@@ -1,0 +1,503 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+    
+    <path>tail.ac</path>
+    
+    <offsets>
+        <x-m>0.0</x-m>
+        <y-m>0.0</y-m>
+        <z-m>0.78</z-m>
+        <pitch-deg>0.0</pitch-deg>
+    </offsets>
+    
+    <!-- Materials effects -->
+    
+    <!-- Internal fuselage -->
+    
+    <animation> 
+        <type>material</type>
+        <object-name>A__G91_fuselage_coda.008</object-name>
+        <object-name>A__G91_fuselage_insideTUbe</object-name>
+        <texture>Pictures/G91-Al.png</texture>
+        <ambient>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
+        </ambient>
+    </animation>
+    
+    <!-- Chrome Effects on materials -->
+    
+    <effect>
+        <inherits-from>Aircraft/G91/Models/Effects/Glass/glass-chrome</inherits-from>
+        <object-name>A__G91_fuselage_coda.002</object-name>
+        <object-name>A__G91_fuselage_coda.005</object-name>
+        <object-name>A__G91_fuselage_coda.006</object-name>
+        <object-name>A__G91_fuselage_coda.007</object-name>
+        <object-name>D_wing_sx_.001</object-name>
+        <object-name>D_wing_sx.000</object-name>
+        <object-name>D_wing_dx_.000</object-name>
+        <object-name>D_wing_dx.007</object-name>
+        <object-name>D_equilibratore_dx</object-name>
+        <object-name>D_equilibratore_sx.002</object-name>
+        <object-name>D_wing_support_sx.001</object-name>
+        <object-name>D_wing_support_dx</object-name>
+        <object-name>A__G91_door_sx_coda.000</object-name>
+        <object-name>A__G91_door_dx_coda.001</object-name>
+        <object-name>D_timone_coda</object-name>
+        <object-name>D_timone_coda.001</object-name>
+        <object-name>D_timone_coda.002</object-name>
+        <object-name>D_timone_coda.003</object-name>
+        <object-name>D_aletta_correttrice</object-name>
+    </effect>
+    
+    <!-- Tail Lights -->
+    
+    <effect>
+        <inherits-from>Effects/model-transparent</inherits-from>
+        <object-name>A_glass_red_est_coda</object-name>
+        <object-name>A_glass_red_int_coda</object-name>
+        <object-name>Sphere.007</object-name>
+    </effect>
+    
+    <animation> 
+        <type>material</type> 
+        <object-name>A_glass_red_est_coda</object-name>
+        <object-name>A_glass_red_int_coda</object-name>
+        <texture>Pictures/G91-Red01.png</texture>
+        <ambient>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </ambient>
+        <emission>	
+            <red>1.0</red>	
+            <green>0.0</green>	
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/position_light_glass_emission</factor-prop>
+        </emission>
+        <transparency>
+            <alpha-prop>sim/G91/position_light_transparent</alpha-prop>
+            <factor>1</factor>
+            <offset>0</offset>
+        </transparency>
+    </animation>
+    
+    <animation> 
+        <type>material</type> 
+        <object-name>Sphere.007</object-name>
+        <texture>Pictures/G91-Red01.png</texture>
+        <ambient>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+        </ambient>
+        <emission>	
+            <red>1.0</red>	
+            <green>0.0</green>	
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/position_light_emission</factor-prop>
+        </emission>
+        <transparency>
+            <alpha-prop>sim/G91/position_light_transparent</alpha-prop>
+            <factor>1</factor>
+            <offset>0</offset>
+        </transparency>
+    </animation>
+    
+    <model>
+        <name>nav-tail-light-red</name>
+        <path>Effects/lights/procedural_light_nav_tail_red.xml</path>
+        <offsets>
+            <x-m> 4.78</x-m>
+            <y-m> -0.05 </y-m>
+            <z-m> 0.29 </z-m>
+        </offsets>
+    </model>
+    
+    <effect>
+        <inherits-from>Effects/model-transparent</inherits-from>
+        <object-name>A_glass_white_est_coda</object-name>
+        <object-name>A_glass_white_int_coda</object-name>
+        <object-name>Sphere.006</object-name>
+    </effect>
+    
+    <animation> 
+        <type>material</type> 
+        <object-name>A_glass_white_est_coda</object-name>
+        <object-name>A_glass_white_int_coda</object-name>
+        <texture>Pictures/G91-Yellow01.png</texture>
+        <ambient>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </ambient>
+        <emission>	
+            <red>0.714</red>	
+            <green>0.6</green>	
+            <blue>0.18</blue>
+            <factor-prop>sim/G91/position_light_glass_emission</factor-prop>
+        </emission>
+        <transparency>
+            <alpha-prop>sim/G91/position_light_transparent</alpha-prop>
+            <factor>0.9</factor>
+            <offset>-0.2</offset>
+        </transparency>
+    </animation>
+    
+    <animation> 
+        <type>material</type> 
+        <object-name>Sphere.006</object-name>
+        <texture>Pictures/G91-Yellow01.png</texture>
+        <ambient>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+        </ambient>
+        <emission>	
+            <red>0.714</red>	
+            <green>0.6</green>	
+            <blue>0.18</blue>
+            <factor-prop>sim/G91/position_light_emission</factor-prop>
+        </emission>
+        <transparency>
+            <alpha-prop>sim/G91/position_light_transparent</alpha-prop>
+            <factor>1</factor>
+            <offset>0</offset>
+        </transparency>
+    </animation>
+    
+    <model>
+        <name>nav-tail-light-yellow</name>
+        <path>Effects/lights/procedural_light_nav_tail_yellow.xml</path>
+        <offsets>
+            <x-m> 4.78</x-m>
+            <y-m> 0.05 </y-m>
+            <z-m> 0.29 </z-m>
+        </offsets>
+    </model>
+    
+    <!-- Material assignment -->
+    
+    <animation> 
+        <type>material</type>
+        <object-name>A__G91_door_dxint_coda.000</object-name>
+        <object-name>A__G91_door_sxint_coda.001</object-name>
+        <texture>Pictures/AichiInteriorGreyGreen.png</texture>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>A__G91_fuselage_coda.003</object-name>
+        <texture>Pictures/G91-Dark-Grey.png</texture>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>A_wing_longherone_sx.002</object-name>
+        <object-name>D_wing_longherone_dx.004</object-name>
+        <object-name>D_wing_longherone_sx.003</object-name>
+        <object-name>A_wing_longherone_sx.005</object-name>
+        <object-name>A_trasmission_command_Alet_sx.003</object-name>
+        <object-name>A_trasmission_command_Alet_sx.007</object-name>
+        <object-name>A_trasmission_command_Alet_sx.008</object-name>
+        <object-name>A_trasmission_command_Alet_sx.009</object-name>
+        <object-name>A__G91_fuselage_insideTUbe</object-name>
+        <texture>Pictures/G91-Al.png</texture>
+    </animation>
+    
+    <!-- Objects animation -->
+    
+    <animation>
+        <type>pick</type>
+        <object-name>A__G91_door_dx_coda.001</object-name>
+        <object-name>A__G91_door_dxint_coda.000</object-name>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <interval-sec>0.2</interval-sec>
+            <binding>
+                <command>property-toggle</command>
+                <property>/controls/switches/door_dx_coda</property>
+                <step>1</step>
+                <min>0</min>
+                <max>1</max>
+                <wrap>false</wrap>
+            </binding>
+        </action>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>A__G91_door_dx_coda.001</object-name>
+        <object-name>A__G91_door_dxint_coda.000</object-name>
+        <property>/controls/switches/door_dx_coda</property>
+        <factor>-60</factor>
+        <axis>
+            <x1-m> 1.97143 </x1-m>
+            <y1-m> 0.48405 </y1-m>
+            <z1-m> 0.06266 </z1-m>
+            <x2-m> 1.74672 </x2-m>
+            <y2-m> 0.50203 </y2-m>
+            <z2-m> 0.05977 </z2-m>
+        </axis>
+    </animation>
+    
+    <animation>
+        <type>pick</type>
+        <object-name>A__G91_door_sx_coda.000</object-name>
+        <object-name>A__G91_door_sxint_coda.001</object-name>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <interval-sec>0.2</interval-sec>
+            <binding>
+                <command>property-toggle</command>
+                <property>/controls/switches/door_sx_coda</property>
+                <step>1</step>
+                <min>0</min>
+                <max>1</max>
+                <wrap>false</wrap>
+            </binding>
+        </action>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>A__G91_door_sx_coda.000</object-name>
+        <object-name>A__G91_door_sxint_coda.001</object-name>
+        <property>/controls/switches/door_sx_coda</property>
+        <factor>60</factor>
+        <axis>
+            <x1-m> 1.98078 </x1-m>
+            <y1-m> -0.47741 </y1-m>
+            <z1-m> 0.06093 </z1-m>
+            <x2-m> 1.76694 </x2-m>
+            <y2-m> -0.49032 </y2-m>
+            <z2-m> 0.05594 </z2-m>
+        </axis>
+    </animation>
+    
+    <!-- Tail sufaces animation -->
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>D_equilibratore_sx.002</object-name>
+        <property>/controls/flight/elevator</property>
+        <min-deg>-12</min-deg>
+        <max-deg>17</max-deg>
+        <factor>-17</factor>
+        <axis>
+            <x1-m> 3.81291 </x1-m>
+            <y1-m> -0.34556 </y1-m>
+            <z1-m> 0.05085 </z1-m>
+            <x2-m> 4.50787 </x2-m>
+            <y2-m> -1.58545 </y2-m>
+            <z2-m> 0.03806 </z2-m>
+        </axis>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>D_equilibratore_dx</object-name>
+        <property>/controls/flight/elevator</property>
+        <min-deg>-12</min-deg>
+        <max-deg>15</max-deg>
+        <factor>17</factor>
+        <axis>
+            <x1-m> 3.81291 </x1-m>
+            <y1-m> 0.34556 </y1-m>
+            <z1-m> 0.05085 </z1-m>
+            <x2-m> 4.50787 </x2-m>
+            <y2-m> 1.58545 </y2-m>
+            <z2-m> 0.03806 </z2-m>
+        </axis>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>D_equilibratore_dx</object-name>
+        <object-name>D_equilibratore_sx.002</object-name>
+        <object-name>A_wing_longherone_sx.002</object-name>
+        <object-name>D_wing_longherone_dx.004</object-name>
+        <object-name>D_wing_longherone_sx.003</object-name>
+        <object-name>A_wing_longherone_sx.005</object-name>
+        <object-name>D_wing_sx_.001</object-name>
+        <object-name>D_wing_sx.000</object-name>
+        <object-name>D_wing_dx_.000</object-name>
+        <object-name>D_wing_dx.007</object-name>
+        <object-name>A_trasmission_command_Alet_sx.003</object-name>
+        <object-name>A_trasmission_command_Alet_sx.007</object-name>
+        <object-name>A_trasmission_command_Alet_sx.008</object-name>
+        <object-name>A_trasmission_command_Alet_sx.009</object-name>
+        <object-name>D_wing_support_dx</object-name>
+        <object-name>D_wing_support_sx.001</object-name>
+        <property>/controls/flight/elevator-trim</property>
+        <min-deg>-5</min-deg>
+        <max-deg>2</max-deg>
+        <factor>5</factor>
+        <axis>
+            <x1-m> 3.5 </x1-m>
+            <y1-m> 1.0 </y1-m>
+            <z1-m> 0.05085 </z1-m>
+            <x2-m> 3.5 </x2-m>
+            <y2-m> -1.0 </y2-m>
+            <z2-m> 0.05085 </z2-m>
+        </axis>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>D_timone_coda</object-name>
+        <object-name>D_timone_coda.001</object-name>
+        <object-name>D_timone_coda.002</object-name>
+        <object-name>D_timone_coda.003</object-name>
+        <object-name>D_aletta_correttrice</object-name>
+        <object-name>D_Plate_vertical_wing</object-name>
+        <object-name>D_aletta_correttrice</object-name>
+        <object-name>D_Plate_vertical_wing</object-name>
+        <object-name>D_bar_node2.000</object-name>
+        <object-name>D_DADI_Plate_vertical_wing</object-name>
+        <object-name>D_DADI_Plate_vertical_wing_01</object-name>
+        <object-name>DADI.027</object-name>
+        <property>/controls/flight/rudder</property>
+        <min-deg>-25</min-deg>
+        <max-deg>25</max-deg>
+        <factor>25</factor>
+        <axis>
+            <x1-m> 4.22196 </x1-m>
+            <y1-m> 0.0 </y1-m>
+            <z1-m> 0.37449 </z1-m>
+            <x2-m> 4.85980 </x2-m>
+            <y2-m> 0.0 </y2-m>
+            <z2-m> 1.65058 </z2-m>
+        </axis>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>D_bar_node3.001</object-name>
+        <object-name>D_bar_node2.001</object-name>
+        <object-name>D_DADI_Plate_vertical_wing_01.001</object-name>
+        <property>/controls/flight/rudder</property>
+        <min-deg>-25</min-deg>
+        <max-deg>25</max-deg>
+        <factor>12</factor>
+        <axis>
+            <x1-m> 4.22196 </x1-m>
+            <y1-m> 0.0 </y1-m>
+            <z1-m> 0.37449 </z1-m>
+            <x2-m> 4.85980 </x2-m>
+            <y2-m> 0.0 </y2-m>
+            <z2-m> 1.65058 </z2-m>
+        </axis>
+    </animation>
+    
+    <animation>
+        <type>locked-track</type>
+        <object-name>D_bar_node2.001</object-name>
+        <center>
+            <x-m>4.20906</x-m>
+            <y-m>0.13228</y-m>
+            <z-m>0.31994</z-m>
+        </center>
+        <lock-axis>
+            <x>1</x>
+            <y>0</y>
+            <z>0</z>
+        </lock-axis>
+        <track-axis>
+            <x>-0.38</x>
+            <y>-0.14</y>
+            <z>0.06</z>
+        </track-axis>
+        <target-name>A__G91_fuselage_coda.002</target-name>
+        <target-center>
+            <x-m>3.83471</x-m>
+            <y-m>0.0</y-m>
+            <z-m>0.37967</z-m>
+        </target-center>
+    </animation> 
+    
+    <animation>
+        <type>locked-track</type>
+        <object-name>D_bar_node2.001</object-name>
+        <center>
+            <x-m>4.20906</x-m>
+            <y-m>0.13228</y-m>
+            <z-m>0.31994</z-m>
+        </center>
+        <lock-axis>
+            <x>0</x>
+            <y>0</y>
+            <z>1</z>
+        </lock-axis>
+        <track-axis>
+            <x>-0.38</x>
+            <y>-0.14</y>
+            <z>0.06</z>
+        </track-axis>
+        <target-name>A__G91_fuselage_coda.002</target-name>
+        <target-center>
+            <x-m>3.83471</x-m>
+            <y-m>0.0</y-m>
+            <z-m>0.37967</z-m>
+        </target-center>
+    </animation> 
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>D_aletta_correttrice</object-name>
+        <object-name>D_Plate_vertical_wing</object-name>
+        <object-name>D_DADI_Plate_vertical_wing</object-name>
+        <object-name>D_DADI_Plate_vertical_wing_01</object-name>
+        <object-name>D_bar_node2.000</object-name>
+        <property>/controls/flight/rudder-trim</property>
+        <min-deg>-10</min-deg>
+        <max-deg>10</max-deg>
+        <factor>25</factor>
+        <axis>
+            <x1-m> 4.21722 </x1-m>
+            <y1-m> 0.0 </y1-m>
+            <z1-m> 0.35041 </z1-m>
+            <x2-m> 4.71195 </x2-m>
+            <y2-m> 0.0 </y2-m>
+            <z2-m> 0.98169 </z2-m>
+        </axis>
+    </animation>
+    
+    <animation>
+        <type>pick</type>
+        <object-name>A__G91_fuselage_coda.005</object-name>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <interval-sec>0.2</interval-sec>
+            <binding>
+                <command>property-toggle</command>
+                <property>/controls/switches/ParachutePanelOpen</property>
+                <step>1</step>
+                <min>0</min>
+                <max>1</max>
+                <wrap>true</wrap>
+            </binding>
+        </action>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>A__G91_fuselage_coda.005</object-name>
+        <property>/controls/switches/ParachutePanelOpen</property>
+        <factor>120</factor>
+        <axis>
+            <x1-m> 4.75524 </x1-m>
+            <y1-m> -0.09659 </y1-m>
+            <z1-m> 0.14552 </z1-m>
+            <x2-m> 4.86624 </x2-m>
+            <y2-m> -0.10628 </y2-m>
+            <z2-m> 0.00500 </z2-m>
+        </axis>
+    </animation>
+    
+</PropertyList>

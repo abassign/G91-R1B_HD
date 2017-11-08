@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+    
+    <name>Set_Object_Position_dialog</name>
+    <layout>vbox</layout>
+    <default-padding>5</default-padding>
+    <modal>false</modal>
+    <width>700</width>
+    
+    <!-- SetObjectPosition --> 
+    
+    <!-- title bar -->
+    
+    <group>
+        <layout>hbox</layout>
+        <empty><stretch>1</stretch></empty>
+        
+        <text>
+            <label>Set Object Position</label>
+        </text>
+        
+        <empty><stretch>1</stretch></empty>
+        
+        <button>
+            <pref-width>16</pref-width>
+            <pref-height>16</pref-height>
+            <legend></legend>
+            <keynum>27</keynum>
+            <border>2</border>
+            <binding>
+                <command>dialog-close</command>
+            </binding>
+        </button>
+    </group>
+    
+    <hrule/>
+    
+    <group>
+        <layout>vbox</layout>
+        <empty>
+            <stretch>true</stretch>
+        </empty>
+        <group>
+            <layout>table</layout>
+            <name>initial_position_x</name>
+            <text>
+                <row>0</row>
+                <col>0</col>
+                <label>Set initial pos</label>
+            </text>
+            <text>
+                <row>0</row>
+                <col>1</col>
+                <label>pos m</label>
+            </text>
+            <text>
+                <row>0</row>
+                <col>2</col>
+                <label>pos dm</label>
+            </text>
+            <text>
+                <row>0</row>
+                <col>3</col>
+                <label>pos cm</label>
+            </text>
+            <text>
+                <row>0</row>
+                <col>4</col>
+                <label>pos mm</label>
+            </text>
+            <text>
+                <row>0</row>
+                <col>5</col>
+                <label>pos 1/10 mm</label>
+            </text>
+                        <text>
+                <row>0</row>
+                <col>6</col>
+                <label>pos X</label>
+            </text>
+            <input>
+                <row>1</row>
+                <col>0</col>
+                <live>1</live>
+                <name>demand-year</name>
+                <property>sim/G91/set_object_initial_position_x</property>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </input>
+            <slider>
+                <row>1</row>
+                <col>1</col>
+                <name>set_object_incremental_position_x_m</name>
+                <property>sim/G91/set_object_incremental_position_x</property>
+                <min>-10.0</min>
+                <max>10.0</max>
+                <step>1</step>  
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </slider>
+            <slider>
+                <row>1</row>
+                <col>2</col>
+                <name>set_object_incremental_position_x_dm</name>
+                <property>sim/G91/set_object_incremental_position_x</property>
+                <min>-10.0</min>
+                <max>10.0</max>
+                <step>1</step>  
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </slider>
+            <slider>
+                <row>1</row>
+                <col>3</col>
+                <name>set_object_incremental_position_x_cm</name>
+                <property>sim/G91/set_object_incremental_position_x</property>
+                <min>-10.0</min>
+                <max>10.0</max>
+                <step>1</step>  
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </slider>
+            <slider>
+                <row>1</row>
+                <col>4</col>
+                <name>set_object_incremental_position_x_mm</name>
+                <property>sim/G91/set_object_incremental_position_x</property>
+                <min>-10.0</min>
+                <max>10.0</max>
+                <step>1</step>  
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </slider>
+            <slider>
+                <row>1</row>
+                <col>5</col>
+                <name>set_object_incremental_position_x_mmm</name>
+                <property>sim/G91/set_object_incremental_position_x</property>
+                <min>-10.0</min>
+                <max>10.0</max>
+                <step>1</step>  
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </slider>
+            <text>
+                <row>1</row>
+                <col>6</col>
+                <label>99999</label>
+                <live>true</live>
+                <format>%2.3f </format>
+                <property>sim/G91/set_object_position_x</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.9</blue>
+                </color>
+            </text>
+        </group>
+        
+    </group>
+    
+    <hrule/>    
+    
+</PropertyList>

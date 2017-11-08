@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   width="100%"
+   height="100%"
+   id="ALT"
+   inkscape:version="0.92.2 (unknown)"
+   sodipodi:docname="SFOM_83A_01_SF.svg"
+   viewBox="0 0 512 512"
+   preserveAspectRatio="xMinYMin meet">
+  <title
+     id="title3023">Altimeter</title>
+  <defs
+     id="defs3747">
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter1368"
+       x="-0.0228"
+       width="1.0456"
+       y="-0.0228"
+       height="1.0456">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="2.5172622"
+         id="feGaussianBlur1370" />
+    </filter>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.1015625"
+     inkscape:cx="120.04473"
+     inkscape:cy="256.34017"
+     inkscape:document-units="px"
+     inkscape:current-layer="Face"
+     showgrid="false"
+     borderlayer="true"
+     inkscape:window-width="1379"
+     inkscape:window-height="1080"
+     inkscape:window-x="2365"
+     inkscape:window-y="174"
+     inkscape:window-maximized="0"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     inkscape:snap-page="true"
+     inkscape:snap-bbox="true"
+     inkscape:bbox-nodes="true"
+     inkscape:bbox-paths="true"
+     inkscape:snap-bbox-edge-midpoints="true"
+     inkscape:snap-bbox-midpoints="true">
+    <sodipodi:guide
+       position="260.539,273.24821"
+       orientation="1,0"
+       id="guide834"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="260.539,273.24821"
+       orientation="0,1"
+       id="guide836"
+       inkscape:locked="false" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata3750">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>Altimeter</dc:title>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Torsten Dreyer</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:rights>
+          <cc:Agent>
+            <dc:title>Torsten Dreyer</dc:title>
+          </cc:Agent>
+        </dc:rights>
+        <dc:publisher>
+          <cc:Agent>
+            <dc:title>flightgear.org</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <cc:license
+           rdf:resource="http://www.gnu.org/licenses/gpl-2.0.html" />
+        <dc:date>2014-08-01</dc:date>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:groupmode="layer"
+     id="Face"
+     inkscape:label="Face"
+     style="display:inline">
+    <g
+       id="g1283"
+       style="filter:url(#filter1368)">
+      <circle
+         inkscape:export-ydpi="365.39899"
+         inkscape:export-xdpi="365.39899"
+         r="1.7205542"
+         cy="238.75179"
+         cx="260.539"
+         id="path885"
+         style="display:inline;opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1.00000322;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+      <circle
+         inkscape:export-ydpi="365.39899"
+         inkscape:export-xdpi="365.39899"
+         r="77.381104"
+         cy="238.75179"
+         cx="260.539"
+         id="path832"
+         style="display:inline;opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:4;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+      <path
+         inkscape:export-ydpi="365.39899"
+         inkscape:export-xdpi="365.39899"
+         sodipodi:nodetypes="cc"
+         inkscape:connector-curvature="0"
+         id="path838"
+         d="m 128.05152,238.75179 90.80686,0"
+         style="display:inline;fill:none;stroke:#000000;stroke-width:4;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         inkscape:export-ydpi="365.39899"
+         inkscape:export-xdpi="365.39899"
+         sodipodi:nodetypes="cc"
+         inkscape:connector-curvature="0"
+         id="path838-3"
+         d="m 300.29388,238.75179 92.7326,0"
+         style="display:inline;fill:none;stroke:#000000;stroke-width:4;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         inkscape:export-ydpi="365.39899"
+         inkscape:export-xdpi="365.39899"
+         sodipodi:nodetypes="cc"
+         inkscape:connector-curvature="0"
+         id="path838-3-6"
+         d="m 260.539,106.2643 0,92.09068"
+         style="display:inline;fill:none;stroke:#000000;stroke-width:4;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         inkscape:export-ydpi="365.39899"
+         inkscape:export-xdpi="365.39899"
+         sodipodi:nodetypes="cc"
+         inkscape:connector-curvature="0"
+         id="path838-3-6-7"
+         d="m 260.539,283.64197 0,87.5973"
+         style="display:inline;fill:none;stroke:#000000;stroke-width:4;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    </g>
+  </g>
+</svg>

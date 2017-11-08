@@ -1,0 +1,85 @@
+I have a big problem with the animation feature "locked-track"
+
+I have an object (shaft of a hydraulic cylinder) that is connected to the leg of a landing gear, the gear can be retracted or extended on the axis of y.
+
+This is the scheme of retracted landing gear:
+
+https://s19.postimg.org/5kupvtrb7/locked_track_y_axis_difect_01.jpg
+
+The (1) This is the shaft in the current position which it assumes when the landing gear is retracted, as you can see the direction is wrong because it is not directed towards the target.
+The (2) is the shaft in the right direction, direction which are not able to get in any way!
+
+It is important to note that instead directions on the Z axis and the X-axis are correct! I have not included a 3D design because the problem occurs only for the axis of the Y.
+
+This is the code that serves to move the origin of the shaft on the coupling point to the leg of the landing gear:
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>gear-front-jack-02</object-name>
+        <property>gear/gear/position-norm</property>
+        <center>
+            <x-m>-2.89963</x-m>
+            <y-m> 0.0</y-m>
+            <z-m>-0.99191</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>-1</y>
+            <z>0</z>
+        </axis>
+        <interpolation>
+            <entry><ind>0.0</ind><dep>91</dep></entry>
+            <entry><ind>0.25</ind><dep>91</dep></entry>
+            <entry><ind>0.50</ind><dep>60</dep></entry>
+            <entry><ind>0.75</ind><dep>30</dep></entry>
+            <entry><ind>1.0</ind><dep>0</dep></entry>
+        </interpolation>
+    </animation>
+    
+This code is used to directing the shaft toward the target poit (the target point is a point on the aircraft fuselage):
+    
+    <animation>
+        <type>locked-track</type>
+        <object-name>gear-front-jack-02</object-name>
+        <center>
+            <x-m>-2.91953</x-m>
+            <y-m>-0.06230</y-m>
+            <z-m>-1.30829</z-m>
+        </center>
+        <lock-axis>
+            <x>0</x>
+            <y>0</y>
+            <z>0</z>
+        </lock-axis>
+        <track-axis>
+            <x>1</x>
+            <y>-0.2</y>
+            <z>0.68</z> 
+        </track-axis>
+        <target-name>BOX_GEAR_GREEN.000</target-name>
+        <target-center>
+            <x-m>-2.065</x-m>
+            <y-m>-0.25553</y-m>
+            <z-m>-0.72571</z-m>
+        </target-center>
+    </animation>
+    
+Note the code:
+[code]
+        <lock-axis>
+            <x>0</x>
+            <y>0</y>
+            <z>0</z>
+        </lock-axis>
+[/code]
+    
+Having the spherical coupling of the shaft, does not exist a lock axis! So I put the value zero in all three axes (in the two-dimensional case however I have always been successful entering this constraint). However if I put any type of lock on one of the three axes, it does not change anything, as if the problem was before.    
+    
+I did other animations with "locked-track" and have always worked well, but it is important to point out that had animated the two-dimensional plane, but in this case we are in a three-dimensional system.
+
+My idea is that there is a problem when "locked-track" should work on an object, which itself is "locked" on an axis, because in my case the "gear-front-jack-02" item is constrained to rotate, in an extreme, with the leg of the landing gear.
+
+Unfortunately, the documentation on "locked-track" function is absolutely incomplete and does not allow to find a good solution.
+I hope someone has solved the problem and can explain how to proceed.
+
+

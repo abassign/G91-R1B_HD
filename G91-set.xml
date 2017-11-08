@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList include="G91-common.xml">
+    
+    <sim>
+        
+        <description>Fiat G91 (JSBSim)</description>
+        
+        <tags>
+            <tag>FIAT</tag>
+            <tag>single-engine</tag>
+            <tag> turbine</tag>
+        </tags>
+        
+        <author>Adriano Bassignana (FDM)</author>
+        <status>alpha</status>
+        <aircraft-version>0.1</aircraft-version>
+        
+        <rating>
+            <FDM type="int">     1 </FDM>
+            <systems type="int"> 0 </systems>
+            <cockpit type="int"> 0 </cockpit>
+            <model type="int">   1 </model>
+        </rating>
+        
+        <startup>
+            <splash-texture>Aircraft/G91/G91092101.jpg</splash-texture>
+        </startup>
+    
+        <flight-model>jsb</flight-model>
+        <!-- JSBSim start file -->
+        <aero>G91-JSBSim</aero>
+        
+        <model>
+            <path>Aircraft/G91/Models/G91.xml</path>
+        </model>
+        
+        <startup>
+            
+        </startup>
+        
+        <sound>
+            
+        </sound>
+        
+        <menubar>
+            <default>
+                <menu n="10">
+                    <label>Fiat G91</label>
+                    <enabled type="bool">true</enabled>
+                    <item>
+                        <label>Test systems plane</label>
+                        <binding>
+                            <command>nasal</command>
+                            <script>
+                                test_dialog = gui.Dialog.new("sim/gui/dialogs/G91/TestSystemsPlane/dialog","Aircraft/G91/Dialogs/G91-test.xml");
+                                test_dialog.open();
+                            </script>
+                        </binding>
+                    </item>
+                    <item>
+                        <label>Set Object Position (Develop)</label>
+                        <binding>
+                            <command>nasal</command>
+                            <script>
+                                Set_Object_Position_dialog = gui.Dialog.new("sim/gui/dialogs/G91/SetObjectPosition/dialog","Aircraft/G91/Dialogs/SetObjectPosition.xml");
+                                Set_Object_Position_dialog.open();
+                            </script>
+                        </binding>
+                    </item>
+                </menu>
+            </default>
+        </menubar>
+    </sim>
+    
+    <engines>
+        <engine n="0">
+            <running>true</running>
+        </engine>
+    </engines>
+    
+    <gear>
+        <brake-parking>1</brake-parking>
+    </gear>
+    
+    <input>
+        <keyboard>
+            <key n="99">
+                <name>c</name>
+                <desc>Canopy</desc>
+                <binding>
+                    <command>nasal</command>
+                    <script>canopy.canopy_switch(2)</script>
+                </binding>
+            </key>
+        </keyboard>
+    </input>
+    
+    <nasal>
+        <general>
+            <file>Aircraft/G91/Nasal/Electric/electric_system_basic.nas</file>
+            <file>Aircraft/G91/Nasal/Autopilot/autopilot_set.nas</file>
+            <file>Aircraft/G91/Nasal/Engine/engine_red_emission.nas</file>
+            <file>Aircraft/G91/Nasal/Reflections/Glass_Camera_Reflections.nas</file>
+            <file>Aircraft/G91/Nasal/Reflections/Glass_Canopy_Reflections.nas</file>
+            <file>Aircraft/G91/Nasal/Lights/position_lights.nas</file>
+            <file>Aircraft/G91/Nasal/Lights/frontal_gear_lights.nas</file>
+            <file>Aircraft/G91/Nasal/Lights/re_emit_green_red_gauges.nas</file>
+            <file>Aircraft/G91/Nasal/Lights/button_lights.nas</file>
+            <file>Aircraft/G91/Nasal/Lights/button_lights.nas</file>
+            <file>Aircraft/G91/Nasal/Electric/power_management.nas</file>
+            <file>Aircraft/G91/Nasal/Hydraulic/hydraulic.nas</file>
+            <!-- Gauges -->
+            <file>Aircraft/G91/Nasal/Gauges/clock.nas</file>
+            <file>Aircraft/G91/Nasal/Gauges/accelerometer.nas</file>
+            <!-- For build and testing -->
+            <file>Aircraft/G91/Nasal/Utility/SetObjectPosition.nas</file>
+        </general>
+        <canvas_gauges>
+            <file>Aircraft/G91/Models/Parts/Canopy/Gauges/SFOM_83A/SFOM_83A_01.nas</file>
+        </canvas_gauges>
+        <canopy>
+            <file>Aircraft/G91/Nasal/canopy.nas</file>
+        </canopy>
+    </nasal>
+    
+    <procedural-lights type="bool">true</procedural-lights>
+    
+</PropertyList>

@@ -1,0 +1,120 @@
+  <propulsion>
+
+    <engine file="ORPHEUS_MK_803">
+      <location unit="M">
+	<x>   8.33 </x>
+	<y>   0.00 </y>
+	<z>   0.00 </z>
+      </location>
+      <orient unit="DEG">
+	<pitch> 0.00 </pitch>
+	<roll>  0.00 </roll>
+	<yaw>   0.00 </yaw>
+      </orient>
+      <feed>5</feed> <!-- The fuel keep from Collector or Manifold Tank number=5 -->
+      <thruster file="direct">
+	<location unit="M">
+	  <x>   9.50 </x>
+	  <y>   0.00 </y>
+	  <z>   0.00 </z>
+	</location>
+	<orient unit="DEG">
+	  <pitch> 0.00 </pitch>
+	  <roll>  0.00 </roll>
+	  <yaw>   0.00 </yaw>
+	</orient>
+      </thruster>
+    </engine>
+
+    <!-- Tank: Divide the tanks right and left in order to simulate the increase of inertia with full tanks -->
+    <!-- Forward Tank -->
+    <tank type="FUEL" number="0">
+      <location unit="M">
+	<x> 4.43 </x>
+	<y> 0.00 </y>
+	<z> 0.41 </z>
+      </location>
+      <capacity unit="LBS"> 1367.00 </capacity>
+      <contents unit="LBS"> 1367.00 </contents>
+    </tank>
+
+    <!-- Aft Tank Right-->
+    <tank type="FUEL" number="1">
+      <location unit="M">
+	<x> 4.43 </x>
+	<y> 1.30 </y>
+	<z> -10.13 </z>
+      </location>
+      <capacity unit="LBS"> 562.00 </capacity>
+      <contents unit="LBS"> 562.00 </contents>
+    </tank>
+    
+    <!-- Aft Tank Left -->
+    <tank type="FUEL" number="2">
+      <location unit="M">
+	<x> 4.43 </x>
+	<y> -1.30 </y>
+	<z> -0.33 </z>
+      </location>
+      <capacity unit="LBS"> 562.00 </capacity>
+      <contents unit="LBS"> 562.00 </contents>
+    </tank>
+    
+    <!-- Auxiliary Tank Right (Droppable fuel tank) -->
+    <tank type="FUEL" number="3">
+      <location unit="M">
+	<x> 4.43 </x>
+	<y> 2.03 </y>
+	<z> -0.93 </z>
+      </location>
+      <capacity unit="LBS"> 450.00 </capacity>
+      <contents unit="LBS"> 0.00 </contents>
+    </tank>
+    
+    <!-- Auxiliary Tank Left (Droppable fuel tank) -->
+    <tank type="FUEL" number="4">
+      <location unit="M">
+	<x> 4.43 </x>
+	<y> -2.03 </y>
+	<z> -0.93 </z>
+      </location>
+      <capacity unit="LBS"> 450.00 </capacity>
+      <contents unit="LBS"> 0.00 </contents>
+    </tank>
+    
+    <!-- Collector or Manifold Tank -->
+    <tank type="FUEL" number="5">
+      <location unit="M">
+	<x> 6.10 </x>
+	<y> 0.00 </y>
+	<z> -0.45 </z>
+      </location>
+      <capacity unit="LBS"> 277.00 </capacity>
+      <contents unit="LBS"> 200.00 </contents>
+    </tank>
+    
+    <!-- Collector tank for collector fuel tank 3-4 -->
+    <tank type="FUEL" number="6">
+      <location unit="M">
+	<x> 6.10 </x>
+	<y> 0.00 </y>
+	<z> -0.45 </z>
+      </location>
+      <capacity unit="LBS"> 10.00 </capacity>
+      <contents unit="LBS"> 0.00 </contents>
+    </tank>
+    
+    <!-- Collector tank for collector fuel tank 1-2 -->
+    <tank type="FUEL" number="7">
+      <location unit="M">
+	<x> 6.10 </x>
+	<y> 0.00 </y>
+	<z> -0.45 </z>
+      </location>
+      <capacity unit="LBS"> 10.00 </capacity>
+      <contents unit="LBS"> 0.00 </contents>
+    </tank>
+
+  </propulsion>
+
+  <system file="G91-fuel"/>

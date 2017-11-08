@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<!--
+File:     ORPHEUS_MK_803.xml
+Author:   Aero-Matic v 0.82
+MO
+Modify on original Orpheus data by Adriano Bassignana 20150811 (4000 ft GS 550 kts)
+
+Inputs:
+name:           ORPHEUS_MK_803
+type:           turbine
+thrust:         4999.552 lb
+augmented?      no
+injected?       no
+
+Some information on XML parameters:
+http://wiki.flightgear.org/JSBSim_Engines#FGTurbine
+
+
+
+-->
+
+<turbine_engine name="ORPHEUS_MK_803">
+  <milthrust>  4999.6 </milthrust>
+  <bypassratio>     1.0 </bypassratio>
+  <tsfc>            0.95 </tsfc>
+  <bleed>           0.03</bleed>
+  <idlen1>         30.0 </idlen1>
+  <idlen2>         60.0 </idlen2>
+  <maxn1>         100.0 </maxn1>
+  <maxn2>         100.0 </maxn2>
+  <augmented>         0 </augmented>
+  <injected>          0 </injected>
+  
+  <function name="IdleThrust">
+    <table>
+      <independentVar lookup="row">velocities/mach</independentVar>
+      <independentVar lookup="column">atmosphere/density-altitude</independentVar>
+      <tableData>
+		-10000	0	10000	20000	30000	40000	60000
+	0	0.036	0.036	0.020	0.054	0.064	0.068	0.0
+	0.1	0.036	0.036	0.020	0.054	0.060	0.068	0.0
+	0.2	0.036	0.036	0.024	0.054	0.060	0.068	0.0
+	0.3	0.032	0.032	0.030	0.048	0.060	0.068	0.0
+	0.4	0.030	0.030	0.031	0.044	0.058	0.068	0.0
+	0.5	0.030	0.030	0.032	0.046	0.058	0.064	0.0
+	0.6	0.020	0.020	0.040	0.048	0.058	0.064	0.0
+	0.7	0.010	0.010	0.000	0.052	0.060	0.064	0.0
+	0.8	0.002	0.002	0.000	0.052	0.060	0.064	0.0
+	0.9	0.000	0.000	0.000	0.052	0.060	0.066	0.0
+	1	0.000	0.000	0.000	0.056	0.060	0.068	0.0
+      </tableData>
+    </table>
+  </function>
+  
+  <function name="MilThrust">
+    <product>
+      
+      <table>
+	<independentVar lookup="row">velocities/mach</independentVar>
+	<independentVar lookup="column">atmosphere/density-altitude</independentVar>
+	<tableData>
+		  -10000	0	10000	20000	30000	40000	60000
+	  0	1	1	0.75	0	0	0	0
+	  0.1	0.95	0.95	0.72	0	0	0	0
+	  0.2	0.91	0.91	0.69	0.52	0	0	0
+	  0.3	0.89	0.89	0.68	0.512	0	0	0
+	  0.4	0.87	0.87	0.68	0.508	0	0	0
+	  0.5	0.87	0.87	0.68	0.512	0	0	0
+	  0.6	0.88	0.88	0.69	0.52	0	0.252	0
+	  0.7	0.9	0.9	0.71	0.54	0	0.268	0
+	  0.8	0.92	0.92	0.73	0.568	0.38	0.284	0
+	  0.9	0.95	0.95	0.77	0.596	0.444	0.304	0
+	  1	1	1	0.8	0.636	0.476	0.324	0
+	</tableData>
+      </table>
+    </product>
+  </function>
+  
+</turbine_engine>  

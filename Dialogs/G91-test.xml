@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+    
+    <name>G91_test_dialog</name>
+    <layout>vbox</layout>
+    <default-padding>5</default-padding>
+    <modal>false</modal>
+    <width>700</width>
+    
+    <!-- title bar -->
+    <group>
+        <layout>hbox</layout>
+        <empty><stretch>true</stretch></empty>
+        <text>
+            <label>Testing G91</label>
+        </text>
+        <empty><stretch>true</stretch></empty>
+        <button>
+            <legend/>
+            <key>Esc</key>
+            <pref-width>16</pref-width>
+            <pref-height>16</pref-height>
+            <border>2</border>
+            <binding>
+                <command>dialog-close</command>
+            </binding>
+        </button>
+    </group>
+    
+    <hrule/>
+    
+    <!-- Hydraulic pressure -->
+    <group>
+        <layout>hbox</layout>
+        <text>
+            <halign>left</halign>
+            <label>Hydraulic pressure (psi) [Flow in|out]</label>
+        </text>
+        <group>
+            <layout>hbox</layout>
+            <halign>right</halign>
+            <text>
+                <label>99999</label>
+                <live>true</live>
+                <format>%5.1f </format>
+                <property>fdm/jsbsim/systems/hydraulics/flight-system-psi</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.9</blue>
+                </color>
+            </text>
+            <text>
+                <label>999999</label>
+                <live>true</live>
+                <format>[%4.2f|</format>
+                <property>fdm/jsbsim/systems/hydraulics/pump_flow_rate</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.9</blue>
+                </color>
+            </text>
+            <text>
+                <label>999999</label>
+                <live>true</live>
+                <format>%4.2f]</format>
+                <property>fdm/jsbsim/systems/hydraulics/lost_flow_rate</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.9</blue>
+                </color>
+            </text>
+            
+            <empty>
+                <stretch>true</stretch>
+            </empty>
+            
+            <vrule/>
+            <group>
+                <width>100</width>
+                <text>
+                    <label> 0.01</label>
+                </text>
+            </group>
+            <slider>
+                <name>hydraulic_pressure_loss</name>
+                <property>fdm/jsbsim/systems/hydraulics/lost-performance-system</property>
+                <min>0.1</min>
+                <max>1.0</max>
+                <step>0.01</step>  
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </slider>
+            <group>
+                <width>30</width>      
+                <text>
+                    <label>1</label>
+                </text>
+            </group>
+            <text>
+                <label>9999</label>
+                <live>true</live>
+                <format>(%2.2f)</format>
+                <property>fdm/jsbsim/systems/hydraulics/lost-performance-system</property>
+                <color>
+                    <red>0.2</red>
+                    <green>0.9</green>
+                    <blue>0.2</blue>
+                </color>
+            </text>
+        </group>
+    </group>
+    
+    <!-- Cockpit Lamps -->
+    <hrule/>
+    
+    <group>
+        <layout>hbox</layout>
+        <text>
+            <halign>left</halign>
+            <label>Gauge UV Lamp Intensity: blu ext light = </label>
+        </text>
+        <text>
+            <label>99999</label>
+            <live>true</live>
+            <format>%2.3f </format>
+            <property>rendering/scene/ambient/blue</property>
+            <color>
+                <red>0.9</red>
+                <green>0.9</green>
+                <blue>0.9</blue>
+            </color>
+        </text>
+        <empty>
+            <stretch>true</stretch>
+        </empty>
+        <slider>
+            <name>gauge_UV_light_spot_lamp</name>
+            <property>sim/G91/gauge_UV_light_spot_lamp_emission</property>
+            <min>0.0</min>
+            <max>1.0</max>
+            <step>0.01</step>  
+            <binding>
+                <command>dialog-apply</command>
+            </binding>
+        </slider>
+        <text>
+            <label>9999</label>
+            <live>true</live>
+            <format>(%2.2f) </format>
+            <property>sim/G91/gauge_UV_light_spot_lamp_emission</property>
+            <color>
+                <red>0.2</red>
+                <green>0.9</green>
+                <blue>0.2</blue>
+            </color>
+        </text>
+        <vrule/>
+        <text>
+            <halign>right</halign>
+            <label> UV light Intensity = </label>
+        </text>
+        <text>
+            <label>99999</label>
+            <live>true</live>
+            <format>%2.4f </format>
+            <property>sim/G91/re_emit/gauge_phosphorescent_light</property>
+            <color>
+                <red>0.9</red>
+                <green>0.9</green>
+                <blue>0.9</blue>
+            </color>
+        </text>
+    </group>
+    
+    <group>
+        <layout>hbox</layout>
+        <text>
+            <halign>left</halign>
+            <label>Gauge red Lamp Intensity: red ext light = </label>
+        </text>
+        <text>
+            <label>99999</label>
+            <live>true</live>
+            <format>%2.3f </format>
+            <property>rendering/scene/ambient/red</property>
+            <color>
+                <red>0.9</red>
+                <green>0.9</green>
+                <blue>0.9</blue>
+            </color>
+        </text>
+        <empty>
+            <stretch>true</stretch>
+        </empty>
+        <slider>
+            <name>gauge_Red_light_spot_lamp</name>
+            <property>sim/G91/gauge_red_spot_lamp_emission</property>
+            <min>0.0</min>
+            <max>1.0</max>
+            <step>0.01</step>  
+            <binding>
+                <command>dialog-apply</command>
+            </binding>
+        </slider>
+        <text>
+            <label>9999</label>
+            <live>true</live>
+            <format>(%2.2f) </format>
+            <property>sim/G91/gauge_red_spot_lamp_emission</property>
+            <color>
+                <red>0.2</red>
+                <green>0.9</green>
+                <blue>0.2</blue>
+            </color>
+        </text>
+        <vrule/>
+        <text>
+            <halign>right</halign>
+            <label> Red light Intensity = </label>
+        </text>
+        <text>
+            <label>99999</label>
+            <live>true</live>
+            <format>%2.4f </format>
+            <property>sim/G91/re_emit/gauge_red_light</property>
+            <color>
+                <red>0.9</red>
+                <green>0.9</green>
+                <blue>0.9</blue>
+            </color>
+        </text>
+    </group>
+    
+    <!-- Altitude - Speed - Mach -->
+    <hrule/>
+    
+    <group>
+        <layout>hbox</layout>
+        <text>
+            <halign>left</halign>
+            <label>Altitude - IAS - Mach</label>
+        </text>
+        <group>
+            <layout>hbox</layout>
+            <halign>right</halign>
+            <text>
+                <label>99999</label>
+                <live>true</live>
+                <format>%5.0f </format>
+                <property>/instrumentation/altimeter/pressure-alt-ft</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.9</blue>
+                </color>
+            </text>
+            <empty>
+                <stretch>true</stretch>
+            </empty>
+            <vrule/>
+            <text>
+                <label>99999</label>
+                <live>true</live>
+                <format>%5.0f </format>
+                <property>instrumentation/airspeed-indicator/indicated-speed-kt</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.9</blue>
+                </color>
+            </text>
+            <empty>
+                <stretch>true</stretch>
+            </empty>
+            <vrule/>
+            <text>
+                <label>99999</label>
+                <live>true</live>
+                <format>%1.2f </format>
+                <property>instrumentation/airspeed-indicator/indicated-mach</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.9</blue>
+                </color>
+            </text>
+            <empty>
+                <stretch>true</stretch>
+            </empty>
+        </group>
+    </group>
+    
+</PropertyList>

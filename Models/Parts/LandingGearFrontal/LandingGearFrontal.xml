@@ -1,0 +1,883 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+    
+    <path>LandingGearFrontal.ac</path>
+    
+    <offsets>
+        <x-m>0.0</x-m>
+        <y-m>0.0</y-m>
+        <z-m>0.78</z-m>
+        <pitch-deg>0.0</pitch-deg>
+    </offsets>
+    
+    <animation>
+        <name>GearSup</name>
+        <object-name>gear-front-jack-03</object-name>
+        <object-name>gear-front-jack-018.001</object-name>
+        <object-name>gear-front-jack-018.002</object-name>
+    </animation>
+    
+    <animation>
+        <name>GearPivot</name>
+        <object-name>Cube</object-name>
+        <object-name>gear-front-jack-018</object-name>
+        <object-name>gear-front-jack-016</object-name>
+        <object-name>gear-front-jack-013</object-name>
+        <object-name>Plane</object-name>
+        <object-name>Plane.001</object-name>
+        <object-name>Cylinder</object-name>
+        <object-name>Cylinder.001</object-name>
+        <object-name>Cylinder.002</object-name>
+        <object-name>Cylinder.003</object-name>
+        <object-name>Cylinder.004</object-name>
+        <object-name>Cylinder.005</object-name>
+        <object-name>Cylinder.006</object-name>
+    </animation>
+    
+    <animation>
+        <name>GearWheel</name>
+        <object-name>gear-front-jack-015</object-name>
+        <object-name>gear-front-jack-015.002</object-name>
+        <object-name>gear-front-jack-014</object-name>
+    </animation>
+    
+    <animation>
+        <name>GearFrontalDoor</name>
+        <object-name>Light_dx</object-name>
+        <object-name>Light_Sphere_dx</object-name>
+        <object-name>Light_Sphere_dx.001</object-name>
+        <object-name>Light_Sphere_dx.002</object-name>
+        <object-name>Light_Sphere_dx.003</object-name>
+        <object-name>Light_Sphere_dx.004</object-name>
+        <object-name>Light_dx.001</object-name>
+        <object-name>Light_dx.002</object-name>
+        <object-name>Light_dx._reflectivepart</object-name>
+        <object-name>Light_dx._reflectivepart.001</object-name>
+        <object-name>Light_sx</object-name>
+        <object-name>Light_sx.reflectivepart</object-name>
+        <object-name>PlanLight.front</object-name>
+        <object-name>Circle.001</object-name>
+        <object-name>Circle.002</object-name>
+        <object-name>Galss_light_sx</object-name>
+        <object-name>glass_light_dx</object-name>
+        <object-name>Circle</object-name>
+        <object-name>Cylinder.007</object-name>
+        <object-name>Cylinder.008</object-name>
+        <object-name>Cylinder.009</object-name>
+        <object-name>Cylinder.010</object-name>
+    </animation>
+    
+    <!-- Material assignment -->
+    <animation>
+        <type>material</type>
+        <object-name>Cylinder.004</object-name>
+        <object-name>gear-front-jack-02</object-name>
+    </animation>
+    
+    <!-- Chrome Effects on materials -->
+    
+    <effect>
+        <inherits-from>Aircraft/G91/Models/Effects/Glass/glass-chrome</inherits-from>
+        <object-name>Light_dx.001</object-name>
+        <object-name>Light_dx.002</object-name>
+        <object-name>gear-front-jack-02</object-name>
+        <object-name>Cylinder.004</object-name>
+        <object-name>gear_door_dx</object-name>
+        <object-name>gear_door_sx.001</object-name>
+        <object-name>PlanLight.front</object-name>
+        <object-name>Light_sx</object-name>
+        <object-name>Light_dx</object-name>
+    </effect>
+    
+    <!-- Landing gear Lights -->
+   
+    <effect>
+        <inherits-from>Effects/model-transparent</inherits-from>
+        <object-name>Galss_light_sx</object-name>
+        <object-name>glass_light_dx</object-name>
+        <object-name>Light_Sphere_dx.001</object-name>
+        <object-name>Light_Sphere_dx.002</object-name>
+    </effect>
+    
+    <animation> 
+        <type>material</type> 
+        <object-name>Galss_light_sx</object-name>
+        <object-name>glass_light_dx</object-name>
+        <texture>Pictures/G91-White.png</texture>
+        <ambient>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </ambient>
+        <emission>	
+            <red>0.85</red>	
+            <green>0.82</green>	
+            <blue>0.70</blue>
+            <factor-prop>sim/G91/frontal_gear_light_glass_emission</factor-prop>
+        </emission>
+        <transparency>
+            <alpha-prop>sim/G91/position_light_transparent</alpha-prop>
+            <factor>1</factor>
+            <offset>0</offset>
+        </transparency>
+    </animation>
+    
+    <animation> 
+        <type>material</type> 
+        <object-name>Light_Sphere_dx.001</object-name>
+        <object-name>Light_Sphere_dx.002</object-name>
+        <texture>Pictures/White1.png</texture>
+        <ambient>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+        </ambient>
+        <emission>	
+            <red>1.0</red>	
+            <green>1.0</green>	
+            <blue>1.0</blue>
+            <factor-prop>sim/G91/frontal_gear_lights_emission</factor-prop>
+        </emission>
+        <transparency>
+            <alpha-prop>sim/G91/position_light_transparent</alpha-prop>
+            <factor>1</factor>
+            <offset>0</offset>
+        </transparency>
+    </animation>
+
+    <model>
+        <name>procedural-light-gear-white-left</name>
+        <path>Effects/lights/procedural_light_gear_white.xml</path>
+        <offsets>
+            <x-m> -3.08</x-m>
+            <y-m> -0.21 </y-m>
+            <z-m> -1.18 </z-m>
+        </offsets>
+    </model>
+
+    <model>
+        <name>procedural-light-gear-white-right</name>
+        <path>Effects/lights/procedural_light_gear_white.xml</path>
+        <offsets>
+            <x-m> -3.08</x-m>
+            <y-m> 0.21 </y-m>
+            <z-m> -1.18 </z-m>
+        </offsets>
+    </model>
+    
+    <!-- Frontal gear animation -->
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>gear_door_dx</object-name>
+        <object-name>plate_box_01.003</object-name>
+        <object-name>plate_door_Sx01..001</object-name>
+        <object-name>DADI</object-name>
+        <object-name>DADI.018</object-name>
+        <property>gear/gear/position-norm</property>
+        <axis>
+            <x1-m>  -2.5741</x1-m>
+            <y1-m>  -0.28411 </y1-m>
+            <z1-m>  -1.04544 </z1-m>
+            <x2-m>  -2.00505</x2-m>
+            <y2-m>  -0.28411 </y2-m>
+            <z2-m>  -1.06593 </z2-m>
+        </axis>
+        <interpolation>
+            <entry><ind>0.07</ind><dep>0</dep></entry>
+            <entry><ind>0.15</ind><dep>-85</dep></entry>
+            <entry><ind>1.0</ind><dep>-85</dep></entry>
+            <entry><ind>1.0</ind><dep>-85</dep></entry>
+        </interpolation>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>gear_door_sx.001</object-name>
+        <object-name>plate_box_01.001</object-name>
+        <object-name>plate_door_Sx02</object-name>
+        <object-name>DADI.005</object-name>
+        <object-name>DADI.009</object-name>
+        <object-name>DADI.012</object-name>
+        <object-name>bloc_nod_2</object-name>
+        <property>gear/gear/position-norm</property>
+        <axis>
+            <x1-m>  -1.98455</x1-m>
+            <y1-m>  0.29553 </y1-m>
+            <z1-m>  -1.06573 </z1-m>
+            <x2-m>  -2.56322</x2-m>
+            <y2-m>  0.29553 </y2-m>
+            <z2-m>  -1.04749 </z2-m>
+        </axis>
+        <interpolation>
+            <entry><ind>0.07</ind><dep>0</dep></entry>
+            <entry><ind>0.15</ind><dep>-85</dep></entry>
+            <entry><ind>1.0</ind><dep>-85</dep></entry>
+            <entry><ind>1.0</ind><dep>-85</dep></entry>
+        </interpolation>
+    </animation>
+    
+    
+    <!-- Open close door mechanism -->
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>G-__555636</object-name>
+        <object-name>G-__555645.004</object-name>
+        <object-name>G-__555654</object-name>
+        <object-name>Circle.006</object-name>
+        <object-name>DADI.004</object-name>
+        <property>gear/gear/position-norm</property>
+        <center>
+            <x-m>-1.81676</x-m>
+            <y-m> 0.13343</y-m>
+            <z-m>-0.92227</z-m>
+        </center>
+        <axis>
+            <x>1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+        <interpolation>
+            <entry><ind>0.07</ind><dep>0</dep></entry>
+            <entry><ind>0.15</ind><dep>140</dep></entry>
+            <entry><ind>1.0</ind><dep>140</dep></entry>
+            <entry><ind>1.0</ind><dep>140</dep></entry>
+        </interpolation>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>G-__555627</object-name>
+        <object-name>Circle.003</object-name>
+        <object-name>G-__555564.001</object-name>
+        <object-name>G-__555663</object-name>
+        <object-name>G-__555645</object-name>
+        <object-name>G-__555645.001</object-name>
+        <object-name>Circle.004</object-name>
+        <property>gear/gear/position-norm</property>
+        <center>
+            <x-m>-1.81676</x-m>
+            <y-m> 0.13343</y-m>
+            <z-m>-0.92227</z-m>
+        </center>
+        <axis>
+            <x>1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+        <interpolation>
+            <entry><ind>0.07</ind><dep>00</dep></entry>
+            <entry><ind>0.15</ind><dep>85</dep></entry>
+            <entry><ind>1.0</ind><dep>85</dep></entry>
+            <entry><ind>1.0</ind><dep>85</dep></entry>
+        </interpolation>
+    </animation>
+    
+    <!-- Attenzione verifica chiusura portello -->
+    
+    <animation>
+        <type>locked-track</type>
+        <object-name>Circle.006</object-name>
+        <object-name>G-__555654</object-name>
+        <object-name>G-__555645.004</object-name>
+        <center>
+            <x-m>-1.84621</x-m>
+            <y-m>0.06909</y-m>
+            <z-m>-0.91502</z-m>
+        </center>
+        <lock-axis>
+            <x>1</x>
+            <y>0</y>
+            <z>0</z>
+        </lock-axis>
+        <track-axis>
+            <x>0</x>
+            <y>1</y>
+            <z>-1.4</z>
+        </track-axis>
+        <target-name>DADI.005</target-name>
+        <target-center>
+            <x-m>-1.83593</x-m>
+            <y-m>0.19473</y-m>
+            <z-m>-1.0722</z-m>
+        </target-center>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>G-__555672</object-name>
+        <object-name>G-__555645.003</object-name>
+        <object-name>Circle.005</object-name>
+        <object-name>DADI.001</object-name>
+        <object-name>DADI.002</object-name>
+        <object-name>G-__555645.005</object-name>
+        <object-name>G-__555564.002</object-name>
+        <property>gear/gear/position-norm</property>
+        <center>
+            <x-m>-1.81343</x-m>
+            <y-m>-0.20295</y-m>
+            <z-m>-0.93146</z-m>
+        </center>
+        <axis>
+            <x>1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+        <interpolation>
+            <entry><ind>0.0</ind><dep>0</dep></entry>
+            <entry><ind>0.05</ind><dep>-10</dep></entry>
+            <entry><ind>0.10</ind><dep>-28</dep></entry>
+            <entry><ind>0.15</ind><dep>-48</dep></entry>
+            <entry><ind>0.20</ind><dep>-66</dep></entry>
+            <entry><ind>0.60</ind><dep>-66</dep></entry>
+            <entry><ind>1.0</ind><dep>-66</dep></entry>
+        </interpolation>
+    </animation>
+
+    <animation>
+        <type>locked-track</type>
+        <object-name>G-__555645.003</object-name>
+        <object-name>Circle.005</object-name>
+        <object-name>DADI.001</object-name>
+        <object-name>G-__555645.005</object-name>
+        <object-name>G-__555564.002</object-name>
+        <property>gear/gear/position-norm</property>
+        <center>
+            <!--
+            <x-m>-1.83593</x-m>
+            <y-m>-0.14748</y-m>
+            <z-m>-0.95093</z-m>
+            -->
+            <x-m>-1.83593</x-m>
+            <y-m>-0.11161</y-m>
+            <z-m>-0.92467</z-m>
+        </center>
+        <lock-axis>
+            <x>1</x>
+            <y>0</y>
+            <z>0</z>
+        </lock-axis>
+        <track-axis>
+            <x>0</x>
+            <y>-1.0</y>
+            <z>-1.3</z>
+        </track-axis>
+        <target-name>DADI</target-name>
+        <target-center>
+            <x-m>-1.83593</x-m>
+            <y-m>-0.20524</y-m>
+            <z-m>-1.05093</z-m>
+        </target-center>
+    </animation>
+
+    <animation>
+        <type>locked-track</type>
+        <object-name>G-__555645</object-name>
+        <object-name>Circle.003</object-name>
+        <object-name>G-__555564.001</object-name>
+        <object-name>G-__555663</object-name>
+        <object-name>Circle.004</object-name>
+        <object-name>G-__555645.001</object-name>
+        <center>
+            <x-m>-1.83593</x-m>
+            <y-m> 0.05338</y-m>
+            <z-m>-0.91485</z-m>
+        </center>
+        <lock-axis>
+            <x>1</x>
+            <y>0</y>
+            <z>0</z>
+        </lock-axis>
+        <track-axis>
+            <x>0</x>
+            <y>-1</y>
+            <z>0.28</z> 
+        </track-axis>
+        <target-name>G-__555672</target-name>
+        <target-center>
+            <x-m>-1.83434</x-m>
+            <y-m>-0.20885</y-m>
+            <z-m>-0.84019</z-m>
+        </target-center>
+    </animation>
+    
+    <!-- Rotate gear frontal door -->
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>GearFrontalDoor</object-name>
+        <object-name>procedural-light-gear-white-right</object-name>
+        <object-name>procedural-light-gear-white-left</object-name>
+        <property>gear/gear/position-norm</property>
+        <axis>
+            <x1-m>  -3.00240</x1-m>
+            <y1-m>  1.0</y1-m>
+            <z1-m>  -1.02906</z1-m>
+            <x2-m>  -3.00240</x2-m>
+            <y2-m>  -1.0</y2-m>
+            <z2-m>  -1.0290</z2-m>
+        </axis>
+        <interpolation>
+            <entry><ind>0.0</ind><dep>90</dep></entry>
+            <entry><ind>0.25</ind><dep>90</dep></entry>
+            <entry><ind>0.50</ind><dep>60</dep></entry>
+            <entry><ind>0.75</ind><dep>30</dep></entry>
+            <entry><ind>1.0</ind><dep>0</dep></entry>
+        </interpolation>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>GearSup</object-name>
+        <object-name>GearPivot</object-name>
+        <object-name>GearWheel</object-name>
+        <property>gear/gear/position-norm</property>
+        <center>
+            <x-m>-2.89963</x-m>
+            <y-m> 0.0</y-m>
+            <z-m>-0.99191</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>-1</y>
+            <z>0</z>
+        </axis>
+        <interpolation>
+            <entry><ind>0.0</ind><dep>90</dep></entry>
+            <entry><ind>0.25</ind><dep>90</dep></entry>
+            <entry><ind>0.50</ind><dep>60</dep></entry>
+            <entry><ind>0.75</ind><dep>30</dep></entry>
+            <entry><ind>1.0</ind><dep>0</dep></entry>
+        </interpolation>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>GearPivot</object-name>
+        <object-name>GearWheel</object-name>
+        <property>gear/gear/position-norm</property>
+        <center>
+            <x-m>-2.89963</x-m>
+            <y-m> 0.0</y-m>
+            <z-m>-0.99191</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>0</y>
+            <z>-1</z>
+        </axis>
+        <interpolation>
+            <entry><ind>0.0</ind><dep>90</dep></entry>
+            <entry><ind>0.25</ind><dep>90</dep></entry>
+            <entry><ind>0.50</ind><dep>45</dep></entry>
+            <entry><ind>0.75</ind><dep>0</dep></entry>
+            <entry><ind>1.0</ind><dep>0</dep></entry>
+        </interpolation>
+    </animation>
+    
+    <!-- Node 2 animation section -->
+    
+    <animation>
+        <type>locked-track</type>
+        <object-name>bar_node2.2</object-name>
+        <center>
+            <x-m>-2.5772</x-m>
+            <y-m>-0.311416</y-m>
+            <z-m>-0.848508</z-m>
+        </center>
+        <lock-axis>
+            <x>1</x>
+            <y>0</y>
+            <z>0</z>
+        </lock-axis>
+        <track-axis>
+            <x>0</x>
+            <y>-0.50</y>
+            <z>-1</z> 
+        </track-axis>
+        <target-name>plate_door_Sx02</target-name>
+        <target-center>
+            <x-m>-2.51186</x-m>
+            <y-m>0.170343</y-m>
+            <z-m>-1.01582</z-m>
+        </target-center>
+        <slave-name>bar_node2.1</slave-name>
+        <slave-center>
+            <x-m>-2.521</x-m>
+            <y-m> 0.169560</y-m>
+            <z-m>-0.849113</z-m>
+        </slave-center>
+    </animation>
+
+    <animation>
+        <type>locked-track</type>
+        <object-name>bar_node2.1</object-name>
+        <center>
+            <x-m>-2.51186</x-m>
+            <y-m>0.170343</y-m>
+            <z-m>-1.01582</z-m>
+        </center>
+        <lock-axis>
+            <x>1</x>
+            <y>0</y>
+            <z>0</z>
+        </lock-axis>
+        <track-axis>
+            <x>0</x>
+            <y>0</y>
+            <z>1</z> 
+        </track-axis>
+        <target-name>plate_door_Sx02</target-name>
+        <target-center>
+            <x-m>-2.521</x-m>
+            <y-m> 0.169560</y-m>
+            <z-m>-0.849113</z-m>
+        </target-center>
+    </animation>
+
+    <!-- 
+    E' fondamentale la sequenza delle rotazioni e track etc, in quanto una può modificare l'altra
+    Ad esempio la rotazione sull'asse delle Y della barra impedisce alla gear-front-jack-02 di sfruttare, pe ril trak
+    il puntamento verso il martinetto sepongo la rotazione successivamente al track avverrà un effetto opposto
+    perciò bisogna mantenere i gradi di libertà, altrimenti il track non funziona correttamente
+    -->
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>gear-front-jack-02</object-name>
+        <property>gear/gear/position-norm</property>
+        <center>
+            <x-m>-2.89963</x-m>
+            <y-m> 0.0</y-m>
+            <z-m>-0.99191</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>-1</y>
+            <z>0</z>
+        </axis>
+        <interpolation>
+            <entry><ind>0.0</ind><dep>90</dep></entry>
+            <entry><ind>0.25</ind><dep>90</dep></entry>
+            <entry><ind>0.50</ind><dep>60</dep></entry>
+            <entry><ind>0.75</ind><dep>30</dep></entry>
+            <entry><ind>1.0</ind><dep>0</dep></entry>
+        </interpolation>
+    </animation>
+    
+    <animation>
+        <type>locked-track</type>
+        <object-name>gear-front-jack-02</object-name>
+        <center>
+            <x-m>-2.91953</x-m>
+            <y-m>-0.06230</y-m>
+            <z-m>-1.30829</z-m>
+        </center>
+        <lock-axis>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+        </lock-axis>
+        <track-axis>
+            <x>1</x>
+            <y>-0.208</y>
+            <z>0.700</z> 
+        </track-axis>
+        <target-name>gear-front-jack-01</target-name>
+        <target-center>
+            <x-m>-2.02225</x-m>
+            <y-m>-0.25125</y-m>
+            <z-m>-0.675</z-m>
+        </target-center>
+    </animation>
+    
+    <animation>
+        <type>locked-track</type>
+        <object-name>gear-front-jack-02</object-name>
+        <center>
+            <x-m>-2.91953</x-m>
+            <y-m>-0.06230</y-m>
+            <z-m>-1.30829</z-m>
+        </center>
+        <lock-axis>
+            <x>1</x>
+            <y>0</y>
+            <z>0</z>
+        </lock-axis>
+        <track-axis>
+            <x>1</x>
+            <y>-0.208</y>
+            <z>0.700</z> 
+        </track-axis>
+        <target-name>gear-front-jack-01</target-name>
+        <target-center>
+            <x-m>-2.02225</x-m>
+            <y-m>-0.25125</y-m>
+            <z-m>-0.675</z-m>
+        </target-center>
+    </animation>
+    
+    <animation>
+        <type>locked-track</type>
+        <object-name>gear-front-jack-01</object-name>
+        <object-name>BezierCurve</object-name>
+        <object-name>BezierCurve.001</object-name>
+        <object-name>BezierCurve.002</object-name>
+        <object-name>BezierCurve.003</object-name>
+        <object-name>BezierCurve.004</object-name>
+        <object-name>Cylinder.011</object-name>
+        <object-name>Cylinder.012</object-name>
+        <object-name>Cylinder.013</object-name>
+        <object-name>Cylinder.014</object-name>
+        <object-name>Cylinder.015</object-name>
+        <object-name>Cylinder.016</object-name>
+        <object-name>Cylinder.017</object-name>
+        <object-name>Cylinder.018</object-name>
+        <object-name>Cylinder.019</object-name>
+        <object-name>Cylinder.020</object-name>
+        <object-name>Cylinder.021</object-name>
+        <center>
+            <x-m>-2.065</x-m>
+            <y-m>-0.25553</y-m>
+            <z-m>-0.72571</z-m>
+        </center>
+        <lock-axis>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+        </lock-axis>
+        <track-axis>
+            <x>-1</x>
+            <y>0.208</y>
+            <z>-0.690</z> 
+        </track-axis>
+        <target-name>gear-front-jack-02</target-name>
+        <target-center>
+            <x-m>-2.91953</x-m>
+            <y-m>-0.07230</y-m>
+            <z-m>-1.32829</z-m>
+        </target-center>
+    </animation>
+    
+    <animation>
+        <type>locked-track</type>
+        <object-name>gear-front-jack-01</object-name>
+        <object-name>BezierCurve</object-name>
+        <object-name>BezierCurve.001</object-name>
+        <object-name>BezierCurve.002</object-name>
+        <object-name>BezierCurve.003</object-name>
+        <object-name>BezierCurve.004</object-name>
+        <object-name>Cylinder.011</object-name>
+        <object-name>Cylinder.012</object-name>
+        <object-name>Cylinder.013</object-name>
+        <object-name>Cylinder.014</object-name>
+        <object-name>Cylinder.015</object-name>
+        <object-name>Cylinder.016</object-name>
+        <object-name>Cylinder.017</object-name>
+        <object-name>Cylinder.018</object-name>
+        <object-name>Cylinder.019</object-name>
+        <object-name>Cylinder.020</object-name>
+        <object-name>Cylinder.021</object-name>
+        <center>
+            <x-m>-2.065</x-m>
+            <y-m>-0.25553</y-m>
+            <z-m>-0.72571</z-m>
+        </center>
+        <lock-axis>
+            <x>1</x>
+            <y>0</y>
+            <z>0</z>
+        </lock-axis>
+        <track-axis>
+            <x>-1</x>
+            <y>0.208</y>
+            <z>-0.690</z> 
+        </track-axis>
+        <target-name>gear-front-jack-02</target-name>
+        <target-center>
+            <x-m>-2.91953</x-m>
+            <y-m>-0.07230</y-m>
+            <z-m>-1.32829</z-m>
+        </target-center>
+    </animation>
+    
+    <!-- Compression -->
+    <animation>
+        <type>rotate</type>
+        <object-name>gear-front-jack-013</object-name>
+        <object-name>gear-front-jack-014</object-name>
+        <object-name>gear-front-jack-015</object-name>
+        <object-name>gear-front-jack-015.002</object-name>
+        <property>gear/gear[0]/compression-norm</property>
+        <center>
+            <x-m>-3.0297</x-m>
+            <y-m>0   </y-m>
+            <z-m>-1.50491</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+        </axis>
+        <interpolation>
+            <entry><ind>0.0</ind><dep>15</dep></entry>
+            <entry><ind>0.2</ind><dep>-10</dep></entry>
+            <entry><ind>0.4</ind><dep>-15</dep></entry>
+            <entry><ind>0.6</ind><dep>-18</dep></entry>
+            <entry><ind>0.8</ind><dep>-20</dep></entry>
+            <entry><ind>1.0</ind><dep>-21</dep></entry>
+        </interpolation>
+    </animation>
+    
+    <animation>
+        <type>translate</type>
+        <object-name>Cylinder.004</object-name>
+        <property>gear/gear[0]/compression-norm</property>
+        <factor>0.13</factor>
+        <offset-m>-0.03</offset-m>
+        <axis>
+            <x>0</x>
+            <y>0</y>
+            <z>1</z>
+        </axis>
+    </animation>
+    
+    <!-- Steering -->
+    <animation>
+        <type>rotate</type>
+        <object-name>GearPivot</object-name>
+        <object-name>GearWheel</object-name>
+        <property>instrumentation/turn-indicator/indicated-turn-rate</property>
+        <offset-deg>0</offset-deg>
+        <factor>15</factor>
+        <condition>
+            <and>
+                <or>
+                    <greater-than>
+                        <property>gear/gear[0]/rollspeed-ms</property>
+                        <value>0.1</value>
+                    </greater-than>
+                    <less-than>
+                        <property>gear/gear[0]/rollspeed-ms</property>
+                        <value>-0.1</value>
+                    </less-than>
+                </or>
+                <greater-than>
+                    <property>gear/gear[0]/compression-norm</property>
+                    <value>0</value>
+                </greater-than>
+            </and>
+        </condition>
+        <axis>
+            <x1-m>  -2.87</x1-m>
+            <y1-m>  0.0</y1-m>
+            <z1-m>  1.0</z1-m>
+            <x2-m>  -2.89963</x2-m>
+            <y2-m>  0.0</y2-m>
+            <z2-m>  -1.0</z2-m>
+        </axis>
+    </animation>
+    
+    
+    <!-- Spin  -->
+    <animation>
+        <type>spin</type>
+        <object-name>gear-front-jack-015</object-name>
+        <object-name>gear-front-jack-015.002</object-name>
+        <object-name>gear-front-jack-014</object-name>
+        <property>gear/gear[0]/rollspeed-ms</property>
+        <factor>-30</factor>
+        <condition>
+            <and>
+                <or>
+                    <greater-than>
+                        <property>gear/gear[0]/rollspeed-ms</property>
+                        <value>0.001</value>
+                    </greater-than>
+                    <less-than>
+                        <property>gear/gear[0]/rollspeed-ms</property>
+                        <value>-0.001</value>
+                    </less-than>
+                </or>
+                <greater-than>
+                    <property>gear/gear[0]/compression-norm</property>
+                    <value>0</value>
+                </greater-than>
+            </and>
+        </condition>
+        <center>
+            <x-m>-2.8247</x-m>
+            <y-m> 0.01114   </y-m>
+            <z-m>-1.78105</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+        </axis>
+    </animation>
+    
+    <!-- External landing light -->
+
+    <animation> 
+        <type>material</type> 
+        <object-name>Galss_light_sx</object-name>
+        <object-name>glass_light_dx</object-name>
+        <texture>Liveries/G91-Al.png</texture>
+        <emission>	
+            <red>1.0</red>	
+            <green>1.0</green>	
+            <blue>1.0</blue>
+            <factor-prop>/rendering/scene/ambient/red</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>blend</type>
+        <property>sim/G91/glass_camera_reflections</property>
+        <factor>0.9</factor>
+        <object-name>Galss_light_sx</object-name>
+        <object-name>glass_light_dx</object-name>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>Light_dx._reflectivepart</object-name>
+        <object-name>Light_sx.reflectivepart</object-name>
+        <texture>Liveries/G91-LightFrontal01.png</texture>
+        <emission>	
+            <red>1.0</red>	
+            <green>1.0</green>	
+            <blue>1.0</blue>
+            <factor-prop>/rendering/scene/ambient/red</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type> 
+        <object-name>Light_Sphere_dx.001</object-name>
+        <object-name>Light_Sphere_dx.002</object-name>
+        <object-name>Light_Sphere_dx.003</object-name>
+        <object-name>Light_Sphere_dx.004</object-name>
+        <texture>Liveries/G91-LightFrontal01.png</texture>
+        <emission>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+            <factor-prop>gear/gear/position-norm</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>blend</type>
+        <property>sim/G91/glass_camera_reflections</property>
+        <factor>0.2</factor>
+        <object-name>Light_Sphere_dx.001</object-name>
+        <object-name>Light_Sphere_dx.002</object-name>
+        <object-name>Light_Sphere_dx.003</object-name>
+        <object-name>Light_Sphere_dx.004</object-name>
+    </animation>
+    
+</PropertyList>

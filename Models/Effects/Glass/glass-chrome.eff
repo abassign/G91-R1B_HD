@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--This effect file is provided as a conveniency for usage on transparent objects.
+If you also need to use a normalmap along with trasnparency check the model-combined-bump.eff
+that is provided alongside this effect.
+You can add the Normalmap Include from there at the end of this effect, but be aware to respect the warnings provided in that file.
+
+Do not use as is.
+Please edit.
+Remove unnedeed settings.
+WARNING: do not remove the Transparency include at the end-->
+
+<PropertyList>
+  <name>glass-chrome</name>
+  <inherits-from>Effects/model-combined</inherits-from>
+  <parameters>
+    <!-- Reflection -->
+    <reflection-type type="int">2</reflection-type>
+    <reflection-enabled type="int"> 1 </reflection-enabled>
+    <reflect-map-enabled type="int"> 1 </reflect-map-enabled>
+    <reflection-correction type="float"> 1.0 </reflection-correction>
+    <reflection-dynamic type="int"> 1 </reflection-dynamic>
+    <texture n="4">
+      <image>Aircraft/G91/Models/Effects/Glass/glass_shader.png</image>
+      <filter>linear-mipmap-linear</filter>
+      <wrap-s>clamp</wrap-s>
+      <wrap-t>clamp</wrap-t>
+      <internal-format>normalized</internal-format>
+    </texture>
+    <!--
+    <reflection-fresnel type="float"> 0.0 </reflection-fresnel>
+    <reflection-rainbow type="float"> 0.0 </reflection-rainbow>
+    <reflection-noise type="float"> 0.0 </reflection-noise>
+    -->
+    <reflection-fresnel-factor type="float">0.5</reflection-fresnel-factor>
+    <!-- WARNING: Do not edit below this line -->
+    <!-- TRANSPARENCY INCLUDE -->
+    <rendering-hint>transparent</rendering-hint>
+    <transparent>true</transparent>
+    <render-bin>
+      <bin-number>10</bin-number>
+      <bin-name>DepthSortedBin</bin-name>
+    </render-bin>
+    <!-- END TRANSPARENCY INCLUDE -->
+  </parameters>
+  <!-- 	Add normalmap include here if needed -->
+</PropertyList>

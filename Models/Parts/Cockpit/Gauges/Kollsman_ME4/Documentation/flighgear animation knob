@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html dir="ltr" class="client-js" lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<title>Knob / slider animation - FlightGear wiki</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>window.RLQ = window.RLQ || []; window.RLQ.push( function () {
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":!1,"wgNamespaceNumber":0,"wgPageName":"Knob_/_slider_animation","wgTitle":"Knob / slider animation","wgCurRevisionId":107547,"wgRevisionId":107547,"wgArticleId":10535,"wgIsArticle":!0,"wgIsRedirect":!1,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Aircraft enhancement"],"wgBreakFrames":!1,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Knob_/_slider_animation","wgRelevantArticleId":10535,"wgIsProbablyEditable":!1,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgWikiEditorEnabledModules":{"toolbar":!0,"dialogs":!0,
+"preview":!1,"publish":!1},"wgCategoryTreePageCategoryOptions":"{\"mode\":0,\"hideprefix\":20,\"showcount\":true,\"namespaces\":false}"});mw.loader.implement("user.options",function($,jQuery){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens",function($,jQuery){mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\"});});mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","skins.vector.js"]);
+} );</script>
+<link rel="stylesheet" href="flighgear%20animation%20knob_files/load.css">
+<style>
+.mw-collapsible-toggle{float:right;-moz-user-select:none;-webkit-user-select:none;-ms-user-select:none;user-select:none}  .mw-content-ltr .mw-collapsible-toggle,.mw-content-rtl .mw-content-ltr .mw-collapsible-toggle{float:right} .mw-content-rtl .mw-collapsible-toggle,.mw-content-ltr .mw-content-rtl .mw-collapsible-toggle{float:left}.mw-customtoggle,.mw-collapsible-toggle{cursor:pointer} caption .mw-collapsible-toggle,.mw-content-ltr caption .mw-collapsible-toggle,.mw-content-rtl caption .mw-collapsible-toggle,.mw-content-rtl .mw-content-ltr caption .mw-collapsible-toggle,.mw-content-ltr .mw-content-rtl caption .mw-collapsible-toggle{float:none} li .mw-collapsible-toggle,.mw-content-ltr li .mw-collapsible-toggle,.mw-content-rtl li .mw-collapsible-toggle,.mw-content-rtl .mw-content-ltr li .mw-collapsible-toggle,.mw-content-ltr .mw-content-rtl li .mw-collapsible-toggle{float:none} .mw-collapsible-toggle-li{list-style:none}
+.suggestions{overflow:hidden;position:absolute;top:0;left:0;width:0;border:none;z-index:1099;padding:0;margin:-1px 0 0 0}.suggestions-special{position:relative;background-color:white;cursor:pointer;border:solid 1px #aaaaaa;padding:0;margin:0;margin-top:-2px;display:none;padding:0.25em 0.25em;line-height:1.25em}.suggestions-results{background-color:white;cursor:pointer;border:solid 1px #aaaaaa;padding:0;margin:0}.suggestions-result{color:black;margin:0;line-height:1.5em;padding:0.01em 0.25em;text-align:left; overflow:hidden;-o-text-overflow:ellipsis; text-overflow:ellipsis;white-space:nowrap}.suggestions-result-current{background-color:#4C59A6;color:white}.suggestions-special .special-label{color:gray;text-align:left}.suggestions-special .special-query{color:black;font-style:italic;text-align:left}.suggestions-special .special-hover{background-color:silver}.suggestions-result-current .special-label,.suggestions-result-current .special-query{color:white}.highlight{font-weight:bold}
+.toclimit-2 .toclevel-1 ul,.toclimit-3 .toclevel-2 ul,.toclimit-4 .toclevel-3 ul,.toclimit-5 .toclevel-4 ul,.toclimit-6 .toclevel-5 ul,.toclimit-7 .toclevel-6 ul{display:none} .skin-monobook .hlist dl,.skin-modern .hlist dl,.skin-vector .hlist dl{line-height:1.5em}.hlist dl,.hlist ol,.hlist ul{margin:0}.hlist dd,.hlist dt,.hlist li{display:inline;margin:0} .hlist dl dl,.hlist ol ol,.hlist ul ul{display:inline} .hlist dt:after{content:":"}.hlist dd:after,.hlist li:after{content:" ·";font-weight:bold}.hlist dd:last-child:after,.hlist dt:last-child:after,.hlist li:last-child:after{content:none} .hlist dd.hlist-last-child:after,.hlist dt.hlist-last-child:after,.hlist li.hlist-last-child:after{content:none} .hlist dl dl dd:first-child:before,.hlist ol ol li:first-child:before,.hlist ul ul li:first-child:before{content:"("}.hlist dl dl dd:last-child:after,.hlist ol ol li:last-child:after,.hlist ul ul li:last-child:after{content:")";font-weight:normal} .hlist dl dl dd.hlist-last-child:after,.hlist ol ol li.hlist-last-child:after,.hlist ul ul li.hlist-last-child:after{content:")";font-weight:normal} .hlist.hnum ol li{counter-increment:level1}.hlist.hnum ol li:before{content:counter(level1) " "}.hlist.hnum ol ol li{counter-increment:level2}.hlist.hnum ol ol li:first-child:before{content:"(" counter(level2) " "}.hlist.hnum ol ol li:before{content:counter(level2) " "} .plainlist ul{line-height:inherit;list-style:none none;margin:0}.plainlist ul li{margin-bottom:0} .navbox{ border:1px solid #aaa;width:100%;margin:auto;clear:both;font-size:88%;text-align:center;padding:1px}.navbox-inner,.navbox-subgroup{width:100%}.navbox th,.navbox-title,.navbox-abovebelow{text-align:center; padding-left:1em;padding-right:1em}th.navbox-group{ white-space:nowrap; text-align:right}.navbox,.navbox-subgroup{background:#fdfdfd; }.navbox-list{border-color:#fdfdfd; }.navbox th,.navbox-title{background:#ccccff; }.navbox-abovebelow,th.navbox-group,.navbox-subgroup .navbox-title{background:#ddddff; }.navbox-subgroup .navbox-group,.navbox-subgroup .navbox-abovebelow{background:#e6e6ff; }.navbox-even{background:#f7f7f7; }.navbox-odd{background:transparent; }table.navbox + table.navbox{ margin-top:-1px; }.navbox .hlist td dl,.navbox .hlist td ol,.navbox .hlist td ul,.navbox td.hlist dl,.navbox td.hlist ol,.navbox td.hlist ul{padding:0.125em 0; }.navbox .hlist dd,.navbox .hlist dt,.navbox .hlist li{white-space:nowrap; white-space:normal !ie; }.navbox .hlist dd dl,.navbox .hlist dt dl,.navbox .hlist li ol,.navbox .hlist li ul{white-space:normal; }ol + table.navbox,ul + table.navbox{margin-top:0.5em; } .navbar{display:inline;font-size:88%;font-weight:normal}.navbar ul{display:inline;white-space:nowrap}.navbar li{word-spacing:-0.125em}.navbar.mini li span{font-variant:small-caps} .navbox .navbar{display:block;font-size:100%}.navbox-title .navbar{ float:left; text-align:left; margin-right:0.5em;width:6em} .collapseButton{ float:right;font-weight:normal; margin-left:0.5em; text-align:right;width:auto} .navbox .collapseButton{width:6em} .mw-collapsible-toggle{font-weight:normal; text-align:right}.navbox .mw-collapsible-toggle{width:6em} div.NavFrame{margin:0;padding:4px;border:1px solid #aaa;text-align:center;border-collapse:collapse;font-size:95%}div.NavFrame + div.NavFrame{border-top-style:none;border-top-style:hidden}div.NavPic{background-color:#fff;margin:0;padding:2px; float:left}div.NavFrame div.NavHead{height:1.6em;font-weight:bold;background-color:#ccf;position:relative}div.NavFrame p,div.NavFrame div.NavContent,div.NavFrame div.NavContent p{font-size:100%}div.NavEnd{margin:0;padding:0;line-height:1px;clear:both}a.NavToggle{position:absolute;top:0; right:3px;font-weight:normal;font-size:90%}  div.mw-geshi div,div.mw-geshi div pre,span.mw-geshi,pre.source-css,pre.source-javascript{font-family:monospace,Courier !important}div.mw-geshi{padding:1em;margin:1em 0;border:1px dashed #2f6fab;font-size:100%}div#siteNotice{background-image:url(http://upload.wikimedia.org/wikipedia/commons/0/0d/Gray-gradient1.png);border:1px solid rgb(192,192,192);margin-bottom:0.5em}div#localNotice{margin:8px auto} body.page-Main_Page h1.firstHeading,body.page-Portal_Developer h1.firstHeading,body.page-Portal_Developer_Aircraft h1.firstHeading,body.page-Portal_Developer_Nasal h1.firstHeading,body.page-Portal_Developer_Scenery h1.firstHeading,body.page-Portal_User h1.firstHeading,body.page-Portal_Wiki h1.firstHeading,body.page-FlightGear_Newsletter_June_2014 h1.firstHeading{display:none} .infobox{border:1px solid #aaa;background-color:#f9f9f9;color:black;margin:0.5em 0 0.5em 1em;padding:0.2em; float:right; clear:right;text-align:left;font-size:88%;line-height:1.5em}.infobox caption{font-size:125%;font-weight:bold}.infobox td,.infobox th{vertical-align:top}.infobox.bordered{border-collapse:collapse}.infobox.bordered td,.infobox.bordered th{border:1px solid #aaa}.infobox.bordered .borderless td,.infobox.bordered .borderless th{border:0}.infobox.sisterproject{width:20em;font-size:90%}.infobox.standard-talk{border:1px solid #c0c090;background-color:#f8eaba}.infobox.standard-talk.bordered td,.infobox.standard-talk.bordered th{border:1px solid #c0c090} .infobox.bordered .mergedtoprow td,.infobox.bordered .mergedtoprow th{border:0;border-top:1px solid #aaa;border-right:1px solid #aaa}.infobox.bordered .mergedrow td,.infobox.bordered .mergedrow th{border:0;border-right:1px solid #aaa} body.mediawiki table.mbox-small{  clear:right; float:right; margin:4px 0 4px 1em;width:238px;font-size:88%;line-height:1.25em}body.mediawiki table.mbox-small-left{  margin:4px 1em 4px 0;width:238px;border-collapse:collapse;font-size:88%;line-height:1.25em} .rellink,.dablink{font-style:italic; padding-left:1.6em;margin-bottom:0.5em}.rellink i,.dablink i{font-style:normal} blockquote.templatequote{margin-top:0}blockquote.templatequote div.templatequotecite{line-height:1.5em; text-align:left; padding-left:1.6em;margin-top:0} table.keytable{margin:1em 3em 1em 3em;border-top:1px #aaa solid;border-bottom:1px #aaa solid;border-collapse:collapse}.keytable th,.keytable td{padding:0.2em 1em 0.2em 1em}.keytable th{text-align:center;font-weight:bold;border-bottom:1px #aaa solid}.keytable tr:nth-child(odd) }.keytable caption{font-weight:bold} table.prettytable{margin:1em 1em 1em 0;background:#f9f9f9;border:1px #aaa solid;border-collapse:collapse}.prettytable th,.prettytable td{border:1px #aaa solid;padding:0.2em}.prettytable th{background:#f1f1f1;text-align:center}.prettytable caption{font-weight:bold}
+.postedit-container{margin:0 auto;position:fixed;top:0;height:0;left:50%;z-index:1000;font-size:13px}.postedit-container:hover{cursor:pointer}.postedit{position:relative;top:0.6em;left:-50%;padding:.6em 3.6em .6em 1.1em;line-height:1.5625em;color:#626465;background-color:#f4f4f4;border:1px solid #dcd9d9;text-shadow:0 0.0625em 0 rgba(255,255,255,0.5);border-radius:5px;box-shadow:0 2px 5px 0 #ccc;-webkit-transition:all 0.25s ease-in-out;-moz-transition:all 0.25s ease-in-out;-ms-transition:all 0.25s ease-in-out;-o-transition:all 0.25s ease-in-out;transition:all 0.25s ease-in-out}.skin-monobook .postedit{top:6em !important}.postedit-faded{opacity:0}.postedit-icon{padding-left:41px;  line-height:25px;background-repeat:no-repeat;background-position:8px 50%}.postedit-icon-checkmark{background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAABblBMVEUAAAD///////9PfTf///80aRdTgjn///9Feij///////////9Rfzf///////////9PfjZRgDh1o1xOfTb///////+bwYqLtnj///////9PfTa82K////9WhT6YxIL///9QgDdTgzr////////j7uDl7eLq8efi693k7OH///////9UhjuBr2rp9uRUhjr///9YljVKgir///9WiTlYjT3////9/v57vFlbkT5PjC9dlD/5/fhuq09stUTs9uhxuElctCpfnT1huDFloEZloUZmpENmvDZpvDxpvTxqvjxrvT5rvT9rwTxsqktswD5uwkBvuUdxw0NztFBztU9ztVBzwkp0tlJ1xkd2t1R3uVR4w1F4xk54x014yE15uVZ5v1R5xVB6v1R7yFJ8wVh9xVl9yFR9yVd9ylN+xVh+yFd/x1l/yFeAylmEx1+Ny2uY0Hqe04Wj1Ymv3Ze33qLD47TJ5L3O6cPU7Mrq9eb2+/Q4j37OAAAAQHRSTlMAAQIEBAUFBQwPFB4fJCUoKiosQEhJS01RUlZZXmdydXaChYuSlJSWmJmoq6uur8LExcvM19fg5ejt8fX2+Pr7SljgewAAAKpJREFUGBkFwQNCAwAAAMDLtl3LtrG4rWXbtvX77gAgZ6grFwC0bhwNVgKgdPZx8b0dgLi+s7Wn0VoAqpfOI9+BNADZI7fLrz2pSEwGHZuH+78lSK8ZLkLezF3ooyUG3VPXq2USei9WngeyoG195yBYWDF3E/2pAhl1e9Gr8bGT+bfOFCC2fnvh4X7rcqIAQNNu+HT6sxkAjceTL/2ZAIhv+PorBwBJxfkA//dFHSCBy/UTAAAAAElFTkSuQmCC);background-image:url(/resources/src/mediawiki.action/images/green-checkmark.png?9048a)!ie;background-position:left}.postedit-close{position:absolute;padding:0 .8em;right:0;top:0;font-size:1.25em;font-weight:bold;line-height:2.3em;color:black;text-shadow:0 0.0625em 0 white;text-decoration:none;opacity:0.2;filter:alpha(opacity=20)}.postedit-close:hover{color:black;text-decoration:none;opacity:0.4;filter:alpha(opacity=40)}</style><style>
+.suggestions a.mw-searchSuggest-link,.suggestions a.mw-searchSuggest-link:hover,.suggestions a.mw-searchSuggest-link:active,.suggestions a.mw-searchSuggest-link:focus{color:black;text-decoration:none}.suggestions-result-current a.mw-searchSuggest-link,.suggestions-result-current a.mw-searchSuggest-link:hover,.suggestions-result-current a.mw-searchSuggest-link:active,.suggestions-result-current a.mw-searchSuggest-link:focus{color:white}.suggestions a.mw-searchSuggest-link .special-query{ overflow:hidden;-o-text-overflow:ellipsis; text-overflow:ellipsis;white-space:nowrap}</style><meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="flighgear%20animation%20knob_files/load_002.css">
+<style>a:lang(ar),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}</style>
+<script async="" src="flighgear%20animation%20knob_files/load.php"></script>
+<meta name="generator" content="MediaWiki 1.26.2">
+<link rel="shortcut icon" href="http://wiki.flightgear.org/Knob_/favicon.ico">
+<link rel="search" type="application/opensearchdescription+xml" href="http://wiki.flightgear.org/opensearch_desc.php" title="FlightGear wiki (en)">
+<link rel="EditURI" type="application/rsd+xml" href="http://wiki.flightgear.org/api.php?action=rsd">
+<link rel="copyright" href="http://www.gnu.org/licenses/old-licenses/gpl-2.0.txt">
+<link rel="alternate" type="application/atom+xml" title="FlightGear wiki Atom feed" href="http://wiki.flightgear.org/index.php?title=Special:RecentChanges&amp;feed=atom">
+<!--[if lt IE 7]><style type="text/css">body{behavior:url("/skins/Vector/csshover.min.htc")}</style><![endif]-->
+<script src="flighgear%20animation%20knob_files/load_002.php"></script></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-Knob_slider_animation skin-vector action-view">
+		<div id="mw-page-base" class="noprint"></div>
+		<div id="mw-head-base" class="noprint"></div>
+		<div id="content" class="mw-body" role="main">
+			<a id="top"></a>
+
+						<div class="mw-indicators">
+</div>
+			<h1 id="firstHeading" class="firstHeading" lang="en">Knob / slider animation</h1>
+									<div id="bodyContent" class="mw-body-content">
+									<div id="siteSub">From FlightGear wiki</div>
+								<div id="contentSub"></div>
+												<div id="jump-to-nav" class="mw-jump">
+					Jump to:					<a href="#mw-head">navigation</a>, 					<a href="#p-search">search</a>
+				</div>
+				<div id="mw-content-text" dir="ltr" class="mw-content-ltr" lang="en"><p>The new (in 2.11) <b>knob animation</b> and <b>slider animation</b>
+ are helpers to reduce repetition in XML files, and provide a separation
+ point for behaviour versus user interface. The idea is to specify a 
+single animation element representing the knob, dial or slider, with 
+bindings for various actions, and allow the GUI to decide which user 
+interactions map to those behaviours. In particular the mapping could be
+ adjusted by platform (Mac vs Linux), device type (laptop, trackpad, 
+trackball or touch-screen) or a GUI preference. All objects using the 
+animation would hence have standard user-interaction across all 
+aircraft, which is not the case at present.
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2><span class="toctoggle">&nbsp;[<a href="#" id="togglelink">hide</a>]&nbsp;</span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Rotate_.2F_Translate_animation"><span class="tocnumber">1</span> <span class="toctext">Rotate / Translate animation</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Binding_Actions"><span class="tocnumber">2</span> <span class="toctext">Binding Actions</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#Shifted_Mode"><span class="tocnumber">3</span> <span class="toctext">Shifted Mode</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="#Dragging"><span class="tocnumber">4</span> <span class="toctext">Dragging</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="#Compatibility"><span class="tocnumber">5</span> <span class="toctext">Compatibility</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="#Examples"><span class="tocnumber">6</span> <span class="toctext">Examples</span></a></li>
+<li class="toclevel-1 tocsection-7"><a href="#Related_content"><span class="tocnumber">7</span> <span class="toctext">Related content</span></a></li>
+</ul>
+</div>
+
+<h3><span class="mw-headline" id="Rotate_.2F_Translate_animation">Rotate / Translate animation</span></h3>
+<p>The core animation values are identical to the standard 'rotate' (for
+ a knob) and 'translate' (for a slider) animations. They can be omitted 
+without problem if you want to keep the animations separate for some 
+reason, e.g. different pick objects to animated objects in the model. 
+This also means the knob could be used with more complex compound 
+animations.
+</p>
+<h3><span class="mw-headline" id="Binding_Actions">Binding Actions</span></h3>
+<p>Using the &lt;action&gt; group, a single set of bindings are run for 
+movement of the knob/slider in either direction. An 'offset' property is
+ exposed, with a value of either 1 or -1. For many common cases, such as
+ a property-adjust command, this will work for both directions of 
+movement, with suitable scale and min/max limits.
+</p><p>If you need different behaviours for increase vs decrease, add 
+bindings to the &lt;increase&gt; and &lt;decrease&gt; groups instead. 
+Note both systems can be used in parallel - all the bindings fire.
+</p><p>A &lt;release&gt; binding is available which fires when the 
+button is released, for spring-loaded knobs (commonly used for engine 
+starters) which return to a position after selection.
+</p><p>Note that if you are using a property-adjust binding, you must 
+use &lt;factor&gt; to control the numerical change, since this scales 
+the &lt;offset&gt; parameter. If you use &lt;step&gt;, bidirectional 
+control via the same binding will <b>not</b> work. If for some reason 
+your actions are asymmetric, then you will need separate increase and 
+decrease bindings as described above. However, an asymmetric instrument 
+might not be a good choice for these animations, for the sake of 
+end-user understanding!
+</p>
+<h3><span class="mw-headline" id="Shifted_Mode">Shifted Mode</span></h3>
+<p>By default, in shifted mode, the normal bindings above are repeated. 
+The default repeat is 10, but this can be changed with the 
+&lt;shift-repeat&gt; property. This is deliberately coded to behave 
+exactly the same as clicking the button a number of times, so the 
+'offset' in the action bindings is still 1 or -1. This is to simplify 
+code for bindings having to deal with steps at the end of the range.
+</p><p>If the above mechanism is too simple, or you wish shifted mode to
+ do something different to unshifted mode, you can specify explicit 
+bindings instead. As soon as you specify an explicit shifted binding, 
+the default 'repeat' behaviour is skipped. Examples of alternate shifted
+ mode would be many MCP or GPS knobs, where pushed/pulled mode might 
+change a totally different setting, eg fractional vs integer part of a 
+radio frequency, or bank limit instead of selected heading.
+</p><p>The group names are &lt;shift-action&gt;, &lt;shift-increase&gt; and &lt;shift-decrease&gt;
+</p>
+<h3><span class="mw-headline" id="Dragging">Dragging</span></h3>
+<p>Dragging the object generates value changes, based on the direction 
+of mouse movement. The mapping from pixel movement to offset values is 
+controlled by the &lt;drag-scale-px&gt; property, which divides the 
+pixel movement. Hence, smaller values mean faster movement (harder to 
+hit a precise value accurately) and larger values mean slower movement 
+(easier to hit a particular value, but more mouse movement needed). The 
+default value is 10px to cause a change.
+</p><p>By default the drag direction is left-right (since most people 
+have better mobility in that direction, and screens are wider than 
+tall), but each slider or knob can over-ride this. For example, for 
+throttle or mixture controls built-into a panel, up-down movement will 
+feel more natural. Set &lt;drag-direction&gt; to 'vertical' or 
+'horizontal'.
+</p>
+<h3><span class="mw-headline" id="Compatibility">Compatibility</span></h3>
+<p>Do <i>not</i> refer to modifier-state or button-state properties in 
+your bindings. This violates the control separation which is the aim of 
+these animations. If you include such references in your bindings, you 
+make it very likely your knobs/sliders will break for some future user 
+with a different platform- or input- configuration. You can't assume how
+ many mouse buttons they have, or how their modifier keys are mapped, so
+ the only safe thing is not to make any assumptions at all. 
+</p><p>This might mean creating multiple in-cockpit animations for a 
+single real-world knob in the worst case, in which case design with 
+great care. For example the KLN-89B has a 'dual' knob (outer and inner 
+rings) and the inner knob can be pulled out. (Some Airbus MCP panels 
+have something similar, but the knob can be pushed <i>or</i> pulled). In
+ the case of the KLN-89, the solution would be two separate knob 
+animations, with the outer one probably having a large surrounding 
+pick-proxy object to ensure it can be hit comfortably in a front-on 
+view. Shifted mode on the inner knob then correspond to 'pulled out' 
+mode in real-life.
+</p><p>Another option (which would also work for the Airbus) would be to
+ make the centre of the knob pick-able separately, to drive 
+pushing/pulling the knob, and then have the knob animation pick cover 
+the outer circumference. This is not ideal but still much more usable 
+than adding conditional bindings on alternate mouse buttons or 
+modifiers! Good use of tooltips will also help here, i.e. the tooltip 
+for the knob would include some text like 'click here to pull out'.
+</p>
+<h2><span class="mw-headline" id="Examples">Examples</span></h2>
+<p>Basic usage:
+</p>
+<div class="mw-highlight mw-content-ltr" dir="ltr"><pre> <span class="cp">&lt;?xml version="1.0" encoding="utf8"?&gt;</span>
+ <span class="nt">&lt;PropertyList&gt;</span>
+  <span class="nt">&lt;animation&gt;</span>
+        <span class="nt">&lt;type&gt;</span>knob<span class="nt">&lt;/type&gt;</span>
+        <span class="nt">&lt;object-name&gt;</span>ALT-SEL<span class="nt">&lt;/object-name&gt;</span>
+        <span class="nt">&lt;value&gt;</span>0.0<span class="nt">&lt;/value&gt;</span> <span class="c">&lt;!-- or property as usual for rotate animation --&gt;</span>
+        <span class="nt">&lt;center&gt;</span>
+            <span class="nt">&lt;x-m&gt;</span>0.0<span class="nt">&lt;/x-m&gt;&lt;y-m&gt;</span>0.027<span class="nt">&lt;/y-m&gt;&lt;z-m&gt;</span>0.0238<span class="nt">&lt;/z-m&gt;</span>
+        <span class="nt">&lt;/center&gt;</span>
+        <span class="nt">&lt;axis&gt;</span>
+            <span class="nt">&lt;x&gt;</span>-1<span class="nt">&lt;/x&gt;&lt;y&gt;</span>0<span class="nt">&lt;/y&gt;&lt;z&gt;</span>0<span class="nt">&lt;/z&gt;</span>
+        <span class="nt">&lt;/axis&gt;</span>
+        
+        <span class="nt">&lt;action&gt;</span>
+            <span class="nt">&lt;binding&gt;</span>
+                <span class="nt">&lt;command&gt;</span>property-adjust<span class="nt">&lt;/command&gt;</span>
+                <span class="nt">&lt;property&gt;</span>/autopilot/settings/target-altitude-ft<span class="nt">&lt;/property&gt;</span>
+                <span class="nt">&lt;factor&gt;</span>100<span class="nt">&lt;/factor&gt;</span>
+                <span class="nt">&lt;min&gt;</span>0<span class="nt">&lt;/min&gt;</span>
+                <span class="nt">&lt;max&gt;</span>40000<span class="nt">&lt;/max&gt;</span>                
+                <span class="nt">&lt;wrap&gt;</span>false<span class="nt">&lt;/wrap&gt;</span>
+            <span class="nt">&lt;/binding&gt;</span>
+        <span class="nt">&lt;/action&gt;</span>
+        <span class="c">&lt;!-- explicit increase binding, action binding still runs too --&gt;</span>
+        <span class="nt">&lt;increase&gt;</span>
+            <span class="nt">&lt;binding&gt;</span>
+                <span class="nt">&lt;command&gt;</span>nasal<span class="nt">&lt;/command&gt;</span>
+                <span class="nt">&lt;script&gt;</span>debug.dump('was increased', cmdarg().getNode('offset').getValue());<span class="nt">&lt;/script&gt;</span>
+           <span class="nt">&lt;/binding&gt;</span>
+        <span class="nt">&lt;/increase&gt;</span>
+        <span class="c">&lt;!-- explicit decrease binding, action binding still runs too --&gt;</span>
+        <span class="nt">&lt;decrease&gt;</span>
+            <span class="nt">&lt;binding&gt;</span>....<span class="nt">&lt;/binding&gt;</span>
+        <span class="nt">&lt;/decrease&gt;</span>
+    <span class="nt">&lt;/animation&gt;</span>
+ <span class="nt">&lt;/PropertyList&gt;</span>
+</pre></div>
+<p>Custom shifted-usage
+</p>
+<div class="mw-highlight mw-content-ltr" dir="ltr"><pre> <span class="cp">&lt;?xml version="1.0" encoding="utf8"?&gt;</span>
+ <span class="nt">&lt;PropertyList&gt;</span>
+  <span class="nt">&lt;animation&gt;</span>
+        <span class="nt">&lt;type&gt;</span>knob<span class="nt">&lt;/type&gt;</span>
+        <span class="nt">&lt;object-name&gt;</span>Radio.TUNE<span class="nt">&lt;/object-name&gt;</span>
+        <span class="nt">&lt;value&gt;</span>0.0<span class="nt">&lt;/value&gt;</span>
+        <span class="nt">&lt;center&gt;</span>...<span class="nt">&lt;/center&gt;</span>
+        <span class="nt">&lt;axis&gt;</span>...<span class="nt">&lt;/axis&gt;</span>
+        
+        <span class="nt">&lt;action&gt;</span>
+            <span class="nt">&lt;binding&gt;</span>
+                <span class="nt">&lt;command&gt;</span>property-adjust<span class="nt">&lt;/command&gt;</span>
+                <span class="nt">&lt;property&gt;</span>/instrumentation/nav[0]/standby-frequency-mhz<span class="nt">&lt;/property&gt;</span>
+                <span class="nt">&lt;factor&gt;</span>1<span class="nt">&lt;/factor&gt;</span>
+                <span class="nt">&lt;min&gt;</span>108<span class="nt">&lt;/min&gt;</span>
+                <span class="nt">&lt;max&gt;</span>122<span class="nt">&lt;/max&gt;</span>                
+                <span class="nt">&lt;wrap&gt;</span>true<span class="nt">&lt;/wrap&gt;</span>
+            <span class="nt">&lt;/binding&gt;</span>
+        <span class="nt">&lt;/action&gt;</span>
+        
+        <span class="nt">&lt;shift-action&gt;</span>
+            <span class="nt">&lt;binding&gt;</span>
+                <span class="nt">&lt;command&gt;</span>property-adjust<span class="nt">&lt;/command&gt;</span>
+                <span class="nt">&lt;property&gt;</span>/instrumentation/nav[0]/standby-frequency-mhz<span class="nt">&lt;/property&gt;</span>
+                <span class="nt">&lt;factor&gt;</span>0.05<span class="nt">&lt;/factor&gt;</span>
+            <span class="nt">&lt;/binding&gt;</span>
+        <span class="nt">&lt;/shift-action&gt;</span>
+
+    <span class="nt">&lt;/animation&gt;</span>
+ <span class="nt">&lt;/PropertyList&gt;</span>
+</pre></div>
+<p>Spring-loaded position:
+</p>
+<div class="mw-highlight mw-content-ltr" dir="ltr"><pre> <span class="cp">&lt;?xml version="1.0" encoding="utf8"?&gt;</span>
+ <span class="nt">&lt;PropertyList&gt;</span>
+  <span class="nt">&lt;animation&gt;</span>
+        <span class="nt">&lt;type&gt;</span>knob<span class="nt">&lt;/type&gt;</span>
+        <span class="nt">&lt;object-name&gt;</span>APU-Start<span class="nt">&lt;/object-name&gt;</span>
+        <span class="nt">&lt;property&gt;</span>/controls/apu/rotary-start<span class="nt">&lt;/property&gt;</span>
+        <span class="c">&lt;!-- center, axis, factor, ... --&gt;</span>
+
+        <span class="c">&lt;!-- Normal action, positions 0, 1 and 2 --&gt;</span>
+        <span class="nt">&lt;action&gt;</span>
+            <span class="nt">&lt;binding&gt;</span>
+                <span class="nt">&lt;command&gt;</span>property-adjust<span class="nt">&lt;/command&gt;</span>
+                <span class="nt">&lt;property&gt;</span>/controls/apu/rotary-start<span class="nt">&lt;/property&gt;</span>
+                <span class="nt">&lt;min&gt;</span>0<span class="nt">&lt;/min&gt;</span>
+                <span class="nt">&lt;max&gt;</span>2<span class="nt">&lt;/max&gt;</span>
+            <span class="nt">&lt;/binding&gt;</span>
+        <span class="nt">&lt;/action&gt;</span>
+
+        <span class="c">&lt;!-- Release action, limit to 0 and 1. 2 is spring loaded starter position --&gt;</span>
+        <span class="nt">&lt;release&gt;</span>
+            <span class="nt">&lt;binding&gt;</span>
+                <span class="nt">&lt;command&gt;</span>property-adjust<span class="nt">&lt;/command&gt;</span>
+                <span class="nt">&lt;property&gt;</span>/controls/apu/rotary-start<span class="nt">&lt;/property&gt;</span>
+                <span class="nt">&lt;step&gt;</span>0<span class="nt">&lt;/step&gt;</span>
+                <span class="nt">&lt;min&gt;</span>0<span class="nt">&lt;/min&gt;</span>
+                <span class="nt">&lt;max&gt;</span>1<span class="nt">&lt;/max&gt;</span>
+            <span class="nt">&lt;/binding&gt;</span>
+        <span class="nt">&lt;/release&gt;</span>
+    <span class="nt">&lt;/animation&gt;</span>
+ <span class="nt">&lt;/PropertyList&gt;</span>
+</pre></div>
+<p>Slider (good for breakers):
+</p>
+<div class="mw-highlight mw-content-ltr" dir="ltr"><pre> <span class="cp">&lt;?xml version="1.0" encoding="utf8"?&gt;</span>
+ <span class="nt">&lt;PropertyList&gt;</span>
+    <span class="nt">&lt;animation&gt;</span>
+        <span class="nt">&lt;type&gt;</span>slider<span class="nt">&lt;/type&gt;</span>
+        <span class="nt">&lt;object-name&gt;</span>brk-ku-elec<span class="nt">&lt;/object-name&gt;</span>
+        <span class="nt">&lt;property&gt;</span>/fdm/jsbsim/systems/mechanical/ku-antenna-elec-cb<span class="nt">&lt;/property&gt;</span>
+        <span class="nt">&lt;factor&gt;</span>0.006<span class="nt">&lt;/factor&gt;</span>
+        <span class="nt">&lt;axis&gt;</span>
+            <span class="nt">&lt;x&gt;</span>0<span class="nt">&lt;/x&gt;</span>
+            <span class="nt">&lt;y&gt;</span>1<span class="nt">&lt;/y&gt;</span>
+            <span class="nt">&lt;z&gt;</span>0<span class="nt">&lt;/z&gt;</span>
+        <span class="nt">&lt;/axis&gt;</span>
+        <span class="nt">&lt;action&gt;</span>
+            <span class="nt">&lt;binding&gt;</span>
+                <span class="nt">&lt;command&gt;</span>property-toggle<span class="nt">&lt;/command&gt;</span>
+                <span class="nt">&lt;property&gt;</span>/fdm/jsbsim/systems/mechanical/ku-antenna-elec-cb<span class="nt">&lt;/property&gt;</span>
+            <span class="nt">&lt;/binding&gt;</span>
+        <span class="nt">&lt;/action&gt;</span>
+    <span class="nt">&lt;/animation&gt;</span>
+ <span class="nt">&lt;/PropertyList&gt;</span>
+</pre></div>
+<p>Slider used as a "Spring/contact" switch (reverts to 0 on exit):
+</p>
+<div class="mw-highlight mw-content-ltr" dir="ltr"><pre> <span class="cp">&lt;?xml version="1.0" encoding="utf8"?&gt;</span>
+ <span class="nt">&lt;PropertyList&gt;</span>    <span class="nt">&lt;animation&gt;</span>
+        <span class="nt">&lt;type&gt;</span>slider<span class="nt">&lt;/type&gt;</span>
+        <span class="nt">&lt;object-name&gt;</span>a6-att-ref<span class="nt">&lt;/object-name&gt;</span>
+        <span class="nt">&lt;property&gt;</span>/fdm/jsbsim/systems/adi/att-ref<span class="nt">&lt;/property&gt;</span>
+        <span class="nt">&lt;factor&gt;</span>0.002<span class="nt">&lt;/factor&gt;</span>
+        <span class="nt">&lt;axis&gt;</span>
+            <span class="nt">&lt;x&gt;</span>1<span class="nt">&lt;/x&gt;</span>
+            <span class="nt">&lt;y&gt;</span>0<span class="nt">&lt;/y&gt;</span>
+            <span class="nt">&lt;z&gt;</span>0<span class="nt">&lt;/z&gt;</span>
+        <span class="nt">&lt;/axis&gt;</span>
+        <span class="nt">&lt;action&gt;</span>
+            <span class="nt">&lt;binding&gt;</span>
+                <span class="nt">&lt;command&gt;</span>property-assign<span class="nt">&lt;/command&gt;</span>
+                <span class="nt">&lt;property&gt;</span>/fdm/jsbsim/systems/adi/att-ref<span class="nt">&lt;/property&gt;</span>
+                <span class="nt">&lt;value&gt;</span>1<span class="nt">&lt;/value&gt;</span>
+            <span class="nt">&lt;/binding&gt;</span>
+            <span class="nt">&lt;binding&gt;</span>
+                <span class="nt">&lt;command&gt;</span>nasal<span class="nt">&lt;/command&gt;</span>
+                <span class="nt">&lt;script&gt;</span>
+                    SpaceShuttle.coas_att_ref();
+                    SpaceShuttle.click("avionics");
+                <span class="nt">&lt;/script&gt;</span>
+            <span class="nt">&lt;/binding&gt;</span>
+        <span class="nt">&lt;/action&gt;</span>
+        <span class="nt">&lt;release&gt;</span>
+            <span class="nt">&lt;binding&gt;</span>
+                <span class="nt">&lt;command&gt;</span>property-adjust<span class="nt">&lt;/command&gt;</span>
+                <span class="nt">&lt;property&gt;</span>/fdm/jsbsim/systems/adi/att-ref<span class="nt">&lt;/property&gt;</span>
+                <span class="nt">&lt;step&gt;</span>0<span class="nt">&lt;/step&gt;</span>
+                <span class="nt">&lt;min&gt;</span>0<span class="nt">&lt;/min&gt;</span>
+                <span class="nt">&lt;max&gt;</span>0<span class="nt">&lt;/max&gt;</span>
+            <span class="nt">&lt;/binding&gt;</span>
+        <span class="nt">&lt;/release&gt;</span>
+        <span class="nt">&lt;hovered&gt;</span>
+            <span class="nt">&lt;binding&gt;</span>
+                <span class="nt">&lt;command&gt;</span>set-tooltip<span class="nt">&lt;/command&gt;</span>
+                <span class="nt">&lt;tooltip-id&gt;</span>a6-att-ref<span class="nt">&lt;/tooltip-id&gt;</span>
+                <span class="nt">&lt;label&gt;</span>Attitude Reference<span class="nt">&lt;/label&gt;</span>
+            <span class="nt">&lt;/binding&gt;</span>
+        <span class="nt">&lt;/hovered&gt;</span>
+    <span class="nt">&lt;/animation&gt;</span>
+ <span class="nt">&lt;/PropertyList&gt;</span>
+</pre></div>
+<p>Note: For the release you can simply use another property-assign with a value of 0.
+</p>
+<h2><span class="mw-headline" id="Related_content">Related content</span></h2>
+<ul><li> <a href="http://wiki.flightgear.org/Howto:Animate_models" title="Howto:Animate models">Howto:Animate models</a></li>
+<li> <a href="http://wiki.flightgear.org/Tooltips" title="Tooltips">Tooltips</a></li></ul>
+
+<!-- Tidy found serious XHTML errors -->
+
+<!-- 
+NewPP limit report
+Cached time: 20170920141913
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.019 seconds
+Real time usage: 0.021 seconds
+Preprocessor visited node count: 72/1000000
+Preprocessor generated node count: 132/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/40
+Expensive parser function count: 0/100
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 - -total
+-->
+
+<!-- Saved in parser cache with key fg_wiki-mw_:pcache:idhash:10535-0!*!0!!en!*!* and timestamp 20170920141913 and revision id 107547
+ -->
+</div>					<div class="printfooter">
+						Retrieved from "<a dir="ltr" href="http://wiki.flightgear.org/index.php?title=Knob_/_slider_animation&amp;oldid=107547">http://wiki.flightgear.org/index.php?title=Knob_/_slider_animation&amp;oldid=107547</a>"					</div>
+				<div id="catlinks" class="catlinks"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://wiki.flightgear.org/Special:Categories" title="Special:Categories">Category</a>: <ul><li><a href="http://wiki.flightgear.org/Category:Aircraft_enhancement" title="Category:Aircraft enhancement">Aircraft enhancement</a></li></ul></div></div>				<div class="visualClear"></div>
+							</div>
+		</div>
+		<div id="mw-navigation">
+			<h2>Navigation menu</h2>
+
+			<div id="mw-head">
+									<div id="p-personal" role="navigation" class="" aria-labelledby="p-personal-label">
+						<h3 id="p-personal-label">Personal tools</h3>
+						<ul>
+							<li id="pt-createaccount"><a href="http://wiki.flightgear.org/index.php?title=Special:UserLogin&amp;returnto=Knob+%2F+slider+animation&amp;type=signup" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://wiki.flightgear.org/index.php?title=Special:UserLogin&amp;returnto=Knob+%2F+slider+animation" title="You are encouraged to log in; however, it is not mandatory [Alt+Maiusc+o]" accesskey="o">Log in</a></li>						</ul>
+					</div>
+									<div id="left-navigation">
+										<div id="p-namespaces" role="navigation" class="vectorTabs" aria-labelledby="p-namespaces-label">
+						<h3 id="p-namespaces-label">Namespaces</h3>
+						<ul>
+															<li id="ca-nstab-main" class="selected"><span><a href="http://wiki.flightgear.org/Knob_/_slider_animation" title="View the content page [Alt+Maiusc+c]" accesskey="c">Page</a></span></li>
+															<li id="ca-talk" class="new"><span><a href="http://wiki.flightgear.org/index.php?title=Talk:Knob_/_slider_animation&amp;action=edit&amp;redlink=1" title="Discussion about the content page [Alt+Maiusc+t]" accesskey="t" rel="discussion">Discussion</a></span></li>
+													</ul>
+					</div>
+										<div id="p-variants" role="navigation" class="vectorMenu emptyPortlet" aria-labelledby="p-variants-label">
+												<h3 id="p-variants-label" tabindex="0">
+							<span>Variants</span><a href="#" tabindex="-1"></a>
+						</h3>
+
+						<div class="menu">
+							<ul>
+															</ul>
+						</div>
+					</div>
+									</div>
+				<div id="right-navigation">
+										<div id="p-views" role="navigation" class="vectorTabs" aria-labelledby="p-views-label">
+						<h3 id="p-views-label">Views</h3>
+						<ul>
+															<li id="ca-view" class="selected"><span><a href="http://wiki.flightgear.org/Knob_/_slider_animation">Read</a></span></li>
+															<li id="ca-viewsource"><span><a href="http://wiki.flightgear.org/index.php?title=Knob_/_slider_animation&amp;action=edit" title="This page is protected.
+You can view its source [Alt+Maiusc+e]" accesskey="e">View source</a></span></li>
+															<li id="ca-history" class="collapsible"><span><a href="http://wiki.flightgear.org/index.php?title=Knob_/_slider_animation&amp;action=history" title="Past revisions of this page [Alt+Maiusc+h]" accesskey="h">View history</a></span></li>
+													</ul>
+					</div>
+										<div id="p-cactions" role="navigation" class="vectorMenu emptyPortlet" aria-labelledby="p-cactions-label" style="">
+						<h3 id="p-cactions-label" tabindex="0"><span>More</span><a href="#" tabindex="-1"></a></h3>
+
+						<div class="menu">
+							<ul>
+															</ul>
+						</div>
+					</div>
+										<div id="p-search" role="search">
+						<h3>
+							<label for="searchInput">Search</label>
+						</h3>
+
+						<form action="/index.php" id="searchform">
+							<div id="simpleSearch">
+							<input name="search" placeholder="Search" title="Search FlightGear wiki [Alt+Maiusc+f]" accesskey="f" id="searchInput" tabindex="1" autocomplete="off" type="search"><input value="Special:Search" name="title" type="hidden"><input name="go" value="Go" title="Go to a page with this exact name if it exists" id="searchButton" class="searchButton" type="submit">							</div>
+						</form>
+					</div>
+									</div>
+			</div>
+			<div id="mw-panel">
+				<div id="p-logo" role="banner"><a class="mw-wiki-logo" href="http://wiki.flightgear.org/Main_Page" title="Visit the main page"></a></div>
+						<div class="portal" role="navigation" id="p-navigation" aria-labelledby="p-navigation-label">
+			<h3 id="p-navigation-label">Navigation</h3>
+
+			<div class="body">
+									<ul>
+						<li id="n-mainpage-description"><a href="http://wiki.flightgear.org/Main_Page" title="Visit the main page [Alt+Maiusc+z]" accesskey="z">Main page</a></li><li id="n-recentchanges"><a href="http://wiki.flightgear.org/Special:RecentChanges" title="A list of recent changes in the wiki [Alt+Maiusc+r]" accesskey="r">Recent changes</a></li><li id="n-randompage"><a href="http://wiki.flightgear.org/Special:Random" title="Load a random page [Alt+Maiusc+x]" accesskey="x">Random page</a></li><li id="n-Discuss.21"><a href="http://wiki.flightgear.org/FlightGear_wiki:Village_pump">Discuss!</a></li><li id="n-Help"><a href="http://wiki.flightgear.org/Help:Contents" title="The place to find out">Help</a></li>					</ul>
+							</div>
+		</div>
+			<div class="portal" role="navigation" id="p-Portals" aria-labelledby="p-Portals-label">
+			<h3 id="p-Portals-label">Portals</h3>
+
+			<div class="body">
+									<ul>
+						<li id="n-User"><a href="http://wiki.flightgear.org/Portal:User">User</a></li><li id="n-Developer"><a href="http://wiki.flightgear.org/Portal:Developer">Developer</a></li><li id="n-Wiki"><a href="http://wiki.flightgear.org/Portal:Wiki">Wiki</a></li>					</ul>
+							</div>
+		</div>
+			<div class="portal" role="navigation" id="p-FlightGear" aria-labelledby="p-FlightGear-label">
+			<h3 id="p-FlightGear-label">FlightGear</h3>
+
+			<div class="body">
+									<ul>
+						<li id="n-Website"><a href="http://www.flightgear.org/" rel="nofollow">Website</a></li><li id="n-Forum"><a href="https://forum.flightgear.org/" rel="nofollow">Forum</a></li><li id="n-Mailing.C2.A0lists"><a href="http://wiki.flightgear.org/Mailing_lists">Mailing&nbsp;lists</a></li><li id="n-Bug.C2.A0tracker"><a href="https://sourceforge.net/p/flightgear/codetickets/" rel="nofollow">Bug&nbsp;tracker</a></li><li id="n-Source"><a href="https://sourceforge.net/p/flightgear/_list/git" rel="nofollow">Source</a></li><li id="n-Scenery"><a href="https://scenery.flightgear.org/" rel="nofollow">Scenery</a></li><li id="n-Liveries"><a href="http://liveries.flightgear.org/" rel="nofollow">Liveries</a></li><li id="n-Build.C2.A0server"><a href="http://build.flightgear.org:8080/" rel="nofollow">Build&nbsp;server</a></li>					</ul>
+							</div>
+		</div>
+			<div class="portal" role="navigation" id="p-tb" aria-labelledby="p-tb-label">
+			<h3 id="p-tb-label">Tools</h3>
+
+			<div class="body">
+									<ul>
+						<li id="t-whatlinkshere"><a href="http://wiki.flightgear.org/Special:WhatLinksHere/Knob_/_slider_animation" title="A list of all wiki pages that link here [Alt+Maiusc+j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://wiki.flightgear.org/Special:RecentChangesLinked/Knob_/_slider_animation" title="Recent changes in pages linked from this page [Alt+Maiusc+k]" accesskey="k">Related changes</a></li><li id="t-upload"><a href="http://wiki.flightgear.org/Special:UploadWizard" title="Upload files [Alt+Maiusc+u]" accesskey="u">Upload file</a></li><li id="t-specialpages"><a href="http://wiki.flightgear.org/Special:SpecialPages" title="A list of all special pages [Alt+Maiusc+q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://wiki.flightgear.org/index.php?title=Knob_/_slider_animation&amp;printable=yes" rel="alternate" title="Printable version of this page [Alt+Maiusc+p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://wiki.flightgear.org/index.php?title=Knob_/_slider_animation&amp;oldid=107547" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://wiki.flightgear.org/index.php?title=Knob_/_slider_animation&amp;action=info" title="More information about this page">Page information</a></li>					</ul>
+							</div>
+		</div>
+				</div>
+		</div>
+		<div id="footer" role="contentinfo">
+							<ul id="footer-info">
+											<li id="footer-info-lastmod"> This page was last modified on 28 March 2017, at 11:59.</li>
+											<li id="footer-info-copyright">Text is available under the <a href="http://www.gnu.org/licenses/old-licenses/gpl-2.0.txt">GNU GPL Version 2</a>; additional terms may apply. Please view the media description page for details about the license of specific media files. See <a href="http://wiki.flightgear.org/FlightGear_wiki:Terms_of_use">Terms of use</a> for details.</li>
+									</ul>
+							<ul id="footer-places">
+											<li id="footer-places-privacy"><a href="http://wiki.flightgear.org/FlightGear_wiki:Privacy_policy" title="FlightGear wiki:Privacy policy">Privacy policy</a></li>
+											<li id="footer-places-about"><a href="http://wiki.flightgear.org/FlightGear_wiki:About" title="FlightGear wiki:About">About FlightGear wiki</a></li>
+											<li id="footer-places-disclaimer"><a href="http://wiki.flightgear.org/FlightGear_wiki:General_disclaimer" title="FlightGear wiki:General disclaimer">Disclaimers</a></li>
+											<li id="footer-places-mobileview"><a href="http://wiki.flightgear.org/index.php?title=Knob_/_slider_animation&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li>
+									</ul>
+										<ul id="footer-icons" class="noprint">
+											<li id="footer-copyrightico">
+							<a href="http://www.gnu.org/licenses/old-licenses/gpl-2.0.txt"><img src="" alt="" width="88" height="31"></a>						</li>
+											<li id="footer-poweredbyico">
+							<a href="http://www.mediawiki.org/"><img src="flighgear%20animation%20knob_files/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" srcset="/resources/assets/poweredby_mediawiki_132x47.png 1.5x, /resources/assets/poweredby_mediawiki_176x62.png 2x" width="88" height="31"></a>						</li>
+									</ul>
+						<div style="clear:both"></div>
+		</div>
+		<script>window.RLQ = window.RLQ || []; window.RLQ.push( function () {
+mw.loader.state({"user":"ready","user.groups":"ready"});mw.loader.load(["mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest"]);
+} );</script><script>window.RLQ = window.RLQ || []; window.RLQ.push( function () {
+mw.config.set({"wgBackendResponseTime":214});
+} );</script>
+	
+
+<div style="display: none; font-size: 13px;" class="suggestions"><div class="suggestions-results"></div><div class="suggestions-special"></div></div></body></html>

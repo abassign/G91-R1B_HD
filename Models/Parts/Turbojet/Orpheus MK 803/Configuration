@@ -1,0 +1,13 @@
+Engine mark                 Viper 600             Orpheus 803
+
+configuration                single-stage       single-stage
+compressor stages           8                              7
+combustor                      annular             cannular- 7 tubes
+turbine                           two-stage         single-stage
+T/O thrust lbt                 3,750                  5,000
+Air mass flow lb/sec          58.4                   84
+Pressure ratio                 5.8:1                   4.14:1
+length in                           85.0                   96.1
+diam in                             24.5                   32.4
+weight lb                         790                     975
+t/w                                   4.75                    5.13

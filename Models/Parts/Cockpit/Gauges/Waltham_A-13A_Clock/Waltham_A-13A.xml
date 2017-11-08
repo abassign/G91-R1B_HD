@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+    
+    <path>Waltham_A-13A.ac</path>
+
+    <effect>
+        <inherits-from>Effects/model-transparent</inherits-from>
+        <object-name>glass (Meshed)</object-name>
+    </effect>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>cover (Meshed)</object-name>
+        <texture>G91-Al.png</texture>
+        <ambient>
+            <red>0.6</red>
+            <green>0.6</green>
+            <blue>0.6</blue>
+        </ambient>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>frontal_all (Meshed)</object-name>
+        <object-name>border_internal (Meshed)</object-name>
+        <object-name>center (Meshed)</object-name>
+        <texture>Pictures/G91-Al-dark.png</texture>
+        <ambient>
+            <red>0.6</red>
+            <green>0.6</green>
+            <blue>0.6</blue>
+        </ambient>
+        <emission>
+            <red>0.2</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>screews (Meshed)</object-name>
+        <texture>Pictures/G91-Dark-Grey.png</texture>
+        <ambient>
+            <red>0.6</red>
+            <green>0.6</green>
+            <blue>0.6</blue>
+        </ambient>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>glass (Meshed)</object-name>
+        <texture>Pictures/G91-Al-Light.png</texture>
+        <transparency>
+            <alpha>0.1</alpha>
+        </transparency>
+        <ambient>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </ambient>
+        <emission>
+            <red>0.01</red>
+            <green>0.07</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>back_plane_A (Meshed)</object-name>
+        <transparency>
+            <alpha>1.0</alpha>
+        </transparency>
+        <ambient>
+            <red>0.90</red>
+            <green>0.83</green>
+            <blue>0.63</blue>
+        </ambient>
+        <emission>
+            <red>0.045</red>
+            <green>0.15</green>
+            <blue>0.031</blue>
+            <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>back_plane_B (Meshed)</object-name>
+        <texture>Pictures/G91-Dark-Grey.png</texture>
+        <ambient>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </ambient>
+        <emission>
+            <red>0.25</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation>
+        <type>material</type>
+        <object-name>Arrow_1A (Meshed)</object-name>
+        <object-name>Arrow_2A (Meshed)</object-name>
+        <object-name>Arrow_3A (Meshed)</object-name>
+        <object-name>Arrow_4A (Meshed)</object-name>
+        <transparency>
+            <alpha>1.0</alpha>
+        </transparency>
+        <ambient>
+            <red>0.90</red>
+            <green>0.83</green>
+            <blue>0.63</blue>
+        </ambient>
+        <emission>
+            <red>0.045</red>
+            <green>0.15</green>
+            <blue>0.031</blue>
+            <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>Arrow_1B (Meshed)</object-name>
+        <object-name>Arrow_2B (Meshed)</object-name>
+        <object-name>Arrow_3B (Meshed)</object-name>
+        <object-name>Arrow_4B (Meshed)</object-name>
+        <texture>Pictures/G91-Dark-Grey.png</texture>
+        <ambient>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
+        </ambient>
+        <emission>
+            <red>0.1</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>knob_001 (Meshed)</object-name>
+        <object-name>knob_002 (Meshed)</object-name>
+        <texture>Pictures/G91-Dark-Grey.png</texture>
+        <ambient>
+            <red>0.6</red>
+            <green>0.6</green>
+            <blue>0.6</blue>
+        </ambient>
+        <emission>
+            <red>0.15</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <!-- animate needles -->
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>Arrow_3A (Meshed)</object-name>
+        <object-name>Arrow_3B (Meshed)</object-name>
+        <property>instrumentation/clock/indicated-sec</property>
+        <factor>0.00833333</factor>
+        <axis>
+            <x>-1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
+
+    <animation>
+        <type>rotate</type>
+        <object-name>Arrow_4A (Meshed)</object-name>
+        <object-name>Arrow_4B (Meshed)</object-name>
+        <property>/instrumentation/clock/indicated-sec</property>
+        <factor>0.1</factor>
+        <axis>
+            <x>-1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
+
+    <animation>
+        <type>rotate</type>
+        <object-name>Arrow_1A (Meshed)</object-name>
+        <object-name>Arrow_1B (Meshed)</object-name>
+        <property>/instrumentation/clock/indicated-sec</property>
+        <factor>6.0</factor>
+        <axis>
+            <x>-1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
+    
+    <animation>
+        <type>pick</type>
+        <visible>true</visible>
+        <object-name>knob_002 (Meshed)</object-name>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <binding>
+                <command>property-cycle</command>
+                <property>sim/G91/gauge/clock/stopwatch</property>
+                <value type="double">1</value>
+                <value type="double">2</value>
+                <value type="double">0</value>
+            </binding>
+        </action>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>Arrow_2A (Meshed)</object-name>
+        <object-name>Arrow_2B (Meshed)</object-name>
+        <property>sim/G91/gauge/clock/stopwatch_seconds</property>
+        <factor>6</factor>
+        <axis>
+            <x>-1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
+    
+    <animation>
+        <type>knob</type>
+        <object-name>knob_001 (Meshed)</object-name>
+        <action>
+            <binding>
+                <command>property-adjust</command>
+                <property>/instrumentation/clock/offset-sec</property>
+                <factor>60</factor>
+                <min>-86400</min>
+                <max>86400</max>
+                <wrap>false</wrap>
+            </binding>
+        </action>
+    </animation>
+    
+    <model>
+        <name>procedural_light_cockpit_gauge_spot_red</name>
+        <path>Aircraft/G91/Models/Parts/Cockpit/Effects/lights/procedural_light_cockpit_gauge_spot_red.xml</path>
+        <offsets>
+            <x-m> 0.03</x-m>
+            <y-m> 0.0 </y-m>
+            <z-m> 0.0 </z-m>
+        </offsets>
+    </model>
+    
+</PropertyList>

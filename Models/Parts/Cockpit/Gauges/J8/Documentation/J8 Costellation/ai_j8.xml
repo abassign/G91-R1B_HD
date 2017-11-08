@@ -1,0 +1,176 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+  <path>ai_j8.ac</path>
+
+  <animation>
+    <type>material</type>
+    <object-name>AI.Ball</object-name>
+    <object-name>AI.BankIndex</object-name>
+    <object-name>AI.BezelMask</object-name>
+    <object-name>AI.Bar.Aircraft</object-name>
+    <object-name>AI.Bar.Horizon</object-name>
+    <emission>
+      <red>0.8</red>
+      <green>0.4</green>
+      <blue>0.2</blue>
+      <factor-prop>/controls/lighting/panel-norm</factor-prop>
+    </emission>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>AI.BankIndex</object-name>
+    <property>instrumentation/attitude-indicator/indicated-roll-deg</property>
+    <interpolation>
+      <entry><ind>-90.0</ind><dep>-90.0</dep></entry>
+      <entry><ind> 90.0</ind><dep> 90.0</dep></entry>
+    </interpolation>
+    <axis>
+      <x>1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>AI.Ball</object-name>
+    <property>instrumentation/attitude-indicator/indicated-roll-deg</property>
+    <interpolation>
+      <entry><ind>-90.0</ind><dep>-90.0</dep></entry>
+      <entry><ind> 90.0</ind><dep> 90.0</dep></entry>
+    </interpolation>
+    <axis>
+      <x>1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+    <center>
+      <x-m>-0.036</x-m>
+      <y-m>0</y-m>
+      <z-m>0</z-m>
+    </center>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>AI.Ball</object-name>
+    <property>instrumentation/attitude-indicator/indicated-pitch-deg</property>
+    <interpolation>
+      <entry><ind>-90.0</ind><dep>-90.0</dep></entry>
+      <entry><ind> 90.0</ind><dep> 90.0</dep></entry>
+    </interpolation>
+    <axis>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
+    </axis>
+    <center>
+      <x-m>-0.036</x-m>
+      <y-m>0</y-m>
+      <z-m>0</z-m>
+    </center>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>AI.Bar.Horizon</object-name>
+    <property>instrumentation/attitude-indicator/indicated-roll-deg</property>
+    <interpolation>
+      <entry><ind>-90.0</ind><dep>-90.0</dep></entry>
+      <entry><ind> 90.0</ind><dep> 90.0</dep></entry>
+    </interpolation>
+    <axis>
+      <x>1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+    <center>
+      <x-m>-0.036</x-m>
+      <y-m>0</y-m>
+      <z-m>0</z-m>
+    </center>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>AI.Bar.Horizon</object-name>
+    <property>instrumentation/attitude-indicator/indicated-pitch-deg</property>
+    <interpolation>
+      <entry><ind>-27.0</ind><dep>-27.0</dep></entry>
+      <entry><ind> 27.0</ind><dep> 27.0</dep></entry>
+    </interpolation>
+    <axis>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
+    </axis>
+    <center>
+      <x-m>-0.036</x-m>
+      <y-m>0</y-m>
+      <z-m>0</z-m>
+    </center>
+  </animation>
+
+  <animation>
+    <type>translate</type>
+    <object-name>AI.Bar.Aircraft</object-name>
+    <property>instrumentation/attitude-indicator/horizon-offset-deg</property>
+    <factor>0.001</factor>
+    <axis>
+      <x>0</x>
+      <y>0</y>
+      <z>1</z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>AI.Knob.Hor</object-name>
+    <property>instrumentation/attitude-indicator/horizon-offset-deg</property>
+    <factor>25</factor>
+    <center>
+      <x-m>0</x-m>
+      <y-m>-0.03</y-m>
+      <z-m>-0.03</z-m>
+    </center>
+    <axis>
+      <x>-1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+  </animation>
+  <animation>
+    <type>pick</type>
+    <object-name>AI.Knob.Hor</object-name>
+    <action>
+      <button>0</button>
+      <button>3</button>
+      <repeatable>true</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property>instrumentation/attitude-indicator/horizon-offset-deg</property>
+        <step>-0.1</step>
+        <min>-5</min>
+        <max>5</max>
+        <wrap>false</wrap>
+      </binding>
+    </action>
+    <action>
+      <button>1</button>
+      <button>4</button>
+      <repeatable>true</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property>instrumentation/attitude-indicator/horizon-offset-deg</property>
+        <step>0.1</step>
+        <min>-5</min>
+        <max>5</max>
+        <wrap>false</wrap>
+      </binding>
+    </action>
+  </animation>
+
+</PropertyList>
