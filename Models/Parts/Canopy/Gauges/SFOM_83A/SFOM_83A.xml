@@ -73,12 +73,12 @@
         <type>material</type>
         <object-name>Collimator_glass_TargetDOWN</object-name>
         <transparency>
-            <alpha>0.5</alpha>
+            <alpha>0.9</alpha>
         </transparency>
         <emission>
-            <red>1.0</red>
-            <green>1.0</green>
-            <blue>1.0</blue>
+            <red-prop>sim/G91/gauge/SFOM_83A/collimator_red</red-prop>
+            <green-prop>sim/G91/gauge/SFOM_83A/collimator_green</green-prop>
+            <blue-prop>sim/G91/gauge/SFOM_83A/collimator_blue</blue-prop>
             <factor-prop>sim/G91/gauge/SFOM_83A/whiteLight</factor-prop>
         </emission>
     </animation>
