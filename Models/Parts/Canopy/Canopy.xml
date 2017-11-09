@@ -35,6 +35,11 @@
         <transparency>
             <alpha>0.2</alpha>
         </transparency>
+        <ambient>
+            <red>1.0</red>
+            <green>0.95</green>
+            <blue>0.9</blue>
+        </ambient>
     </animation>
     
     <animation> 
@@ -42,8 +47,13 @@
         <object-name>F_canopy_ant_blind</object-name>
         <texture>Pictures/InteriorLightGreyGreen.png</texture>
         <transparency>
-            <alpha>0.3</alpha>
+            <alpha>0.25</alpha>
         </transparency>
+        <ambient>
+            <red>0.9</red>
+            <green>1.0</green>
+            <blue>0.9</blue>
+        </ambient>
     </animation>
     
     <effect>

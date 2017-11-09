@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.2 (unknown)"
+   sodipodi:docname="SFOM_83A_01_Brend.svg">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.98994949"
+     inkscape:cx="499.68364"
+     inkscape:cy="805.47938"
+     inkscape:document-units="mm"
+     inkscape:current-layer="g831"
+     showgrid="false"
+     inkscape:window-width="1903"
+     inkscape:window-height="970"
+     inkscape:window-x="2309"
+     inkscape:window-y="277"
+     inkscape:window-maximized="0" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Livello 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g831"
+       inkscape:export-xdpi="162.46001"
+       inkscape:export-ydpi="162.46001">
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         x="-46.237629"
+         y="53.250191"
+         id="text831"><tspan
+           sodipodi:role="line"
+           id="tspan829"
+           x="-46.237629"
+           y="62.61396"
+           style="stroke-width:0.26458332" /></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         x="-38.535656"
+         y="4.8036337"
+         id="text821-3"><tspan
+           sodipodi:role="line"
+           x="-38.535656"
+           y="14.167403"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:1.20000005;font-family:G91_font;-inkscape-font-specification:G91_font;text-align:center;letter-spacing:-3.17499995px;text-anchor:middle;stroke-width:0.26458332"
+           id="tspan827-3" /></text>
+      <g
+         id="g910"
+         inkscape:export-filename="/media/abassign/varie/salvataggi/github/G91/Models/Parts/Canopy/Gauges/SFOM_83A/SFOM_83A_Brend.png"
+         inkscape:export-xdpi="154.97882"
+         inkscape:export-ydpi="154.97882">
+        <text
+           id="text821"
+           y="66.61367"
+           x="104.51583"
+           style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+           xml:space="preserve"><tspan
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:1.20000005;font-family:G91_font;-inkscape-font-specification:G91_font;text-align:center;letter-spacing:-3.17499995px;text-anchor:middle;stroke-width:0.26458332"
+             y="75.97744"
+             x="104.51583"
+             id="tspan819"
+             sodipodi:role="line" /><tspan
+             id="tspan823"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:1.20000005;font-family:G91_font;-inkscape-font-specification:G91_font;text-align:center;letter-spacing:-3.17499995px;text-anchor:middle;stroke-width:0.26458332"
+             y="89.365768"
+             x="102.92833"
+             sodipodi:role="line">collimateur</tspan><tspan
+             id="tspan825"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:1.20000005;font-family:G91_font;-inkscape-font-specification:G91_font;text-align:center;letter-spacing:-3.17499995px;text-anchor:middle;stroke-width:0.26458332"
+             y="102.7541"
+             x="102.92833"
+             sodipodi:role="line">type 83</tspan><tspan
+             id="tspan827"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:1.20000005;font-family:G91_font;-inkscape-font-specification:G91_font;text-align:center;letter-spacing:-3.17499995px;text-anchor:middle;stroke-width:0.26458332"
+             y="116.14243"
+             x="102.92833"
+             sodipodi:role="line">nr 333</tspan></text>
+        <flowRoot
+           transform="matrix(0.39623664,0,0,0.26458333,169.88577,45.168551)"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40px;line-height:1.25;font-family:G91_font;-inkscape-font-specification:G91_font;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+           id="flowRoot869"
+           xml:space="preserve"><flowRegion
+             id="flowRegion871"><rect
+               y="66.910271"
+               x="-237.38585"
+               height="115.15739"
+               width="280.82242"
+               id="rect873" /></flowRegion><flowPara
+             id="flowPara875">S.F.O.M</flowPara></flowRoot>        <path
+           inkscape:connector-curvature="0"
+           id="path877"
+           d="M 71.093694,62.337355 H 137.64381"
+           style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+        <path
+           inkscape:connector-curvature="0"
+           id="path877-5"
+           d="M 71.227327,75.433561 H 137.77744"
+           style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+        <rect
+           y="48.672531"
+           x="63.118904"
+           height="83.913414"
+           width="83.913414"
+           id="rect896"
+           style="opacity:1;fill:none;stroke:none;stroke-width:1.08658755;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+      </g>
+    </g>
+  </g>
+</svg>
