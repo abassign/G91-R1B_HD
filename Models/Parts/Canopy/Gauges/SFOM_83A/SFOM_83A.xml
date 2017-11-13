@@ -73,13 +73,12 @@
         <type>material</type>
         <object-name>Collimator_glass_TargetDOWN</object-name>
         <transparency>
-            <alpha>1.0</alpha>
+            <alpha-prop>sim/G91/gauge/SFOM_83A/whiteLight</alpha-prop>
         </transparency>
         <emission>
             <red-prop>sim/G91/gauge/SFOM_83A/collimator_red</red-prop>
             <green-prop>sim/G91/gauge/SFOM_83A/collimator_green</green-prop>
             <blue-prop>sim/G91/gauge/SFOM_83A/collimator_blue</blue-prop>
-            <factor-prop>sim/G91/gauge/SFOM_83A/whiteLight</factor-prop>
         </emission>
     </animation>
     
@@ -136,6 +135,7 @@
     <animation>
         <type>material</type>
         <object-name>Collimator_body.002</object-name>
+        <object-name>button.001</object-name>
         <transparency>
             <alpha>1.0</alpha>
         </transparency>
@@ -145,29 +145,10 @@
             <blue>0.53</blue>
         </ambient>
         <emission>
-            <red>0.025</red>
-            <green>0.10</green>
-            <blue>0.021</blue>
-            <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
-        </emission>
-    </animation>
-    
-    <animation>
-        <type>material</type>
-        <object-name>button.001</object-name>
-        <transparency>
-            <alpha>1.0</alpha>
-        </transparency>
-        <ambient>
-            <red>0.90</red>
-            <green>0.83</green>
-            <blue>0.73</blue>
-        </ambient>
-        <emission>
-            <red>0.025</red>
-            <green>0.10</green>
-            <blue>0.021</blue>
-            <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
+            <red>0.02</red>
+            <green>0.00</green>
+            <blue>0.005</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
     
@@ -392,7 +373,7 @@
                 <property>/sim/G91/gauge/SFOM_83A/button</property>
                 <factor>10</factor>
                 <min>0</min>
-                <max>850</max>                
+                <max>256</max>                
                 <wrap>false</wrap>
             </binding>
         </action>
@@ -407,7 +388,7 @@
         <property>/sim/G91/gauge/SFOM_83A/button</property>
         <interpolation>
             <entry><ind>0</ind><dep>0</dep></entry>
-            <entry><ind>850</ind><dep>-340</dep></entry>
+            <entry><ind>256</ind><dep>-340</dep></entry>
         </interpolation>
         <center>
             <x-m>0.02786</x-m><y-m>0.03332</y-m><z-m>0.08191</z-m>

@@ -98,6 +98,7 @@
     
     <nasal>
         <general>
+            <file>Aircraft/G91/Nasal/Ambient/ambient_data.nas</file>
             <file>Aircraft/G91/Nasal/Electric/electric_system_basic.nas</file>
             <file>Aircraft/G91/Nasal/Autopilot/autopilot_set.nas</file>
             <file>Aircraft/G91/Nasal/Engine/engine_red_emission.nas</file>
