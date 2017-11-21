@@ -26,18 +26,28 @@ setlistener("/sim/G91/gauge/SFOM_83A/button", func {
 }, 1, 0);
 
 var color_cross_SFOM83A = maketimer(0.1, func() {
-    var ambientRedLight = props.globals.getNode("rendering/scene/ambient/red",1).getValue();
-    var ambientGreenLight = props.globals.getNode("rendering/scene/ambient/green",1).getValue();
-    var ambientBlueLight = props.globals.getNode("rendering/scene/ambient/blue",1).getValue();
+    var isLightActive = props.globals.getNode("sim/G91/gauge/SFOM_83A/isLightActive",1).getValue();
     var internalRedLight = props.globals.getNode("sim/G91/re_emit/gauge_red_light",1).getValue();
-    var orientationHeading = props.globals.getNode("orientation/heading-deg",1).getValue();
-    ambientRedLight = ambientRedLight + internalRedLight;
-    ambientGreenLight = ambientGreenLight + internalRedLight * 0.5;
+    var ambientRedLight = 0.0;
+    var ambientGreenLight = 0.0;
+    var ambientBlueLight = 0.0;
+    if (isLightActive == 0.0) {
+        ambientRedLight = props.globals.getNode("rendering/scene/ambient/red",1).getValue();
+        ambientGreenLight = props.globals.getNode("rendering/scene/ambient/green",1).getValue();
+        ambientBlueLight = props.globals.getNode("rendering/scene/ambient/blue",1).getValue();
+    } else {
+        ambientRedLight = ambientRedLight + internalRedLight;
+        ambientGreenLight = ambientGreenLight + internalRedLight * 0.5;
+    }
     setprop("sim/G91/gauge/SFOM_83A/collimator_red",ambientRedLight);
     setprop("sim/G91/gauge/SFOM_83A/collimator_green",ambientGreenLight);
     setprop("sim/G91/gauge/SFOM_83A/collimator_blue",ambientBlueLight);
-    var sun_angular_deg = props.globals.getNode("sim/G91/ambient-data/sun-angular-deg",1).getValue();
-    var white_Light = 0.3 + (1 - sun_angular_deg * 0.005555);
-    setprop("sim/G91/gauge/SFOM_83A/whiteLight",white_Light);
+    if (isLightActive == 0.0) {
+        var sun_angular_deg = props.globals.getNode("sim/G91/ambient-data/sun-angular-deg",1).getValue();
+        var white_Light = 0.25 + math.pow((1 - sun_angular_deg * 0.01745 / 3.1428),2) * 0.75 ;
+        setprop("sim/G91/gauge/SFOM_83A/whiteLight",white_Light);
+    } else {
+        setprop("sim/G91/gauge/SFOM_83A/whiteLight",internalRedLight);
+    }
 });
 color_cross_SFOM83A.start();

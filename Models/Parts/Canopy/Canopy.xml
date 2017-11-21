@@ -133,4 +133,15 @@
         </offsets>
     </model>
     
+    <model>
+        <path>Aircraft/G91/Models/Parts/Canopy/Gauges/Compass_Kollsman_1979U4/Compass_Kollsman_1979U4.xml</path>
+        <offsets>
+            <x-m>-3.00</x-m>
+            <y-m>0.08</y-m>
+            <z-m>0.48</z-m>
+        </offsets>
+    </model>
+    
+    
+    
 </PropertyList>

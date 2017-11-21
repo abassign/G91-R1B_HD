@@ -1,0 +1,220 @@
+<PropertyList>
+    
+    <path>Compass_Kollsman_1979U4.ac</path>
+    
+    <effect>
+        <inherits-from>Effects/model-transparent</inherits-from>
+        <object-name>glass (Meshed)</object-name>
+        <object-name>cone_B (Meshed)</object-name>
+    </effect>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>glass (Meshed)</object-name>
+        <texture>Pictures/G91-Al-Light.png</texture>
+        <transparency>
+            <alpha>0.1</alpha>
+        </transparency>
+        <ambient>
+            <red>0.6</red>
+            <green>0.7</green>
+            <blue>0.6</blue>
+        </ambient>
+        <emission>
+            <red>0.1</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>  
+    
+    <animation> 
+        <type>material</type>
+        <object-name>internal_black (Meshed)</object-name>
+        <texture>Pictures/G91-Black.png</texture>
+        <ambient>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </ambient>
+    </animation> 
+    
+    <animation> 
+        <type>material</type>
+        <object-name>screews_external (Meshed)</object-name>
+        <object-name>screews_internal (Meshed)</object-name>
+        <object-name>screews_lamp_cover (Meshed)</object-name>
+        <object-name>screews_external_back (Meshed)</object-name>
+        <object-name>lamp_cover</object-name>
+        <texture>Pictures/G91-Dark-Grey.png</texture>
+        <ambient>
+            <red>0.6</red>
+            <green>0.6</green>
+            <blue>0.6</blue>
+        </ambient>
+    </animation>
+    
+    <animation>
+        <type>material</type>
+        <object-name>cover_external (Meshed)</object-name>
+        <object-name>cover_lamp (Meshed)</object-name>
+        <texture>Pictures/G91-Dark-Grey.png</texture>
+        <ambient>
+            <red>0.4</red>
+            <green>0.4</green>
+            <blue>0.4</blue>
+        </ambient>
+        <emission>
+            <red>0.2</red>
+            <green>0.00</green>
+            <blue>0.02</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation>
+        <type>material</type>
+        <object-name>support (Meshed)</object-name>
+        <texture>Pictures/G91-Al-Dark.png</texture>
+        <ambient>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
+        </ambient>
+        <emission>
+            <red>0.02</red>
+            <green>0.00</green>
+            <blue>0.005</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation>
+        <type>material</type>
+        <object-name>Support (Meshed)</object-name>
+        <object-name>lubber_support (Meshed)</object-name>
+        <object-name>cone_support (Meshed)</object-name>
+        <object-name>cone_A (Meshed)</object-name>
+        <texture>Pictures/G91-Black.png</texture>
+        <ambient>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </ambient>
+        <emission>
+            <red>0.04</red>
+            <green>0.00</green>
+            <blue>0.01</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation>
+        <type>material</type>
+        <object-name>cone_B (Meshed)</object-name>
+        <transparency>
+            <alpha>1.0</alpha>
+        </transparency>
+        <ambient>
+            <red>0.90</red>
+            <green>0.83</green>
+            <blue>0.63</blue>
+        </ambient>
+        <emission>
+            <red>0.045</red>
+            <green>0.15</green>
+            <blue>0.031</blue>
+            <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation>
+        <type>material</type>
+        <object-name>lubber_line (Meshed)</object-name>
+        <transparency>
+            <alpha>1.0</alpha>
+        </transparency>
+        <ambient>
+            <red>0.90</red>
+            <green>0.83</green>
+            <blue>0.63</blue>
+        </ambient>
+        <emission>
+            <red>0.045</red>
+            <green>0.15</green>
+            <blue>0.031</blue>
+            <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>cone_support (Meshed)</object-name>
+        <object-name>cone_A (Meshed)</object-name>
+        <object-name>cone_B (Meshed)</object-name>
+        <property>/instrumentation/magnetic-compass/indicated-heading-deg</property>
+        <axis>
+            <x>0</x>
+            <y>0</y>
+            <z>1</z>
+        </axis>
+        <center>
+            <x-m>-0.015</x-m>
+            <y-m>0.000</y-m>
+            <z-m>-0.002</z-m>
+        </center>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>cone_support (Meshed)</object-name>
+        <object-name>cone_A (Meshed)</object-name>
+        <object-name>cone_B (Meshed)</object-name>
+        <property>/instrumentation/slip-skid-ball/indicated-slip-skid</property>
+        <factor>20.0</factor>
+        <min-deg>-30</min-deg>
+        <max-deg> 30</max-deg>
+        <axis>
+            <x>-1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+        <center>
+            <x-m>-0.015</x-m>
+            <y-m>0.000</y-m>
+            <z-m>-0.002</z-m>
+        </center>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>cone_support (Meshed)</object-name>
+        <object-name>cone_A (Meshed)</object-name>
+        <object-name>cone_B (Meshed)</object-name>
+        <expression>
+            <prod>
+                <atan>
+                    <sum>
+                        <property>fdm/jsbsim/accelerations/Nz</property>
+                        <value>-1</value>
+                    </sum>
+                </atan>
+                <value>20.0</value>
+            </prod>
+        </expression>
+        <min-deg>-30</min-deg>
+        <max-deg> 30</max-deg>
+        <axis>
+            <x>0</x>
+            <y>-1</y>
+            <z>0</z>
+        </axis>
+        <center>
+            <x-m>-0.015</x-m>
+            <y-m>0.000</y-m>
+            <z-m>-0.002</z-m>
+        </center>
+    </animation>
+    
+</PropertyList>
+
