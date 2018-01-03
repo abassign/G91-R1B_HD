@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+    
+    <offsets>
+        <x-m>-3.182</x-m>
+        <y-m>-0.001</y-m>
+        <z-m>-0.044</z-m>
+        <pitch-deg>0.0</pitch-deg>
+    </offsets>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Components/Panels/Panels_central/Panel_inf_01.xml</path>
+    </model>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Components/Panels/Panels_central/Panel_inf_02.xml</path>
+    </model>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Components/Panels/Panels_central/Panel_inf_03.xml</path>
+    </model>
+</PropertyList>

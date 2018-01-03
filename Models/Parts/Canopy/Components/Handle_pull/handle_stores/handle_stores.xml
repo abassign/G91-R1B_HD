@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+    
+    <path>handle_stores.ac</path>
+    
+    <offsets>
+        <x-m>0.0</x-m>
+        <y-m>0.0</y-m>
+        <z-m>0.0</z-m>
+    </offsets>
+    
+    <effect>
+        <inherits-from>handle_stores</inherits-from>
+        <object-name>handle_cockpit01.001</object-name>
+    </effect>
+    
+    <effect>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
+        <object-name>handle_cockpit01.001</object-name>
+        <object-name>block_handle</object-name>
+        <object-name>handle_cockpit01</object-name>
+        <object-name>handle_cockpit01.002</object-name>
+    </effect>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>handle_cockpit01.001</object-name>
+        <ambient>
+            <red>0.6</red>
+            <green>0.6</green>
+            <blue>0.6</blue>
+        </ambient>
+        <emission>
+            <red>0.15</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>block_handle</object-name>
+        <texture>Pictures/G91-Dark-Grey.png</texture>
+        <ambient>
+            <red>0.6</red>
+            <green>0.6</green>
+            <blue>0.6</blue>
+        </ambient>
+        <emission>
+            <red>0.15</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>handle_cockpit01</object-name>
+        <object-name>handle_cockpit01.002</object-name>
+        <texture>Pictures/G91-Al.png</texture>
+        <ambient>
+            <red>0.6</red>
+            <green>0.6</green>
+            <blue>0.6</blue>
+        </ambient>
+        <emission>
+            <red>0.03</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation>
+        <type>pick</type>
+        <object-name>block_handle</object-name>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <interval-sec>0.2</interval-sec>
+            <binding>
+                <condition>
+                    <not>
+                        <property>/sim/G91/handle/handle_stores_flag</property>
+                    </not>
+                </condition>
+                <command>property-toggle</command>
+                <property>/sim/G91/handle/handle_stores_block_flag</property>
+            </binding>
+        </action>
+    </animation>
+    
+    <animation>
+        <type>pick</type>
+        <object-name>handle_cockpit01.001</object-name>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <interval-sec>0.2</interval-sec>
+            <binding>
+                <condition>
+                    <and>
+                        <property>/sim/G91/handle/handle_stores_block_flag</property>
+                    </and>
+                </condition>
+                <command>property-toggle</command>
+                <property>/sim/G91/handle/handle_stores_flag</property>
+            </binding>
+        </action>
+    </animation>
+    
+    <animation>
+        <object-name>block_handle</object-name>
+        <type>rotate</type>
+        <property>/sim/G91/handle/handle_stores_block_flag</property>
+        <factor>30</factor>
+        <offset-deg>0</offset-deg>
+        <center>
+            <x-m>-0.077585</x-m>
+            <y-m> 0.0   </y-m>
+            <z-m> 0.0060782</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>-1</y>
+            <z>0</z>
+        </axis>
+    </animation>
+    
+    <animation>
+        <type>translate</type>
+        <object-name>handle_cockpit01.001</object-name>
+        <object-name>handle_cockpit01</object-name>
+        <object-name>handle_cockpit01.002</object-name>
+        <property>/sim/G91/handle/handle_stores_flag</property>
+        <factor>0.1</factor>
+        <offset-m>0.0</offset-m>
+        <axis>
+            <x>1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
+    
+</PropertyList>  

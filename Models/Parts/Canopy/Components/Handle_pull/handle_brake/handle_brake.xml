@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+    
+    <path>handle_brake.ac</path>
+    
+    <offsets>
+        <x-m>0.0</x-m>
+        <y-m>0.0</y-m>
+        <z-m>0.0</z-m>
+        <roll-deg>-30.0</roll-deg>
+    </offsets>
+    
+    <effect>
+        <inherits-from>handle_brake</inherits-from>
+        <object-name>handle_cockpit02.000</object-name>
+    </effect>
+    
+    <effect>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
+        <object-name>handle_cockpit02.000</object-name>
+        <object-name>handle_cockpit02.003</object-name>
+        <object-name>handle_cockpit02.001</object-name>
+    </effect>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>handle_cockpit02.000</object-name>
+        <ambient>
+            <red>0.6</red>
+            <green>0.6</green>
+            <blue>0.6</blue>
+        </ambient>
+        <emission>
+            <red>0.15</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>handle_cockpit02.003</object-name>
+        <object-name>handle_cockpit02.001</object-name>
+        <texture>Pictures/G91-Al.png</texture>
+        <ambient>
+            <red>0.6</red>
+            <green>0.6</green>
+            <blue>0.6</blue>
+        </ambient>
+        <emission>
+            <red>0.05</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation>
+        <type>pick</type>
+        <object-name>handle_cockpit02.000</object-name>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <interval-sec>0.2</interval-sec>
+            <binding>
+                <command>property-toggle</command>
+                <property>/sim/G91/handle/handle_barake_flag</property>
+            </binding>
+        </action>
+    </animation>
+    
+    <animation>
+        <type>translate</type>
+        <object-name>handle_cockpit02.000</object-name>
+        <object-name>handle_cockpit02.001</object-name>
+        <object-name>handle_cockpit02.003</object-name>
+        <property>/sim/G91/handle/handle_barake_flag</property>
+        <factor>0.1</factor>
+        <offset-m>0.0</offset-m>
+        <axis>
+            <x>1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
+
+</PropertyList>

@@ -66,36 +66,113 @@
       <target-z-offset-m archive="y" type="double"> 0 </target-z-offset-m>
     </config>
   </view>
-  
+
+  <!--
+  Example:
+    <x-offset-m archive="y"> 0.0 </x-offset-m> : Right 
+    <y-offset-m archive="y"> 0.48710 </y-offset-m> : Up
+    <z-offset-m archive="y"> -2.42124 </z-offset-m> : Back 
+  -->
   <view n="100">
-    <name>Frontal Gear View 1</name>
+    <name>Cube map to 0</name>
     <type>lookfrom</type>
     <internal archive="y">true</internal>
     <config>
       <from-model type="bool">true</from-model>
       <from-model-idx type="int">0</from-model-idx>
       <ground-level-nearplane-m type="double">0.01f</ground-level-nearplane-m>
-      <x-offset-m archive="y"> 0.2500 </x-offset-m> <!--Right-->
-      <y-offset-m archive="y"> 0.050 </y-offset-m> <!--Up-->
-      <z-offset-m archive="y"> -2.0 </z-offset-m> <!--Back-->
-      <pitch-offset-deg> -20 </pitch-offset-deg>
-      <default-field-of-view-deg type="double"> 60 </default-field-of-view-deg>
+      <x-offset-m archive="y"> 0.0 </x-offset-m> <!--Right-->
+      <y-offset-m archive="y"> 0.743 </y-offset-m> <!--Up-->
+      <z-offset-m archive="y"> -2.42124 </z-offset-m> <!--Back-->
+      <pitch-offset-deg>0.0</pitch-offset-deg>
+      <heading-offset-deg>0.0</heading-offset-deg>
+      <default-field-of-view-deg type="double"> 90 </default-field-of-view-deg>
     </config>
   </view>
   
   <view n="101">
-    <name>Frontal Gear View 2</name>
+    <name>Cube map to Front to 90</name>
     <type>lookfrom</type>
     <internal archive="y">true</internal>
     <config>
       <from-model type="bool">true</from-model>
       <from-model-idx type="int">0</from-model-idx>
       <ground-level-nearplane-m type="double">0.01f</ground-level-nearplane-m>
-      <x-offset-m archive="y"> 0.2000 </x-offset-m> <!--Right-->
-      <y-offset-m archive="y"> 0.050 </y-offset-m> <!--Up-->
-      <z-offset-m archive="y"> -2.6 </z-offset-m> <!--Back-->
-      <pitch-offset-deg> -20 </pitch-offset-deg>
-      <default-field-of-view-deg type="double"> 60 </default-field-of-view-deg>
+      <x-offset-m archive="y"> 0.0 </x-offset-m> <!--Right-->
+      <y-offset-m archive="y"> 0.743 </y-offset-m> <!--Up-->
+      <z-offset-m archive="y"> -2.42124 </z-offset-m> <!--Back-->
+      <pitch-offset-deg>0.0</pitch-offset-deg>
+      <heading-offset-deg>90.0</heading-offset-deg>
+      <pitch-offset-deg> 0 </pitch-offset-deg>
+      <default-field-of-view-deg type="double"> 90 </default-field-of-view-deg>
+    </config>
+  </view>
+  
+  <view n="102">
+    <name>Cube map to Front to 180</name>
+    <type>lookfrom</type>
+    <internal archive="y">true</internal>
+    <config>
+      <from-model type="bool">true</from-model>
+      <from-model-idx type="int">0</from-model-idx>
+      <ground-level-nearplane-m type="double">0.01f</ground-level-nearplane-m>
+      <x-offset-m archive="y"> 0.0 </x-offset-m> <!--Right-->
+      <y-offset-m archive="y"> 0.743 </y-offset-m> <!--Up-->
+      <z-offset-m archive="y"> -2.42124 </z-offset-m> <!--Back-->
+      <pitch-offset-deg>0.0</pitch-offset-deg>
+      <heading-offset-deg>180.0</heading-offset-deg>
+      <default-field-of-view-deg type="double"> 90 </default-field-of-view-deg>
+    </config>
+  </view>
+  
+  <view n="103">
+    <name>Cube map to Front to 270</name>
+    <type>lookfrom</type>
+    <internal archive="y">true</internal>
+    <config>
+      <from-model type="bool">true</from-model>
+      <from-model-idx type="int">0</from-model-idx>
+      <ground-level-nearplane-m type="double">0.01f</ground-level-nearplane-m>
+      <x-offset-m archive="y"> 0.0 </x-offset-m> <!--Right-->
+      <y-offset-m archive="y"> 0.743 </y-offset-m> <!--Up-->
+      <z-offset-m archive="y"> -2.42124 </z-offset-m> <!--Back-->
+      <pitch-offset-deg>0.0</pitch-offset-deg>
+      <heading-offset-deg>270.0</heading-offset-deg>
+      <default-field-of-view-deg type="double"> 90 </default-field-of-view-deg>
+    </config>
+  </view>
+  
+  <view n="104">
+    <name>Cube map to down</name>
+    <type>lookfrom</type>
+    <internal archive="y">true</internal>
+    <config>
+      <from-model type="bool">true</from-model>
+      <from-model-idx type="int">0</from-model-idx>
+      <ground-level-nearplane-m type="double">0.01f</ground-level-nearplane-m>
+      <x-offset-m archive="y"> 0.0 </x-offset-m> <!--Right-->
+      <y-offset-m archive="y"> 0.743 </y-offset-m> <!--Up-->
+      <z-offset-m archive="y"> -2.42124 </z-offset-m> <!--Back-->
+      <pitch-offset-deg>-90.0</pitch-offset-deg>
+      <heading-offset-deg>0.0</heading-offset-deg>
+      <default-field-of-view-deg type="double"> 90 </default-field-of-view-deg>
+    </config>
+  </view>
+  
+  <view n="105">
+    <name>Cube map to up</name>
+    <type>lookfrom</type>
+    <internal archive="y">true</internal>
+    <config>
+      <from-model type="bool">true</from-model>
+      <from-model-idx type="int">0</from-model-idx>
+      <ground-level-nearplane-m type="double">0.01f</ground-level-nearplane-m>
+      <x-offset-m archive="y"> 0.0 </x-offset-m> <!--Right-->
+      <y-offset-m archive="y"> 0.743 </y-offset-m> <!--Up-->
+      <z-offset-m archive="y"> -2.42124 </z-offset-m> <!--Back-->
+      <pitch-offset-deg>90.0</pitch-offset-deg>
+      <heading-offset-deg>0.0</heading-offset-deg>
+      <default-field-of-view-deg type="double"> 90 </default-field-of-view-deg>
     </config>
   </view>
 

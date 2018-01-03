@@ -20,6 +20,20 @@
         <object-name>tex_panel_light</object-name>
     </effect>
     
+    <!-- interior shadows -->
+   <effect>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
+        <object-name>pannelli_laterali</object-name>
+        <object-name>pannelli_laterali.001</object-name>
+        <object-name>pannelli_laterali.004</object-name>
+        <object-name>pannello_centrale</object-name>
+        <object-name>Support_gauges_01</object-name>
+        <object-name>Support_gauges_012</object-name>
+        <object-name>panei_dx_texi.000</object-name>
+        <object-name>panel_Sx_tex.002</object-name>
+        <object-name>tex_panel_light</object-name>
+    </effect>
+    
     <animation> 
         <type>material</type>
         <object-name>pannelli_laterali</object-name>
@@ -215,7 +229,7 @@
     <!-- Components -->
     
     <model>
-        <path>Aircraft/G91/Models/Parts/Cockpit/Components/Gear_lever/Gear_lever.xml</path>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Components/Gear_lever/Gear_lever.xml</path>
         <offsets>
             <x-m>-3.212</x-m>
             <y-m>-0.267</y-m>
@@ -227,97 +241,97 @@
     <!-- Gauges -->
     
     <model>
-        <path>Aircraft/G91/Models/Parts/Cockpit/Gauges/Altimeter/Altimeter.xml</path>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/Altimeter/Altimeter.xml</path>
         <offsets>
             <x-m>-3.198</x-m>
             <y-m>-0.1005</y-m>
             <z-m>0.066</z-m>
-            <pitch-deg>-8.5</pitch-deg>
+            <pitch-deg>-8.65</pitch-deg>
         </offsets>
     </model>
     
     <model>
-        <path>Aircraft/G91/Models/Parts/Cockpit/Gauges/ADF_8720/ADF_8720.xml</path>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/ADF_8720/ADF_8720.xml</path>
         <offsets>
             <x-m>-3.220</x-m>
             <y-m>-0.182</y-m>
             <z-m>0.150</z-m>
-            <pitch-deg>-8.5</pitch-deg>
+            <pitch-deg>-8.65</pitch-deg>
         </offsets>
     </model>
     
     <model>
-        <path>Aircraft/G91/Models/Parts/Cockpit/Gauges/Kollsman_ME4/Kollsman_ME4.xml</path>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/Kollsman_ME4/Kollsman_ME4.xml</path>
         <offsets>
             <x-m>-3.211</x-m>
             <y-m>-0.0900</y-m>
             <z-m>0.150</z-m>
-            <pitch-deg>-8.5</pitch-deg>
+            <pitch-deg>-8.65</pitch-deg>
         </offsets>
     </model>
     
     <model>
-        <path>Aircraft/G91/Models/Parts/Cockpit/Gauges/Allen_MD-1A_Turn_Ind/Allen_MD-1A_Turn_Ind_01.xml</path>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/Allen_MD-1A_Turn_Ind/Allen_MD-1A_Turn_Ind_01.xml</path>
         <offsets>
             <x-m>-3.195</x-m>
             <y-m>-0.026</y-m>
             <z-m>0.036</z-m>
-            <pitch-deg>-8.5</pitch-deg>
+            <pitch-deg>-8.65</pitch-deg>
         </offsets>
     </model>
     
     <model>
-        <path>Aircraft/G91/Models/Parts/Cockpit/Gauges/Waltham_A-13A_Clock/Waltham_A-13A.xml</path>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/Waltham_A-13A_Clock/Waltham_A-13A.xml</path>
         <offsets>
             <x-m>-3.2</x-m>
             <y-m>0.038</y-m>
             <z-m>0.036</z-m>
-            <pitch-deg>-8.5</pitch-deg>
+            <pitch-deg>-8.65</pitch-deg>
         </offsets>
     </model>
     
     <model>
-        <path>Aircraft/G91/Models/Parts/Cockpit/Gauges/MS-33678-3P/MS-33678-3P-1.xml</path>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/MS-33678-3P/MS-33678-3P-1.xml</path>
         <offsets>
             <x-m>-3.194</x-m>
             <y-m>-0.2598</y-m>
             <z-m>-0.0245</z-m>
-            <pitch-deg>-8.5</pitch-deg>
+            <pitch-deg>-8.65</pitch-deg>
         </offsets>
     </model>
     
     <model>
-        <path>Aircraft/G91/Models/Parts/Cockpit/Gauges/MS-33678-3P/MS-33678-3P-2.xml</path>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/MS-33678-3P/MS-33678-3P-2.xml</path>
         <offsets>
             <x-m>-3.190</x-m>
             <y-m>-0.2731</y-m>
             <z-m>-0.066</z-m>
-            <pitch-deg>-8.5</pitch-deg>
+            <pitch-deg>-8.65</pitch-deg>
         </offsets>
     </model>
     
     <model>
-        <path>Aircraft/G91/Models/Parts/Cockpit/Gauges/MS-33678-3P/MS-33678-3P-3.xml</path>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/MS-33678-3P/MS-33678-3P-3.xml</path>
         <offsets>
             <x-m>-3.190</x-m>
             <y-m>-0.250</y-m>
             <z-m>-0.066</z-m>
-            <pitch-deg>-8.5</pitch-deg>
+            <pitch-deg>-8.65</pitch-deg>
         </offsets>
     </model>
     
     <model>
-        <path>Aircraft/G91/Models/Parts/Cockpit/Gauges/Kollsman_Climb_25363/Kollsman_Climb_25363.xml</path>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/Kollsman_Climb_25363/Kollsman_Climb_25363.xml</path>
         <offsets>
             <x-m>-3.20</x-m>
             <y-m>0.105</y-m>
             <z-m>0.055</z-m>
-            <pitch-deg>-8.5</pitch-deg>
+            <pitch-deg>-8.65</pitch-deg>
         </offsets>
     </model>
     
     <model>
-        <path>Aircraft/G91/Models/Parts/Cockpit/Gauges/Bendix_B6_3419_5A_A1_Acc/Bendix_B6_3419_5A_A1_Acc.xml</path>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/Bendix_B6_3419_5A_A1_Acc/Bendix_B6_3419_5A_A1_Acc.xml</path>
         <offsets>
             <x-m>-3.195</x-m>
             <y-m>-0.185</y-m>
@@ -327,39 +341,89 @@
     </model>
     
     <model>
-        <path>Aircraft/G91/Models/Parts/Cockpit/Gauges/J8/J8.xml</path>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/J8/J8.xml</path>
         <offsets>
             <x-m>-3.20</x-m>
             <y-m>0.125</y-m>
-            <z-m>0.148</z-m>
+            <z-m>0.145</z-m>
             <pitch-deg>0.0</pitch-deg>
         </offsets>
     </model>
     
     <model>
-        <path>Aircraft/G91/Models/Parts/Cockpit/Gauges/PHI/PHI-Indicator.xml</path>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/PHI/PHI-Indicator.xml</path>
         <offsets>
             <x-m>-3.21</x-m>
-            <y-m>0.0115</y-m>
-            <z-m>0.135</z-m>
-            <pitch-deg>-8.5</pitch-deg>
+            <y-m>0.013</y-m>
+            <z-m>0.133</z-m>
+            <pitch-deg>-8.65</pitch-deg>
         </offsets>
     </model>
     
     <model>
-        <path>Aircraft/G91/Models/Parts/Cockpit/Gauges/PHI/PHI-Wind.xml</path>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/PHI/PHI-Wind.xml</path>
         <offsets>
             <x-m>-3.195</x-m>
             <y-m>-0.188</y-m>
             <z-m>-0.021</z-m>
-            <pitch-deg>-8.5</pitch-deg>
+            <pitch-deg>-8.65</pitch-deg>
+        </offsets>
+    </model>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/RPM_Indicator/RPM_Indicator.xml</path>
+        <offsets>
+            <x-m>-3.2188</x-m>
+            <y-m>0.204</y-m>
+            <z-m>0.164</z-m>
+            <pitch-deg>-8.65</pitch-deg>
+        </offsets>
+    </model>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/Jet_Temperature/Jet_Temperature.xml</path>
+        <offsets>
+            <x-m>-3.210</x-m>
+            <y-m>0.205</y-m>
+            <z-m>0.108</z-m>
+            <pitch-deg>-8.65</pitch-deg>
+        </offsets>
+    </model>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/Fuel_Pounds/Fuel_Pounds.xml</path>
+        <offsets>
+            <x-m>-3.196</x-m>
+            <y-m>0.196</y-m>
+            <z-m>0.025</z-m>
+            <pitch-deg>-8.65</pitch-deg>
+        </offsets>
+    </model>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/AN_3203_voltmeter/AN_3203_voltmeter.xml</path>
+        <offsets>
+            <x-m>-3.188</x-m>
+            <y-m>0.28</y-m>
+            <z-m>-0.049</z-m>
+            <pitch-deg>-8.65</pitch-deg>
+        </offsets>
+    </model>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/Roller-Smith_90702_J1_Amperometer/Roller-Smith_90702_J1_Amperometer.xml</path>
+        <offsets>
+            <x-m>-3.186</x-m>
+            <y-m>0.335</y-m>
+            <z-m>-0.065</z-m>
+            <pitch-deg>-8.65</pitch-deg>
         </offsets>
     </model>
     
     <!-- Switch and light -->
 
     <model>
-        <path>Aircraft/G91/Models/Parts/Cockpit/Switchs_Lights/Frontal_pannel_switchs_lights.xml</path>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Switchs_Lights/Frontal_pannel_switchs_lights.xml</path>
     </model>
     
 </PropertyList> 

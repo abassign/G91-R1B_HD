@@ -1,0 +1,67 @@
+% Adriano Bassignana nov 2017
+% Program for creating a linear index useful for the construction of a compass on a conical support
+% The program can be modified and adapted for the construction of other types of numeric indexes.
+% The font used is OCR-B which allows to have alphabetic and numeric symbols very similar
+% to those used in analogue flight gauges in the 50s and 80s
+% You must have installed OCR-B in OTF format that has a GPL-2 and later compatible license.
+% The font is present in the texlive-fonts-extra package
+% 
+% Explanation:
+%
+% \documentclass{standalone} is particular class that non have a size, but the size is define from
+% the document itself
+%%\documentclass[tikz,margin=0pt]{standalone}
+% This command permit the direct file conversion from PDF to png or svg
+% {outfile=test.png} the conversion is from pdf to png with background transparent layer
+% {outfile=test.svg} the conversion is from pdf to svg but as only raster format
+\documentclass[tikz,margin=0pt, convert={density=300,size=1024x1024,outfile=RPM_Indicator.png}]{standalone}
+% \usepackage{tikz} is the package that contain the graphics command as \draw etc ...
+% The package is describe in this document: https://www.sharelatex.com/learn/TikZ_package
+% If the "tikz" package is define as option on \documentclass is not necessary define this option
+\usepackage{tikz}
+% A TiKz library to extend math functions
+\usetikzlibrary{calc}
+% If the graduate dials is for analogical gauges period 50-70 years, this font is ok
+% OCR is open-source package deposited in the CTAN repository: https://www.ctan.org/pkg/ocr-b
+% Opentype can be used on Linux and Mac machines
+% (I do not know if it's possible in Windows, but I think of it),
+% you can always download it from the CTAN site at this address:
+% https://www.ctan.org/tex-archive/fonts/ocr-b-outline
+\usepackage{ocr}
+\tikzset{font={\fontsize{9pt}{10}\selectfont}}
+% Wind Rose position pram
+\newcommand\externalRadius{2.38}
+\newcommand\graduateThick{0.35}
+\newcommand\arcRadius{\externalRadius}
+% Defines the font size to use, the first number defines the font size,
+% the second number the dimensional family from which the font is taken.
+% It can be assumed that there are differences between a dimensional family 10 and a 12 dimensional font.
+\begin{document}
+	% The link OCR package documentation is this:
+	% http://ctan.mirror.garr.it/mirrors/CTAN/macros/latex/contrib/ocr-latex/ocr.pdf
+	% \ocrfamily - Normal font family
+	% \ocrnegfamily - Family negative fonts
+	{\ocrfamily
+		\begin{tikzpicture}
+			% 1° 270° RPM index
+			\foreach \a in {0, 10,...,100}
+				\draw[line width=0.8mm, cap=round]
+					(-\a * 2.7 + 90 :\externalRadius-\graduateThick) -- (-\a * 2.7 + 90:\externalRadius);    
+			% RPM labels 
+			\foreach \a in {0,10,...,100}
+				\draw (-\a * 2.7 + 90: \externalRadius-\graduateThick-0.50) node  {\large\a};
+			% 2° 360° RPM x 10 index
+			\coordinate (c2) at (-0.9,0.9);
+			\coordinate (c2a) at (-0.9,0.955);
+			\draw[line width=0.5mm](c2) circle(0.65);
+			\foreach \a in {0, 1,...,10}
+				\draw[line width=0.3mm, cap=round]
+					($(c2) + (-\a * 36 + 90 :0.60)$) -- ($(c2)+(-\a * 36 + 90:0.70)$);
+			% RPM x 10 labels 
+			\foreach \a in {0,1,...,9}
+				\draw ($(c2a) + (-\a * 36 + 90 :0.82)$) node {\scriptsize\a};
+			% Insert the label
+			\draw (90: -0.7) node{R.P.M.};
+		\end{tikzpicture}
+	}
+\end{document}

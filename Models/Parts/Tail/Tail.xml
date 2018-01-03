@@ -30,7 +30,7 @@
     <!-- Chrome Effects on materials -->
     
     <effect>
-        <inherits-from>Aircraft/G91/Models/Effects/Glass/glass-chrome</inherits-from>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Glass/glass-chrome</inherits-from>
         <object-name>A__G91_fuselage_coda.002</object-name>
         <object-name>A__G91_fuselage_coda.005</object-name>
         <object-name>A__G91_fuselage_coda.006</object-name>
@@ -50,6 +50,10 @@
         <object-name>D_timone_coda.002</object-name>
         <object-name>D_timone_coda.003</object-name>
         <object-name>D_aletta_correttrice</object-name>
+        <object-name>A__G91_fuselage_coda.009</object-name>
+        <object-name>A__G91_fuselage_coda.010</object-name>
+        <object-name>A__G91_fuselage_coda.011</object-name>
+        <object-name>fin_connector</object-name>
     </effect>
     
     <!-- Tail Lights -->

@@ -16,6 +16,17 @@
         <object-name>I_ironware.002</object-name>
     </animation> 
     
+    <effect>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
+        <object-name>Circle</object-name>
+        <object-name>Circle.001</object-name>
+        <object-name>Torus</object-name>
+        <object-name>Torus.001</object-name>
+        <object-name>Cube.001</object-name>
+        <object-name>I_ironware.001</object-name>
+        <object-name>I_ironware.002</object-name>
+    </effect>
+    
     <animation> 
         <type>material</type>
         <object-name>Torus</object-name>
@@ -158,7 +169,7 @@
     
     <model>
         <name>procedural_light_cockpit_gauge_spot_red</name>
-        <path>Aircraft/G91/Models/Parts/Cockpit/Effects/lights/procedural_light_cockpit_gauge_spot_red.xml</path>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Effects/lights/procedural_light_cockpit_gauge_spot_red.xml</path>
         <offsets>
             <x-m> 0.08</x-m>
             <y-m> 0.05 </y-m>

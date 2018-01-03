@@ -30,8 +30,7 @@
         <object-name>node10</object-name>
         <object-name>node12</object-name>
         <object-name>node13</object-name>
-        <!--     <object-name>node14</object-name> -->
-        <texture>Liveries/G91-Dark-Grey.png</texture>
+        <texture>Pictures/G91-Dark-Grey.png</texture>
         <ambient>
             <red>0.0</red>
             <green>0.0</green>
@@ -49,7 +48,7 @@
         <object-name>node1</object-name>
         <object-name>node2</object-name>
         <object-name>node8</object-name>
-        <texture>Liveries/G91-Al-Light.png</texture>
+        <texture>Pictures/G91-Al-Light.png</texture>
         <ambient>
             <red>0.2</red>
             <green>0.2</green>
@@ -65,7 +64,7 @@
     <animation> 
         <type>material</type> 
         <object-name>node3</object-name>
-        <texture>Liveries/G91-Al.png</texture>
+        <texture>Pictures/G91-Al.png</texture>
         <ambient>
             <red>0.0</red>
             <green>0.0</green>
@@ -81,7 +80,7 @@
     <animation> 
         <type>material</type> 
         <object-name>node11</object-name>
-        <texture>Liveries/G91-Al-Light.png</texture>
+        <texture>Pictures/G91-Al-Light.png</texture>
         <ambient>
             <red>0.0</red>
             <green>0.0</green>
@@ -96,7 +95,7 @@
     
         <!-- Chrome Effects on materials -->
     <effect>
-        <inherits-from>Aircraft/G91/Models/Effects/Glass/glass-chrome</inherits-from>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Glass/glass-chrome</inherits-from>
         <object-name>node11</object-name>
     </effect>
     

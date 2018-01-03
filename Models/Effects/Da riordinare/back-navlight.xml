@@ -4,7 +4,7 @@
  <path>back-navlight.ac</path>
 
  <effect>
-   <inherits-from>Aircraft/G91/Models/Effects/back-navlight</inherits-from>
+   <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/back-navlight</inherits-from>
    <object-name>back-navlight</object-name>
  </effect>
  

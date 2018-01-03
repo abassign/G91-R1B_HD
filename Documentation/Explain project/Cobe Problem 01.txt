@@ -1,0 +1,978 @@
+﻿[img]https://s19.postimg.org/70fuo6sir/C01.jpg[/img]
+
+
+[img]https://s19.postimg.org/szm9bdtxf/C02.jpg[/img]
+
+
+[img]https://s19.postimg.org/x8qzdphsz/CA01.jpg[/img]
+
+
+[img]https://s19.postimg.org/qiai4ahsj/CA02.jpg[/img]
+
+
+[img]https://s19.postimg.org/wj871cwoz/CA03.jpg[/img]
+
+
+[img]https://s19.postimg.org/4j43h2lir/CA04.jpg[/img]
+
+
+
+List of objects declared by COBE:
+
+[url]https://forum.flightgear.org/viewtopic.php?f=4&t=30473&p=295052[/url]
+
+Here COBE declares the dimensions of his work as a response to a request from @PINTO:
+
+Postby cobe571 » Wed Jun 08, 2016 7:30 am:
+@PINTO: Actually my Fiat G.91 R4 v.10109 count a total of 53.041 Verts and 46.067 Faces
+
+[url]https://forum.flightgear.org/viewtopic.php?f=4&t=23163&start=135[/url]
+
+
+[quote="Thorsten";p=325485][quote]This post was made to better explain what were our development criteria in order to have the possibility of being placed in the official repository. [/quote]
+Please be aware that I received a mail from your former collaborator claiming that you stole his 3d work for this project (his wording, not mine) - I think this needs to be resolved before any commit to FGAddon can be discussed, sorry.[/quote]
+
+According to Italian law:
+[i]intellectual property is that part of the work of a creative nature protected by the law on copyright (s. 22 April 1941, n. 663), which takes on identifying feature of the work itself, so much so that the works of 'ingenuity intellectual property, while not being provided under trade marks (art. 2563 to 2569 cc) it is regarded as a true hallmark of a product, which in the case is an intellectual work. First, the intellectual intellectual works is not protected as a separate well in home making: that is, it is not eligible for protection if the intellectual property is not completed or is not yet in circulation; this also because 'in this case is missing the main prerequisite to a real risk of confusion with another original works having similar or identical title.[/i]
+Excerpt from the paragraph: "title of intellectual property"
+[url]http://www.enciclopedia-juridica.biz14.com/it/d/opere-dell%E2%80%99ingegno/opere-dell%E2%80%99ingegno.htm[/url]
+
+I tried in vain to find a link that would allow to get the job done by Cobe571 as it is essential that an intellectual work is available at the time you made a complaint. The only reference is a series of posts he has written more than a year ago in which he defined the characteristics of the object of his complaint.
+
+[quote="Mada00";p=325501]
+List of objects declared by COBE:
+[url]https://forum.flightgear.org/viewtopic.php?f=4&t=30473&p=295052[/url]
+Here COBE declares the dimensions of his work as a response to a request from @PINTO:
+Postby cobe571 » Wed Jun 08, 2016 7:30 am:
+@PINTO: Actually my Fiat G.91 R4 v.10109 count a total of 53.041 Verts and 46.067 Faces
+[url]https://forum.flightgear.org/viewtopic.php?f=4&t=23163&start=135[/url][/quote]
+
+The concept of Italian law but also international law, is that an author of the work may claim his paternity only when the work has been distributed. If the author of the work do not want to publish the work, then you must deposit it in a special office, in the case of Cobe571 who is Italian, was supposed to deposit the work at the SIAE ([url]https://www.siae.it/it[/url]).
+
+Stating that the work was to him "stolen" during the realization of the work, is an affirmation worthless as it requires an objective response. For example, an explicit relationship of cooperation that was no longer there after the present work by Cobe571, as he himself wrote:
+
+[quote="cobe571";p=295052]Well, the development continue. A new thread in order to continue the Fiat G.91R4 development. Unfortunately, the project will no longer be followed by abassign for the FDM part. Thanks to him for the great effort and the time spent. Now is time to take his work and rewrite to make it more compatible with my 3D model. So I decided to open this new thread where I will show the more recent updates. Now there's the hard work of all development supported in the recent years in order to validate whether the commitment, is still valid today. Besides the texture, which are in my opinion, the last part on  the creation of a 3D plane for FlightGear; in this project it is necessary to erase various FDM code parts made by abassign with a proper re-organization of the entire work into the different directories. Time will say if this plane will fly under FlightGear.
+To read the old abandoned topic look there -> https://forum.flightgear.org/viewtopic.php?f=4&t=23163[/quote]
+
+In this post Cobe571 says the term of my association with him and so from that moment I was thrown out of work and, therefore, all the material that I have of his work will stop on that date: Mon Sep 19, 2016 10:32 pm Material it has entered has correctly included in a list made on: Wed Sep 28, 2016 12:34 pm.
+
+As the comparison of the drawings made by Mada00, the list of parts, the size of the project, confirm that the whole thing was done in a separate way, just as it is natural for a project that uses a different 3D author. Not only that but I noticed that the project is based on a different documentation. I think there are also dimensional differences on the angles and on various objects.
+
+[quote="Thorsten";p=325519][quote]On all this there is no correspondence with our model that has been realized in a COMPLETELY DIFFERENT way, each 3D modeler has his own working technique.[/quote]
+I'm not a 3d modeler myself, but even I could within the course of a few minutes change the number of vertices without altering the mesh shape by applying smoothing to some surfaces, or change the number of objects by splitting/merging - so these do not seem good criteria for me to judge differences.
+If you made the model from scratch, it's probably easy for you to produce a repository/backup history which shows a smooth continuation from rough shape to final product - I think that would be the most convincing proof, as the stealing allegation is equivalent to the claim that you have no rough early stages in your possession because you started working from a fairly advanced model.[/quote]
+
+Thorsten's affirmation that it is enough to vary the vertices etc ... is absolutely absurd because in this way it is possible to take his wonderful Shuttle, pass it in a hypothetical program and affirm that it is mine ... it seems too childish! The reason is simple because we are reproducing a real object. So if two 3D renderings of two different authors are well made, they MUST BE COINCIDENT in function of the object they reproduce! Therefore Thorsten statement is totally inadequate.
+The Law states that the only way to assert that something is self-realization is to have it put it in a public repository so that other authors can verify the work and avoid making a plagiarism. Since Cobe571 has not made a deposit of the work and has not entered a link to reach it, here is a situation for which it can not have any claim.
+
+Thorsten's claim that we should proceed in this way:
+[i]"If you made the model from scratch, it's probably easy for you to produce a repository/backup history which shows a smooth continuation from rough shape to final product"[/i]
+I consider it correct so we have done, since the beginning of the project, a folder of DropBox (which currently contains 1.8 GB of data) that reports the project's history, if Thorsten wants to see some files tell us and we publish it so that there are no other doubts for him. This is the list of files in the repository:
+
+[code]G91.sviluppo/:
+totale 3844
+-rwxrwxrwx  1 abassign abassign   3925 ott 20  2016 AichiInteriorGreyGreen.png
+-rwxrwxrwx  1 abassign abassign    723 nov 23  2016 appunti per materiali.txt
+drwxrwxr-x  4 abassign abassign   4096 lug  3 08:54 CARRELLO_G91
+drwxrwxr-x  2 abassign abassign   4096 mag  2  2017 Dialogs
+drwxrwxr-x  5 abassign abassign   4096 nov 28 21:26 Documentation
+drwxrwxr-x  2 abassign abassign   4096 mag  2  2017 Engines
+-rwxrwxrwx  1 abassign abassign 111447 set 25 00:05 FONTS.ZIP
+-rwxrwxrwx  1 abassign abassign 153587 mar 13  2017 fuselage_02b.ac
+-rwxrwxrwx  1 abassign abassign 677432 mar 13  2017 fuselage_02b.blend
+-rwxrwxrwx  1 abassign abassign  72111 mar 13  2017 fuselage_coda.ac
+-rwxrwxrwx  1 abassign abassign 575076 mar 13  2017 fuselage_coda.blend
+-rwxrwxrwx  1 abassign abassign  22003 mar 13  2017 fuselage_timonecoda.ac
+-rwxrwxrwx  1 abassign abassign 512112 mar 13  2017 fuselage_timonecoda.blend
+-rwxrwxrwx  1 abassign abassign 502016 mar 13  2017 fuselage_weapon_dx_door.blend
+-rwxrwxrwx  1 abassign abassign 528040 mar 13  2017 fuselage_weapon_utility2.blend
+-rwxrwxrwx  1 abassign abassign 519504 mar 13  2017 fuselage_weapon_utility.blend
+-rwxrwxrwx  1 abassign abassign   3168 ott  2  2016 G91-common.xml
+-rwxrwxrwx  1 abassign abassign  40955 dic  8  2016 G91-JSBSim.xml
+-rwxrwxrwx  1 abassign abassign  28559 dic  6  2016 G91-JSBSim.xml.001
+-rwxrwxrwx  1 abassign abassign   2964 ott  3  2016 G91-Propulsion
+-rwxrwxrwx  1 abassign abassign   1889 mar 27  2017 G91-set.xml
+drwxrwxr-x 13 abassign abassign   4096 mag  2  2017 Models
+drwxrwxr-x  6 abassign abassign   4096 mag  2  2017 Nasal
+drwxrwxr-x  5 abassign abassign   4096 dic 30 23:11 NUOVI FILE G91
+drwxrwxr-x  2 abassign abassign   4096 giu 26  2017 Orpheus MK 803
+drwxrwxr-x  2 abassign abassign   4096 mag  2  2017 Systems
+drwxrwxr-x  2 abassign abassign   4096 mag  2  2017 Test multimedia
+
+G91.sviluppo/CARRELLO_G91:
+totale 161676
+-rwxrwxrwx 1 abassign abassign   476899 set 29  2016 4a7de-fiat-g-91r_1958c.jpg
+-rwxrwxrwx 1 abassign abassign 33112784 lug  3 01:16 CARRELLO ANTERIORE_REV.blend
+-rwxrwxrwx 1 abassign abassign 33090144 lug  3 01:12 CARRELLO ANTERIORE_REV.blend1
+-rwxrwxrwx 1 abassign abassign    28689 ott 19  2016 fgfs-screen-092.png
+-rwxrwxrwx 1 abassign abassign   187642 ott 19  2016 fgfs-screen-093.png
+-rwxrwxrwx 1 abassign abassign    57941 ott 19  2016 fgfs-screen-094.png
+-rwxrwxrwx 1 abassign abassign    54467 ott 19  2016 fgfs-screen-095.png
+-rwxrwxrwx 1 abassign abassign   298991 ott 19  2016 fgfs-screen-096.png
+-rwxrwxrwx 1 abassign abassign   461710 ott 19  2016 fgfs-screen-097.png
+-rwxrwxrwx 1 abassign abassign   320826 ott 19  2016 fgfs-screen-098.png
+-rwxrwxrwx 1 abassign abassign   360501 ott 19  2016 fgfs-screen-099.png
+-rwxrwxrwx 1 abassign abassign   480793 ott 19  2016 fgfs-screen-100.png
+-rwxrwxrwx 1 abassign abassign   206547 ott 19  2016 fgfs-screen-101.png
+-rwxrwxrwx 1 abassign abassign    86084 ott 19  2016 fgfs-screen-102.png
+-rwxrwxrwx 1 abassign abassign   506844 ott 19  2016 fgfs-screen-103.png
+-rwxrwxrwx 1 abassign abassign 30192016 gen 17  2017 FIAT_G91_carrello_frontale.17.01.2017.blend
+drwxrwxr-x 2 abassign abassign     4096 mag  2  2017 FUSOLIERA_max
+-rwxrwxrwx 1 abassign abassign  6831564 mar 19  2017 g91_a0001-0140.avi
+-rwxrwxrwx 1 abassign abassign 11488542 gen 17  2017 LandingGearFrontal.ac
+-rwxrwxrwx 1 abassign abassign    36698 dic  8  2016 Landing Gear moviment 01.jpg
+-rwxrwxrwx 1 abassign abassign      301 dic 20  2016 Modifiche Material ac 20161218.txt
+-rwxrwxrwx 1 abassign abassign   639804 gen  4  2017 musetto.blend
+drwxrwxr-x 2 abassign abassign     4096 mag  2  2017 old front_gear
+-rwxrwxrwx 1 abassign abassign 33264384 lug  1  2017 posizionamento carrello su fusoliera.blend1
+-rwxrwxrwx 1 abassign abassign 13208616 dic 10  2016 sispositivo.blend1
+
+G91.sviluppo/CARRELLO_G91/FUSOLIERA_max:
+totale 3440
+-rwxrwxrwx 1 abassign abassign 187803 feb 11  2017 fuselage_A0.ac
+-rwxrwxrwx 1 abassign abassign 669804 feb 10  2017 fuselage_A0.blend
+-rwxrwxrwx 1 abassign abassign  10069 feb 11  2017 fuselage_AB.ac
+-rwxrwxrwx 1 abassign abassign 514852 feb 10  2017 fuselage_AB.blend
+-rwxrwxrwx 1 abassign abassign 110950 feb 11  2017 fuselage_B0.ac
+-rwxrwxrwx 1 abassign abassign 633396 feb 10  2017 fuselage_B0.blend
+-rwxrwxrwx 1 abassign abassign  11192 feb 11  2017 fuselage_B1.ac
+-rwxrwxrwx 1 abassign abassign 512416 feb 10  2017 fuselage_B1.blend
+-rwxrwxrwx 1 abassign abassign 137289 feb 11  2017 fuselage_C0.ac
+-rwxrwxrwx 1 abassign abassign 675236 feb 10  2017 fuselage_C0.blend
+
+G91.sviluppo/CARRELLO_G91/old front_gear:
+totale 176340
+-rwxrwxrwx 1 abassign abassign 12943912 dic 18  2016 FIAT_G91_carrello_frontale.16.12.16.blend
+-rwxrwxrwx 1 abassign abassign 14121964 dic 16  2016 FIAT_G91_carrello_frontale.16.12.16.blend1
+-rwxrwxrwx 1 abassign abassign 30603080 dic 23  2016 FIAT_G91_carrello_frontale.23.12.16.blend
+-rwxrwxrwx 1 abassign abassign 30604456 dic 23  2016 FIAT_G91_carrello_frontale.23.12.16.blend1
+-rwxrwxrwx 1 abassign abassign 30608216 dic 24  2016 FIAT_G91_carrello_frontale.23.12.16-Semplificato.blend
+-rwxrwxrwx 1 abassign abassign 30601808 dic 27  2016 FIAT_G91_carrello_frontale.27.12.16-Semplificato.blend
+-rwxrwxrwx 1 abassign abassign 30400092 gen  2  2017 FIAT_G91_PROJECT_2017_Adriano.blend
+-rwxrwxrwx 1 abassign abassign   641604 gen  2  2017 fusolieraAdriano.blend
+
+G91.sviluppo/Dialogs:
+totale 8
+-rwxrwxrwx 1 abassign abassign 401 ott  3  2016 G91-menu.xml
+
+G91.sviluppo/Documentation:
+totale 5612
+drwxrwxr-x 2 abassign abassign   4096 mag  2  2017 Aerodynamics
+-rwxrwxrwx 1 abassign abassign 213132 mar 25  2017 Cinefotomitragliatrice 01.jpg
+-rwxrwxrwx 1 abassign abassign 220405 mar 25  2017 Contenitore cartuccia start 01.jpg
+drwxrwxr-x 3 abassign abassign   4096 nov 28 21:27 dettagli G91
+-rwxrwxrwx 1 abassign abassign 161464 mar 18  2017 Dispositivo bloccaggio sportelloni 01.jpg
+-rwxrwxrwx 1 abassign abassign 139409 mar 18  2017 Dispositivo bloccaggio sportelloni 02.jpg
+-rwxrwxrwx 1 abassign abassign 147896 dic 25  2016 G91 01.jpg
+-rwxrwxrwx 1 abassign abassign 164064 dic 26  2016 G91 02.jpg
+-rwxrwxrwx 1 abassign abassign 180865 dic 26  2016 G91 03.jpg
+-rwxrwxrwx 1 abassign abassign 131350 dic 26  2016 G91 05.jpg
+-rwxrwxrwx 1 abassign abassign 120040 gen 22  2017 G91 - Centine 01.jpg
+-rwxrwxrwx 1 abassign abassign 123186 gen 22  2017 G91 - Centine 02.jpg
+-rwxrwxrwx 1 abassign abassign  83840 gen 22  2017 G91 - Centine 03.jpg
+-rwxrwxrwx 1 abassign abassign  78560 gen 22  2017 G91 - Centine 04.jpg
+-rwxrwxrwx 1 abassign abassign 159765 gen 22  2017 G91 - Centine 05.jpg
+-rwxrwxrwx 1 abassign abassign 263676 gen 22  2017 G91 - Centine 06.jpg
+-rwxrwxrwx 1 abassign abassign 248017 gen 22  2017 G91 - Centine 07.jpg
+-rwxrwxrwx 1 abassign abassign 237657 gen 22  2017 G91 - Centine 08.jpg
+-rwxrwxrwx 1 abassign abassign 274955 gen 22  2017 G91 - Centine 09.jpg
+-rwxrwxrwx 1 abassign abassign 137099 gen 22  2017 G91 - Centine 10.jpg
+-rwxrwxrwx 1 abassign abassign 273781 gen 22  2017 G91 - Centine 11.jpg
+-rwxrwxrwx 1 abassign abassign 173231 gen 22  2017 G91 - Centine 12.jpg
+-rwxrwxrwx 1 abassign abassign  67149 mar 29  2017 G91 R1A Armamento 01.jpg
+drwxrwxr-x 4 abassign abassign   4096 mag  2  2017 G91Y_Cervia_flap
+-rwxrwxrwx 1 abassign abassign   8973 dic  8  2016 LandingGear 01 moviment.svg
+-rwxrwxrwx 1 abassign abassign  12820 dic 17  2016 Landing Gear frontal - 01.svg
+-rwxrwxrwx 1 abassign abassign  36698 dic  8  2016 Landing Gear moviment 01.jpg
+-rwxrwxrwx 1 abassign abassign  24292 dic  9  2016 locked-track y axis difect 01.jpg
+-rwxrwxrwx 1 abassign abassign  11456 dic  9  2016 locked-track y axis difect 01.svg
+-rwxrwxrwx 1 abassign abassign   3556 dic  9  2016 locked-track y axis difect 01.txt
+-rwxrwxrwx 1 abassign abassign 113603 mar 25  2017 Luci 01.jpg
+-rwxrwxrwx 1 abassign abassign 125370 mar 25  2017 Luci 02.jpg
+-rwxrwxrwx 1 abassign abassign 123707 mar 25  2017 Luci 03.jpg
+-rwxrwxrwx 1 abassign abassign 167733 mar 25  2017 Luci 04.jpg
+-rwxrwxrwx 1 abassign abassign 148373 mar 25  2017 Luci 05.jpg
+-rwxrwxrwx 1 abassign abassign 145861 mar 25  2017 Luci 06.jpg
+-rwxrwxrwx 1 abassign abassign 125697 mar 25  2017 Luci 07.jpg
+-rwxrwxrwx 1 abassign abassign  99966 mar 25  2017 Luci 08.jpg
+-rwxrwxrwx 1 abassign abassign 149692 mar 25  2017 Luci 09.jpg
+-rwxrwxrwx 1 abassign abassign 167177 mar 25  2017 Luci 10.jpg
+-rwxrwxrwx 1 abassign abassign 146607 mar 25  2017 Luci 11.jpg
+-rwxrwxrwx 1 abassign abassign 146607 mar 25  2017 Luci 12.jpg
+-rwxrwxrwx 1 abassign abassign 107503 mar 25  2017 Luci 13.jpg
+
+G91.sviluppo/Documentation/Aerodynamics:
+totale 4996
+-rwxrwxrwx 1 abassign abassign   38143 set  2  2015 0-2_aero.xml
+-rwxrwxrwx 1 abassign abassign   38143 set  2  2015 0-3_aero.xml
+-rwxrwxrwx 1 abassign abassign   38143 set  2  2015 0-4_aero.xml
+-rwxrwxrwx 1 abassign abassign   38143 set  2  2015 0-5_aero.xml
+-rwxrwxrwx 1 abassign abassign   38143 set  2  2015 0-6_aero.xml
+-rwxrwxrwx 1 abassign abassign   38143 set  2  2015 0-8_aero.xml
+-rwxrwxrwx 1 abassign abassign   38143 set  2  2015 0-9_aero.xml
+-rwxrwxrwx 1 abassign abassign       0 set  2  2015 _1.ac
+-rwxrwxrwx 1 abassign abassign   38143 set  2  2015 3-2_aero.xml
+-rwxrwxrwx 1 abassign abassign   38143 set  2  2015 3-9_aero.xml
+-rwxrwxrwx 1 abassign abassign   53509 set 12  2015 Aerodynamic data related to F86 01.ods
+-rwxrwxrwx 1 abassign abassign 2443316 set  2  2015 Chapter 3. Drag Force and its Coefficient.pdf
+-rwxrwxrwx 1 abassign abassign   64443 ago 29  2015 Datacom by Mach & density.ods
+-rwxrwxrwx 1 abassign abassign 1359050 ago 11  2015 datcom
+-rwxrwxrwx 1 abassign abassign   17303 ago 29  2015 datcom.out
+-rwxrwxrwx 1 abassign abassign   29456 ago 15  2015 Drag by Altitude loop eq 1-20150815.ods
+-rwxrwxrwx 1 abassign abassign   32135 ago 18  2015 Drag by Altitude loop eq 1.ods
+-rwxrwxrwx 1 abassign abassign   14337 ago 15  2015 Drag by Altitude loop eq 2.ods
+-rwxrwxrwx 1 abassign abassign   11815 ago 15  2015 Drag by Altitude loop eq 3.ods
+-rwxrwxrwx 1 abassign abassign  451156 ago 16  2015 DSV-DQV_Quaderno_9.pdf
+-rwxrwxrwx 1 abassign abassign     989 set  2  2015 for005.dat
+-rwxrwxrwx 1 abassign abassign    1045 ago 29  2015 G91_0
+-rwxrwxrwx 1 abassign abassign    1135 set  2  2015 G91_00000
+-rwxrwxrwx 1 abassign abassign    1135 ago 29  2015 G91_10000
+-rwxrwxrwx 1 abassign abassign    1180 ago 29  2015 G91_20000
+-rwxrwxrwx 1 abassign abassign    1135 ago 29  2015 G91_30000
+-rwxrwxrwx 1 abassign abassign    1170 ago 16  2015 G91_40000
+-rwxrwxrwx 1 abassign abassign    1170 ago 16  2015 G91_50000
+-rwxrwxrwx 1 abassign abassign    1170 ago 16  2015 G91_60000
+-rwxrwxrwx 1 abassign abassign   56895 ago 14  2015 Pressure-Altitude ALT_PRESS_TABLE1.pdf
+-rwxrwxrwx 1 abassign abassign   26343 set  2  2015 Test Drag M-H.ods
+
+G91.sviluppo/Documentation/dettagli G91:
+totale 9504
+-rwxrwxrwx 1 abassign abassign   69222 giu  1  2017 02.jpg
+-rwxrwxrwx 1 abassign abassign   68178 giu  1  2017 04.jpg
+-rwxrwxrwx 1 abassign abassign   71697 giu  1  2017 08.jpg
+-rwxrwxrwx 1 abassign abassign   72111 giu  1  2017 09.jpg
+-rwxrwxrwx 1 abassign abassign   79592 giu  1  2017 10.jpg
+-rwxrwxrwx 1 abassign abassign   70521 giu  1  2017 12.jpg
+-rwxrwxrwx 1 abassign abassign   70558 giu  1  2017 13.jpg
+-rwxrwxrwx 1 abassign abassign   72222 giu  1  2017 14.jpg
+-rwxrwxrwx 1 abassign abassign  146763 mag 21  2017 18527036_10212792374073730_5732800398138665503_o.jpg
+-rwxrwxrwx 1 abassign abassign   64646 giu  1  2017 18.jpg
+-rwxrwxrwx 1 abassign abassign  189051 lug  1  2017 19488673_10209516408689097_1361465701992670538_o.jpg
+-rwxrwxrwx 1 abassign abassign  224863 lug  1  2017 19488773_10209516407529068_3018459074662802049_o.jpg
+-rwxrwxrwx 1 abassign abassign   26553 lug  6 22:47 19732336_957137857762382_3660365298036589077_n.jpg
+-rwxrwxrwx 1 abassign abassign  105885 lug  7 18:05 19756582_1746301065397404_7358096943971454239_n.jpg
+-rwxrwxrwx 1 abassign abassign   71640 giu  1  2017 19.jpg
+-rwxrwxrwx 1 abassign abassign   73585 giu  1  2017 23.jpg
+-rwxrwxrwx 1 abassign abassign   86698 giu  1  2017 25.jpg
+-rwxrwxrwx 1 abassign abassign   69309 giu  1  2017 26.jpg
+-rwxrwxrwx 1 abassign abassign   74961 giu  1  2017 27.jpg
+-rwxrwxrwx 1 abassign abassign   87687 giu  1  2017 28.jpg
+-rwxrwxrwx 1 abassign abassign   90823 giu  1  2017 29.jpg
+drwxrwxr-x 3 abassign abassign    4096 dic  1 09:51 abitacolo
+-rwxrwxrwx 1 abassign abassign  145087 giu  1  2017 g91-07.jpg
+-rwxrwxrwx 1 abassign abassign  150836 giu  1  2017 g91-10.jpg
+-rwxrwxrwx 1 abassign abassign 1102535 giu  1  2017 g-91y_09_of_64.jpg
+-rwxrwxrwx 1 abassign abassign 1150244 giu  1  2017 g-91y_43_of_64.jpg
+-rwxrwxrwx 1 abassign abassign 1201379 giu  1  2017 g-91y_46_of_64.jpg
+-rwxrwxrwx 1 abassign abassign   86045 giu  1  2017 IMG_5886.jpg
+-rwxrwxrwx 1 abassign abassign  126920 giu  1  2017 IMG_5888.jpg
+-rwxrwxrwx 1 abassign abassign  130217 giu  1  2017 IMG_5889.jpg
+-rwxrwxrwx 1 abassign abassign  127610 giu  1  2017 IMG_5891.jpg
+-rwxrwxrwx 1 abassign abassign  130053 giu  1  2017 IMG_5892.jpg
+-rwxrwxrwx 1 abassign abassign  102798 giu  1  2017 IMG_5898.jpg
+-rwxrwxrwx 1 abassign abassign  108320 giu  1  2017 IMG_5900.jpg
+-rwxrwxrwx 1 abassign abassign  101922 giu  1  2017 IMG_5901.jpg
+-rwxrwxrwx 1 abassign abassign   78832 giu  1  2017 IMG_5902.jpg
+-rwxrwxrwx 1 abassign abassign  104135 giu  1  2017 IMG_5903.jpg
+-rwxrwxrwx 1 abassign abassign   87337 giu  1  2017 IMG_5904.jpg
+-rwxrwxrwx 1 abassign abassign  100397 giu  1  2017 IMG_5906.jpg
+-rwxrwxrwx 1 abassign abassign  124332 giu  1  2017 IMG_5907.jpg
+-rwxrwxrwx 1 abassign abassign   78320 giu  1  2017 IMG_5911.jpg
+-rwxrwxrwx 1 abassign abassign   80424 giu  1  2017 IMG_5912.jpg
+-rwxrwxrwx 1 abassign abassign   82533 giu  1  2017 IMG_5914.jpg
+-rwxrwxrwx 1 abassign abassign   56641 giu  1  2017 IMG_5915.jpg
+-rwxrwxrwx 1 abassign abassign  124054 giu  1  2017 IMG_5918.jpg
+-rwxrwxrwx 1 abassign abassign  155550 giu  1  2017 IMG_5919.jpg
+-rwxrwxrwx 1 abassign abassign  117872 giu  1  2017 IMG_5920.jpg
+-rwxrwxrwx 1 abassign abassign  130778 giu  1  2017 IMG_5923.jpg
+-rwxrwxrwx 1 abassign abassign   91947 giu  1  2017 IMG_5937.jpg
+-rwxrwxrwx 1 abassign abassign   73457 giu  1  2017 IMG_5938.jpg
+-rwxrwxrwx 1 abassign abassign  146943 giu  1  2017 IMG_5940.jpg
+-rwxrwxrwx 1 abassign abassign   43919 giu  1  2017 IMG_5988.jpg
+-rwxrwxrwx 1 abassign abassign  105987 giu  1  2017 IMG_5989.jpg
+-rwxrwxrwx 1 abassign abassign  123882 giu  1  2017 IMG_5990.jpg
+-rwxrwxrwx 1 abassign abassign  144288 giu  1  2017 IMG_5991.jpg
+-rwxrwxrwx 1 abassign abassign  145636 giu  1  2017 IMG_5992.jpg
+-rwxrwxrwx 1 abassign abassign   88092 giu  1  2017 IMG_5993.jpg
+-rwxrwxrwx 1 abassign abassign  113136 giu  1  2017 IMG_5994.jpg
+-rwxrwxrwx 1 abassign abassign   94216 giu  1  2017 IMG_5996.jpg
+-rwxrwxrwx 1 abassign abassign  116973 giu  1  2017 IMG_5997.jpg
+-rwxrwxrwx 1 abassign abassign  101994 giu  1  2017 IMG_5998.jpg
+-rwxrwxrwx 1 abassign abassign   97387 giu  1  2017 IMG_5999.jpg
+
+G91.sviluppo/Documentation/dettagli G91/abitacolo:
+totale 36772
+-rwxrwxrwx 1 abassign abassign    87387 giu 24  2017 19247879_10209459179818411_8977570924429393992_n.jpg
+-rwxrwxrwx 1 abassign abassign   261337 giu 24  2017 19400320_10209458251675208_6381903672770428651_o.jpg
+-rwxrwxrwx 1 abassign abassign   283611 giu 24  2017 19400358_10209458252315224_3563426906329423736_o.jpg
+-rwxrwxrwx 1 abassign abassign   113194 giu 27  2017 19420790_1615490168464148_8907172186294608339_n.jpg
+-rwxrwxrwx 1 abassign abassign    93564 giu 27  2017 19429719_10155376274399795_6971832862605981702_n.jpg
+-rwxrwxrwx 1 abassign abassign   430434 giu 24  2017 19453058_10209458248155120_3237639751706757687_o.jpg
+-rwxrwxrwx 1 abassign abassign   114413 giu 27  2017 19467760_1615490131797485_7291405382346707396_o.jpg
+-rwxrwxrwx 1 abassign abassign    92579 lug  1  2017 19598629_1545858708760659_2247439858316184470_n.jpg
+-rwxrwxrwx 1 abassign abassign   162560 lug  7 00:21 19679397_1702204160083128_1986828215620266305_o (1).jpg
+-rwxrwxrwx 1 abassign abassign   171424 lug  7 00:21 19801007_1702204163416461_8329581993687163514_o.jpg
+-rwxrwxrwx 1 abassign abassign   887626 ott 11 15:22 22289930_10210247094395783_8276726860315584155_o.jpg
+-rw-rw-r-- 1 abassign abassign    84548 nov 30 23:10 24176988_1038362676306566_1617997731127351314_n.jpg
+-rwxrwxrwx 1 abassign abassign   559542 ago 27 11:50 2621281.jpg
+-rw-rw-r-- 1 abassign abassign   339952 nov 26 01:09 28097285044_c4b9f23eee_b.jpg
+-rwxrwxrwx 1 abassign abassign   323731 ott 29 20:11 28636837071_bfd0bd635c_b.jpg
+-rwxrwxrwx 1 abassign abassign   372704 set 24 23:10 30147_1136586674.jpg
+-rwxrwxrwx 1 abassign abassign   194375 ott 29 20:12 489129.jpg
+-rwxrwxrwx 1 abassign abassign  1542859 set 24 23:09 723747.jpg
+-rwxrwxrwx 1 abassign abassign   349220 set  9 23:20 a_Fiat_-_Cockpit_vorne.jpg
+-rwxrwxrwx 1 abassign abassign   103504 set  9 23:21 DSCF6629.jpg
+-rwxrwxrwx 1 abassign abassign   480133 ott 29 20:10 fgfs-screen-003 - Copia.png
+-rwxrwxrwx 1 abassign abassign   669859 giu 11  2017 Fiat 1.jpg
+-rwxrwxrwx 1 abassign abassign   561406 giu 11  2017 Fiat 2.jpg
+-rwxrwxrwx 1 abassign abassign   675507 giu 11  2017 Fiat 3.jpg
+-rwxrwxrwx 1 abassign abassign   624837 giu 11  2017 Fiat 4.jpg
+-rwxrwxrwx 1 abassign abassign   460263 giu 11  2017 Fiat dir 1.jpg
+-rwxrwxrwx 1 abassign abassign   423684 giu 11  2017 Fiat dir.jpg
+-rwxrwxrwx 1 abassign abassign   414837 giu 11  2017 Fiat esq 1.jpg
+-rwxrwxrwx 1 abassign abassign   365452 giu 11  2017 Fiat esq 2.jpg
+-rwxrwxrwx 1 abassign abassign   347419 giu 11  2017 Fiat esq.jpg
+-rwxrwxrwx 1 abassign abassign   300947 giu 11  2017 Fiat Frente 1.jpg
+-rwxrwxrwx 1 abassign abassign   435010 giu 11  2017 Fiat frente.jpg
+-rwxrwxrwx 1 abassign abassign   567059 giu 11  2017 Fiat.jpg
+-rwxrwxrwx 1 abassign abassign   398198 giu 11  2017 Fiat trás 1.jpg
+-rwxrwxrwx 1 abassign abassign   549267 giu 11  2017 Fiat trás.jpg
+-rwxrwxrwx 1 abassign abassign   909296 set  9 23:17 G.91cockpit.JPG
+-rwxrwxrwx 1 abassign abassign   152100 ago 27 01:10 Il pannello strumenti del G91.jpg
+-rwxrwxrwx 1 abassign abassign 19875428 set 18 22:22 Il pannello strumenti del G91.psd
+-rwxrwxrwx 1 abassign abassign   212417 ott 29 20:13 large.jpg
+-rwxrwxrwx 1 abassign abassign   812491 set  9 23:25 _MG_4823_030617.jpg
+-rwxrwxrwx 1 abassign abassign   419231 ago 28 22:26 nod8p2.jpg
+drwxrwxr-x 2 abassign abassign     4096 nov 15 22:28 Nuova cartella
+-rwxrwxrwx 1 abassign abassign   238810 set  9 23:21 por-Rui-Sousa-Madira-Spotters-G91-5452-AM1-16Abr2011.jpg
+-rwxrwxrwx 1 abassign abassign   115485 ago 27 01:12 s-l1000.jpg
+-rw-rw-r-- 1 abassign abassign   205295 nov 26 01:20 s-l1600 (1).jpg
+-rw-rw-r-- 1 abassign abassign   130416 nov 26 01:20 s-l1600 (2).jpg
+-rw-rw-r-- 1 abassign abassign   228276 nov 26 01:20 s-l1600 (3).jpg
+-rw-rw-r-- 1 abassign abassign   216339 nov 26 01:20 s-l1600.jpg
+
+G91.sviluppo/Documentation/dettagli G91/abitacolo/Nuova cartella:
+totale 356
+-rwxrwxrwx 1 abassign abassign  79883 ott 19 23:43 22491482_10213902374584723_3213755404829343486_n.jpg
+-rwxrwxrwx 1 abassign abassign  76052 ott 19 23:43 22519369_10213902373944707_8216972925745315699_n.jpg
+-rwxrwxrwx 1 abassign abassign  72212 ott 19 23:43 22527994_10213902373464695_1594414417548805652_n.jpg
+-rwxrwxrwx 1 abassign abassign 113361 ott 19 23:43 22539946_10213902372344667_1110231816036024334_n.jpg
+
+G91.sviluppo/Documentation/G91Y_Cervia_flap:
+totale 16
+drwxrwxr-x 2 abassign abassign 4096 nov 28 21:26 Alettone
+drwxrwxr-x 2 abassign abassign 4096 nov 28 21:26 Flap
+
+G91.sviluppo/Documentation/G91Y_Cervia_flap/Alettone:
+totale 1308
+-rwxrwxrwx 1 abassign abassign 236473 apr 25  2017 01.jpg
+-rwxrwxrwx 1 abassign abassign  78483 apr 25  2017 02.jpg
+-rwxrwxrwx 1 abassign abassign  93816 apr 25  2017 03.jpg
+-rwxrwxrwx 1 abassign abassign 110769 apr 25  2017 04.jpg
+-rwxrwxrwx 1 abassign abassign  87557 apr 25  2017 05.jpg
+-rwxrwxrwx 1 abassign abassign 108374 apr 25  2017 06.jpg
+-rwxrwxrwx 1 abassign abassign 145704 apr 25  2017 07.jpg
+-rwxrwxrwx 1 abassign abassign 127968 apr 25  2017 08.jpg
+-rwxrwxrwx 1 abassign abassign 285451 apr 25  2017 18055856_1847529392180996_6876330968514573301_o.jpg
+-rwxrwxrwx 1 abassign abassign    106 mag  1  2017 cfl.dropboxstatic.com.url
+
+G91.sviluppo/Documentation/G91Y_Cervia_flap/Flap:
+totale 2300
+-rwxrwxrwx 1 abassign abassign 139435 apr 22  2017 18052442_817165661774348_499875401_o.jpg
+-rwxrwxrwx 1 abassign abassign 124863 apr 22  2017 18083510_817165785107669_335977286_o (1).jpg
+-rwxrwxrwx 1 abassign abassign 124863 apr 22  2017 18083510_817165785107669_335977286_o.jpg
+-rwxrwxrwx 1 abassign abassign 171368 apr 22  2017 18083535_817165531774361_548617987_o.jpg
+-rwxrwxrwx 1 abassign abassign 190117 apr 22  2017 18083713_817165731774341_1751003441_o.jpg
+-rwxrwxrwx 1 abassign abassign 144706 apr 22  2017 18083913_817165671774347_1792823010_o.jpg
+-rwxrwxrwx 1 abassign abassign 116546 apr 22  2017 18090479_817165698441011_2129173316_o.jpg
+-rwxrwxrwx 1 abassign abassign 223049 apr 22  2017 18090768_817165611774353_419262118_o.jpg
+-rwxrwxrwx 1 abassign abassign 165938 apr 22  2017 18090804_817165571774357_490571737_o.jpg
+-rwxrwxrwx 1 abassign abassign 103709 apr 22  2017 18090865_817165745107673_690746443_o.jpg
+-rwxrwxrwx 1 abassign abassign 120036 apr 22  2017 18090905_817165755107672_1681215941_o.jpg
+-rwxrwxrwx 1 abassign abassign 162806 apr 22  2017 18110352_817165635107684_1039637547_o.jpg
+-rwxrwxrwx 1 abassign abassign 134607 apr 22  2017 18110962_817165718441009_1396415984_o.jpg
+-rwxrwxrwx 1 abassign abassign  80086 apr 22  2017 18110969_817165708441010_1384686580_o.jpg
+-rwxrwxrwx 1 abassign abassign 132578 apr 22  2017 18111112_817165521774362_1543803764_o.jpg
+-rwxrwxrwx 1 abassign abassign 121217 apr 22  2017 18111205_817165648441016_2043158316_o.jpg
+
+G91.sviluppo/Engines:
+totale 28
+-rwxrwxrwx 1 abassign abassign  111 ago  3  2015 direct.xml
+-rwxrwxrwx 1 abassign abassign 4535 ott  6  2015 ORPHEUS_MK_803.xml
+-rwxrwxrwx 1 abassign abassign 2298 ago 15  2015 ORPHEUS_MK_803.xml.notemp
+
+G91.sviluppo/Models:
+totale 96
+drwxrwxr-x 3 abassign abassign 4096 mag  2  2017 Effects
+drwxrwxr-x 2 abassign abassign 4096 ott  2  2016 External
+drwxrwxr-x 2 abassign abassign 4096 ott 17  2016 Front_Gear
+drwxrwxr-x 3 abassign abassign 4096 mag  2  2017 Fuselage_A
+drwxrwxr-x 3 abassign abassign 4096 mag  2  2017 Fuselage_B
+drwxrwxr-x 2 abassign abassign 4096 mag  2  2017 Fuselage_C
+-rwxrwxrwx 1 abassign abassign 1741 mar 24  2017 G91.xml
+drwxrwxr-x 2 abassign abassign 4096 ott  2  2016 Interior
+drwxrwxr-x 2 abassign abassign 4096 mag  2  2017 LandingGearFrontal
+drwxrwxr-x 2 abassign abassign 4096 mag  2  2017 Lights
+drwxrwxr-x 2 abassign abassign 4096 mag  2  2017 Liveries
+drwxrwxr-x 4 abassign abassign 4096 mag  2  2017 Turbojet
+
+G91.sviluppo/Models/Effects:
+totale 184
+-rwxrwxrwx 1 abassign abassign  523 set 17  2016 back-navlight.ac
+-rwxrwxrwx 1 abassign abassign 1578 mar 24  2016 back-navlight.eff
+-rwxrwxrwx 1 abassign abassign  681 mar 24  2016 back-navlight.xml
+-rwxrwxrwx 1 abassign abassign  405 mar 24  2016 beacon.ac
+-rwxrwxrwx 1 abassign abassign 1125 mar 24  2016 beacon.eff
+-rwxrwxrwx 1 abassign abassign  688 mar 24  2016 beacon.xml
+-rwxrwxrwx 1 abassign abassign 4078 set 13  2015 Dark-Grey-Lightmap.png
+-rwxrwxrwx 1 abassign abassign  363 giu  8  2016 flash-light.eff
+-rwxrwxrwx 1 abassign abassign  673 giu  8  2016 flash-light.xml
+-rwxrwxrwx 1 abassign abassign  493 set 17  2016 front-light.ac
+-rwxrwxrwx 1 abassign abassign 1575 giu  9  2016 front-light.eff
+-rwxrwxrwx 1 abassign abassign  674 mar 24  2016 front-light.xml
+drwxrwxr-x 2 abassign abassign 4096 mag  2  2017 Glass
+-rwxrwxrwx 1 abassign abassign  417 set 17  2016 green-navlight.ac
+-rwxrwxrwx 1 abassign abassign 1617 mar 23  2016 green-navlight.eff
+-rwxrwxrwx 1 abassign abassign  686 mag 31  2016 green-navlight.xml
+-rwxrwxrwx 1 abassign abassign  362 set 13  2015 internal_Light_Map.eff
+-rwxrwxrwx 1 abassign abassign  411 set 17  2016 red-navlight.ac
+-rwxrwxrwx 1 abassign abassign 1618 mar 23  2016 red-navlight.eff
+-rwxrwxrwx 1 abassign abassign  682 giu  8  2016 red-navlight.xml
+-rwxrwxrwx 1 abassign abassign 3698 ago  5  2015 spray.png
+-rwxrwxrwx 1 abassign abassign 1917 set  3  2015 start_exhaust_eng_proxy.xml
+-rwxrwxrwx 1 abassign abassign 1925 set  3  2015 start_exhaust_eng.xml
+
+G91.sviluppo/Models/Effects/Glass:
+totale 112
+-rwxrwxrwx 1 abassign abassign  1748 ott  3  2016 glass-chrome.eff
+-rwxrwxrwx 1 abassign abassign 99740 ago 28  2012 glass_shader.png
+
+G91.sviluppo/Models/External:
+totale 0
+
+G91.sviluppo/Models/Front_Gear:
+totale 0
+
+G91.sviluppo/Models/Fuselage_A:
+totale 672
+-rwxrwxrwx 1 abassign abassign 662618 mar 27  2017 fuselage_A0.ac
+-rwxrwxrwx 1 abassign abassign   5496 mar 27  2017 Fuselage_A0.xml
+drwxrwxr-x 2 abassign abassign   4096 mag  2  2017 Liveries
+
+G91.sviluppo/Models/Fuselage_A/Liveries:
+totale 48
+-rwxrwxrwx 1 abassign abassign 3925 ott 20  2016 AichiInteriorGreyGreen.png
+-rwxrwxrwx 1 abassign abassign 3960 mar 25  2017 G91-Al-Light.png
+-rwxrwxrwx 1 abassign abassign 3957 ago 17  2015 G91-Al.png
+-rwxrwxrwx 1 abassign abassign 4072 set 13  2015 G91-Black.png
+-rwxrwxrwx 1 abassign abassign 4074 set 13  2015 G91-Dark-Grey.png
+-rwxrwxrwx 1 abassign abassign 3968 mar 27  2017 G91-Orange01.png
+
+G91.sviluppo/Models/Fuselage_B:
+totale 3888
+-rwxrwxrwx 1 abassign abassign  295704 mar 26  2017 fuselage_B0.ac
+-rwxrwxrwx 1 abassign abassign    2197 mar 26  2017 Fuselage_B0.xml
+-rwxrwxrwx 1 abassign abassign 3638676 mar 26  2017 fuselage_B1.ac
+-rwxrwxrwx 1 abassign abassign    8867 mar 26  2017 Fuselage_B1.xml
+drwxrwxr-x 2 abassign abassign    4096 mag  2  2017 Liveries
+
+G91.sviluppo/Models/Fuselage_B/Liveries:
+totale 40
+-rwxrwxrwx 1 abassign abassign 3925 ott 20  2016 AichiInteriorGreyGreen.png
+-rwxrwxrwx 1 abassign abassign 3960 mar 25  2017 G91-Al-Light.png
+-rwxrwxrwx 1 abassign abassign 3957 ago 17  2015 G91-Al.png
+-rwxrwxrwx 1 abassign abassign 4072 set 13  2015 G91-Black.png
+-rwxrwxrwx 1 abassign abassign 4074 set 13  2015 G91-Dark-Grey.png
+
+G91.sviluppo/Models/Fuselage_C:
+totale 184
+-rwxrwxrwx 1 abassign abassign 174479 mar 14  2017 fuselage_C0.ac
+-rwxrwxrwx 1 abassign abassign   2134 mar 26  2017 Fuselage_C0.xml
+
+G91.sviluppo/Models/Interior:
+totale 0
+
+G91.sviluppo/Models/LandingGearFrontal:
+totale 102612
+-rwxrwxrwx 1 abassign abassign 12943912 dic 18  2016 FIAT_G91_carrello_frontale.16.12.16.blend
+-rwxrwxrwx 1 abassign abassign 30608216 dic 24  2016 FIAT_G91_carrello_frontale.23.12.16.blend
+-rwxrwxrwx 1 abassign abassign 30604104 dic 24  2016 FIAT_G91_carrello_frontale.23.12.16.blend1
+-rwxrwxrwx 1 abassign abassign  7457280 gen 22  2017 LandingGearFrontal.ac
+-rwxrwxrwx 1 abassign abassign 11488542 gen 17  2017 LandingGearFrontal.ac-old
+-rwxrwxrwx 1 abassign abassign 11904918 gen 17  2017 LandingGearFrontal.ac.old
+-rwxrwxrwx 1 abassign abassign    24588 mar 26  2017 LandingGearFrontal.xml
+
+G91.sviluppo/Models/Lights:
+totale 192
+-rwxrwxrwx 1 abassign abassign  5197 giu  7  2016 BackLight-rembrandt.xml
+-rwxrwxrwx 1 abassign abassign  8227 mar  8  2016 Lights.ac
+-rwxrwxrwx 1 abassign abassign 87536 mar  8  2016 lights.dds
+-rwxrwxrwx 1 abassign abassign 30756 mar  8  2016 lights.png
+-rwxrwxrwx 1 abassign abassign  5111 mar  8  2016 NavLightL-rembrandt.xml
+-rwxrwxrwx 1 abassign abassign  5111 mar  8  2016 NavLightR-rembrandt.xml
+-rwxrwxrwx 1 abassign abassign  4782 giu  7  2016 StrobeLight-rembrandt.xml
+
+G91.sviluppo/Models/Liveries:
+totale 8
+-rwxrwxrwx 1 abassign abassign 3925 ott 20  2016 AichiInteriorGreyGreen.png
+
+G91.sviluppo/Models/Turbojet:
+totale 3376
+drwxrwxr-x 2 abassign abassign    4096 mag  2  2017 Liveries
+drwxrwxr-x 2 abassign abassign    4096 mag  2  2017 Orpheus MK 803
+-rwxrwxrwx 1 abassign abassign 3420265 mar 24  2017 OrpheusMK803.ac
+-rwxrwxrwx 1 abassign abassign    6719 mar 27  2017 OrpheusMK803.xml
+
+G91.sviluppo/Models/Turbojet/Liveries:
+totale 40
+-rwxrwxrwx 1 abassign abassign 3925 ott 20  2016 AichiInteriorGreyGreen.png
+-rwxrwxrwx 1 abassign abassign 3960 mar 25  2017 G91-Al-Light.png
+-rwxrwxrwx 1 abassign abassign 3957 ago 17  2015 G91-Al.png
+-rwxrwxrwx 1 abassign abassign 4072 set 13  2015 G91-Black.png
+-rwxrwxrwx 1 abassign abassign 4074 set 13  2015 G91-Dark-Grey.png
+
+G91.sviluppo/Models/Turbojet/Orpheus MK 803:
+totale 161284
+-rwxrwxrwx 1 abassign abassign   669011 ott 22  2016 bi-lateral view.png
+-rwxrwxrwx 1 abassign abassign      754 ago  3  2015 Configuration
+-rwxrwxrwx 1 abassign abassign    23594 ago 15  2015 Estimated Performance at sea level 01.ods
+-rwxrwxrwx 1 abassign abassign   500272 ago 19  2015 Hot and Cold area sections 01.jpg
+-rwxrwxrwx 1 abassign abassign  1576803 ago 19  2015 Hot and Cold area sections 01.png
+-rwxrwxrwx 1 abassign abassign  1338164 ago 19  2015 Hot and Cold area sections 01.svg
+-rwxrwxrwx 1 abassign abassign   754790 ott 22  2016 lateral Dx view.png
+-rwxrwxrwx 1 abassign abassign   671080 ott 22  2016 lateral Lx view.png
+-rwxrwxrwx 1 abassign abassign   272964 ago 10  2015 nominal engine performance at sea level 01.png
+-rwxrwxrwx 1 abassign abassign   700288 ago 19  2015 Orpheus Compressor blades 01.png
+-rwxrwxrwx 1 abassign abassign  1940959 ago 19  2015 Orpheus Compressor blades 02.png
+-rwxrwxrwx 1 abassign abassign   802641 ago 19  2015 Orpheus Exhaust cone 01.png
+-rwxrwxrwx 1 abassign abassign   547794 ago 19  2015 Orpheus external view.png
+-rwxrwxrwx 1 abassign abassign   512747 ago 19  2015 Orpheus longitudinal external view.png
+-rwxrwxrwx 1 abassign abassign   579605 ago 19  2015 Orpheus longitudinal external view with measures.png
+-rwxrwxrwx 1 abassign abassign  1739513 ott 20  2016 Orpheus longitudinal external view with measures-x-2.1-2000x6000.png
+-rwxrwxrwx 1 abassign abassign  4324382 ott 20  2016 Orpheus longitudinal external view with measures-x-4.203-4000x12000.png
+-rwxrwxrwx 1 abassign abassign 79112746 giu 17  2014 ORPHEUS MARK 803 Lightwaight Turbojet Engine 1960 (Bristol Siddeley).pdf
+-rwxrwxrwx 1 abassign abassign  1811166 ott 21  2016 Orpheus MK 803 - 01-01.fcstd
+-rwxrwxrwx 1 abassign abassign  1811163 ott 21  2016 Orpheus MK 803 - 01-01.fcstd1
+-rwxrwxrwx 1 abassign abassign  1600427 ott 20  2016 Orpheus MK 803 - 01-02.fcstd
+-rwxrwxrwx 1 abassign abassign  1596840 ott 20  2016 Orpheus MK 803 - 01-02.fcstd1
+-rwxrwxrwx 1 abassign abassign  1000375 ott 21  2016 Orpheus MK 803 - 01 - Assembled.fcstd
+-rwxrwxrwx 1 abassign abassign   203252 ott 21  2016 Orpheus MK 803 - 01 - Assembled.fcstd1
+-rwxrwxrwx 1 abassign abassign  1767744 ott 22  2016 Orpheus MK 803 - 01.fcstd
+-rwxrwxrwx 1 abassign abassign  1767678 ott 22  2016 Orpheus MK 803 - 01.fcstd1
+-rwxrwxrwx 1 abassign abassign  1753031 ott 20  2016 Orpheus MK 803 - 01.fcstd.backup
+-rwxrwxrwx 1 abassign abassign   424731 mar 17  2017 Orpheus MK 803 - 020.dae
+-rwxrwxrwx 1 abassign abassign  1753477 mar 17  2017 Orpheus MK 803 - 020.fcstd
+-rwxrwxrwx 1 abassign abassign  1645340 mar 17  2017 Orpheus MK 803 - 020.fcstd1
+-rwxrwxrwx 1 abassign abassign   288900 mar 17  2017 Orpheus MK 803 - 021.dae
+-rwxrwxrwx 1 abassign abassign  1793237 mar 17  2017 Orpheus MK 803 - 021.fcstd
+-rwxrwxrwx 1 abassign abassign  1793251 mar 17  2017 Orpheus MK 803 - 021.fcstd1
+-rwxrwxrwx 1 abassign abassign   708807 mar 17  2017 Orpheus MK 803 - 022.dae
+-rwxrwxrwx 1 abassign abassign  2003923 mar 17  2017 Orpheus MK 803 - 022.fcstd
+-rwxrwxrwx 1 abassign abassign  1958103 mar 17  2017 Orpheus MK 803 - 022.fcstd1
+-rwxrwxrwx 1 abassign abassign  1729931 mar 17  2017 Orpheus MK 803 - 023.fcstd
+-rwxrwxrwx 1 abassign abassign  1698544 mar 17  2017 Orpheus MK 803 - 023.fcstd1
+-rwxrwxrwx 1 abassign abassign   346158 mar 17  2017 Orpheus MK 803 - 024.dae
+-rwxrwxrwx 1 abassign abassign  1728784 mar 17  2017 Orpheus MK 803 - 024.fcstd
+-rwxrwxrwx 1 abassign abassign  1728765 mar 17  2017 Orpheus MK 803 - 024.fcstd1
+-rwxrwxrwx 1 abassign abassign   519206 mar 17  2017 Orpheus MK 803 - 025.dae
+-rwxrwxrwx 1 abassign abassign  1897960 mar 17  2017 Orpheus MK 803 - 025.fcstd
+-rwxrwxrwx 1 abassign abassign  1776630 mar 17  2017 Orpheus MK 803 - 025.fcstd1
+-rwxrwxrwx 1 abassign abassign  1592213 mar 17  2017 Orpheus MK 803 - 026.fcstd
+-rwxrwxrwx 1 abassign abassign  1592248 mar 17  2017 Orpheus MK 803 - 026.fcstd1
+-rwxrwxrwx 1 abassign abassign  3492513 mar 23  2017 Orpheus MK 803 - 02A.dae
+-rwxrwxrwx 1 abassign abassign  3629271 mar 23  2017 Orpheus MK 803 - 02A.fcstd
+-rwxrwxrwx 1 abassign abassign  3629269 mar 23  2017 Orpheus MK 803 - 02A.fcstd1
+-rwxrwxrwx 1 abassign abassign  4528074 mar 17  2017 Orpheus MK 803 - 02.dae
+-rwxrwxrwx 1 abassign abassign  2085371 mar 17  2017 Orpheus MK 803 - 02.fcstd
+-rwxrwxrwx 1 abassign abassign  2093191 mar 17  2017 Orpheus MK 803 - 02.fcstd1
+-rwxrwxrwx 1 abassign abassign  4159424 mar 23  2017 OrpheusMK803.blend
+-rwxrwxrwx 1 abassign abassign  4194948 mar 22  2017 OrpheusMK803.blend1
+-rwxrwxrwx 1 abassign abassign     5664 mar 23  2017 Orpheus MK 803 - Paletta-BassaPressione.fcstd
+-rwxrwxrwx 1 abassign abassign   631448 ott 22  2016 section 02.png
+
+G91.sviluppo/Nasal:
+totale 40
+-rwxrwxrwx 1 abassign abassign  779 giu 16  2016 canopy.nas
+drwxrwxr-x 2 abassign abassign 4096 mag  2  2017 Engine
+drwxrwxr-x 2 abassign abassign 4096 mag  2  2017 Lights
+drwxrwxr-x 2 abassign abassign 4096 mag  2  2017 Reflections
+drwxrwxr-x 2 abassign abassign 4096 mag  2  2017 Sound
+
+G91.sviluppo/Nasal/Engine:
+totale 8
+-rwxrwxrwx 1 abassign abassign 767 mar 27  2017 engine_red_emission.nas
+
+G91.sviluppo/Nasal/Lights:
+totale 8
+-rwxrwxrwx 1 abassign abassign 243 set 17  2015 strobe.nas
+
+G91.sviluppo/Nasal/Reflections:
+totale 8
+-rwxrwxrwx 1 abassign abassign 385 mar 27  2017 Glass_Camera_Reflections.nas
+
+G91.sviluppo/Nasal/Sound:
+totale 8
+-rwxrwxrwx 1 abassign abassign 546 set 11  2015 sound_reload.nas
+
+G91.sviluppo/NUOVI FILE G91:
+totale 363592
+-rwxrwxrwx 1 abassign abassign    92819 mar 26  2017 A01.jpg
+-rwxrwxrwx 1 abassign abassign   494104 apr  7  2017 ALI.blend
+drwxrwxr-x 2 abassign abassign     4096 set  7 23:14 alt
+drwxrwxr-x 2 abassign abassign     4096 set 10 19:47 Alt2
+-rwxrwxrwx 1 abassign abassign   707424 set  4 22:36 Altimeter.ac
+-rwxrwxrwx 1 abassign abassign   165920 set  8 16:04 altimetro.svg
+-rwxrwxrwx 1 abassign abassign  9277484 lug  3 01:22 BLENDER PER ADRIANO.blend
+-rwxrwxrwx 1 abassign abassign  9375156 giu 29  2017 BLENDER PER ADRIANO.blend1
+-rwxrwxrwx 1 abassign abassign  3766802 ago 21 23:31 CANOPY_B_21.08.17.ac
+-rwxrwxrwx 1 abassign abassign  3755350 ago 23 00:28 CANOPY_B_22.08.17.ac
+-rwxrwxrwx 1 abassign abassign 21927672 lug  2 13:16 CARRELLO ANTERIORE SMUSSATO.ac
+-rwxrwxrwx 1 abassign abassign  9490107 giu 24  2017 carrello_chiuso_02.ac
+-rwxrwxrwx 1 abassign abassign 10635050 giu 29  2017 carrello_chiuso_03.ac
+-rwxrwxrwx 1 abassign abassign  8437142 giu 17  2017 carrello_chiuso.ac
+-rwxrwxrwx 1 abassign abassign  8375974 giu 14  2017 CARRELLO_Max.ac
+-rwxrwxrwx 1 abassign abassign 12572644 giu 28  2017 CARRELLO_principale_ DEF.blend
+-rwxrwxrwx 1 abassign abassign 12440068 giu 28  2017 CARRELLO_principale_ DEF.blend1
+-rwxrwxrwx 1 abassign abassign 10678632 lug  1  2017 CARRELLO PRINC.MAX001.ac
+-rwxrwxrwx 1 abassign abassign   525216 ago 29 23:35 cockpit.ac
+-rwxrwxrwx 1 abassign abassign   972960 set  4 22:04 cockpit.blend
+-rwxrwxrwx 1 abassign abassign   973180 ago 29 16:41 cockpit.blend1
+-rwxrwxrwx 1 abassign abassign   955104 ago 29 23:25 cockpit_GR1A.blend1
+-rwxrwxrwx 1 abassign abassign   966960 set 13 00:30 cockpit_GR1B.blend
+-rwxrwxrwx 1 abassign abassign   966960 set 13 00:27 cockpit_GR1B.blend1
+-rwxrwxrwx 1 abassign abassign   573288 set  4 22:05 cockpit_R1B.ac
+-rwxrwxrwx 1 abassign abassign  1094374 ago  6 18:13 coda_06_08_17.ac
+-rwxrwxrwx 1 abassign abassign  1911720 ago 11 00:36 coda_06_08_17.blend
+-rwxrwxrwx 1 abassign abassign  1945928 ago  9 16:23 coda_06_08_17.blend1
+-rwxrwxrwx 1 abassign abassign   281727 mar 26  2017 coda.jpg
+-rwxrwxrwx 1 abassign abassign  5090128 apr 20  2017 Fiat_G.91.pdf
+-rwxrwxrwx 1 abassign abassign   295704 mar 26  2017 fuselage_B0.ac
+-rwxrwxrwx 1 abassign abassign   819812 mar 26  2017 fuselage_B0.blend
+-rwxrwxrwx 1 abassign abassign   795644 mar 26  2017 fuselage_B0.blend1
+-rwxrwxrwx 1 abassign abassign   302640 mar 29  2017 fuselage_B0_rev1.ac
+-rwxrwxrwx 1 abassign abassign   821756 mar 28  2017 fuselage_B0_rev1.blend
+-rwxrwxrwx 1 abassign abassign  3638676 mar 26  2017 fuselage_B1.ac
+-rwxrwxrwx 1 abassign abassign  7665684 lug 21 15:24 fuselage_B1.blend
+-rwxrwxrwx 1 abassign abassign  7534744 lug 21 15:03 fuselage_B1.blend1
+-rwxrwxrwx 1 abassign abassign   174479 mar 14  2017 fuselage_C0.ac
+-rwxrwxrwx 1 abassign abassign   755532 mar 14  2017 fuselage_C0.blend
+-rwxrwxrwx 1 abassign abassign   176306 mar 29  2017 fuselage_C0_rev1.ac
+-rwxrwxrwx 1 abassign abassign   710920 mar 29  2017 fuselage_C0_rev1.blend
+-rwxrwxrwx 1 abassign abassign   730484 mar 28  2017 fuselage_C0_rev1.blend1
+-rwxrwxrwx 1 abassign abassign 10793987 ago 21 23:30 FUSOLIERA_B_21.08.17.ac
+-rwxrwxrwx 1 abassign abassign 11662046 set  9 14:44 GRUPPO TETTUCCIO-ABITACOLO.ac
+-rwxrwxrwx 1 abassign abassign 13503416 set  9 23:41 GRUPPO TETTUCCIO-ABITACOLO.blend
+-rwxrwxrwx 1 abassign abassign 12030840 set  9 17:37 GRUPPO TETTUCCIO-ABITACOLO.blend1
+-rwxrwxrwx 1 abassign abassign  6963956 mar 16  2017 mistragliatrice.blend
+-rwxrwxrwx 1 abassign abassign  6472220 giu 17  2017 modifica carrello.blend
+-rwxrwxrwx 1 abassign abassign  6678212 giu 18  2017 modifica carrello_chiuso.blend
+-rwxrwxrwx 1 abassign abassign  8421818 giu 16  2017 modifica_ROT_carrello.ac
+-rwxrwxrwx 1 abassign abassign 20777594 mar 14  2017 Motore.ac
+-rwxrwxrwx 1 abassign abassign 23161436 mar 16  2017 Motore.blend
+-rwxrwxrwx 1 abassign abassign 23173276 mar 14  2017 Motore.blend1
+-rwxrwxrwx 1 abassign abassign   662618 mar 26  2017 musetto.ac
+-rwxrwxrwx 1 abassign abassign  1337968 mar 26  2017 musetto.blend
+-rwxrwxrwx 1 abassign abassign  1378428 mar 26  2017 musetto.blend1
+-rwxrwxrwx 1 abassign abassign   663857 mar 29  2017 musetto_rev.ac
+-rwxrwxrwx 1 abassign abassign  1319776 mar 29  2017 musetto_rev.blend
+-rwxrwxrwx 1 abassign abassign  5114756 lug 21 01:23 revisione portello_armi dx.blend
+-rwxrwxrwx 1 abassign abassign  8437442 giu 17  2017 scocca.ac
+drwxrwxr-x 5 abassign abassign     4096 dic 30 23:11 SORGENTI DEFINITIVI ADOTTATI
+-rwxrwxrwx 1 abassign abassign  1855052 mag 20  2017 TEST_ALA.blend
+-rwxrwxrwx 1 abassign abassign  1855052 mag 20  2017 TEST_ALA.blend1
+-rwxrwxrwx 1 abassign abassign   845016 apr 17  2017 test flap.blend
+-rwxrwxrwx 1 abassign abassign  1903932 ago 13 18:42 Tiles_13.08.17.ac
+-rwxrwxrwx 1 abassign abassign  2656900 ago 14 17:32 Tiles_13.08.17.blend
+-rwxrwxrwx 1 abassign abassign  2673432 ago 13 18:43 Tiles_13.08.17.blend1
+-rwxrwxrwx 1 abassign abassign  1942183 ago 14 17:35 Tiles_14.08.17.ac
+-rwxrwxrwx 1 abassign abassign   601592 mar 26  2017 top_2.jpg
+-rwxrwxrwx 1 abassign abassign  7244086 mar 16  2017 TurboJet01.ac
+-rwxrwxrwx 1 abassign abassign 23161436 mar 16  2017 TurboJet01.blend
+-rwxrwxrwx 1 abassign abassign    81220 apr  4  2017 wings_A0.ac
+-rwxrwxrwx 1 abassign abassign    81560 apr  4  2017 wings_A0_S.ac
+-rwxrwxrwx 1 abassign abassign  1525612 mag 20  2017 wings.ac
+
+G91.sviluppo/NUOVI FILE G91/alt:
+totale 568
+-rwxrwxrwx 1 abassign abassign 218333 set  7 00:00 altimeter002.png
+-rwxrwxrwx 1 abassign abassign 349777 set  7 23:14 altimeter_1.ac
+
+G91.sviluppo/NUOVI FILE G91/Alt2:
+totale 1004
+-rwxrwxrwx 1 abassign abassign  19625 set  9 23:43 altimeter001-1024-Alfa.png
+-rwxrwxrwx 1 abassign abassign  80960 set 10 00:12 altimeter002-1024-Alfa.png
+-rwxrwxrwx 1 abassign abassign 301026 set  9 23:40 altimeter003-1024-Alfa.png
+-rwxrwxrwx 1 abassign abassign 604056 set 10 19:47 altimeter_2.ac
+
+G91.sviluppo/NUOVI FILE G91/SORGENTI DEFINITIVI ADOTTATI:
+totale 229292
+-rw-rw-r-- 1 abassign abassign        0 dic 23 14:59 Audit report.txt
+-rw-rw-r-- 1 abassign abassign  4163132 mar 18  2017 browing_g91.blend
+-rw-rw-r-- 1 abassign abassign 19644012 dic  8 22:41 canopy_def01_tex_canopy.blend
+-rw-rw-r-- 1 abassign abassign    33580 dic  1 23:43 canoy_n_d.jpg
+-rw-rw-r-- 1 abassign abassign    61593 dic  1 23:32 canoy_n_hn.jpg
+-rw-rw-r-- 1 abassign abassign    62628 dic  1 23:32 canoy_n_ln.jpg
+-rw-rw-r-- 1 abassign abassign    47309 dic  1 23:32 canoy_n_mn.jpg
+-rw-rw-r-- 1 abassign abassign    69364 dic  1 23:32 canoy_n_n.jpg
+-rw-rw-r-- 1 abassign abassign 34841608 dic 11 18:14 CARRELLO ANTERIORE_G91R1B.blend
+-rw-rw-r-- 1 abassign abassign 12572644 giu 28  2017 CARRELLO_principale_ G91R1B.blend
+drwxrwxr-x 2 abassign abassign     4096 dic 11 19:29 cockpit
+-rw-rw-r-- 1 abassign abassign 61394552 dic 23 18:58 CODA_G91R1B.blend
+-rw-rw-r-- 1 abassign abassign 61394552 dic 23 18:50 CODA_G91R1B.blend1
+drwxrwxr-x 2 abassign abassign     4096 dic 14 21:29 cubemap
+-rw-rw-r-- 1 abassign abassign  1763872 dic 25 19:27 Disegno1.bak
+-rw-rw-r-- 1 abassign abassign  1761536 dic 25 19:27 Disegno1.dwg
+-rw-rw-r-- 1 abassign abassign 10807288 dic 26 00:32 FUSOLIERA CENTRALE E ALI_G91R1B.blend
+-rw-rw-r-- 1 abassign abassign 10805944 dic 25 23:06 FUSOLIERA CENTRALE E ALI_G91R1B.blend1
+-rw-rw-r-- 1 abassign abassign  1311816 dic 11 17:32 musetto_G91R1B.blend
+-rw-rw-r-- 1 abassign abassign  5068140 dic 11 17:59 portelli armi_G91R1B.blend
+-rw-rw-r-- 1 abassign abassign   130498 dic 23 14:28 schema airbrake.3ds
+-rw-rw-r-- 1 abassign abassign    33580 dic  1 23:43 screw_n_d .jpg
+-rw-rw-r-- 1 abassign abassign    61593 dic  1 23:32 screw_n_hn.jpg
+-rw-rw-r-- 1 abassign abassign    62628 dic  1 23:32 screw_n_ln.jpg
+-rw-rw-r-- 1 abassign abassign    47309 dic  1 23:32 screw_n_mn.jpg
+-rw-rw-r-- 1 abassign abassign    69364 dic  1 23:32 screw_n_n.jpg
+-rw-rw-r-- 1 abassign abassign  7953316 dic 23 14:59 Senza titolo.dxf
+-rw-rw-r-- 1 abassign abassign   439854 dic 23 15:03 Senza titolo.wmf
+drwxrwxr-x 2 abassign abassign     4096 dic 30 23:12 vari
+
+G91.sviluppo/NUOVI FILE G91/SORGENTI DEFINITIVI ADOTTATI/cockpit:
+totale 40100
+-rw-rw-r-- 1 abassign abassign 1151768 set 15 16:12 Airspeed.blend
+-rw-rw-r-- 1 abassign abassign 1183804 ott 19 23:16 Airspeed_rev.blend
+-rw-rw-r-- 1 abassign abassign 3897320 nov  3 01:20 CICLEScollimatore def.blend
+-rw-rw-r-- 1 abassign abassign 4767504 ott  4 00:49 cockpit_GR1Bvvv_.blend
+-rw-rw-r-- 1 abassign abassign 2920944 dic  8 19:14 handle cockpit.blend
+-rw-rw-r-- 1 abassign abassign  779796 ott 12 00:20 interruttore levetta2.blend
+-rw-rw-r-- 1 abassign abassign  717372 set 18 23:01 interruttore levetta.blend
+-rw-rw-r-- 1 abassign abassign 3833656 set 23 20:48 leva2.blend
+-rw-rw-r-- 1 abassign abassign 3878688 set 24 01:03 leva3.blend
+-rw-rw-r-- 1 abassign abassign 1916880 set 22 22:09 leva.blend
+-rw-rw-r-- 1 abassign abassign  725876 set 23 16:59 leva_canpy.blend
+-rw-rw-r-- 1 abassign abassign  716132 set 17 23:22 panel_sx_dx.blend
+-rw-rw-r-- 1 abassign abassign 1292840 set 27 23:13 pannli inf separati.blend
+-rw-rw-r-- 1 abassign abassign 2602536 ott 22 19:17 PHI-Indicator_opt.blend
+-rw-rw-r-- 1 abassign abassign 2667664 ott 22 17:17 PHI-Indicator_sicurezza.blend
+-rw-rw-r-- 1 abassign abassign 7909624 dic 11 19:22 portelli armi_G91R1B.blend
+
+G91.sviluppo/NUOVI FILE G91/SORGENTI DEFINITIVI ADOTTATI/cubemap:
+totale 80284
+-rw-rw-r-- 1 abassign abassign    68928 dic  8 23:02 0001.png0001.png
+-rw-rw-r-- 1 abassign abassign   127482 dic 13 22:27 25434467_10215111764250211_1544138966_o.jpg
+-rw-rw-r-- 1 abassign abassign 40905092 dic  9 01:31 cubemap.blend
+-rw-rw-r-- 1 abassign abassign 40905092 dic  9 01:30 cubemap.blend1
+-rw-rw-r-- 1 abassign abassign   169566 dic 13 23:20 Screenshot 2017-12-13 23.05.41.png
+
+G91.sviluppo/NUOVI FILE G91/SORGENTI DEFINITIVI ADOTTATI/vari:
+totale 299692
+-rw-rw-r-- 1 abassign abassign 49274184 dic 20 19:10 avanzamento_7.6comp_sottoali.blend
+-rw-rw-r-- 1 abassign abassign 49133648 dic 18 01:16 avanzamento_7.6comp_sottoali.blend1
+-rw-rw-r-- 1 abassign abassign   654384 ott  1 01:28 bottonlight.blend
+-rw-rw-r-- 1 abassign abassign 94278376 dic 26 22:57 FIATG91R1B_project.blend
+-rw-rw-r-- 1 abassign abassign 94278376 dic 26 22:50 FIATG91R1B_project.blend1
+-rw-rw-r-- 1 abassign abassign  9309416 dic 19 01:53 ground_shadow.blend
+-rw-rw-r-- 1 abassign abassign  9309416 dic 19 01:52 ground_shadow.blend1
+-rw-rw-r-- 1 abassign abassign   588016 nov 13 00:58 montante.blend
+
+G91.sviluppo/Orpheus MK 803:
+totale 162732
+-rwxrwxrwx 1 abassign abassign   669011 ott 22  2016 bi-lateral view.png
+-rwxrwxrwx 1 abassign abassign      754 ago  3  2015 Configuration
+-rwxrwxrwx 1 abassign abassign    23594 ago 15  2015 Estimated Performance at sea level 01.ods
+-rwxrwxrwx 1 abassign abassign   500272 ago 19  2015 Hot and Cold area sections 01.jpg
+-rwxrwxrwx 1 abassign abassign  1576803 ago 19  2015 Hot and Cold area sections 01.png
+-rwxrwxrwx 1 abassign abassign  1338164 ago 19  2015 Hot and Cold area sections 01.svg
+-rwxrwxrwx 1 abassign abassign   754790 ott 22  2016 lateral Dx view.png
+-rwxrwxrwx 1 abassign abassign   671080 ott 22  2016 lateral Lx view.png
+-rwxrwxrwx 1 abassign abassign   272964 ago 10  2015 nominal engine performance at sea level 01.png
+-rwxrwxrwx 1 abassign abassign   700288 ago 19  2015 Orpheus Compressor blades 01.png
+-rwxrwxrwx 1 abassign abassign  1940959 ago 19  2015 Orpheus Compressor blades 02.png
+-rwxrwxrwx 1 abassign abassign   802641 ago 19  2015 Orpheus Exhaust cone 01.png
+-rwxrwxrwx 1 abassign abassign   547794 ago 19  2015 Orpheus external view.png
+-rwxrwxrwx 1 abassign abassign   512747 ago 19  2015 Orpheus longitudinal external view.png
+-rwxrwxrwx 1 abassign abassign   579605 ago 19  2015 Orpheus longitudinal external view with measures.png
+-rwxrwxrwx 1 abassign abassign  1739513 ott 20  2016 Orpheus longitudinal external view with measures-x-2.1-2000x6000.png
+-rwxrwxrwx 1 abassign abassign  4324382 ott 20  2016 Orpheus longitudinal external view with measures-x-4.203-4000x12000.png
+-rwxrwxrwx 1 abassign abassign 79112746 giu 17  2014 ORPHEUS MARK 803 Lightwaight Turbojet Engine 1960 (Bristol Siddeley).pdf
+-rwxrwxrwx 1 abassign abassign  1811166 ott 21  2016 Orpheus MK 803 - 01-01.fcstd
+-rwxrwxrwx 1 abassign abassign  1811163 ott 21  2016 Orpheus MK 803 - 01-01.fcstd1
+-rwxrwxrwx 1 abassign abassign  1600427 ott 20  2016 Orpheus MK 803 - 01-02.fcstd
+-rwxrwxrwx 1 abassign abassign  1596840 ott 20  2016 Orpheus MK 803 - 01-02.fcstd1
+-rwxrwxrwx 1 abassign abassign  1000375 ott 21  2016 Orpheus MK 803 - 01 - Assembled.fcstd
+-rwxrwxrwx 1 abassign abassign   203252 ott 21  2016 Orpheus MK 803 - 01 - Assembled.fcstd1
+-rwxrwxrwx 1 abassign abassign  1767744 ott 22  2016 Orpheus MK 803 - 01.fcstd
+-rwxrwxrwx 1 abassign abassign  1767678 ott 22  2016 Orpheus MK 803 - 01.fcstd1
+-rwxrwxrwx 1 abassign abassign  1753031 ott 20  2016 Orpheus MK 803 - 01.fcstd.backup
+-rwxrwxrwx 1 abassign abassign  1477016 ott 21  2016 Orpheus MK 803 - 01.obj
+-rwxrwxrwx 1 abassign abassign   424731 mar 17  2017 Orpheus MK 803 - 020.dae
+-rwxrwxrwx 1 abassign abassign  1753477 mar 17  2017 Orpheus MK 803 - 020.fcstd
+-rwxrwxrwx 1 abassign abassign  1645340 mar 17  2017 Orpheus MK 803 - 020.fcstd1
+-rwxrwxrwx 1 abassign abassign   288900 mar 17  2017 Orpheus MK 803 - 021.dae
+-rwxrwxrwx 1 abassign abassign  1793237 mar 17  2017 Orpheus MK 803 - 021.fcstd
+-rwxrwxrwx 1 abassign abassign  1793251 mar 17  2017 Orpheus MK 803 - 021.fcstd1
+-rwxrwxrwx 1 abassign abassign   708807 mar 17  2017 Orpheus MK 803 - 022.dae
+-rwxrwxrwx 1 abassign abassign  2003923 mar 17  2017 Orpheus MK 803 - 022.fcstd
+-rwxrwxrwx 1 abassign abassign  1958103 mar 17  2017 Orpheus MK 803 - 022.fcstd1
+-rwxrwxrwx 1 abassign abassign  1729931 mar 17  2017 Orpheus MK 803 - 023.fcstd
+-rwxrwxrwx 1 abassign abassign  1698544 mar 17  2017 Orpheus MK 803 - 023.fcstd1
+-rwxrwxrwx 1 abassign abassign   346158 mar 17  2017 Orpheus MK 803 - 024.dae
+-rwxrwxrwx 1 abassign abassign  1728784 mar 17  2017 Orpheus MK 803 - 024.fcstd
+-rwxrwxrwx 1 abassign abassign  1728765 mar 17  2017 Orpheus MK 803 - 024.fcstd1
+-rwxrwxrwx 1 abassign abassign   519206 mar 17  2017 Orpheus MK 803 - 025.dae
+-rwxrwxrwx 1 abassign abassign  1897960 mar 17  2017 Orpheus MK 803 - 025.fcstd
+-rwxrwxrwx 1 abassign abassign  1776630 mar 17  2017 Orpheus MK 803 - 025.fcstd1
+-rwxrwxrwx 1 abassign abassign  1592213 mar 17  2017 Orpheus MK 803 - 026.fcstd
+-rwxrwxrwx 1 abassign abassign  1592248 mar 17  2017 Orpheus MK 803 - 026.fcstd1
+-rwxrwxrwx 1 abassign abassign  3492513 mar 23  2017 Orpheus MK 803 - 02A.dae
+-rwxrwxrwx 1 abassign abassign  3629271 mar 23  2017 Orpheus MK 803 - 02A.fcstd
+-rwxrwxrwx 1 abassign abassign  3629269 mar 23  2017 Orpheus MK 803 - 02A.fcstd1
+-rwxrwxrwx 1 abassign abassign  4528074 mar 17  2017 Orpheus MK 803 - 02.dae
+-rwxrwxrwx 1 abassign abassign  2085371 mar 17  2017 Orpheus MK 803 - 02.fcstd
+-rwxrwxrwx 1 abassign abassign  2093191 mar 17  2017 Orpheus MK 803 - 02.fcstd1
+-rwxrwxrwx 1 abassign abassign  4159424 mar 23  2017 OrpheusMK803.blend
+-rwxrwxrwx 1 abassign abassign  4194948 mar 22  2017 OrpheusMK803.blend1
+-rwxrwxrwx 1 abassign abassign     5664 mar 23  2017 Orpheus MK 803 - Paletta-BassaPressione.fcstd
+-rwxrwxrwx 1 abassign abassign   631448 ott 22  2016 section 02.png
+
+G91.sviluppo/Systems:
+totale 52
+-rwxrwxrwx 1 abassign abassign 7138 ago 17  2015 G91-fuel.xml
+-rwxrwxrwx 1 abassign abassign 1517 giu 11  2016 G91-hydraulic.xml
+-rwxrwxrwx 1 abassign abassign  114 ago  6  2015 G91-keyboard.xml
+-rwxrwxrwx 1 abassign abassign 3311 dic 10  2016 G91-views.xml
+-rwxrwxrwx 1 abassign abassign  560 ago 24  2015 G91-views.xml.zip
+-rwxrwxrwx 1 abassign abassign  369 ott  2  2016 help.xml
+
+G91.sviluppo/Test multimedia:
+totale 27744
+-rwxrwxrwx 1 abassign abassign 28404865 dic 17  2016 vokoscreen-2016-12-17_19-29-11.mkv[/code]
+
+It is evident that this project follows different 3D modeling parameters that are quite unusual in FGFS, criteria that I would like to see more popular in this flight simulator. I would like to stop continuing to define the ownership of a model in such a smoky and personal way, there are PRECISE international regulations, which define the paternity of work according to the fact that it has been published (we have already done some month ago...). If we want to attract new and effective developers, we need to be clear from the beginning. We must stop paying attention only to those who scream! It is necessary to pay attention only to the evidence of the facts and to the fact that the law affirms precise things just to prevent those who scream are always right!
+
+
+[quote="Thorsten";p=325559]I'm truly sorry, but I don't think we can proceed under these circumstances.[/quote]
+
+I'm glad for your repository, then if you're the one who manages $ FG_ROOT it's obvious that you know what he put in it. The example I gave you is obviously a "Reductio ad absurdum", it did not want to be offensive to you, but only to explain that without certain legal allegations it is not possible to produce legally certain evidence.
+We are preparing various images that illustrate the development of the project, but you must also understand that the project is born on computers and not online, so the work phases have followed a classic trend of a project that comes from enthusiasts, who first decide to make the front landing gear (which causes the compactness of the G91 is very binding for the front of the fuselage). Then seen the results are passed to the other parts.
+The period is from October 2016 to December 2017, I have seen the blender files that I have listed in the previous post:
+
+I hope this will make it clear that the G91R1B is our work done since October of last year until now. If there are allegations about our work we demand absolutely that is accurate and reliable evidence.
+
+Happy New Year.
+
+20161019:
+[img]https://s19.postimg.org/5mt9pqccz/20161019_-_fgfs-screen-097.png[/img]
+
+20170314
+[img]https://s19.postimg.org/bnqymsbtv/20170314_-_Fuselage_C0.jpg[/img]
+
+20170314
+[img]https://s19.postimg.org/iqyu2dmeb/20170314_-_Motor_01.jpg[/img]
+
+20170316
+[img]https://s19.postimg.org/phfbbtwpf/20170316_-_Gun.jpg[/img]
+
+20170317
+[img]https://s19.postimg.org/d2sjbiscj/20170317-musetto.jpg[/img]
+
+20170328
+[img]https://s19.postimg.org/euli6f3zn/20170328-fuselage_B0_rev1.jpg[/img]
+
+20170417
+[img]https://s19.postimg.org/npmcgz32r/20170417-test_flap.jpg[/img]
+
+20170428
+[img]https://s19.postimg.org/ug2tqeiir/20170428-_ALI.jpg[/img]
+
+20170701
+[img]https://s19.postimg.org/4xahdc1ir/20170701_-_Landing_gear_integration.jpg[/img]
+
+20170703
+[img]https://s19.postimg.org/fwvooxznn/20170703_-_Landimg_gear_integration.jpg[/img]
+
+20170703
+[img]https://s19.postimg.org/9j6llws9f/20170703-_BLENDER_PER_ADRIANO.jpg[/img]
+
+20170915
+[img]https://s19.postimg.org/bazkgrtlv/20170915-_Airspeed.jpg[/img]
+
+20171004
+[img]https://s19.postimg.org/jt90l2xjn/20171004-cockpit_GR1_Bvvv.jpg[/img]
+
+20171012
+[img]https://s19.postimg.org/p4nx5s46r/20171012-interruttore_levetta2.jpg[/img]
+
+20171019
+[img]https://s19.postimg.org/71uuekvhf/20171019-_Airspeed_rev.jpg[/img]
+
+20171022
+[img]https://s19.postimg.org/bnqymyrb7/20171022-_PHI-_Indicator_sicurezza.jpg[/img]
+
+20171103
+[img]https://s19.postimg.org/cq155i2er/20171103-_CICLEScollimatore_def.jpg[/img]
+
+20171208
+[img]https://s19.postimg.org/npmch2atf/20171208-handle_cockpit.jpg[/img]
+
+20170703
+[img]https://s19.postimg.org/d2sjbqpub/20170703-_BLENDER_PER_ADRIANO.jpg[/img]
+
+20172107
+[img]https://s19.postimg.org/npmch7npv/20172107-revisione_portello_armi_dx.jpg[/img]
+
+20170814
+[img]https://s19.postimg.org/algs4j3dv/20170814-_Tiles_13.08.17.jpg[/img]
+
+20170829
+[img]https://s19.postimg.org/ycg5mnqqb/20170829-cockpit.jpg[/img]
+
+20170909
+[img]https://s19.postimg.org/71uuer38z/20170909-_GRUPPO_TETTUCCIO-_ABITACOLO.jpg[/img]
+
+20170913
+[img]https://s19.postimg.org/yp7jsv3v7/20170913-cockpit_GR1_B.jpg[/img]
+
+20171211
+[img]https://s19.postimg.org/a8pdyg8ab/20171211-portelli_armi_G91_R1_B.jpg[/img]
+
+20170917
+[img]https://s19.postimg.org/ay86atvz7/20170917-panel_sx_dx.jpg[/img]
+
+
+
+[quote="Thorsten";p=325594]
+...You may think whatever you prefer since I don't have to do this and I'll remove myself from these proceedings now. I've written a request to the mailing list outlining my problem and asking someone else to take over the review.[/quote]
+
+[b]It seems to me a wise decision that makes you honor.[/b]
+
+Unfortunately, as I have already told you that in these cases more precise guidelines should be adopted.
+Telling you that you should have expected from Cobe571 first, its failes, which it says were used by us to build our model, was an essential step.
+Having not previously claimed this from Cobe571, it has generated a lot of confusion., making Cobe571 reach its goal.
+A friend of mine, a court judge, told me that an investigation, like the one you wanted to do, has only 24 hours to solve, if this time is exceeded, it's a problem! Many people are or have been in jail without criminal guilt because those who started the investigation did not do it correctly. A famous case in Italy is the murder of Meredith_Kercher ([url]https://en.wikipedia.org/wiki/Murder_of_Meredith_Kercher[/url]) American citizen who was 4 years in prison in Italy because the detective did not want to work on the evidence of the facts, but only by making personal deductions that were later found to be untrue.
+Your behavior I found it not suitable for the role of problem analysis. I repeat, this applies not only to this case, but also to many other cases:
+It's easy to say they stole it! But to say it should be combined with this statement of the concrete evidence, in this case it was enough to have the Cobe571 files and make a comparison. Now if we publish the repository and Cobe571 takes it and says it's his ... showing files is much more difficult to make a unanimous and clear judgment.
+What Cobe571 is doing is incomprehensible to us, I do not understand the usefulness, I consider it a nice model, nice. I developed his FDM (2015-2016) and was the first job in JSBSim. The information material for the project G91R4-GINA I found it at 80% and in part I bought it (Aviologs), the first post that asked those who wanted to develop I did it on FB page FGFS Italy. 
+The project start in this post:
+[quote="abassign";p=210752]The Italian group of FligtGear now is starting to try to "build" a FIAT G-91R Gina. We are looking for documentation, manuals, drawings on which set up the 3D model and the FDM, let even those who want to give us a helping hand :)
+Thank[/quote]
+The date is: Tue May 27, 2014 11:09 am is the true starting project date!
+
+in this post start the Patrizio Melis (Alias Cobe571) collaboration:
+[quote="abassign";p=213614] ...
+Our friend "Patrick Melis" is starting to modeling the fuselage and wings of the G91, it will be certainly a wonderful job :) I hope others will give us a hand to other parts of this beautiful aircraft.
+Activities currently planned:
+FDM JSBSim - Adriano Bassignana (abassign)
+3D model - Patrizio Melis
+All the modeling should have a high quality, even if the model will be a bit generous ;) Do not worry we will have time to do it to lose weight ...
+All model must be Rembrandt compatible !
+In case someone wants to contribute I have 0.5 GB of material that I can give the link for DropBox, it needs to have an email to send the link![/quote]
+
+[quote="cobe571";p=252325]Hello everyone,
+I am the person who is working on the model of the G-91R4 (v.10109). I started working on this model about 25 June 2014. After some time I moved on to work on other 3D models. Meanwhile I had not realized that the interest in this airplane has grown so much to take us to the current situation. I rise to show updates on the current state of development of the G-91R that I picked up recently and that I intend to carry out following the timing of my work.
+The first stages:
+[img]http://sites.google.com/site/cobe571data03/home/fiat-g-91r10109/FIAT-G.91R.blend343.png[/img]
+Working on main body:
+[img]http://sites.google.com/site/cobe571data03/home/fiat-g-91r10109/FIAT-G.91-R4-10109-DEV.blend24v.png[/img]
+Workin on the tail:
+[img]http://sites.google.com/site/cobe571data03/home/fiat-g-91r10109/FIAT-G.91-R4-10109-DEV.blend1.png[/img]
+Follow...[/quote]

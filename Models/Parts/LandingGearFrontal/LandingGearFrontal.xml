@@ -78,7 +78,7 @@
     <!-- Chrome Effects on materials -->
     
     <effect>
-        <inherits-from>Aircraft/G91/Models/Effects/Glass/glass-chrome</inherits-from>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Glass/glass-chrome</inherits-from>
         <object-name>Light_dx.001</object-name>
         <object-name>Light_dx.002</object-name>
         <object-name>gear-front-jack-02</object-name>
@@ -825,7 +825,7 @@
         <type>material</type> 
         <object-name>Galss_light_sx</object-name>
         <object-name>glass_light_dx</object-name>
-        <texture>Liveries/G91-Al.png</texture>
+        <texture>Pictures/G91-Al.png</texture>
         <emission>	
             <red>1.0</red>	
             <green>1.0</green>	
@@ -846,7 +846,7 @@
         <type>material</type>
         <object-name>Light_dx._reflectivepart</object-name>
         <object-name>Light_sx.reflectivepart</object-name>
-        <texture>Liveries/G91-LightFrontal01.png</texture>
+        <texture>Pictures/G91-LightFrontal01.png</texture>
         <emission>	
             <red>1.0</red>	
             <green>1.0</green>	
@@ -861,7 +861,7 @@
         <object-name>Light_Sphere_dx.002</object-name>
         <object-name>Light_Sphere_dx.003</object-name>
         <object-name>Light_Sphere_dx.004</object-name>
-        <texture>Liveries/G91-LightFrontal01.png</texture>
+        <texture>Pictures/G91-LightFrontal01.png</texture>
         <emission>
             <red>1.0</red>
             <green>1.0</green>

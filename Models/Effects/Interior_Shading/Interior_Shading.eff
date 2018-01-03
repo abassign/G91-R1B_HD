@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PropertyList>
+    <name>G91-interior</name>
+    <inherits-from>Effects/model-interior</inherits-from>
+    
+    <parameters>
+        <texture n="4">
+            <type>cubemap</type>
+            <images>
+                <positive-x>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/shadowmap_back.png</positive-x>
+                <negative-x>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/shadowmap_front.png</negative-x>
+                <positive-y>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/shadowmap_right.png</positive-y>
+                <negative-y>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/shadowmap_left.png</negative-y>
+                <positive-z>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/shadowmap_top.png</positive-z>
+                <negative-z>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/shadowmap_bottom.png</negative-z>
+            </images>
+        </texture>
+        <opacity-cube-center type="vec3d" n="0"> -3.6 0.0 0.6</opacity-cube-center>
+        <opacity-cube-scale type="vec3d" n="0"> 1.0 1.0 1.0</opacity-cube-scale>
+        <opacity-cube-angle type="float">0.0</opacity-cube-angle>
+    </parameters>
+</PropertyList>

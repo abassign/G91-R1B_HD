@@ -63,7 +63,7 @@
     </animation>
     
     <effect>
-        <inherits-from>Aircraft/G91/Models/Effects/Glass/glass-chrome</inherits-from>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Glass/glass-chrome</inherits-from>
         <object-name>swich_04</object-name>
         <object-name>swich_02</object-name>
         <object-name>swich_03</object-name>

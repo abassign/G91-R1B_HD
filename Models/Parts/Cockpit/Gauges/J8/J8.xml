@@ -128,7 +128,7 @@
             <blue>0.6</blue>
         </ambient>
         <emission>
-            <red>0.15</red>
+            <red>0.05</red>
             <green>0.0</green>
             <blue>0.0</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
@@ -311,7 +311,6 @@
     </animation>
     
     <animation>
-        
         <type>pick</type>
         <object-name>Knob_caging_top (Meshed)</object-name>
         <action>
@@ -330,7 +329,7 @@
         <object-name>Knob_caging_top (Meshed)</object-name>
         <object-name>knob_caging_cylinder (Meshed)</object-name>
         <property>/instrumentation/attitude-indicator/caged-flag</property>
-        <factor>0.025</factor>
+        <factor>0.015</factor>
         <offset-m>0.0</offset-m>
         <axis>
             <x>1</x>
@@ -341,7 +340,7 @@
     
     <model>
         <name>procedural_light_cockpit_gauge_spot_red</name>
-        <path>Aircraft/G91/Models/Parts/Cockpit/Effects/lights/procedural_light_cockpit_gauge_spot_red.xml</path>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Effects/lights/procedural_light_cockpit_gauge_spot_red.xml</path>
         <offsets>
             <x-m> 0.05</x-m>
             <y-m> 0.0 </y-m>

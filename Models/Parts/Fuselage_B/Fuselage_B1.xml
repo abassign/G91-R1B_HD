@@ -13,7 +13,7 @@
 
     <!-- Chrome Effects on materials -->
     <effect>
-        <inherits-from>Aircraft/G91/Models/Effects/Glass/glass-chrome</inherits-from>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Glass/glass-chrome</inherits-from>
         <object-name>A__G91_fuselage_weapon_door_dx.001</object-name>
         <object-name>A__G91_fuselage_weapon_door_sx.001</object-name>
         <object-name>munitions_box_dx_01</object-name>
@@ -123,7 +123,7 @@
         <object-name>browning M2_dx_02.e.001</object-name>
         <object-name>browning M2_dx_02.f.001</object-name>
         <object-name>A__G91_fuselage_weapon_01up 02.002</object-name>
-        <texture>Liveries/G91-Dark-Grey.png</texture>
+        <texture>Pictures/G91-Dark-Grey.png</texture>
     </animation>
     
     <animation>

@@ -24,7 +24,7 @@
         </rating>
         
         <startup>
-            <splash-texture>Aircraft/G91/G9120171106.jpg</splash-texture>
+            <splash-texture>Aircraft/G91-R1B_HD/G91-Space.png</splash-texture>
         </startup>
         
         <flight-model>jsb</flight-model>
@@ -32,7 +32,7 @@
         <aero>G91-JSBSim</aero>
         
         <model>
-            <path>Aircraft/G91/Models/G91.xml</path>
+            <path>Aircraft/G91-R1B_HD/Models/G91.xml</path>
         </model>
         
         <startup>
@@ -40,7 +40,8 @@
         </startup>
         
         <sound>
-            
+            <audible>true</audible>
+            <path>Aircraft/G91-R1B_HD/Sounds/G91-sounds.xml</path>
         </sound>
         
         <menubar>
@@ -53,7 +54,7 @@
                         <binding>
                             <command>nasal</command>
                             <script>
-                                test_dialog = gui.Dialog.new("sim/gui/dialogs/G91/TestSystemsPlane/dialog","Aircraft/G91/Dialogs/G91-test.xml");
+                                test_dialog = gui.Dialog.new("sim/gui/dialogs/G91/TestSystemsPlane/dialog","Aircraft/G91-R1B_HD/Dialogs/G91-test.xml");
                                 test_dialog.open();
                             </script>
                         </binding>
@@ -63,7 +64,7 @@
                         <binding>
                             <command>nasal</command>
                             <script>
-                                Set_Object_Position_dialog = gui.Dialog.new("sim/gui/dialogs/G91/SetObjectPosition/dialog","Aircraft/G91/Dialogs/SetObjectPosition.xml");
+                                Set_Object_Position_dialog = gui.Dialog.new("sim/gui/dialogs/G91/SetObjectPosition/dialog","Aircraft/G91-R1B_HD/Dialogs/SetObjectPosition.xml");
                                 Set_Object_Position_dialog.open();
                             </script>
                         </binding>
@@ -98,30 +99,32 @@
     
     <nasal>
         <general>
-            <file>Aircraft/G91/Nasal/Ambient/ambient_data.nas</file>
-            <file>Aircraft/G91/Nasal/Electric/electric_system_basic.nas</file>
-            <file>Aircraft/G91/Nasal/Autopilot/autopilot_set.nas</file>
-            <file>Aircraft/G91/Nasal/Engine/engine_red_emission.nas</file>
-            <file>Aircraft/G91/Nasal/Reflections/Glass_Camera_Reflections.nas</file>
-            <file>Aircraft/G91/Nasal/Reflections/Glass_Canopy_Reflections.nas</file>
-            <file>Aircraft/G91/Nasal/Lights/position_lights.nas</file>
-            <file>Aircraft/G91/Nasal/Lights/frontal_gear_lights.nas</file>
-            <file>Aircraft/G91/Nasal/Lights/re_emit_green_red_gauges.nas</file>
-            <file>Aircraft/G91/Nasal/Lights/button_lights.nas</file>
-            <file>Aircraft/G91/Nasal/Lights/button_lights.nas</file>
-            <file>Aircraft/G91/Nasal/Electric/power_management.nas</file>
-            <file>Aircraft/G91/Nasal/Hydraulic/hydraulic.nas</file>
+            <file>Aircraft/G91-R1B_HD/Nasal/Ambient/ambient_data.nas</file>
+            <file>Aircraft/G91-R1B_HD/Nasal/Electric/electric_system_basic.nas</file>
+            <file>Aircraft/G91-R1B_HD/Nasal/Autopilot/autopilot_set.nas</file>
+            <file>Aircraft/G91-R1B_HD/Nasal/Engine/engine_red_emission.nas</file>
+            <file>Aircraft/G91-R1B_HD/Nasal/Reflections/Glass_Camera_Reflections.nas</file>
+            <file>Aircraft/G91-R1B_HD/Nasal/Reflections/Glass_Canopy_Reflections.nas</file>
+            <file>Aircraft/G91-R1B_HD/Nasal/Lights/position_lights.nas</file>
+            <file>Aircraft/G91-R1B_HD/Nasal/Lights/frontal_gear_lights.nas</file>
+            <file>Aircraft/G91-R1B_HD/Nasal/Lights/re_emit_green_red_gauges.nas</file>
+            <file>Aircraft/G91-R1B_HD/Nasal/Lights/button_lights.nas</file>
+            <file>Aircraft/G91-R1B_HD/Nasal/Lights/button_lights.nas</file>
+            <file>Aircraft/G91-R1B_HD/Nasal/Electric/power_management.nas</file>
+            <file>Aircraft/G91-R1B_HD/Nasal/Hydraulic/hydraulic.nas</file>
             <!-- Gauges -->
-            <file>Aircraft/G91/Nasal/Gauges/clock.nas</file>
-            <file>Aircraft/G91/Nasal/Gauges/accelerometer.nas</file>
+            <file>Aircraft/G91-R1B_HD/Nasal/Gauges/clock.nas</file>
+            <file>Aircraft/G91-R1B_HD/Nasal/Gauges/accelerometer.nas</file>
+            <!-- Fuel -->
+            <file>Aircraft/G91-R1B_HD/Nasal/Fuel/collect_tank_2_all_tank.nas</file>
             <!-- For build and testing -->
-            <file>Aircraft/G91/Nasal/Utility/SetObjectPosition.nas</file>
+            <file>Aircraft/G91-R1B_HD/Nasal/Utility/SetObjectPosition.nas</file>
         </general>
         <canvas_gauges>
-            <file>Aircraft/G91/Models/Parts/Canopy/Gauges/SFOM_83A/SFOM_83A_01.nas</file>
+            <file>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Gauges/SFOM_83A/SFOM_83A_01.nas</file>
         </canvas_gauges>
         <canopy>
-            <file>Aircraft/G91/Nasal/canopy.nas</file>
+            <file>Aircraft/G91-R1B_HD/Nasal/canopy.nas</file>
         </canopy>
     </nasal>
     

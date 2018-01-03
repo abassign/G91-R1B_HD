@@ -6,7 +6,7 @@
 
   <parameters>
   	<texture n="3">
-		<image>Aircraft/G91/Models/Effects/heatmap.png</image>
+		<image>Aircraft/G91-R1B_HD/Models/Effects/heatmap.png</image>
 		<type>2d</type>
 		<filter>linear-mipmap-linear</filter>
 		<wrap-s>clamp</wrap-s>
@@ -15,7 +15,7 @@
 	</texture>
 	
 	<texture n="4">
-		<image>Aircraft/G91/Models/Effects/scorchmarks.png</image>
+		<image>Aircraft/G91-R1B_HD/Models/Effects/scorchmarks.png</image>
 		<type>2d</type>
 		<filter>linear-mipmap-linear</filter>
 		<wrap-s>clamp</wrap-s>

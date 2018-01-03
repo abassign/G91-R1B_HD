@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+    
+    <offsets>
+        <x-m>0.0</x-m>
+        <y-m>0.0</y-m>
+        <z-m>-0.35</z-m>
+        <pitch-deg>0.0</pitch-deg>
+    </offsets>
+
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Fuselage_A/Fuselage_A0.xml</path>
+        <offsets>
+            <x-m>0</x-m>
+            <y-m>0</y-m>
+            <z-m>-0.10</z-m>
+        </offsets>
+    </model>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Fuselage_B/Fuselage_B1.xml</path>
+        <offsets>
+            <x-m>0.2</x-m>
+            <y-m>0</y-m>
+            <z-m>-0.10</z-m>
+        </offsets>
+    </model>
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Tail/Tail.xml</path>
+        <offsets>
+            <x-m>6</x-m>
+            <y-m>0</y-m>
+            <z-m>-0.10</z-m>
+        </offsets>
+    </model>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Wing/Wing.xml</path>
+        <offsets>
+            <x-m>2.5</x-m>
+            <y-m>0</y-m>
+            <z-m>-0.10</z-m>
+        </offsets>
+    </model>
+
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Turbojet/OrpheusMK803.xml</path>
+        <offsets>
+            <x-m>3</x-m>
+            <y-m>0.30</y-m>
+            <z-m>1</z-m>
+        </offsets>
+    </model>
+
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/LandingGearFrontal/LandingGearFrontal.xml</path>
+        <offsets>
+            <x-m>0</x-m>
+            <y-m>0</y-m>
+            <z-m>-1</z-m>
+        </offsets>
+    </model>
+
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Canopy.xml</path>
+        <offsets>
+            <x-m>0</x-m>
+            <y-m>0</y-m>
+            <z-m>1</z-m>
+        </offsets>
+    </model>
+
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Cockpit.xml</path>
+        <offsets>
+            <x-m>0.0</x-m>
+            <y-m>0</y-m>
+            <z-m>-0.10</z-m>
+        </offsets>
+    </model>
+<!--
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Effects/Ground_Shadow/shadow.xml</path>
+    </model>
+    -->
+</PropertyList>

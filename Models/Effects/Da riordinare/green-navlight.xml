@@ -4,7 +4,7 @@
  <path>/Models/Effects/procedural_light.xml</path>
 
  <effect>
-   <inherits-from>Aircraft/G91/Models/Effects/green-navlight</inherits-from>
+   <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/green-navlight</inherits-from>
    <object-name>green-navlight</object-name>
  </effect>
  

@@ -1,0 +1,104 @@
+[b]How to make a medium-high quality aircraft, we will tell you about our experience.[/b]
+
+[img]https://s19.postimg.org/4kgabpkxv/00-fgfs-screen-007_A1.jpg[/img]
+
+When we wanted to build the FIAT G91-R1B, we did it with the concept of giving the FGFS community an aircraft model that was qualitatively close to the models offered (almost always paid) on X-Plane. The intent was to show that in the open source it is possible to make quality aircraft projects, in the hope that others can continue to refine the aircraft or to derive new variants using parts of the basic model.
+
+In the project we are trying to insert new criteria and methods to increase the quality of the aircraft as explained below:
+
+Use official documentation obtained from material available on the web and possibly free of copyright. 
+
+[img]https://s19.postimg.org/b845ptoib/00_A-_Screenshot_20171228_225553.jpg[/img]
+[img]https://s19.postimg.org/tax8h4kdv/00_B-_Screenshot_20171228_224813.jpg[/img]
+[img]https://s19.postimg.org/5jxuyv7ab/14_A1-_Screenshot_20171225_203939.jpg[/img]
+
+The documentation must be as technical as possible and made by those who designed and built the aircraft. We have noticed that the documentation found in books and magazines is often wrong! The drawings that are not the original blue-prints, have dimensions that are not always certain because the printing and / or the reduction in scale is not always well done. 
+
+The choice of the aircraft MUST be done with the availability of good documentation material, it is impossible to make a good aircraft if sufficient documentation is missing. Fortunately, many enthusiasts make a lot of material available on the Internet and often it is copyright free material. For the G91-R1B part of the material was collected by me from [url]http://www.avialogs.com[/url] a website that is doing a wonderful job of collecting, scanning and rearranging the material for many types of aircraft.
+
+Then I discovered that many other enthusiasts have done the same job for specific aircraft, for example the FaceBook group: PILOTI DI G91 R-Y-T-PAN [url]https://www.facebook.com/groups/315853958496729/[/url] is helping us a lot for learn more about the plane and explain things that the manuals do not always report, such as the true lighting of the instruments and the cockpit.
+
+[b]Work with greater freedom in the complexity of the 3D model.[/b]
+
+Certainly the use of a 3D file that reports more complex objects than simple triangles or quadrilaterals, can be a great improvement if such graphic objects could be directly treated by the 3D rendering engine, but at present it is not so. But the modern graphics cards are very powerful and the memory available a lot (4-8 GB are the norm) this allows you to propose complex models in complex scenarios, as do our friends of X-Plane. So do not limit yourself to making objects with few vertices, especially for the narrowest and most visible curves! As I have often written in this forum, there are surfaces that can be quite poor at the top, but there are surfaces such as the wheels of landing gear, the analogue instruments on board, the frame on which the canopy is mounted etc, which being close to the point of view they MUST be realized in a way that does not give the sensation of being prisms and not of continuous curves as in reality.
+Our criterion was simple, put many knots in order to have good surfaces and if they are too many, reduce them through the various functions that Blender makes available.
+For those who do not like this criterion, continue to do as you wish, but this model has been made with this spirit and we would like no one to change this principle. The future, the continuous increase in the power of the GPU, will make this model ever lighter, delaying its obsolescence over time.
+
+This example of the main landing gear I think can give an exact idea of the need to use many nodes to have a sufficient rendering quality:
+
+[img]https://s19.postimg.org/t0yg66teb/01_A-_Massimiliano_G91_01-47.jpg[/img]
+
+In my opinion the results are not bad, and in any case the model is flying well even on my development PC that lacks a dedicated 3D card!
+
+[img]https://s19.postimg.org/vv1ljjg43/02-_Massimiliano_G91_01-3.jpg[/img]
+[img]https://s19.postimg.org/d2pqfxour/03-_Massimiliano_G91_01-5.jpg[/img]
+[img]https://s19.postimg.org/e4zwyhfdv/04-_Massimiliano_G91_01-6.jpg[/img]
+
+In the past years I have done several tests on the speed of execution of 3D rendering, and I have verified that the speed reduction is not always perceptible with greater complexity of the model, I noticed that the real killer of the execution speed are the NASAL and XML programs (I think it is caused by the problem of insufficient management of the multiprocessing) and some functions of the scenario (Mainly the trees ... but not the grass ...). Currently I perform the model test on a machine with Intel I7 4700 and without a dedicated video card with a speed of 10-15 frames per second with a resolution of 1024x1024.
+
+[b]How to start making the model[/b]
+
+All start from the fuselage, I think it's wrong! It can be useful for a first approach, but then it is better to throw everything away and start again!
+
+It is best to start from the objects that will have to be inserted in the fuselage, like the landing trolleys, the roof and the engine in order to generate the constraints with which to build the fuselage, the wings and the tail rudders. However it is essential that every part that composes a .ac file is never too big, on average less than 2000-3000 nodes, otherwise the loading time is lengthened too much, but this is not a general rule. Try and then eventually modify, but first try!
+
+This approach is less gratifying, but extremely instructive and allows us to evaluate the quality of information material available to us and follows the typical criterion of aircraft designers. A designer of an airplane defines the exact dimensions of the fuselage and wing according to the organs that will be mounted inside, this does so to save time and money. If the model we build follows the same criteria we discover that modeling is simpler and more realistic!
+It would always be desirable to have the design of the ribs so you can arrange things closer to reality.
+
+We started from the front landing gear, it is complex and very compact, its constraints are stringent and we must proceed with great care:
+
+[img]https://s19.postimg.org/i1d8ulier/05-_Massimiliano_G91_01-13.jpg[/img]
+
+But the result seems to me very good:
+
+[img]https://s19.postimg.org/q6vasm96r/01_B-_Massimiliano_G91_01-32.jpg[/img]
+
+[img]https://s19.postimg.org/z1w53bl6b/08-_Massimiliano_G91_01-19.jpg[/img]
+
+[img]https://s19.postimg.org/ldn2rme2b/landing-gera-01-fgfs-screen-009.jpg[/img]
+
+Then we went on to model the fuselage, not the wing, as this, for the G91, can be dismantled for a quick assembly for a possible transport by plane. 
+
+[img]https://s19.postimg.org/xbd41iiz7/10_A0-_Massimiliano_G91_01-9.jpg[/img]
+
+[img]https://s19.postimg.org/fy2tmn0ir/10_B0-_Massimiliano_G91_01-20.jpg[/img]
+
+[img]https://s19.postimg.org/4o1djgfmb/10_E-_Massimiliano_G91_01-30.jpg[/img]
+
+Then the wing with its moving parts that must be adapted to the rear landing gear.
+
+[img]https://s19.postimg.org/spgzt8pr7/10_C-_Massimiliano_G91_01-29.jpg[/img]
+
+[img]https://s19.postimg.org/jjzwr1blf/10_D-_Massimiliano_G91_01-27.jpg[/img]
+
+[img]https://s19.postimg.org/dj27u671f/12_AMassimiliano_G91_01-36.jpg[/img]
+
+[img]https://s19.postimg.org/boy3ke4yb/12_B-_Massimiliano_G91_01-11.jpg[/img]
+
+[img]https://s19.postimg.org/7skroezeb/13-_Massimiliano_G91_01-12.jpg[/img]
+
+For the tail of the plane, we always proceed with detached parts that will then be composed in Blender. As always we try to follow the ribs of the aircraft, also to improve the complex double curvature of the tail.
+
+[img]https://s19.postimg.org/qxo0ydgoz/13_A-_Massimiliano_G91_01-40.jpg[/img]
+
+[img]https://s19.postimg.org/fy2tmsdf7/13_B-_Massimiliano_G91_01-39.jpg[/img]
+
+For the cockpit we have created two sets of parts, the Canopy that includes the whole cockpit and the transparent cover:
+
+[img]https://s19.postimg.org/xo4i7tjab/13_C-_Massimiliano_G91_01-41.jpg[/img]
+
+And the cockpit with flying instruments:
+
+[img]https://s19.postimg.org/v6sr0qev7/50_B1-fgfs-screen-003.jpg[/img]
+
+For the dimensioning of parts, manuals do not always tell us everything, often need to use pictures that some friends had us on the plane (if it exists)!
+
+[img]https://s19.postimg.org/9t2l17ib7/50_C0-_Screenshot_20171117_170520.jpg[/img]
+
+[img]https://s19.postimg.org/u4iki5lr7/50_C1-fgfs-screen-005.jpg[/img]
+
+So all the plane is composed of many parts, some will be merged directly into Blender, while other parts will remain separated in different .ac files and then merged via XML. This method can cause problems for the liveries, in case those deliveries will have to work on parts, but it is enough to have patience or a program that performs the cut (I think Blender does it) that everything is back in place.
+
+[img]https://s19.postimg.org/wkbnnpisz/00_D-fgfs-screen-006.jpg[/img]
+
+This post was made to better explain what were our development criteria in order to have the possibility of being placed in the official repository. It would be nice if someone with a good FDM JSBSim experience could give us the possibility to improve flight qualities, especially for inertia and stability in take-off and landing. At present, we continue to work on the inside and other external parts, the electricity management system and power-off, along with the addition of side panels. The current development time is close to 1.5 years, we hope to release as soon as possible the model to the whole community with GNU license 2 and later. If others can help us will surely further improve the model and add other things that at present we have not achieved. We thank everyone for their patience and for the various advice they are giving us.

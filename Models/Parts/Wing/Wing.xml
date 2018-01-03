@@ -37,7 +37,7 @@
     
     <!-- Chrome Effects on materials -->
     <effect>
-        <inherits-from>Aircraft/G91/Models/Effects/Glass/glass-chrome</inherits-from>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Glass/glass-chrome</inherits-from>
         <object-name>A__G91_fuselage_int.weapon.door.001</object-name>
         <object-name>A__G91_fuselage_weapon_01up 02.001</object-name>
         <object-name>box_recovery_munitions_dx</object-name>

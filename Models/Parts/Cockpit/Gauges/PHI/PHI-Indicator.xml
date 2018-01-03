@@ -8,7 +8,6 @@
         <inherits-from>Effects/model-transparent</inherits-from>
         <object-name>glass (Meshed)</object-name>
     </effect>
-    
     <animation> 
         <type>material</type>
         <object-name>cover (Meshed)</object-name>
@@ -41,9 +40,9 @@
         <object-name>back_frontal (Meshed)</object-name>
         <texture>Pictures/G91-Al-dark.png</texture>
         <ambient>
-            <red>0.2</red>
-            <green>0.2</green>
-            <blue>0.2</blue>
+            <red>0.6</red>
+            <green>0.6</green>
+            <blue>0.6</blue>
         </ambient>
         <emission>
             <red>0.2</red>
@@ -56,7 +55,6 @@
     <animation> 
         <type>material</type>
         <object-name>knob_001 (Meshed)</object-name>
-        <object-name>knob_001_A (Meshed)</object-name>
         <object-name>knob_002 (Meshed)</object-name>
         <object-name>knob_003 (Meshed)</object-name>
         <object-name>knob_004 (Meshed)</object-name>
@@ -117,7 +115,7 @@
         <object-name>glass (Meshed)</object-name>
         <texture>Pictures/G91-Al-Light.png</texture>
         <transparency>
-            <alpha>0.1</alpha>
+            <alpha>0.2</alpha>
         </transparency>
         <ambient>
             <red>0.0</red>
@@ -338,7 +336,7 @@
     
     <model>
         <name>procedural_light_cockpit_gauge_spot_red</name>
-        <path>Aircraft/G91/Models/Parts/Cockpit/Effects/lights/procedural_light_cockpit_gauge_spot_red.xml</path>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Effects/lights/procedural_light_cockpit_gauge_spot_red.xml</path>
         <offsets>
             <x-m> 0.03</x-m>
             <y-m> 0.0 </y-m>
