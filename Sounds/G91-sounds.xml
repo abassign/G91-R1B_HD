@@ -72,7 +72,7 @@
         
         <jet>
             <name>jet</name>
-            <path>Sounds/jet.wav</path>
+            <path>Aircraft/G91-R1B_HD/Sounds/jet.wav</path>
             <mode>looped</mode>
             <condition>
                 <equals>
@@ -82,8 +82,9 @@
             </condition>
             <volume>
                 <property>engines/engine[0]/thrust_lb</property>
-                <factor type="double">0.00001</factor>
+                <factor type="double">0.0002</factor>
             </volume>
+            <!--
             <volume>
                 <property>fdm/jsbsim/tweak_factors/vol_jet</property>
             </volume>
@@ -93,6 +94,7 @@
             <volume>
                 <property>fdm/jsbsim/systems/canopy/noise_factor</property>
             </volume>
+            -->
             <pitch>
                 <property>engines/engine[0]/n1</property>
                 <factor>0.2</factor>
@@ -112,7 +114,7 @@
                 <outer-gain>0.5</outer-gain>
             </orientation>
         </jet>
-        
+
         <highpitch0>
             <name>highpitch0</name>
             <path>Aircraft/G91-R1B_HD/Sounds/2000hz.wav</path>
@@ -264,7 +266,7 @@
                 <factor>0.007</factor>
             </volume>
         </engine-stop>
-        
+
         <gear>
             <name>roll sound</name>
             <path>Aircraft/G91-R1B_HD/Sounds/drb_154.wav</path>
@@ -291,7 +293,6 @@
             <volume>
                 <property>velocities/groundspeed-kt</property>
                 <factor>0.001</factor>
-                <!-- <factor>0.0</factor> -->
                 <offset>0.0</offset>
             </volume>
         </gear> 
@@ -299,7 +300,7 @@
         <rumble>
             <name>rumble0</name>
             <mode>looped</mode>
-            <path>Sounds/rumble.wav</path>
+            <path>Aircraft/G91-R1B_HD/Sounds/rumble.wav</path>
             <condition>
                 <equals>
                     <property>fdm/jsbsim/gear/unit[0]/WOW</property>
@@ -316,7 +317,7 @@
         <rumble>
             <name>rumble1</name>
             <mode>looped</mode>
-            <path>Sounds/rumble.wav</path>
+            <path>Aircraft/G91-R1B_HD/Sounds/rumble.wav</path>
             <condition>
                 <equals>
                     <property>fdm/jsbsim/gear/unit[1]/WOW</property>
@@ -333,7 +334,7 @@
         <rumble>
             <name>rumble2</name>
             <mode>looped</mode>
-            <path>Sounds/rumble.wav</path>
+            <path>Aircraft/G91-R1B_HD/Sounds/rumble.wav</path>
             <condition>
                 <equals>
                     <property>fdm/jsbsim/gear/unit[2]/WOW</property>
@@ -346,7 +347,7 @@
                 <factor>0.12</factor>
             </volume>
         </rumble>
-        
+        <!--
         <gear>
             <name>gear0</name>
             <mode>in-transit</mode>
@@ -369,7 +370,7 @@
         
         <gear>
             <name>gear-lock0</name>
-            <path>Sounds/gear-lck.wav</path>
+            <path>Aircraft/G91-R1B_HD/Sounds/gear-lck.wav</path>
             <condition>
                 <equals>
                     <property>fdm/jsbsim/gear/unit[0]/pos-norm-real</property>
@@ -391,7 +392,7 @@
         
         <gear>
             <name>gear-lock0a</name>
-            <path>Sounds/gear-lck.wav</path>
+            <path>Aircraft/G91-R1B_HD/Sounds/gear-lck.wav</path>
             <condition>
                 <equals>
                     <property>fdm/jsbsim/gear/unit[0]/pos-norm-real</property>
@@ -433,7 +434,7 @@
         
         <gear>
             <name>gear-lock1</name>
-            <path>Sounds/gear-lck.wav</path>
+            <path>Aircraft/G91-R1B_HD/Sounds/gear-lck.wav</path>
             <condition>
                 <equals>
                     <property>fdm/jsbsim/gear/unit[1]/pos-norm-real</property>
@@ -454,7 +455,7 @@
         
         <gear>
             <name>gear-lock1a</name>
-            <path>Sounds/gear-lck.wav</path>
+            <path>Aircraft/G91-R1B_HD/Sounds/gear-lck.wav</path>
             <condition>
                 <equals>
                     <property>fdm/jsbsim/gear/unit[1]/pos-norm-real</property>
@@ -491,7 +492,7 @@
         
         <gear>
             <name>gear-lock2</name>
-            <path>Sounds/gear-lck.wav</path>
+            <path>Aircraft/G91-R1B_HD/Sounds/gear-lck.wav</path>
             <condition>
                 <equals>
                     <property>fdm/jsbsim/gear/unit[2]/pos-norm-real</property>
@@ -512,7 +513,7 @@
         
         <gear>
             <name>gear-lock2a</name>
-            <path>Sounds/gear-lck.wav</path>
+            <path>Aircraft/G91-R1B_HD/Sounds/gear-lck.wav</path>
             <condition>
                 <equals>
                     <property>fdm/jsbsim/gear/unit[2]/pos-norm-real</property>
@@ -533,7 +534,7 @@
         
         <squeal>
             <name>squeal0</name>
-            <path>Sounds/squeal.wav</path>
+            <path>Aircraft/G91-R1B_HD/Sounds/squeal.wav</path>
             <condition>
                 <equals>
                     <property>gear/gear[0]/wow</property>
@@ -562,7 +563,7 @@
         
         <squeal>
             <name>squeal1</name>
-            <path>Sounds/squeal.wav</path>
+            <path>Aircraft/G91-R1B_HD/Sounds/squeal.wav</path>
             <condition>
                 <equals>
                     <property>gear/gear[1]/wow</property>
@@ -591,7 +592,7 @@
         
         <squeal>
             <name>squeal2</name>
-            <path>Sounds/squeal.wav</path>
+            <path>Aircraft/G91-R1B_HD/Sounds/squeal.wav</path>
             <condition>
                 <equals>
                     <property>gear/gear[2]/wow</property>
@@ -651,7 +652,7 @@
         <flap>
             <name>flaps</name>
             <mode>in-transit</mode>
-            <path>Sounds/flaps.wav</path>
+            <path>Aircraft/G91-R1B_HD/Sounds/flaps.wav</path>
             <property>fdm/jsbsim/fcs/flap-pos-norm</property>
             <volume>
                 <factor>0.15</factor>
@@ -661,7 +662,7 @@
         <spoiler>
             <name>spoilers</name>
             <mode>in-transit</mode>
-            <path>Sounds/flaps.wav</path>
+            <path>Aircraft/G91-R1B_HD/Sounds/flaps.wav</path>
             <property>surface-positions/left-spoiler-pos-norm</property>
             <volume>
                 <factor>0.15</factor>
@@ -671,7 +672,7 @@
         <spoiler>
             <name>spoilers</name>
             <mode>in-transit</mode>
-            <path>Sounds/flaps.wav</path>
+            <path>Aircraft/G91-R1B_HD/Sounds/flaps.wav</path>
             <property>surface-positions/right-spoiler-pos-norm</property>
             <volume>
                 <factor>0.25</factor>
@@ -681,7 +682,7 @@
         <air-brakes>
             <name>air-brakes</name>
             <mode>in-transit</mode>
-            <path>Sounds/flaps.wav</path>
+            <path>Aircraft/G91-R1B_HD/Sounds/flaps.wav</path>
             <property>surface-positions/speedbrake-pos-norm</property>
             <volume>
                 <factor>0.25</factor>
@@ -796,7 +797,7 @@
         
         <click>
             <name>click</name>
-            <path>Sounds/click.wav</path>
+            <path>Aircraft/G91-R1B_HD/Sounds/click.wav</path>
             <mode>once</mode>
             <condition>
                 <and>
@@ -1201,7 +1202,7 @@
             </condition>
             <volume><factor>0.3</factor></volume>
         </jsb-throttle-crack>
-        
+        -->
     </fx>
     
 </PropertyList>

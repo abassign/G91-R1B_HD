@@ -239,7 +239,7 @@
     </model>
     
     <!-- Gauges -->
-    
+
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/Altimeter/Altimeter.xml</path>
         <offsets>
@@ -289,7 +289,7 @@
             <pitch-deg>-8.65</pitch-deg>
         </offsets>
     </model>
-    
+
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/MS-33678-3P/MS-33678-3P-1.xml</path>
         <offsets>
@@ -349,7 +349,7 @@
             <pitch-deg>0.0</pitch-deg>
         </offsets>
     </model>
-    
+
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/PHI/PHI-Indicator.xml</path>
         <offsets>
@@ -359,7 +359,7 @@
             <pitch-deg>-8.65</pitch-deg>
         </offsets>
     </model>
-    
+
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/PHI/PHI-Wind.xml</path>
         <offsets>
@@ -369,7 +369,7 @@
             <pitch-deg>-8.65</pitch-deg>
         </offsets>
     </model>
-    
+
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/RPM_Indicator/RPM_Indicator.xml</path>
         <offsets>
@@ -419,7 +419,7 @@
             <pitch-deg>-8.65</pitch-deg>
         </offsets>
     </model>
-    
+
     <!-- Switch and light -->
 
     <model>

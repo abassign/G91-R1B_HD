@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+    
+    <sim include="Systems/G91-views.xml">
+        
+        <long-description>The Fiat G.91 was an Italian jet fighter aircraft designed and built by Fiat Aviazione, which later merged into Aeritalia.
+            The G.91 has its origins in the NATO-organised NBMR-1 competition in 1953, which sought a light fighter-bomber "Light Weight Strike Fighter" to be adopted as standard equipment across the air forces of the various NATO nations. 
+        </long-description>
+        <author>Massimiliano Cuccarano rendering 3D and Adriano Bassignana FDM JSBSim and historical research</author>
+        <status>in_progress</status>
+        <aircraft-version>0.1</aircraft-version>
+        <license>GPL 3</license>
+        <rating>
+            <FDM type="int">2</FDM>
+            <systems type="int">1</systems>
+            <model type="int">4</model>
+            <cockpit type="int">3</cockpit>
+        </rating>
+        <minimum-fg-version>2017.3</minimum-fg-version>
+        <tags>
+            <tag>FIAT</tag>
+            <tag>single-engine</tag>
+            <tag>turbine</tag>
+        </tags>
+        
+        <sound>
+        </sound>
+        
+        <submodels> 
+        </submodels>
+        
+        <multiplay>
+            <chat_display>1</chat_display>
+            <generic> 
+                <int   n="0"  type="int">  0 </int>                                         <!--  0 immat -->
+                <int   n="1"  type="int">  0 </int>                                         <!--  1 immat -->
+                <int   n="2"  type="int">  0 </int>                                         <!--  2 immat -->
+                <int   n="3"  type="int">  0 </int>                                         <!--  3 immat -->
+                <int   n="4"  type="int">  0 </int>                                         <!--  4 immat -->
+                <int   n="5"  type="int">  0 </int>                                         <!--  5 immat -->
+                <int   n="6"  type="bool" alias="/sim/model/versionPAN">false</int>         <!--  6 version PAN -->
+                <int   n="7"  type="int">  0 </int>                                         <!--  7 color -->
+                <int   n="8"  alias="/systems/electrical/outputs/nav-lights">  0 </int>     <!--  8 nav-lights -->
+                <int   n="9"  alias="/sim/model/lights/beacon/state">  false </int>         <!--  9 strobe-lights -->
+                <int   n="11" type="bool" alias="/sim/model/hide-smoketanks">true</int>     <!-- 11 Smoke tanks -->
+                <int   n="12" type="bool" alias="/smoke/active">false</int>                 <!-- 12 Smoke active -->
+                <int   n="13" type="int"  alias="/smoke/colors">1</int>                     <!-- 13 Smoke color -->
+                <int   n="14" type="bool" alias="/sim/model/hide-tanks">false</int>         <!-- 14 Smoke tanks -->
+                <int   n="15" type="bool" alias="/sim/model/hide-probe">false</int>         <!-- 15 Probe -->
+                <float n="0"  alias="/sim/model/door-positions/crew/position-norm"/>
+                <float n="1"  alias="/sim/model/door-positions/passenger/position-norm"/>
+                <float n="2"  alias="/position/gear-agl-m"> 0 </float>                      <!-- altitude for MP shadow -->
+                <float n="3"  alias="/position/altitude-ft"> 0 </float>                     <!-- altitude for Smoke/Trail -->
+                <float n="4"  alias="/engines/engine[0]/n1"/>
+                <float n="5"  alias="/engines/engine[1]/n1"/>
+                <float n="6"  alias="/engines/engine[0]/n2"/>
+                <float n="7"  alias="/engines/engine[1]/n2"/>
+                <float n="8"  alias="/gear/gear[0]/wow/"/>
+                <float n="9"  alias="/gear/gear[1]/wow/"/>
+                <float n="10" alias="/gear/gear[2]/wow/"/>
+                <float n="11" alias="/gear/gear[0]/rollspeed-ms"/>
+                <float n="12" alias="/gear/gear[1]/rollspeed-ms"/>
+                <float n="13" alias="/gear/gear[2]/rollspeed-ms"/>
+                <float n="14" alias="/controls/engines/engine[0]/throttle"/>
+                <float n="15" alias="/controls/engines/engine[1]/throttle"/>
+                <!-- For Bombable -->
+                <int type="int" n="10" alias="controls/armament/trigger">0</int>
+                <string n="9" type="string" />
+            </generic>
+        </multiplay>
+        
+    </sim>
+    
+    <input include="Systems/G91-keyboard.xml"/>
+    
+    <nasal>
+    </nasal>
+    
+</PropertyList>

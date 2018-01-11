@@ -20,10 +20,10 @@
             <blue>0.6</blue>
         </ambient>
         <emission>
-            <red>0.1</red>
-            <green>0.0</green>
+            <red>0.6</red>
+            <green>0.6</green>
             <blue>0.0</blue>
-            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+            <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
         </emission>
     </animation>  
     
@@ -133,8 +133,8 @@
             <blue>0.0</blue>
         </ambient>
         <emission>
-            <red>0.01</red>
-            <green>0.00</green>
+            <red>0.1</red>
+            <green>0.1</green>
             <blue>0.005</blue>
             <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
         </emission>
@@ -152,9 +152,9 @@
             <blue>0.63</blue>
         </ambient>
         <emission>
-            <red>0.5</red>
-            <green>0.2</green>
-            <blue>0.1</blue>
+            <red>0.4</red>
+            <green>0.4</green>
+            <blue>0.05</blue>
             <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
         </emission>
     </animation>
@@ -171,8 +171,8 @@
             <blue>0.63</blue>
         </ambient>
         <emission>
-            <red>0.15</red>
-            <green>0.05</green>
+            <red>0.20</red>
+            <green>0.20</green>
             <blue>0.02</blue>
             <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
         </emission>
@@ -184,11 +184,11 @@
         <object-name>cone_A (Meshed)</object-name>
         <object-name>cone_B</object-name>
         <property>/instrumentation/magnetic-compass/indicated-heading-deg</property>
-        <offset-deg>-180</offset-deg>
+        <offset-deg>+90</offset-deg>
         <axis>
             <x>0</x>
             <y>0</y>
-            <z>1</z>
+            <z>-1</z>
         </axis>
         <center>
             <x-m>-0.015</x-m>
@@ -247,26 +247,16 @@
             <z-m>-0.002</z-m>
         </center>
     </animation>
-     <!--
+
     <model>
         <name>procedural_light_canopy_spot_red</name>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Effects/lights/procedural_light_canopy_spot_red.xml</path>
         <offsets>
-            <x-m> 0.011</x-m>
+            <x-m> 0.02</x-m>
             <y-m> 0.0 </y-m>
             <z-m> 0.0 </z-m>
         </offsets>
     </model>
-   
-    <model>
-        <name>procedural_light_canopy_spot_red</name>
-        <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Effects/lights/procedural_light_canopy_spot_red.xml</path>
-        <offsets>
-            <x-m> 0.025</x-m>
-            <y-m> 0.0 </y-m>
-            <z-m> 0.0 </z-m>
-        </offsets>
-    </model>
-    -->
+
 </PropertyList>
 

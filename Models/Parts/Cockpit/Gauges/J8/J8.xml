@@ -8,7 +8,7 @@
         <inherits-from>Effects/model-transparent</inherits-from>
         <object-name>glass (Meshed)</object-name>
         <object-name>internal_ring_A (Meshed)</object-name>
-        <object-name>Sphere_A (Meshed)</object-name>
+        <object-name>sphere_A (Meshed)</object-name>
     </effect>
     
     <animation> 
@@ -24,7 +24,7 @@
     
     <animation> 
         <type>material</type>
-        <object-name>Frontal (Meshed)</object-name>
+        <object-name>frontal (Meshed)</object-name>
         <texture>Pictures/G91-Al-dark.png</texture>
         <ambient>
             <red>0.6</red>
@@ -84,8 +84,9 @@
     
     <animation> 
         <type>material</type>
-        <object-name>back_frontal (Meshed)</object-name>
+        <object-name>back_frontal_B (Meshed)</object-name>
         <object-name>internal_ring_B (Meshed)</object-name>
+        <object-name>flag_B (Meshed)</object-name>
         <texture>Pictures/G91-Dark-Grey.png</texture>
         <ambient>
             <red>0.1</red>
@@ -103,7 +104,7 @@
     <animation> 
         <type>material</type>
         <object-name>Knob (Meshed)</object-name>
-        <object-name>Knob_caging_top (Meshed)</object-name>
+        <object-name>knob_caging_top_B (Meshed)</object-name>
         <texture>Pictures/G91-Dark-Grey.png</texture>
         <ambient>
             <red>0.6</red>
@@ -169,14 +170,16 @@
         <type>material</type>
         <object-name>airplane_A (Meshed)</object-name>
         <object-name>bank_index (Meshed)</object-name>
-        <object-name>horizon (Meshed)</object-name>
+        <object-name>back_frontal_A (Meshed)</object-name>
+        <object-name>flag_A (Meshed)</object-name>
+        <object-name>knob_caging_top_A (Meshed)</object-name>
         <ambient>
             <red>0.90</red>
             <green>0.83</green>
             <blue>0.63</blue>
         </ambient>
         <emission>
-            <red>0.03</red>
+            <red>0.00</red>
             <green>0.15</green>
             <blue>0.00</blue>
             <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
@@ -185,7 +188,23 @@
     
     <animation>
         <type>material</type>
-        <object-name>Sphere_A (Meshed)</object-name>
+        <object-name>horizon (Meshed)</object-name>
+        <ambient>
+            <red>0.8</red>
+            <green>0.73</green>
+            <blue>0.53</blue>
+        </ambient>
+        <emission>
+            <red>0.025</red>
+            <green>0.10</green>
+            <blue>0.00</blue>
+            <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation>
+        <type>material</type>
+        <object-name>sphere_A (Meshed)</object-name>
         <texture>Pictures/G91-Dark-Grey.png</texture>
         <transparency>
             <alpha>0.0</alpha>
@@ -205,7 +224,7 @@
     
     <animation>
         <type>material</type>
-        <object-name>Sphere_B (Meshed)</object-name>
+        <object-name>sphere_B (Meshed)</object-name>
         <texture>Pictures/G91-Dark-Grey.png</texture>
         <ambient>
             <red>0.1</red>
@@ -311,8 +330,31 @@
     </animation>
     
     <animation>
+        <type>rotate</type>
+        <object-name>flag_B (Meshed)</object-name>
+        <object-name>flag_A (Meshed)</object-name>
+        <property>instrumentation/attitude-indicator/caged-flag</property>
+        <!--
+        <property>instrumentation/attitude-indicator/spin</property>
+        <property>instrumentation/attitude-indicator/serviceable</property>
+        -->
+        <center>
+            <x-m>0.0</x-m><y-m>0.03</y-m><z-m>0.0235</z-m>
+        </center>
+        <interpolation>
+            <entry><ind>1</ind><dep>0.0</dep></entry>
+            <entry><ind>0</ind><dep>30.0</dep></entry>
+        </interpolation>
+        <axis>
+            <x>-1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
+    
+    <animation>
         <type>pick</type>
-        <object-name>Knob_caging_top (Meshed)</object-name>
+        <object-name>knob_caging_top_B (Meshed)</object-name>
         <action>
             <button>0</button>
             <repeatable>false</repeatable>
@@ -326,7 +368,8 @@
     
     <animation>
         <type>translate</type>
-        <object-name>Knob_caging_top (Meshed)</object-name>
+        <object-name>knob_caging_top_A (Meshed)</object-name>
+        <object-name>knob_caging_top_B (Meshed)</object-name>
         <object-name>knob_caging_cylinder (Meshed)</object-name>
         <property>/instrumentation/attitude-indicator/caged-flag</property>
         <factor>0.015</factor>

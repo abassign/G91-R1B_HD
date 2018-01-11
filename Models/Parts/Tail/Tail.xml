@@ -288,10 +288,8 @@
     <animation>
         <type>rotate</type>
         <object-name>D_equilibratore_sx.002</object-name>
-        <property>/controls/flight/elevator</property>
-        <min-deg>-12</min-deg>
-        <max-deg>17</max-deg>
-        <factor>-17</factor>
+        <property>fdm/jsbsim/fcs/elevator-cmd-rad</property>
+        <factor>-57</factor>
         <axis>
             <x1-m> 3.81291 </x1-m>
             <y1-m> -0.34556 </y1-m>
@@ -305,10 +303,8 @@
     <animation>
         <type>rotate</type>
         <object-name>D_equilibratore_dx</object-name>
-        <property>/controls/flight/elevator</property>
-        <min-deg>-12</min-deg>
-        <max-deg>15</max-deg>
-        <factor>17</factor>
+        <property>fdm/jsbsim/fcs/elevator-cmd-rad</property>
+        <factor>57</factor>
         <axis>
             <x1-m> 3.81291 </x1-m>
             <y1-m> 0.34556 </y1-m>
@@ -337,10 +333,8 @@
         <object-name>A_trasmission_command_Alet_sx.009</object-name>
         <object-name>D_wing_support_dx</object-name>
         <object-name>D_wing_support_sx.001</object-name>
-        <property>/controls/flight/elevator-trim</property>
-        <min-deg>-5</min-deg>
-        <max-deg>2</max-deg>
-        <factor>5</factor>
+        <property>fdm/jsbsim/fcs/pitch-trim-cmd-rad</property>
+        <factor>57</factor>
         <axis>
             <x1-m> 3.5 </x1-m>
             <y1-m> 1.0 </y1-m>

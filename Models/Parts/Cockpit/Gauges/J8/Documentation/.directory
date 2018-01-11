@@ -1,4 +1,6 @@
 [Dolphin]
 PreviewsShown=true
-Timestamp=2017,9,28,23,5,57
-Version=3
+SortRole=modificationtime
+Timestamp=2018,1,11,15,20,25
+Version=4
+ViewMode=1

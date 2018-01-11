@@ -22,7 +22,7 @@ http://wiki.flightgear.org/JSBSim_Engines#FGTurbine
   <bypassratio>     1.0 </bypassratio>
   <tsfc>            1.05 </tsfc>
   <bleed>           0.03</bleed>
-  <idlen1>         30.0 </idlen1>
+  <idlen1>         35.0 </idlen1>
   <idlen2>         60.0 </idlen2>
   <n1spinup>        1.0 </n1spinup> 
   <n2spinup>        3.0 </n2spinup> 
