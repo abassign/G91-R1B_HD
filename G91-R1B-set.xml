@@ -101,8 +101,10 @@
             <file>Aircraft/G91-R1B_HD/Nasal/Electric/power_management.nas</file>
             <file>Aircraft/G91-R1B_HD/Nasal/Hydraulic/hydraulic.nas</file>
             <!-- Gauges -->
+            <file>Aircraft/G91-R1B_HD/Nasal/LandingGear/landig_gear_handle.nas</file>
             <file>Aircraft/G91-R1B_HD/Nasal/Gauges/clock.nas</file>
             <file>Aircraft/G91-R1B_HD/Nasal/Gauges/accelerometer.nas</file>
+            <file>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/J8/J8.nas</file>
             <!-- Fuel -->
             <file>Aircraft/G91-R1B_HD/Nasal/Fuel/collect_tank_2_all_tank.nas</file>
             <!-- For build and testing -->

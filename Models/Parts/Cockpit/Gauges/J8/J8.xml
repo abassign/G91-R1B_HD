@@ -49,6 +49,12 @@
             <green>0.6</green>
             <blue>0.6</blue>
         </ambient>
+        <emission>
+            <red>0.1</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
     </animation>
     
     <animation> 
@@ -86,6 +92,22 @@
         <type>material</type>
         <object-name>back_frontal_B (Meshed)</object-name>
         <object-name>internal_ring_B (Meshed)</object-name>
+        <texture>Pictures/G91-Dark-Grey.png</texture>
+        <ambient>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </ambient>
+        <emission>
+            <red>0.1</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
         <object-name>flag_B (Meshed)</object-name>
         <texture>Pictures/G91-Dark-Grey.png</texture>
         <ambient>
@@ -94,7 +116,7 @@
             <blue>0.1</blue>
         </ambient>
         <emission>
-            <red>0.2</red>
+            <red>0.1</red>
             <green>0.0</green>
             <blue>0.0</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
@@ -112,7 +134,7 @@
             <blue>0.6</blue>
         </ambient>
         <emission>
-            <red>0.15</red>
+            <red>0.25</red>
             <green>0.0</green>
             <blue>0.0</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
@@ -232,7 +254,7 @@
             <blue>0.1</blue>
         </ambient>
         <emission>
-            <red>0.15</red>
+            <red>0.05</red>
             <green>0.0</green>
             <blue>0.0</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
@@ -277,7 +299,8 @@
     <animation>
         <type>rotate</type>
         <object-name>horizon (Meshed)</object-name>
-        <property>instrumentation/attitude-indicator/indicated-roll-deg</property>
+        <object-name>bank_index (Meshed)</object-name>
+        <property>instrumentation/attitude-indicator/internal-roll-deg</property>
         <interpolation>
             <entry><ind>-90.0</ind><dep>-90.0</dep></entry>
             <entry><ind> 90.0</ind><dep> 90.0</dep></entry>
@@ -297,7 +320,7 @@
     <animation>
         <type>rotate</type>
         <object-name>horizon (Meshed)</object-name>
-        <property>instrumentation/attitude-indicator/indicated-pitch-deg</property>
+        <property>instrumentation/attitude-indicator/internal-pitch-deg</property>
         <interpolation>
             <entry><ind>-27.0</ind><dep>-27.0</dep></entry>
             <entry><ind> 27.0</ind><dep> 27.0</dep></entry>
@@ -316,35 +339,13 @@
     
     <animation>
         <type>rotate</type>
-        <object-name>bank_index (Meshed)</object-name>
-        <property>instrumentation/attitude-indicator/indicated-roll-deg</property>
-        <interpolation>
-            <entry><ind>-90.0</ind><dep>-90.0</dep></entry>
-            <entry><ind> 90.0</ind><dep> 90.0</dep></entry>
-        </interpolation>
-        <axis>
-            <x>1</x>
-            <y>0</y>
-            <z>0</z>
-        </axis>
-    </animation>
-    
-    <animation>
-        <type>rotate</type>
         <object-name>flag_B (Meshed)</object-name>
         <object-name>flag_A (Meshed)</object-name>
-        <property>instrumentation/attitude-indicator/caged-flag</property>
-        <!--
-        <property>instrumentation/attitude-indicator/spin</property>
-        <property>instrumentation/attitude-indicator/serviceable</property>
-        -->
+        <property>sim/G91/gauge/J8/flag_deg</property>
+        <factor>30</factor>
         <center>
             <x-m>0.0</x-m><y-m>0.03</y-m><z-m>0.0235</z-m>
         </center>
-        <interpolation>
-            <entry><ind>1</ind><dep>0.0</dep></entry>
-            <entry><ind>0</ind><dep>30.0</dep></entry>
-        </interpolation>
         <axis>
             <x>-1</x>
             <y>0</y>
@@ -371,7 +372,7 @@
         <object-name>knob_caging_top_A (Meshed)</object-name>
         <object-name>knob_caging_top_B (Meshed)</object-name>
         <object-name>knob_caging_cylinder (Meshed)</object-name>
-        <property>/instrumentation/attitude-indicator/caged-flag</property>
+        <property>sim/G91/gauge/J8/flag_return</property>
         <factor>0.015</factor>
         <offset-m>0.0</offset-m>
         <axis>

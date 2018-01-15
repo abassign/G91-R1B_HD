@@ -41,8 +41,6 @@ var timer_re_emit_green_red_gauges = maketimer(0.5, func() {
         pl_phosphorescent_emission = 1.0;
     }
     setprop("sim/G91/re_emit/gauge_phosphorescent_light",pl_phosphorescent_emission);
-    
-    
    
 });
 timer_re_emit_green_red_gauges.start();

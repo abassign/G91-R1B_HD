@@ -7,45 +7,129 @@
     <!-- Materials effects --> 
     <animation>
         <name>LandinGearLeverage</name>
-        <object-name>Circle</object-name>
-        <object-name>Circle.001</object-name>
-        <object-name>Torus</object-name>
-        <object-name>Torus.001</object-name>
-        <object-name>Cube.001</object-name>
-        <object-name>I_ironware.001</object-name>
-        <object-name>I_ironware.002</object-name>
+        <object-name>torus_arm_cylinder (Meshed)</object-name>
+        <object-name>torus_arm_ring (Meshed)</object-name>
+        <object-name>torus_support (Meshed)</object-name>
+        <object-name>torus_lamp (Meshed)</object-name>
+        <object-name>torus_lateral (Meshed)</object-name>
+        <object-name>torus_ring001 (Meshed)</object-name>
+        <object-name>torus_central (Meshed)</object-name>
+        <object-name>torus_screews_lateral (Meshed)</object-name>
+        <object-name>torus_screew (Meshed)</object-name>
+        <object-name>torus (Meshed)</object-name>
+        <object-name>disk (Meshed)</object-name>
     </animation> 
     
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
-        <object-name>Circle</object-name>
-        <object-name>Circle.001</object-name>
-        <object-name>Torus</object-name>
-        <object-name>Torus.001</object-name>
-        <object-name>Cube.001</object-name>
-        <object-name>I_ironware.001</object-name>
-        <object-name>I_ironware.002</object-name>
+        <object-name>torus_arm_cylinder (Meshed)</object-name>
+        <object-name>torus_arm_ring (Meshed)</object-name>
+        <object-name>torus_support (Meshed)</object-name>
+        <object-name>torus_lateral (Meshed)</object-name>
+        <object-name>torus_ring001 (Meshed)</object-name>
+        <object-name>torus_central (Meshed)</object-name>
+        <object-name>torus_screews_lateral (Meshed)</object-name>
+        <object-name>torus_screew (Meshed)</object-name>
+        <object-name>torus (Meshed)</object-name>
+        <object-name>disk (Meshed)</object-name>
     </effect>
+    <!--
+    <effect>
+        <inherits-from>Effects/model-transparent</inherits-from>
+        <object-name>torus (Meshed)</object-name>
+        <object-name>torus_central (Meshed)</object-name>
+    </effect>
+    <effect>
+    <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Glass/glass-chrome</inherits-from>
+    <object-name>torus (Meshed)</object-name>
+    <object-name>torus_central (Meshed)</object-name>
+    </effect>
+    -->
     
     <animation> 
         <type>material</type>
-        <object-name>Torus</object-name>
+        <object-name>torus (Meshed)</object-name>
         <texture>Pictures/G91-Red_02.png</texture>
+        <transparency>
+            <alpha>1.6</alpha>
+            <factor-prop>sim/G91/landingGear/landingGearHandle_light_transparent</factor-prop>
+        </transparency>
         <ambient>
-            <red>0.80</red>
-            <green>0.73</green>
-            <blue>0.53</blue>
+            <red>0.4</red>
+            <green>0.4</green>
+            <blue>0.4</blue>
         </ambient>
         <specular>
-            <red>1.0</red>
-            <green>0.2</green>
+            <red>0.0</red>
+            <green>0.0</green>
             <blue>0.0</blue>
         </specular>
         <emission>
-            <red>0.15</red>
-            <green>0.1</green>
-            <blue>0.03</blue>
-            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+            <red>0.8</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/landingGear/landingGearHandle_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>torus_ring001 (Meshed)</object-name>
+        <transparency>
+            <alpha>0.8</alpha>
+            <factor-prop>sim/G91/landingGear/landingGearHandle_shell_transparent</factor-prop>
+        </transparency>
+        <emission>
+            <red>1.0</red>
+            <green>0.2</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/landingGear/landingGearHandle_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>torus_central (Meshed)</object-name>
+        <texture>Pictures/G91-Red_02.png</texture>
+        <transparency>
+            <alpha>1.0</alpha>
+            <factor-prop>sim/G91/landingGear/landingGearHandle_light_transparent</factor-prop>
+        </transparency>
+        <ambient>
+            <red>0.8</red>
+            <green>0.4</green>
+            <blue>0.4</blue>
+        </ambient>
+        <specular>
+            <red>1.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </specular>
+        <emission>
+            <red>1.5</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/landingGear/landingGearHandle_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>torus_lamp (Meshed)</object-name>
+        <transparency>
+            <alpha>1.0</alpha>
+            <factor-prop>sim/G91/landingGear/landingGearHandle_shell_transparent</factor-prop>
+        </transparency>
+        <ambient>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </ambient>
+        <emission>
+            <red>1.0</red>
+            <green>0.2</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/landingGear/landingGearHandle_light</factor-prop>
         </emission>
     </animation>
     
@@ -94,6 +178,7 @@
         <object-name>Cube.001</object-name>
         <object-name>Circle.001</object-name>
         <object-name>box_gauges_gearposition</object-name>
+        <object-name>Cylinder</object-name>
         <texture>Pictures/G91-Al_02.png</texture>
         <ambient>
             <red>0.5</red>
@@ -109,15 +194,16 @@
     </animation>
     
     <animation>
-        <object-name>LandinGearLeverage</object-name>
         <type>rotate</type>
-        <property>gear/gear/position-norm</property>
+        <object-name>LandinGearLeverage</object-name>
+        <object-name>procedural_light_cockpit_landing_gear_handle_spot_red_bottom</object-name>
+        <property>sim/G91/landingGear/landingGearHandle_deg</property>
         <factor>50</factor>
-        <offset-deg>-40</offset-deg>
+        <offset-deg>-25</offset-deg>
         <center>
-            <x-m>-0.01315</x-m>
+            <x-m>-0.013</x-m>
             <y-m>0</y-m>
-            <z-m>-0.0441</z-m>
+            <z-m>0</z-m>
         </center>
         <axis>
             <x>0</x>
@@ -128,18 +214,15 @@
     
     <animation>
         <type>pick</type>
-        <object-name>Torus</object-name>
+        <object-name>torus (Meshed)</object-name>
+        <object-name>torus_central (Meshed)</object-name>
         <action>
             <button>0</button>
             <repeatable>false</repeatable>
             <interval-sec>0.2</interval-sec>
             <binding>
                 <command>property-toggle</command>
-                <property>/controls/gear/gear-down</property>
-                <step>1</step>
-                <min>0</min>
-                <max>1</max>
-                <wrap>false</wrap>
+                <property>sim/G91/landingGear/landingGearHandle_Start</property>
             </binding>
         </action>
     </animation>
@@ -166,14 +249,24 @@
             <factor-prop>sim/G91/gauge_green_light_emission</factor-prop>
         </emission>
     </animation>
-    
+
+    <model>
+        <name>procedural_light_cockpit_landing_gear_handle_spot_red_bottom</name>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Effects/lights/procedural_light_cockpit_landing_gear_handle_spot_red.xml</path>
+        <offsets>
+            <x-m> 0.03</x-m>
+            <y-m> 0.0 </y-m>
+            <z-m> 0.0 </z-m>
+        </offsets>
+    </model>
+
     <model>
         <name>procedural_light_cockpit_gauge_spot_red</name>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Effects/lights/procedural_light_cockpit_gauge_spot_red.xml</path>
         <offsets>
-            <x-m> 0.08</x-m>
-            <y-m> 0.05 </y-m>
-            <z-m> 0.0 </z-m>
+            <x-m> 0.00</x-m>
+            <y-m> 0.00 </y-m>
+            <z-m> 0.00 </z-m>
         </offsets>
     </model>
     

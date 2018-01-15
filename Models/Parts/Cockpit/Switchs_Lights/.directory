@@ -1,5 +1,4 @@
 [Dolphin]
-SortRole=date
-Timestamp=2017,10,11,21,1,40
-Version=3
-ViewMode=1
+PreviewsShown=true
+Timestamp=2018,1,12,1,9,48
+Version=4

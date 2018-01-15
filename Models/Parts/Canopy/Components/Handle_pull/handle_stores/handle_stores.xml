@@ -26,6 +26,9 @@
     <animation> 
         <type>material</type>
         <object-name>handle_cockpit01.001</object-name>
+                <transparency>
+            <alpha>0.5</alpha>
+        </transparency>
         <ambient>
             <red>0.6</red>
             <green>0.6</green>

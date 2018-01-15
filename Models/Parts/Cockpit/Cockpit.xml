@@ -231,10 +231,10 @@
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Components/Gear_lever/Gear_lever.xml</path>
         <offsets>
-            <x-m>-3.212</x-m>
-            <y-m>-0.267</y-m>
-            <z-m>0.112</z-m>
-            <pitch-deg>0</pitch-deg>
+            <x-m>-3.2095</x-m>
+            <y-m>-0.269</y-m>
+            <z-m>0.074</z-m>
+            <pitch-deg>-8.5</pitch-deg>
         </offsets>
     </model>
     
