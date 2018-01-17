@@ -7,6 +7,26 @@
         <object-name>glass (Meshed)</object-name>
     </effect>
 
+    <effect>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
+        <object-name>glass (Meshed)</object-name>
+        <object-name>internal_black (Meshed)</object-name>
+        <object-name>screews_external (Meshed)</object-name>
+        <object-name>screews_internal (Meshed)</object-name>
+        <object-name>screews_external_back (Meshed)</object-name>
+        <object-name>screews_lamp_cover (Meshed)</object-name>
+        <object-name>cover_external (Meshed)</object-name>
+        <object-name>cover_lamp (Meshed)</object-name>
+        <object-name>lamp_cover (Meshed)</object-name>
+        <object-name>support (Meshed)</object-name>
+        <object-name>Support (Meshed)</object-name>
+        <object-name>lubber_support (Meshed)</object-name>
+        <object-name>cone_support (Meshed)</object-name>
+        <object-name>cone_A (Meshed)</object-name>
+        <object-name>cone_B</object-name>
+        <object-name>lubber_line (Meshed)</object-name>
+    </effect>    
+    
     <animation> 
         <type>material</type>
         <object-name>glass (Meshed)</object-name>
@@ -92,9 +112,9 @@
         <object-name>support (Meshed)</object-name>
         <texture>Pictures/G91-Dark-Grey.png</texture>
         <ambient>
-            <red>0.8</red>
-            <green>0.8</green>
-            <blue>0.8</blue>
+            <red>0.4</red>
+            <green>0.4</green>
+            <blue>0.4</blue>
         </ambient>
         <emission>
             <red>0.02</red>

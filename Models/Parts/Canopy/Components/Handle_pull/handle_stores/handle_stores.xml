@@ -26,7 +26,7 @@
     <animation> 
         <type>material</type>
         <object-name>handle_cockpit01.001</object-name>
-                <transparency>
+        <transparency>
             <alpha>0.5</alpha>
         </transparency>
         <ambient>
@@ -65,9 +65,9 @@
         <object-name>handle_cockpit01.002</object-name>
         <texture>Pictures/G91-Al.png</texture>
         <ambient>
-            <red>0.6</red>
-            <green>0.6</green>
-            <blue>0.6</blue>
+            <red>0.4</red>
+            <green>0.4</green>
+            <blue>0.4</blue>
         </ambient>
         <emission>
             <red>0.03</red>

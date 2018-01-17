@@ -9,6 +9,26 @@
         <object-name>glass (Meshed)</object-name>
     </effect>
     
+    <effect>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
+        <object-name>frontal_filet (Meshed)</object-name>
+        <object-name>screews (Meshed)</object-name>
+        <object-name>frontal_mask_B (Meshed)</object-name>
+        <object-name>glass_torus_division (Meshed)</object-name>
+        <object-name>sphere (Meshed)</object-name>
+        <object-name>separator (Meshed)</object-name>
+        <object-name>Support (Meshed)</object-name>
+        <object-name>level_container_A (Meshed)</object-name>
+        <object-name>level_container_B (Meshed)</object-name>
+        <object-name>glass (Meshed)</object-name>
+        <object-name>glass_torus (Meshed)</object-name>
+        <object-name>pointer (Meshed)</object-name>
+        <object-name>back_plane_A (Meshed)</object-name>
+        <object-name>frontal_mask_A (Meshed)</object-name>
+        <object-name>back_plane_B (Meshed)</object-name>
+        <object-name>frontal_mask_B (Meshed)</object-name>
+    </effect>
+    
     <animation> 
         <type>material</type>
         <object-name>cover (Meshed)</object-name>
@@ -48,6 +68,12 @@
             <green>0.6</green>
             <blue>0.6</blue>
         </ambient>
+        <emission>
+            <red>0.15</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
     </animation>
     
     <animation> 
@@ -71,6 +97,12 @@
             <green>0.5</green>
             <blue>0.5</blue>
         </ambient>
+        <emission>
+            <red>0.2</red>
+            <green>0.1</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
     </animation>
     
     <animation> 
@@ -82,21 +114,27 @@
             <green>0.3</green>
             <blue>0.3</blue>
         </ambient>
+        <emission>
+            <red>0.3</red>
+            <green>0.1</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
     </animation>
     
     <animation>
         <type>material</type>
         <object-name>level_container_B (Meshed)</object-name>
         <ambient>
-            <red>0.9</red>
-            <green>0.9</green>
-            <blue>0.9</blue>
+            <red>0.6</red>
+            <green>0.7</green>
+            <blue>0.5</blue>
         </ambient>
         <emission>
-            <red>0.06</red>
-            <green>0.0</green>
+            <red>0.01</red>
+            <green>0.1</green>
             <blue>0.0</blue>
-            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+            <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
         </emission>
     </animation>
     
@@ -152,8 +190,8 @@
             <blue>0.63</blue>
         </ambient>
         <emission>
-            <red>0.01</red>
-            <green>0.1</green>
+            <red>0.05</red>
+            <green>0.15</green>
             <blue>0.0</blue>
             <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
         </emission>
@@ -172,9 +210,9 @@
             <blue>0.63</blue>
         </ambient>
         <emission>
-            <red>0.045</red>
-            <green>0.2</green>
-            <blue>0.031</blue>
+            <red>0.05</red>
+            <green>0.15</green>
+            <blue>0.0</blue>
             <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
         </emission>
     </animation>

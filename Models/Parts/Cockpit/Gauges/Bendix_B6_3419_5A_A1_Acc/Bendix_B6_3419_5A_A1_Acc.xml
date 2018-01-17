@@ -9,6 +9,26 @@
         <object-name>glass (Meshed)</object-name>
     </effect>
     
+    <effect>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
+        <object-name>frontal_filet (Meshed)</object-name>
+        <object-name>border (Meshed)</object-name>
+        <object-name>knob (Meshed)</object-name>
+        <object-name>screews (Meshed)</object-name>
+        <object-name>separator (Meshed)</object-name>
+        <object-name>I_knurl (Meshed)</object-name>
+        <object-name>glass (Meshed)</object-name>
+        <object-name>back_plane_A (Meshed)</object-name>
+        <object-name>back_plane_B (Meshed)</object-name>
+        <object-name>pointer_1_A (Meshed)</object-name>
+        <object-name>pointer_2_A (Meshed)</object-name>
+        <object-name>pointer_3_A (Meshed)</object-name>
+        <object-name>pointer_1_B (Meshed)</object-name>
+        <object-name>pointer_2_B (Meshed)</object-name>
+        <object-name>pointer_3_B (Meshed)</object-name>
+        <object-name>center (Meshed)</object-name>
+    </effect>
+    
     <animation> 
         <type>material</type>
         <object-name>cover (Meshed)</object-name>

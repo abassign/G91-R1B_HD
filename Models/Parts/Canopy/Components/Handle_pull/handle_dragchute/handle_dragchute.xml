@@ -46,9 +46,9 @@
         <object-name>handle_cockpit03.002</object-name>
         <texture>Pictures/G91-Al.png</texture>
         <ambient>
-            <red>0.6</red>
-            <green>0.6</green>
-            <blue>0.6</blue>
+            <red>0.4</red>
+            <green>0.4</green>
+            <blue>0.4</blue>
         </ambient>
         <emission>
             <red>0.03</red>
@@ -63,9 +63,9 @@
         <object-name>handle_cockpit03.003</object-name>
         <texture>Pictures/G91-Al-Light.png</texture>
         <ambient>
-            <red>0.6</red>
-            <green>0.6</green>
-            <blue>0.6</blue>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
         </ambient>
         <emission>
             <red>0.10</red>

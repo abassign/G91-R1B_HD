@@ -10,6 +10,48 @@
         <object-name>border_glass_target</object-name>
     </effect>
     
+    <effect>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
+        <object-name>border_glass_target</object-name>
+        <object-name>Colimator_Objective01</object-name>
+        <object-name>Plane</object-name>
+        <object-name>Collimator_screen</object-name>
+        <object-name>Plane.001</object-name>
+        <object-name>Collimator_body</object-name>
+        <object-name>button</object-name>
+        <object-name>Large_disk.001</object-name>
+        <object-name>cover_glass_target</object-name>
+        <object-name>Cube.004</object-name>
+        <object-name>Collimator_cable_support</object-name>
+        <object-name>Disk_mobile</object-name>
+        <object-name>Large_disk</object-name>
+        <object-name>Circle.001</object-name>
+        <object-name>Collimator_cable</object-name>
+        <object-name>Collimator_cover_retichle</object-name>
+        <object-name>F_structure_panel_cockpit.005</object-name>
+        <object-name>F_structure_panel_cockpit.006</object-name>
+        <object-name>support_collim_gauges</object-name>
+        <object-name>collimator_Ice breaker</object-name>
+        <object-name>Collimator_Lever_lock_screw</object-name>
+        <object-name>Collimator_Lever_lock_screw_02</object-name>
+        <object-name>support_disk</object-name>
+        <object-name>beam</object-name>
+        <object-name>bolt_index</object-name>
+        <object-name>bolt_support01</object-name>
+        <object-name>bolt_support02</object-name>
+        <object-name>index.001</object-name>
+        <object-name>flange_fixed_drum</object-name>
+        <object-name>screw_gauges</object-name>
+        <object-name>fixed_drum</object-name>
+        <object-name>locking_lever01</object-name>
+        <object-name>locking_lever02</object-name>
+        <object-name>locking_lever03</object-name>
+        <object-name>locking_plate</object-name>
+        <object-name>screw_gauges01</object-name>
+        <object-name>index</object-name>
+        <object-name>button</object-name>
+    </effect>
+    
     <animation> 
         <type>material</type>
         <object-name>Collimator_glass02</object-name>
@@ -120,9 +162,9 @@
         <object-name>button</object-name>
         <texture>Pictures/G91-Dark-Grey.png</texture>
         <ambient>
-            <red>0.3</red>
-            <green>0.3</green>
-            <blue>0.3</blue>
+            <red>0.4</red>
+            <green>0.4</green>
+            <blue>0.4</blue>
         </ambient>
         <emission>
             <red>0.04</red>
@@ -140,9 +182,9 @@
             <alpha>1.0</alpha>
         </transparency>
         <ambient>
-            <red>0.70</red>
-            <green>0.63</green>
-            <blue>0.53</blue>
+            <red>0.6</red>
+            <green>0.7</green>
+            <blue>0.5</blue>
         </ambient>
         <emission>
             <red>0.02</red>
@@ -159,9 +201,9 @@
             <alpha>1.0</alpha>
         </transparency>
         <ambient>
-            <red>0.90</red>
-            <green>0.83</green>
-            <blue>0.73</blue>
+            <red>0.6</red>
+            <green>0.7</green>
+            <blue>0.5</blue>
         </ambient>
         <emission>
             <red>0.045</red>
@@ -194,9 +236,9 @@
         <object-name>Collimator_cable_support</object-name>
         <texture>Pictures/G91-Al-dark.png</texture>
         <ambient>
-            <red>0.6</red>
-            <green>0.6</green>
-            <blue>0.6</blue>
+            <red>0.4</red>
+            <green>0.4</green>
+            <blue>0.4</blue>
         </ambient>
     </animation>
     
@@ -206,9 +248,9 @@
         <object-name>Large_disk</object-name>
         <texture>Pictures/G91-Black.png</texture>
         <ambient>
-            <red>0.8</red>
-            <green>0.8</green>
-            <blue>0.8</blue>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
         </ambient>
         <specular>
             <red>0.9</red>
@@ -230,9 +272,9 @@
         <object-name>Collimator_cover_retichle</object-name>
         <texture>Pictures/G91-Dark-Grey.png</texture>
         <ambient>
-            <red>0.8</red>
-            <green>0.8</green>
-            <blue>0.8</blue>
+            <red>0.6</red>
+            <green>0.6</green>
+            <blue>0.6</blue>
         </ambient>
         <specular>
             <red>0.9</red>
@@ -274,9 +316,9 @@
         <object-name>support_disk</object-name>
         <texture>Pictures/G91-Al-Light.png</texture>
         <ambient>
-            <red>0.5</red>
-            <green>0.5</green>
-            <blue>0.5</blue>
+            <red>0.4</red>
+            <green>0.4</green>
+            <blue>0.4</blue>
         </ambient>
     </animation>
     
@@ -289,9 +331,9 @@
         <object-name>index.001</object-name>
         <texture>Pictures/G91-Al-Light.png</texture>
         <ambient>
-            <red>0.8</red>
-            <green>0.8</green>
-            <blue>0.8</blue>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
         </ambient>
         <specular>
             <red>0.9</red>
@@ -323,9 +365,9 @@
         <object-name>fixed_drum</object-name>
         <texture>Pictures/G91-Al-dark.png</texture>
         <ambient>
-            <red>0.6</red>
-            <green>0.6</green>
-            <blue>0.6</blue>
+            <red>0.4</red>
+            <green>0.4</green>
+            <blue>0.4</blue>
         </ambient>
         <emission>
             <red>0.07</red>
@@ -345,9 +387,9 @@
         <object-name>index</object-name>
         <texture>Pictures/G91-Al-01.png</texture>
         <ambient>
-            <red>0.6</red>
-            <green>0.6</green>
-            <blue>0.6</blue>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
         </ambient>
         <emission>
             <red>0.05</red>

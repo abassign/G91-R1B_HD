@@ -19,9 +19,11 @@
         <object-name>torus (Meshed)</object-name>
         <object-name>disk (Meshed)</object-name>
     </animation> 
-    
+
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
+        <object-name>frontal (Meshed)</object-name>
+        <object-name>frontal_1 (Meshed)</object-name>
         <object-name>torus_arm_cylinder (Meshed)</object-name>
         <object-name>torus_arm_ring (Meshed)</object-name>
         <object-name>torus_support (Meshed)</object-name>
@@ -33,18 +35,6 @@
         <object-name>torus (Meshed)</object-name>
         <object-name>disk (Meshed)</object-name>
     </effect>
-    <!--
-    <effect>
-        <inherits-from>Effects/model-transparent</inherits-from>
-        <object-name>torus (Meshed)</object-name>
-        <object-name>torus_central (Meshed)</object-name>
-    </effect>
-    <effect>
-    <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Glass/glass-chrome</inherits-from>
-    <object-name>torus (Meshed)</object-name>
-    <object-name>torus_central (Meshed)</object-name>
-    </effect>
-    -->
     
     <animation> 
         <type>material</type>
@@ -55,17 +45,17 @@
             <factor-prop>sim/G91/landingGear/landingGearHandle_light_transparent</factor-prop>
         </transparency>
         <ambient>
-            <red>0.4</red>
-            <green>0.4</green>
-            <blue>0.4</blue>
+            <red>1.0</red>
+            <green>0.6</green>
+            <blue>0.6</blue>
         </ambient>
         <specular>
-            <red>0.0</red>
-            <green>0.0</green>
-            <blue>0.0</blue>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
         </specular>
         <emission>
-            <red>0.8</red>
+            <red>0.7</red>
             <green>0.0</green>
             <blue>0.0</blue>
             <factor-prop>sim/G91/landingGear/landingGearHandle_light</factor-prop>
@@ -92,22 +82,22 @@
         <object-name>torus_central (Meshed)</object-name>
         <texture>Pictures/G91-Red_02.png</texture>
         <transparency>
-            <alpha>1.0</alpha>
+            <alpha>1.6</alpha>
             <factor-prop>sim/G91/landingGear/landingGearHandle_light_transparent</factor-prop>
         </transparency>
         <ambient>
-            <red>0.8</red>
-            <green>0.4</green>
-            <blue>0.4</blue>
+            <red>0.9</red>
+            <green>0.6</green>
+            <blue>0.6</blue>
         </ambient>
         <specular>
             <red>1.0</red>
-            <green>0.0</green>
-            <blue>0.0</blue>
+            <green>1.0</green>
+            <blue>1.0</blue>
         </specular>
         <emission>
             <red>1.5</red>
-            <green>0.0</green>
+            <green>0.3</green>
             <blue>0.0</blue>
             <factor-prop>sim/G91/landingGear/landingGearHandle_light</factor-prop>
         </emission>
@@ -135,61 +125,95 @@
     
     <animation> 
         <type>material</type>
-        <object-name>Circle</object-name>
-        <object-name>Circle.001</object-name>
-        <object-name>pannelli_laterali.004</object-name>
-        <object-name>I_ironware.000</object-name>
-        <object-name>I_ironware.001</object-name>
-        <object-name>I_ironware.002</object-name>
-        <object-name>I_ironware.003</object-name>
+        <object-name>cover (Meshed)</object-name>
         <texture>Pictures/G91-Dark-Grey.png</texture>
         <ambient>
-            <red>0.5</red>
-            <green>0.5</green>
-            <blue>0.5</blue>
-        </ambient>
-        <emission>
-            <red>0.02</red>
-            <green>0.01</green>
-            <blue>0.005</blue>
-            <factor-prop>sim/G91/gauge_green_light_emission</factor-prop>
-        </emission>
-    </animation>
-    
-    <animation> 
-        <type>material</type>
-        <object-name>Circle</object-name>
-        <texture>Pictures/G91-Dark-Grey.png</texture>
-        <ambient>
-            <red>0.5</red>
-            <green>0.5</green>
-            <blue>0.5</blue>
-        </ambient>
-        <emission>
             <red>0.1</red>
-            <green>0.02</green>
-            <blue>0.01</blue>
-            <factor-prop>sim/G91/gauge_green_light_emission</factor-prop>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </ambient>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>torus_support (Meshed)</object-name>
+        <object-name>torus_lateral (Meshed)</object-name>
+        <object-name>emerg_up_push (Meshed)</object-name>
+        <object-name>emerg_up_screew (Meshed)</object-name>
+        <object-name>disk (Meshed)</object-name>
+        <object-name>stop_down (Meshed)</object-name>
+        <object-name>stop_up (Meshed)</object-name>
+        <object-name>frontal (Meshed)</object-name>
+        <object-name>frontal_1 (Meshed)</object-name>
+        <texture>Pictures/G91-Dark-Grey.png</texture>
+        <ambient>
+            <red>0.6</red>
+            <green>0.6</green>
+            <blue>0.6</blue>
+        </ambient>
+        <emission>
+            <red>0.15</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
     
     <animation> 
         <type>material</type>
-        <object-name>Cube.001</object-name>
-        <object-name>Circle.001</object-name>
-        <object-name>box_gauges_gearposition</object-name>
-        <object-name>Cylinder</object-name>
+        <object-name>stop_down (Meshed)</object-name>
+        <object-name>stop_up (Meshed)</object-name>
+        <texture>Pictures/G91-Brown_01.png</texture>
+        <ambient>
+            <red>0.6</red>
+            <green>0.6</green>
+            <blue>0.6</blue>
+        </ambient>
+        <emission>
+            <red>0.30</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>torus_screew (Meshed)</object-name>
+        <object-name>torus_screews_lateral (Meshed)</object-name>
+        <object-name>screew_down (Meshed)</object-name>
+        <object-name>screew_up (Meshed)</object-name>
+        <object-name>screews_frontal (Meshed)</object-name>
         <texture>Pictures/G91-Al_02.png</texture>
         <ambient>
-            <red>0.5</red>
-            <green>0.5</green>
-            <blue>0.5</blue>
+            <red>0.6</red>
+            <green>0.6</green>
+            <blue>0.6</blue>
         </ambient>
         <emission>
-            <red>0.02</red>
-            <green>0.01</green>
-            <blue>0.005</blue>
-            <factor-prop>sim/G91/gauge_green_light_emission</factor-prop>
+            <red>0.25</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>torus_arm_cylinder (Meshed)</object-name>
+        <object-name>torus_arm_ring (Meshed)</object-name>
+        <object-name>emerg_up_arm (Meshed)</object-name>
+        <texture>Pictures/G91-Al_02.png</texture>
+        <ambient>
+            <red>0.6</red>
+            <green>0.6</green>
+            <blue>0.6</blue>
+        </ambient>
+        <emission>
+            <red>0.15</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
     

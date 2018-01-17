@@ -4,6 +4,11 @@
     
     <path>swich_panel_01.ac</path>
     
+    <effect>
+        <inherits-from>Effects/model-transparent</inherits-from>
+        <object-name>swich_support</object-name>
+    </effect>
+    
     <animation> 
         <type>material</type>
         <object-name>swich_01</object-name>

@@ -4,6 +4,13 @@
     
     <path>MS-33678-3P.ac</path>
     
+    <effect>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
+        <object-name>Cover</object-name>
+        <object-name>Frontalr</object-name>
+        <object-name>Cylynder-15-18</object-name>
+    </effect>
+    
     <animation> 
         <type>material</type>
         <object-name>Cover</object-name>

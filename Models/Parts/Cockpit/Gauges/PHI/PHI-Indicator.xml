@@ -8,6 +8,47 @@
         <inherits-from>Effects/model-transparent</inherits-from>
         <object-name>glass (Meshed)</object-name>
     </effect>
+    
+    <effect>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
+        <object-name>screews_01 (Meshed)</object-name>
+        <object-name>screews_02 (Meshed)</object-name>
+        <object-name>screews_03 (Meshed)</object-name>
+        <object-name>screews_04 (Meshed)</object-name>
+        <object-name>screews_05 (Meshed)</object-name>
+        <object-name>frontal (Meshed)</object-name>
+        <object-name>back_frontal (Meshed)</object-name>
+        <object-name>knob_001 (Meshed)</object-name>
+        <object-name>knob_002 (Meshed)</object-name>
+        <object-name>knob_003 (Meshed)</object-name>
+        <object-name>knob_004 (Meshed)</object-name>
+        <object-name>knob_001_A (Meshed)</object-name>
+        <object-name>ring (Meshed)</object-name>
+        <object-name>glass (Meshed)</object-name>
+        <object-name>knob_001_plate_A (Meshed)</object-name>
+        <object-name>knob_001_A_plate_A (Meshed)</object-name>
+        <object-name>knob_002_plate_A (Meshed)</object-name>
+        <object-name>knob_003_plate_A (Meshed)</object-name>
+        <object-name>knob_004_plate_A (Meshed)</object-name>
+        <object-name>frontal_mark_knob_001 (Meshed)</object-name>
+        <object-name>NWE_ref (Meshed)</object-name>
+        <object-name>frontal_border_plate_ABIS</object-name>
+        <object-name>back_plate_B (Meshed)</object-name>
+        <object-name>frontal_plate_A (Meshed)</object-name>
+        <object-name>back_plate_A (Meshed)</object-name>
+        <object-name>frontal_plate_B (Meshed)</object-name>
+        <object-name>arrow_0 (Meshed)</object-name>
+        <object-name>arrow_1 (Meshed)</object-name>
+        <object-name>arrow_2 (Meshed)</object-name>
+        <object-name>support (Meshed)</object-name>
+        <object-name>axis (Meshed)</object-name>
+        <object-name>airplane_support (Meshed)</object-name>
+        <object-name>arrow_3 (Meshed)</object-name>
+        <object-name>arrow_4 (Meshed)</object-name>
+        <object-name>pointer_1_B (Meshed)</object-name>
+        <object-name>frontal_plate_A (Meshed)</object-name>
+    </effect>    
+    
     <animation> 
         <type>material</type>
         <object-name>cover (Meshed)</object-name>

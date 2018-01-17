@@ -96,6 +96,7 @@
             <file>Aircraft/G91-R1B_HD/Nasal/Lights/position_lights.nas</file>
             <file>Aircraft/G91-R1B_HD/Nasal/Lights/frontal_gear_lights.nas</file>
             <file>Aircraft/G91-R1B_HD/Nasal/Lights/re_emit_green_red_gauges.nas</file>
+            <file>Aircraft/G91-R1B_HD/Nasal/Lights/ambient_light.nas</file>
             <file>Aircraft/G91-R1B_HD/Nasal/Lights/button_lights.nas</file>
             <file>Aircraft/G91-R1B_HD/Nasal/Lights/button_lights.nas</file>
             <file>Aircraft/G91-R1B_HD/Nasal/Electric/power_management.nas</file>
