@@ -12,17 +12,31 @@
     </offsets>
     
     <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Glass/glass-chrome</inherits-from>
-        <object-name>A__G91_fuselage_canopy</object-name>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_silver_D5_0</inherits-from>
         <object-name>F_CANPOPY</object-name>
         <object-name>F_canopy_ant_blind</object-name>
         <object-name>F_canopY_ant.001</object-name>
+        <object-name>F_CANPOPY.002</object-name>
+        <object-name>F_CANPOPY.003</object-name>
+        
+        <object-name>F_CANPOPY.001</object-name>
+        <texture>Pictures/G91-Al-Light.png</texture>
+    </effect>
+    
+    <!-- Chrome Effects on materials -->
+    <effect>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Glass/glass-chrome</inherits-from>
+        <object-name>A__G91_fuselage_canopy</object-name>
         <object-name>F_glass_est_tettuccio</object-name>
         <object-name>F_glass_int_tettuccio</object-name>
+        <object-name>A__G91_fuselage_canopy</object-name>
+        <object-name>A__G91_fuselage_int.weapon.door.003</object-name>
+        <object-name>F_CANPOPY</object-name>
+        <object-name>F.CANPOPY.telaio2</object-name>
     </effect>
     
     <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading_canopy</inherits-from>
         <object-name>F_canopy_ant_blind</object-name>
         <object-name>F_canopY_ant.001</object-name>
         <object-name>F_CANPOPY_guarn.2.001</object-name>
@@ -84,7 +98,7 @@
         <texture>Pictures/G91-Al-Light.png</texture>
         <ambient>
             <red>0.9</red>
-            <green>1.0</green>
+            <green>0.92</green>
             <blue>0.9</blue>
         </ambient>
     </animation>
@@ -124,15 +138,6 @@
     <effect>
         <inherits-from>canopy_lightmap_01</inherits-from>
         <object-name>F_test_abitacolo1</object-name>
-    </effect>
-
-    <!-- Chrome Effects on materials -->
-    <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Glass/glass-chrome</inherits-from>
-        <object-name>A__G91_fuselage_canopy</object-name>
-        <object-name>A__G91_fuselage_int.weapon.door.003</object-name>
-        <object-name>F_CANPOPY</object-name>
-        <object-name>F.CANPOPY.telaio2</object-name>
     </effect>
     
     <!-- Gauges -->

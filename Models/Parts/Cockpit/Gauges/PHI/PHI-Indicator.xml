@@ -8,7 +8,7 @@
         <inherits-from>Effects/model-transparent</inherits-from>
         <object-name>glass (Meshed)</object-name>
     </effect>
-    
+
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
         <object-name>screews_01 (Meshed)</object-name>
@@ -48,7 +48,7 @@
         <object-name>pointer_1_B (Meshed)</object-name>
         <object-name>frontal_plate_A (Meshed)</object-name>
     </effect>    
-    
+
     <animation> 
         <type>material</type>
         <object-name>cover (Meshed)</object-name>
@@ -91,6 +91,11 @@
             <blue>0.0</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
+        <specular>
+            <red>0.9</red>
+            <green>0.9</green>
+            <blue>0.9</blue>
+        </specular>
     </animation>
     
     <animation> 

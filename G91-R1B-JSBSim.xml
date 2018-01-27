@@ -90,7 +90,7 @@
         Modificated from 20180108:
         -->
         <ixx unit="SLUG*FT2">  10000.00  </ixx>
-        <iyy unit="SLUG*FT2">  22000.00  </iyy>
+        <iyy unit="SLUG*FT2">  25000.00  </iyy>
         <izz unit="SLUG*FT2">  20000.00  </izz>
         <ixz unit="SLUG*FT2">    594.9233  </ixz>
         <emptywt unit="LBS" >   6834.0 </emptywt>
@@ -949,7 +949,7 @@
                     <property>aero/qbar-psf</property>
                     <property>metrics/Sw-sqft</property>
                     <property>gear/gear-pos-norm</property>
-                    <value>0.1</value>
+                    <value>0.005</value>
                 </product>
             </function>
             

@@ -100,7 +100,6 @@
             <file>Aircraft/G91-R1B_HD/Nasal/Lights/button_lights.nas</file>
             <file>Aircraft/G91-R1B_HD/Nasal/Lights/button_lights.nas</file>
             <file>Aircraft/G91-R1B_HD/Nasal/Electric/power_management.nas</file>
-            <file>Aircraft/G91-R1B_HD/Nasal/Hydraulic/hydraulic.nas</file>
             <!-- Gauges -->
             <file>Aircraft/G91-R1B_HD/Nasal/LandingGear/landig_gear_handle.nas</file>
             <file>Aircraft/G91-R1B_HD/Nasal/Gauges/clock.nas</file>

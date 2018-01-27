@@ -10,6 +10,15 @@
     </offsets>
 
     <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Tail/Tail.xml</path>
+        <offsets>
+            <x-m>0</x-m>
+            <y-m>0</y-m>
+            <z-m>-0.10</z-m>
+        </offsets>
+    </model>
+
+    <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Fuselage_A/Fuselage_A0.xml</path>
         <offsets>
             <x-m>0</x-m>
@@ -20,14 +29,6 @@
     
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Fuselage_B/Fuselage_B1.xml</path>
-        <offsets>
-            <x-m>0</x-m>
-            <y-m>0</y-m>
-            <z-m>-0.10</z-m>
-        </offsets>
-    </model>
-    <model>
-        <path>Aircraft/G91-R1B_HD/Models/Parts/Tail/Tail.xml</path>
         <offsets>
             <x-m>0</x-m>
             <y-m>0</y-m>
@@ -61,7 +62,7 @@
             <z-m>-0.10</z-m>
         </offsets>
     </model>
-    -->
+
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Canopy.xml</path>
         <offsets>
@@ -79,7 +80,7 @@
             <z-m>-0.10</z-m>
         </offsets>
     </model>
-
+    -->
 <!--
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Effects/Ground_Shadow/shadow.xml</path>

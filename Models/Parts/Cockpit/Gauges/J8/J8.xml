@@ -10,7 +10,7 @@
         <object-name>internal_ring_A (Meshed)</object-name>
         <object-name>sphere_A (Meshed)</object-name>
     </effect>
-    
+
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
         <object-name>glass (Meshed)</object-name>
@@ -36,7 +36,6 @@
         <object-name>horizon (Meshed)</object-name>
         <object-name>bank_index (Meshed)</object-name>
     </effect>
-    
     
     <animation> 
         <type>material</type>
