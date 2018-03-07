@@ -42,7 +42,7 @@ WARNING: do not remove the Transparency include at the end-->
         </texture>
         
         <dirt-enabled>1</dirt-enabled>
-        <dirt-color type="vec3d" n="0">1.0 1.0 1.0</dirt-color>
+        <dirt-color type="vec3d" n="0">0.8 0.8 0.8</dirt-color>
         <dirt-factor type="float">3.5</dirt-factor>
         <reflection-enabled type="int">1</reflection-enabled>
         <reflection-dynamic type="int">1</reflection-dynamic>

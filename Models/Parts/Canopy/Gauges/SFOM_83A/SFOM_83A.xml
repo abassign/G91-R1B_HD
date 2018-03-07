@@ -11,6 +11,46 @@
     </effect>
     
     <effect>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
+        <object-name>Plane</object-name>
+        <object-name>Collimator_screen</object-name>
+        <object-name>Plane.001</object-name>
+        <object-name>Collimator_body</object-name>
+        <object-name>button</object-name>
+        <object-name>Large_disk.001</object-name>
+        <object-name>cover_glass_target</object-name>
+        <object-name>Cube.004</object-name>
+        <object-name>Collimator_cable_support</object-name>
+        <object-name>Disk_mobile</object-name>
+        <object-name>Large_disk</object-name>
+        <object-name>Circle.001</object-name>
+        <object-name>Collimator_cable</object-name>
+        <object-name>Collimator_cover_retichle</object-name>
+        <object-name>F_structure_panel_cockpit.005</object-name>
+        <object-name>F_structure_panel_cockpit.006</object-name>
+        <object-name>support_collim_gauges</object-name>
+        <object-name>collimator_Ice breaker</object-name>
+        <object-name>Collimator_Lever_lock_screw</object-name>
+        <object-name>Collimator_Lever_lock_screw_02</object-name>
+        <object-name>support_disk</object-name>
+        <object-name>beam</object-name>
+        <object-name>bolt_index</object-name>
+        <object-name>bolt_support01</object-name>
+        <object-name>bolt_support02</object-name>
+        <object-name>index.001</object-name>
+        <object-name>flange_fixed_drum</object-name>
+        <object-name>screw_gauges</object-name>
+        <object-name>fixed_drum</object-name>
+        <object-name>locking_lever01</object-name>
+        <object-name>locking_lever02</object-name>
+        <object-name>locking_lever03</object-name>
+        <object-name>locking_plate</object-name>
+        <object-name>screw_gauges01</object-name>
+        <object-name>index</object-name>
+        <object-name>button</object-name>
+    </effect>
+    
+    <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
         <object-name>border_glass_target</object-name>
         <object-name>Colimator_Objective01</object-name>
@@ -443,20 +483,6 @@
     </animation>
     
     <animation>
-        <type>pick</type>
-        <object-name>locking_lever03</object-name>
-        <action>
-            <button>0</button>
-            <repeatable>false</repeatable>
-            <interval-sec>0.2</interval-sec>
-            <binding>
-                <command>property-toggle</command>
-                <property>sim/G91/gauge/SFOM_83A/isLightActive</property>
-            </binding>
-        </action>
-    </animation>
-    
-    <animation>
         <type>select</type>
         <object-name>Collimator_cable</object-name>
         <object-name>Collimator_cable_support</object-name>
@@ -555,10 +581,20 @@
         </center>
         <axis>
             <x>  0 </x>
-            <y>  -1 </y>
+            <y> -1 </y>
             <z>  0 </z>
         </axis>
     </animation>
-    
+<!-- test 
+    <model>
+        <name>gun_cross_effect</name>
+        <path>procedural_light_gun_cross.xml</path>
+        <offsets>
+            <x-m> 0.0</x-m>
+            <y-m> 0.0 </y-m>
+            <z-m> 0.12 </z-m>
+        </offsets>
+    </model>
+    -->
 </PropertyList>
 

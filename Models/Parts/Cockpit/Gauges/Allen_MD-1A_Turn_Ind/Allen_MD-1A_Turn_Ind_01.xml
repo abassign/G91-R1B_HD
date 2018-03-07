@@ -5,6 +5,18 @@
     <path>Allen_MD-1A_Turn_Ind_01.ac</path>
     
     <effect>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
+        <object-name>frontal_filet (Meshed)</object-name>
+        <object-name>screews (Meshed)</object-name>
+        <object-name>frontal_mask_B (Meshed)</object-name>
+        <object-name>sphere (Meshed)</object-name>
+        <object-name>separator (Meshed)</object-name>
+        <object-name>Support (Meshed)</object-name>
+        <object-name>level_container_A (Meshed)</object-name>
+        <object-name>pointer (Meshed)</object-name>
+    </effect>
+    
+    <effect>
         <inherits-from>Effects/model-transparent</inherits-from>
         <object-name>glass (Meshed)</object-name>
     </effect>
@@ -202,7 +214,7 @@
         <object-name>back_plane_A (Meshed)</object-name>
         <object-name>frontal_mask_A (Meshed)</object-name>
         <transparency>
-            <alpha>1.0</alpha>
+            <alpha>0.7</alpha>
         </transparency>
         <ambient>
             <red>0.90</red>
@@ -210,9 +222,9 @@
             <blue>0.63</blue>
         </ambient>
         <emission>
-            <red>0.05</red>
-            <green>0.15</green>
-            <blue>0.0</blue>
+            <red>0.08</red>
+            <green>0.3</green>
+            <blue>0.06</blue>
             <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
         </emission>
     </animation>

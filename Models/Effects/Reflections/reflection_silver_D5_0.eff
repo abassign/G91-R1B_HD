@@ -21,7 +21,7 @@ WARNING: do not remove the Transparency include at the end-->
     <reflection-dynamic type="int"> 1 </reflection-dynamic>
     
     <texture n="4">
-      <image>Aircraft/G91-R1B_HD/Models/Effects/Reflections/glass_shader.png</image>
+      <image>Aircraft/G91-R1B_HD/Models/Effects/Reflections/G91-Al-Light.png</image>
       <type>2d</type>
       <filter>linear-mipmap-linear</filter>
       <wrap-s>clamp</wrap-s>

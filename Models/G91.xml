@@ -80,8 +80,9 @@
             <z-m>-0.10</z-m>
         </offsets>
     </model>
-    -->
-<!--
+
+    <!--
+
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Effects/Ground_Shadow/shadow.xml</path>
     </model>

@@ -3,6 +3,21 @@
 <PropertyList>
     
     <path>Waltham_A-13A.ac</path>
+    
+    <effect>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
+        <object-name>frontal_all (Meshed)</object-name>
+        <object-name>border_internal (Meshed)</object-name>
+        <object-name>center (Meshed)</object-name>
+        <object-name>screews (Meshed)</object-name>
+        <object-name>back_plane_B (Meshed)</object-name>
+        <object-name>Arrow_1B (Meshed)</object-name>
+        <object-name>Arrow_2B (Meshed)</object-name>
+        <object-name>Arrow_3B (Meshed)</object-name>
+        <object-name>Arrow_4B (Meshed)</object-name>
+        <object-name>knob_001 (Meshed)</object-name>
+        <object-name>knob_002 (Meshed)</object-name>
+    </effect>
 
     <effect>
         <inherits-from>Effects/model-transparent</inherits-from>
@@ -95,7 +110,7 @@
         <type>material</type>
         <object-name>back_plane_A (Meshed)</object-name>
         <transparency>
-            <alpha>1.0</alpha>
+            <alpha>0.7</alpha>
         </transparency>
         <ambient>
             <red>0.90</red>
@@ -103,9 +118,9 @@
             <blue>0.63</blue>
         </ambient>
         <emission>
-            <red>0.045</red>
-            <green>0.15</green>
-            <blue>0.031</blue>
+            <red>0.08</red>
+            <green>0.3</green>
+            <blue>0.06</blue>
             <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
         </emission>
     </animation>
@@ -142,9 +157,9 @@
             <blue>0.63</blue>
         </ambient>
         <emission>
-            <red>0.045</red>
-            <green>0.15</green>
-            <blue>0.031</blue>
+            <red>0.08</red>
+            <green>0.3</green>
+            <blue>0.06</blue>
             <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
         </emission>
     </animation>

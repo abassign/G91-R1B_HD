@@ -5,6 +5,18 @@
     <path>j8.ac</path>
     
     <effect>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
+        <object-name>frontal (Meshed)</object-name>
+        <object-name>sphere_B (Meshed)</object-name>
+        <object-name>Knob (Meshed)</object-name>
+        <object-name>knob_caging_top_B (Meshed)</object-name>
+        <object-name>knob_caging_cylinder (Meshed)</object-name>
+        <object-name>flag_B (Meshed)</object-name>
+        <object-name>screews_01 (Meshed)</object-name>
+        <object-name>screews_02 (Meshed)</object-name>
+    </effect>
+    
+    <effect>
         <inherits-from>Effects/model-transparent</inherits-from>
         <object-name>glass (Meshed)</object-name>
         <object-name>internal_ring_A (Meshed)</object-name>
@@ -36,7 +48,7 @@
         <object-name>horizon (Meshed)</object-name>
         <object-name>bank_index (Meshed)</object-name>
     </effect>
-    
+
     <animation> 
         <type>material</type>
         <object-name>Cover (Meshed)</object-name>
@@ -53,9 +65,9 @@
         <object-name>frontal (Meshed)</object-name>
         <texture>Pictures/G91-Al-dark.png</texture>
         <ambient>
-            <red>0.6</red>
-            <green>0.6</green>
-            <blue>0.6</blue>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
         </ambient>
         <emission>
             <red>0.15</red>
@@ -187,6 +199,7 @@
     <animation>
         <type>material</type>
         <object-name>internal_ring_A (Meshed)</object-name>
+        <texture>Pictures/G91-Al-Light.png</texture>
         <transparency>
             <alpha>0.0</alpha>
         </transparency>
@@ -221,15 +234,16 @@
         <object-name>back_frontal_A (Meshed)</object-name>
         <object-name>flag_A (Meshed)</object-name>
         <object-name>knob_caging_top_A (Meshed)</object-name>
+        <texture>Pictures/G91-Al-Light.png</texture>
         <ambient>
             <red>0.90</red>
             <green>0.83</green>
             <blue>0.63</blue>
         </ambient>
         <emission>
-            <red>0.00</red>
-            <green>0.15</green>
-            <blue>0.00</blue>
+            <red>0.08</red>
+            <green>0.3</green>
+            <blue>0.06</blue>
             <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
         </emission>
     </animation>
@@ -237,15 +251,16 @@
     <animation>
         <type>material</type>
         <object-name>horizon (Meshed)</object-name>
+        <texture>Pictures/G91-Al-Light.png</texture>
         <ambient>
             <red>0.8</red>
             <green>0.73</green>
             <blue>0.53</blue>
         </ambient>
         <emission>
-            <red>0.025</red>
-            <green>0.10</green>
-            <blue>0.00</blue>
+            <red>0.08</red>
+            <green>0.3</green>
+            <blue>0.06</blue>
             <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
         </emission>
     </animation>
@@ -263,9 +278,9 @@
             <blue>0.63</blue>
         </ambient>
         <emission>
-            <red>0.06</red>
-            <green>0.15</green>
-            <blue>0.03</blue>
+            <red>0.08</red>
+            <green>0.3</green>
+            <blue>0.06</blue>
             <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
         </emission>
     </animation>

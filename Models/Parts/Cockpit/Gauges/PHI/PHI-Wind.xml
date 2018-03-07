@@ -5,6 +5,24 @@
     <path>PHI-Wind.ac</path>
     
     <effect>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
+        <object-name>frontal (Meshed)</object-name>
+        <object-name>frontal_plate_A (Meshed)</object-name>
+        <object-name>frontal_plate_B (Meshed)</object-name>
+        <object-name>ring (Meshed)</object-name>
+        <object-name>lamp_ring (Meshed)</object-name>
+        <object-name>knob_001 (Meshed)</object-name>
+        <object-name>knob_002 (Meshed)</object-name>
+        <object-name>lamp_cover (Meshed)</object-name>
+        <object-name>arrow_1 (Meshed)</object-name>
+        <object-name>arrow_2 (Meshed)</object-name>
+        <object-name>lamp_glass (Meshed)</object-name>
+        <object-name>screews_01 (Meshed)</object-name>
+        <object-name>screews_02 (Meshed)</object-name>
+        <object-name>screews_03 (Meshed)</object-name>
+    </effect>
+    
+    <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
         <object-name>frontal (Meshed)</object-name>
         <object-name>glass (Meshed)</object-name>

@@ -5,7 +5,7 @@
     <path>MS-33678-3P.ac</path>
     
     <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
         <object-name>Cover</object-name>
         <object-name>Frontalr</object-name>
         <object-name>Cylynder-15-18</object-name>
@@ -42,10 +42,10 @@
             <blue>0.6</blue>
         </ambient>
         <emission>
-            <red>0.02</red>
+            <red>0.15</red>
             <green>0.0</green>
-            <blue>0.002</blue>
-            <factor-prop>sim/G91/gauge_green_light_emission</factor-prop>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
     

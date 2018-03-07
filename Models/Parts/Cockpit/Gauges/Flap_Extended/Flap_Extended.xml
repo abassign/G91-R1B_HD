@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+    
+    <path>Flap_Extended.ac</path>
+    
+   <effect>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
+        <object-name>frontal (Meshed)</object-name>
+        <object-name>ring (Meshed)</object-name>
+        <object-name>screews (Meshed)</object-name>
+        <object-name>back_plane_2A2 (Meshed)</object-name>
+        <object-name>back_plane_2A1 (Meshed)</object-name>
+        <object-name>pointer_1A (Meshed)</object-name>
+        <object-name>back_plane_2B (Meshed)</object-name>
+        <object-name>pointer_1B (Meshed)</object-name>
+        <object-name>frontal_internal_A (Meshed)</object-name>
+        <object-name>frontal_internal_B (Meshed)</object-name>
+    </effect>
+    
+    <effect>
+        <inherits-from>Effects/model-transparent</inherits-from>
+        <object-name>glass (Meshed)</object-name>
+    </effect>
+    
+     <effect>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
+        <object-name>frontal (Meshed)</object-name>
+        <object-name>ring (Meshed)</object-name>
+        <object-name>screews (Meshed)</object-name>
+        <object-name>back_plane_2A2 (Meshed)</object-name>
+        <object-name>back_plane_2A1 (Meshed)</object-name>
+        <object-name>pointer_1A (Meshed)</object-name>
+        <object-name>back_plane_2B (Meshed)</object-name>
+        <object-name>pointer_1B (Meshed)</object-name>
+        <object-name>frontal_internal_A (Meshed)</object-name>
+        <object-name>frontal_internal_B (Meshed)</object-name>
+    </effect>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>cover (Meshed)</object-name>
+        <texture>G91-Al.png</texture>
+        <ambient>
+            <red>0.6</red>
+            <green>0.6</green>
+            <blue>0.6</blue>
+        </ambient>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>frontal (Meshed)</object-name>
+        <texture>Pictures/G91-Al-dark.png</texture>
+        <ambient>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.3</blue>
+        </ambient>
+        <emission>
+            <red>0.2</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>screews (Meshed)</object-name>
+        <texture>Pictures/G91-Al-dark.png</texture>
+        <ambient>
+            <red>0.6</red>
+            <green>0.6</green>
+            <blue>0.6</blue>
+        </ambient>
+        <emission>
+            <red>0.2</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>ring (Meshed)</object-name>
+        <texture>Pictures/G91-Al-dark.png</texture>
+        <ambient>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </ambient>
+        <emission>
+            <red>0.15</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>glass (Meshed)</object-name>
+        <transparency>
+            <alpha>0.1</alpha>
+        </transparency>
+        <ambient>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </ambient>
+        <emission>
+            <red>0.05</red>
+            <green>0.0</green>
+            <blue>0.1</blue>
+            <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>back_plane_2A2 (Meshed)</object-name>
+        <transparency>
+            <alpha>0.9</alpha>
+        </transparency>
+        <ambient>
+            <red>0.9</red>
+            <green>0.9</green>
+            <blue>0.9</blue>
+        </ambient>
+        <emission>
+            <red>0.10</red>
+            <green>0.03</green>
+            <blue>0.03</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>back_plane_2A1 (Meshed)</object-name>
+        <transparency>
+            <alpha>1.0</alpha>
+        </transparency>
+        <ambient>
+            <red>0.80</red>
+            <green>0.73</green>
+            <blue>0.53</blue>
+        </ambient>
+        <emission>
+            <red>0.045</red>
+            <green>0.15</green>
+            <blue>0.031</blue>
+            <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>pointer_1A (Meshed)</object-name>
+        <texture>Pictures/G91-White-00.png</texture>
+        <ambient>
+            <red>0.80</red>
+            <green>0.73</green>
+            <blue>0.40</blue>
+        </ambient>
+        <emission>
+            <red>0.08</red>
+            <green>0.15</green>
+            <blue>0.031</blue>
+            <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>back_plane_2B (Meshed)</object-name>
+        <object-name>pointer_1B (Meshed)</object-name>
+        <texture>Pictures/G91-Black.png</texture>
+        <ambient>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </ambient>
+        <emission>
+            <red>0.10</red>
+            <green>0.03</green>
+            <blue>0.03</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>frontal_internal_A (Meshed)</object-name>
+        <transparency>
+            <alpha>0.9</alpha>
+        </transparency>
+        <ambient>
+            <red>0.9</red>
+            <green>0.9</green>
+            <blue>0.9</blue>
+        </ambient>
+        <emission>
+            <red>0.12</red>
+            <green>0.04</green>
+            <blue>0.04</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>frontal_internal_B (Meshed)</object-name>
+        <texture>Pictures/G91-Dark-Grey.png</texture>
+        <ambient>
+            <red>0.6</red>
+            <green>0.6</green>
+            <blue>0.6</blue>
+        </ambient>
+        <emission>
+            <red>0.05</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+
+    <animation>
+        <type>rotate</type>
+        <object-name>pointer_1A (Meshed)</object-name>
+        <object-name>pointer_1B (Meshed)</object-name>
+        <property>fdm/jsbsim/fcs/flap-pos-deg</property>
+        <factor>1</factor>
+        <interpolation>
+            <entry><ind>0</ind><dep>-40</dep></entry>
+            <entry><ind>15</ind><dep>0</dep></entry>
+            <entry><ind>30</ind><dep>40</dep></entry>
+        </interpolation>
+        <axis>
+            <x>-1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+        <center>
+            <x-m>0.0</x-m>
+            <y-m>-0.008</y-m>
+            <z-m>0.0</z-m>
+        </center>
+    </animation>
+    
+    
+    <model>
+        <name>procedural_light_cockpit_gauge_spot_red</name>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Effects/lights/procedural_light_cockpit_gauge_spot_red.xml</path>
+        <offsets>
+            <x-m> 0.03</x-m>
+            <y-m> 0.0 </y-m>
+            <z-m> 0.0 </z-m>
+        </offsets>
+    </model>
+    
+</PropertyList>

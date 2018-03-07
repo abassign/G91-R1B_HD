@@ -14,6 +14,16 @@
     <!-- Materials effects -->
     
     <effect>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
+        <object-name>pannelli_laterali</object-name>
+        <object-name>pannelli_laterali.001</object-name>
+        <object-name>pannelli_laterali.004</object-name>
+        <object-name>pannello_centrale</object-name>
+        <object-name>Support_gauges_01</object-name>
+        <object-name>Support_gauges_012</object-name>
+    </effect>
+    
+    <effect>
         <inherits-from>Effects/model-transparent</inherits-from>
         <object-name>panei_dx_texi.000</object-name>
         <object-name>panel_Sx_tex.002</object-name>
@@ -419,6 +429,47 @@
             <pitch-deg>-8.65</pitch-deg>
         </offsets>
     </model>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/Pressure_Gauge/Pressure_Gauge.xml</path>
+        <offsets>
+            <x-m>-3.188</x-m>
+            <y-m>0.189</y-m>
+            <z-m>-0.043</z-m>
+            <pitch-deg>-8.65</pitch-deg>
+        </offsets>
+    </model>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/Pressure_Gauge_Emergency/Pressure_Gauge_Emergency.xml</path>
+        <offsets>
+            <x-m>-3.188</x-m>
+            <y-m>0.125</y-m>
+            <z-m>-0.043</z-m>
+            <pitch-deg>-8.65</pitch-deg>
+        </offsets>
+    </model>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/Flap_Extended/Flap_Extended.xml</path>
+        <offsets>
+            <x-m>-3.196</x-m>
+            <y-m>-0.125</y-m>
+            <z-m>0.002</z-m>
+            <pitch-deg>-8.65</pitch-deg>
+        </offsets>
+    </model>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/Airbrake_Extended/Airbrake_Extended.xml</path>
+        <offsets>
+            <x-m>-3.190</x-m>
+            <y-m>-0.125</y-m>
+            <z-m>-0.040</z-m>
+            <pitch-deg>-8.65</pitch-deg>
+        </offsets>
+    </model>
+
 
     <!-- Switch and light -->
 
