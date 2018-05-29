@@ -11,10 +11,15 @@
         <object-name>center (Meshed)</object-name>
         <object-name>screews (Meshed)</object-name>
         <object-name>back_plane_B (Meshed)</object-name>
+        <object-name>back_plane_A (Meshed)</object-name>
         <object-name>Arrow_1B (Meshed)</object-name>
         <object-name>Arrow_2B (Meshed)</object-name>
         <object-name>Arrow_3B (Meshed)</object-name>
         <object-name>Arrow_4B (Meshed)</object-name>
+        <object-name>Arrow_1A (Meshed)</object-name>
+        <object-name>Arrow_2A (Meshed)</object-name>
+        <object-name>Arrow_3A (Meshed)</object-name>
+        <object-name>Arrow_4A (Meshed)</object-name>
         <object-name>knob_001 (Meshed)</object-name>
         <object-name>knob_002 (Meshed)</object-name>
     </effect>
@@ -61,11 +66,11 @@
         <object-name>frontal_all (Meshed)</object-name>
         <object-name>border_internal (Meshed)</object-name>
         <object-name>center (Meshed)</object-name>
-        <texture>Pictures/G91-Al-dark.png</texture>
+        <texture>Pictures/G91-Dark-Grey.png</texture>
         <ambient>
-            <red>0.6</red>
-            <green>0.6</green>
-            <blue>0.6</blue>
+            <red>0.4</red>
+            <green>0.4</green>
+            <blue>0.4</blue>
         </ambient>
         <emission>
             <red>0.2</red>
@@ -148,9 +153,7 @@
         <object-name>Arrow_2A (Meshed)</object-name>
         <object-name>Arrow_3A (Meshed)</object-name>
         <object-name>Arrow_4A (Meshed)</object-name>
-        <transparency>
-            <alpha>1.0</alpha>
-        </transparency>
+        <texture>Pictures/G91-White-00.png</texture>
         <ambient>
             <red>0.90</red>
             <green>0.83</green>

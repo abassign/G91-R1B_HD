@@ -7,9 +7,14 @@
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
         <object-name>support (Meshed)</object-name>
+        <object-name>center_1 (Meshed)</object-name>
+        <object-name>center_2 (Meshed)</object-name>
         <object-name>border_gauge (Meshed)</object-name>
         <object-name>screews (Meshed)</object-name>
+        <object-name>back_plane_A (Meshed)</object-name>
         <object-name>back_plane_B (Meshed)</object-name>
+        <object-name>pointer_1_A (Meshed)</object-name>
+        <object-name>pointer_2_A (Meshed)</object-name>
         <object-name>pointer_1_B (Meshed)</object-name>
         <object-name>pointer_2_B (Meshed)</object-name>
         <object-name>center (Meshed)</object-name>
@@ -27,7 +32,6 @@
         <object-name>center_2 (Meshed)</object-name>
         <object-name>border_gauge (Meshed)</object-name>
         <object-name>screews (Meshed)</object-name>
-        <object-name>glass (Meshed)</object-name>
         <object-name>back_plane_A (Meshed)</object-name>
         <object-name>back_plane_B (Meshed)</object-name>
         <object-name>pointer_1_A (Meshed)</object-name>
@@ -154,9 +158,7 @@
         <type>material</type>
         <object-name>pointer_1_A (Meshed)</object-name>
         <object-name>pointer_2_A (Meshed)</object-name>
-        <transparency>
-            <alpha>1.0</alpha>
-        </transparency>
+        <texture>Pictures/G91-White-00.png</texture>
         <ambient>
             <red>0.90</red>
             <green>0.83</green>

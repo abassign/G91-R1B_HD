@@ -1,0 +1,47 @@
+% \documentclass{standalone} is particular class that non have a size, but the size is define from
+% the document itself
+\documentclass[tikz,margin=0pt, convert={outfile=SFOM_10-60.png}]{standalone}
+% \usepackage{tikz} is the package that contain the graphics command as \draw etc ...
+% The package is describe in this document: https://www.sharelatex.com/learn/TikZ_package
+\usepackage{tikz}
+% If the graduate dials is for analogical gauges period 50-70 years, this font is ok
+% OCR is open-source package deposited in the CTAN repository: https://www.ctan.org/pkg/ocr-b
+% Opentype can be used on Linux and Mac machines
+% (I do not know if it's possible in Windows, but I think of it),
+% you can always download it from the CTAN site at this address:
+% https://www.ctan.org/tex-archive/fonts/ocr-b-outline
+\usepackage{ocr}
+% Defines the font size to use, the first number defines the font size,
+% the second number the dimensional family from which the font is taken.
+% It can be assumed that there are differences between a dimensional family 10 and a 12 dimensional font.
+\tikzset{font={\fontsize{7pt}{10}\selectfont}}
+\begin{document}
+% The link OCR package documentation is this: http://ctan.mirror.garr.it/mirrors/CTAN/macros/latex/contrib/ocr-latex/ocr.pdf
+% \ocrfamily - Normal font family
+% \ocrnegfamily - Family negative fonts
+{\ocrfamily
+    % Xscale defines the scale of the drawing with respect to the document we write.
+    % It is imperative to make it compatible for the size of the graduated dial that we are designing.
+    % Its determination requires a number of tests to optimize the font dimension with the units of measurement.
+    \begin{tikzpicture}[xscale = 0.0480]
+      %5° Rays
+      \foreach \a in {-180, -179,...,180}
+	\draw[line width=0.3mm] (\a,0) -- (\a,2mm);
+      %10° Rays
+      \foreach \a in {-10, -5,...,60}
+	\draw[line width=0.3mm] (\a,0) -- (\a,3mm);
+      %30° Rays
+      \foreach \a in {-10, 0,...,60}
+	\draw[line width=0.3mm] (\a,0) -- (\a,4mm); 
+      %labels  
+      \draw (-10,0.7) node[rotate=90] { 10};
+      \draw (0,0.7) node[rotate=90] { 0};
+      \draw (10,0.7) node[rotate=90] {-10};
+      \draw (20,0.7) node[rotate=90] {-20};
+      \draw (30,0.7) node[rotate=90] {-30};
+      \draw (40,0.7) node[rotate=90] {-40};
+      \draw (50,0.7) node[rotate=90] {-50};
+      \draw (60,0.7) node[rotate=90] {-60};
+    \end{tikzpicture}
+}
+\end{document} 

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+    
+    <!-- Fuel 260 lit Tanks -->
+    
+    <submodel>
+        <offsets>
+            <x-m>-1.78</x-m>
+            <y-m>-2.025</y-m>
+            <z-m>-0.449</z-m>
+            <pitch-offset>-2.5</pitch-offset>
+        </offsets>
+        <name>stationSxInternal_Tank260lit</name>
+        <model>Aircraft/G91-R1B_HD/Models/Parts/Stores/Tank/Tank260lit_sub.xml</model>
+        <trigger>sim/G91/stores/stationSxInternalDropFromStation</trigger>
+        <repeat>false</repeat>
+        <count>100</count>
+        <delay>0.1</delay>
+        <speed>0</speed>
+        <slaved>false</slaved>
+        <wind>false</wind>
+        <aero-stabilised>true</aero-stabilised>
+        <collision>true</collision>
+        <eda>1.35</eda>
+        <cd>0.2</cd>
+        <weight>150</weight>
+        <contents>sim/G91/stores/stationSxInternalContent</contents>
+        <buoyancy>0</buoyancy>
+        <life>60</life>
+        <impact>true</impact>
+        <impact-reports>ai/models/model-impact</impact-reports>
+        <external-force>true</external-force>
+    </submodel>
+    
+    <submodel>
+        <offsets>
+            <x-m>-1.78</x-m>
+            <y-m>2.025</y-m>
+            <z-m>-0.449</z-m>
+            <pitch-offset>-2.5</pitch-offset>
+        </offsets>
+        <name>stationDxInternal_Tank260lit</name>
+        <model>Aircraft/G91-R1B_HD/Models/Parts/Stores/Tank/Tank260lit_sub.xml</model>
+        <trigger>sim/G91/stores/stationDxInternalDropFromStation</trigger>
+        <repeat>false</repeat>
+        <count>100</count>
+        <delay>0.1</delay>
+        <speed>0</speed>
+        <slaved>false</slaved>
+        <wind>false</wind>
+        <aero-stabilised>true</aero-stabilised>
+        <collision>true</collision>
+        <eda>1.35</eda>
+        <cd>0.2</cd>
+        <weight>150</weight>
+        <contents>sim/G91/stores/stationDxInternalContent</contents>
+        <buoyancy>0</buoyancy>
+        <life>60</life>
+        <impact>true</impact>
+        <impact-reports>ai/models/model-impact</impact-reports>
+        <external-force>true</external-force>
+    </submodel>
+
+</PropertyList> 

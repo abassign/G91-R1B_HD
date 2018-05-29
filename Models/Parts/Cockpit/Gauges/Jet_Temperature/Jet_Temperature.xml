@@ -6,15 +6,20 @@
     
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
+        <object-name>cover (Meshed)</object-name>
         <object-name>support (Meshed)</object-name>
         <object-name>border_gauge (Meshed)</object-name>
         <object-name>Screews (Meshed)</object-name>
         <object-name>screews (Meshed)</object-name>
         <object-name>back_cover (Meshed)</object-name>
+        <object-name>back_plane_1A (Meshed)</object-name>
+        <object-name>pointer_stop_A (Meshed)</object-name>
+        <object-name>back_plane_2A1 (Meshed)</object-name>
         <object-name>back_plane_1B (Meshed)</object-name>
         <object-name>pointer_stop_B (Meshed)</object-name>
         <object-name>pointer_1B (Meshed)</object-name>
         <object-name>back_plane_2B (Meshed)</object-name>
+        <object-name>pointer_1A (Meshed)</object-name>
         <object-name>pointer_1B (Meshed)</object-name>
     </effect>
     
@@ -31,11 +36,8 @@
         <object-name>Screews (Meshed)</object-name>
         <object-name>screews (Meshed)</object-name>
         <object-name>back_cover (Meshed)</object-name>
-        <object-name>glass (Meshed)</object-name>
         <object-name>back_plane_1A (Meshed)</object-name>
         <object-name>pointer_stop_A (Meshed)</object-name>
-        <object-name>back_plane_2A1 (Meshed)</object-name>
-        <object-name>back_plane_1B (Meshed)</object-name>
         <object-name>pointer_stop_B (Meshed)</object-name>
         <object-name>pointer_1B (Meshed)</object-name>
         <object-name>back_plane_2B (Meshed)</object-name>
@@ -198,9 +200,7 @@
     <animation>
         <type>material</type>
         <object-name>pointer_1A (Meshed)</object-name>
-        <transparency>
-            <alpha>1.0</alpha>
-        </transparency>
+        <texture>Pictures/G91-White-00.png</texture>
         <ambient>
             <red>0.90</red>
             <green>0.83</green>

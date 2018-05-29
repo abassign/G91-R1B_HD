@@ -37,21 +37,23 @@ var color_cross_SFOM83A = maketimer(0.1, func() {
     ambientRedLight = props.globals.getNode("rendering/scene/specular/red",1).getValue();
     ambientGreenLight = props.globals.getNode("rendering/scene/specular/green",1).getValue();
     ambientBlueLight = props.globals.getNode("rendering/scene/specular/blue",1).getValue();
-    collimatorLight = 1.2 * (ambientRedLight + ambientGreenLight + ambientBlueLight) / 3;
+    var collimatorLight = 1.2 * (ambientRedLight + ambientGreenLight + ambientBlueLight) / 3;
     whiteLight_sun = collimatorLight * (1 + sun_direct_Light);
     if (lightIntesity <= 0.01) {
         setprop("sim/G91/gauge/SFOM_83A/isLightActive", 0);
-        setprop("sim/G91/gauge/SFOM_83A/whiteLight", whiteLight_sun);
     } else {
         setprop("sim/G91/gauge/SFOM_83A/isLightActive", 1);
         ambientRedLight = lightIntesity;
         ambientGreenLight = 0.3 * lightIntesity;
         ambientBlueLight = 0.0;
-        setprop("sim/G91/gauge/SFOM_83A/whiteLight", (1 - collimatorLight * 3));
+        whiteLight_sun = (1 - collimatorLight * 3);
+        if (whiteLight_sun < 0.01) { whiteLight_sun = 0.0; }
     }
+    setprop("sim/G91/gauge/SFOM_83A/whiteLight", whiteLight_sun);
     setprop("sim/G91/gauge/SFOM_83A/collimatorLight", collimatorLight);
     setprop("sim/G91/gauge/SFOM_83A/collimator_red",ambientRedLight);
     setprop("sim/G91/gauge/SFOM_83A/collimator_green",ambientGreenLight);
     setprop("sim/G91/gauge/SFOM_83A/collimator_blue",ambientBlueLight);
+
 });
 color_cross_SFOM83A.start();

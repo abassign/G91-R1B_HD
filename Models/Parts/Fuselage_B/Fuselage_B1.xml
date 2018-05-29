@@ -13,7 +13,7 @@
 
     <!-- Chrome Effects on materials -->
     <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Glass/glass-chrome</inherits-from>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/glass-chrome</inherits-from>
         <object-name>A__G91_fuselage_weapon_door_dx.001</object-name>
         <object-name>A__G91_fuselage_weapon_door_sx.001</object-name>
         <object-name>munitions_box_dx_01</object-name>
@@ -28,7 +28,7 @@
     
     
     <animation>
-        <name>ArmPanelSxRemovePanel</name>
+        <name>ArmyPanelSxRemovePanel</name>
         <object-name>A__G91_fuselage_weapon_door_sx.001</object-name>
         <object-name>A__G91_fuselage_weapon_door_sx</object-name>
         <object-name>A__G91_fuselage_weapon_door_dx.003</object-name>
@@ -59,15 +59,17 @@
         
         <object-name>Componente#12.002</object-name>
         <object-name>Componente#12.003</object-name>
+        
+        <object-name>closing_door_sx</object-name>
     </animation>
     
     <animation>
-        <name>ArmPanelDxRemovePanel</name>
+        <name>ArmyPanelDxRemovePanel</name>
         <object-name>A__G91_fuselage_weapon_door_dx.001</object-name>
         <object-name>A__G91_fuselage_weapon_door_dx</object-name>
         <object-name>A__G91_fuselage_weapon_door_dx.002</object-name>
         <object-name>A__G91_fuselage_weapon__01up 02.002</object-name>
-        
+    
         <object-name>weapon_structure_dx_00</object-name>
         <object-name>weapon_structure_dx_01</object-name>
         <object-name>weapon_structure_dx_02</object-name>
@@ -93,6 +95,8 @@
         
         <object-name>Componente#12.000</object-name>
         <object-name>Componente#12.001</object-name>
+        
+        <object-name>closing_door_dx</object-name>
     </animation>
     
     <animation>
@@ -126,28 +130,22 @@
         <texture>Pictures/G91-Dark-Grey.png</texture>
     </animation>
     
-    <animation>
-        <type>pick</type>
-        <object-name>ArmPanelDxRemovePanel</object-name>
-        <action>
-            <button>0</button>
-            <repeatable>false</repeatable>
-            <interval-sec>0.2</interval-sec>
-            <binding>
-                <command>property-toggle</command>
-                <property>/controls/switches/ArmPanelSx</property>
-                <step>1</step>
-                <min>0</min>
-                <max>1</max>
-                <wrap>false</wrap>
-            </binding>
-        </action>
+    <animation> 
+        <type>material</type> 
+        <object-name>closing_door_dx</object-name>
+        <object-name>closing_door_sx</object-name>
+        <texture>Pictures/G91-Dark-Grey.png</texture>
+        <ambient>
+            <red>0.4</red>
+            <green>0.4</green>
+            <blue>0.4</blue>
+        </ambient>	
     </animation>
     
     <animation>
         <type>rotate</type>
-        <object-name>ArmPanelDxRemovePanel</object-name>
-        <property>/controls/switches/ArmPanelSx</property>
+        <object-name>ArmyPanelDxRemovePanel</object-name>
+        <property>sim/G91/switchs/ArmyPanels/ArmyPanelSx_timing</property>
         <factor>-60</factor>
         <axis>
             <x1-m> -2.6982 </x1-m>
@@ -160,27 +158,9 @@
     </animation>
     
     <animation>
-        <type>pick</type>
-        <object-name>ArmPanelSxRemovePanel</object-name>
-        <action>
-            <button>0</button>
-            <repeatable>false</repeatable>
-            <interval-sec>0.2</interval-sec>
-            <binding>
-                <command>property-toggle</command>
-                <property>/controls/switches/ArmPanelDx</property>
-                <step>1</step>
-                <min>0</min>
-                <max>1</max>
-                <wrap>true</wrap>
-            </binding>
-        </action>
-    </animation>
-    
-    <animation>
         <type>rotate</type>
-        <object-name>ArmPanelSxRemovePanel</object-name>
-        <property>/controls/switches/ArmPanelDx</property>
+        <object-name>ArmyPanelSxRemovePanel</object-name>
+        <property>sim/G91/switchs/ArmyPanels/ArmyPanelDx_timing</property>
         <factor>60</factor>
         <axis>
             <x1-m> -2.6982 </x1-m>

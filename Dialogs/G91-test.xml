@@ -30,7 +30,7 @@
     
     <hrule/>
     
-    <!-- Hydraulic pressure -->
+    <!-- Hydraulic pressure test -->
     <group>
         <layout>hbox</layout>
         <text>

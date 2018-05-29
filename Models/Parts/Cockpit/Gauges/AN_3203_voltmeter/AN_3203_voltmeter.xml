@@ -6,11 +6,16 @@
     
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
-        <object-name>cover (Meshed)</object-name>
         <object-name>frontal (Meshed)</object-name>
         <object-name>ring (Meshed)</object-name>
         <object-name>screews (Meshed)</object-name>
+        <object-name>screews_reg (Meshed)</object-name>
+        <object-name>back_plane_2A2 (Meshed)</object-name>
+        <object-name>back_plane_2A1 (Meshed)</object-name>
+        <object-name>pointer_1A (Meshed)</object-name>
         <object-name>back_plane_2B (Meshed)</object-name>
+        <object-name>pointer_1B (Meshed)</object-name>
+        <object-name>stop_pointer (Meshed)</object-name>
     </effect>
     
     <effect>
@@ -24,7 +29,6 @@
         <object-name>ring (Meshed)</object-name>
         <object-name>screews (Meshed)</object-name>
         <object-name>screews_reg (Meshed)</object-name>
-        <object-name>glass (Meshed)</object-name>
         <object-name>back_plane_2A2 (Meshed)</object-name>
         <object-name>back_plane_2A1 (Meshed)</object-name>
         <object-name>pointer_1A (Meshed)</object-name>
@@ -47,11 +51,11 @@
     <animation> 
         <type>material</type>
         <object-name>frontal (Meshed)</object-name>
-        <texture>Pictures/G91-Al-dark.png</texture>
+        <texture>Pictures/G91-Dark-Grey.png</texture>
         <ambient>
-            <red>0.6</red>
-            <green>0.6</green>
-            <blue>0.6</blue>
+            <red>0.4</red>
+            <green>0.4</green>
+            <blue>0.4</blue>
         </ambient>
         <emission>
             <red>0.2</red>
@@ -150,9 +154,7 @@
     <animation> 
         <type>material</type>
         <object-name>pointer_1A (Meshed)</object-name>
-        <transparency>
-            <alpha>0.9</alpha>
-        </transparency>
+        <texture>Pictures/G91-White-00.png</texture>
         <ambient>
             <red>1.0</red>
             <green>0.9</green>
@@ -172,9 +174,9 @@
         <object-name>pointer_1B (Meshed)</object-name>
         <texture>Pictures/G91-Dark-Grey.png</texture>
         <ambient>
-            <red>0.0</red>
-            <green>0.0</green>
-            <blue>0.0</blue>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
         </ambient>
         <emission>
             <red>0.25</red>

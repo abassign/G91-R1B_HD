@@ -6,20 +6,41 @@
     
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
-        <object-name>frontal (Meshed)</object-name>
         <object-name>screews_01 (Meshed)</object-name>
         <object-name>screews_02 (Meshed)</object-name>
         <object-name>screews_03 (Meshed)</object-name>
         <object-name>screews_04 (Meshed)</object-name>
         <object-name>screews_05 (Meshed)</object-name>
+        <object-name>frontal (Meshed)</object-name>
         <object-name>back_frontal (Meshed)</object-name>
         <object-name>knob_001 (Meshed)</object-name>
         <object-name>knob_002 (Meshed)</object-name>
         <object-name>knob_003 (Meshed)</object-name>
         <object-name>knob_004 (Meshed)</object-name>
+        <object-name>knob_001_A (Meshed)</object-name>
         <object-name>ring (Meshed)</object-name>
+        <object-name>knob_001_plate_A (Meshed)</object-name>
+        <object-name>knob_001_A_plate_A (Meshed)</object-name>
+        <object-name>knob_002_plate_A (Meshed)</object-name>
+        <object-name>knob_003_plate_A (Meshed)</object-name>
+        <object-name>knob_004_plate_A (Meshed)</object-name>
+        <object-name>frontal_mark_knob_001 (Meshed)</object-name>
+        <object-name>NWE_ref (Meshed)</object-name>
         <object-name>frontal_border_plate_ABIS</object-name>
         <object-name>back_plate_B (Meshed)</object-name>
+        <object-name>frontal_plate_A (Meshed)</object-name>
+        <object-name>back_plate_A (Meshed)</object-name>
+        <object-name>frontal_plate_B (Meshed)</object-name>
+        <object-name>arrow_0 (Meshed)</object-name>
+        <object-name>arrow_1 (Meshed)</object-name>
+        <object-name>arrow_2 (Meshed)</object-name>
+        <object-name>support (Meshed)</object-name>
+        <object-name>axis (Meshed)</object-name>
+        <object-name>airplane_support (Meshed)</object-name>
+        <object-name>arrow_3 (Meshed)</object-name>
+        <object-name>arrow_4 (Meshed)</object-name>
+        <object-name>pointer_1_B (Meshed)</object-name>
+        <object-name>frontal_plate_A (Meshed)</object-name>
     </effect>
     
     <effect>
@@ -42,7 +63,6 @@
         <object-name>knob_004 (Meshed)</object-name>
         <object-name>knob_001_A (Meshed)</object-name>
         <object-name>ring (Meshed)</object-name>
-        <object-name>glass (Meshed)</object-name>
         <object-name>knob_001_plate_A (Meshed)</object-name>
         <object-name>knob_001_A_plate_A (Meshed)</object-name>
         <object-name>knob_002_plate_A (Meshed)</object-name>
@@ -99,9 +119,9 @@
         <object-name>back_frontal (Meshed)</object-name>
         <texture>Pictures/G91-Dark-Grey.png</texture>
         <ambient>
-            <red>0.2</red>
-            <green>0.2</green>
-            <blue>0.2</blue>
+            <red>0.4</red>
+            <green>0.4</green>
+            <blue>0.4</blue>
         </ambient>
         <emission>
             <red>0.2</red>
@@ -174,7 +194,7 @@
         <object-name>glass (Meshed)</object-name>
         <texture>Pictures/G91-Al-Light.png</texture>
         <transparency>
-            <alpha>0.2</alpha>
+            <alpha>0.25</alpha>
         </transparency>
         <ambient>
             <red>0.0</red>
@@ -182,9 +202,9 @@
             <blue>0.0</blue>
         </ambient>
         <emission>
-            <red>0.01</red>
-            <green>0.07</green>
-            <blue>0.0</blue>
+            <red>0.095</red>
+            <green>0.087</green>
+            <blue>0.022</blue>
             <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
         </emission>
     </animation>
@@ -216,9 +236,7 @@
     <animation> 
         <type>material</type>
         <object-name>NWE_ref (Meshed)</object-name>
-        <transparency>
-            <alpha>1.0</alpha>
-        </transparency>
+        <texture>Pictures/G91-White-00.png</texture>
         <ambient>
             <red>0.80</red>
             <green>0.73</green>
@@ -276,14 +294,14 @@
             <alpha>1.0</alpha>
         </transparency>
         <ambient>
-            <red>0.90</red>
-            <green>0.83</green>
-            <blue>0.63</blue>
+            <red>0.80</red>
+            <green>0.73</green>
+            <blue>0.53</blue>
         </ambient>
         <emission>
-            <red>0.08</red>
-            <green>0.3</green>
-            <blue>0.06</blue>
+            <red>0.28</red>
+            <green>0.26</green>
+            <blue>0.08</blue>
             <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
         </emission>
     </animation>
@@ -291,6 +309,7 @@
     <animation> 
         <type>material</type>
         <object-name>frontal_plate_B (Meshed)</object-name>
+        <object-name>axis (Meshed)</object-name>
         <texture>Pictures/G91-Dark-Grey.png</texture>
         <ambient>
             <red>0.0</red>
@@ -308,14 +327,28 @@
     <animation>
         <type>material</type>
         <object-name>arrow_0 (Meshed)</object-name>
-        <object-name>arrow_1 (Meshed)</object-name>
-        <transparency>
-            <alpha>1.0</alpha>
-        </transparency>
+        <texture>Pictures/G91-White-00.png</texture>
         <ambient>
-            <red>0.90</red>
-            <green>0.83</green>
-            <blue>0.63</blue>
+            <red>0.80</red>
+            <green>0.73</green>
+            <blue>0.53</blue>
+        </ambient>
+        <emission>
+            <red>0.15</red>
+            <green>0.24</green>
+            <blue>0.044</blue>
+            <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation>
+        <type>material</type>
+        <object-name>arrow_1 (Meshed)</object-name>
+        <texture>Pictures/G91-White-00.png</texture>
+        <ambient>
+            <red>0.80</red>
+            <green>0.73</green>
+            <blue>0.53</blue>
         </ambient>
         <emission>
             <red>0.08</red>
@@ -327,15 +360,13 @@
     
     <animation>
         <type>material</type>
-        <object-name>arrow_2 (Meshed)</object-name>
-        <object-name>support (Meshed)</object-name>
-        <object-name>axis (Meshed)</object-name>
         <object-name>airplane_support (Meshed)</object-name>
+        <object-name>support (Meshed)</object-name>
         <texture>Pictures/G91-Dark-Grey.png</texture>
         <ambient>
-            <red>0.0</red>
-            <green>0.0</green>
-            <blue>0.0</blue>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
         </ambient>
         <emission>
             <red>0.30</red>
@@ -347,20 +378,19 @@
     
     <animation>
         <type>material</type>
+        <object-name>arrow_2 (Meshed)</object-name>
         <object-name>arrow_3 (Meshed)</object-name>
         <object-name>arrow_4 (Meshed)</object-name>
-        <transparency>
-            <alpha>1.0</alpha>
-        </transparency>
+        <texture>Pictures/G91-White-00.png</texture>
         <ambient>
-            <red>0.90</red>
-            <green>0.83</green>
-            <blue>0.63</blue>
+            <red>0.80</red>
+            <green>0.73</green>
+            <blue>0.53</blue>
         </ambient>
         <emission>
-            <red>0.08</red>
-            <green>0.3</green>
-            <blue>0.06</blue>
+            <red>0.15</red>
+            <green>0.17</green>
+            <blue>0.044</blue>
             <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
         </emission>
     </animation>
@@ -392,14 +422,24 @@
             <z>  0 </z>
         </axis>
     </animation>
-    
+    <!--
     <model>
-        <name>procedural_light_cockpit_gauge_spot_red</name>
-        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Effects/lights/procedural_light_cockpit_gauge_spot_red.xml</path>
+        <name>procedural_light_cockpit_gauge_spot_yellow</name>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Effects/lights/procedural_light_cockpit_gauge_spot_yellow.xml</path>
         <offsets>
             <x-m> 0.03</x-m>
             <y-m> 0.0 </y-m>
             <z-m> 0.0 </z-m>
+        </offsets>
+    </model>
+    -->
+    <model>
+        <path>digit3_Indicator.xml</path>
+        <offsets>
+            <x-m>-0.002</x-m>
+            <y-m>0</y-m>
+            <z-m>0</z-m>
+            <pitch-deg>0</pitch-deg>
         </offsets>
     </model>
 

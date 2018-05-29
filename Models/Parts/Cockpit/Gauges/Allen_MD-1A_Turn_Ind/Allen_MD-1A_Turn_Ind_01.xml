@@ -9,11 +9,18 @@
         <object-name>frontal_filet (Meshed)</object-name>
         <object-name>screews (Meshed)</object-name>
         <object-name>frontal_mask_B (Meshed)</object-name>
+        <object-name>glass_torus_division (Meshed)</object-name>
         <object-name>sphere (Meshed)</object-name>
         <object-name>separator (Meshed)</object-name>
         <object-name>Support (Meshed)</object-name>
         <object-name>level_container_A (Meshed)</object-name>
+        <object-name>level_container_B (Meshed)</object-name>
+        <object-name>glass_torus (Meshed)</object-name>
         <object-name>pointer (Meshed)</object-name>
+        <object-name>back_plane_A (Meshed)</object-name>
+        <object-name>frontal_mask_A (Meshed)</object-name>
+        <object-name>back_plane_B (Meshed)</object-name>
+        <object-name>frontal_mask_B (Meshed)</object-name>
     </effect>
     
     <effect>
@@ -32,7 +39,6 @@
         <object-name>Support (Meshed)</object-name>
         <object-name>level_container_A (Meshed)</object-name>
         <object-name>level_container_B (Meshed)</object-name>
-        <object-name>glass (Meshed)</object-name>
         <object-name>glass_torus (Meshed)</object-name>
         <object-name>pointer (Meshed)</object-name>
         <object-name>back_plane_A (Meshed)</object-name>
@@ -55,11 +61,11 @@
     <animation> 
         <type>material</type>
         <object-name>frontal_filet (Meshed)</object-name>
-        <texture>Pictures/G91-Al-dark.png</texture>
+        <texture>Pictures/G91-Dark-Grey.png</texture>
         <ambient>
-            <red>0.6</red>
-            <green>0.6</green>
-            <blue>0.6</blue>
+            <red>0.4</red>
+            <green>0.4</green>
+            <blue>0.4</blue>
         </ambient>
         <emission>
             <red>0.2</red>
@@ -137,6 +143,7 @@
     <animation>
         <type>material</type>
         <object-name>level_container_B (Meshed)</object-name>
+        <texture>Pictures/G91-Al-Light.png</texture>
         <ambient>
             <red>0.6</red>
             <green>0.7</green>
@@ -193,9 +200,7 @@
     <animation>
         <type>material</type>
         <object-name>pointer (Meshed)</object-name>
-        <transparency>
-            <alpha>1.0</alpha>
-        </transparency>
+        <texture>Pictures/G91-White-00.png</texture>
         <ambient>
             <red>0.90</red>
             <green>0.83</green>

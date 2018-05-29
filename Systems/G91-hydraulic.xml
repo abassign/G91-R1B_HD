@@ -5,7 +5,7 @@ Description: G91R4 hydraulics system from "Manuale di pilotaggio (1-11,1-12, etc
 -->
 
 <system name="hydraulic">
-    
+
     <property value="3500">systems/hydraulics/normal-pressure-psi</property>
     <property value="3200">systems/hydraulics/minimal-pressure-psi</property>
     <property value="4000">systems/hydraulics/maximal-pressure-psi</property>
@@ -14,7 +14,7 @@ Description: G91R4 hydraulics system from "Manuale di pilotaggio (1-11,1-12, etc
     <property value="0">systems/hydraulics/flight-system-psi</property>
     <property value="0">systems/hydraulics/flight-system-pump-failed</property>
     <property value="0.1">systems/hydraulics/lost-performance-system</property>
-    
+
     <channel name="hydraulic pressure">
         <!--
         The pump is driven by the motor and is a function of the number of actual engine rpm (n1)

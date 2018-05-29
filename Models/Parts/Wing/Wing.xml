@@ -37,7 +37,7 @@
     
     <!-- Chrome Effects on materials -->
     <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Glass/glass-chrome</inherits-from>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/glass-chrome</inherits-from>
         <object-name>A__G91_fuselage_int.weapon.door.001</object-name>
         <object-name>A__G91_fuselage_weapon_01up 02.001</object-name>
         <object-name>box_recovery_munitions_dx</object-name>
@@ -83,7 +83,446 @@
         <object-name>C00_dx_airbrake_door</object-name>
         <object-name>B00_dx_door_01.000</object-name>
         <object-name>B00_sx_door_01.001</object-name>
+        <object-name>F__door_02</object-name>
+        <object-name>F__door_03</object-name>
+        <object-name>F__door_em_canopy01</object-name>
+        <object-name>Circle</object-name>
+        <object-name>Cube</object-name>
+        <object-name>F_door_em_canopyDX.001</object-name>
+        <object-name>F_door_em_canopyDX.002</object-name>
+        <object-name>F_door_em_canopySX.005</object-name>
+        <object-name>F_door_em_canopySX.001</object-name>
+        <object-name>F_door_em_canopySX.002</object-name>
+        <object-name>m00_door_01.1</object-name>
+        <object-name>m00_door_01.2</object-name>
+        <object-name>m00_door_02</object-name>
+        <object-name>m00_door_dx01</object-name>
+        <object-name>m00_door_dx03</object-name>
+        <object-name>m00_door_sx01</object-name>
+        <object-name>m00_door_sx03</object-name>
+        <object-name>m00_hinge_axe</object-name>
+        <object-name>m00_platelight</object-name>
+        <object-name>A__G91_light_coda-reflect.000</object-name>
     </effect>
+    
+    <effect>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
+        <object-name>A__rotto.005</object-name>
+        <object-name>F_door_em_canopyDX.004a</object-name>
+        <object-name>F_door_em_canopyDX.004</object-name>
+        <object-name>F_door_em_canopyDX.004a.001</object-name>
+        <object-name>F_door_em_canopySX.004a</object-name>
+        <object-name>F_door_em_canopySX.004a</object-name>
+        <object-name>F_door_em_canopyDX.005</object-name>
+        <object-name>F_handle_armydoorDX</object-name>
+        <object-name>F_handle_armydoorSX</object-name>
+        <object-name>m00_box</object-name>
+    </effect>
+    
+    <animation> 
+        <type>material</type> 
+        <object-name>A__rotto.005</object-name>
+        <object-name>F_door_em_canopyDX.004a</object-name>
+        <object-name>F_door_em_canopyDX.004</object-name>
+        <object-name>F_door_em_canopySX.004a</object-name>
+        <object-name>F_door_em_canopySX.004a</object-name>
+        <object-name>F_door_em_canopyDX.004a.001</object-name>
+        <object-name>F_door_em_canopyDX.005</object-name>
+        <object-name>F_door_em_canopyDX.005</object-name>
+        <object-name>F_handle_armydoorDX</object-name>
+        <object-name>F_handle_armydoorSX</object-name>
+        <texture>Pictures/G91-Al-Light.png</texture>
+        <ambient>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </ambient>	
+    </animation>
+    
+    <animation> 
+        <type>material</type> 
+        <object-name>A__rotto.005</object-name>
+        <texture>Pictures/AichiInteriorGreyGreen.png</texture>
+        <object-name>m00_box</object-name>
+        <ambient>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </ambient>	
+    </animation>
+    
+    <animation> 
+        <type>material</type> 
+        <object-name>F_door_em_canopyDX.005</object-name>
+        <object-name>F_door_em_canopySX.005</object-name>
+        <object-name>m00_lightsupport</object-name>
+        <texture>Pictures/G91-Dark-Grey.png</texture>
+        <ambient>
+            <red>0.4</red>
+            <green>0.4</green>
+            <blue>0.4</blue>
+        </ambient>	
+    </animation>
+    
+    <!-- Emergency Canopy Open Sx -->
+    
+    <animation>
+        <type>pick</type>
+        <object-name>F_door_em_canopyDX.002</object-name>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <interval-sec>0.2</interval-sec>
+            <binding>
+                <command>property-toggle</command>
+                <property>sim/G91/switchs/canopy/EmergencyCanopyOpenSx</property>
+                <min>0</min>
+                <max>1</max>
+            </binding>
+            <binding>
+                <command>property-interpolate</command>
+                <property>sim/G91/switchs/canopy/EmergencyCanopyOpenSx_timing</property>
+                <property>sim/G91/switchs/canopy/EmergencyCanopyOpenSx</property>
+                <time>1</time>
+            </binding>
+            <binding>
+                <command>nasal</command>
+                <script>
+                    <![CDATA[
+                    var self = cmdarg();
+                    var emer_Canopy_Jett_Sx = getprop("sim/G91/switchs/canopy/handle/Emer_Canopy_Jett_Sx");
+                    var canopyOpenSx = getprop("sim/G91/switchs/canopy/EmergencyCanopyOpenSx");
+                    if (emer_Canopy_Jett_Sx == 1 and canopyOpenSx == 0) {
+                    setprop("sim/G91/switchs/canopy/handle/Emer_Canopy_Jett_Sx",0);
+                    }
+                    ]]>
+                </script>
+            </binding>
+            <decrease>
+                <binding>
+                    <command>property-assign</command>
+                    <property>/sim/G91/handle/Emer_Canopy_Jett_Sx</property>
+                    <value>0</value>
+                </binding>
+            </decrease>
+        </action>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>F_door_em_canopyDX.002</object-name>
+        <object-name>F_door_em_canopyDX.004a</object-name>
+        <object-name>F_door_em_canopyDX.001</object-name>
+        <object-name>F_door_em_canopyDX.000</object-name>
+        <property>sim/G91/switchs/canopy/EmergencyCanopyOpenSx_timing</property>
+        <factor>120</factor>
+        <axis>
+            <x1-m> -1.24163 </x1-m>
+            <y1-m> -0.65250 </y1-m>
+            <z1-m> -0.53144 </z1-m>
+            <x2-m> -1.20231 </x2-m>
+            <y2-m> -0.65209 </y2-m>
+            <z2-m> -0.53158 </z2-m>
+        </axis>
+    </animation>
+    
+    <!-- Emergency Canopy Open Dx -->
+    
+    <animation>
+        <type>pick</type>
+        <object-name>F_door_em_canopySX.002</object-name>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <interval-sec>0.2</interval-sec>
+            <binding>
+                <command>property-toggle</command>
+                <property>sim/G91/switchs/canopy/EmergencyCanopyOpenDx</property>
+                <min>0</min>
+                <max>1</max>
+            </binding>
+            <binding>
+                <command>property-interpolate</command>
+                <property>sim/G91/switchs/canopy/EmergencyCanopyOpenDx_timing</property>
+                <property>sim/G91/switchs/canopy/EmergencyCanopyOpenDx</property>
+                <time>1</time>
+            </binding>
+            <binding>
+                <command>nasal</command>
+                <script>
+                    <![CDATA[
+                    var self = cmdarg();
+                    var emer_Canopy_Jett_Dx = getprop("sim/G91/switchs/canopy/handle/Emer_Canopy_Jett_Dx");
+                    var canopyOpenDx = getprop("sim/G91/switchs/canopy/EmergencyCanopyOpenDx");
+                    if (emer_Canopy_Jett_Dx == 1 and canopyOpenDx == 0) {
+                    setprop("sim/G91/switchs/canopy/handle/Emer_Canopy_Jett_Dx",0);
+                    }
+                    ]]>
+                </script>
+            </binding>
+        </action>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>F_door_em_canopySX.002</object-name>
+        <object-name>F_door_em_canopySX.001</object-name>
+        <object-name>F_door_em_canopySX.004a</object-name>
+        <object-name>F_door_em_canopySX.000</object-name>
+        <property>sim/G91/switchs/canopy/EmergencyCanopyOpenDx_timing</property>
+        <factor>-120</factor>
+        <axis>
+            <x1-m> -1.24163 </x1-m>
+            <y1-m> 0.65250 </y1-m>
+            <z1-m> -0.53144 </z1-m>
+            <x2-m> -1.20231 </x2-m>
+            <y2-m> 0.65209 </y2-m>
+            <z2-m> -0.53158 </z2-m>
+        </axis>
+    </animation>
+    
+    <!-- Fuel door open Sx-Dx -->
+    <!--
+    <object-name>m00_door_dx03</object-name>
+    <object-name>m00_door_sx01</object-name>
+    <object-name>m00_door_sx03</object-name>
+    -->
+    
+    <animation>
+        <type>pick</type>
+        <object-name>m00_door_dx03</object-name>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <interval-sec>0.2</interval-sec>
+            <binding>
+                <command>property-toggle</command>
+                <property>sim/G91/switchs/FuelPanels/FuelPanelsFrontDx</property>
+                <min>0</min>
+                <max>1</max>
+            </binding>
+            <binding>
+                <command>property-interpolate</command>
+                <property>sim/G91/switchs/FuelPanels/FuelPanelsFrontDx_timing</property>
+                <property>sim/G91/switchs/FuelPanels/FuelPanelsFrontDx</property>
+                <time>2</time>
+            </binding>
+        </action>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>m00_door_dx03</object-name>
+        <property>sim/G91/switchs/FuelPanels/FuelPanelsFrontDx_timing</property>
+        <factor>80</factor>
+        <axis>
+            <x1-m>0.48813</x1-m>
+            <y1-m>0.0065</y1-m>
+            <z1-m>0.337</z1-m>
+            <x2-m>1.34301</x2-m>
+            <y2-m>0.0065</y2-m>
+            <z2-m>0.324</z2-m>
+        </axis>
+    </animation>
+    
+    <animation>
+        <type>pick</type>
+        <object-name>m00_door_sx03</object-name>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <interval-sec>0.2</interval-sec>
+            <binding>
+                <command>property-toggle</command>
+                <property>sim/G91/switchs/FuelPanels/FuelPanelsFrontSx</property>
+                <min>0</min>
+                <max>1</max>
+            </binding>
+            <binding>
+                <command>property-interpolate</command>
+                <property>sim/G91/switchs/FuelPanels/FuelPanelsFrontSx_timing</property>
+                <property>sim/G91/switchs/FuelPanels/FuelPanelsFrontSx</property>
+                <time>2</time>
+            </binding>
+        </action>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>m00_door_sx03</object-name>
+        <property>sim/G91/switchs/FuelPanels/FuelPanelsFrontSx_timing</property>
+        <factor>-80</factor>
+        <axis>
+            <x1-m>0.48813</x1-m>
+            <y1-m>0.0065</y1-m>
+            <z1-m>0.337</z1-m>
+            <x2-m>1.34301</x2-m>
+            <y2-m>0.0065</y2-m>
+            <z2-m>0.324</z2-m>
+        </axis>
+    </animation>
+    
+    <animation>
+        <type>pick</type>
+        <object-name>m00_door_dx01</object-name>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <interval-sec>0.2</interval-sec>
+            <binding>
+                <command>property-toggle</command>
+                <property>sim/G91/switchs/FuelPanels/FuelPanelsBackDx</property>
+                <min>0</min>
+                <max>1</max>
+            </binding>
+            <binding>
+                <command>property-interpolate</command>
+                <property>sim/G91/switchs/FuelPanels/FuelPanelsBackDx_timing</property>
+                <property>sim/G91/switchs/FuelPanels/FuelPanelsBackDx</property>
+                <time>2</time>
+            </binding>
+        </action>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>m00_door_dx01</object-name>
+        <property>sim/G91/switchs/FuelPanels/FuelPanelsBackDx_timing</property>
+        <factor>80</factor>
+        <axis>
+            <x1-m>0.48813</x1-m>
+            <y1-m>0.0065</y1-m>
+            <z1-m>0.337</z1-m>
+            <x2-m>1.34301</x2-m>
+            <y2-m>0.0065</y2-m>
+            <z2-m>0.324</z2-m>
+        </axis>
+    </animation>
+    
+    <animation>
+        <type>pick</type>
+        <object-name>m00_door_sx01</object-name>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <interval-sec>0.2</interval-sec>
+            <binding>
+                <command>property-toggle</command>
+                <property>sim/G91/switchs/FuelPanels/FuelPanelsBackSx</property>
+                <min>0</min>
+                <max>1</max>
+            </binding>
+            <binding>
+                <command>property-interpolate</command>
+                <property>sim/G91/switchs/FuelPanels/FuelPanelsBackSx_timing</property>
+                <property>sim/G91/switchs/FuelPanels/FuelPanelsBackSx</property>
+                <time>2</time>
+            </binding>
+        </action>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>m00_door_sx01</object-name>
+        <property>sim/G91/switchs/FuelPanels/FuelPanelsBackSx_timing</property>
+        <factor>-80</factor>
+        <axis>
+            <x1-m>0.48813</x1-m>
+            <y1-m>0.0065</y1-m>
+            <z1-m>0.337</z1-m>
+            <x2-m>1.34301</x2-m>
+            <y2-m>0.0065</y2-m>
+            <z2-m>0.324</z2-m>
+        </axis>
+    </animation>
+    
+    <!-- Army door open Sx -->
+    
+    <animation>
+        <type>pick</type>
+        <object-name>F_handle_armydoorSX</object-name>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <interval-sec>0.2</interval-sec>
+            <binding>
+                <command>property-toggle</command>
+                <property>sim/G91/switchs/ArmyPanels/ArmyPanelDx</property>
+                <min>0</min>
+                <max>1</max>
+            </binding>
+            <binding>
+                <command>property-interpolate</command>
+                <property>sim/G91/switchs/ArmyPanels/ArmyPanelDx_timing</property>
+                <property>sim/G91/switchs/ArmyPanels/ArmyPanelDx</property>
+                <time>2</time>
+            </binding>
+        </action>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>F_handle_armydoorSX</object-name>
+        <property>sim/G91/switchs/ArmyPanels/ArmyPanelDx_timing</property>
+        <factor>150</factor>
+        <center>
+            <x-m> -1.43247 </x-m>
+            <y-m> -0.63710 </y-m>
+            <z-m> -0.36160</z-m>
+        </center>
+        <axis>
+            <x>-1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
+    
+    <!-- Army door open Dx -->
+    
+    <animation>
+        <type>pick</type>
+        <object-name>F_handle_armydoorDX</object-name>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <interval-sec>0.2</interval-sec>
+            <binding>
+                <command>property-toggle</command>
+                <property>sim/G91/switchs/ArmyPanels/ArmyPanelSx</property>
+                <min>0</min>
+                <max>1</max>
+            </binding>
+            <binding>
+                <command>property-interpolate</command>
+                <property>sim/G91/switchs/ArmyPanels/ArmyPanelSx_timing</property>
+                <property>sim/G91/switchs/ArmyPanels/ArmyPanelSx</property>
+                <time>2</time>
+            </binding>
+        </action>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>F_handle_armydoorDX</object-name>
+        <property>sim/G91/switchs/ArmyPanels/ArmyPanelSx_timing</property>
+        <factor>150</factor>
+        <center>
+            <x-m> -1.43255 </x-m>
+            <y-m> 0.64478 </y-m>
+            <z-m> -0.36140</z-m>
+        </center>
+        <axis>
+            <x>1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
+    
+    <!-- Handles -->
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Wing/Handle_pull/Handle_pull.xml</path>
+    </model>
     
     <!-- Lights -->
     <!-- Explain the syntax at: http://wiki.flightgear.org/ALS_technical_notes#ALS_procedural_lights -->
@@ -139,6 +578,64 @@
         </transparency>
     </animation>
     
+    <!-- Red top light -->
+    <!--
+    m00_lightsupport
+    
+    A__G91_light_coda-reflect.000
+    -->
+    
+    <model>
+        <name>nav-light-top</name>
+        <path>Effects/lights/procedural_light_nav_top.xml</path>
+        <offsets>
+            <x-m> 0.01856</x-m>
+            <y-m> 0.0</y-m>
+            <z-m> 0.38</z-m>
+        </offsets>
+    </model>
+    
+    <animation> 
+        <type>material</type> 
+        <object-name>A_glass_red_est_</object-name>
+        <object-name>A_glass_red_int_coda</object-name>
+        <object-name>A__G91_light_coda-reflect.000</object-name>
+        <texture>Pictures/G91-Red01.png</texture>
+        <ambient>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </ambient>
+        <emission>	
+            <red>1.0</red>	
+            <green>0.5</green>	
+            <blue>0.5</blue>
+            <factor-prop>sim/G91/position_light_glass_emission</factor-prop>
+        </emission>
+        <transparency>
+            <alpha-prop>sim/G91/position_light_transparent</alpha-prop>
+            <factor>1</factor>
+            <offset>0</offset>
+        </transparency>
+    </animation>
+    
+    <animation> 
+        <type>material</type> 
+        <object-name>Sphere.007</object-name>
+        <texture>Pictures/G91-Red01.png</texture>
+        <ambient>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+        </ambient>
+        <emission>	
+            <red>1.0</red>	
+            <green>0.0</green>	
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/position_light_emission</factor-prop>
+        </emission>
+    </animation>
+    
     <!-- Red navigation light on port side (left) -->
     
     <effect>
@@ -147,7 +644,7 @@
         <object-name>A00_wing_light.glass_dx</object-name>
         <object-name>A00_light_sphere_dx</object-name>
     </effect>
-        
+    
     <model>
         <name>nav-light-left</name>
         <path>Effects/lights/procedural_light_nav_left.xml</path>
@@ -434,7 +931,7 @@
         </axis>
         <interpolation>
             <entry><ind>0.0</ind><dep>0</dep></entry>
-            <entry><ind>0.25</ind><dep>0</dep></entry>
+            <entry><ind>0.05</ind><dep>0</dep></entry>
             <entry><ind>0.50</ind><dep>-30</dep></entry>
             <entry><ind>0.75</ind><dep>-60</dep></entry>
             <entry><ind>1.0</ind><dep>-90</dep></entry>
@@ -460,7 +957,7 @@
             <entry><ind>0.40</ind><dep>-90</dep></entry>
             <entry><ind>0.60</ind><dep>-90</dep></entry>
             <entry><ind>0.90</ind><dep>-90</dep></entry>
-            <entry><ind>1.0</ind><dep>0</dep></entry>
+            <entry><ind>1.0</ind><dep>-90</dep></entry>
         </interpolation>
     </animation>
     
@@ -478,7 +975,7 @@
         </axis>
         <interpolation>
             <entry><ind>0.0</ind><dep>0</dep></entry>
-            <entry><ind>0.25</ind><dep>0</dep></entry>
+            <entry><ind>0.05</ind><dep>0</dep></entry>
             <entry><ind>0.50</ind><dep>45</dep></entry>
             <entry><ind>0.75</ind><dep>90</dep></entry>
             <entry><ind>1.0</ind><dep>135</dep></entry>
@@ -503,7 +1000,7 @@
         </axis>
         <interpolation>
             <entry><ind>0.0</ind><dep>0</dep></entry>
-            <entry><ind>0.25</ind><dep>-5</dep></entry>
+            <entry><ind>0.05</ind><dep>-5</dep></entry>
             <entry><ind>0.50</ind><dep>-10</dep></entry>
             <entry><ind>0.75</ind><dep>-15</dep></entry>
             <entry><ind>1.0</ind><dep>-20</dep></entry>
@@ -578,7 +1075,7 @@
         </axis>
         <interpolation>
             <entry><ind>0.0</ind><dep>0</dep></entry>
-            <entry><ind>0.25</ind><dep>0</dep></entry>
+            <entry><ind>0.05</ind><dep>0</dep></entry>
             <entry><ind>0.50</ind><dep>30</dep></entry>
             <entry><ind>0.75</ind><dep>60</dep></entry>
             <entry><ind>1.0</ind><dep>90</dep></entry>
@@ -604,7 +1101,7 @@
             <entry><ind>0.40</ind><dep>-90</dep></entry>
             <entry><ind>0.60</ind><dep>-90</dep></entry>
             <entry><ind>0.90</ind><dep>-90</dep></entry>
-            <entry><ind>1.0</ind><dep>0</dep></entry>
+            <entry><ind>1.0</ind><dep>-90</dep></entry>
         </interpolation>
     </animation>
     
@@ -622,7 +1119,7 @@
         </axis>
         <interpolation>
             <entry><ind>0.0</ind><dep>0</dep></entry>
-            <entry><ind>0.25</ind><dep>0</dep></entry>
+            <entry><ind>0.05</ind><dep>0</dep></entry>
             <entry><ind>0.50</ind><dep>-45</dep></entry>
             <entry><ind>0.75</ind><dep>-90</dep></entry>
             <entry><ind>1.0</ind><dep>-135</dep></entry>
@@ -647,12 +1144,50 @@
         </axis>
         <interpolation>
             <entry><ind>0.0</ind><dep>0</dep></entry>
-            <entry><ind>0.25</ind><dep>-5</dep></entry>
+            <entry><ind>0.05</ind><dep>-5</dep></entry>
             <entry><ind>0.50</ind><dep>-10</dep></entry>
             <entry><ind>0.75</ind><dep>-15</dep></entry>
             <entry><ind>1.0</ind><dep>-20</dep></entry>
         </interpolation>
     </animation>
     
+    <!-- Hardpoints -->
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Stores/Hardpoints/hardpoints.xml</path>
+        <offsets>
+            <x-m>0.0</x-m>
+            <y-m>0.0</y-m>
+            <z-m>0.0</z-m>
+        </offsets>
+    </model>
+    
+    <!-- JATO -->
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Wing/JATO/JATO.xml</path>
+    </model>
+    
+    <!-- Tyre-Smoke -->
+    
+    <model>
+        <path>Aircraft/Generic/Effects/tyre-smoke-port.xml</path>
+        <name>tyre-smoke-p</name>
+        <offsets>
+            <x-m>0.31</x-m>
+            <y-m>-1.15</y-m>
+            <z-m>-1.6</z-m>
+        </offsets>
+    </model>
+    
+    <model>
+        <path>Aircraft/Generic/Effects/tyre-smoke-stbd.xml</path>
+        <name>tyre-smoke-s</name>
+        <offsets>
+            <x-m>0.31</x-m>
+            <y-m>1.15</y-m>
+            <z-m>-1.6</z-m>
+        </offsets>
+    </model>
     
 </PropertyList>

@@ -93,9 +93,10 @@
             <interval-sec>0.2</interval-sec>
             <binding>
                 <condition>
-                    <not>
-                        <property>/sim/G91/handle/handle_stores_flag</property>
-                    </not>
+                    <equals>
+                        <property>sim/G91/handle/handleRequestToDropPosition</property>
+                        <value type="double">0.0</value>
+                    </equals>
                 </condition>
                 <command>property-toggle</command>
                 <property>/sim/G91/handle/handle_stores_block_flag</property>
@@ -113,11 +114,11 @@
             <binding>
                 <condition>
                     <and>
-                        <property>/sim/G91/handle/handle_stores_block_flag</property>
+                        <property>sim/G91/handle/handle_stores_block_flag</property>
                     </and>
                 </condition>
                 <command>property-toggle</command>
-                <property>/sim/G91/handle/handle_stores_flag</property>
+                <property>sim/G91/stores/handleRequestToDrop</property>
             </binding>
         </action>
     </animation>
@@ -145,7 +146,7 @@
         <object-name>handle_cockpit01.001</object-name>
         <object-name>handle_cockpit01</object-name>
         <object-name>handle_cockpit01.002</object-name>
-        <property>/sim/G91/handle/handle_stores_flag</property>
+        <property>sim/G91/handle/handleRequestToDropPosition</property>
         <factor>0.1</factor>
         <offset-m>0.0</offset-m>
         <axis>

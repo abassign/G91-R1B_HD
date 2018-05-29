@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+   
+    <path>Tank260lit.ac</path>
+    <nopreview/>
+    
+    <effect>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
+        <object-name>tank_dx</object-name>
+    </effect>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>tank_dx</object-name>
+        <texture>Pictures/G91-Al-Light.png</texture>
+        <ambient>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </ambient>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>strut_ttank_dx.001</object-name>
+        <object-name>strut_ttank_dx.002</object-name>
+        <texture>Pictures/G91-Dark-Grey.png</texture>
+        <ambient>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </ambient>
+    </animation>
+
+</PropertyList>

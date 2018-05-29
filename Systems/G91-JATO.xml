@@ -1,0 +1,18 @@
+<?xml version="1.0"?>  
+
+<system name="jato">
+    
+    <property value="88.5">systems/jato/dry-weight</property>
+    <property value="70">systems/jato/fuel-weight</property>
+    <property value="4">systems/jato/Rokets_Number</property>
+    <!--
+    <channel name="jato dry weight">        
+        <switch name="jato/jato1 dry weight">
+            <default value="0.0"/>
+            <test logic="AND" value="systems/jato/dry-weight">
+                systems/jato/Rokets_Number > 0
+            </test>
+        </switch>
+    </channel>
+    -->
+</system>

@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+
+<!--
+Description: G91R4 hydraulics system from "Manuale di pilotaggio (1-11,1-12, etc..)
+-->
+
+<system name="gear">
+    
+    <channel name="Landing Gear control">
+        <kinematic name="Gear Control">
+            <input>gear/gear-cmd-norm</input>
+            <traverse>
+                <setting>
+                    <position> 0 </position>
+                    <time>     0 </time>
+                </setting>
+                <setting>
+                    <position> 1 </position>
+                    <time>     6 </time>
+                </setting>
+            </traverse>
+            <output>gear/gear-pos-norm</output>
+        </kinematic>
+        
+        <switch name="Set gear direction">
+            <default value="0"/>
+            <test logic="AND" value="1">
+                gear/gear-cmd-norm EQ 0
+                gear/gear-pos-norm GT 0
+                gear/gear-pos-norm LT 1
+            </test>
+            <test logic="AND" value="-1">
+                gear/gear-cmd-norm EQ 1
+                gear/gear-pos-norm GT 0
+                gear/gear-pos-norm LT 1
+            </test>
+            <output>gear/gear-direction</output>
+        </switch>
+        
+        <scheduled_gain name="Scheduled Steer Pos Deg">
+            <input>fcs/steer-cmd-norm</input>
+            <table>
+                <independentVar>velocities/vg-fps</independentVar>
+                <tableData>
+                    5.0         80.0
+                    10.0        20.0
+                    20.0        10.0
+                    50.0        2.0
+                    150.0       0.5
+                </tableData>
+            </table>
+            <output>fcs/steer-pos-deg</output>
+        </scheduled_gain>
+    </channel>
+    
+</system>
+

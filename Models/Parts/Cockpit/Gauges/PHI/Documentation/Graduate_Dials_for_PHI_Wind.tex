@@ -31,7 +31,7 @@
 \tikzset{font={\fontsize{9pt}{10}\selectfont}}
 % Wind Rose position pram
 \newcommand\posWindRose{2.8}
-\newcommand\externalRadius{3.55}
+\newcommand\externalRadius{4.3}
 \newcommand\graduateThick{0.12}
 \newcommand\graduateInternaThick{0.3}
 \newcommand\arcRadius{\externalRadius}
@@ -47,16 +47,16 @@
 		\begin{tikzpicture}
 			%2° Rays
 			\foreach \a in {0, 2,...,358}
-				\draw[line width=0.3mm, cap=round]
+				\draw[line width=0.5mm, cap=round]
 					(\a:\externalRadius-\graduateThick) -- (\a:\externalRadius);    
 			%10° Rays
 			\foreach \a in {0, 10,...,350}
-				\draw[line width=0.6mm, cap=round]
+				\draw[line width=0.7mm, cap=round]
 					(\a:\externalRadius-\graduateThick-\graduateThick*0.5) -- (\a:\externalRadius);
 			%Angle labels 
 			\foreach \a in {30, 60, 120, 150, 210, 240, 300, 330}
 				\pgfmathtruncatemacro\result{(360 - \a)/10}
-				\draw (\a + 90: \externalRadius-\graduateThick-0.5) node {\result};
+				\draw (\a + 90: \externalRadius-\graduateThick-0.4) node {\result};
 			% Wind rose labels
 			\draw (90: \externalRadius-\graduateThick-0.3) node{N};
 			\draw (360:\externalRadius-\graduateThick-0.3) node{E};

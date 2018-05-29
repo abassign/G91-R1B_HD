@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+    
+    <path>canopy_top.ac</path>
+    
+    <offsets>
+        <x-m>0.0</x-m>
+        <y-m>0.0</y-m>
+        <z-m>0.0</z-m>
+        <pitch-deg>0.0</pitch-deg>
+    </offsets>
+    
+    <animation>
+        <name>CanopyGroup</name>
+        <object-name>F_CANPOPY</object-name>
+        <object-name>F_CANPOPY.001</object-name>
+        <object-name>F_CANPOPY.002</object-name>
+        <object-name>F_CANPOPY.003</object-name>
+        <object-name>F_CANPOPY.004</object-name>
+        <object-name>F_CANPOPY.005</object-name>
+        <object-name>F_CANPOPY_guarn.2.001</object-name>
+        <object-name>F_blocksistem</object-name>
+        <object-name>F_dadi.004</object-name>
+        <object-name>F_dadi canopy_ant.004</object-name>
+        <object-name>F_glass_est_tettuccio</object-name>
+        <object-name>F_glass_int_tettuccio</object-name>
+        <object-name>F_livetto.027</object-name>
+    </animation>
+
+    <effect>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/glass-chrome</inherits-from>
+        <object-name>F_CANPOPY.005</object-name>
+    </effect>
+    
+    <effect>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
+        <object-name>F_CANPOPY</object-name>
+        <object-name>F_CANPOPY.001</object-name>
+        <object-name>F_CANPOPY.002</object-name>
+        <object-name>F_CANPOPY.003</object-name>
+        <object-name>F_CANPOPY.004</object-name>
+        <object-name>F_dadi.004</object-name>
+        <object-name>F_livetto.027</object-name>
+        <object-name>F_CANPOPY_guarn.2.001</object-name>
+        <object-name>F_blocksistem</object-name>
+        <object-name>F_dadi canopy_ant.004</object-name>
+    </effect>
+    
+    <!-- Chrome Effects on materials -->
+    <effect>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_chrome</inherits-from>
+        <object-name>F_glass_est_tettuccio</object-name>
+        <object-name>F_glass_int_tettuccio</object-name>
+    </effect>
+    
+    <effect>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading_canopy</inherits-from>
+        <object-name>F_CANPOPY</object-name>
+        <object-name>F_CANPOPY.001</object-name>
+        <object-name>F_CANPOPY.002</object-name>
+        <object-name>F_CANPOPY.003</object-name>
+        <object-name>F_CANPOPY.004</object-name>
+        <object-name>F_livetto.027</object-name>
+    </effect>
+    
+    <animation> 
+        <type>material</type> 
+        <object-name>F_glass_est_tettuccio</object-name>
+        <object-name>F_glass_int_tettuccio</object-name>
+        <texture>Pictures/G91-Al-Light.png</texture>
+        <transparency>
+            <alpha>0.1</alpha>
+        </transparency>
+        <ambient>
+            <red>1.0</red>
+            <green>0.95</green>
+            <blue>0.9</blue>
+        </ambient>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>F_CANPOPY.001</object-name>
+        <object-name>F_CANPOPY.003</object-name>
+        <object-name>F_CANPOPY</object-name>
+        <texture>Pictures/G91-Al-Light.png</texture>
+        <ambient>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
+        </ambient>
+    </animation>
+
+    <animation> 
+        <type>material</type>
+        <object-name>F_CANPOPY_guarn.2.001</object-name>
+        <texture>Pictures/G91-Cream01.png</texture>
+        <ambient>
+            <red>0.6</red>
+            <green>0.6</green>
+            <blue>0.6</blue>
+        </ambient>
+    </animation>
+
+    <animation> 
+        <type>material</type>
+        <object-name>F_dadi.004</object-name>
+        <object-name>F_dadi canopy_ant.004</object-name>
+        <object-name>F_livetto.027</object-name>
+        <object-name>F_blocksistem</object-name>
+        <texture>Pictures/G91-Al.png</texture>
+        <ambient>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.3</blue>
+        </ambient>
+        <emission>
+            <red>0.01</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+        
+    <!-- animation -->
+    
+    <animation> 
+        <type>rotate</type>
+        <object-name>CanopyGroup</object-name>
+        <property>/controls/canopy/position-norm</property>
+        <factor>45</factor>
+        <center>
+            <x-m>-1.50104</x-m>
+            <y-m> 0.0</y-m>
+            <z-m> 0.55355</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+        </axis>
+    </animation>   
+    
+    
+</PropertyList>

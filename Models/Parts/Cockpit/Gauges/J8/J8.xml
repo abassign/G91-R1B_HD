@@ -14,6 +14,12 @@
         <object-name>flag_B (Meshed)</object-name>
         <object-name>screews_01 (Meshed)</object-name>
         <object-name>screews_02 (Meshed)</object-name>
+        <object-name>airplane_A (Meshed)</object-name>
+        <object-name>bank_index (Meshed)</object-name>
+        <object-name>back_frontal_A (Meshed)</object-name>
+        <object-name>flag_A (Meshed)</object-name>
+        <object-name>knob_caging_top_A (Meshed)</object-name>
+        <object-name>horizon (Meshed)</object-name>
     </effect>
     
     <effect>
@@ -37,15 +43,13 @@
         <object-name>Knob (Meshed)</object-name>
         <object-name>knob_caging_top_B (Meshed)</object-name>
         <object-name>knob_caging_cylinder (Meshed)</object-name>
-        <object-name>airplane_A (Meshed)</object-name>
-        <object-name>bank_index (Meshed)</object-name>
         <object-name>back_frontal_A (Meshed)</object-name>
         <object-name>flag_A (Meshed)</object-name>
         <object-name>knob_caging_top_A (Meshed)</object-name>
         <object-name>horizon (Meshed)</object-name>
         <object-name>sphere_A (Meshed)</object-name>
         <object-name>sphere_B (Meshed)</object-name>
-        <object-name>horizon (Meshed)</object-name>
+        <object-name>airplane_A (Meshed)</object-name>
         <object-name>bank_index (Meshed)</object-name>
     </effect>
 
@@ -63,11 +67,11 @@
     <animation> 
         <type>material</type>
         <object-name>frontal (Meshed)</object-name>
-        <texture>Pictures/G91-Al-dark.png</texture>
+        <texture>Pictures/G91-Dark-Grey.png</texture>
         <ambient>
-            <red>0.2</red>
-            <green>0.2</green>
-            <blue>0.2</blue>
+            <red>0.4</red>
+            <green>0.4</green>
+            <blue>0.4</blue>
         </ambient>
         <emission>
             <red>0.15</red>
@@ -234,11 +238,11 @@
         <object-name>back_frontal_A (Meshed)</object-name>
         <object-name>flag_A (Meshed)</object-name>
         <object-name>knob_caging_top_A (Meshed)</object-name>
-        <texture>Pictures/G91-Al-Light.png</texture>
+        <texture>Pictures/G91-White-00.png</texture>
         <ambient>
-            <red>0.90</red>
-            <green>0.83</green>
-            <blue>0.63</blue>
+            <red>0.80</red>
+            <green>0.73</green>
+            <blue>0.40</blue>
         </ambient>
         <emission>
             <red>0.08</red>

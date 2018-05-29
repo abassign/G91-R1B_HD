@@ -36,4 +36,16 @@
         </offsets>
     </model>
     
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Components/Handle_pull/Emer_Canopy_Jett/Emer_Canopy_Jett_Sx.xml</path>
+        <offsets>
+            <x-m>-3.28</x-m>
+            <y-m>0.284</y-m>
+            <z-m>-0.112</z-m>
+            <roll-deg>-30.0</roll-deg>
+            <pitch-deg>0.0</pitch-deg>
+            <heading-deg>0.0</heading-deg>
+        </offsets>
+    </model>
+    
 </PropertyList>

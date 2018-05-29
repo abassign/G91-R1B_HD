@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+    
+    <name>JATO_dialog</name>
+    <layout>vbox</layout>
+    <default-padding>7</default-padding>
+    <modal>false</modal>
+    <width>400</width>
+    
+    <!-- title bar -->
+    <group>
+        <layout>hbox</layout>
+        <empty><stretch>true</stretch></empty>
+        <text>
+            <label>JATO System</label>
+        </text>
+        <empty><stretch>true</stretch></empty>
+        <button>
+            <legend/>
+            <key>Esc</key>
+            <pref-width>16</pref-width>
+            <pref-height>16</pref-height>
+            <border>2</border>
+            <binding>
+                <command>dialog-close</command>
+            </binding>
+        </button>
+    </group>
+    
+    <hrule/>
+    <!--
+    <group>
+        <layout>vbox</layout>
+        <group>
+            <layout>table</layout>
+            <text>
+                <label>The JATO system is non installed</label>
+                <halign>right</halign>
+                <row>0</row>
+                <col>0</col>
+            </text>
+            <radio>
+                <row>0</row>
+                <col>1</col>
+                <property>sim/G91/gui/dialogs/JATO/no-jato-system</property>
+                <live>true</live>
+                <binding>
+                    <command>property-assign</command>
+                        <property>sim/G91/dialogs/JATO/install-jato-system-2-rocket</property>
+                    <value>0</value>
+                </binding>
+                <binding>
+                    <command>property-assign</command>
+                        <property>sim/G91/dialogs/JATO/install-jato-system-4-rocket</property>
+                    <value>0</value>
+                </binding>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </radio>
+            <text>
+                <label>The JATO system installed with 2 rockets</label>
+                <halign>right</halign>
+                <row>1</row>
+                <col>0</col>
+            </text>
+            <radio>
+                <row>1</row>
+                <col>1</col>
+                <property>sim/G91/dialogs/JATO/install-jato-system-2-rocket</property>
+                <live>true</live>
+                <binding>
+                    <command>property-assign</command>
+                        <property>sim/G91/gui/dialogs/JATO/no-jato-system</property>
+                    <value>0</value>
+                </binding>
+                <binding>
+                    <command>property-assign</command>
+                        <property>sim/G91/dialogs/JATO/install-jato-system-4-rocket</property>
+                    <value>0</value>
+                </binding>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </radio>
+            <text>
+                <label>The JATO system installed with 4 rockets</label>
+                <halign>right</halign>
+                <row>2</row>
+                <col>0</col>
+            </text>
+            <checkbox>
+                <row>2</row>
+                <col>1</col>
+                <property>sim/G91/dialogs/JATO/install-jato-system-4-rocket</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </checkbox>
+        </group>
+    </group>
+    
+    <hrule/>
+    
+    <group>
+        <layout>vbox</layout>
+        <group>
+            <layout>table</layout>
+            <text>
+                <label>Ready Switch</label>
+                <halign>right</halign>
+                <row>0</row>
+                <col>0</col>
+            </text>
+            <checkbox>
+                <row>0</row>
+                <col>1</col>
+                <halign>fill</halign>
+                <property>sim/G91/JATO/JATO_Ready_Switch</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+                <binding>
+                    <command>nasal</command>
+                    <script>act.enable()</script>
+                </binding>
+            </checkbox>
+        </group>
+    </group>
+    -->
+</PropertyList>
+

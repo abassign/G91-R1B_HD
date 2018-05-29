@@ -78,20 +78,24 @@
     <!-- Chrome Effects on materials -->
     
     <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Glass/glass-chrome</inherits-from>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/glass-chrome</inherits-from>
+        <object-name>gear_door_dx</object-name>
+        <object-name>gear_door_sx.001</object-name>
+        <object-name>PlanLight.front</object-name>
+    </effect>
+    
+    <effect>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_chrome</inherits-from>
         <object-name>Light_dx.001</object-name>
         <object-name>Light_dx.002</object-name>
         <object-name>gear-front-jack-02</object-name>
         <object-name>Cylinder.004</object-name>
-        <object-name>gear_door_dx</object-name>
-        <object-name>gear_door_sx.001</object-name>
-        <object-name>PlanLight.front</object-name>
         <object-name>Light_sx</object-name>
         <object-name>Light_dx</object-name>
     </effect>
     
     <!-- Landing gear Lights -->
-   
+    
     <effect>
         <inherits-from>Effects/model-transparent</inherits-from>
         <object-name>Galss_light_sx</object-name>
@@ -145,7 +149,7 @@
             <offset>0</offset>
         </transparency>
     </animation>
-
+    
     <model>
         <name>procedural-light-gear-white-left</name>
         <path>Effects/lights/procedural_light_gear_white.xml</path>
@@ -155,7 +159,7 @@
             <z-m> -1.18 </z-m>
         </offsets>
     </model>
-
+    
     <model>
         <name>procedural-light-gear-white-right</name>
         <path>Effects/lights/procedural_light_gear_white.xml</path>
@@ -335,7 +339,7 @@
             <entry><ind>1.0</ind><dep>-66</dep></entry>
         </interpolation>
     </animation>
-
+    
     <animation>
         <type>locked-track</type>
         <object-name>G-__555645.003</object-name>
@@ -371,7 +375,7 @@
             <z-m>-1.05093</z-m>
         </target-center>
     </animation>
-
+    
     <animation>
         <type>locked-track</type>
         <object-name>G-__555645</object-name>
@@ -510,7 +514,7 @@
             <z-m>-0.849113</z-m>
         </slave-center>
     </animation>
-
+    
     <animation>
         <type>locked-track</type>
         <object-name>bar_node2.1</object-name>
@@ -536,7 +540,7 @@
             <z-m>-0.849113</z-m>
         </target-center>
     </animation>
-
+    
     <!-- 
     E' fondamentale la sequenza delle rotazioni e track etc, in quanto una può modificare l'altra
     Ad esempio la rotazione sull'asse delle Y della barra impedisce alla gear-front-jack-02 di sfruttare, pe ril trak
@@ -820,7 +824,7 @@
     </animation>
     
     <!-- External landing light -->
-
+    
     <animation> 
         <type>material</type> 
         <object-name>Galss_light_sx</object-name>
@@ -841,7 +845,7 @@
         <object-name>Galss_light_sx</object-name>
         <object-name>glass_light_dx</object-name>
     </animation>
-
+    
     <animation>
         <type>material</type>
         <object-name>Light_dx._reflectivepart</object-name>
@@ -879,5 +883,17 @@
         <object-name>Light_Sphere_dx.003</object-name>
         <object-name>Light_Sphere_dx.004</object-name>
     </animation>
+    
+    <!-- Tyre-Smoke -->
+    
+    <model>
+        <path>Aircraft/Generic/Effects/tyre-smoke-nose.xml</path>
+        <name>tyre-smoke-n</name>
+        <offsets>
+            <x-m>-2.83</x-m>
+            <y-m>0</y-m>
+            <z-m>-1.97</z-m>
+        </offsets>
+    </model>
     
 </PropertyList>

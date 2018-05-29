@@ -3,6 +3,7 @@ var prop = props.globals.initNode("sim/G91/ambient-data/sun-angular-deg", 0, "DO
 var ambient_data = maketimer(0.1, func() {
     var heading_deg = props.globals.getNode("orientation/heading-deg",1).getValue();
     var local_day_deg = props.globals.getNode("sim/time/local-day-seconds",1).getValue();
+    if (local_day_deg == nil) local_day_deg = 0.0;
     local_day_deg = local_day_deg / 240;
     var sun_angle_deg = props.globals.getNode("sim/time/sun-angle-rad",1).getValue();
     sun_angle_deg = sun_angle_deg * 57.3;

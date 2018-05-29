@@ -20,19 +20,34 @@
         <object-name>I_Fusion004.001</object-name>
         <object-name>I_Fusion004.002</object-name>
         <object-name>I_Knob.001</object-name>
-        <object-name>hand01b</object-name>
-        <object-name>hand01b.001</object-name>
         <object-name>Plane</object-name>
         <object-name>hand02b</object-name>
         <object-name>hand03a</object-name>
         <object-name>hand01a</object-name>
         <object-name>hand02a</object-name>
-        <object-name>Plane</object-name>
     </effect>
     
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
-        <object-name>I_glass</object-name>
+        <object-name>hand03b</object-name>
+        <object-name>I_plate.000A</object-name>
+        <object-name>I_plate.000B</object-name>
+        <object-name>I_Plate.001A</object-name>
+        <object-name>I_Plate.001B</object-name>
+        <object-name>I_Plate.003A</object-name>
+        <object-name>I_Plate.004B</object-name>
+        <object-name>hand01b</object-name>
+        <object-name>hand01b.001</object-name>
+        <object-name>I_ironware.003</object-name>
+        <object-name>I_Internal_Cone.001</object-name>
+        <object-name>I_Fusion004.001</object-name>
+        <object-name>I_Fusion004.002</object-name>
+        <object-name>I_Knob.001</object-name>
+        <object-name>Plane</object-name>
+        <object-name>hand02b</object-name>
+        <object-name>hand03a</object-name>
+        <object-name>hand01a</object-name>
+        <object-name>hand02a</object-name>
     </effect>
     
     <animation> 
@@ -83,11 +98,11 @@
         <type>material</type>
         <object-name>I_Fusion004.001</object-name>
         <object-name>I_Fusion004.002</object-name>
-        <texture>Pictures/G91-Al-dark.png</texture>
+        <texture>Pictures/G91-Dark-Grey.png</texture>
         <ambient>
-            <red>0.6</red>
-            <green>0.6</green>
-            <blue>0.6</blue>
+            <red>0.4</red>
+            <green>0.4</green>
+            <blue>0.4</blue>
         </ambient>
         <emission>
             <red>0.2</red>

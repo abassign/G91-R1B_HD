@@ -1,0 +1,89 @@
+<PropertyList>
+    
+    <path>film_counter.ac</path>
+    
+    <effect>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
+        <object-name>Film_counter_body</object-name>
+        <object-name>plate_tex01</object-name>
+    </effect>
+    
+    <effect>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
+        <object-name>Film_counter_body</object-name>
+        <object-name>plate_tex01</object-name>
+    </effect>
+    
+    <animation>
+        <type>material</type>
+        <object-name>Film_counter_body</object-name>
+        <texture>Pictures/G91-Black.png</texture>
+        <ambient>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
+        </ambient>
+        <emission>
+            <red>0.08</red>
+            <green>0.00</green>
+            <blue>0.01</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation>
+        <type>material</type>
+        <object-name>plate_tex01</object-name>
+        <transparency>
+            <alpha>1.0</alpha>
+        </transparency>
+        <ambient>
+            <red>0.90</red>
+            <green>0.83</green>
+            <blue>0.63</blue>
+        </ambient>
+        <emission>
+            <red>0.20</red>
+            <green>0.20</green>
+            <blue>0.02</blue>
+            <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <model>
+        <path>Film_Counter_Gauge_FORWARD.xml</path>
+        <offsets>
+            <x-m>-3.12627</x-m>
+            <y-m>0.29752</y-m>
+            <z-m>0.28131</z-m>
+            <pitch-deg>-19.0</pitch-deg>
+            <heading-deg>-16.0</heading-deg>
+            <roll-deg>-50.0</roll-deg>
+        </offsets>
+    </model>
+    
+    <model>
+        <path>Film_Counter_Gauge_STBD.xml</path>
+        <offsets>
+            <x-m>-3.12378</x-m>
+            <y-m>0.25612</y-m>
+            <z-m>0.27749</z-m>
+            <pitch-deg>-19.0</pitch-deg>
+            <heading-deg>-16.0</heading-deg>
+            <roll-deg>-50.0</roll-deg>
+        </offsets>
+    </model>
+    
+    <model>
+        <path>Film_Counter_Gauge_VERTIC.xml</path>
+        <offsets>
+            <x-m>-3.11511</x-m>
+            <y-m>0.28108</y-m>
+            <z-m>0.24531</z-m>
+            <pitch-deg>-19.0</pitch-deg>
+            <heading-deg>-16.0</heading-deg>
+            <roll-deg>-50.0</roll-deg>
+        </offsets>
+    </model>
+    
+</PropertyList>

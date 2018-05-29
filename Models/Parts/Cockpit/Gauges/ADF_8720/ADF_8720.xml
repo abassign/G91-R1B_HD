@@ -67,11 +67,11 @@
         <type>material</type>
         <object-name>frontal (Meshed)</object-name>
         <object-name>back_frontal (Meshed)</object-name>
-        <texture>Pictures/G91-Al-dark.png</texture>
+        <texture>Pictures/G91-Dark-Grey.png</texture>
         <ambient>
-            <red>0.6</red>
-            <green>0.6</green>
-            <blue>0.6</blue>
+            <red>0.4</red>
+            <green>0.4</green>
+            <blue>0.4</blue>
         </ambient>
         <emission>
             <red>0.2</red>
@@ -136,9 +136,9 @@
         <object-name>back_plate_B (Meshed)</object-name>
         <texture>Pictures/G91-Al-dark.png</texture>
         <ambient>
-            <red>0.6</red>
-            <green>0.6</green>
-            <blue>0.6</blue>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
         </ambient>
         <emission>
             <red>0.12</red>
@@ -231,7 +231,7 @@
     </animation>
     
     <model>
-        <name>procedural_light_cockpit_gauge_spot_red</name>
+        <name>procedural_light_cockpit_gauge_spot_yellow</name>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Effects/lights/procedural_light_cockpit_gauge_spot_red.xml</path>
         <offsets>
             <x-m> 0.03</x-m>

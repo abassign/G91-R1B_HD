@@ -1,0 +1,84 @@
+<PropertyList>
+    
+    <path>digit3.ac</path>
+    
+    <effect>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
+        <object-name>box</object-name>
+        <object-name>prism_1</object-name>
+        <object-name>prism_2</object-name>
+        <object-name>prism_3</object-name>
+        <object-name>digit_1A</object-name>
+        <object-name>digit_2A</object-name>
+        <object-name>digit_3A</object-name>
+        <object-name>digit_1B</object-name>
+        <object-name>digit_2B</object-name>
+        <object-name>digit_3B</object-name>
+    </effect>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>box</object-name>
+        <object-name>prism_1</object-name>
+        <object-name>prism_2</object-name>
+        <object-name>prism_3</object-name>
+        <texture>Pictures/G91-Dark-Grey.png</texture>
+        <ambient>
+            <red>0.4</red>
+            <green>0.4</green>
+            <blue>0.4</blue>
+        </ambient>
+        <emission>
+            <red>0.2</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>digit_1B</object-name>
+        <object-name>digit_2B</object-name>
+        <object-name>digit_3B</object-name>
+        <texture>Pictures/G91-Dark-Grey.png</texture>
+        <ambient>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
+        </ambient>
+        <emission>
+            <red>0.10</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+        <specular>
+            <red>0.9</red>
+            <green>0.9</green>
+            <blue>0.9</blue>
+        </specular>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>digit_1A</object-name>
+        <object-name>digit_2A</object-name>
+        <object-name>digit_3A</object-name>
+        <transparency>
+            <alpha>1.0</alpha>
+        </transparency>
+        <ambient>
+            <red>0.80</red>
+            <green>0.73</green>
+            <blue>0.53</blue>
+        </ambient>
+        <emission>
+            <red>0.28</red>
+            <green>0.26</green>
+            <blue>0.08</blue>
+            <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
+        </emission>
+    </animation>
+    
+</PropertyList> 

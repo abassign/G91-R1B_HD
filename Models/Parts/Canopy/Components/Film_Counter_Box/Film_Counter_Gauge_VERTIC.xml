@@ -1,0 +1,115 @@
+<PropertyList>
+    
+    <path>film_counter_gauge.ac</path>
+    
+    <effect>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
+        <object-name>screews (Meshed)</object-name>
+        <object-name>frontal_internal_1_B (Meshed)</object-name>
+        <object-name>frontal_internal_2_B (Meshed)</object-name>
+        <object-name>axis (Meshed)</object-name>
+    </effect>
+    
+    <effect>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
+        <object-name>screews (Meshed)</object-name>
+        <object-name>frontal_internal_1_B (Meshed)</object-name>
+        <object-name>frontal_internal_2_B (Meshed)</object-name>
+        <object-name>axis (Meshed)</object-name>
+    </effect>
+
+    <effect>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_chrome</inherits-from>
+        <object-name>frontal (Meshed)</object-name>
+        <object-name>arrow (Meshed)</object-name>
+    </effect>
+
+    <animation>
+        <type>material</type>
+        <object-name>screews (Meshed)</object-name>
+        <object-name>axis (Meshed)</object-name>
+        <texture>Pictures/G91-Black.png</texture>
+        <ambient>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
+        </ambient>
+        <emission>
+            <red>0.02</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation>
+        <type>material</type>
+        <object-name>arrow (Meshed)</object-name>
+        <texture>Pictures/G91-Al-Light.png</texture>
+        <ambient>
+            <red>1</red>
+            <green>1</green>
+            <blue>1</blue>
+        </ambient>
+        <emission>
+            <red>0.08</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation>
+        <type>material</type>
+        <object-name>frontal_internal_1_B (Meshed)</object-name>
+        <texture>Pictures/G91-Dark-Grey-blue.png</texture>
+        <ambient>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
+        </ambient>
+        <emission>
+            <red>0.05</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation>
+        <type>material</type>
+        <object-name>frontal_internal_2_B (Meshed)</object-name>
+        <texture>Pictures/G91-Al.png</texture>
+        <ambient>
+            <red>0.7</red>
+            <green>0.7</green>
+            <blue>0.7</blue>
+        </ambient>
+        <emission>
+            <red>0.04</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>frontal_internal_1_A (Meshed)</object-name>
+        <transparency>
+            <alpha>1.0</alpha>
+        </transparency>
+        <ambient>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+        </ambient>
+        <emission>
+            <red>0.08</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+
+</PropertyList>

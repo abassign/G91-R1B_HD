@@ -17,7 +17,7 @@
     <animation> 
         <type>material</type>
         <object-name>Swicht_gun_01</object-name>
-        <texture>Pictures/G91-Dark-Grey</texture>
+        <texture>Pictures/G91-Dark-Grey.png</texture>
         <ambient>
             <red>0.6</red>
             <green>0.6</green>

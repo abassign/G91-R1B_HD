@@ -60,11 +60,11 @@
     <animation> 
         <type>material</type>
         <object-name>I_ironware</object-name>
-        <texture>Pictures/G91-Al-dark.png</texture>
+        <texture>Pictures/G91-Dark-Grey.png</texture>
         <ambient>
-            <red>0.6</red>
-            <green>0.6</green>
-            <blue>0.6</blue>
+            <red>0.4</red>
+            <green>0.4</green>
+            <blue>0.4</blue>
         </ambient>
         <emission>
             <red>0.2</red>
@@ -223,7 +223,7 @@
         <object-name>I_hand_red</object-name>
         <texture>Pictures/G91-Dark-Grey.png</texture>
         <ambient>
-            <red>0.20</red>
+            <red>0.2</red>
             <green>0.2</green>
             <blue>0.2</blue>
         </ambient>

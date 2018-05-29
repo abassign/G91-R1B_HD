@@ -30,7 +30,7 @@
     <!-- Chrome Effects on materials -->
     
     <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Glass/glass-chrome</inherits-from>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/glass-chrome</inherits-from>
         <object-name>A__G91_fuselage_coda.002</object-name>
         <object-name>A__G91_fuselage_coda.005</object-name>
         <object-name>A__G91_fuselage_coda.006</object-name>
@@ -54,7 +54,31 @@
         <object-name>A__G91_fuselage_coda.010</object-name>
         <object-name>A__G91_fuselage_coda.011</object-name>
         <object-name>fin_connector</object-name>
+        <object-name>exit_smoke</object-name>
+        <object-name>Sphere.012</object-name>
+        <object-name>fin_small.001</object-name>
+        <object-name>fin_small.002</object-name>
+        <object-name>fin_small.003</object-name>
+        <object-name>fin_small.004</object-name>
+        <object-name>fin_small.005</object-name>
+        <object-name>fin_small.006</object-name>
+        <object-name>fin_small.007</object-name>
+        <object-name>fin_small.008</object-name>
+        <object-name>fin_small.009</object-name>
+        <object-name>fin_small.010</object-name>
     </effect>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>exit_smoke.001</object-name>
+        <object-name>exit_smoke.002</object-name>
+        <texture>Pictures/G91-Black.png</texture>
+        <ambient>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.3</blue>
+        </ambient>
+    </animation>
     
     <!-- Tail Lights -->
     
@@ -207,8 +231,23 @@
         <object-name>A_trasmission_command_Alet_sx.007</object-name>
         <object-name>A_trasmission_command_Alet_sx.008</object-name>
         <object-name>A_trasmission_command_Alet_sx.009</object-name>
-        <object-name>A__G91_fuselage_insideTUbe</object-name>
         <texture>Pictures/G91-Al.png</texture>
+        <ambient>
+            <red>0.7</red>
+            <green>0.7</green>
+            <blue>0.7</blue>
+        </ambient>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>A__G91_fuselage_insideTUbe</object-name>
+        <texture>Pictures/G91-Dark-Grey.png</texture>
+        <ambient>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.3</blue>
+        </ambient>
     </animation>
     
     <!-- Objects animation -->

@@ -10,6 +10,13 @@
         <z-m>0.78</z-m>
         <pitch-deg>0.0</pitch-deg>
     </offsets>
+    
+    <effect>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading_canopy</inherits-from>
+        <object-name>F_test_abitacolo1</object-name>
+        <object-name>F.CANPOPY.telaio2</object-name>
+        <object-name>F_Segg_support.</object-name>
+    </effect>
 
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
@@ -20,79 +27,40 @@
         <object-name>F_structure_panel_cockpit.002</object-name>
         <object-name>F_structure_panel_cockpit.003</object-name>
         <object-name>swich_light_gun</object-name>
-        <object-name>Handle_up</object-name>
         <object-name>F_Cover_panel_cockpit</object-name>
         <object-name>F_dadi</object-name>
         <object-name>F_dadi.001</object-name>
         <object-name>F_dadi.002</object-name>
         <object-name>F_dadi.003</object-name>
-        <object-name>F_dadi.004</object-name>
         <object-name>F_dadi.005</object-name>
         <object-name>F_dadi.006</object-name>
         <object-name>F_dadi.007</object-name>
         <object-name>F_dadi.008</object-name>
         <object-name>F_canopY_ant.005</object-name>
         <object-name>F_defrosters.005</object-name>
+        <object-name>F_canopY_ant.006</object-name>
+        <object-name>Handle_up</object-name>
+        <object-name>F_Segg_support.</object-name>
     </effect>
     
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_silver_D5_0</inherits-from>
-        <object-name>F_CANPOPY</object-name>
         <object-name>F_canopy_ant_blind</object-name>
         <object-name>F_canopY_ant.001</object-name>
-        <object-name>F_CANPOPY.002</object-name>
-        <object-name>F_CANPOPY.003</object-name>
-        <object-name>F_CANPOPY.001</object-name>
         <texture>Pictures/G91-Al-Light.png</texture>
     </effect>
     
     <!-- Chrome Effects on materials -->
     <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Glass/glass-chrome</inherits-from>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/glass-chrome</inherits-from>
         <object-name>A__G91_fuselage_canopy</object-name>
-        <object-name>F_glass_est_tettuccio</object-name>
-        <object-name>F_glass_int_tettuccio</object-name>
         <object-name>A__G91_fuselage_int.weapon.door.003</object-name>
-        <object-name>F_CANPOPY</object-name>
         <object-name>F.CANPOPY.telaio2</object-name>
+        <object-name>F_canopY_ant</object-name>
     </effect>
-    
-    <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading_canopy</inherits-from>
-        <object-name>F_canopy_ant_blind</object-name>
-        <object-name>F_canopY_ant.001</object-name>
-        <object-name>F_CANPOPY</object-name>
-        <object-name>F_CANPOPY.001</object-name>
-        <object-name>F_CANPOPY.002</object-name>
-        <object-name>F_CANPOPY.003</object-name>
-        <object-name>F_CANPOPY.004</object-name>
-        <object-name>F_livetto.027</object-name>
-        <object-name>F_test_abitacolo1</object-name>
-        <object-name>A__G91_fuselage_canopy</object-name>
-        <object-name>F.CANPOPY.telaio2</object-name>
-        <object-name>F_Segg_support.</object-name>
-    </effect>
-    
-    <animation>
-        <name>CanopyGroup</name>
-        <object-name>F_CANPOPY</object-name>
-        <object-name>F_CANPOPY.001</object-name>
-        <object-name>F_CANPOPY.002</object-name>
-        <object-name>F_CANPOPY.003</object-name>
-        <object-name>F_CANPOPY.004</object-name>
-        <object-name>F_CANPOPY.005</object-name>
-        <object-name>F_CANPOPY_guarn.2.001</object-name>
-        <object-name>F_blocksistem</object-name>
-        <object-name>F_dadi canopy_ant.004</object-name>
-        <object-name>F_glass_est_tettuccio</object-name>
-        <object-name>F_glass_int_tettuccio</object-name>
-        <object-name>F_livetto.027</object-name>
-    </animation>    
     
     <animation> 
         <type>material</type> 
-        <object-name>F_glass_est_tettuccio</object-name>
-        <object-name>F_glass_int_tettuccio</object-name>
         <object-name>F_canopy_ant_blind</object-name>
         <object-name>F_canopY_ant.001</object-name>
         <texture>Pictures/G91-Al-Light.png</texture>
@@ -108,22 +76,30 @@
     
     <animation> 
         <type>material</type>
-        <object-name>F_CANPOPY.001</object-name>
         <object-name>F_test abitacolo1</object-name>
-        <object-name>F_Segg_support.</object-name>
         <object-name>F_canopy_ant_blind</object-name>
         <texture>Pictures/G91-Al-Light.png</texture>
         <ambient>
-            <red>0.9</red>
-            <green>0.92</green>
-            <blue>0.9</blue>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8c</blue>
+        </ambient>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>F_Segg_support.</object-name>
+        <texture>Pictures/G91-Al.png</texture>
+        <ambient>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
         </ambient>
     </animation>
 
     <animation> 
         <type>material</type>
         <object-name>F_canopY_ant.003</object-name>
-        <object-name>F_CANPOPY_guarn.2.001</object-name>
         <object-name>F_canopY_guarnz.ant.002</object-name>
         <texture>Pictures/G91-Cream01.png</texture>
         <ambient>
@@ -142,12 +118,29 @@
         <object-name>F_structure_panel_cockpit.002</object-name>
         <object-name>F_structure_panel_cockpit.003</object-name>
         <object-name>swich_light_gun</object-name>
+        <texture>Pictures/G91-Dark-Grey.png</texture>
+        <ambient>
+            <red>0.6</red>
+            <green>0.6</green>
+            <blue>0.6</blue>
+        </ambient>
+        <emission>
+            <red>0.04</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>F_canopY_ant.006</object-name>
         <object-name>Handle_up</object-name>
         <texture>Pictures/G91-Dark-Grey.png</texture>
         <ambient>
-            <red>0.3</red>
-            <green>0.3</green>
-            <blue>0.3</blue>
+            <red>0.4</red>
+            <green>0.4</green>
+            <blue>0.4</blue>
         </ambient>
         <emission>
             <red>0.05</red>
@@ -195,7 +188,6 @@
         <object-name>F_dadi.001</object-name>
         <object-name>F_dadi.002</object-name>
         <object-name>F_dadi.003</object-name>
-        <object-name>F_dadi.004</object-name>
         <object-name>F_dadi.005</object-name>
         <object-name>F_dadi.006</object-name>
         <object-name>F_dadi.007</object-name>
@@ -226,23 +218,6 @@
             <green>0.92</green>
             <blue>0.9</blue>
         </ambient>
-    </animation>
-    
-    <animation> 
-        <type>rotate</type>
-        <object-name>CanopyGroup</object-name>
-        <property>/controls/canopy/position-norm</property>
-        <factor>45</factor>
-        <center>
-            <x-m>-1.50104</x-m>
-            <y-m> 0.0</y-m>
-            <z-m> 0.55355</z-m>
-        </center>
-        <axis>
-            <x>0</x>
-            <y>1</y>
-            <z>0</z>
-        </axis>
     </animation>
     
     <!-- Gauges -->
@@ -284,7 +259,17 @@
         <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Components/Panels/Panels_central.xml</path>
     </model>
     
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Canopy_Top/Canopy_Top.xml</path>
+        <offsets>
+            <x-m>0.0</x-m>
+            <y-m>0.0</y-m>
+            <z-m>0.0</z-m>
+        </offsets>
+    </model>
+    
     <!-- MK6 -->
+    
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/MK6/MK6.xml</path>
         <offsets>
@@ -294,5 +279,40 @@
         </offsets>
     </model>
     
+    <!-- Film Counter Box -->
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Components/Film_Counter_Box/Film_Counter_Box.xml</path>
+        <offsets>
+            <x-m>0.0</x-m>
+            <y-m>0.0</y-m>
+            <z-m>0.0</z-m>
+        </offsets>
+    </model>
+    
+    <!-- Jato System -->
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Components/JATO_System/JATO_System.xml</path>
+        <offsets>
+            <x-m>0.0</x-m>
+            <y-m>0.0</y-m>
+            <z-m>0.0</z-m>
+        </offsets>
+    </model>
+    
+    <!-- Lateral Panels Left -->
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Lateral_Panels_Left/Lateral_Panels_Left.xml</path>
+        <offsets>
+            <x-m>-3.0</x-m>
+            <y-m>-0.225</y-m>
+            <z-m>-0.205</z-m>
+            <roll-deg>-30.5</roll-deg>
+            <pitch-deg>5.60</pitch-deg>
+            <heading-deg>3</heading-deg>
+        </offsets>
+    </model>
     
 </PropertyList>

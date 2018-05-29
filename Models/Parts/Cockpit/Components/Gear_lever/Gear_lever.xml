@@ -239,7 +239,7 @@
         <type>rotate</type>
         <object-name>LandinGearLeverage</object-name>
         <object-name>procedural_light_cockpit_landing_gear_handle_spot_red_bottom</object-name>
-        <property>sim/G91/landingGear/landingGearHandle_deg</property>
+        <property>fdm/jsbsim/gear/gear-pos-norm</property>
         <factor>50</factor>
         <offset-deg>-25</offset-deg>
         <center>
@@ -264,7 +264,11 @@
             <interval-sec>0.2</interval-sec>
             <binding>
                 <command>property-toggle</command>
-                <property>sim/G91/landingGear/landingGearHandle_Start</property>
+                <property>/controls/gear/gear-down</property>
+                <step>1</step>
+                <min>0</min>
+                <max>1</max>
+                <wrap>false</wrap>
             </binding>
         </action>
     </animation>
