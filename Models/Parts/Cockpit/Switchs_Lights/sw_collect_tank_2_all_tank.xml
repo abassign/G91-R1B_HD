@@ -9,13 +9,15 @@
     <animation>
         <type>pick</type>
         <visible>true</visible>
-        <object-name>swich_support</object-name>
+        <object-name>sw_north</object-name>
+        <object-name>sw_center</object-name>
+        <object-name>sw_south</object-name>
         <action>
             <button>0</button>
             <repeatable>false</repeatable>
             <binding>
                 <command>property-toggle</command>
-                <property>sim/G91/switchs/cockpit/sw_collect_tank_2_all_tank</property>
+                <property>fdm/jsbsim/systems/electric/bus[1]/fuel-level-indicator/sw</property>
             </binding>
         </action>
     </animation>
@@ -23,7 +25,7 @@
      <animation>
         <type>rotate</type>
         <object-name>swich_04</object-name>
-        <property>sim/G91/switchs/cockpit/sw_collect_tank_2_all_tank</property>
+        <property>fdm/jsbsim/systems/electric/bus[1]/fuel-level-indicator/sw</property>
         <factor>-20</factor>
         <center>
             <x-m> 0.0</x-m>

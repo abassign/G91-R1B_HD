@@ -66,6 +66,14 @@
         <object-name>fin_small.008</object-name>
         <object-name>fin_small.009</object-name>
         <object-name>fin_small.010</object-name>
+        <object-name>M_tail_component_01</object-name>
+    </effect>
+    
+    <effect>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
+        <object-name>J_jato_support</object-name>
+        <object-name>exit_smoke.001</object-name>
+        <object-name>exit_smoke.002</object-name>
     </effect>
     
     <animation> 
@@ -73,6 +81,17 @@
         <object-name>exit_smoke.001</object-name>
         <object-name>exit_smoke.002</object-name>
         <texture>Pictures/G91-Black.png</texture>
+        <ambient>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.3</blue>
+        </ambient>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>J_jato_support</object-name>
+        <texture>Pictures/G91-Dark-Grey.png</texture>
         <ambient>
             <red>0.3</red>
             <green>0.3</green>

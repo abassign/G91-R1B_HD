@@ -102,7 +102,7 @@
         <object-name>m00_door_sx03</object-name>
         <object-name>m00_hinge_axe</object-name>
         <object-name>m00_platelight</object-name>
-        <object-name>A__G91_light_coda-reflect.000</object-name>
+        <object-name>A__G91_fuselage_int.weapon.door.007</object-name>
     </effect>
     
     <effect>
@@ -117,6 +117,7 @@
         <object-name>F_handle_armydoorDX</object-name>
         <object-name>F_handle_armydoorSX</object-name>
         <object-name>m00_box</object-name>
+        <object-name>B00_box_gear_door</object-name>
     </effect>
     
     <animation> 
@@ -155,7 +156,6 @@
         <type>material</type> 
         <object-name>F_door_em_canopyDX.005</object-name>
         <object-name>F_door_em_canopySX.005</object-name>
-        <object-name>m00_lightsupport</object-name>
         <texture>Pictures/G91-Dark-Grey.png</texture>
         <ambient>
             <red>0.4</red>
@@ -436,6 +436,24 @@
         </axis>
     </animation>
     
+    <!-- Box gear -->
+    
+    <animation> 
+        <type>material</type> 
+        <object-name>B00_box_gear_door</object-name>
+        <texture>Pictures/AichiInteriorGreyGreen.png</texture>
+        <ambient>
+            <red>0.7</red>
+            <green>0.7</green>
+            <blue>0.7</blue>
+        </ambient>
+        <specular>
+            <red>0.5</red>
+            <green>1.0</green>
+            <blue>0.5</blue>
+        </specular>
+    </animation>
+    
     <!-- Army door open Sx -->
     
     <animation>
@@ -578,63 +596,6 @@
         </transparency>
     </animation>
     
-    <!-- Red top light -->
-    <!--
-    m00_lightsupport
-    
-    A__G91_light_coda-reflect.000
-    -->
-    
-    <model>
-        <name>nav-light-top</name>
-        <path>Effects/lights/procedural_light_nav_top.xml</path>
-        <offsets>
-            <x-m> 0.01856</x-m>
-            <y-m> 0.0</y-m>
-            <z-m> 0.38</z-m>
-        </offsets>
-    </model>
-    
-    <animation> 
-        <type>material</type> 
-        <object-name>A_glass_red_est_</object-name>
-        <object-name>A_glass_red_int_coda</object-name>
-        <object-name>A__G91_light_coda-reflect.000</object-name>
-        <texture>Pictures/G91-Red01.png</texture>
-        <ambient>
-            <red>0.8</red>
-            <green>0.8</green>
-            <blue>0.8</blue>
-        </ambient>
-        <emission>	
-            <red>1.0</red>	
-            <green>0.5</green>	
-            <blue>0.5</blue>
-            <factor-prop>sim/G91/position_light_glass_emission</factor-prop>
-        </emission>
-        <transparency>
-            <alpha-prop>sim/G91/position_light_transparent</alpha-prop>
-            <factor>1</factor>
-            <offset>0</offset>
-        </transparency>
-    </animation>
-    
-    <animation> 
-        <type>material</type> 
-        <object-name>Sphere.007</object-name>
-        <texture>Pictures/G91-Red01.png</texture>
-        <ambient>
-            <red>1.0</red>
-            <green>1.0</green>
-            <blue>1.0</blue>
-        </ambient>
-        <emission>	
-            <red>1.0</red>	
-            <green>0.0</green>	
-            <blue>0.0</blue>
-            <factor-prop>sim/G91/position_light_emission</factor-prop>
-        </emission>
-    </animation>
     
     <!-- Red navigation light on port side (left) -->
     
@@ -987,7 +948,15 @@
     <animation>
         <type>rotate</type>
         <object-name>Landing-Gear-Mobile-Sx</object-name>
-        <property>gear/gear[1]/compression-norm</property>
+        <expression>
+            <sum>
+                <product>
+                    <value>-0.1</value>
+                    <property>/fdm/jsbsim/gears/unit[1]/hydraulics-extension</property>
+                </product>
+                <property>gear/gear[1]/compression-ft</property>
+            </sum>
+        </expression>
         <center>
             <x-m>-0.07829</x-m>
             <y-m>-0.55687</y-m>
@@ -1000,11 +969,46 @@
         </axis>
         <interpolation>
             <entry><ind>0.0</ind><dep>0</dep></entry>
-            <entry><ind>0.05</ind><dep>-5</dep></entry>
-            <entry><ind>0.50</ind><dep>-10</dep></entry>
-            <entry><ind>0.75</ind><dep>-15</dep></entry>
-            <entry><ind>1.0</ind><dep>-20</dep></entry>
+            <entry><ind>0.2</ind><dep>-20</dep></entry>
         </interpolation>
+    </animation>
+    
+    <!-- SX Main landing gear Spin  -->
+    <animation>
+        <type>spin</type>
+        <object-name>B00_sx_tire</object-name>
+        <object-name>B00_sx_brakes02</object-name>
+        <object-name>B00_sx_tire_01</object-name>
+        <property>gear/gear[1]/rollspeed-ms</property>
+        <factor>-15</factor>
+        <condition>
+            <and>
+                <or>
+                    <greater-than>
+                        <property>gear/gear[1]/rollspeed-ms</property>
+                        <value>0.001</value>
+                    </greater-than>
+                    <less-than>
+                        <property>gear/gear[1]/rollspeed-ms</property>
+                        <value>-0.001</value>
+                    </less-than>
+                </or>
+                <greater-than>
+                    <property>gear/gear[1]/compression-norm</property>
+                    <value>0</value>
+                </greater-than>
+            </and>
+        </condition>
+        <center>
+            <x-m>0.21528</x-m>
+            <y-m>-0.36886</y-m>
+            <z-m>-1.00326</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>-0.1</y>
+            <z>1</z>
+        </axis>
     </animation>
     
     <!--DX Main landing gear animation section -->
@@ -1131,7 +1135,15 @@
     <animation>
         <type>rotate</type>
         <object-name>Landing-Gear-Mobile-Dx</object-name>
-        <property>gear/gear[2]/compression-norm</property>
+        <expression>
+            <sum>
+                <product>
+                    <value>-0.2</value>
+                    <property>/fdm/jsbsim/gears/unit[2]/hydraulics-extension</property>
+                </product>
+                <property>gear/gear[2]/compression-ft</property>
+            </sum>
+        </expression>
         <center>
             <x-m>-0.07829</x-m>
             <y-m>0.55686</y-m>
@@ -1144,11 +1156,46 @@
         </axis>
         <interpolation>
             <entry><ind>0.0</ind><dep>0</dep></entry>
-            <entry><ind>0.05</ind><dep>-5</dep></entry>
-            <entry><ind>0.50</ind><dep>-10</dep></entry>
-            <entry><ind>0.75</ind><dep>-15</dep></entry>
-            <entry><ind>1.0</ind><dep>-20</dep></entry>
+            <entry><ind>0.2</ind><dep>-20</dep></entry>
         </interpolation>
+    </animation>
+    
+    <!-- SX Main landing gear Spin  -->
+    <animation>
+        <type>spin</type>
+        <object-name>B00_dx_tire.002</object-name>
+        <object-name>B00_dx_brakes02.002</object-name>
+        <object-name>B00_dx_tire_01.002</object-name>
+        <property>gear/gear[2]/rollspeed-ms</property>
+        <factor>15</factor>
+        <condition>
+            <and>
+                <or>
+                    <greater-than>
+                        <property>gear/gear[2]/rollspeed-ms</property>
+                        <value>0.001</value>
+                    </greater-than>
+                    <less-than>
+                        <property>gear/gear[2]/rollspeed-ms</property>
+                        <value>-0.001</value>
+                    </less-than>
+                </or>
+                <greater-than>
+                    <property>gear/gear[2]/compression-norm</property>
+                    <value>0</value>
+                </greater-than>
+            </and>
+        </condition>
+        <center>
+            <x-m>0.21528</x-m>
+            <y-m>0.36886</y-m>
+            <z-m>-1.00326</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>0.1</y>
+            <z>1</z>
+        </axis>
     </animation>
     
     <!-- Hardpoints -->
@@ -1189,5 +1236,18 @@
             <z-m>-1.6</z-m>
         </offsets>
     </model>
+    
+    <!-- lights -->
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Wing/Components/Beacon/G8400A24-24.xml</path>
+        <name>tyre-smoke-s</name>
+        <offsets>
+            <x-m>0.015</x-m>
+            <y-m>0.0</y-m>
+            <z-m>0.339</z-m>
+            <pitch-deg>1.0</pitch-deg>
+        </offsets>
+    </model>    
     
 </PropertyList>

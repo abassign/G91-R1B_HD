@@ -92,7 +92,7 @@
             <button>0</button>
             <binding>
                 <command>property-toggle</command>
-                <property>/sim/G91/JATO/JATO_Ignition_Push</property>
+                <property>fdm/jsbsim/systems/manual-switches/jato/sw-ignition-togle</property>
             </binding>
         </action>
     </animation>
@@ -100,7 +100,7 @@
     <animation>
         <type>translate</type>
         <object-name>push_button (Meshed)</object-name>
-        <property>/sim/G91/JATO/JATO_Ignition_Push</property>
+        <property>fdm/jsbsim/systems/manual-switches/jato/sw-ignition-pos</property>
         <factor>0.005</factor>
         <offset-m>0.0</offset-m>
         <axis>

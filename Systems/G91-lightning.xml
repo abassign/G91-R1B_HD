@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+
+<!--
+Description: G91R4 hydraulics system from "Manuale di pilotaggio (1-11,1-12, etc..)
+-->
+
+<system name="lightning">
+    
+    <channel name="landing light" execrate="33">
+        
+        <lag_filter name="systems/lightning/landing-light/intensity-norm">
+            <input>systems/lightning/landing-light/on</input>
+            <c1>16.0</c1>
+        </lag_filter>
+        
+        <lag_filter name="systems/lightning/taxiing-light/intensity-norm">
+            <input>systems/lightning/taxiing-light/on</input>
+            <c1>16.0</c1>
+        </lag_filter>
+    
+        <switch name="systems/lightning/landing-light/on">
+            <default value="0"/>
+            <test logic="AND" value="systems/lightning/intensity-bus1-norm">
+                systems/manual-switches/cockpit/sw-landing-light GT 0.95
+                systems/electric/bus[1]/landing-light/fuse == 1
+                gear/unit/compression-ft LE 0.0001
+                gear/gear-pos-norm GT 0
+            </test>
+        </switch>
+        
+        <switch name="systems/lightning/taxiing-light/on">
+            <default value="0"/>
+            <test logic="AND" value="systems/lightning/intensity-bus1-norm">
+                systems/manual-switches/cockpit/sw-landing-light GT 0.95
+                systems/electric/bus[1]/landing-light/fuse == 1
+                gear/unit/compression-ft GT 0.0001
+                gear/gear-pos-norm GT 0
+            </test>
+        </switch>
+        
+        <summer name="systems/electric/bus[1]/landing-light/I">
+            <input>systems/lightning/landing-light/I</input>
+            <input>systems/lightning/taxiing-light/I</input>
+        </summer>
+
+        <pure_gain name="systems/lightning/landing-light/I">
+            <input>systems/lightning/landing-light/on</input>
+            <gain>16.0</gain>
+        </pure_gain>
+        
+        <pure_gain name="systems/lightning/taxiing-light/I">
+            <input>systems/lightning/taxiing-light/on</input>
+            <gain>3.0</gain>
+        </pure_gain>
+        
+    </channel>
+
+    <channel name="beacon light" execrate="31">
+
+        <switch name="systems/lightning/beacon/on">
+            <default value="0"/>
+            <test logic="AND" value="systems/lightning/intensity-bus1-norm">
+                systems/manual-switches/cockpit/sw-beacon-light-pos GT 0.85
+                systems/electric/bus[1]/anti-collision-light/fuse == 1
+            </test>
+        </switch>
+        
+        <lag_filter name="systems/lightning/beacon/motor">
+            <input>systems/lightning/beacon/on</input>
+            <c1>2.0</c1>
+        </lag_filter>
+
+        <switch name="systems/electric/bus[1]/beacon/I">
+            <default value="0"/>
+            <test logic="AND" value="3">
+                systems/lightning/beacon/on GT 0.1
+            </test>
+        </switch>
+
+    </channel>
+
+    <function name="systems/lightning/intensity-bus1-norm">
+        <table>
+            <independentVar>systems/electric/bus[1]/V</independentVar>
+            <tableData>
+                0.0   0.0
+                10.0  0.3
+                20.0  0.7
+                30.0  1.0
+            </tableData>
+        </table>
+    </function>
+    
+</system>
+

@@ -230,9 +230,9 @@
         <object-name>pointer_1A (Meshed)</object-name>
         <object-name>pointer_1B (Meshed)</object-name>
         <object-name>screew_03 (Meshed)</object-name>
-        <property>/systems/electrical/suppliers/battery</property>
+        <property>fdm/jsbsim/systems/electric/bus[1]/internal-power-generator-I-display</property>
         <factor>3</factor>
-        <offset-deg>-45</offset-deg>
+        <offset-deg>-42</offset-deg>
         <center>
             <x-m>0.0</x-m>
             <y-m>0.0</y-m>

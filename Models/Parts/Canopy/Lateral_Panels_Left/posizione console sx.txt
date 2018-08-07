@@ -1,0 +1,16 @@
+Console comandi sx
+
+
+location:
+
+x=-3.18955m
+Y=-24.1831cm
+z=-17.557cm
+
+
+Rotation:
+
+x=9.01°
+Y=29.7°
+z=94.7°
+

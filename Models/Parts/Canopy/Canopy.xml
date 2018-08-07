@@ -180,8 +180,6 @@
         </ambient>
     </animation>
     
-
-    
     <animation> 
         <type>material</type>
         <object-name>F_dadi</object-name>
@@ -209,6 +207,7 @@
     </animation>
         
     <!-- Bath area -->
+    
     <animation> 
         <type>material</type>
         <object-name>Plane.014</object-name>
@@ -268,6 +267,17 @@
         </offsets>
     </model>
     
+    <!-- Bath -->
+        
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/bath.xml</path>
+        <offsets>
+            <x-m>0.0</x-m>
+            <y-m>0.0</y-m>
+            <z-m>0.0</z-m>
+        </offsets>
+    </model>
+    
     <!-- MK6 -->
     
     <model>
@@ -291,13 +301,38 @@
     </model>
     
     <!-- Jato System -->
-    
+
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Components/JATO_System/JATO_System.xml</path>
         <offsets>
             <x-m>0.0</x-m>
             <y-m>0.0</y-m>
             <z-m>0.0</z-m>
+        </offsets>
+    </model>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Components/JATO_System/JATO_Ready_Switch.xml</path>
+        <offsets>
+            <x-m>-2.72</x-m>
+            <y-m>-0.445</y-m>
+            <z-m>-0.005</z-m>
+            <roll-deg>-25</roll-deg>
+            <heading-deg>-8</heading-deg>
+        </offsets>
+    </model>
+
+    <!-- Canopy lever -->
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Components/Canopy_lever/Canopy_lever.xml</path>
+        <offsets>
+            <x-m>-3.03</x-m>
+            <y-m>-0.303</y-m>
+            <z-m>0.12</z-m>
+            <pitch-deg>0.0</pitch-deg>
+            <heading-deg>-4.0</heading-deg>
+            <roll-deg>0.0</roll-deg>
         </offsets>
     </model>
     
@@ -310,8 +345,8 @@
             <y-m>-0.225</y-m>
             <z-m>-0.205</z-m>
             <roll-deg>-30.5</roll-deg>
-            <pitch-deg>5.60</pitch-deg>
-            <heading-deg>3</heading-deg>
+            <pitch-deg>9.60</pitch-deg>
+            <heading-deg>6</heading-deg>
         </offsets>
     </model>
     

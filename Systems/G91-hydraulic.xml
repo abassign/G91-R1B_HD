@@ -73,18 +73,5 @@ Description: G91R4 hydraulics system from "Manuale di pilotaggio (1-11,1-12, etc
         </summer>
     </channel>
     
-    <function name="systems/hydraulics/gears/extension">
-        <description>Extension mail gear hydraulic cylinder</description>
-        <table>
-            <independentVar>systems/hydraulics/flight-system-psi</independentVar>
-            <tableData>
-                0.0 0.0
-                1000.0 0.0
-                3000.0 -5
-                4000.0 -5
-            </tableData>
-        </table>
-    </function>
-    
 </system>
 

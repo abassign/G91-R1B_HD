@@ -4,15 +4,123 @@
     
     <property value="88.5">systems/jato/dry-weight</property>
     <property value="70">systems/jato/fuel-weight</property>
-    <property value="4">systems/jato/Rokets_Number</property>
-    <!--
-    <channel name="jato dry weight">        
-        <switch name="jato/jato1 dry weight">
-            <default value="0.0"/>
-            <test logic="AND" value="systems/jato/dry-weight">
-                systems/jato/Rokets_Number > 0
+    <property value="0.25">systems/jato/rocket-drag-sqft</property>
+    <property value="0">systems/jato/rocket_number_1</property>
+    <property value="0">systems/jato/rocket_number_2</property>
+    <property value="0">systems/jato/rocket_number_3</property>
+    <property value="0">systems/jato/rocket_number_4</property>
+    
+    <channel name="jato electric" execrate="8">
+        
+        <switch name="systems/jato/electric-active">
+            <default value="0"/>
+            <test logic="AND" value="1">
+                systems/electric/bus[1]/V GT 18
+                systems/electric/bus[1]/JATO-ignition/fuse == 1
             </test>
         </switch>
+        
+        <switch name="systems/jato/lg-ready-on">
+            <default value="0"/>
+            <test logic = "AND" value = "systems/warning-lights/light-intensity-by-battery-tension">
+                systems/manual-switches/jato/sw-ready-pos GT 0.95
+                systems/jato/electric-active == 1
+            </test>
+        </switch>
+        
+        <switch name="systems/jato/lg-ready-transparent">
+            <default value="0.85"/>
+            <test logic = "AND" value = "0.1">
+                systems/jato/lg-ready-on GT 0.3
+            </test>
+        </switch>
+        
     </channel>
-    -->
+
+    <channel name="jato weight">
+        
+        <switch>
+            <default value="0"/>
+            <test logic = "AND" value = "systems/jato/dry-weight">
+                systems/jato/rocket_number_1 == 1
+            </test>
+            <output>inertia/pointmass-weight-lbs[2]</output>
+        </switch>
+        
+        <switch>
+            <default value="0"/>
+            <test logic = "AND" value = "systems/jato/dry-weight">
+                systems/jato/rocket_number_2 == 1
+            </test>
+            <output>inertia/pointmass-weight-lbs[3]</output>
+        </switch>
+        
+        <switch>
+            <default value="0"/>
+            <test logic = "AND" value = "systems/jato/dry-weight">
+                systems/jato/rocket_number_3 == 1
+            </test>
+            <output>inertia/pointmass-weight-lbs[4]</output>
+        </switch>
+        
+        <switch>
+            <default value="0"/>
+            <test logic = "AND" value = "systems/jato/dry-weight">
+                systems/jato/rocket_number_4 == 1
+            </test>
+            <output>inertia/pointmass-weight-lbs[5]</output>
+        </switch>
+
+    </channel>
+    
+    <channel name="jato drag">
+        
+        <switch>
+            <default value="0"/>
+            <test logic = "AND" value = "systems/jato/rocket-drag-sqft">
+                systems/jato/rocket_number_1 == 1
+            </test>
+            <output>systems/jato/rocket-drag[1]</output>
+        </switch>
+        
+        <switch>
+            <default value="0"/>
+            <test logic = "AND" value = "systems/jato/rocket-drag-sqft">
+                systems/jato/rocket_number_2 == 1
+            </test>
+            <output>systems/jato/rocket-drag[2]</output>
+        </switch>
+        
+        <switch>
+            <default value="0"/>
+            <test logic = "AND" value = "systems/jato/rocket-drag-sqft">
+                systems/jato/rocket_number_3 == 1
+            </test>
+            <output>systems/jato/rocket-drag[3]</output>
+        </switch>
+        
+        <switch>
+            <default value="0"/>
+            <test logic = "AND" value = "systems/jato/rocket-drag-sqft">
+                systems/jato/rocket_number_4 == 1
+            </test>
+            <output>systems/jato/rocket-drag[4]</output>
+        </switch>
+        
+        <summer>
+            <input>systems/jato/rocket-drag[1]</input>
+            <input>systems/jato/rocket-drag[2]</input>
+            <input>systems/jato/rocket-drag[3]</input>
+            <input>systems/jato/rocket-drag[4]</input>
+            <output>systems/jato/rockets-drag</output>
+        </summer>
+        
+        <pure_gain>
+            <input>systems/jato/rockets-drag</input>
+            <gain>aero/qbar-psf</gain>
+            <output>external_reactions/JATO-rockets/magnitude</output>
+        </pure_gain>
+
+    </channel>
+
 </system>

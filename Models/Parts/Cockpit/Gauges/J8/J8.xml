@@ -319,7 +319,7 @@
         <action>
             <binding>
                 <command>property-adjust</command>
-                <property>instrumentation/attitude-indicator/horizon-offset-deg</property>
+                <property>fdm/jsbsim/systems/gauges/cockpit-attitude-J8-horizon-offset</property>
                 <factor>1</factor>
                 <min>-27</min>
                 <max>27</max>                
@@ -332,7 +332,7 @@
         <type>translate</type>
         <object-name>airplane_A (Meshed)</object-name>
         <object-name>airplane_B (Meshed)</object-name>
-        <property>instrumentation/attitude-indicator/horizon-offset-deg</property>
+        <property>fdm/jsbsim/systems/gauges/cockpit-attitude-J8-horizon-offset</property>
         <factor>0.00025</factor>
         <axis>
             <x>0</x>
@@ -345,7 +345,7 @@
         <type>rotate</type>
         <object-name>horizon (Meshed)</object-name>
         <object-name>bank_index (Meshed)</object-name>
-        <property>instrumentation/attitude-indicator/internal-roll-deg</property>
+        <property>fdm/jsbsim/systems/gauges/cockpit-attitude-roll-deg-display</property>
         <interpolation>
             <entry><ind>-90.0</ind><dep>-90.0</dep></entry>
             <entry><ind> 90.0</ind><dep> 90.0</dep></entry>
@@ -365,7 +365,7 @@
     <animation>
         <type>rotate</type>
         <object-name>horizon (Meshed)</object-name>
-        <property>instrumentation/attitude-indicator/internal-pitch-deg</property>
+        <property>fdm/jsbsim/systems/gauges/cockpit-attitude-pitch-deg-display</property>
         <interpolation>
             <entry><ind>-27.0</ind><dep>-27.0</dep></entry>
             <entry><ind> 27.0</ind><dep> 27.0</dep></entry>
@@ -386,7 +386,7 @@
         <type>rotate</type>
         <object-name>flag_B (Meshed)</object-name>
         <object-name>flag_A (Meshed)</object-name>
-        <property>sim/G91/gauge/J8/flag_deg</property>
+        <property>fdm/jsbsim/systems/gauges/cockpit-attitude-J8-no-flag</property>
         <factor>30</factor>
         <center>
             <x-m>0.0</x-m><y-m>0.03</y-m><z-m>0.0235</z-m>
@@ -404,11 +404,19 @@
         <action>
             <button>0</button>
             <repeatable>false</repeatable>
-            <interval-sec>0.2</interval-sec>
+            <interval-sec>0.5</interval-sec>
             <binding>
-                <command>property-toggle</command>
-                <property>/instrumentation/attitude-indicator/caged-flag</property>
+                <command>property-assign</command>
+                <property>fdm/jsbsim/systems/gauges/cockpit-attitude-J8-caged-push-trigger</property>
+                <value>1</value>
             </binding>
+            <mod-up>
+                <binding>
+                    <command>property-assign</command>
+                    <property>fdm/jsbsim/systems/gauges/cockpit-attitude-J8-caged-push-trigger</property>
+                    <value>0</value>
+                </binding>
+            </mod-up>
         </action>
     </animation>
     
@@ -417,7 +425,7 @@
         <object-name>knob_caging_top_A (Meshed)</object-name>
         <object-name>knob_caging_top_B (Meshed)</object-name>
         <object-name>knob_caging_cylinder (Meshed)</object-name>
-        <property>sim/G91/gauge/J8/flag_return</property>
+        <property>fdm/jsbsim/systems/gauges/cockpit-attitude-J8-caged-push-position</property>
         <factor>0.015</factor>
         <offset-m>0.0</offset-m>
         <axis>

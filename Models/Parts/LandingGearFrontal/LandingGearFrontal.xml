@@ -90,12 +90,15 @@
         <object-name>Light_dx.002</object-name>
         <object-name>gear-front-jack-02</object-name>
         <object-name>Cylinder.004</object-name>
+        <object-name>Light_sx.reflectivepart</object-name>
+        <object-name>Light_dx._reflectivepart.001</object-name>
+        <object-name>Light_dx._reflectivepart</object-name>
         <object-name>Light_sx</object-name>
         <object-name>Light_dx</object-name>
     </effect>
     
-    <!-- Landing gear Lights -->
-    
+    <!-- Transparent -->
+
     <effect>
         <inherits-from>Effects/model-transparent</inherits-from>
         <object-name>Galss_light_sx</object-name>
@@ -103,7 +106,7 @@
         <object-name>Light_Sphere_dx.001</object-name>
         <object-name>Light_Sphere_dx.002</object-name>
     </effect>
-    
+    <!--
     <animation> 
         <type>material</type> 
         <object-name>Galss_light_sx</object-name>
@@ -149,26 +152,7 @@
             <offset>0</offset>
         </transparency>
     </animation>
-    
-    <model>
-        <name>procedural-light-gear-white-left</name>
-        <path>Effects/lights/procedural_light_gear_white.xml</path>
-        <offsets>
-            <x-m> -3.08</x-m>
-            <y-m> -0.21 </y-m>
-            <z-m> -1.18 </z-m>
-        </offsets>
-    </model>
-    
-    <model>
-        <name>procedural-light-gear-white-right</name>
-        <path>Effects/lights/procedural_light_gear_white.xml</path>
-        <offsets>
-            <x-m> -3.08</x-m>
-            <y-m> 0.21 </y-m>
-            <z-m> -1.18 </z-m>
-        </offsets>
-    </model>
+    -->
     
     <!-- Frontal gear animation -->
     
@@ -725,6 +709,7 @@
             <y>1</y>
             <z>0</z>
         </axis>
+        <!--
         <interpolation>
             <entry><ind>0.0</ind><dep>15</dep></entry>
             <entry><ind>0.2</ind><dep>-10</dep></entry>
@@ -732,6 +717,15 @@
             <entry><ind>0.6</ind><dep>-18</dep></entry>
             <entry><ind>0.8</ind><dep>-20</dep></entry>
             <entry><ind>1.0</ind><dep>-21</dep></entry>
+        </interpolation>
+        -->
+        <interpolation>
+            <entry><ind>0.0</ind><dep>15</dep></entry>
+            <entry><ind>0.02</ind><dep>-0</dep></entry>
+            <entry><ind>0.03</ind><dep>-15</dep></entry>
+            <entry><ind>0.04</ind><dep>-20</dep></entry>
+            <entry><ind>0.1</ind><dep>-30</dep></entry>
+            <entry><ind>1.0</ind><dep>-32</dep></entry>
         </interpolation>
     </animation>
     
@@ -823,57 +817,147 @@
         </axis>
     </animation>
     
-    <!-- External landing light -->
-    
-    <animation> 
-        <type>material</type> 
-        <object-name>Galss_light_sx</object-name>
-        <object-name>glass_light_dx</object-name>
-        <texture>Pictures/G91-Al.png</texture>
-        <emission>	
-            <red>1.0</red>	
-            <green>1.0</green>	
-            <blue>1.0</blue>
-            <factor-prop>/rendering/scene/ambient/red</factor-prop>
-        </emission>
-    </animation>
+    <!-- External emission landing light Sx (Landing) -->
     
     <animation> 
         <type>blend</type>
         <property>sim/G91/glass_camera_reflections</property>
-        <factor>0.9</factor>
+        <factor>1.0</factor>
         <object-name>Galss_light_sx</object-name>
-        <object-name>glass_light_dx</object-name>
     </animation>
-    
+
     <animation>
         <type>material</type>
-        <object-name>Light_dx._reflectivepart</object-name>
         <object-name>Light_sx.reflectivepart</object-name>
+        <object-name>Galss_light_sx</object-name>
         <texture>Pictures/G91-LightFrontal01.png</texture>
         <emission>	
             <red>1.0</red>	
             <green>1.0</green>	
             <blue>1.0</blue>
-            <factor-prop>/rendering/scene/ambient/red</factor-prop>
+            <factor-prop>sim/G91/lightning/landing-light/intensity</factor-prop>
         </emission>
+        <ambient>
+            <red>2.0</red>
+            <green>2.0</green>
+            <blue>2.0</blue>
+        </ambient>
+        <specular>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
+        </specular>
     </animation>
     
     <animation> 
         <type>material</type> 
         <object-name>Light_Sphere_dx.001</object-name>
-        <object-name>Light_Sphere_dx.002</object-name>
         <object-name>Light_Sphere_dx.003</object-name>
-        <object-name>Light_Sphere_dx.004</object-name>
         <texture>Pictures/G91-LightFrontal01.png</texture>
+        <transparency>
+            <alpha>1.0</alpha>
+            <factor-prop>fdm/jsbsim/systems/lightning/landing-light/intensity-norm</factor-prop>
+        </transparency>
         <emission>
             <red>1.0</red>
             <green>1.0</green>
             <blue>1.0</blue>
-            <factor-prop>gear/gear/position-norm</factor-prop>
+            <factor-prop>sim/G91/lightning/landing-light/intensity_bulb</factor-prop>
         </emission>
+        <ambient>
+            <red>2.0</red>
+            <green>2.0</green>
+            <blue>2.0</blue>
+        </ambient>
+        <specular>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
+        </specular>
     </animation>
     
+    <model>
+        <name>procedural-light-gear-white-left</name>
+        <path>Effects/lights/procedural_light_gear_left.xml</path>
+        <offsets>
+            <x-m> -3.08</x-m>
+            <y-m> -0.21 </y-m>
+            <z-m> -1.18 </z-m>
+        </offsets>
+    </model>
+    
+
+    <!-- External emission landing light Dx (Taxiing) -->
+
+    <animation> 
+        <type>blend</type>
+        <property>sim/G91/glass_camera_reflections</property>
+        <factor>1.0</factor>
+        <object-name>glass_light_dx</object-name>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>glass_light_dx</object-name>
+        <object-name>Light_dx._reflectivepart</object-name>
+        <texture>Pictures/G91-LightFrontal01.png</texture>
+        <emission>	
+            <red>1.0</red>	
+            <green>1.0</green>	
+            <blue>1.0</blue>
+            <factor-prop>sim/G91/lightning/taxiing-light/intensity</factor-prop>
+        </emission>
+        <ambient>
+            <red>2.0</red>
+            <green>2.0</green>
+            <blue>2.0</blue>
+        </ambient>
+        <specular>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
+        </specular>
+    </animation>
+    
+    <animation> 
+        <type>material</type> 
+        <object-name>Light_Sphere_dx.002</object-name>
+        <object-name>Light_Sphere_dx.004</object-name>
+        <texture>Pictures/G91-LightFrontal01.png</texture>
+        <transparency>
+            <alpha>1.0</alpha>
+            <factor-prop>fdm/jsbsim/systems/lightning/taxiing-light/intensity-norm</factor-prop>
+        </transparency>
+        <emission>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+            <factor-prop>sim/G91/lightning/taxiing-light/intensity_bulb</factor-prop>
+        </emission>
+        <ambient>
+            <red>2.0</red>
+            <green>2.0</green>
+            <blue>2.0</blue>
+        </ambient>
+        <specular>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
+        </specular>
+    </animation>
+
+    <model>
+        <name>procedural-light-gear-white-right</name>
+        <path>Effects/lights/procedural_light_gear_right.xml</path>
+        <offsets>
+            <x-m> -3.08</x-m>
+            <y-m> 0.21 </y-m>
+            <z-m> -1.18 </z-m>
+        </offsets>
+    </model>
+
+    <!-- Landing light Dx Sx -->
+
     <animation> 
         <type>blend</type>
         <property>sim/G91/glass_camera_reflections</property>
@@ -883,7 +967,7 @@
         <object-name>Light_Sphere_dx.003</object-name>
         <object-name>Light_Sphere_dx.004</object-name>
     </animation>
-    
+
     <!-- Tyre-Smoke -->
     
     <model>

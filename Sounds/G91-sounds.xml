@@ -5,7 +5,6 @@
 <PropertyList>
     
     <fx>
-        
         <spoolup>
             <name>spoolup</name>
             <path>Aircraft/G91-R1B_HD/Sounds/engine-spoolup.wav</path>
@@ -44,17 +43,26 @@
             <path>Aircraft/G91-R1B_HD/Sounds/engine-combustion.wav</path>
             <mode>looped</mode>
             <condition>
-                <equals>
-                    <property>engines/engine/combustion</property>
-                    <value>1</value>
-                </equals>
+                <and>
+                    <equals>
+                        <property>engines/engine/running</property>
+                        <value>1</value>	
+                    </equals>
+                    <equals>
+                        <property>sim/current-view/internal</property>
+                        <value>false</value>
+                    </equals>
+                </and>
             </condition>
             <volume>
-                <!-- <property>engines/engine/starter-time</property> -->
-                <!-- <factor>0.1</factor> -->
-                <!-- <offset>0.1</offset> -->
-                <value>0.4</value>
+                <property>engines/engine[0]/thrust_lb</property>
+                <factor type="double">0.001</factor>
             </volume>
+            <pitch>
+                <property>engines/engine[0]/n1</property>
+                <factor>0.2</factor>
+                <factor>0</factor>
+            </pitch>
             <position>
                 <x> 5.185 </x>
                 <y>  0.0 </y>
@@ -197,12 +205,12 @@
                 <and>
                     <equals>
                         <property>engines/engine/running</property>
-                        <value>1</value>	
+                        <value>true</value>	
                     </equals>
-                    <!-- <equals> -->
-                    <!--     <property>sim/current-view/internal</property> -->
-                    <!--     <value>true</value>	 -->
-                    <!-- </equals> -->
+                    <equals>
+                        <property>sim/current-view/internal</property>
+                        <value>true</value>
+                    </equals>
                 </and>
             </condition>
             <volume>
@@ -266,7 +274,65 @@
                 <factor>0.007</factor>
             </volume>
         </engine-stop>
-
+        
+        <!-- JATO system -->
+        
+        <jato-burning-internal>
+            <name>jato-burning-internal</name>
+            <path>Aircraft/G91-R1B_HD/Sounds/Vostok-1-Stage-1-2-Engines-Internal.wav</path>
+            <mode>looped</mode>
+            <condition>
+                <and>
+                    <greater-than>
+                        <property>engines/engine[1]/thrust_lb</property>
+                        <value>10</value>
+                    </greater-than>
+                    <equals>
+                        <property>sim/current-view/internal</property>
+                        <value>1</value>
+                    </equals>
+                </and>
+            </condition>
+            <volume>
+                <factor>0.3</factor>
+                <property>engines/engine[1]/thrust_lb</property>
+            </volume>
+            <pitch>
+                <factor>1.0</factor>
+                <property>sim/G91/JATO/JATO_Sound_Factor</property>
+            </pitch>
+        </jato-burning-internal>
+        
+        <jato-burning-external>
+            <name>jato-burning-external</name>
+            <path>Aircraft/G91-R1B_HD/Sounds/Vostok-1-Stage-1-2-Engines-External.wav</path>
+            <mode>looped</mode>
+            <condition>
+                <and>
+                    <greater-than>
+                        <property>engines/engine[1]/thrust_lb</property>
+                        <value>10</value>
+                    </greater-than>
+                    <not>
+                        <equals>
+                            <property>sim/current-view/internal</property>
+                            <value>1</value>
+                        </equals>
+                    </not>
+                </and>
+            </condition>
+            <volume>
+                <factor>0.5</factor>
+                <property>engines/engine[1]/thrust_lb</property>
+            </volume>
+            <pitch>
+                <factor>1.0</factor>
+                <property>sim/G91/JATO/JATO_Sound_Factor</property>
+            </pitch>
+        </jato-burning-external>
+        
+        <!-- gear -->
+        
         <gear>
             <name>roll sound</name>
             <path>Aircraft/G91-R1B_HD/Sounds/drb_154.wav</path>
@@ -347,6 +413,102 @@
                 <factor>0.12</factor>
             </volume>
         </rumble>
+        
+        <wind>
+            <name>wind</name>
+            <mode>looped</mode>
+            <path>Aircraft/G91-R1B_HD/Sounds/wind.wav</path>
+            <property>velocities/airspeed-kt</property>
+            <volume>
+                <property>position/altitude-ft</property>
+                <factor>-0.000015</factor>
+                <offset>1.0</offset>
+                <min>0.1</min>
+                <max>1.0</max>
+            </volume>
+            <volume>
+                <property>velocities/airspeed-kt</property>
+                <factor>0.1</factor>
+                <min>0.03</min>
+                <max>5</max>
+            </volume>
+            <pitch>
+                <property>velocities/airspeed-kt</property>
+                <factor>0.02</factor>
+                <offset>1</offset>
+            </pitch> 
+        </wind>
+        
+        <flaps-tear>
+            <name>flaps-tear</name>
+            <path>Aircraft/G91-R1B_HD/Sounds/flaps-tear.wav</path>
+            <mode>once</mode>
+            <condition>
+                <equals>
+                    <property>sounds/flaps-torn/on</property>
+                    <value>1</value>
+                </equals>
+            </condition>
+            <volume>
+                <factor>1</factor>
+            </volume>
+        </flaps-tear>
+        
+        <flaps-down>
+            <name>flaps-down</name>
+            <path>Aircraft/G91-R1B_HD/Sounds/metal-down.wav</path>
+            <mode>once</mode>
+            <condition>
+                <equals>
+                    <property>sounds/flaps-down/on</property>
+                    <value>1</value>
+                </equals>
+            </condition>
+            <volume>
+                <factor>0.3</factor>
+            </volume>
+        </flaps-down>
+        
+        <flap>
+            <name>flaps</name>
+            <mode>in-transit</mode>
+            <path>Aircraft/G91-R1B_HD/Sounds/flaps.wav</path>
+            <property>fdm/jsbsim/fcs/flap-pos-norm</property>
+            <volume>
+                <factor>0.15</factor>
+            </volume>
+        </flap>
+        
+        <spoiler>
+            <name>spoilers</name>
+            <mode>in-transit</mode>
+            <path>Aircraft/G91-R1B_HD/Sounds/flaps.wav</path>
+            <property>surface-positions/left-spoiler-pos-norm</property>
+            <volume>
+                <factor>0.15</factor>
+            </volume>
+        </spoiler>
+        
+        <spoiler>
+            <name>spoilers</name>
+            <mode>in-transit</mode>
+            <path>Aircraft/G91-R1B_HD/Sounds/flaps.wav</path>
+            <property>surface-positions/right-spoiler-pos-norm</property>
+            <volume>
+                <factor>0.25</factor>
+            </volume>
+        </spoiler>
+        
+        <air-brakes>
+            <name>air-brakes</name>
+            <mode>in-transit</mode>
+            <path>Aircraft/G91-R1B_HD/Sounds/flaps.wav</path>
+            <property>surface-positions/speedbrake-pos-norm</property>
+            <volume>
+                <factor>0.25</factor>
+            </volume>
+        </air-brakes>
+        
         <!--
         <gear>
             <name>gear0</name>
@@ -689,26 +851,7 @@
             </volume>
         </air-brakes>
         
-        <wind>
-            <name>wind</name>
-            <path>Aircraft/G91-R1B_HD/Sounds/wind.wav</path>
-            <mode>looped</mode>
-            <type>log</type>
-            <volume>
-                <property>/fdm/jsbsim/aero/calculations/drag-MN</property>
-                <factor>0.0005</factor>
-            </volume>
-            <volume>
-                <property>/fdm/jsbsim/tweak_factors/vol_wind</property>
-            </volume>
-            <volume>
-                <property>fdm/jsbsim/systems/canopy/noise_factor</property>
-            </volume>
-            <pitch>
-                <property>velocities/airspeed-kt</property>
-                <factor>0.01</factor>
-            </pitch>
-        </wind>
+
         
         <canopy>
             <name>canopy</name>

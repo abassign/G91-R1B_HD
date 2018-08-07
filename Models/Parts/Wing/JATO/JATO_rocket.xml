@@ -101,7 +101,7 @@
         <condition>
             <greater-than-equals>
                 <property>sim/G91/JATO/JATO_Rokets_Number</property>
-                <value>2</value>
+                <value>4</value>
             </greater-than-equals>
         </condition>
     </animation>
@@ -127,47 +127,119 @@
     <model>
         <path>smoke_JATO_1.xml</path>
         <offsets>
-            <x-m>  1.800 </x-m>
-            <y-m>  -0.400 </y-m>
-            <z-m>  -1.3 </z-m>
+            <x-m>  1.58 </x-m>
+            <y-m>  -0.49 </y-m>
+            <z-m>  -1.17 </z-m>
             <roll-deg>    0.000 </roll-deg>
-            <pitch-deg>   -15.000 </pitch-deg>
+            <pitch-deg>   0 </pitch-deg>
+            <heading-deg> 0 </heading-deg>
+        </offsets>
+    </model>
+    
+    <model>
+        <path>smoke_JATO_1.xml</path>
+        <offsets>
+            <x-m>  1.57 </x-m>
+            <y-m>  -0.166 </y-m>
+            <z-m>  -1.259 </z-m>
+            <roll-deg>    0.000 </roll-deg>
+            <pitch-deg>   0 </pitch-deg>
+            <heading-deg> 0 </heading-deg>
+        </offsets>
+    </model>
+    
+    <model>
+        <path>smoke_JATO_1.xml</path>
+        <offsets>
+            <x-m>  1.57 </x-m>
+            <y-m>  0.166 </y-m>
+            <z-m>  -1.259 </z-m>
+            <roll-deg>    0.000 </roll-deg>
+            <pitch-deg>   0 </pitch-deg>
+            <heading-deg> 0 </heading-deg>
+        </offsets>
+    </model>
+    
+    <model>
+        <path>smoke_JATO_1.xml</path>
+        <offsets>
+            <x-m>  1.58 </x-m>
+            <y-m>  0.49 </y-m>
+            <z-m>  -1.17 </z-m>
+            <roll-deg>    0.000 </roll-deg>
+            <pitch-deg>   0 </pitch-deg>
+            <heading-deg> 0 </heading-deg>
+        </offsets>
+    </model>
+    
+    <model>
+        <path>smoke_JATO_1B.xml</path>
+        <offsets>
+            <x-m>  2.5 </x-m>
+            <y-m>  0 </y-m>
+            <z-m>  -1.17 </z-m>
+            <roll-deg>    0.000 </roll-deg>
+            <pitch-deg>   0 </pitch-deg>
+            <heading-deg> 0 </heading-deg>
+        </offsets>
+    </model>
+    
+    <model>
+        <path>smoke_JATO_1C.xml</path>
+        <offsets>
+            <x-m>  2.5 </x-m>
+            <y-m>  0 </y-m>
+            <z-m>  -1.17 </z-m>
+            <roll-deg>    0.000 </roll-deg>
+            <pitch-deg>   0 </pitch-deg>
+            <heading-deg> 0 </heading-deg>
+        </offsets>
+    </model>
+    
+    <model>
+        <path>flame_JATO_1.xml</path>
+        <offsets>
+            <x-m>  1.58 </x-m>
+            <y-m>  -0.50 </y-m>
+            <z-m>  -1.19 </z-m>
+            <roll-deg>    0.000 </roll-deg>
+            <pitch-deg>   15.000 </pitch-deg>
             <heading-deg> -15.000 </heading-deg>
         </offsets>
     </model>
     
     <model>
-        <path>smoke_JATO_1.xml</path>
+        <path>flame_JATO_2.xml</path>
         <offsets>
-            <x-m>  1.800 </x-m>
-            <y-m>  -0.100 </y-m>
-            <z-m>  -1.3 </z-m>
+            <x-m>  1.57 </x-m>
+            <y-m>  -0.166 </y-m>
+            <z-m>  -1.259 </z-m>
             <roll-deg>    0.000 </roll-deg>
-            <pitch-deg>   -25.000 </pitch-deg>
+            <pitch-deg>   25.000 </pitch-deg>
             <heading-deg> 0.000 </heading-deg>
         </offsets>
     </model>
     
     <model>
-        <path>smoke_JATO_1.xml</path>
+        <path>flame_JATO_3.xml</path>
         <offsets>
-            <x-m>  1.800 </x-m>
-            <y-m>  0.100 </y-m>
-            <z-m>  -1.3 </z-m>
+            <x-m>  1.57 </x-m>
+            <y-m>  0.166 </y-m>
+            <z-m>  -1.259 </z-m>
             <roll-deg>    0.000 </roll-deg>
-            <pitch-deg>   -25.000 </pitch-deg>
+            <pitch-deg>   25.000 </pitch-deg>
             <heading-deg> 0.000 </heading-deg>
         </offsets>
     </model>
     
     <model>
-        <path>smoke_JATO_1.xml</path>
+        <path>flame_JATO_4.xml</path>
         <offsets>
-            <x-m>  1.800 </x-m>
-            <y-m>  0.400 </y-m>
-            <z-m>  -1.3 </z-m>
+            <x-m>  1.58 </x-m>
+            <y-m>  0.50 </y-m>
+            <z-m>  -1.19 </z-m>
             <roll-deg>    0.000 </roll-deg>
-            <pitch-deg>   -15.000 </pitch-deg>
+            <pitch-deg>   15.000 </pitch-deg>
             <heading-deg> 15.000 </heading-deg>
         </offsets>
     </model>

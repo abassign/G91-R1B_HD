@@ -42,15 +42,15 @@ WARNING: do not remove the Transparency include at the end-->
         </texture>
         
         <dirt-enabled>1</dirt-enabled>
-        <dirt-color type="vec3d" n="0">0.0 0.0 0.2</dirt-color>
-        <dirt-factor type="float">10</dirt-factor>
+        <dirt-color type="vec3d" n="0">0.6 0.6 0.6</dirt-color>
+        <dirt-factor type="float">5.0</dirt-factor>
         <reflection-enabled type="int">1</reflection-enabled>
         <reflection-dynamic type="int">1</reflection-dynamic>
-        <reflect_map-enabled type="int">0</reflect_map-enabled>
-        <reflection-correction type="float">0.0</reflection-correction>
-        <reflection-rainbow type="float">0.0</reflection-rainbow>
+        <reflect_map-enabled type="int">1</reflect_map-enabled>
+        <reflection-correction type="float"><use>0.0</use></reflection-correction>
+        <reflection-rainbow type="float">0.2</reflection-rainbow>
         <reflection-fresnel type="float">0.0</reflection-fresnel>
-        <ambient_correction>0.1</ambient_correction>
+        <ambient_correction>0.0</ambient_correction>
         
         <!--
         <reflection-fresnel-factor type="float">0.5</reflection-fresnel-factor>

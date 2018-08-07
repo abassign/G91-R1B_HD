@@ -195,7 +195,7 @@
         <type>rotate</type>
         <object-name>pointer_1_A (Meshed)</object-name>
         <object-name>pointer_1_B (Meshed)</object-name>
-        <property>engines/engine/n1</property>
+        <property>fdm/jsbsim/propulsion/engine/n1</property>
         <factor>2.7</factor>
         <axis>
             <x>-1</x>
@@ -208,7 +208,7 @@
         <type>rotate</type>
         <object-name>pointer_2_A (Meshed)</object-name>
         <object-name>pointer_2_B (Meshed)</object-name>
-        <property>engines/engine/n1</property>
+        <property>fdm/jsbsim/propulsion/engine/n1</property>
         <factor>36</factor>
         <axis>
             <x>-1</x>

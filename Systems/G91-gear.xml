@@ -6,7 +6,12 @@ Description: G91R4 hydraulics system from "Manuale di pilotaggio (1-11,1-12, etc
 
 <system name="gear">
     
+    <property value="-60">systems/gears/gear[0]/z</property>
+    <property value="-55">systems/gears/gear[1]/z</property>
+    <property value="-55">systems/gears/gear[2]/z</property>
+    
     <channel name="Landing Gear control">
+        
         <kinematic name="Gear Control">
             <input>gear/gear-cmd-norm</input>
             <traverse>
@@ -46,12 +51,72 @@ Description: G91R4 hydraulics system from "Manuale di pilotaggio (1-11,1-12, etc
                     10.0        20.0
                     20.0        10.0
                     50.0        2.0
-                    150.0       0.5
+                    180.0       0.5
                 </tableData>
             </table>
             <output>fcs/steer-pos-deg</output>
         </scheduled_gain>
+        
     </channel>
+
+    <channel name="Landing gear hydraulics extension">
+        
+        <summer>
+            <input>systems/gears/gear[0]/z</input>
+            <input>systems/gears/unit[0]/hydraulics-extension</input>
+            <output>gear/unit[0]/z-position</output>
+        </summer>
+        
+        <summer>
+            <input>systems/gears/gear[1]/z</input>
+            <input>systems/gears/unit[1]/hydraulics-extension</input>
+            <output>gear/unit[1]/z-position</output>
+        </summer>
+        
+        <summer>
+            <input>systems/gears/gear[2]/z</input>
+            <input>systems/gears/unit[2]/hydraulics-extension</input>
+            <output>gear/unit[2]/z-position</output>
+        </summer>
+        
+    </channel>
+
+    <function name="systems/gears/unit[0]/hydraulics-extension">
+        <description>Extension main gear hydraulic cylinder</description>
+        <table>
+            <independentVar>systems/hydraulics/flight-system-psi</independentVar>
+            <tableData>
+                0.0 0.0
+                1000.0 0.0
+                3000.0 0.0
+                4000.0 0.0
+            </tableData>
+        </table>
+    </function>
+    
+    <function name="systems/gears/unit[1]/hydraulics-extension">
+        <description>Extension main gear hydraulic cylinder</description>
+        <table>
+            <independentVar>systems/hydraulics/flight-system-psi</independentVar>
+            <tableData>
+                0.0  0.0
+                3000.0 -5
+                4000.0 -5
+            </tableData>
+        </table>
+    </function>
+    
+    <function name="systems/gears/unit[2]/hydraulics-extension">
+        <description>Extension main gear hydraulic cylinder</description>
+        <table>
+            <independentVar>systems/hydraulics/flight-system-psi</independentVar>
+            <tableData>
+                0.0  0.0
+                3000.0 -5
+                4000.0 -5
+            </tableData>
+        </table>
+    </function>
     
 </system>
 

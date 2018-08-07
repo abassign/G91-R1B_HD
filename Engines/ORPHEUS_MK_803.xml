@@ -22,13 +22,13 @@ http://wiki.flightgear.org/JSBSim_Engines#FGTurbine
     <milthrust>  5900 </milthrust>
     <bypassratio>     1.0 </bypassratio>
     <tsfc>            1.05 </tsfc>
-    <bleed>           0.03</bleed>
-    <idlen1>         35.0 </idlen1>
-    <idlen2>         60.0 </idlen2>
-    <n1spinup>        1.0 </n1spinup> 
-    <n2spinup>        1.0 </n2spinup> 
-    <maxn1>         100.0 </maxn1>
-    <maxn2>         100.0 </maxn2>
+    <bleed>           0.05</bleed>
+    <idlen1>         15.0 </idlen1>
+    <idlen2>         15.0 </idlen2>
+    <n1spinup>        3.0 </n1spinup> 
+    <n2spinup>        3.0 </n2spinup> 
+    <maxn1>         103.0 </maxn1>
+    <maxn2>         103.0 </maxn2>
     <augmented>         0 </augmented>
     <injected>          0 </injected>
     
@@ -120,5 +120,5 @@ http://wiki.flightgear.org/JSBSim_Engines#FGTurbine
             </table>
         </product>
     </function>
-    
+
 </turbine_engine>  

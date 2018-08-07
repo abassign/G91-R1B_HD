@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<PropertyList>
+
+    <path>Aircraft/Generic/Effects/Thruster/thrust_flame.ac</path>
+    <nopreview/>
+    <animation>
+        <type>scale</type>
+        <property>sim/G91/JATO/JATO_Flame_Size[3]</property>
+        <x-min>0.2</x-min>
+        <y-min>0.05</y-min>
+        <z-min>0.05</z-min>
+        <y-max>0.15</y-max>
+        <z-max>0.15</z-max>
+        <x-factor>0.01</x-factor>
+        <y-factor>0.06</y-factor>
+        <z-factor>0.06</z-factor>
+    </animation>
+    <animation>
+        <type>select</type>
+        <object-name>Bounding_box</object-name>
+        <condition>
+            <greater-than>
+                <property>engines/engine[3]/thrust_lb</property>
+                <value>10</value>
+            </greater-than>
+        </condition>
+    </animation>
+
+    <effect>
+        <inherits-from>flame_JATO</inherits-from>
+        <object-name>Bounding_box</object-name>
+    </effect>
+
+</PropertyList> 

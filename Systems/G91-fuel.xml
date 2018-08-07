@@ -213,6 +213,6 @@
             <input>fuel/from-tank7-to-tank5</input>
             <output>propulsion/tank[5]/external-flow-rate-pps</output>
         </summer>
-    </channel>  
+    </channel>
     
 </system>

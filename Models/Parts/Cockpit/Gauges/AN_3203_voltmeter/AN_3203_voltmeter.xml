@@ -207,7 +207,7 @@
         <type>rotate</type>
         <object-name>pointer_1A (Meshed)</object-name>
         <object-name>pointer_1B (Meshed)</object-name>
-        <property>/systems/electrical/suppliers/battery</property>
+        <property>fdm/jsbsim/systems/gauges/cockpit-voltmeter/display-V</property>
         <factor>3</factor>
         <offset-deg>-45</offset-deg>
         <center>

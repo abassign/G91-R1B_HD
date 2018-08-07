@@ -235,22 +235,23 @@
         <type>rotate</type>
         <object-name>pointer_1A (Meshed)</object-name>
         <object-name>pointer_1B (Meshed)</object-name>
-        <property>engines/engine/egt-degf</property>
+        <property>fdm/jsbsim/systems/gauges/cockpit-jet-temperature-display-C</property>
         <factor>36</factor>
         <interpolation>
-            <entry><ind>212</ind><dep>-119</dep></entry>
-            <entry><ind>392</ind><dep>-107</dep></entry>
-            <entry><ind>572</ind><dep>-94</dep></entry>
-            <entry><ind>752</ind><dep>-82</dep></entry>
-            <entry><ind>932</ind><dep>-60</dep></entry>
-            <entry><ind>1112</ind><dep>-53</dep></entry>
-            <entry><ind>1202</ind><dep>-31</dep></entry>
-            <entry><ind>1292</ind><dep>0</dep></entry>
-            <entry><ind>1382</ind><dep>25</dep></entry>
-            <entry><ind>1472</ind><dep>49</dep></entry>
-            <entry><ind>1562</ind><dep>77</dep></entry>
-            <entry><ind>1652</ind><dep>86</dep></entry>
-            <entry><ind>1832</ind><dep>101</dep></entry>
+            <entry><ind>0</ind><dep>-125</dep></entry>
+            <entry><ind>100</ind><dep>-119</dep></entry>
+            <entry><ind>200</ind><dep>-107</dep></entry>
+            <entry><ind>300</ind><dep>-94</dep></entry>
+            <entry><ind>400</ind><dep>-82</dep></entry>
+            <entry><ind>500</ind><dep>-60</dep></entry>
+            <entry><ind>600</ind><dep>-53</dep></entry>
+            <entry><ind>650</ind><dep>-31</dep></entry>
+            <entry><ind>700</ind><dep>0</dep></entry>
+            <entry><ind>750</ind><dep>25</dep></entry>
+            <entry><ind>800</ind><dep>49</dep></entry>
+            <entry><ind>850</ind><dep>77</dep></entry>
+            <entry><ind>900</ind><dep>86</dep></entry>
+            <entry><ind>1000</ind><dep>101</dep></entry>
         </interpolation>
         <axis>
             <x>-1</x>

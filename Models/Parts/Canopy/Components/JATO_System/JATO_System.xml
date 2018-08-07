@@ -70,11 +70,11 @@
     </model>
     
     <model>
-        <path>JATO_Ready.xml</path>
+        <path>lg_JATO_Ready.xml</path>
         <offsets>
             <x-m>-2.99240</x-m>
             <y-m>-0.26346</y-m>
-            <z-m>0.11779</z-m>
+            <z-m>0.118</z-m>
             <pitch-deg>0.0</pitch-deg>
             <heading-deg>16.0</heading-deg>
             <roll-deg>0.0</roll-deg>

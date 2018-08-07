@@ -25,9 +25,11 @@
         <path>Aircraft/G91-R1B_HD/Models/Parts/Airbrake/Airbrake.xml</path>
     </model>
     -->
+
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Wing/Wing.xml</path>
     </model>
+
 <!--
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Fuselage_B/Fuselage_B1.xml</path>
@@ -41,16 +43,18 @@
             <z-m>-0.25</z-m>
         </offsets>
     </model>
-
+    -->
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Cockpit.xml</path>
     </model>
-    -->
+
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Canopy.xml</path>
     </model>
     
 <!-- Submodels -->
+    
+    <!--
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Stores/Tank/Tank260lit_S2.xml</path>
     </model>
@@ -58,7 +62,7 @@
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Stores/Tank/Tank260lit_S3.xml</path>
     </model>
-    
+    -->
     <!--
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Effects/Ground_Shadow/shadow.xml</path>

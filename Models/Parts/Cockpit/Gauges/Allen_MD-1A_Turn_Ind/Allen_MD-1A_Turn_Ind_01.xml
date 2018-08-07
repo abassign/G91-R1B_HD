@@ -255,17 +255,8 @@
     <animation>
         <type>rotate</type>
         <object-name>pointer (Meshed)</object-name>
-        <property>/instrumentation/turn-indicator/indicated-turn-rate</property>
-        <condition>
-            <and>
-                <property>/controls/electric/battery-switch</property>
-                <property>/instrumentation/turn-indicator/serviceable</property>
-            </and>
-        </condition>
-        <interpolation>
-            <entry> <ind>-2.5</ind> <dep>-30</dep> </entry>
-            <entry> <ind>2.5</ind> <dep>30</dep> </entry>
-        </interpolation>
+        <property>fdm/jsbsim/systems/gauges/cockpit-turn-indicator/display-rad-sec</property>
+        <factor>288</factor>
         <axis>
             <x>-1</x>
             <y>0</y>

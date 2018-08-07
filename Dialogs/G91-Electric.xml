@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+    
+    <name>Electric_dialog</name>
+    <layout>vbox</layout>
+    <default-padding>7</default-padding>
+    <modal>false</modal>
+    <width>800</width>
+    
+    <!-- title bar -->
+    <group>
+        <layout>hbox</layout>
+        <empty><stretch>true</stretch></empty>
+        <text>
+            <label>Electric System</label>
+        </text>
+        <empty><stretch>true</stretch></empty>
+        <button>
+            <legend/>
+            <key>Esc</key>
+            <pref-width>16</pref-width>
+            <pref-height>16</pref-height>
+            <border>2</border>
+            <binding>
+                <command>dialog-close</command>
+            </binding>
+        </button>
+    </group>
+    
+    <hrule/>
+
+    <group>
+        <layout>vbox</layout>
+        <group>
+            <layout>table</layout>
+            <text>
+                <label>Battery capacity</label>
+                <halign>right</halign>
+                <row>0</row>
+                <col>0</col>
+            </text>
+            <slider>
+                <name>battery_capacity</name>
+                <property>fdm/jsbsim/systems/electric/bus[0]/battery-capacity-initial-J</property>
+                <min>0</min>
+                <max>2937600</max>
+                <step>1000</step>  
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+                <row>0</row>
+                <col>1</col>
+            </slider>
+            <text>
+                <label>9999999</label>
+                <live>true</live>
+                <format>Init. %7.0f J</format>
+                <property>fdm/jsbsim/systems/electric/bus[0]/battery-capacity-initial-J</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.9</blue>
+                </color>
+                <halign>left</halign>
+                <row>0</row>
+                <col>2</col>
+            </text>
+            <text>
+                <label>9999999</label>
+                <live>true</live>
+                <format>Actual %7.0f J</format>
+                <property>fdm/jsbsim/systems/electric/bus[0]/battery-capacity-J</property>
+                <color>
+                    <red>0.3</red>
+                    <green>0.9</green>
+                    <blue>0.3</blue>
+                </color>
+                <halign>left</halign>
+                <row>0</row>
+                <col>3</col>
+            </text>
+            <text>
+                <label>9999999</label>
+                <live>true</live>
+                <format>Load %7.0f J</format>
+                <property>fdm/jsbsim/systems/electric/bus[0]/battery-load-J</property>
+                <color>
+                    <red>0.3</red>
+                    <green>0.9</green>
+                    <blue>0.3</blue>
+                </color>
+                <halign>left</halign>
+                <row>0</row>
+                <col>4</col>
+            </text>
+            <text>
+                <label>99999999</label>
+                <live>true</live>
+                <format>%2.0f V.</format>
+                <property>fdm/jsbsim/systems/electric/bus[0]/battery-V</property>
+                <color>
+                    <red>0.6</red>
+                    <green>0.2</green>
+                    <blue>0.2</blue>
+                </color>
+                <halign>left</halign>
+                <row>0</row>
+                <col>5</col>
+            </text>
+            <text>
+                <label>External generator</label>
+                <halign>right</halign>
+                <row>1</row>
+                <col>0</col>
+            </text>
+            <checkbox>
+                <row>1</row>
+                <col>1</col>
+                <halign>fill</halign>
+                <property>fdm/jsbsim/systems/electric/bus[1]/external-power-generator-on</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </checkbox>
+            <text>
+                <label>Internal generator</label>
+                <halign>right</halign>
+                <row>1</row>
+                <col>2</col>
+            </text>
+            <text>
+                <label>99999999</label>
+                <live>true</live>
+                <format>%2.0f (V)</format>
+                <property>fdm/jsbsim/systems/electric/bus[1]/internal-power-generator-V-n1</property>
+                <color>
+                    <red>0.6</red>
+                    <green>0.6</green>
+                    <blue>0.6</blue>
+                </color>
+                <halign>left</halign>
+                <row>1</row>
+                <col>3</col>
+            </text>
+            <text>
+                <label>Inverted current rele</label>
+                <halign>right</halign>
+                <row>1</row>
+                <col>4</col>
+            </text>
+            <text>
+                <label>99999999</label>
+                <live>true</live>
+                <format>%2.0f (Status)</format>
+                <property>fdm/jsbsim/systems/electric/bus[1]/internal-power-generator-inverted-current-rele-on</property>
+                <color>
+                    <red>0.6</red>
+                    <green>0.6</green>
+                    <blue>0.6</blue>
+                </color>
+                <halign>left</halign>
+                <row>1</row>
+                <col>5</col>
+            </text>
+        </group>
+        <group>
+            <layout>table</layout>
+            <text>
+                <label>BUS 0</label>
+                <halign>right</halign>
+                <row>0</row>
+                <col>0</col>
+            </text>
+            <text>
+                <label>99999999</label>
+                <live>true</live>
+                <format>%2.0f (V)</format>
+                <property>fdm/jsbsim/systems/electric/bus[0]/V</property>
+                <color>
+                    <red>0.6</red>
+                    <green>0.6</green>
+                    <blue>0.6</blue>
+                </color>
+                <halign>left</halign>
+                <row>0</row>
+                <col>1</col>
+            </text>
+            <text>
+                <label>BUS 1</label>
+                <halign>right</halign>
+                <row>0</row>
+                <col>2</col>
+            </text>
+            <text>
+                <label>99999999</label>
+                <live>true</live>
+                <format>%2.0f (V)</format>
+                <property>fdm/jsbsim/systems/electric/bus[1]/V</property>
+                <color>
+                    <red>0.6</red>
+                    <green>0.6</green>
+                    <blue>0.6</blue>
+                </color>
+                <halign>left</halign>
+                <row>0</row>
+                <col>3</col>
+            </text>
+            <text>
+                <label>BUS 2</label>
+                <halign>right</halign>
+                <row>0</row>
+                <col>4</col>
+            </text>
+            <text>
+                <label>99999999</label>
+                <live>true</live>
+                <format>%2.0f (V)</format>
+                <property>fdm/jsbsim/systems/electric/bus[2]/V</property>
+                <color>
+                    <red>0.6</red>
+                    <green>0.6</green>
+                    <blue>0.6</blue>
+                </color>
+                <halign>left</halign>
+                <row>0</row>
+                <col>5</col>
+            </text>
+        </group>
+    </group>
+    
+    <hrule/>
+    
+    <group>
+        <layout>vbox</layout>
+        <group>
+            <layout>table</layout>
+            <text>
+                <label>Landing light</label>
+                <halign>right</halign>
+                <row>0</row>
+                <col>0</col>
+            </text>
+            <checkbox>
+                <row>0</row>
+                <col>1</col>
+                <halign>fill</halign>
+                <property>systems/manual-switches/cockpit/sw-landing-light</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </checkbox>
+            <layout>table</layout>
+            <text>
+                <label>Anticollision light</label>
+                <halign>right</halign>
+                <row>0</row>
+                <col>2</col>
+            </text>
+            <checkbox>
+                <row>0</row>
+                <col>3</col>
+                <halign>fill</halign>
+                <property>fdm/jsbsim/systems/electric/bus[1]/anti-collision-light/sw</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </checkbox>
+            <text>
+                <label>Beacon</label>
+                <halign>right</halign>
+                <row>0</row>
+                <col>4</col>
+            </text>
+            <checkbox>
+                <row>0</row>
+                <col>5</col>
+                <halign>fill</halign>
+                <property>fdm/jsbsim/systems/manual-switches/cockpit/sw-beacon-light</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </checkbox>
+        </group>
+    </group>
+
+</PropertyList>
+

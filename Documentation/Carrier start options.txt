@@ -1,0 +1,2 @@
+--ai-scenario=truman_demo
+--carrier=Truman

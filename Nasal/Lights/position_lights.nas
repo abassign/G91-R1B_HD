@@ -24,7 +24,7 @@ var timerPosition_light_emission = maketimer(1, func() {
         setprop("sim/G91/position_light_emission",pl_emission);
         setprop("sim/G91/position_light_glass_emission",pl_glass_emission);
         setprop("sim/G91/position_light_transparent",pl_transparent);
-        setprop("sim/G91/position_light_emission_effect",pl_glass_emission * 0.5);
+        setprop("sim/G91/position_light_emission_effect",pl_glass_emission * 0.75);
         setprop("sim/G91/position_light_emission_effect_white",pl_glass_emission * 0.6);
     } else {
         setprop("sim/G91/position_light_emission",0);

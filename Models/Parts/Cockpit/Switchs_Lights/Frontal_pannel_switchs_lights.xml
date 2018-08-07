@@ -103,5 +103,61 @@
             <pitch-deg>-8.5</pitch-deg>
         </offsets>
     </model>
+    
+    <!-- Left section -->
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Switchs_Lights/sw_landing_light.xml</path>
+        <offsets>
+            <x-m>-3.178</x-m>
+            <y-m>-0.3095</y-m>
+            <z-m>-0.039</z-m>
+            <pitch-deg>-8.5</pitch-deg>
+        </offsets>
+    </model>
+    
+    <!-- Canopy section -->
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Switchs_Lights/sw_canopy_on_off.xml</path>
+        <offsets>
+            <x-m>-3.19</x-m>
+            <y-m>-0.384</y-m>
+            <z-m>-0.045</z-m>
+            <pitch-deg>-8.5</pitch-deg>
+        </offsets>
+    </model>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Switchs_Lights/lg_canopy_light.xml</path>
+        <offsets>
+            <x-m>-3.19</x-m>
+            <y-m>-0.328</y-m>
+            <z-m>-0.058</z-m>
+            <pitch-deg>-8.5</pitch-deg>
+        </offsets>
+    </model>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Switchs_Lights/sw_canopy_open_external.xml</path>
+        <offsets>
+            <x-m>-1.217</x-m>
+            <y-m>-0.602</y-m>
+            <z-m>-0.19178</z-m>
+            <pitch-deg>0.0</pitch-deg>
+            <heading-deg>-90</heading-deg>
+        </offsets>
+    </model>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Switchs_Lights/sw_canopy_close_external.xml</path>
+        <offsets>
+            <x-m>-1.217</x-m>
+            <y-m>-0.615</y-m>
+            <z-m>-0.271</z-m>
+            <pitch-deg>0.0</pitch-deg>
+            <heading-deg>-90</heading-deg>
+        </offsets>
+    </model>
 
 </PropertyList>  

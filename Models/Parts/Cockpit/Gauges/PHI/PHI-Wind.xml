@@ -7,7 +7,7 @@
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
         <object-name>frontal (Meshed)</object-name>
-        <object-name>frontal_plate_A (Meshed)</object-name>
+        <object-name>frontal_plate_A</object-name>
         <object-name>frontal_plate_B (Meshed)</object-name>
         <object-name>ring (Meshed)</object-name>
         <object-name>lamp_ring (Meshed)</object-name>
@@ -24,7 +24,7 @@
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
         <object-name>frontal (Meshed)</object-name>
-        <object-name>frontal_plate_A (Meshed)</object-name>
+        <object-name>frontal_plate_A</object-name>
         <object-name>frontal_plate_B (Meshed)</object-name>
         <object-name>ring (Meshed)</object-name>
         <object-name>lamp_ring (Meshed)</object-name>
@@ -92,9 +92,9 @@
     
     <animation> 
         <type>material</type>
-        <object-name>frontal_plate_A (Meshed)</object-name>
+        <object-name>frontal_plate_A</object-name>
         <transparency>
-            <alpha>0.0</alpha>
+            <alpha>1.0</alpha>
         </transparency>
         <ambient>
             <red>0.80</red>
@@ -235,6 +235,9 @@
         </emission>
     </animation>
     
+    
+    <!--
+    
     <animation> 
         <type>material</type>
         <object-name>lamp_mirror (Meshed)</object-name>
@@ -251,7 +254,7 @@
             <factor-prop>sim/G91/switchs/cockpit/lg_battery_on</factor-prop>
         </emission>
     </animation>
-    
+
     <animation> 
         <type>material</type>
         <object-name>lamp_light (Meshed)</object-name>
@@ -268,9 +271,10 @@
             <red>1.0</red>
             <green>0.5</green>
             <blue>0.5</blue>
-            <factor-prop>sim/G91/switchs/cockpit/lg_battery_on</factor-prop>
+            <factor-prop> ... </factor-prop>
         </emission>
     </animation>
+    -->
     
     <model>
         <name>procedural_light_cockpit_gauge_spot_red</name>

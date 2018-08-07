@@ -72,6 +72,18 @@
             <blue>0.0</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
-    </animation>   
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>sw_center</object-name>
+        <object-name>sw_north</object-name>
+        <object-name>sw_south</object-name>
+        <object-name>sw_est</object-name>
+        <object-name>sw_west</object-name>
+        <transparency>
+            <alpha>0.0</alpha>
+        </transparency>
+    </animation>
     
 </PropertyList> 

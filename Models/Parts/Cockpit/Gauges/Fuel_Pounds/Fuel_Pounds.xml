@@ -284,7 +284,7 @@
         <type>rotate</type>
         <object-name>pointer_1A (Meshed)</object-name>
         <object-name>pointer_1B (Meshed)</object-name>
-        <property>sim/G91/fuel/fuel_pounds_display</property>
+        <property>fdm/jsbsim/systems/gauges/cockpit-fuel-pounds/display-libs</property>
         <interpolation>
             <entry><ind>0.0</ind><dep>-118</dep></entry>
             <entry><ind>100</ind><dep>-101</dep></entry>

@@ -40,7 +40,6 @@
         <object-name>arrow_3 (Meshed)</object-name>
         <object-name>arrow_4 (Meshed)</object-name>
         <object-name>pointer_1_B (Meshed)</object-name>
-        <object-name>frontal_plate_A (Meshed)</object-name>
     </effect>
     
     <effect>
@@ -84,7 +83,6 @@
         <object-name>arrow_3 (Meshed)</object-name>
         <object-name>arrow_4 (Meshed)</object-name>
         <object-name>pointer_1_B (Meshed)</object-name>
-        <object-name>frontal_plate_A (Meshed)</object-name>
     </effect>    
 
     <animation> 

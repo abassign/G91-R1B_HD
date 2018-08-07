@@ -61,5 +61,34 @@
         <impact-reports>ai/models/model-impact</impact-reports>
         <external-force>true</external-force>
     </submodel>
+    
+    <!-- JATO System -->
+    
+    <submodel>
+        <offsets>
+            <x-m>0.0</x-m>
+            <y-m>0.0</y-m>
+            <z-m>0.0</z-m>
+        </offsets>
+        <name>JATO_System</name>
+        <model>Aircraft/G91-R1B_HD/Models/Parts/Wing/JATO/JATO.xml</model>
+        <trigger>sim/G91/JATO/JATO_Jettinson_Push</trigger>
+        <repeat>false</repeat>
+        <count>100</count>
+        <delay>0.1</delay>
+        <speed>0</speed>
+        <slaved>false</slaved>
+        <wind>false</wind>
+        <aero-stabilised>true</aero-stabilised>
+        <collision>true</collision>
+        <eda>1.35</eda>
+        <cd>0.2</cd>
+        <weight>300</weight>
+        <buoyancy>0</buoyancy>
+        <life>60</life>
+        <impact>true</impact>
+        <impact-reports>ai/models/model-impact</impact-reports>
+        <external-force>true</external-force>
+    </submodel>
 
 </PropertyList> 
