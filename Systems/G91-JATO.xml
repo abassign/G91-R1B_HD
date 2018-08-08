@@ -10,6 +10,17 @@
     <property value="0">systems/jato/rocket_number_3</property>
     <property value="0">systems/jato/rocket_number_4</property>
     
+    <channel name="jato configuration" execrate="16">
+        
+        <summer name = "systems/jato/rocket_total_number">
+            <input>systems/jato/rocket_number_1</input>
+            <input>systems/jato/rocket_number_2</input>
+            <input>systems/jato/rocket_number_3</input>
+            <input>systems/jato/rocket_number_4</input>
+        </summer>
+        
+    </channel>
+    
     <channel name="jato electric" execrate="8">
         
         <switch name="systems/jato/electric-active">
@@ -35,9 +46,87 @@
             </test>
         </switch>
         
+        <switch name="systems/jato/ignition-on">
+            <default value="0"/>
+            <test logic = "AND" value = "1">
+                systems/jato/lg-ready-on GT 0.70
+                systems/manual-switches/jato/sw-ignition == 1
+            </test>
+        </switch>
+        
+        <switch name="systems/electric/bus[1]/JATO-ignition/I">
+            <default value="0"/>
+            <test logic = "AND" value = "10">
+                systems/jato/ignition-on == 1
+            </test>
+        </switch>
+        
     </channel>
-
-    <channel name="jato weight">
+        
+        
+    <channel name="jato start" execrate="8">
+        
+        <switch name="fcs/throttle-cmd-norm[1]">
+            <default value="0"/>
+            <test logic = "AND" value = "1">
+                systems/jato/ignition-on == 1
+                systems/jato/rocket_number_1 == 1
+            </test>
+        </switch>
+        
+        <switch name="fcs/throttle-cmd-norm[2]">
+            <default value="0"/>
+            <test logic = "AND" value = "1">
+                systems/jato/ignition-on == 1
+                systems/jato/rocket_number_2 == 1
+            </test>
+        </switch>
+        
+        <switch name="fcs/throttle-cmd-norm[3]">
+            <default value="0"/>
+            <test logic = "AND" value = "1">
+                systems/jato/ignition-on == 1
+                systems/jato/rocket_number_3 == 1
+            </test>
+        </switch>
+        
+        <switch name="fcs/throttle-cmd-norm[4]">
+            <default value="0"/>
+            <test logic = "AND" value = "1">
+                systems/jato/ignition-on == 1
+                systems/jato/rocket_number_4 == 1
+            </test>
+        </switch>
+        
+        <summer name = "systems/jato/thrust-lbs-total">
+            <input>propulsion/engine[1]/thrust-lbs</input>
+            <input>propulsion/engine[2]/thrust-lbs</input>
+            <input>propulsion/engine[3]/thrust-lbs</input>
+            <input>propulsion/engine[4]/thrust-lbs</input>
+        </summer>
+        
+        <pure_gain name="systems/jato/sound-factor">
+            <input>systems/jato/thrust-lbs-total</input>
+            <gain> 0.00025</gain>
+            <clipto>
+                <min> 0 </min>
+                <max> 1 </max>
+            </clipto>
+        </pure_gain>
+        
+        <!-- Remove rockets -->
+        
+        <switch name="systems/jato/jettinson-on">
+            <default value="0"/>
+            <test logic = "AND" value = "1">
+                systems/jato/electric-active == 1
+                systems/manual-switches/jato/sw-jettinson == 1
+            </test>
+        </switch>
+        
+    </channel>
+    
+    <channel name="jato weight" execrate="16">
         
         <switch>
             <default value="0"/>
@@ -70,10 +159,10 @@
             </test>
             <output>inertia/pointmass-weight-lbs[5]</output>
         </switch>
-
+        
     </channel>
     
-    <channel name="jato drag">
+    <channel name="jato drag" execrate="16">
         
         <switch>
             <default value="0"/>
@@ -120,7 +209,7 @@
             <gain>aero/qbar-psf</gain>
             <output>external_reactions/JATO-rockets/magnitude</output>
         </pure_gain>
-
+        
     </channel>
-
+    
 </system>

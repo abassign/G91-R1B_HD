@@ -196,12 +196,12 @@
             <default value="0"/>
             <test logic="AND" value="1">
                 systems/manual-switches/jato/sw-ignition-trigger == 1
-                systems/manual-switches/jato/sw-ignition-pos GT 0.90
+                systems/manual-switches/jato/sw-ignition-pos GT 0.50
                 systems/jato/electric-active == 1
             </test>
             <test logic="AND" value="0">
                 systems/manual-switches/jato/sw-ignition-trigger == 0
-                systems/manual-switches/jato/sw-ignition-pos LE 0.90
+                systems/manual-switches/jato/sw-ignition-pos LE 0.50
             </test>
         </switch>
         
@@ -241,12 +241,12 @@
             <default value="0"/>
             <test logic="AND" value="1">
                 systems/manual-switches/jato/sw-jettinson-trigger == 1
-                systems/manual-switches/jato/sw-jettinson-pos GT 0.90
+                systems/manual-switches/jato/sw-jettinson-pos GT 0.50
                 systems/jato/electric-active == 1
             </test>
             <test logic="AND" value="0">
                 systems/manual-switches/jato/sw-jettinson-trigger == 0
-                systems/manual-switches/jato/sw-jettinson-pos LE 0.90
+                systems/manual-switches/jato/sw-jettinson-pos LE 0.50
             </test>
         </switch>
         

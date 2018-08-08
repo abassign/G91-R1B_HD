@@ -16,7 +16,7 @@
         
         <condition>
             <greater-than>
-                <property>engines/engine[1]/thrust_lb</property>
+                <property>fdm/jsbsim/propulsion/engine[1]/thrust-lbs</property>
                 <value>10</value>
             </greater-than>
         </condition>

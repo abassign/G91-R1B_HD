@@ -32,7 +32,7 @@
         <object-name>piastra_jato02</object-name>
         <condition>
             <greater-than-equals>
-                <property>sim/G91/JATO/JATO_Rokets_Number</property>
+                <property>fdm/jsbsim/systems/jato/rocket_total_number</property>
                 <value>1</value>
             </greater-than-equals>
         </condition>
@@ -70,7 +70,7 @@
         <object-name>rocket_02</object-name>
         <condition>
             <greater-than-equals>
-                <property>sim/G91/JATO/JATO_Rokets_Number</property>
+                <property>fdm/jsbsim/systems/jato/rocket_total_number</property>
                 <value>2</value>
             </greater-than-equals>
         </condition>
@@ -83,7 +83,7 @@
         <texture>Pictures/JATO-Rocket-01.png</texture>
         <condition>
             <greater-than-equals>
-                <property>sim/G91/JATO/JATO_Rokets_Number</property>
+                <property>fdm/jsbsim/systems/jato/rocket_total_number</property>
                 <value>2</value>
             </greater-than-equals>
         </condition>
@@ -100,7 +100,7 @@
         <object-name>rocket_03.001</object-name>
         <condition>
             <greater-than-equals>
-                <property>sim/G91/JATO/JATO_Rokets_Number</property>
+                <property>fdm/jsbsim/systems/jato/rocket_total_number</property>
                 <value>4</value>
             </greater-than-equals>
         </condition>
@@ -113,7 +113,7 @@
         <texture>Pictures/JATO-Rocket-01.png</texture>
         <condition>
             <greater-than-equals>
-                <property>sim/G91/JATO/JATO_Rokets_Number</property>
+                <property>fdm/jsbsim/systems/jato/rocket_total_number</property>
                 <value>4</value>
             </greater-than-equals>
         </condition>

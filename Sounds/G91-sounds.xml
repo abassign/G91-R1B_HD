@@ -284,8 +284,8 @@
             <condition>
                 <and>
                     <greater-than>
-                        <property>engines/engine[1]/thrust_lb</property>
-                        <value>10</value>
+                        <property>fdm/jsbsim/systems/jato/thrust-lbs-total</property>
+                        <value>40</value>
                     </greater-than>
                     <equals>
                         <property>sim/current-view/internal</property>
@@ -294,12 +294,12 @@
                 </and>
             </condition>
             <volume>
-                <factor>0.3</factor>
-                <property>engines/engine[1]/thrust_lb</property>
+                <factor>0.1</factor>
+                <property>fdm/jsbsim/systems/jato/thrust-lbs-total</property>
             </volume>
             <pitch>
                 <factor>1.0</factor>
-                <property>sim/G91/JATO/JATO_Sound_Factor</property>
+                <property>fdm/jsbsim/systems/jato/sound-factor</property>
             </pitch>
         </jato-burning-internal>
         
@@ -310,8 +310,8 @@
             <condition>
                 <and>
                     <greater-than>
-                        <property>engines/engine[1]/thrust_lb</property>
-                        <value>10</value>
+                        <property>fdm/jsbsim/systems/jato/thrust-lbs-total</property>
+                        <value>40</value>
                     </greater-than>
                     <not>
                         <equals>
@@ -322,12 +322,12 @@
                 </and>
             </condition>
             <volume>
-                <factor>0.5</factor>
-                <property>engines/engine[1]/thrust_lb</property>
+                <factor>0.1</factor>
+                <property>fdm/jsbsim/systems/jato/thrust-lbs-total</property>
             </volume>
             <pitch>
                 <factor>1.0</factor>
-                <property>sim/G91/JATO/JATO_Sound_Factor</property>
+                <property>fdm/jsbsim/systems/jato/sound-factor</property>
             </pitch>
         </jato-burning-external>
         
