@@ -10,6 +10,7 @@
     <property value="0">systems/jato/rocket_number_3</property>
     <property value="0">systems/jato/rocket_number_4</property>
     
+    
     <channel name="jato configuration" execrate="16">
         
         <summer name = "systems/jato/rocket_total_number">
@@ -20,6 +21,7 @@
         </summer>
         
     </channel>
+    
     
     <channel name="jato electric" execrate="8">
         
@@ -62,24 +64,26 @@
         </switch>
         
     </channel>
-        
-        
+    
+ 
     <channel name="jato start" execrate="8">
-        
+
         <switch name="fcs/throttle-cmd-norm[1]">
             <default value="0"/>
             <test logic = "AND" value = "1">
                 systems/jato/ignition-on == 1
                 systems/jato/rocket_number_1 == 1
             </test>
+            <output>/controls/engines/engine[1]/throttle</output>
         </switch>
-        
+
         <switch name="fcs/throttle-cmd-norm[2]">
             <default value="0"/>
             <test logic = "AND" value = "1">
                 systems/jato/ignition-on == 1
                 systems/jato/rocket_number_2 == 1
             </test>
+            <output>/controls/engines/engine[2]/throttle</output>
         </switch>
         
         <switch name="fcs/throttle-cmd-norm[3]">
@@ -88,6 +92,7 @@
                 systems/jato/ignition-on == 1
                 systems/jato/rocket_number_3 == 1
             </test>
+            <output>/controls/engines/engine[3]/throttle</output>
         </switch>
         
         <switch name="fcs/throttle-cmd-norm[4]">
@@ -96,6 +101,7 @@
                 systems/jato/ignition-on == 1
                 systems/jato/rocket_number_4 == 1
             </test>
+            <output>/controls/engines/engine[4]/throttle</output>
         </switch>
         
         <summer name = "systems/jato/thrust-lbs-total">
@@ -125,6 +131,7 @@
         </switch>
         
     </channel>
+    
     
     <channel name="jato weight" execrate="16">
         
@@ -161,6 +168,7 @@
         </switch>
         
     </channel>
+    
     
     <channel name="jato drag" execrate="16">
         
