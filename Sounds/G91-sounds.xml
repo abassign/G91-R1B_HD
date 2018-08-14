@@ -851,69 +851,122 @@
             </volume>
         </air-brakes>
         
-
+        -->
         
-        <canopy>
-            <name>canopy</name>
-            <mode>in-transit</mode>
-            <path>Aircraft/G91-R1B_HD/Sounds/canopy-move.wav</path>
-            <property>fdm/jsbsim/systems/canopy/pos</property>
+        <canopy_move_int>
+            <name>canopy_move</name>
+            <mode>once</mode>
+            <path>Aircraft/G91-R1B_HD/Sounds/canopy-audioclip-1534115848-6773.wav</path>
+            <condition>
+                <and>
+                    <or>
+                        <equals>
+                            <property>fdm/jsbsim/systems/canopy/position-go</property>
+                            <value>1</value>
+                        </equals>
+                        <equals>
+                            <property>fdm/jsbsim/systems/canopy/position-go</property>
+                            <value>-1</value>
+                        </equals>
+                    </or>
+                    <equals>
+                        <property>sim/current-view/internal</property>
+                        <value>1</value>
+                    </equals>
+                </and>
+            </condition>
             <volume>
                 <factor>0.5</factor>
-                <property>sim/current-view/internal</property>
-                <property>fdm/jsbsim/init/finally-initialized</property>
             </volume>
-        </canopy>
+        </canopy_move_int>
         
-        <canopy-close-left>
-            <name>canopy-close-left</name>
+        <canopy_stop_int>
+            <name>canopy_stop</name>
+            <mode>once</mode>
+            <path>Aircraft/G91-R1B_HD/Sounds/canopy-stop-audioclip-1534116200-6087.wav</path>
+            <condition>
+                <and>
+                    <equals>
+                        <property>fdm/jsbsim/systems/canopy/position-stopping-go</property>
+                        <value>1</value>
+                    </equals>
+                    <equals>
+                        <property>sim/current-view/internal</property>
+                        <value>1</value>
+                    </equals>
+                </and>
+            </condition>
+            <volume>
+                <factor>1.0</factor>
+            </volume>
+        </canopy_stop_int>
+        
+        <canopy_move_ext>
+            <name>canopy_move</name>
+            <mode>in-transit</mode>
+            <path>Aircraft/G91-R1B_HD/Sounds/canopy-audioclip-1534115848-6773.wav</path>
+            <condition>
+                <and>
+                    <or>
+                        <equals>
+                            <property>fdm/jsbsim/systems/canopy/position-go</property>
+                            <value>1</value>
+                        </equals>
+                        <equals>
+                            <property>fdm/jsbsim/systems/canopy/position-go</property>
+                            <value>-1</value>
+                        </equals>
+                    </or>
+                    <equals>
+                        <property>sim/current-view/internal</property>
+                        <value>0</value>
+                    </equals>
+                </and>
+            </condition>
+            <volume>
+                <factor>1.0</factor>
+            </volume>
+        </canopy_move_ext>
+        
+        <canopy_stop_ext>
+            <name>canopy_stop</name>
+            <mode>in-transit</mode>
+            <path>Aircraft/G91-R1B_HD/Sounds/canopy-stop-audioclip-1534116200-6087.wav</path>
+            <condition>
+                <and>
+                    <equals>
+                        <property>fdm/jsbsim/systems/canopy/position-stopping-go</property>
+                        <value>1</value>
+                    </equals>
+                    <equals>
+                        <property>sim/current-view/internal</property>
+                        <value>0</value>
+                    </equals>
+                </and>
+            </condition>
+            <volume>
+                <factor>0.5</factor>
+            </volume>
+        </canopy_stop_ext>
+        
+        <canopy_lock_int>
+            <name>canopy_lock_int</name>
             <mode>once</mode>
             <path>Aircraft/G91-R1B_HD/Sounds/canopy-close-left.wav</path>
             <condition>
-                <less-than-equals>
-                    <property>fdm/jsbsim/systems/sounds/canopy-lock-click/on</property>
-                    <value>0</value>
-                </less-than-equals>
+                <and>
+                    <equals>
+                        <property>fdm/jsbsim/systems/canopy/lever-lock</property>
+                        <value>1</value>
+                    </equals>
+                </and>
             </condition>
-            <position>
-                <x>0.0</x>
-                <y>0.5</y>
-                <z>0.0</z>
-            </position>
             <volume>
-                <product>
-                    <factor>0.3</factor>
-                    <property>sim/current-view/internal</property>
-                </product>
+                <factor>0.5</factor>
             </volume>
-            <volume>
-                <property>/fdm/jsbsim/calculations/init_volume</property>
-            </volume>
-        </canopy-close-left>
+        </canopy_lock_int>
         
-        <canopy-close-right>
-            <name>canopy-close-right</name>
-            <mode>once</mode>
-            <path>Aircraft/G91-R1B_HD/Sounds/canopy-close-right.wav</path>
-            <condition>
-                <less-than-equals>
-                    <property>fdm/jsbsim/systems/sounds/canopy-lock-click/on</property>
-                    <value>0</value>
-                </less-than-equals>
-            </condition>
-            <position>
-                <x>0.0</x>
-                <y>-0.5</y>
-                <z>0.0</z>
-            </position>
-            <volume>
-                <factor>0.3</factor>
-                <property>sim/current-view/internal</property>
-            </volume>
-            <volume>
-                <property>/fdm/jsbsim/calculations/init_volume</property>
-            </volume>
-        </canopy-close-right>
+        <!--
         
         <throttle-crack>
             <name>throttle-crack</name>

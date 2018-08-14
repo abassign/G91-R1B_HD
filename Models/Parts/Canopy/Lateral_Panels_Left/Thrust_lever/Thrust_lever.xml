@@ -1,0 +1,308 @@
+<PropertyList>
+    
+    <path>Thrust_lever.ac</path>
+    
+    <effect>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
+        <object-name>Screew cross top M2</object-name>
+        <object-name>Screew cross top M2.001</object-name>
+        <object-name>Screew cross top M2.002</object-name>
+        <object-name>Screew top </object-name>
+        <object-name>Screew top .001</object-name>
+        <object-name>Screew_d</object-name>
+        <object-name>Thrust_lever_01</object-name>
+        <object-name>Thrust_lever_02</object-name>
+        <object-name>Thrust_lever_03</object-name>
+        <object-name>Thrust_lever_04</object-name>
+        <object-name>push_01</object-name>
+        <object-name>push_01a</object-name>
+        <object-name>push_01b</object-name>
+        <object-name>push_02</object-name>
+        <object-name>push_02a</object-name>
+        <object-name>push_02b</object-name>
+        <object-name>push_03a</object-name>
+        <object-name>push_03b</object-name>
+        <object-name>segnature_push_03a</object-name>
+        <object-name>segnature_push_03b</object-name>
+        <object-name>support_push_03</object-name>
+    </effect>
+    
+    <effect>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
+        <object-name>Screew cross top M2</object-name>
+        <object-name>Screew cross top M2.001</object-name>
+        <object-name>Screew cross top M2.002</object-name>
+        <object-name>Screew top </object-name>
+        <object-name>Screew top .001</object-name>
+        <object-name>Screew_d</object-name>
+        <object-name>Thrust_lever_01</object-name>
+        <object-name>Thrust_lever_02</object-name>
+        <object-name>Thrust_lever_03</object-name>
+        <object-name>Thrust_lever_04</object-name>
+        <object-name>push_01</object-name>
+        <object-name>push_01a</object-name>
+        <object-name>push_01b</object-name>
+        <object-name>push_02</object-name>
+        <object-name>push_02a</object-name>
+        <object-name>push_02b</object-name>
+        <object-name>push_03a</object-name>
+        <object-name>push_03b</object-name>
+        <object-name>segnature_push_03a</object-name>
+        <object-name>segnature_push_03b</object-name>
+        <object-name>support_push_03</object-name>
+    </effect>
+    
+    <animation>
+        <name>lever</name>
+        <object-name>Screew cross top M2</object-name>
+        <object-name>Screew cross top M2.001</object-name>
+        <object-name>Screew cross top M2.002</object-name>
+        <object-name>Screew top </object-name>
+        <object-name>Screew top .001</object-name>
+        <object-name>Screew_d</object-name>
+        <object-name>Thrust_lever_01.001</object-name>
+        <object-name>Thrust_lever_01</object-name>
+        <object-name>Thrust_lever_02</object-name>
+        <object-name>Thrust_lever_03</object-name>
+        <object-name>Thrust_lever_04</object-name>
+        <object-name>push_01</object-name>
+        <object-name>push_01a</object-name>
+        <object-name>push_01b</object-name>
+        <object-name>push_02</object-name>
+        <object-name>push_02a</object-name>
+        <object-name>push_02b</object-name>
+        <object-name>push_03a</object-name>
+        <object-name>push_03b</object-name>
+        <object-name>segnature_push_03a</object-name>
+        <object-name>segnature_push_03b</object-name>
+        <object-name>support_push_03</object-name>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>Screew cross top M2</object-name>
+        <object-name>Screew cross top M2.001</object-name>
+        <object-name>Screew cross top M2.002</object-name>
+        <object-name>Screew top </object-name>
+        <object-name>Screew top .001</object-name>
+        <texture>Pictures/G91-Dark-Grey.png</texture>
+        <ambient>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </ambient>
+        <emission>
+            <red>0.07</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>Screew_d</object-name>
+        <texture>Pictures/G91-Al.png</texture>
+        <ambient>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+        </ambient>
+        <emission>
+            <red>0.07</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+
+    <animation>
+        <type>translate</type>
+        <object-name>Thrust_lever_01.001</object-name>
+        <offset-m>0.00001</offset-m>
+        <axis>
+            <x>0</x>
+            <y>0</y>
+            <z>1</z>
+        </axis>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>Thrust_lever_01.001</object-name>
+        <transparency>
+            <alpha>1.0</alpha>
+        </transparency>
+        <ambient>
+            <red>0.9</red>
+            <green>0.9</green>
+            <blue>0.9</blue>
+        </ambient>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>Thrust_lever_01</object-name>
+        <object-name>Thrust_lever_02</object-name>
+        <object-name>Thrust_lever_04</object-name>
+        <texture>Pictures/G91-Ivory01.png</texture>
+        <ambient>
+            <red>0.98</red>
+            <green>0.92</green>
+            <blue>0.84</blue>
+        </ambient>
+        <specular>
+            <red>0.98</red>
+            <green>0.92</green>
+            <blue>0.84</blue>
+        </specular>
+        <emission>
+            <red>0.05</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>push_01</object-name>
+        <object-name>push_02</object-name>
+        <object-name>push_03a</object-name>
+        <object-name>push_03b</object-name>
+        <object-name>support_push_03</object-name>
+        <texture>Pictures/G91-Ivory01.png</texture>
+        <ambient>
+            <red>0.9</red>
+            <green>0.9</green>
+            <blue>0.9</blue>
+        </ambient>
+        <specular>
+            <red>0.98</red>
+            <green>0.92</green>
+            <blue>0.84</blue>
+        </specular>
+        <emission>
+            <red>0.07</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>push_01a</object-name>
+        <object-name>push_01b</object-name>
+        <object-name>push_02a</object-name>
+        <object-name>push_02b</object-name>
+        <texture>Pictures/G91-Al.png</texture>
+        <ambient>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </ambient>
+        <specular>
+            <red>0.98</red>
+            <green>0.92</green>
+            <blue>0.84</blue>
+        </specular>
+        <emission>
+            <red>0.07</red>
+            <green>0.003</green>
+            <blue>0.0015</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>segnature_push_03a</object-name>
+        <object-name>segnature_push_03b</object-name>
+        <texture>Pictures/G91-Dark-Grey.png</texture>
+        <ambient>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+        </ambient>
+        <emission>
+            <red>0.07</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>Thrust_lever_03</object-name>
+        <texture>Pictures/G91-Al.png</texture>
+        <ambient>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+        </ambient>
+        <emission>
+            <red>0.07</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation>
+        <type>translate</type>
+        <object-name>lever</object-name>
+        <offset-m>0.005</offset-m>
+        <axis>
+            <x>0</x>
+            <y>0</y>
+            <z>1</z>
+        </axis>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>lever</object-name>
+        <object-name>lever_rotation_bar</object-name>
+        <property>fdm/jsbsim/propulsion/engine/n1</property>
+        <factor>0.8</factor>
+        <offset-deg>-50</offset-deg>
+        <axis>
+            <x>0</x>
+            <y>-1</y>
+            <z>0</z>
+        </axis>
+        <center>
+            <x-m>0.0</x-m>
+            <y-m>0.0</y-m>
+            <z-m>0.0</z-m>
+        </center>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>lever</object-name>
+        <property>fdm/jsbsim/propulsion/engine/n1</property>
+        <factor>1.0</factor>
+        <interpolation>
+            <entry><ind>0</ind><dep>-5</dep></entry>
+            <entry><ind>12</ind><dep>-5</dep></entry>
+            <entry><ind>24</ind><dep>7</dep></entry>
+            <entry><ind>49</ind><dep>7</dep></entry>
+            <entry><ind>52</ind><dep>0</dep></entry>
+            <entry><ind>100</ind><dep>0</dep></entry>
+        </interpolation>
+        <axis>
+            <x>1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+        <center>
+            <x-m>0.0</x-m>
+            <y-m>-0.07</y-m>
+            <z-m>0.06</z-m>
+        </center>
+    </animation>
+    
+</PropertyList>

@@ -51,6 +51,10 @@
         
         <switch name="systems/manual-switches/cockpit/sw-canopy-pos-status">
             <default value="systems/manual-switches/cockpit/sw-canopy-pos-status"/>
+            <test logic="OR" value="0">
+                systems/canopy/position-go NE 0
+                systems/canopy/position-stopping-go EQ 1
+            </test>
             <test logic="OR" value="1">
                 systems/manual-switches/cockpit/sw-canopy-trigger == 1
                 systems/manual-switches/cockpit/sw-canopy-togle-trigger == 1

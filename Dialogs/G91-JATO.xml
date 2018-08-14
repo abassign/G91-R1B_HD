@@ -34,80 +34,37 @@
         <layout>vbox</layout>
         <group>
             <layout>table</layout>
-            <text>
-                <label>The JATO system is installed with 2 rockets</label>
-                <halign>right</halign>
+            <slider>
                 <row>0</row>
                 <col>0</col>
-            </text>
-            <checkbox>
+                <name>jato_request_to_mount</name>
+                <property>fdm/jsbsim/systems/jato/request-to-mount</property>
+                <min>0.0</min>
+                <max>4.0</max>
+                <step>2</step>  
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </slider>
+            <text>
                 <row>0</row>
                 <col>1</col>
-                <property>sim/G91/dialogs/JATO/install-2-jato-rocket</property>
+                <halign>left</halign>
+                <label>9</label>
                 <live>true</live>
-                <binding>
-                    <command>nasal</command>
-                    <script><![CDATA[
-                        var install_2_jato_rocket = props.globals.getNode("sim/G91/dialogs/JATO/install-2-jato-rocket",1).getValue();
-                        install_2_jato_rocket = !install_2_jato_rocket;
-                        setprop("sim/G91/dialogs/JATO/install-2-jato-rocket",install_2_jato_rocket);
-                        var JATO_Rokets_Number = props.globals.getNode("sim/G91/JATO/JATO_Rokets_Number",1).getValue();
-                        if (install_2_jato_rocket) {
-                        setprop("sim/G91/dialogs/JATO/install-4-jato-rocket",0);
-                        setprop("sim/G91/JATO/JATO_Rokets_Number",2);
-                        setprop("sim/G91/JATO/JATO_is_mounted",1);
-                        setprop("fdm/jsbsim/systems/jato/rocket_number_1",1);
-                        setprop("fdm/jsbsim/systems/jato/rocket_number_2",0);
-                        setprop("fdm/jsbsim/systems/jato/rocket_number_3",0);
-                        setprop("fdm/jsbsim/systems/jato/rocket_number_4",1);
-                        } else {
-                        setprop("sim/G91/JATO/JATO_Rokets_Number",0);
-                        setprop("sim/G91/JATO/JATO_is_mounted",0);
-                        setprop("fdm/jsbsim/systems/jato/rocket_number_1",0);
-                        setprop("fdm/jsbsim/systems/jato/rocket_number_2",0);
-                        setprop("fdm/jsbsim/systems/jato/rocket_number_3",0);
-                        setprop("fdm/jsbsim/systems/jato/rocket_number_4",0);
-                        }
-                        ]]></script>
-                </binding>
-            </checkbox>
-            <text>
-                <label>The JATO system is installed with 4 rockets</label>
-                <halign>right</halign>
-                <row>1</row>
-                <col>0</col>
+                <property>fdm/jsbsim/systems/jato/request-to-mount</property>
+                <color>
+                    <red>1.0</red>
+                    <green>0.0</green>
+                    <blue>0.0</blue>
+                </color>
             </text>
-            <checkbox>
-                <row>1</row>
+            <text>
+                <label>JATO rocket mounted</label>
+                <halign>center</halign>
+                <row>0</row>
                 <col>1</col>
-                <property>sim/G91/dialogs/JATO/install-4-jato-rocket</property>
-                <live>true</live>
-                <binding>
-                    <command>nasal</command>
-                    <script><![CDATA[
-                        var install_4_jato_rocket = props.globals.getNode("sim/G91/dialogs/JATO/install-4-jato-rocket",1).getValue();
-                        install_4_jato_rocket = !install_4_jato_rocket;
-                        setprop("sim/G91/dialogs/JATO/install-4-jato-rocket",install_4_jato_rocket);
-                        var JATO_Rokets_Number = props.globals.getNode("sim/G91/JATO/JATO_Rokets_Number",1).getValue();
-                        if (install_4_jato_rocket) {
-                        setprop("sim/G91/dialogs/JATO/install-2-jato-rocket",0);
-                        setprop("sim/G91/JATO/JATO_Rokets_Number",4);
-                        setprop("sim/G91/JATO/JATO_is_mounted",1);
-                        setprop("fdm/jsbsim/systems/jato/rocket_number_1",1);
-                        setprop("fdm/jsbsim/systems/jato/rocket_number_2",1);
-                        setprop("fdm/jsbsim/systems/jato/rocket_number_3",1);
-                        setprop("fdm/jsbsim/systems/jato/rocket_number_4",1);
-                        } else {
-                        setprop("sim/G91/JATO/JATO_Rokets_Number",0);
-                        setprop("sim/G91/JATO/JATO_is_mounted",0);
-                        setprop("fdm/jsbsim/systems/jato/rocket_number_1",0);
-                        setprop("fdm/jsbsim/systems/jato/rocket_number_2",0);
-                        setprop("fdm/jsbsim/systems/jato/rocket_number_3",0);
-                        setprop("fdm/jsbsim/systems/jato/rocket_number_4",0);
-                        }
-                        ]]></script>
-                </binding>
-            </checkbox>
+            </text>
         </group>
     </group>
     

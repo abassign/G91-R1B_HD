@@ -555,5 +555,29 @@
             <z2-m> 0.00500 </z2-m>
         </axis>
     </animation>
-    
+
+    <model>
+        <path>rear_smoke_1.xml</path>
+        <offsets>
+            <x-m>  5.0 </x-m>
+            <y-m>  0.0 </y-m>
+            <z-m>  -0.35 </z-m>
+            <roll-deg>    0.0 </roll-deg>
+            <pitch-deg>   0.0 </pitch-deg>
+            <heading-deg> 0.0 </heading-deg>
+        </offsets>
+    </model>
+
+    <model>
+        <path>rear_smoke_2.xml</path>
+        <offsets>
+            <x-m>  5.0 </x-m>
+            <y-m>  0.0 </y-m>
+            <z-m>  -0.35 </z-m>
+            <roll-deg>    0.0 </roll-deg>
+            <pitch-deg>   0.0 </pitch-deg>
+            <heading-deg> 0.0 </heading-deg>
+        </offsets>
+    </model>
+
 </PropertyList>

@@ -16,8 +16,8 @@
         
         <condition>
             <greater-than>
-                <property>fdm/jsbsim/propulsion/engine[1]/thrust-lbs</property>
-                <value>10</value>
+                <property>fdm/jsbsim/systems/jato/thrust-lbs-total</property>
+                <value>20</value>
             </greater-than>
         </condition>
         
@@ -55,6 +55,7 @@
             <particles-per-sec>
                 <value>400</value>
                 <spread>300</spread>
+                <factor-prop>fdm/jsbsim/systems/jato/smoke_jato_1_particles</factor-prop>
             </particles-per-sec>
         </counter>
         

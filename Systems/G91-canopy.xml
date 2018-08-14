@@ -7,12 +7,13 @@ Description: G91R2 Canopy automation
 <system name="canopy">
     
     <property value="0">systems/canopy/lever-trigger</property>
+
     
-    <channel name="cockpit switchs" execrate="8">
+    <channel name="cockpit switchs" execrate="4">
         
         <integrator name="systems/canopy/position">
             <input>systems/canopy/position-go</input>
-            <c1>0.2</c1>
+            <c1>0.15</c1>
         </integrator>
         
         <switch name="systems/canopy/position-go">
@@ -25,18 +26,43 @@ Description: G91R2 Canopy automation
             <test logic="AND" value="-1">
                 systems/canopy/electric-ok == 1
                 systems/manual-switches/cockpit/sw-canopy == -1
-                systems/canopy/position GT 0.015
+                systems/canopy/position GT 0.005
+            </test>
+        </switch>
+        
+        <washout_filter name="systems/canopy/position-stopping">
+            <input>systems/canopy/position-go</input>
+            <c1>0.3</c1>
+        </washout_filter>
+        
+        <switch name="systems/canopy/position-stopping-go">
+            <default value="0"/>
+            <test logic="AND" value="1">
+                systems/canopy/position-stopping GT 0.2
+                systems/canopy/position-go == 0
+            </test>
+            <test logic="AND" value="1">
+                systems/canopy/position-stopping LE -0.2
+                systems/canopy/position-go == 0
             </test>
         </switch>
         
     </channel>
     
+    
     <channel name="canopy lever" execrate="8">
         
         <lag_filter name="systems/canopy/lever-pos">
-            <input>systems/canopy/lever-trigger</input>
+            <input>systems/canopy/lever-trigger-on</input>
             <c1>8.0</c1>
         </lag_filter>
+        
+        <switch name="systems/canopy/lever-trigger-on">
+            <default value="0"/>
+            <test logic="AND" value="systems/canopy/lever-trigger">
+                systems/canopy/canopy-close == 1
+            </test>
+        </switch>
         
         <switch name="systems/canopy/canopy-close">
             <default value="0"/>
