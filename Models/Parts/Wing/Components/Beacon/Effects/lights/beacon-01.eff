@@ -37,7 +37,7 @@
         -->
         <inner_angle type="float">0.1</inner_angle>
         <outer_angle type="float">0.8</outer_angle>
-        <zero_angle type="float"><use>sim/G91/Test/V0_1A</use></zero_angle>
+        <zero_angle type="float">0.0</zero_angle>
         <outer_gain type="float">0.0</outer_gain>
     </parameters>
 

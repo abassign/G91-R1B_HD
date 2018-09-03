@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+    
+    <model>
+        <path>push_button_1in_naked_model.xml</path>
+    </model>
+    
+    <animation>
+        <type>material</type>
+        <object-name>push_button (Meshed)</object-name>
+        <texture>Pictures/G91-Al-Light.png</texture>
+        <ambient>
+            <red>0.6</red>
+            <green>0.6</green>
+            <blue>0.6</blue>
+        </ambient>
+        <specular>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
+        </specular>
+        <emission>
+            <red>0.02</red>
+            <green>0.01</green>
+            <blue>0.01</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation>
+        <type>pick</type>
+        <object-name>push_button (Meshed)</object-name>
+        <action>
+            <button>0</button>
+            <binding>
+                <command>property-toggle</command>
+                <property>fdm/jsbsim/systems/manual-switches/cockpit/sw-landing-light-test-togle</property>
+            </binding>
+        </action>
+    </animation>
+    
+    <animation>
+        <type>translate</type>
+        <object-name>push_button (Meshed)</object-name>
+        <property>fdm/jsbsim/systems/manual-switches/cockpit/sw-landing-light-test-pos</property>
+        <factor>0.005</factor>
+        <offset-m>0.0</offset-m>
+        <axis>
+            <x>-1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
+    
+</PropertyList>

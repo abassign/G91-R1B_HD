@@ -8,13 +8,17 @@ Description: G91R2 Canopy automation
     
     <property value="0">systems/canopy/lever-trigger</property>
 
-    
     <channel name="cockpit switchs" execrate="4">
         
         <integrator name="systems/canopy/position">
             <input>systems/canopy/position-go</input>
             <c1>0.15</c1>
         </integrator>
+        
+        <pure_gain name="systems/canopy/position-deg">
+            <input>systems/canopy/position</input>
+            <gain>45.0</gain>
+        </pure_gain>
         
         <switch name="systems/canopy/position-go">
             <default value="0"/>
@@ -95,7 +99,7 @@ Description: G91R2 Canopy automation
         
         <switch name="systems/electric/bus[1]/canopy-command/I">
             <default value="0"/>
-            <test logic="OR" value="10.0">
+            <test logic="OR" value="6.0">
                 systems/canopy/position-go GE 0.01
                 systems/canopy/position-go LE -0.01
             </test>

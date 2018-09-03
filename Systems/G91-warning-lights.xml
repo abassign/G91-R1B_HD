@@ -33,6 +33,34 @@
             </test>
         </switch>
         
+        <switch name="systems/warning-lights/cockpit/wl-inverter-primary-off">
+            <default value="0"/>
+            <test logic="AND" value="systems/warning-lights/light-intensity-by-bus1-tension">
+                systems/electric/inv-primary/V LT 110
+            </test>
+        </switch>
+        
+        <switch name="systems/warning-lights/cockpit/wl-inverter-primary-off-transparent">
+            <default value="0.85"/>
+            <test logic="AND" value="systems/warning-lights/transparent-by-bus1-tension">
+                systems/electric/inv-primary/V LT 110
+            </test>
+        </switch>
+        
+        <switch name="systems/warning-lights/cockpit/wl-inverter-secondary-off">
+            <default value="0"/>
+            <test logic="AND" value="systems/warning-lights/light-intensity-by-bus1-tension">
+                systems/electric/inv-secondary/V LT 110
+            </test>
+        </switch>
+        
+        <switch name="systems/warning-lights/cockpit/wl-inverter-secondary-off-transparent">
+            <default value="0.85"/>
+            <test logic="AND" value="systems/warning-lights/transparent-by-bus1-tension">
+                systems/electric/inv-secondary/V LT 110
+            </test>
+        </switch>
+        
         <switch name="systems/warning-lights/cockpit/lg_canopy_light">
             <default value="0"/>
             <test logic="AND" value="systems/warning-lights/light-intensity-by-battery-tension">

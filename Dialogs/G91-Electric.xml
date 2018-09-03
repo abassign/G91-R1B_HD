@@ -188,10 +188,30 @@
                 <col>1</col>
             </text>
             <text>
-                <label>BUS 1</label>
-                <halign>right</halign>
+                <label>99999999</label>
+                <live>true</live>
+                <format>%2.0f (I)</format>
+                <property>fdm/jsbsim/systems/electric/bus[0]/I</property>
+                <color>
+                    <red>0.6</red>
+                    <green>0.6</green>
+                    <blue>0.6</blue>
+                </color>
+                <halign>left</halign>
                 <row>0</row>
                 <col>2</col>
+            </text>
+            <text>
+                <label>|</label>
+                <halign>right</halign>
+                <row>0</row>
+                <col>3</col>
+            </text>
+            <text>
+                <label>  BUS 1</label>
+                <halign>right</halign>
+                <row>0</row>
+                <col>4</col>
             </text>
             <text>
                 <label>99999999</label>
@@ -205,13 +225,33 @@
                 </color>
                 <halign>left</halign>
                 <row>0</row>
-                <col>3</col>
+                <col>5</col>
             </text>
             <text>
-                <label>BUS 2</label>
+                <label>99999999</label>
+                <live>true</live>
+                <format>%2.0f (I)</format>
+                <property>fdm/jsbsim/systems/electric/bus[1]/I</property>
+                <color>
+                    <red>0.6</red>
+                    <green>0.6</green>
+                    <blue>0.6</blue>
+                </color>
+                <halign>left</halign>
+                <row>0</row>
+                <col>6</col>
+            </text>
+            <text>
+                <label>|</label>
                 <halign>right</halign>
                 <row>0</row>
-                <col>4</col>
+                <col>7</col>
+            </text>
+            <text>
+                <label>  BUS 2</label>
+                <halign>right</halign>
+                <row>0</row>
+                <col>8</col>
             </text>
             <text>
                 <label>99999999</label>
@@ -225,7 +265,115 @@
                 </color>
                 <halign>left</halign>
                 <row>0</row>
-                <col>5</col>
+                <col>9</col>
+            </text>
+            <text>
+                <label>99999999</label>
+                <live>true</live>
+                <format>%2.0f (I)</format>
+                <property>fdm/jsbsim/systems/electric/bus[2]/I</property>
+                <color>
+                    <red>0.6</red>
+                    <green>0.6</green>
+                    <blue>0.6</blue>
+                </color>
+                <halign>left</halign>
+                <row>0</row>
+                <col>10</col>
+            </text>
+            <text>
+                <label>|</label>
+                <halign>right</halign>
+                <row>0</row>
+                <col>11</col>
+            </text>
+            <text>
+                <label>  Inv Prim.</label>
+                <halign>right</halign>
+                <row>0</row>
+                <col>12</col>
+            </text>
+            <text>
+                <label>99999999</label>
+                <live>true</live>
+                <format>%2.0f (V)</format>
+                <property>fdm/jsbsim/systems/electric/inv-primary/V</property>
+                <color>
+                    <red>0.6</red>
+                    <green>0.6</green>
+                    <blue>0.6</blue>
+                </color>
+                <halign>left</halign>
+                <row>0</row>
+                <col>13</col>
+            </text>
+            <text>
+                <label>99999999</label>
+                <live>true</live>
+                <format>%2.0f (I1)</format>
+                <property>fdm/jsbsim/systems/electric/bus[1]/primary-inverter/I</property>
+                <color>
+                    <red>0.6</red>
+                    <green>0.6</green>
+                    <blue>0.6</blue>
+                </color>
+                <halign>left</halign>
+                <row>0</row>
+                <col>14</col>
+            </text>
+            <text>
+                <label>99999999</label>
+                <live>true</live>
+                <format>%2.0f (I2)</format>
+                <property>fdm/jsbsim/systems/electric/bus[2]/primary-inverter/I</property>
+                <color>
+                    <red>0.6</red>
+                    <green>0.6</green>
+                    <blue>0.6</blue>
+                </color>
+                <halign>left</halign>
+                <row>0</row>
+                <col>15</col>
+            </text>
+            <text>
+                <label>|</label>
+                <halign>right</halign>
+                <row>0</row>
+                <col>16</col>
+            </text>
+            <text>
+                <label>  Inv Sec.</label>
+                <halign>right</halign>
+                <row>0</row>
+                <col>17</col>
+            </text>
+            <text>
+                <label>99999999</label>
+                <live>true</live>
+                <format>%2.0f (V)</format>
+                <property>fdm/jsbsim/systems/electric/inv-secondary/V</property>
+                <color>
+                    <red>0.6</red>
+                    <green>0.6</green>
+                    <blue>0.6</blue>
+                </color>
+                <halign>left</halign>
+                <row>0</row>
+                <col>18</col>
+            </text>
+            <text>
+                <label>99999999</label>
+                <live>true</live>
+                <format>%2.0f (I)</format>
+                <property>fdm/jsbsim/systems/electric/bus[2]/primary-inverter/I</property>
+                <color>
+                    <red>0.6</red>
+                    <green>0.6</green>
+                    <blue>0.6</blue>
+                </color>
+                <halign>left</halign>
+                <row>0</row>
+                <col>19</col>
             </text>
         </group>
     </group>

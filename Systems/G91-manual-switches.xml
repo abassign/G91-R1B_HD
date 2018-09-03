@@ -12,8 +12,11 @@
     <property value="0">systems/manual-switches/jato/sw-ready-togle</property>
     <property value="0">systems/manual-switches/jato/sw-ignition-togle</property>
     <property value="0">systems/manual-switches/jato/sw-jettinson-togle</property>
+    <property value="0">systems/manual-switches/cockpit/sw-landing-light-test-togle</property>
     <property value="0">systems/manual-switches/cockpit/sw-landing-light</property>
     <property value="0">systems/manual-switches/cockpit/sw-beacon-light</property>
+    <property value="0">systems/manual-switches/lateral_panel_left/dampers/sw-pitch-damper-togle</property>
+    <property value="0">systems/manual-switches/lateral_panel_left/dampers/sw-yaw-damper-togle</property>
     
     
     <channel name="cockpit switchs" execrate="8">
@@ -39,6 +42,32 @@
                     systems/manual-switches/cockpit/sw-bus0-bus1-battery-pos GE 0.9
                     systems/manual-switches/cockpit/sw-bus0-bus1-battery-pos LE -0.9
                 </test>
+            </test>
+        </switch>
+        
+        <!-- Inverters switch -->
+        
+        <lag_filter name="systems/manual-switches/cockpit/sw-primary-inverter-pos">
+            <input>systems/electric/bus[2]/primary-inverter/sw</input>
+            <c1>8.0</c1>
+        </lag_filter>
+        
+        <switch name="systems/manual-switches/cockpit/sw-primary-inverter-on">
+            <default value="0"/>
+            <test logic="AND" value="1">
+                systems/manual-switches/cockpit/sw-primary-inverter-pos GT 0.9
+            </test>
+        </switch>
+        
+        <lag_filter name="systems/manual-switches/cockpit/sw-secondary-inverter-pos">
+            <input>systems/electric/bus[1]/secondary-inverter/sw</input>
+            <c1>8.0</c1>
+        </lag_filter>
+        
+        <switch name="systems/manual-switches/cockpit/sw-secondary-inverter-on">
+            <default value="0"/>
+            <test logic="AND" value="1">
+                systems/manual-switches/cockpit/sw-secondary-inverter-pos GT 0.9
             </test>
         </switch>
         
@@ -254,7 +283,7 @@
             </test>
         </switch>
         
-        <!-- lights -->
+        <!-- Landing and Taxi lights -->
         
         <lag_filter name="systems/manual-switches/cockpit/sw-landing-light-pos">
             <input>systems/manual-switches/cockpit/sw-landing-light</input>
@@ -265,6 +294,74 @@
             <input>systems/manual-switches/cockpit/sw-beacon-light</input>
             <c1>8.0</c1>
         </lag_filter>
+        
+        <washout_filter name="systems/manual-switches/cockpit/sw-landing-light-test-togle-washed">
+            <input>systems/manual-switches/cockpit/sw-landing-light-test-togle</input>
+            <c1>1.0</c1>
+        </washout_filter>
+        
+        <switch name="systems/manual-switches/cockpit/sw-landing-light-test-togle-norm">
+            <default value="1"/>
+            <test logic="AND" value = "0">
+                systems/manual-switches/cockpit/sw-landing-light-test-togle-washed LT 0.6
+                systems/manual-switches/cockpit/sw-landing-light-test-togle-washed GT -0.6
+            </test>
+        </switch>
+        
+        <switch name="systems/manual-switches/cockpit/sw-landing-light-test-trigger">
+            <default value="systems/manual-switches/cockpit/sw-landing-light-test-trigger"/>
+            <test logic="AND" value="1">
+                systems/manual-switches/cockpit/sw-landing-light-test-togle-norm == 1
+                systems/manual-switches/cockpit/sw-landing-light-test-pos LE 0.05
+                systems/manual-switches/cockpit/sw-landing-light-test-trigger == 0
+            </test>
+            <test logic="AND" value="0">
+                systems/manual-switches/cockpit/sw-landing-light-test-pos GT 0.95
+            </test>
+        </switch>
+        
+        <lag_filter name="systems/manual-switches/cockpit/sw-landing-light-test-pos">
+            <input>systems/manual-switches/cockpit/sw-landing-light-test-trigger</input>
+            <c1>1.0</c1>
+        </lag_filter>
+        
+        <switch name="systems/manual-switches/cockpit/sw-landing-light-test">
+            <default value="0"/>
+            <test logic="AND" value="1">
+                systems/manual-switches/cockpit/sw-landing-light-test-trigger == 1
+                systems/manual-switches/cockpit/sw-landing-light-test-pos GT 0.50
+            </test>
+            <test logic="AND" value="0">
+                systems/manual-switches/cockpit/sw-landing-light-test-trigger == 0
+                systems/manual-switches/cockpit/sw-landing-light-test-pos LE 0.50
+            </test>
+        </switch>
+        
+        <!-- Yaw and Pitch Dumper -->
+        
+        <lag_filter name="systems/manual-switches/lateral_panel_left/dampers/sw-pitch-damper-pos">
+            <input>systems/manual-switches/lateral_panel_left/dampers/sw-pitch-damper-togle</input>
+            <c1>1.0</c1>
+        </lag_filter>
+        
+        <switch name="systems/manual-switches/lateral_panel_left/dampers/sw-pitch-damper-on">
+            <default value="0"/>
+            <test logic="AND" value="1">
+                systems/manual-switches/lateral_panel_left/dampers/sw-pitch-damper-pos GE 0.9
+            </test>
+        </switch>
+        
+        <lag_filter name="systems/manual-switches/lateral_panel_left/dampers/sw-yaw-damper-pos">
+            <input>systems/manual-switches/lateral_panel_left/dampers/sw-yaw-damper-togle</input>
+            <c1>1.0</c1>
+        </lag_filter>
+        
+        <switch name="systems/manual-switches/lateral_panel_left/dampers/sw-yaw-damper-on">
+            <default value="0"/>
+            <test logic="AND" value="1">
+                systems/manual-switches/lateral_panel_left/dampers/sw-yaw-damper-pos GE 0.9
+            </test>
+        </switch>
         
     </channel>
         

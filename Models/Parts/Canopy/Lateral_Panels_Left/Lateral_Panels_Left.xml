@@ -5,10 +5,10 @@
         <offsets>
             <x-m>-0.103</x-m>
             <y-m>-0.157</y-m>
-            <z-m>-0.0</z-m>
-            <roll-deg>0</roll-deg>
-            <pitch-deg>0</pitch-deg>
-            <heading-deg>0</heading-deg>
+            <z-m>-0.01</z-m>
+            <roll-deg>0.8</roll-deg>
+            <pitch-deg>0.0</pitch-deg>
+            <heading-deg>0.0</heading-deg>
         </offsets>
     </model>
     
@@ -33,6 +33,18 @@
             <roll-deg>31</roll-deg>
             <pitch-deg>-8.0</pitch-deg>
             <heading-deg>0</heading-deg>
+        </offsets>
+    </model>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Lateral_Panels_Left/Pitch_Yaw_Damper/pitch_yaw_damper.xml</path>
+        <offsets>
+            <x-m>0.105</x-m>
+            <y-m>-0.020</y-m>
+            <z-m>0.000</z-m>
+            <roll-deg>0.0</roll-deg>
+            <pitch-deg>0.0</pitch-deg>
+            <heading-deg>0.0</heading-deg>
         </offsets>
     </model>
     

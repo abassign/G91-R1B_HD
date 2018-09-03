@@ -1,0 +1,27 @@
+<PropertyList>
+    
+    <model>
+        <path>sw_pitch_damper.xml</path>
+        <offsets>
+            <x-m>0.025</x-m>
+            <y-m>-0.020</y-m>
+            <z-m>-0.005</z-m>
+            <roll-deg>180.0</roll-deg>
+            <pitch-deg>90.0</pitch-deg>
+            <heading-deg>180.0</heading-deg>
+        </offsets>
+    </model>
+    
+    <model>
+        <path>sw_yaw_damper.xml</path>
+        <offsets>
+            <x-m>0.070</x-m>
+            <y-m>-0.010</y-m>
+            <z-m>-0.005</z-m>
+            <roll-deg>180.0</roll-deg>
+            <pitch-deg>90.0</pitch-deg>
+            <heading-deg>180.0</heading-deg>
+        </offsets>
+    </model>
+
+</PropertyList>

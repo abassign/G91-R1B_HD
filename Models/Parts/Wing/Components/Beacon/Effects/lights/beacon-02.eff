@@ -6,8 +6,8 @@
 
     <parameters>
         <light_color_base_r type="float">1.0</light_color_base_r>
-        <light_color_base_g type="float">0.8</light_color_base_g>
-        <light_color_base_b type="float">0.8</light_color_base_b>
+        <light_color_base_g type="float">0.0</light_color_base_g>
+        <light_color_base_b type="float">0.0</light_color_base_b>
         <light_color_center_r type="float">1.0</light_color_center_r>
         <light_color_center_g type="float">0.8</light_color_center_g>
         <light_color_center_b type="float">0.8</light_color_center_b>
@@ -35,10 +35,10 @@
              0.9396926207859083 = 70 deg (* 2 = 140 deg inner angle)
              1.0000 = 90 deg (* 2 = 180 deg outer angle)
         -->
-        <inner_angle type="float"><use>sim/G91/Test/V0_1A</use></inner_angle>
-        <outer_angle type="float"><use>sim/G91/Test/V0_1B</use></outer_angle>
-        <zero_angle type="float"><use>sim/G91/Test/V0_1C</use></zero_angle>
-        <outer_gain type="float"><use>sim/G91/Test/V0_1D</use></outer_gain>
+        <inner_angle type="float">0.1</inner_angle>
+        <outer_angle type="float">0.8</outer_angle>
+        <zero_angle type="float">0.0</zero_angle>
+        <outer_gain type="float">0.0</outer_gain>
     </parameters>
 
 </PropertyList>

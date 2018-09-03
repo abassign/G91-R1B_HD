@@ -20,11 +20,17 @@ Description: G91R4 hydraulics system from "Manuale di pilotaggio (1-11,1-12, etc
     
         <switch name="systems/lightning/landing-light/on">
             <default value="0"/>
-            <test logic="AND" value="systems/lightning/intensity-bus1-norm">
-                systems/manual-switches/cockpit/sw-landing-light GT 0.95
-                systems/electric/bus[1]/landing-light/fuse == 1
-                gear/unit/compression-ft LE 0.0001
-                gear/gear-pos-norm GT 0
+            <test logic="OR" value="systems/lightning/intensity-bus1-norm">
+                <test logic="AND">
+                    systems/manual-switches/cockpit/sw-landing-light GT 0.95
+                    systems/electric/bus[1]/landing-light/fuse == 1
+                    gear/unit/compression-ft LE 0.0001
+                    gear/gear-pos-norm GT 0
+                </test>
+                <test logic="AND">
+                    systems/manual-switches/cockpit/sw-landing-light-test == 1
+                    systems/electric/bus[1]/landing-light/fuse == 1
+                </test>
             </test>
         </switch>
         
@@ -50,7 +56,7 @@ Description: G91R4 hydraulics system from "Manuale di pilotaggio (1-11,1-12, etc
         
         <pure_gain name="systems/lightning/taxiing-light/I">
             <input>systems/lightning/taxiing-light/on</input>
-            <gain>3.0</gain>
+            <gain>2.15</gain>
         </pure_gain>
         
     </channel>

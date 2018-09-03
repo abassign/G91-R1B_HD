@@ -159,5 +159,35 @@
             <heading-deg>-90</heading-deg>
         </offsets>
     </model>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Switchs_Lights/push_button_landing_gear_test.xml</path>
+        <offsets>
+            <x-m>-3.180</x-m>
+            <y-m>-0.318</y-m>
+            <z-m>-0.096</z-m>
+            <pitch-deg>-8.5</pitch-deg>
+        </offsets>
+    </model>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Switchs_Lights/push_button_off_beeper.xml</path>
+        <offsets>
+            <x-m>-3.190</x-m>
+            <y-m>-0.335</y-m>
+            <z-m>-0.002</z-m>
+            <pitch-deg>-8.5</pitch-deg>
+        </offsets>
+    </model>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Switchs_Lights/push_button_off_yaw_pitch_damper.xml</path>
+        <offsets>
+            <x-m>-3.1857</x-m>
+            <y-m>-0.089</y-m>
+            <z-m>-0.046</z-m>
+            <pitch-deg>-8.5</pitch-deg>
+        </offsets>
+    </model>
 
 </PropertyList>  

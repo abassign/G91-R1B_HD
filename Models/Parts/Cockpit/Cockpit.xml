@@ -100,10 +100,10 @@
             <blue>0.63</blue>
         </ambient>
         <emission>
-            <red>0.1</red>
-            <green>0.35</green>
-            <blue>0.06</blue>
-            <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
+            <red>0.2</red>
+            <green>0.15</green>
+            <blue>0.12</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
 
@@ -469,7 +469,6 @@
             <pitch-deg>-8.65</pitch-deg>
         </offsets>
     </model>
-
 
     <!-- Switch and light -->
 

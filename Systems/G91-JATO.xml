@@ -110,7 +110,7 @@
         
         <switch name="systems/electric/bus[1]/JATO-ignition/I">
             <default value="0"/>
-            <test logic = "AND" value = "10">
+            <test logic = "AND" value = "45">
                 systems/jato/ignition-on == 1
             </test>
         </switch>

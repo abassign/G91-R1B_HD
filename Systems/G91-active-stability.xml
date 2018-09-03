@@ -1,0 +1,111 @@
+<?xml version="1.0"?>
+
+<system name="Active stability">  
+    
+    <channel name="Yaw Damper">
+        
+        <switch name="systems/active-stability/yaw-damper/operative">
+            <default value="0.0" />
+            <test logic="AND" value="1.0">
+                systems/manual-switches/lateral_panel_left/dampers/sw-yaw-damper-on == 1
+                systems/electric/bus[2]/V GE 24.0
+                systems/electric/bus[2]/yaw-damper/fuse == 1
+            </test>
+        </switch>
+        
+        <washout_filter name="systems/active-stability/yaw-damper/washout">
+            <input>velocities/r-aero-rad_sec</input>
+            <c1>0.2</c1>
+        </washout_filter>
+        
+        <actuator name="systems/active-stability/yaw-damper/correction">
+            <input>systems/active-stability/yaw-damper/washout</input>
+            <lag> 0.0 </lag>
+            <rate_limit> 0.085 </rate_limit> <!-- 5 degrees/sec -->
+            <bias>0.002</bias>
+            <deadband_width>0.002</deadband_width>
+            <hysteresis_width> 0.05 </hysteresis_width>
+            <clipto>
+                <min> -1.0 </min>
+                <max>  1.0 </max>
+            </clipto>
+        </actuator>
+        
+        <switch name="yaw damper correction norm">
+            <default value="0.0" />
+            <test value="systems/active-stability/yaw-damper/correction">
+                systems/active-stability/yaw-damper/operative == 1
+            </test>
+            <output>systems/active-stability/yaw-damper/correction-norm</output>
+        </switch>
+        
+        <scheduled_gain name="systems/electric/bus[2]/yaw-damper/I">
+            <input>systems/active-stability/yaw-damper/operative</input>
+            <table>
+                <independentVar>systems/active-stability/yaw-damper/correction-norm</independentVar>
+                <tableData>
+                    -1.0    11
+                    -0.01   11
+                    0.0     3
+                    0.01    11
+                    1.0     11
+                </tableData>
+            </table>
+        </scheduled_gain>
+        
+    </channel>
+    
+    <channel name="Pitch Damper">
+        
+        <switch name="systems/active-stability/pitch-damper/operative">
+            <default value="0.0" />
+            <test logic="AND" value="1.0">
+                systems/manual-switches/lateral_panel_left/dampers/sw-pitch-damper-on == 1
+                systems/electric/bus[2]/V GE 24.0
+                systems/electric/bus[2]/pitch-damper/fuse == 1
+            </test>
+        </switch>
+        
+        <washout_filter name="systems/active-stability/pitch-damper/washout">
+            <input>velocities/q-aero-rad_sec</input>
+            <c1>1.0</c1>
+        </washout_filter>
+        
+        <actuator name="systems/active-stability/pitch-damper/correction">
+            <input>systems/active-stability/pitch-damper/washout</input>
+            <lag> 0.0 </lag>
+            <rate_limit> 0.085 </rate_limit> <!-- 5 degrees/sec -->
+            <bias>0.002</bias>
+            <deadband_width>0.002</deadband_width>
+            <hysteresis_width> 0.05 </hysteresis_width>
+            <clipto>
+                <min> -1.0 </min>
+                <max>  1.0 </max>
+            </clipto>
+        </actuator>
+        
+        <switch name="pitch damper correction norm">
+            <default value="0.0" />
+            <test value="systems/active-stability/pitch-damper/correction">
+                systems/active-stability/pitch-damper/operative == 1
+            </test>
+            <output>systems/active-stability/pitch-damper/correction-norm</output>
+        </switch>
+        
+        <scheduled_gain name="systems/electric/bus[2]/pitch-damper/I">
+            <input>systems/active-stability/pitch-damper/operative</input>
+            <table>
+                <independentVar>systems/active-stability/pitch-damper/correction-norm</independentVar>
+                <tableData>
+                -1.0    24
+                -0.01   24
+                0.0     2
+                0.01    24
+                1.0     24
+                </tableData>
+            </table>
+        </scheduled_gain>
+        
+    </channel>
+    
+</system>

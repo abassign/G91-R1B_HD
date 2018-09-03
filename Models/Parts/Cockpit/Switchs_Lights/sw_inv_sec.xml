@@ -25,7 +25,7 @@
      <animation>
         <type>rotate</type>
         <object-name>swich_04</object-name>
-        <property>fdm/jsbsim/systems/electric/bus[1]/secondary-inverter/sw</property>
+        <property>fdm/jsbsim/systems/manual-switches/cockpit/sw-secondary-inverter-pos</property>
         <factor>-20</factor>
         <center>
             <x-m> 0.0</x-m>

@@ -133,6 +133,9 @@ Description: G91R4 Electric system from "Manuale di pilotaggio (p.56)
     <property value="1">systems/electric/bus[2]/yaw-damper/fuse</property>
     <property value="1">systems/electric/bus[2]/aileron-vibrator/fuse</property>
     <property value="1">systems/electric/bus[2]/cockpit-vibrator/fuse</property>
+    <property value="1">systems/electric/bus[2]/cockpit-vibrator/fuse</property>
+    <property value="10">systems/electric/inv-primary/I0</property>
+    <property value="10">systems/electric/inv-secondary/I0</property>
 
     
     <channel name="Bus Battery" execrate="8">
@@ -277,7 +280,7 @@ Description: G91R4 Electric system from "Manuale di pilotaggio (p.56)
         
         <switch name="systems/electric/bus-link/relay-bus1-bus2-secondary">
             <default value="0"/>
-            <test logic="AND" value="1">
+            <test logic="OR" value="1">
                 systems/electric/bus[1]/internal-power-generator-inverted-current-rele-on == 1
             </test>
         </switch>
@@ -294,9 +297,10 @@ Description: G91R4 Electric system from "Manuale di pilotaggio (p.56)
             <input>systems/electric/bus[1]/UHF-radio/I</input>
             <input>systems/electric/bus[1]/UHF-radio-emergency/I</input>
             <input>systems/electric/bus[1]/pitot-heating/I</input>
-            <input>systems/electric/bus[1]/turn-indicator/I</input>
-            <input>systems/electric/bus[1]/attitude-indicator/I</input>
             <input>systems/electric/bus[1]/beacon/I</input>
+            <input>systems/electric/bus[1]/starter/I</input>
+            <input>systems/electric/bus[1]/primary-inverter/I</input>
+            <input>systems/electric/bus[1]/secondary-inverter/I</input>
         </summer>
         
     </channel>
@@ -320,7 +324,99 @@ Description: G91R4 Electric system from "Manuale di pilotaggio (p.56)
             <input>systems/electric/bus[2]/cameras/camera[3]/I</input>
             <input>systems/electric/bus[2]/PHI/I</input>
             <input>systems/electric/bus[2]/magnetic-tape/I</input>
+            <input>systems/electric/bus[2]/primary-inverter/I</input>
+            <input>systems/electric/bus[2]/pitch-damper/I</input>
+            <input>systems/electric/bus[2]/yaw-damper/I</input>
         </summer>
+    </channel>
+    
+    
+    <channel name="Inverters" execrate="32">
+        
+        <!-- primary inverter -->
+        
+        <switch name="systems/electric/inv-primary/active">
+            <default value="0"/>
+            <test logic="AND" value="115">
+                systems/electric/bus[2]/primary-inverter/fuse == 1
+                systems/manual-switches/cockpit/sw-primary-inverter-on == 1
+                systems/electric/bus[2]/V GE 26
+                systems/electric/inv-primary/emergency-on-bus1 == 0
+            </test>
+            <test logic="AND" value="115">
+                systems/electric/bus[2]/primary-inverter/fuse == 1
+                systems/manual-switches/cockpit/sw-primary-inverter-on == 1
+                systems/electric/bus[2]/V LT 26
+                systems/electric/inv-primary/emergency-on-bus1 == 1
+            </test>
+        </switch>
+        
+        <lag_filter name="systems/electric/inv-primary/V">
+            <input>systems/electric/inv-primary/active</input>
+            <c1>0.5</c1>
+        </lag_filter>
+        
+        <switch name="systems/electric/bus[2]/primary-inverter/I">
+            <default value="0"/>
+            <test logic="AND" value="systems/electric/inv-primary/I">
+                systems/electric/inv-primary/emergency-on-bus1 == 0
+                systems/electric/inv-primary/active GE 10
+            </test>
+        </switch>
+        
+        <switch name="systems/electric/bus[1]/primary-inverter/I">
+            <default value="0"/>
+            <test logic="AND" value="systems/electric/inv-primary/I">
+                systems/electric/inv-primary/emergency-on-bus1 == 1
+                systems/electric/inv-primary/active GE 10
+            </test>
+        </switch>
+        
+        <summer name="systems/electric/inv-primary/I">
+            <input>systems/electric/inv-primary/I0</input>
+            <input>systems/electric/bus[1]/turn-indicator/I</input>
+            <input>systems/electric/bus[1]/attitude-indicator/I</input>
+        </summer>
+        
+        <!-- Emergency primary inverter on Bus1 -->
+        
+        <switch name="systems/electric/inv-primary/emergency-on-bus1">
+            <default value="0"/>
+            <test logic="AND" value="1">
+                systems/electric/bus[2]/primary-inverter/fuse == 1
+                systems/manual-switches/cockpit/sw-primary-inverter-on == 1
+                systems/electric/bus[2]/V LT 26
+                systems/electric/bus[1]/V GE 26
+            </test>
+        </switch>
+        
+        <!-- Secondary inverter -->
+        
+        <switch name="systems/electric/inv-secondary/active">
+            <default value="0"/>
+            <test logic="AND" value="115">
+                systems/electric/bus[1]/secondary-inverter/fuse == 1
+                systems/manual-switches/cockpit/sw-secondary-inverter-on == 1
+                systems/electric/bus[1]/V GE 26
+            </test>
+        </switch>
+        
+        <switch name="systems/electric/bus[1]/secondary-inverter/I">
+            <default value="0"/>
+            <test logic="AND" value="systems/electric/inv-secondary/I">
+                systems/electric/inv-secondary/active GE 10
+            </test>
+        </switch>
+        
+        <summer name="systems/electric/inv-secondary/I">
+            <input>systems/electric/inv-secondary/I0</input>
+        </summer>
+        
+        <lag_filter name="systems/electric/inv-secondary/V">
+            <input>systems/electric/inv-secondary/active</input>
+            <c1>0.5</c1>
+        </lag_filter>
+        
     </channel>
     
     

@@ -64,7 +64,7 @@ The C1 lag_filter is less is longer respond time
         <switch name="systems/gauges/cockpit-turn-indicator/operative">
             <default value="0"/>
             <test logic="AND" value="1">
-                systems/electric/bus[1]/V GE 15.0
+                systems/electric/inv-primary/V GT 110.0
                 systems/electric/bus[1]/turn-indicator/fuse == 1
             </test>
         </switch>
@@ -178,7 +178,7 @@ The C1 lag_filter is less is longer respond time
         <switch name="systems/gauges/cockpit-attitude-J8-on">
             <default value="0"/>
             <test logic="AND" value="1">
-                systems/electric/bus[1]/V GE 15.0
+                systems/electric/inv-primary/V GT 110.0
                 systems/electric/bus[1]/turn-indicator/fuse == 1
             </test>
         </switch>

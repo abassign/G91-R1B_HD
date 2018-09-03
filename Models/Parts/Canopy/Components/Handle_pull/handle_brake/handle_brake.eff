@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
 <PropertyList>
+    
     <name>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Components/Handle_pull/handle_brake/handle_brake</name>
     <inherits-from>Effects/model-combined-deferred</inherits-from>
     <parameters>
@@ -13,6 +14,7 @@
             <internal-format>normalized</internal-format>
         </texture>   
     </parameters>
+    
     <generate>
         <tangent type="int">6</tangent>
         <binormal type="int">7</binormal>

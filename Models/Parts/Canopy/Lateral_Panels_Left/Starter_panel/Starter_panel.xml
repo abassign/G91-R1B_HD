@@ -4,22 +4,137 @@
     
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
+        <object-name>panel_start01</object-name>
+        <object-name>panel_start2</object-name>
+        <object-name>panel_start_tex</object-name>
     </effect>
     
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
+        <object-name>panel_start01</object-name>
+        <object-name>panel_start2</object-name>
+        <object-name>panel_start_tex</object-name>
     </effect>
     
+    <animation> 
+        <type>material</type>
+        <object-name>panel_start01</object-name>
+        <texture>Pictures/G91-Internal-Gray.png</texture>
+        <ambient>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </ambient>
+        <emission>
+            <red>0.07</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>panel_start2</object-name>
+        <texture>Pictures/G91-Dark-Grey.png</texture>
+        <ambient>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </ambient>
+        <specular>
+            <red>0.98</red>
+            <green>0.92</green>
+            <blue>0.84</blue>
+        </specular>
+        <emission>
+            <red>0.15</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>panel_start_tex</object-name>
+        <transparency>
+            <alpha>1.0</alpha>
+        </transparency>
+        <ambient>
+            <red>1.0</red>
+            <green>0.9</green>
+            <blue>0.6</blue>
+        </ambient>
+        <emission>
+            <red>0.2</red>
+            <green>0.15</green>
+            <blue>0.12</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
     <model>
-        <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Lateral_Panels_Left/Starter_panel/Starter_sw.xml</path>
+        <path>Starter_sw.xml</path>
         <offsets>
-            <x-m>0.042</x-m>
-            <y-m>0.007</y-m>
-            <z-m>0.007</z-m>
+            <x-m>0.04</x-m>
+            <y-m>0.0065</y-m>
+            <z-m>0.008</z-m>
             <roll-deg>0.0</roll-deg>
             <pitch-deg>0.0</pitch-deg>
             <heading-deg>90.0</heading-deg>
         </offsets>
     </model>
+    
+    <model>
+        <path>sw_engine_JPTL.xml</path>
+        <offsets>
+            <x-m>0.035</x-m>
+            <y-m>0.063</y-m>
+            <z-m>0.005</z-m>
+            <roll-deg>180.0</roll-deg>
+            <pitch-deg>90.0</pitch-deg>
+            <heading-deg>182.0</heading-deg>
+        </offsets>
+    </model>
+    
+    <model>
+        <path>sw_engine_HE.xml</path>
+        <offsets>
+            <x-m>-0.021</x-m>
+            <y-m>0.036</y-m>
+            <z-m>0.005</z-m>
+            <roll-deg>180.0</roll-deg>
+            <pitch-deg>90.0</pitch-deg>
+            <heading-deg>182.0</heading-deg>
+        </offsets>
+    </model>
+    
+    <model>
+        <path>sw_engine_Booster.xml</path>
+        <offsets>
+            <x-m>-0.021</x-m>
+            <y-m>0.010</y-m>
+            <z-m>0.005</z-m>
+            <roll-deg>180.0</roll-deg>
+            <pitch-deg>90.0</pitch-deg>
+            <heading-deg>182.0</heading-deg>
+        </offsets>
+    </model>
+
+    <!-- only for testing -->
+    <model>
+        <name>procedural_light_canopy_spot_red_sx_1</name>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Effects/lights/procedural_light_canopy_spot_red_large.xml</path>
+        <offsets>
+            <x-m> 0.00</x-m>
+            <y-m> 0.00 </y-m>
+            <z-m> 0.05 </z-m>
+            <roll-deg>0.0</roll-deg>
+            <pitch-deg>-90.0</pitch-deg>
+            <heading-deg>0.0</heading-deg>
+        </offsets>
+    </model>
+
     
 </PropertyList>

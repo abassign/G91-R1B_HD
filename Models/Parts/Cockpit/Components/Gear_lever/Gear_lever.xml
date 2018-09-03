@@ -310,7 +310,17 @@
         <name>procedural_light_cockpit_gauge_spot_red</name>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Effects/lights/procedural_light_cockpit_gauge_spot_red.xml</path>
         <offsets>
-            <x-m> 0.00</x-m>
+            <x-m> 0.00 </x-m>
+            <y-m> 0.00 </y-m>
+            <z-m> 0.00 </z-m>
+        </offsets>
+    </model>
+    
+    <model>
+        <name>procedural_light_cockpit_gauge_spot_red</name>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Effects/lights/procedural_light_cockpit_gauge_spot_red.xml</path>
+        <offsets>
+            <x-m> 0.10</x-m>
             <y-m> 0.00 </y-m>
             <z-m> 0.00 </z-m>
         </offsets>

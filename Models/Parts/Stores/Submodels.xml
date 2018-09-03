@@ -2,6 +2,21 @@
 
 <PropertyList>
     
+    <!-- Canopy -->
+    <!--
+    <submodel>
+        <offsets>
+            <x-m>0.0</x-m>
+            <y-m>0.0</y-m>
+            <z-m>0.45</z-m>
+            <pitch-offset>45</pitch-offset>
+        </offsets>
+        <name>canopy_top</name>
+        <model>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Canopy_Top/Canopy_Top.xml</model>
+        <trigger>sim/G91/Test/V0_1B</trigger>
+        <slaved>true</slaved>
+    </submodel>
+    -->
     <!-- Fuel 260 lit Tanks -->
     
     <submodel>

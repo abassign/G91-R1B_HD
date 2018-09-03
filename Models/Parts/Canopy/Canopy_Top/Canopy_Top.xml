@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 
 <PropertyList>
-    
+
     <path>canopy_top.ac</path>
     
     <offsets>
@@ -118,7 +118,7 @@
     </animation>
         
     <!-- animation -->
-    
+
     <animation> 
         <type>rotate</type>
         <object-name>CanopyGroup</object-name>
@@ -134,7 +134,6 @@
             <y>1</y>
             <z>0</z>
         </axis>
-    </animation>   
-    
-    
+    </animation>
+
 </PropertyList>

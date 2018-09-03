@@ -58,7 +58,7 @@
             <red>1.0</red>
             <green>0.5</green>
             <blue>0.0</blue>
-            <factor-prop>fdm/jsbsim/systems/electric/bus[1]/internal-power-generator-on</factor-prop>
+            <factor-prop>fdm/jsbsim/systems/warning-lights/cockpit/wl-inverter-primary-off</factor-prop>
         </emission>
     </animation>
     
@@ -68,7 +68,7 @@
         <texture>Pictures/G91-Orange01.png</texture>
         <transparency>
             <alpha>1.0</alpha>
-            <factor-prop>sim/G91/switchs/cockpit/lg_inv_prim_transparent</factor-prop>
+            <factor-prop>fdm/jsbsim/systems/warning-lights/cockpit/wl-inverter-primary-off-transparent</factor-prop>
         </transparency>
         <ambient>
             <red>0.1</red>
@@ -103,7 +103,7 @@
             <red>1.0</red>
             <green>0.5</green>
             <blue>0.0</blue>
-            <factor-prop>sim/G91/switchs/cockpit/lg_inv_prim_on</factor-prop>
+            <factor-prop>fdm/jsbsim/systems/warning-lights/cockpit/wl-inverter-primary-off</factor-prop>
         </emission>
     </animation>
     
@@ -122,14 +122,14 @@
             <red>1.0</red>
             <green>0.3</green>
             <blue>1.0</blue>
-            <factor-prop>sim/G91/switchs/cockpit/lg_inv_prim_on</factor-prop>
+            <factor-prop>fdm/jsbsim/systems/warning-lights/cockpit/wl-inverter-primary-off</factor-prop>
         </emission>
     </animation>
     
     <model>
         <condition>
             <greater-than-equals>
-                <property>sim/G91/switchs/cockpit/lg_inv_prim_on</property>
+                <property>fdm/jsbsim/systems/warning-lights/cockpit/wl-inverter-primary-off</property>
                 <value>1</value>
             </greater-than-equals>
         </condition>

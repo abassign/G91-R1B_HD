@@ -436,10 +436,7 @@
         <object-name>D_bar_node3.001</object-name>
         <object-name>D_bar_node2.001</object-name>
         <object-name>D_DADI_Plate_vertical_wing_01.001</object-name>
-        <property>/controls/flight/rudder</property>
-        <min-deg>-25</min-deg>
-        <max-deg>25</max-deg>
-        <factor>12</factor>
+        <property>fdm/jsbsim/fcs/rudder-pos-deg</property>
         <axis>
             <x1-m> 4.22196 </x1-m>
             <y1-m> 0.0 </y1-m>
@@ -509,10 +506,7 @@
         <object-name>D_DADI_Plate_vertical_wing</object-name>
         <object-name>D_DADI_Plate_vertical_wing_01</object-name>
         <object-name>D_bar_node2.000</object-name>
-        <property>/controls/flight/rudder-trim</property>
-        <min-deg>-10</min-deg>
-        <max-deg>10</max-deg>
-        <factor>25</factor>
+        <property>fdm/jsbsim/fcs/rudder-trim-pos-deg</property>
         <axis>
             <x1-m> 4.21722 </x1-m>
             <y1-m> 0.0 </y1-m>

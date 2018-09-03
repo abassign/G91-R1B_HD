@@ -4,10 +4,166 @@
     
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
+        <object-name>starter_C01</object-name>
+        <object-name>starter_C02</object-name>
+        <object-name>starter_C03</object-name>
+        <object-name>starter_C04</object-name>
     </effect>
     
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
+        <object-name>starter_C01</object-name>
+        <object-name>starter_C02</object-name>
+        <object-name>starter_C03</object-name>
+        <object-name>starter_C04</object-name>
     </effect>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>starter_C01</object-name>
+        <texture>Pictures/G91-Black.png</texture>
+        <ambient>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </ambient>
+        <specular>
+            <red>0.98</red>
+            <green>0.92</green>
+            <blue>0.84</blue>
+        </specular>
+        <emission>
+            <red>0.04</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>starter_C02</object-name>
+        <texture>Pictures/G91-Black.png</texture>
+        <ambient>
+            <red>0.9</red>
+            <green>0.9</green>
+            <blue>0.9</blue>
+        </ambient>
+        <specular>
+            <red>0.98</red>
+            <green>0.92</green>
+            <blue>0.84</blue>
+        </specular>
+        <emission>
+            <red>0.25</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>starter_C03</object-name>
+        <texture>Pictures/G91-Red01.png</texture>
+        <ambient>
+            <red>0.6</red>
+            <green>0.6</green>
+            <blue>0.6</blue>
+        </ambient>
+        <specular>
+            <red>1.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </specular>
+        <emission>
+            <red>0.08</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>starter_C04</object-name>
+        <texture>Pictures/G91-Al-Dark01.png</texture>
+        <ambient>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </ambient>
+        <emission>
+            <red>0.07</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation>
+        <type>pick</type>
+        <object-name>starter_C02</object-name>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <interval-sec>0.2</interval-sec>
+            <binding>
+                <command>property-assign</command>
+                <property>fdm/jsbsim/systems/starter/sw-cover-trigger</property>
+                <value>1</value>
+            </binding>
+            <mod-up>
+                <binding>
+                    <command>property-assign</command>
+                    <property>fdm/jsbsim/systems/starter/sw-cover-trigger</property>
+                    <value>0</value>
+                </binding>
+            </mod-up>
+        </action>
+    </animation>
+
+    <animation>
+        <type>rotate</type>
+        <object-name>starter_C02</object-name>
+        <property>fdm/jsbsim/systems/starter/sw-cover-pos</property>
+        <offset-deg>2</offset-deg>
+        <factor>-120</factor>
+        <center>
+            <x-m> 0.0</x-m>
+            <y-m> 0.0235</y-m>
+            <z-m> 0.0055</z-m>
+        </center>
+        <axis>
+            <x>1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
+    
+    <animation>
+        <type>pick</type>
+        <object-name>starter_C03</object-name>
+        <action>
+            <button>0</button>
+            <binding>
+                <command>property-toggle</command>
+                <property>fdm/jsbsim/systems/starter/sw-push-togle</property>
+            </binding>
+        </action>
+    </animation>
+    
+    <animation>
+        <type>translate</type>
+        <object-name>starter_C03</object-name>
+        <property>fdm/jsbsim/systems/starter/sw-push-pos</property>
+        <factor>0.009</factor>
+        <offset-m>0.0</offset-m>
+        <axis>
+            <x>0</x>
+            <y>0</y>
+            <z>-1</z>
+        </axis>
+    </animation>
     
 </PropertyList>

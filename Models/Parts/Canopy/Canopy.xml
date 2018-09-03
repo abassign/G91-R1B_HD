@@ -82,7 +82,7 @@
         <ambient>
             <red>0.8</red>
             <green>0.8</green>
-            <blue>0.8c</blue>
+            <blue>0.8</blue>
         </ambient>
     </animation>
     
@@ -252,63 +252,36 @@
         <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Components/Handle_pull/Handle_pull.xml</path>
     </model>
     
-    <!-- Panels -->
-    
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Components/Panels/Panels_central.xml</path>
     </model>
     
     <model>
-        <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Canopy_Top/Canopy_Top.xml</path>
-        <offsets>
-            <x-m>0.0</x-m>
-            <y-m>0.0</y-m>
-            <z-m>0.0</z-m>
-        </offsets>
+        <path>Canopy_Glass.xml</path>
     </model>
     
     <!-- Bath -->
         
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/bath.xml</path>
-        <offsets>
-            <x-m>0.0</x-m>
-            <y-m>0.0</y-m>
-            <z-m>0.0</z-m>
-        </offsets>
     </model>
     
     <!-- MK6 -->
     
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/MK6/MK6.xml</path>
-        <offsets>
-            <x-m>0.0</x-m>
-            <y-m>0.0</y-m>
-            <z-m>0.0</z-m>
-        </offsets>
     </model>
     
     <!-- Film Counter Box -->
     
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Components/Film_Counter_Box/Film_Counter_Box.xml</path>
-        <offsets>
-            <x-m>0.0</x-m>
-            <y-m>0.0</y-m>
-            <z-m>0.0</z-m>
-        </offsets>
     </model>
     
     <!-- Jato System -->
 
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Components/JATO_System/JATO_System.xml</path>
-        <offsets>
-            <x-m>0.0</x-m>
-            <y-m>0.0</y-m>
-            <z-m>0.0</z-m>
-        </offsets>
     </model>
     
     <model>
