@@ -34,11 +34,10 @@
         <object-name>A_flap_dx</object-name>
         <object-name>A_flap_dx.006</object-name>
     </animation>
-    
+
     <!-- Chrome Effects on materials -->
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/glass-chrome</inherits-from>
-        <object-name>A__G91_fuselage_int.weapon.door.001</object-name>
         <object-name>A__G91_fuselage_weapon_01up 02.001</object-name>
         <object-name>box_recovery_munitions_dx</object-name>
         <object-name>box_recovery_munitions_sx</object-name>
@@ -119,6 +118,51 @@
         <object-name>m00_box</object-name>
         <object-name>B00_box_gear_door</object-name>
     </effect>
+    
+    <!--
+    <effect>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_external_canvas</inherits-from>
+        <object-name>A__G91_fuselage_int.weapon.door.001</object-name>
+    </effect>
+
+    <animation> 
+        <type>material</type>
+        <object-name>A__G91_fuselage_int.weapon.door.001</object-name>
+        <ambient>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+        </ambient>
+        <specular>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+        </specular>
+    </animation>
+    -->
+   
+    <effect>
+        <inherits-from>Effects/model-combined-deferred</inherits-from>
+        <object-name>A__G91_fuselage_int.weapon.door.001</object-name>
+        <parameters>
+            <rain-enabled type="int">2</rain-enabled>
+            <ambient-correction type="float">-0.3</ambient-correction>
+            <normalmap-enabled type="int">0</normalmap-enabled>
+            <lightmap-enabled type="int">0</lightmap-enabled>
+            <reflection-enabled type="int">1</reflection-enabled>
+            <reflection-type type="int">2</reflection-type>
+            <reflect-map-enabled type="int">1</reflect-map-enabled>
+            <reflection-correction type="float">0</reflection-correction>
+            <reflection-rainbow type="float">0.0</reflection-rainbow>
+            <reflection-noise type="float"><use>sim/G91/Test/V0_1B</use></reflection-noise>
+            <reflection-dynamic type="int">1</reflection-dynamic>
+            <dirt-enabled>0</dirt-enabled>
+            <dirt-factor type="float" n="0">0.0</dirt-factor>
+            <!-- only for type 1 -->
+            <reflection-fresnel type="float">0.0</reflection-fresnel>
+            <reflection-noise type="float">0.0</reflection-noise>
+        </parameters>
+    </effect> 
     
     <animation> 
         <type>material</type> 
@@ -979,17 +1023,17 @@
         <object-name>B00_sx_tire</object-name>
         <object-name>B00_sx_brakes02</object-name>
         <object-name>B00_sx_tire_01</object-name>
-        <property>gear/gear[1]/rollspeed-ms</property>
+        <property>fdm/jsbsim/gear/unit[1]/wheel-speed-fps</property>
         <factor>-15</factor>
         <condition>
             <and>
                 <or>
                     <greater-than>
-                        <property>gear/gear[1]/rollspeed-ms</property>
+                        <property>fdm/jsbsim/gear/unit[1]/wheel-speed-fps</property>
                         <value>0.001</value>
                     </greater-than>
                     <less-than>
-                        <property>gear/gear[1]/rollspeed-ms</property>
+                        <property>fdm/jsbsim/gear/unit[1]/wheel-speed-fps</property>
                         <value>-0.001</value>
                     </less-than>
                 </or>
@@ -1166,17 +1210,17 @@
         <object-name>B00_dx_tire.002</object-name>
         <object-name>B00_dx_brakes02.002</object-name>
         <object-name>B00_dx_tire_01.002</object-name>
-        <property>gear/gear[2]/rollspeed-ms</property>
+        <property>fdm/jsbsim/gear/unit[2]/wheel-speed-fps</property>
         <factor>15</factor>
         <condition>
             <and>
                 <or>
                     <greater-than>
-                        <property>gear/gear[2]/rollspeed-ms</property>
+                        <property>fdm/jsbsim/gear/unit[2]/wheel-speed-fps</property>
                         <value>0.001</value>
                     </greater-than>
                     <less-than>
-                        <property>gear/gear[2]/rollspeed-ms</property>
+                        <property>fdm/jsbsim/gear/unit[2]/wheel-speed-fps</property>
                         <value>-0.001</value>
                     </less-than>
                 </or>

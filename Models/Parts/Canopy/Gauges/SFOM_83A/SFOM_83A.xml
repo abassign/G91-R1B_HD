@@ -113,7 +113,7 @@
             <blue>0.0</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
-    </animation>  
+    </animation>
     
     <animation> 
         <type>material</type>
@@ -158,7 +158,8 @@
         <type>material</type>
         <object-name>Collimator_glass_TargetDOWN</object-name>
         <transparency>
-            0.1
+            <alpha>1.0</alpha>
+            <factor-prop>sim/G91/gauge/SFOM_83A/alpha</factor-prop>
         </transparency>
         <emission>
             <red-prop>sim/G91/gauge/SFOM_83A/collimator_red</red-prop>

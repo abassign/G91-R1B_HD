@@ -17,8 +17,8 @@
         <slaved>true</slaved>
     </submodel>
     -->
-    <!-- Fuel 260 lit Tanks -->
     
+    <!-- Fuel 260 lit Tanks -->
     <submodel>
         <offsets>
             <x-m>-1.78</x-m>

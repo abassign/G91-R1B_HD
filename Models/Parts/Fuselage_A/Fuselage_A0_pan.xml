@@ -11,126 +11,58 @@
         <pitch-deg>0.0</pitch-deg>
     </offsets>
     
-    <animation>
-        <name>FuselageCameraCompartment</name>
-        <object-name>A__G91_fuselage_muso_1.000</object-name>
-        <object-name>A__G91_fuselage_muso_1.005</object-name>
-        <object-name>A__G91_fuselage_muso_1.006</object-name>
-        <object-name>A__G91_fuselage_muso_1.007</object-name>
-        <object-name>A__G91_fuselage_muso_1.010</object-name>
-        <object-name>A__G91_fuselage_muso_1.014</object-name>
-        <object-name>Corniera_oblo_sx_dx</object-name>
-        <object-name>Corniera_oblo_sx_dx.001</object-name>
-        <object-name>Guarnizione_oblo_sx_dx</object-name>
-        <object-name>Guarnizione_oblo_sx_dx.001</object-name>
-        <object-name>guarnizione_oblo_front.000</object-name>
-        <object-name>guarnizione_oblo_front.001</object-name>
-        <object-name>Cristallo_oblo_front</object-name>
-        <object-name>Cristallo_sx_dx</object-name>
-        <object-name>Cristallo_sx_dx.001</object-name>
-    </animation>
-    
-    <!-- Material assignment -->
-    
-    <effect>
-        <inherits-from>Effects/model-transparent</inherits-from>
-        <object-name>Cristallo_down</object-name>
-        <object-name>Cristallo_oblo_front</object-name>
-        <object-name>Cristallo_sx_dx</object-name>
-        <object-name>Cristallo_sx_dx.001</object-name>
-    </effect>
-    
-    <animation> 
-        <type>material</type> 
-        <object-name>Guarnizione_oblo_sx_dx</object-name>
-        <object-name>Guarnizione_oblo_sx_dx.001</object-name>
-        <object-name>guarnizione_oblo_front.001</object-name>
-        <object-name>Guarnizione_down</object-name>
-        <texture>Pictures/G91-Al.png</texture>
-    </animation>
-    
-    <animation> 
-        <type>material</type> 
-        <object-name>Cristallo_down</object-name>
-        <object-name>Cristallo_oblo_front</object-name>
-        <object-name>Cristallo_sx_dx</object-name>
-        <object-name>Cristallo_sx_dx.001</object-name>
-        <texture>Pictures/G91-Orange01.png</texture>
-    </animation>
-    
-    <animation> 
-        <type>blend</type>
-        <property>sim/G91/glass_camera_reflections</property>
-        <factor>0.7</factor>
-        <object-name>Cristallo_down</object-name>
-        <object-name>Cristallo_oblo_front</object-name>
-        <object-name>Cristallo_sx_dx</object-name>
-        <object-name>Cristallo_sx_dx.001</object-name>
-    </animation>
-
-    <animation> 
-        <type>material</type>
-        <object-name>A_antenna_cover</object-name>
-        <object-name>A__G91_fuselage_muso_1.014</object-name>
-        <texture>Pictures/G91-Al.png</texture>
-    </animation>
-    
     <!-- Chrome Effects on materials -->
     <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/glass-chrome</inherits-from>
-        <object-name>A__G91_fuselage_muso_1.001</object-name>
-        <object-name>A__G91_fuselage_muso_1.000</object-name>
-        <object-name>A__G91_fuselage_muso_1.008</object-name>
-        <object-name>A__G91_fuselage_muso_1.011</object-name>
-        <object-name>A__G91_fuselage_muso_1.012</object-name>
-        <object-name>A__G91_fuselage_muso_1.013</object-name>
-    </effect>
-    
-    <animation>
-        <type>pick</type>
-        <object-name>A__G91_fuselage_muso_1.014</object-name>
-        <action>
-            <button>0</button>
-            <repeatable>false</repeatable>
-            <interval-sec>0.2</interval-sec>
-            <binding>
-                <command>property-toggle</command>
-                <property>/controls/switches/FuselageCameraCompartment</property>
-                <step>1</step>
-                <min>0</min>
-                <max>1</max>
-                <wrap>false</wrap>
-            </binding>
-        </action>
+        <inherits-from>Effects/model-combined-deferred</inherits-from>
+        <object-name>A__G91_fuselage_muso_1.024</object-name>
+        <parameters>
+            <rain-enabled type="int">2</rain-enabled>
+            <ambient-correction type="float">-0.3</ambient-correction>
+            <normalmap-enabled type="int">0</normalmap-enabled>
+            <lightmap-enabled type="int">0</lightmap-enabled>
+            <reflection-enabled type="int">1</reflection-enabled>
+            <reflection-type type="int">2</reflection-type>
+            <reflect-map-enabled type="int">1</reflect-map-enabled>
+            <reflection-correction type="float">0.0</reflection-correction>
+            <reflection-fresnel type="float">0.15</reflection-fresnel>
+            <reflection-rainbow type="float">0.0</reflection-rainbow>
+            <reflection-noise type="float">0.0</reflection-noise>
+            <reflection-dynamic type="int">1</reflection-dynamic>
+            <dirt-enabled type="int">0</dirt-enabled>
+        </parameters>
+    </effect> 
+
+    <!--
+    <animation> 
+        <type>material</type>
+        <object-name>A__G91_fuselage_muso_1.024</object-name>
+        <ambient>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+        </ambient>
+        <specular>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+        </specular>
     </animation>
+    -->
     
-    <animation>
-        <type>translate</type>
-        <object-name>FuselageCameraCompartment</object-name>
-        <object-name>Cube.002</object-name>
-        <property>/controls/switches/FuselageCameraCompartment</property>
-        <factor>-0.1</factor>
-        <offset-m>0.0</offset-m>
-        <axis>
-            <x>1</x>
-            <y>0</y>
-            <z>0</z>
-        </axis>
+    <animation> 
+        <type>material</type>
+        <object-name>A__G91_fuselage_muso_1.024</object-name>
+        <transparency>
+            <alpha>1.0</alpha>
+        </transparency>
     </animation>
+
+    <!-- Material assignment -->
     
-    <animation>
-        <type>rotate</type>
-        <object-name>FuselageCameraCompartment</object-name>
-        <property>/controls/switches/FuselageCameraCompartment</property>
-        <factor>80</factor>
-        <axis>
-            <x1-m> -4.85047 </x1-m>
-            <y1-m> 0.1 </y1-m>
-            <z1-m> -0.42598 </z1-m>
-            <x2-m> -4.85047 </x2-m>
-            <y2-m> -0.1 </y2-m>
-            <z2-m> -0.42598 </z2-m>
-        </axis>
+    <animation> 
+        <type>material</type>
+        <object-name>A_antenna_cover.001</object-name>
+        <texture>Pictures/G91-Al.png</texture>
     </animation>
     
 </PropertyList>

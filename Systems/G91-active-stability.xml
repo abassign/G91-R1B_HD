@@ -1,6 +1,15 @@
 <?xml version="1.0"?>
 
-<system name="Active stability">  
+<system name="Active stability">
+    
+    <property value="0.0">systems/active-stability/yaw-damper/washout-c1</property>
+    <property value="0.0">systems/active-stability/pitch-damper/washout-c1</property>
+    <property value="0.2">systems/active-stability/pitch-damper/pid-kp</property>
+    <property value="0.1">systems/active-stability/pitch-damper/pid-ki</property>
+    <property value="0.8">systems/active-stability/pitch-damper/pid-kd</property>
+    <property value="0.2">systems/active-stability/yaw-damper/pid-kp</property>
+    <property value="0.05">systems/active-stability/yaw-damper/pid-ki</property>
+    <property value="0.8">systems/active-stability/yaw-damper/pid-kd</property>
     
     <channel name="Yaw Damper">
         
@@ -13,30 +22,48 @@
             </test>
         </switch>
         
-        <washout_filter name="systems/active-stability/yaw-damper/washout">
+        <pid name="systems/active-stability/yaw-damper/pid">
             <input>velocities/r-aero-rad_sec</input>
-            <c1>0.2</c1>
-        </washout_filter>
+            <kp>systems/active-stability/yaw-damper/pid-kp</kp>
+            <ki>systems/active-stability/yaw-damper/pid-ki</ki>
+            <kd>systems/active-stability/yaw-damper/pid-kd</kd>
+            <trigger>systems/active-stability/yaw-damper/pid-trigger</trigger>
+        </pid>
         
-        <actuator name="systems/active-stability/yaw-damper/correction">
-            <input>systems/active-stability/yaw-damper/washout</input>
-            <lag> 0.0 </lag>
-            <rate_limit> 0.085 </rate_limit> <!-- 5 degrees/sec -->
-            <bias>0.002</bias>
+        <switch name="systems/active-stability/yaw-damper/pid-on">
+            <default value="0.0" />
+            <test value="systems/active-stability/yaw-damper/pid">
+                systems/active-stability/pitch-damper/operative == 1
+            </test>
+        </switch>
+        
+        <actuator name="systems/active-stability/yaw-damper/correction-norm">
+            <input>systems/active-stability/yaw-damper/pid-on</input>
+            <lag>100</lag>
+            <rate_limit>0.3</rate_limit>
+            <bias>0.001</bias>
             <deadband_width>0.002</deadband_width>
-            <hysteresis_width> 0.05 </hysteresis_width>
+            <hysteresis_width> 0.001 </hysteresis_width>
             <clipto>
                 <min> -1.0 </min>
                 <max>  1.0 </max>
             </clipto>
         </actuator>
         
-        <switch name="yaw damper correction norm">
+        <aerosurface_scale name="systems/active-stability/yaw-damper/correction-norm-scale">
+            <input>systems/active-stability/yaw-damper/correction-norm</input>
+            <range>
+                <min> -0.3 </min>
+                <max>  0.3 </max>
+            </range>
+        </aerosurface_scale>
+        
+        <switch name="systems/active-stability/yaw-damper/pid-trigger">
             <default value="0.0" />
-            <test value="systems/active-stability/yaw-damper/correction">
-                systems/active-stability/yaw-damper/operative == 1
+            <test value="1" logic="AND">
+                systems/active-stability/yaw-damper/correction-norm GE 1.0
+                systems/active-stability/yaw-damper/correction-norm LE -1.0
             </test>
-            <output>systems/active-stability/yaw-damper/correction-norm</output>
         </switch>
         
         <scheduled_gain name="systems/electric/bus[2]/yaw-damper/I">
@@ -66,36 +93,54 @@
             </test>
         </switch>
         
-        <washout_filter name="systems/active-stability/pitch-damper/washout">
+        <pid name="systems/active-stability/pitch-damper/pid">
             <input>velocities/q-aero-rad_sec</input>
-            <c1>1.0</c1>
-        </washout_filter>
+            <kp>systems/active-stability/pitch-damper/pid-kp</kp>
+            <ki>systems/active-stability/pitch-damper/pid-ki</ki>
+            <kd>systems/active-stability/pitch-damper/pid-kd</kd>
+            <trigger>systems/active-stability/pitch-damper/pid-trigger</trigger>
+        </pid>
+        
+        <switch name="systems/active-stability/pitch-damper/pid-on">
+            <default value="0.0" />
+            <test value="systems/active-stability/pitch-damper/pid">
+                systems/active-stability/pitch-damper/operative == 1
+            </test>
+        </switch>
+        
+        <aerosurface_scale name="systems/active-stability/pitch-damper/correction-norm-rad">
+            <input>systems/active-stability/pitch-damper/correction</input>
+            <range>
+                <min> -0.26 </min>
+                <max>  0.26 </max>
+            </range>
+        </aerosurface_scale>
         
         <actuator name="systems/active-stability/pitch-damper/correction">
-            <input>systems/active-stability/pitch-damper/washout</input>
-            <lag> 0.0 </lag>
-            <rate_limit> 0.085 </rate_limit> <!-- 5 degrees/sec -->
-            <bias>0.002</bias>
+            <input>systems/active-stability/pitch-damper/pid-on</input>
+            <lag>100</lag>
+            <rate_limit>0.2</rate_limit>
+            <bias>0.001</bias>
             <deadband_width>0.002</deadband_width>
-            <hysteresis_width> 0.05 </hysteresis_width>
+            <hysteresis_width> 0.001 </hysteresis_width>
             <clipto>
                 <min> -1.0 </min>
                 <max>  1.0 </max>
             </clipto>
         </actuator>
         
-        <switch name="pitch damper correction norm">
+        <switch name="systems/active-stability/pitch-damper/pid-trigger">
             <default value="0.0" />
-            <test value="systems/active-stability/pitch-damper/correction">
-                systems/active-stability/pitch-damper/operative == 1
+            <test value="1" logic="AND">
+                systems/active-stability/pitch-damper/correction GE 1.0
+                systems/active-stability/pitch-damper/correction LE -1.0
             </test>
-            <output>systems/active-stability/pitch-damper/correction-norm</output>
         </switch>
         
         <scheduled_gain name="systems/electric/bus[2]/pitch-damper/I">
             <input>systems/active-stability/pitch-damper/operative</input>
             <table>
-                <independentVar>systems/active-stability/pitch-damper/correction-norm</independentVar>
+                <independentVar>systems/active-stability/pitch-damper/correction</independentVar>
                 <tableData>
                 -1.0    24
                 -0.01   24

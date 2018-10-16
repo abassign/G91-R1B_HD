@@ -1,0 +1,112 @@
+<?xml version="1.0"?>
+
+<system name="PHI">
+    
+    <channel name="systems gauges PHI radar doppler" execrate="8">
+        
+        <sensor name="systems/gauges/PHI/radar-v-fts">
+            <input>velocities/vtrue-fps</input>
+            <lag>0.0</lag>
+            <noise variation="PERCENT" distribution="GAUSSIAN"> 0.01 </noise>
+            <quantization name="name">
+                <bits>12</bits>
+                <min>0</min>
+                <max>1000</max>
+            </quantization>
+            <drift_rate>0.0</drift_rate>
+            <gain>1.0</gain>
+            <bias>0.0</bias>
+            <delay type="time">0.1</delay>
+        </sensor>
+        
+        <integrator name="systems/gauges/PHI/radar-s-ft">
+            <input>systems/gauges/PHI/radar-v-fts</input>
+            <c1>1.0</c1>
+        </integrator>
+        
+        <pure_gain name="systems/gauges/PHI/radar-s-mil">
+            <input>systems/gauges/PHI/radar-s-ft</input>
+            <gain>0.00018939393</gain>
+        </pure_gain>
+        
+        <fcs_function name="systems/gauges/PHI/indicator/digit1A">
+            <function>
+                <integer>
+                    <quotient>
+                        <p>systems/gauges/PHI/radar-s-mil</p>
+                        <v>100.0</v>
+                    </quotient>
+                </integer>
+            </function>
+        </fcs_function>
+        
+        <fcs_function name="systems/gauges/PHI/indicator/digit1AW">
+            <function>
+                <ifthen>
+                    <lt>
+                        <p>systems/gauges/PHI/indicator/digit1AW</p>
+                        <p>systems/gauges/PHI/indicator/digit1A</p>
+                    </lt>
+                    <sum>
+                        <p>systems/gauges/PHI/indicator/digit1AW</p>
+                        <v>0.05</v>
+                    </sum>
+                    <p>systems/gauges/PHI/indicator/digit1AW</p>
+                </ifthen>
+            </function>
+        </fcs_function>
+        
+        <fcs_function name="systems/gauges/PHI/indicator/digit2A">
+            <function>
+                <integer>
+                    <quotient>
+                        <p>systems/gauges/PHI/radar-s-mil</p>
+                        <v>10.0</v>
+                    </quotient>
+                </integer>
+            </function>
+        </fcs_function>
+        
+        <fcs_function name="systems/gauges/PHI/indicator/digit2AW">
+            <function>
+                <ifthen>
+                    <lt>
+                        <p>systems/gauges/PHI/indicator/digit2AW</p>
+                        <p>systems/gauges/PHI/indicator/digit2A</p>
+                    </lt>
+                    <sum>
+                        <p>systems/gauges/PHI/indicator/digit2AW</p>
+                        <v>0.05</v>
+                    </sum>
+                    <p>systems/gauges/PHI/indicator/digit2AW</p>
+                </ifthen>
+            </function>
+        </fcs_function>
+        
+        <fcs_function name="systems/gauges/PHI/indicator/digit3A">
+            <function>
+                <integer>
+                    <p>systems/gauges/PHI/radar-s-mil</p>
+                </integer>
+            </function>
+        </fcs_function>
+        
+        <fcs_function name="systems/gauges/PHI/indicator/digit3AW">
+            <function>
+                <ifthen>
+                    <lt>
+                        <p>systems/gauges/PHI/indicator/digit3AW</p>
+                        <p>systems/gauges/PHI/indicator/digit3A</p>
+                    </lt>
+                    <sum>
+                        <p>systems/gauges/PHI/indicator/digit3AW</p>
+                        <v>0.05</v>
+                    </sum>
+                    <p>systems/gauges/PHI/indicator/digit3AW</p>
+                </ifthen>
+            </function>
+        </fcs_function>
+        
+    </channel>
+    
+</system>

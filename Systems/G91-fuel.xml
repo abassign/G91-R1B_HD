@@ -23,7 +23,7 @@
             <test logic="AND" value="3">
                 propulsion/tank[3]/priority EQ 1 
                 propulsion/tank[3]/contents-lbs GT 0
-                /consumables/fuel/tank[6]/level-lbs LT 9
+                propulsion/tank[6]/contents-lbs LT 9
                 propulsion/tank[6]/priority EQ 1
                 accelerations/Nz GE -0.5
             </test>
@@ -35,7 +35,7 @@
             <test logic="AND" value="3">
                 propulsion/tank[4]/priority EQ 1 
                 propulsion/tank[4]/contents-lbs GT 0
-                /consumables/fuel/tank[6]/level-lbs LT 9
+                propulsion/tank[6]/contents-lbs LT 9
                 propulsion/tank[6]/priority EQ 1
                 accelerations/Nz GE -0.5
             </test>
@@ -61,7 +61,6 @@
             <input>fuel/from-tank4-to-tank6</input>
             <input>-fuel/from-tank6-to-tank0</input>
             <input>-fuel/from-tank6-to-tank1</input>
-            <input>-fuel/from-tank6-to-tank2</input>
             <output>propulsion/tank[6]/external-flow-rate-pps</output>
         </summer>
     </channel>
@@ -70,10 +69,10 @@
         <!-- from Collector Tank 6 to Tank0 -->
         <switch name="fuel/from-tank6-to-tank0">
             <default value="0"/>
-            <test logic="AND" value="3">
+            <test logic="AND" value="1.5">
                 propulsion/tank[6]/priority EQ 1 
-                propulsion/tank[6]/contents-lbs GT 5
-                /consumables/fuel/tank[0]/level-lbs LT 1366
+                propulsion/tank[6]/contents-lbs GT 0
+                propulsion/tank[0]/contents-lbs LT 1366
                 propulsion/tank[0]/priority EQ 1
                 accelerations/Nz GE -0.5
             </test>
@@ -95,8 +94,8 @@
             <default value="0"/>
             <test logic="AND" value="1.5">
                 propulsion/tank[6]/priority EQ 1 
-                propulsion/tank[6]/contents-lbs GT 5
-                /consumables/fuel/tank[1]/level-lbs LT 561
+                propulsion/tank[6]/contents-lbs GT 0
+                propulsion/tank[1]/contents-lbs LT 561
                 propulsion/tank[1]/priority EQ 1
                 accelerations/Nz GE -0.5
             </test>
@@ -113,23 +112,24 @@
     </channel>
     
     <channel name="To Tank2">
-        <!-- from Collector Tank 6 to Tank2 -->
-        <switch name="fuel/from-tank6-to-tank2">
+        <!-- from Collector Tank 1 to Tank2 -->
+        <switch name="fuel/from-tank1-to-tank2">
             <default value="0"/>
             <test logic="AND" value="1.5">
-                propulsion/tank[6]/priority EQ 1 
-                propulsion/tank[6]/contents-lbs GT 5
-                /consumables/fuel/tank[2]/level-lbs LT 561
-                propulsion/tank[2]/priority EQ 1
-                accelerations/Nz GE -0.5
+                propulsion/tank[1]/contents-lbs GT propulsion/tank[2]/contents-lbs
+                propulsion/tank[2]/contents-lbs LT 561
+            </test>
+            <test logic="AND" value="-1.5">
+                propulsion/tank[1]/contents-lbs LE propulsion/tank[2]/contents-lbs
+                propulsion/tank[2]/contents-lbs LT 561
             </test>
         </switch>
     </channel>
     
-    <!-- Total from Collector Tank 6 to Tank 2 -->
+    <!-- Total from Collector Tank 1,2 to Tank 7 -->
     <channel name="Total flow rate into tank 2">
-        <summer name="tank6 to tank2">
-            <input>fuel/from-tank6-to-tank2</input>
+        <summer name="tank1 to tank2">
+            <input>fuel/from-tank1-to-tank2</input>
             <input>-fuel/from-tank2-to-tank7</input>
             <output>propulsion/tank[2]/external-flow-rate-pps</output>
         </summer>
@@ -143,7 +143,7 @@
             <test logic="AND" value="1">
                 propulsion/tank[1]/priority EQ 1 
                 propulsion/tank[1]/contents-lbs GT 0
-                /consumables/fuel/tank[7]/level-lbs LT 9
+                propulsion/tank[7]/contents-lbs LT 9
                 propulsion/tank[7]/priority EQ 1
                 accelerations/Nz GE -0.5
             </test>
@@ -155,7 +155,7 @@
             <test logic="AND" value="1">
                 propulsion/tank[2]/priority EQ 1 
                 propulsion/tank[2]/contents-lbs GT 0
-                /consumables/fuel/tank[7]/level-lbs LT 9
+                propulsion/tank[7]/contents-lbs LT 9
                 propulsion/tank[7]/priority EQ 1
                 accelerations/Nz GE -0.5
             </test>
@@ -187,7 +187,7 @@
             <test logic="AND" value="1">
                 propulsion/tank[0]/priority EQ 1 
                 propulsion/tank[0]/contents-lbs GT 0
-                /consumables/fuel/tank[5]/level-lbs LT 276
+                propulsion/tank[5]/contents-lbs LT 276
                 propulsion/tank[5]/priority EQ 1
                 accelerations/Nz GE -0.5
             </test>
@@ -199,7 +199,7 @@
             <test logic="AND" value="1">
                 propulsion/tank[7]/priority EQ 1 
                 propulsion/tank[7]/contents-lbs GT 0
-                /consumables/fuel/tank[5]/level-lbs LT 276
+                propulsion/tank[5]/contents-lbs LT 276
                 propulsion/tank[5]/priority EQ 1
                 accelerations/Nz GE -0.5
             </test>

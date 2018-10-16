@@ -65,14 +65,24 @@
     <animation>
         <type>pick</type>
         <object-name>handle_cockpit02.000</object-name>
+        <object-name>handle_cockpit02.001</object-name>
+        <object-name>handle_cockpit02.003</object-name>
         <action>
             <button>0</button>
             <repeatable>false</repeatable>
-            <interval-sec>0.2</interval-sec>
+            <interval-sec>0.0</interval-sec>
             <binding>
-                <command>property-toggle</command>
-                <property>/sim/G91/handle/handle_barake_flag</property>
+                <command>property-assign</command>
+                <property>fdm/jsbsim/systems/handle-switches/sw-handle-brake-trigger</property>
+                <value>1</value>
             </binding>
+            <mod-up>
+                <binding>
+                    <command>property-assign</command>
+                    <property>fdm/jsbsim/systems/handle-switches/sw-handle-brake-trigger</property>
+                    <value>0</value>
+                </binding>
+            </mod-up>
         </action>
     </animation>
     
@@ -81,8 +91,23 @@
         <object-name>handle_cockpit02.000</object-name>
         <object-name>handle_cockpit02.001</object-name>
         <object-name>handle_cockpit02.003</object-name>
-        <property>/sim/G91/handle/handle_barake_flag</property>
+        <property>fdm/jsbsim/systems/handle-switches/sw-handle-brake-pos-linear</property>
         <factor>0.1</factor>
+        <offset-m>0.0</offset-m>
+        <axis>
+            <x>1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>handle_cockpit02.000</object-name>
+        <object-name>handle_cockpit02.001</object-name>
+        <object-name>handle_cockpit02.003</object-name>
+        <property>fdm/jsbsim/systems/handle-switches/sw-handle-brake-pos-rotate</property>
+        <factor>-70</factor>
         <offset-m>0.0</offset-m>
         <axis>
             <x>1</x>

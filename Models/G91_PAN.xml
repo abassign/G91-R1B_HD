@@ -1,20 +1,31 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 
 <PropertyList>
-
+    
     <offsets>
         <x-m>0.0</x-m>
         <y-m>0.0</y-m>
         <z-m>-0.45</z-m>
         <pitch-deg>0.0</pitch-deg>
     </offsets>
- 
+    
+    <!-- LIVERY SCRIPT -->
+    <!--
+    <nasal>
+        <load>
+            var livery_update = aircraft.livery_update.new("Aircraft/G91-R1B_HD/Models/Liveries/PAN", 10);
+        </load>
+        <unload>
+            livery_update.stop();
+        </unload>
+    </nasal>
+    -->
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Tail/Tail.xml</path>
     </model>
-<!--
+    <!--
     <model>
-        <path>Aircraft/G91-R1B_HD/Models/Parts/Fuselage_A/Fuselage_A0.xml</path>
+    <path>Aircraft/G91-R1B_HD/Models/Parts/Fuselage_A/Fuselage_A0.xml</path>
     </model>
     -->
     <model>
@@ -24,19 +35,19 @@
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/LandingGearFrontal/LandingGearFrontal.xml</path>
     </model>    
-
+    
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Airbrake/Airbrake.xml</path>
     </model>
-
+    
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Wing/Wing.xml</path>
     </model>
-
+    
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Fuselage_B/Fuselage_B1.xml</path>
     </model>
-
+    
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Turbojet/OrpheusMK803.xml</path>
         <offsets>
@@ -45,16 +56,16 @@
             <z-m>-0.25</z-m>
         </offsets>
     </model>
-
+    
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Cockpit.xml</path>
     </model>
-
+    
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Canopy.xml</path>
     </model>
     
-<!-- Submodels -->
+    <!-- Submodels -->
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Stores/Tank/Tank260lit_S2.xml</path>
     </model>
@@ -65,7 +76,7 @@
     
     <!--
     <model>
-        <path>Aircraft/G91-R1B_HD/Models/Effects/Ground_Shadow/shadow.xml</path>
+    <path>Aircraft/G91-R1B_HD/Models/Effects/Ground_Shadow/shadow.xml</path>
     </model>
     -->
     

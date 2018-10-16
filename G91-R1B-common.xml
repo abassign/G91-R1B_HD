@@ -129,14 +129,33 @@
                             </script>
                         </binding>
                     </item>
+                    <!--
+                    <item>
+                        <label>Select Livery</label>
+                        <binding>
+                            <command>nasal</command>
+                            <script>aircraft.livery.dialog.toggle()</script>
+                        </binding>
+                    </item>
+                    -->
                 </menu>
             </default>
         </menubar>
-        
+        <!--
+        <model>
+            <livery>
+                <name>PAN Version</name>
+                <texture>Aircraft/G91-R1B_HD/Models/Liveries/PAN/Livery_PAN_01.png</texture>
+            </livery>
+        </model>
+        -->
     </sim>
     
     <nasal>
         <general>
+            <!--
+            <file>Aircraft/G91-R1B_HD/Nasal/liveries.nas</file>
+            -->
             <!-- Generic -->
             <file>Aircraft/G91-R1B_HD/Nasal/Ambient/ambient_data.nas</file>
             <file>Aircraft/G91-R1B_HD/Nasal/Autopilot/autopilot_set.nas</file>
@@ -147,10 +166,9 @@
             <file>Aircraft/G91-R1B_HD/Nasal/Lights/re_emit_green_red_gauges.nas</file>
             <file>Aircraft/G91-R1B_HD/Nasal/Lights/ambient_light.nas</file>
             <file>Aircraft/G91-R1B_HD/Nasal/Lights/button_lights.nas</file>
-            <file>Aircraft/G91-R1B_HD/Nasal/Lights/button_lights.nas</file>
             <file>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Switchs_Lights/Switchs_Lights.nas</file>
             <!-- Lights -->
-            <file>Aircraft/G91-R1B_HD/Models/Parts/LandingGearFrontal/Nasal/frontal_gear_lights.nas</file>
+            <file>Aircraft/G91-R1B_HD/Models/Parts/LandingGearFrontal/NASAL/frontal_gear_lights.nas</file>
             <file>Aircraft/G91-R1B_HD/Models/Parts/Wing/Components/Beacon/Nasal/beacon_lights.nas</file>
             <!-- Gauges -->
             <file>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Components/Gear_lever/gear_lever.nas</file>
@@ -164,10 +182,11 @@
         </general>
         <canvas_gauges>
             <file>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Gauges/SFOM_83A/SFOM_83A_01.nas</file>
+            <file>Aircraft/G91-R1B_HD/Models/Parts/Fuselage_A/fuselage_A0.nas</file>
+            <file>Aircraft/G91-R1B_HD/Models/Parts/Wing/wing.nas</file>
+            <file>Aircraft/G91-R1B_HD/Models/Parts/Fuselage_B/fuselage_B1.nas</file>
+            <file>Aircraft/G91-R1B_HD/Models/Parts/Tail/tail.nas</file>
         </canvas_gauges>
-        <canopy>
-            <file>Aircraft/G91-R1B_HD/Nasal/Canopy/canopy.nas</file>
-        </canopy>
         <tyresmoke>
             <file>Aircraft/G91-R1B_HD/Nasal/tyresmoke.nas</file>
         </tyresmoke>

@@ -6,6 +6,7 @@
     <property value="88.5">systems/jato/dry-weight</property>
     <property value="70">systems/jato/fuel-weight</property>
     <property value="0.25">systems/jato/rocket-drag-sqft</property>
+    <property value="70.0">systems/jato/rocket-fuel-lb</property>
     
     
     <channel name="jato mount or dismount" execrate="16">
@@ -206,6 +207,67 @@
         
     </channel>
     
+    <!--
+    <channel name="Load JATO Fuel" execrate="16">
+        
+        <switch name="systems/jato/rocket_number_1_fuel_load">
+            <default value="0"/>
+            <test logic = "AND" value = "1">
+                systems/jato/rocket_number_1 == 1
+                propulsion/tank[8]/contents-lbs LT systems/jato/rocket-fuel-lb
+                ....
+            </test>
+        </switch>
+        
+        <switch>
+            <default value="0"/>
+            <test logic = "AND" value = "systems/jato/rocket-drag-sqft">
+                systems/jato/rocket_number_2 == 1
+            </test>
+            <output>systems/jato/rocket-drag[2]</output>
+        </switch>
+        
+        <switch>
+            <default value="0"/>
+            <test logic = "AND" value = "systems/jato/rocket-drag-sqft">
+                systems/jato/rocket_number_3 == 1
+            </test>
+            <output>systems/jato/rocket-drag[3]</output>
+        </switch>
+        
+        <switch>
+            <default value="0"/>
+            <test logic = "AND" value = "systems/jato/rocket-drag-sqft">
+                systems/jato/rocket_number_4 == 1
+            </test>
+            <output>systems/jato/rocket-drag[4]</output>
+        </switch>
+...
+        <switch name="fuel/from-tank3-to-tank6">
+            <default value="0"/>
+            <test logic="AND" value="3">
+                propulsion/tank[3]/priority EQ 1 
+                propulsion/tank[3]/contents-lbs GT 0
+                propulsion/tank[6]/contents-lbs LT 9
+                propulsion/tank[6]/priority EQ 1
+                accelerations/Nz GE -0.5
+            </test>
+        </switch>
+
+        <switch name="fuel/from-tank4-to-tank6">
+            <default value="0"/>
+            <test logic="AND" value="3">
+                propulsion/tank[4]/priority EQ 1 
+                propulsion/tank[4]/contents-lbs GT 0
+                propulsion/tank[6]/contents-lbs LT 9
+                propulsion/tank[6]/priority EQ 1
+                accelerations/Nz GE -0.5
+            </test>
+        </switch>
+
+        
+    </channel>
+            -->
     
     <channel name="jato weight" execrate="16">
         

@@ -6,7 +6,6 @@ Description: G91R4 Electric system from "Manuale di pilotaggio (p.56)
 
 <system name="electric-system">
     
-    <property value="24">systems/electric/bus[0]/battery-nominal-voltage</property>
     <property value="34">systems/electric/bus[0]/battery-AH</property>
     <property value="2937600">systems/electric/bus[0]/battery-capacity-initial-J</property>
     <property value="2937600">systems/electric/bus[0]/battery-capacity-max-J</property>
@@ -25,6 +24,8 @@ Description: G91R4 Electric system from "Manuale di pilotaggio (p.56)
     <property value="0.0">systems/electric/bus[0]/emergency-radio/I</property>
     <property value="1">systems/electric/bus[0]/emergency-release-of-external-loads/fuse</property>
     <property value="1">systems/electric/bus[0]/emergency-release-of-external-loads-SALVO/fuse</property>
+    <property value="1">systems/electric/bus[0]/LADD-command/fuse</property>
+    <property value="1">systems/electric/bus[0]/canopy-command/fuse</property>
     <property value="1">systems/electric/bus[1]/JATO-ignition/fuse</property>
     <property value="0">systems/electric/bus[1]/JATO-ignition/sw</property>
     <property value="0.0">systems/electric/bus[1]/JATO-ignition/I</property>
@@ -37,8 +38,6 @@ Description: G91R4 Electric system from "Manuale di pilotaggio (p.56)
     <property value="1">systems/electric/bus[1]/BP-fuel/fuse</property>
     <property value="1">systems/electric/bus[1]/BP-oil/fuse</property>
     <property value="1">systems/electric/bus[1]/landig-gear-command/fuse</property>
-    <property value="1">systems/electric/bus[1]/LADD-command/fuse</property>
-    <property value="1">systems/electric/bus[1]/canopy-command/fuse</property>
     <property value="1">systems/electric/bus[1]/air-conditioning-pressurization/fuse</property>
     <property value="1">systems/electric/bus[1]/horizontal-stabilization-corrector/fuse</property>
     <property value="1">systems/electric/bus[1]/vertical-tail-corrector/fuse</property>
@@ -56,6 +55,7 @@ Description: G91R4 Electric system from "Manuale di pilotaggio (p.56)
     <property value="0.0">systems/electric/bus[1]/IFF/I</property>
     <property value="1">systems/electric/bus[1]/collimator-lighting/fuse</property>
     <property value="0">systems/electric/bus[1]/collimator-lighting/sw</property>
+    <property value="0">systems/electric/bus[1]/collimator-lighting/I</property>
     <property value="1">systems/electric/bus[1]/hydraulic-system-flight-controls/fuse</property>
     <property value="1">systems/electric/bus[1]/hydraulic-system-general-utilities/fuse</property>
     <property value="1">systems/electric/bus[1]/fuel-level-indicator/fuse</property>
@@ -138,64 +138,160 @@ Description: G91R4 Electric system from "Manuale di pilotaggio (p.56)
     <property value="10">systems/electric/inv-secondary/I0</property>
 
     
-    <channel name="Bus Battery" execrate="8">
+    <channel name="Calculate loads on bus" execrate="8">
         
-        <!-- this switch is only for test -->
-        <switch name="systems/electric/bus[0]/battery-load-J">
-            <default value="0"/>
-            <test logic="AND" value="0">
-                systems/manual-switches/cockpit/sw-bus0-bus1-battery == 1
-                systems/electric/bus[1]/V GT systems/electric/bus[0]/battery-V
-                systems/electric/bus[0]/battery-capacity-J GE systems/electric/bus[0]/battery-capacity-max-J
-            </test>
-            <test logic="AND" value="50">
-                systems/manual-switches/cockpit/sw-bus0-bus1-battery == 1
-                systems/electric/bus[1]/V GT systems/electric/bus[0]/battery-V
-            </test>
-            <test logic="AND" value="-100">
-                systems/manual-switches/cockpit/sw-bus0-bus1-battery == 1
-                systems/electric/bus[1]/V LE systems/electric/bus[0]/battery-V
-            </test>
-            <test logic="AND" value="-10">
-                systems/manual-switches/cockpit/sw-bus0-bus1-battery == 0
-            </test>
-        </switch>
+        <summer name="systems/electric/bus[0]/I">
+            <input>systems/electric/bus[0]/emergency-canopy-light/I</input>
+            <input>systems/electric/bus[0]/emergency-radio/I</input>
+            <input>systems/electric/bus[0]/canopy-command/I</input>
+        </summer>
+        
+        <summer name="systems/electric/bus[1]/I">
+            <input>systems/electric/bus[1]/internal-power-generator-I-Fiels</input>
+            <input>systems/electric/bus[1]/JATO-ignition/I</input>
+            <input>systems/electric/bus[1]/landing-light/I</input>
+            <input>systems/electric/bus[1]/gyrocompass/I</input>
+            <input>systems/electric/bus[1]/IFF/I</input>
+            <input>systems/electric/bus[1]/wing-flap/I</input>
+            <input>systems/electric/bus[1]/anti-collision-light/I</input>
+            <input>systems/electric/bus[1]/interior-lights/I</input>
+            <input>systems/electric/bus[1]/radiogoniometer/I</input>
+            <input>systems/electric/bus[1]/UHF-radio/I</input>
+            <input>systems/electric/bus[1]/UHF-radio-emergency/I</input>
+            <input>systems/electric/bus[1]/pitot-heating/I</input>
+            <input>systems/electric/bus[1]/beacon/I</input>
+            <input>systems/electric/bus[1]/starter/I</input>
+            <input>systems/electric/bus[1]/primary-inverter/I</input>
+            <input>systems/electric/bus[1]/secondary-inverter/I</input>
+            <input>systems/electric/bus[1]/collimator-lighting/I</input>
+        </summer>
+        
+        <summer name="systems/electric/bus[2]/I">
+            <input>systems/electric/bus[2]/doppler/I</input>
+            <input>systems/electric/bus[2]/position-lights/I</input>
+            <input>systems/electric/bus[2]/cockpit-lights/I</input>
+            <input>systems/electric/bus[2]/cameras/camera[1]/I</input>
+            <input>systems/electric/bus[2]/cameras/camera[2]/I</input>
+            <input>systems/electric/bus[2]/cameras/camera[3]/I</input>
+            <input>systems/electric/bus[2]/PHI/I</input>
+            <input>systems/electric/bus[2]/magnetic-tape/I</input>
+            <input>systems/electric/bus[2]/primary-inverter/I</input>
+            <input>systems/electric/bus[2]/pitch-damper/I</input>
+            <input>systems/electric/bus[2]/yaw-damper/I</input>
+        </summer>
+    
+    </channel>
+    
+        
+    <channel name="Bus 0 - Battery" execrate="8">
+        
+        <fcs_function name="systems/electric/bus[0]/I-To-Battery">
+            <function>
+                <ifthen>
+                    <p>systems/manual-switches/cockpit/sw-bus0-bus1-battery</p>
+                    <sum>
+                        <p>systems/electric/bus[0]/I</p>
+                        <p>systems/electric/bus[1]/I</p>
+                        <p>systems/electric/bus[2]/I</p>
+                        <product>
+                            <p>systems/electric/bus[2]/I</p>
+                        </product>
+                    </sum>
+                    <p>systems/electric/bus[0]/I</p>
+                </ifthen>
+            </function>
+        </fcs_function>
+        
+        <fcs_function name="systems/electric/bus[0]/V">
+            <function>
+                <ifthen>
+                    <p>systems/manual-switches/cockpit/sw-bus0-bus1-battery</p>
+                    <ifthen>
+                        <gt>
+                            <p>systems/electric/bus[1]/V</p>
+                            <p>systems/electric/bus[0]/battery-V</p>
+                        </gt>
+                        <sum>
+                            <p>systems/electric/bus[1]/V</p>
+                        </sum>
+                        <p>systems/electric/bus[0]/battery-V</p>
+                    </ifthen>
+                    <p>systems/electric/bus[0]/battery-V</p>
+                </ifthen>
+            </function>
+        </fcs_function>
+        
+        <fcs_function name="systems/electric/bus[0]/W-To-Battery">
+            <function>
+                <ifthen>
+                    <p>systems/manual-switches/cockpit/sw-bus0-bus1-battery</p>
+                    <ifthen>
+                        <p>systems/electric/bus[1]/internal-power-generator-inverted-current-rele-on</p>
+                        <product>
+                            <v>250.0</v>
+                            <quotient>
+                                <difference>
+                                    <p>systems/electric/bus[1]/internal-power-generator-V</p>
+                                    <p>systems/electric/bus[0]/battery-V</p>
+                                </difference>
+                                <p>systems/electric/bus[1]/internal-power-generator-V</p>
+                            </quotient>
+                        </product>
+                        <product>
+                            <p>systems/electric/bus[0]/I-To-Battery</p>
+                            <p>systems/electric/bus[0]/V</p>
+                            <v>-1.0</v>
+                        </product>
+                    </ifthen>
+                    <product>
+                        <p>systems/electric/bus[0]/I-To-Battery</p>
+                        <p>systems/electric/bus[0]/V</p>
+                        <v>-1.0</v>
+                    </product>
+                </ifthen>
+            </function>
+        </fcs_function>
         
         <integrator name="systems/electric/bus[0]/battery-energy-change-J">
-            <input>systems/electric/bus[0]/battery-load-J</input>
+            <input>systems/electric/bus[0]/W-To-Battery</input>
             <c1>1.0</c1>
         </integrator>
         
         <summer name="systems/electric/bus[0]/battery-capacity-J">
             <input>systems/electric/bus[0]/battery-capacity-initial-J</input>
             <input>systems/electric/bus[0]/battery-energy-change-J</input>
+            <clipto>
+                <min>0.0</min>
+                <max>2937600</max>
+            </clipto>
         </summer>
 
-        <scheduled_gain name="systems/electric/bus[0]/battery-V">
-            <input>systems/electric/bus[0]/battery-nominal-voltage</input>
+        <fcs_function name="systems/electric/bus[0]/battery-charge-norm">
+            <function>
+                <quotient>
+                    <p>systems/electric/bus[0]/battery-capacity-J</p>
+                    <p>systems/electric/bus[0]/battery-capacity-max-J</p>
+                </quotient>
+            </function>
+        </fcs_function>
+        
+         <fcs_function name="systems/electric/bus[0]/battery-V">
+            <function>
             <table>
-                <independentVar lookup="row">systems/electric/bus[0]/battery-capacity-J</independentVar>
+                <independentVar lookup="row">systems/electric/bus[0]/battery-charge-norm</independentVar>
                 <tableData>
-                    0       0.0
-                    1000000 0.8
-                    2000000 0.9
-                    3000000 1.1
+                    0.0     0.0
+                    0.02    21.0
+                    0.1     22.5
+                    0.2     23.0
+                    0.5     24.0
+                    0.8     24.8
+                    0.9     25.0
+                    1.0     25.4
                 </tableData>
             </table>
-        </scheduled_gain>
-        
-        <switch name="systems/electric/bus[0]/V">
-            <default value="systems/electric/bus[0]/battery-V"/>
-            <test logic="AND" value="systems/electric/bus[1]/V">
-                systems/manual-switches/cockpit/sw-bus0-bus1-battery == 1
-                systems/electric/bus[1]/V GT systems/electric/bus[0]/battery-V
-            </test>  
-        </switch>
-
-        <summer name="systems/electric/bus[0]/I">
-            <input>systems/electric/bus[0]/emergency-canopy-light/I</input>
-            <input>systems/electric/bus[0]/emergency-radio/I</input>
-        </summer>
+            </function>
+        </fcs_function>
         
     </channel>
     
@@ -204,7 +300,7 @@ Description: G91R4 Electric system from "Manuale di pilotaggio (p.56)
         
         <switch name="systems/electric/bus[1]/V">
             <default value="0"/>
-            <test logic="AND" value="28">
+            <test logic="AND" value="28.0">
                 systems/electric/bus[1]/external-power-generator-on == 1
             </test>
             <test logic="AND" value="0">
@@ -224,18 +320,6 @@ Description: G91R4 Electric system from "Manuale di pilotaggio (p.56)
                 systems/electric/bus[1]/internal-power-generator-inverted-current-rele-on == 1
             </test> 
         </switch>
-        
-        <switch name="systems/electric/bus[1]/internal-power-generator-V-n1-on">
-            <default value="0"/>
-            <test logic="AND" value="systems/electric/bus[1]/internal-power-generator-V-n1">
-                systems/manual-switches/cockpit/sw-internal-power-generator == 1
-            </test>
-        </switch>
-        
-        <lag_filter name="systems/electric/bus[1]/internal-power-generator-V">
-            <input>systems/electric/bus[1]/internal-power-generator-V-n1-on</input>
-            <c1>10.0</c1>
-        </lag_filter>
 
         <switch name="systems/electric/bus[1]/internal-power-generator-inverted-current-rele-on">
             <default value="0"/>
@@ -259,16 +343,76 @@ Description: G91R4 Electric system from "Manuale di pilotaggio (p.56)
         
         <switch name="systems/electric/bus[1]/internal-power-generator-I">
             <default value="0"/>
-            <test logic="AND" value="systems/electric/bus[1]/internal-power-generator-I-conditional">
+            <test logic="AND" value="systems/electric/bus[1]/internal-power-generator-I-Allload">
                 systems/electric/bus[1]/internal-power-generator-inverted-current-rele-on == 1
             </test>
         </switch>
         
-        <summer name="systems/electric/bus[1]/internal-power-generator-I-conditional">
+        <pure_gain name="systems/electric/bus[1]/internal-power-generator-W-All-Load">
+            <input>systems/electric/bus[1]/internal-power-generator-I-Allload</input>
+            <gain>systems/electric/bus[1]/V</gain>
+        </pure_gain>
+        
+        <fcs_function name="systems/electric/bus[1]/internal-power-generator-I-Fiels">
+            <function>
+                <ifthen>
+                    <p>systems/manual-switches/cockpit/sw-internal-power-generator</p>
+                    <quotient>
+                        <p>systems/electric/bus[1]/V</p>
+                        <v>2.6</v>
+                    </quotient>
+                    <v>0.0</v>
+                </ifthen>
+            </function>
+        </fcs_function>
+        
+        <fcs_function name="systems/electric/bus[1]/internal-power-generator-Vout-Potenzial">
+            <function>
+                <ifthen>
+                    <ifthen>
+                        <gt>
+                            <p>systems/electric/bus[1]/V</p>
+                            <v>18.0</v>
+                        </gt>
+                        <p>systems/manual-switches/cockpit/sw-internal-power-generator</p>
+                        <v>0</v>
+                    </ifthen>
+                    <product>
+                        <table>
+                            <independentVar>propulsion/engine/n1</independentVar>
+                            <tableData>
+                                0.0   0.0
+                                10.0  12.0
+                                20.0  18.0
+                                35.0  28.0
+                                100.0 30.0
+                            </tableData>
+                        </table>
+                        <table>
+                            <independentVar>systems/electric/bus[1]/internal-power-generator-I</independentVar>
+                            <tableData>
+                                0.0    1.0
+                                200.0  1.0
+                                300.0  0.9
+                                400.0  0.6
+                                1000.0 0.0
+                            </tableData>
+                        </table>
+                    </product>
+                    <v>0.0</v>
+                </ifthen>
+            </function>
+        </fcs_function>
+        
+        <lag_filter name="systems/electric/bus[1]/internal-power-generator-V">
+            <input>systems/electric/bus[1]/internal-power-generator-Vout-Potenzial</input>
+            <c1>1.0</c1>
+        </lag_filter>
+        
+        <summer name="systems/electric/bus[1]/internal-power-generator-I-Allload">
             <input>systems/electric/bus[1]/I-bus0-to-bus1</input>
             <input>systems/electric/bus[1]/I</input>
             <input>systems/electric/bus[2]/I</input>
-            <input>systems/electric/bus[1]/canopy-command/I</input>
         </summer>
         
         <switch name="systems/electric/bus[1]/I-bus0-to-bus1">
@@ -285,23 +429,10 @@ Description: G91R4 Electric system from "Manuale di pilotaggio (p.56)
             </test>
         </switch>
         
-        <summer name="systems/electric/bus[1]/I">
-            <input>systems/electric/bus[1]/JATO-ignition/I</input>
-            <input>systems/electric/bus[1]/landing-light/I</input>
-            <input>systems/electric/bus[1]/gyrocompass/I</input>
-            <input>systems/electric/bus[1]/IFF/I</input>
-            <input>systems/electric/bus[1]/wing-flap/I</input>
-            <input>systems/electric/bus[1]/anti-collision-light/I</input>
-            <input>systems/electric/bus[1]/interior-lights/I</input>
-            <input>systems/electric/bus[1]/radiogoniometer/I</input>
-            <input>systems/electric/bus[1]/UHF-radio/I</input>
-            <input>systems/electric/bus[1]/UHF-radio-emergency/I</input>
-            <input>systems/electric/bus[1]/pitot-heating/I</input>
-            <input>systems/electric/bus[1]/beacon/I</input>
-            <input>systems/electric/bus[1]/starter/I</input>
-            <input>systems/electric/bus[1]/primary-inverter/I</input>
-            <input>systems/electric/bus[1]/secondary-inverter/I</input>
-        </summer>
+        <pure_gain name="systems/electric/bus[1]/W">
+            <input>systems/electric/bus[1]/I</input>
+            <gain>systems/electric/bus[1]/V</gain>
+        </pure_gain>
         
     </channel>
 
@@ -315,19 +446,11 @@ Description: G91R4 Electric system from "Manuale di pilotaggio (p.56)
             </test>
         </switch>
         
-        <summer name="systems/electric/bus[2]/I">
-            <input>systems/electric/bus[2]/doppler/I</input>
-            <input>systems/electric/bus[2]/position-lights/I</input>
-            <input>systems/electric/bus[2]/cockpit-lights/I</input>
-            <input>systems/electric/bus[2]/cameras/camera[1]/I</input>
-            <input>systems/electric/bus[2]/cameras/camera[2]/I</input>
-            <input>systems/electric/bus[2]/cameras/camera[3]/I</input>
-            <input>systems/electric/bus[2]/PHI/I</input>
-            <input>systems/electric/bus[2]/magnetic-tape/I</input>
-            <input>systems/electric/bus[2]/primary-inverter/I</input>
-            <input>systems/electric/bus[2]/pitch-damper/I</input>
-            <input>systems/electric/bus[2]/yaw-damper/I</input>
-        </summer>
+        <pure_gain name="systems/electric/bus[2]/W">
+            <input>systems/electric/bus[2]/I</input>
+            <gain>systems/electric/bus[2]/V</gain>
+        </pure_gain>
+        
     </channel>
     
     
@@ -419,19 +542,6 @@ Description: G91R4 Electric system from "Manuale di pilotaggio (p.56)
         
     </channel>
     
-    
-    <function name="systems/electric/bus[1]/internal-power-generator-V-n1">
-        <table>
-            <independentVar>propulsion/engine/n1</independentVar>
-            <tableData>
-                0.0   0.0
-                10.0  12.0
-                20.0  18.0
-                35.0  28.0
-                100.0 30.0
-            </tableData>
-        </table>
-    </function>
     
 </system>
 

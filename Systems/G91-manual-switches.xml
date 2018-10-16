@@ -13,6 +13,7 @@
     <property value="0">systems/manual-switches/jato/sw-ignition-togle</property>
     <property value="0">systems/manual-switches/jato/sw-jettinson-togle</property>
     <property value="0">systems/manual-switches/cockpit/sw-landing-light-test-togle</property>
+    <property value="0">systems/manual-switches/cockpit/sw-emergency-release-togle</property>
     <property value="0">systems/manual-switches/cockpit/sw-landing-light</property>
     <property value="0">systems/manual-switches/cockpit/sw-beacon-light</property>
     <property value="0">systems/manual-switches/lateral_panel_left/dampers/sw-pitch-damper-togle</property>
@@ -361,6 +362,52 @@
             <test logic="AND" value="1">
                 systems/manual-switches/lateral_panel_left/dampers/sw-yaw-damper-pos GE 0.9
             </test>
+        </switch>
+        
+        <!-- Emergency release loads -->
+        <washout_filter name="systems/manual-switches/cockpit/sw-emergency-release-togle-washed">
+            <input>systems/manual-switches/cockpit/sw-emergency-release-togle</input>
+            <c1>1.0</c1>
+        </washout_filter>
+        
+        <switch name="systems/manual-switches/cockpit/sw-emergency-release-togle-norm">
+            <default value="1"/>
+            <test logic="AND" value = "0">
+                systems/manual-switches/cockpit/sw-emergency-release-togle-washed LT 0.6
+                systems/manual-switches/cockpit/sw-emergency-release-togle-washed GT -0.6
+            </test>
+        </switch>
+        
+        <switch name="systems/manual-switches/cockpit/sw-emergency-release-trigger">
+            <default value="systems/manual-switches/cockpit/sw-emergency-release-trigger"/>
+            <test logic="AND" value="1">
+                systems/manual-switches/cockpit/sw-emergency-release-togle-norm == 1
+                systems/manual-switches/cockpit/sw-emergency-release-pos LE 0.05
+                systems/manual-switches/cockpit/sw-emergency-release-trigger == 0
+            </test>
+            <test logic="AND" value="0">
+                systems/manual-switches/cockpit/sw-emergency-release-pos GT 0.95
+            </test>
+        </switch>
+        
+        <lag_filter name="systems/manual-switches/cockpit/sw-emergency-release-pos">
+            <input>systems/manual-switches/cockpit/sw-emergency-release-trigger</input>
+            <c1>1.0</c1>
+        </lag_filter>
+        
+        <switch name="systems/manual-switches/cockpit/sw-emergency-release">
+            <default value="0"/>
+            <test logic="AND" value="1">
+                systems/manual-switches/cockpit/sw-emergency-release-trigger == 1
+                systems/manual-switches/cockpit/sw-emergency-release-pos GT 0.50
+                systems/electric/bus[0]/emergency-release-of-external-loads/fuse == 1
+                systems/electric/bus[0]/V GT 18.0
+            </test>
+            <test logic="AND" value="0">
+                systems/manual-switches/cockpit/sw-emergency-release-trigger == 0
+                systems/manual-switches/cockpit/sw-emergency-release-pos LE 0.50
+            </test>
+            <output>/sim/G91/stores/sw-emergency-release</output>
         </switch>
         
     </channel>

@@ -1,33 +1,44 @@
-var prop = props.globals.initNode("sim/G91/stores/handleRequestToLoadStation", 0, "DOUBLE");
-var prop = props.globals.initNode("sim/G91/stores/handleRequestToLoadType", 0, "DOUBLE");
+
+var prop = props.globals.initNode("sim/G91/stores/sw-emergency-release", 0, "DOUBLE");
 var prop = props.globals.initNode("sim/G91/stores/handleRequestToDrop", 0, "DOUBLE");
 var prop = props.globals.initNode("sim/G91/handle/handleRequestToDropPosition", 0, "DOUBLE");
 var prop = props.globals.initNode("sim/G91/stores/startStoreView", -1, "DOUBLE");
 var prop = props.globals.initNode("sim/G91/stores/lastStoreBalObj", "", "STRING");
 var prop = props.globals.initNode("sim/G91/stores/lastStoreBalObjDataPath", "", "STRING");
 
-# stationDxExternalTypeLoad define the load stationDxExternalTypeLoad
-# 0 - nothing
-# 10 - Thank type 450 lb (260 lit)
-# 20 - Single MK82
-var prop = props.globals.initNode("sim/G91/stores/stationSxExternalTypeLoad", 0, "DOUBLE");
-var prop = props.globals.initNode("sim/G91/stores/stationSxInternalTypeLoad", 0, "DOUBLE");
-var prop = props.globals.initNode("sim/G91/stores/stationDxInternalTypeLoad", 0, "DOUBLE");
-var prop = props.globals.initNode("sim/G91/stores/stationDxExternalTypeLoad", 0, "DOUBLE");
-
-var prop = props.globals.initNode("sim/G91/stores/stationSxExternalCount", 0, "DOUBLE");
-var prop = props.globals.initNode("sim/G91/stores/stationSxInternalCount", 0, "DOUBLE");
-var prop = props.globals.initNode("sim/G91/stores/stationDxInternalCount", 0, "DOUBLE");
-var prop = props.globals.initNode("sim/G91/stores/stationDxExternalCount", 0, "DOUBLE");
+# Drop trigger for store in the station
 var prop = props.globals.initNode("sim/G91/stores/stationSxExternalDropFromStation", 0, "DOUBLE");
 var prop = props.globals.initNode("sim/G91/stores/stationSxInternalDropFromStation", 0, "DOUBLE");
 var prop = props.globals.initNode("sim/G91/stores/stationDxInternalDropFromStation", 0, "DOUBLE");
 var prop = props.globals.initNode("sim/G91/stores/stationDxExternalDropFromStation", 0, "DOUBLE");
 
+# Weight for fuel thank (lbs)
 var prop = props.globals.initNode("sim/G91/stores/stationSxExternalContent/level-lbs", 0, "DOUBLE");
 var prop = props.globals.initNode("sim/G91/stores/stationSxInternalContent/level-lbs", 0, "DOUBLE");
 var prop = props.globals.initNode("sim/G91/stores/stationDxInternalContent/level-lbs", 0, "DOUBLE");
 var prop = props.globals.initNode("sim/G91/stores/stationDxExternalContent/level-lbs", 0, "DOUBLE");
+
+# ----------
+# LOADER end REMOVE loads
+#
+# Loader binding to parameters:
+# handleRequestToLoadStation - station number
+# handleRequestToLoadType - type store 
+# stationDxExternalTypeLoad define the load stationDxExternalTypeLoad
+# 0 - nothing
+# 10 - Thank type 450 lb (260 lit)
+# 20 - Single MK82
+# ----------
+
+var prop = props.globals.initNode("sim/G91/stores/handleRequestToLoadStation", 0, "DOUBLE");
+var prop = props.globals.initNode("sim/G91/stores/handleRequestToLoadType", 0, "DOUBLE");
+
+var prop = props.globals.initNode("sim/G91/stores/stationSxExternalTypeLoad", 0, "DOUBLE");
+var prop = props.globals.initNode("sim/G91/stores/stationSxInternalTypeLoad", 0, "DOUBLE");
+var prop = props.globals.initNode("sim/G91/stores/stationDxInternalTypeLoad", 0, "DOUBLE");
+var prop = props.globals.initNode("sim/G91/stores/stationDxExternalTypeLoad", 0, "DOUBLE");
+
+# Generic listener for load/unload all type stations and load
 
 setlistener("sim/G91/stores/handleRequestToLoadStation", func {
     var handleRequestToLoadStation = props.globals.getNode("sim/G91/stores/handleRequestToLoadStation",1).getValue();
@@ -48,7 +59,7 @@ setlistener("sim/G91/stores/handleRequestToLoadStation", func {
             stationDxExternalTypeLoad(loadType);
         }
     } else if (handleRequestToLoadStation < 0)  {
-        # unload station
+        # Unload station
         isUnLoadStation = -handleRequestToLoadStation;
         loadType = props.globals.getNode("sim/G91/stores/handleRequestToLoadType",1).getValue();
         if (isUnLoadStation == 1) {
@@ -61,10 +72,15 @@ setlistener("sim/G91/stores/handleRequestToLoadStation", func {
             stationDxExternalTypeLoadDrop();
         }
     }
+    # The load-unload station command is terminated, remove the action
     if (handleRequestToLoadStation != 0) {
         setprop("sim/G91/stores/handleRequestToLoadStation", 0);
     }
 }, 1, 0);
+
+# ----------
+# Functions for definine the load stations for types
+# ----------
 
 var stationSxExternalTypeLoad = func(typeLoad = 0) {
     
@@ -72,19 +88,31 @@ var stationSxExternalTypeLoad = func(typeLoad = 0) {
 
 var stationSxInternalTypeLoad = func(typeLoad = 0) {
     if (typeLoad = 10) {
-        setprop("sim/G91/stores/stationSxInternalTypeLoad", typeLoad);
+        print("Stores: stationSxInternalTypeLoad : ",10);
+        setprop("sim/G91/stores/stationSxInternalTypeLoad", 10);
         setprop("consumables/fuel/tank[4]/selected",1);
         setprop("consumables/fuel/tank[4]/level-norm", 1);
         setprop("sim/G91/stores/startStoreView", -1);
+        setprop("/fdm/jsbsim/systems/stations/stationSxInternal/Count",1);
+        setprop("/fdm/jsbsim/systems/stations/stationSxInternal/Weight",70);
+        setprop("/fdm/jsbsim/systems/stations/stationSxInternal/Cd",0.2);
+        setprop("/fdm/jsbsim/systems/stations/hardPointSxInternal/Count",1);
+        setprop("/fdm/jsbsim/systems/stations/hardPointDxInternal/Count",1);
     }
 }
 
 var stationDxInternalTypeLoad = func(typeLoad = 0) {
     if (typeLoad = 10) {
-        setprop("sim/G91/stores/stationDxInternalTypeLoad", typeLoad);
+        print("Stores: stationDxInternalTypeLoad : ",10);
+        setprop("sim/G91/stores/stationDxInternalTypeLoad", 10);
         setprop("consumables/fuel/tank[3]/selected",1);
         setprop("consumables/fuel/tank[3]/level-norm", 1);
         setprop("sim/G91/stores/startStoreView", -1);
+        setprop("/fdm/jsbsim/systems/stations/stationDxInternal/Count",1);
+        setprop("/fdm/jsbsim/systems/stations/stationDxInternal/Weight",70);
+        setprop("/fdm/jsbsim/systems/stations/stationDxInternal/Cd",0.2);
+        setprop("/fdm/jsbsim/systems/stations/hardPointSxInternal/Count",1);
+        setprop("/fdm/jsbsim/systems/stations/hardPointDxInternal/Count",1);
     }
 }
 
@@ -92,29 +120,41 @@ var stationDxExternalTypeLoad = func(typeLoad = 0) {
     
 }
 
+# ----------
+# Functions for definine the unload stations for types
+# ----------
+
 var stationSxExternalTypeLoadDrop = func() {
     
 }
 
 var stationSxInternalTypeLoadDrop = func() {
     var typeLoad = props.globals.getNode("sim/G91/stores/stationSxInternalTypeLoad",1).getValue();
-    if (typeLoad = 10) {
-        setprop("sim/G91/stores/stationSxInternalTypeLoad", 0);
+    if (typeLoad == 10) {
+        print("Stores: stationSxInternalTypeLoadDrop : ",typeLoad);
         setprop("consumables/fuel/tank[4]/level-norm", 0);
         setprop("consumables/fuel/tank[4]/selected",0);
+        setprop("sim/G91/stores/stationSxInternalTypeLoad", 0);
         setprop("sim/G91/stores/startStoreView", 0);
         setprop("sim/G91/stores/lastStoreBalObj","stationSxInternal_Tank260lit");
+        setprop("/fdm/jsbsim/systems/stations/stationSxInternal/Count",0);
+        setprop("/fdm/jsbsim/systems/stations/stationSxInternal/Weight",0);
+        setprop("/fdm/jsbsim/systems/stations/stationSxInternal/Cd",0);
     }
 }
 
 var stationDxInternalTypeLoadDrop = func() {
     var typeLoad = props.globals.getNode("sim/G91/stores/stationDxInternalTypeLoad",1).getValue();
-    if (typeLoad = 10) {
-        setprop("sim/G91/stores/stationDxInternalTypeLoad", 0);
+    if (typeLoad == 10) {
+        print("Stores: stationDxInternalTypeLoadDrop : ",typeLoad);
         setprop("consumables/fuel/tank[3]/level-norm", 0);
         setprop("consumables/fuel/tank[3]/selected",0);
+        setprop("sim/G91/stores/stationDxInternalTypeLoad", 0);
         setprop("sim/G91/stores/startStoreView", 0);
         setprop("sim/G91/stores/lastStoreBalObj","stationDxInternal_Tank260lit");
+        setprop("/fdm/jsbsim/systems/stations/stationSxInternal/Count",0);
+        setprop("/fdm/jsbsim/systems/stations/stationSxInternal/Weight",0);
+        setprop("/fdm/jsbsim/systems/stations/stationSxInternal/Cd",0);
     }
     
 }
@@ -123,13 +163,14 @@ var stationDxExternalTypeLoadDrop = func() {
     
 }
 
-# Auxiliary funtions
-
-# Remove all in external station
+# ----------
+# Emergency remove all in external station by Handle_Store or the push_button
+# ----------
 
 var return_Handle_Stores = func() {
 
     var handleRequestToDrop = props.globals.getNode("sim/G91/stores/handleRequestToDrop",1).getValue();
+    var emergency_release = props.globals.getNode("sim/G91/stores/sw-emergency-release",1).getValue();
     if (handleRequestToDrop > 0) {
         setprop("sim/G91/stores/handleRequestToDrop", 0);
         setprop("sim/G91/handle/handleRequestToDropPosition", 1);
@@ -137,16 +178,22 @@ var return_Handle_Stores = func() {
         stationSxInternalTypeLoadDrop();
         stationDxInternalTypeLoadDrop();
         stationDxExternalTypeLoadDrop();
-    }
-    var handleRequestToDropPosition = props.globals.getNode("sim/G91/handle/handleRequestToDropPosition",1).getValue();
-    if (handleRequestToDropPosition > 0) {
-        handleRequestToDropPosition = handleRequestToDropPosition - 0.05;
-        setprop("sim/G91/handle/handleRequestToDropPosition", handleRequestToDropPosition);
-        settimer(return_Handle_Stores,0.05);
-    } else if (handleRequestToDropPosition < 0.1) {
-        handleRequestToDropPosition = 0;
-        setprop("sim/G91/handle/handleRequestToDropPosition", handleRequestToDropPosition);
-        setprop("sim/G91/handle/handle_stores_block_flag",0);
+        var handleRequestToDropPosition = props.globals.getNode("sim/G91/handle/handleRequestToDropPosition",1).getValue();
+        if (handleRequestToDropPosition > 0) {
+            handleRequestToDropPosition = handleRequestToDropPosition - 0.05;
+            setprop("sim/G91/handle/handleRequestToDropPosition", handleRequestToDropPosition);
+            settimer(return_Handle_Stores,0.05);
+        } else if (handleRequestToDropPosition < 0.1) {
+            handleRequestToDropPosition = 0;
+            setprop("sim/G91/handle/handleRequestToDropPosition", handleRequestToDropPosition);
+            setprop("sim/G91/handle/handle_stores_block_flag",0);
+        }
+    } else if (emergency_release > 0) {
+        print("Stores: emergency_release");
+        stationSxExternalTypeLoadDrop();
+        stationSxInternalTypeLoadDrop();
+        stationDxInternalTypeLoadDrop();
+        stationDxExternalTypeLoadDrop();
     }
 }
 
@@ -154,10 +201,18 @@ setlistener("sim/G91/stores/handleRequestToDrop", func {
     return_Handle_Stores();
 }, 1, 0);
 
+setlistener("sim/G91/stores/sw-emergency-release", func {
+    return_Handle_Stores();
+}, 1, 0);
+
+# ----------
+# Transform the phisical static store object in balistic object
 # Fuel external tank from equipment fuel menu check
 # If consumables/fuel/tank[x]/selected is nil, remove the tank
+# ----------
 
 var storesTank = maketimer(1, func() {
+
     var tankSx_Selected = props.globals.getNode("consumables/fuel/tank[4]/selected",1).getValue();
     if (tankSx_Selected == nil) {
         setprop("consumables/fuel/tank[4]/selected", 0);
@@ -204,10 +259,12 @@ var storesTank = maketimer(1, func() {
 });
 storesTank.start();
 
+# ----------
 # Put the camera on the last model added
 # The /ai/models/model-added report the last model insert
+# ----------
 
-var transportToView = maketimer(0.01, func() {
+var transportToView = maketimer(0.0, func() {
     var startStoreView = props.globals.getNode("sim/G91/stores/startStoreView",1).getValue();
     if (startStoreView < 0) {
         var latitude_deg = props.globals.getNode("position/latitude-deg",1).getValue();
@@ -244,21 +301,34 @@ transportToView.start();
 setlistener("ai/models/model-added", func {
     var lastStoreBalObj = getprop("sim/G91/stores/lastStoreBalObj");
     var a = props.globals.getNode("/ai/models/model-added").getValue();
-    print(a);
-    var sub = props.globals.getNode(a);
-    var subName = sub.getChild("name").getValue();
-    print(subName);
-    if (string.imatch(lastStoreBalObj,subName)) {
-        setprop("sim/G91/stores/lastStoreBalObjDataPath", props.globals.getNode("/ai/models/model-added").getValue());
+    if (a != nil) {
+        var sub = props.globals.getNode(a);
+        if (sub != nil) {
+            var subName = sub.getValue("name");
+            if (subName != nil) {
+                print("Stores: setlistener ai/models/model-added:", subName);
+                if (string.imatch(lastStoreBalObj,subName)) {
+                    setprop("sim/G91/stores/lastStoreBalObjDataPath", props.globals.getNode("/ai/models/model-added").getValue());
+                    print("Stores: MATCH");
+                }
+            }
+        }
     }
 }, 1, 0);
 
 setlistener("ai/models/model-impact", func {
+    print("Stores: setlistener ai/models/model-impact");
     var lastStoreBalObj = getprop("sim/G91/stores/lastStoreBalObj");
     var sub = props.globals.getNode(props.globals.getNode("/ai/models/model-impact").getValue());
-    var subName = sub.getChild("name").getValue();
-    if (string.imatch(lastStoreBalObj,subName)) {
-#        setprop("sim/G91/stores/lastStoreBalObjDataPath", "");
+    if (sub != nil) {
+        var subName = sub.getValue("name");
+        if (subName != nil) {
+            print("Stores: setlistener ai/models/model-impact:", subName, " : ", lastStoreBalObj);
+            if (string.imatch(lastStoreBalObj,subName)) {
+                setprop("sim/G91/stores/lastStoreBalObjDataPath", "");
+                setprop("sim/G91/stores/startStoreView", -1);
+            }
+        }
     }
 }, 1, 0);
 

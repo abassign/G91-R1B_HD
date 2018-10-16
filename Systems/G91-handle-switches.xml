@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+
+<system name="Manual handle switches"> 
+    
+    <property value="0">systems/handle-switches/sw-handle-brake-trigger</property>
+    
+    <channel name="handle brake" execrate="8">
+        
+        <switch name="systems/handle-switches/sw-handle-brake-pos-status">
+            <default value="systems/handle-switches/sw-handle-brake-pos-status"/>
+            <test logic="AND" value="0">
+                gear/unit[0]/wheel-speed-fps GT 0.5
+                systems/handle-switches/sw-handle-brake-trigger == 0
+            </test>
+            <test logic="AND" value="1">
+                gear/unit[0]/wheel-speed-fps GT 0.5
+                systems/handle-switches/sw-handle-brake-trigger == 1
+            </test>
+            <test logic="AND" value="0">
+                gear/unit[0]/wheel-speed-fps LE 0.5
+                systems/handle-switches/sw-handle-brake-trigger == 1
+                systems/handle-switches/sw-handle-brake-pos-status == 2
+                systems/handle-switches/sw-handle-brake-pos-rotate GT 0.95
+            </test>
+            <test logic="AND" value="2">
+                gear/unit[0]/wheel-speed-fps LE 0.5
+                systems/handle-switches/sw-handle-brake-trigger == 1
+            </test>
+        </switch>
+        
+        <lag_filter name="systems/handle-switches/sw-handle-brake-pos-linear">
+            <input>systems/handle-switches/sw-handle-brake-pos-status-linear</input>
+            <c1>1.5</c1>
+        </lag_filter>
+        
+        <lag_filter name="systems/handle-switches/sw-handle-brake-pos-rotate">
+            <input>systems/handle-switches/sw-handle-brake-pos-status-rotate</input>
+            <c1>3.0</c1>
+        </lag_filter>
+        
+        <switch name="systems/handle-switches/sw-handle-brake-pos-status-linear">
+            <default value="systems/handle-switches/sw-handle-brake-pos-status-linear"/>
+            <test logic="AND" value="1">
+                systems/handle-switches/sw-handle-brake-pos-status GE 1
+            </test>
+            <test logic="AND" value="0">
+                systems/handle-switches/sw-handle-brake-pos-status == 0
+                systems/handle-switches/sw-handle-brake-pos-rotate LE 0.1
+            </test>
+        </switch>
+        
+        <switch name="systems/handle-switches/sw-handle-brake-pos-status-rotate">
+            <default value="0"/>
+            <test logic="AND" value="1">
+                systems/handle-switches/sw-handle-brake-pos-status == 2
+                systems/handle-switches/sw-handle-brake-pos-linear GT 0.9
+            </test>
+            <test logic="AND" value="0">
+                systems/handle-switches/sw-handle-brake-pos-status LE 1
+            </test>
+        </switch>
+        
+        <switch name="systems/handle-switches/sw-handle-brake-activate">
+            <default value="0"/>
+            <test logic="AND" value="1">
+                systems/handle-switches/sw-handle-brake-pos-linear GT 0.8
+            </test>
+        </switch>
+        
+    </channel>
+    
+</system>

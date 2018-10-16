@@ -83,8 +83,8 @@
             <text>
                 <label>9999999</label>
                 <live>true</live>
-                <format>Load %7.0f J</format>
-                <property>fdm/jsbsim/systems/electric/bus[0]/battery-load-J</property>
+                <format> Load %7.0f J</format>
+                <property>fdm/jsbsim/systems/electric/bus[0]/W-To-Battery</property>
                 <color>
                     <red>0.3</red>
                     <green>0.9</green>
@@ -97,17 +97,23 @@
             <text>
                 <label>99999999</label>
                 <live>true</live>
-                <format>%2.0f V.</format>
+                <format>%2.1f Volt</format>
                 <property>fdm/jsbsim/systems/electric/bus[0]/battery-V</property>
                 <color>
-                    <red>0.6</red>
-                    <green>0.2</green>
-                    <blue>0.2</blue>
+                    <red>1.0</red>
+                    <green>1.0</green>
+                    <blue>1.0</blue>
                 </color>
                 <halign>left</halign>
                 <row>0</row>
                 <col>5</col>
             </text>
+        </group>
+        
+            <hrule/>
+        
+        <group>
+            <layout>table</layout>
             <text>
                 <label>External generator</label>
                 <halign>right</halign>
@@ -133,8 +139,8 @@
             <text>
                 <label>99999999</label>
                 <live>true</live>
-                <format>%2.0f (V)</format>
-                <property>fdm/jsbsim/systems/electric/bus[1]/internal-power-generator-V-n1</property>
+                <format>%2.1f (V)</format>
+                <property>fdm/jsbsim/systems/electric/bus[1]/internal-power-generator-V</property>
                 <color>
                     <red>0.6</red>
                     <green>0.6</green>
@@ -383,23 +389,6 @@
     <group>
         <layout>vbox</layout>
         <group>
-            <layout>table</layout>
-            <text>
-                <label>Landing light</label>
-                <halign>right</halign>
-                <row>0</row>
-                <col>0</col>
-            </text>
-            <checkbox>
-                <row>0</row>
-                <col>1</col>
-                <halign>fill</halign>
-                <property>systems/manual-switches/cockpit/sw-landing-light</property>
-                <live>true</live>
-                <binding>
-                    <command>dialog-apply</command>
-                </binding>
-            </checkbox>
             <layout>table</layout>
             <text>
                 <label>Anticollision light</label>

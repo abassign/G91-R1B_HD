@@ -181,7 +181,7 @@
     </model>
     
     <model>
-        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Switchs_Lights/push_button_off_yaw_pitch_damper.xml</path>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Switchs_Lights/push_button_emergency_release_loads.xml</path>
         <offsets>
             <x-m>-3.1857</x-m>
             <y-m>-0.089</y-m>

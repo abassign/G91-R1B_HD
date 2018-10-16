@@ -89,15 +89,12 @@ Description: G91R2 Canopy automation
         <switch name="systems/canopy/electric-ok">
             <default value="0"/>
             <test logic="AND" value="1">
-                systems/electric/bus[1]/canopy-command/fuse == 1
-                <test logic="OR">
-                    systems/electric/bus[0]/V GT 18.0
-                    systems/electric/bus[1]/V GT 18.0
-                </test>
+                systems/electric/bus[0]/canopy-command/fuse == 1
+                systems/electric/bus[0]/V GT 18.0
             </test>
         </switch>
         
-        <switch name="systems/electric/bus[1]/canopy-command/I">
+        <switch name="systems/electric/bus[0]/canopy-command/I">
             <default value="0"/>
             <test logic="OR" value="6.0">
                 systems/canopy/position-go GE 0.01

@@ -2,11 +2,10 @@ var prop = props.globals.initNode("sim/G91/gauge/SFOM_83A/button", 60, "DOUBLE")
 var prop = props.globals.initNode("sim/G91/gauge/SFOM_83A/inclination", 0, "DOUBLE");
 var prop = props.globals.initNode("sim/G91/gauge/SFOM_83A/isLightActive", 0, "DOUBLE");
 var prop = props.globals.initNode("sim/G91/gauge/SFOM_83A/collimatorLight", 0, "DOUBLE");
-var prop = props.globals.initNode("sim/G91/gauge/SFOM_83A/whiteLight", 0, "DOUBLE");
+var prop = props.globals.initNode("sim/G91/gauge/SFOM_83A/alpha", 0, "DOUBLE");
 var prop = props.globals.initNode("sim/G91/gauge/SFOM_83A/collimator_red", 0, "DOUBLE");
 var prop = props.globals.initNode("sim/G91/gauge/SFOM_83A/collimator_green", 0, "DOUBLE");
 var prop = props.globals.initNode("sim/G91/gauge/SFOM_83A/collimator_blue", 0, "DOUBLE");
-var prop = props.globals.initNode("sim/G91/gauge/SFOM_83A/knob_intensity", 0, "DOUBLE");
 
 sfom83A_canvas = canvas.new({"name": "SFOM83A_canvas_Collimator_glass_TargetDOWN",
                     "size": [512,512], 
@@ -28,28 +27,31 @@ setlistener("/sim/G91/gauge/SFOM_83A/button", func {
 }, 1, 0);
 
 var color_cross_SFOM83A = maketimer(0.1, func() {
-    var lightIntesity = props.globals.getNode("sim/G91/gauge/SFOM_83A/knob_intensity",1).getValue();
+    var lightIntesity = props.globals.getNode("fdm/jsbsim/systems/electric/bus[1]/collimator-lighting/sw",1).getValue();
     var ambientRedLight = 0.0;
     var ambientGreenLight = 0.0;
     var ambientBlueLight = 0.0;
     var sun_angular_deg = props.globals.getNode("sim/G91/ambient-data/sun-angular-deg",1).getValue();
     var sun_direct_Light = 0.25 + math.pow((1 - sun_angular_deg * 0.01745 / 3.1428),2) * 0.75;
-    ambientRedLight = props.globals.getNode("rendering/scene/specular/red",1).getValue();
-    ambientGreenLight = props.globals.getNode("rendering/scene/specular/green",1).getValue();
-    ambientBlueLight = props.globals.getNode("rendering/scene/specular/blue",1).getValue();
-    var collimatorLight = 1.2 * (ambientRedLight + ambientGreenLight + ambientBlueLight) / 3;
-    whiteLight_sun = collimatorLight * (1 + sun_direct_Light);
+    ambientRedLight = props.globals.getNode("rendering/scene/chrome-light/red",1).getValue();
+    ambientGreenLight = props.globals.getNode("rendering/scene/chrome-light/green",1).getValue();
+    ambientBlueLight = props.globals.getNode("rendering/scene/chrome-light/blue",1).getValue() * 1.05;
+    var collimatorLight = (ambientRedLight + ambientGreenLight + ambientBlueLight) / 3;
+    whiteLight_sun = collimatorLight * (1 + sun_direct_Light) / 4.0;
     if (lightIntesity <= 0.01) {
         setprop("sim/G91/gauge/SFOM_83A/isLightActive", 0);
     } else {
         setprop("sim/G91/gauge/SFOM_83A/isLightActive", 1);
-        ambientRedLight = lightIntesity;
-        ambientGreenLight = 0.3 * lightIntesity;
+        var lightIntesityBattery = props.globals.getNode("fdm/jsbsim/systems/warning-lights/light-intensity-by-bus1-tension",1).getValue();
+        var lightIntesityFuse = props.globals.getNode("fdm/jsbsim/systems/electric/bus[1]/collimator-lighting/fuse",1).getValue();
+        setprop("fdm/jsbsim/systems/electric/bus[1]/collimator-lighting/I",0.2 * lightIntesityBattery * lightIntesityFuse * lightIntesity);
+        lightIntesity = lightIntesity * 0.6 * lightIntesityBattery * lightIntesityFuse;
+        ambientRedLight = 1.0;
+        ambientGreenLight = 0.5;
         ambientBlueLight = 0.0;
-        whiteLight_sun = (1 - collimatorLight * 3);
-        if (whiteLight_sun < 0.01) { whiteLight_sun = 0.0; }
+        whiteLight_sun = lightIntesity - whiteLight_sun * 0.9;
     }
-    setprop("sim/G91/gauge/SFOM_83A/whiteLight", whiteLight_sun);
+    setprop("sim/G91/gauge/SFOM_83A/alpha", whiteLight_sun);
     setprop("sim/G91/gauge/SFOM_83A/collimatorLight", collimatorLight);
     setprop("sim/G91/gauge/SFOM_83A/collimator_red",ambientRedLight);
     setprop("sim/G91/gauge/SFOM_83A/collimator_green",ambientGreenLight);

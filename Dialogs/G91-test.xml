@@ -488,7 +488,6 @@
         
     </group>
     <group>
-
         <layout>hbox</layout>
         <text>
             <halign>left</halign>
@@ -543,7 +542,70 @@
             <name>sim_G91_Test_V0_100B</name>
             <property>sim/G91/Test/V0_100B</property>
             <min>0.0</min>
-            <max>10.0</max>
+            <max>100.0</max>
+            <step>0.1</step>  
+            <binding>
+                <command>dialog-apply</command>
+            </binding>
+        </slider>
+    </group>
+    
+    <group>
+        <layout>hbox</layout>
+        <text>
+            <halign>left</halign>
+            <label>sim_G91_Test_V0_1000A = </label>
+        </text>
+        <text>
+            <label>99999</label>
+            <live>true</live>
+            <format>%3.3f </format>
+            <property>sim/G91/Test/V0_1000A</property>
+            <color>
+                <red>0.9</red>
+                <green>0.9</green>
+                <blue>0.9</blue>
+            </color>
+        </text>
+        <empty>
+            <stretch>true</stretch>
+        </empty>
+        <slider>
+            <name>sim_G91_Test_V0_1000A</name>
+            <property>sim/G91/Test/V0_1000A</property>
+            <min>0.0</min>
+            <max>1000.0</max>
+            <step>1.0</step>  
+            <binding>
+                <command>dialog-apply</command>
+            </binding>
+        </slider>
+        
+        <vrule/>
+        
+        <text>
+            <halign>left</halign>
+            <label>sim_G91_Test_V0_1000B = </label>
+        </text>
+        <text>
+            <label>99999</label>
+            <live>true</live>
+            <format>%3.3f </format>
+            <property>sim/G91/Test/V0_1000B</property>
+            <color>
+                <red>0.9</red>
+                <green>0.9</green>
+                <blue>0.9</blue>
+            </color>
+        </text>
+        <empty>
+            <stretch>true</stretch>
+        </empty>
+        <slider>
+            <name>sim_G91_Test_V0_1000B</name>
+            <property>sim/G91/Test/V0_1000B</property>
+            <min>0.0</min>
+            <max>1000.0</max>
             <step>0.1</step>  
             <binding>
                 <command>dialog-apply</command>

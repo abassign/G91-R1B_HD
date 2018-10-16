@@ -52,7 +52,7 @@
         <type>rotate</type>
         <object-name>Swicht_gun_01</object-name>
         <object-name>Swich_gun_02</object-name>
-        <property>sim/G91/gauge/SFOM_83A/knob_intensity</property>
+        <property>fdm/jsbsim/systems/electric/bus[1]/collimator-lighting/sw</property>
         <factor>-180</factor>
         <offset-deg>53</offset-deg>
         <center>
@@ -73,7 +73,7 @@
         <action>
             <binding>
                 <command>property-adjust</command>
-                <property>sim/G91/gauge/SFOM_83A/knob_intensity</property>
+                <property>fdm/jsbsim/systems/electric/bus[1]/collimator-lighting/sw</property>
                 <factor>0.1</factor>
                 <min>0</min>
                 <max>1</max>
