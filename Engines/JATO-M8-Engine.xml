@@ -10,7 +10,7 @@
     -->
 
 <rocket_engine name="JATO_M8_Engine">    
-    <isp>228</isp>
+    <isp>180</isp>
     <builduptime> 0.2 </builduptime>
     <variation>
         <thrust>0.02</thrust>
@@ -21,9 +21,9 @@
             0.0 200
             6.0 800
             8.0 1000
-            40.0 1000
-            50.0 800
-            60.0 500
+            50.0 1000
+            60.0 900
+            65.0 500
             70.0 0.0
         </tableData>
     </thrust_table>

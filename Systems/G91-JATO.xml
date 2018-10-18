@@ -6,7 +6,10 @@
     <property value="88.5">systems/jato/dry-weight</property>
     <property value="70">systems/jato/fuel-weight</property>
     <property value="0.25">systems/jato/rocket-drag-sqft</property>
-    <property value="70.0">systems/jato/rocket-fuel-lb</property>
+    <property value="70.0">systems/jato/rocket-fuel-lb-max</property>
+    <property value="0.0">systems/jato/rockets_started</property>
+    <property value="0.0">systems/jato/ignition-on</property>
+    <property value="0.0">systems/jato/jettinson-on</property>
     
     
     <channel name="jato mount or dismount" execrate="16">
@@ -104,7 +107,7 @@
         <switch name="systems/jato/ignition-on">
             <default value="0"/>
             <test logic = "AND" value = "1">
-                systems/jato/lg-ready-on GT 0.70
+                systems/jato/electric-active == 1
                 systems/manual-switches/jato/sw-ignition == 1
             </test>
         </switch>
@@ -126,6 +129,7 @@
             <test logic = "AND" value = "1">
                 systems/jato/ignition-on == 1
                 systems/jato/rocket_number_1 == 1
+                propulsion/tank[8]/contents-lbs GE systems/jato/rocket-fuel-lb-max
             </test>
             <output>/controls/engines/engine[1]/throttle</output>
         </switch>
@@ -135,6 +139,7 @@
             <test logic = "AND" value = "1">
                 systems/jato/ignition-on == 1
                 systems/jato/rocket_number_2 == 1
+                propulsion/tank[9]/contents-lbs GE systems/jato/rocket-fuel-lb-max
             </test>
             <output>/controls/engines/engine[2]/throttle</output>
         </switch>
@@ -144,6 +149,7 @@
             <test logic = "AND" value = "1">
                 systems/jato/ignition-on == 1
                 systems/jato/rocket_number_3 == 1
+                propulsion/tank[10]/contents-lbs GE systems/jato/rocket-fuel-lb-max
             </test>
             <output>/controls/engines/engine[3]/throttle</output>
         </switch>
@@ -153,6 +159,7 @@
             <test logic = "AND" value = "1">
                 systems/jato/ignition-on == 1
                 systems/jato/rocket_number_4 == 1
+                propulsion/tank[11]/contents-lbs GE systems/jato/rocket-fuel-lb-max
             </test>
             <output>/controls/engines/engine[4]/throttle</output>
         </switch>
@@ -207,67 +214,82 @@
         
     </channel>
     
+    
     <!--
+    This channel is used to avoid the problem of rocket ignition when the throttle
+    is placed at the end of its stroke.
+    If the rocket had a different modality of start it would be possible to avoid this particular system.
+    -->
     <channel name="Load JATO Fuel" execrate="16">
         
-        <switch name="systems/jato/rocket_number_1_fuel_load">
-            <default value="0"/>
+        <switch name="systems/jato/rockets_started">
+            <default value="systems/jato/rockets_started"/>
             <test logic = "AND" value = "1">
+                systems/jato/ignition-on == 1
+            </test>
+            <test logic = "AND" value = "0">
+                systems/jato/thrust-lbs-total GT 1
+            </test>
+        </switch>
+        
+        <switch name="systems/jato/rocket_number_1_loading_lb">
+            <default value="0"/>
+            <test logic = "AND" value = "1000">
                 systems/jato/rocket_number_1 == 1
-                propulsion/tank[8]/contents-lbs LT systems/jato/rocket-fuel-lb
-                ....
+                propulsion/tank[8]/contents-lbs LT systems/jato/rocket-fuel-lb-max
+                systems/jato/rockets_started == 1
             </test>
         </switch>
         
-        <switch>
+        <summer>
+            <input>systems/jato/rocket_number_1_loading_lb</input>
+            <output>propulsion/tank[8]/external-flow-rate-pps</output>
+        </summer>
+        
+        <switch name="systems/jato/rocket_number_2_loading_lb">
             <default value="0"/>
-            <test logic = "AND" value = "systems/jato/rocket-drag-sqft">
+            <test logic = "AND" value = "1000">
                 systems/jato/rocket_number_2 == 1
+                propulsion/tank[9]/contents-lbs LT systems/jato/rocket-fuel-lb-max
+                systems/jato/rockets_started == 1
             </test>
-            <output>systems/jato/rocket-drag[2]</output>
         </switch>
         
-        <switch>
+        <summer>
+            <input>systems/jato/rocket_number_2_loading_lb</input>
+            <output>propulsion/tank[9]/external-flow-rate-pps</output>
+        </summer>
+        
+        <switch name="systems/jato/rocket_number_3_loading_lb">
             <default value="0"/>
-            <test logic = "AND" value = "systems/jato/rocket-drag-sqft">
+            <test logic = "AND" value = "1000">
                 systems/jato/rocket_number_3 == 1
+                propulsion/tank[10]/contents-lbs LT systems/jato/rocket-fuel-lb-max
+                systems/jato/rockets_started == 1
             </test>
-            <output>systems/jato/rocket-drag[3]</output>
         </switch>
         
-        <switch>
+        <summer>
+            <input>systems/jato/rocket_number_3_loading_lb</input>
+            <output>propulsion/tank[10]/external-flow-rate-pps</output>
+        </summer>
+        
+        <switch name="systems/jato/rocket_number_4_loading_lb">
             <default value="0"/>
-            <test logic = "AND" value = "systems/jato/rocket-drag-sqft">
+            <test logic = "AND" value = "1000">
                 systems/jato/rocket_number_4 == 1
-            </test>
-            <output>systems/jato/rocket-drag[4]</output>
-        </switch>
-...
-        <switch name="fuel/from-tank3-to-tank6">
-            <default value="0"/>
-            <test logic="AND" value="3">
-                propulsion/tank[3]/priority EQ 1 
-                propulsion/tank[3]/contents-lbs GT 0
-                propulsion/tank[6]/contents-lbs LT 9
-                propulsion/tank[6]/priority EQ 1
-                accelerations/Nz GE -0.5
+                propulsion/tank[11]/contents-lbs LT systems/jato/rocket-fuel-lb-max
+                systems/jato/rockets_started == 1
             </test>
         </switch>
-
-        <switch name="fuel/from-tank4-to-tank6">
-            <default value="0"/>
-            <test logic="AND" value="3">
-                propulsion/tank[4]/priority EQ 1 
-                propulsion/tank[4]/contents-lbs GT 0
-                propulsion/tank[6]/contents-lbs LT 9
-                propulsion/tank[6]/priority EQ 1
-                accelerations/Nz GE -0.5
-            </test>
-        </switch>
-
         
+        <summer>
+            <input>systems/jato/rocket_number_4_loading_lb</input>
+            <output>propulsion/tank[11]/external-flow-rate-pps</output>
+        </summer>
+
     </channel>
-            -->
+    
     
     <channel name="jato weight" execrate="16">
         

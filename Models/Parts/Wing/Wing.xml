@@ -34,7 +34,7 @@
         <object-name>A_flap_dx</object-name>
         <object-name>A_flap_dx.006</object-name>
     </animation>
-
+    
     <!-- Chrome Effects on materials -->
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/glass-chrome</inherits-from>
@@ -121,26 +121,26 @@
     
     <!--
     <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_external_canvas</inherits-from>
-        <object-name>A__G91_fuselage_int.weapon.door.001</object-name>
+    <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_external_canvas</inherits-from>
+    <object-name>A__G91_fuselage_int.weapon.door.001</object-name>
     </effect>
-
+    
     <animation> 
-        <type>material</type>
-        <object-name>A__G91_fuselage_int.weapon.door.001</object-name>
-        <ambient>
-            <red>1.0</red>
-            <green>1.0</green>
-            <blue>1.0</blue>
-        </ambient>
-        <specular>
-            <red>1.0</red>
-            <green>1.0</green>
-            <blue>1.0</blue>
-        </specular>
+    <type>material</type>
+    <object-name>A__G91_fuselage_int.weapon.door.001</object-name>
+    <ambient>
+    <red>1.0</red>
+    <green>1.0</green>
+    <blue>1.0</blue>
+    </ambient>
+    <specular>
+    <red>1.0</red>
+    <green>1.0</green>
+    <blue>1.0</blue>
+    </specular>
     </animation>
     -->
-   
+    
     <effect>
         <inherits-from>Effects/model-combined-deferred</inherits-from>
         <object-name>A__G91_fuselage_int.weapon.door.001</object-name>

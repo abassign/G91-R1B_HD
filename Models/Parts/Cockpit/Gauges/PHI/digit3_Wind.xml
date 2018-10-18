@@ -81,4 +81,61 @@
         </emission>
     </animation>
     
+    <animation>
+        <type>rotate</type>
+        <object-name>digit_1A</object-name>
+        <object-name>digit_1B</object-name>
+        <property>fdm/jsbsim/systems/gauges/PHI/wind/digit1AW</property>
+        <factor>-36</factor>
+        <offset-deg>40</offset-deg>
+        <axis>
+            <x>  0 </x>
+            <y>  1 </y>
+            <z>  0 </z>
+        </axis>
+        <center>
+            <x-m> -0.00661 </x-m>
+            <y-m> 0.0 </y-m>
+            <z-m> -0.01963 </z-m>
+        </center>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>digit_2A</object-name>
+        <object-name>digit_2B</object-name>
+        <property>fdm/jsbsim/systems/gauges/PHI/wind/digit2AW</property>
+        <factor>-36</factor>
+        <offset-deg>40</offset-deg>
+        <axis>
+            <x>  0 </x>
+            <y>  1 </y>
+            <z>  0 </z>
+        </axis>
+        <center>
+            <x-m> -0.00661 </x-m>
+            <y-m> 0.0 </y-m>
+            <z-m> -0.01963 </z-m>
+        </center>
+    </animation>
+
+    <animation>
+        <type>rotate</type>
+        <object-name>digit_3A</object-name>
+        <object-name>digit_3B</object-name>
+        <property>fdm/jsbsim/systems/gauges/PHI/wind/digit3AW</property>
+        <factor>-36</factor>
+        <offset-deg>40</offset-deg>
+        <axis>
+            <x>  0 </x>
+            <y>  1 </y>
+            <z>  0 </z>
+        </axis>
+        <center>
+            <x-m> -0.00661 </x-m>
+            <y-m> 0.0 </y-m>
+            <z-m> -0.01963 </z-m>
+        </center>
+    </animation>
+    
 </PropertyList> 

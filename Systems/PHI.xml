@@ -2,10 +2,68 @@
 
 <system name="PHI">
     
+    <property value="0.0">systems/gauges/PHI/doppler-operative</property>
+    <property value="0.0">systems/gauges/PHI/indicator/dist</property>
+    <property value="0.0">systems/gauges/PHI/var-deg</property>
+    <property value="0.0">systems/gauges/PHI/wind/wd</property>
+    <property value="0.0">systems/gauges/PHI/wind/ws</property>
+    <property value="80.0">systems/gauges/PHI/dir-div-1AW</property>
+    <property value="10.0">systems/gauges/PHI/dir-div-2AW</property>
+    
+    
+    <channel name="systems gauges PHI electric" execrate="32">
+        
+        <switch name="systems/gauges/PHI/operative">
+            <default value="0"/>
+            <test logic="AND" value="1">
+                systems/electric/bus[2]/PHI/fuse == 1
+                systems/electric/bus[2]/V GE 24.0
+            </test>
+        </switch>
+        
+    </channel>
+    
+    
+    <channel name="systems gauges PHI attitude" execrate="4">
+        
+        <fcs_function name="systems/gauges/PHI/attitude/heading-true-deg">
+            <function>
+                <ifthen>
+                    <p>systems/gauges/PHI/operative</p>
+                    <difference>
+                        <product>
+                            <p>attitude/heading-true-rad</p>
+                            <v>57.2958</v>
+                        </product>
+                        <p>systems/gauges/PHI/var-deg</p>
+                    </difference>
+                    <v>0.0</v>
+                </ifthen>
+            </function>
+            <output>systems/airbrake/sound-roumble</output>
+        </fcs_function>
+        
+        <lag_filter name="systems/gauges/PHI/attitude/heading-true-deg-lag">
+            <input>systems/gauges/PHI/attitude/heading-true-deg</input>
+            <c1>1.0</c1>
+        </lag_filter>
+        
+    </channel>
+    
+    
     <channel name="systems gauges PHI radar doppler" execrate="8">
         
+        <switch name="systems/gauges/PHI/vtrue-fps-active">
+            <default value="0"/>
+            <test logic="AND" value="velocities/vtrue-fps">
+                velocities/vtrue-kts GE 80.0
+                gear/unit[0]/compression-ft LT 0.01
+                systems/gauges/PHI/operative == 1
+            </test>
+        </switch>
+        
         <sensor name="systems/gauges/PHI/radar-v-fts">
-            <input>velocities/vtrue-fps</input>
+            <input>systems/gauges/PHI/vtrue-fps-active</input>
             <lag>0.0</lag>
             <noise variation="PERCENT" distribution="GAUSSIAN"> 0.01 </noise>
             <quantization name="name">
@@ -29,11 +87,78 @@
             <gain>0.00018939393</gain>
         </pure_gain>
         
+    </channel>
+    
+    
+    <channel name="systems gauges PHI indicator digit" execrate="4">
+        
+        <fcs_function name="systems/gauges/PHI/indicator/mil-sum">
+            <function>
+                <sum>
+                    <p>systems/gauges/PHI/radar-s-mil</p>
+                    <p>systems/gauges/PHI/indicator/dist</p>
+                    <v>0.1</v>
+                </sum>
+            </function>
+        </fcs_function>
+        
+        <!--
+        <fcs_function name="systems/gauges/PHI/indicator/dist-correct">
+            <function>
+                <ifthen>
+                    <lt>
+                        <p>systems/gauges/PHI/indicator/mil-sum</p>
+                        <v>0.0</v>
+                    </lt>
+                    <difference>
+                        <p>systems/gauges/PHI/indicator/dist</p>
+                        <sum>
+                            <p>systems/gauges/PHI/indicator/dist</p>
+                            <p>systems/gauges/PHI/radar-s-mil</p>
+                        </sum>
+                    </difference>
+                    <p>0.0</p>
+                </ifthen>
+            </function>
+        </fcs_function>
+        
+        <switch name="systems/gauges/PHI/indicator/dist">
+            <default value="systems/gauges/PHI/indicator/dist"/>
+            <test logic="AND" value="systems/gauges/PHI/indicator/dist-correct">
+                systems/gauges/PHI/indicator/dist-correct NE systems/gauges/PHI/indicator/dist
+            </test>
+        </switch>
+        -->
+
+        <fcs_function name="systems/gauges/PHI/indicator/mil-direction">
+            <function>
+                <ifthen>
+                    <le>
+                        <abs>
+                            <difference>
+                                <p>systems/gauges/PHI/indicator/digit3AW</p>
+                                <p>systems/gauges/PHI/indicator/mil-sum</p>
+                            </difference>
+                        </abs>
+                        <v>0.01</v>
+                    </le>
+                    <v>0.0</v>
+                    <quotient>
+                        <difference>
+                            <p>systems/gauges/PHI/indicator/mil-sum</p>
+                            <p>systems/gauges/PHI/indicator/digit3AW</p>
+                        </difference>
+                        <v>20</v>
+                    </quotient>
+                </ifthen>
+            </function>
+        </fcs_function>
+        
         <fcs_function name="systems/gauges/PHI/indicator/digit1A">
             <function>
                 <integer>
                     <quotient>
-                        <p>systems/gauges/PHI/radar-s-mil</p>
+                        <p>systems/gauges/PHI/indicator/mil-sum</p>
                         <v>100.0</v>
                     </quotient>
                 </integer>
@@ -43,13 +168,26 @@
         <fcs_function name="systems/gauges/PHI/indicator/digit1AW">
             <function>
                 <ifthen>
-                    <lt>
-                        <p>systems/gauges/PHI/indicator/digit1AW</p>
-                        <p>systems/gauges/PHI/indicator/digit1A</p>
-                    </lt>
+                    <ifthen>
+                        <gt>
+                            <p>systems/gauges/PHI/indicator/mil-direction</p>
+                            <v>0.0</v>
+                        </gt>
+                        <lt>
+                            <p>systems/gauges/PHI/indicator/digit1AW</p>
+                            <p>systems/gauges/PHI/indicator/digit1A</p>
+                        </lt>
+                        <gt>
+                            <p>systems/gauges/PHI/indicator/digit1AW</p>
+                            <p>systems/gauges/PHI/indicator/digit1A</p>
+                        </gt>
+                    </ifthen>
                     <sum>
                         <p>systems/gauges/PHI/indicator/digit1AW</p>
-                        <v>0.05</v>
+                        <quotient>
+                            <p>systems/gauges/PHI/indicator/mil-direction</p>
+                            <p>systems/gauges/PHI/dir-div-1AW</p>
+                        </quotient>
                     </sum>
                     <p>systems/gauges/PHI/indicator/digit1AW</p>
                 </ifthen>
@@ -60,7 +198,7 @@
             <function>
                 <integer>
                     <quotient>
-                        <p>systems/gauges/PHI/radar-s-mil</p>
+                        <p>systems/gauges/PHI/indicator/mil-sum</p>
                         <v>10.0</v>
                     </quotient>
                 </integer>
@@ -70,13 +208,26 @@
         <fcs_function name="systems/gauges/PHI/indicator/digit2AW">
             <function>
                 <ifthen>
-                    <lt>
-                        <p>systems/gauges/PHI/indicator/digit2AW</p>
-                        <p>systems/gauges/PHI/indicator/digit2A</p>
-                    </lt>
+                    <ifthen>
+                        <gt>
+                            <p>systems/gauges/PHI/indicator/mil-direction</p>
+                            <v>0.0</v>
+                        </gt>
+                        <lt>
+                            <p>systems/gauges/PHI/indicator/digit2AW</p>
+                            <p>systems/gauges/PHI/indicator/digit2A</p>
+                        </lt>
+                        <gt>
+                            <p>systems/gauges/PHI/indicator/digit2AW</p>
+                            <p>systems/gauges/PHI/indicator/digit2A</p>
+                        </gt>
+                    </ifthen>
                     <sum>
                         <p>systems/gauges/PHI/indicator/digit2AW</p>
-                        <v>0.05</v>
+                        <quotient>
+                            <p>systems/gauges/PHI/indicator/mil-direction</p>
+                            <p>systems/gauges/PHI/dir-div-2AW</p>
+                        </quotient>
                     </sum>
                     <p>systems/gauges/PHI/indicator/digit2AW</p>
                 </ifthen>
@@ -86,7 +237,7 @@
         <fcs_function name="systems/gauges/PHI/indicator/digit3A">
             <function>
                 <integer>
-                    <p>systems/gauges/PHI/radar-s-mil</p>
+                    <p>systems/gauges/PHI/indicator/mil-sum</p>
                 </integer>
             </function>
         </fcs_function>
@@ -94,15 +245,177 @@
         <fcs_function name="systems/gauges/PHI/indicator/digit3AW">
             <function>
                 <ifthen>
-                    <lt>
-                        <p>systems/gauges/PHI/indicator/digit3AW</p>
-                        <p>systems/gauges/PHI/indicator/digit3A</p>
-                    </lt>
+                    <ifthen>
+                        <gt>
+                            <p>systems/gauges/PHI/indicator/mil-direction</p>
+                            <v>0.0</v>
+                        </gt>
+                        <lt>
+                            <p>systems/gauges/PHI/indicator/digit3AW</p>
+                            <p>systems/gauges/PHI/indicator/digit3A</p>
+                        </lt>
+                        <gt>
+                            <p>systems/gauges/PHI/indicator/digit3AW</p>
+                            <p>systems/gauges/PHI/indicator/digit3A</p>
+                        </gt>
+                    </ifthen>
                     <sum>
                         <p>systems/gauges/PHI/indicator/digit3AW</p>
-                        <v>0.05</v>
+                        <p>systems/gauges/PHI/indicator/mil-direction</p>
                     </sum>
                     <p>systems/gauges/PHI/indicator/digit3AW</p>
+                </ifthen>
+            </function>
+        </fcs_function>
+        
+    </channel>
+    
+    
+    <channel name="systems gauges PHI wind digit" execrate="4">
+        
+        <fcs_function name="systems/gauges/PHI/wind/ws-sum">
+            <function>
+                <sum>
+                    <p>systems/gauges/PHI/wind/ws</p>
+                    <v>0.1</v>
+                </sum>
+            </function>
+        </fcs_function>
+        
+        <fcs_function name="systems/gauges/PHI/wind/ws-direction">
+            <function>
+                <ifthen>
+                    <le>
+                        <abs>
+                            <difference>
+                                <p>systems/gauges/PHI/wind/digit3AW</p>
+                                <p>systems/gauges/PHI/wind/ws-sum</p>
+                            </difference>
+                        </abs>
+                        <v>0.01</v>
+                    </le>
+                    <v>0.0</v>
+                    <quotient>
+                        <difference>
+                            <p>systems/gauges/PHI/wind/ws-sum</p>
+                            <p>systems/gauges/PHI/wind/digit3AW</p>
+                        </difference>
+                        <v>20</v>
+                    </quotient>
+                </ifthen>
+            </function>
+        </fcs_function>
+        
+        <fcs_function name="systems/gauges/PHI/wind/digit1A">
+            <function>
+                <integer>
+                    <quotient>
+                        <p>systems/gauges/PHI/wind/ws-sum</p>
+                        <v>100.0</v>
+                    </quotient>
+                </integer>
+            </function>
+        </fcs_function>
+        
+        <fcs_function name="systems/gauges/PHI/wind/digit1AW">
+            <function>
+                <ifthen>
+                    <ifthen>
+                        <gt>
+                            <p>systems/gauges/PHI/wind/ws-direction</p>
+                            <v>0.0</v>
+                        </gt>
+                        <lt>
+                            <p>systems/gauges/PHI/wind/digit1AW</p>
+                            <p>systems/gauges/PHI/wind/digit1A</p>
+                        </lt>
+                        <gt>
+                            <p>systems/gauges/PHI/wind/digit1AW</p>
+                            <p>systems/gauges/PHI/wind/digit1A</p>
+                        </gt>
+                    </ifthen>
+                    <sum>
+                        <p>systems/gauges/PHI/wind/digit1AW</p>
+                        <quotient>
+                            <p>systems/gauges/PHI/wind/ws-direction</p>
+                            <p>systems/gauges/PHI/dir-div-1AW</p>
+                        </quotient>
+                    </sum>
+                    <p>systems/gauges/PHI/wind/digit1AW</p>
+                </ifthen>
+            </function>
+        </fcs_function>
+        
+        <fcs_function name="systems/gauges/PHI/wind/digit2A">
+            <function>
+                <integer>
+                    <quotient>
+                        <p>systems/gauges/PHI/wind/ws-sum</p>
+                        <v>10.0</v>
+                    </quotient>
+                </integer>
+            </function>
+        </fcs_function>
+        
+        <fcs_function name="systems/gauges/PHI/wind/digit2AW">
+            <function>
+                <ifthen>
+                    <ifthen>
+                        <gt>
+                            <p>systems/gauges/PHI/wind/ws-direction</p>
+                            <v>0.0</v>
+                        </gt>
+                        <lt>
+                            <p>systems/gauges/PHI/wind/digit2AW</p>
+                            <p>systems/gauges/PHI/wind/digit2A</p>
+                        </lt>
+                        <gt>
+                            <p>systems/gauges/PHI/wind/digit2AW</p>
+                            <p>systems/gauges/PHI/wind/digit2A</p>
+                        </gt>
+                    </ifthen>
+                    <sum>
+                        <p>systems/gauges/PHI/wind/digit2AW</p>
+                        <quotient>
+                            <p>systems/gauges/PHI/wind/ws-direction</p>
+                            <p>systems/gauges/PHI/dir-div-2AW</p>
+                        </quotient>
+                    </sum>
+                    <p>systems/gauges/PHI/wind/digit2AW</p>
+                </ifthen>
+            </function>
+        </fcs_function>
+        
+        <fcs_function name="systems/gauges/PHI/wind/digit3A">
+            <function>
+                <integer>
+                    <p>systems/gauges/PHI/wind/ws-sum</p>
+                </integer>
+            </function>
+        </fcs_function>
+        
+        <fcs_function name="systems/gauges/PHI/wind/digit3AW">
+            <function>
+                <ifthen>
+                    <ifthen>
+                        <gt>
+                            <p>systems/gauges/PHI/wind/ws-direction</p>
+                            <v>0.0</v>
+                        </gt>
+                        <lt>
+                            <p>systems/gauges/PHI/wind/digit3AW</p>
+                            <p>systems/gauges/PHI/wind/digit3A</p>
+                        </lt>
+                        <gt>
+                            <p>systems/gauges/PHI/wind/digit3AW</p>
+                            <p>systems/gauges/PHI/wind/digit3A</p>
+                        </gt>
+                    </ifthen>
+                    <sum>
+                        <p>systems/gauges/PHI/wind/digit3AW</p>
+                        <p>systems/gauges/PHI/wind/ws-direction</p>
+                    </sum>
+                    <p>systems/gauges/PHI/wind/digit3AW</p>
                 </ifthen>
             </function>
         </fcs_function>

@@ -85,20 +85,23 @@
         
         <fcs_function name="location-z-in">
             <function>
-                <table>
-                    <independentVar>fcs/speedbrake-pos-norm</independentVar>
-                    <tableData>
-                        0 19.7
-                        0.125 21.2
-                        0.25 22.8
-                        0.375 24.3
-                        0.5 25.7
-                        0.625 27.2
-                        0.75 28.5
-                        0.875 29.8
-                        1 31.1
-                    </tableData>
-                </table>
+                <product>
+                    <v>-1.0</v>
+                    <table>
+                        <independentVar>fcs/speedbrake-pos-norm</independentVar>
+                        <tableData>
+                            0 19.7
+                            0.125 21.2
+                            0.25 22.8
+                            0.375 24.3
+                            0.5 25.7
+                            0.625 27.2
+                            0.75 28.5
+                            0.875 29.8
+                            1 31.1
+                        </tableData>
+                    </table>
+                </product>
             </function>
             <output>external_reactions/Airbrake/location-z-in</output>
         </fcs_function>
