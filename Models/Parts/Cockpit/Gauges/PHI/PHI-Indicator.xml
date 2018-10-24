@@ -479,8 +479,8 @@
         <factor>1</factor>
         <center>
             <x-m>  0.004 </x-m>
-            <y-m>  0.0416 </y-m>
-            <z-m>  0.04053 </z-m>
+            <y-m>  0.04103 </y-m>
+            <z-m>  0.04103 </z-m>
         </center>
         <axis>
             <x>-1</x>
@@ -517,6 +517,99 @@
             <x-m>  0.004 </x-m>
             <y-m>  -0.041 </y-m>
             <z-m>  -0.042 </z-m>
+        </center>
+        <axis>
+            <x>-1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
+    
+    <!-- BRG -->
+    
+    <animation>
+        <type>knob</type>
+        <object-name>knob_003 (Meshed)</object-name>
+        <object-name>knob_003_plate_A (Meshed)</object-name>
+        <action>
+            <binding>
+                <command>property-adjust</command>
+                <property>/fdm/jsbsim/systems/gauges/PHI/indicator/brg-imposed</property>
+                <factor>5</factor>
+                <wrap>false</wrap>
+            </binding>
+        </action>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>knob_003 (Meshed)</object-name>
+        <object-name>knob_003_plate_A (Meshed)</object-name>
+        <property>/fdm/jsbsim/systems/systems/gauges/PHI/indicator/brg-imposed</property>
+        <factor>5</factor>
+        <center>
+            <x-m>  0.004 </x-m>
+            <y-m>  0.041 </y-m>
+            <z-m>  -0.042 </z-m>
+        </center>
+        <axis>
+            <x>-1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>arrow_2 (Meshed)</object-name>
+        <object-name>arrow_3 (Meshed)</object-name>
+        <object-name>arrow_4 (Meshed)</object-name>
+        <property>/fdm/jsbsim/systems/gauges/PHI/indicator/brg-lag</property>
+        <factor>1</factor>
+        <center>
+            <x-m>  0.0 </x-m>
+            <y-m>  0.0 </y-m>
+            <z-m>  0.0 </z-m>
+        </center>
+        <axis>
+            <x>-1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
+
+    <!-- SWITCH -->
+    
+    <animation>
+        <type>knob</type>
+        <object-name>knob_001 (Meshed)</object-name>
+        <object-name>knob_001_plate_A (Meshed)</object-name>
+        <object-name>knob_001_A (Meshed)</object-name>
+        <object-name>knob_001_A_plate_A (Meshed)</object-name>
+        <action>
+            <binding>
+                <command>property-adjust</command>
+                <property>/fdm/jsbsim/systems/gauges/PHI/indicator/switch</property>
+                <factor>1</factor>
+                <min>-1</min>
+                <max>1</max>
+                <wrap>false</wrap>
+            </binding>
+        </action>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>knob_001 (Meshed)</object-name>
+        <object-name>knob_001_plate_A (Meshed)</object-name>
+        <object-name>knob_001_A (Meshed)</object-name>
+        <object-name>knob_001_A_plate_A (Meshed)</object-name>
+        <property>/fdm/jsbsim/systems/gauges/PHI/indicator/switch-lag</property>
+        <factor>55</factor>
+        <center>
+            <x-m>  0.004 </x-m>
+            <y-m>  -0.04103 </y-m>
+            <z-m>  0.04103 </z-m>
         </center>
         <axis>
             <x>-1</x>

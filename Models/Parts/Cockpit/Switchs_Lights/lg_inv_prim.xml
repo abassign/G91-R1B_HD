@@ -130,13 +130,13 @@
         <condition>
             <greater-than-equals>
                 <property>fdm/jsbsim/systems/warning-lights/cockpit/wl-inverter-primary-off</property>
-                <value>1</value>
+                <value>0.1</value>
             </greater-than-equals>
         </condition>
         <name>pb_light_effect</name>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Effects/lights/procedural_light_cockpit_advise_yellow.xml</path>
         <offsets>
-            <x-m> 0.03</x-m>
+            <x-m> 0.033</x-m>
             <y-m> 0.0 </y-m>
             <z-m> 0.0 </z-m>
         </offsets>

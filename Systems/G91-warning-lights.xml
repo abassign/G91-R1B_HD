@@ -115,4 +115,26 @@
         </table>
     </function>
     
+    <function name="systems/warning-lights/light-intensity-by-bus2-tension">
+        <table>
+            <independentVar>systems/electric/bus[2]/V</independentVar>
+            <tableData>
+                0.0     0.0
+                12.0    0.1
+                30.0    1.0
+            </tableData>
+        </table>
+    </function>
+    
+    <function name="systems/warning-lights/transparent-by-bus2-tension">
+        <table>
+            <independentVar>systems/electric/bus[2]/V</independentVar>
+            <tableData>
+                0.0     0.85
+                18.0    0.85
+                30.0    0.2
+            </tableData>
+        </table>
+    </function>
+    
 </system>

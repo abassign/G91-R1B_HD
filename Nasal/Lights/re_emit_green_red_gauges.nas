@@ -21,7 +21,7 @@ var timer_re_emit_green_red_gauges = maketimer(0.5, func() {
     var pl_emission = -29.7 * math.pow(ambientBlueLight,3) + 6.7 * math.pow(ambientBlueLight,2) - 1.29 * ambientBlueLight + 0.97;
     
     # Use for controlled light for example cabin advisor lights
-    setprop("sim/G91/light/lg_base",pl_emission * 0.2 * light_by_tension_bus);
+    setprop("sim/G91/light/lg_base",pl_emission * 0.15 * light_by_tension_bus);
     
     pl_emission = pl_emission * (getprop("sim/G91/gauge_red_spot_lamp_emission")) * 1.2;
     if (pl_emission <= 0.01) {

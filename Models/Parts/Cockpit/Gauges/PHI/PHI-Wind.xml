@@ -219,35 +219,40 @@
         <texture>Pictures/G91-Yellow_01.png</texture>
         <transparency>
             <alpha>1.0</alpha>
-            <factor-prop>sim/G91/switchs/cockpit/lg_battery_transparent</factor-prop>
+            <factor-prop>fdm/jsbsim/systems/gauges/PHI/wind/advise-light-transparent</factor-prop>
         </transparency>
         <ambient>
             <red>0.1</red>
-            <green>0.1</green>
-            <blue>0.5</blue>
+            <green>0.05</green>
+            <blue>0.0</blue>
         </ambient>
         <emission>
-            <red>0.05</red>
+            <red>0.1</red>
             <green>0.0</green>
             <blue>0.0</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
+        <specular>
+            <red>0.5</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </specular>
     </animation>
 
     <animation> 
         <type>material</type>
         <object-name>lamp_mirror (Meshed)</object-name>
-        <texture>Pictures/G91-Al-Light.png</texture>
+        <texture>Pictures/G91-Orange01.png</texture>
         <ambient>
-            <red>0.4</red>
-            <green>0.4</green>
-            <blue>0.2</blue>
+            <red>1.0</red>
+            <green>0.5</green>
+            <blue>0.0</blue>
         </ambient>
         <emission>
-            <red>0.7</red>
-            <green>0.7</green>
-            <blue>0.3</blue>
-            <factor-prop>sim/G91/switchs/cockpit/lg_battery_on</factor-prop>
+            <red>1.0</red>
+            <green>0.5</green>
+            <blue>0.0</blue>
+            <factor-prop>/fdm/jsbsim/systems/gauges/PHI/wind/advise-light-on</factor-prop>
         </emission>
     </animation>
 
@@ -256,7 +261,7 @@
         <object-name>lamp_light (Meshed)</object-name>
         <texture>Pictures/G91-Al-Light.png</texture>
         <transparency>
-            <alpha>0.3</alpha>
+            <alpha>0.5</alpha>
         </transparency>
         <ambient>
             <red>0.8</red>
@@ -266,10 +271,27 @@
         <emission>
             <red>1.0</red>
             <green>0.5</green>
-            <blue>0.5</blue>
-            <factor-prop>sim/G91/switchs/cockpit/lg_battery_on</factor-prop>
+            <blue>0.0</blue>
+            <factor-prop>/fdm/jsbsim/systems/gauges/PHI/wind/advise-light-on</factor-prop>
         </emission>
     </animation>
+    
+    <model>
+        <condition>
+            <greater-than-equals>
+                <property>/fdm/jsbsim/systems/gauges/PHI/wind/advise-light-on</property>
+                <value>0.1</value>
+            </greater-than-equals>
+        </condition>
+        <name>PHI_wind_advise_light_on</name>
+        <path>procedural_light_PHI_yellow.xml</path>
+        <offsets>
+            <x-m> 0.03</x-m>
+            <y-m> 0.0 </y-m>
+            <z-m> -0.010 </z-m>
+            <pitch-deg>8</pitch-deg>
+        </offsets>
+    </model>
 
     <model>
         <name>procedural_light_cockpit_gauge_spot_red</name>
