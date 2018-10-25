@@ -73,7 +73,7 @@
         <object-name>pannello_centrale</object-name>
         <object-name>Support_gauges_01</object-name>
         <object-name>Support_gauges_012</object-name>
-        <texture>Pictures/InteriorLightGreyGreen.png</texture>
+        <texture>Pictures/InteriorLightGreyBlu.png</texture>
         <ambient>
             <red>0.8</red>
             <green>0.8</green>

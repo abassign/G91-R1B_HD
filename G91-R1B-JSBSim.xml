@@ -807,7 +807,7 @@
             </aerosurface_scale>
             
             <aerosurface_scale name="left aileron normalization">
-                <input>fcs/left-aileron-pos-rad</input>
+                <input>fcs/left-aileron-pos-rad-speed-red</input>
                 <domain>
                     <min> -0.26 </min>
                     <max>  0.26 </max>
@@ -816,11 +816,12 @@
                     <min> -1 </min>
                     <max>  1 </max>
                 </range>
+                <gain>1.0</gain>
                 <output>fcs/left-aileron-pos-norm</output>
             </aerosurface_scale>
             
             <aerosurface_scale name="right aileron normalization">
-                <input>fcs/right-aileron-pos-rad</input>
+                <input>fcs/right-aileron-pos-rad-speed-red</input>
                 <domain>
                     <min> -0.26 </min>
                     <max>  0.26 </max>
@@ -829,8 +830,39 @@
                     <min> -1 </min>
                     <max>  1 </max>
                 </range>
+                <gain>1.0</gain>
                 <output>fcs/right-aileron-pos-norm</output>
             </aerosurface_scale>
+            
+            <scheduled_gain name="aileron left speed reduction">
+                <input>fcs/left-aileron-pos-rad</input>
+                <table>
+                    <independentVar>aero/qbar-psf</independentVar>
+                    <tableData>
+                        0.0        1.0
+                        200.0      0.95
+                        1000.0     0.0
+                        2000.0     -0.2
+                    </tableData>
+                </table>
+                <gain>1.0</gain>
+                <output>fcs/left-aileron-pos-rad-speed-red</output>
+            </scheduled_gain>
+            
+            <scheduled_gain name="aileron right speed reduction">
+                <input>fcs/right-aileron-pos-rad</input>
+                <table>
+                    <independentVar>aero/qbar-psf</independentVar>
+                    <tableData>
+                        0.0        1.0
+                        200.0      0.95
+                        1000.0     0.0
+                        2000.0     -0.2
+                    </tableData>
+                </table>
+                <gain>1.0</gain>
+                <output>fcs/right-aileron-pos-rad-speed-red</output>
+            </scheduled_gain>
             
         </channel>
         
@@ -1350,11 +1382,19 @@
             
         </axis>
         
+        <property value="0.010">aero/constant/Cnb-coefficient</property>
+        <property value="-0.05">aero/constant/Yaw_beta-coefficient</property>
+        <property value="-0.8">aero/constant/Yaw_damp-coefficient</property>
+        <property value="-0.08">aero/constant/Yaw_rudder-coefficient</property>
+        <property value="0.1">aero/constant/Yaw_aileron-coefficient</property>
+        
+        <!--
         <property value="0.006">aero/constant/Cnb-coefficient</property>
         <property value="-0.05">aero/constant/Yaw_beta-coefficient</property>
         <property value="-0.8">aero/constant/Yaw_damp-coefficient</property>
         <property value="-0.08">aero/constant/Yaw_rudder-coefficient</property>
         <property value="0.1">aero/constant/Yaw_aileron-coefficient</property>
+        -->
         
         <axis name="YAW">
             
