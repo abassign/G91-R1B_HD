@@ -18,7 +18,6 @@
         <object-name>cone_support (Meshed)</object-name>
         <object-name>cone_A (Meshed)</object-name>
         <object-name>cone_B</object-name>
-        <object-name>lubber_line (Meshed)</object-name>
     </effect>
     
     <effect>
@@ -43,7 +42,6 @@
         <object-name>cone_support (Meshed)</object-name>
         <object-name>cone_A (Meshed)</object-name>
         <object-name>cone_B</object-name>
-        <object-name>lubber_line (Meshed)</object-name>
     </effect>    
     
     <animation> 

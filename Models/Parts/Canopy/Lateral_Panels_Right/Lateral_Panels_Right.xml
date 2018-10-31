@@ -1,0 +1,15 @@
+<PropertyList>
+
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/PHI/PHI Station Selector.xml</path>
+        <offsets>
+            <x-m>0.128</x-m>
+            <y-m>0.182</y-m>
+            <z-m>0.00</z-m>
+            <roll-deg>0.0</roll-deg>
+            <pitch-deg>0.0</pitch-deg>
+            <heading-deg>0.0</heading-deg>
+        </offsets>
+    </model>
+    
+</PropertyList> 

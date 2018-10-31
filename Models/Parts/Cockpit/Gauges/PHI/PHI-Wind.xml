@@ -322,10 +322,10 @@
             <binding>
                 <command>property-adjust</command>
                 <property>/fdm/jsbsim/systems/gauges/PHI/wind/wd</property>
-                <factor>1.0</factor>
-                <min>-180.0</min>
-                <max>180.0</max>
-                <wrap>false</wrap>
+                <factor>5.0</factor>
+                <min>0</min>
+                <max>360</max>
+                <wrap>true</wrap>
             </binding>
         </action>
     </animation>

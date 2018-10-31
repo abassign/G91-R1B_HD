@@ -84,6 +84,24 @@ Description: G91R4 hydraulics system from "Manuale di pilotaggio (1-11,1-12, etc
         </switch>
 
     </channel>
+    
+    <channel name="ambient lighting corection" execrate="60">
+
+        <fcs_function name="systems/lightning/ambient-light-emission-display-correction">
+            <function>
+                <interpolate1d>
+                    <p>/rendering/scene/ambient/blue</p>
+                    <v> 0.0 </v>  <v> 0.3 </v>
+                    <v> 0.2 </v>  <v> 0.35 </v>
+                    <v> 0.4 </v>  <v> 0.4 </v>
+                    <v> 0.6 </v>  <v> 0.6 </v>
+                    <v> 0.8 </v>  <v> 0.9 </v>
+                    <v> 1.0 </v>  <v> 1.0 </v>
+                </interpolate1d>
+            </function>
+        </fcs_function>
+
+    </channel>
 
     <function name="systems/lightning/intensity-bus1-norm">
         <table>

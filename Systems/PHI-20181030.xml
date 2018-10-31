@@ -497,37 +497,7 @@
             </function>
             <output>systems/gauges/PHI/wind/digit3A</output>
         </fcs_function>
-        <!--
-        <actuator name="digit1AW-inc">
-            <input>systems/gauges/PHI/wind/digit1A</input>
-            <lag>0.0</lag>
-            <rate_limit>10</rate_limit>
-            <bias>0.002</bias>
-            <deadband_width>0.01</deadband_width>
-            <hysteresis_width>0.01</hysteresis_width>
-            <output>systems/gauges/PHI/wind/digit1AW</output>
-        </actuator>
-        
-        <actuator name="digit2AW-inc">
-            <input>systems/gauges/PHI/wind/digit2A</input>
-            <lag>0.0</lag>
-            <rate_limit>10</rate_limit>
-            <bias>0.002</bias>
-            <deadband_width>0.01</deadband_width>
-            <hysteresis_width>0.01</hysteresis_width>
-            <output>systems/gauges/PHI/wind/digit2AW</output>
-        </actuator>
-        
-        <actuator name="digit3AW-inc">
-            <input>systems/gauges/PHI/wind/digit3A</input>
-            <lag>0.0</lag>
-            <rate_limit>10</rate_limit>
-            <bias>0.002</bias>
-            <deadband_width>0.01</deadband_width>
-            <hysteresis_width>0.01</hysteresis_width>
-            <output>systems/gauges/PHI/wind/digit3AW</output>
-        </actuator>
-        -->
+
         <fcs_function>
             <function>
                 <ifthen>
@@ -580,7 +550,7 @@
             </function>
             <output>systems/gauges/PHI/wind/digit1AW</output>
         </fcs_function>
-
+        
         <fcs_function>
             <function>
                 <ifthen>

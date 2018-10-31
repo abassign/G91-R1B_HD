@@ -309,7 +309,7 @@
         </offsets>
     </model>
     
-    <!-- Lateral Panels Left -->
+    <!-- Lateral Panels -->
     
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Lateral_Panels_Left/Lateral_Panels_Left.xml</path>
@@ -320,6 +320,18 @@
             <roll-deg>-30.5</roll-deg>
             <pitch-deg>9.60</pitch-deg>
             <heading-deg>6</heading-deg>
+        </offsets>
+    </model>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Lateral_Panels_Right/Lateral_Panels_Right.xml</path>
+        <offsets>
+            <x-m>-3.0</x-m>
+            <y-m>0.225</y-m>
+            <z-m>-0.192</z-m>
+            <roll-deg>30.0</roll-deg>
+            <pitch-deg>8.50</pitch-deg>
+            <heading-deg>-7</heading-deg>
         </offsets>
     </model>
     
