@@ -96,7 +96,6 @@ Description: G91R4 Electric system from "Manuale di pilotaggio (p.56)
     <property value="1">systems/electric/bus[1]/turn-indicator/fuse</property>
     <property value="1">systems/electric/bus[2]/featuring-gun/fuse</property>
     <property value="1">systems/electric/bus[2]/doppler/fuse</property>
-    <property value="0">systems/electric/bus[2]/doppler/sw</property>
     <property value="0.0">systems/electric/bus[2]/doppler/I</property>
     <property value="1">systems/electric/bus[2]/inverter-missiles/fuse</property>
     <property value="1">systems/electric/bus[2]/primary-inverter/fuse</property>
@@ -119,7 +118,6 @@ Description: G91R4 Electric system from "Manuale di pilotaggio (p.56)
     <property value="0">systems/electric/bus[2]/cameras/camera[3]/film</property>
     <property value="1">systems/electric/bus[2]/as20-missiles/fuse</property>
     <property value="1">systems/electric/bus[2]/PHI/fuse</property>
-    <property value="1">systems/electric/bus[2]/PHI/sw</property>
     <property value="0.0">systems/electric/bus[2]/PHI/I</property>
     <property value="1">systems/electric/bus[2]/generator-emergency-relay/fuse</property>
     <property value="0">systems/electric/bus[2]/generator-emergency-relay/sw</property>

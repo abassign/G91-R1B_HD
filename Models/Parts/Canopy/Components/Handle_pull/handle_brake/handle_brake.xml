@@ -70,7 +70,7 @@
         <action>
             <button>0</button>
             <repeatable>false</repeatable>
-            <interval-sec>0.0</interval-sec>
+            <interval-sec>1.0</interval-sec>
             <binding>
                 <command>property-assign</command>
                 <property>fdm/jsbsim/systems/handle-switches/sw-handle-brake-trigger</property>

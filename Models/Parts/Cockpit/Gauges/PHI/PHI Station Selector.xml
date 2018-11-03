@@ -212,29 +212,6 @@
             <blue>1.0</blue>
         </specular>
     </animation>
-    
-    <animation> 
-        <type>material</type>
-        <object-name>chan_rotate_numbers_A (Meshed)</object-name>
-        <object-name>box_cover_sup_A (Meshed)</object-name>
-        <object-name>knob_function_A (Meshed)</object-name>
-        <object-name>vol_knob_A (Meshed)</object-name>
-        <object-name>knob_freq_cover_A (Meshed)</object-name>
-        <transparency>
-            <alpha>0.0</alpha>
-        </transparency>
-        <ambient>
-            <red>1.0</red>
-            <green>0.9</green>
-            <blue>0.6</blue>
-        </ambient>
-        <emission>
-            <red>0.08</red>
-            <green>0.3</green>
-            <blue>0.06</blue>
-            <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
-        </emission>
-    </animation>
 
     <!--
     <animation> 

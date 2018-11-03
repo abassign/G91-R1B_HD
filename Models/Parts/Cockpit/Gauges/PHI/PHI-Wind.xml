@@ -349,6 +349,20 @@
     </animation>
     
     <animation>
+        <type>translate</type>
+        <object-name>knob_002 (Meshed)</object-name>
+        <object-name>knob_002_A (Meshed)</object-name>
+        <property>/fdm/jsbsim/systems/gauges/PHI/wind/wd-up</property>
+        <factor>0.002</factor>
+        <offset-m>-0.002</offset-m>
+        <axis>
+            <x>-1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
+    
+    <animation>
         <type>rotate</type>
         <object-name>arrow (Meshed)</object-name>
         <object-name>arrow_mirror (Meshed)</object-name>
@@ -392,6 +406,20 @@
             <y-m> -0.017 </y-m>
             <z-m> -0.009 </z-m>
         </center>
+        <axis>
+            <x>-1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
+    
+    <animation>
+        <type>translate</type>
+        <object-name>knob_001 (Meshed)</object-name>
+        <object-name>knob_001_A (Meshed)</object-name>
+        <property>/fdm/jsbsim/systems/gauges/PHI/wind/ws-up</property>
+        <factor>0.002</factor>
+        <offset-m>-0.002</offset-m>
         <axis>
             <x>-1</x>
             <y>0</y>

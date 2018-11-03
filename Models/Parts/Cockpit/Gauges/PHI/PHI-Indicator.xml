@@ -589,10 +589,10 @@
         <action>
             <binding>
                 <command>property-adjust</command>
-                <property>/fdm/jsbsim/systems/gauges/PHI/indicator/switch</property>
-                <factor>1</factor>
-                <min>-1</min>
-                <max>1</max>
+                <property>/fdm/jsbsim/systems/gauges/PHI/indicator/switch-turn</property>
+                <factor>0.25</factor>
+                <min>0</min>
+                <max>2</max>  
                 <wrap>false</wrap>
             </binding>
         </action>
@@ -604,7 +604,8 @@
         <object-name>knob_001_plate_A (Meshed)</object-name>
         <object-name>knob_001_A (Meshed)</object-name>
         <object-name>knob_001_A_plate_A (Meshed)</object-name>
-        <property>/fdm/jsbsim/systems/gauges/PHI/indicator/switch-lag</property>
+        <property>/fdm/jsbsim/systems/gauges/PHI/indicator/switch-turned</property>
+        <offset-deg>-55</offset-deg>
         <factor>55</factor>
         <center>
             <x-m>  0.004 </x-m>
@@ -613,6 +614,21 @@
         </center>
         <axis>
             <x>-1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
+    
+    <animation>
+        <type>translate</type>
+        <object-name>knob_001 (Meshed)</object-name>
+        <object-name>knob_001_plate_A (Meshed)</object-name>
+        <object-name>knob_001_A (Meshed)</object-name>
+        <object-name>knob_001_A_plate_A (Meshed)</object-name>
+        <property>/fdm/jsbsim/systems/gauges/PHI/indicator/switch-up</property>
+        <factor>0.005</factor>
+        <axis>
+            <x>1</x>
             <y>0</y>
             <z>0</z>
         </axis>
