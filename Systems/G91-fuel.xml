@@ -10,6 +10,7 @@
     Auxiliary Tank Right (Droppable fuel tank) id = 3
     Auxiliary Tank Left (Droppable fuel tank) id = 4
     Collector or Manifold Tank id = 5
+    Cut-Off valve and fuel pressure circuit is Tank id = 8
     The drop tank (3-4) if there are, fill the internal tanks (0) (1-2), in turn tanks (1-2) are kept level.
     The tank (5) is fed through a specially balancing valve that connects to the tanks (0) and (1-2).
     The tank (6) is the collector tank for (3) and (4)
@@ -17,202 +18,245 @@
     
     <!-- Collector Tank 6 level-maintenance for droppable tank 3-4 -->
     <channel name="To Tank6">
+        
         <!-- from Tank 3 (to Collector Tank 6) -->
-        <switch name="fuel/from-tank3-to-tank6">
+        <switch name="systems/fuel/from-tank3-to-tank6">
             <default value="0"/>
-            <test logic="AND" value="3">
-                propulsion/tank[3]/priority EQ 1 
+            <test logic="AND" value="2">
                 propulsion/tank[3]/contents-lbs GT 0
-                propulsion/tank[6]/contents-lbs LT 9
-                propulsion/tank[6]/priority EQ 1
+                propulsion/tank[6]/contents-lbs LT 8
                 accelerations/Nz GE -0.5
+                systems/starter/drop-tank-press-on == 1
+                systems/engine/air-compression-service-on == 1
             </test>
         </switch>
         
         <!-- from Tank 4 (to Collector Tank 6) -->
-        <switch name="fuel/from-tank4-to-tank6">
+        <switch name="systems/fuel/from-tank4-to-tank6">
             <default value="0"/>
-            <test logic="AND" value="3">
-                propulsion/tank[4]/priority EQ 1 
+            <test logic="AND" value="2">
                 propulsion/tank[4]/contents-lbs GT 0
-                propulsion/tank[6]/contents-lbs LT 9
-                propulsion/tank[6]/priority EQ 1
+                propulsion/tank[6]/contents-lbs LT 8
                 accelerations/Nz GE -0.5
+                systems/starter/drop-tank-press-on == 1
+                systems/engine/air-compression-service-on == 1
             </test>
         </switch>
-    </channel>
-    
-    <!-- Total flux from Tank 3 and 4 to Tank 3 -->
-    <channel name="Total flow rates">
-        <summer name="fuel/tank3-flow-rate">
-            <input>-fuel/from-tank3-to-tank6</input>
+        
+        <!-- Total flux from Tank 3 and 4 to Tank 6 -->
+        <summer>
+            <input>-systems/fuel/from-tank3-to-tank6</input>
             <output>propulsion/tank[3]/external-flow-rate-pps</output>
         </summer>
-        <summer name="fuel/tank4-flow-rate">
-            <input>-fuel/from-tank4-to-tank6</input>
+        
+        <summer>
+            <input>-systems/fuel/from-tank4-to-tank6</input>
             <output>propulsion/tank[4]/external-flow-rate-pps</output>
         </summer>
-    </channel>
-    
-    <!-- Total flux for Tank 6 -->
-    <channel name="Total flow rate into tank 6">
-        <summer name="tank3 and tank4 to tank6">
-            <input>fuel/from-tank3-to-tank6</input>
-            <input>fuel/from-tank4-to-tank6</input>
-            <input>-fuel/from-tank6-to-tank0</input>
-            <input>-fuel/from-tank6-to-tank1</input>
+        
+        <!-- Total flux for Tank 6 -->
+        <summer>
+            <input>systems/fuel/from-tank3-to-tank6</input>
+            <input>systems/fuel/from-tank4-to-tank6</input>
+            <input>-systems/fuel/from-tank6-to-tank0</input>
+            <input>-systems/fuel/from-tank6-to-tank1</input>
             <output>propulsion/tank[6]/external-flow-rate-pps</output>
         </summer>
+        
     </channel>
+    
     
     <channel name="To Tank0">
+        
         <!-- from Collector Tank 6 to Tank0 -->
-        <switch name="fuel/from-tank6-to-tank0">
+        <switch name="systems/fuel/from-tank6-to-tank0">
             <default value="0"/>
             <test logic="AND" value="1.5">
-                propulsion/tank[6]/priority EQ 1 
                 propulsion/tank[6]/contents-lbs GT 0
-                propulsion/tank[0]/contents-lbs LT 1366
-                propulsion/tank[0]/priority EQ 1
-                accelerations/Nz GE -0.5
-            </test>
-        </switch>
-    </channel>
-    
-    <!-- Total from Collector Tank 6 to Tank 0 -->
-    <channel name="Total flow rate into tank 0">
-        <summer name="tank6 to tank0">
-            <input>fuel/from-tank6-to-tank0</input>
-            <input>-fuel/from-tank0-to-tank5</input>
-            <output>propulsion/tank[0]/external-flow-rate-pps</output>
-        </summer>
-    </channel>
-    
-    <channel name="To Tank1">
-        <!-- from Collector Tank 6 to Tank1 -->
-        <switch name="fuel/from-tank6-to-tank1">
-            <default value="0"/>
-            <test logic="AND" value="1.5">
-                propulsion/tank[6]/priority EQ 1 
-                propulsion/tank[6]/contents-lbs GT 0
-                propulsion/tank[1]/contents-lbs LT 561
-                propulsion/tank[1]/priority EQ 1
-                accelerations/Nz GE -0.5
-            </test>
-        </switch>
-    </channel>
-    
-    <!-- Total from Collector Tank 6 to Tank 1 -->
-    <channel name="Total flow rate into tank 1">
-        <summer name="tank6 to tank1">
-            <input>fuel/from-tank6-to-tank1</input>
-            <input>-fuel/from-tank1-to-tank7</input>
-            <output>propulsion/tank[1]/external-flow-rate-pps</output>
-        </summer>
-    </channel>
-    
-    <channel name="To Tank2">
-        <!-- from Collector Tank 1 to Tank2 -->
-        <switch name="fuel/from-tank1-to-tank2">
-            <default value="0"/>
-            <test logic="AND" value="1.5">
-                propulsion/tank[1]/contents-lbs GT propulsion/tank[2]/contents-lbs
-                propulsion/tank[2]/contents-lbs LT 561
-            </test>
-            <test logic="AND" value="-1.5">
-                propulsion/tank[1]/contents-lbs LE propulsion/tank[2]/contents-lbs
-                propulsion/tank[2]/contents-lbs LT 561
-            </test>
-        </switch>
-    </channel>
-    
-    <!-- Total from Collector Tank 1,2 to Tank 7 -->
-    <channel name="Total flow rate into tank 2">
-        <summer name="tank1 to tank2">
-            <input>fuel/from-tank1-to-tank2</input>
-            <input>-fuel/from-tank2-to-tank7</input>
-            <output>propulsion/tank[2]/external-flow-rate-pps</output>
-        </summer>
-    </channel>
-    
-    <!-- Collector Tank 7 level-maintenance for tank 1-2 -->
-    <channel name="To Tank7">
-        <!-- from Tank 1 (to Collector Tank 7) -->
-        <switch name="fuel/from-tank1-to-tank7">
-            <default value="0"/>
-            <test logic="AND" value="1">
-                propulsion/tank[1]/priority EQ 1 
-                propulsion/tank[1]/contents-lbs GT 0
-                propulsion/tank[7]/contents-lbs LT 9
-                propulsion/tank[7]/priority EQ 1
+                propulsion/tank[0]/contents-lbs LT 1365
                 accelerations/Nz GE -0.5
             </test>
         </switch>
         
-        <!-- from Tank 2 (to Collector Tank 7) -->
-        <switch name="fuel/from-tank2-to-tank7">
+        <!-- Total from Collector Tank 6 to Tank 0 -->
+        <summer>
+            <input>systems/fuel/from-tank6-to-tank0</input>
+            <input>-systems/fuel/from-tank0-to-tank5</input>
+            <output>propulsion/tank[0]/external-flow-rate-pps</output>
+        </summer>
+        
+    </channel>
+    
+    
+    <channel name="To Tank1 and Tank1 - Tank2">
+        
+        <!-- from Collector Tank 1 to Tank2 -->
+        <switch name="systems/fuel/from-tank1-to-tank2">
             <default value="0"/>
-            <test logic="AND" value="1">
-                propulsion/tank[2]/priority EQ 1 
-                propulsion/tank[2]/contents-lbs GT 0
-                propulsion/tank[7]/contents-lbs LT 9
-                propulsion/tank[7]/priority EQ 1
+            <test logic="AND" value="1.5">
+                propulsion/tank[1]/contents-lbs GT 2
+                propulsion/tank[1]/contents-lbs GT propulsion/tank[2]/contents-lbs
+                propulsion/tank[2]/contents-lbs LT 560
+                accelerations/Ny GT -0.2
+                accelerations/Ny LT 0.2
+                accelerations/Nz GE -0.5
+            </test>
+            <test logic="AND" value="1.0">
+                propulsion/tank[2]/contents-lbs GT 10
+                propulsion/tank[2]/contents-lbs LT 550
+                accelerations/Ny LE -0.2
                 accelerations/Nz GE -0.5
             </test>
         </switch>
+        
+        <switch name="systems/fuel/from-tank2-to-tank1">
+            <default value="0"/>
+            <test logic="AND" value="1.5">
+                propulsion/tank[2]/contents-lbs GT 2
+                propulsion/tank[2]/contents-lbs GT propulsion/tank[1]/contents-lbs
+                propulsion/tank[1]/contents-lbs LT 560
+                accelerations/Ny GT -0.2
+                accelerations/Ny LT 0.2
+                accelerations/Nz GE -0.5
+            </test>
+            <test logic="AND" value="1.0">
+                propulsion/tank[1]/contents-lbs GT 10
+                propulsion/tank[1]/contents-lbs LT 550
+                accelerations/Ny LE 0.2
+                accelerations/Nz GE -0.5
+            </test>
+        </switch>
+        
+        <!-- from Collector Tank 6 to Tank1 -->
+        <switch name="systems/fuel/from-tank6-to-tank1">
+            <default value="0"/>
+            <test logic="AND" value="1.5">
+                propulsion/tank[6]/contents-lbs GT 2
+                propulsion/tank[1]/contents-lbs LT 560
+                accelerations/Nz GE -0.5
+            </test>
+        </switch>
+        
+        <summer>
+            <input>systems/fuel/from-tank1-to-tank2</input>
+            <input>-systems/fuel/from-tank2-to-tank1</input>
+            <output>propulsion/tank[2]/external-flow-rate-pps</output>
+        </summer>
+        
+        <summer>
+            <input>systems/fuel/from-tank6-to-tank1</input>
+            <input>-systems/fuel/from-tank1-to-tank5</input>
+            <input>systems/fuel/from-tank2-to-tank1</input>
+            <input>-systems/fuel/from-tank1-to-tank2</input>
+            <output>propulsion/tank[1]/external-flow-rate-pps</output>
+        </summer>
+        
     </channel>
     
-    <!-- Total flux for Tank 7 -->
-    <channel name="Total flow rate into tank 7">
-        <summer name="tank1 and tank2 to tank7">
-            <input>fuel/from-tank1-to-tank7</input>
-            <input>fuel/from-tank2-to-tank7</input>
-            <input>-fuel/from-tank7-to-tank5</input>
-            <output>propulsion/tank[7]/external-flow-rate-pps</output>
-        </summer>
-    </channel>
     
     <!-- Collector Tank 5 level-maintenance for tank 0-7 -->
     <!-- Note:
     The values assigned to:
-    fuel/from-tank0-to-tank5
-    fuel/from-tank7-to-tank5
+    systems/fuel/from-tank0-to-tank5
+    fuel/from-tank8-to-tank5
     They must be calibrated appropriately to simulate the mixing device used by heating it.
     Theoretically it should not change the weight relation Tank0 with Tank1+Tank2
     -->
     <channel name="To Tank5">
-        <!-- from Tank 0 (to Collector Tank 5) -->
-        <switch name="fuel/from-tank0-to-tank5">
+        
+        <switch name="systems/fuel/from-tank0-to-tank5">
             <default value="0"/>
-            <test logic="AND" value="1">
-                propulsion/tank[0]/priority EQ 1 
-                propulsion/tank[0]/contents-lbs GT 0
-                propulsion/tank[5]/contents-lbs LT 276
-                propulsion/tank[5]/priority EQ 1
+            <test logic="AND" value="2.0">
+                propulsion/tank[0]/contents-lbs GT 2
+                propulsion/tank[5]/contents-lbs LT 273
                 accelerations/Nz GE -0.5
             </test>
         </switch>
         
-        <!-- from Tank 7 (to Collector Tank 5) -->
-        <switch name="fuel/from-tank7-to-tank5">
+        <switch name="systems/fuel/from-tank1-to-tank5">
             <default value="0"/>
-            <test logic="AND" value="1">
-                propulsion/tank[7]/priority EQ 1 
-                propulsion/tank[7]/contents-lbs GT 0
-                propulsion/tank[5]/contents-lbs LT 276
-                propulsion/tank[5]/priority EQ 1
+            <test logic="AND" value="2.0">
+                propulsion/tank[1]/contents-lbs GT 2
+                propulsion/tank[5]/contents-lbs LT 273
                 accelerations/Nz GE -0.5
             </test>
         </switch>
-    </channel>
-    
-    <!-- Total flux for Tank 5 -->
-    <channel name="Total flow rate into tank 5">
-        <summer name="tank0 and tank7 to tank5">
-            <input>fuel/from-tank0-to-tank5</input>
-            <input>fuel/from-tank7-to-tank5</input>
+        
+        <summer>
+            <input>systems/fuel/from-tank0-to-tank5</input>
+            <input>systems/fuel/from-tank1-to-tank5</input>
+            <input>-systems/fuel/from-tank5-to-tank7</input>
             <output>propulsion/tank[5]/external-flow-rate-pps</output>
         </summer>
+        
+    </channel>
+    
+    
+    <!-- Total flux for Tank 8 -->
+    <channel name="Tank 7 collector for engine">
+        
+        <switch name="systems/fuel/tank7-pump-pressure-on">
+            <default value="0"/>
+            <test logic="OR" value="1">
+                systems/starter/fuel-booster-pump-on-lag GT 0.7
+                systems/engine/air-compression-service-on == 1
+            </test>
+        </switch>
+        
+        <switch name="systems/fuel/from-tank5-to-tank7">
+            <default value="0"/>
+            <test logic="AND" value="2">
+                propulsion/tank[5]/contents-lbs GT 2
+                propulsion/tank[7]/contents-lbs LT 3
+                systems/starter/fuel-shut-off-valve-on == 0
+                systems/fuel/tank7-pump-pressure-on == 1
+            </test>
+        </switch>
+        
+        <summer name="tank5 to tank7">
+            <input>systems/fuel/from-tank5-to-tank7</input>
+            <output>propulsion/tank[7]/external-flow-rate-pps</output>
+        </summer>
+        
+    </channel>
+    
+    
+    <channel name="fuel systems fuel pressure" execrate="32">
+        
+        <lag_filter name="systems/starter/fuel-booster-pump-on-lag">
+            <input>systems/starter/fuel-booster-pump-on</input>
+            <c1>0.5</c1>
+        </lag_filter>
+        
+        <switch name="systems/fuel/fuel-low-pressure-on">
+            <default value="0"/>
+            <test logic="OR" value="1">
+                <test logic="AND">
+                    systems/starter/fuel-booster-pump-on-lag LE 0.7
+                    systems/engine/air-compression-service-on == 0
+                </test>
+                <test logic="AND">
+                    propulsion/tank[7]/contents-lbs LT 1.5
+                </test>
+            </test>
+        </switch>
+        
+        <switch>
+            <default value="0"/>
+            <test logic="OR" value="systems/warning-lights/light-intensity-by-bus1-tension">
+                systems/fuel/fuel-low-pressure-on == 1
+            </test>
+            <output>systems/fuel/fuel-low-pressure-lg</output>
+        </switch>
+        
+        <switch>
+            <default value="0.85"/>
+            <test logic="OR" value="systems/warning-lights/transparent-by-bus1-tension">
+                systems/fuel/fuel-low-pressure-on == 1
+            </test>
+            <output>systems/fuel/fuel-low-pressure-lg-transparent</output>
+        </switch>
+        
     </channel>
     
 </system>

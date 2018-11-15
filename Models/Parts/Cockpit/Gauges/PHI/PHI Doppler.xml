@@ -155,7 +155,7 @@
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
-    
+
     <animation> 
         <type>material</type>
         <texture>Pictures/G91-Ivory.png</texture>

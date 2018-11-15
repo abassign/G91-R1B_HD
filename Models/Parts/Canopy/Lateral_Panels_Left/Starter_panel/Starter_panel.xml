@@ -77,8 +77,8 @@
     <model>
         <path>Starter_sw.xml</path>
         <offsets>
-            <x-m>0.04</x-m>
-            <y-m>0.0065</y-m>
+            <x-m>0.042</x-m>
+            <y-m>0.0055</y-m>
             <z-m>0.008</z-m>
             <roll-deg>0.0</roll-deg>
             <pitch-deg>0.0</pitch-deg>
@@ -111,10 +111,58 @@
     </model>
     
     <model>
-        <path>sw_engine_Booster.xml</path>
+        <path>sw_engine_booster_pump.xml</path>
         <offsets>
             <x-m>-0.021</x-m>
             <y-m>0.010</y-m>
+            <z-m>0.005</z-m>
+            <roll-deg>180.0</roll-deg>
+            <pitch-deg>90.0</pitch-deg>
+            <heading-deg>182.0</heading-deg>
+        </offsets>
+    </model>
+    
+    <model>
+        <path>sw_engine_shut_off_valve.xml</path>
+        <offsets>
+            <x-m>-0.010</x-m>
+            <y-m>-0.0135</y-m>
+            <z-m>0.005</z-m>
+            <roll-deg>180.0</roll-deg>
+            <pitch-deg>182.0</pitch-deg>
+            <heading-deg>182.0</heading-deg>
+        </offsets>
+    </model>
+
+    <model>
+        <path>sw_engine_drop_tank_press.xml</path>
+        <offsets>
+            <x-m>-0.017</x-m>
+            <y-m>-0.045</y-m>
+            <z-m>0.005</z-m>
+            <roll-deg>180.0</roll-deg>
+            <pitch-deg>92.0</pitch-deg>
+            <heading-deg>182.0</heading-deg>
+        </offsets>
+    </model>
+    
+    <model>
+        <path>lg_emerg.xml</path>
+        <offsets>
+            <x-m>0.019</x-m>
+            <y-m>-0.06</y-m>
+            <z-m>0.005</z-m>
+            <roll-deg>180.0</roll-deg>
+            <pitch-deg>92.0</pitch-deg>
+            <heading-deg>182.0</heading-deg>
+        </offsets>
+    </model>
+    
+    <model>
+        <path>sw_emerg_engine.xml</path>
+        <offsets>
+            <x-m>0.048</x-m>
+            <y-m>-0.044</y-m>
             <z-m>0.005</z-m>
             <roll-deg>180.0</roll-deg>
             <pitch-deg>90.0</pitch-deg>

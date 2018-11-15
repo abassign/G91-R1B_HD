@@ -183,10 +183,50 @@
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Switchs_Lights/push_button_emergency_release_loads.xml</path>
         <offsets>
-            <x-m>-3.1857</x-m>
+            <x-m>-3.1852</x-m>
             <y-m>-0.089</y-m>
             <z-m>-0.046</z-m>
+            <pitch-deg>-10</pitch-deg>
+        </offsets>
+    </model>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Switchs_Lights/lg_low_fuel_pressure.xml</path>
+        <offsets>
+            <x-m>-3.19898</x-m>
+            <y-m>0.187</y-m>
+            <z-m>0.070</z-m>
             <pitch-deg>-8.5</pitch-deg>
+        </offsets>
+    </model>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Switchs_Lights/lg_low_oil_pressure.xml</path>
+        <offsets>
+            <x-m>-3.19898</x-m>
+            <y-m>0.218</y-m>
+            <z-m>0.070</z-m>
+            <pitch-deg>-8.5</pitch-deg>
+        </offsets>
+    </model>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Switchs_Lights/lg_hydraulic_low_pressure.xml</path>
+        <offsets>
+            <x-m>-3.193</x-m>
+            <y-m>0.087</y-m>
+            <z-m>-0.005</z-m>
+            <pitch-deg>-10.0</pitch-deg>
+        </offsets>
+    </model>
+
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Switchs_Lights/sw_hydraulic_emerg.xml</path>
+        <offsets>
+            <x-m>-3.184</x-m>
+            <y-m>0.087</y-m>
+            <z-m>-0.055</z-m>
+            <pitch-deg>82.0</pitch-deg>
         </offsets>
     </model>
 

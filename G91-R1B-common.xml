@@ -33,7 +33,7 @@
             <serviceable type="bool">true</serviceable>
             <path>Aircraft/G91-R1B_HD/Models/Parts/Stores/Submodels.xml</path>
         </submodels>
-        
+
         <multiplay>
             <chat_display>1</chat_display>
             <generic> 
@@ -57,9 +57,7 @@
                 <float n="2"  alias="/position/gear-agl-m"> 0 </float>                      <!-- altitude for MP shadow -->
                 <float n="3"  alias="/position/altitude-ft"> 0 </float>                     <!-- altitude for Smoke/Trail -->
                 <float n="4"  alias="/engines/engine[0]/n1"/>
-                <float n="5"  alias="/engines/engine[1]/n1"/>
                 <float n="6"  alias="/engines/engine[0]/n2"/>
-                <float n="7"  alias="/engines/engine[1]/n2"/>
                 <float n="8"  alias="/gear/gear[0]/wow/"/>
                 <float n="9"  alias="/gear/gear[1]/wow/"/>
                 <float n="10" alias="/gear/gear[2]/wow/"/>
@@ -67,7 +65,6 @@
                 <float n="12" alias="/gear/gear[1]/rollspeed-ms"/>
                 <float n="13" alias="/gear/gear[2]/rollspeed-ms"/>
                 <float n="14" alias="/controls/engines/engine[0]/throttle"/>
-                <float n="15" alias="/controls/engines/engine[1]/throttle"/>
                 <!-- For Bombable -->
                 <int type="int" n="10" alias="controls/armament/trigger">0</int>
                 <string n="9" type="string" />
@@ -176,7 +173,6 @@
             <file>Aircraft/G91-R1B_HD/Nasal/Lights/re_emit_green_red_gauges.nas</file>
             <file>Aircraft/G91-R1B_HD/Nasal/Lights/ambient_light.nas</file>
             <file>Aircraft/G91-R1B_HD/Nasal/Lights/button_lights.nas</file>
-            <file>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Switchs_Lights/Switchs_Lights.nas</file>
             <!-- Lights -->
             <file>Aircraft/G91-R1B_HD/Models/Parts/LandingGearFrontal/NASAL/frontal_gear_lights.nas</file>
             <file>Aircraft/G91-R1B_HD/Models/Parts/Wing/Components/Beacon/Nasal/beacon_lights.nas</file>

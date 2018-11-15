@@ -11,6 +11,24 @@ Description: G91R2 Canopy automation
     <property value="0">systems/starter/sw-push-togle</property>
     <property value="0">systems/starter/sw-push-pos</property>
     
+    <property value="0">systems/starter/fuel-shut-off-valve-lock</property>
+    <property value="0">systems/starter/fuel-shut-off-valve-lock-pos</property>
+    <property value="0">systems/starter/fuel-shut-off-valve</property>
+    <property value="0">systems/starter/fuel-shut-off-valve-pos</property>
+    <property value="0">systems/starter/fuel-booster-pump</property>
+    <property value="0">systems/starter/fuel-booster-pump-pos</property>
+    <property value="0">systems/starter/fuel-booster-pump-on</property>
+    <property value="0">systems/starter/HE</property>
+    <property value="0">systems/starter/HE-pos</property>
+    <property value="0">systems/starter/engine-JPTL</property>
+    <property value="0">systems/starter/engine-JPTL-pos</property>
+    <property value="0">systems/starter/drop-tank-press</property>
+    <property value="0">systems/starter/drop-tank-press-pos</property>
+    <property value="0">systems/starter/emerg-engine</property>
+    <property value="0">systems/starter/emerg-engine-pos</property>
+    <property value="0">systems/starter/emerg-engine-on-lg</property>
+    <property value="0">systems/starter/emerg-engine-on-lg-transparent</property>
+    
     
     <channel name="starter switch" execrate="8">
         
@@ -82,12 +100,7 @@ Description: G91R2 Canopy automation
         <switch name="systems/starter/sw-push">
             <default value="0"/>
             <test logic="AND" value="1">
-                systems/starter/sw-push-trigger == 1
                 systems/starter/sw-push-pos GT 0.50
-            </test>
-            <test logic="AND" value="0">
-                systems/starter/sw-push-trigger == 0
-                systems/starter/sw-push-pos LE 0.50
             </test>
         </switch>
         
@@ -129,6 +142,167 @@ Description: G91R2 Canopy automation
             <default value="0"/>
             <test logic="AND" value="6.1">
                 systems/starter/sw-push-rele-deleyed-on == 1
+            </test>
+        </switch>
+        
+    </channel>
+    
+    
+    <channel name="starter fuel shut off valve" execrate="16">
+        
+        <lag_filter name="systems/starter/fuel-shut-off-valve-lock-pos">
+            <input>systems/starter/fuel-shut-off-valve-lock</input>
+            <c1>4.0</c1>
+        </lag_filter>
+        
+        <lag_filter name="systems/starter/fuel-shut-off-valve-pos">
+            <input>systems/starter/fuel-shut-off-valve</input>
+            <c1>4.0</c1>
+        </lag_filter>
+        
+        <switch name="systems/starter/fuel-shut-off-valve-on">
+            <default value="0"/>
+            <test logic="AND" value="1">
+                systems/starter/fuel-shut-off-valve-pos GT 0.9
+                systems/electric/bus[1]/fuel-shut-off/fuse == 1
+                systems/electric/bus[1]/V GE 18.0
+            </test>
+        </switch>
+        
+    </channel>
+    
+        
+    <channel name="starter fuel booster pump" execrate="16">
+        
+        <lag_filter name="systems/starter/fuel-booster-pump-pos">
+            <input>systems/starter/fuel-booster-pump</input>
+            <c1>4.0</c1>
+        </lag_filter>
+        
+        <switch name="systems/starter/fuel-booster-pump-on">
+            <default value="0"/>
+            <test logic="AND" value="1">
+                systems/starter/fuel-booster-pump-pos GT 0.9
+                systems/electric/bus[1]/BP-fuel/fuse == 1
+                systems/electric/bus[1]/V GE 18.0
+            </test>
+        </switch>
+        
+        <switch name="systems/electric/bus[1]/BP-fuel/I">
+            <default value="0"/>
+            <test logic="AND" value="9">
+                systems/starter/fuel-booster-pump-on == 1
+            </test>
+        </switch>
+        
+    </channel>
+    
+    
+    <channel name="starter HE" execrate="16">
+        
+        <lag_filter name="systems/starter/HE-pos">
+            <input>systems/starter/HE</input>
+            <c1>4.0</c1>
+        </lag_filter>
+        
+        <switch name="systems/starter/HE-on">
+            <default value="0"/>
+            <test logic="AND" value="1">
+                systems/starter/HE-pos GT 0.9
+                systems/electric/bus[1]/V GE 16.0
+                systems/electric/bus[1]/turbojet-start-up/fuse == 1
+            </test>
+        </switch>
+        
+    </channel>
+    
+    
+    <channel name="starter engine JPTL" execrate="16">
+        
+        <lag_filter name="systems/starter/engine-JPTL-pos">
+            <input>systems/starter/engine-JPTL</input>
+            <c1>4.0</c1>
+        </lag_filter>
+        
+        <switch name="systems/starter/engine-JPTL-on">
+            <default value="0"/>
+            <test logic="AND" value="1">
+                systems/starter/engine-JPTL-pos GT 0.9
+                systems/electric/bus[1]/V GE 18.0
+                systems/electric/bus[1]/fuel-JPTL/fuse == 1
+            </test>
+        </switch>
+        
+        <switch name="systems/electric/bus[1]/fuel-JPTL/I">
+            <default value="0"/>
+            <test logic="AND" value="0.6">
+                systems/starter/engine-JPTL-on == 1
+            </test>
+        </switch>
+        
+    </channel>
+    
+    
+    <channel name="starter engine droppable fuel tabk pressure" execrate="16">
+        
+        <lag_filter name="systems/starter/drop-tank-press-pos">
+            <input>systems/starter/drop-tank-press</input>
+            <c1>4.0</c1>
+        </lag_filter>
+        
+        <switch name="systems/starter/drop-tank-press-on">
+            <default value="0"/>
+            <test logic="AND" value="1">
+                systems/starter/drop-tank-press-pos GT 0.9
+                systems/electric/bus[1]/V GE 18.0
+                systems/electric/bus[1]/drop-tank-press-on/fuse == 1
+            </test>
+        </switch>
+        
+        <switch name="systems/electric/bus[1]/drop-tank-press-on/I">
+            <default value="0"/>
+            <test logic="AND" value="0.5">
+                systems/starter/drop-tank-press-on == 1
+            </test>
+        </switch>
+        
+    </channel>
+    
+    
+    <channel name="starter emerg engine" execrate="16">
+        
+        <lag_filter name="systems/starter/emerg-engine-pos">
+            <input>systems/starter/emerg-engine</input>
+            <c1>4.0</c1>
+        </lag_filter>
+        
+        <switch name="systems/starter/emerg-engine-on">
+            <default value="0"/>
+            <test logic="AND" value="1">
+                systems/starter/emerg-engine-pos GT 0.9
+                systems/electric/bus[1]/V GE 18.0
+                systems/electric/bus[1]/fuel-AP-emergency/fuse == 1
+            </test>
+        </switch>
+        
+        <switch name="systems/electric/bus[1]/fuel-AP-emergency/I">
+            <default value="0"/>
+            <test logic="AND" value="1">
+                systems/starter/emerg-engine-on == 1
+            </test>
+        </switch>
+        
+        <switch name="systems/starter/emerg-engine-on-lg">
+            <default value="0"/>
+            <test logic="AND" value="systems/warning-lights/light-intensity-by-bus1-tension">
+                systems/starter/emerg-engine-on == 1
+            </test>
+        </switch>
+        
+        <switch name="systems/starter/emerg-engine-on-lg-transparent">
+            <default value="0.85"/>
+            <test logic="AND" value="systems/warning-lights/transparent-by-bus1-tension">
+                systems/starter/emerg-engine-on == 1
             </test>
         </switch>
         

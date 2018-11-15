@@ -24,14 +24,29 @@ The C1 lag_filter is less is longer respond time
             <gain>2.7</gain>
         </pure_gain>
         
+        <switch name="systems/electric/bus[1]/fuel-level-indicator/on">
+            <default value="0"/>
+            <test logic="AND" value="1">
+                systems/electric/bus[1]/V GE 18.0
+                systems/electric/bus[1]/fuel-level-indicator/fuse == 1
+            </test>
+        </switch>
+        
+        <switch name="systems/electric/bus[1]/fuel-level-indicator/I">
+            <default value="0"/>
+            <test logic="AND" value="0.9">
+                systems/electric/bus[1]/fuel-level-indicator/on == 1
+            </test>
+        </switch>
+        
         <switch name="systems/gauges/cockpit-fuel-pounds/libs">
             <default value="0"/>
             <test logic="AND" value="systems/gauges/cockpit-fuel-pounds/fuel_pounds_0-1-2">
-                systems/electric/bus[1]/V GE 18.0
+                systems/electric/bus[1]/fuel-level-indicator/on == 1
                 systems/electric/bus[1]/fuel-level-indicator/sw == 0
             </test>
             <test logic="AND" value="propulsion/tank[5]/contents-lbs-27">
-                systems/electric/bus[1]/V GE 18.0
+                systems/electric/bus[1]/fuel-level-indicator/on == 1
                 systems/electric/bus[1]/fuel-level-indicator/sw == 1
             </test>
         </switch>

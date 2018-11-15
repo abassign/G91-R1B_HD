@@ -59,6 +59,7 @@
     <system file="G91-JATO"/>
     <system file="G91-gauges"/>
     <system file="G91-starter"/>
+    <system file="G91-engine"/>
     <system file="G91-engine-sound"/>
     <system file="G91-stations"/>
     <system file="PHI"/>
@@ -107,7 +108,7 @@
         <emptywt unit="LBS" >   6834.0 </emptywt>
         <location name="CG" unit="IN">
             
-            <x> 212.00 </x>
+            <x> 205.00 </x>
             <y>   0.00 </y>
             <z>   0.00 </z>
         </location>
@@ -479,7 +480,7 @@
                 <roll>  0.00 </roll>
                 <yaw>   0.00 </yaw>
             </orient>
-            <feed>5</feed> <!-- The fuel keep from Collector or Manifold Tank number=5 -->
+            <feed>7</feed> <!-- The fuel keep from Collector or Manifold Tank number=7 -->
             <thruster file="direct">
                 <location unit="M">
                     <x>   9.50 </x>
@@ -562,7 +563,7 @@
                 <z> -17.71 </z>
             </location>
             <capacity unit="LBS"> 277.00 </capacity>
-            <contents unit="LBS"> 10.00 </contents>
+            <contents unit="LBS"> 277.00 </contents>
         </tank>
         
         <!-- Collector tank for collector fuel tank 3-4 -->
@@ -576,15 +577,17 @@
             <contents unit="LBS"> 0.00 </contents>
         </tank>
         
-        <!-- Collector tank for collector fuel tank 1-2 -->
+        <!--
+        Collector tank for propulsor collector ad cut-off
+        -->
         <tank type="FUEL" number="7">
             <location unit="IN">
                 <x> 181.89 </x>
                 <y> 0.00 </y>
                 <z> 0.00 </z>
             </location>
-            <capacity unit="LBS"> 10.00 </capacity>
-            <contents unit="LBS"> 0.00 </contents>
+            <capacity unit="LBS"> 4.00 </capacity>
+            <contents unit="LBS"> 4.00 </contents>
         </tank>
         
         <!-- JATO Engine 1 -->

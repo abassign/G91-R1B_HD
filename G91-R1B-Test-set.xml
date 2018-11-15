@@ -23,10 +23,6 @@
             <path>Aircraft/G91-R1B_HD/Models/G91_Test.xml</path>
         </model>
         
-        <startup>
-            
-        </startup>
-        
     </sim>
     
     <engines>

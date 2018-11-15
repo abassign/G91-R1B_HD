@@ -9,6 +9,8 @@
     <property value="0">systems/manual-switches/cockpit/sw-canopy-trigger</property>
     <property value="0">systems/manual-switches/cockpit/sw-canopy-pos</property>
     <property value="0">systems/manual-switches/cockpit/sw-canopy-togle</property>
+    <property value="0">systems/manual-switches/cockpit/sw-hydraulic-emerg-togle</property>
+    <property value="0">systems/manual-switches/cockpit/sw-hydraulic-emerg-top-togle</property>
     <property value="0">systems/manual-switches/jato/sw-ready-togle</property>
     <property value="0">systems/manual-switches/jato/sw-ignition-togle</property>
     <property value="0">systems/manual-switches/jato/sw-jettinson-togle</property>
@@ -323,18 +325,18 @@
         
         <lag_filter name="systems/manual-switches/cockpit/sw-landing-light-test-pos">
             <input>systems/manual-switches/cockpit/sw-landing-light-test-trigger</input>
-            <c1>1.0</c1>
+            <c1>0.2</c1>
         </lag_filter>
         
         <switch name="systems/manual-switches/cockpit/sw-landing-light-test">
             <default value="0"/>
             <test logic="AND" value="1">
                 systems/manual-switches/cockpit/sw-landing-light-test-trigger == 1
-                systems/manual-switches/cockpit/sw-landing-light-test-pos GT 0.50
+                systems/manual-switches/cockpit/sw-landing-light-test-pos GT 0.10
             </test>
             <test logic="AND" value="0">
                 systems/manual-switches/cockpit/sw-landing-light-test-trigger == 0
-                systems/manual-switches/cockpit/sw-landing-light-test-pos LE 0.50
+                systems/manual-switches/cockpit/sw-landing-light-test-pos LE 0.10
             </test>
         </switch>
         
@@ -365,6 +367,7 @@
         </switch>
         
         <!-- Emergency release loads -->
+        
         <washout_filter name="systems/manual-switches/cockpit/sw-emergency-release-togle-washed">
             <input>systems/manual-switches/cockpit/sw-emergency-release-togle</input>
             <c1>1.0</c1>
@@ -409,6 +412,18 @@
             </test>
             <output>/sim/G91/stores/sw-emergency-release</output>
         </switch>
+        
+        <!-- Hydraulic Emergency -->
+        
+        <lag_filter name="systems/manual-switches/cockpit/sw-hydraulic-emerg-pos">
+            <input>systems/manual-switches/cockpit/sw-hydraulic-emerg-togle</input>
+            <c1>8.0</c1>
+        </lag_filter>
+        
+        <lag_filter name="systems/manual-switches/cockpit/sw-hydraulic-emerg-top-pos">
+            <input>systems/manual-switches/cockpit/sw-hydraulic-emerg-top-togle</input>
+            <c1>8.0</c1>
+        </lag_filter>
         
     </channel>
         

@@ -1,0 +1,117 @@
+<?xml version="1.0"?>
+
+<!--
+Description: G91R2 Canopy automation
+-->
+
+<system name="Engine systems">
+    
+    <property>propulsion/engine[0]/starter</property>
+    <!--
+    <property>propulsion/engine[0]/cutoff</property>
+    -->
+    
+    <property value="0">systems/engine/cartridge-one/is-load</property>
+    <property value="0">systems/engine/cartridge-one/is-operative</property>
+    <property value="0">systems/engine/cartridge-one/burned</property>
+    <property value="0">systems/engine/cartridge-two/is-load</property>
+    <property value="0">systems/engine/cartridge-two/is-operative</property>
+    <property value="0">systems/engine/cartridge-two/burned</property>
+
+    <property value="10020">systems/engine/RPM-max</property>
+    <property value="0.0">systems/engine/air-system-pressure</property>
+    <property value="0.0">systems/engine/oil-low-pressure-on</property>
+    
+    <channel name="engine systems starter">
+
+        <switch name="systems/engine/start_cmd">
+            <output>propulsion/starter_cmd</output>
+            <default value="0"/>
+            <test logic="AND" value="propulsion/engine[0]/starter">
+                systems/starter/sw-push-pos GT 0.5
+            </test>
+        </switch>
+
+    </channel>
+
+  <!--
+    <switch name="propulsion/cutoff_cmd_">
+        <output>propulsion/cutoff_cmd</output>
+        <default value="0"/>
+        <test value="propulsion/engine[0]/cutoff">
+            systems/starter/sw-push-pos GT 0.5
+            systems/starter/HE-on == 1
+            propulsion/engine[0]/n2 LT 20.0
+        </test>
+    </switch>
+    -->
+    
+    <channel name="engine systems RPM" execrate="32">
+        
+        <pure_gain name="systems/engine/rpm">
+            <input>propulsion/engine/n2</input>
+            <gain>systems/engine/RPM-max</gain>
+        </pure_gain>
+        
+        <pure_gain name="systems/engine/rpm-norm">
+            <input>propulsion/engine/n2</input>
+            <gain>0.01</gain>
+            <clipto>
+                <min>0.0</min>
+                <max>1.0</max>
+            </clipto>
+        </pure_gain>
+        
+    </channel>
+    
+    
+    <channel name="engine systems oil pressure" execrate="32">
+        
+        <lag_filter name="systems/engine/rpm-norm-lag">
+            <input>systems/engine/rpm-norm</input>
+            <c1>0.1</c1>
+        </lag_filter>
+        
+        <switch name="systems/engine/oil-low-pressure-on">
+            <default value="0"/>
+            <test logic="AND" value="1">
+                systems/engine/rpm-norm-lag LT 0.15
+            </test>
+        </switch>
+        
+        <switch>
+            <default value="0"/>
+            <test logic="AND" value="systems/warning-lights/light-intensity-by-bus1-tension">
+                systems/engine/oil-low-pressure-on == 1
+            </test>
+            <output>systems/engine/oil-low-pressure-lg</output>
+        </switch>
+        
+        <switch>
+            <default value="0.85"/>
+            <test logic="AND" value="systems/warning-lights/transparent-by-bus1-tension">
+                systems/engine/oil-low-pressure-on == 1
+            </test>
+            <output>systems/engine/oil-low-pressure-lg-transparent</output>
+        </switch>
+        
+    </channel>
+    
+    
+    <channel name="engine systems compressor air" execrate="32">
+        
+        <lag_filter name="systems/engine/rpm-norm-lag">
+            <input>systems/engine/rpm-norm</input>
+            <c1>0.1</c1>
+        </lag_filter>
+        
+        <switch name="systems/engine/air-compression-service-on">
+            <default value="0"/>
+            <test logic="AND" value="1">
+                systems/engine/rpm-norm-lag GT 0.2
+            </test>
+        </switch>
+        
+    </channel>
+    
+</system>

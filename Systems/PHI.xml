@@ -1,8 +1,6 @@
 <?xml version="1.0"?>
 
 <system name="PHI">
-    
-    <property value="0.0">systems/gauges/PHI/vtrue-air/v</property>
 
     <property value="0.0">systems/gauges/PHI/doppler/switch-turn</property>
     <property value="0.0">systems/gauges/PHI/doppler/switch-up</property>
@@ -32,7 +30,6 @@
     <property value="0.0">systems/gauges/PHI/indicator/switch</property>
     <property value="0.0">systems/gauges/PHI/indicator/brg-imposed</property>
     <property value="0.0">systems/gauges/PHI/indicator/is-hold</property>
-    <property value="0.0">systems/gauges/PHI/var-deg</property>
     <property value="0.0">systems/gauges/PHI/wind/wd</property>
     <property value="0.0">systems/gauges/PHI/wind/wd-up</property>
     <property value="0.0">systems/gauges/PHI/wind/ws</property>
@@ -89,12 +86,50 @@
     </channel>
     
     
+    <channel name="systems gauges PHI gyrocompass operative" execrate="32">
+        
+        <switch name="systems/gauges/PHI/gyrocompass-on">
+            <default value="0"/>
+            <test logic="AND" value="1">
+                systems/electric/bus[1]/gyrocompass/fuse == 1
+                systems/electric/bus[1]/gyrocompass/sw == 1
+                systems/electric/bus[1]/V GE 18.0
+            </test>
+        </switch>
+        
+        <switch name="systems/gauges/PHI/gyrocompass-magnetic-deg">
+            <default value="0"/>
+            <test logic="AND" value="/orientation/heading-magnetic-deg">
+                systems/gauges/PHI/gyrocompass-on == 1
+            </test>
+        </switch>
+        
+        <sensor name="systems/gauges/PHI/attitude/heading-magnetic-deg-lag">
+            <input>systems/gauges/PHI/gyrocompass-magnetic-deg</input>
+            <lag>16</lag>
+            <noise variation="PERCENT" distribution="GAUSSIAN"> 0.001 </noise>
+            <drift_rate>0.0</drift_rate>
+            <gain>1.0</gain>
+            <bias>0.0</bias>
+            <delay type="time">0.1</delay>
+        </sensor>
+        
+        <switch name="systems/electric/bus[1]/gyrocompass/I">
+            <default value="0.0"/>
+            <test logic="AND" value="0.7">
+                systems/gauges/PHI/gyrocompass-on == 1
+            </test>
+        </switch>
+        
+    </channel>
+    
+    
     <channel name="systems gauges PHI calculate TAS" execrate="16">
         
         <sensor name="systems/gauges/PHI/T-R-sensor">
             <input>atmosphere/T-R</input>
             <lag>0.2</lag>
-            <noise variation="PERCENT"> 0.5 </noise>
+            <noise variation="PERCENT" distribution="GAUSSIAN"> 0.5 </noise>
             <quantization name="systems/gauges/PHI/quantizated/T-R-sensor">
                 <bits>10</bits>
                 <min>0</min>
@@ -109,7 +144,7 @@
         <sensor name="systems/gauges/PHI/qbar-psf-sensor">
             <input>aero/qbar-psf</input>
             <lag>2.0</lag>
-            <noise variation="PERCENT"> 0.2 </noise>
+            <noise variation="PERCENT" distribution="GAUSSIAN"> 0.2 </noise>
             <quantization name="systems/gauges/PHI/quantizated/qbar-psf-sensor">
                 <bits>10</bits>
                 <min>0</min>
@@ -124,7 +159,7 @@
         <sensor name="systems/gauges/PHI/P-psf-sensor">
             <input>atmosphere/P-psf</input>
             <lag>2.0</lag>
-            <noise variation="PERCENT"> 0.2 </noise>
+            <noise variation="PERCENT" distribution="GAUSSIAN"> 0.2 </noise>
             <quantization name="systems/gauges/PHI/quantizated/PHI/P-psf-sensor">
                 <bits>10</bits>
                 <min>0</min>
@@ -195,11 +230,26 @@
                 attitude/roll-rad LE 0.69
             </test>
         </switch>
+        
+        <fcs_function name="systems/gauges/PHI/speed-XY-fps">
+            <function>
+                <sqrt>
+                    <pow>
+                        <p>velocities/v-north-fps</p>
+                        <v>2.0</v>
+                    </pow>
+                    <pow>
+                        <p>velocities/v-east-fps</p>
+                        <v>2.0</v>
+                    </pow>
+                </sqrt>
+            </function>
+        </fcs_function>
 
         <!-- Doppler sensor section -->
         <switch name="systems/gauges/PHI/speed-doppler-fps">
             <default value="0"/>
-            <test logic="AND" value="velocities/vtrue-fps">
+            <test logic="AND" value="systems/gauges/PHI/speed-XY-fps">
                 systems/gauges/PHI/doppler/is-operative == 1
                 systems/gauges/PHI/doppler/rec-only == 0
                 systems/gauges/PHI/doppler/is-correct-asset == 1
@@ -232,11 +282,8 @@
     <channel name="systems gauges PHI calculate speed and space" execrate="4">
         
         <switch name="systems/gauges/PHI/speed-mil-sensor">
-            <default value="0.0"/>
+            <default value="systems/gauges/PHI/TAS-mil-s-calculate"/>
             <test logic="AND" value="systems/gauges/PHI/speed-doppler-mil-sensor">
-                systems/gauges/PHI/doppler/is-operative == 0
-            </test>
-            <test logic="AND" value="systems/gauges/PHI/TAS-mil-s-calculate">
                 systems/gauges/PHI/doppler/is-operative == 1
             </test>
         </switch>
@@ -246,6 +293,22 @@
             <c1 type="ab2">1.0</c1>
             <trigger>systems/gauges/PHI/distance-reset</trigger>
         </integrator>
+        
+        <fcs_function name="systems/gauges/PHI/mil-sum-display">
+             <function>
+                <ifthen>
+                    <gt>
+                        <p>systems/gauges/PHI/mil-sum</p>
+                        <v>1000</v>
+                    </gt>
+                    <difference>
+                        <p>systems/gauges/PHI/mil-sum</p>
+                        <v>1000</v>
+                    </difference>
+                    <p>systems/gauges/PHI/mil-sum</p>
+                </ifthen>
+            </function>
+        </fcs_function>
         
         <summer name="systems/gauges/PHI/speed-TAS-doppler">
             <input>systems/gauges/PHI/TAS-mil-s-calculate</input>
@@ -288,7 +351,7 @@
                 <abs>
                     <difference>
                         <p>systems/gauges/PHI/indicator/dist</p>
-                        <p>systems/gauges/PHI/mil-sum</p>
+                        <p>systems/gauges/PHI/mil-sum-display</p>
                     </difference>
                 </abs>
             </function>
@@ -943,6 +1006,9 @@
             <function>
                 <ifthen>
                     <and>
+                        <not>
+                            <p>systems/gauges/PHI/doppler/is-operative</p>
+                        </not>
                         <p>systems/gauges/PHI/indicator/is-phi-on</p>
                         <lt>
                             <p>systems/gauges/PHI/wind/advise-light-set-on</p>
@@ -969,6 +1035,9 @@
             <function>
                 <ifthen>
                     <and>
+                        <not>
+                            <p>systems/gauges/PHI/doppler/is-operative</p>
+                        </not>
                         <p>systems/gauges/PHI/indicator/is-phi-on</p>
                         <gt>
                             <p>systems/gauges/PHI/speed-mil-sensor</p>
@@ -1299,10 +1368,11 @@
                             <ifthen>
                                 <p>systems/gauges/PHI/indicator/is-phi-on</p>
                                 <sum>
+                                    <!-- NOTE: If doppler operative insert correction for doppler -->
                                     <p>systems/gauges/PHI/wind/correction-wind-dir</p>
                                     <difference>
                                         <p>systems/gauges/PHI/program/route-phi</p>
-                                        <p>systems/gauges/PHI/attitude/heading-true-deg</p>
+                                        <p>systems/gauges/PHI/attitude/heading-magnetic-deg-lag</p>
                                     </difference>
                                 </sum>
                                 <v>0.0</v>
@@ -1411,29 +1481,17 @@
     </channel>
     
         
-    <channel name="systems gauges PHI attitude" execrate="4">
+    <channel name="systems gauges PHI attitude" execrate="8">
         
-        <fcs_function name="systems/gauges/PHI/attitude/heading-true-deg">
-            <function>
-                <ifthen>
-                    <p>systems/gauges/PHI/operative</p>
-                    <difference>
-                        <product>
-                            <p>attitude/heading-true-rad</p>
-                            <v>57.2958</v>
-                        </product>
-                        <p>systems/gauges/PHI/var-deg</p>
-                    </difference>
-                    <v>0.0</v>
-                </ifthen>
-            </function>
-            <output>systems/airbrake/sound-roumble</output>
-        </fcs_function>
+        <pure_gain name="systems/gauges/PHI/attitude/heading-true-deg">
+            <input>attitude/heading-true-rad</input>
+            <gain>57.2958</gain>
+        </pure_gain>
         
-        <lag_filter name="systems/gauges/PHI/attitude/heading-true-deg-lag">
+        <summer name="systems/gauges/PHI/attitude/magnetic-declination-true-deg">
+            <input>-/orientation/heading-magnetic-deg</input>
             <input>systems/gauges/PHI/attitude/heading-true-deg</input>
-            <c1>32</c1>
-        </lag_filter>
+        </summer>
         
     </channel>
     

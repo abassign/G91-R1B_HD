@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+    
+    <model>
+        <path>sw_model_naked_little.xml</path>
+    </model>
+    
+    <animation>
+        <type>pick</type>
+        <visible>true</visible>
+        <object-name>swich_02</object-name>
+        <object-name>swich_03</object-name>
+        <object-name>swich_04</object-name>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <interval-sec>0.5</interval-sec>
+                 <binding>
+                <command>property-toggle</command>
+                <property>fdm/jsbsim/systems/starter/fuel-shut-off-valve</property>
+                <step>1</step>
+                <min>0</min>
+                <max>1</max>
+                <wrap>true</wrap>
+            </binding>
+        </action>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>swich_04</object-name>
+        <property>fdm/jsbsim/systems/starter/fuel-shut-off-valve-pos</property>
+        <offset-deg>0</offset-deg>
+        <factor>-30</factor>
+        <center>
+            <x-m> 0.0004</x-m>
+            <y-m> 0.0</y-m>
+            <z-m> 0.0</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>1.0</y>
+            <z>0</z>
+        </axis>
+    </animation>
+            
+            
+</PropertyList> 

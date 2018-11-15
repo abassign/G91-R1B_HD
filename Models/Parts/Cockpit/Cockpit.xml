@@ -434,7 +434,7 @@
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/Pressure_Gauge/Pressure_Gauge.xml</path>
         <offsets>
             <x-m>-3.188</x-m>
-            <y-m>0.189</y-m>
+            <y-m>0.193</y-m>
             <z-m>-0.043</z-m>
             <pitch-deg>-8.65</pitch-deg>
         </offsets>
@@ -444,7 +444,7 @@
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/Pressure_Gauge_Emergency/Pressure_Gauge_Emergency.xml</path>
         <offsets>
             <x-m>-3.188</x-m>
-            <y-m>0.125</y-m>
+            <y-m>0.129</y-m>
             <z-m>-0.043</z-m>
             <pitch-deg>-8.65</pitch-deg>
         </offsets>
@@ -466,6 +466,16 @@
             <x-m>-3.190</x-m>
             <y-m>-0.125</y-m>
             <z-m>-0.040</z-m>
+            <pitch-deg>-8.65</pitch-deg>
+        </offsets>
+    </model>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/Trim_Indicator/Trim_indicator.xml</path>
+        <offsets>
+            <x-m>-3.195</x-m>
+            <y-m>-0.090</y-m>
+            <z-m>0.0085</z-m>
             <pitch-deg>-8.65</pitch-deg>
         </offsets>
     </model>

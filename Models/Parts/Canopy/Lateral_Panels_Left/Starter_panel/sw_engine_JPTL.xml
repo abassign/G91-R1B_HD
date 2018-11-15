@@ -9,66 +9,30 @@
     <animation>
         <type>pick</type>
         <visible>true</visible>
-        <object-name>sw_north</object-name>
-        <object-name>sw_center</object-name>
+        <object-name>swich_02</object-name>
+        <object-name>swich_03</object-name>
+        <object-name>swich_04</object-name>
         <action>
             <button>0</button>
             <repeatable>false</repeatable>
             <interval-sec>0.5</interval-sec>
-            <binding>
-                <command>property-assign</command>
-                <property>fdm/jsbsim/systems/manual-switches/cockpit/sw-bus0-bus1-battery-trigger</property>
-                <value>1</value>
+                 <binding>
+                <command>property-toggle</command>
+                <property>fdm/jsbsim/systems/starter/engine-JPTL</property>
+                <step>1</step>
+                <min>0</min>
+                <max>1</max>
+                <wrap>true</wrap>
             </binding>
-            <binding>
-                <command>property-assign</command>
-                <property>fdm/jsbsim/systems/manual-switches/cockpit/sw-bus0-bus1-battery</property>
-                <value>1</value>
-            </binding>
-            <mod-up>
-                <binding>
-                    <command>property-assign</command>
-                    <property>fdm/jsbsim/systems/manual-switches/cockpit/sw-bus0-bus1-battery-trigger</property>
-                    <value>0</value>
-                </binding>
-            </mod-up>
-        </action>
-    </animation>
-    
-    <animation>
-        <type>pick</type>
-        <visible>true</visible>
-        <object-name>sw_south</object-name>
-        <action>
-            <button>0</button>
-            <repeatable>false</repeatable>
-            <interval-sec>0.5</interval-sec>
-            <binding>
-                <command>property-assign</command>
-                <property>fdm/jsbsim/systems/manual-switches/cockpit/sw-bus0-bus1-battery-trigger</property>
-                <value>-1</value>
-            </binding>
-            <binding>
-                <command>property-assign</command>
-                <property>fdm/jsbsim/systems/manual-switches/cockpit/sw-bus0-bus1-battery</property>
-                <value>0</value>
-            </binding>
-            <mod-up>
-                <binding>
-                    <command>property-assign</command>
-                    <property>fdm/jsbsim/systems/manual-switches/cockpit/sw-bus0-bus1-battery-trigger</property>
-                    <value>0</value>
-                </binding>
-            </mod-up>
         </action>
     </animation>
     
     <animation>
         <type>rotate</type>
         <object-name>swich_04</object-name>
-        <property>fdm/jsbsim/systems/manual-switches/cockpit/sw-bus0-bus1-battery-pos</property>
-        <offset-deg>-10</offset-deg>
-        <factor>-10</factor>
+        <property>fdm/jsbsim/systems/starter/engine-JPTL-pos</property>
+        <offset-deg>10</offset-deg>
+        <factor>-20</factor>
         <center>
             <x-m> 0.0004</x-m>
             <y-m> 0.0</y-m>
@@ -79,7 +43,6 @@
             <y>1.0</y>
             <z>0</z>
         </axis>
-    </animation>
-            
+    </animation> 
             
 </PropertyList> 

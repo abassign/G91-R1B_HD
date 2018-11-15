@@ -23,32 +23,6 @@
             <path>Aircraft/G91-R1B_HD/Models/G91.xml</path>
         </model>
         
-        <configuration>
-            <rudder_input_exponent type="float" archive="y">2</rudder_input_exponent>
-        </configuration>
-        
-        <G91>
-            <switchs>
-                <ArmyPanels>
-                    <ArmyPanelDx type="bool">false</ArmyPanelDx>
-                    <ArmyPanelDx_timing type="float">0</ArmyPanelDx_timing>
-                    <ArmyPanelSx type="bool">false</ArmyPanelSx>
-                    <ArmyPanelSx_timing type="float">0</ArmyPanelSx_timing>
-                </ArmyPanels>
-                <canopy>
-                    <EmergencyCanopyOpenDx type="bool">false</EmergencyCanopyOpenDx>
-                    <EmergencyCanopyOpenDx_timing type="float">0</EmergencyCanopyOpenDx_timing>
-                    <EmergencyCanopyOpenSx type="bool">false</EmergencyCanopyOpenSx>
-                    <EmergencyCanopyOpenSx_timing type="float">0</EmergencyCanopyOpenSx_timing>
-                    <handle>
-                        <Emer_Canopy_Jett_Sx type="bool">false</Emer_Canopy_Jett_Sx>
-                        <Emer_Canopy_Jett_Dx type="bool">false</Emer_Canopy_Jett_Dx>
-                        <Emer_Canopy_Jett_Cabin type="bool">false</Emer_Canopy_Jett_Cabin>
-                    </handle>
-                </canopy>
-            </switchs>
-        </G91>
-        
     </sim>
     
     <engines>

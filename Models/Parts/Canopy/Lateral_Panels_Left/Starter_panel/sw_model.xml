@@ -12,12 +12,15 @@
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
         <object-name>swich_support</object-name>
-        <object-name>swich_04</object-name>
+        <object-name>swich_01</object-name>
+        <object-name>swich_02</object-name>
+        <object-name>swich_03</object-name>
     </effect>
     
     <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_silver_D2_1</inherits-from>
-        <object-name>swich_04</object-name>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
+        <object-name>swich_support</object-name>
+        <object-name>swich_01</object-name>
         <object-name>swich_02</object-name>
         <object-name>swich_03</object-name>
     </effect>
@@ -25,16 +28,14 @@
     <animation> 
         <type>material</type>
         <object-name>swich_01</object-name>
-        <object-name>swich_02</object-name>
-        <object-name>swich_03</object-name>
-         <texture>Pictures/G91-Al_02.png</texture>
+        <texture>Pictures/G91-Al_02.png</texture>
         <ambient>
-            <red>0.9</red>
-            <green>0.9</green>
-            <blue>0.9</blue>
+            <red>0.6</red>
+            <green>0.6</green>
+            <blue>0.6</blue>
         </ambient>
         <emission>
-            <red>0.15</red>
+            <red>0.08</red>
             <green>0.0</green>
             <blue>0.0</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
@@ -43,23 +44,45 @@
     
     <animation> 
         <type>material</type>
-        <object-name>swich_support</object-name>
-        <texture>Pictures/G91-Al-dark.png</texture>
+        <object-name>swich_02</object-name>
+        <texture>Pictures/G91-Al-Light.png</texture>
         <ambient>
-            <red>0.9</red>
-            <green>0.9</green>
-            <blue>0.9</blue>
+            <red>0.6</red>
+            <green>0.6</green>
+            <blue>0.6</blue>
         </ambient>
         <emission>
-            <red>0.15</red>
+            <red>0.10</red>
             <green>0.0</green>
             <blue>0.0</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
         <specular>
-            <red>0.8</red>
-            <green>0.9</green>
-            <blue>0.9</blue>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
+        </specular>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>swich_03</object-name>
+        <texture>Pictures/G91-Al-Light.png</texture>
+        <ambient>
+            <red>0.7</red>
+            <green>0.7</green>
+            <blue>0.7</blue>
+        </ambient>
+        <emission>
+            <red>0.12</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+        <specular>
+            <red>0.7</red>
+            <green>0.7</green>
+            <blue>0.7</blue>
         </specular>
     </animation>
     
@@ -74,6 +97,28 @@
         </ambient>
         <emission>
             <red>0.15</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+        <specular>
+            <red>0.9</red>
+            <green>0.9</green>
+            <blue>0.9</blue>
+        </specular>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>swich_support</object-name>
+        <texture>Pictures/G91-Al-dark.png</texture>
+        <ambient>
+            <red>0.4</red>
+            <green>0.4</green>
+            <blue>0.4</blue>
+        </ambient>
+        <emission>
+            <red>0.12</red>
             <green>0.0</green>
             <blue>0.0</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>

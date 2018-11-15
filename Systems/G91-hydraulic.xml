@@ -14,6 +14,9 @@ Description: G91R4 hydraulics system from "Manuale di pilotaggio (1-11,1-12, etc
     <property value="0">systems/hydraulics/flight-system-psi</property>
     <property value="0">systems/hydraulics/flight-system-pump-failed</property>
     <property value="0.1">systems/hydraulics/lost-performance-system</property>
+    
+    <property value="0">systems/hydraulics/low_press_on</property>
+    <property value="0">systems/hydraulics/emerg_system_press_on</property>
 
     <channel name="hydraulic pressure" execrate="8">
         <!--
@@ -71,7 +74,16 @@ Description: G91R4 hydraulics system from "Manuale di pilotaggio (1-11,1-12, etc
             <input>systems/hydraulics/pump_flow_rate</input>
             <input>-systems/hydraulics/lost_flow_rate</input>
         </summer>
+        
+        <switch name="systems/hydraulics/low_press_on">
+            <default value="0"/>
+            <test logic="AND" value="1">
+                systems/hydraulics/flight-system-psi LT 2000
+            </test>
+        </switch>
+        
     </channel>
+    
     
     <function name="systems/hydraulics/pump_power-psi">
         <product>

@@ -68,6 +68,34 @@
             </test>
         </switch>
         
+        <switch name="systems/warning-lights/cockpit/lg_collect_tank_2_all_tank">
+            <default value="0"/>
+            <test logic="AND" value="systems/warning-lights/light-intensity-by-bus1-tension">
+                systems/electric/bus[1]/fuel-level-indicator/sw == 1
+            </test>
+        </switch>
+        
+        <switch name="systems/warning-lights/cockpit/lg_collect_tank_2_all_tank-transparent">
+            <default value="0.85"/>
+            <test logic="AND" value="systems/warning-lights/transparent-by-bus1-tension">
+                systems/electric/bus[1]/fuel-level-indicator/sw == 1
+            </test>
+        </switch>
+        
+        <switch name="systems/warning-lights/cockpit/lg_hydraulic_low_press">
+            <default value="0"/>
+            <test logic="AND" value="systems/warning-lights/light-intensity-by-bus1-tension">
+                systems/hydraulics/low_press_on == 1
+            </test>
+        </switch>
+        
+        <switch name="systems/warning-lights/cockpit/lg_hydraulic_low_press-transparent">
+            <default value="0.85"/>
+            <test logic="AND" value="systems/warning-lights/transparent-by-bus1-tension">
+                systems/hydraulics/low_press_on == 1
+            </test>
+        </switch>
+        
     </channel>
 
     

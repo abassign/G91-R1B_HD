@@ -476,7 +476,7 @@
         <object-name>knob_002 (Meshed)</object-name>
         <object-name>knob_002_plate_A (Meshed)</object-name>
         <property>/fdm/jsbsim/systems/gauges/PHI/var-deg</property>
-        <factor>1</factor>
+        <factor>10</factor>
         <center>
             <x-m>  0.004 </x-m>
             <y-m>  0.04103 </y-m>

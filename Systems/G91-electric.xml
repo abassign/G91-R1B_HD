@@ -36,20 +36,22 @@ Description: G91R4 Electric system from "Manuale di pilotaggio (p.56)
     <property value="1">systems/electric/bus[1]/normal-bombs/fuse</property>
     <property value="1">systems/electric/bus[1]/special-bombs/fuse</property>
     <property value="1">systems/electric/bus[1]/BP-fuel/fuse</property>
+    <property value="0.0">systems/electric/bus[1]/BP-fuel/I</property>
     <property value="1">systems/electric/bus[1]/BP-oil/fuse</property>
+    <property value="0.0">systems/electric/bus[1]/BP-oil/I</property>
     <property value="1">systems/electric/bus[1]/landig-gear-command/fuse</property>
     <property value="1">systems/electric/bus[1]/air-conditioning-pressurization/fuse</property>
     <property value="1">systems/electric/bus[1]/horizontal-stabilization-corrector/fuse</property>
     <property value="1">systems/electric/bus[1]/vertical-tail-corrector/fuse</property>
     <property value="1">systems/electric/bus[1]/fuel-pump/fuse</property>
     <property value="1">systems/electric/bus[1]/fuel-AP-emergency/fuse</property>
+    <property value="0.0">systems/electric/bus[1]/fuel-AP-emergency/I</property>
     <property value="1">systems/electric/bus[1]/aileron-servocontrol-emergency/fuse</property>
     <property value="1">systems/electric/bus[1]/landing-light/fuse</property>
     <property value="1">systems/electric/bus[1]/aerodynamic-brakes/fuse</property>
     <property value="0">systems/electric/bus[1]/aerodynamic-brakes/sw</property>
     <property value="1">systems/electric/bus[1]/gyrocompass/fuse</property>
     <property value="1">systems/electric/bus[1]/gyrocompass/sw</property>
-    <property value="0.0">systems/electric/bus[1]/gyrocompass/I</property>
     <property value="1">systems/electric/bus[1]/IFF/fuse</property>
     <property value="1">systems/electric/bus[1]/IFF/sw</property>
     <property value="0.0">systems/electric/bus[1]/IFF/I</property>
@@ -59,7 +61,8 @@ Description: G91R4 Electric system from "Manuale di pilotaggio (p.56)
     <property value="1">systems/electric/bus[1]/hydraulic-system-flight-controls/fuse</property>
     <property value="1">systems/electric/bus[1]/hydraulic-system-general-utilities/fuse</property>
     <property value="1">systems/electric/bus[1]/fuel-level-indicator/fuse</property>
-    <property value="0">systems/electric/bus[1]/fuel-level-indicator/sw</property>
+    <property value="0">systems/electric/bus[1]/fuel-level-indicator/on</property>
+    <property value="0.0">systems/electric/bus[1]/fuel-level-indicator/I</property>
     <property value="1">systems/electric/bus[1]/fuel-interception-BP/fuse</property>
     <property value="1">systems/electric/bus[1]/secondary-inverter/fuse</property>
     <property value="0">systems/electric/bus[1]/secondary-inverter/sw</property>
@@ -94,6 +97,11 @@ Description: G91R4 Electric system from "Manuale di pilotaggio (p.56)
     <property value="1">systems/electric/bus[1]/safe-special-bombs/fuse</property>
     <property value="1">systems/electric/bus[1]/shoot-on-ground/fuse</property>
     <property value="1">systems/electric/bus[1]/turn-indicator/fuse</property>
+    <property value="1">systems/electric/bus[1]/fuel-JPTL/fuse</property>
+    <property value="1">systems/electric/bus[1]/fuel-JPTL/I</property>
+    <property value="1">systems/electric/bus[1]/drop-tank-press-on/fuse</property>
+    <property value="0.0">systems/electric/bus[1]/drop-tank-press-on/I</property>
+    <property value="1">systems/electric/bus[1]/fuel-shut-off/fuse</property>
     <property value="1">systems/electric/bus[2]/featuring-gun/fuse</property>
     <property value="1">systems/electric/bus[2]/doppler/fuse</property>
     <property value="0.0">systems/electric/bus[2]/doppler/I</property>
@@ -162,6 +170,11 @@ Description: G91R4 Electric system from "Manuale di pilotaggio (p.56)
             <input>systems/electric/bus[1]/primary-inverter/I</input>
             <input>systems/electric/bus[1]/secondary-inverter/I</input>
             <input>systems/electric/bus[1]/collimator-lighting/I</input>
+            <input>systems/electric/bus[1]/BP-fuel/I</input>
+            <input>systems/electric/bus[1]/fuel-AP-emergency/I</input>
+            <input>systems/electric/bus[1]/fuel-level-indicator/I</input>
+            <input>systems/electric/bus[1]/fuel-JPTL/I</input>
+            <input>systems/electric/bus[1]/drop-tank-press-on/I</input>
         </summer>
         
         <summer name="systems/electric/bus[2]/I">
