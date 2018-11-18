@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+    
+    <path>fire.ac</path>
+    
+    <effect>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
+        <object-name>lg_red_border (Meshed)</object-name>
+        <object-name>lg_red_cover (Meshed)</object-name>
+        <object-name>lg_fire (Meshed)</object-name>
+        <object-name>box (Meshed)</object-name>
+        <object-name>test_circuit (Meshed)</object-name>
+        <object-name>switch_2_ring (Meshed)</object-name>
+        <object-name>switch_2_cone (Meshed)</object-name>
+        <object-name>switch_2_level (Meshed)</object-name>
+        <object-name>switch_2_base (Meshed)</object-name>
+    </effect>
+    
+    <effect>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
+        <object-name>box (Meshed)</object-name>
+        <object-name>test_circuit (Meshed)</object-name>
+        <object-name>switch_2_ring (Meshed)</object-name>
+        <object-name>switch_2_cone (Meshed)</object-name>
+        <object-name>switch_2_level (Meshed)</object-name>
+        <object-name>switch_2_base (Meshed)</object-name>
+    </effect>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>box (Meshed)</object-name>
+        <texture>Pictures/G91-Dark-Grey.png</texture>
+        <ambient>
+            <red>0.4</red>
+            <green>0.4</green>
+            <blue>0.4</blue>
+        </ambient>
+        <emission>
+            <red>0.2</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>switch_2_level (Meshed)</object-name>
+        <texture>Pictures/G91-Al-Light.png</texture>
+        <ambient>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </ambient>
+        <emission>
+            <red>0.15</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+        <specular>
+            <red>0.8</red>
+            <green>0.9</green>
+            <blue>0.9</blue>
+        </specular>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>switch_2_cone (Meshed)</object-name>
+        <object-name>switch_2_ring (Meshed)</object-name>
+        <texture>Pictures/G91-Al-Light.png</texture>
+        <ambient>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
+        </ambient>
+        <emission>
+            <red>0.1</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+        <specular>
+            <red>0.8</red>
+            <green>0.9</green>
+            <blue>0.9</blue>
+        </specular>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>switch_2_base (Meshed)</object-name>
+        <texture>Pictures/G91-Al-Light.png</texture>
+        <ambient>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.3</blue>
+        </ambient>
+        <emission>
+            <red>0.05</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+        <specular>
+            <red>0.9</red>
+            <green>0.9</green>
+            <blue>0.9</blue>
+        </specular>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>test_circuit (Meshed)</object-name>
+        <texture>Pictures/G91-Ivory.png</texture>
+        <ambient>
+            <red>0.4</red>
+            <green>0.45</green>
+            <blue>0.4</blue>
+        </ambient>
+        <emission>
+            <red>0.0</red>
+            <green>0.15</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
+        </emission>
+        <specular>
+            <red>0.7</red>
+            <green>0.7</green>
+            <blue>0.7</blue>
+        </specular>
+    </animation>
+    
+    <animation>
+        <type>pick</type>
+        <visible>true</visible>
+        <object-name>switch_2_ring (Meshed)</object-name>
+        <object-name>switch_2_cone (Meshed)</object-name>
+        <object-name>switch_2_level (Meshed)</object-name>
+        <object-name>switch_2_base (Meshed)</object-name>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <interval-sec>0.2</interval-sec>
+            <binding>
+                <command>property-assign</command>
+                <property>fdm/jsbsim/systems/gauges/cockpit-fire-sw-test-togle</property>
+                <value>1</value>
+            </binding>
+            <mod-up>
+            <button>0</button>
+                <binding>
+                    <command>property-assign</command>
+                    <property>fdm/jsbsim/systems/gauges/cockpit-fire-sw-test-togle</property>
+                    <value>0</value>
+                </binding>
+            </mod-up>
+        </action>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>switch_2_level (Meshed)</object-name>
+        <property>fdm/jsbsim/systems/gauges/cockpit-fire-sw-test-pos</property>
+        <factor>30</factor>
+        <offset-deg>-15</offset-deg>
+        <center>
+            <x-m> 0.012</x-m>
+            <y-m> 0.0</y-m>
+            <z-m> 0.0185</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>-1</y>
+            <z>0</z>
+        </axis>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>lg_red_cover (Meshed)</object-name>
+        <texture>Pictures/G91-Red_01.png</texture>
+        <transparency>
+            <alpha>1.0</alpha>
+        </transparency>
+        <ambient>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </ambient>
+        <emission>
+            <red>0.6</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>fdm/jsbsim/systems/gauges/cockpit-fire-light-intensity</factor-prop>
+        </emission>
+        <specular>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
+        </specular>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>lg_red_border (Meshed)</object-name>
+        <texture>Pictures/G91-Red_01.png</texture>
+        <ambient>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </ambient>
+        <emission>
+            <red>1.0</red>
+            <green>0.6</green>
+            <blue>0.15</blue>
+            <factor-prop>fdm/jsbsim/systems/gauges/cockpit-fire-light-intensity</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>lg_fire (Meshed)</object-name>
+        <texture>Pictures/G91-White-00.png</texture>
+        <transparency>
+            <alpha>1.0</alpha>
+            <factor-prop>fdm/jsbsim/systems/gauges/cockpit-fire-light-transparent</factor-prop>
+        </transparency>
+        <ambient>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </ambient>
+        <emission>
+            <red>0.6</red>
+            <green>0.6</green>
+            <blue>0.6</blue>
+            <factor-prop>fdm/jsbsim/systems/gauges/cockpit-fire-light-intensity</factor-prop>
+        </emission>
+        <specular>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
+        </specular>
+    </animation>
+        
+    <model>
+        <condition>
+            <greater-than-equals>
+                <property>fdm/jsbsim/systems/gauges/cockpit-fire-light-intensity</property>
+                <value>0.1</value>
+            </greater-than-equals>
+        </condition>
+        <name>pb_light_effect</name>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Effects/lights/procedural_light_cockpit_advise_red.xml</path>
+        <offsets>
+            <x-m> 0.02</x-m>
+            <y-m> -0.013 </y-m>
+            <z-m> 0.05 </z-m>
+        </offsets>
+    </model>
+    
+    <model>
+        <condition>
+            <greater-than-equals>
+                <property>fdm/jsbsim/systems/gauges/cockpit-fire-light-intensity</property>
+                <value>0.1</value>
+            </greater-than-equals>
+        </condition>
+        <name>pb_light_effect</name>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Effects/lights/procedural_light_cockpit_advise_red.xml</path>
+        <offsets>
+            <x-m> 0.02</x-m>
+            <y-m> -0.033 </y-m>
+            <z-m> 0.05 </z-m>
+        </offsets>
+    </model>
+
+    
+</PropertyList>

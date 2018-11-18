@@ -20,6 +20,7 @@
         <object-name>flag_A (Meshed)</object-name>
         <object-name>knob_caging_top_A (Meshed)</object-name>
         <object-name>horizon (Meshed)</object-name>
+        <object-name>Support (Meshed)</object-name>
     </effect>
     
     <effect>
@@ -51,6 +52,7 @@
         <object-name>sphere_B (Meshed)</object-name>
         <object-name>airplane_A (Meshed)</object-name>
         <object-name>bank_index (Meshed)</object-name>
+        <object-name>Support (Meshed)</object-name>
     </effect>
 
     <animation> 
@@ -62,6 +64,23 @@
             <green>0.6</green>
             <blue>0.6</blue>
         </ambient>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>Support (Meshed)</object-name>
+        <texture>Pictures/AichiInteriorGreyGreen.png</texture>
+        <ambient>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
+        </ambient>
+        <emission>
+            <red>0.2</red>
+            <green>0.1</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
     </animation>
     
     <animation> 

@@ -10,6 +10,7 @@ The C1 lag_filter is less is longer respond time
     
     <property value="0">systems/gauges/cockpit-attitude-J8-horizon-offset</property>
     <property value="0">systems/gauges/cockpit-attitude-J8-caged-push-trigger</property>
+    <property value="0">systems/gauges/cockpit-fire-sw-test-togle</property>
     
     <channel name="Cockpit Fuel Pounds" execrate="8">
         
@@ -138,16 +139,6 @@ The C1 lag_filter is less is longer respond time
     </channel>
     
     
-    <channel name="Cockpit Jet Temperature" execrate="16">
-        
-        <lag_filter name="systems/gauges/cockpit-jet-temperature-display-C">
-            <input>propulsion/engine/jet-TC-temperature-C</input>
-            <c1>0.1</c1>
-        </lag_filter>
-        
-    </channel>
-    
-    
     <channel name="Cockpit Attitude Indicator J8" execrate="8">
         
         <lead_lag_filter name="systems/gauges/cockpit-attitude-J8-caged-push-position">
@@ -242,26 +233,39 @@ The C1 lag_filter is less is longer respond time
     </channel>
     
     
-    <function name="propulsion/engine/jet-TC-temperature-C">
-        <table>
-            <independentVar>propulsion/engine/n1</independentVar>
-            <tableData>
-                0	0
-                5	451
-                10	516
-                20	580
-                30	618
-                40	645
-                50	666
-                60	683
-                70	698
-                80	710
-                90	721
-                100	731
-                110	740
-            </tableData>
-        </table>
-    </function>
-    
+    <channel name="Fire advisor" execrate="16">
+        
+        systems/engine/jet-TC-temperature-hight-fire-on
+        
+        <lag_filter name="systems/gauges/cockpit-fire-sw-test-pos">
+            <input>systems/gauges/cockpit-fire-sw-test-togle</input>
+            <c1>16.0</c1>
+        </lag_filter>
+        
+        <switch name="systems/gauges/cockpit-fire-light-on">
+            <default value="0"/>
+            <test logic="OR" value="1">
+                systems/engine/jet-TC-temperature-hight-fire-on == 1
+                systems/gauges/cockpit-fire-sw-test-pos GT 0.8
+            </test>
+        </switch>
+        
+        <switch name="systems/gauges/cockpit-fire-light-intensity">
+            <default value="0"/>
+            <test logic="AND" value="systems/warning-lights/light-intensity-by-battery-tension">
+                systems/gauges/cockpit-fire-light-on == 1
+            </test>
+        </switch>
+        
+        <pure_gain name="systems/gauges/cockpit-fire-light-transparent">
+            <input>systems/gauges/cockpit-fire-light-intensity</input>
+            <gain>1.2</gain>
+            <clipto>
+                <min>0.05</min>
+                <max>1.0</max>
+            </clipto>
+        </pure_gain>
+        
+    </channel>
     
 </system>

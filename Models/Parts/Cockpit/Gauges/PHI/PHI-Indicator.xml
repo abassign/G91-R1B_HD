@@ -26,6 +26,7 @@
         <object-name>knob_004_plate_A (Meshed)</object-name>
         <object-name>frontal_mark_knob_001 (Meshed)</object-name>
         <object-name>NWE_ref (Meshed)</object-name>
+        <object-name>knob_var (Meshed)</object-name>
         <object-name>frontal_border_plate_ABIS</object-name>
         <object-name>back_plate_B (Meshed)</object-name>
         <object-name>frontal_plate_A (Meshed)</object-name>
@@ -69,6 +70,7 @@
         <object-name>knob_004_plate_A (Meshed)</object-name>
         <object-name>frontal_mark_knob_001 (Meshed)</object-name>
         <object-name>NWE_ref (Meshed)</object-name>
+        <object-name>knob_var (Meshed)</object-name>
         <object-name>frontal_border_plate_ABIS</object-name>
         <object-name>back_plate_B (Meshed)</object-name>
         <object-name>frontal_plate_A (Meshed)</object-name>
@@ -234,6 +236,7 @@
     <animation> 
         <type>material</type>
         <object-name>NWE_ref (Meshed)</object-name>
+        <object-name>knob_var (Meshed)</object-name>
         <texture>Pictures/G91-White-00.png</texture>
         <ambient>
             <red>0.80</red>
@@ -413,7 +416,7 @@
     <animation>
         <type>rotate</type>
         <object-name>frontal_plate_A (Meshed)</object-name>
-        <property>/fdm/jsbsim/systems/gauges/PHI/attitude/heading-true-deg-lag</property>
+        <property>/fdm/jsbsim/systems/gauges/PHI/attitude/gyrocompass-magnetic-deg-var-operative-lag</property>
         <axis>
             <x>  1 </x>
             <y>  0 </y>
@@ -426,9 +429,10 @@
         <name>procedural_light_cockpit_gauge_spot_yellow</name>
         <path>procedural_light_PHI_yellow.xml</path>
         <offsets>
-            <x-m> 0.03</x-m>
-            <y-m> 0.01 </y-m>
-            <z-m> 0.005 </z-m>
+            <x-m> 0.008</x-m>
+            <y-m> 0.03 </y-m>
+            <z-m> -0.005 </z-m>
+            <pitch-deg>0</pitch-deg>   
         </offsets>
     </model>
     
@@ -436,9 +440,10 @@
         <name>procedural_light_cockpit_gauge_spot_yellow</name>
         <path>procedural_light_PHI_yellow.xml</path>
         <offsets>
-            <x-m> 0.03</x-m>
-            <y-m> -0.01 </y-m>
-            <z-m> 0.005 </z-m>
+            <x-m> 0.008</x-m>
+            <y-m> -0.03 </y-m>
+            <z-m> -0.005 </z-m>
+            <pitch-deg>0</pitch-deg>   
         </offsets>
     </model>
     -->
@@ -462,7 +467,7 @@
         <action>
             <binding>
                 <command>property-adjust</command>
-                <property>/fdm/jsbsim/systems/gauges/PHI/var-deg</property>
+                <property>/fdm/jsbsim/systems/gauges/PHI/indicator/var-deg</property>
                 <factor>1.0</factor>
                 <min>-40.0</min>
                 <max>40.0</max>
@@ -475,12 +480,29 @@
         <type>rotate</type>
         <object-name>knob_002 (Meshed)</object-name>
         <object-name>knob_002_plate_A (Meshed)</object-name>
-        <property>/fdm/jsbsim/systems/gauges/PHI/var-deg</property>
+        <property>/fdm/jsbsim/systems/gauges/PHI/indicator/var-deg</property>
         <factor>10</factor>
         <center>
             <x-m>  0.004 </x-m>
             <y-m>  0.04103 </y-m>
             <z-m>  0.04103 </z-m>
+        </center>
+        <axis>
+            <x>-1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>knob_var (Meshed)</object-name>
+        <property>/fdm/jsbsim/systems/gauges/PHI/indicator/var-deg</property>
+        <factor>1.3</factor>
+        <center>
+            <x-m>  0.004 </x-m>
+            <y-m>  0.0 </y-m>
+            <z-m>  0.0 </z-m>
         </center>
         <axis>
             <x>-1</x>
@@ -498,7 +520,7 @@
         <action>
             <binding>
                 <command>property-adjust</command>
-                <property>/fdm/jsbsim/systems/gauges/PHI/indicator/dist</property>
+                <property>/fdm/jsbsim/systems/gauges/PHI/indicator/dist-set</property>
                 <factor>1</factor>
                 <min>-999.0</min>
                 <max>999.0</max>
@@ -511,8 +533,8 @@
         <type>rotate</type>
         <object-name>knob_004 (Meshed)</object-name>
         <object-name>knob_004_plate_A (Meshed)</object-name>
-        <property>/fdm/jsbsim/systems/gauges/PHI/indicator/dist</property>
-        <factor>1</factor>
+        <property>/fdm/jsbsim/systems/gauges/PHI/indicator/dist-set</property>
+        <factor>10</factor>
         <center>
             <x-m>  0.004 </x-m>
             <y-m>  -0.041 </y-m>
@@ -535,8 +557,8 @@
             <binding>
                 <command>property-adjust</command>
                 <property>/fdm/jsbsim/systems/gauges/PHI/indicator/brg-imposed</property>
-                <factor>5</factor>
-                <wrap>false</wrap>
+                <factor>-2</factor>
+                <wrap>true</wrap>
             </binding>
         </action>
     </animation>
@@ -545,8 +567,8 @@
         <type>rotate</type>
         <object-name>knob_003 (Meshed)</object-name>
         <object-name>knob_003_plate_A (Meshed)</object-name>
-        <property>/fdm/jsbsim/systems/systems/gauges/PHI/indicator/brg-imposed</property>
-        <factor>5</factor>
+        <property>/fdm/jsbsim/systems/gauges/PHI/program/route[0]/phi</property>
+        <factor>-5</factor>
         <center>
             <x-m>  0.004 </x-m>
             <y-m>  0.041 </y-m>
@@ -565,14 +587,8 @@
         <object-name>arrow_3 (Meshed)</object-name>
         <object-name>arrow_4 (Meshed)</object-name>
         <property>/fdm/jsbsim/systems/gauges/PHI/indicator/brg-lag</property>
-        <factor>1</factor>
-        <center>
-            <x-m>  0.0 </x-m>
-            <y-m>  0.0 </y-m>
-            <z-m>  0.0 </z-m>
-        </center>
         <axis>
-            <x>-1</x>
+            <x>1</x>
             <y>0</y>
             <z>0</z>
         </axis>

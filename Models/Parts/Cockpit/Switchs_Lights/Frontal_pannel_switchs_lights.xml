@@ -98,7 +98,7 @@
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Switchs_Lights/lg_collect_tank_2_all_tank.xml</path>
         <offsets>
             <x-m>-3.19</x-m>
-            <y-m>0.151</y-m>
+            <y-m>0.153</y-m>
             <z-m>0.05</z-m>
             <pitch-deg>-8.5</pitch-deg>
         </offsets>
@@ -227,6 +227,26 @@
             <y-m>0.087</y-m>
             <z-m>-0.055</z-m>
             <pitch-deg>82.0</pitch-deg>
+        </offsets>
+    </model>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Switchs_Lights/lg_elevator_servo_ctrl.xml</path>
+        <offsets>
+            <x-m>-3.193</x-m>
+            <y-m>0.236</y-m>
+            <z-m>-0.018</z-m>
+            <pitch-deg>-10.0</pitch-deg>
+        </offsets>
+    </model>
+
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Switchs_Lights/sw_elevator_servo_ctrl.xml</path>
+        <offsets>
+            <x-m>-3.184</x-m>
+            <y-m>0.236</y-m>
+            <z-m>-0.052</z-m>
+            <pitch-deg>-10</pitch-deg>
         </offsets>
     </model>
 

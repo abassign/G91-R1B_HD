@@ -254,7 +254,7 @@
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/Altimeter/Altimeter.xml</path>
         <offsets>
             <x-m>-3.198</x-m>
-            <y-m>-0.1005</y-m>
+            <y-m>-0.1015</y-m>
             <z-m>0.066</z-m>
             <pitch-deg>-8.65</pitch-deg>
         </offsets>
@@ -283,10 +283,10 @@
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/Allen_MD-1A_Turn_Ind/Allen_MD-1A_Turn_Ind_01.xml</path>
         <offsets>
-            <x-m>-3.195</x-m>
-            <y-m>-0.026</y-m>
+            <x-m>-3.190</x-m>
+            <y-m>-0.027</y-m>
             <z-m>0.036</z-m>
-            <pitch-deg>-8.65</pitch-deg>
+            <pitch-deg>0.0</pitch-deg>
         </offsets>
     </model>
     
@@ -334,7 +334,7 @@
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/Kollsman_Climb_25363/Kollsman_Climb_25363.xml</path>
         <offsets>
             <x-m>-3.20</x-m>
-            <y-m>0.105</y-m>
+            <y-m>0.106</y-m>
             <z-m>0.055</z-m>
             <pitch-deg>-8.65</pitch-deg>
         </offsets>
@@ -344,8 +344,8 @@
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/Bendix_B6_3419_5A_A1_Acc/Bendix_B6_3419_5A_A1_Acc.xml</path>
         <offsets>
             <x-m>-3.195</x-m>
-            <y-m>-0.185</y-m>
-            <z-m>0.06</z-m>
+            <y-m>-0.1865</y-m>
+            <z-m>0.062</z-m>
             <pitch-deg>0.0</pitch-deg>
         </offsets>
     </model>
@@ -354,7 +354,7 @@
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/J8/J8.xml</path>
         <offsets>
             <x-m>-3.20</x-m>
-            <y-m>0.125</y-m>
+            <y-m>0.119</y-m>
             <z-m>0.145</z-m>
             <pitch-deg>0.0</pitch-deg>
         </offsets>
@@ -477,6 +477,16 @@
             <y-m>-0.090</y-m>
             <z-m>0.0085</z-m>
             <pitch-deg>-8.65</pitch-deg>
+        </offsets>
+    </model>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/Fire/Fire.xml</path>
+        <offsets>
+            <x-m>-3.198985</x-m>
+            <y-m>0.298</y-m>
+            <z-m>0.115</z-m>
+            <pitch-deg>-8.5</pitch-deg>
         </offsets>
     </model>
 

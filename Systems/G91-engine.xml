@@ -22,6 +22,8 @@ Description: G91R2 Canopy automation
     <property value="0.0">systems/engine/air-system-pressure</property>
     <property value="0.0">systems/engine/oil-low-pressure-on</property>
     
+    <property value="0.0">systems/engine/fire-allert-on</property>
+    
     <channel name="engine systems starter">
 
         <switch name="systems/engine/start_cmd">
@@ -113,5 +115,61 @@ Description: G91R2 Canopy automation
         </switch>
         
     </channel>
+    
+    
+    <channel name="Cockpit Jet Temperature" execrate="16">
+        
+        <lag_filter name="systems/gauges/cockpit-jet-temperature-display-C">
+            <input>systems/engine/jet-TC-temperature-C</input>
+            <c1>0.1</c1>
+        </lag_filter>
+        
+    </channel>
+    
+    
+    <channel name="engine fire allert" execrate="32">
+        
+        <switch name="systems/engine/jet-TC-temperature-hight">
+            <default value="0"/>
+            <test logic="OR" value="1">
+                systems/engine/jet-TC-temperature-C GT 730
+            </test>
+        </switch>
+        
+        <lag_filter name="systems/engine/jet-TC-temperature-hight-lag">
+            <input>systems/engine/jet-TC-temperature-hight</input>
+            <c1>0.1</c1>
+        </lag_filter>
+        
+        <switch name="systems/engine/jet-TC-temperature-hight-fire-on">
+            <default value="systems/engine/jet-TC-temperature-hight-fire-on"/>
+            <test logic="AND" value="1">
+                systems/engine/jet-TC-temperature-hight-lag GT 0.9
+            </test>
+        </switch>
+        
+    </channel>
+    
+    
+    <function name="systems/engine/jet-TC-temperature-C">
+        <table>
+            <independentVar>propulsion/engine/n2</independentVar>
+            <tableData>
+                0	0
+                5	451
+                10	516
+                20	580
+                30	618
+                40	645
+                50	666
+                60	683
+                70	698
+                80	710
+                90	721
+                100	731
+                110	740
+            </tableData>
+        </table>
+    </function>
     
 </system>

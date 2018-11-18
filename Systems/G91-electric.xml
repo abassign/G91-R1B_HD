@@ -18,6 +18,7 @@ Description: G91R4 Electric system from "Manuale di pilotaggio (p.56)
     <property value="1">systems/electric/bus[0]/emergency-canopy-light/fuse</property>
     <property value="0">systems/electric/bus[0]/emergency-canopy-light/sw</property>
     <property value="0.0">systems/electric/bus[0]/emergency-canopy-light/I</property>
+    <property value="1">systems/electric/bus[0]/horizontal-stabilizer-actuator/fuse</property>
     <property value="1">systems/electric/bus[0]/emergency-stabilizer-corrector/fuse</property>
     <property value="1">systems/electric/bus[0]/emergency-radio/fuse</property>
     <property value="0">systems/electric/bus[0]/emergency-radio/sw</property>

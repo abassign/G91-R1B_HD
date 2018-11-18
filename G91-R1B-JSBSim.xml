@@ -62,6 +62,7 @@
     <system file="G91-engine"/>
     <system file="G91-engine-sound"/>
     <system file="G91-stations"/>
+    <system file="G91-servo-wings"/>
     <system file="PHI"/>
     
     <metrics>

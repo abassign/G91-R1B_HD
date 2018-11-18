@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+
+<system name="Servo Wings">
+    
+    <channel name="Servo Elevator" execrate="16">
+        
+        <switch name="systems/servo-wings/elevator/operative">
+            <default value="0.0" />
+            <test logic="AND" value="1.0">
+                systems/electric/bus[0]/V GE 18.0
+                systems/electric/bus[0]/horizontal-stabilizer-actuator/fuse == 1
+                systems/manual-switches/cockpit/sw-elevator-servo-disengaged == 0
+                systems/hydraulics/flight-system-psi GE 2000
+            </test>
+        </switch>
+        
+    </channel>
+    
+    
+</system>

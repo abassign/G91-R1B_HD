@@ -96,6 +96,20 @@
             </test>
         </switch>
         
+        <switch name="systems/warning-lights/cockpit/lg-elevator_servo_ctrl-off">
+            <default value="0"/>
+            <test logic="AND" value="systems/warning-lights/light-intensity-by-battery-tension">
+                systems/servo-wings/elevator/operative == 0
+            </test>
+        </switch>
+        
+        <switch name="systems/warning-lights/cockpit/lg-elevator_servo_ctrl-off-transparent">
+            <default value="0.85"/>
+            <test logic="AND" value="systems/warning-lights/transparent-by-battery-tension">
+                systems/servo-wings/elevator/operative == 0
+            </test>
+        </switch>
+        
     </channel>
 
     
