@@ -278,14 +278,16 @@
         <fcs_function name="systems/gauges/PHI/speed-XY-fps">
             <function>
                 <sqrt>
-                    <pow>
-                        <p>velocities/v-north-fps</p>
-                        <v>2.0</v>
-                    </pow>
-                    <pow>
-                        <p>velocities/v-east-fps</p>
-                        <v>2.0</v>
-                    </pow>
+                    <sum>
+                        <pow>
+                            <p>velocities/v-north-fps</p>
+                            <v>2.0</v>
+                        </pow>
+                        <pow>
+                            <p>velocities/v-east-fps</p>
+                            <v>2.0</v>
+                        </pow>
+                    </sum>
                 </sqrt>
             </function>
         </fcs_function>
