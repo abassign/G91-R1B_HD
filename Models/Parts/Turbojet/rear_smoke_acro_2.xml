@@ -1,0 +1,113 @@
+<PropertyList>
+    
+    <particlesystem>
+        <name>smoke2</name>
+        
+        <offsets>
+            <x-m>  0.000 </x-m>
+            <y-m>  0.000 </y-m>
+            <z-m>  0.000 </z-m>
+            <roll-deg>    0.000 </roll-deg>
+            <pitch-deg>   0.000 </pitch-deg>
+            <heading-deg> 0.000 </heading-deg>
+        </offsets>
+        
+        <texture>Pictures/smoke.png</texture>
+        
+        <condition>
+            <greater-than>
+                <property>sim/G91/smoke/acrobatic/on</property>
+                <value>0</value>
+            </greater-than>
+        </condition>
+        
+        <emissive>false</emissive>
+        <lighting>false</lighting>
+        <align>billboard</align> <!-- billboard / fixed -->
+        <attach>world</attach> <!-- world / local-->
+        
+        <placer>
+            <type>segments</type> <!-- sector / segments / point -->
+        </placer>
+        
+        <shooter>
+            <theta-min-deg>-100</theta-min-deg>
+            <theta-max-deg>100</theta-max-deg>
+            <phi-min-deg>-100</phi-min-deg>
+            <phi-max-deg>100</phi-max-deg>
+            <speed-mps>
+                <property>sim/G91/smoke/acrobatic/dispersion</property>
+                <factor>1.0</factor>
+                <spread>0.0</spread>
+            </speed-mps>
+            <rotation-speed>
+                <x-min-deg-sec>0</x-min-deg-sec>
+                <y-min-deg-sec>0</y-min-deg-sec>
+                <z-min-deg-sec>0</z-min-deg-sec>
+                <x-max-deg-sec>0</x-max-deg-sec>
+                <y-max-deg-sec>0</y-max-deg-sec>
+                <z-max-deg-sec>0</z-max-deg-sec>
+            </rotation-speed>
+        </shooter>
+        
+        <counter>
+            <particles-per-sec>
+                <property>sim/G91/smoke/acrobatic/shutter</property>
+                <factor>1.0</factor>
+                <spread>0.1</spread>
+            </particles-per-sec>
+        </counter>
+        
+        <particle>
+            <start>
+                <color>
+                    <red><property>sim/G91/smoke/acrobatic/red</property><factor>1.0</factor></red>
+                    <green><property>sim/G91/smoke/acrobatic/green</property><factor>1.0</factor></green>
+                    <blue><property>sim/G91/smoke/acrobatic/blue</property><factor>1.0</factor></blue>
+                    <alpha><value> 0.1 </value></alpha>
+                </color>
+                <size>
+                    <value>0.3</value>
+                    <spread>0.0</spread>
+                </size>
+            </start>
+            
+            <end>
+                <color>
+                    <red><property>sim/G91/smoke/acrobatic/red</property><factor>1.0</factor></red>
+                    <green><property>sim/G91/smoke/acrobatic/green</property><factor>1.0</factor></green>
+                    <blue><property>sim/G91/smoke/acrobatic/blue</property><factor>1.0</factor></blue>
+                    <alpha><value> 0.0 </value></alpha>
+                </color>
+                <size>
+                    <value>sim/G91/smoke/acrobatic/duration</value>
+                    <factor>1.5</factor>
+                    <spread>0.0</spread>
+                </size>
+            </end>
+            
+            <life-sec>
+                <property>sim/G91/smoke/acrobatic/duration</property>
+                <factor>1.0</factor>
+                <spread>0.3</spread>
+            </life-sec>
+            
+            <mass-kg>0.0845</mass-kg>
+            <radius-m>0.25</radius-m>
+            
+        </particle>
+        
+        <program>
+            <fluid>air</fluid>         <!-- air / water -->
+            <gravity>true</gravity>
+            <wind>true</wind>
+        </program>
+        
+    </particlesystem>
+    
+</PropertyList>
+
+
+
+
+

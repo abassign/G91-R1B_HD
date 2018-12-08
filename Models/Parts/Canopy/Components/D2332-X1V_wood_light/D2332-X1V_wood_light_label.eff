@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <PropertyList>
 
-    <name>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Components/D2332-X1V_wood_light/D2332-X1V_wood_light_label</name>
+    <name>Aircraft_G91-R1B_HD_Models_Parts_Canopy_Components_D2332_X1V_wood_light_D2332_X1V_wood_light_label</name>
     <inherits-from>Effects/model-combined-deferred</inherits-from>
     <parameters>
         <normalmap-enabled type="int">1</normalmap-enabled>

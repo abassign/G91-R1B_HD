@@ -1,7 +1,7 @@
 <PropertyList>   
    
    <model>
-        <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Canopy_Top/Canopy_Top.xml</path>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Canopy_Top.xml</path>
     </model>
     
     <model>

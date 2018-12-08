@@ -82,6 +82,22 @@ Description: G91R4 hydraulics system from "Manuale di pilotaggio (1-11,1-12, etc
             </test>
         </switch>
         
+        <fcs_function name="systems/hydraulics/flight-system-norm">
+            <function>
+                <ifthen>
+                    <lt>
+                        <p>systems/hydraulics/flight-system-psi</p>
+                        <p>systems/hydraulics/minimal-pressure-psi</p>
+                    </lt>
+                    <quotient>
+                        <p>systems/hydraulics/flight-system-psi</p>
+                        <p>systems/hydraulics/minimal-pressure-psi</p>
+                    </quotient>
+                    <v>1</v>
+                </ifthen>
+            </function>
+        </fcs_function>
+        
     </channel>
     
     

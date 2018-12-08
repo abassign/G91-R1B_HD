@@ -44,6 +44,7 @@ Description: G91R4 Electric system from "Manuale di pilotaggio (p.56)
     <property value="1">systems/electric/bus[1]/air-conditioning-pressurization/fuse</property>
     <property value="1">systems/electric/bus[1]/horizontal-stabilization-corrector/fuse</property>
     <property value="1">systems/electric/bus[1]/vertical-tail-corrector/fuse</property>
+    <property value="0">systems/electric/bus[1]/fuel-level-indicator/sw</property>
     <property value="1">systems/electric/bus[1]/fuel-pump/fuse</property>
     <property value="1">systems/electric/bus[1]/fuel-AP-emergency/fuse</property>
     <property value="0.0">systems/electric/bus[1]/fuel-AP-emergency/I</property>
@@ -205,9 +206,6 @@ Description: G91R4 Electric system from "Manuale di pilotaggio (p.56)
                         <p>systems/electric/bus[0]/I</p>
                         <p>systems/electric/bus[1]/I</p>
                         <p>systems/electric/bus[2]/I</p>
-                        <product>
-                            <p>systems/electric/bus[2]/I</p>
-                        </product>
                     </sum>
                     <p>systems/electric/bus[0]/I</p>
                 </ifthen>
@@ -223,9 +221,7 @@ Description: G91R4 Electric system from "Manuale di pilotaggio (p.56)
                             <p>systems/electric/bus[1]/V</p>
                             <p>systems/electric/bus[0]/battery-V</p>
                         </gt>
-                        <sum>
-                            <p>systems/electric/bus[1]/V</p>
-                        </sum>
+                        <p>systems/electric/bus[1]/V</p>
                         <p>systems/electric/bus[0]/battery-V</p>
                     </ifthen>
                     <p>systems/electric/bus[0]/battery-V</p>

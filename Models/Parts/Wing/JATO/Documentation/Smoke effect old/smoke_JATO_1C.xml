@@ -1,0 +1,103 @@
+<PropertyList>
+
+    <particlesystem>
+        <name>smoke1</name>
+        
+        <offsets>
+            <x-m>  0.000 </x-m>
+            <y-m>  0.000 </y-m>
+            <z-m>  0.000 </z-m>
+            <roll-deg>    0.000 </roll-deg>
+            <pitch-deg>   0.000 </pitch-deg>
+            <heading-deg> 0.000 </heading-deg>
+        </offsets>
+        
+        <texture>Pictures/smoke.png</texture>
+        
+        <condition>
+            <greater-than>
+                <property>fdm/jsbsim/systems/jato/thrust-lbs-total</property>
+                <value>20</value>
+            </greater-than>
+        </condition>
+        
+        <emissive>false</emissive>
+        <lighting>false</lighting>
+        <align>billboard</align> <!-- billboard / fixed -->
+        <attach>world</attach> <!-- world / local-->
+        
+        <placer>
+            <type>point</type> <!-- sector / segments / point -->
+        </placer>
+
+        <shooter>
+            <radius-min-m>0.2</radius-min-m>
+            <radius-max-m>1.0</radius-max-m>
+            <theta-min-deg>80</theta-min-deg>
+            <theta-max-deg>100</theta-max-deg>
+            <phi-min-deg>-10</phi-min-deg>
+            <phi-max-deg>10</phi-max-deg>
+            <speed-mps>
+                <value>10</value>
+                <spread>20</spread>
+            </speed-mps>
+            <rotation-speed>
+                <x-min-deg-sec>-90</x-min-deg-sec>
+                <y-min-deg-sec>-90</y-min-deg-sec>
+                <z-min-deg-sec>-90</z-min-deg-sec>
+                <x-max-deg-sec>90</x-max-deg-sec>
+                <y-max-deg-sec>90</y-max-deg-sec>
+                <z-max-deg-sec>90</z-max-deg-sec>
+            </rotation-speed>
+        </shooter>
+        
+        <counter>
+            <particles-per-sec>
+                <value>80</value>
+                <spread>10</spread>
+            </particles-per-sec>
+        </counter>
+        
+        <particle>
+            <start>
+                <color>
+                    <red><value>   0.3 </value></red>
+                    <green><value> 0.3 </value></green>
+                    <blue><value>  0.3 </value></blue>
+                    <alpha><value> 0.3 </value></alpha>
+                </color>
+                <size>
+                    <value>1.2</value>
+                </size>
+            </start>
+            
+            <end>
+                <color>
+                    <red><value>   0.0 </value></red>
+                    <green><value> 0.0 </value></green>
+                    <blue><value>  0.0 </value></blue>
+                    <alpha><value> 0.0 </value></alpha>
+                </color>
+                <size>
+                    <value>50.0</value>v
+                </size>
+            </end>
+            
+            <life-sec>
+                <value>15</value>
+            </life-sec>
+
+            <mass-kg>0.001</mass-kg>
+            <radius-m>0.001</radius-m>
+
+        </particle>
+        
+        <program>
+            <fluid>air</fluid>         <!-- air / water -->
+            <gravity>false</gravity>
+            <wind>true</wind>
+        </program>
+        
+    </particlesystem>
+
+</PropertyList>

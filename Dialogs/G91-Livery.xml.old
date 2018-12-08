@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!--
+http://wiki.flightgear.org/Howto:Adding_a_canvas_to_a_GUI_dialog
+-->
+
+<PropertyList>
+    
+    <name>Livery_dialog</name>
+    <layout>vbox</layout>
+    <default-padding>7</default-padding>
+    <modal>false</modal>
+    <width>400</width>
+    
+    <!-- title bar -->
+    
+    <empty><stretch>true</stretch></empty>
+    
+    
+    <group>
+        <layout>hbox</layout>
+        <empty><stretch>true</stretch></empty>
+        <text>
+            <label>Livery configuration</label>
+        </text>
+        <empty><stretch>true</stretch></empty>
+        <button>
+            <legend/>
+            <key>Esc</key>
+            <pref-width>16</pref-width>
+            <pref-height>16</pref-height>
+            <border>2</border>
+            <binding>
+                <command>dialog-close</command>
+            </binding>
+        </button>
+    </group>
+    
+    <hrule/>
+    
+    <group>
+        <layout>vbox</layout>
+        <group>
+            <layout>table</layout>
+            
+            <button>
+                <row>0</row>
+                <col>0</col>
+                <legend>01</legend>
+                <binding>
+                    <command>nasal</command>
+                    <script>
+                        <![CDATA[
+                        setprop("sim/G91/liveries/active/name_short","PAN R1");
+                        setprop("sim/G91/liveries/active/name_long","PAN - National Aerobatic Pinocchio nose (R1)");
+                        setprop("sim/G91/liveries/active/livery_001","Aircraft/G91-R1B_HD/Models/Liveries/pan_1_001.png");
+                        setprop("sim/G91/liveries/active/livery_002","Aircraft/G91-R1B_HD/Models/Liveries/pan_1_002.png");
+                        setprop("sim/G91/liveries/active/dirty_001","");
+                        setprop("sim/G91/liveries/active/dirty_002","");
+                        setprop("sim/G91/liveries/active/luminosity",-0.18);
+                        setprop("sim/G91/liveries/active/reflective",-0.57);
+                        setprop("sim/G91/liveries/active/PANR1",1.0);
+                        setprop("sim/G91/liveries/active/ambient",0.48);
+                        setprop("sim/G91/liveries/active/specular",0.36);
+                        setprop("sim/G91/liveries/active/dirty",0.0);
+                        setprop("sim/G91/liveries/active/ID",1);
+                        ]]>
+                    </script>
+                </binding>
+            </button>
+            <text>
+                <row>0</row>
+                <col>1</col>
+                <label>PAN - National Aerobatic Pinocchio nose (R1)</label>
+                <halign>left</halign>
+            </text>
+            
+            <button>
+                <row>1</row>
+                <col>0</col>
+                <legend>02</legend>
+                <binding>
+                    <command>nasal</command>
+                    <script>
+                        <![CDATA[
+                        setprop("sim/G91/liveries/active/name_short","PAN R1B");
+                        setprop("sim/G91/liveries/active/name_long","PAN - National Aerobatic recognition nose (R1B)");
+                        setprop("sim/G91/liveries/active/livery_001","Aircraft/G91-R1B_HD/Models/Liveries/pan_1_001.png");
+                        setprop("sim/G91/liveries/active/livery_002","Aircraft/G91-R1B_HD/Models/Liveries/pan_1_002.png");
+                        setprop("sim/G91/liveries/active/dirty_001","");
+                        setprop("sim/G91/liveries/active/dirty_002","");
+                        setprop("sim/G91/liveries/active/luminosity",-0.18);
+                        setprop("sim/G91/liveries/active/reflective",-0.57);
+                        setprop("sim/G91/liveries/active/PANR1",0.0);
+                        setprop("sim/G91/liveries/active/ambient",0.48);
+                        setprop("sim/G91/liveries/active/specular",0.36);
+                        setprop("sim/G91/liveries/active/dirty",0.0);
+                        setprop("sim/G91/liveries/active/ID",2);
+                        ]]>
+                    </script>
+                </binding>
+            </button>
+            <text>
+                <row>1</row>
+                <col>1</col>
+                <label>PAN - National Aerobatic recognition nose (R1B)</label>
+                <halign>left</halign>
+            </text>
+
+            <button>
+                <row>2</row>
+                <col>0</col>
+                <legend>03</legend>
+                <binding>
+                    <command>nasal</command>
+                    <script>
+                        <![CDATA[
+                        setprop("sim/G91/liveries/active/name_short","Mil ITA 3-37 R1B");
+                        setprop("sim/G91/liveries/active/name_long","Italian Air Force - 2nd flight flock n. 37 (R1B)");
+                        setprop("sim/G91/liveries/active/livery_001","Aircraft/G91-R1B_HD/Models/Liveries/ITA_2_37_001.png");
+                        setprop("sim/G91/liveries/active/livery_002","Aircraft/G91-R1B_HD/Models/Liveries/ITA_2_37_002.png");
+                        setprop("sim/G91/liveries/active/dirty_001","Aircraft/G91-R1B_HD/Models/Liveries/dirty_01_4k.png");
+                        setprop("sim/G91/liveries/active/dirty_002","Aircraft/G91-R1B_HD/Models/Liveries/dirty_02_4k.png");
+                        setprop("sim/G91/liveries/active/luminosity",0.09);
+                        setprop("sim/G91/liveries/active/reflective",-1.0);
+                        setprop("sim/G91/liveries/active/PANR1",0.0);
+                        setprop("sim/G91/liveries/active/ambient",0.25);
+                        setprop("sim/G91/liveries/active/specular",0.08);
+                        setprop("sim/G91/liveries/active/dirty",0.0);
+                        setprop("sim/G91/liveries/active/ID",3);
+                        ]]>
+                    </script>
+                </binding>
+            </button>
+            <text>
+                <row>2</row>
+                <col>1</col>
+                <label>Italian Air Force - 2nd flight flock n. 37 (R1B)</label>
+                <halign>left</halign>
+            </text>
+
+            <button>
+                <row>3</row>
+                <col>0</col>
+                <legend>04</legend>
+                <binding>
+                    <command>nasal</command>
+                    <script>
+                        <![CDATA[
+                        setprop("sim/G91/liveries/active/name_short","Silver R1");
+                        setprop("sim/G91/liveries/active/name_long","Silver version, used as a prototype Pinocchio nose (R1)");
+                        setprop("sim/G91/liveries/active/livery_001","Aircraft/G91-R1B_HD/Models/Liveries/ITA_prot_001.png");
+                        setprop("sim/G91/liveries/active/livery_002","Aircraft/G91-R1B_HD/Models/Liveries/ITA_prot_002.png");
+                        setprop("sim/G91/liveries/active/dirty_001","");
+                        setprop("sim/G91/liveries/active/dirty_002","");
+                        setprop("sim/G91/liveries/active/luminosity",0.12);
+                        setprop("sim/G91/liveries/active/reflective",-0.7);
+                        setprop("sim/G91/liveries/active/PANR1",1.0);
+                        setprop("sim/G91/liveries/active/ambient",0.48);
+                        setprop("sim/G91/liveries/active/specular",0.28);
+                        setprop("sim/G91/liveries/active/dirty",0.0);
+                        setprop("sim/G91/liveries/active/ID",4);
+                        ]]>
+                    </script>
+                </binding>
+            </button>
+            <text>
+                <row>3</row>
+                <col>1</col>
+                <label>Silver version, used as a prototype Pinocchio nose (R1)</label>
+                <halign>left</halign>
+            </text>
+            
+            <button>
+                <row>4</row>
+                <col>0</col>
+                <legend>05</legend>
+                <binding>
+                    <command>nasal</command>
+                    <script>
+                        <![CDATA[
+                        setprop("sim/G91/liveries/active/name_short","Silver");
+                        setprop("sim/G91/liveries/active/name_long","Silver version R1B recognition nose (R1B)");
+                        setprop("sim/G91/liveries/active/livery_001","Aircraft/G91-R1B_HD/Models/Liveries/ITA_prot_001.png");
+                        setprop("sim/G91/liveries/active/livery_002","Aircraft/G91-R1B_HD/Models/Liveries/ITA_prot_002.png");
+                        setprop("sim/G91/liveries/active/dirty_001","");
+                        setprop("sim/G91/liveries/active/dirty_002","");
+                        setprop("sim/G91/liveries/active/luminosity",0.12);
+                        setprop("sim/G91/liveries/active/reflective",-0.7);
+                        setprop("sim/G91/liveries/active/PANR1",0.0);
+                        setprop("sim/G91/liveries/active/ambient",0.48);
+                        setprop("sim/G91/liveries/active/specular",0.28);
+                        setprop("sim/G91/liveries/active/dirty",0.0);
+                        setprop("sim/G91/liveries/active/ID",5);
+                        ]]>
+                    </script>
+                </binding>
+            </button>
+            <text>
+                <row>4</row>
+                <col>1</col>
+                <label>Silver version R1B recognition nose (R1B)</label>
+                <halign>left</halign>
+            </text>
+            
+        </group>
+    </group>
+    
+    <hrule/>
+    
+    <group>
+        <layout>vbox</layout>
+        <group>
+            <layout>table</layout>
+            
+            <text>
+                <row>0</row>
+                <col>0</col>
+                <label>Set luminosity</label>
+                <halign>left</halign>
+            </text>
+            <slider>
+                <row>0</row>
+                <col>1</col>
+                <width>100</width>
+                <property>sim/G91/liveries/active/luminosity</property>
+                <min>-1</min>
+                <max>1</max>
+                <step>0.01</step>  
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </slider>
+            <text>
+                <row>0</row>
+                <col>2</col>
+                <halign>left</halign>
+                <label>99999</label>
+                <live>true</live>
+                <format>%1.2f </format>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.9</blue>
+                </color>
+                <property>sim/G91/liveries/active/luminosity</property>
+            </text>
+            
+            <text>
+                <row>1</row>
+                <col>0</col>
+                <label>Set reflective</label>
+                <halign>left</halign>
+            </text>
+            <slider>
+                <row>1</row>
+                <col>1</col>
+                <width>100</width>
+                <property>sim/G91/liveries/active/reflective</property>
+                <min>-1</min>
+                <max>0</max>
+                <step>0.01</step>  
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </slider>
+            <text>
+                <row>1</row>
+                <col>2</col>
+                <halign>left</halign>
+                <label>99999</label>
+                <live>true</live>
+                <format>%1.2f </format>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.9</blue>
+                </color>
+                <property>sim/G91/liveries/active/reflective</property>
+            </text>
+            
+            <text>
+                <row>2</row>
+                <col>0</col>
+                <label>Set diffuse</label>
+                <halign>left</halign>
+            </text>
+            <slider>
+                <row>2</row>
+                <col>1</col>
+                <width>100</width>
+                <property>sim/G91/liveries/active/diffuse</property>
+                <min>0</min>
+                <max>1</max>
+                <step>0.01</step>  
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </slider>
+            <text>
+                <row>2</row>
+                <col>2</col>
+                <halign>left</halign>
+                <label>99999</label>
+                <live>true</live>
+                <format>%1.2f </format>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.9</blue>
+                </color>
+                <property>sim/G91/liveries/active/diffuse</property>
+            </text>
+            
+            <text>
+                <row>3</row>
+                <col>0</col>
+                <label>Set specular</label>
+                <halign>left</halign>
+            </text>
+            <slider>
+                <row>3</row>
+                <col>1</col>
+                <width>100</width>
+                <property>sim/G91/liveries/active/specular</property>
+                <min>0</min>
+                <max>1</max>
+                <step>0.01</step>  
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </slider>
+            <text>
+                <row>3</row>
+                <col>2</col>
+                <halign>left</halign>
+                <label>99999</label>
+                <live>true</live>
+                <format>%1.2f </format>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.9</blue>
+                </color>
+                <property>sim/G91/liveries/active/specular</property>
+            </text>
+            
+            <text>
+                <row>4</row>
+                <col>0</col>
+                <label>Set dirty</label>
+                <halign>left</halign>
+            </text>
+            <slider>
+                <row>4</row>
+                <col>1</col>
+                <width>100</width>
+                <property>sim/G91/liveries/active/dirty</property>
+                <min>0</min>
+                <max>1</max>
+                <step>0.01</step>  
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </slider>
+            <text>
+                <row>4</row>
+                <col>2</col>
+                <halign>left</halign>
+                <label>99999</label>
+                <live>true</live>
+                <format>%1.2f </format>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.9</blue>
+                </color>
+                <property>sim/G91/liveries/active/dirty</property>
+            </text>
+            
+        </group>
+    </group>
+    
+</PropertyList>
+

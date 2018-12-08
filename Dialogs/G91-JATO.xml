@@ -115,5 +115,62 @@
         </group>
     </group>
     
+    <hrule/>
+    
+    <group>
+        <layout>vbox</layout>
+        <group>
+            <layout>table</layout>
+            <text>
+                <label>Autostart JATO</label>
+                <halign>right</halign>
+                <row>0</row>
+                <col>0</col>
+            </text>
+            <checkbox>
+                <row>0</row>
+                <col>1</col>
+                <halign>fill</halign>
+                <property>fdm/jsbsim/systems/jato/autostart-ok</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </checkbox>
+            <text>
+                <label>Ignition speed</label>
+                <halign>right</halign>
+                <row>0</row>
+                <col>2</col>
+            </text>
+            <slider>
+                <row>0</row>
+                <col>3</col>
+                <name>jato-autostart-speed</name>
+                <property>fdm/jsbsim/systems/jato/autostart-speed</property>
+                <min>40</min>
+                <max>500</max>
+                <step>10</step>  
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </slider>
+            <text>
+                <label>999999</label>
+                <live>true</live>
+                <format>%2.0f (mph)</format>
+                <property>fdm/jsbsim/systems/jato/autostart-speed</property>
+                <color>
+                    <red>1</red>
+                    <green>1</green>
+                    <blue>0.6</blue>
+                </color>
+                <halign>left</halign>
+                <row>0</row>
+                <col>4</col>
+            </text>
+        </group>
+    </group>
+    
 </PropertyList>
 

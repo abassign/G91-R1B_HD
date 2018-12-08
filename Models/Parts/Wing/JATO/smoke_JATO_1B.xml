@@ -22,7 +22,7 @@
         </condition>
         
         <emissive>false</emissive>
-        <lighting>false</lighting>
+        <lighting>true</lighting>
         <align>billboard</align> <!-- billboard / fixed -->
         <attach>world</attach> <!-- world / local-->
         
@@ -38,8 +38,8 @@
             <phi-min-deg>-10</phi-min-deg>
             <phi-max-deg>10</phi-max-deg>
             <speed-mps>
-                <value>10</value>
-                <spread>20</spread>
+                <value>0</value>
+                <spread>0</spread>
             </speed-mps>
             <rotation-speed>
                 <x-min-deg-sec>-90</x-min-deg-sec>
@@ -53,8 +53,8 @@
         
         <counter>
             <particles-per-sec>
-                <value>80</value>
-                <spread>20</spread>
+                <value>60</value>
+                <spread>3</spread>
             </particles-per-sec>
         </counter>
         
@@ -67,7 +67,7 @@
                     <alpha><value> 0.2 </value></alpha>
                 </color>
                 <size>
-                    <value>0.5</value>
+                    <value>1</value>
                 </size>
             </start>
             
@@ -79,15 +79,15 @@
                     <alpha><value> 0.0 </value></alpha>
                 </color>
                 <size>
-                    <value>20.0</value>
+                    <value>35</value>
                 </size>
             </end>
             
             <life-sec>
-                <value>10</value>
+                <value>6.5</value>
             </life-sec>
 
-            <mass-kg>0.001</mass-kg>
+            <mass-kg>0.002</mass-kg>
             <radius-m>0.001</radius-m>
 
         </particle>

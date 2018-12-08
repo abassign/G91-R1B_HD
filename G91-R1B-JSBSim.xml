@@ -772,12 +772,19 @@
                 <output>fcs/elevator-cmd-rad</output>
             </aerosurface_scale>
             
-            <summer name="Pitch Trim Sum">
-                <input>fcs/pitch-trim-cmd-rad</input>
-                <input>fcs/elevator-cmd-rad</input>
-                <input>systems/active-stability/pitch-damper/correction-norm-rad</input>
+            <fcs_function name="Pitch Trim Sum">
+                <function>
+                    <product>
+                        <sum>
+                            <p>fcs/pitch-trim-cmd-rad</p>
+                            <p>fcs/elevator-cmd-rad</p>
+                            <p>systems/active-stability/pitch-damper/correction-norm-rad</p>
+                        </sum>
+                        <p>systems/servo-wings/elevator-pos-rad-correction-lag</p>
+                    </product>
+                </function>
                 <output>fcs/elevator-pos-rad</output>
-            </summer>
+            </fcs_function>
             
         </channel>
         
@@ -961,6 +968,7 @@
         <function name="aero/function/ground-effect-factor-lift">
             <description>Change in lift due to ground effect factor</description>
             <product>
+                <v>1.0</v>
                 <table>
                     <independentVar lookup="row">aero/h_b-mac-ft</independentVar>
                     <tableData>
@@ -985,6 +993,7 @@
         <function name="aero/function/ground-effect-factor-drag">
             <description>Change in drag due to ground effect</description>
             <product>
+                <v>1.0</v>
                 <table>
                     <independentVar lookup="row">aero/h_b-mac-ft</independentVar>
                     <tableData>

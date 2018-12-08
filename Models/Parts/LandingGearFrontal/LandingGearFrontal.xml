@@ -11,6 +11,30 @@
         <pitch-deg>0.0</pitch-deg>
     </offsets>
     
+    <effect>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
+        <object-name>gear-front-jack-015</object-name>
+        <object-name>BezierCurve</object-name>
+        <object-name>BezierCurve.001</object-name>
+        <object-name>BezierCurve.002</object-name>
+        <object-name>BezierCurve.003</object-name>
+        <object-name>BezierCurve.004</object-name>
+        <object-name>BezierCurve.005</object-name>
+        <object-name>BezierCurve.006</object-name>
+        <object-name>BezierCurve.007</object-name>
+        <object-name>BezierCurve.008</object-name>
+        <object-name>BezierCurve.009</object-name>
+        <object-name>BezierCurve.010</object-name>
+        <object-name>BezierCurve.011</object-name>
+        <object-name>BezierCurve.012</object-name>
+        <object-name>BezierCurve.013</object-name>
+        <object-name>BezierCurve.014</object-name>
+        <object-name>BezierCurve.015</object-name>
+        <object-name>scatola</object-name>
+        <object-name>centine</object-name>
+        <object-name>centine.001</object-name>
+    </effect>
+    
     <animation>
         <name>GearSup</name>
         <object-name>gear-front-jack-03</object-name>
@@ -24,15 +48,15 @@
         <object-name>gear-front-jack-018</object-name>
         <object-name>gear-front-jack-016</object-name>
         <object-name>gear-front-jack-013</object-name>
-        <object-name>Plane</object-name>
-        <object-name>Plane.001</object-name>
-        <object-name>Cylinder</object-name>
+        <object-name>Plane.002</object-name>
+        <object-name>Plane.003</object-name>
         <object-name>Cylinder.001</object-name>
         <object-name>Cylinder.002</object-name>
         <object-name>Cylinder.003</object-name>
         <object-name>Cylinder.004</object-name>
         <object-name>Cylinder.005</object-name>
         <object-name>Cylinder.006</object-name>
+        <object-name>Cylinder.007</object-name>
     </animation>
     
     <animation>
@@ -57,8 +81,12 @@
         <object-name>Light_sx</object-name>
         <object-name>Light_sx.reflectivepart</object-name>
         <object-name>PlanLight.front</object-name>
+        <object-name>PlanLight.front.001</object-name>
         <object-name>Circle.001</object-name>
         <object-name>Circle.002</object-name>
+        <object-name>Circle.005</object-name>
+        <object-name>Circle.006</object-name>
+        <object-name>Circle.007</object-name>
         <object-name>Galss_light_sx</object-name>
         <object-name>glass_light_dx</object-name>
         <object-name>Circle</object-name>
@@ -66,30 +94,49 @@
         <object-name>Cylinder.008</object-name>
         <object-name>Cylinder.009</object-name>
         <object-name>Cylinder.010</object-name>
+        <object-name>Cylinder.011</object-name>
     </animation>
     
     <!-- Material assignment -->
+    
+    <effect>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Liveries/liveries_002</inherits-from>
+        <object-name>gear_door_dx.001</object-name>
+        <object-name>gear_door_sx.000</object-name>
+        <object-name>PlanLight.front.001</object-name>
+    </effect>
+    
     <animation>
         <type>material</type>
-        <object-name>Cylinder.004</object-name>
-        <object-name>gear-front-jack-02</object-name>
+        <object-name>gear_door_dx.001</object-name>
+        <object-name>gear_door_sx.000</object-name>
+        <object-name>PlanLight.front.001</object-name>
+        <diffuse>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+            <factor-prop>sim/G91/liveries/active/diffuse</factor-prop>
+        </diffuse>
+        <specular>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+            <factor-prop>sim/G91/liveries/active/specular</factor-prop>
+        </specular>
     </animation>
     
     <!-- Chrome Effects on materials -->
     
     <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/glass-chrome</inherits-from>
-        <object-name>gear_door_dx</object-name>
-        <object-name>gear_door_sx.001</object-name>
-        <object-name>PlanLight.front</object-name>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_silver_D2_1</inherits-from>
+        <object-name>gear-front-jack-02</object-name>
+        <object-name>Cylinder.004</object-name>
     </effect>
     
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_chrome</inherits-from>
         <object-name>Light_dx.001</object-name>
         <object-name>Light_dx.002</object-name>
-        <object-name>gear-front-jack-02</object-name>
-        <object-name>Cylinder.004</object-name>
         <object-name>Light_sx.reflectivepart</object-name>
         <object-name>Light_dx._reflectivepart.001</object-name>
         <object-name>Light_dx._reflectivepart</object-name>
@@ -98,7 +145,6 @@
     </effect>
     
     <!-- Transparent -->
-
     <effect>
         <inherits-from>Effects/model-transparent</inherits-from>
         <object-name>Galss_light_sx</object-name>
@@ -106,58 +152,76 @@
         <object-name>Light_Sphere_dx.001</object-name>
         <object-name>Light_Sphere_dx.002</object-name>
     </effect>
-    <!--
+    
+    <!-- Colours -->
+    
     <animation> 
         <type>material</type> 
-        <object-name>Galss_light_sx</object-name>
-        <object-name>glass_light_dx</object-name>
-        <texture>Pictures/G91-White.png</texture>
+        <object-name>scatola</object-name>
+        <object-name>centine.001</object-name>
+        <texture>Pictures/AichiInteriorGreyGreen.png</texture>
+        <ambient>
+            <red>0.4</red>
+            <green>0.4</green>
+            <blue>0.4</blue>
+        </ambient>
+    </animation>
+    
+    <animation> 
+        <type>material</type> 
+        <object-name>centine</object-name>
+        <texture>Pictures/AichiInteriorGreyGreen.png</texture>
+        <ambient>
+            <red>0.6</red>
+            <green>0.6</green>
+            <blue>0.6</blue>
+        </ambient>
+    </animation>
+    
+    <animation> 
+        <type>material</type> 
+        <object-name>gear-front-jack-015</object-name>
+        <texture>Pictures/G91-Black.png</texture>
         <ambient>
             <red>0.8</red>
             <green>0.8</green>
             <blue>0.8</blue>
         </ambient>
-        <emission>	
-            <red>0.85</red>	
-            <green>0.82</green>	
-            <blue>0.70</blue>
-            <factor-prop>sim/G91/frontal_gear_light_glass_emission</factor-prop>
-        </emission>
-        <transparency>
-            <alpha-prop>sim/G91/position_light_transparent</alpha-prop>
-            <factor>1</factor>
-            <offset>0</offset>
-        </transparency>
     </animation>
     
     <animation> 
         <type>material</type> 
-        <object-name>Light_Sphere_dx.001</object-name>
-        <object-name>Light_Sphere_dx.002</object-name>
-        <texture>Pictures/White1.png</texture>
+        <object-name>BezierCurve</object-name>
+        <object-name>BezierCurve.001</object-name>
+        <object-name>BezierCurve.002</object-name>
+        <object-name>BezierCurve.003</object-name>
+        <object-name>BezierCurve.004</object-name>
+        <object-name>BezierCurve.005</object-name>
+        <object-name>BezierCurve.006</object-name>
+        <object-name>BezierCurve.007</object-name>
+        <object-name>BezierCurve.008</object-name>
+        <object-name>BezierCurve.009</object-name>
+        <object-name>BezierCurve.010</object-name>
+        <object-name>BezierCurve.011</object-name>
+        <object-name>BezierCurve.012</object-name>
+        <object-name>BezierCurve.013</object-name>
+        <object-name>BezierCurve.014</object-name>
+        <object-name>BezierCurve.015</object-name>
+        <object-name>cable_light_dx.001</object-name>
+        <object-name>cable_light_sx.001</object-name>
+        <texture>Pictures/G91-Black.png</texture>
         <ambient>
-            <red>1.0</red>
-            <green>1.0</green>
-            <blue>1.0</blue>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
         </ambient>
-        <emission>	
-            <red>1.0</red>	
-            <green>1.0</green>	
-            <blue>1.0</blue>
-            <factor-prop>sim/G91/frontal_gear_lights_emission</factor-prop>
-        </emission>
-        <transparency>
-            <alpha-prop>sim/G91/position_light_transparent</alpha-prop>
-            <factor>1</factor>
-            <offset>0</offset>
-        </transparency>
     </animation>
-    -->
     
     <!-- Frontal gear animation -->
     
     <animation>
         <type>rotate</type>
+        <object-name>gear_door_dx.001</object-name>
         <object-name>gear_door_dx</object-name>
         <object-name>plate_box_01.003</object-name>
         <object-name>plate_door_Sx01..001</object-name>
@@ -182,6 +246,7 @@
     
     <animation>
         <type>rotate</type>
+        <object-name>gear_door_sx.000</object-name>
         <object-name>gear_door_sx.001</object-name>
         <object-name>plate_box_01.001</object-name>
         <object-name>plate_door_Sx02</object-name>
@@ -393,6 +458,17 @@
     
     <!-- Rotate gear frontal door -->
     
+    <!--
+                <axis>
+            <x1-m>  -3.00240</x1-m>
+            <y1-m>  1.0</y1-m>
+            <z1-m>  -1.0290</z1-m>
+            <x2-m>  -3.00240</x2-m>
+            <y2-m>  -1.0</y2-m>
+            <z2-m>  -1.0290</z2-m>
+        </axis>
+        -->
+    
     <animation>
         <type>rotate</type>
         <object-name>GearFrontalDoor</object-name>
@@ -402,14 +478,14 @@
         <axis>
             <x1-m>  -3.00240</x1-m>
             <y1-m>  1.0</y1-m>
-            <z1-m>  -1.02906</z1-m>
+            <z1-m>  -1.023</z1-m>
             <x2-m>  -3.00240</x2-m>
             <y2-m>  -1.0</y2-m>
-            <z2-m>  -1.0290</z2-m>
+            <z2-m>  -1.023</z2-m>
         </axis>
         <interpolation>
-            <entry><ind>0.0</ind><dep>90</dep></entry>
-            <entry><ind>0.25</ind><dep>90</dep></entry>
+            <entry><ind>0.0</ind><dep>88</dep></entry>
+            <entry><ind>0.25</ind><dep>88</dep></entry>
             <entry><ind>0.50</ind><dep>60</dep></entry>
             <entry><ind>0.75</ind><dep>30</dep></entry>
             <entry><ind>1.0</ind><dep>0</dep></entry>
@@ -797,7 +873,7 @@
         <factor>1.0</factor>
         <object-name>Galss_light_sx</object-name>
     </animation>
-
+    
     <animation>
         <type>material</type>
         <object-name>Light_sx.reflectivepart</object-name>
@@ -858,16 +934,16 @@
         </offsets>
     </model>
     
-
+    
     <!-- External emission landing light Dx (Taxiing) -->
-
+    
     <animation> 
         <type>blend</type>
         <property>sim/G91/glass_camera_reflections</property>
         <factor>1.0</factor>
         <object-name>glass_light_dx</object-name>
     </animation>
-
+    
     <animation>
         <type>material</type>
         <object-name>glass_light_dx</object-name>
@@ -917,7 +993,7 @@
             <blue>0.5</blue>
         </specular>
     </animation>
-
+    
     <model>
         <name>procedural-light-gear-white-right</name>
         <path>Effects/lights/procedural_light_gear_right.xml</path>
@@ -927,9 +1003,9 @@
             <z-m> -1.18 </z-m>
         </offsets>
     </model>
-
+    
     <!-- Landing light Dx Sx -->
-
+    
     <animation> 
         <type>blend</type>
         <property>sim/G91/glass_camera_reflections</property>
@@ -939,7 +1015,7 @@
         <object-name>Light_Sphere_dx.003</object-name>
         <object-name>Light_Sphere_dx.004</object-name>
     </animation>
-
+    
     <!-- Tyre-Smoke -->
     
     <model>

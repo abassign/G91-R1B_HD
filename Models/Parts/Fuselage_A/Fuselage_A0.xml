@@ -2,7 +2,7 @@
 
 <PropertyList>
     
-    <path>fuselage_A0.ac</path>
+    <path>musetto_pan_r1b.ac</path>
     
     <offsets>
         <x-m>0.0</x-m>
@@ -17,6 +17,8 @@
         <object-name>A__G91_fuselage_muso_1.005</object-name>
         <object-name>A__G91_fuselage_muso_1.006</object-name>
         <object-name>A__G91_fuselage_muso_1.007</object-name>
+        <object-name>A__G91_fuselage_muso_1.008</object-name>
+        <object-name>A__G91_fuselage_muso_1.009</object-name>
         <object-name>A__G91_fuselage_muso_1.010</object-name>
         <object-name>A__G91_fuselage_muso_1.014</object-name>
         <object-name>Corniera_oblo_sx_dx</object-name>
@@ -28,6 +30,134 @@
         <object-name>Cristallo_oblo_front</object-name>
         <object-name>Cristallo_sx_dx</object-name>
         <object-name>Cristallo_sx_dx.001</object-name>
+    </animation>
+    
+    <animation>
+        <name>FuselageFrontAll_R1B</name>
+        <type>select</type>
+        <object-name>A__G91_fuselage_muso_1.000</object-name>
+        <object-name>A__G91_fuselage_muso_1.001</object-name>
+        <object-name>A__G91_fuselage_muso_1.002</object-name>
+        <object-name>A__G91_fuselage_muso_1.003</object-name>
+        <object-name>A__G91_fuselage_muso_1.004</object-name>
+        <object-name>A__G91_fuselage_muso_1.005</object-name>
+        <object-name>A__G91_fuselage_muso_1.006</object-name>
+        <object-name>A__G91_fuselage_muso_1.007</object-name>
+        <object-name>A__G91_fuselage_muso_1.008</object-name>
+        <object-name>A__G91_fuselage_muso_1.009</object-name>
+        <object-name>A__G91_fuselage_muso_1.010</object-name>
+        <object-name>A__G91_fuselage_muso_1.014</object-name>
+        <object-name>A__G91_fuselage_muso_1.015</object-name>
+        <object-name>A__G91_fuselage_muso_1.017</object-name>
+        <object-name>A_antenna_cover</object-name>
+        <object-name>Corniera_oblo_sx_dx</object-name>
+        <object-name>Corniera_oblo_sx_dx.001</object-name>
+        <object-name>Corniera_oown</object-name>
+        <object-name>Cristallo_down</object-name>
+        <object-name>Cristallo_oblo_front</object-name>
+        <object-name>Cristallo_sx_dx</object-name>
+        <object-name>Cristallo_sx_dx.001</object-name>
+        <object-name>Cube.002</object-name>
+        <object-name>Cube.003</object-name>
+        <object-name>Guarnizione_down</object-name>
+        <object-name>Cristallo_sx_dx</object-name>
+        <object-name>Cristallo_sx_dx.001</object-name>
+        <object-name>Guarnizione_oblo_sx_dx</object-name>
+        <object-name>Guarnizione_oblo_sx_dx.001</object-name>
+        <object-name>guarnizione_oblo_front.000</object-name>
+        <object-name>guarnizione_oblo_front.001</object-name>
+        <condition>
+            <not>
+                <equals>
+                    <property>sim/G91/liveries/active/PANR1</property>
+                    <value>1</value>
+                </equals>
+            </not>
+        </condition>
+    </animation>
+    
+    <animation>
+        <name>FuselageFrontAll_PAN_R1B</name>
+        <type>select</type>
+        <object-name>panR1b_Corniera_oown.001</object-name>
+        <object-name>panR1b_Cube.000</object-name>
+        <object-name>panR1b_Cube.001</object-name>
+        <object-name>panR1b__G91_fuselage_muso_1.000</object-name>
+        <object-name>panR1b__G91_fuselage_muso_1.008</object-name>
+        <object-name>panR1b__G91_fuselage_muso_1.009</object-name>
+        <object-name>panR1b__G91_fuselage_muso_1.019</object-name>
+        <object-name>panR1b__G91_fuselage_muso_1.020</object-name>
+        <object-name>panR1b__G91_fuselage_muso_1.021</object-name>
+        <object-name>panR1b__G91_fuselage_muso_1.022</object-name>
+        <object-name>panR1b__G91_fuselage_muso_1.023</object-name>
+        <object-name>panR1b__G91_fuselage_muso_1.024</object-name>
+        <object-name>panR1b_antenna_cover.001</object-name>
+        <condition>
+            <equals>
+                <property>sim/G91/liveries/active/PANR1</property>
+                <value>1</value>
+            </equals>
+        </condition>
+    </animation>
+    
+    <effect>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
+        <object-name>A__G91_fuselage_muso_1.005</object-name>
+        <object-name>A__G91_fuselage_muso_1.006</object-name>
+        <object-name>A__G91_fuselage_muso_1.007</object-name>
+        <object-name>A__G91_fuselage_muso_1.010</object-name>
+        <object-name>A__G91_fuselage_muso_1.014</object-name>
+        <object-name>Corniera_oblo_sx_dx</object-name>
+        <object-name>Corniera_oblo_sx_dx.001</object-name>
+        <object-name>Guarnizione_oblo_sx_dx</object-name>
+        <object-name>Guarnizione_oblo_sx_dx.001</object-name>
+        <object-name>guarnizione_oblo_front.000</object-name>
+        <object-name>guarnizione_oblo_front.001</object-name>
+        <object-name>A__G91_fuselage_muso_1.002</object-name>
+        <object-name>A__G91_fuselage_muso_1.004</object-name>
+        <object-name>A__G91_fuselage_muso_1.003</object-name>
+        <object-name>Cube.002</object-name>
+        <object-name>Cube.003</object-name>
+        <object-name>A__G91_fuselage_muso_1.015</object-name>
+        <object-name>panR1b_Corniera_oown.001</object-name>
+        <object-name>panR1b_Cube.000</object-name>
+        <object-name>panR1b_Cube.001</object-name>
+        <object-name>panR1b__G91_fuselage_muso_1.000</object-name>
+        <object-name>panR1b__G91_fuselage_muso_1.008</object-name>
+        <object-name>panR1b__G91_fuselage_muso_1.009</object-name>
+        <object-name>panR1b__G91_fuselage_muso_1.019</object-name>
+        <object-name>panR1b__G91_fuselage_muso_1.020</object-name>
+        <object-name>panR1b__G91_fuselage_muso_1.021</object-name>
+        <object-name>panR1b__G91_fuselage_muso_1.022</object-name>
+        <object-name>panR1b__G91_fuselage_muso_1.023</object-name>
+        <object-name>panR1b_antenna_cover.001</object-name>
+    </effect>
+    
+    <effect>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Liveries/liveries_001</inherits-from>
+        <object-name>A__G91_fuselage_muso_1.000</object-name>
+        <object-name>A__G91_fuselage_muso_1.001</object-name>
+        <object-name>panR1b__G91_fuselage_muso_1.024</object-name>
+    </effect>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>A__G91_fuselage_muso_1.000</object-name>
+        <object-name>A__G91_fuselage_muso_1.001</object-name>
+        <object-name>panR1b__G91_fuselage_muso_1.024</object-name>
+        <object-name>A_antenna_cover</object-name>
+        <diffuse>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+            <factor-prop>sim/G91/liveries/active/diffuse</factor-prop>
+        </diffuse>
+        <specular>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+            <factor-prop>sim/G91/liveries/active/specular</factor-prop>
+        </specular>
     </animation>
     
     <!-- Material assignment -->
@@ -42,57 +172,141 @@
     
     <animation> 
         <type>material</type> 
-        <object-name>Guarnizione_oblo_sx_dx</object-name>
-        <object-name>Guarnizione_oblo_sx_dx.001</object-name>
-        <object-name>guarnizione_oblo_front.001</object-name>
-        <object-name>Guarnizione_down</object-name>
+        <object-name>A__G91_fuselage_muso_1.002</object-name>
+        <object-name>A__G91_fuselage_muso_1.005</object-name>
+        <object-name>A__G91_fuselage_muso_1.004</object-name>
+        <object-name>A__G91_fuselage_muso_1.003</object-name>
         <texture>Pictures/G91-Al.png</texture>
+        <ambient>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </ambient>
     </animation>
     
     <animation> 
-        <type>material</type> 
+        <type>material</type>
         <object-name>Cristallo_down</object-name>
         <object-name>Cristallo_oblo_front</object-name>
         <object-name>Cristallo_sx_dx</object-name>
         <object-name>Cristallo_sx_dx.001</object-name>
         <texture>Pictures/G91-Dark-Grey.png</texture>
+        <transparency>
+            <alpha>0.8</alpha>
+        </transparency>
+        <ambient>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.25</blue>
+        </ambient>
+        <specular>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>0.8</blue>
+        </specular>
     </animation>
     
     <animation> 
-        <type>blend</type>
-        <property>sim/G91/glass_camera_reflections</property>
-        <factor>0.7</factor>
-        <object-name>Cristallo_down</object-name>
-        <object-name>Cristallo_oblo_front</object-name>
-        <object-name>Cristallo_sx_dx</object-name>
-        <object-name>Cristallo_sx_dx.001</object-name>
+        <type>material</type>
+        <object-name>panR1b__G91_fuselage_muso_1.000</object-name>
+        <object-name>A__G91_fuselage_muso_1.008</object-name>
+        <object-name>A__G91_fuselage_muso_1.009</object-name>
+        <texture>Pictures/G91-Dark-Grey.png</texture>
+        <ambient>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
+        </ambient>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>Corniera_oblo_sx_dx</object-name>
+        <object-name>Corniera_oblo_sx_dx.001</object-name>
+        <object-name>Guarnizione_oblo_sx_dx</object-name>
+        <object-name>Guarnizione_oblo_sx_dx.001</object-name>
+        <object-name>guarnizione_oblo_front.001</object-name>
+        <object-name>Guarnizione_down</object-name>
+        <texture>Pictures/G91-Dark-Grey.png</texture>
+        <ambient>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </ambient>
+    </animation>
+    
+    <animation> 
+        <type>material</type> 
+        <object-name>panR1b_antenna_cover.001</object-name>
+        <object-name>panR1b__G91_fuselage_muso_1.021</object-name>
+        <object-name>panR1b__G91_fuselage_muso_1.022</object-name>
+        <object-name>panR1b__G91_fuselage_muso_1.023</object-name>
+        <texture>Pictures/G91-Al.png</texture>
+        <ambient>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </ambient>
+    </animation>
+
+    <animation> 
+        <type>material</type> 
+        <object-name>Cube.002</object-name>
+        <object-name>Cube.003</object-name>
+        <object-name>A__G91_fuselage_muso_1.015</object-name>
+        <object-name>panR1b__G91_fuselage_muso_1.008</object-name>
+        <object-name>A__G91_fuselage_muso_1.014</object-name>
+        <object-name>panR1b__G91_fuselage_muso_1.019</object-name>
+        <object-name>panR1b__G91_fuselage_muso_1.009</object-name>
+        <object-name>panR1b_Cube.000</object-name>
+        <object-name>panR1b_Cube.001</object-name>
+        <texture>Pictures/G91-Al.png</texture>
+        <ambient>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
+        </ambient>
     </animation>
 
     <animation> 
         <type>material</type>
-        <object-name>A_antenna_cover</object-name>
-        <object-name>A__G91_fuselage_muso_1.014</object-name>
-        <texture>Pictures/G91-Al.png</texture>
+        <object-name>A__G91_fuselage_muso_1.006</object-name>
+        <object-name>panR1b__G91_fuselage_muso_1.001</object-name>
+        <object-name>panR1b__G91_fuselage_muso_1.021</object-name>
+        <object-name>A__G91_fuselage_muso_1.003</object-name>
+        <object-name>A__G91_fuselage_muso_1.005</object-name>
+        <texture>Pictures/AichiInteriorGreyGreen.png</texture>
+        <ambient>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </ambient>
     </animation>
     
-    <!-- Chrome Effects on materials -->
-    <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/glass-chrome</inherits-from>
-        <object-name>A__G91_fuselage_muso_1.001</object-name>
-        <object-name>A__G91_fuselage_muso_1.000</object-name>
-        <object-name>A__G91_fuselage_muso_1.008</object-name>
-        <object-name>A__G91_fuselage_muso_1.011</object-name>
-        <object-name>A__G91_fuselage_muso_1.012</object-name>
-        <object-name>A__G91_fuselage_muso_1.013</object-name>
-    </effect>
+    <animation> 
+        <type>material</type>
+        <object-name>A__G91_fuselage_muso_1.002</object-name>
+        <object-name>A__G91_fuselage_muso_1.003</object-name>
+        <object-name>A__G91_fuselage_muso_1.007</object-name>
+        <object-name>A__G91_fuselage_muso_1.006</object-name>
+        <object-name>panR1b__G91_fuselage_muso_1.020</object-name>
+        <object-name>panR1b__G91_fuselage_muso_1.021</object-name>
+        <texture>Pictures/G91-Al.png</texture>
+        <ambient>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </ambient>
+    </animation>
     
     <animation>
         <type>pick</type>
         <object-name>A__G91_fuselage_muso_1.014</object-name>
+        <object-name>A__G91_fuselage_muso_1.000</object-name>
         <action>
             <button>0</button>
             <repeatable>false</repeatable>
-            <interval-sec>0.2</interval-sec>
+            <interval-sec>0.5</interval-sec>
             <binding>
                 <command>property-toggle</command>
                 <property>/controls/switches/FuselageCameraCompartment</property>

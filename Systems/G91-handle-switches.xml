@@ -19,7 +19,6 @@
             <test logic="AND" value="0">
                 gear/unit[0]/wheel-speed-fps LE 0.5
                 systems/handle-switches/sw-handle-brake-trigger == 1
-                systems/handle-switches/sw-handle-brake-pos-status == 2
                 systems/handle-switches/sw-handle-brake-pos-rotate GT 0.95
             </test>
             <test logic="AND" value="2">

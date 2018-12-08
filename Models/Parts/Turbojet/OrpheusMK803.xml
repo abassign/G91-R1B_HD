@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+
 
 <PropertyList>
     
@@ -11,7 +11,7 @@
     </offsets>
     
     <!-- Color parts -->
-    
+    <!--
     <effect>
         <inherits-from>Effects/model-transparent</inherits-from>
         <object-name>node11</object-name>
@@ -42,6 +42,7 @@
             <blue>0.5</blue>
         </diffuse>
     </animation>
+    -->
     
     <animation> 
         <type>material</type> 
@@ -156,6 +157,7 @@
     <animation>
         <type>material</type> 
         <object-name>node14</object-name>
+        <texture>Pictures/G91-Dark-Grey.png</texture>
         <emission>	
             <red>0.07</red>	
             <green>0.0</green>	
@@ -177,6 +179,7 @@
     <animation>
         <type>material</type> 
         <object-name>node15</object-name>
+        <texture>Pictures/G91-Dark-Grey.png</texture>
         <emission>	
             <red>0.05</red>	
             <green>0.01</green>	
@@ -198,8 +201,9 @@
     <animation>
         <type>material</type> 
         <object-name>node4</object-name>
+        <texture>Pictures/G91-Dark-Grey.png</texture>
         <emission>
-            <red>0.1</red>	
+            <red>0.01</red>	
             <green>0.0</green>	
             <blue>0.0</blue>
             <factor-prop>sim/G91/engengine_red_emission</factor-prop>
@@ -219,6 +223,7 @@
     <animation>
         <type>material</type> 
         <object-name>node5</object-name>
+        <texture>Pictures/G91-Dark-Grey.png</texture>
         <emission>	
             <red>0.18</red>	
             <green>0.015</green>	
@@ -240,10 +245,11 @@
     <animation>
         <type>material</type> 
         <object-name>node6</object-name>
+        <texture>Pictures/G91-Dark-Grey.png</texture>
         <emission>	
             <red>0.1</red>	
             <green>0.0</green>	
-            <blue>0.4</blue>
+            <blue>0.8</blue>
             <factor-prop>sim/G91/engengine_red_emission</factor-prop>
         </emission>
         <ambient>
@@ -258,4 +264,102 @@
         </diffuse>
     </animation>
     
+    <animation>
+        <type>material</type> 
+        <object-name>node10</object-name>
+        <texture>Pictures/G91-Dark-Grey.png</texture>
+        <emission>	
+            <red>0.02</red>	
+            <green>0.0</green>	
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/engengine_red_emission</factor-prop>
+        </emission>
+        <ambient>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </ambient>
+        <diffuse>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </diffuse>
+    </animation>
+    
+    <!-- Fire flame  and smoke -->
+
+    <model>
+        <path>fire_flame.xml</path>
+        <offsets>
+            <x-m> 2.3 </x-m>
+            <y-m> -0.305 </y-m>
+            <z-m> 0.63 </z-m>
+            <roll-deg>    0.000 </roll-deg>
+            <pitch-deg>   0 </pitch-deg>
+            <heading-deg> 0 </heading-deg>
+        </offsets>
+    </model>
+    
+    <model>
+        <path>fire_smoke.xml</path>
+        <offsets>
+            <x-m> 5 </x-m>
+            <y-m> -0.305 </y-m>
+            <z-m> 0.63 </z-m>
+            <roll-deg>    0.000 </roll-deg>
+            <pitch-deg>   0 </pitch-deg>
+            <heading-deg> 0 </heading-deg>
+        </offsets>
+    </model>
+
+    <!-- Experimental -->
+
+    <model>
+        <path>flame_smoke_1.xml</path>
+        <offsets>
+            <x-m> 3.5 </x-m>
+            <y-m> -0.305 </y-m>
+            <z-m> 0.63 </z-m>
+            <roll-deg>    0.000 </roll-deg>
+            <pitch-deg>   0 </pitch-deg>
+            <heading-deg> 0 </heading-deg>
+        </offsets>
+    </model>
+    
+    <model>
+        <path>rear_smoke_acro_1.xml</path>
+        <offsets>
+            <x-m> 3.5 </x-m>
+            <y-m> -0.305 </y-m>
+            <z-m> 0.63 </z-m>
+            <roll-deg>    0.000 </roll-deg>
+            <pitch-deg>   0 </pitch-deg>
+            <heading-deg> 0 </heading-deg>
+        </offsets>
+    </model>
+    
+    <model>
+        <path>rear_smoke_acro_2.xml</path>
+        <offsets>
+            <x-m> 4.5 </x-m>
+            <y-m> -0.305 </y-m>
+            <z-m> 0.63 </z-m>
+            <roll-deg>    0.000 </roll-deg>
+            <pitch-deg>   0 </pitch-deg>
+            <heading-deg> 0 </heading-deg>
+        </offsets>
+    </model>
+
+    <model>
+        <path>flame_OrpheusMK803.xml</path>
+        <offsets>
+            <x-m> 0.43 </x-m>
+            <y-m> -0.305 </y-m>
+            <z-m> 0.63 </z-m>
+            <roll-deg>    0.0 </roll-deg>
+            <pitch-deg>   0.0 </pitch-deg>
+            <heading-deg> 0.0 </heading-deg>
+        </offsets>
+    </model>
+
 </PropertyList>

@@ -10,6 +10,8 @@
     <property value="0.0">systems/jato/rockets_started</property>
     <property value="0.0">systems/jato/ignition-on</property>
     <property value="0.0">systems/jato/jettinson-on</property>
+    <property value="0">systems/jato/autostart-ok</property>
+    <property value="40">systems/jato/autostart-speed</property>
     
     
     <channel name="jato mount or dismount" execrate="16">
@@ -106,9 +108,18 @@
         
         <switch name="systems/jato/ignition-on">
             <default value="0"/>
-            <test logic = "AND" value = "1">
-                systems/jato/electric-active == 1
-                systems/manual-switches/jato/sw-ignition == 1
+            <test logic = "OR" value = "1">
+                <test logic = "AND">
+                    systems/jato/electric-active == 1
+                    systems/manual-switches/jato/sw-ready-pos GT 0.95
+                    systems/manual-switches/jato/sw-ignition == 1
+                </test>
+                <test logic = "AND">
+                    systems/jato/electric-active == 1
+                    systems/manual-switches/jato/sw-ready-pos GT 0.95
+                    systems/jato/autostart-ok == 1
+                    velocities/vtrue-kts GT systems/jato/autostart-speed 
+                </test>
             </test>
         </switch>
         
@@ -222,22 +233,11 @@
     -->
     <channel name="Load JATO Fuel" execrate="16">
         
-        <switch name="systems/jato/rockets_started">
-            <default value="systems/jato/rockets_started"/>
-            <test logic = "AND" value = "1">
-                systems/jato/ignition-on == 1
-            </test>
-            <test logic = "AND" value = "0">
-                systems/jato/thrust-lbs-total GT 1
-            </test>
-        </switch>
-        
         <switch name="systems/jato/rocket_number_1_loading_lb">
             <default value="0"/>
             <test logic = "AND" value = "1000">
                 systems/jato/rocket_number_1 == 1
                 propulsion/tank[8]/contents-lbs LT systems/jato/rocket-fuel-lb-max
-                systems/jato/rockets_started == 1
             </test>
         </switch>
         
@@ -251,7 +251,6 @@
             <test logic = "AND" value = "1000">
                 systems/jato/rocket_number_2 == 1
                 propulsion/tank[9]/contents-lbs LT systems/jato/rocket-fuel-lb-max
-                systems/jato/rockets_started == 1
             </test>
         </switch>
         
@@ -265,7 +264,6 @@
             <test logic = "AND" value = "1000">
                 systems/jato/rocket_number_3 == 1
                 propulsion/tank[10]/contents-lbs LT systems/jato/rocket-fuel-lb-max
-                systems/jato/rockets_started == 1
             </test>
         </switch>
         
@@ -279,7 +277,6 @@
             <test logic = "AND" value = "1000">
                 systems/jato/rocket_number_4 == 1
                 propulsion/tank[11]/contents-lbs LT systems/jato/rocket-fuel-lb-max
-                systems/jato/rockets_started == 1
             </test>
         </switch>
         

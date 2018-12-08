@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<PropertyList>
+
+    <path>Aircraft/G91-R1B_HD/Models/Parts/Turbojet/flame_OrpheusMK803_max.ac</path>
+    <nopreview/>
+    <animation>
+        <type>scale</type>
+        <property>fdm/jsbsim/propulsion/engine[0]/thrust-lbs</property>
+        <x-min>1.0</x-min>
+        <y-min>1.0</y-min>
+        <z-min>1.0</z-min>
+        <x-max>1.0</x-max>
+        <y-max>1.0</y-max>
+        <z-max>1.0</z-max>
+        <x-factor>0.05</x-factor>
+        <y-factor>0.0</y-factor>
+        <z-factor>0.0</z-factor>
+    </animation>
+    
+    <animation>
+        <type>select</type>
+        <object-name>flame_OrpheusMK803</object-name>
+        <condition>
+            <greater-than>
+                <property>fdm/jsbsim/propulsion/engine[0]/thrust-lbs</property>
+                <value>10</value>
+            </greater-than>
+        </condition>
+    </animation>
+    
+    <effect>
+        <inherits-from>flame_OrpheusMK803</inherits-from>
+        <object-name>flame_OrpheusMK803</object-name>
+    </effect>
+
+</PropertyList> 

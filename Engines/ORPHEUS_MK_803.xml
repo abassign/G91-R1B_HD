@@ -23,18 +23,64 @@ http://wiki.flightgear.org/JSBSim_Engines#FGTurbine
     <bypassratio>     1.0   </bypassratio>
     <tsfc>            1.05  </tsfc>
     <bleed>           0.05  </bleed>
-    <idlen1>         23.4   </idlen1>
-    <idlen2>         60.9   </idlen2>
-    <n1spinup>        0.137 </n1spinup> 
-    <n2spinup>        0.680 </n2spinup> 
+    <idlen1>         30.0   </idlen1>
+    <idlen2>         40.0   </idlen2>
     <maxn1>         103.0   </maxn1>
-    <maxn2>         100.0   </maxn2>
+    <maxn2>         103.0   </maxn2>
     <augmented>         0   </augmented>
     <injected>          0   </injected>
-    <ignitionn1>      4.8   </ignitionn1>
-    <ignitionn2>     23.9   </ignitionn2>
-    <n1startrate>     0.365 </n1startrate>
-    <n2startrate>     0.724 </n2startrate>
+    
+    <function name="N1SpoolUp">
+        <table>
+            <independentVar lookup="row">/engines/engine[0]/n1</independentVar>
+            <tableData>
+                30  12
+                50  18
+                70  22
+                90  26
+                105 30
+            </tableData>
+        </table>
+    </function>
+    
+    <function name="N1SpoolDown">
+        <table>
+            <independentVar lookup="row">/engines/engine[0]/n1</independentVar>
+            <tableData>
+                30  12
+                50  18
+                70  22
+                90  26
+                105 30
+            </tableData>
+        </table>
+    </function>
+    
+    <function name="N2SpoolUp">
+        <table>
+            <independentVar lookup="row">/engines/engine[0]/n2</independentVar>
+            <tableData>
+                30  1.8
+                50  3.7
+                70  7.2
+                90  11
+                105 12
+            </tableData>
+        </table>
+    </function>
+    
+    <function name="N2SpoolDown">
+        <table>
+            <independentVar lookup="row">/engines/engine[0]/n2</independentVar>
+            <tableData>
+                30  1.8
+                50  3.7
+                70  7.2
+                90  11
+                105 12
+            </tableData>
+        </table>
+    </function>
     
     <function name="propulsion/engine[#]/TSFC_Calculate">
         <description>
@@ -124,5 +170,5 @@ http://wiki.flightgear.org/JSBSim_Engines#FGTurbine
             </table>
         </product>
     </function>
-
+    
 </turbine_engine>  

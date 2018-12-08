@@ -35,33 +35,272 @@
         <object-name>A_flap_dx.006</object-name>
     </animation>
     
-    <!-- Chrome Effects on materials -->
+    <!-- Effects on materials -->
+    
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/glass-chrome</inherits-from>
-        <object-name>A__G91_fuselage_weapon_01up 02.001</object-name>
-        <object-name>box_recovery_munitions_dx</object-name>
-        <object-name>box_recovery_munitions_sx</object-name>
-        <object-name>A_wing_dx</object-name>
-        <object-name>A_wing_sx</object-name>
+        <object-name>A00_wing_light.cone_dx</object-name>
+        <object-name>A00_wing_light.cone_dx</object-name>
+        <object-name>A00_wing_light.cone_sx.mesh</object-name>
+        <object-name>B00_barra di rotazione.001</object-name>
+        <object-name>B00_sx_barra di rotazione</object-name>
+    </effect>
+    
+    <effect>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
+        <object-name>A__G91_fuselage_muso_1.025</object-name>
+        <object-name>A__rotto.005</object-name>
+        <object-name>A00.flap.dx.004</object-name>
+        <object-name>A00.flap.dx.005</object-name>
+        <object-name>A00.flap.dx.006</object-name>
+        <object-name>A00.flap.dx.007</object-name>
+        <object-name>A00.flap.sx.000</object-name>
+        <object-name>A00.flap.sx.002</object-name>
+        <object-name>A00.flap.sx.003</object-name>
+        <object-name>A00.flap.sx.01</object-name>
+        <object-name>A00_Guide001_Dx_flap</object-name>
+        <object-name>A00_Guide001_sx_flap.001</object-name>
+        <object-name>A00_Guide002_Dx_flap.</object-name>
+        <object-name>A00_Guide002_sx_flap.001</object-name>
+        <object-name>A00_pitot_dx</object-name>
+        <object-name>A00_wing_light.support_dx</object-name>
+        <object-name>A00_wing_light.support_sx</object-name>
+        <object-name>A__G91_fuselage_int</object-name>
+        <object-name>A__G91_fuselage_int.weapon.door.002</object-name>
+        <object-name>A_flap_dx.006</object-name>
+        <object-name>A_flap_sx.005</object-name>
+        <object-name>A_trasmission_command_Alet_sx.000</object-name>
+        <object-name>A_trasmission_command_Alet_sx.001</object-name>
+        <object-name>A_trasmission_command_Alet_sx.002</object-name>
+        <object-name>A_trasmission_command_Alet_sx.003</object-name>
+        <object-name>A_trasmission_command_Alet_sx.004</object-name>
+        <object-name>A_trasmission_command_Alet_sx.005</object-name>
+        <object-name>A_trasmission_command_Alet_sx.006</object-name>
+        <object-name>A_wing_dx.001</object-name>
+        <object-name>A_wing_dx.003</object-name>
+        <object-name>A_wing_dx.004</object-name>
+        <object-name>A_wing_longherone_dx.001</object-name>
+        <object-name>A_wing_longherone_sx</object-name>
+        <object-name>A_wing_sx.001</object-name>
+        <object-name>A_wing_sx.003</object-name>
+        <object-name>A_wing_sx.006</object-name>
+        <object-name>B00_Asse_dx_door_bis.001</object-name>
+        <object-name>B00_beam_gear_dx.002</object-name>
+        <object-name>B00_beam_gear_dx_01.002</object-name>
+        <object-name>B00_beam_gear_dx_02.002</object-name>
+        <object-name>B00_beam_gear_sx</object-name>
+        <object-name>B00_beam_gear_sx_01</object-name>
+        <object-name>B00_beam_gear_sx_02</object-name>
+        <object-name>B00_box_gear_door</object-name>
+        <object-name>B00_c_sx_door_bis</object-name>
+        <object-name>B00_c_sx_door_bis.001</object-name>
+        <object-name>B00_cable01_gear_dx.001</object-name>
+        <object-name>B00_cable01_gear_dx.004</object-name>
+        <object-name>B00_cable01_gear_sx.003</object-name>
+        <object-name>B00_cable01_gear_sx.004</object-name>
+        <object-name>B00_cable02_gear_dx.002</object-name>
+        <object-name>B00_cable02_gear_sx</object-name>
+        <object-name>B00_cable03_gear_dx.002</object-name>
+        <object-name>B00_cable03_gear_sx</object-name>
+        <object-name>B00_cable_gear_sx_gen</object-name>
+        <object-name>B00_dx_Leg_01.000</object-name>
+        <object-name>B00_dx_Leg_01.002</object-name>
+        <object-name>B00_dx_Leg_02.002</object-name>
+        <object-name>B00_dx_Leg_03.002</object-name>
+        <object-name>B00_dx_Leg_04.002</object-name>
+        <object-name>B00_dx_bolt_01.002</object-name>
+        <object-name>B00_dx_bolt_02.002</object-name>
+        <object-name>B00_dx_bolt_03.001</object-name>
+        <object-name>B00_dx_bolt_04.002</object-name>
+        <object-name>B00_dx_bolt_05.002</object-name>
+        <object-name>B00_dx_bolt_06.002</object-name>
+        <object-name>B00_dx_bolt_07.002</object-name>
+        <object-name>B00_dx_brake:01.002</object-name>
+        <object-name>B00_dx_brakes02.002</object-name>
+        <object-name>B00_dx_brakes03.002</object-name>
+        <object-name>B00_dx_brakes04.002</object-name>
+        <object-name>B00_dx_damper_01.002</object-name>
+        <object-name>B00_dx_damper_02.002</object-name>
+        <object-name>B00_dx_door_02.000</object-name>
+        <object-name>B00_dx_door_02.001</object-name>
+        <object-name>B00_dx_door_02.008</object-name>
+        <object-name>B00_dx_gear_support_.002</object-name>
+        <object-name>B00_dx_gear_support_02.002</object-name>
+        <object-name>B00_dx_hub_01.003</object-name>
+        <object-name>B00_dx_hub_01.004</object-name>
+        <object-name>B00_dx_leg_04.002</object-name>
+        <object-name>B00_dx_microswich.002</object-name>
+        <object-name>B00_dx_support_01.002</object-name>
+        <object-name>B00_dx_support_02.002</object-name>
+        <object-name>B00_dx_support_03.004</object-name>
+        <object-name>B00_dx_support_03.005</object-name>
+        <object-name>B00_dx_tire_01.002</object-name>
+        <object-name>B00_sx_Leg_01</object-name>
+        <object-name>B00_sx_Leg_02</object-name>
+        <object-name>B00_sx_Leg_03</object-name>
+        <object-name>B00_sx_Leg_04</object-name>
+        <object-name>B00_sx_bolt_01</object-name>
+        <object-name>B00_sx_bolt_02</object-name>
+        <object-name>B00_sx_bolt_03</object-name>
+        <object-name>B00_sx_bolt_04</object-name>
+        <object-name>B00_sx_bolt_05</object-name>
+        <object-name>B00_sx_bolt_06</object-name>
+        <object-name>B00_sx_bolt_07</object-name>
+        <object-name>B00_sx_brake:01</object-name>
+        <object-name>B00_sx_brakes02</object-name>
+        <object-name>B00_sx_brakes03</object-name>
+        <object-name>B00_sx_brakes04</object-name>
+        <object-name>B00_sx_damper_01</object-name>
+        <object-name>B00_sx_damper_02</object-name>
+        <object-name>B00_sx_door_02.1</object-name>
+        <object-name>B00_sx_door_bis.001</object-name>
+        <object-name>B00_sx_gear_support_</object-name>
+        <object-name>B00_sx_gear_support_02</object-name>
+        <object-name>B00_sx_hub_01</object-name>
+        <object-name>B00_sx_hub_02</object-name>
+        <object-name>B00_sx_leg_04</object-name>
+        <object-name>B00_sx_microswich</object-name>
+        <object-name>B00_sx_support_01</object-name>
+        <object-name>B00_sx_support_02</object-name>
+        <object-name>B00_sx_support_03</object-name>
+        <object-name>B00_sx_support_03.001</object-name>
+        <object-name>B00_sx_tire_01</object-name>
+        <object-name>Circle.001</object-name>
+        <object-name>Circle.003</object-name>
+        <object-name>Cube.004</object-name>
+        <object-name>F_door_em_canopyDX.000</object-name>
+        <object-name>F_door_em_canopyDX.004a.001</object-name>
+        <object-name>F_door_em_canopyDX.005</object-name>
+        <object-name>F_door_em_canopySX.000</object-name>
+        <object-name>F_door_em_canopySX.005</object-name>
+        <object-name>Rivethead 2</object-name>
+        <object-name>Rivethead 2.001</object-name>
+        <object-name>plate_box_01.000</object-name>
+        <object-name>plate_box_01.001</object-name>
+        <object-name>plate_box_01.002</object-name>
+        <object-name>plate_box_01.003</object-name>
+        <object-name>plate_box_02</object-name>
+        <object-name>staffa001_door_dx</object-name>
+        <object-name>staffa001_door_dx.001</object-name>
+        <object-name>staffa001_door_dx.001</object-name>
+        <object-name>staffa001_door_dx.003</object-name>
+        <object-name>supporto_jato</object-name>
+    </effect>
+    
+    <effect>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Liveries/liveries_001</inherits-from>
+        <object-name>A__G91_fuselage_int.weapon.door.001</object-name>
+        <object-name>m00_door_01.1</object-name>
+        <object-name>m00_door_02</object-name>
+        <object-name>m00_door_dx01</object-name>
+        <object-name>m00_door_dx03</object-name>
+        <object-name>m00_door_sx01</object-name>
+        <object-name>m00_door_sx03</object-name>
+        <object-name>m00_platelight</object-name>
+        <object-name>m00_door_sx03.001</object-name>
+        <object-name>m00_door_dx03.001</object-name>
+        <object-name>F__door_02</object-name>
+        <object-name>F__door_03</object-name>
+        <object-name>F__door_02.001</object-name>
+        <object-name>F__door_03</object-name>
+        <object-name>F__door_03.002</object-name>
+        <object-name>F__door_em_canopy01</object-name>
+        <object-name>F__door_em_canopy01.002</object-name>
+        <object-name>F_door_em_canopyDX.001</object-name>
+        <object-name>F_door_em_canopyDX.002</object-name>
+        <object-name>F_door_em_canopyDX.004</object-name>
+        <object-name>F_door_em_canopyDX.004a</object-name>
+        <object-name>F_door_em_canopySX.001</object-name>
+        <object-name>F_door_em_canopySX.002</object-name>
+        <object-name>F_door_em_canopySX.004</object-name>
+        <object-name>F_door_em_canopySX.004a</object-name>
+        <object-name>F_door_em_canopySX.005</object-name>
+        <object-name>F_handle_armydoorDX</object-name>
+        <object-name>F_handle_armydoorSX</object-name>
+        <object-name>B00_sx_door_01.001</object-name>
+        <object-name>B00_dx_door_01.000</object-name>
+        <object-name>B00_Asse_dx_door_bis</object-name>
+        <object-name>B00_sx_door_bis.002</object-name>
+        <object-name>A__G91_fuselage_int.weapon.door.007</object-name>
+        <object-name>A__G91_fuselage_int.weapon.door.008</object-name>
+        <object-name>m00_door_01.2</object-name>
+        <object-name>m00_door_dx03.002</object-name>
+        <object-name>tank_cap</object-name>
+        <object-name>tank_cap1</object-name>
+    </effect>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>A__G91_fuselage_int.weapon.door.001</object-name>
+        <object-name>m00_door_01.1</object-name>
+        <object-name>m00_door_02</object-name>
+        <object-name>m00_door_dx01</object-name>
+        <object-name>m00_door_dx03</object-name>
+        <object-name>m00_door_sx01</object-name>
+        <object-name>m00_door_sx03</object-name>
+        <object-name>m00_platelight</object-name>
+        <object-name>m00_door_sx03.001</object-name>
+        <object-name>m00_door_dx03.001</object-name>
+        <object-name>F__door_02</object-name>
+        <object-name>F__door_03</object-name>
+        <object-name>F__door_02.001</object-name>
+        <object-name>F__door_03</object-name>
+        <object-name>F__door_03.002</object-name>
+        <object-name>F__door_em_canopy01</object-name>
+        <object-name>F__door_em_canopy01.002</object-name>
+        <object-name>F_door_em_canopyDX.001</object-name>
+        <object-name>F_door_em_canopyDX.002</object-name>
+        <object-name>F_door_em_canopyDX.004</object-name>
+        <object-name>F_door_em_canopyDX.004a</object-name>
+        <object-name>F_door_em_canopySX.001</object-name>
+        <object-name>F_door_em_canopySX.002</object-name>
+        <object-name>F_door_em_canopySX.004</object-name>
+        <object-name>F_door_em_canopySX.004a</object-name>
+        <object-name>F_door_em_canopySX.005</object-name>
+        <object-name>F_handle_armydoorDX</object-name>
+        <object-name>F_handle_armydoorSX</object-name>
+        <object-name>B00_sx_door_01.001</object-name>
+        <object-name>B00_dx_door_01.000</object-name>
+        <object-name>B00_Asse_dx_door_bis</object-name>
+        <object-name>B00_sx_door_bis.002</object-name>
+        <object-name>A__G91_fuselage_int.weapon.door.007</object-name>
+        <object-name>A__G91_fuselage_int.weapon.door.008</object-name>
+        <object-name>m00_door_01.2</object-name>
+        <object-name>m00_door_dx03.002</object-name>
+        <object-name>tank_cap</object-name>
+        <object-name>tank_cap1</object-name>
+        <diffuse>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+            <factor-prop>sim/G91/liveries/active/diffuse</factor-prop>
+        </diffuse>
+        <specular>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+            <factor-prop>sim/G91/liveries/active/specular</factor-prop>
+        </specular>
+    </animation>
+    
+    <effect>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Liveries/liveries_002</inherits-from>
         <object-name>A_wing_dx.000</object-name>
         <object-name>A_wing_sx.000</object-name>
-        <object-name>A_wing_dx.001</object-name>
-        <object-name>A_wing_sx.001</object-name>
         <object-name>A_wing_dx.002</object-name>
         <object-name>A_wing_sx.002</object-name>
-        <object-name>A_wing_dx.004</object-name>
         <object-name>A_wing_sx.004</object-name>
         <object-name>A_wing_dx.005</object-name>
         <object-name>A_wing_sx.005</object-name>
-        <object-name>A_wing_dx.006</object-name>
+        <object-name>A00_wing_dx_part.001</object-name>
+        <object-name>A00_wing_dx_part.002</object-name>
+        <object-name>A00_wing_dx_part.003</object-name>
         <object-name>A_flap_dx</object-name>
         <object-name>A_flap_sx</object-name>
         <object-name>A_alettone_sx.001</object-name>
         <object-name>A_alettone_dx.002</object-name>
         <object-name>A_alettone_sx</object-name>
         <object-name>A_alettone_dx</object-name>
-        <object-name>A00_wing_dx_part.001</object-name>
-        <object-name>A00_wing_dx_part.002</object-name>
         <object-name>A_wing_border_sx</object-name>
         <object-name>A_wing_border_dx.001</object-name>
         <object-name>A_door_wing_dx.001</object-name>
@@ -70,113 +309,117 @@
         <object-name>A_door_wing_sx.000</object-name>
         <object-name>A_door_wing_sx.002</object-name>
         <object-name>A_door_wing_sx.003</object-name>
-        <object-name>A00_wing_light.cone_sx</object-name>
-        <object-name>A00_wing_light.cone_dx</object-name>
-        <object-name>B00_dx_door_01.005</object-name>
-        <object-name>B00_sx_door_01</object-name>
-        <object-name>B00_dx_door_02</object-name>
         <object-name>B00_dx_door_02.002</object-name>
-        <object-name>B00_Asse_dx_door_bis</object-name>
-        <object-name>B00_sx_door_bis.002</object-name>
-        <object-name>C00_sx_airbrake_door</object-name>
-        <object-name>C00_dx_airbrake_door</object-name>
-        <object-name>B00_dx_door_01.000</object-name>
-        <object-name>B00_sx_door_01.001</object-name>
-        <object-name>F__door_02</object-name>
-        <object-name>F__door_03</object-name>
-        <object-name>F__door_em_canopy01</object-name>
-        <object-name>Circle</object-name>
-        <object-name>Cube</object-name>
-        <object-name>F_door_em_canopyDX.001</object-name>
-        <object-name>F_door_em_canopyDX.002</object-name>
-        <object-name>F_door_em_canopySX.005</object-name>
-        <object-name>F_door_em_canopySX.001</object-name>
-        <object-name>F_door_em_canopySX.002</object-name>
-        <object-name>m00_door_01.1</object-name>
-        <object-name>m00_door_01.2</object-name>
-        <object-name>m00_door_02</object-name>
-        <object-name>m00_door_dx01</object-name>
-        <object-name>m00_door_dx03</object-name>
-        <object-name>m00_door_sx01</object-name>
-        <object-name>m00_door_sx03</object-name>
-        <object-name>m00_hinge_axe</object-name>
-        <object-name>m00_platelight</object-name>
-        <object-name>A__G91_fuselage_int.weapon.door.007</object-name>
-    </effect>
-    
-    <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
-        <object-name>A__rotto.005</object-name>
-        <object-name>F_door_em_canopyDX.004a</object-name>
-        <object-name>F_door_em_canopyDX.004</object-name>
-        <object-name>F_door_em_canopyDX.004a.001</object-name>
-        <object-name>F_door_em_canopySX.004a</object-name>
-        <object-name>F_door_em_canopySX.004a</object-name>
-        <object-name>F_door_em_canopyDX.005</object-name>
-        <object-name>F_handle_armydoorDX</object-name>
-        <object-name>F_handle_armydoorSX</object-name>
-        <object-name>m00_box</object-name>
-        <object-name>B00_box_gear_door</object-name>
-    </effect>
-    
-    <!--
-    <effect>
-    <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_external_canvas</inherits-from>
-    <object-name>A__G91_fuselage_int.weapon.door.001</object-name>
+        <object-name>B00_dx_door_02</object-name>
     </effect>
     
     <animation> 
-    <type>material</type>
-    <object-name>A__G91_fuselage_int.weapon.door.001</object-name>
-    <ambient>
-    <red>1.0</red>
-    <green>1.0</green>
-    <blue>1.0</blue>
-    </ambient>
-    <specular>
-    <red>1.0</red>
-    <green>1.0</green>
-    <blue>1.0</blue>
-    </specular>
+        <type>material</type>
+        <object-name>A_wing_dx.000</object-name>
+        <object-name>A_wing_sx.000</object-name>
+        <object-name>A_wing_dx.002</object-name>
+        <object-name>A_wing_sx.002</object-name>
+        <object-name>A_wing_sx.004</object-name>
+        <object-name>A_wing_dx.005</object-name>
+        <object-name>A_wing_sx.005</object-name>
+        <object-name>A00_wing_dx_part.001</object-name>
+        <object-name>A00_wing_dx_part.002</object-name>
+        <object-name>A00_wing_dx_part.003</object-name>
+        <object-name>A_flap_dx</object-name>
+        <object-name>A_flap_sx</object-name>
+        <object-name>A_alettone_sx.001</object-name>
+        <object-name>A_alettone_dx.002</object-name>
+        <object-name>A_alettone_sx</object-name>
+        <object-name>A_alettone_dx</object-name>
+        <object-name>A_wing_border_sx</object-name>
+        <object-name>A_wing_border_dx.001</object-name>
+        <object-name>A_door_wing_dx.001</object-name>
+        <object-name>A_door_wing_dx.004</object-name>
+        <object-name>A_door_wing_dx.005</object-name>
+        <object-name>A_door_wing_sx.000</object-name>
+        <object-name>A_door_wing_sx.002</object-name>
+        <object-name>A_door_wing_sx.003</object-name>
+        <object-name>B00_dx_door_02.002</object-name>
+        <object-name>B00_dx_door_02</object-name>
+        <diffuse>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+            <factor-prop>sim/G91/liveries/active/diffuse</factor-prop>
+        </diffuse>
+        <specular>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+            <factor-prop>sim/G91/liveries/active/specular</factor-prop>
+        </specular>
     </animation>
-    -->
-    
-    <effect>
-        <inherits-from>Effects/model-combined-deferred</inherits-from>
-        <object-name>A__G91_fuselage_int.weapon.door.001</object-name>
-        <parameters>
-            <rain-enabled type="int">2</rain-enabled>
-            <ambient-correction type="float">-0.3</ambient-correction>
-            <normalmap-enabled type="int">0</normalmap-enabled>
-            <lightmap-enabled type="int">0</lightmap-enabled>
-            <reflection-enabled type="int">1</reflection-enabled>
-            <reflection-type type="int">2</reflection-type>
-            <reflect-map-enabled type="int">1</reflect-map-enabled>
-            <reflection-correction type="float">0</reflection-correction>
-            <reflection-rainbow type="float">0.0</reflection-rainbow>
-            <reflection-noise type="float"><use>sim/G91/Test/V0_1B</use></reflection-noise>
-            <reflection-dynamic type="int">1</reflection-dynamic>
-            <dirt-enabled>0</dirt-enabled>
-            <dirt-factor type="float" n="0">0.0</dirt-factor>
-            <!-- only for type 1 -->
-            <reflection-fresnel type="float">0.0</reflection-fresnel>
-            <reflection-noise type="float">0.0</reflection-noise>
-        </parameters>
-    </effect> 
+
+    <animation> 
+        <type>material</type>
+        <texture>Pictures/G91-Black.png</texture>
+        <object-name>B00_cable01_gear_dx.001</object-name>
+        <object-name>B00_cable01_gear_dx.004</object-name>
+        <object-name>B00_cable01_gear_sx.003</object-name>
+        <object-name>B00_cable01_gear_sx.004</object-name>
+        <object-name>B00_cable02_gear_dx.002</object-name>
+        <object-name>B00_cable02_gear_sx</object-name>
+        <object-name>B00_cable03_gear_dx.002</object-name>
+        <object-name>B00_cable03_gear_sx</object-name>
+        <object-name>B00_cable_gear_sx_gen</object-name>
+        <ambient>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
+        </ambient>	
+    </animation>
     
     <animation> 
-        <type>material</type> 
-        <object-name>A__rotto.005</object-name>
-        <object-name>F_door_em_canopyDX.004a</object-name>
-        <object-name>F_door_em_canopyDX.004</object-name>
-        <object-name>F_door_em_canopySX.004a</object-name>
-        <object-name>F_door_em_canopySX.004a</object-name>
-        <object-name>F_door_em_canopyDX.004a.001</object-name>
-        <object-name>F_door_em_canopyDX.005</object-name>
-        <object-name>F_door_em_canopyDX.005</object-name>
-        <object-name>F_handle_armydoorDX</object-name>
-        <object-name>F_handle_armydoorSX</object-name>
+        <type>material</type>
         <texture>Pictures/G91-Al-Light.png</texture>
+        <object-name>A00_pitot_dx</object-name>
+        <ambient>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+        </ambient>
+        <specular>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+        </specular>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <texture>Pictures/G91-Al-Light.png</texture>
+        <object-name>A__G91_fuselage_muso_1.025</object-name>
+        <object-name>A__G91_fuselage_int.weapon.door.002</object-name>
+        <ambient>
+            <red>0.05</red>
+            <green>0.05</green>
+            <blue>0.05</blue>
+        </ambient>	
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <texture>Pictures/G91-Al.png</texture>
+        <object-name>A_flap_dx.006</object-name>
+        <object-name>A_flap_sx.005</object-name>
+        <object-name>B00_dx_Leg_01.002</object-name>
+        <object-name>B00_dx_Leg_02.002</object-name>
+        <object-name>B00_sx_Leg_01</object-name>
+        <object-name>B00_sx_Leg_02</object-name>
+        <object-name>B00_dx_damper_02.002</object-name>
+        <object-name>B00_dx_hub_01.004</object-name>
+        <object-name>B00_dx_tire_01.002</object-name>
+        <object-name>B00_sx_damper_01</object-name>
+        <object-name>B00_sx_damper_02</object-name>
+        <object-name>B00_sx_hub_02</object-name>
+        <object-name>B00_sx_hub_01</object-name>
+        <object-name>B00_sx_tire_01</object-name>
+        <object-name>F_door_em_canopyDX.000</object-name>
         <ambient>
             <red>0.8</red>
             <green>0.8</green>
@@ -185,10 +428,175 @@
     </animation>
     
     <animation> 
-        <type>material</type> 
-        <object-name>A__rotto.005</object-name>
+        <type>material</type>
+        <texture>Pictures/G91-Al.png</texture>
+        <object-name>A00.flap.dx.004</object-name>
+        <object-name>A00.flap.dx.005</object-name>
+        <object-name>A00.flap.dx.006</object-name>
+        <object-name>A00.flap.dx.007</object-name>
+        <object-name>A00.flap.sx.000</object-name>
+        <object-name>A00.flap.sx.002</object-name>
+        <object-name>A00.flap.sx.003</object-name>
+        <object-name>A00.flap.sx.01</object-name>
+        <object-name>A00_Guide001_Dx_flap</object-name>
+        <object-name>A00_Guide001_sx_flap.001</object-name>
+        <object-name>A00_Guide002_Dx_flap.</object-name>
+        <object-name>A00_Guide002_sx_flap.001</object-name>
+        <object-name>A00_wing_light.support_dx</object-name>
+        <object-name>A00_wing_light.support_sx</object-name>
+        <object-name>A_flap_dx.006</object-name>
+        <object-name>A_flap_sx.005</object-name>
+        <object-name>B00_beam_gear_dx.002</object-name>
+        <object-name>B00_beam_gear_dx_01.002</object-name>
+        <object-name>B00_beam_gear_dx_02.002</object-name>
+        <object-name>B00_beam_gear_sx</object-name>
+        <object-name>B00_beam_gear_sx_01</object-name>
+        <object-name>B00_beam_gear_sx_02</object-name>
+        <object-name>B00_dx_Leg_01.000</object-name>
+        <object-name>B00_dx_Leg_03.002</object-name>
+        <object-name>B00_dx_Leg_04.002</object-name>
+        <object-name>B00_dx_brakes03.002</object-name>
+        <object-name>B00_dx_brakes04.002</object-name>
+        <object-name>B00_dx_damper_01.002</object-name>
+        <object-name>B00_dx_door_02.000</object-name>
+        <object-name>B00_dx_gear_support_02.002</object-name>
+        <object-name>B00_dx_hub_01.003</object-name>
+        <object-name>B00_dx_microswich.002</object-name>
+        <object-name>B00_dx_support_01.002</object-name>
+        <object-name>B00_dx_support_02.002</object-name>
+        <object-name>B00_dx_support_03.004</object-name>
+        <object-name>B00_dx_support_03.005</object-name>
+        <object-name>B00_sx_Leg_03</object-name>
+        <object-name>B00_sx_brakes03</object-name>
+        <object-name>B00_sx_brakes04</object-name>
+        <object-name>B00_sx_door_02.1</object-name>
+        <object-name>B00_sx_gear_support_</object-name>
+        <object-name>B00_dx_gear_support_.002</object-name>
+        <object-name>B00_sx_gear_support_02</object-name>
+        <object-name>B00_sx_leg_04</object-name>
+        <object-name>B00_sx_microswich</object-name>
+        <object-name>B00_sx_support_01</object-name>
+        <object-name>B00_sx_support_02</object-name>
+        <object-name>B00_sx_support_03</object-name>
+        <object-name>B00_sx_support_03.001</object-name>
+        <object-name>Cube.004</object-name>
+        <object-name>F_door_em_canopyDX.004a.001</object-name>
+        <object-name>F_door_em_canopySX.000</object-name>
+        <object-name>plate_box_01.000</object-name>
+        <object-name>plate_box_01.001</object-name>
+        <object-name>plate_box_01.002</object-name>
+        <object-name>plate_box_01.003</object-name>
+        <object-name>plate_box_02</object-name>
+        <ambient>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
+        </ambient>	
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <texture>Pictures/G91-Dark-Grey.png</texture>
+        <object-name>A_trasmission_command_Alet_sx.000</object-name>
+        <object-name>A_trasmission_command_Alet_sx.001</object-name>
+        <object-name>A_trasmission_command_Alet_sx.002</object-name>
+        <object-name>A_trasmission_command_Alet_sx.003</object-name>
+        <object-name>A_trasmission_command_Alet_sx.004</object-name>
+        <object-name>A_trasmission_command_Alet_sx.005</object-name>
+        <object-name>A_trasmission_command_Alet_sx.006</object-name>
+        <object-name>B00_Asse_dx_door_bis.001</object-name>
+        <object-name>B00_c_sx_door_bis</object-name>
+        <object-name>B00_c_sx_door_bis.001</object-name>
+        <object-name>B00_dx_bolt_01.002</object-name>
+        <object-name>B00_dx_bolt_02.002</object-name>
+        <object-name>B00_dx_bolt_03.001</object-name>
+        <object-name>B00_dx_bolt_04.002</object-name>
+        <object-name>B00_dx_bolt_05.002</object-name>
+        <object-name>B00_dx_bolt_06.002</object-name>
+        <object-name>B00_dx_bolt_07.002</object-name>
+        <object-name>B00_dx_brake:01.002</object-name>
+        <object-name>B00_dx_leg_04.002</object-name>
+        <object-name>B00_sx_Leg_04</object-name>
+        <object-name>B00_sx_bolt_01</object-name>
+        <object-name>B00_sx_bolt_02</object-name>
+        <object-name>B00_sx_bolt_03</object-name>
+        <object-name>B00_sx_bolt_04</object-name>
+        <object-name>B00_sx_bolt_05</object-name>
+        <object-name>B00_sx_bolt_06</object-name>
+        <object-name>B00_sx_bolt_07</object-name>
+        <object-name>B00_sx_brake:01</object-name>
+        <object-name>B00_sx_door_bis.001</object-name>
+        <object-name>Circle.001</object-name>
+        <object-name>Circle.003</object-name>
+        <object-name>F_door_em_canopyDX.005</object-name>
+        <object-name>F_door_em_canopySX.005</object-name>
+        <object-name>Rivethead 2</object-name>
+        <object-name>Rivethead 2.001</object-name>
+        <object-name>staffa001_door_dx</object-name>
+        <object-name>staffa001_door_dx.001</object-name>
+        <object-name>staffa001_door_dx.001</object-name>
+        <object-name>staffa001_door_dx.003</object-name>
+        <object-name>supporto_jato</object-name>
+        <ambient>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </ambient>	
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <texture>Pictures/G91-Dark-Grey.png</texture>
+        <object-name>B00_dx_brakes02.002</object-name>
+        <object-name>B00_sx_brakes02</object-name>
+        <ambient>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
+        </ambient>	
+    </animation>
+    
+    <animation> 
+        <type>material</type>
         <texture>Pictures/AichiInteriorGreyGreen.png</texture>
+        <object-name>A_wing_dx.004</object-name>
+        <object-name>A_wing_sx.006</object-name>
         <object-name>m00_box</object-name>
+        <ambient>
+            <red>0.4</red>
+            <green>0.4</green>
+            <blue>0.4</blue>
+        </ambient>	
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <texture>Pictures/AichiInteriorGreyGreen.png</texture>
+        <object-name>A__G91_fuselage_int</object-name>
+        <object-name>A_wing_dx.004</object-name>
+        <object-name>A_wing_dx.001</object-name>
+        <object-name>A_wing_dx.003</object-name>
+        <object-name>A_wing_longherone_sx</object-name>
+        <object-name>A_wing_sx.001</object-name>
+        <object-name>A_wing_sx.003</object-name>
+        <object-name>B00_box_gear_door</object-name>
+        <object-name>B00_dx_door_02.001</object-name>
+        <object-name>B00_dx_door_02.008</object-name>
+        <object-name>m00_box</object-name>
+        <ambient>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </ambient>	
+    </animation>
+   
+    <!-- Landing gear materials -->
+    
+    <animation> 
+        <type>material</type> 
+        <object-name>B00_sx_tire</object-name>
+        <object-name>B00_dx_tire.002</object-name>
+        <texture>Pictures/G91-Black.png</texture>
         <ambient>
             <red>0.8</red>
             <green>0.8</green>
@@ -208,7 +616,19 @@
         </ambient>	
     </animation>
     
-    <!-- Emergency Canopy Open Sx -->
+    <!-- Emergency Canopy Open Sx-dx-->
+    
+    <animation> 
+        <type>material</type> 
+        <object-name>A__rotto.005</object-name>
+        <texture>Pictures/AichiInteriorGreyGreen.png</texture>
+        <object-name>m00_box</object-name>
+        <ambient>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </ambient>	
+    </animation>
     
     <animation>
         <type>pick</type>
@@ -269,8 +689,6 @@
             <z2-m> -0.53158 </z2-m>
         </axis>
     </animation>
-    
-    <!-- Emergency Canopy Open Dx -->
     
     <animation>
         <type>pick</type>
@@ -1292,6 +1710,21 @@
             <z-m>0.339</z-m>
             <pitch-deg>1.0</pitch-deg>
         </offsets>
-    </model>    
+    </model>
+    
+    <!-- Gauges -->
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Wing/Components/Fuel_manometer_thank_5/fuel_manometer_D63_0-5PSI.xml</path>
+        <name>tyre-smoke-s</name>
+        <offsets>
+            <x-m>0.892</x-m>
+            <y-m>-0.628</y-m>
+            <z-m>-0.609</z-m>
+            <roll-deg>1</roll-deg>
+            <pitch-deg>1</pitch-deg>
+            <heading-deg>271</heading-deg>
+        </offsets>
+    </model>
     
 </PropertyList>

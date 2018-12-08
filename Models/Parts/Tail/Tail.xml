@@ -11,95 +11,193 @@
         <pitch-deg>0.0</pitch-deg>
     </offsets>
     
-    <!-- Materials effects -->
-    
-    <!-- Internal fuselage -->
-    
-    <animation> 
-        <type>material</type>
-        <object-name>A__G91_fuselage_coda.008</object-name>
-        <object-name>A__G91_fuselage_insideTUbe</object-name>
-        <texture>Pictures/G91-Al.png</texture>
-        <ambient>
-            <red>0.2</red>
-            <green>0.2</green>
-            <blue>0.2</blue>
-        </ambient>
-    </animation>
-    
     <!-- Chrome Effects on materials -->
     
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/glass-chrome</inherits-from>
+        <object-name>A__G91_light_coda-reflect.000</object-name>
+        <object-name>DADI.027</object-name>
+        <object-name>D_DADI_Plate_vertical_wing</object-name>
+        <object-name>D_DADI_Plate_vertical_wing_01</object-name>
+        <object-name>D_DADI_Plate_vertical_wing_01.001</object-name>
+        <object-name>D_Plate_vertical_wing</object-name>
+    </effect>
+    
+    <effect>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
+        <object-name>A__G91_door_dx_coda.000</object-name>
+        <object-name>A__G91_door_sx_coda.002</object-name>
+        <object-name>J_jato_support</object-name>
+        <object-name>exit_smoke_001_tube</object-name>
+        <object-name>exit_smoke.003</object-name>
+        <object-name>exit_smoke.002</object-name>
+        <object-name>D_wing_longherone_dx.004</object-name>
+        <object-name>D_wing_longherone_sx.003</object-name>
+        <object-name>A__G91_fuselage_coda.003</object-name>
+        <object-name>A__G91_fuselage_coda.004</object-name>
+        <object-name>A__G91_fuselage_coda.000</object-name>
+        <object-name>A__G91_fuselage_coda.001</object-name>
+        <object-name>A__G91_fuselage_coda.008</object-name>
+        <object-name>A__G91_fuselage_coda.009</object-name>
+        <object-name>A__G91_fuselage_coda.010</object-name>
+        <object-name>A__G91_fuselage_insideTUbe</object-name>
+        <object-name>A_trasmission_command_Alet_sx.007</object-name>
+        <object-name>A_trasmission_command_Alet_sx.008</object-name>
+        <object-name>A_trasmission_command_Alet_sx.009</object-name>
+        <object-name>A_trasmission_command_Alet_sx.010</object-name>
+        <object-name>D__longherone_timone_coda</object-name>
+        <object-name>DADI.027</object-name>
+        <object-name>D_bar_node2.000</object-name>
+        <object-name>D_bar_node2.001</object-name>
+        <object-name>D_bar_node3.001</object-name>
+        <object-name>presa28v_01</object-name>
+        <object-name>presa28v_box</object-name>
+        <object-name>D_timone_coda.002</object-name>
+        <object-name>D_timone_coda.003</object-name>
+        <object-name>A__G91_fuselage_coda.012</object-name>
+    </effect>
+    
+    <effect>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Liveries/liveries_001</inherits-from>
+        <object-name>A__G91_fuselage_coda.002</object-name>
         <object-name>A__G91_fuselage_coda.005</object-name>
+        <object-name>A__G91_fuselage_coda.006</object-name>
+        <object-name>A__G91_door_dx_coda.001</object-name>
+        <object-name>A__G91_door_sx_coda.000</object-name>
         <object-name>A__G91_fuselage_coda.007</object-name>
+        <object-name>exit_smoke_001_cover</object-name>
+        <object-name>exit_smoke_001</object-name>
+        <object-name>exit_smoke</object-name>
+        <object-name>fin_small.000</object-name>
+        <object-name>fin_small.004</object-name>
+        <object-name>fin_small.006</object-name>
+        <object-name>fin_small.007</object-name>
+        <object-name>fin_small.023</object-name>
+        <object-name>D_timone_coda</object-name>
+        <object-name>D_timone_coda.001</object-name>
+        <object-name>D_aletta_correttrice</object-name>
+        <object-name>M_tail_component_01</object-name>
+        <object-name>vent_tail</object-name>
+    </effect>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>A__G91_fuselage_coda.002</object-name>
+        <object-name>A__G91_fuselage_coda.005</object-name>
+        <object-name>A__G91_fuselage_coda.006</object-name>
+        <object-name>A__G91_door_dx_coda.001</object-name>
+        <object-name>A__G91_door_sx_coda.000</object-name>
+        <object-name>A__G91_fuselage_coda.007</object-name>
+        <object-name>exit_smoke_001_cover</object-name>
+        <object-name>exit_smoke_001</object-name>
+        <object-name>exit_smoke</object-name>
+        <object-name>fin_small.000</object-name>
+        <object-name>fin_small.004</object-name>
+        <object-name>fin_small.006</object-name>
+        <object-name>fin_small.007</object-name>
+        <object-name>fin_small.023</object-name>
+        <object-name>D_timone_coda</object-name>
+        <object-name>D_timone_coda.001</object-name>
+        <object-name>D_aletta_correttrice</object-name>
+        <object-name>M_tail_component_01</object-name>
+        <object-name>vent_tail</object-name>
+        <diffuse>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+            <factor-prop>sim/G91/liveries/active/diffuse</factor-prop>
+        </diffuse>
+        <specular>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+            <factor-prop>sim/G91/liveries/active/specular</factor-prop>
+        </specular>
+    </animation>
+    
+    <effect>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Liveries/liveries_002</inherits-from>
         <object-name>D_wing_sx_.001</object-name>
         <object-name>D_wing_sx.000</object-name>
         <object-name>D_wing_dx_.000</object-name>
         <object-name>D_wing_dx.007</object-name>
         <object-name>D_equilibratore_dx</object-name>
         <object-name>D_equilibratore_sx.002</object-name>
-        <object-name>D_wing_support_sx.001</object-name>
-        <object-name>D_wing_support_dx</object-name>
-        <object-name>A__G91_door_sx_coda.000</object-name>
-        <object-name>A__G91_door_dx_coda.001</object-name>
-        <object-name>D_timone_coda</object-name>
-        <object-name>D_timone_coda.001</object-name>
-        <object-name>D_timone_coda.002</object-name>
-        <object-name>D_timone_coda.003</object-name>
-        <object-name>D_aletta_correttrice</object-name>
-        <object-name>A__G91_fuselage_coda.009</object-name>
-        <object-name>A__G91_fuselage_coda.010</object-name>
-        <object-name>A__G91_fuselage_coda.011</object-name>
-        <object-name>fin_connector</object-name>
-        <object-name>exit_smoke</object-name>
-        <object-name>Sphere.012</object-name>
-        <object-name>fin_small.001</object-name>
-        <object-name>fin_small.002</object-name>
-        <object-name>fin_small.003</object-name>
-        <object-name>fin_small.004</object-name>
-        <object-name>fin_small.005</object-name>
-        <object-name>fin_small.006</object-name>
-        <object-name>fin_small.007</object-name>
-        <object-name>fin_small.008</object-name>
-        <object-name>fin_small.009</object-name>
-        <object-name>fin_small.010</object-name>
-        <object-name>M_tail_component_01</object-name>
     </effect>
     
-    <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
-        <object-name>J_jato_support</object-name>
-        <object-name>exit_smoke.001</object-name>
-        <object-name>exit_smoke.002</object-name>
-    </effect>
-    
-    <effect>
-        <inherits-from>Effects/model-combined-deferred</inherits-from>
-        <object-name>A__G91_fuselage_coda.002</object-name>
-        <object-name>A__G91_fuselage_coda.006</object-name>
-        <parameters>
-            <rain-enabled type="int">2</rain-enabled>
-            <ambient-correction type="float">-0.3</ambient-correction>
-            <normalmap-enabled type="int">0</normalmap-enabled>
-            <lightmap-enabled type="int">0</lightmap-enabled>
-            <reflection-enabled type="int">1</reflection-enabled>
-            <reflection-type type="int">2</reflection-type>
-            <reflect-map-enabled type="int">1</reflect-map-enabled>
-            <reflection-correction type="float">0.0</reflection-correction>
-            <reflection-fresnel type="float">0.15</reflection-fresnel>
-            <reflection-rainbow type="float">0.0</reflection-rainbow>
-            <reflection-noise type="float">0.0</reflection-noise>
-            <reflection-dynamic type="int">1</reflection-dynamic>
-            <dirt-enabled type="int">0</dirt-enabled>
-        </parameters>
-    </effect> 
-
-    <!--
     <animation> 
         <type>material</type>
-        <object-name>A__G91_fuselage_coda.002</object-name>
-        <object-name>A__G91_fuselage_coda.006</object-name>
+        <object-name>D_wing_sx_.001</object-name>
+        <object-name>D_wing_sx.000</object-name>
+        <object-name>D_wing_dx_.000</object-name>
+        <object-name>D_wing_dx.007</object-name>
+        <object-name>D_equilibratore_dx</object-name>
+        <object-name>D_equilibratore_sx.002</object-name>
+        <diffuse>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+            <factor-prop>sim/G91/liveries/active/diffuse</factor-prop>
+        </diffuse>
+        <specular>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+            <factor-prop>sim/G91/liveries/active/specular</factor-prop>
+        </specular>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>A_trasmission_command_Alet_sx.007</object-name>
+        <object-name>A_trasmission_command_Alet_sx.008</object-name>
+        <object-name>A_trasmission_command_Alet_sx.009</object-name>
+        <object-name>A_trasmission_command_Alet_sx.010</object-name>
+        <object-name>D_Plate_vertical_wing</object-name>
+        <object-name>D_bar_node2.000</object-name>
+        <object-name>D_bar_node2.001</object-name>
+        <object-name>D_bar_node3.001</object-name>
+        <object-name>D_timone_coda.003</object-name>
+        <texture>Pictures/G91-Al-Light.png</texture>
+        <ambient>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </ambient>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>D_timone_coda.002</object-name>
+        <texture>Pictures/G91-Al.png</texture>
+        <ambient>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
+        </ambient>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>A__G91_door_dx_coda.000</object-name>
+        <object-name>A__G91_door_sx_coda.001</object-name>
+        <texture>Pictures/G91-Al-Light.png</texture>
+        <ambient>
+            <red>0.6</red>
+            <green>0.6</green>
+            <blue>0.6</blue>
+        </ambient>
+        <specular>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+        </specular>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>presa28v_01</object-name>
+        <texture>Pictures/G91-Al-Light.png</texture>
         <ambient>
             <red>1.0</red>
             <green>1.0</green>
@@ -111,13 +209,30 @@
             <blue>1.0</blue>
         </specular>
     </animation>
-    -->
     
     <animation> 
         <type>material</type>
-        <object-name>exit_smoke.001</object-name>
+        <object-name>A__G91_fuselage_insideTUbe</object-name>
+        <object-name>A__G91_fuselage_coda.000</object-name>
+        <object-name>A__G91_fuselage_coda.009</object-name>
+        <object-name>A__G91_fuselage_coda.010</object-name>
+        <object-name>A__G91_fuselage_coda.012</object-name>
+        <object-name>exit_smoke_001_tube</object-name>
+        <object-name>exit_smoke.003</object-name>
         <object-name>exit_smoke.002</object-name>
         <texture>Pictures/G91-Black.png</texture>
+        <ambient>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </ambient>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>A__G91_fuselage_coda.003</object-name>
+        <object-name>presa28v_box</object-name>
+        <texture>Pictures/G91-Dark-Grey.png</texture>
         <ambient>
             <red>0.3</red>
             <green>0.3</green>
@@ -127,8 +242,13 @@
     
     <animation> 
         <type>material</type>
-        <object-name>J_jato_support</object-name>
-        <texture>Pictures/G91-Dark-Grey.png</texture>
+        <object-name>D_wing_longherone_dx.004</object-name>
+        <object-name>D_wing_longherone_sx.003</object-name>
+        <object-name>A__G91_fuselage_coda.004</object-name>
+        <object-name>A__G91_fuselage_coda.001</object-name>
+        <object-name>A__G91_fuselage_coda.008</object-name>
+        <object-name>D__longherone_timone_coda</object-name>
+        <texture>Pictures/AichiInteriorGreyGreen.png</texture>
         <ambient>
             <red>0.3</red>
             <green>0.3</green>
@@ -262,56 +382,12 @@
         </offsets>
     </model>
     
-    <!-- Material assignment -->
-    
-    <animation> 
-        <type>material</type>
-        <object-name>A__G91_door_dxint_coda.000</object-name>
-        <object-name>A__G91_door_sxint_coda.001</object-name>
-        <texture>Pictures/AichiInteriorGreyGreen.png</texture>
-    </animation>
-    
-    <animation> 
-        <type>material</type>
-        <object-name>A__G91_fuselage_coda.003</object-name>
-        <texture>Pictures/G91-Dark-Grey.png</texture>
-    </animation>
-    
-    <animation> 
-        <type>material</type>
-        <object-name>A_wing_longherone_sx.002</object-name>
-        <object-name>D_wing_longherone_dx.004</object-name>
-        <object-name>D_wing_longherone_sx.003</object-name>
-        <object-name>A_wing_longherone_sx.005</object-name>
-        <object-name>A_trasmission_command_Alet_sx.003</object-name>
-        <object-name>A_trasmission_command_Alet_sx.007</object-name>
-        <object-name>A_trasmission_command_Alet_sx.008</object-name>
-        <object-name>A_trasmission_command_Alet_sx.009</object-name>
-        <texture>Pictures/G91-Al.png</texture>
-        <ambient>
-            <red>0.7</red>
-            <green>0.7</green>
-            <blue>0.7</blue>
-        </ambient>
-    </animation>
-    
-    <animation> 
-        <type>material</type>
-        <object-name>A__G91_fuselage_insideTUbe</object-name>
-        <texture>Pictures/G91-Dark-Grey.png</texture>
-        <ambient>
-            <red>0.3</red>
-            <green>0.3</green>
-            <blue>0.3</blue>
-        </ambient>
-    </animation>
-    
     <!-- Objects animation -->
     
     <animation>
         <type>pick</type>
         <object-name>A__G91_door_dx_coda.001</object-name>
-        <object-name>A__G91_door_dxint_coda.000</object-name>
+        <object-name>A__G91_door_dx_coda.000</object-name>
         <action>
             <button>0</button>
             <repeatable>false</repeatable>
@@ -330,7 +406,7 @@
     <animation>
         <type>rotate</type>
         <object-name>A__G91_door_dx_coda.001</object-name>
-        <object-name>A__G91_door_dxint_coda.000</object-name>
+        <object-name>A__G91_door_dx_coda.000</object-name>
         <property>/controls/switches/door_dx_coda</property>
         <factor>-60</factor>
         <axis>
@@ -346,7 +422,7 @@
     <animation>
         <type>pick</type>
         <object-name>A__G91_door_sx_coda.000</object-name>
-        <object-name>A__G91_door_sxint_coda.001</object-name>
+        <object-name>A__G91_door_sx_coda.001</object-name>
         <action>
             <button>0</button>
             <repeatable>false</repeatable>
@@ -365,7 +441,7 @@
     <animation>
         <type>rotate</type>
         <object-name>A__G91_door_sx_coda.000</object-name>
-        <object-name>A__G91_door_sxint_coda.001</object-name>
+        <object-name>A__G91_door_sx_coda.001</object-name>
         <property>/controls/switches/door_sx_coda</property>
         <factor>60</factor>
         <axis>
@@ -383,7 +459,7 @@
     <animation>
         <type>rotate</type>
         <object-name>D_equilibratore_sx.002</object-name>
-        <property>fdm/jsbsim/fcs/elevator-cmd-rad</property>
+        <property>fdm/jsbsim/fcs/elevator-pos-rad</property>
         <factor>-57</factor>
         <axis>
             <x1-m> 3.81291 </x1-m>
@@ -398,7 +474,7 @@
     <animation>
         <type>rotate</type>
         <object-name>D_equilibratore_dx</object-name>
-        <property>fdm/jsbsim/fcs/elevator-cmd-rad</property>
+        <property>fdm/jsbsim/fcs/elevator-pos-rad</property>
         <factor>57</factor>
         <axis>
             <x1-m> 3.81291 </x1-m>
@@ -474,6 +550,7 @@
         <object-name>D_bar_node2.001</object-name>
         <object-name>D_DADI_Plate_vertical_wing_01.001</object-name>
         <property>fdm/jsbsim/fcs/rudder-pos-deg</property>
+        <factor>0.3</factor>
         <axis>
             <x1-m> 4.22196 </x1-m>
             <y1-m> 0.0 </y1-m>
@@ -586,29 +663,5 @@
             <z2-m> 0.00500 </z2-m>
         </axis>
     </animation>
-    
-    <model>
-        <path>rear_smoke_1.xml</path>
-        <offsets>
-            <x-m>  5.0 </x-m>
-            <y-m>  0.0 </y-m>
-            <z-m>  -0.35 </z-m>
-            <roll-deg>    0.0 </roll-deg>
-            <pitch-deg>   0.0 </pitch-deg>
-            <heading-deg> 0.0 </heading-deg>
-        </offsets>
-    </model>
-    
-    <model>
-        <path>rear_smoke_2.xml</path>
-        <offsets>
-            <x-m>  5.0 </x-m>
-            <y-m>  0.0 </y-m>
-            <z-m>  -0.35 </z-m>
-            <roll-deg>    0.0 </roll-deg>
-            <pitch-deg>   0.0 </pitch-deg>
-            <heading-deg> 0.0 </heading-deg>
-        </offsets>
-    </model>
     
 </PropertyList>

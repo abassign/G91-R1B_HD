@@ -322,7 +322,7 @@
             <property>sim/G91/Test/V0_1A</property>
             <min>-1.0</min>
             <max>1.0</max>
-            <step>0.01</step>  
+            <step>0.01</step> 
             <binding>
                 <command>dialog-apply</command>
             </binding>
@@ -353,6 +353,7 @@
             <property>sim/G91/Test/V0_1B</property>
             <min>-1.0</min>
             <max>1.0</max>
+            <step>0.01</step> 
             <step>0.01</step>  
             <binding>
                 <command>dialog-apply</command>
@@ -447,7 +448,7 @@
         <slider>
             <name>sim_G91_Test_V0_10A</name>
             <property>sim/G91/Test/V0_10A</property>
-            <min>0.0</min>
+            <min>-10.0</min>
             <max>10.0</max>
             <step>0.1</step>  
             <binding>
@@ -478,7 +479,7 @@
         <slider>
             <name>sim_G91_Test_V0_10B</name>
             <property>sim/G91/Test/V0_10B</property>
-            <min>0.0</min>
+            <min>-10.0</min>
             <max>10.0</max>
             <step>0.1</step>  
             <binding>

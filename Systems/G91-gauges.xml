@@ -254,6 +254,7 @@ The C1 lag_filter is less is longer respond time
             <default value="0"/>
             <test logic="AND" value="systems/warning-lights/light-intensity-by-battery-tension">
                 systems/gauges/cockpit-fire-light-on == 1
+                systems/electric/bus[1]/V GE 18.0
             </test>
         </switch>
         

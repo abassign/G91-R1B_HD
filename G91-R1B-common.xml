@@ -33,7 +33,7 @@
             <serviceable type="bool">true</serviceable>
             <path>Aircraft/G91-R1B_HD/Models/Parts/Stores/Submodels.xml</path>
         </submodels>
-
+        
         <multiplay>
             <chat_display>1</chat_display>
             <generic> 
@@ -127,6 +127,16 @@
                         </binding>
                     </item>
                     <item>
+                        <label>G91 livery</label>
+                        <binding>
+                            <command>nasal</command>
+                            <script>
+                                test_dialog = gui.Dialog.new("sim/gui/dialogs/G91/Livery/dialog","Aircraft/G91-R1B_HD/Dialogs/G91-Livery.xml");
+                                test_dialog.open();
+                            </script>
+                        </binding>
+                    </item>
+                    <item>
                         <label>G91 Help</label>
                         <binding>
                             <command>nasal</command>
@@ -136,26 +146,12 @@
                             </script>
                         </binding>
                     </item>
-                    <!--
-                    <item>
-                        <label>Select Livery</label>
-                        <binding>
-                            <command>nasal</command>
-                            <script>aircraft.livery.dialog.toggle()</script>
-                        </binding>
-                    </item>
-                    -->
                 </menu>
             </default>
         </menubar>
-        <!--
-        <model>
-            <livery>
-                <name>PAN Version</name>
-                <texture>Aircraft/G91-R1B_HD/Models/Liveries/PAN/Livery_PAN_01.png</texture>
-            </livery>
-        </model>
-        -->
+        
+        <G91 include="Models/G91_Params.xml"/>
+        
     </sim>
     
     <nasal>
@@ -187,11 +183,7 @@
             <file>Aircraft/G91-R1B_HD/Nasal/light-manager.nas</file>
         </general>
         <canvas_gauges>
-            <file>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Gauges/SFOM_83A/SFOM_83A_01.nas</file>
-            <file>Aircraft/G91-R1B_HD/Models/Parts/Fuselage_A/fuselage_A0.nas</file>
-            <file>Aircraft/G91-R1B_HD/Models/Parts/Wing/wing.nas</file>
-            <file>Aircraft/G91-R1B_HD/Models/Parts/Fuselage_B/fuselage_B1.nas</file>
-            <file>Aircraft/G91-R1B_HD/Models/Parts/Tail/tail.nas</file>
+            <file>Aircraft/G91-R1B_HD/Models/Liveries/set_livery.nas</file>
         </canvas_gauges>
         <tyresmoke>
             <file>Aircraft/G91-R1B_HD/Nasal/tyresmoke.nas</file>

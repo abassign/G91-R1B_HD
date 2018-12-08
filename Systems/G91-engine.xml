@@ -52,7 +52,8 @@ Description: G91R2 Canopy automation
         
         <pure_gain name="systems/engine/rpm">
             <input>propulsion/engine/n2</input>
-            <gain>systems/engine/RPM-max</gain>
+            <input>systems/engine/RPM-max</input>
+            <gain>0.01</gain>
         </pure_gain>
         
         <pure_gain name="systems/engine/rpm-norm">
@@ -69,7 +70,7 @@ Description: G91R2 Canopy automation
     
     <channel name="engine systems oil pressure" execrate="32">
         
-        <lag_filter name="systems/engine/rpm-norm-lag">
+        <lag_filter name="systems/engine/oil-pressure-norm-lag">
             <input>systems/engine/rpm-norm</input>
             <c1>0.1</c1>
         </lag_filter>
@@ -77,7 +78,7 @@ Description: G91R2 Canopy automation
         <switch name="systems/engine/oil-low-pressure-on">
             <default value="0"/>
             <test logic="AND" value="1">
-                systems/engine/rpm-norm-lag LT 0.15
+                systems/engine/oil-pressure-norm-lag LT 0.15
             </test>
         </switch>
         
@@ -102,26 +103,44 @@ Description: G91R2 Canopy automation
     
     <channel name="engine systems compressor air" execrate="32">
         
-        <lag_filter name="systems/engine/rpm-norm-lag">
+        <!-- The air pressure is 76 psi (5.35 Bar) -->
+        
+        <lag_filter name="systems/engine/air-compressor-norm-lag">
             <input>systems/engine/rpm-norm</input>
-            <c1>0.1</c1>
+            <c1>0.05</c1>
         </lag_filter>
         
         <switch name="systems/engine/air-compression-service-on">
             <default value="0"/>
             <test logic="AND" value="1">
-                systems/engine/rpm-norm-lag GT 0.2
+                systems/engine/air-compressor-norm-lag GT 0.2
             </test>
         </switch>
+        
+        <fcs_function name="systems/engine/air-compression-fuel-tank-psi">
+            <function>
+                <interpolate1d>
+                    <p>systems/engine/air-compressor-norm-lag</p>
+                    <v>0.0</v> <v>0.0</v>
+                    <v>0.1</v> <v>0.05</v>
+                    <v>0.2</v> <v>0.2</v>
+                    <v>0.4</v> <v>0.6</v>
+                    <v>0.6</v> <v>1.0</v>
+                    <v>0.8</v> <v>1.3</v>
+                    <v>1.0</v> <v>1.4</v>
+                    <v>1.2</v> <v>1.45</v>
+                </interpolate1d>
+            </function>
+        </fcs_function>
         
     </channel>
     
     
-    <channel name="Cockpit Jet Temperature" execrate="16">
+    <channel name="engine Jet Temperature" execrate="16">
         
         <lag_filter name="systems/gauges/cockpit-jet-temperature-display-C">
             <input>systems/engine/jet-TC-temperature-C</input>
-            <c1>0.1</c1>
+            <c1>0.05</c1>
         </lag_filter>
         
     </channel>
@@ -141,6 +160,20 @@ Description: G91R2 Canopy automation
             <c1>0.1</c1>
         </lag_filter>
         
+        <switch name="systems/engine/jet-TC-temperature-hight-fire-display">
+            <default value="0"/>
+            <test logic="AND" value="1">
+                systems/engine/jet-TC-temperature-hight-lag GT 0.9
+            </test>
+        </switch>
+        
+        <switch name="systems/engine/jet-TC-temperature-hight-fire-display-lag">
+            <default value="0"/>
+            <test logic="AND" value="systems/engine/jet-TC-temperature-hight-lag">
+                systems/engine/jet-TC-temperature-hight-lag GT 0.9
+            </test>
+        </switch>
+        
         <switch name="systems/engine/jet-TC-temperature-hight-fire-on">
             <default value="systems/engine/jet-TC-temperature-hight-fire-on"/>
             <test logic="AND" value="1">
@@ -148,6 +181,15 @@ Description: G91R2 Canopy automation
             </test>
         </switch>
         
+        <integrator name="systems/damage/engine/damage-fire-norm">
+            <input>systems/engine/jet-TC-temperature-hight-fire-display-lag</input>
+            <c1>0.02</c1>
+            <clipto>
+                <min>0</min>
+                <max>1</max>
+            </clipto>
+        </integrator>
+
     </channel>
     
     
