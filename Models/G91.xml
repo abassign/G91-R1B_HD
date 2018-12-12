@@ -51,6 +51,8 @@
     </model>
     
 <!-- Submodels -->
+    
+    <!--
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Stores/Tank/Tank260lit_S2.xml</path>
     </model>
@@ -58,7 +60,7 @@
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Stores/Tank/Tank260lit_S3.xml</path>
     </model>
-    
+    -->
     <!--
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Effects/Ground_Shadow/shadow.xml</path>

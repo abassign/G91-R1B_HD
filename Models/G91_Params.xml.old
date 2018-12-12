@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+    
+    <name type="string" n="0">Liveries</name>
+    
+    <liveries>
+        
+        <active>
+            <ID>3</ID>
+            <setResolution>3</setResolution>
+        </active>
+        
+        <livery n="1">
+            <reloads type="float">0.0</reloads>
+            <ID type="int">1</ID>
+            <name_short type="string">PAN R1</name_short>
+            <name_long type="string">PAN - National Aerobatic with Pinocchio nose (R1)</name_long>
+            <luminosity type="float">-0.18</luminosity>
+            <reflective type="float">-0.57</reflective>
+            <PANR1 type="float">1.0</PANR1>
+            <diffuse type="float">0.48</diffuse>
+            <specular type="float">0.36</specular>
+            <dirty type="float">0.0</dirty>
+            <noise>sim/G91/liveries/active/noise</noise>
+            <livery_001 type="string">Aircraft/G91-R1B_HD/Models/Liveries/pan_1_001.png</livery_001>
+            <livery_002 type="string">Aircraft/G91-R1B_HD/Models/Liveries/pan_1_002.png</livery_002>
+            <dirty_001 type="string">Aircraft/G91-R1B_HD/Models/Liveries/dirty_01_4k.png</dirty_001>
+            <dirty_002 type="string">Aircraft/G91-R1B_HD/Models/Liveries/dirty_02_4k.png</dirty_002>
+            <anti_reflective type="string">Aircraft/G91-R1B_HD/Models/Liveries/G91_Dark_Grey_128.png</anti_reflective>
+        </livery>
+        
+        <livery n="2">
+            <reloads type="float">0.0</reloads>
+            <ID type="int">2</ID>
+            <name_short type="string">PAN R1B</name_short>
+            <name_long type="string">PAN - National Aerobatic with recognition nose (R1B)</name_long>
+            <luminosity type="float">-0.18</luminosity>
+            <reflective type="float">-0.57</reflective>
+            <PANR1 type="float">0.0</PANR1>
+            <diffuse type="float">0.48</diffuse>
+            <specular type="float">0.36</specular>
+            <dirty type="float">0.0</dirty>
+            <noise>sim/G91/liveries/active/noise</noise>
+            <livery_001 type="string">Aircraft/G91-R1B_HD/Models/Liveries/pan_1_001.png</livery_001>
+            <livery_002 type="string">Aircraft/G91-R1B_HD/Models/Liveries/pan_1_002.png</livery_002>
+            <dirty_001 type="string">Aircraft/G91-R1B_HD/Models/Liveries/dirty_01_4k.png</dirty_001>
+            <dirty_002 type="string">Aircraft/G91-R1B_HD/Models/Liveries/dirty_02_4k.png</dirty_002>
+            <anti_reflective type="string">Aircraft/G91-R1B_HD/Models/Liveries/G91_Dark_Grey_128.png</anti_reflective>
+        </livery>
+        
+        <livery n="3">
+            <ID type="int">3</ID>
+            <reloads type="float">0.0</reloads>
+            <name_short type="string">Mil ITA 3-37 R1B</name_short>
+            <name_long type="string">Italian Air Force - 2nd flight flock n. 37 (R1B)</name_long>
+            <luminosity type="float">0.09</luminosity>
+            <reflective type="float">-1.0</reflective>
+            <PANR1 type="float">0.0</PANR1>
+            <diffuse type="float">0.71</diffuse>
+            <specular type="float">0.11</specular>
+            <dirty type="float">0.0</dirty>
+            <noise>sim/G91/liveries/active/noise</noise>
+            <livery_001 type="string">Aircraft/G91-R1B_HD/Models/Liveries/ITA_2_37_001.png</livery_001>
+            <livery_002 type="string">Aircraft/G91-R1B_HD/Models/Liveries/ITA_2_37_002.png</livery_002>
+            <dirty_001 type="string">Aircraft/G91-R1B_HD/Models/Liveries/dirty_01_4k.png</dirty_001>
+            <dirty_002 type="string">Aircraft/G91-R1B_HD/Models/Liveries/dirty_02_4k.png</dirty_002>
+            <anti_reflective type="string">Aircraft/G91-R1B_HD/Models/Liveries/G91_Dark_Grey_128.png</anti_reflective>
+        </livery>
+        
+        <livery n="4">
+            <ID type="int">4</ID>
+            <reloads type="float">0.0</reloads>
+            <name_short type="string">Silver R1</name_short>
+            <name_long type="string">Silver version, used as a prototype Pinocchio nose (R1)</name_long>
+            <luminosity type="float">0.12</luminosity>
+            <reflective type="float">-0.70</reflective>
+            <PANR1 type="float">1.0</PANR1>
+            <diffuse type="float">0.48</diffuse>
+            <specular type="float">0.28</specular>
+            <dirty type="float">0.0</dirty>
+            <noise>sim/G91/liveries/active/noise</noise>
+            <livery_001 type="string">Aircraft/G91-R1B_HD/Models/Liveries/ITA_prot_001.png</livery_001>
+            <livery_002 type="string">Aircraft/G91-R1B_HD/Models/Liveries/ITA_prot_002.png</livery_002>
+            <dirty_001 type="string">Aircraft/G91-R1B_HD/Models/Liveries/dirty_01_4k.png</dirty_001>
+            <dirty_002 type="string">Aircraft/G91-R1B_HD/Models/Liveries/dirty_02_4k.png</dirty_002>
+            <anti_reflective type="string">Aircraft/G91-R1B_HD/Models/Liveries/G91_Dark_Grey_128.png</anti_reflective>
+        </livery>
+        
+        <livery n="5">
+            <ID type="int">5</ID>
+            <reloads type="float">0.0</reloads>
+            <name_short type="string">Silver R1B</name_short>
+            <name_long type="string">Silver version R1B with recognition nose (R1B)</name_long>
+            <luminosity type="float">0.12</luminosity>
+            <reflective type="float">-0.70</reflective>
+            <PANR1 type="float">0.0</PANR1>
+            <diffuse type="float">0.48</diffuse>
+            <specular type="float">0.28</specular>
+            <dirty type="float">0.0</dirty>
+            <noise>sim/G91/liveries/active/noise</noise>
+            <livery_001 type="string">Aircraft/G91-R1B_HD/Models/Liveries/ITA_prot_001.png</livery_001>
+            <livery_002 type="string">Aircraft/G91-R1B_HD/Models/Liveries/ITA_prot_002.png</livery_002>
+            <dirty_001 type="string">Aircraft/G91-R1B_HD/Models/Liveries/dirty_01_4k.png</dirty_001>
+            <dirty_002 type="string">Aircraft/G91-R1B_HD/Models/Liveries/dirty_02_4k.png</dirty_002>
+            <anti_reflective type="string">Aircraft/G91-R1B_HD/Models/Liveries/G91_Dark_Grey_128.png</anti_reflective>
+        </livery>
+    </liveries>
+    
+    <smoke>
+        <acrobatic>
+            <on type="float">0.0</on>
+            <dispersion type="float">4.0</dispersion>
+            <shutter type="float">200.0</shutter>
+            <duration type="float">60.0</duration>
+            <red type="float">1.0</red>
+            <green type="float">1.0</green>
+            <blue type="float">1.0</blue>
+        </acrobatic>
+    </smoke>
+    
+</PropertyList>
+
+

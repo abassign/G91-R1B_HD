@@ -155,10 +155,12 @@
     </sim>
     
     <nasal>
+        
         <general>
             <!--
             <file>Aircraft/G91-R1B_HD/Nasal/liveries.nas</file>
             -->
+            
             <!-- Generic -->
             <file>Aircraft/G91-R1B_HD/Nasal/Ambient/ambient_data.nas</file>
             <file>Aircraft/G91-R1B_HD/Nasal/Autopilot/autopilot_set.nas</file>

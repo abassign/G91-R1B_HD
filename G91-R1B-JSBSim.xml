@@ -45,9 +45,9 @@
     K:             0.12
     -->
     
-    <system file="G91-electric"/>
     <system file="G91-manual-switches"/>
     <system file="G91-handle-switches"/>
+    <system file="G91-electric"/>
     <system file="G91-active-stability"/>
     <system file="G91-warning-lights"/>
     <system file="G91-lightning"/>

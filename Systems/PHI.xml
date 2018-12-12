@@ -1154,22 +1154,26 @@
                 systems/gauges/PHI/program/route-is-pusching == 1
             </test>
         </switch>
-
-        <switch name="systems/gauges/PHI/indicator/dist-set-clean">
-            <default value="0.0"/>
-            <test logic="AND" value = "systems/gauges/PHI/indicator/dist-set">
-                systems/gauges/PHI/indicator/dist-set GE 0.0
-            </test>
-        </switch>
         
         <fcs_function name="systems/gauges/PHI/indicator/dist-set-clean">
             <function>
-                <abs>
+                <ifthen>
+                    <gt>
+                        <p>systems/gauges/PHI/indicator/dist-set</p>
+                        <v>0.0</v>
+                    </gt>
                     <mod>
                         <p>systems/gauges/PHI/indicator/dist-set</p>
                         <v>1000</v>
                     </mod>
-                </abs>
+                    <mod>
+                        <sum>
+                            <p>systems/gauges/PHI/indicator/dist-set</p>
+                            <v>1000</v>
+                        </sum>
+                        <v>1000</v>
+                    </mod>
+                </ifthen>
             </function>
         </fcs_function>
         

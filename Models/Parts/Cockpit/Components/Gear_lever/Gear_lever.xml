@@ -198,6 +198,22 @@
     <animation> 
         <type>material</type>
         <object-name>torus_screew (Meshed)</object-name>
+        <texture>Pictures/G91-Al_02.png</texture>
+        <ambient>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
+        </ambient>
+        <emission>
+            <red>0.15</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
         <object-name>torus_screews_lateral (Meshed)</object-name>
         <object-name>screew_down (Meshed)</object-name>
         <object-name>screew_up (Meshed)</object-name>
@@ -223,9 +239,9 @@
         <object-name>emerg_up_arm (Meshed)</object-name>
         <texture>Pictures/G91-Al_02.png</texture>
         <ambient>
-            <red>0.6</red>
-            <green>0.6</green>
-            <blue>0.6</blue>
+            <red>0.4</red>
+            <green>0.4</green>
+            <blue>0.4</blue>
         </ambient>
         <emission>
             <red>0.15</red>
@@ -271,29 +287,6 @@
                 <wrap>false</wrap>
             </binding>
         </action>
-    </animation>
-    
-    <animation> 
-        <type>material</type>
-        <object-name>Circle</object-name>
-        <object-name>Circle.001</object-name>
-        <object-name>pannelli_laterali.004</object-name>
-        <object-name>I_ironware.000</object-name>
-        <object-name>I_ironware.001</object-name>
-        <object-name>I_ironware.002</object-name>
-        <object-name>I_ironware.003</object-name>
-        <texture>Pictures/G91-Dark-Grey.png</texture>
-        <ambient>
-            <red>0.5</red>
-            <green>0.5</green>
-            <blue>0.5</blue>
-        </ambient>
-        <emission>
-            <red>0.05</red>
-            <green>0.02</green>
-            <blue>0.01</blue>
-            <factor-prop>sim/G91/gauge_green_light_emission</factor-prop>
-        </emission>
     </animation>
 
     <model>

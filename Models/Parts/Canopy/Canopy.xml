@@ -41,8 +41,6 @@
         <object-name>F_canopY_ant.006</object-name>
         <object-name>Handle_up</object-name>
         <object-name>F_Segg_support.</object-name>
-        <object-name>A__G91_fuselage_int.weapon.door.004</object-name>
-        <object-name>A__G91_fuselage_canopy.004</object-name>
     </effect>
     
     <!-- Chrome Effects on materials -->
@@ -91,17 +89,11 @@
         <object-name>F_canopY_ant.001</object-name>
     </effect>
     
-    <animation> 
-        <type>material</type>
+    <effect>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Liveries/anti_reflective_001</inherits-from>
         <object-name>A__G91_fuselage_int.weapon.door.004</object-name>
         <object-name>A__G91_fuselage_canopy.004</object-name>
-        <texture>Pictures/G91-Dark-Grey.png</texture>
-        <ambient>
-            <red>0.2</red>
-            <green>0.2</green>
-            <blue>0.2</blue>
-        </ambient>
-    </animation>
+    </effect>
     
     <animation> 
         <type>material</type> 
@@ -109,6 +101,11 @@
         <transparency>
             <alpha>0.2</alpha>
         </transparency>
+        <diffuse>
+            <red>0.0</red>
+            <green>0.4</green>
+            <blue>0.0</blue>
+        </diffuse>
         <ambient>
             <red>0.8</red>
             <green>1.0</green>
@@ -122,6 +119,11 @@
         <transparency>
             <alpha>0.1</alpha>
         </transparency>
+        <diffuse>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>0.0</blue>
+        </diffuse>
         <ambient>
             <red>1.0</red>
             <green>0.95</green>

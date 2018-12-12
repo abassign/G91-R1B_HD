@@ -286,35 +286,106 @@ http://wiki.flightgear.org/Howto:Adding_a_canvas_to_a_GUI_dialog
                 <label>Set dirty</label>
                 <halign>left</halign>
             </text>
-            <slider>
+            <button>
                 <row>4</row>
                 <col>1</col>
-                <width>100</width>
-                <property>sim/G91/liveries/active/dirty</property>
-                <min>0</min>
-                <max>1</max>
-                <step>0.01</step>  
+                <legend>Dirty on/off</legend>
+                <binding>
+                    <command>property-toggle</command>
+                    <property>sim/G91/liveries/active/dirtySet</property>
+                </binding>
                 <binding>
                     <command>dialog-apply</command>
                 </binding>
-            </slider>
+            </button>
             <text>
                 <row>4</row>
                 <col>2</col>
                 <halign>left</halign>
-                <label>99999</label>
                 <live>true</live>
-                <format>%1.2f </format>
                 <color>
                     <red>0.9</red>
                     <green>0.9</green>
                     <blue>0.9</blue>
                 </color>
-                <property>sim/G91/liveries/active/dirty</property>
+                <property>sim/G91/liveries/active/dirtyMsg</property>
             </text>
             
         </group>
     </group>
+    
+
+    <hrule/>
+    
+    <group>
+        <layout>vbox</layout>
+        <group>
+            <layout>table</layout>
+            
+            <text>
+                <row>0</row>
+                <col>0</col>
+                <label>Set livery resolution</label>
+                <halign>left</halign>
+            </text>
+            <button>
+                <row>0</row>
+                <col>1</col>
+                <legend>1024</legend>
+                <binding>
+                    <command>property-assign</command>
+                    <property>sim/G91/liveries/active/setResolution</property>
+                    <value>1</value>
+                </binding>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </button>
+            <button>
+                <row>0</row>
+                <col>2</col>
+                <legend>2048</legend>
+                <binding>
+                    <command>property-assign</command>
+                    <property>sim/G91/liveries/active/setResolution</property>
+                    <value>2</value>
+                </binding>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </button>
+            <button>
+                <row>0</row>
+                <col>3</col>
+                <legend>4096</legend>
+                <binding>
+                    <command>property-assign</command>
+                    <property>sim/G91/liveries/active/setResolution</property>
+                    <value>3</value>
+                </binding>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </button>
+
+            <text>
+                <row>0</row>
+                <col>4</col>
+                <halign>center</halign>
+                <label>99999</label>
+                <live>true</live>
+                <format>%1.0f </format>
+                <color>
+                    <red>0.8</red>
+                    <green>0.0</green>
+                    <blue>0.0</blue>
+                </color>
+                <property>sim/G91/liveries/active/resolution</property>
+            </text>
+            
+        </group>
+    </group>
+
     
 </PropertyList>
 

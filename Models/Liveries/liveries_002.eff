@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
 <PropertyList>
-    
+    <!-- note: for DDS this link is important http://wiki.flightgear.org/DDS_texture_conversion -->
     <name>Aircraft/G91-R1B_HD/Models/Liveries/nm_001</name>
     <inherits-from>Effects/model-combined-deferred</inherits-from>
     <parameters>
         <normalmap-enabled type="int">1</normalmap-enabled>
-        <normalmap-dds type="int">0</normalmap-dds>
+        <normalmap-dds type="int">1</normalmap-dds>
         <texture n="2">
-            <image>Aircraft/G91-R1B_HD/Models/Liveries/nm_002_6k.png</image>
+            <image>Aircraft/G91-R1B_HD/Models/Liveries/dds/nm_002_4k.dds</image>
             <filter>linear-mipmap-linear</filter>
             <wrap-s>clamp</wrap-s>
             <wrap-t>clamp</wrap-t>
@@ -21,10 +21,10 @@
             <reflect-map-enabled type="int">1</reflect-map-enabled>
             <reflection-correction type="float"><use>sim/G91/liveries/active/reflective</use></reflection-correction>
             <reflection-rainbow type="float">0.0</reflection-rainbow>
-            <reflection-noise type="float"><use>sim/G91/Test/V0_1C</use></reflection-noise>
+            <reflection-noise type="float"><use>sim/G91/liveries/active/noise</use></reflection-noise>
             <reflection-dynamic type="int">1</reflection-dynamic>
-            <dirt-enabled>1</dirt-enabled>
-            <dirt-factor type="float" n="0"><use>sim/G91/Test/V0_1D</use></dirt-factor>
+            <dirt-enabled>0</dirt-enabled>
+            <dirt-factor type="float" n="0">0.0></dirt-factor>
             <reflection-fresnel type="float">0.0</reflection-fresnel>
     </parameters>
     

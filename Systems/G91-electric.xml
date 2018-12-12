@@ -141,7 +141,6 @@ Description: G91R4 Electric system from "Manuale di pilotaggio (p.56)
     <property value="1">systems/electric/bus[2]/yaw-damper/fuse</property>
     <property value="1">systems/electric/bus[2]/aileron-vibrator/fuse</property>
     <property value="1">systems/electric/bus[2]/cockpit-vibrator/fuse</property>
-    <property value="1">systems/electric/bus[2]/cockpit-vibrator/fuse</property>
     <property value="10">systems/electric/inv-primary/I0</property>
     <property value="10">systems/electric/inv-secondary/I0</property>
 

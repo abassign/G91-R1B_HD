@@ -3,11 +3,6 @@
 <PropertyList>
     
     <path>G8400A24-24.ac</path>
-    
-    <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/glass-chrome</inherits-from>
-        <object-name>base (Meshed)</object-name>
-    </effect>
 
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
@@ -18,26 +13,31 @@
         <object-name>top-gasket (Meshed)</object-name>
         <object-name>contact (Meshed)</object-name>
         <object-name>support (Meshed)</object-name>
+        <object-name>ring (Meshed)</object-name>
+        <object-name>base (Meshed)</object-name>
     </effect>
     
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_chrome</inherits-from>
         <object-name>lamp-support (Meshed)</object-name>
-        <object-name>ring (Meshed)</object-name>
     </effect>
     
     <animation> 
         <type>material</type> 
         <object-name>cover (Meshed)</object-name>
-        <texture>Pictures/G91-Red02.png</texture>
         <transparency>
-            <alpha>0.9</alpha>
+            <alpha>0.90</alpha>
             <factor-prop>sim/G91/lightning/beacon-light/transparent_cover</factor-prop>
         </transparency>
+        <diffuse>
+            <red>0.59</red>
+            <green>0.18</green>
+            <blue>0.18</blue>
+        </diffuse>
         <ambient>
-            <red>0.8</red>
-            <green>0.8</green>
-            <blue>0.8</blue>
+            <red>0.59</red>
+            <green>0.18</green>
+            <blue>0.18</blue>
         </ambient>
         <emission>	
             <red>1.0</red>	
@@ -55,13 +55,39 @@
     <animation> 
         <type>material</type> 
         <object-name>ring (Meshed)</object-name>
+        <diffuse>
+            <red>0.67</red>
+            <green>0.67</green>
+            <blue>0.67</blue>
+        </diffuse>
         <ambient>
-            <red>0.8</red>
-            <green>0.8</green>
-            <blue>0.8</blue>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
         </ambient>
         <emission>	
             <red>0.2</red>	
+            <green>0.0</green>	
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/lightning/beacon-light/emission_cover</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type> 
+        <object-name>base (Meshed)</object-name>
+        <diffuse>
+            <red>0.67</red>
+            <green>0.67</green>
+            <blue>0.67</blue>
+        </diffuse>
+        <ambient>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.3</blue>
+        </ambient>
+        <emission>	
+            <red>0.15</red>	
             <green>0.0</green>	
             <blue>0.0</blue>
             <factor-prop>sim/G91/lightning/beacon-light/emission_cover</factor-prop>
@@ -87,7 +113,11 @@
     <animation> 
         <type>material</type> 
         <object-name>contact (Meshed)</object-name>
-        <texture>Pictures/G91-Al-Light.png</texture>
+        <diffuse>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </diffuse>
         <ambient>
             <red>0.8</red>
             <green>0.8</green>
@@ -104,7 +134,11 @@
     <animation> 
         <type>material</type> 
         <object-name>support (Meshed)</object-name>
-        <texture>Pictures/G91-Al.png</texture>
+        <diffuse>
+            <red>0.67</red>
+            <green>0.67</green>
+            <blue>0.67</blue>
+        </diffuse>
         <ambient>
             <red>0.5</red>
             <green>0.5</green>
@@ -122,11 +156,20 @@
         <type>material</type> 
         <object-name>lamp-glasses (Meshed)</object-name>
         <object-name>glass-support (Meshed)</object-name>
-        <texture>Pictures/G91-Red02.png</texture>
         <transparency>
             <alpha>0.4</alpha>
             <factor-prop>sim/G91/lightning/beacon-light/transparent_cover</factor-prop>
         </transparency>
+        <diffuse>
+            <red>0.59</red>
+            <green>0.18</green>
+            <blue>0.18</blue>
+        </diffuse>
+        <ambient>
+            <red>0.59</red>
+            <green>0.18</green>
+            <blue>0.18</blue>
+        </ambient>
         <ambient>
             <red>0.8</red>
             <green>0.8</green>
@@ -167,7 +210,11 @@
             <alpha>1.0</alpha>
             <factor-prop>sim/G91/lightning/beacon-light/intensity_bulb</factor-prop>
         </transparency>
-        <texture>Pictures/G91-Al-Light.png</texture>
+        <diffuse>
+            <red>0.67</red>
+            <green>0.67</green>
+            <blue>0.67</blue>
+        </diffuse>
         <ambient>
             <red>1.0</red>
             <green>1.0</green>
@@ -185,11 +232,15 @@
         <type>material</type> 
         <object-name>top (Meshed)</object-name>
         <object-name>base-rotante (Meshed)</object-name>
-        <texture>Pictures/G91-Red03-bronze.png</texture>
+        <diffuse>
+            <red>0.31</red>
+            <green>0.14</green>
+            <blue>0.11</blue>
+        </diffuse>
         <ambient>
-            <red>1.0</red>
-            <green>1.0</green>
-            <blue>1.0</blue>
+            <red>0.31</red>
+            <green>0.14</green>
+            <blue>0.11</blue>
         </ambient>
         <emission>	
             <red>0.5</red>	
@@ -202,11 +253,15 @@
     <animation> 
         <type>material</type> 
         <object-name>screews (Meshed)</object-name>
-        <texture>Pictures/G91-Dark-Grey.png</texture>
+        <diffuse>
+            <red>0.28</red>
+            <green>0.28</green>
+            <blue>0.28</blue>
+        </diffuse>
         <ambient>
-            <red>1.0</red>
-            <green>1.0</green>
-            <blue>1.0</blue>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.3</blue>
         </ambient>
         <emission>	
             <red>0.3</red>	
@@ -219,11 +274,15 @@
     <animation> 
         <type>material</type> 
         <object-name>top-gasket (Meshed)</object-name>
-        <texture>Pictures/G91-Black.png</texture>
+        <diffuse>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </diffuse>
         <ambient>
-            <red>1.0</red>
-            <green>1.0</green>
-            <blue>1.0</blue>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
         </ambient>
         <emission>	
             <red>0.3</red>	
@@ -240,7 +299,11 @@
         <transparency>
             <alpha>0.0</alpha>
         </transparency>
-        <texture>Pictures/G91-Al-Light.png</texture>
+        <diffuse>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </diffuse>
     </animation>
 
     <animation>
@@ -256,7 +319,7 @@
         <object-name>beacon-02 (Meshed)</object-name>
         <type>spin</type>
         <property>fdm/jsbsim/systems/lightning/beacon/motor</property>
-        <factor>30</factor>
+        <factor>45</factor>
         <center>
             <x-m>0.0</x-m>
             <y-m>0.0</y-m>
@@ -280,7 +343,7 @@
             <pitch-deg>45</pitch-deg>
         </offsets>
     </model>
-
+    
     <model>
         <name>beacon-02 (Meshed)</name>
         <path>Effects/lights/beacon-02.xml</path>

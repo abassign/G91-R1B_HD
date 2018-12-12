@@ -122,7 +122,6 @@
         <object-name>panR1b_Corniera_oown.001</object-name>
         <object-name>panR1b_Cube.000</object-name>
         <object-name>panR1b_Cube.001</object-name>
-        <object-name>panR1b__G91_fuselage_muso_1.000</object-name>
         <object-name>panR1b__G91_fuselage_muso_1.008</object-name>
         <object-name>panR1b__G91_fuselage_muso_1.009</object-name>
         <object-name>panR1b__G91_fuselage_muso_1.019</object-name>
@@ -138,6 +137,13 @@
         <object-name>A__G91_fuselage_muso_1.000</object-name>
         <object-name>A__G91_fuselage_muso_1.001</object-name>
         <object-name>panR1b__G91_fuselage_muso_1.024</object-name>
+    </effect>
+    
+    <effect>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Liveries/anti_reflective_001</inherits-from>
+        <object-name>panR1b__G91_fuselage_muso_1.000</object-name>
+        <object-name>A__G91_fuselage_muso_1.008</object-name>
+        <object-name>A__G91_fuselage_muso_1.009</object-name>
     </effect>
     
     <animation> 
@@ -206,6 +212,7 @@
         </specular>
     </animation>
     
+    <!--
     <animation> 
         <type>material</type>
         <object-name>panR1b__G91_fuselage_muso_1.000</object-name>
@@ -218,6 +225,7 @@
             <blue>0.2</blue>
         </ambient>
     </animation>
+    -->
     
     <animation> 
         <type>material</type>

@@ -265,10 +265,6 @@
         <object-name>B00_sx_door_bis.002</object-name>
         <object-name>A__G91_fuselage_int.weapon.door.007</object-name>
         <object-name>A__G91_fuselage_int.weapon.door.008</object-name>
-        <object-name>m00_door_01.2</object-name>
-        <object-name>m00_door_dx03.002</object-name>
-        <object-name>tank_cap</object-name>
-        <object-name>tank_cap1</object-name>
         <diffuse>
             <red>1.0</red>
             <green>1.0</green>
@@ -1707,8 +1703,8 @@
         <offsets>
             <x-m>0.015</x-m>
             <y-m>0.0</y-m>
-            <z-m>0.339</z-m>
-            <pitch-deg>1.0</pitch-deg>
+            <z-m>0.340</z-m>
+            <pitch-deg>0.8</pitch-deg>
         </offsets>
     </model>
     

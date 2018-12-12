@@ -18,7 +18,6 @@
         <object-name>knob_003 (Meshed)</object-name>
         <object-name>knob_004 (Meshed)</object-name>
         <object-name>knob_001_A (Meshed)</object-name>
-        <object-name>ring (Meshed)</object-name>
         <object-name>knob_001_plate_A (Meshed)</object-name>
         <object-name>knob_001_A_plate_A (Meshed)</object-name>
         <object-name>knob_002_plate_A (Meshed)</object-name>
@@ -40,7 +39,6 @@
         <object-name>airplane_support (Meshed)</object-name>
         <object-name>arrow_3 (Meshed)</object-name>
         <object-name>arrow_4 (Meshed)</object-name>
-        <object-name>pointer_1_B (Meshed)</object-name>
     </effect>
     
     <effect>
@@ -62,7 +60,6 @@
         <object-name>knob_003 (Meshed)</object-name>
         <object-name>knob_004 (Meshed)</object-name>
         <object-name>knob_001_A (Meshed)</object-name>
-        <object-name>ring (Meshed)</object-name>
         <object-name>knob_001_plate_A (Meshed)</object-name>
         <object-name>knob_001_A_plate_A (Meshed)</object-name>
         <object-name>knob_002_plate_A (Meshed)</object-name>
@@ -84,7 +81,6 @@
         <object-name>airplane_support (Meshed)</object-name>
         <object-name>arrow_3 (Meshed)</object-name>
         <object-name>arrow_4 (Meshed)</object-name>
-        <object-name>pointer_1_B (Meshed)</object-name>
     </effect>    
 
     <animation> 
@@ -176,17 +172,6 @@
             <green>0.9</green>
             <blue>0.9</blue>
         </specular>
-    </animation>
-    
-    <animation> 
-        <type>material</type>
-        <object-name>ring (Meshed)</object-name>
-        <texture>Pictures/G91-Dark-Grey.png</texture>
-        <ambient>
-            <red>0.3</red>
-            <green>0.3</green>
-            <blue>0.3</blue>
-        </ambient>
     </animation>
     
     <animation> 
@@ -393,23 +378,6 @@
             <green>0.17</green>
             <blue>0.044</blue>
             <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
-        </emission>
-    </animation>
-    
-    <animation> 
-        <type>material</type>
-        <object-name>pointer_1_B (Meshed)</object-name>
-        <texture>Pictures/G91-Dark-Grey.png</texture>
-        <ambient>
-            <red>0.2</red>
-            <green>0.2</green>
-            <blue>0.2</blue>
-        </ambient>
-        <emission>
-            <red>0.1</red>
-            <green>0.0</green>
-            <blue>0.0</blue>
-            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
     

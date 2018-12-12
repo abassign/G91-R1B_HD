@@ -7,14 +7,18 @@
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
         <object-name>Cover</object-name>
-        <object-name>Frontalr</object-name>
+        <object-name>Frontal</object-name>
         <object-name>Cylynder-15-18</object-name>
     </effect>
     
     <animation> 
         <type>material</type>
         <object-name>Cover</object-name>
-        <texture>Pictures/G91-Dark-Grey.png</texture>
+        <diffuse>
+            <red>0.28</red>
+            <green>0.28</green>
+            <blue>0.28</blue>
+        </diffuse>
         <ambient>
             <red>0.2</red>
             <green>0.2</green>
@@ -24,8 +28,12 @@
     
     <animation> 
         <type>material</type>
-        <object-name>Frontalr</object-name>
-        <texture>Pictures/G91-Dark-Grey.png</texture>
+        <object-name>Frontal</object-name>
+        <diffuse>
+            <red>0.28</red>
+            <green>0.28</green>
+            <blue>0.28</blue>
+        </diffuse>
         <ambient>
             <red>0.1</red>
             <green>0.1</green>
