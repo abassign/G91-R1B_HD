@@ -2,12 +2,11 @@
 
 <PropertyList>
     
-    <path>PHI-Wind.ac</path>
+    <path>PHI-Wind 02.ac</path>
     
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
         <object-name>frontal (Meshed)</object-name>
-        <object-name>frontal_plate_A</object-name>
         <object-name>frontal_plate_B (Meshed)</object-name>
         <object-name>ring (Meshed)</object-name>
         <object-name>lamp_ring (Meshed)</object-name>
@@ -15,16 +14,17 @@
         <object-name>knob_002 (Meshed)</object-name>
         <object-name>lamp_cover (Meshed)</object-name>
         <object-name>arrow_mirror (Meshed)</object-name>
-        <object-name>lamp_glass (Meshed)</object-name>
         <object-name>screews_01 (Meshed)</object-name>
         <object-name>screews_02 (Meshed)</object-name>
         <object-name>screews_03 (Meshed)</object-name>
+        <object-name>Curve</object-name>
+        <object-name>Curve.001</object-name>
+        <object-name>Curve.002</object-name>
     </effect>
     
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
         <object-name>frontal (Meshed)</object-name>
-        <object-name>frontal_plate_A</object-name>
         <object-name>frontal_plate_B (Meshed)</object-name>
         <object-name>ring (Meshed)</object-name>
         <object-name>lamp_ring (Meshed)</object-name>
@@ -32,16 +32,25 @@
         <object-name>knob_002 (Meshed)</object-name>
         <object-name>lamp_cover (Meshed)</object-name>
         <object-name>arrow_mirror (Meshed)</object-name>
-        <object-name>lamp_glass (Meshed)</object-name>
         <object-name>screews_01 (Meshed)</object-name>
         <object-name>screews_02 (Meshed)</object-name>
         <object-name>screews_03 (Meshed)</object-name>
+        <object-name>lamp_glass (Meshed)</object-name>
+        <object-name>lamp_light (Meshed)</object-name>
+        <object-name>frontal_plate_A</object-name>
+        <object-name>Curve</object-name>
+        <object-name>Curve.001</object-name>
+        <object-name>Curve.002</object-name>
     </effect>
     
     <animation> 
         <type>material</type>
         <object-name>cover (Meshed)</object-name>
-        <texture>G91-Al.png</texture>
+        <diffuse>
+            <red>0.67</red>
+            <green>0.67</green>
+            <blue>0.67</blue>
+        </diffuse>
         <ambient>
             <red>0.6</red>
             <green>0.6</green>
@@ -52,38 +61,18 @@
     <animation> 
         <type>material</type>
         <object-name>frontal_plateB_back (Meshed)</object-name>
-        <texture>Pictures/G91-Black.png</texture>
+        <diffuse>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
+        </diffuse>
         <ambient>
-            <red>0.0</red>
-            <green>0.0</green>
-            <blue>0.0</blue>
-        </ambient>
-    </animation>
-    
-    <animation> 
-        <type>material</type>
-        <object-name>screews_01 (Meshed)</object-name>
-        <object-name>screews_02 (Meshed)</object-name>
-        <object-name>screews_03 (Meshed)</object-name>
-        <texture>Pictures/G91-Dark-Grey.png</texture>
-        <ambient>
-            <red>0.6</red>
-            <green>0.6</green>
-            <blue>0.6</blue>
-        </ambient>
-    </animation>
-    
-    <animation> 
-        <type>material</type>
-        <object-name>frontal (Meshed)</object-name>
-        <texture>Pictures/G91-Dark-Grey.png</texture>
-        <ambient>
-            <red>0.4</red>
-            <green>0.4</green>
-            <blue>0.4</blue>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
         </ambient>
         <emission>
-            <red>0.2</red>
+            <red>0.02</red>
             <green>0.0</green>
             <blue>0.0</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
@@ -92,14 +81,149 @@
     
     <animation> 
         <type>material</type>
-        <object-name>frontal_plate_A</object-name>
-        <transparency>
-            <alpha>1.0</alpha>
-        </transparency>
+        <object-name>screews_01 (Meshed)</object-name>
+        <object-name>screews_02 (Meshed)</object-name>
+        <object-name>screews_03 (Meshed)</object-name>
+        <diffuse>
+            <red>0.33</red>
+            <green>0.31</green>
+            <blue>0.30</blue>
+        </diffuse>
+        <ambient>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
+        </ambient>
+        <emission>
+            <red>0.04</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>frontal (Meshed)</object-name>
+        <diffuse>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
+        </diffuse>
+        <ambient>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </ambient>
+        <emission>
+            <red>0.015</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>Curve</object-name>
+        <diffuse>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+        </diffuse>
         <ambient>
             <red>0.80</red>
             <green>0.73</green>
             <blue>0.53</blue>
+        </ambient>
+        <emission>
+            <red>0.35</red>
+            <green>0.30</green>
+            <blue>0.095</blue>
+            <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation>
+        <type>material</type>
+        <object-name>frontal_plate_B (Meshed)</object-name>
+        <object-name>ring (Meshed)</object-name>
+        <object-name>lamp_ring (Meshed)</object-name>
+        <diffuse>
+            <red>0.15</red>
+            <green>0.15</green>
+            <blue>0.15</blue>
+        </diffuse>
+        <ambient>
+            <red>0.05</red>
+            <green>0.05</green>
+            <blue>0.05</blue>
+        </ambient>
+        <emission>
+            <red>0.015</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>knob_001 (Meshed)</object-name>
+        <object-name>knob_002 (Meshed)</object-name>
+        <object-name>lamp_cover (Meshed)</object-name>
+        <diffuse>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
+        </diffuse>
+        <ambient>
+            <red>0.15</red>
+            <green>0.15</green>
+            <blue>0.15</blue>
+        </ambient>
+        <emission>
+            <red>0.025</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>Curve.001</object-name>
+        <object-name>Curve.002</object-name>
+        <diffuse>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
+        </diffuse>
+        <ambient>
+            <red>0.80</red>
+            <green>0.73</green>
+            <blue>0.53</blue>
+        </ambient>
+        <emission>
+            <red>0.04</red>
+            <green>0.14</green>
+            <blue>0.03</blue>
+            <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>arrow (Meshed)</object-name>
+        <diffuse>
+            <red>0.80</red>
+            <green>0.73</green>
+            <blue>0.53</blue>
+        </diffuse>
+        <ambient>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.3</blue>
         </ambient>
         <emission>
             <red>0.28</red>
@@ -111,90 +235,12 @@
     
     <animation> 
         <type>material</type>
-        <object-name>frontal_plate_B (Meshed)</object-name>
-        <object-name>ring (Meshed)</object-name>
-        <object-name>lamp_ring (Meshed)</object-name>
-        <texture>Pictures/G91-Dark-Grey.png</texture>
-        <ambient>
-            <red>0.0</red>
-            <green>0.0</green>
-            <blue>0.0</blue>
-        </ambient>
-        <emission>
-            <red>0.30</red>
-            <green>0.0</green>
-            <blue>0.0</blue>
-            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
-        </emission>
-    </animation>
-    
-    <animation> 
-        <type>material</type>
-        <object-name>knob_001 (Meshed)</object-name>
-        <object-name>knob_002 (Meshed)</object-name>
-        <object-name>lamp_cover (Meshed)</object-name>
-        <texture>Pictures/G91-Dark-Grey.png</texture>
-        <ambient>
-            <red>0.6</red>
-            <green>0.6</green>
-            <blue>0.6</blue>
-        </ambient>
-        <emission>
-            <red>0.05</red>
-            <green>0.0</green>
-            <blue>0.0</blue>
-            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
-        </emission>
-        <specular>
-            <red>0.9</red>
-            <green>0.9</green>
-            <blue>0.9</blue>
-        </specular>
-    </animation>
-    
-    <animation> 
-        <type>material</type>
-        <object-name>knob_001_A (Meshed)</object-name>
-        <object-name>knob_002_A (Meshed)</object-name>
-        <transparency>
-            <alpha>1.0</alpha>
-        </transparency>
-        <ambient>
-            <red>0.80</red>
-            <green>0.73</green>
-            <blue>0.53</blue>
-        </ambient>
-        <emission>
-            <red>0.08</red>
-            <green>0.3</green>
-            <blue>0.06</blue>
-            <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
-        </emission>
-    </animation>
-    
-    <animation> 
-        <type>material</type>
-        <object-name>arrow (Meshed)</object-name>
-        <transparency>
-            <alpha>1.0</alpha>
-        </transparency>
-        <ambient>
-            <red>0.80</red>
-            <green>0.73</green>
-            <blue>0.53</blue>
-        </ambient>
-        <emission>
-            <red>0.08</red>
-            <green>0.3</green>
-            <blue>0.021</blue>
-            <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
-        </emission>
-    </animation>
-    
-    <animation> 
-        <type>material</type>
         <object-name>arrow_mirror (Meshed)</object-name>
-        <texture>Pictures/G91-Al-Light.png</texture>
+        <diffuse>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </diffuse>
         <ambient>
             <red>0.6</red>
             <green>0.6</green>
@@ -216,33 +262,41 @@
     <animation> 
         <type>material</type>
         <object-name>lamp_glass (Meshed)</object-name>
-        <texture>Pictures/G91-Yellow_01.png</texture>
         <transparency>
-            <alpha>1.0</alpha>
+            <alpha>0.95</alpha>
             <factor-prop>fdm/jsbsim/systems/gauges/PHI/wind/advise-light-transparent</factor-prop>
         </transparency>
         <ambient>
-            <red>0.1</red>
-            <green>0.05</green>
-            <blue>0.0</blue>
+            <red>0.3</red>
+            <green>0.2</green>
+            <blue>0.1</blue>
         </ambient>
+        <ambient>
+            <red>0.5</red>
+            <green>0.4</green>
+            <blue>0.2</blue>
+        </ambient>
+        <specular>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.1</blue>
+        </specular>
         <emission>
             <red>0.1</red>
             <green>0.0</green>
             <blue>0.0</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
-        <specular>
-            <red>0.5</red>
-            <green>0.0</green>
-            <blue>0.0</blue>
-        </specular>
     </animation>
 
     <animation> 
         <type>material</type>
         <object-name>lamp_mirror (Meshed)</object-name>
-        <texture>Pictures/G91-Orange01.png</texture>
+        <diffuse>
+            <red>0.8</red>
+            <green>0.5</green>
+            <blue>0.3</blue>
+        </diffuse>
         <ambient>
             <red>1.0</red>
             <green>0.5</green>
@@ -259,19 +313,23 @@
     <animation> 
         <type>material</type>
         <object-name>lamp_light (Meshed)</object-name>
-        <texture>Pictures/G91-Al-Light.png</texture>
         <transparency>
             <alpha>0.5</alpha>
         </transparency>
-        <ambient>
+        <diffuse>
             <red>0.8</red>
-            <green>0.8</green>
-            <blue>0.8</blue>
-        </ambient>
-        <emission>
+            <green>0.2</green>
+            <blue>0.5</blue>
+        </diffuse>
+        <ambient>
             <red>1.0</red>
             <green>0.5</green>
             <blue>0.0</blue>
+        </ambient>
+        <emission>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>1.0</blue>
             <factor-prop>/fdm/jsbsim/systems/gauges/PHI/wind/advise-light-on</factor-prop>
         </emission>
     </animation>
@@ -333,7 +391,7 @@
     <animation>
         <type>rotate</type>
         <object-name>knob_002 (Meshed)</object-name>
-        <object-name>knob_002_A (Meshed)</object-name>
+        <object-name>Curve.002</object-name>
         <property>/fdm/jsbsim/systems/gauges/PHI/wind/wd</property>
         <factor>1</factor>
         <center>
@@ -351,7 +409,7 @@
     <animation>
         <type>translate</type>
         <object-name>knob_002 (Meshed)</object-name>
-        <object-name>knob_002_A (Meshed)</object-name>
+        <object-name>Curve.002</object-name>
         <property>/fdm/jsbsim/systems/gauges/PHI/wind/wd-up</property>
         <factor>0.002</factor>
         <offset-m>-0.002</offset-m>
@@ -398,7 +456,7 @@
     <animation>
         <type>rotate</type>
         <object-name>knob_001 (Meshed)</object-name>
-        <object-name>knob_001_A (Meshed)</object-name>
+        <object-name>Curve.001</object-name>
         <property>/fdm/jsbsim/systems/gauges/PHI/wind/ws</property>
         <factor>1</factor>
         <center>
@@ -416,7 +474,7 @@
     <animation>
         <type>translate</type>
         <object-name>knob_001 (Meshed)</object-name>
-        <object-name>knob_001_A (Meshed)</object-name>
+        <object-name>Curve.001</object-name>
         <property>/fdm/jsbsim/systems/gauges/PHI/wind/ws-up</property>
         <factor>0.002</factor>
         <offset-m>-0.002</offset-m>

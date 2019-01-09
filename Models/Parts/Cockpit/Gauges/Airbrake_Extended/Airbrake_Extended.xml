@@ -3,21 +3,21 @@
 <PropertyList>
     
     <path>Airbrake_Extended.ac</path>
-
-    <effect>
+    
+   <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
         <object-name>frontal (Meshed)</object-name>
         <object-name>ring (Meshed)</object-name>
         <object-name>screews (Meshed)</object-name>
-        <object-name>back_plane_2A2 (Meshed)</object-name>
-        <object-name>back_plane_2A1 (Meshed)</object-name>
+        <object-name>back_plane_2A1</object-name>
         <object-name>pointer_1A (Meshed)</object-name>
         <object-name>back_plane_2B (Meshed)</object-name>
         <object-name>pointer_1B (Meshed)</object-name>
-        <object-name>frontal_internal_A (Meshed)</object-name>
         <object-name>frontal_internal_B (Meshed)</object-name>
+        <object-name>Airbrake Percent Extended Gen (Meshed)</object-name>
+        <object-name>Up Down (Meshed)</object-name>
     </effect>
-
+    
     <effect>
         <inherits-from>Effects/model-transparent</inherits-from>
         <object-name>glass (Meshed)</object-name>
@@ -28,19 +28,23 @@
         <object-name>frontal (Meshed)</object-name>
         <object-name>ring (Meshed)</object-name>
         <object-name>screews (Meshed)</object-name>
-        <object-name>back_plane_2A2 (Meshed)</object-name>
-        <object-name>back_plane_2A1 (Meshed)</object-name>
+        <object-name>back_plane_2A1</object-name>
         <object-name>pointer_1A (Meshed)</object-name>
         <object-name>back_plane_2B (Meshed)</object-name>
         <object-name>pointer_1B (Meshed)</object-name>
-        <object-name>frontal_internal_A (Meshed)</object-name>
         <object-name>frontal_internal_B (Meshed)</object-name>
+        <object-name>Airbrake Percent Extended Gen (Meshed)</object-name>
+        <object-name>Up Down (Meshed)</object-name>
     </effect>
     
     <animation> 
         <type>material</type>
         <object-name>cover (Meshed)</object-name>
-        <texture>G91-Al.png</texture>
+        <diffuse>
+            <red>0.67</red>
+            <green>0.67</green>
+            <blue>0.67</blue>
+        </diffuse>
         <ambient>
             <red>0.6</red>
             <green>0.6</green>
@@ -51,14 +55,18 @@
     <animation> 
         <type>material</type>
         <object-name>frontal (Meshed)</object-name>
-        <texture>Pictures/G91-Al-dark.png</texture>
+        <diffuse>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
+        </diffuse>
         <ambient>
-            <red>0.3</red>
-            <green>0.3</green>
-            <blue>0.3</blue>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
         </ambient>
         <emission>
-            <red>0.2</red>
+            <red>0.015</red>
             <green>0.0</green>
             <blue>0.0</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
@@ -68,14 +76,18 @@
     <animation> 
         <type>material</type>
         <object-name>screews (Meshed)</object-name>
-        <texture>Pictures/G91-Al-dark.png</texture>
+        <diffuse>
+            <red>0.33</red>
+            <green>0.31</green>
+            <blue>0.30</blue>
+        </diffuse>
         <ambient>
-            <red>0.6</red>
-            <green>0.6</green>
-            <blue>0.6</blue>
+            <red>0.25</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
         </ambient>
         <emission>
-            <red>0.2</red>
+            <red>0.02</red>
             <green>0.0</green>
             <blue>0.0</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
@@ -85,14 +97,18 @@
     <animation> 
         <type>material</type>
         <object-name>ring (Meshed)</object-name>
-        <texture>Pictures/G91-Al-dark.png</texture>
+        <diffuse>
+            <red>0.33</red>
+            <green>0.31</green>
+            <blue>0.30</blue>
+        </diffuse>
         <ambient>
             <red>0.1</red>
             <green>0.1</green>
             <blue>0.1</blue>
         </ambient>
         <emission>
-            <red>0.15</red>
+            <red>0.015</red>
             <green>0.0</green>
             <blue>0.0</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
@@ -105,61 +121,53 @@
         <transparency>
             <alpha>0.1</alpha>
         </transparency>
+        <diffuse>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </diffuse>
         <ambient>
             <red>0.0</red>
             <green>0.0</green>
             <blue>0.0</blue>
         </ambient>
         <emission>
-            <red>0.05</red>
+            <red>0.1</red>
             <green>0.0</green>
-            <blue>0.1</blue>
+            <blue>0.3</blue>
             <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
         </emission>
     </animation>
     
     <animation> 
         <type>material</type>
-        <object-name>back_plane_2A2 (Meshed)</object-name>
-        <transparency>
-            <alpha>0.9</alpha>
-        </transparency>
+        <object-name>Airbrake Percent Extended Gen (Meshed)</object-name>
+        <diffuse>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </diffuse>
         <ambient>
-            <red>0.9</red>
-            <green>0.9</green>
-            <blue>0.9</blue>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
         </ambient>
         <emission>
-            <red>0.10</red>
-            <green>0.03</green>
-            <blue>0.03</blue>
+            <red>0.05</red>
+            <green>0.003</green>
+            <blue>0.003</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
     
     <animation> 
         <type>material</type>
-        <object-name>back_plane_2A1 (Meshed)</object-name>
-        <transparency>
-            <alpha>1.0</alpha>
-        </transparency>
-        <ambient>
-            <red>0.80</red>
-            <green>0.73</green>
-            <blue>0.53</blue>
-        </ambient>
-        <emission>
-            <red>0.045</red>
-            <green>0.15</green>
-            <blue>0.031</blue>
-            <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
-        </emission>
-    </animation>
-    
-    <animation> 
-        <type>material</type>
         <object-name>pointer_1A (Meshed)</object-name>
-        <texture>Pictures/G91-White-00.png</texture>
+        <diffuse>
+            <red>0.9</red>
+            <green>0.9</green>
+            <blue>0.9</blue>
+        </diffuse>
         <ambient>
             <red>0.80</red>
             <green>0.73</green>
@@ -177,35 +185,20 @@
         <type>material</type>
         <object-name>back_plane_2B (Meshed)</object-name>
         <object-name>pointer_1B (Meshed)</object-name>
-        <texture>Pictures/G91-Black.png</texture>
+        <diffuse>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
+        </diffuse>
         <ambient>
-            <red>0.0</red>
-            <green>0.0</green>
-            <blue>0.0</blue>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
         </ambient>
         <emission>
-            <red>0.10</red>
-            <green>0.03</green>
-            <blue>0.03</blue>
-            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
-        </emission>
-    </animation>
-    
-    <animation> 
-        <type>material</type>
-        <object-name>frontal_internal_A (Meshed)</object-name>
-        <transparency>
-            <alpha>0.9</alpha>
-        </transparency>
-        <ambient>
-            <red>0.9</red>
-            <green>0.9</green>
-            <blue>0.9</blue>
-        </ambient>
-        <emission>
-            <red>0.12</red>
-            <green>0.04</green>
-            <blue>0.04</blue>
+            <red>0.01</red>
+            <green>0.002</green>
+            <blue>0.002</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
@@ -213,20 +206,46 @@
     <animation> 
         <type>material</type>
         <object-name>frontal_internal_B (Meshed)</object-name>
-        <texture>Pictures/G91-Dark-Grey.png</texture>
+        <diffuse>
+            <red>0.28</red>
+            <green>0.28</green>
+            <blue>0.28</blue>
+        </diffuse>
         <ambient>
-            <red>0.6</red>
-            <green>0.6</green>
-            <blue>0.6</blue>
+            <red>0.15</red>
+            <green>0.15</green>
+            <blue>0.15</blue>
         </ambient>
         <emission>
-            <red>0.05</red>
-            <green>0.0</green>
-            <blue>0.0</blue>
+            <red>0.0025</red>
+            <green>0.0005</green>
+            <blue>0.0005</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
-
+    
+    <animation> 
+        <type>material</type>
+        <object-name>Up Down (Meshed)</object-name>
+        <object-name>back_plane_2A1</object-name>
+        <diffuse>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
+        </diffuse>
+        <ambient>
+            <red>1.0</red>
+            <green>0.9</green>
+            <blue>0.6</blue>
+        </ambient>
+        <emission>
+            <red>0.07</red>
+            <green>0.15</green>
+            <blue>0.02</blue>
+            <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
+        </emission>
+    </animation>
+    
     <animation>
         <type>rotate</type>
         <object-name>pointer_1A (Meshed)</object-name>

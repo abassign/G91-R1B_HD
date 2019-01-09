@@ -18,9 +18,9 @@
         <object-name>pannelli_laterali</object-name>
         <object-name>pannelli_laterali.001</object-name>
         <object-name>pannelli_laterali.004</object-name>
-        <object-name>pannello_centrale</object-name>
         <object-name>Support_gauges_01</object-name>
         <object-name>Support_gauges_012</object-name>
+        <object-name>pannello_centrale</object-name>
     </effect>
     
     <effect>
@@ -40,6 +40,11 @@
         <object-name>Support_gauges_012</object-name>
         <object-name>panei_dx_texi.000</object-name>
         <object-name>panel_Sx_tex.002</object-name>
+    </effect>
+    
+    <effect>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Effects/InteriorLightGreyBlu</inherits-from>
+        <object-name>pannello_centrale</object-name>
     </effect>
     
     <animation> 
@@ -68,9 +73,9 @@
     
     <animation> 
         <type>material</type>
-        <object-name>pannello_centrale</object-name>
         <object-name>Support_gauges_01</object-name>
         <object-name>Support_gauges_012</object-name>
+        <object-name>pannello_centrale</object-name>
         <texture>Pictures/InteriorLightGreyBlu.png</texture>
         <ambient>
             <red>0.8</red>
@@ -241,8 +246,8 @@
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/ADF_8720/ADF_8720.xml</path>
         <offsets>
-            <x-m>-3.220</x-m>
-            <y-m>-0.182</y-m>
+            <x-m>-3.221</x-m>
+            <y-m>-0.183</y-m>
             <z-m>0.150</z-m>
             <pitch-deg>-8.65</pitch-deg>
         </offsets>

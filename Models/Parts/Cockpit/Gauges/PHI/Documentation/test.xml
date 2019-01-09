@@ -1,0 +1,193 @@
+
+        <linearizer name="systems/gauges/PHI/wind/digit1AW">
+            <input>systems/gauges/PHI/wind/digit1A</input>
+            <min>0</min>
+            <max>10</max>
+            <min_rate>0.5</min_rate>
+            <max_rate>0.5</max_rate>
+            <gain>1.0</gain>
+        </linearizer>
+        
+        <linearizer name="systems/gauges/PHI/wind/digit2AW">
+            <input>systems/gauges/PHI/wind/digit2A</input>
+            <min>0</min>
+            <max>10</max>
+            <min_rate>0.5</min_rate>
+            <max_rate>0.5</max_rate>
+            <gain>1.0</gain>
+        </linearizer>
+        
+        <linearizer name="systems/gauges/PHI/wind/digit3AW">
+            <input>systems/gauges/PHI/wind/digit3A</input>
+            <min>0</min>
+            <max>10</max>
+            <min_rate>0.5</min_rate>
+            <max_rate>0.5</max_rate>
+            <gain>1.0</gain>
+        </linearizer>
+
+
+
+        
+        
+        
+
+        <fcs_function>
+            <function>
+                <ifthen>
+                    <gt>
+                        <abs>
+                            <difference>
+                                <p>systems/gauges/PHI/wind/digit1A</p>
+                                <p>systems/gauges/PHI/wind/digit1AW</p>
+                            </difference>
+                        </abs>
+                        <v>0.1</v>
+                    </gt>
+                    <p>systems/gauges/PHI/wind/digit-inc</p>
+                    <v>0.0</v>
+                </ifthen>
+            </function>
+            <output>systems/gauges/PHI/wind/digit1AW-inc</output>
+        </fcs_function>
+        
+        <fcs_function>
+            <function>
+                <ifthen>
+                    <gt>
+                        <p>systems/gauges/PHI/wind/digit1AW-inc</p>
+                        <v>0.0</v>
+                    </gt>
+                    <ifthen>
+                        <gt>
+                            <p>systems/gauges/PHI/wind/digit1AW</p>
+                            <v>9.9</v>
+                        </gt>
+                        <v>0.0</v>
+                        <sum>
+                            <p>systems/gauges/PHI/wind/digit1AW</p>
+                            <p>systems/gauges/PHI/wind/digit1AW-inc</p>
+                        </sum>
+                    </ifthen>
+                    <ifthen>
+                        <lt>
+                            <p>systems/gauges/PHI/wind/digit1AW</p>
+                            <v>0.0</v>
+                        </lt>
+                        <v>9.9</v>
+                        <sum>
+                            <p>systems/gauges/PHI/wind/digit1AW</p>
+                            <p>systems/gauges/PHI/wind/digit1AW-inc</p>
+                        </sum>
+                    </ifthen>
+                </ifthen>
+            </function>
+            <output>systems/gauges/PHI/wind/digit1AW</output>
+        </fcs_function>
+
+        <fcs_function>
+            <function>
+                <ifthen>
+                    <gt>
+                        <abs>
+                            <difference>
+                                <p>systems/gauges/PHI/wind/digit2A</p>
+                                <p>systems/gauges/PHI/wind/digit2AW</p>
+                            </difference>
+                        </abs>
+                        <v>0.1</v>
+                    </gt>
+                    <p>systems/gauges/PHI/wind/digit-inc</p>
+                    <v>0.0</v>
+                </ifthen>
+            </function>
+            <output>systems/gauges/PHI/wind/digit2AW-inc</output>
+        </fcs_function>
+        
+        <fcs_function>
+            <function>
+                <ifthen>
+                    <gt>
+                        <p>systems/gauges/PHI/wind/digit2AW-inc</p>
+                        <v>0.0</v>
+                    </gt>
+                    <ifthen>
+                        <gt>
+                            <p>systems/gauges/PHI/wind/digit2AW</p>
+                            <v>9.9</v>
+                        </gt>
+                        <v>0.0</v>
+                        <sum>
+                            <p>systems/gauges/PHI/wind/digit2AW</p>
+                            <p>systems/gauges/PHI/wind/digit2AW-inc</p>
+                        </sum>
+                    </ifthen>
+                    <ifthen>
+                        <lt>
+                            <p>systems/gauges/PHI/wind/digit2AW</p>
+                            <v>0.0</v>
+                        </lt>
+                        <v>9.9</v>
+                        <sum>
+                            <p>systems/gauges/PHI/wind/digit2AW</p>
+                            <p>systems/gauges/PHI/wind/digit2AW-inc</p>
+                        </sum>
+                    </ifthen>
+                </ifthen>
+            </function>
+            <output>systems/gauges/PHI/wind/digit2AW</output>
+        </fcs_function>
+        
+        <fcs_function>
+            <function>
+                <ifthen>
+                    <gt>
+                        <abs>
+                            <difference>
+                                <p>systems/gauges/PHI/wind/digit3A</p>
+                                <p>systems/gauges/PHI/wind/digit3AW</p>
+                            </difference>
+                        </abs>
+                        <v>0.1</v>
+                    </gt>
+                    <p>systems/gauges/PHI/wind/digit-inc</p>
+                    <v>0.0</v>
+                </ifthen>
+            </function>
+            <output>systems/gauges/PHI/wind/digit3AW-inc</output>
+        </fcs_function>
+        
+        <fcs_function>
+            <function>
+                <ifthen>
+                    <gt>
+                        <p>systems/gauges/PHI/wind/digit3AW-inc</p>
+                        <v>0.0</v>
+                    </gt>
+                    <ifthen>
+                        <gt>
+                            <p>systems/gauges/PHI/wind/digit3AW</p>
+                            <v>9.9</v>
+                        </gt>
+                        <v>0.0</v>
+                        <sum>
+                            <p>systems/gauges/PHI/wind/digit3AW</p>
+                            <p>systems/gauges/PHI/wind/digit3AW-inc</p>
+                        </sum>
+                    </ifthen>
+                    <ifthen>
+                        <lt>
+                            <p>systems/gauges/PHI/wind/digit3AW</p>
+                            <v>0.0</v>
+                        </lt>
+                        <v>9.9</v>
+                        <sum>
+                            <p>systems/gauges/PHI/wind/digit3AW</p>
+                            <p>systems/gauges/PHI/wind/digit3AW-inc</p>
+                        </sum>
+                    </ifthen>
+                </ifthen>
+            </function>
+            <output>systems/gauges/PHI/wind/digit3AW</output>
+        </fcs_function>
+ 

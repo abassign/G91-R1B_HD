@@ -212,21 +212,6 @@
         </specular>
     </animation>
     
-    <!--
-    <animation> 
-        <type>material</type>
-        <object-name>panR1b__G91_fuselage_muso_1.000</object-name>
-        <object-name>A__G91_fuselage_muso_1.008</object-name>
-        <object-name>A__G91_fuselage_muso_1.009</object-name>
-        <texture>Pictures/G91-Dark-Grey.png</texture>
-        <ambient>
-            <red>0.2</red>
-            <green>0.2</green>
-            <blue>0.2</blue>
-        </ambient>
-    </animation>
-    -->
-    
     <animation> 
         <type>material</type>
         <object-name>Corniera_oblo_sx_dx</object-name>

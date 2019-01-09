@@ -18,6 +18,17 @@
     </effect>
     
     <effect>
+        <inherits-from>Effects/model-transparent</inherits-from>
+        <object-name>cover (Meshed)</object-name>
+        <object-name>lamp-glasses (Meshed)</object-name>
+        <object-name>glass-support (Meshed)</object-name>
+        <object-name>lamp-filament (Meshed)</object-name>
+        <object-name>lamp-mirrors (Meshed)</object-name>
+        <object-name>beacon-01 (Meshed)</object-name>
+        <object-name>beacon-02 (Meshed)</object-name>
+    </effect>
+    
+    <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_chrome</inherits-from>
         <object-name>lamp-support (Meshed)</object-name>
     </effect>

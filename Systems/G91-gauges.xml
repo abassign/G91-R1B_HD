@@ -87,14 +87,14 @@ The C1 lag_filter is less is longer respond time
         
         <switch name="systems/gauges/cockpit-turn-indicator/gyro-start-stop">
             <default value="0.01"/>
-            <test logic="AND" value="0.5">
+            <test logic="AND" value="0.1">
                 systems/gauges/cockpit-turn-indicator/operative == 1
             </test>
         </switch>
         
         <lag_filter name="systems/gauges/cockpit-turn-indicator/gyro-sensibility">
             <input>systems/gauges/cockpit-turn-indicator/gyro-start-stop</input>
-            <c1>0.1</c1>
+            <c1>0.5</c1>
         </lag_filter>
         
         <switch name="systems/electric/bus[1]/turn-indicator/I">
@@ -104,16 +104,20 @@ The C1 lag_filter is less is longer respond time
             </test>
         </switch>
         
-        <switch name="systems/gauges/cockpit-turn-indicator/display-rad-sec">
-            <default value="0"/>
-            <test logic="AND" value="systems/gauges/cockpit-turn-indicator/rad-sec">
-                systems/gauges/cockpit-turn-indicator/gyro-sensibility GT 0.02
+        <switch name="systems/gauges/cockpit-turn-indicator/r-aero-rad_sec-operative">
+            <default value="0.0"/>
+            <test logic="AND" value="velocities/r-aero-rad_sec">
+                systems/gauges/cockpit-turn-indicator/operative == 1
             </test>
         </switch>
         
-        <lag_filter name="systems/gauges/cockpit-turn-indicator/rad-sec">
-            <input>velocities/r-aero-rad_sec</input>
+        <lag_filter name="systems/gauges/cockpit-turn-indicator/display-rad-sec">
+            <input>systems/gauges/cockpit-turn-indicator/r-aero-rad_sec-operative</input>
             <c1>systems/gauges/cockpit-turn-indicator/gyro-sensibility</c1>
+            <clipto>
+                <min>-0.12</min>
+                <max>0.12</max>
+            </clipto>
         </lag_filter>
         
     </channel>
@@ -195,7 +199,7 @@ The C1 lag_filter is less is longer respond time
                 systems/gauges/cockpit-attitude-J8-on == 1
             </test>
         </switch>
-        
+
         <lag_filter name="systems/gauges/cockpit-attitude-roll-deg">
             <input>attitude/phi-deg</input>
             <c1>systems/gauges/cockpit-attitude-J8-on-speed</c1>

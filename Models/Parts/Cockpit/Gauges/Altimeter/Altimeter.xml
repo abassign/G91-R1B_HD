@@ -53,7 +53,11 @@
     <animation> 
         <type>material</type> 
         <object-name>I_ExtenalCover.001</object-name>
-        <texture>G91-Al.png</texture>
+        <diffuse>
+            <red>0.67</red>
+            <green>0.67</green>
+            <blue>0.67</blue>
+        </diffuse>
         <ambient>
             <red>0.6</red>
             <green>0.6</green>
@@ -86,26 +90,40 @@
         <type>material</type>
         <object-name>I_ironware.003</object-name>
         <object-name>I_Internal_Cone.001</object-name>
-        <texture>Pictures/G91-Dark-Grey.png</texture>
+        <diffuse>
+            <red>0.33</red>
+            <green>0.31</green>
+            <blue>0.30</blue>
+        </diffuse>
         <ambient>
-            <red>0.6</red>
-            <green>0.6</green>
-            <blue>0.6</blue>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
         </ambient>
+        <emission>
+            <red>0.02</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
     </animation>
     
     <animation> 
         <type>material</type>
         <object-name>I_Fusion004.001</object-name>
         <object-name>I_Fusion004.002</object-name>
-        <texture>Pictures/G91-Dark-Grey.png</texture>
+        <diffuse>
+            <red>0.33</red>
+            <green>0.31</green>
+            <blue>0.30</blue>
+        </diffuse>
         <ambient>
-            <red>0.4</red>
-            <green>0.4</green>
-            <blue>0.4</blue>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
         </ambient>
         <emission>
-            <red>0.2</red>
+            <red>0.02</red>
             <green>0.0</green>
             <blue>0.0</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
@@ -116,13 +134,18 @@
         <type>material</type>
         <object-name>I_Knob.001</object-name>
         <texture>Pictures/G91-Dark-Grey.png</texture>
+        <diffuse>
+            <red>0.33</red>
+            <green>0.31</green>
+            <blue>0.30</blue>
+        </diffuse>
         <ambient>
-            <red>0.6</red>
-            <green>0.6</green>
-            <blue>0.6</blue>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
         </ambient>
         <emission>
-            <red>0.10</red>
+            <red>0.02</red>
             <green>0.0</green>
             <blue>0.0</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
@@ -135,15 +158,20 @@
         <transparency>
             <alpha>0.1</alpha>
         </transparency>
+        <diffuse>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </diffuse>
         <ambient>
             <red>0.0</red>
             <green>0.0</green>
             <blue>0.0</blue>
         </ambient>
         <emission>
-            <red>0.05</red>
+            <red>0.1</red>
             <green>0.0</green>
-            <blue>0.1</blue>
+            <blue>0.3</blue>
             <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
         </emission>
     </animation>
@@ -155,9 +183,9 @@
             <alpha>1.0</alpha>
         </transparency>
         <ambient>
-            <red>0.80</red>
-            <green>0.73</green>
-            <blue>0.40</blue>
+            <red>0.7</red>
+            <green>0.6</green>
+            <blue>0.4</blue>
         </ambient>
         <emission>
             <red>0.045</red>
@@ -170,16 +198,20 @@
     <animation> 
         <type>material</type>
         <object-name>I_plate.000B</object-name>
-        <texture>Pictures/G91-Al-dark.png</texture>
+        <diffuse>
+            <red>0.35</red>
+            <green>0.35</green>
+            <blue>0.35</blue>
+        </diffuse>
         <ambient>
-            <red>0.6</red>
-            <green>0.6</green>
-            <blue>0.6</blue>
+            <red>0.15</red>
+            <green>0.15</green>
+            <blue>0.15</blue>
         </ambient>
         <emission>
-            <red>0.10</red>
-            <green>0.0</green>
-            <blue>0.0</blue>
+            <red>0.025</red>
+            <green>0.0005</green>
+            <blue>0.0005</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
@@ -191,9 +223,9 @@
             <alpha>1.0</alpha>
         </transparency>
         <ambient>
-            <red>0.80</red>
-            <green>0.73</green>
-            <blue>0.53</blue>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.5</blue>
         </ambient>
         <emission>
             <red>0.045</red>
@@ -206,14 +238,18 @@
     <animation> 
         <type>material</type>
         <object-name>I_Plate.001B</object-name>
-        <texture>Pictures/G91-Dark-Grey.png</texture>
+        <diffuse>
+            <red>0.33</red>
+            <green>0.31</green>
+            <blue>0.30</blue>
+        </diffuse>
         <ambient>
-            <red>0.2</red>
-            <green>0.2</green>
-            <blue>0.2</blue>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
         </ambient>
         <emission>
-            <red>0.30</red>
+            <red>0.02</red>
             <green>0.0</green>
             <blue>0.0</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
@@ -223,17 +259,19 @@
     <animation> 
         <type>material</type>
         <object-name>I_Plate.003A</object-name>
-        <transparency>
-            <alpha>1.0</alpha>
-        </transparency>
+        <diffuse>
+            <red>0.9</red>
+            <green>0.9</green>
+            <blue>0.9</blue>
+        </diffuse>
         <ambient>
             <red>0.80</red>
             <green>0.73</green>
-            <blue>0.53</blue>
+            <blue>0.40</blue>
         </ambient>
         <emission>
-            <red>0.045</red>
-            <green>0.15</green>
+            <red>0.1</red>
+            <green>0.18</green>
             <blue>0.031</blue>
             <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
         </emission>
@@ -242,14 +280,18 @@
     <animation> 
         <type>material</type>
         <object-name>I_Plate.004B</object-name>
-        <texture>Pictures/G91-Dark-Grey.png</texture>
+        <diffuse>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
+        </diffuse>
         <ambient>
-            <red>0.0</red>
-            <green>0.0</green>
-            <blue>0.0</blue>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
         </ambient>
         <emission>
-            <red>0.30</red>
+            <red>0.01</red>
             <green>0.0</green>
             <blue>0.0</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
@@ -262,14 +304,18 @@
         <object-name>hand01b.001</object-name>
         <object-name>hand02b</object-name>
         <object-name>hand03b</object-name>
-        <texture>Pictures/G91-Al-Light.png</texture>
+        <diffuse>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
+        </diffuse>
         <ambient>
-            <red>0.3</red>
-            <green>0.3</green>
-            <blue>0.3</blue>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
         </ambient>
         <emission>
-            <red>0.05</red>
+            <red>0.005</red>
             <green>0.0</green>
             <blue>0.0</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
@@ -282,7 +328,11 @@
         <object-name>hand01a</object-name>
         <object-name>hand02a</object-name>
         <object-name>Plane</object-name>
-        <texture>Pictures/G91-White-00.png</texture>
+        <diffuse>
+            <red>0.9</red>
+            <green>0.9</green>
+            <blue>0.9</blue>
+        </diffuse>
         <ambient>
             <red>0.80</red>
             <green>0.73</green>

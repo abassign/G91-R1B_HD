@@ -8,7 +8,7 @@
         <z-m>-0.45</z-m>
         <pitch-deg>0.0</pitch-deg>
     </offsets>
-
+<!--
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Tail/Tail.xml</path>
     </model>
@@ -24,13 +24,16 @@
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Fuselage_B/Fuselage_B1.xml</path>
     </model>
-    
-    <!--
-    
+    -->
+
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Canopy.xml</path>
     </model>
-    
+
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Cockpit.xml</path>
+    </model>
+   <!-- 
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/LandingGearFrontal/LandingGearFrontal.xml</path>
     </model>    
@@ -48,11 +51,8 @@
         </offsets>
     </model>
 
-    <model>
-        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Cockpit.xml</path>
-    </model>
-    
     -->
+
 <!-- Submodels -->
     
     <!--

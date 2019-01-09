@@ -7,10 +7,8 @@
     <liveries>
         
         <active>
-            <ID>5</ID>
+            <ID>0</ID>
             <setResolution>0</setResolution>
-            <dirtySet type="int">0</dirtySet>
-            <dirtyMsg type="string">No dirty file</dirtyMsg>
         </active>
         
         <livery n="1">
@@ -101,8 +99,8 @@
             <specular type="float">0.28</specular>
             <dirty type="float">0.0</dirty>
             <noise>sim/G91/liveries/active/noise</noise>
-            <livery_001 type="string">Aircraft/G91-R1B_HD/Models/Liveries/ITA_prot_001.png</livery_001>
-            <livery_002 type="string">Aircraft/G91-R1B_HD/Models/Liveries/ITA_prot_002.png</livery_002>
+            <livery_001 type="string">Aircraft/G91-R1B_HD/Models/Liveries/dds/ITA_prot_001.dds</livery_001>
+            <livery_002 type="string">Aircraft/G91-R1B_HD/Models/Liveries/dds/ITA_prot_002.dds</livery_002>
             <dirty_001 type="string">Aircraft/G91-R1B_HD/Models/Liveries/dirty_01_4k.png</dirty_001>
             <dirty_002 type="string">Aircraft/G91-R1B_HD/Models/Liveries/dirty_02_4k.png</dirty_002>
             <anti_reflective type="string">Aircraft/G91-R1B_HD/Models/Liveries/G91_Dark_Grey_128.png</anti_reflective>

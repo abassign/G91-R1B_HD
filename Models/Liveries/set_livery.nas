@@ -1,10 +1,11 @@
 # From: http://wiki.flightgear.org/Howto:Dynamic_Liveries_via_Canvas
 
 var inExecution = 0;
-var setCanvasExecute = 0;
 
-var setResolution = 0;
-var setResolutionChanged = 0;
+var resolutionSet = 0;
+var resolutionSetPrec = -1;
+var resolutionSetChanged = 0;
+var canvasSetChanged = -1;
 
 var id_prec = 0;
 var resolution = 0;
@@ -21,24 +22,22 @@ var ar_root = nil;
 
 var dirtySet = 0;
 
-# InitiaL configuration without livery (setResolution = 0)
-setprop("sim/G91/liveries/active/luminosity",0);
-setprop("sim/G91/liveries/active/reflective",0);
-setprop("sim/G91/liveries/active/PANR1",0);
-setprop("sim/G91/liveries/active/ambient",0.6);
-setprop("sim/G91/liveries/active/specular",0.72);
+var livery_001 = "";
+var livery_002 = "";
+var dirty_001 = "";
+var dirty_002 = "";
+var anti_reflective = "";
+
+# InitiaL configuration without livery (resolutionSet = 0)
 
 
 var setCanvas = func() {
 
-    if (resolution == 0) {
+    if (resolution == 0 or canvasSetChanged == 0) {
         return;
     }
-
-    if (setCanvasExecute == 1 and setResolution > 0) {
-        return;
-    }
-    setCanvasExecute = 1;
+    
+    print("set_livery.nas setCanvas: ca_size = ",ca_size," cw_size = ",cw_size);
 
     ca = canvas.new({"name": "Fuselage",
                         "size": [ca_size,ca_size], 
@@ -146,7 +145,6 @@ var setCanvas = func() {
 
     ca_root = ca.createGroup();
 
-
     cw = canvas.new({"name": "Wing",
                         "size": [cw_size,cw_size], 
                         "view": [cw_size,cw_size],
@@ -194,7 +192,6 @@ var setCanvas = func() {
 
     cw_root = cw.createGroup();
 
-
     # Anti-reflective
 
     ar = canvas.new({"name": "Anti-reflective-area",
@@ -209,41 +206,58 @@ var setCanvas = func() {
     ar.addPlacement({"node": "A__G91_fuselage_canopy.004"});
 
     ar_root = ar.createGroup();
+    
+    canvasSetChanged = 0;
 
 }
 
 
 var changeResolution = func() {
 
-    if (setResolution > 0 and setResolutionChanged > 0) {
-        print("set_livery.nas changeResolution (is changed): ",setResolution," pixel: ",resolution);
+    if (resolutionSetPrec == resolutionSet) {
+        resolutionSetChanged = 0;
+        print("set_livery.nas changeResolution (is changed): ",resolutionSet," pixel: ",resolution);
         return;
+    } else {
+        resolutionSetChanged = 1;
     }
     
-    if (setResolution == nil) {
-        setResolution = 0;
-    }
+    print("set_livery.nas changeResolution #1: ", resolutionSetChanged, " ",resolutionSetPrec);
     
-    if (setResolution == 1) {
+    if (resolutionSetChanged == 1 and resolutionSetPrec > 0) {
+        fgcommand("reinit", props.Node.new({ subsystem: "Canvas" }));
+        ca = nil;
+        cw = nil;
+        layers_001 = {};
+        ca_root = nil;
+        layers_002 = {};
+        cw_root = nil;
+        print("set_livery.nas changeResolution #2: reinit subsystem Canvas");
+        resolutionSetChanged = 0;
+        canvasSetChanged = 1;
+    }
+
+    if (resolutionSet == 1) {
         resolution = 1024; }
-    else if (setResolution == 2) {
+    else if (resolutionSet == 2) {
         resolution = 2048; }
-    else if (setResolution == 3) {
+    else if (resolutionSet == 3) {
         resolution = 4096; }
     else {
+        print("set_livery.nas changeResolution resolutionSet error: ",resolutionSet);
+        resolutionSet = 0;
         resolution = 0;
+        return;
     }
         
-    print("set_livery.nas changeResolution (is new): ",setResolution," pixel: ",resolution);
+    print("set_livery.nas changeResolution (is new): ",resolutionSet," pixel: ",resolution);
     setprop("sim/G91/liveries/active/resolution",resolution);
     
     ca_size = resolution;
     cw_size = resolution;
     
-    if (setResolution > 0) {
-        setResolutionChanged = 1;
-    }
-    
+    resolutionSetPrec = resolutionSet;
+
 }
 
 
@@ -256,10 +270,101 @@ var setLivery = func() {
         return;
     }
 
+    if (size(dirty_001) == 0) {
+        setprop("sim/G91/liveries/active/dirtyMsg","No dirty file");
+    } else {
+        if (dirtySet == 0) {
+            setprop("sim/G91/liveries/active/dirtyMsg","Dirty inactive");
+        } else {
+            setprop("sim/G91/liveries/active/dirtyMsg","Dirty active");
+        }
+    }
+    
+    if (ca_root != nil) {
+        foreach(var image; [livery_001, dirty_001]) {
+            print("set_livery.nas image: ",image," (",size(image),")");
+            # Insert the layer
+            if (size(image) > 0 and resolutionSet > 0) {
+                layers_001[image] = ca_root.createChild("image")
+                    .setFile(image)
+                    .setSize(ca_size,ca_size);
+                if (image == dirty_001) {
+                    if (dirtySet == 1) {
+                        print("set_livery.nas dirty show: ",dirty_001);
+                        layers_001[image].show();
+                    } else {
+                        print("set_livery.nas dirty hide: ",dirty_001);
+                        layers_001[image].hide();
+                    }
+                }
+            }
+        }
+    }
+    
+    if (cw_root != nil) {
+        foreach(var image; [livery_002, dirty_002]) {
+            print("set_livery.nas image: ",image," (",size(image),")");
+            # Insert the layer
+            if (size(image) > 0 and resolutionSet > 0) {
+                layers_002[image] = cw_root.createChild("image")
+                    .setFile(image)
+                    .setSize(cw_size,cw_size);
+                if (image == dirty_002) {
+                    if (dirtySet == 1) {
+                        print("set_livery.nas dirty show: ",dirty_002);
+                        layers_002[image].show();
+                    } else {
+                        print("set_livery.nas dirty hide: ",dirty_002);
+                        layers_002[image].hide();
+                    }
+                }
+            }
+        }
+    }
+    
+    if (ar_root != nil) {
+        foreach(var image; [anti_reflective]) {
+            print("set_livery.nas anti-reflective: ",image," (",size(image),")");
+            # Insert the layer
+            if (size(image) > 0 and resolutionSet > 0) {
+                anti_reflective_area[image] = ar_root.createChild("image")
+                    .setFile(image)
+                    .setSize(128,128);
+            }
+        }
+    }
+    
+    inExecution = 0;
+};
+
+
+var getActiveData = func() {
+    
     var idSelect = props.globals.getNode("sim/G91/liveries/active/ID",1).getValue();
-    var isPushed = props.globals.getNode("sim/G91/liveries/active/pushed",1).getValue();
+    if (idSelect == nil) {
+        idSelect = 0;
+    }
+    resolutionSet = props.globals.getNode("sim/G91/liveries/active/setResolution",1).getValue();
+    if (resolutionSet == nil) {
+        resolutionSet = 0;
+    }
+
+    if (resolutionSetPrec > 0 and resolutionSetPrec != resolutionSet) {
+        print("set_livery.nas getActiveData resolutionSet: change resolution is only for one time");
+        resolutionSet = resolutionSetPrec;
+        setprop("sim/G91/liveries/active/setResolution",resolutionSet);
+        return;
+    }
+    
+    print("set_livery.nas getActiveData set resolution: ", resolutionSet);
+    
+    if (idSelect == 0 or resolutionSet == 0) {
+        return;
+    }
+    
     var liverys = props.globals.getNode("sim/G91/liveries").getChildren("livery");
     
+    var isPushed = props.globals.getNode("sim/G91/liveries/active/pushed",1).getValue();
     if (isPushed == nil) {
         isPushed = 0;
     }
@@ -274,7 +379,7 @@ var setLivery = func() {
                 liverys[i].getNode("specular").setValue(props.globals.getNode("sim/G91/liveries/active/specular",1).getValue());
                 liverys[i].getNode("dirty").setValue(props.globals.getNode("sim/G91/liveries/active/dirty",1).getValue());
                 liverys[i].getNode("noise").setValue(props.globals.getNode("sim/G91/liveries/active/noise",1).getValue());
-                ## print("*2 isPushed: ", i," v: ",debug.dump(liverys[i].getNode("luminosity")));
+                print("*2 isPushed: ", i," v: ",debug.dump(liverys[i].getNode("luminosity")));
                 break;
             }
         }
@@ -283,20 +388,22 @@ var setLivery = func() {
     var id = -1;
     forindex(i; liverys) {
         if (liverys[i].getNode("ID").getValue() == idSelect) {
+            print("set_livery.nas getActiveData id select: ", idSelect, "(",i,")");
             id = i;
             break;
         }
     }
     if (id == -1) {
         id = 0;
-        print("G91:ERROR: set_livery.nas id not found, set default id=0");
+        print("G91:ERROR: set_livery.nas getActiveData id not found, set default id=0");
     }
     
-    var livery_001 = liverys[id].getNode("livery_001").getValue();
-    var livery_002 = liverys[id].getNode("livery_002").getValue();
-    var dirty_001 = liverys[id].getNode("dirty_001").getValue();
-    var dirty_002 = liverys[id].getNode("dirty_002",).getValue();
-    var anti_reflective = liverys[id].getNode("anti_reflective",).getValue();
+    livery_001 = liverys[id].getNode("livery_001").getValue();
+    livery_002 = liverys[id].getNode("livery_002").getValue();
+    dirty_001 = liverys[id].getNode("dirty_001").getValue();
+    dirty_002 = liverys[id].getNode("dirty_002",).getValue();
+    anti_reflective = liverys[id].getNode("anti_reflective",).getValue();
+    
     var name_short = liverys[id].getNode("name_short").getValue();
     var name_long = liverys[id].getNode("name_long").getValue();
     var luminosity = liverys[id].getNode("luminosity").getValue();
@@ -307,7 +414,10 @@ var setLivery = func() {
     var dirty = liverys[id].getNode("dirty").getValue();
     var noise = liverys[id].getNode("noise").getValue();
     
-    print("set_livery.nas id: ",id," livery_001: ",livery_001," livery_002: ",livery_002);
+    print("set_livery.nas getActiveData setLivery id: ",id," livery_001: ",livery_001);
+    print("set_livery.nas getActiveData setLivery id: ",id," livery_002: ",livery_002);
+    print("set_livery.nas getActiveData setLivery id: ",id," dirty_001: ",dirty_001);
+    print("set_livery.nas getActiveData setLivery id: ",id," dirty_002: ",dirty_002);
     
     setprop("sim/G91/liveries/active/name_short",name_short);
     setprop("sim/G91/liveries/active/name_long",name_long);
@@ -326,89 +436,43 @@ var setLivery = func() {
     setprop("sim/G91/liveries/active/ID",idSelect);
     setprop("sim/G91/liveries/active/pushed",0.0);
     
-    if (size(dirty_001) == 0) {
-        setprop("sim/G91/liveries/active/dirtyMsg","No dirty file");
-    } else {
-        if (dirtySet == 0) {
-            setprop("sim/G91/liveries/active/dirtyMsg","Dirty inactive");
-        } else {
-            setprop("sim/G91/liveries/active/dirtyMsg","Dirty active");
-        }
-    }
-    
-    foreach(var image; [livery_001, dirty_001]) {
-        print("set_livery.nas image: ",image," (",size(image),")");
-        # Insert the layer
-        if (size(image) > 0 and setResolution > 0) {
-            layers_001[image] = ca_root.createChild("image")
-                .setFile(image)
-                .setSize(ca_size,ca_size);
-            if (image == dirty_001) {
-                if (dirtySet == 1) {
-                    print("set_livery.nas dirty show: ",dirty_001);
-                    layers_001[image].show();
-                } else {
-                    print("set_livery.nas dirty hide: ",dirty_001);
-                    layers_001[image].hide();
-                }
-            }
-        }
-    }
-
-    print("set_livery.nas livery_002: ",livery_002);
-    
-    foreach(var image; [livery_002, dirty_002]) {
-        print("set_livery.nas image: ",image," (",size(image),")");
-        # Insert the layer
-        if (size(image) > 0 and setResolution > 0) {
-            layers_002[image] = cw_root.createChild("image")
-                .setFile(image)
-                .setSize(cw_size,cw_size);
-            if (image == dirty_002) {
-                if (dirtySet == 1) {
-                    print("set_livery.nas dirty show: ",dirty_002);
-                    layers_002[image].show();
-                } else {
-                    print("set_livery.nas dirty hide: ",dirty_002);
-                    layers_002[image].hide();
-                }
-            }
-        }
-    }
-    
-    foreach(var image; [anti_reflective]) {
-        print("set_livery.nas anti-reflective: ",image," (",size(image),")");
-        # Insert the layer
-        if (size(image) > 0 and setResolution > 0) {
-            anti_reflective_area[image] = ar_root.createChild("image")
-                .setFile(image)
-                .setSize(128,128);
-        }
-    }
-    
     id_prec = idSelect;
     
-    inExecution = 0;
-};
+}
 
-
-setlistener("sim/G91/liveries/active/ID", func {
-
-    if(inExecution == 0) {
-        print("set_livery.nas setlistener ID: execute");
-        call(changeResolution,[]);
-        call(setCanvas,[]);
-        call(setLivery,[]);
+setlistener("sim/G91/liveries/active/ID", func { 
+    var id = props.globals.getNode("sim/G91/liveries/active/ID",1).getValue();
+    if (id != nil and id != 0 and id_prec != id) {
+        if(inExecution == 0) {
+            print("set_livery.nas setlistener ID: execute");
+            call(getActiveData,[]);
+            call(changeResolution,[]);
+            call(setCanvas,[]);
+            call(setLivery,[]);
+            setprop("sim/multiplay/generic/int[0]",id);
+            setprop("sim/multiplay/generic/int[1]",1024);
+        }
     }
-    
 }, 1, 1);
 
+var timer_liveries_ID = maketimer(1.0, func() {
+    var idRemote = props.globals.getNode("sim/multiplay/generic/short[0]",1).getValue();
+    var resolution = props.globals.getNode("sim/multiplay/generic/short[1]",1).getValue();
+    var id = props.globals.getNode("sim/G91/liveries/active/ID",1).getValue();
+    if (idRemote != nil and id != nil and idRemote != id) {
+        print("set_livery.nas timer_liveries_ID idRemote: ",idRemote, " id: ",id," resolution: ",resolution);
+        setprop("sim/G91/liveries/active/ID",idRemote);
+        setprop("sim/G91/liveries/active/setResolution",resolution);
+    }
+});
+timer_liveries_ID.start();
 
 setlistener("sim/G91/liveries/active/dirtySet", func {
 
     if(inExecution == 0) {
         dirtySet = props.globals.getNode("sim/G91/liveries/active/dirtySet",1).getValue();
         print("set_livery.nas setlistener dirtySet: ",dirtySet);
+        call(getActiveData,[]);
         call(changeResolution,[]);
         call(setCanvas,[]);
         call(setLivery,[]);
@@ -416,18 +480,14 @@ setlistener("sim/G91/liveries/active/dirtySet", func {
     
 }, 1, 1);
 
-
 setlistener("sim/G91/liveries/active/setResolution", func {
 
     if(inExecution == 0) {
-        if (setResolutionChanged == 0) {
-            setResolution = props.globals.getNode("sim/G91/liveries/active/setResolution",1).getValue();
-            print("set_livery.nas setlistener setResolution: ",setResolution);
-            call(changeResolution,[]);
-            call(setCanvas,[]);
-            call(setLivery,[]);
-        }
-    }
+        print("set_livery.nas setlistener resolutionSet: ",resolutionSet);
+        call(getActiveData,[]);
+        call(changeResolution,[]);
+        call(setCanvas,[]);
+        call(setLivery,[]);
+    } 
     
 }, 1, 1);
-

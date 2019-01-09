@@ -588,8 +588,8 @@
         <type>rotate</type>
         <object-name>switch_2_level (Meshed)</object-name>
         <property>fdm/jsbsim/systems/gauges/PHI/doppler/switch-increase-pos</property>
-        <factor>50</factor>
-        <offset-deg>-25</offset-deg>
+        <factor>25</factor>
+        <offset-deg>0</offset-deg>
         <center>
             <x-m> 0.0225</x-m>
             <y-m> 0.0</y-m>

@@ -15,17 +15,17 @@
         <object-name>Support (Meshed)</object-name>
         <object-name>level_container_A (Meshed)</object-name>
         <object-name>level_container_B (Meshed)</object-name>
-        <object-name>glass_torus (Meshed)</object-name>
         <object-name>pointer (Meshed)</object-name>
         <object-name>back_plane_A (Meshed)</object-name>
         <object-name>frontal_mask_A (Meshed)</object-name>
         <object-name>back_plane_B (Meshed)</object-name>
-        <object-name>frontal_mask_B (Meshed)</object-name>
+        <object-name>rif (Meshed)</object-name>
     </effect>
     
     <effect>
         <inherits-from>Effects/model-transparent</inherits-from>
         <object-name>glass (Meshed)</object-name>
+        <object-name>glass_torus (Meshed)</object-name>
     </effect>
     
     <effect>
@@ -39,18 +39,22 @@
         <object-name>Support (Meshed)</object-name>
         <object-name>level_container_A (Meshed)</object-name>
         <object-name>level_container_B (Meshed)</object-name>
-        <object-name>glass_torus (Meshed)</object-name>
         <object-name>pointer (Meshed)</object-name>
         <object-name>back_plane_A (Meshed)</object-name>
         <object-name>frontal_mask_A (Meshed)</object-name>
         <object-name>back_plane_B (Meshed)</object-name>
-        <object-name>frontal_mask_B (Meshed)</object-name>
+        <object-name>rif (Meshed)</object-name>
+    
     </effect>
     
     <animation> 
         <type>material</type>
         <object-name>cover (Meshed)</object-name>
-        <texture>G91-Al.png</texture>
+                <diffuse>
+            <red>0.67</red>
+            <green>0.67</green>
+            <blue>0.67</blue>
+        </diffuse>
         <ambient>
             <red>0.6</red>
             <green>0.6</green>
@@ -61,14 +65,18 @@
     <animation> 
         <type>material</type>
         <object-name>frontal_filet (Meshed)</object-name>
-        <texture>Pictures/G91-Dark-Grey.png</texture>
+        <diffuse>
+            <red>0.33</red>
+            <green>0.31</green>
+            <blue>0.30</blue>
+        </diffuse>
         <ambient>
-            <red>0.4</red>
-            <green>0.4</green>
-            <blue>0.4</blue>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
         </ambient>
         <emission>
-            <red>0.2</red>
+            <red>0.03</red>
             <green>0.0</green>
             <blue>0.0</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
@@ -79,15 +87,18 @@
         <type>material</type>
         <object-name>screews (Meshed)</object-name>
         <object-name>frontal_mask_B (Meshed)</object-name>
-        <object-name>glass_torus_division (Meshed)</object-name>
-        <texture>Pictures/G91-Dark-Grey.png</texture>
+        <diffuse>
+            <red>0.33</red>
+            <green>0.31</green>
+            <blue>0.30</blue>
+        </diffuse>
         <ambient>
-            <red>0.6</red>
-            <green>0.6</green>
-            <blue>0.6</blue>
+            <red>0.15</red>
+            <green>0.15</green>
+            <blue>0.15</blue>
         </ambient>
         <emission>
-            <red>0.15</red>
+            <red>0.02</red>
             <green>0.0</green>
             <blue>0.0</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
@@ -96,28 +107,71 @@
     
     <animation> 
         <type>material</type>
-        <object-name>sphere (Meshed)</object-name>
-        <object-name>separator (Meshed)</object-name>
-        <texture>Pictures/G91-Dark-Grey.png</texture>
+        <object-name>glass_torus_division (Meshed)</object-name>
+        <diffuse>
+            <red>0.33</red>
+            <green>0.31</green>
+            <blue>0.30</blue>
+        </diffuse>
         <ambient>
-            <red>0.3</red>
-            <green>0.3</green>
-            <blue>0.3</blue>
+            <red>0.05</red>
+            <green>0.05</green>
+            <blue>0.05</blue>
+        </ambient>
+        <emission>
+            <red>0.01</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>separator (Meshed)</object-name>
+        <diffuse>
+            <red>0.33</red>
+            <green>0.31</green>
+            <blue>0.30</blue>
+        </diffuse>
+        <ambient>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </ambient>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>sphere (Meshed)</object-name>
+        <diffuse>
+            <red>0.33</red>
+            <green>0.31</green>
+            <blue>0.30</blue>
+        </diffuse>
+        <ambient>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
         </ambient>
     </animation>
     
     <animation> 
         <type>material</type>
         <object-name>Support (Meshed)</object-name>
-        <texture>Pictures/AichiInteriorGreyGreen.png</texture>
+        <diffuse>
+            <red>0.40</red>
+            <green>0.45</green>
+            <blue>0.38</blue>
+        </diffuse>
         <ambient>
-            <red>0.5</red>
-            <green>0.5</green>
-            <blue>0.5</blue>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
         </ambient>
         <emission>
-            <red>0.2</red>
-            <green>0.1</green>
+            <red>0.025</red>
+            <green>0.012</green>
             <blue>0.0</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
@@ -126,15 +180,19 @@
     <animation> 
         <type>material</type>
         <object-name>level_container_A (Meshed)</object-name>
-        <texture>Pictures/G91-Black.png</texture>
+        <diffuse>
+            <red>0.05</red>
+            <green>0.05</green>
+            <blue>0.05</blue>
+        </diffuse>
         <ambient>
             <red>0.3</red>
             <green>0.3</green>
             <blue>0.3</blue>
         </ambient>
         <emission>
-            <red>0.3</red>
-            <green>0.1</green>
+            <red>0.01</red>
+            <green>0.0</green>
             <blue>0.0</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
@@ -143,15 +201,19 @@
     <animation>
         <type>material</type>
         <object-name>level_container_B (Meshed)</object-name>
-        <texture>Pictures/G91-Al-Light.png</texture>
+        <diffuse>
+            <red>0.9</red>
+            <green>0.9</green>
+            <blue>0.9</blue>
+        </diffuse>
         <ambient>
-            <red>0.6</red>
-            <green>0.7</green>
-            <blue>0.5</blue>
+            <red>0.3</red>
+            <green>0.4</green>
+            <blue>0.4</blue>
         </ambient>
         <emission>
-            <red>0.01</red>
-            <green>0.1</green>
+            <red>0.005</red>
+            <green>0.06</green>
             <blue>0.0</blue>
             <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
         </emission>
@@ -160,39 +222,47 @@
     <animation> 
         <type>material</type>
         <object-name>glass (Meshed)</object-name>
-        <texture>Pictures/G91-Al-Light.png</texture>
         <transparency>
             <alpha>0.1</alpha>
         </transparency>
+        <diffuse>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </diffuse>
         <ambient>
             <red>0.0</red>
             <green>0.0</green>
             <blue>0.0</blue>
         </ambient>
         <emission>
-            <red>0.5</red>
-            <green>0.1</green>
-            <blue>0.0</blue>
-            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+            <red>0.0</red>
+            <green>0.3</green>
+            <blue>0.3</blue>
+            <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
         </emission>
     </animation>
     
     <animation> 
         <type>material</type>
         <object-name>glass_torus (Meshed)</object-name>
-        <texture>Pictures/G91-Al-Light.png</texture>
         <transparency>
             <alpha>0.3</alpha>
         </transparency>
+        <diffuse>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </diffuse>
         <ambient>
-            <red>0.0</red>
-            <green>0.0</green>
-            <blue>0.0</blue>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
         </ambient>
         <emission>
-            <red>0.01</red>
-            <green>0.07</green>
-            <blue>0.0</blue>
+            <red>0.0</red>
+            <green>0.3</green>
+            <blue>0.1</blue>
             <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
         </emission>
     </animation>
@@ -200,15 +270,19 @@
     <animation>
         <type>material</type>
         <object-name>pointer (Meshed)</object-name>
-        <texture>Pictures/G91-White-00.png</texture>
+        <diffuse>
+            <red>0.90</red>
+            <green>0.83</green>
+            <blue>0.63</blue>
+        </diffuse>
         <ambient>
             <red>0.90</red>
             <green>0.83</green>
             <blue>0.63</blue>
         </ambient>
         <emission>
-            <red>0.05</red>
-            <green>0.15</green>
+            <red>0.07</red>
+            <green>0.2</green>
             <blue>0.0</blue>
             <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
         </emission>
@@ -217,19 +291,62 @@
     <animation> 
         <type>material</type>
         <object-name>back_plane_A (Meshed)</object-name>
+        <diffuse>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
+        </diffuse>
+        <ambient>
+            <red>1.0</red>
+            <green>0.9</green>
+            <blue>0.6</blue>
+        </ambient>
+        <emission>
+            <red>0.07</red>
+            <green>0.15</green>
+            <blue>0.02</blue>
+            <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
         <object-name>frontal_mask_A (Meshed)</object-name>
-        <transparency>
-            <alpha>0.7</alpha>
-        </transparency>
+        <diffuse>
+            <red>0.6</red>
+            <green>0.5</green>
+            <blue>0.0</blue>
+        </diffuse>
         <ambient>
             <red>0.90</red>
             <green>0.83</green>
             <blue>0.63</blue>
         </ambient>
         <emission>
-            <red>0.08</red>
-            <green>0.3</green>
-            <blue>0.06</blue>
+            <red>0.1</red>
+            <green>0.02</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>rif (Meshed)</object-name>
+        <diffuse>
+            <red>0.6</red>
+            <green>0.5</green>
+            <blue>0.0</blue>
+        </diffuse>
+        <ambient>
+            <red>0.90</red>
+            <green>0.83</green>
+            <blue>0.63</blue>
+        </ambient>
+        <emission>
+            <red>0.04</red>
+            <green>0.1</green>
+            <blue>0.0</blue>
             <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
         </emission>
     </animation>
@@ -238,14 +355,18 @@
         <type>material</type>
         <object-name>back_plane_B (Meshed)</object-name>
         <object-name>frontal_mask_B (Meshed)</object-name>
-        <texture>Pictures/G91-Dark-Grey.png</texture>
+        <diffuse>
+            <red>0.33</red>
+            <green>0.31</green>
+            <blue>0.30</blue>
+        </diffuse>
         <ambient>
             <red>0.0</red>
             <green>0.0</green>
             <blue>0.0</blue>
         </ambient>
         <emission>
-            <red>0.1</red>
+            <red>0.03</red>
             <green>0.0</green>
             <blue>0.0</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>

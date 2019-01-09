@@ -49,7 +49,11 @@
     <animation> 
         <type>material</type>
         <object-name>I_ExtenalCover</object-name>
-        <texture>G91-Al.png</texture>
+        <diffuse>
+            <red>0.67</red>
+            <green>0.67</green>
+            <blue>0.67</blue>
+        </diffuse>
         <ambient>
             <red>0.6</red>
             <green>0.6</green>
@@ -60,14 +64,18 @@
     <animation> 
         <type>material</type>
         <object-name>I_ironware</object-name>
-        <texture>Pictures/G91-Dark-Grey.png</texture>
+        <diffuse>
+            <red>0.33</red>
+            <green>0.31</green>
+            <blue>0.30</blue>
+        </diffuse>
         <ambient>
-            <red>0.4</red>
-            <green>0.4</green>
-            <blue>0.4</blue>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
         </ambient>
         <emission>
-            <red>0.2</red>
+            <red>0.02</red>
             <green>0.0</green>
             <blue>0.0</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
@@ -77,14 +85,18 @@
     <animation> 
         <type>material</type>
         <object-name>I_ironware.003</object-name>
-        <texture>Pictures/G91-Al-dark.png</texture>
+        <diffuse>
+            <red>0.33</red>
+            <green>0.31</green>
+            <blue>0.30</blue>
+        </diffuse>
         <ambient>
-            <red>0.2</red>
-            <green>0.2</green>
-            <blue>0.2</blue>
+            <red>0.15</red>
+            <green>0.15</green>
+            <blue>0.15</blue>
         </ambient>
         <emission>
-            <red>0.2</red>
+            <red>0.025</red>
             <green>0.0</green>
             <blue>0.0</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
@@ -94,14 +106,18 @@
     <animation> 
         <type>material</type>
         <object-name>I_knurl</object-name>
-        <texture>Pictures/G91-Dark-Grey.png</texture>
+        <diffuse>
+            <red>0.33</red>
+            <green>0.31</green>
+            <blue>0.30</blue>
+        </diffuse>
         <ambient>
-            <red>0.6</red>
-            <green>0.6</green>
-            <blue>0.6</blue>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
         </ambient>
         <emission>
-            <red>0.10</red>
+            <red>0.025</red>
             <green>0.0</green>
             <blue>0.0</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
@@ -114,15 +130,20 @@
         <transparency>
             <alpha>0.1</alpha>
         </transparency>
+        <diffuse>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </diffuse>
         <ambient>
             <red>0.0</red>
             <green>0.0</green>
             <blue>0.0</blue>
         </ambient>
         <emission>
-            <red>0.05</red>
+            <red>0.1</red>
             <green>0.0</green>
-            <blue>0.1</blue>
+            <blue>0.3</blue>
             <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
         </emission>
     </animation>
@@ -130,7 +151,11 @@
     <animation>
         <type>material</type>
         <object-name>I_han_02</object-name>
-        <texture>Pictures/G91-White-00.png</texture>
+        <diffuse>
+            <red>0.9</red>
+            <green>0.9</green>
+            <blue>0.9</blue>
+        </diffuse>
         <ambient>
             <red>0.80</red>
             <green>0.73</green>
@@ -147,15 +172,19 @@
     <animation>
         <type>material</type>
         <object-name>I_hand_01.001</object-name>
-        <texture>Pictures/G91-White-00.png</texture>
+        <diffuse>
+            <red>1</red>
+            <green>1</green>
+            <blue>1</blue>
+        </diffuse>
         <ambient>
             <red>0.80</red>
             <green>0.73</green>
             <blue>0.40</blue>
         </ambient>
         <emission>
-            <red>0.08</red>
-            <green>0.15</green>
+            <red>0.1</red>
+            <green>0.18</green>
             <blue>0.031</blue>
             <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
         </emission>
@@ -166,18 +195,20 @@
         <object-name>I_plate_01</object-name>
         <object-name>I_plate_02</object-name>
         <object-name>I_plate_03</object-name>
-        <transparency>
-            <alpha>1.0</alpha>
-        </transparency>
+        <diffuse>
+            <red>0.9</red>
+            <green>0.9</green>
+            <blue>0.9</blue>
+        </diffuse>
         <ambient>
-            <red>0.90</red>
-            <green>0.83</green>
-            <blue>0.63</blue>
+            <red>0.80</red>
+            <green>0.73</green>
+            <blue>0.40</blue>
         </ambient>
         <emission>
-            <red>0.01</red>
-            <green>0.2</green>
-            <blue>0.0</blue>
+            <red>0.1</red>
+            <green>0.18</green>
+            <blue>0.031</blue>
             <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
         </emission>
     </animation>
@@ -185,16 +216,20 @@
     <animation> 
         <type>material</type>
         <object-name>I_plate_01BIS</object-name>
-        <texture>Pictures/G91-Al-dark.png</texture>
+        <diffuse>
+            <red>0.35</red>
+            <green>0.35</green>
+            <blue>0.35</blue>
+        </diffuse>
         <ambient>
-            <red>0.6</red>
-            <green>0.6</green>
-            <blue>0.6</blue>
+            <red>0.15</red>
+            <green>0.15</green>
+            <blue>0.15</blue>
         </ambient>
         <emission>
-            <red>0.15</red>
-            <green>0.0</green>
-            <blue>0.0</blue>
+            <red>0.025</red>
+            <green>0.0005</green>
+            <blue>0.0005</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
@@ -202,14 +237,18 @@
     <animation> 
         <type>material</type>
         <object-name>I_hand_01</object-name>
-        <texture>Pictures/G91-Al-dark.png</texture>
+        <diffuse>
+            <red>0.25</red>
+            <green>0.25</green>
+            <blue>0.25</blue>
+        </diffuse>
         <ambient>
-            <red>0.0</red>
-            <green>0.0</green>
-            <blue>0.0</blue>
+            <red>0.15</red>
+            <green>0.15</green>
+            <blue>0.15</blue>
         </ambient>
         <emission>
-            <red>0.20</red>
+            <red>0.01</red>
             <green>0.0</green>
             <blue>0.0</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
@@ -221,14 +260,18 @@
         <object-name>I_plate_02BIS</object-name>
         <object-name>I_plate_03BIS</object-name>
         <object-name>I_hand_red</object-name>
-        <texture>Pictures/G91-Dark-Grey.png</texture>
+        <diffuse>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </diffuse>
         <ambient>
-            <red>0.2</red>
-            <green>0.2</green>
-            <blue>0.2</blue>
+            <red>0.05</red>
+            <green>0.05</green>
+            <blue>0.05</blue>
         </ambient>
         <emission>
-            <red>0.15</red>
+            <red>0.01</red>
             <green>0.0</green>
             <blue>0.0</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
@@ -238,7 +281,11 @@
     <animation> 
         <type>material</type>
         <object-name>I_hand_red.02</object-name>
-        <texture>Pictures/G91-Red_02.png</texture>
+        <diffuse>
+            <red>0.8</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </diffuse>
         <ambient>
             <red>0.8</red>
             <green>0.1</green>
@@ -372,5 +419,15 @@
             </binding>
         </action>
     </animation>
+    
+    <model>
+        <name>procedural_light_cockpit_gauge_spot_red</name>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Effects/lights/procedural_light_cockpit_gauge_spot_red.xml</path>
+        <offsets>
+            <x-m> 0.03</x-m>
+            <y-m> 0.0 </y-m>
+            <z-m> 0.0 </z-m>
+        </offsets>
+    </model>
     
 </PropertyList>

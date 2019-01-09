@@ -35,23 +35,7 @@
         </submodels>
         
         <multiplay>
-            <chat_display>1</chat_display>
-            <generic> 
-                <int   n="0"  type="int">  0 </int>                                         <!--  0 immat -->
-                <int   n="1"  type="int">  0 </int>                                         <!--  1 immat -->
-                <int   n="2"  type="int">  0 </int>                                         <!--  2 immat -->
-                <int   n="3"  type="int">  0 </int>                                         <!--  3 immat -->
-                <int   n="4"  type="int">  0 </int>                                         <!--  4 immat -->
-                <int   n="5"  type="int">  0 </int>                                         <!--  5 immat -->
-                <int   n="6"  type="bool" alias="/sim/model/versionPAN">false</int>         <!--  6 version PAN -->
-                <int   n="7"  type="int">  0 </int>                                         <!--  7 color -->
-                <int   n="8"  alias="/systems/electrical/outputs/nav-lights">  0 </int>     <!--  8 nav-lights -->
-                <int   n="9"  alias="/sim/model/lights/beacon/state">  false </int>         <!--  9 strobe-lights -->
-                <int   n="11" type="bool" alias="/sim/model/hide-smoketanks">true</int>     <!-- 11 Smoke tanks -->
-                <int   n="12" type="bool" alias="/smoke/active">false</int>                 <!-- 12 Smoke active -->
-                <int   n="13" type="int"  alias="/smoke/colors">1</int>                     <!-- 13 Smoke color -->
-                <int   n="14" type="bool" alias="/sim/model/hide-tanks">false</int>         <!-- 14 Smoke tanks -->
-                <int   n="15" type="bool" alias="/sim/model/hide-probe">false</int>         <!-- 15 Probe -->
+            <generic>                 
                 <float n="0"  alias="/sim/model/door-positions/crew/position-norm"/>
                 <float n="1"  alias="/sim/model/door-positions/passenger/position-norm"/>
                 <float n="2"  alias="/position/gear-agl-m"> 0 </float>                      <!-- altitude for MP shadow -->
@@ -65,9 +49,8 @@
                 <float n="12" alias="/gear/gear[1]/rollspeed-ms"/>
                 <float n="13" alias="/gear/gear[2]/rollspeed-ms"/>
                 <float n="14" alias="/controls/engines/engine[0]/throttle"/>
-                <!-- For Bombable -->
-                <int type="int" n="10" alias="controls/armament/trigger">0</int>
-                <string n="9" type="string" />
+                <int n="10500" alias="/sim/G91/liveries/multiplay/ID"/>
+                <int n="10501" alias="/sim/G91/liveries/multiplay/resolution"/>
             </generic>
         </multiplay>
         
@@ -160,7 +143,6 @@
             <!--
             <file>Aircraft/G91-R1B_HD/Nasal/liveries.nas</file>
             -->
-            
             <!-- Generic -->
             <file>Aircraft/G91-R1B_HD/Nasal/Ambient/ambient_data.nas</file>
             <file>Aircraft/G91-R1B_HD/Nasal/Autopilot/autopilot_set.nas</file>
@@ -179,6 +161,7 @@
             <file>Aircraft/G91-R1B_HD/Nasal/Gauges/clock.nas</file>
             <file>Aircraft/G91-R1B_HD/Nasal/Gauges/accelerometer.nas</file>
             <file>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/J8/J8.nas</file>
+            <file>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Gauges/SFOM_83A/SFOM_83A_01.nas</file>
             <!-- Stores -->
             <file>Aircraft/G91-R1B_HD/Nasal/Stores/Stores.nas</file>
             <!-- Test -->
