@@ -7,7 +7,7 @@
         <long-description>The Fiat G.91 was an Italian jet fighter aircraft designed and built by Fiat Aviazione, which later merged into Aeritalia.
             The G.91 has its origins in the NATO-organised NBMR-1 competition in 1953, which sought a light fighter-bomber "Light Weight Strike Fighter" to be adopted as standard equipment across the air forces of the various NATO nations. 
         </long-description>
-        <author>Massimiliano Cuccarano rendering 3D and Adriano Bassignana FDM JSBSim and historical research</author>
+        <author>Massimiliano Cuccarano rendering 3D, Adriano Bassignana FDM JSBSim and historical research, Joshua Davidson Flight Control System</author>
         <status>in_progress</status>
         <aircraft-version>0.1</aircraft-version>
         <license>GPL 2+</license>

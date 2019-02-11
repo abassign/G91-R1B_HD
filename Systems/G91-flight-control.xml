@@ -1,0 +1,198 @@
+<!-- G91 Flight Control System -->
+
+<!-- Copyright (c) 2019 Joshua Davidson (it0uchpods) -->
+
+<system name="G91 FCS"> <!-- Basically, we converted the one in the base JSB file and made improvements, Deflection amounts came from there -->
+	
+	<channel name="Elevators">
+		
+		<aerosurface_scale name="fcs/pitch-trim-input">
+			<description>
+				The range define the trim position, is important to have zero_centered false.
+				The value is found for to have a neutral asset with zero trim.
+			</description>
+			<input>fcs/pitch-trim-cmd-norm</input>
+			<zero_centered>false</zero_centered>
+			<range>
+				<min>-0.22</min> <!-- 3.3 deg / 15 deg -->
+				<max>0.0</max>
+			</range>
+		</aerosurface_scale>
+		
+		<summer name="fcs/pitch-input-sum">
+			<input>fcs/elevator-cmd-norm</input>
+			<input>fcs/pitch-trim-input</input>
+			<!--input>systems/active-stability/pitch-damper/output</input-->
+		</summer>
+		
+		<pure_gain name="fcs/elevator-deg-cmd">
+			<input>fcs/pitch-input-sum</input>
+			<gain>15</gain>
+		</pure_gain>
+		
+		<actuator name="fcs/elevator-deg">
+			<input>fcs/elevator-deg-cmd</input>
+			<rate_limit>100</rate_limit>
+			<lag>26.7</lag>
+			<output>fcs/elevator-pos-deg</output>
+		</actuator>
+		
+		<pure_gain name="fcs/elevator-rad">
+			<input>fcs/elevator-deg</input>
+			<gain>0.0174533</gain> <!-- Deg to Rad -->
+			<output>fcs/elevator-pos-rad</output>
+		</pure_gain>
+	
+	</channel>
+	
+	<channel name="Ailerons">
+		
+		<summer name="fcs/roll-input-sum">
+			<input>fcs/aileron-cmd-norm</input>
+			<input>fcs/roll-trim-cmd-norm</input>
+		</summer>
+		
+		<pure_gain name="fcs/aileron-deg-cmd">
+			<input>fcs/roll-input-sum</input>
+			<gain>15</gain>
+		</pure_gain>
+		
+		<actuator name="fcs/aileron-left-deg">
+			<input>fcs/aileron-deg-cmd</input>
+			<rate_limit>100</rate_limit>
+			<lag>26.7</lag>
+			<output>fcs/left-aileron-pos-deg</output>
+		</actuator>
+		
+		<pure_gain name="fcs/aileron-left-rad">
+			<input>fcs/aileron-left-deg</input>
+			<gain>0.0174533</gain> <!-- Deg to Rad -->
+			<output>fcs/left-aileron-pos-rad</output>
+		</pure_gain>
+		
+		<actuator name="fcs/aileron-right-deg">
+			<input>-fcs/aileron-deg-cmd</input>
+			<rate_limit>100</rate_limit>
+			<lag>26.7</lag>
+			<output>fcs/right-aileron-pos-deg</output>
+		</actuator>
+		
+		<pure_gain name="fcs/aileron-right-rad">
+			<input>fcs/aileron-right-deg</input>
+			<gain>0.0174533</gain> <!-- Deg to Rad -->
+			<output>fcs/right-aileron-pos-rad</output>
+		</pure_gain>
+		
+		<scheduled_gain name="fcs/aileron-left-speed-reduction">
+			<description>
+				I don't know what this is for, doesn't appear to be used in aero.
+			</description>
+			<input>fcs/aileron-left-rad</input>
+			<table>
+				<independentVar>aero/qbar-psf</independentVar>
+				<tableData>
+					   0.0  1.00
+					 200.0  0.95
+					1000.0  0.00
+					2000.0 -0.20
+				</tableData>
+			</table>
+			<output>fcs/left-aileron-pos-rad-speed-red</output>
+		</scheduled_gain>
+		
+		<scheduled_gain name="fcs/aileron-right-speed-reduction">
+			<description>
+				I don't know what this is for, doesn't appear to be used in aero.
+			</description>
+			<input>fcs/aileron-right-rad</input>
+			<table>
+				<independentVar>aero/qbar-psf</independentVar>
+				<tableData>
+					   0.0  1.00
+					 200.0  0.95
+					1000.0  0.00
+					2000.0 -0.20
+				</tableData>
+			</table>
+			<output>fcs/right-aileron-pos-rad-speed-red</output>
+		</scheduled_gain>
+	
+	</channel>
+	
+	<channel name="Rudder">
+		
+		<summer name="fcs/yaw-input-sum">
+			<input>fcs/rudder-cmd-norm</input>
+			<input>fcs/yaw-trim-cmd-norm</input>
+			<!--input>systems/active-stability/yaw-damper/output</input-->
+		</summer>
+		
+		<pure_gain name="fcs/rudder-deg-cmd">
+			<input>fcs/yaw-input-sum</input>
+			<gain>20</gain>
+		</pure_gain>
+		
+		<actuator name="fcs/rudder-deg">
+			<input>fcs/rudder-deg-cmd</input>
+			<rate_limit>100</rate_limit>
+			<lag>26.7</lag>
+			<output>fcs/rudder-pos-deg</output>
+		</actuator>
+		
+		<pure_gain name="fcs/rudder-rad">
+			<input>fcs/rudder-deg</input>
+			<gain>0.0174533</gain> <!-- Deg to Rad -->
+			<output>fcs/rudder-pos-rad</output>
+		</pure_gain>
+		
+		<pure_gain name="fcs/rudder-trim-deg-cmd">
+			<input>fcs/yaw-trim-cmd-norm</input>
+			<gain>20</gain>
+		</pure_gain>
+		
+		<actuator name="fcs/rudder-trim-deg">
+			<input>fcs/rudder-trim-deg-cmd</input>
+			<rate_limit>75</rate_limit>
+			<lag>26.7</lag>
+			<output>fcs/rudder-trim-pos-deg</output>
+		</actuator>
+	
+	</channel>
+	
+	<channel name="Flaps">
+		
+		<kinematic name="rubbish/flap-pos-deg">
+			<input>fcs/flap-cmd-norm</input>
+			<traverse>
+				<setting>
+					<position>0</position>
+					<time>0</time>
+				</setting>
+				<setting>
+					<position>15</position>
+					<time>4</time>
+				</setting>
+				<setting>
+					<position>30</position>
+					<time>3</time>
+				</setting>
+			</traverse>
+			<output>fcs/flap-pos-deg</output>
+		</kinematic>
+		
+		<aerosurface_scale name="rubbish/flap-pos-norm">
+			<input>fcs/flap-pos-deg</input>
+			<domain>
+				<min>0</min>
+				<max>30</max>
+			</domain>
+			<range>
+				<min>0</min>
+				<max>1</max>
+			</range>
+			<output>fcs/flap-pos-norm</output>
+		</aerosurface_scale>
+		
+	</channel>
+
+</system>
