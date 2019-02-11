@@ -26,7 +26,7 @@
             <greater-than-equals>
                 <property>/fdm/jsbsim/systems/stations/hardPointDxInternal/Count</property>
                 <value>1</value>
-            </greater-than>
+            </greater-than-equals>
         </condition>
     </animation>
     
