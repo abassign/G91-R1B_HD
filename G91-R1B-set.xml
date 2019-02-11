@@ -31,8 +31,10 @@
         </engine>
     </engines>
     
-    <gear>
-        <brake-parking>1</brake-parking>
-    </gear>
+    <controls>
+        <gear>
+            <brake-parking>1</brake-parking>
+        </gear>
+    </controls>
     
 </PropertyList>
