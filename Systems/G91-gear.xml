@@ -106,7 +106,6 @@ Description: G91R4 hydraulics system from "Manuale di pilotaggio (1-11,1-12, etc
         
     </channel>
     
-    
     <channel name="Landing gear hydraulics extension" execrate="8">
         
         <summer>
@@ -150,7 +149,6 @@ Description: G91R4 hydraulics system from "Manuale di pilotaggio (1-11,1-12, etc
         </pure_gain>
         
     </channel>
-    
     
     <function name="systems/gears/unit[0]/hydraulics-extension">
         <description>Extension main gear hydraulic cylinder</description>

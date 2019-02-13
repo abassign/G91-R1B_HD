@@ -135,6 +135,12 @@
         
         <G91 include="Models/G91_Params.xml"/>
         
+        <systems>
+            <autopilot>
+                <name>Testing rules</name>
+                <path>Systems/test-rule.xml</path>
+			</autopilot>
+        </systems>
     </sim>
     
     <nasal>

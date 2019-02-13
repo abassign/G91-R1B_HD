@@ -4,6 +4,8 @@
 
 <system name="G91 FCS"> <!-- Basically, we converted the one in the base JSB file and made improvements, Deflection amounts came from there -->
 	
+	<property value="0">/orientation/heading-deg-rate</property>
+	
 	<channel name="Elevators">
 		
 		<pure_gain name="fcs/pitch-trim-input">
@@ -258,11 +260,48 @@
 		
 	</channel>
 	
+	<channel name="Steering Brake Command">
+		
+		<scheduled_gain name="fcs/left-brake">
+			<input>/controls/flight/rudder</input>
+			<table>
+				<independentVar lookup="row">/velocities/groundspeed-kt</independentVar>
+				<tableData>
+					 10 -1.0
+					 60 -0.2
+					110 -0.0
+				</tableData>
+			</table>
+			<clipto>
+				<min>0</min>
+				<max>1</max>
+			</clipto>
+		</scheduled_gain>
+		
+		<scheduled_gain name="fcs/right-brake">
+			<input>/controls/flight/rudder</input>
+			<table>
+				<independentVar lookup="row">/velocities/groundspeed-kt</independentVar>
+				<tableData>
+					 10  1.0
+					 60  0.2
+					110  0.0
+				</tableData>
+			</table>
+			<clipto>
+				<min>0</min>
+				<max>1</max>
+			</clipto>
+		</scheduled_gain>
+	
+	</channel>
+	
 	<channel name="Brakes">
 		
 		<summer name="fcs/left-brake-summer">
 			<input>/controls/gear/brake-left</input>
 			<input>/controls/gear/brake-parking</input>
+			<input>fcs/left-brake</input>
 			<clipto>
 				<min>0</min>
 				<max>1</max>
@@ -284,6 +323,7 @@
 		<summer name="fcs/right-brake-summer">
 			<input>/controls/gear/brake-right</input>
 			<input>/controls/gear/brake-parking</input>
+			<input>fcs/right-brake</input>
 			<clipto>
 				<min>0</min>
 				<max>1</max>
