@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+    
+    <path>hooks.ac</path>
+    
+    <!-- On internal Hardpoints -->
+    
+    <animation>
+        <type>select</type>
+        <object-name>tank_hook_sx_front_1</object-name>
+        <object-name>tank_hook_sx_rear_1</object-name>
+        <condition>
+            <and>
+                <greater-than-equals>
+                    <property>/fdm/jsbsim/systems/stations/hardPointSxInternal/Count</property>
+                    <value>1</value>
+                </greater-than-equals>
+                <equals>
+                    <property>/fdm/jsbsim/systems/stations/stationSxInternal/typeHook</property>
+                    <value>1</value>
+                </equals>
+            </and>
+        </condition>
+    </animation>
+    
+    <animation>
+        <type>select</type>
+        <object-name>tank_hook_sx_front_2</object-name>
+        <object-name>tank_hook_sx_rear_2</object-name>
+        <condition>
+            <and>
+                <greater-than-equals>
+                    <property>/fdm/jsbsim/systems/stations/hardPointSxInternal/Count</property>
+                    <value>1</value>
+                </greater-than-equals>
+                <equals>
+                    <property>/fdm/jsbsim/systems/stations/stationSxInternal/typeHook</property>
+                    <value>2</value>
+                </equals>
+            </and>
+        </condition>
+    </animation>
+    
+    <animation>
+        <type>select</type>
+        <object-name>tank_hook_dx_front_1</object-name>
+        <object-name>tank_hook_dx_rear_1</object-name>
+        <condition>
+            <and>
+                <greater-than-equals>
+                    <property>/fdm/jsbsim/systems/stations/hardPointDxInternal/Count</property>
+                    <value>1</value>
+                </greater-than-equals>
+                <equals>
+                    <property>/fdm/jsbsim/systems/stations/stationDxInternal/typeHook</property>
+                    <value>1</value>
+                </equals>
+            </and>
+        </condition>
+    </animation>
+    
+    <animation>
+        <type>select</type>
+        <object-name>tank_hook_dx_front_2</object-name>
+        <object-name>tank_hook_dx_rear_2</object-name>
+        <condition>
+            <and>
+                <greater-than-equals>
+                    <property>/fdm/jsbsim/systems/stations/hardPointDxInternal/Count</property>
+                    <value>1</value>
+                </greater-than-equals>
+                <equals>
+                    <property>/fdm/jsbsim/systems/stations/stationDxInternal/typeHook</property>
+                    <value>2</value>
+                </equals>
+            </and>
+        </condition>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>tank_hook_sx_front_1</object-name>
+        <object-name>tank_hook_sx_rear_1</object-name>
+        <object-name>tank_hook_sx_front_2</object-name>
+        <object-name>tank_hook_sx_rear_2</object-name>
+        <object-name>tank_hook_dx_front_1</object-name>
+        <object-name>tank_hook_dx_rear_1</object-name>
+        <object-name>tank_hook_dx_front_2</object-name>
+        <object-name>tank_hook_dx_rear_2</object-name>
+        <texture>Pictures/G91-Dark-Grey.png</texture>
+        <ambient>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </ambient>
+    </animation>
+    
+</PropertyList>

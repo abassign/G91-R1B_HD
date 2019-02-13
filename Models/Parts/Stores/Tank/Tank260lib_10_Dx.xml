@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+    
+    <path>Tank260lib_10.ac</path>
+    <nopreview/>
+
+    <offsets>
+        <x-m>-1.78</x-m>
+        <y-m>2.025</y-m>
+        <z-m>-0.449</z-m>
+        <pitch-offset>-2.5</pitch-offset>
+    </offsets>
+    <!--
+    <effect>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Liveries/liveries_002</inherits-from>
+        <object-name>tank_260lb_sub_01</object-name>
+        <object-name>tank_260lb_sup_01</object-name>
+        <object-name>tank_260lb_tail_01</object-name>
+    </effect>
+    -->
+    <animation> 
+        <type>material</type>
+        <object-name>tank_260lb_sub_01</object-name>
+        <object-name>tank_260lb_sup_01</object-name>
+        <object-name>tank_260lb_tail_01</object-name>
+        <diffuse>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+            <factor-prop>sim/G91/liveries/active/diffuse</factor-prop>
+        </diffuse>
+        <specular>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+            <factor-prop>sim/G91/liveries/active/specular</factor-prop>
+        </specular>
+    </animation>
+    
+    <effect>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
+        <object-name>tank_260lb_hook_01</object-name>
+        <object-name>tank_260lb_hook_02</object-name>
+    </effect>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>tank_260lb_hook_01</object-name>
+        <object-name>tank_260lb_hook_02</object-name>
+        <texture>Pictures/G91-Dark-Grey.png</texture>
+        <ambient>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </ambient>
+    </animation>
+
+    <animation>
+        <type>select</type>
+        <nopreview/>
+        <object-name>tank_260lb_hook_01</object-name>
+        <object-name>tank_260lb_hook_02</object-name>
+        <object-name>tank_260lb_sub_01</object-name>
+        <object-name>tank_260lb_sup_01</object-name>
+        <object-name>tank_260lb_tail_01</object-name>
+        <condition> 
+            <equals>
+                <property>sim/G91/stores/stationDxInternalTypeLoad</property>
+                <value>10</value>
+            </equals>
+        </condition>
+    </animation>
+
+
+</PropertyList>

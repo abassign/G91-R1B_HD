@@ -140,9 +140,6 @@
     <nasal>
         
         <general>
-            <!--
-            <file>Aircraft/G91-R1B_HD/Nasal/liveries.nas</file>
-            -->
             <!-- Generic -->
             <file>Aircraft/G91-R1B_HD/Nasal/Ambient/ambient_data.nas</file>
             <file>Aircraft/G91-R1B_HD/Nasal/Autopilot/autopilot_set.nas</file>
@@ -163,7 +160,7 @@
             <file>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/J8/J8.nas</file>
             <file>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Gauges/SFOM_83A/SFOM_83A_01.nas</file>
             <!-- Stores -->
-            <file>Aircraft/G91-R1B_HD/Nasal/Stores/Stores.nas</file>
+            <file>Aircraft/G91-R1B_HD/Models/Parts/Stores/Stores.nas</file>
             <!-- Test -->
             <file>Aircraft/G91-R1B_HD/Nasal/light-manager.nas</file>
         </general>

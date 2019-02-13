@@ -9,6 +9,7 @@ var prop = props.globals.initNode("sim/G91/gauge_red_spot_lamp_emission", 0, "DO
 
 
 var prop = props.globals.initNode("sim/G91/re_emit/gauge_phosphorescent_light", 0, "DOUBLE");
+var prop = props.globals.initNode("sim/G91/re_emit/gauge_red_30_phosphorescent_light", 0, "DOUBLE");
 var prop = props.globals.initNode("sim/G91/re_emit/gauge_red_light", 0, "DOUBLE");
 var prop = props.globals.initNode("sim/G91/re_emit/gauge_spot_internal_red_light", 0, "DOUBLE");
 var prop = props.globals.initNode("sim/G91/light/lg_base", 0, "DOUBLE");
@@ -42,6 +43,7 @@ var timer_re_emit_green_red_gauges = maketimer(0.5, func() {
         pl_phosphorescent_emission = 1.0;
     }
     setprop("sim/G91/re_emit/gauge_phosphorescent_light",pl_phosphorescent_emission * light_by_tension_bus);
+    setprop("sim/G91/re_emit/gauge_red_30_phosphorescent_light",(pl_emission * 0.3 + pl_phosphorescent_emission) * light_by_tension_bus);
    
 });
 timer_re_emit_green_red_gauges.start();

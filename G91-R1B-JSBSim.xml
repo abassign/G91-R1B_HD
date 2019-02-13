@@ -63,7 +63,16 @@
     <system file="G91-engine-sound"/>
     <system file="G91-stations"/>
     <system file="G91-servo-wings"/>
-    <system file="PHI"/>
+    
+    <!-- for testing -->
+    <system file="PHI-old"/>
+    
+    <!--
+    <system file="radio-PTR175"/>
+    <system file="ADF-Marconi-8283"/>
+    -->
+    
+    <system file="pippo"/>
     
     <metrics>
         <wingarea  unit="FT2">  176.75 </wingarea>

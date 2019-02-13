@@ -21,17 +21,16 @@
         <object-name>flag_A (Meshed)</object-name>
         <object-name>knob_caging_top_A (Meshed)</object-name>
         <object-name>horizon (Meshed)</object-name>
-        <object-name>sphere_A (Meshed)</object-name>
         <object-name>sphere_B (Meshed)</object-name>
         <object-name>airplane_A (Meshed)</object-name>
         <object-name>bank_index (Meshed)</object-name>
         <object-name>Support (Meshed)</object-name>
+        <object-name>marker (Meshed)</object-name>
     </effect>
     
     <effect>
         <inherits-from>Effects/model-transparent</inherits-from>
         <object-name>glass (Meshed)</object-name>
-        <object-name>sphere_A (Meshed)</object-name>
     </effect>
     
     <effect>
@@ -51,11 +50,11 @@
         <object-name>flag_A (Meshed)</object-name>
         <object-name>knob_caging_top_A (Meshed)</object-name>
         <object-name>horizon (Meshed)</object-name>
-        <object-name>sphere_A (Meshed)</object-name>
         <object-name>sphere_B (Meshed)</object-name>
         <object-name>airplane_A (Meshed)</object-name>
         <object-name>bank_index (Meshed)</object-name>
         <object-name>Support (Meshed)</object-name>
+        <object-name>marker (Meshed)</object-name>
     </effect>
     
     <animation> 
@@ -284,6 +283,7 @@
         <object-name>back_frontal_A (Meshed)</object-name>
         <object-name>flag_A (Meshed)</object-name>
         <object-name>knob_caging_top_A (Meshed)</object-name>
+        <object-name>marker (Meshed)</object-name>
         <diffuse>
             <red>1.0</red>
             <green>1.0</green>
@@ -304,6 +304,27 @@
     
     <animation>
         <type>material</type>
+        <object-name>marker (Meshed)</object-name>
+        <diffuse>
+            <red>0.9</red>
+            <green>0.9</green>
+            <blue>0.9</blue>
+        </diffuse>
+        <ambient>
+            <red>0.80</red>
+            <green>0.73</green>
+            <blue>0.40</blue>
+        </ambient>
+        <emission>
+            <red>0.07</red>
+            <green>0.25</green>
+            <blue>0.06</blue>
+            <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation>
+        <type>material</type>
         <object-name>horizon (Meshed)</object-name>
         <diffuse>
             <red>0.8</red>
@@ -314,30 +335,6 @@
             <red>0.8</red>
             <green>0.73</green>
             <blue>0.53</blue>
-        </ambient>
-        <emission>
-            <red>0.08</red>
-            <green>0.3</green>
-            <blue>0.06</blue>
-            <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
-        </emission>
-    </animation>
-    
-    <animation>
-        <type>material</type>
-        <object-name>sphere_A (Meshed)</object-name>
-        <transparency>
-            <alpha>0.0</alpha>
-        </transparency>
-        <diffuse>
-            <red>0.28</red>
-            <green>0.28</green>
-            <blue>0.28</blue>
-        </diffuse>
-        <ambient>
-            <red>0.90</red>
-            <green>0.83</green>
-            <blue>0.63</blue>
         </ambient>
         <emission>
             <red>0.08</red>
@@ -405,13 +402,24 @@
     
     <animation>
         <type>rotate</type>
-        <object-name>horizon (Meshed)</object-name>
         <object-name>bank_index (Meshed)</object-name>
         <property>fdm/jsbsim/systems/gauges/cockpit-attitude-roll-deg-display</property>
-        <interpolation>
-            <entry><ind>-90.0</ind><dep>-90.0</dep></entry>
-            <entry><ind> 90.0</ind><dep> 90.0</dep></entry>
-        </interpolation>
+        <axis>
+            <x>1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+        <center>
+            <x-m>-0.032</x-m>
+            <y-m>0</y-m>
+            <z-m>0</z-m>
+        </center>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>horizon (Meshed)</object-name>
+        <property>fdm/jsbsim/systems/gauges/cockpit-attitude-roll-deg-display</property>
         <axis>
             <x>1</x>
             <y>0</y>
@@ -435,6 +443,39 @@
         <axis>
             <x>0</x>
             <y>1</y>
+            <z>0</z>
+        </axis>
+        <center>
+            <x-m>-0.032</x-m>
+            <y-m>0</y-m>
+            <z-m>0</z-m>
+        </center>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>marker (Meshed)</object-name>
+        <property>fdm/jsbsim/systems/gauges/cockpit-attitude-roll-deg-display</property>
+        <axis>
+            <x>1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+        <center>
+            <x-m>-0.032</x-m>
+            <y-m>0</y-m>
+            <z-m>0</z-m>
+        </center>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>marker (Meshed)</object-name>
+        <property>fdm/jsbsim/systems/gauges/cockpit-attitude-pitch-deg-display</property>
+        <offset-deg>90</offset-deg>
+        <axis>
+            <x>0</x>
+            <y>-1</y>
             <z>0</z>
         </axis>
         <center>

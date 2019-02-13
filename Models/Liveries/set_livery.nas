@@ -189,6 +189,11 @@ var setCanvas = func() {
     cw.addPlacement({"node": "D_wing_dx.007"});
     cw.addPlacement({"node": "D_equilibratore_dx"});
     cw.addPlacement({"node": "D_equilibratore_sx.002"});
+    
+    # Stores
+    cw.addPlacement({"node": "tank_260lb_sub_01"});
+    cw.addPlacement({"node": "tank_260lb_sup_01"});
+    cw.addPlacement({"node": "tank_260lb_tail_01"});
 
     cw_root = cw.createGroup();
 

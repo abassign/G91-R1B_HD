@@ -2,30 +2,98 @@
 
 <PropertyList>
     
-    <path>upright.ac</path>
+    <path>hardpoints.ac</path>
     
-    <!-- internal Hardpoints -->
+    <effect>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
+        <object-name>hp_dx_int_01_internal</object-name>
+        <object-name>hp_sx_int_01_internal</object-name>
+        <object-name>hp_dx_int_PAN_separator</object-name>
+        <object-name>hp_dx_int_PAN_bottom</object-name>
+        <object-name>hp_sx_int_PAN_separator</object-name>
+        <object-name>hp_sx_int_PAN_bottom</object-name>
+    </effect>
+    
+    <effect>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/glass-chrome</inherits-from>
+        <object-name>hp_dx_int_01_external</object-name>
+        <object-name>hp_dx_int_PAN_external</object-name>
+        <object-name>hp_sx_int_01_external</object-name>
+        <object-name>hp_sx_int_PAN_external</object-name>
+    </effect>
     
     <animation>
         <type>select</type>
-        <object-name>upright_dx</object-name>
-        <object-name>upright_sx</object-name>
+        <object-name>hp_dx_int_01_external</object-name>
+        <object-name>hp_dx_int_01_internal</object-name>
         <condition>
-            <or>
-                <equals>
-                    <property>sim/G91/stores/stationSxInternalTypeLoad</property>
-                    <value>10</value>
-                </equals>
-                <equals>
-                    <property>sim/G91/stores/stationDxInternalTypeLoad</property>
-                    <value>10</value>
-                </equals>
-            </or>
+            <equals>
+                <property>/fdm/jsbsim/systems/stations/stationDxInternal/typeHardpoint</property>
+                <value>1</value>
+            </equals>
         </condition>
     </animation>
     
+    <animation>
+        <type>select</type>
+        <object-name>hp_dx_int_PAN_bottom</object-name>
+        <object-name>hp_dx_int_PAN_external</object-name>
+        <object-name>hp_dx_int_PAN_separator</object-name>
+        <condition>
+            <equals>
+                <property>/fdm/jsbsim/systems/stations/stationDxInternal/typeHardpoint</property>
+                <value>2</value>
+            </equals>
+        </condition>
+    </animation>
+    
+    <animation>
+        <type>select</type>
+        <object-name>hp_sx_int_01_external</object-name>
+        <object-name>hp_sx_int_01_internal</object-name>
+        <condition>
+            <equals>
+                <property>/fdm/jsbsim/systems/stations/stationSxInternal/typeHardpoint</property>
+                <value>1</value>
+            </equals>
+        </condition>
+    </animation>
+    
+    <animation>
+        <type>select</type>
+        <object-name>hp_sx_int_PAN_bottom</object-name>
+        <object-name>hp_sx_int_PAN_external</object-name>
+        <object-name>hp_sx_int_PAN_separator</object-name>
+        <condition>
+            <equals>
+                <property>/fdm/jsbsim/systems/stations/stationSxInternal/typeHardpoint</property>
+                <value>2</value>
+            </equals>
+        </condition>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>hp_dx_int_01_external</object-name>
+        <object-name>hp_dx_int_01_internal</object-name>
+        <object-name>hp_dx_int_PAN_bottom</object-name>
+        <object-name>hp_dx_int_PAN_external</object-name>
+        <object-name>hp_dx_int_PAN_separator</object-name>
+        <object-name>hp_sx_int_01_external</object-name>
+        <object-name>hp_sx_int_01_internal</object-name>
+        <object-name>hp_sx_int_PAN_bottom</object-name>
+        <object-name>hp_sx_int_PAN_external</object-name>
+        <object-name>hp_sx_int_PAN_separator</object-name>
+        <texture>Pictures/G91-Dark-Grey.png</texture>
+        <ambient>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </ambient>
+    </animation>
+    
     <model>
-        <path>strut_tank.xml</path>
+        <path>hooks.xml</path>
     </model>
 
 </PropertyList>

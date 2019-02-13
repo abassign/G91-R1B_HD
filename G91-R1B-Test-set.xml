@@ -17,7 +17,7 @@
         
         <flight-model>jsb</flight-model>
         <!-- JSBSim start file -->
-        <aero>G91-R1B-JSBSim</aero>
+        <aero>G91-R1B-JSBSim-test</aero>
         
         <model>
             <path>Aircraft/G91-R1B_HD/Models/G91_Test.xml</path>

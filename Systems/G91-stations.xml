@@ -5,7 +5,16 @@ Description: G91R2 Canopy automation
 -->
 
 <system name="stations">
-
+    
+    <property value="0">systems/stations/stationSxExternal/typeHook</property>
+    <property value="0">systems/stations/stationSxInternal/typeHook</property>
+    <property value="0">systems/stations/stationDxExternal/typeHook</property>
+    <property value="0">systems/stations/stationDxInternal/typeHook</property>
+    <property value="0">systems/stations/stationSxExternal/typeHardpoint</property>
+    <property value="0">systems/stations/stationSxInternal/typeHardpoint</property>
+    <property value="0">systems/stations/stationDxExternal/typeHardpoint</property>
+    <property value="0">systems/stations/stationDxInternal/typeHardpoint</property>
+    
     <property value="0">systems/stations/hardPointSxExternal/Weight</property>
     <property value="0">systems/stations/hardPointSxExternal/Cd</property>
     <property value="0">systems/stations/hardPointSxExternal/Count</property>
@@ -31,7 +40,6 @@ Description: G91R2 Canopy automation
     <property value="0">systems/stations/stationDxExternal/Weight</property>
     <property value="0">systems/stations/stationDxExternal/Cd</property>
     <property value="0">systems/stations/stationDxExternal/Count</property>
-    
     
     <channel name="drag stations" execrate="32">
         

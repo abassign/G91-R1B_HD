@@ -47,9 +47,9 @@
             <heading-deg>0.0</heading-deg>
         </offsets>
     </model>
-    
+    <!--
     <model>
-        <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Lateral_Panels_Left/Radio_C1607_ARC52/Radio_C1607_ARC52.xml</path>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Lateral_Panels_Left/Radio/C1607_ARC52.xml</path>
         <offsets>
             <x-m>0.168</x-m>
             <y-m>-0.065</y-m>
@@ -57,5 +57,17 @@
             <roll-deg>0.5</roll-deg>
         </offsets>
     </model>
+    -->
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Lateral_Panels_Left/Radio/PTR175.xml</path>
+        <offsets>
+            <x-m>0.168</x-m>
+            <y-m>-0.065</y-m>
+            <z-m>-0.0035</z-m>
+            <roll-deg>0.5</roll-deg>
+            <heading-deg>-1.0</heading-deg>
+        </offsets>
+    </model>
+    
     
 </PropertyList> 

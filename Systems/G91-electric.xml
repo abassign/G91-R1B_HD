@@ -54,6 +54,7 @@ Description: G91R4 Electric system from "Manuale di pilotaggio (p.56)
     <property value="0">systems/electric/bus[1]/aerodynamic-brakes/sw</property>
     <property value="1">systems/electric/bus[1]/gyrocompass/fuse</property>
     <property value="1">systems/electric/bus[1]/gyrocompass/sw</property>
+    <property value="1">systems/electric/bus[1]/gyrocompass/I</property>
     <property value="1">systems/electric/bus[1]/IFF/fuse</property>
     <property value="1">systems/electric/bus[1]/IFF/sw</property>
     <property value="0.0">systems/electric/bus[1]/IFF/I</property>
@@ -144,7 +145,6 @@ Description: G91R4 Electric system from "Manuale di pilotaggio (p.56)
     <property value="10">systems/electric/inv-primary/I0</property>
     <property value="10">systems/electric/inv-secondary/I0</property>
 
-    
     <channel name="Calculate loads on bus" execrate="8">
         
         <summer name="systems/electric/bus[0]/I">

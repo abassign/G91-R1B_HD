@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+
+    <offsets>
+        <x-m>0.0</x-m>
+        <y-m>0.0</y-m>
+        <z-m>0.0</z-m>
+        <pitch-deg>0.0</pitch-deg>
+    </offsets>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Stores/Tank/Tank260lib_10_Dx.xml</path>
+    </model>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Stores/Tank/Tank260lib_10_Sx.xml</path>
+    </model>
+    
+</PropertyList>

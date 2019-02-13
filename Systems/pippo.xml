@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+
+<system name="ADF Marconi 8283">
+    
+    <property value="0.0">systems/gauges/radio/ADF-Marconi-8283/freq-set</property>
+    <property value="0.0">systems/gauges/radio/ADF-Marconi-8283/freq-band-set</property>
+    <property value="0.0">systems/gauges/radio/ADF-Marconi-8283/gain-set</property>
+    <property value="0.0">systems/gauges/radio/ADF-Marconi-8283/sw-on-togle</property>
+    <property value="0.0">systems/gauges/radio/ADF-Marconi-8283/sw-on-pos</property>
+    <property value="0.0">systems/gauges/radio/ADF-Marconi-8283/sw-dim-togle</property>
+    <property value="0.0">systems/gauges/radio/ADF-Marconi-8283/sw-dim-pos</property>
+    <property value="0.0">systems/gauges/radio/ADF-Marconi-8283/sw-dim-intensity</property>
+    <property value="0.0">systems/gauges/radio/ADF-Marconi-8283/operative-start-stop</property>
+    <property value="0.0">systems/gauges/radio/ADF-Marconi-8283/operative</property>
+    <property value="0.0">systems/gauges/radio/ADF-Marconi-8283/operative-heating</property>
+    <property value="0.0">systems/gauges/radio/ADF-Marconi-8283/vol-set</property>
+    
+    <channel name="systems gauges radio ADF Marconi 8283 electric" execrate="32">
+        
+        <switch name="systems/gauges/radio/ADF-Marconi-8283/operative-start-stop">
+            <default value="0"/>
+            <test logic="AND" value="1">
+                systems/electric/bus[1]/UHF-radio/fuse == 1
+                systems/electric/bus[1]/V GE 24.0
+                systems/gauges/radio/ADF-Marconi-8283/sw-on-pos GE 0.9
+            </test>
+        </switch>
+        
+        <switch name="systems/electric/bus[1]/radiogoniometer/I">
+            <default value="0.0"/>
+            <test logic="AND" value="3.5">
+                systems/gauges/radio/ADF-Marconi-8283/operative-start-stop == 1
+            </test>
+        </switch>
+        
+        <!-- This delay is the time for starting the electronics -->
+        <lag_filter name="systems/gauges/radio/ADF-Marconi-8283/operative-heating">
+            <input>systems/gauges/radio/ADF-Marconi-8283/operative-start-stop</input>
+            <c1>0.2</c1>
+        </lag_filter>
+        
+        <switch name="systems/gauges/radio/ADF-Marconi-8283/operative">
+            <default value="0.0"/>
+            <test logic="AND" value="1.0">
+                systems/gauges/radio/ADF-Marconi-8283/operative-heating GT 0.9
+            </test>
+        </switch>
+        
+        <scheduled_gain name="systems/gauges/radio/ADF-Marconi-8283/volume">
+            <input>systems/gauges/radio/ADF-Marconi-8283/vol-set</input>
+            <table>
+                <independentVar>systems/gauges/radio/ADF-Marconi-8283/operative-heating</independentVar>
+                <tableData>
+                    0.0     0.0
+                    0.5     0.0
+                    0.6     0.1
+                    1.0     1.0
+                </tableData>
+            </table>
+            <gain>1.0</gain>
+        </scheduled_gain>
+
+    </channel>
+    
+    
+    <channel name="systems gauges radio ADF Marconi 8283 switches" execrate="4">
+
+        <lag_filter name="systems/gauges/radio/ADF-Marconi-8283/sw-on-pos">
+            <input>systems/gauges/radio/ADF-Marconi-8283/sw-on-togle</input>
+            <c1>8.0</c1>
+        </lag_filter>
+        
+        <lag_filter name="systems/gauges/radio/ADF-Marconi-8283/sw-dim-pos">
+            <input>systems/gauges/radio/ADF-Marconi-8283/sw-dim-togle</input>
+            <c1>8.0</c1>
+        </lag_filter>
+        
+        <fcs_function name="systems/gauges/radio/ADF-Marconi-8283/sw-dim-intensity">
+            <function>
+                <ifthen>
+                    <gt>
+                    <p>systems/gauges/radio/ADF-Marconi-8283/sw-dim-pos</p>
+                    <v>0.2</v>
+                    </gt>
+                    <quotient>
+                        <p>systems/warning-lights/light-intensity-by-bus1-tension</p>
+                        <v>2.0</v>
+                    </quotient>
+                    <p>systems/warning-lights/light-intensity-by-bus1-tension</p>
+                </ifthen>
+            </function>
+        </fcs_function>
+
+    </channel>
+    
+</system>

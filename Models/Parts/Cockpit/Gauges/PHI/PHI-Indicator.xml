@@ -629,7 +629,7 @@
         <object-name>arrow_2 (Meshed)</object-name>
         <object-name>arrow_3 (Meshed)</object-name>
         <object-name>arrow_4 (Meshed)</object-name>
-        <property>/fdm/jsbsim/systems/gauges/PHI/indicator/brg-lag</property>
+        <property>/fdm/jsbsim/systems/gauges/PHI/indicator/brg-lag-actuator</property>
         <axis>
             <x>1</x>
             <y>0</y>
