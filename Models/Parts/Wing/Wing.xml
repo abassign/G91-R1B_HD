@@ -1134,10 +1134,8 @@
     <animation>
         <type>rotate</type>
         <object-name>Aileron-sx</object-name>
-        <property>/fdm/jsbsim/fcs/left-aileron-pos-norm</property>
-        <min-deg>-15</min-deg>
-        <max-deg>15</max-deg>
-        <factor>-15</factor>
+        <property>/fdm/jsbsim/fcs/left-aileron-pos-deg</property>
+        <factor>-1</factor>
         <axis>
             <x1-m>1.16247</x1-m>
             <y1-m>-2.25308</y1-m>
@@ -1151,10 +1149,8 @@
     <animation>
         <type>rotate</type>
         <object-name>Aileron-dx</object-name>
-        <property>/fdm/jsbsim/fcs/right-aileron-pos-norm</property>
-        <min-deg>-15</min-deg>
-        <max-deg>15</max-deg>
-        <factor>-15</factor>
+        <property>/fdm/jsbsim/fcs/right-aileron-pos-deg</property>
+        <factor>1</factor>
         <axis>
             <x1-m>1.16247</x1-m>
             <y1-m>2.25308</y1-m>

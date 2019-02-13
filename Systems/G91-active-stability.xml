@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 
-<system name="Active stability">
+<system name="Active stability"> <!-- To be replaced... no longer used in FCS -->
     
     <property value="0.0">systems/active-stability/yaw-damper/washout-c1</property>
     <property value="0.0">systems/active-stability/pitch-damper/washout-c1</property>
