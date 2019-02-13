@@ -997,6 +997,7 @@
 
         <property value="-1.2146">aero/constant/Side_beta-coefficient</property>
         <property value="1.4227">aero/constant/Side_yaw-coefficient</property>
+        <property value="0.3816">aero/constant/Side_rudder-coefficient</property>
 
         <axis name="SIDE">
             <function name="aero/force/Side_beta">
@@ -1007,6 +1008,25 @@
                     <property>aero/beta-rad</property>
                     <property>aero/constant/Side_beta-coefficient</property>
                 </product>
+            </function>
+            
+            <function name="aero/force/Side_roll_rate">
+               <description>Side force due to roll rate</description>
+               <product>
+                   <property>aero/qbar-psf</property>
+                   <property>metrics/Sw-sqft</property>
+                   <property>aero/bi2vel</property>
+                   <property>velocities/p-aero-rad_sec</property>
+                   <table>
+                        <independentVar lookup="row">aero/Re</independentVar>
+                        <tableData>
+                            17307328  0.2160
+                            19038060  0.0159
+                            25960990  0.0069
+                            34828468  0.0071
+                        </tableData>
+                   </table>
+               </product>
             </function>
             
             <function name="aero/force/Side_yaw_rate">
@@ -1020,6 +1040,15 @@
                </product>
             </function>
             
+            <function name="aero/force/Side_rudder">
+                <description>Side force due to rudder</description>
+                <product>
+                    <property>aero/qbar-psf</property>
+                    <property>metrics/Sw-sqft</property>
+                    <property>fcs/rudder-rad</property>
+                    <property>aero/constant/Side_rudder-coefficient</property>
+                </product>
+            </function>
         </axis>
         
         <property value="-0.5112">aero/constant/Roll_damp-coefficient</property>
