@@ -30,11 +30,5 @@
             <running>true</running>
         </engine>
     </engines>
-    
-    <controls>
-        <gear>
-            <brake-parking>1</brake-parking>
-        </gear>
-    </controls>
-    
+
 </PropertyList>

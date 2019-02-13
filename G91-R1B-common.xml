@@ -143,6 +143,12 @@
         </systems>
     </sim>
     
+    <controls>
+        <gear>
+            <brake-parking>0</brake-parking>
+        </gear>
+    </controls>
+    
     <nasal>
         
         <general>
