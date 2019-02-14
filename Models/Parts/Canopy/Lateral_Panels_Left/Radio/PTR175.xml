@@ -260,27 +260,6 @@
     
     <animation> 
         <type>material</type>
-        <object-name>knob_freq A (Meshed)</object-name>
-        <diffuse>
-            <red>0.7</red>
-            <green>0.7</green>
-            <blue>0.7</blue>
-        </diffuse>
-        <ambient>
-            <red>1.0</red>
-            <green>0.9</green>
-            <blue>0.6</blue>
-        </ambient>
-        <emission>
-            <red>0.35</red>
-            <green>0.15</green>
-            <blue>0.0</blue>
-            <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
-        </emission>
-    </animation>
-    
-    <animation> 
-        <type>material</type>
         <object-name>digit A 10000 (Meshed)</object-name>
         <object-name>digit A 01000 (Meshed)</object-name>
         <object-name>digit A 00100 (Meshed)</object-name>

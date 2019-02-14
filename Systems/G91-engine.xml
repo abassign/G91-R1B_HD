@@ -21,8 +21,9 @@ Description: G91R2 Canopy automation
     <property value="10020">systems/engine/RPM-max</property>
     <property value="0.0">systems/engine/air-system-pressure</property>
     <property value="0.0">systems/engine/oil-low-pressure-on</property>
-    
+    <property value="0.0">systems/engine/air-compression-service-on</property>
     <property value="0.0">systems/engine/fire-allert-on</property>
+    <property value="0.0">systems/engine/jet-TC-temperature-hight-fire-on</property>
     
     <channel name="engine systems starter">
 

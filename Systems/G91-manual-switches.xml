@@ -2,6 +2,7 @@
 
 <system name="Manual switches"> 
     
+    <property value="0">systems/manual-switches/cockpit/sw-canopy-togle-trigger</property>
     <property value="0">systems/manual-switches/cockpit/sw-bus0-bus1-battery</property>
     <property value="0">systems/manual-switches/cockpit/sw-bus0-bus1-battery-trigger</property>
     <property value="0">systems/manual-switches/cockpit/sw-bus0-bus1-battery-pos</property>
@@ -21,6 +22,12 @@
     <property value="0">systems/manual-switches/cockpit/sw-beacon-light</property>
     <property value="0">systems/manual-switches/lateral_panel_left/dampers/sw-pitch-damper-togle</property>
     <property value="0">systems/manual-switches/lateral_panel_left/dampers/sw-yaw-damper-togle</property>
+    <property value="0">systems/manual-switches/jato/sw-ready-pos</property>
+    <property value="0">systems/manual-switches/jato/sw-ignition-pos</property>
+    <property value="0">systems/manual-switches/jato/sw-jettinson-pos</property>
+    <property value="0">systems/manual-switches/cockpit/sw-landing-light-test-pos</property>
+    <property value="0">systems/manual-switches/cockpit/sw-emergency-release-pos</property>
+    
     
     
     <channel name="cockpit switchs" execrate="8">

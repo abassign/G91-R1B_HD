@@ -3,6 +3,8 @@
 <system name="Manual handle switches"> 
     
     <property value="0">systems/handle-switches/sw-handle-brake-trigger</property>
+    <property value="0">systems/handle-switches/sw-handle-brake-pos-rotate</property>
+    
     
     <channel name="handle brake" execrate="8">
         

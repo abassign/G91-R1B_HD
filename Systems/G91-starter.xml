@@ -10,24 +10,28 @@ Description: G91R2 Canopy automation
     <property value="0">systems/starter/sw-cover-pos</property>
     <property value="0">systems/starter/sw-push-togle</property>
     <property value="0">systems/starter/sw-push-pos</property>
-    
+    <property value="0">systems/starter/sw-push-togle-washed</property>
     <property value="0">systems/starter/fuel-shut-off-valve-lock</property>
     <property value="0">systems/starter/fuel-shut-off-valve-lock-pos</property>
     <property value="0">systems/starter/fuel-shut-off-valve</property>
     <property value="0">systems/starter/fuel-shut-off-valve-pos</property>
+    <property value="0">systems/starter/fuel-shut-off-valve-on</property>
     <property value="0">systems/starter/fuel-booster-pump</property>
     <property value="0">systems/starter/fuel-booster-pump-pos</property>
     <property value="0">systems/starter/fuel-booster-pump-on</property>
+    <property value="0">systems/starter/fuel-booster-pump-on-lag</property>
     <property value="0">systems/starter/HE</property>
     <property value="0">systems/starter/HE-pos</property>
     <property value="0">systems/starter/engine-JPTL</property>
     <property value="0">systems/starter/engine-JPTL-pos</property>
     <property value="0">systems/starter/drop-tank-press</property>
     <property value="0">systems/starter/drop-tank-press-pos</property>
+    <property value="0">systems/starter/drop-tank-press-on</property>
     <property value="0">systems/starter/emerg-engine</property>
     <property value="0">systems/starter/emerg-engine-pos</property>
     <property value="0">systems/starter/emerg-engine-on-lg</property>
     <property value="0">systems/starter/emerg-engine-on-lg-transparent</property>
+    <property value="0">systems/starter/electric-ok</property>
     
     
     <channel name="starter switch" execrate="8">

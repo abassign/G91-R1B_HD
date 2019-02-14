@@ -5,6 +5,7 @@
     <property value="0.0">systems/gauges/PHI/doppler/switch-turn</property>
     <property value="0.0">systems/gauges/PHI/doppler/switch-up</property>
     <property value="0.0">systems/gauges/PHI/doppler/switch-turned</property>
+    <property value="0.0">systems/gauges/PHI/doppler/is-operative</property>
     <property value="0.0">systems/gauges/PHI/doppler/switch</property>
     <property value="0.0">systems/gauges/PHI/doppler/allarm</property>
     <property value="0.0">systems/gauges/PHI/doppler/sea-land</property>
@@ -32,6 +33,9 @@
     <property value="0.0">systems/gauges/PHI/indicator/is-hold</property>
     <property value="0.0">systems/gauges/PHI/indicator/var-deg</property>
     <property value="0.0">systems/gauges/PHI/indicator/dist-set</property>
+    <property value="0.0">systems/gauges/PHI/indicator/dist-set-lag</property>
+    <property value="0.0">systems/gauges/PHI/indicator/is-hold-on</property>
+    <property value="0.0">systems/gauges/PHI/indicator/phi-set-lag</property>
     
     <property value="0.0">systems/gauges/PHI/wind/wd</property>
     <property value="0.0">systems/gauges/PHI/wind/wd-up</property>
@@ -71,6 +75,9 @@
     <property value="360.0">systems/gauges/PHI/program/route[5]/phi</property>
     <property value="0.0">systems/gauges/PHI/program/route[5]/push-pos</property>
     <property value="0.0">systems/gauges/PHI/program/route[5]/push-togle</property>
+    <property value="0.0">systems/gauges/PHI/program/light-intensity-by-bus2-tension-on-caddy</property>
+    <property value="0.0">systems/gauges/PHI/program/transparent-by-bus2-tension-on-caddy</property>
+    <property value="0.0">systems/gauges/PHI/program/release-togle-pos-lag</property>
     
     <channel name="systems gauges PHI electric" execrate="32">
         

@@ -12,7 +12,6 @@
         <object-name>screws internal (Meshed)</object-name>
         <object-name>freq frontal (Meshed)</object-name>
         <object-name>freq cover (Meshed)</object-name>
-        <object-name>freq drum (Meshed)</object-name>
         <object-name>freq drum cursor (Meshed)</object-name>
         <object-name>freq band selector (Meshed)</object-name>
         <object-name>freq dime (Meshed)</object-name>
@@ -64,7 +63,6 @@
         <object-name>screws internal (Meshed)</object-name>
         <object-name>freq frontal (Meshed)</object-name>
         <object-name>freq cover (Meshed)</object-name>
-        <object-name>freq drum (Meshed)</object-name>
         <object-name>freq drum cursor (Meshed)</object-name>
         <object-name>freq dime (Meshed)</object-name>
         <object-name>gain (Meshed)</object-name>
@@ -276,27 +274,6 @@
             <red>0.04</red>
             <green>0.01</green>
             <blue>0.01</blue>
-            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
-        </emission>
-    </animation>
-    
-    <animation>
-        <type>material</type>
-        <object-name>freq drum (Meshed)</object-name>
-        <diffuse>
-            <red>0.05</red>
-            <green>0.05</green>
-            <blue>0.05</blue>
-        </diffuse>
-        <ambient>
-            <red>0.05</red>
-            <green>0.05</green>
-            <blue>0.05</blue>
-        </ambient>
-        <emission>
-            <red>0.05</red>
-            <green>0.0</green>
-            <blue>0.0</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>

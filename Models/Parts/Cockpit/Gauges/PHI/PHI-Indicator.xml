@@ -26,7 +26,6 @@
         <object-name>frontal_mark_knob_001 (Meshed)</object-name>
         <object-name>NWE_ref (Meshed)</object-name>
         <object-name>knob_var (Meshed)</object-name>
-        <object-name>frontal_border_plate_ABIS</object-name>
         <object-name>back_plate_B (Meshed)</object-name>
         <object-name>frontal_plate_A</object-name>
         <object-name>back_plate_A</object-name>
@@ -69,7 +68,6 @@
         <object-name>frontal_mark_knob_001 (Meshed)</object-name>
         <object-name>NWE_ref (Meshed)</object-name>
         <object-name>knob_var (Meshed)</object-name>
-        <object-name>frontal_border_plate_ABIS</object-name>
         <object-name>back_plate_B (Meshed)</object-name>
         <object-name>frontal_plate_A</object-name>
         <object-name>back_plate_A</object-name>
@@ -248,27 +246,6 @@
         <type>material</type>
         <object-name>NWE_ref (Meshed)</object-name>
         <object-name>knob_var (Meshed)</object-name>
-        <diffuse>
-            <red>0.9</red>
-            <green>0.9</green>
-            <blue>0.7</blue>
-        </diffuse>
-        <ambient>
-            <red>0.80</red>
-            <green>0.73</green>
-            <blue>0.40</blue>
-        </ambient>
-        <emission>
-            <red>0.15</red>
-            <green>0.25</green>
-            <blue>0.04</blue>
-            <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
-        </emission>
-    </animation>
-    
-    <animation> 
-        <type>material</type>
-        <object-name>frontal_border_plate_ABIS</object-name>
         <diffuse>
             <red>0.9</red>
             <green>0.9</green>

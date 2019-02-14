@@ -10,6 +10,10 @@
     <property value="0.2">systems/active-stability/yaw-damper/pid-kp</property>
     <property value="0.05">systems/active-stability/yaw-damper/pid-ki</property>
     <property value="0.8">systems/active-stability/yaw-damper/pid-kd</property>
+    <property value="0.0">systems/active-stability/yaw-damper/pid-trigger</property>
+    <property value="0.0">systems/active-stability/pitch-damper/operative</property>
+    <property value="0.0">systems/active-stability/pitch-damper/pid-trigger</property>
+    
     
     <channel name="Yaw Damper">
         

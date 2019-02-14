@@ -7,6 +7,10 @@ Description: G91R2 Canopy automation
 <system name="canopy">
     
     <property value="0">systems/canopy/lever-trigger</property>
+    <property value="0">systems/canopy/warning-light</property>
+    <property value="0">systems/canopy/electric-ok</property>
+    <property value="0">systems/canopy/canopy-close</property>
+    
 
     <channel name="cockpit switchs" execrate="4">
         

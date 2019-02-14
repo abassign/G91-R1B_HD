@@ -16,7 +16,6 @@
         <object-name>level_container_A (Meshed)</object-name>
         <object-name>level_container_B (Meshed)</object-name>
         <object-name>pointer (Meshed)</object-name>
-        <object-name>back_plane_A (Meshed)</object-name>
         <object-name>frontal_mask_A (Meshed)</object-name>
         <object-name>back_plane_B (Meshed)</object-name>
         <object-name>rif (Meshed)</object-name>
@@ -40,7 +39,6 @@
         <object-name>level_container_A (Meshed)</object-name>
         <object-name>level_container_B (Meshed)</object-name>
         <object-name>pointer (Meshed)</object-name>
-        <object-name>back_plane_A (Meshed)</object-name>
         <object-name>frontal_mask_A (Meshed)</object-name>
         <object-name>back_plane_B (Meshed)</object-name>
         <object-name>rif (Meshed)</object-name>
@@ -284,27 +282,6 @@
             <red>0.07</red>
             <green>0.2</green>
             <blue>0.0</blue>
-            <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
-        </emission>
-    </animation>
-    
-    <animation> 
-        <type>material</type>
-        <object-name>back_plane_A (Meshed)</object-name>
-        <diffuse>
-            <red>0.5</red>
-            <green>0.5</green>
-            <blue>0.5</blue>
-        </diffuse>
-        <ambient>
-            <red>1.0</red>
-            <green>0.9</green>
-            <blue>0.6</blue>
-        </ambient>
-        <emission>
-            <red>0.07</red>
-            <green>0.15</green>
-            <blue>0.02</blue>
             <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
         </emission>
     </animation>

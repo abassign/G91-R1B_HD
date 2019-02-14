@@ -121,21 +121,6 @@
     
     <animation> 
         <type>material</type>
-        <object-name>back_plane_B_black (Meshed)</object-name>
-        <diffuse>
-            <red>0.0</red>
-            <green>0.0</green>
-            <blue>0.0</blue>
-        </diffuse>
-        <ambient>
-            <red>0.0</red>
-            <green>0.0</green>
-            <blue>0.0</blue>
-        </ambient>
-    </animation>
-    
-    <animation> 
-        <type>material</type>
         <object-name>blue (Meshed)</object-name>
         <diffuse>
             <red>0.29</red>
