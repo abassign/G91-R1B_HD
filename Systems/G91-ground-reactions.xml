@@ -31,6 +31,7 @@
         <max_steer unit="DEG">0</max_steer>
         <brake_group>NONE</brake_group>
         <retractable>1</retractable>
+        <castered>1</castered> <!-- Implement free-swiveling gear -->
         <relaxation_velocity>
             <rolling unit="FT/SEC"> 1.0 </rolling>
             <side unit="FT/SEC"> 1.0 </side>
@@ -43,8 +44,8 @@
             <y> -54.4 </y>
             <z> 0.0 </z>
         </location>
-        <static_friction>  1.30 </static_friction>
-        <dynamic_friction> 1.10 </dynamic_friction>
+        <static_friction>  0.80 </static_friction>
+        <dynamic_friction> 0.50 </dynamic_friction>
         <rolling_friction> 0.03 </rolling_friction>
         <spring_coeff unit="LBS/FT">      25000.0 </spring_coeff>
         <damping_coeff unit="LBS/FT/SEC">  4500.0 </damping_coeff>
@@ -64,8 +65,8 @@
             <y>  54.4 </y>
             <z> 0.0 </z>
         </location>
-        <static_friction>  1.30 </static_friction>
-        <dynamic_friction> 1.10 </dynamic_friction>
+        <static_friction>  0.80 </static_friction>
+        <dynamic_friction> 0.50 </dynamic_friction>
         <rolling_friction> 0.03 </rolling_friction>
         <spring_coeff unit="LBS/FT">      25000.0 </spring_coeff>
         <damping_coeff unit="LBS/FT/SEC">  4500.0 </damping_coeff>

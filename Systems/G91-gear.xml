@@ -83,27 +83,6 @@ Description: G91R4 hydraulics system from "Manuale di pilotaggio (1-11,1-12, etc
             <output>gear/gear-direction-sound</output>
         </switch>
         
-        <lag_filter name="systems/gears/gear[0]/slip-angle-calc-norm-lag">
-            <input>systems/gears/gear[0]/slip-angle-calc-diff-v</input>
-            <c1>0.5</c1>
-        </lag_filter>
-        
-        <switch name="systems/gears/gear[0]/slip-angle-calc-norm">
-            <default value="systems/gears/gear[0]/slip-angle-calc-norm"/>
-            <test logic="AND" value="systems/gears/gear[0]/slip-angle-calc-norm-lag">
-                systems/gears/gear[0]/slip-angle-calc-low-wheel-speed == 0.0
-            </test>
-        </switch>
-    
-        <pure_gain name="systems/gears/gear[0]/slip-angle-deg-lag">
-            <input>systems/gears/gear[0]/slip-angle-calc-norm</input>
-            <gain>40.0</gain>
-            <clipto>
-                <min>-40.0</min>
-                <max>40.0</max>
-            </clipto>
-        </pure_gain>
-        
     </channel>
     
     <channel name="Landing gear hydraulics extension" execrate="8">
@@ -185,40 +164,6 @@ Description: G91R4 hydraulics system from "Manuale di pilotaggio (1-11,1-12, etc
                 4000.0 -5
             </tableData>
         </table>
-    </function>
-    
-    <function name="systems/gears/gear[0]/slip-angle-calc-low-wheel-speed">
-        <ifthen>
-            <and>
-                <lt>
-                    <p>gear/unit[0]/wheel-speed-fps</p>
-                    <v>0.01</v>
-                </lt>
-                <gt>
-                    <p>gear/unit[0]/wheel-speed-fps</p>
-                    <v>-0.01</v>
-                </gt>
-            </and>
-            <v>1.0</v>
-            <v>0.0</v>
-        </ifthen>
-    </function>
-    
-    <function name="systems/gears/gear[0]/slip-angle-calc-diff-v">
-        <ifthen>
-            <ge>
-                <p>gear/unit[0]/compression-ft</p>
-                <v>0.01</v>
-            </ge>
-            <quotient>
-                <difference>
-                    <p>gear/unit[1]/wheel-speed-fps</p>
-                    <p>gear/unit[2]/wheel-speed-fps</p>
-                </difference>
-                <v>2.0</v>
-            </quotient>
-            <v>0.0</v>
-        </ifthen>
     </function>
     
     <function name="systems/gears/gear[0]/drag-norm">
