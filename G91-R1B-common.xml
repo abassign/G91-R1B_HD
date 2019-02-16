@@ -137,8 +137,8 @@
         
         <systems>
             <autopilot>
-                <name>Testing rules</name>
-                <path>Systems/test-rule.xml</path>
+                <name>Libraries</name>
+                <path>Systems/libraries.xml</path>
 			</autopilot>
         </systems>
     </sim>

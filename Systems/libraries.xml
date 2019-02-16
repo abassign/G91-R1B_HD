@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Copyright (c) 2019 Joshua Davidson (it0uchpods) -->
+
+<PropertyList>
+
+	<filter>
+		<name>Compression Gear 0 Meter</name>
+		<type>gain</type>
+		<gain>0.3048</gain>
+		<input>/gear/gear[0]/compression-ft</input>
+		<output>/gear/gear[0]/compression-m-calc</output>
+	</filter>
+	
+	<filter>
+		<name>Compression Gear 1 Meter</name>
+		<type>gain</type>
+		<gain>0.3048</gain>
+		<input>/gear/gear[1]/compression-ft</input>
+		<output>/gear/gear[1]/compression-m-calc</output>
+	</filter>
+	
+	<filter>
+		<name>Compression Gear 2 Meter</name>
+		<type>gain</type>
+		<gain>0.3048</gain>
+		<input>/gear/gear[2]/compression-ft</input>
+		<output>/gear/gear[2]/compression-m-calc</output>
+	</filter>
+
+</PropertyList>

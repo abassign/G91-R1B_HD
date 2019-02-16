@@ -107,28 +107,6 @@ Description: G91R4 hydraulics system from "Manuale di pilotaggio (1-11,1-12, etc
         
     </channel>
     
-    <channel name="drag gear" execrate="8">
-        
-        <pure_gain>
-            <input>systems/gears/gear[0]/drag-norm</input>
-            <gain>2.0</gain>
-            <output>external_reactions/LandingGearFrontAerodinamicDrag/magnitude</output>
-        </pure_gain>
-        
-        <pure_gain>
-            <input>systems/gears/gear[1]/drag-norm</input>
-            <gain>4.0</gain>
-            <output>external_reactions/LandingGearRightAerodinamicDrag/magnitude</output>
-        </pure_gain>
-        
-        <pure_gain>
-            <input>systems/gears/gear[2]/drag-norm</input>
-            <gain>4.0</gain>
-            <output>external_reactions/LandingGearLeftAerodinamicDrag/magnitude</output>
-        </pure_gain>
-        
-    </channel>
-    
     <function name="systems/gears/unit[0]/hydraulics-extension">
         <description>Extension main gear hydraulic cylinder</description>
         <table>
@@ -165,57 +143,6 @@ Description: G91R4 hydraulics system from "Manuale di pilotaggio (1-11,1-12, etc
             </tableData>
         </table>
     </function>
-    
-    <function name="systems/gears/gear[0]/drag-norm">
-        <product>
-            <p>aero/qbar-psf</p>
-            <table>
-                <independentVar>gear/gear-pos-norm</independentVar>
-                <tableData>
-                    0.0  0.0
-                    0.2  0.292
-                    0.4  0.559
-                    0.6  0.777
-                    0.8  0.927
-                    1.0  0.996
-                </tableData>
-            </table>
-        </product>
-    </function>
-    
-    <function name="systems/gears/gear[1]/drag-norm">
-        <product>
-            <p>aero/qbar-psf</p>
-            <table>
-                <independentVar>gear/gear-pos-norm</independentVar>
-                <tableData>
-                    0.0  0.0
-                    0.2  0.309
-                    0.4  0.588
-                    0.6  0.809
-                    0.8  0.951
-                    1.0  1.000
-                </tableData>
-            </table>
-        </product>
-    </function>
-    
-    <function name="systems/gears/gear[2]/drag-norm">
-        <product>
-            <p>aero/qbar-psf</p>
-            <table>
-                <independentVar>gear/gear-pos-norm</independentVar>
-                <tableData>
-                    0.0  0.0
-                    0.2  0.309
-                    0.4  0.588
-                    0.6  0.809
-                    0.8  0.951
-                    1.0  1.000
-                </tableData>
-            </table>
-        </product>
-    </function>
-    
+
 </system>
 
