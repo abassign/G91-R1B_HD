@@ -262,7 +262,7 @@
 	
 	<channel name="Steering Brake Command">
 		
-		<scheduled_gain name="fcs/left-brake">
+		<scheduled_gain name="fcs/left-steer-brake">
 			<input>/controls/flight/rudder</input>
 			<table>
 				<independentVar lookup="row">/velocities/groundspeed-kt</independentVar>
@@ -278,7 +278,7 @@
 			</clipto>
 		</scheduled_gain>
 		
-		<scheduled_gain name="fcs/right-brake">
+		<scheduled_gain name="fcs/right-steer-brake">
 			<input>/controls/flight/rudder</input>
 			<table>
 				<independentVar lookup="row">/velocities/groundspeed-kt</independentVar>
@@ -292,54 +292,6 @@
 				<min>0</min>
 				<max>1</max>
 			</clipto>
-		</scheduled_gain>
-	
-	</channel>
-	
-	<channel name="Brakes">
-		
-		<summer name="fcs/left-brake-summer">
-			<input>/controls/gear/brake-left</input>
-			<input>/controls/gear/brake-parking</input>
-			<input>fcs/left-brake</input>
-			<clipto>
-				<min>0</min>
-				<max>1</max>
-			</clipto>
-		</summer>
-		
-		<scheduled_gain name="fcs/left-brake-cmd">
-			<input>fcs/left-brake-summer</input>
-			<table>
-				<independentVar lookup="row">systems/hydraulics/flight-system-psi</independentVar>
-				<tableData>
-					 300  0.0
-					1800  1.0
-				</tableData>
-			</table>
-			<output>fcs/left-brake-cmd-norm</output>
-		</scheduled_gain>
-		
-		<summer name="fcs/right-brake-summer">
-			<input>/controls/gear/brake-right</input>
-			<input>/controls/gear/brake-parking</input>
-			<input>fcs/right-brake</input>
-			<clipto>
-				<min>0</min>
-				<max>1</max>
-			</clipto>
-		</summer>
-		
-		<scheduled_gain name="fcs/right-brake-cmd">
-			<input>fcs/right-brake-summer</input>
-			<table>
-				<independentVar lookup="row">systems/hydraulics/flight-system-psi</independentVar>
-				<tableData>
-					 300  0.0
-					1800  1.0
-				</tableData>
-			</table>
-			<output>fcs/right-brake-cmd-norm</output>
 		</scheduled_gain>
 	
 	</channel>

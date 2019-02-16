@@ -1,0 +1,86 @@
+<!-- G91 Brake Control System -->
+
+<!-- Copyright (c) 2019 Joshua Davidson (it0uchpods) -->
+
+<system name="G91 BCS">
+	
+	<channel name="Parking Brake"> <!-- Abassign, Rimuovi il mio scheduled_gain e scrivi qui il tuo codice freno, e assicurati che venga trasmesso a fcs/park-brake-cmd e funzionerà correttamente -->
+		
+		<scheduled_gain name="fcs/park-brake-cmd"> <!-- Usa /controls/gear/brake-parking per l'ingresso del sistema frenante in modo che la scorciatoia SHIFT + B funzioni ancora e cambia anche l'animazione -->
+			<input>/controls/gear/brake-parking</input>
+			<table>
+				<independentVar lookup="row">systems/hydraulics/flight-system-psi</independentVar>
+				<tableData>
+					 300  0.0
+					1800  1.0
+				</tableData>
+			</table>
+		</scheduled_gain>
+	
+	</channel>
+	
+	<channel name="Brakes">
+		
+		<summer name="fcs/left-brake-summer">
+			<input>/controls/gear/brake-left</input>
+			<input>fcs/left-steer-brake</input> <!-- Steering brake command -->
+			<clipto>
+				<min>0</min>
+				<max>1</max>
+			</clipto>
+		</summer>
+		
+		<scheduled_gain name="fcs/left-brake-cmd">
+			<input>fcs/left-brake-summer</input>
+			<table>
+				<independentVar lookup="row">systems/hydraulics/flight-system-psi</independentVar>
+				<tableData>
+					 300  0.0
+					1800  1.0
+				</tableData>
+			</table>
+		</scheduled_gain>
+		
+		<summer name="fcs/left-brake-output"> <!-- Output to JSB -->
+			<input>fcs/left-brake-cmd</input>
+			<input>fcs/park-brake-cmd</input>
+			<clipto>
+				<min>0</min>
+				<max>1</max>
+			</clipto>
+			<output>fcs/left-brake-cmd-norm</output>
+		</summer>
+		
+		<summer name="fcs/right-brake-summer">
+			<input>/controls/gear/brake-right</input>
+			<input>fcs/right-steer-brake</input> <!-- Steering brake command -->
+			<clipto>
+				<min>0</min>
+				<max>1</max>
+			</clipto>
+		</summer>
+		
+		<scheduled_gain name="fcs/right-brake-cmd">
+			<input>fcs/right-brake-summer</input>
+			<table>
+				<independentVar lookup="row">systems/hydraulics/flight-system-psi</independentVar>
+				<tableData>
+					 300  0.0
+					1800  1.0
+				</tableData>
+			</table>
+		</scheduled_gain>
+		
+		<summer name="fcs/right-brake-output"> <!-- Output to JSB -->
+			<input>fcs/right-brake-cmd</input>
+			<input>fcs/park-brake-cmd</input>
+			<clipto>
+				<min>0</min>
+				<max>1</max>
+			</clipto>
+			<output>fcs/right-brake-cmd-norm</output>
+		</summer>
+	
+	</channel>
+
+</system>
