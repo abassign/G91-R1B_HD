@@ -24,7 +24,7 @@
         <z>  0.83 </z>
     </location>
     <location name="VRP" unit="IN">
-        <x>0</x>
+        <x>210.848976378</x> <!-- Model offset -->
         <y>0</y>
         <z>0</z>
     </location>

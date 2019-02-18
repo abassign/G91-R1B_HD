@@ -1408,7 +1408,7 @@
                     <value>-0.1</value>
                     <property>/fdm/jsbsim/gears/unit[1]/hydraulics-extension</property>
                 </product>
-                <property>gear/gear[1]/compression-ft</property>
+                <property>gear/gear[1]/compression-m-calc</property>
             </sum>
         </expression>
         <center>
@@ -1448,7 +1448,7 @@
                     </less-than>
                 </or>
                 <greater-than>
-                    <property>gear/gear[1]/compression-norm</property>
+                    <property>gear/gear[1]/compression-m-calc</property>
                     <value>0</value>
                 </greater-than>
             </and>
@@ -1595,7 +1595,7 @@
                     <value>-0.2</value>
                     <property>/fdm/jsbsim/gears/unit[2]/hydraulics-extension</property>
                 </product>
-                <property>gear/gear[2]/compression-ft</property>
+                <property>gear/gear[2]/compression-m-calc</property>
             </sum>
         </expression>
         <center>
@@ -1635,7 +1635,7 @@
                     </less-than>
                 </or>
                 <greater-than>
-                    <property>gear/gear[2]/compression-norm</property>
+                    <property>gear/gear[2]/compression-m-calc</property>
                     <value>0</value>
                 </greater-than>
             </and>

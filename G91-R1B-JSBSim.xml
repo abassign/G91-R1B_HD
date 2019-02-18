@@ -52,6 +52,7 @@
     <system file="G91-hydraulic"/>
     <system file="G91-gear"/>
     <system file="G91-flight-control"/>
+    <system file="G91-brakes"/>
     <system file="G91-lightning"/>
     <system file="G91-fuel"/>
     <system file="G91-canopy"/>

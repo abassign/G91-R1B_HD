@@ -774,7 +774,7 @@
         <object-name>gear-front-jack-014</object-name>
         <object-name>gear-front-jack-015</object-name>
         <object-name>gear-front-jack-015.002</object-name>
-        <property>gear/gear[0]/compression-norm</property>
+        <property>gear/gear[0]/compression-m-calc</property>
         <center>
             <x-m>-3.0297</x-m>
             <y-m>0   </y-m>
@@ -798,7 +798,7 @@
     <animation>
         <type>translate</type>
         <object-name>Cylinder.004</object-name>
-        <property>gear/gear[0]/compression-norm</property>
+        <property>gear/gear[0]/compression-m-calc</property>
         <factor>0.13</factor>
         <offset-m>-0.03</offset-m>
         <axis>
@@ -813,8 +813,7 @@
         <type>rotate</type>
         <object-name>GearPivot</object-name>
         <object-name>GearWheel</object-name>
-        <property>fdm/jsbsim/systems/gears/gear[0]/slip-angle-deg-lag</property>
-        <offset-deg>0.0</offset-deg>
+        <property>fdm/jsbsim/gear/unit[0]/steering-angle-deg</property>
         <factor>1.0</factor>
         <axis>
             <x1-m>  -2.87</x1-m>
@@ -848,7 +847,7 @@
                     </less-than>
                 </or>
                 <greater-than>
-                    <property>gear/gear[0]/compression-norm</property>
+                    <property>gear/gear[0]/compression-m-calc</property>
                     <value>0</value>
                 </greater-than>
             </and>

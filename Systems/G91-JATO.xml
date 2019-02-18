@@ -367,13 +367,7 @@
             <input>systems/jato/rocket-drag[4]</input>
             <output>systems/jato/rockets-drag</output>
         </summer>
-        
-        <pure_gain>
-            <input>systems/jato/rockets-drag</input>
-            <gain>aero/qbar-psf</gain>
-            <output>external_reactions/JATO-rockets/magnitude</output>
-        </pure_gain>
-        
+
     </channel>
     
 </system>

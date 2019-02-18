@@ -9,32 +9,13 @@
         </location>
         <static_friction>  0.80 </static_friction>
         <dynamic_friction> 0.50 </dynamic_friction>
-        <!--
-        <function type="CORNERING_COEFF"> 
-            <table> 
-                <independentVar>gear/slip-angle-calc</independentVar> 
-                <tableData>
-                    0.0     0.0
-                    2.0     0.1
-                    4.0     0.2
-                    6.0     0.25
-                    8.0     0.29
-                    10.0    0.38
-                </tableData> 
-            </table>         
-        </function>
-        -->
         <rolling_friction> 0.02 </rolling_friction>
-        <spring_coeff unit="LBS/FT">       50000.0 </spring_coeff>
-        <damping_coeff unit="LBS/FT/SEC">  10000.0 </damping_coeff>
-        <damping_coeff_rebound unit="LBS/FT/SEC">2600.0</damping_coeff_rebound>
+        <spring_coeff unit="LBS/FT">       20200.0 </spring_coeff>
+        <damping_coeff unit="LBS/FT/SEC">   2000.0 </damping_coeff>
         <max_steer unit="DEG">0</max_steer>
         <brake_group>NONE</brake_group>
         <retractable>1</retractable>
-        <relaxation_velocity>
-            <rolling unit="FT/SEC"> 1.0 </rolling>
-            <side unit="FT/SEC"> 1.0 </side>
-        </relaxation_velocity>
+        <castered>1</castered> <!-- Implement free-swiveling gear -->
     </contact>
     
     <contact type="BOGEY" name="LEFT_MAIN">
@@ -43,19 +24,14 @@
             <y> -54.4 </y>
             <z> 0.0 </z>
         </location>
-        <static_friction>  1.30 </static_friction>
-        <dynamic_friction> 1.10 </dynamic_friction>
-        <rolling_friction> 0.03 </rolling_friction>
-        <spring_coeff unit="LBS/FT">      25000.0 </spring_coeff>
+        <static_friction>  0.80 </static_friction>
+        <dynamic_friction> 0.50 </dynamic_friction>
+        <rolling_friction> 0.02 </rolling_friction>
+        <spring_coeff unit="LBS/FT">      29200.0 </spring_coeff>
         <damping_coeff unit="LBS/FT/SEC">  4500.0 </damping_coeff>
-        <damping_coeff_rebound unit="LBS/FT/SEC">5000.0</damping_coeff_rebound>
         <max_steer unit="DEG">0</max_steer>
         <brake_group>LEFT</brake_group>
         <retractable>1</retractable>
-        <relaxation_velocity>
-            <rolling unit="FT/SEC"> 1.0 </rolling>
-            <side unit="FT/SEC"> 1.0 </side>
-        </relaxation_velocity>
     </contact>
     
     <contact type="BOGEY" name="RIGHT_MAIN">
@@ -64,19 +40,14 @@
             <y>  54.4 </y>
             <z> 0.0 </z>
         </location>
-        <static_friction>  1.30 </static_friction>
-        <dynamic_friction> 1.10 </dynamic_friction>
-        <rolling_friction> 0.03 </rolling_friction>
-        <spring_coeff unit="LBS/FT">      25000.0 </spring_coeff>
+        <static_friction>  0.80 </static_friction>
+        <dynamic_friction> 0.50 </dynamic_friction>
+        <rolling_friction> 0.02 </rolling_friction>
+        <spring_coeff unit="LBS/FT">      29200.0 </spring_coeff>
         <damping_coeff unit="LBS/FT/SEC">  4500.0 </damping_coeff>
-        <damping_coeff_rebound unit="LBS/FT/SEC">5000.0</damping_coeff_rebound>
         <max_steer unit="DEG">0</max_steer>
         <brake_group>RIGHT</brake_group>
         <retractable>1</retractable>
-        <relaxation_velocity>
-            <rolling unit="FT/SEC"> 1.0 </rolling>
-            <side unit="FT/SEC"> 1.0 </side>
-        </relaxation_velocity>
     </contact>
     
     <contact type="STRUCTURE" name="LEFT_WING_TIP_BOTTOM">
@@ -139,136 +110,6 @@
         </location>
         <static_friction>  0.80 </static_friction>
         <dynamic_friction> 0.50 </dynamic_friction>
-        <spring_coeff unit="LBS/FT">                10000 </spring_coeff>
-        <damping_coeff unit="LBS/FT/SEC">            2000 </damping_coeff>
-        <damping_coeff_rebound unit="LBS/FT/SEC">   40000 </damping_coeff_rebound>
-    </contact>
-    
-    <contact type="STRUCTURE" name="C1">
-        <location unit="IN">
-            <x> 55.08 </x>
-            <y> 0 </y>
-            <z> 31.6 </z>
-        </location>
-        <static_friction>  0.80 </static_friction>
-        <dynamic_friction> 0.50 </dynamic_friction>
-        <spring_coeff unit="LBS/FT">                10000 </spring_coeff>
-        <damping_coeff unit="LBS/FT/SEC">            2000 </damping_coeff>
-        <damping_coeff_rebound unit="LBS/FT/SEC">   40000 </damping_coeff_rebound>
-    </contact>
-    
-    <contact type="STRUCTURE" name="C2">
-        <location unit="IN">
-            <x> 92.52 </x>
-            <y> 0 </y>
-            <z> 31.6 </z>
-        </location>
-        <static_friction>  0.80 </static_friction>
-        <dynamic_friction> 0.50 </dynamic_friction>
-        <spring_coeff unit="LBS/FT">                10000 </spring_coeff>
-        <damping_coeff unit="LBS/FT/SEC">            2000 </damping_coeff>
-        <damping_coeff_rebound unit="LBS/FT/SEC">   40000 </damping_coeff_rebound>
-    </contact>
-    
-    <contact type="STRUCTURE" name="C3">
-        <location unit="IN">
-            <x> 142.92 </x>
-            <y> 0 </y>
-            <z> 48.88 </z>
-        </location>
-        <static_friction>  0.80 </static_friction>
-        <dynamic_friction> 0.50 </dynamic_friction>
-        <spring_coeff unit="LBS/FT">                10000 </spring_coeff>
-        <damping_coeff unit="LBS/FT/SEC">            2000 </damping_coeff>
-        <damping_coeff_rebound unit="LBS/FT/SEC">   40000 </damping_coeff_rebound>
-    </contact>
-    
-    <contact type="STRUCTURE" name="C4">
-        <location unit="IN">
-            <x> 224.52 </x>
-            <y> 0 </y>
-            <z> 40.0 </z>
-        </location>
-        <static_friction>  1.80 </static_friction>
-        <dynamic_friction> 1.50 </dynamic_friction>
-        <spring_coeff unit="LBS/FT">                10000 </spring_coeff>
-        <damping_coeff unit="LBS/FT/SEC">            2000 </damping_coeff>
-        <damping_coeff_rebound unit="LBS/FT/SEC">   40000 </damping_coeff_rebound>
-    </contact>
-    
-    <contact type="STRUCTURE" name="C5">
-        <location unit="IN">
-            <x> 342.6 </x>
-            <y> 0 </y>
-            <z> 57.88 </z>
-        </location>
-        <static_friction>  0.80 </static_friction>
-        <dynamic_friction> 0.50 </dynamic_friction>
-        <spring_coeff unit="LBS/FT">                10000 </spring_coeff>
-        <damping_coeff unit="LBS/FT/SEC">            2000 </damping_coeff>
-        <damping_coeff_rebound unit="LBS/FT/SEC">   40000 </damping_coeff_rebound>
-    </contact>
-    
-    <contact type="STRUCTURE" name="C6">
-        <location unit="IN">
-            <x> 391.08 </x>
-            <y> 0 </y>
-            <z> 19.0 </z>
-        </location>
-        <static_friction>  1.80 </static_friction>
-        <dynamic_friction> 1.50 </dynamic_friction>
-        <spring_coeff unit="LBS/FT">                10000 </spring_coeff>
-        <damping_coeff unit="LBS/FT/SEC">            2000 </damping_coeff>
-        <damping_coeff_rebound unit="LBS/FT/SEC">   40000 </damping_coeff_rebound>
-    </contact>
-    
-    <contact type="STRUCTURE" name="C7">
-        <location unit="IN">
-            <x> 312.0 </x>
-            <y> 0 </y>
-            <z> -20.0 </z>
-        </location>
-        <static_friction>  1.80 </static_friction>
-        <dynamic_friction> 1.50 </dynamic_friction>
-        <spring_coeff unit="LBS/FT">                10000 </spring_coeff>
-        <damping_coeff unit="LBS/FT/SEC">            2000 </damping_coeff>
-        <damping_coeff_rebound unit="LBS/FT/SEC">   40000 </damping_coeff_rebound>
-    </contact>
-    
-    <contact type="STRUCTURE" name="C8">
-        <location unit="IN">
-            <x> 235.2 </x>
-            <y> 0 </y>
-            <z> -20.72 </z>
-        </location>
-        <static_friction>  3.80 </static_friction>
-        <dynamic_friction> 3.50 </dynamic_friction>
-        <spring_coeff unit="LBS/FT">                10000 </spring_coeff>
-        <damping_coeff unit="LBS/FT/SEC">            2000 </damping_coeff>
-        <damping_coeff_rebound unit="LBS/FT/SEC">   40000 </damping_coeff_rebound>
-    </contact>
-    
-    <contact type="STRUCTURE" name="C9">
-        <location unit="IN">
-            <x> 144.0 </x>
-            <y> 0 </y>
-            <z> -26.32 </z>
-        </location>
-        <static_friction>  3.80 </static_friction>
-        <dynamic_friction> 3.50 </dynamic_friction>
-        <spring_coeff unit="LBS/FT">                10000 </spring_coeff>
-        <damping_coeff unit="LBS/FT/SEC">            2000 </damping_coeff>
-        <damping_coeff_rebound unit="LBS/FT/SEC">   40000 </damping_coeff_rebound>
-    </contact>
-    
-    <contact type="STRUCTURE" name="C10">
-        <location unit="IN">
-            <x> 38.4 </x>
-            <y> 0 </y>
-            <z> -15.6 </z>
-        </location>
-        <static_friction>  2.80 </static_friction>
-        <dynamic_friction> 2.50 </dynamic_friction>
         <spring_coeff unit="LBS/FT">                10000 </spring_coeff>
         <damping_coeff unit="LBS/FT/SEC">            2000 </damping_coeff>
         <damping_coeff_rebound unit="LBS/FT/SEC">   40000 </damping_coeff_rebound>
