@@ -11,9 +11,10 @@
         <object-name>screws external (Meshed)</object-name>
         <object-name>screws internal (Meshed)</object-name>
         <object-name>freq frontal (Meshed)</object-name>
-        <object-name>freq cover (Meshed)</object-name>
-        <object-name>freq drum cursor (Meshed)</object-name>
-        <object-name>freq band selector (Meshed)</object-name>
+        <object-name>freq cover A (Meshed)</object-name>
+        <object-name>freq cover B (Meshed)</object-name>
+        <object-name>freq drum A (Meshed)</object-name>
+        <object-name>freq drum B (Meshed)</object-name>
         <object-name>freq dime (Meshed)</object-name>
         <object-name>gain (Meshed)</object-name>
         <object-name>tune ring (Meshed)</object-name>
@@ -47,6 +48,9 @@
         <object-name>lamp support screws 01 (Meshed)</object-name>
         <object-name>lamp support top 01 (Meshed)</object-name>
         <object-name>tag base (Meshed)</object-name>
+        <object-name>tag blue (Meshed)</object-name>
+        <object-name>tag silver (Meshed)</object-name>
+        <object-name>tag black (Meshed)</object-name>
         <object-name>tag screews (Meshed)</object-name>
         <object-name>box_cover_sup A (Meshed)</object-name>
         <object-name>box_cover_sup (Meshed)</object-name>
@@ -62,8 +66,10 @@
         <object-name>screws external (Meshed)</object-name>
         <object-name>screws internal (Meshed)</object-name>
         <object-name>freq frontal (Meshed)</object-name>
-        <object-name>freq cover (Meshed)</object-name>
-        <object-name>freq drum cursor (Meshed)</object-name>
+        <object-name>freq cover A (Meshed)</object-name>
+        <object-name>freq cover B (Meshed)</object-name>
+        <object-name>freq drum A (Meshed)</object-name>
+        <object-name>freq drum B (Meshed)</object-name>
         <object-name>freq dime (Meshed)</object-name>
         <object-name>gain (Meshed)</object-name>
         <object-name>tune ring (Meshed)</object-name>
@@ -97,6 +103,9 @@
         <object-name>lamp support screws 01 (Meshed)</object-name>
         <object-name>lamp support top 01 (Meshed)</object-name>
         <object-name>tag base (Meshed)</object-name>
+        <object-name>tag blue (Meshed)</object-name>
+        <object-name>tag silver (Meshed)</object-name>
+        <object-name>tag black (Meshed)</object-name>
         <object-name>tag screews (Meshed)</object-name>
         <object-name>box_cover_sup A (Meshed)</object-name>
         <object-name>box_cover_sup (Meshed)</object-name>
@@ -238,7 +247,28 @@
     
     <animation>
         <type>material</type>
-        <object-name>freq cover (Meshed)</object-name>
+        <object-name>freq cover A (Meshed)</object-name>
+        <diffuse>
+            <red>0.6</red>
+            <green>0.6</green>
+            <blue>0.4</blue>
+        </diffuse>
+        <ambient>
+            <red>0.6</red>
+            <green>0.6</green>
+            <blue>0.4</blue>
+        </ambient>
+        <emission>
+            <red>0.3</red>
+            <green>0.25</green>
+            <blue>0.1</blue>
+            <factor-prop>/fdm/jsbsim/systems/gauges/radio/ADF-Marconi-8283/sw-dim-intensity</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation>
+        <type>material</type>
+        <object-name>freq cover B (Meshed)</object-name>
         <diffuse>
             <red>0.05</red>
             <green>0.05</green>
@@ -261,14 +291,14 @@
         <type>material</type>
         <object-name>freq band selector (Meshed)</object-name>
         <diffuse>
-            <red>0.3</red>
-            <green>0.3</green>
-            <blue>0.3</blue>
+            <red>0.25</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
         </diffuse>
         <ambient>
-            <red>0.3</red>
-            <green>0.3</green>
-            <blue>0.3</blue>
+            <red>0.25</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
         </ambient>
         <emission>
             <red>0.04</red>
@@ -280,7 +310,28 @@
     
     <animation>
         <type>material</type>
-        <object-name>freq drum cursor (Meshed)</object-name>
+        <object-name>freq drum A (Meshed)</object-name>
+        <diffuse>
+            <red>0.05</red>
+            <green>0.05</green>
+            <blue>0.05</blue>
+        </diffuse>
+        <ambient>
+            <red>0.05</red>
+            <green>0.05</green>
+            <blue>0.05</blue>
+        </ambient>
+        <emission>
+            <red>0.1</red>
+            <green>0.05</green>
+            <blue>0.0</blue>
+            <factor-prop>/fdm/jsbsim/systems/gauges/radio/ADF-Marconi-8283/sw-dim-intensity</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation>
+        <type>material</type>
+        <object-name>freq drum B (Meshed)</object-name>
         <diffuse>
             <red>1.0</red>
             <green>1.0</green>
@@ -806,6 +857,7 @@
     <animation> 
         <type>material</type>
         <object-name>tag base (Meshed)</object-name>
+        <object-name>tag black (Meshed)</object-name>
         <diffuse>
             <red>0.05</red>
             <green>0.05</green>
@@ -829,6 +881,58 @@
         </emission>
     </animation>
     
+    <animation> 
+        <type>material</type>
+        <object-name>tag blue (Meshed)</object-name>
+        <diffuse>
+            <red>0.4</red>
+            <green>0.4</green>
+            <blue>0.8</blue>
+        </diffuse>
+        <ambient>
+            <red>0.4</red>
+            <green>0.4</green>
+            <blue>0.8</blue>
+        </ambient>
+        <specular>
+            <red>0.15</red>
+            <green>0.15</green>
+            <blue>0.8</blue>
+        </specular>
+        <emission>
+            <red>0.05</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+        
+    <animation> 
+        <type>material</type>
+        <object-name>tag silver (Meshed)</object-name>
+        <diffuse>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </diffuse>
+        <ambient>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </ambient>
+        <specular>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+        </specular>
+        <emission>
+            <red>0.12</red>
+            <green>0.03</green>
+            <blue>0.03</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+
     <animation> 
         <type>material</type>
         <object-name>tag screews (Meshed)</object-name>
@@ -911,10 +1015,10 @@
             <binding>
                 <command>property-adjust</command>
                 <property>/fdm/jsbsim/systems/gauges/radio/ADF-Marconi-8283/freq-set</property>
-                <factor>1.0</factor>
+                <factor>1</factor>
                 <min>0</min>
-                <max>270</max>                
-                <wrap>false</wrap>
+                <max>72</max>                
+                <wrap>true</wrap>
             </binding>
         </action>
     </animation>
@@ -925,8 +1029,8 @@
         <object-name>crank sxis (Meshed)</object-name>
         <object-name>crank knob (Meshed)</object-name>
         <object-name>crank rod (Meshed)</object-name>
-        <property>/fdm/jsbsim/systems/gauges/radio/ADF-Marconi-8283/freq-set</property>
-        <factor>1</factor>
+        <property>/fdm/jsbsim/systems/gauges/radio/ADF-Marconi-8283/freq-pos</property>
+        <factor>5</factor>
         <offset-deg>0</offset-deg>
         <center>
             <x-m>0.095</x-m><y-m>-0.043</y-m><z-m>0.0</z-m>
@@ -938,12 +1042,12 @@
     
     <animation>
         <type>rotate</type>
-        <object-name>freq drum cursor (Meshed)</object-name>
-        <property>/fdm/jsbsim/systems/gauges/radio/ADF-Marconi-8283/freq-set</property>
+        <object-name>freq drum A (Meshed)</object-name>
+        <property>/fdm/jsbsim/systems/gauges/radio/ADF-Marconi-8283/freq-pos</property>
         <factor>1.0</factor>
-        <offset-deg>-268</offset-deg>
+        <offset-deg>0</offset-deg>
         <center>
-            <x-m>0.0</x-m><y-m>-0.059</y-m><z-m>-0.028</z-m>
+            <x-m>0.0</x-m><y-m>-0.059</y-m><z-m>-0.026</z-m>
         </center>
         <axis>
             <x>1</x><y>0</y><z>0</z>
@@ -966,8 +1070,8 @@
                 <property>/fdm/jsbsim/systems/gauges/radio/ADF-Marconi-8283/freq-band-set</property>
                 <factor>1</factor>
                 <min>0</min>
-                <max>3</max>                
-                <wrap>true</wrap>
+                <max>2</max>                
+                <wrap>false</wrap>
             </binding>
         </action>
     </animation>
@@ -975,9 +1079,9 @@
     <animation>
         <type>rotate</type>
         <object-name>freq band selector (Meshed)</object-name>
-        <property>/fdm/jsbsim/systems/gauges/radio/ADF-Marconi-8283/freq-band-set</property>
-        <factor>45.0</factor>
-        <offset-deg>0</offset-deg>
+        <property>/fdm/jsbsim/systems/gauges/radio/ADF-Marconi-8283/freq-band-pos</property>
+        <factor>40.0</factor>
+        <offset-deg>-40</offset-deg>
         <center>
             <x-m>0.0</x-m><y-m>-0.059</y-m><z-m>-0.031</z-m>
         </center>
@@ -988,12 +1092,13 @@
     
     <animation>
         <type>rotate</type>
-        <object-name>freq cover (Meshed)</object-name>
-        <property>/fdm/jsbsim/systems/gauges/radio/ADF-Marconi-8283/freq-band-set</property>
+        <object-name>freq cover A (Meshed)</object-name>
+        <object-name>freq cover B (Meshed)</object-name>
+        <property>/fdm/jsbsim/systems/gauges/radio/ADF-Marconi-8283/freq-band-pos</property>
         <factor>90.0</factor>
         <offset-deg>0</offset-deg>
         <center>
-            <x-m>0.0</x-m><y-m>-0.059</y-m><z-m>-0.028</z-m>
+            <x-m>0.0</x-m><y-m>-0.059</y-m><z-m>-0.026</z-m>
         </center>
         <axis>
             <x>-1</x><y>0</y><z>0</z>
@@ -1008,7 +1113,7 @@
             <x-m>0.048</x-m><y-m>-0.120</y-m><z-m>0.0</z-m>
         </center>
         <axis>
-            <x>0</x><y>0</y><z>1</z>
+            <x>0</x><y>0</y><z>-1</z>
         </axis>
         <action>
             <binding>
@@ -1026,7 +1131,7 @@
         <type>rotate</type>
         <object-name>gain (Meshed)</object-name>
         <property>/fdm/jsbsim/systems/gauges/radio/ADF-Marconi-8283/gain-set</property>
-        <factor>270</factor>
+        <factor>-270</factor>
         <offset-deg>0</offset-deg>
         <center>
             <x-m>0.048</x-m><y-m>-0.120</y-m><z-m>0.0</z-m>
@@ -1068,6 +1173,66 @@
     
     <animation>
         <type>pick</type>
+        <object-name>switch CW lever (Meshed)</object-name>
+        <object-name>switch CW nut (Meshed)</object-name>
+        <object-name>switch CW screw (Meshed)</object-name>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <interval-sec>0.5</interval-sec>
+            <binding>
+                <command>property-toggle</command>
+                <property>/fdm/jsbsim/systems/gauges/radio/ADF-Marconi-8283/sw-cw-togle</property>
+            </binding>
+        </action>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>switch CW lever (Meshed)</object-name>
+        <property>/fdm/jsbsim/systems/gauges/radio/ADF-Marconi-8283/sw-cw-pos</property>
+        <factor>-30</factor>
+        <offset-deg>15</offset-deg>
+        <center>
+            <x-m>0.104</x-m><y-m>0.0</y-m><z-m>0.002</z-m>
+        </center>
+        <axis>
+            <x>0</x><y>1</y><z>0</z>
+        </axis>
+    </animation>
+    
+    <animation>
+        <type>pick</type>
+        <object-name>switch ADF lever (Meshed)</object-name>
+        <object-name>switch ADF nut (Meshed)</object-name>
+        <object-name>switch ADF screw (Meshed)</object-name>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <interval-sec>0.5</interval-sec>
+            <binding>
+                <command>property-toggle</command>
+                <property>/fdm/jsbsim/systems/gauges/radio/ADF-Marconi-8283/sw-ADF-togle</property>
+            </binding>
+        </action>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>switch ADF lever (Meshed)</object-name>
+        <property>/fdm/jsbsim/systems/gauges/radio/ADF-Marconi-8283/sw-ADF-pos</property>
+        <factor>-30</factor>
+        <offset-deg>15</offset-deg>
+        <center>
+            <x-m>0.104</x-m><y-m>0.0</y-m><z-m>0.002</z-m>
+        </center>
+        <axis>
+            <x>0</x><y>1</y><z>0</z>
+        </axis>
+    </animation>
+    
+    <animation>
+        <type>pick</type>
         <object-name>switch dim push top (Meshed)</object-name>
         <action>
             <button>0</button>
@@ -1090,6 +1255,20 @@
         </center>
         <axis>
             <x>0</x><y>0</y><z>1</z>
+        </axis>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>tune arrow A (Meshed)</object-name>
+        <property>/fdm/jsbsim/systems/gauges/radio/ADF-Marconi-8283/tune-arrow-pos</property>
+        <factor>90</factor>
+        <offset-deg>-45</offset-deg>
+        <center>
+            <x-m>0.021</x-m><y-m>-0.096</y-m><z-m>0.0</z-m>
+        </center>
+        <axis>
+            <x>0</x><y>0</y><z>-1</z>
         </axis>
     </animation>
     

@@ -19,7 +19,6 @@ Description: G91R2 Canopy automation
     <property value="0">systems/starter/fuel-booster-pump</property>
     <property value="0">systems/starter/fuel-booster-pump-pos</property>
     <property value="0">systems/starter/fuel-booster-pump-on</property>
-    <property value="0">systems/starter/fuel-booster-pump-on-lag</property>
     <property value="0">systems/starter/HE</property>
     <property value="0">systems/starter/HE-pos</property>
     <property value="0">systems/starter/engine-JPTL</property>

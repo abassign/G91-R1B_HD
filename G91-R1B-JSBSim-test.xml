@@ -66,11 +66,11 @@
     <system file="G91-warning-lights"/>
     
     <!-- for testing -->
-    <system file="PHI-new"/>
+    <system file="PHI"/>
     <system file="radio-PTR175"/>
     
     <!-- apparatus -->
-    <system file="pippo"/>
+    <system file="ADF-MARCONI-8283"/>
     
     <metrics file="Systems/G91-metrics"/>
     <mass_balance file="Systems/G91-mass-balance"/>

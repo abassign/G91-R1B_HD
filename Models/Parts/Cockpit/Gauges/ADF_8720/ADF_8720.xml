@@ -295,7 +295,7 @@
         <type>rotate</type>
         <object-name>pointer_1_A (Meshed)</object-name>
         <object-name>pointer_1_B (Meshed)</object-name>
-        <property>/instrumentation/adf/indicated-bearing-deg</property>
+        <property>/fdm/jsbsim/systems/gauges/radio/ADF-Marconi-8283/indicated-bearing-deg</property>
         <axis>
             <x>  -1 </x>
             <y>  0 </y>
