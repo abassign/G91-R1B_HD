@@ -91,7 +91,7 @@
         <object-name>handle_cockpit02.000</object-name>
         <object-name>handle_cockpit02.001</object-name>
         <object-name>handle_cockpit02.003</object-name>
-        <property>fdm/jsbsim/systems/handle-switches/sw-handle-brake-pos-linear</property>
+        <property>fdm/jsbsim/systems/handle-switches/sw-handle-brake-extension</property>
         <factor>0.1</factor>
         <offset-m>0.0</offset-m>
         <axis>

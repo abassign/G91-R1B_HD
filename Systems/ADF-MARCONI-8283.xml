@@ -146,7 +146,7 @@
         
         <actuator name="systems/gauges/radio/ADF-Marconi-8283/tune-arrow-pos">
             <input>systems/gauges/radio/ADF-Marconi-8283/tune-intensity</input>
-            <lag>0.5</lag>
+            <lag>1.0</lag>
             <rate_limit> 0.2 </rate_limit>
             <deadband_width> 0.01 </deadband_width>
             <hysteresis_width> 0.02 </hysteresis_width>

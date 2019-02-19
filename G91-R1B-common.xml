@@ -139,7 +139,7 @@
             <autopilot>
                 <name>Libraries</name>
                 <path>Systems/libraries.xml</path>
-			</autopilot>
+            </autopilot>
         </systems>
     </sim>
     
