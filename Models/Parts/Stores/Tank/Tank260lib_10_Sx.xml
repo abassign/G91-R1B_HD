@@ -11,6 +11,16 @@
         <z-m>-0.449</z-m>
         <pitch-offset>-2.5</pitch-offset>
     </offsets>
+    
+    <effect>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
+        <object-name>tank_260lb_hook_01</object-name>
+        <object-name>tank_260lb_hook_02</object-name>
+        <object-name>tank_260lb_sub_01</object-name>
+        <object-name>tank_260lb_sup_01</object-name>
+        <object-name>tank_260lb_tail_01</object-name>
+    </effect>
+    
     <!--
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Liveries/liveries_002</inherits-from>
@@ -30,6 +40,11 @@
             <blue>1.0</blue>
             <factor-prop>sim/G91/liveries/active/diffuse</factor-prop>
         </diffuse>
+        <ambient>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </ambient>
         <specular>
             <red>1.0</red>
             <green>1.0</green>
@@ -38,21 +53,20 @@
         </specular>
     </animation>
     
-    <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
-        <object-name>tank_260lb_hook_01</object-name>
-        <object-name>tank_260lb_hook_02</object-name>
-    </effect>
-    
     <animation> 
         <type>material</type>
         <object-name>tank_260lb_hook_01</object-name>
         <object-name>tank_260lb_hook_02</object-name>
-        <texture>Pictures/G91-Dark-Grey.png</texture>
+        <diffuse>
+            <red>0.4</red>
+            <green>0.4</green>
+            <blue>0.4</blue>
+            <factor-prop>sim/G91/liveries/active/diffuse</factor-prop>
+        </diffuse>
         <ambient>
-            <red>0.8</red>
-            <green>0.8</green>
-            <blue>0.8</blue>
+            <red>0.4</red>
+            <green>0.4</green>
+            <blue>0.4</blue>
         </ambient>
     </animation>
 

@@ -3,7 +3,6 @@
 <system name="Manual handle switches"> 
     
     <property value="0.0">systems/handle-switches/sw-handle-brake-trigger</property>
-    <property value="0.0">systems/handle-switches/sw-brake-parking</property>
     <property value="0.0">systems/handle-switches/sw-handle-brake-pos-rotate</property>
     <property value="0.0">systems/handle-switches/sw-handle-brake-extension</property>
     
