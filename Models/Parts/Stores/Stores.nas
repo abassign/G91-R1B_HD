@@ -1,4 +1,3 @@
-
 var prop = props.globals.initNode("sim/G91/stores/sw-emergency-release", 0, "DOUBLE");
 var prop = props.globals.initNode("sim/G91/stores/handleRequestToDrop", 0, "DOUBLE");
 var prop = props.globals.initNode("sim/G91/handle/handleRequestToDropPosition", 0, "DOUBLE");
@@ -50,6 +49,7 @@ setlistener("sim/G91/stores/handleRequestToLoadStation", func {
         # Load station
         isLoadStation = handleRequestToLoadStation;
         loadType = props.globals.getNode("sim/G91/stores/handleRequestToLoadType",1).getValue();
+        print("Stores: load handleRequestToLoadStation id = ",isLoadStation," loadType = ",loadType);
         if (isLoadStation == 1) {
             stationSxExternalTypeLoad(loadType);
         } else if (isLoadStation == 2) {
@@ -62,7 +62,7 @@ setlistener("sim/G91/stores/handleRequestToLoadStation", func {
     } else if (handleRequestToLoadStation < 0)  {
         # Unload station
         isUnLoadStation = -handleRequestToLoadStation;
-        loadType = props.globals.getNode("sim/G91/stores/handleRequestToLoadType",1).getValue();
+        print("Stores: unload handleRequestToLoadStation id = ",isUnLoadStation);
         if (isUnLoadStation == 1) {
             stationSxExternalTypeLoadDrop();
         } else if (isUnLoadStation == 2) {
@@ -88,9 +88,10 @@ var stationSxExternalTypeLoad = func(typeLoad = 0) {
 }
 
 var stationSxInternalTypeLoad = func(typeLoad = 0) {
-    if (typeLoad = 10) {
+    if (typeLoad == 10) {
         print("Stores: stationSxInternalTypeLoad : ",10);
         setprop("sim/G91/stores/stationSxInternalTypeLoad", 10);
+        setprop("/fdm/jsbsim/systems/stations/stationSxInternal/TypeLoad",10);
         setprop("/fdm/jsbsim/systems/stations/stationSxInternal/typeHook",1);
         setprop("/fdm/jsbsim/systems/stations/stationSxInternal/typeHardpoint",1);
         setprop("consumables/fuel/tank[4]/selected",1);
@@ -100,9 +101,11 @@ var stationSxInternalTypeLoad = func(typeLoad = 0) {
         setprop("/fdm/jsbsim/systems/stations/stationSxInternal/Weight",70);
         setprop("/fdm/jsbsim/systems/stations/stationSxInternal/Cd",0.2);
         setprop("/fdm/jsbsim/systems/stations/hardPointSxInternal/Count",1);
-    } else if (typeLoad = 11) {
+        print("Stores: stationSxExternalTypeLoad loadType = 10");
+    } else if (typeLoad == 11) {
         print("Stores: stationSxInternalTypeLoad : ",11);
         setprop("sim/G91/stores/stationSxInternalTypeLoad", 11);
+        setprop("/fdm/jsbsim/systems/stations/stationSxInternal/TypeLoad",11);
         setprop("/fdm/jsbsim/systems/stations/stationSxInternal/typeHook",2);
         setprop("/fdm/jsbsim/systems/stations/stationSxInternal/typeHardpoint",2);
         setprop("consumables/fuel/tank[4]/selected",0);
@@ -112,13 +115,15 @@ var stationSxInternalTypeLoad = func(typeLoad = 0) {
         setprop("/fdm/jsbsim/systems/stations/stationSxInternal/Weight",50);
         setprop("/fdm/jsbsim/systems/stations/stationSxInternal/Cd",0.15);
         setprop("/fdm/jsbsim/systems/stations/hardPointSxInternal/Count",1);
+        print("Stores: stationSxExternalTypeLoad loadType = 11");
     }
 }
 
 var stationDxInternalTypeLoad = func(typeLoad = 0) {
-    if (typeLoad = 10) {
+    if (typeLoad == 10) {
         print("Stores: stationDxInternalTypeLoad : ",10);
         setprop("sim/G91/stores/stationDxInternalTypeLoad", 10);
+        setprop("/fdm/jsbsim/systems/stations/stationDxInternal/TypeLoad",10);
         setprop("/fdm/jsbsim/systems/stations/stationDxInternal/typeHook",1);
         setprop("/fdm/jsbsim/systems/stations/stationDxInternal/typeHardpoint",1);
         setprop("consumables/fuel/tank[3]/selected",1);
@@ -128,9 +133,11 @@ var stationDxInternalTypeLoad = func(typeLoad = 0) {
         setprop("/fdm/jsbsim/systems/stations/stationDxInternal/Weight",70);
         setprop("/fdm/jsbsim/systems/stations/stationDxInternal/Cd",0.2);
         setprop("/fdm/jsbsim/systems/stations/hardPointDxInternal/Count",1);
-    } else if (typeLoad = 11) {
+        print("Stores: stationDxInternalTypeLoad loadType = 10");
+    } else if (typeLoad == 11) {
         print("Stores: stationDxInternalTypeLoad : ",11);
         setprop("sim/G91/stores/stationDxInternalTypeLoad", 11);
+        setprop("/fdm/jsbsim/systems/stations/stationDxInternal/TypeLoad",11);
         setprop("/fdm/jsbsim/systems/stations/stationDxInternal/typeHook",2);
         setprop("/fdm/jsbsim/systems/stations/stationDxInternal/typeHardpoint",2);
         setprop("consumables/fuel/tank[3]/selected",0);
@@ -140,6 +147,7 @@ var stationDxInternalTypeLoad = func(typeLoad = 0) {
         setprop("/fdm/jsbsim/systems/stations/stationDxInternal/Weight",50);
         setprop("/fdm/jsbsim/systems/stations/stationDxInternal/Cd",0.15);
         setprop("/fdm/jsbsim/systems/stations/hardPointDxInternal/Count",1);
+        print("Stores: stationDxInternalTypeLoad loadType = 11");
     }
 }
 
@@ -164,6 +172,17 @@ var stationSxInternalTypeLoadDrop = func() {
         setprop("sim/G91/stores/stationSxInternalTypeLoad", 0);
         setprop("sim/G91/stores/startStoreView", 0);
         setprop("sim/G91/stores/lastStoreBalObj","stationSxInternal_Tank260lit");
+        setprop("/fdm/jsbsim/systems/stations/stationSxInternal/TypeLoad",0);
+        setprop("/fdm/jsbsim/systems/stations/stationSxInternal/Count",0);
+        setprop("/fdm/jsbsim/systems/stations/stationSxInternal/Weight",0);
+        setprop("/fdm/jsbsim/systems/stations/stationSxInternal/Cd",0);
+        setprop("/fdm/jsbsim/systems/stations/hardPointSxInternal/Count",0);
+    } else if (typeLoad == 11) {
+        print("Stores: stationSxInternalTypeLoadDrop : ",typeLoad);
+        setprop("sim/G91/stores/stationSxInternalTypeLoad", 0);
+        setprop("sim/G91/stores/startStoreView", 0);
+        setprop("sim/G91/stores/lastStoreBalObj","stationSxInternal_Tank260lit");
+        setprop("/fdm/jsbsim/systems/stations/stationSxInternal/TypeLoad",0);
         setprop("/fdm/jsbsim/systems/stations/stationSxInternal/Count",0);
         setprop("/fdm/jsbsim/systems/stations/stationSxInternal/Weight",0);
         setprop("/fdm/jsbsim/systems/stations/stationSxInternal/Cd",0);
@@ -180,6 +199,17 @@ var stationDxInternalTypeLoadDrop = func() {
         setprop("sim/G91/stores/stationDxInternalTypeLoad", 0);
         setprop("sim/G91/stores/startStoreView", 0);
         setprop("sim/G91/stores/lastStoreBalObj","stationDxInternal_Tank260lit");
+        setprop("/fdm/jsbsim/systems/stations/stationDxInternal/TypeLoad",0);
+        setprop("/fdm/jsbsim/systems/stations/stationDxInternal/Count",0);
+        setprop("/fdm/jsbsim/systems/stations/stationDxInternal/Weight",0);
+        setprop("/fdm/jsbsim/systems/stations/stationDxInternal/Cd",0);
+        setprop("/fdm/jsbsim/systems/stations/hardPointDxInternal/Count",0);
+    } else if (typeLoad == 11) {
+        print("Stores: stationDxInternalTypeLoadDrop : ",typeLoad);
+        setprop("sim/G91/stores/stationDxInternalTypeLoad", 0);
+        setprop("sim/G91/stores/startStoreView", 0);
+        setprop("sim/G91/stores/lastStoreBalObj","stationDxInternal_Tank260lit");
+        setprop("/fdm/jsbsim/systems/stations/stationDxInternal/TypeLoad",0);
         setprop("/fdm/jsbsim/systems/stations/stationDxInternal/Count",0);
         setprop("/fdm/jsbsim/systems/stations/stationDxInternal/Weight",0);
         setprop("/fdm/jsbsim/systems/stations/stationDxInternal/Cd",0);

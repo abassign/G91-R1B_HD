@@ -50,10 +50,9 @@
             <z-m>-0.25</z-m>
         </offsets>
     </model>
-    
+
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Stores/Stores.xml</path>
     </model>
 
-    
 </PropertyList>

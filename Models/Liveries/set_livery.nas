@@ -190,10 +190,18 @@ var setCanvas = func() {
     cw.addPlacement({"node": "D_equilibratore_dx"});
     cw.addPlacement({"node": "D_equilibratore_sx.002"});
     
+    # Hard points
+    cw.addPlacement({"node": "hp_dx_int_01_external"});
+    cw.addPlacement({"node": "hp_dx_int_PAN_external"});
+    cw.addPlacement({"node": "hp_sx_int_01_external"});
+    cw.addPlacement({"node": "hp_sx_int_PAN_external"});
+    
     # Stores
     cw.addPlacement({"node": "tank_260lb_sub_01"});
     cw.addPlacement({"node": "tank_260lb_sup_01"});
     cw.addPlacement({"node": "tank_260lb_tail_01"});
+    cw.addPlacement({"node": "PAN_tank_sx.004"});
+    cw.addPlacement({"node": "PAN_tank_sx_003"});
 
     cw_root = cw.createGroup();
 

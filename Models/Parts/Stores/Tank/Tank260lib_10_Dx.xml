@@ -2,7 +2,7 @@
 
 <PropertyList>
     
-    <path>Tank260lib_10.ac</path>
+    <path>Tanks.ac</path>
     <nopreview/>
 
     <offsets>
@@ -16,24 +16,24 @@
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
         <object-name>tank_260lb_hook_01</object-name>
         <object-name>tank_260lb_hook_02</object-name>
-        <object-name>tank_260lb_sub_01</object-name>
-        <object-name>tank_260lb_sup_01</object-name>
-        <object-name>tank_260lb_tail_01</object-name>
     </effect>
-    
-    <!--
+
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Liveries/liveries_002</inherits-from>
         <object-name>tank_260lb_sub_01</object-name>
         <object-name>tank_260lb_sup_01</object-name>
         <object-name>tank_260lb_tail_01</object-name>
+        <object-name>PAN_tank_sx.004</object-name>
+        <object-name>PAN_tank_sx_003</object-name>
     </effect>
-    -->
+
     <animation> 
         <type>material</type>
         <object-name>tank_260lb_sub_01</object-name>
         <object-name>tank_260lb_sup_01</object-name>
         <object-name>tank_260lb_tail_01</object-name>
+        <object-name>PAN_tank_sx.004</object-name>
+        <object-name>PAN_tank_sx_003</object-name>
         <diffuse>
             <red>1.0</red>
             <green>1.0</green>
@@ -80,8 +80,21 @@
         <object-name>tank_260lb_tail_01</object-name>
         <condition> 
             <equals>
-                <property>sim/G91/stores/stationDxInternalTypeLoad</property>
+                <property>/fdm/jsbsim/systems/stations/stationDxInternal/TypeLoad</property>
                 <value>10</value>
+            </equals>
+        </condition>
+    </animation>
+    
+    <animation>
+        <type>select</type>
+        <nopreview/>
+        <object-name>PAN_tank_sx.004</object-name>
+        <object-name>PAN_tank_sx_003</object-name>
+        <condition> 
+            <equals>
+                <property>/fdm/jsbsim/systems/stations/stationDxInternal/TypeLoad</property>
+                <value>11</value>
             </equals>
         </condition>
     </animation>

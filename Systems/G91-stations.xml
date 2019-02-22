@@ -6,6 +6,10 @@ Description: G91R2 Canopy automation
 
 <system name="stations">
     
+    <property value="0">systems/stations/stationSxExternal/TypeLoad</property>
+    <property value="0">systems/stations/stationSxInternal/TypeLoad</property>
+    <property value="0">systems/stations/stationDxExternal/TypeLoad</property>
+    <property value="0">systems/stations/stationDxInternal/TypeLoad</property>
     <property value="0">systems/stations/stationSxExternal/typeHook</property>
     <property value="0">systems/stations/stationSxInternal/typeHook</property>
     <property value="0">systems/stations/stationDxExternal/typeHook</property>

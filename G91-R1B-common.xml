@@ -172,6 +172,7 @@
             <file>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/J8/J8.nas</file>
             <file>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Gauges/SFOM_83A/SFOM_83A_01.nas</file>
             <!-- Stores -->
+            <file>Aircraft/G91-R1B_HD/Models/Parts/Stores/Configurator.nas</file>
             <file>Aircraft/G91-R1B_HD/Models/Parts/Stores/Stores.nas</file>
             <!-- Test -->
             <file>Aircraft/G91-R1B_HD/Nasal/light-manager.nas</file>

@@ -3,54 +3,46 @@
 <system name="Manual handle switches"> 
     
     <property value="0.0">systems/handle-switches/sw-handle-brake-trigger</property>
+    <property value="0.0">systems/handle-switches/sw-handle-brake-trigger-fcs-wa</property>
+    <property value="0.0">systems/handle-switches/sw-handle-brake-move</property>
     <property value="0.0">systems/handle-switches/sw-handle-brake-pos-rotate</property>
     <property value="0.0">systems/handle-switches/sw-handle-brake-extension</property>
     
     <channel name="handle brake" execrate="16">
-
+        
+        <washout_filter name="systems/handle-switches/sw-handle-brake-trigger-fcs-wa">
+            <input>/controls/gear/brake-parking</input>
+            <c1>1.0</c1>
+        </washout_filter>
+        
+        <switch name="systems/handle-switches/sw-handle-brake-move">
+            <default value="0"/>
+            <test logic="OR" value="1">
+                systems/handle-switches/sw-handle-brake-trigger-fcs-wa GT 0.8
+                systems/handle-switches/sw-handle-brake-trigger-fcs-wa LT -0.2
+                systems/handle-switches/sw-handle-brake-trigger == 1
+            </test>
+        </switch>
+        
         <switch name="systems/handle-switches/sw-handle-brake-pos-status">
             <default value="systems/handle-switches/sw-handle-brake-pos-status"/>
             <test logic="AND" value="0">
                 gear/unit[0]/wheel-speed-fps GT 0.5
-                systems/handle-switches/sw-handle-brake-trigger == 0
-                /controls/gear/brake-parking == 0
+                systems/handle-switches/sw-handle-brake-move == 0
             </test>
             <test logic="AND" value="1">
                 gear/unit[0]/wheel-speed-fps GT 0.5
-                systems/handle-switches/sw-handle-brake-trigger == 1
+                systems/handle-switches/sw-handle-brake-move == 1
             </test>
             <test logic="AND" value="0">
                 gear/unit[0]/wheel-speed-fps LE 0.5
-                systems/handle-switches/sw-handle-brake-trigger == 1
+                systems/handle-switches/sw-handle-brake-move == 1
                 systems/handle-switches/sw-handle-brake-pos-rotate GT 0.95
             </test>
             <test logic="AND" value="2">
                 gear/unit[0]/wheel-speed-fps LE 0.5
-                systems/handle-switches/sw-handle-brake-trigger == 1
+                systems/handle-switches/sw-handle-brake-move == 1
             </test>
-            <test logic="AND" value="0">
-                /controls/gear/brake-parking == 0
-                systems/handle-switches/sw-handle-brake-pos-rotate GT 0.95
-            </test>
-            <test logic="AND" value="1">
-                gear/unit[0]/wheel-speed-fps GT 0.5
-                /controls/gear/brake-parking == 1
-            </test>
-            <test logic="AND" value="2">
-                gear/unit[0]/wheel-speed-fps LE 0.5
-                /controls/gear/brake-parking == 1
-            </test>
-        </switch>
-        
-        <switch name="set controls gear brake-parking">
-            <default value="/controls/gear/brake-parking"/>
-            <test logic="AND" value="0">
-                systems/handle-switches/sw-handle-brake-pos-status == 0
-            </test>
-            <test logic="AND" value="1">
-                systems/handle-switches/sw-handle-brake-pos-status GT 0
-            </test>
-            <output>/controls/gear/brake-parking</output>
         </switch>
         
         <switch name="systems/handle-switches/sw-handle-brake-pos-status-linear">

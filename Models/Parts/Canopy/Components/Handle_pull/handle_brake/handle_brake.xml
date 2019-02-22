@@ -71,6 +71,13 @@
             <button>0</button>
             <repeatable>false</repeatable>
             <interval-sec>1.0</interval-sec>
+            <!--
+            <binding>
+                <command>property-toggle</command>
+                <property>fdm/jsbsim/systems/handle-switches/sw-handle-brake-trigger</property>
+            </binding>
+            -->
+
             <binding>
                 <command>property-assign</command>
                 <property>fdm/jsbsim/systems/handle-switches/sw-handle-brake-trigger</property>
@@ -83,6 +90,7 @@
                     <value>0</value>
                 </binding>
             </mod-up>
+
         </action>
     </animation>
     

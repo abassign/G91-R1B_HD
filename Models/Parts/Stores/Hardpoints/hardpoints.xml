@@ -3,7 +3,40 @@
 <PropertyList>
     
     <path>hardpoints.ac</path>
-    
+
+    <effect>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Liveries/liveries_002</inherits-from>
+        <object-name>hp_dx_int_01_external</object-name>
+        <object-name>hp_sx_int_01_external</object-name>
+        <object-name>hp_dx_int_PAN_external</object-name>
+        <object-name>hp_sx_int_PAN_external</object-name>
+    </effect>
+
+    <animation> 
+        <type>material</type>
+        <object-name>hp_dx_int_01_external</object-name>
+        <object-name>hp_sx_int_01_external</object-name>
+        <object-name>hp_dx_int_PAN_external</object-name>
+        <object-name>hp_sx_int_PAN_external</object-name>
+        <diffuse>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+            <factor-prop>sim/G91/liveries/active/diffuse</factor-prop>
+        </diffuse>
+        <ambient>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </ambient>
+        <specular>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+            <factor-prop>sim/G91/liveries/active/specular</factor-prop>
+        </specular>
+    </animation>
+
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
         <object-name>hp_dx_int_01_internal</object-name>
@@ -12,14 +45,6 @@
         <object-name>hp_dx_int_PAN_bottom</object-name>
         <object-name>hp_sx_int_PAN_separator</object-name>
         <object-name>hp_sx_int_PAN_bottom</object-name>
-    </effect>
-    
-    <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/glass-chrome</inherits-from>
-        <object-name>hp_dx_int_01_external</object-name>
-        <object-name>hp_dx_int_PAN_external</object-name>
-        <object-name>hp_sx_int_01_external</object-name>
-        <object-name>hp_sx_int_PAN_external</object-name>
     </effect>
     
     <animation>
@@ -74,22 +99,27 @@
     
     <animation> 
         <type>material</type>
-        <object-name>hp_dx_int_01_external</object-name>
         <object-name>hp_dx_int_01_internal</object-name>
         <object-name>hp_dx_int_PAN_bottom</object-name>
-        <object-name>hp_dx_int_PAN_external</object-name>
         <object-name>hp_dx_int_PAN_separator</object-name>
-        <object-name>hp_sx_int_01_external</object-name>
         <object-name>hp_sx_int_01_internal</object-name>
         <object-name>hp_sx_int_PAN_bottom</object-name>
-        <object-name>hp_sx_int_PAN_external</object-name>
         <object-name>hp_sx_int_PAN_separator</object-name>
-        <texture>Pictures/G91-Dark-Grey.png</texture>
+        <diffuse>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </diffuse>
         <ambient>
             <red>0.8</red>
             <green>0.8</green>
             <blue>0.8</blue>
         </ambient>
+        <specular>
+            <red>0.7</red>
+            <green>0.7</green>
+            <blue>0.7</blue>
+        </specular>
     </animation>
     
     <model>
