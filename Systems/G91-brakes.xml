@@ -1,9 +1,9 @@
 <!-- G91 Brake Control System -->
 
 <!-- 
-Copyright (c) 2019 Joshua Davidson (it0uchpods)
-    Create the program for for the centralization of the braking system
-Copyright (c) 2019 Adriano Bassignana (abassign)
+Original work Copyright (c) 2019 Joshua Davidson (it0uchpods)
+    Create the program to centralization of the braking system
+Modified work Copyright 2019 Adriano Bassignana (abassign)
     Modify the program forfcs/left/right-steer-brake-intensity
     for keyboard integration ( , and . )
 -->

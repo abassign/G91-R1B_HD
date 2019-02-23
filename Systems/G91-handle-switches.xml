@@ -1,5 +1,12 @@
 <?xml version="1.0"?>
 
+<!-- 
+Original work Copyright (c) 2019 Adriano Bassignana (abassign)
+    Create the program handle switches integration
+Modified work Copyright 2019 Joshua Davidson (it0uchpods)
+    Modify the "handle brake" channel
+-->
+
 <system name="Manual handle switches"> 
     
     <property value="0.0">systems/handle-switches/sw-handle-brake-trigger</property>
@@ -12,14 +19,14 @@
         
         <washout_filter name="systems/handle-switches/sw-handle-brake-trigger-fcs-wa">
             <input>/controls/gear/brake-parking</input>
-            <c1>1.0</c1>
+            <c1>4.0</c1>
         </washout_filter>
         
         <switch name="systems/handle-switches/sw-handle-brake-move">
             <default value="0"/>
             <test logic="OR" value="1">
-                systems/handle-switches/sw-handle-brake-trigger-fcs-wa GT 0.8
-                systems/handle-switches/sw-handle-brake-trigger-fcs-wa LT -0.2
+                systems/handle-switches/sw-handle-brake-trigger-fcs-wa GT 0.5
+                systems/handle-switches/sw-handle-brake-trigger-fcs-wa LT -0.5
                 systems/handle-switches/sw-handle-brake-trigger == 1
             </test>
         </switch>
