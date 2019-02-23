@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 
+<!-- 
+Original work Copyright (c) 2018 Adriano Bassignana (abassign)
+-->
+
 <PropertyList>
     
     <path>switch_panel_02-15mm_lock.ac</path>
@@ -34,7 +38,11 @@
     <animation> 
         <type>material</type>
         <object-name>lock_axis (Meshed)</object-name>
-        <texture>Pictures/G91-Al-dark.png</texture>
+        <diffuse>
+            <red>0.33</red>
+            <green>0.31</green>
+            <blue>0.30</blue>
+        </diffuse>
         <ambient>
             <red>0.2</red>
             <green>0.2</green>
@@ -51,11 +59,15 @@
     <animation> 
         <type>material</type>
         <object-name>lock_top (Meshed)</object-name>
-        <texture>Pictures/G91-Red02.png</texture>
+        <diffuse>
+            <red>0.59</red>
+            <green>0.18</green>
+            <blue>0.18</blue>
+        </diffuse>
         <ambient>
-            <red>0.6</red>
-            <green>0.6</green>
-            <blue>0.6</blue>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.3</blue>
         </ambient>
         <emission>
             <red>0.10</red>
@@ -73,11 +85,15 @@
     <animation> 
         <type>material</type>
         <object-name>lock_bottom (Meshed)</object-name>
-        <texture>Pictures/G91-Al-Dark01.png</texture>
+        <diffuse>
+            <red>0.46</red>
+            <green>0.46</green>
+            <blue>0.46</blue>
+        </diffuse>
         <ambient>
-            <red>0.7</red>
-            <green>0.7</green>
-            <blue>0.7</blue>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.3</blue>
         </ambient>
         <emission>
             <red>0.12</red>
@@ -95,14 +111,18 @@
     <animation> 
         <type>material</type>
         <object-name>switch_pin (Meshed)</object-name>
-        <texture>Pictures/G91-Al-Light.png</texture>
+        <diffuse>
+            <red>0.80</red>
+            <green>0.80</green>
+            <blue>0.80</blue>
+        </diffuse>
         <ambient>
             <red>0.9</red>
             <green>0.9</green>
             <blue>0.9</blue>
         </ambient>
         <emission>
-            <red>0.15</red>
+            <red>0.12</red>
             <green>0.0</green>
             <blue>0.0</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
@@ -117,7 +137,11 @@
     <animation> 
         <type>material</type>
         <object-name>switch_cone (Meshed)</object-name>
-        <texture>Pictures/G91-Al-Light.png</texture>
+        <diffuse>
+            <red>0.80</red>
+            <green>0.80</green>
+            <blue>0.80</blue>
+        </diffuse>
         <ambient>
             <red>0.7</red>
             <green>0.7</green>
@@ -139,7 +163,11 @@
     <animation> 
         <type>material</type>
         <object-name>switch_ring (Meshed)</object-name>
-        <texture>Pictures/G91-Al-Light.png</texture>
+        <diffuse>
+            <red>0.80</red>
+            <green>0.80</green>
+            <blue>0.80</blue>
+        </diffuse>
         <ambient>
             <red>0.9</red>
             <green>0.9</green>
@@ -161,7 +189,11 @@
     <animation> 
         <type>material</type>
         <object-name>switch_base (Meshed)</object-name>
-        <texture>Pictures/G91-Al-Light.png</texture>
+        <diffuse>
+            <red>0.4</red>
+            <green>0.4</green>
+            <blue>0.4</blue>
+        </diffuse>
         <ambient>
             <red>0.4</red>
             <green>0.4</green>

@@ -141,6 +141,7 @@
                 <path>Systems/libraries.xml</path>
             </autopilot>
         </systems>
+
     </sim>
     
     <controls>

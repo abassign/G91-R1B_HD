@@ -222,7 +222,6 @@
         <object-name>B00_Asse_dx_door_bis</object-name>
         <object-name>B00_sx_door_bis.002</object-name>
         <object-name>A__G91_fuselage_int.weapon.door.007</object-name>
-        <object-name>A__G91_fuselage_int.weapon.door.008</object-name>
         <object-name>m00_door_01.2</object-name>
         <object-name>m00_door_dx03.002</object-name>
         <object-name>tank_cap</object-name>
@@ -264,7 +263,6 @@
         <object-name>B00_Asse_dx_door_bis</object-name>
         <object-name>B00_sx_door_bis.002</object-name>
         <object-name>A__G91_fuselage_int.weapon.door.007</object-name>
-        <object-name>A__G91_fuselage_int.weapon.door.008</object-name>
         <diffuse>
             <red>1.0</red>
             <green>1.0</green>

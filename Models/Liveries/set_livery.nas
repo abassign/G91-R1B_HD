@@ -44,7 +44,7 @@ var setCanvas = func() {
                         "view": [ca_size,ca_size],
                         "mipmapping": 1});
                         
-    # Wing
+    # Fuselage
     ca.addPlacement({"node": "A__G91_fuselage_int.weapon.door.001"});
     ca.addPlacement({"node": "m00_door_01.1"});
     ca.addPlacement({"node": "m00_door_02"});
@@ -87,6 +87,9 @@ var setCanvas = func() {
     ca.addPlacement({"node": "m00_door_dx03.002"});
     ca.addPlacement({"node": "tank_cap1"});
     ca.addPlacement({"node": "tank_cap"});
+    ca.addPlacement({"node": "A__G91r3_fuselage_weapon_door_sx."});
+    ca.addPlacement({"node": "A__G91r3_fuselage_weapon_door_dx"});
+    ca.addPlacement({"node": "A__G91r3_fuselage_weapon.door"});
 
     # Tail
     ca.addPlacement({"node": "A__G91_fuselage_coda.002"});
@@ -392,6 +395,7 @@ var getActiveData = func() {
                 liverys[i].getNode("specular").setValue(props.globals.getNode("sim/G91/liveries/active/specular",1).getValue());
                 liverys[i].getNode("dirty").setValue(props.globals.getNode("sim/G91/liveries/active/dirty",1).getValue());
                 liverys[i].getNode("noise").setValue(props.globals.getNode("sim/G91/liveries/active/noise",1).getValue());
+                liverys[i].getNode("version").setValue(props.globals.getNode("sim/G91/liveries/active/version",1).getValue());
                 print("*2 isPushed: ", i," v: ",debug.dump(liverys[i].getNode("luminosity")));
                 break;
             }
@@ -426,6 +430,7 @@ var getActiveData = func() {
     var specular = liverys[id].getNode("specular").getValue();
     var dirty = liverys[id].getNode("dirty").getValue();
     var noise = liverys[id].getNode("noise").getValue();
+    var version = liverys[id].getNode("version").getValue();
     
     print("set_livery.nas getActiveData setLivery id: ",id," livery_001: ",livery_001);
     print("set_livery.nas getActiveData setLivery id: ",id," livery_002: ",livery_002);
@@ -446,6 +451,7 @@ var getActiveData = func() {
     setprop("sim/G91/liveries/active/specular",specular);
     setprop("sim/G91/liveries/active/dirty",dirty);
     setprop("sim/G91/liveries/active/noise",noise);
+    setprop("sim/G91/liveries/active/version",version);
     setprop("sim/G91/liveries/active/ID",idSelect);
     setprop("sim/G91/liveries/active/pushed",0.0);
     

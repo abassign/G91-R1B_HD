@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 
+<!-- 
+Original work Copyright (c) 2018 Adriano Bassignana (abassign)
+-->
+
 <PropertyList>
     
     <path>swich_panel_01_no_protection_little.ac</path>
@@ -28,7 +32,11 @@
     <animation> 
         <type>material</type>
         <object-name>swich_01</object-name>
-        <texture>Pictures/G91-Al_02.png</texture>
+        <diffuse>
+            <red>0.57</red>
+            <green>0.57</green>
+            <blue>0.57</blue>
+        </diffuse>
         <ambient>
             <red>0.6</red>
             <green>0.6</green>
@@ -45,7 +53,11 @@
     <animation> 
         <type>material</type>
         <object-name>swich_02</object-name>
-        <texture>Pictures/G91-Al-Light.png</texture>
+        <diffuse>
+            <red>0.80</red>
+            <green>0.80</green>
+            <blue>0.80</blue>
+        </diffuse>
         <ambient>
             <red>0.6</red>
             <green>0.6</green>
@@ -67,7 +79,11 @@
     <animation> 
         <type>material</type>
         <object-name>swich_03</object-name>
-        <texture>Pictures/G91-Al-Light.png</texture>
+        <diffuse>
+            <red>0.80</red>
+            <green>0.80</green>
+            <blue>0.80</blue>
+        </diffuse>
         <ambient>
             <red>0.7</red>
             <green>0.7</green>
@@ -89,7 +105,11 @@
     <animation> 
         <type>material</type>
         <object-name>swich_04</object-name>
-        <texture>Pictures/G91-Al-Light.png</texture>
+        <diffuse>
+            <red>0.80</red>
+            <green>0.80</green>
+            <blue>0.80</blue>
+        </diffuse>
         <ambient>
             <red>0.9</red>
             <green>0.9</green>
@@ -111,7 +131,11 @@
     <animation> 
         <type>material</type>
         <object-name>swich_support</object-name>
-        <texture>Pictures/G91-Al-dark.png</texture>
+        <diffuse>
+            <red>0.33</red>
+            <green>0.31</green>
+            <blue>0.30</blue>
+        </diffuse>
         <ambient>
             <red>0.4</red>
             <green>0.4</green>

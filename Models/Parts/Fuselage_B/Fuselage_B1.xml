@@ -79,12 +79,14 @@
         <inherits-from>Aircraft/G91-R1B_HD/Models/Liveries/liveries_001</inherits-from>
         <object-name>A__G91_fuselage_weapon_door_dx.003</object-name>
         <object-name>A__G91_fuselage_weapon_door_sx.003</object-name>
+        <object-name>A__G91_fuselage_int.weapon.door.008</object-name>
     </effect>
     
     <animation> 
         <type>material</type>
         <object-name>A__G91_fuselage_weapon_door_dx.003</object-name>
         <object-name>A__G91_fuselage_weapon_door_sx.003</object-name>
+        <object-name>A__G91_fuselage_int.weapon.door.008</object-name>
         <diffuse>
             <red>1.0</red>
             <green>1.0</green>

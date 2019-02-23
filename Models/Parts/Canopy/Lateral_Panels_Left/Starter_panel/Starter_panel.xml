@@ -1,3 +1,9 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!-- 
+Original work Copyright (c) 2018 Adriano Bassignana (abassign)
+-->
+
 <PropertyList>
     
     <path>panel_start.ac</path>
@@ -19,7 +25,11 @@
     <animation> 
         <type>material</type>
         <object-name>panel_start01</object-name>
-        <texture>Pictures/G91-Internal-Gray.png</texture>
+        <diffuse>
+            <red>0.7</red>
+            <green>0.7</green>
+            <blue>0.75</blue>
+        </diffuse>
         <ambient>
             <red>0.8</red>
             <green>0.8</green>
@@ -36,19 +46,23 @@
     <animation> 
         <type>material</type>
         <object-name>panel_start2</object-name>
-        <texture>Pictures/G91-Dark-Grey.png</texture>
+        <diffuse>
+            <red>0.15</red>
+            <green>0.15</green>
+            <blue>0.15</blue>
+        </diffuse>
         <ambient>
-            <red>0.8</red>
-            <green>0.8</green>
-            <blue>0.8</blue>
+            <red>0.4</red>
+            <green>0.4</green>
+            <blue>0.4</blue>
         </ambient>
         <specular>
-            <red>0.98</red>
-            <green>0.92</green>
-            <blue>0.84</blue>
+            <red>0.6</red>
+            <green>0.6</green>
+            <blue>0.6</blue>
         </specular>
         <emission>
-            <red>0.15</red>
+            <red>0.04</red>
             <green>0.0</green>
             <blue>0.0</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
@@ -68,8 +82,8 @@
         </ambient>
         <emission>
             <red>0.2</red>
-            <green>0.15</green>
-            <blue>0.12</blue>
+            <green>0.05</green>
+            <blue>0.05</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
@@ -127,7 +141,7 @@
         <offsets>
             <x-m>-0.010</x-m>
             <y-m>-0.0135</y-m>
-            <z-m>0.005</z-m>
+            <z-m>0.0055</z-m>
             <roll-deg>180.0</roll-deg>
             <pitch-deg>182.0</pitch-deg>
             <heading-deg>182.0</heading-deg>
@@ -139,7 +153,7 @@
         <offsets>
             <x-m>-0.017</x-m>
             <y-m>-0.045</y-m>
-            <z-m>0.005</z-m>
+            <z-m>0.0055</z-m>
             <roll-deg>180.0</roll-deg>
             <pitch-deg>92.0</pitch-deg>
             <heading-deg>182.0</heading-deg>
@@ -151,7 +165,7 @@
         <offsets>
             <x-m>0.019</x-m>
             <y-m>-0.06</y-m>
-            <z-m>0.005</z-m>
+            <z-m>0.0125</z-m>
             <roll-deg>180.0</roll-deg>
             <pitch-deg>92.0</pitch-deg>
             <heading-deg>182.0</heading-deg>
