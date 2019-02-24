@@ -89,7 +89,6 @@ var setCanvas = func() {
     ca.addPlacement({"node": "tank_cap"});
     ca.addPlacement({"node": "A__G91r3_fuselage_weapon_door_sx."});
     ca.addPlacement({"node": "A__G91r3_fuselage_weapon_door_dx"});
-    ca.addPlacement({"node": "A__G91r3_fuselage_weapon.door"});
 
     # Tail
     ca.addPlacement({"node": "A__G91_fuselage_coda.002"});
@@ -205,6 +204,9 @@ var setCanvas = func() {
     cw.addPlacement({"node": "tank_260lb_tail_01"});
     cw.addPlacement({"node": "PAN_tank_sx.004"});
     cw.addPlacement({"node": "PAN_tank_sx_003"});
+    
+    # Fuselage extra
+    cw.addPlacement({"node": "A__G91r3_fuselage_weapon.door"});
 
     cw_root = cw.createGroup();
 
