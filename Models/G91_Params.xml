@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 
 <!--
-Version: 2 R1B and 4 is R4
+Version: 
+2 R1B 
+3 R3 
+4 R4
 -->
 
 <PropertyList>
@@ -9,6 +12,10 @@ Version: 2 R1B and 4 is R4
     <name type="string" n="0">Liveries</name>
     
     <liveries>
+        
+        <!-- For correct identification ref:
+            http://www.forgottenjets.warbirdsresourcegroup.org/G-91.html
+        -->
         
         <active>
             <ID>0</ID>
@@ -119,22 +126,43 @@ Version: 2 R1B and 4 is R4
         <livery n="6">
             <ID type="int">6</ID>
             <reloads type="float">0.0</reloads>
-            <name_short type="string">Portuguese Air Force</name_short>
-            <name_long type="string">Portuguese Air Force version for Portuguese Colonial War (R4)</name_long>
-            <luminosity type="float">0.12</luminosity>
-            <reflective type="float">-0.70</reflective>
+            <name_short type="string">Portuguese R3 c/n 301</name_short>
+            <name_long type="string">Portuguese Air Force G-91R/3 c/n 301 in the Portuguese Colonial War (R3)</name_long>
+            <luminosity type="float">-0.04</luminosity>
+            <reflective type="float">-1.00</reflective>
             <PANR1 type="float">0.0</PANR1>
-            <diffuse type="float">0.48</diffuse>
-            <specular type="float">0.28</specular>
+            <diffuse type="float">0.56</diffuse>
+            <specular type="float">0.40</specular>
             <dirty type="float">0.0</dirty>
             <noise>sim/G91/liveries/active/noise</noise>
-            <livery_001 type="string">Aircraft/G91-R1B_HD/Models/Liveries/R4/poto_01.png</livery_001>
-            <livery_002 type="string">Aircraft/G91-R1B_HD/Models/Liveries/R4/poto_02.png</livery_002>
+            <livery_001 type="string">Aircraft/G91-R1B_HD/Models/Liveries/R3/poto_01.png</livery_001>
+            <livery_002 type="string">Aircraft/G91-R1B_HD/Models/Liveries/R3/poto_02.png</livery_002>
             <dirty_001 type="string">Aircraft/G91-R1B_HD/Models/Liveries/dirty_01_4k.png</dirty_001>
             <dirty_002 type="string">Aircraft/G91-R1B_HD/Models/Liveries/dirty_02_4k.png</dirty_002>
             <anti_reflective type="string">Aircraft/G91-R1B_HD/Models/Liveries/G91_Dark_Grey_128.png</anti_reflective>
-            <version>4</version>
+            <version>3</version>
         </livery>
+        
+        <livery n="7">
+            <ID type="int">7</ID>
+            <reloads type="float">0.0</reloads>
+            <name_short type="string">Luftwaffe R3 c/n 535</name_short>
+            <name_long type="string">Luftwaffe FUS G-91R/3 c/n 535 (R3)</name_long>
+            <luminosity type="float">-0.04</luminosity>
+            <reflective type="float">-1.00</reflective>
+            <PANR1 type="float">0.0</PANR1>
+            <diffuse type="float">0.56</diffuse>
+            <specular type="float">0.40</specular>
+            <dirty type="float">0.0</dirty>
+            <noise>sim/G91/liveries/active/noise</noise>
+            <livery_001 type="string">Aircraft/G91-R1B_HD/Models/Liveries/R3/GER_1962_001.png</livery_001>
+            <livery_002 type="string">Aircraft/G91-R1B_HD/Models/Liveries/R3/GER_1962_002.png</livery_002>
+            <dirty_001 type="string">Aircraft/G91-R1B_HD/Models/Liveries/dirty_01_4k.png</dirty_001>
+            <dirty_002 type="string">Aircraft/G91-R1B_HD/Models/Liveries/dirty_02_4k.png</dirty_002>
+            <anti_reflective type="string">Aircraft/G91-R1B_HD/Models/Liveries/G91_Dark_Grey_128.png</anti_reflective>
+            <version>3</version>
+        </livery>
+        
     </liveries>
     
     <smoke>

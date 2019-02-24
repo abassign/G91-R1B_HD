@@ -147,7 +147,25 @@ http://wiki.flightgear.org/Howto:Adding_a_canvas_to_a_GUI_dialog
             <text>
                 <row>5</row>
                 <col>1</col>
-                <label>Portuguese Air Force version (R4)</label>
+                <label>Portuguese R3 c/n 301 (R3)</label>
+                <halign>left</halign>
+            </text>
+            
+            <button>
+                <row>6</row>
+                <col>0</col>
+                <legend>07</legend>
+                <binding>
+                    <command>nasal</command>
+                    <script>
+                        setprop("sim/G91/liveries/active/ID",7);
+                    </script>
+                </binding>
+            </button>
+            <text>
+                <row>6</row>
+                <col>1</col>
+                <label>Luftwaffe c/n 535 (R3)</label>
                 <halign>left</halign>
             </text>
             

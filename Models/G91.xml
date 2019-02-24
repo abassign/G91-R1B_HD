@@ -31,6 +31,22 @@
 
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Fuselage_B/Fuselage_B1.xml</path>
+        <condition>
+            <equals>
+                <property>sim/G91/liveries/active/version</property>
+                <value>2</value>
+            </equals>
+        </condition>
+    </model>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Fuselage_B/Fuselage_B3.xml</path>
+        <condition>
+            <equals>
+                <property>sim/G91/liveries/active/version</property>
+                <value>3</value>
+            </equals>
+        </condition>
     </model>
 
     <model>

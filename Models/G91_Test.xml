@@ -40,11 +40,11 @@
     </model>
     
     <model>
-        <path>Aircraft/G91-R1B_HD/Models/Parts/Fuselage_B/Fuselage_B4.xml</path>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Fuselage_B/Fuselage_B3.xml</path>
         <condition>
             <equals>
                 <property>sim/G91/liveries/active/version</property>
-                <value>4</value>
+                <value>3</value>
             </equals>
         </condition>
     </model>
