@@ -2,9 +2,9 @@
 
 <!--
 Version: 
-2 R1B 
-3 R3 
-4 R4
+2  R1B 
+10 R3 
+11 R4
 -->
 
 <PropertyList>
@@ -19,7 +19,7 @@ Version:
         
         <active>
             <ID>0</ID>
-            <setResolution>2</setResolution>
+            <setResolution>0</setResolution>
             <version>2</version>
         </active>
 
@@ -140,7 +140,7 @@ Version:
             <dirty_001 type="string">Aircraft/G91-R1B_HD/Models/Liveries/dirty_01_4k.png</dirty_001>
             <dirty_002 type="string">Aircraft/G91-R1B_HD/Models/Liveries/dirty_02_4k.png</dirty_002>
             <anti_reflective type="string">Aircraft/G91-R1B_HD/Models/Liveries/G91_Dark_Grey_128.png</anti_reflective>
-            <version>3</version>
+            <version>10</version>
         </livery>
         
         <livery n="7">
@@ -160,7 +160,7 @@ Version:
             <dirty_001 type="string">Aircraft/G91-R1B_HD/Models/Liveries/dirty_01_4k.png</dirty_001>
             <dirty_002 type="string">Aircraft/G91-R1B_HD/Models/Liveries/dirty_02_4k.png</dirty_002>
             <anti_reflective type="string">Aircraft/G91-R1B_HD/Models/Liveries/G91_Dark_Grey_128.png</anti_reflective>
-            <version>3</version>
+            <version>10</version>
         </livery>
         
     </liveries>
@@ -176,6 +176,23 @@ Version:
             <blue type="float">1.0</blue>
         </acrobatic>
     </smoke>
+    
+    <accessories>
+        <staircase type="int">0</staircase>
+    </accessories>
+    
+    <switchs>
+        <ArmyPanels>
+            <ArmyPanelDx_timing type="float">0</ArmyPanelDx_timing>
+            <ArmyPanelSx_timing type="float">0</ArmyPanelSx_timing>
+        </ArmyPanels>
+        <FuelPanels>
+            <FuelPanelsBackSx_timing type="float">0</FuelPanelsBackSx_timing>
+            <FuelPanelsBackDx_timing type="float">0</FuelPanelsBackDx_timing>
+            <FuelPanelsFrontSx_timing type="float">0</FuelPanelsFrontSx_timing>
+            <FuelPanelsFrontDx_timing type="float">0</FuelPanelsFrontDx_timing>
+        </FuelPanels>
+    </switchs>
     
 </PropertyList>
 

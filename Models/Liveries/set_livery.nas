@@ -87,8 +87,6 @@ var setCanvas = func() {
     ca.addPlacement({"node": "m00_door_dx03.002"});
     ca.addPlacement({"node": "tank_cap1"});
     ca.addPlacement({"node": "tank_cap"});
-    ca.addPlacement({"node": "A__G91r3_fuselage_weapon_door_sx."});
-    ca.addPlacement({"node": "A__G91r3_fuselage_weapon_door_dx"});
 
     # Tail
     ca.addPlacement({"node": "A__G91_fuselage_coda.002"});
@@ -135,6 +133,8 @@ var setCanvas = func() {
     # Fuselage B0
     ca.addPlacement({"node": "A__G91_fuselage_weapon_door_dx.003"});
     ca.addPlacement({"node": "A__G91_fuselage_weapon_door_sx.003"});
+    ca.addPlacement({"node": "A__G91r3_fuselage_weapon_door_sx."});
+    ca.addPlacement({"node": "A__G91r3_fuselage_weapon_door_dx"});
 
     # Airbrake
     ca.addPlacement({"node": "C00_dx_airbrake_door.002"});
@@ -183,6 +183,8 @@ var setCanvas = func() {
     cw.addPlacement({"node": "A_door_wing_sx.003"});
     cw.addPlacement({"node": "B00_dx_door_02.002"});
     cw.addPlacement({"node": "B00_dx_door_02"});
+    cw.addPlacement({"node": "A00_pitot_dx"});
+    cw.addPlacement({"node": "A00_pitot_dx.001"});
 
     # Tail
     cw.addPlacement({"node": "D_wing_sx_.001"});

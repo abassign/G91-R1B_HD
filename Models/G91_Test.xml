@@ -8,7 +8,7 @@
         <z-m>-0.45</z-m>
         <pitch-deg>0.0</pitch-deg>
     </offsets>
-<!--
+
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Cockpit.xml</path>
     </model>
@@ -18,17 +18,23 @@
     </model>
     
     <model>
-        <path>Aircraft/G91-R1B_HD/Models/Parts/Tail/Tail.xml</path>
-    </model>
-    
-    <model>
-        <path>Aircraft/G91-R1B_HD/Models/Parts/Fuselage_A/Fuselage_A0.xml</path>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/LandingGearFrontal/LandingGearFrontal.xml</path>
     </model>
     
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Wing/Wing.xml</path>
     </model>
-    -->
+    
+    <!--
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Fuselage_A/Fuselage_A0.xml</path>
+    </model>
+
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Tail/Tail.xml</path>
+    </model>
+    
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Fuselage_B/Fuselage_B1.xml</path>
         <condition>
@@ -44,11 +50,11 @@
         <condition>
             <equals>
                 <property>sim/G91/liveries/active/version</property>
-                <value>3</value>
+                <value>10</value>
             </equals>
         </condition>
     </model>
-<!--
+
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/LandingGearFrontal/LandingGearFrontal.xml</path>
     </model>    
@@ -70,5 +76,10 @@
         <path>Aircraft/G91-R1B_HD/Models/Parts/Stores/Stores.xml</path>
     </model>
     -->
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Accessories/Accessories.xml</path>
+    </model>
+    
     </PropertyList>
     

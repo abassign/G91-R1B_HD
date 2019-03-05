@@ -1,14 +1,201 @@
 <?xml version="1.0"?>
 
 <!--
-Description: G91R4 hydraulics system from "Manuale di pilotaggio (1-11,1-12, etc..)
+Original work Copyright (c) 2018-2019 Adriano Bassignana (abassign)
+Create the program to centralization of the braking system
+Modify the program for steer limitation
+Modified work Copyright 2019 Joshua Davidson (it0uchpods)
+Modify the program for gear[0] pivoting
 -->
 
-<system name="gear">
+
+<system name="gears">
     
     <property value="-60">systems/gears/gear[0]/z</property>
     <property value="-55">systems/gears/gear[1]/z</property>
     <property value="-55">systems/gears/gear[2]/z</property>
+    
+    <property value="0.0">systems/gears/gear[0]/is-stationary</property>
+    <property value="0.0">systems/gears/gear[0]/slip-angle-deg-lag</property>
+    <property value="20.0">systems/gears/gear[0]/slip-angle-deg-max</property>
+    <property value="1.0">systems/gears/gear[0]/landingGearSteerLimitationFx-sign</property>
+    <property value="-1.0">systems/gears/gear[0]/landingGearSteerLimitationFy-sign</property>
+    <property value="5.0">systems/gears/gear[0]/steering-angle-deg-limiter-force</property>
+    <property value="2.0">systems/gears/gear[0]/steering-angle-deg-limiter-force-exp</property>
+    
+    
+    <channel name="Landing Gear[0] steer" execrate="1">
+        <!-- Calcolare una reazione quando lo steer supera 40° 
+        Punto di applicazione è il carrello anteriore il valore deve essere tale da ridurre lo steer e riportarlo a 40° è quindi un attuatore
+        -->
+        
+        <fcs_function name="systems/gears/gear[0]/is-stationary">
+            <function>
+                <ifthen>
+                    <and>
+                        <gt>
+                            <p>gear/unit[0]/compression-ft</p>
+                            <v>0.01</v>
+                        </gt>
+                        <lt>
+                            <p>gear/unit[0]/wheel-speed-fps</p>
+                            <v>0.1</v>
+                        </lt>
+                    </and>
+                    <v>1.0</v>
+                    <v>0.0</v>
+                </ifthen>
+            </function>
+        </fcs_function>
+        
+        <fcs_function name="systems/gears/gear[0]/slip-angle-deg">
+            <function>
+                <difference>
+                    <ifthen>
+                        <gt>
+                            <p>gear/unit[0]/compression-ft</p>
+                            <v>0.001</v>
+                        </gt>
+                        <p>gear/unit[0]/steering-angle-deg</p>
+                        <v>0.0</v>
+                    </ifthen>
+                    <v>0.0</v>
+                </difference>
+            </function>
+        </fcs_function>
+        
+        <lag_filter name="systems/gears/gear[0]/slip-angle-deg-lag">
+            <input>systems/gears/gear[0]/slip-angle-deg</input>
+            <c1>2.0</c1>
+        </lag_filter>
+        
+        <switch name="systems/gears/gear[0]/steering-angle-deg-limiter-active">
+            <default value="0"/>
+            <test value="1" logic="AND">
+                gear/unit[0]/WOW ne 0
+                gear/unit[0]/wheel-speed-fps GT 0.1
+            </test>
+        </switch>
+        
+        <fcs_function name="systems/gears/gear[0]/steering-angle-deg-limiter-norm">
+            <function>
+                <ifthen>
+                    <and>
+                        <gt>
+                            <abs>
+                                <quotient>
+                                    <p>systems/gears/gear[0]/slip-angle-deg-lag</p>
+                                    <p>systems/gears/gear[0]/slip-angle-deg-max</p>
+                                </quotient>
+                            </abs>
+                            <v>1.0</v>
+                        </gt>
+                        <gt>
+                            <p>systems/gears/gear[0]/steering-angle-deg-limiter-active</p>
+                            <v>0.0</v>
+                        </gt>
+                    </and>
+                    <product>
+                        <difference>
+                            <pow>
+                                <abs>
+                                    <quotient>
+                                        <p>systems/gears/gear[0]/slip-angle-deg-lag</p>
+                                        <p>systems/gears/gear[0]/slip-angle-deg-max</p>
+                                    </quotient>
+                                </abs>
+                                <p>systems/gears/gear[0]/steering-angle-deg-limiter-force-exp</p>
+                            </pow>
+                            <p>systems/gears/gear[0]/steering-angle-deg-limiter-force</p>
+                        </difference>
+                        <p>systems/gears/gear[0]/steering-angle-deg-limiter-force</p>
+                    </product>
+                    <v>0.0</v>
+                </ifthen>
+            </function>
+        </fcs_function>
+        
+        <fcs_function name="systems/gears/gear[0]/LandingGearSteerLimitationFx">
+            <function>
+                <product>
+                    <!-- problema sistema di riferimento carrello -->
+                    <sin>
+                        <p>systems/gears/gear[0]/slip-angle-deg-lag</p>
+                    </sin>
+                    <p>systems/gears/gear[0]/steering-angle-deg-limiter-norm</p>
+                    <p>systems/gears/gear[0]/steering-angle-deg-limiter-force</p>
+                    <p>systems/gears/gear[0]/steering-angle-deg-limiter-active</p>
+                    <p>systems/gears/gear[0]/landingGearSteerLimitationFx-sign</p>
+                </product>
+            </function>
+            <output>external_reactions/LandingGearSteerLimitationFx/magnitude</output>
+        </fcs_function>
+        
+        <fcs_function name="systems/gears/gear[0]/LandingGearSteerLimitationFy">
+            <function>
+                <product>
+                    <cos>
+                        <p>systems/gears/gear[0]/slip-angle-deg-lag</p>
+                    </cos>
+                    <p>systems/gears/gear[0]/steering-angle-deg-limiter-norm</p>
+                    <p>systems/gears/gear[0]/steering-angle-deg-limiter-force</p>
+                    <p>systems/gears/gear[0]/steering-angle-deg-limiter-active</p>
+                    <p>systems/gears/gear[0]/landingGearSteerLimitationFy-sign</p>
+                </product>
+            </function>
+            <output>external_reactions/LandingGearSteerLimitationFy/magnitude</output>
+        </fcs_function>
+
+    </channel>
+    
+<!--
+        <channel name="Nose Wheel Steering">
+        <switch name="position/aircraft-on-ground">
+            <description>Aircraft on ground</description>
+            <default value="0"/>
+            <test value="1" logic="OR">
+                gear/unit[0]/WOW ne 0
+                gear/unit[1]/WOW ne 0
+                gear/unit[2]/WOW ne 0
+            </test>
+        </switch>
+        <switch name="systems/NWS/engaged">
+            <default value="0"/>
+            <test value="1">
+                gear/unit[0]/wheel-speed-fps le 135
+                position/aircraft-on-ground ne 0
+            </test>
+            <output>systems/NWS/engaged</output>
+        </switch>
+
+        <scheduled_gain name="systems/gears/gear[0]/scheduled-steer-pos-deg">
+            <input>fcs/steer-cmd-norm</input>
+            <table>
+                <independentVar lookup="row">gear/unit[0]/wheel-speed-fps</independentVar>
+                <independentVar lookup="column">systems/NWS/engaged</independentVar>
+                <tableData>
+                    0   1
+                    0   0   40
+                    80  0   10
+                    150 0   0
+                </tableData>
+            </table>
+            <output>fcs/steer-pos-deg</output>
+            <clipto>
+                <min>-40.0</min>
+                <max>40.0</max>
+            </clipto>
+        </scheduled_gain>
+
+        <lag_filter name="systems/gears/gear[0]/slip-angle-deg-lag">
+            <input>fcs/steer-pos-deg</input>
+            <c1>2.0</c1>
+        </lag_filter>
+
+    </channel>
+    
+    -->
+    
     
     <channel name="Landing Gear control" execrate="8">
         
@@ -85,6 +272,7 @@ Description: G91R4 hydraulics system from "Manuale di pilotaggio (1-11,1-12, etc
         
     </channel>
     
+    
     <channel name="Landing gear hydraulics extension" execrate="8">
         
         <summer>
@@ -106,6 +294,30 @@ Description: G91R4 hydraulics system from "Manuale di pilotaggio (1-11,1-12, etc
         </summer>
         
     </channel>
+    
+    
+    <channel name="drag gear" execrate="8">
+        
+        <pure_gain>
+            <input>systems/gears/gear[0]/drag-norm</input>
+            <gain>2.0</gain>
+            <output>external_reactions/LandingGearFrontAerodinamicDrag/magnitude</output>
+        </pure_gain>
+        
+        <pure_gain>
+            <input>systems/gears/gear[1]/drag-norm</input>
+            <gain>4.0</gain>
+            <output>external_reactions/LandingGearRightAerodinamicDrag/magnitude</output>
+        </pure_gain>
+        
+        <pure_gain>
+            <input>systems/gears/gear[2]/drag-norm</input>
+            <gain>4.0</gain>
+            <output>external_reactions/LandingGearLeftAerodinamicDrag/magnitude</output>
+        </pure_gain>
+        
+    </channel>
+    
     
     <function name="systems/gears/unit[0]/hydraulics-extension">
         <description>Extension main gear hydraulic cylinder</description>
@@ -143,6 +355,57 @@ Description: G91R4 hydraulics system from "Manuale di pilotaggio (1-11,1-12, etc
             </tableData>
         </table>
     </function>
-
+    
+    <function name="systems/gears/gear[0]/drag-norm">
+        <product>
+            <p>aero/qbar-psf</p>
+            <table>
+                <independentVar>gear/gear-pos-norm</independentVar>
+                <tableData>
+                    0.0  0.0
+                    0.2  0.292
+                    0.4  0.559
+                    0.6  0.777
+                    0.8  0.927
+                    1.0  0.996
+                </tableData>
+            </table>
+        </product>
+    </function>
+    
+    <function name="systems/gears/gear[1]/drag-norm">
+        <product>
+            <p>aero/qbar-psf</p>
+            <table>
+                <independentVar>gear/gear-pos-norm</independentVar>
+                <tableData>
+                    0.0  0.0
+                    0.2  0.309
+                    0.4  0.588
+                    0.6  0.809
+                    0.8  0.951
+                    1.0  1.000
+                </tableData>
+            </table>
+        </product>
+    </function>
+    
+    <function name="systems/gears/gear[2]/drag-norm">
+        <product>
+            <p>aero/qbar-psf</p>
+            <table>
+                <independentVar>gear/gear-pos-norm</independentVar>
+                <tableData>
+                    0.0  0.0
+                    0.2  0.309
+                    0.4  0.588
+                    0.6  0.809
+                    0.8  0.951
+                    1.0  1.000
+                </tableData>
+            </table>
+        </product>
+    </function>
+    
 </system>
 

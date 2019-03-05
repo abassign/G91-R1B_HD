@@ -1,4 +1,12 @@
-<!-- G91 JSBsim -->
+<?xml version="1.0"?>
+
+<!--
+Original work Copyright (c) 2018-2019 Adriano Bassignana (abassign)
+    Create the program to centralization of the braking system
+    Modify the program for steer limitation
+Modified work Copyright 2019 Joshua Davidson (it0uchpods)
+    Modify the program for gear[0] pivoting
+-->
 
 <ground_reactions>
     <contact type="BOGEY" name="NOSE">
@@ -7,17 +15,17 @@
             <y> 0.0 </y>
             <z> 0.0 </z>
         </location>
-        <static_friction>  0.80 </static_friction>
-        <dynamic_friction> 0.50 </dynamic_friction>
+        <static_friction>0.80</static_friction>
+        <dynamic_friction>0.50</dynamic_friction>
         <rolling_friction> 0.02 </rolling_friction>
         <spring_coeff unit="LBS/FT">       20200.0 </spring_coeff>
         <damping_coeff unit="LBS/FT/SEC">   2000.0 </damping_coeff>
-        <max_steer unit="DEG">0</max_steer>
+        <max_steer unit="DEG">40</max_steer>
         <brake_group>NONE</brake_group>
         <retractable>1</retractable>
-        <castered>1</castered> <!-- Implement free-swiveling gear -->
+        <castered>1</castered> <!-- 1 Implement free-swiveling gear -->
     </contact>
-    
+ 
     <contact type="BOGEY" name="LEFT_MAIN">
         <location unit="IN">
             <x> 219.61 </x>
@@ -36,7 +44,7 @@
     
     <contact type="BOGEY" name="RIGHT_MAIN">
         <location unit="IN">
-            <x> 219.6 </x>
+            <x> 219.61 </x>
             <y>  54.4 </y>
             <z> 0.0 </z>
         </location>

@@ -44,7 +44,7 @@
         <condition>
             <equals>
                 <property>sim/G91/liveries/active/version</property>
-                <value>3</value>
+                <value>10</value>
             </equals>
         </condition>
     </model>
@@ -64,6 +64,10 @@
 
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Canopy.xml</path>
+    </model>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Accessories/Accessories.xml</path>
     </model>
     
     <model>

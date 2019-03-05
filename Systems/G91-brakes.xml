@@ -1,86 +1,39 @@
+<?xml version="1.0"?>
+
 <!-- G91 Brake Control System -->
 
 <!-- 
-Original work Copyright (c) 2019 Joshua Davidson (it0uchpods)
+Original work Copyright (c) 2018 Adriano Bassignana (abassign)
     Create the program to centralization of the braking system
-Modified work Copyright 2019 Adriano Bassignana (abassign)
+Modified work Copyright 2019 Joshua Davidson (it0uchpods)
     Modify the program forfcs/left/right-steer-brake-intensity
     for keyboard integration ( , and . )
 -->
 
 <system name="G91 BCS">
     
-    <property value="0.0">fcs/left-steer-brake-intensity</property>
-    <property value="0.0">fcs/right-steer-brake-intensity</property>
-    
-    <channel name="Parking Brake" execrate="16">
-        
-        <scheduled_gain name="fcs/park-brake-cmd">
-            <input>systems/handle-switches/sw-handle-brake-extension</input>
-            <table>
-                <independentVar lookup="row">systems/hydraulics/flight-system-psi</independentVar>
-                <tableData>
-                    300  0.0
-                    1800  1.0
-                </tableData>
-            </table>
-        </scheduled_gain>
-        
-    </channel>
+    <property value="0.0">systems/brake/left-steer-brake-intensity</property>
+    <property value="0.0">systems/brake/right-steer-brake-intensity</property>
     
     
     <channel name="Steering Brake regulator" execrate="4">
         
-        <lag_filter name="fcs/left-steer-brake-intensity-lg">
-            <input>fcs/left-steer-brake</input>
-            <c1>0.5</c1>
-        </lag_filter>
-
-        <scheduled_gain name="fcs/left-steer-brake-intensity">
-            <input>fcs/left-steer-brake-intensity-lg</input>
-            <table>
-                <independentVar lookup="row">fcs/left-steer-brake</independentVar>
-                <tableData>
-                    0.1  0.0
-                    0.9  0.3
-                    1.0  0.7
-                </tableData>
-            </table>
-        </scheduled_gain>
-        
-        <lag_filter name="fcs/right-steer-brake-intensity-lg">
-            <input>fcs/right-steer-brake</input>
-            <c1>0.5</c1>
-        </lag_filter>
-        
-        <scheduled_gain name="fcs/right-steer-brake-intensity">
-            <input>fcs/right-steer-brake-intensity-lg</input>
-            <table>
-                <independentVar lookup="row">fcs/right-steer-brake</independentVar>
-                <tableData>
-                    0.1  0.0
-                    0.9  0.3
-                    1.0  0.7
-                </tableData>
-            </table>
-        </scheduled_gain>
-
-    </channel>
-    
-    
-    <channel name="Brakes" execrate="16">
-        
-        <summer name="fcs/left-brake-summer">
+        <summer name="systems/brake/brake-left-intensity"> <!-- Output to JSB -->
             <input>/controls/gear/brake-left</input>
-            <input>fcs/left-steer-brake-intensity</input> <!-- Steering brake command -->
+            <input>systems/handle-switches/sw-handle-brake-extension</input>
             <clipto>
                 <min>0</min>
                 <max>1</max>
             </clipto>
         </summer>
         
-        <scheduled_gain name="fcs/left-brake-cmd">
-            <input>fcs/left-brake-summer</input>
+        <lag_filter name="systems/brake/brake-left-intensity-lg">
+            <input>systems/brake/brake-left-intensity</input>
+            <c1>1.0</c1>
+        </lag_filter>
+
+        <scheduled_gain name="systems/brake/left-steer-brake-intensity">
+            <input>systems/brake/brake-left-intensity-lg</input>
             <table>
                 <independentVar lookup="row">systems/hydraulics/flight-system-psi</independentVar>
                 <tableData>
@@ -88,29 +41,25 @@ Modified work Copyright 2019 Adriano Bassignana (abassign)
                     1800  1.0
                 </tableData>
             </table>
-        </scheduled_gain>
-        
-        <summer name="fcs/left-brake-output"> <!-- Output to JSB -->
-            <input>fcs/left-brake-cmd</input>
-            <input>fcs/park-brake-cmd</input>
-            <clipto>
-                <min>0</min>
-                <max>1</max>
-            </clipto>
             <output>fcs/left-brake-cmd-norm</output>
-        </summer>
+        </scheduled_gain>
         
-        <summer name="fcs/right-brake-summer">
+        <summer name="systems/brake/brake-right-intensity"> <!-- Output to JSB -->
             <input>/controls/gear/brake-right</input>
-            <input>fcs/right-steer-brake-intensity</input> <!-- Steering brake command -->
+            <input>systems/handle-switches/sw-handle-brake-extension</input>
             <clipto>
                 <min>0</min>
                 <max>1</max>
             </clipto>
         </summer>
         
-        <scheduled_gain name="fcs/right-brake-cmd">
-            <input>fcs/right-brake-summer</input>
+        <lag_filter name="systems/brake/brake-right-intensity-lg">
+            <input>systems/brake/brake-right-intensity</input>
+            <c1>1.0</c1>
+        </lag_filter>
+
+        <scheduled_gain name="systems/brake/right-steer-brake-intensity">
+            <input>systems/brake/brake-right-intensity-lg</input>
             <table>
                 <independentVar lookup="row">systems/hydraulics/flight-system-psi</independentVar>
                 <tableData>
@@ -118,18 +67,10 @@ Modified work Copyright 2019 Adriano Bassignana (abassign)
                     1800  1.0
                 </tableData>
             </table>
-        </scheduled_gain>
-        
-        <summer name="fcs/right-brake-output"> <!-- Output to JSB -->
-            <input>fcs/right-brake-cmd</input>
-            <input>fcs/park-brake-cmd</input>
-            <clipto>
-                <min>0</min>
-                <max>1</max>
-            </clipto>
             <output>fcs/right-brake-cmd-norm</output>
-        </summer>
-        
+        </scheduled_gain>
+
     </channel>
+    
     
 </system>

@@ -62,7 +62,6 @@
         <object-name>A00_Guide001_sx_flap.001</object-name>
         <object-name>A00_Guide002_Dx_flap.</object-name>
         <object-name>A00_Guide002_sx_flap.001</object-name>
-        <object-name>A00_pitot_dx</object-name>
         <object-name>A00_wing_light.support_dx</object-name>
         <object-name>A00_wing_light.support_sx</object-name>
         <object-name>A__G91_fuselage_int</object-name>
@@ -305,6 +304,8 @@
         <object-name>A_door_wing_sx.003</object-name>
         <object-name>B00_dx_door_02.002</object-name>
         <object-name>B00_dx_door_02</object-name>
+        <object-name>A00_pitot_dx</object-name>
+        <object-name>A00_pitot_dx.001</object-name>
     </effect>
     
     <animation> 
@@ -335,6 +336,8 @@
         <object-name>A_door_wing_sx.003</object-name>
         <object-name>B00_dx_door_02.002</object-name>
         <object-name>B00_dx_door_02</object-name>
+        <object-name>A00_pitot_dx</object-name>
+        <object-name>A00_pitot_dx.001</object-name>
         <diffuse>
             <red>1.0</red>
             <green>1.0</green>
@@ -348,7 +351,19 @@
             <factor-prop>sim/G91/liveries/active/specular</factor-prop>
         </specular>
     </animation>
-
+    
+    <animation> 
+        <type>select</type>
+        <object-name>A00_pitot_dx.001</object-name>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Fuselage_B/Fuselage_B3.xml</path>
+        <condition>
+            <greater-than-equals>
+                <property>sim/G91/liveries/active/version</property>
+                <value>10</value>
+            </greater-than-equals>
+        </condition>
+    </animation>
+    
     <animation> 
         <type>material</type>
         <texture>Pictures/G91-Black.png</texture>
@@ -1426,6 +1441,7 @@
     </animation>
     
     <!-- SX Main landing gear Spin  -->
+    
     <animation>
         <type>spin</type>
         <object-name>B00_sx_tire</object-name>
@@ -1613,6 +1629,7 @@
     </animation>
     
     <!-- SX Main landing gear Spin  -->
+    
     <animation>
         <type>spin</type>
         <object-name>B00_dx_tire.002</object-name>

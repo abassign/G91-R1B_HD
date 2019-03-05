@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+    
+    <path>Accessories.ac</path>
+    
+    <offsets>
+        <x-m>0.0</x-m>
+        <y-m>0.0</y-m>
+        <z-m>0.78</z-m>
+        <pitch-deg>0.0</pitch-deg>
+    </offsets>
+
+    <animation>
+        <name>staircase_show</name>
+        <type>select</type>
+        <object-name>staircase</object-name>
+        <condition>
+            <and>
+                <equals>
+                    <property>sim/G91/accessories/staircase</property>
+                    <value>1</value>
+                </equals>
+                <greater-than>
+                    <property>fdm/jsbsim/systems/canopy/position-deg</property>
+                    <value>45.0</value>
+                </greater-than>
+                <less-than>
+                    <property>sim/G91/switchs/ArmyPanels/ArmyPanelDx_timing</property>
+                    <value>0.05</value>
+                </less-than>
+                <greater-than>
+                    <property>fdm/jsbsim/systems/gears/gear[0]/is-stationary</property>
+                    <value>0.5</value>
+                </greater-than>
+            </and>
+        </condition>
+    </animation>
+
+    <effect>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
+        <object-name>staircase</object-name>
+    </effect>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>staircase</object-name>
+        <diffuse>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
+        </diffuse>
+        <ambient>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
+        </ambient>
+    </animation>
+
+</PropertyList>

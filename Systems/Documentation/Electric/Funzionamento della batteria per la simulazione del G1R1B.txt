@@ -1,0 +1,144 @@
+Funzionamento della batteria per la simulazione del G1R1B
+
+Nel G91R1B la batteria ha una propria capacità definita in joule (W*sec) ovvero (V*I*sec).
+La batteria per il G91 è al piombo-acido ed ha una capacità (teorica) di 2937600J.
+Questop valore viene inserito in due parametri:
+
+systems/electric/bus[0]/battery-capacity-initial-J
+systems/electric/bus[0]/battery-capacity-max-J
+
+Il primo parametro è la capacità della batteria che pongo all'inizio (ad esempio un batteria quasi scarica ..), il secondo la capacità massima possibile. Quando il motore funziona la batteria si ricarica. La velocità di ricarica è definita dal generatore del motore.
+
+Il file G91-electric.xml ha le seguenti importanti funzioni:
+
+Capacità inizioale della batteria e la sua capacità massima:
+
+    systems/electric/bus[0]/battery-capacity-initial-J
+    systems/electric/bus[0]/battery-capacity-max-J
+
+Il carico (in Ampere) complessivo sul bus0 che è il bus della batteria. Praticamente tutti gli aerei militari usano almeno deu bus:
+Il bus0 serve per lo start, per quando il motore va in foult e per alimentare ii sistemi di emergenza.
+Il bus1 è il bus dei sistemi di bordo, non di emergenza.
+Perciò in questa funzione se il bus0 è collegato con il bus1 si ha l'assorbimento della batteria da parte degli apparati. Se non è collegato la batteria alimenterà solo gli apparati di emergenza.
+
+    <fcs_function name="systems/electric/bus[0]/I-To-Battery">
+        <function>
+            <ifthen>
+                <p>systems/manual-switches/cockpit/sw-bus0-bus1-battery</p>
+                <sum>
+                    <p>systems/electric/bus[0]/I</p>
+                    <p>systems/electric/bus[1]/I</p>
+                    <p>systems/electric/bus[2]/I</p>
+                </sum>
+                <p>systems/electric/bus[0]/I</p>
+            </ifthen>
+        </function>
+    </fcs_function>
+
+Avere la corrente assorbita è importante in quanto è un parametro che può essere sommato. L'assorbimento in Joule sarà semplicemente il prodotto della correte complessiva alla batteria * il voltaggio del bus0 o bus1 (il voltaggio tra i bus si considera costante, anche se in certi casi di assorbimenti importanti può essere una approssimazione).
+
+La potenza in watt che andrà alla batteria (chaimata W-To-Battery) è data da questa funzione:
+
+    <fcs_function name="systems/electric/bus[0]/W-To-Battery">
+        <function>
+            <ifthen>
+                <p>systems/manual-switches/cockpit/sw-bus0-bus1-battery</p>
+                <ifthen>
+                    <p>systems/electric/bus[1]/internal-power-generator-inverted-current-rele-on</p>
+                    <product>
+                        <v>250.0</v>
+                        <quotient>
+                            <difference>
+                                <p>systems/electric/bus[1]/internal-power-generator-V</p>
+                                <p>systems/electric/bus[0]/battery-V</p>
+                            </difference>
+                            <p>systems/electric/bus[1]/internal-power-generator-V</p>
+                        </quotient>
+                    </product>
+                    <product>
+                        <p>systems/electric/bus[0]/I-To-Battery</p>
+                        <p>systems/electric/bus[0]/V</p>
+                        <v>-1.0</v>
+                    </product>
+                </ifthen>
+                <product>
+                    <p>systems/electric/bus[0]/I-To-Battery</p>
+                    <p>systems/electric/bus[0]/V</p>
+                    <v>-1.0</v>
+                </product>
+            </ifthen>
+        </function>
+    </fcs_function>
+
+Leggendola si ossewrva la presenza di unb relè: 
+"systems/electric/bus[1]/internal-power-generator-inverted-current-rele-on"
+Questo relè serve per evitare che il generatore di corrente collegato al motore possa diventare una assorbitore (un generatore ha una propria resistenza interna, piuttosto bassa) quando il motore è fermo o a basso numero di giri. Se vi ricordate la vecchie auto (fono a 20 anni fa), quando partivano c'era una spia rossa accesa, quella spia era collegata ad un "inverted-current-rele" che rimaneva aperto quando la tensione del generatore era inferiore a quella della batteria.
+
+A questo punto esegue un integrale, per trasformare la potenza trasmessa verso la batteria (quindi con il generatore del motore attivo e "inverted-current-rele" chiuso in Joule ovvero in energia.
+
+    <integrator name="systems/electric/bus[0]/battery-energy-change-J">
+        <input>systems/electric/bus[0]/W-To-Battery</input>
+        <c1>1.0</c1>
+    </integrator>
+
+Sommo la capacità della batteria con lo il contributo ottenuto da "battery-energy-change-J". Ovviamente se se il generatore non funziona ("inverted-current-rele" aperto) il calore di questo parametro sarà negativo e quindi la batteria perderà energia.
+    
+    <summer name="systems/electric/bus[0]/battery-capacity-J">
+        <input>systems/electric/bus[0]/battery-capacity-initial-J</input>
+        <input>systems/electric/bus[0]/battery-energy-change-J</input>
+        <clipto>
+            <min>0.0</min>
+            <max>systems/electric/bus[0]/battery-capacity-max-J</max>
+        </clipto>
+    </summer>
+
+Un particolare importante descritto da questo passo della funzione:
+"systems/electric/bus[0]/W-To-Battery":
+
+    <product>
+        <v>250.0</v>
+        <quotient>
+            <difference>
+                <p>systems/electric/bus[1]/internal-power-generator-V</p>
+                <p>systems/electric/bus[0]/battery-V</p>
+            </difference>
+            <p>systems/electric/bus[1]/internal-power-generator-V</p>
+        </quotient>
+    </product>
+
+È un prodotto tra un valore 250 (fattore di ricarica della batteria in W/s) e la differenza di tensione tra il generatore e la batteria diviso per la tensione del generatore. Ovviamente è una approssimazione, ma permette di ottenere la potenza trasferita tra il generatore e la batteria.
+
+Questa funzione determina la carica normalizzata della batteria (ovviamente la ritengo nuova!):
+
+    <fcs_function name="systems/electric/bus[0]/battery-charge-norm">
+        <function>
+            <quotient>
+                <p>systems/electric/bus[0]/battery-capacity-J</p>
+                <p>systems/electric/bus[0]/battery-capacity-max-J</p>
+            </quotient>
+        </function>
+    </fcs_function>
+
+Finalmente posso ottenere il voltaggio della batteria:
+
+    <fcs_function name="systems/electric/bus[0]/battery-V">
+        <function>
+            <table>
+                <independentVar lookup="row">systems/electric/bus[0]/battery-charge-norm</independentVar>
+                <tableData>
+                    0.0     0.0
+                    0.02    21.0
+                    0.1     22.5
+                    0.2     23.0
+                    0.5     24.0
+                    0.8     24.8
+                    0.9     25.0
+                    1.0     25.4
+                </tableData>
+            </table>
+        </function>
+    </fcs_function>
+
+Che è ottenuto dalle classiche tabelle Volt-Carica delle batterie al piombo.
+
+Essendo JSBSim un sistema di simulazione data-driven con variabili continue, la costruzione di queste relazioni permette di ottenere una corretta descrizione del sistema elettrico presente nel G91R1B. Cosa molto simile faccio per l'impianto idraulico (anche se in modo un po' semplificato).

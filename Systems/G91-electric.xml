@@ -144,7 +144,7 @@ Description: G91R4 Electric system from "Manuale di pilotaggio (p.56)
     <property value="1">systems/electric/bus[2]/cockpit-vibrator/fuse</property>
     <property value="10">systems/electric/inv-primary/I0</property>
     <property value="10">systems/electric/inv-secondary/I0</property>
-
+    
     <channel name="Calculate loads on bus" execrate="8">
         
         <summer name="systems/electric/bus[0]/I">
@@ -191,10 +191,10 @@ Description: G91R4 Electric system from "Manuale di pilotaggio (p.56)
             <input>systems/electric/bus[2]/pitch-damper/I</input>
             <input>systems/electric/bus[2]/yaw-damper/I</input>
         </summer>
-    
+        
     </channel>
     
-        
+    
     <channel name="Bus 0 - Battery" execrate="8">
         
         <fcs_function name="systems/electric/bus[0]/I-To-Battery">
@@ -269,10 +269,10 @@ Description: G91R4 Electric system from "Manuale di pilotaggio (p.56)
             <input>systems/electric/bus[0]/battery-energy-change-J</input>
             <clipto>
                 <min>0.0</min>
-                <max>2937600</max>
+                <max>systems/electric/bus[0]/battery-capacity-max-J</max>
             </clipto>
         </summer>
-
+        
         <fcs_function name="systems/electric/bus[0]/battery-charge-norm">
             <function>
                 <quotient>
@@ -282,21 +282,21 @@ Description: G91R4 Electric system from "Manuale di pilotaggio (p.56)
             </function>
         </fcs_function>
         
-         <fcs_function name="systems/electric/bus[0]/battery-V">
+        <fcs_function name="systems/electric/bus[0]/battery-V">
             <function>
-            <table>
-                <independentVar lookup="row">systems/electric/bus[0]/battery-charge-norm</independentVar>
-                <tableData>
-                    0.0     0.0
-                    0.02    21.0
-                    0.1     22.5
-                    0.2     23.0
-                    0.5     24.0
-                    0.8     24.8
-                    0.9     25.0
-                    1.0     25.4
-                </tableData>
-            </table>
+                <table>
+                    <independentVar lookup="row">systems/electric/bus[0]/battery-charge-norm</independentVar>
+                    <tableData>
+                        0.0     0.0
+                        0.02    21.0
+                        0.1     22.5
+                        0.2     23.0
+                        0.5     24.0
+                        0.8     24.8
+                        0.9     25.0
+                        1.0     25.4
+                    </tableData>
+                </table>
             </function>
         </fcs_function>
         
@@ -327,7 +327,7 @@ Description: G91R4 Electric system from "Manuale di pilotaggio (p.56)
                 systems/electric/bus[1]/internal-power-generator-inverted-current-rele-on == 1
             </test> 
         </switch>
-
+        
         <switch name="systems/electric/bus[1]/internal-power-generator-inverted-current-rele-on">
             <default value="0"/>
             <test logic="AND" value="0">
@@ -442,7 +442,7 @@ Description: G91R4 Electric system from "Manuale di pilotaggio (p.56)
         </pure_gain>
         
     </channel>
-
+    
     
     <channel name="Bus Secondary" execrate="8">
         

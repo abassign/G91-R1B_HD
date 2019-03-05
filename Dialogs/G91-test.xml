@@ -496,7 +496,7 @@
         <text>
             <label>99999</label>
             <live>true</live>
-            <format>%2.3f </format>
+            <format>%2.3f</format>
             <property>sim/G91/Test/V0_100A</property>
             <color>
                 <red>0.9</red>
@@ -510,7 +510,7 @@
         <slider>
             <name>sim_G91_Test_V0_100A</name>
             <property>sim/G91/Test/V0_100A</property>
-            <min>0.0</min>
+            <min>-100.0</min>
             <max>100.0</max>
             <step>1.0</step>  
             <binding>

@@ -813,7 +813,7 @@
         <type>rotate</type>
         <object-name>GearPivot</object-name>
         <object-name>GearWheel</object-name>
-        <property>fdm/jsbsim/gear/unit[0]/steering-angle-deg</property>
+        <property>fdm/jsbsim/systems/gears/gear[0]/slip-angle-deg-lag</property>
         <factor>1.0</factor>
         <axis>
             <x1-m>  -2.87</x1-m>

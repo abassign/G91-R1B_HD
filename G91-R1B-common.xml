@@ -120,6 +120,16 @@
                         </binding>
                     </item>
                     <item>
+                        <label>G91 accessories</label>
+                        <binding>
+                            <command>nasal</command>
+                            <script>
+                                test_dialog = gui.Dialog.new("sim/gui/dialogs/G91/Accessories/dialog","Aircraft/G91-R1B_HD/Dialogs/G91-Accessories.xml");
+                                test_dialog.open();
+                            </script>
+                        </binding>
+                    </item>
+                    <item>
                         <label>G91 Help</label>
                         <binding>
                             <command>nasal</command>

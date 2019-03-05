@@ -62,7 +62,50 @@
                 <max>systems/airbrake/position_max</max>
             </clipto>
         </integrator>
-
+        
+        <scheduled_gain name="magnitude">
+            <input>aero/qbar-psf</input>
+            <gain>1.0</gain>
+            <table>
+                <independentVar>fcs/speedbrake-pos-norm</independentVar>
+                <tableData>
+                    0 0.00
+                    0.125 0.56
+                    0.25 1.12
+                    0.375 1.67
+                    0.5 2.2
+                    0.625 2.72
+                    0.75 3.22
+                    0.875 3.7
+                    1 4.14
+                </tableData>
+            </table>
+            <output>external_reactions/Airbrake/magnitude</output>
+        </scheduled_gain>
+        
+        <fcs_function name="location-z-in">
+            <function>
+                <product>
+                    <v>-1.0</v>
+                    <table>
+                        <independentVar>fcs/speedbrake-pos-norm</independentVar>
+                        <tableData>
+                            0 19.7
+                            0.125 21.2
+                            0.25 22.8
+                            0.375 24.3
+                            0.5 25.7
+                            0.625 27.2
+                            0.75 28.5
+                            0.875 29.8
+                            1 31.1
+                        </tableData>
+                    </table>
+                </product>
+            </function>
+            <output>external_reactions/Airbrake/location-z-in</output>
+        </fcs_function>
+        
     </channel>
     
     

@@ -1,0 +1,147 @@
+Battery operation for the G1R1B simulation
+
+In the G91R1B the battery has its own capacity defined in joules (W * sec) or (V * I * sec).
+The battery for the G91 is lead-acid and has a (theoretical) capacity of 2937600J.
+This value is entered in two parameters:
+
+systems/electric/bus[0]/battery-capacity-initial-J
+systems/electric/bus[0]/battery-capacity-max-J
+
+The first parameter is the capacity of the battery that I put at the beginning (for example a battery almost empty ..), the second the maximum capacity possible. When the engine is running, the battery is recharged. The charging speed is defined by the motor generator.
+
+The G91-electric.xml file has the following important functions:
+
+Battery start capacity and its maximum capacity:
+
+    systems/electric/bus[0]/battery-capacity-initial-J
+    systems/electric/bus[0]/battery-capacity-max-J
+
+The total load (in Ampere) on the bus0 which is the battery bus. In principle, all military planes use at least two buses:
+The bus0 is used to start, for when the motor goes in foult and in order to power the emergency systems.
+Bus1 is the on-board system bus, not an emergency bus.
+Therefore in this function if the bus0 is connected to the bus1, the battery is absorbed by the equipment. If it is not connected, the battery will only power emergency equipment.
+
+    <fcs_function name="systems/electric/bus[0]/I-To-Battery">
+        <function>
+            <ifthen>
+                <p>systems/manual-switches/cockpit/sw-bus0-bus1-battery</p>
+                <sum>
+                    <p>systems/electric/bus[0]/I</p>
+                    <p>systems/electric/bus[1]/I</p>
+                    <p>systems/electric/bus[2]/I</p>
+                </sum>
+                <p>systems/electric/bus[0]/I</p>
+            </ifthen>
+        </function>
+    </fcs_function>
+
+Knowing the absorbed current is fundamental as it is a parameter that can be obtained through the sum of all the absorptions of the devices. The absorption in Joule per second (W) will simply be the product of the total battery current * the voltage of the bus0 or bus1 (the voltage between the buses is considered constant, even if in some cases of important absorptions it can be an approximation).
+
+The power in watts that will go to the battery (called W-To-Battery) is given by this function:
+
+    <fcs_function name="systems/electric/bus[0]/W-To-Battery">
+        <function>
+            <ifthen>
+                <p>systems/manual-switches/cockpit/sw-bus0-bus1-battery</p>
+                <ifthen>
+                    <p>systems/electric/bus[1]/internal-power-generator-inverted-current-rele-on</p>
+                    <product>
+                        <v>250.0</v>
+                        <quotient>
+                            <difference>
+                                <p>systems/electric/bus[1]/internal-power-generator-V</p>
+                                <p>systems/electric/bus[0]/battery-V</p>
+                            </difference>
+                            <p>systems/electric/bus[1]/internal-power-generator-V</p>
+                        </quotient>
+                    </product>
+                    <product>
+                        <p>systems/electric/bus[0]/I-To-Battery</p>
+                        <p>systems/electric/bus[0]/V</p>
+                        <v>-1.0</v>
+                    </product>
+                </ifthen>
+                <product>
+                    <p>systems/electric/bus[0]/I-To-Battery</p>
+                    <p>systems/electric/bus[0]/V</p>
+                    <v>-1.0</v>
+                </product>
+            </ifthen>
+        </function>
+    </fcs_function>
+
+Reading the code we observe the presence of a relay:
+"Systems/electric/bus[1]/internal-power-generator-inverted-current-relay-on"
+This relay is used to prevent the current generator connected to the motor from becoming an absorber (a generator has its own internal resistance, rather low) when the motor is stopped or at low speed. If you remember the old car (up to 20 years ago), when you put it so there was a red light on, that light was connected to an "inverted-current-relay" that remained open when the generator voltage was lower to that of the battery.
+
+At this point performs an integral, to transform the power transmitted to the battery (so with the engine generator active and "inverted-current-relay" closed in Joule or in energy.
+
+    <integrator name="systems/electric/bus[0]/battery-energy-change-J">
+        <input>systems/electric/bus[0]/W-To-Battery</input>
+        <c1>1.0</c1>
+    </integrator>
+
+The capacity of the battery is added together with the contribution of "battery-energy-change-J". Obviously if the generator does not work ("inverted-current-relay" open) the value of this parameter will be negative and therefore the battery will lose energy.
+    
+    <summer name="systems/electric/bus[0]/battery-capacity-J">
+        <input>systems/electric/bus[0]/battery-capacity-initial-J</input>
+        <input>systems/electric/bus[0]/battery-energy-change-J</input>
+        <clipto>
+            <min>0.0</min>
+            <max>systems/electric/bus[0]/battery-capacity-max-J</max>
+        </clipto>
+    </summer>
+
+An important detail described by this step of the function:
+"systems/electric/bus[0]/W-To-Battery":
+
+    <product>
+        <v>250.0</v>
+        <quotient>
+            <difference>
+                <p>systems/electric/bus[1]/internal-power-generator-V</p>
+                <p>systems/electric/bus[0]/battery-V</p>
+            </difference>
+            <p>systems/electric/bus[1]/internal-power-generator-V</p>
+        </quotient>
+    </product>
+
+It is the product between a value of 250 (maximum charging factor of the battery in W / s) and the difference in voltage between the generator and the battery divided by the generator voltage. Obviously it is only an approximation, but it allows to obtain, with good approximation, the power transferred between the generator and the battery.
+
+Someone will object that the batteries are recharged at constant current, it is true, but not necessary. For cars, motorcycles and airplanes etc. up to 20 years ago the battery was recharged by inserting a voltage a bit 'higher than that of the battery! For example, the battery of the G91 is 24V of voltage, while the generator is 28V of voltage. The risk is that the battery, especially if it is rather discharged, can boil, or lose water (and acid) because the voltage difference can even be 10-15V! The G91 (but also other planes) had a device to disperse the vapors, after a passage on a basic compound to cancel the acidity.
+
+This function determines the normal charge of the battery (of course I consider the battery to be new!):
+
+    <fcs_function name="systems/electric/bus[0]/battery-charge-norm">
+        <function>
+            <quotient>
+                <p>systems/electric/bus[0]/battery-capacity-J</p>
+                <p>systems/electric/bus[0]/battery-capacity-max-J</p>
+            </quotient>
+        </function>
+    </fcs_function>
+
+Finally I can get the battery voltage:
+
+    <fcs_function name="systems/electric/bus[0]/battery-V">
+        <function>
+            <table>
+                <independentVar lookup="row">systems/electric/bus[0]/battery-charge-norm</independentVar>
+                <tableData>
+                    0.0     0.0
+                    0.02    21.0
+                    0.1     22.5
+                    0.2     23.0
+                    0.5     24.0
+                    0.8     24.8
+                    0.9     25.0
+                    1.0     25.4
+                </tableData>
+            </table>
+        </function>
+    </fcs_function>
+
+Which is obtained from the classic Volt-Charge tables of lead batteries.
+
+Since JSBSim is a data-driven simulation system with continuous variables, the construction of these relationships makes it possible to obtain a correct description of the electrical system present in the G91R1B.
+What I do is very similar to the hydraulic system (albeit a bit 'simplified).
