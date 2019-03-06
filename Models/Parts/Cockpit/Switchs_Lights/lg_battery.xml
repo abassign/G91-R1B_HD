@@ -12,6 +12,15 @@
     </offsets>
     
     <effect>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
+        <object-name>box_button</object-name>
+        <object-name>button_base</object-name>
+        <object-name>ring (Meshed)</object-name>
+        <object-name>screew (Meshed)</object-name>
+        <object-name>box_button_top (Meshed)</object-name>
+    </effect>
+    
+    <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
         <object-name>box_button</object-name>
         <object-name>button_base</object-name>
@@ -108,9 +117,9 @@
             <blue>0.7</blue>
         </diffuse>
         <ambient>
-            <red>0.5</red>
-            <green>0.5</green>
-            <blue>0.5</blue>
+            <red>0.7</red>
+            <green>0.7</green>
+            <blue>0.7</blue>
         </ambient>
         <specular>
             <red>0.7</red>
