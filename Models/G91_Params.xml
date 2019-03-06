@@ -165,6 +165,16 @@ Version:
         
     </liveries>
     
+    <internal>
+        <effect>
+            <luminosity type="float">-0.04</luminosity>
+            <reflective type="float">0.00</reflective>
+            <noise type="float">-1.00</noise>
+            <dirty type="float">0.00</dirty>
+            <fresnel type="float">0.00</fresnel>
+        </effect>
+    </internal>
+    
     <smoke>
         <acrobatic>
             <on type="float">0.0</on>

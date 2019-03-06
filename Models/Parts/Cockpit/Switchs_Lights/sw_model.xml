@@ -20,6 +20,15 @@
         <object-name>swich_03</object-name>
     </effect>
     
+    <effect>
+        <inherits-from>Effects/model-transparent</inherits-from>
+        <object-name>sw_center</object-name>
+        <object-name>sw_north</object-name>
+        <object-name>sw_south</object-name>
+        <object-name>sw_est</object-name>
+        <object-name>sw_west</object-name>
+    </effect>
+    
     <animation> 
         <type>material</type>
         <object-name>swich_01</object-name>

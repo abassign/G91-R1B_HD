@@ -2,137 +2,9 @@
 
 <PropertyList>
     
-    <path>button_light_type_2.ac</path>
-
-    <offsets>
-        <x-m>0.0055</x-m>
-        <y-m>0.0</y-m>
-        <z-m>0.0</z-m>
-        <pitch-deg>1.0</pitch-deg>
-    </offsets>
-    
-    <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
-        <object-name>box_button</object-name>
-        <object-name>button_base</object-name>
-        <object-name>ring (Meshed)</object-name>
-        <object-name>screew (Meshed)</object-name>
-        <object-name>box_button_top (Meshed)</object-name>
-    </effect>
-    
-    <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
-        <object-name>box_button</object-name>
-        <object-name>button_base</object-name>
-        <object-name>ring (Meshed)</object-name>
-        <object-name>screew (Meshed)</object-name>
-        <object-name>box_button_top (Meshed)</object-name>
-    </effect>
-    
-    <animation> 
-        <type>material</type>
-        <object-name>box_button (Meshed)</object-name>
-        <object-name>button_base (Meshed)</object-name>
-        <diffuse>
-            <red>0.33</red>
-            <green>0.31</green>
-            <blue>0.30</blue>
-        </diffuse>
-        <ambient>
-            <red>0.3</red>
-            <green>0.3</green>
-            <blue>0.3</blue>
-        </ambient>
-        <specular>
-            <red>0.8</red>
-            <green>0.8</green>
-            <blue>0.8</blue>
-        </specular>
-        <emission>
-            <red>0.051</red>
-            <green>0.0</green>
-            <blue>0.0</blue>
-            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
-        </emission>
-    </animation>
-    
-    <animation> 
-        <type>material</type>
-        <object-name>ring (Meshed)</object-name>
-        <diffuse>
-            <red>0.4</red>
-            <green>0.4</green>
-            <blue>0.4</blue>
-        </diffuse>
-        <ambient>
-            <red>0.2</red>
-            <green>0.2</green>
-            <blue>0.2</blue>
-        </ambient>
-        <specular>
-            <red>0.3</red>
-            <green>0.3</green>
-            <blue>0.3</blue>
-        </specular>
-        <emission>
-            <red>0.06</red>
-            <green>0.0</green>
-            <blue>0.0</blue>
-            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
-        </emission>
-    </animation>
-    
-    <animation> 
-        <type>material</type>
-        <object-name>screew (Meshed)</object-name>
-        <diffuse>
-            <red>0.5</red>
-            <green>0.5</green>
-            <blue>0.5</blue>
-        </diffuse>
-        <ambient>
-            <red>0.3</red>
-            <green>0.3</green>
-            <blue>0.3</blue>
-        </ambient>
-        <specular>
-            <red>0.5</red>
-            <green>0.5</green>
-            <blue>0.5</blue>
-        </specular>
-        <emission>
-            <red>0.08</red>
-            <green>0.0</green>
-            <blue>0.0</blue>
-            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
-        </emission>
-    </animation>
-    
-    <animation> 
-        <type>material</type>
-        <object-name>box_button_top (Meshed)</object-name>
-        <diffuse>
-            <red>0.7</red>
-            <green>0.7</green>
-            <blue>0.7</blue>
-        </diffuse>
-        <ambient>
-            <red>0.7</red>
-            <green>0.7</green>
-            <blue>0.7</blue>
-        </ambient>
-        <specular>
-            <red>0.7</red>
-            <green>0.7</green>
-            <blue>0.9</blue>
-        </specular>
-        <emission>
-            <red>0.15</red>
-            <green>0.0</green>
-            <blue>0.0</blue>
-            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
-        </emission>
-    </animation>
+    <model>
+        <path>lg_model.xml</path>
+    </model>
     
     <animation> 
         <type>material</type>
@@ -148,7 +20,7 @@
             <blue>0.0</blue>
         </ambient>
         <emission>
-            <red>1.0</red>
+            <red>1.3</red>
             <green>0.0</green>
             <blue>0.0</blue>
             <factor-prop>fdm/jsbsim/systems/warning-lights/cockpit/wl-bus0-bus1-battery-out</factor-prop>
@@ -159,7 +31,7 @@
         <type>material</type>
         <object-name>transparent_button (Meshed)</object-name>
         <transparency>
-            <alpha>1.0</alpha>
+            <alpha>1.1</alpha>
             <factor-prop>fdm/jsbsim/systems/warning-lights/cockpit/wl-bus0-bus1-battery-out-transparent</factor-prop>
         </transparency>
         <diffuse>
@@ -168,18 +40,18 @@
             <blue>0.0</blue>
         </diffuse>
         <ambient>
-            <red>0.1</red>
+            <red>0.5</red>
             <green>0.0</green>
             <blue>0.0</blue>
         </ambient>
         <emission>
-            <red>0.1</red>
+            <red>0.2</red>
             <green>0.0</green>
             <blue>0.0</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
         <specular>
-            <red>0.5</red>
+            <red>1.0</red>
             <green>0.0</green>
             <blue>0.0</blue>
         </specular>
@@ -189,12 +61,12 @@
         <type>material</type>
         <object-name>light_Sphere (Meshed)</object-name>
         <transparency>
-            <alpha>0.5</alpha>
+            <alpha>0.8</alpha>
         </transparency>
         <diffuse>
-            <red>0.0</red>
-            <green>0.0</green>
-            <blue>0.0</blue>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
         </diffuse>
         <ambient>
             <red>0.0</red>
@@ -202,9 +74,9 @@
             <blue>0.0</blue>
         </ambient>
         <emission>
-            <red>1.0</red>
-            <green>0.0</green>
-            <blue>0.0</blue>
+            <red>1.5</red>
+            <green>0.5</green>
+            <blue>0.3</blue>
             <factor-prop>fdm/jsbsim/systems/warning-lights/cockpit/wl-bus0-bus1-battery-out</factor-prop>
         </emission>
     </animation>
@@ -213,12 +85,12 @@
         <type>material</type>
         <object-name>light_Sphere_hot (Meshed)</object-name>
         <transparency>
-            <alpha>0.2</alpha>
+            <alpha>0.4</alpha>
         </transparency>
         <diffuse>
-            <red>0.0</red>
-            <green>0.0</green>
-            <blue>0.0</blue>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
         </diffuse>
         <ambient>
             <red>0.0</red>
@@ -226,9 +98,9 @@
             <blue>0.0</blue>
         </ambient>
         <emission>
-            <red>0.0</red>
-            <green>0.3</green>
-            <blue>3.0</blue>
+            <red>1.5</red>
+            <green>1.0</green>
+            <blue>2.0</blue>
             <factor-prop>fdm/jsbsim/systems/warning-lights/cockpit/wl-bus0-bus1-battery-out</factor-prop>
         </emission>
     </animation>

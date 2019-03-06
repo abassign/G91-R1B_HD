@@ -16,7 +16,7 @@
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Canopy.xml</path>
     </model>
-    
+    <!--
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/LandingGearFrontal/LandingGearFrontal.xml</path>
     </model>
@@ -24,7 +24,7 @@
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Wing/Wing.xml</path>
     </model>
-    
+    -->
     <!--
     
     <model>

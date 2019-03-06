@@ -115,9 +115,9 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
             <blue>0.7</blue>
         </diffuse>
         <ambient>
-            <red>0.9</red>
-            <green>0.9</green>
-            <blue>0.9</blue>
+            <red>0.7</red>
+            <green>0.7</green>
+            <blue>0.7</blue>
         </ambient>
         <specular>
             <red>0.7</red>
@@ -125,7 +125,7 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
             <blue>0.9</blue>
         </specular>
         <emission>
-            <red>0.1</red>
+            <red>0.15</red>
             <green>0.0</green>
             <blue>0.0</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>

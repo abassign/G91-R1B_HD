@@ -229,12 +229,22 @@
     <animation> 
         <type>material</type>
         <object-name>F_Cover_panel_cockpit</object-name>
-        <texture>Pictures/G91-Black.png</texture>
+        <diffuse>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </diffuse>
         <ambient>
             <red>0.1</red>
             <green>0.1</green>
             <blue>0.1</blue>
         </ambient>
+        <emission>
+            <red>0.01</red>
+            <green>0.05</green>
+            <blue>0.01</blue>
+            <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
+        </emission>
     </animation>
     
     <animation> 

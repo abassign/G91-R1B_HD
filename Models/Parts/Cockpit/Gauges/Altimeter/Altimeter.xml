@@ -50,6 +50,13 @@
         <object-name>hand02a</object-name>
     </effect>
     
+    <effect>
+        <inherits-from>Effects/model-transparent</inherits-from>
+        <object-name>I_glass</object-name>
+        <object-name>I_plate.000A</object-name>
+        <object-name>I_Plate.001A</object-name>
+    </effect>
+    
     <animation> 
         <type>material</type> 
         <object-name>I_ExtenalCover.001</object-name>
