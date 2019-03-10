@@ -8,7 +8,6 @@
         <object-name>F_livetto.028</object-name>
         <object-name>F_livetto.029</object-name>
         <object-name>JATO_box</object-name>
-        <object-name>Jato_tex</object-name>
     </effect>
     
     <effect>
@@ -16,20 +15,26 @@
         <object-name>F_livetto.028</object-name>
         <object-name>F_livetto.029</object-name>
         <object-name>JATO_box</object-name>
-        <object-name>Jato_tex</object-name>
     </effect>
 
     <animation>
         <type>material</type>
-        <object-name>F_livetto.028</object-name>
-        <object-name>F_livetto.029</object-name>
         <object-name>JATO_box</object-name>
-        <texture>Pictures/G91-Black.png</texture>
+        <diffuse>
+            <red>0.05</red>
+            <green>0.05</green>
+            <blue>0.05</blue>
+        </diffuse>
         <ambient>
-            <red>0.2</red>
-            <green>0.2</green>
-            <blue>0.2</blue>
+            <red>0.05</red>
+            <green>0.05</green>
+            <blue>0.05</blue>
         </ambient>
+        <specular>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.3</blue>
+        </specular>
         <emission>
             <red>0.02</red>
             <green>0.0</green>
@@ -40,20 +45,52 @@
     
     <animation> 
         <type>material</type>
-        <object-name>Jato_tex</object-name>
-        <transparency>
-            <alpha>1.0</alpha>
-        </transparency>
+        <object-name>Curve.002</object-name>
+        <object-name>Curve.003</object-name>
+        <object-name>Curve.004</object-name>
+        <object-name>Curve.005</object-name>
+        <diffuse>
+            <red>0.9</red>
+            <green>0.8</green>
+            <blue>0.5</blue>
+        </diffuse>
         <ambient>
-            <red>0.80</red>
-            <green>0.73</green>
-            <blue>0.53</blue>
+            <red>0.9</red>
+            <green>0.9</green>
+            <blue>0.9</blue>
         </ambient>
         <emission>
-            <red>0.045</red>
+            <red>0.1</red>
+            <green>0.02</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation>
+        <type>material</type>
+        <object-name>F_livetto.028</object-name>
+        <object-name>F_livetto.029</object-name>
+        <diffuse>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </diffuse>
+        <ambient>
+            <red>0.15</red>
             <green>0.15</green>
-            <blue>0.031</blue>
-            <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
+            <blue>0.15</blue>
+        </ambient>
+        <specular>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </specular>
+        <emission>
+            <red>0.03</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
     

@@ -7,11 +7,8 @@
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
         <object-name>hand03b</object-name>
-        <object-name>I_plate.000A</object-name>
         <object-name>I_plate.000B</object-name>
-        <object-name>I_Plate.001A</object-name>
         <object-name>I_Plate.001B</object-name>
-        <object-name>I_Plate.003A</object-name>
         <object-name>I_Plate.004B</object-name>
         <object-name>hand01b</object-name>
         <object-name>hand01b.001</object-name>
@@ -30,11 +27,8 @@
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
         <object-name>hand03b</object-name>
-        <object-name>I_plate.000A</object-name>
         <object-name>I_plate.000B</object-name>
-        <object-name>I_Plate.001A</object-name>
         <object-name>I_Plate.001B</object-name>
-        <object-name>I_Plate.003A</object-name>
         <object-name>I_Plate.004B</object-name>
         <object-name>hand01b</object-name>
         <object-name>hand01b.001</object-name>
@@ -53,8 +47,6 @@
     <effect>
         <inherits-from>Effects/model-transparent</inherits-from>
         <object-name>I_glass</object-name>
-        <object-name>I_plate.000A</object-name>
-        <object-name>I_Plate.001A</object-name>
     </effect>
     
     <animation> 
@@ -182,13 +174,15 @@
             <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
         </emission>
     </animation>
-    
+
     <animation> 
         <type>material</type>
         <object-name>I_plate.000A</object-name>
-        <transparency>
-            <alpha>1.0</alpha>
-        </transparency>
+        <diffuse>
+            <red>0.7</red>
+            <green>0.6</green>
+            <blue>0.4</blue>
+        </diffuse>
         <ambient>
             <red>0.7</red>
             <green>0.6</green>
@@ -201,7 +195,7 @@
             <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
         </emission>
     </animation>
-    
+
     <animation> 
         <type>material</type>
         <object-name>I_plate.000B</object-name>
@@ -222,17 +216,40 @@
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
-    
-        <animation> 
+
+    <animation> 
         <type>material</type>
-        <object-name>I_Plate.001A</object-name>
-        <transparency>
-            <alpha>1.0</alpha>
-        </transparency>
+        <object-name>I_Plate.001A1</object-name>
+        <diffuse>
+            <red>0.9</red>
+            <green>0.9</green>
+            <blue>0.9</blue>
+        </diffuse>
         <ambient>
-            <red>0.8</red>
-            <green>0.8</green>
-            <blue>0.5</blue>
+            <red>0.80</red>
+            <green>0.73</green>
+            <blue>0.40</blue>
+        </ambient>
+        <emission>
+            <red>0.1</red>
+            <green>0.18</green>
+            <blue>0.031</blue>
+            <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>I_Plate.001A2</object-name>
+        <diffuse>
+            <red>0.9</red>
+            <green>0.9</green>
+            <blue>0.9</blue>
+        </diffuse>
+        <ambient>
+            <red>0.80</red>
+            <green>0.73</green>
+            <blue>0.40</blue>
         </ambient>
         <emission>
             <red>0.045</red>
@@ -241,19 +258,19 @@
             <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
         </emission>
     </animation>
-    
+
     <animation> 
         <type>material</type>
         <object-name>I_Plate.001B</object-name>
         <diffuse>
-            <red>0.33</red>
-            <green>0.31</green>
-            <blue>0.30</blue>
-        </diffuse>
-        <ambient>
             <red>0.1</red>
             <green>0.1</green>
             <blue>0.1</blue>
+        </diffuse>
+        <ambient>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
         </ambient>
         <emission>
             <red>0.02</red>
@@ -265,7 +282,7 @@
     
     <animation> 
         <type>material</type>
-        <object-name>I_Plate.003A</object-name>
+        <object-name>I_Plate.004A</object-name>
         <diffuse>
             <red>0.9</red>
             <green>0.9</green>
@@ -410,7 +427,7 @@
     
     <animation>
         <type>rotate</type>
-        <object-name>I_Plate.003A</object-name>
+        <object-name>I_Plate.004A</object-name>
         <property>instrumentation/altimeter/setting-inhg</property>
         <interpolation>
             <entry><ind>27.9</ind><dep>-210</dep></entry>

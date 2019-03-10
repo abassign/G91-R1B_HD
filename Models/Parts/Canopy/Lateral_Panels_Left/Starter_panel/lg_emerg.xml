@@ -6,137 +6,15 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
 
 <PropertyList>
     
-    <path>button_light_type_2.ac</path>
-    
-    <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
-        <object-name>screew (Meshed)</object-name>
-        <object-name>ring (Meshed)</object-name>
-        <object-name>box_button (Meshed)</object-name>
-        <object-name>box_button_top (Meshed)</object-name>
-        <object-name>button_base (Meshed)</object-name>
-        <object-name>Cone_reflect (Meshed)</object-name>
-    </effect>
-    
-    <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
-        <object-name>screew (Meshed)</object-name>
-        <object-name>ring (Meshed)</object-name>
-        <object-name>box_button (Meshed)</object-name>
-        <object-name>box_button_top (Meshed)</object-name>
-        <object-name>button_base (Meshed)</object-name>
-    </effect>
-    
-    <animation> 
-        <type>material</type>
-        <object-name>box_button (Meshed)</object-name>
-        <object-name>button_base (Meshed)</object-name>
-        <diffuse>
-            <red>0.33</red>
-            <green>0.31</green>
-            <blue>0.30</blue>
-        </diffuse>
-        <ambient>
-            <red>0.3</red>
-            <green>0.3</green>
-            <blue>0.3</blue>
-        </ambient>
-        <specular>
-            <red>0.8</red>
-            <green>0.8</green>
-            <blue>0.8</blue>
-        </specular>
-        <emission>
-            <red>0.051</red>
-            <green>0.0</green>
-            <blue>0.0</blue>
-            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
-        </emission>
-    </animation>
-    
-    <animation> 
-        <type>material</type>
-        <object-name>ring (Meshed)</object-name>
-        <diffuse>
-            <red>0.5</red>
-            <green>0.5</green>
-            <blue>0.5</blue>
-        </diffuse>
-        <ambient>
-            <red>0.5</red>
-            <green>0.5</green>
-            <blue>0.5</blue>
-        </ambient>
-        <specular>
-            <red>0.8</red>
-            <green>0.8</green>
-            <blue>0.8</blue>
-        </specular>
-        <emission>
-            <red>0.06</red>
-            <green>0.0</green>
-            <blue>0.0</blue>
-            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
-        </emission>
-    </animation>
-    
-    <animation> 
-        <type>material</type>
-        <object-name>screew (Meshed)</object-name>
-        <diffuse>
-            <red>0.6</red>
-            <green>0.6</green>
-            <blue>0.6</blue>
-        </diffuse>
-        <ambient>
-            <red>0.6</red>
-            <green>0.6</green>
-            <blue>0.6</blue>
-        </ambient>
-        <specular>
-            <red>0.8</red>
-            <green>0.8</green>
-            <blue>0.8</blue>
-        </specular>
-        <emission>
-            <red>0.08</red>
-            <green>0.0</green>
-            <blue>0.0</blue>
-            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
-        </emission>
-    </animation>
-    
-    <animation> 
-        <type>material</type>
-        <object-name>box_button_top (Meshed)</object-name>
-        <diffuse>
-            <red>0.7</red>
-            <green>0.7</green>
-            <blue>0.7</blue>
-        </diffuse>
-        <ambient>
-            <red>0.9</red>
-            <green>0.9</green>
-            <blue>0.9</blue>
-        </ambient>
-        <specular>
-            <red>0.7</red>
-            <green>0.7</green>
-            <blue>0.9</blue>
-        </specular>
-        <emission>
-            <red>0.1</red>
-            <green>0.0</green>
-            <blue>0.0</blue>
-            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
-        </emission>
-    </animation>
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Common/lg_model_01.xml</path>
+    </model>
     
     <animation> 
         <type>material</type>
         <object-name>Cone_reflect (Meshed)</object-name>
         <diffuse>
-            <red>8.0</red>
+            <red>1.0</red>
             <green>0.0</green>
             <blue>0.0</blue>
         </diffuse>
@@ -146,7 +24,7 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
             <blue>0.0</blue>
         </ambient>
         <emission>
-            <red>1.0</red>
+            <red>2.0</red>
             <green>0.0</green>
             <blue>0.0</blue>
             <factor-prop>fdm/jsbsim/systems/starter/emerg-engine-on-lg</factor-prop>
@@ -157,42 +35,42 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
         <type>material</type>
         <object-name>transparent_button (Meshed)</object-name>
         <transparency>
-            <alpha>1.0</alpha>
+            <alpha>0.95</alpha>
             <factor-prop>fdm/jsbsim/systems/starter/emerg-engine-on-lg-transparent</factor-prop>
         </transparency>
         <diffuse>
-            <red>1.0</red>
+            <red>0.5</red>
             <green>0.0</green>
             <blue>0.0</blue>
         </diffuse>
         <ambient>
-            <red>0.1</red>
+            <red>0.5</red>
             <green>0.0</green>
             <blue>0.0</blue>
         </ambient>
+        <specular>
+            <red>1.0</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
+        </specular>
         <emission>
-            <red>0.1</red>
+            <red>1.5</red>
             <green>0.0</green>
             <blue>0.0</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
-        <specular>
-            <red>0.5</red>
-            <green>0.0</green>
-            <blue>0.0</blue>
-        </specular>
     </animation>
     
     <animation> 
         <type>material</type>
         <object-name>light_Sphere (Meshed)</object-name>
         <transparency>
-            <alpha>0.5</alpha>
+            <alpha>0.4</alpha>
         </transparency>
         <diffuse>
-            <red>0.0</red>
-            <green>0.0</green>
-            <blue>0.0</blue>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
         </diffuse>
         <ambient>
             <red>0.0</red>
@@ -200,9 +78,9 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
             <blue>0.0</blue>
         </ambient>
         <emission>
-            <red>1.0</red>
-            <green>0.0</green>
-            <blue>0.0</blue>
+            <red>1.5</red>
+            <green>0.5</green>
+            <blue>0.3</blue>
             <factor-prop>fdm/jsbsim/systems/starter/emerg-engine-on-lg</factor-prop>
         </emission>
     </animation>
@@ -211,12 +89,12 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
         <type>material</type>
         <object-name>light_Sphere_hot (Meshed)</object-name>
         <transparency>
-            <alpha>0.2</alpha>
+            <alpha>0.4</alpha>
         </transparency>
         <diffuse>
-            <red>0.0</red>
-            <green>0.0</green>
-            <blue>0.0</blue>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
         </diffuse>
         <ambient>
             <red>0.0</red>
@@ -224,9 +102,9 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
             <blue>0.0</blue>
         </ambient>
         <emission>
-            <red>0.0</red>
-            <green>0.3</green>
-            <blue>3.0</blue>
+            <red>2.0</red>
+            <green>0.5</green>
+            <blue>1.5</blue>
             <factor-prop>fdm/jsbsim/systems/starter/emerg-engine-on-lg</factor-prop>
         </emission>
     </animation>
@@ -241,9 +119,9 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
         <name>pb_light_effect</name>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Effects/lights/procedural_light_cockpit_advise_red.xml</path>
         <offsets>
-            <x-m> 0.02</x-m>
+            <x-m> 0.03</x-m>
             <y-m> 0.0 </y-m>
-            <z-m> 0.0 </z-m>
+            <z-m> -0.01 </z-m>
         </offsets>
     </model>
     

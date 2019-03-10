@@ -128,11 +128,11 @@ Version:
             <reloads type="float">0.0</reloads>
             <name_short type="string">Portuguese R3 c/n 301</name_short>
             <name_long type="string">Portuguese Air Force G-91R/3 c/n 301 in the Portuguese Colonial War (R3)</name_long>
-            <luminosity type="float">-0.04</luminosity>
-            <reflective type="float">-1.00</reflective>
+            <luminosity type="float">0.0</luminosity>
+            <reflective type="float">-0.92</reflective>
             <PANR1 type="float">0.0</PANR1>
-            <diffuse type="float">0.56</diffuse>
-            <specular type="float">0.40</specular>
+            <diffuse type="float">0.50</diffuse>
+            <specular type="float">0.06</specular>
             <dirty type="float">0.0</dirty>
             <noise>sim/G91/liveries/active/noise</noise>
             <livery_001 type="string">Aircraft/G91-R1B_HD/Models/Liveries/R3/poto_01.png</livery_001>
@@ -148,11 +148,11 @@ Version:
             <reloads type="float">0.0</reloads>
             <name_short type="string">Luftwaffe R3 c/n 535</name_short>
             <name_long type="string">Luftwaffe FUS G-91R/3 c/n 535 (R3)</name_long>
-            <luminosity type="float">-0.04</luminosity>
-            <reflective type="float">-1.00</reflective>
+            <luminosity type="float">0.0</luminosity>
+            <reflective type="float">-0.92</reflective>
             <PANR1 type="float">0.0</PANR1>
-            <diffuse type="float">0.56</diffuse>
-            <specular type="float">0.40</specular>
+            <diffuse type="float">0.50</diffuse>
+            <specular type="float">0.06</specular>
             <dirty type="float">0.0</dirty>
             <noise>sim/G91/liveries/active/noise</noise>
             <livery_001 type="string">Aircraft/G91-R1B_HD/Models/Liveries/R3/GER_1962_001.png</livery_001>

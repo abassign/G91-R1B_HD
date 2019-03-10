@@ -8,7 +8,6 @@
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
         <object-name>Cover</object-name>
         <object-name>Frontal</object-name>
-        <object-name>Cylynder-15-18</object-name>
     </effect>
     
     <animation> 

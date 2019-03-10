@@ -47,7 +47,6 @@
         <object-name>locking_plate</object-name>
         <object-name>screw_gauges01</object-name>
         <object-name>index</object-name>
-        <object-name>button</object-name>
     </effect>
     
     <effect>
@@ -87,21 +86,29 @@
         <object-name>locking_plate</object-name>
         <object-name>screw_gauges01</object-name>
         <object-name>index</object-name>
-        <object-name>button</object-name>
     </effect>
     
     <animation> 
         <type>material</type>
         <object-name>Collimator_glass02</object-name>
-        <texture>Pictures/G91-Al-Light.png</texture>
         <transparency>
             <alpha>0.1</alpha>
         </transparency>
-        <ambient>
-            <red>0.6</red>
+        <diffuse>
+            <red>0.7</red>
             <green>0.7</green>
-            <blue>0.6</blue>
+            <blue>0.7</blue>
+        </diffuse>
+        <ambient>
+            <red>0.1</red>
+            <green>0.3</green>
+            <blue>0.1</blue>
         </ambient>
+        <specular>
+            <red>0.9</red>
+            <green>0.9</green>
+            <blue>0.9</blue>
+        </specular>
         <emission>
             <red>0.1</red>
             <green>0.0</green>
@@ -113,17 +120,21 @@
     <animation> 
         <type>material</type>
         <object-name>border_glass_target</object-name>
-        <texture>Pictures/G91-Green-01.png</texture>
         <transparency>
             <alpha>0.3</alpha>
         </transparency>
+        <diffuse>
+            <red>0.1</red>
+            <green>0.3</green>
+            <blue>0.1</blue>
+        </diffuse>
         <ambient>
             <red>0.1</red>
             <green>0.3</green>
             <blue>0.1</blue>
         </ambient>
         <emission>
-            <red>0.5</red>
+            <red>0.05</red>
             <green>0.0</green>
             <blue>0.0</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
@@ -133,13 +144,17 @@
     <animation> 
         <type>material</type>
         <object-name>Colimator_Objective01</object-name>
-        <texture>Pictures/G91-Al-Light.png</texture>
         <transparency>
             <alpha>0.5</alpha>
         </transparency>
+        <diffuse>
+            <red>0.5</red>
+            <green>0.6</green>
+            <blue>0.7</blue>
+        </diffuse>
         <ambient>
-            <red>0.2</red>
-            <green>0.2</green>
+            <red>0.1</red>
+            <green>0.1</green>
             <blue>0.2</blue>
         </ambient>
         <specular>
@@ -172,11 +187,15 @@
         <type>material</type>
         <object-name>Collimator_screen</object-name>
         <object-name>Plane.001</object-name>
-        <texture>Pictures/G91-Dark-Grey.png</texture>
+        <diffuse>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.3</blue>
+        </diffuse>
         <ambient>
-            <red>0.6</red>
-            <green>0.6</green>
-            <blue>0.6</blue>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
         </ambient>
     </animation>
     
@@ -184,11 +203,15 @@
         <type>material</type>
         <object-name>Collimator_body</object-name>
         <object-name>button</object-name>
-        <texture>Pictures/G91-Dark-Grey.png</texture>
+        <diffuse>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </diffuse>
         <ambient>
-            <red>0.4</red>
-            <green>0.4</green>
-            <blue>0.4</blue>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
         </ambient>
         <emission>
             <red>0.04</red>
@@ -205,11 +228,21 @@
         <transparency>
             <alpha>1.0</alpha>
         </transparency>
+        <diffuse>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.7</blue>
+        </diffuse>
         <ambient>
-            <red>0.6</red>
-            <green>0.7</green>
-            <blue>0.5</blue>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.7</blue>
         </ambient>
+        <specular>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </specular>
         <emission>
             <red>0.02</red>
             <green>0.00</green>
@@ -221,14 +254,21 @@
     <animation>
         <type>material</type>
         <object-name>Large_disk.001</object-name>
-        <transparency>
-            <alpha>1.0</alpha>
-        </transparency>
+        <diffuse>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.6</blue>
+        </diffuse>
         <ambient>
-            <red>0.6</red>
-            <green>0.7</green>
-            <blue>0.5</blue>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.6</blue>
         </ambient>
+        <specular>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </specular>
         <emission>
             <red>0.045</red>
             <green>0.20</green>
@@ -240,12 +280,21 @@
     <animation>
         <type>material</type>
         <object-name>cover_glass_target</object-name>
-        <texture>Pictures/G91-Al-dark.png</texture>
+        <diffuse>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </diffuse>
         <ambient>
-            <red>0.3</red>
-            <green>0.3</green>
-            <blue>0.3</blue>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
         </ambient>
+        <specular>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </specular>
         <emission>
             <red>0.04</red>
             <green>0.00</green>
@@ -258,12 +307,21 @@
         <type>material</type>
         <object-name>Cube.004</object-name>
         <object-name>Collimator_cable_support</object-name>
-        <texture>Pictures/G91-Al-dark.png</texture>
+        <diffuse>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </diffuse>
         <ambient>
-            <red>0.4</red>
-            <green>0.4</green>
-            <blue>0.4</blue>
+            <red>0.15</red>
+            <green>0.15</green>
+            <blue>0.15</blue>
         </ambient>
+        <specular>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </specular>
     </animation>
     
     <animation>
@@ -272,11 +330,21 @@
         <transparency>
             <alpha>1.0</alpha>
         </transparency>
+        <diffuse>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.6</blue>
+        </diffuse>
         <ambient>
-            <red>0.6</red>
-            <green>0.7</green>
-            <blue>0.5</blue>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.6</blue>
         </ambient>
+        <specular>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </specular>
         <emission>
             <red>0.045</red>
             <green>0.20</green>
@@ -290,24 +358,24 @@
         <object-name>Disk_mobile</object-name>
         <object-name>Large_disk</object-name>
         <diffuse>
+            <red>0.05</red>
+            <green>0.05</green>
+            <blue>0.05</blue>
+        </diffuse>
+        <ambient>
             <red>0.1</red>
             <green>0.1</green>
             <blue>0.1</blue>
-        </diffuse>
-        <ambient>
-            <red>0.2</red>
-            <green>0.2</green>
-            <blue>0.2</blue>
         </ambient>
         <specular>
-            <red>0.9</red>
-            <green>0.9</green>
-            <blue>0.9</blue>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
         </specular>
         <emission>
-            <red>0.1</red>
+            <red>0.03</red>
             <green>0.0</green>
-            <blue>0.03</blue>
+            <blue>0.01</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
@@ -317,21 +385,25 @@
         <object-name>Circle.001</object-name>
         <object-name>Collimator_cable</object-name>
         <object-name>Collimator_cover_retichle</object-name>
-        <texture>Pictures/G91-Dark-Grey.png</texture>
+        <diffuse>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.3</blue>
+        </diffuse>
         <ambient>
-            <red>0.6</red>
-            <green>0.6</green>
-            <blue>0.6</blue>
+            <red>0.15</red>
+            <green>0.15</green>
+            <blue>0.15</blue>
         </ambient>
         <specular>
-            <red>0.9</red>
-            <green>0.9</green>
-            <blue>0.9</blue>
+            <red>0.4</red>
+            <green>0.4</green>
+            <blue>0.4</blue>
         </specular>
         <emission>
-            <red>0.1</red>
+            <red>0.03</red>
             <green>0.0</green>
-            <blue>0.03</blue>
+            <blue>0.01</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
@@ -341,16 +413,25 @@
         <object-name>F_structure_panel_cockpit.005</object-name>
         <object-name>F_structure_panel_cockpit.006</object-name>
         <object-name>support_collim_gauges</object-name>
-        <texture>Pictures/G91-Dark-Grey.png</texture>
+        <diffuse>
+            <red>0.05</red>
+            <green>0.05</green>
+            <blue>0.05</blue>
+        </diffuse>
         <ambient>
-            <red>0.4</red>
-            <green>0.4</green>
-            <blue>0.4</blue>
-        </ambient>
-        <emission>
             <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </ambient>
+        <specular>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </specular>
+        <emission>
+            <red>0.02</red>
             <green>0.0</green>
-            <blue>0.03</blue>
+            <blue>0.0</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
@@ -361,32 +442,56 @@
         <object-name>Collimator_Lever_lock_screw</object-name>
         <object-name>Collimator_Lever_lock_screw_02</object-name>
         <object-name>support_disk</object-name>
-        <texture>Pictures/G91-Al-Light.png</texture>
+        <diffuse>
+            <red>0.7</red>
+            <green>0.7</green>
+            <blue>0.7</blue>
+        </diffuse>
         <ambient>
             <red>0.4</red>
             <green>0.4</green>
             <blue>0.4</blue>
         </ambient>
+        <specular>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
+        </specular>
+        <emission>
+            <red>0.06</red>
+            <green>0.0</green>
+            <blue>0.01</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
     </animation>
     
     <animation>
         <type>material</type>
         <object-name>beam</object-name>
-        <object-name>bolt_index</object-name>
         <object-name>bolt_support01</object-name>
         <object-name>bolt_support02</object-name>
         <object-name>index.001</object-name>
-        <texture>Pictures/G91-Al-Light.png</texture>
+        <diffuse>
+            <red>0.7</red>
+            <green>0.7</green>
+            <blue>0.7</blue>
+        </diffuse>
         <ambient>
             <red>0.5</red>
             <green>0.5</green>
             <blue>0.5</blue>
         </ambient>
         <specular>
-            <red>0.9</red>
-            <green>0.9</green>
-            <blue>0.9</blue>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
         </specular>
+        <emission>
+            <red>0.07</red>
+            <green>0.0</green>
+            <blue>0.01</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
         <emission>
             <red>0.1</red>
             <green>0.0</green>
@@ -397,27 +502,52 @@
     
     <animation>
         <type>material</type>
-        <object-name>flange_fixed_drum</object-name>
         <object-name>screw_gauges</object-name>
-        <texture>Pictures/G91-Al-Light.png</texture>
+        <object-name>bolt_index</object-name>
+        <diffuse>
+            <red>0.7</red>
+            <green>0.7</green>
+            <blue>0.7</blue>
+        </diffuse>
         <ambient>
             <red>0.1</red>
             <green>0.1</green>
             <blue>0.1</blue>
         </ambient>
+        <specular>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </specular>
+        <emission>
+            <red>0.03</red>
+            <green>0.0</green>
+            <blue>0.01</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
     </animation>
     
     <animation>
         <type>material</type>
+        <object-name>flange_fixed_drum</object-name>
         <object-name>fixed_drum</object-name>
-        <texture>Pictures/G91-Al-dark.png</texture>
+        <diffuse>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.3</blue>
+        </diffuse>
         <ambient>
-            <red>0.4</red>
-            <green>0.4</green>
-            <blue>0.4</blue>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
         </ambient>
+        <specular>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
+        </specular>
         <emission>
-            <red>0.07</red>
+            <red>0.04</red>
             <green>0.0</green>
             <blue>0.01</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
@@ -432,12 +562,21 @@
         <object-name>locking_plate</object-name>
         <object-name>screw_gauges01</object-name>
         <object-name>index</object-name>
-        <texture>Pictures/G91-Al-01.png</texture>
+        <diffuse>
+            <red>0.4</red>
+            <green>0.4</green>
+            <blue>0.4</blue>
+        </diffuse>
         <ambient>
-            <red>0.5</red>
-            <green>0.5</green>
-            <blue>0.5</blue>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.3</blue>
         </ambient>
+        <specular>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </specular>
         <emission>
             <red>0.05</red>
             <green>0.0</green>

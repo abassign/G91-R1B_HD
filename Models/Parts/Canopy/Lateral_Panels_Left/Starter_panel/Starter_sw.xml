@@ -38,9 +38,9 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
             <blue>0.2</blue>
         </ambient>
         <specular>
-            <red>0.9</red>
-            <green>0.9</green>
-            <blue>0.9</blue>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
         </specular>
         <emission>
             <red>0.06</red>
@@ -64,9 +64,9 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
             <blue>0.2</blue>
         </ambient>
         <specular>
-            <red>0.9</red>
-            <green>0.9</green>
-            <blue>0.9</blue>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
         </specular>
         <emission>
             <red>0.08</red>
@@ -86,13 +86,13 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
         </diffuse>
         <ambient>
             <red>0.8</red>
-            <green>0.4</green>
-            <blue>0.4</blue>
+            <green>0.2</green>
+            <blue>0.2</blue>
         </ambient>
         <specular>
-            <red>0.8</red>
-            <green>0.4</green>
-            <blue>0.4</blue>
+            <red>0.4</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
         </specular>
         <emission>
             <red>0.12</red>
@@ -111,14 +111,14 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
             <blue>0.5</blue>
         </diffuse>
         <ambient>
-            <red>0.6</red>
-            <green>0.6</green>
-            <blue>0.6</blue>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
         </ambient>
         <specular>
-            <red>0.8</red>
-            <green>0.8</green>
-            <blue>0.8</blue>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.3</blue>
         </specular>
         <emission>
             <red>0.06</red>
@@ -184,8 +184,8 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
         <type>translate</type>
         <object-name>starter_C03</object-name>
         <property>fdm/jsbsim/systems/starter/sw-push-pos</property>
-        <factor>0.009</factor>
-        <offset-m>0.0</offset-m>
+        <factor>0.004</factor>
+        <offset-m>-0.002</offset-m>
         <axis>
             <x>0</x>
             <y>0</y>

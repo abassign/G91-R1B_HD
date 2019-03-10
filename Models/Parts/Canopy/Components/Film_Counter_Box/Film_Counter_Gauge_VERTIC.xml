@@ -1,6 +1,6 @@
 <PropertyList>
     
-    <path>film_counter_gauge.ac</path>
+    <path>film_counter_gauge_vertic.ac</path>
     
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>

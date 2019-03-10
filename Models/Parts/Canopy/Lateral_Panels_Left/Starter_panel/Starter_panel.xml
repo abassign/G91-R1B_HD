@@ -12,14 +12,12 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
         <object-name>panel_start01</object-name>
         <object-name>panel_start2</object-name>
-        <object-name>panel_start_tex</object-name>
     </effect>
     
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
         <object-name>panel_start01</object-name>
         <object-name>panel_start2</object-name>
-        <object-name>panel_start_tex</object-name>
     </effect>
     
     <animation> 
@@ -28,12 +26,12 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
         <diffuse>
             <red>0.7</red>
             <green>0.7</green>
-            <blue>0.75</blue>
+            <blue>0.7</blue>
         </diffuse>
         <ambient>
-            <red>0.8</red>
-            <green>0.8</green>
-            <blue>0.8</blue>
+            <red>0.6</red>
+            <green>0.6</green>
+            <blue>0.6</blue>
         </ambient>
         <emission>
             <red>0.07</red>
@@ -47,19 +45,19 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
         <type>material</type>
         <object-name>panel_start2</object-name>
         <diffuse>
-            <red>0.15</red>
-            <green>0.15</green>
-            <blue>0.15</blue>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
         </diffuse>
         <ambient>
-            <red>0.4</red>
-            <green>0.4</green>
-            <blue>0.4</blue>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
         </ambient>
         <specular>
-            <red>0.6</red>
-            <green>0.6</green>
-            <blue>0.6</blue>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
         </specular>
         <emission>
             <red>0.04</red>
@@ -71,23 +69,46 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
     
     <animation> 
         <type>material</type>
-        <object-name>panel_start_tex</object-name>
-        <transparency>
-            <alpha>1.0</alpha>
-        </transparency>
+        <object-name>start_panel_map_A1</object-name>
+        <diffuse>
+            <red>0.9</red>
+            <green>0.8</green>
+            <blue>0.5</blue>
+        </diffuse>
         <ambient>
-            <red>1.0</red>
+            <red>0.9</red>
             <green>0.9</green>
-            <blue>0.6</blue>
+            <blue>0.9</blue>
         </ambient>
         <emission>
-            <red>0.2</red>
-            <green>0.05</green>
-            <blue>0.05</blue>
+            <red>0.1</red>
+            <green>0.02</green>
+            <blue>0.0</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
     
+    <animation> 
+        <type>material</type>
+        <object-name>start_panel_map_A2</object-name>
+        <diffuse>
+            <red>0.9</red>
+            <green>0.8</green>
+            <blue>0.0</blue>
+        </diffuse>
+        <ambient>
+            <red>0.9</red>
+            <green>0.8</green>
+            <blue>0.0</blue>
+        </ambient>
+        <emission>
+            <red>0.1</red>
+            <green>0.05</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+
     <model>
         <path>Starter_sw.xml</path>
         <offsets>
@@ -99,11 +120,11 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
             <heading-deg>90.0</heading-deg>
         </offsets>
     </model>
-    
+
     <model>
         <path>sw_engine_JPTL.xml</path>
         <offsets>
-            <x-m>0.035</x-m>
+            <x-m>0.039</x-m>
             <y-m>0.063</y-m>
             <z-m>0.005</z-m>
             <roll-deg>180.0</roll-deg>
@@ -115,8 +136,8 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
     <model>
         <path>sw_engine_HE.xml</path>
         <offsets>
-            <x-m>-0.021</x-m>
-            <y-m>0.036</y-m>
+            <x-m>-0.017</x-m>
+            <y-m>0.034</y-m>
             <z-m>0.005</z-m>
             <roll-deg>180.0</roll-deg>
             <pitch-deg>90.0</pitch-deg>
@@ -127,8 +148,8 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
     <model>
         <path>sw_engine_booster_pump.xml</path>
         <offsets>
-            <x-m>-0.021</x-m>
-            <y-m>0.010</y-m>
+            <x-m>-0.017</x-m>
+            <y-m>0.008</y-m>
             <z-m>0.005</z-m>
             <roll-deg>180.0</roll-deg>
             <pitch-deg>90.0</pitch-deg>
@@ -139,7 +160,7 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
     <model>
         <path>sw_engine_shut_off_valve.xml</path>
         <offsets>
-            <x-m>-0.010</x-m>
+            <x-m>-0.006</x-m>
             <y-m>-0.0135</y-m>
             <z-m>0.0055</z-m>
             <roll-deg>180.0</roll-deg>
@@ -151,7 +172,7 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
     <model>
         <path>sw_engine_drop_tank_press.xml</path>
         <offsets>
-            <x-m>-0.017</x-m>
+            <x-m>-0.011</x-m>
             <y-m>-0.045</y-m>
             <z-m>0.0055</z-m>
             <roll-deg>180.0</roll-deg>
@@ -163,7 +184,7 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
     <model>
         <path>lg_emerg.xml</path>
         <offsets>
-            <x-m>0.019</x-m>
+            <x-m>0.024</x-m>
             <y-m>-0.06</y-m>
             <z-m>0.0125</z-m>
             <roll-deg>180.0</roll-deg>
@@ -175,8 +196,8 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
     <model>
         <path>sw_emerg_engine.xml</path>
         <offsets>
-            <x-m>0.048</x-m>
-            <y-m>-0.044</y-m>
+            <x-m>0.050</x-m>
+            <y-m>-0.043</y-m>
             <z-m>0.005</z-m>
             <roll-deg>180.0</roll-deg>
             <pitch-deg>90.0</pitch-deg>
