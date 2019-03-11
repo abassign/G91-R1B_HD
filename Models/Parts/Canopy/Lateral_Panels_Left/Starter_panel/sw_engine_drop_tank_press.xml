@@ -7,20 +7,22 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
 <PropertyList>
     
     <model>
-        <path>sw_model.xml</path>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Common/switch_panel_05_model.xml</path>
     </model>
     
     <animation>
         <type>pick</type>
         <visible>true</visible>
-        <object-name>swich_02</object-name>
-        <object-name>swich_03</object-name>
-        <object-name>swich_04</object-name>
+        <object-name>support (Meshed)</object-name>
+        <object-name>pin (Meshed)</object-name>
+        <object-name>ring (Meshed)</object-name>
+        <object-name>nut (Meshed)</object-name>
+        <object-name>cover (Meshed)</object-name>
         <action>
             <button>0</button>
             <repeatable>false</repeatable>
             <interval-sec>0.5</interval-sec>
-                 <binding>
+            <binding>
                 <command>property-toggle</command>
                 <property>fdm/jsbsim/systems/starter/drop-tank-press</property>
                 <step>1</step>
@@ -33,12 +35,12 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
     
     <animation>
         <type>rotate</type>
-        <object-name>swich_04</object-name>
+        <object-name>pin (Meshed)</object-name>
         <property>fdm/jsbsim/systems/starter/drop-tank-press-pos</property>
-        <offset-deg>10</offset-deg>
+        <offset-deg>20</offset-deg>
         <factor>-20</factor>
         <center>
-            <x-m> 0.0004</x-m>
+            <x-m> 0.001</x-m>
             <y-m> 0.0</y-m>
             <z-m> 0.0</z-m>
         </center>
@@ -48,24 +50,5 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
             <z>0</z>
         </axis>
     </animation>
-    
-    <animation>
-        <type>rotate</type>
-        <object-name>swich_04</object-name>
-        <property>fdm/jsbsim/systems/manual-switches/cockpit/sw-bus0-bus1-battery-pos</property>
-        <offset-deg>-10</offset-deg>
-        <factor>-10</factor>
-        <center>
-            <x-m> 0.0004</x-m>
-            <y-m> 0.0</y-m>
-            <z-m> 0.0</z-m>
-        </center>
-        <axis>
-            <x>0</x>
-            <y>1.0</y>
-            <z>0</z>
-        </axis>
-    </animation>
-            
             
 </PropertyList> 

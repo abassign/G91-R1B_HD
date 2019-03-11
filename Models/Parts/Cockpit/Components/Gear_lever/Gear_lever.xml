@@ -6,7 +6,6 @@
     
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
-        <object-name>torus (Meshed)</object-name>
         <object-name>torus_arm_cylinder (Meshed)</object-name>
         <object-name>torus_arm_ring (Meshed)</object-name>
         <object-name>torus_support (Meshed)</object-name>
@@ -215,7 +214,7 @@
             <blue>0.2</blue>
         </specular>
         <emission>
-            <red>0.10</red>
+            <red>0.06</red>
             <green>0.0</green>
             <blue>0.0</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>

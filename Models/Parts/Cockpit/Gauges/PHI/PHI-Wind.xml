@@ -35,12 +35,16 @@
         <object-name>screews_01 (Meshed)</object-name>
         <object-name>screews_02 (Meshed)</object-name>
         <object-name>screews_03 (Meshed)</object-name>
-        <object-name>lamp_glass (Meshed)</object-name>
-        <object-name>lamp_light (Meshed)</object-name>
         <object-name>frontal_plate_A</object-name>
         <object-name>Curve</object-name>
         <object-name>Curve.001</object-name>
         <object-name>Curve.002</object-name>
+    </effect>
+    
+        <effect>
+        <inherits-from>Effects/model-transparent</inherits-from>
+        <object-name>lamp_glass (Meshed)</object-name>
+        <object-name>lamp_light (Meshed)</object-name>
     </effect>
     
     <animation> 
@@ -266,20 +270,20 @@
             <alpha>0.95</alpha>
             <factor-prop>fdm/jsbsim/systems/gauges/PHI/wind/advise-light-transparent</factor-prop>
         </transparency>
+        <diffuse>
+            <red>0.3</red>
+            <green>0.2</green>
+            <blue>0.1</blue>
+        </diffuse>
         <ambient>
             <red>0.3</red>
             <green>0.2</green>
             <blue>0.1</blue>
         </ambient>
-        <ambient>
-            <red>0.5</red>
-            <green>0.4</green>
-            <blue>0.2</blue>
-        </ambient>
         <specular>
-            <red>0.2</red>
-            <green>0.2</green>
-            <blue>0.1</blue>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.0</blue>
         </specular>
         <emission>
             <red>0.1</red>

@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 
+<!-- 
+Original work Copyright (c) 2018 Adriano Bassignana (abassign)
+-->
+
 <PropertyList>
     
     <model>
-        <path>lg_model.xml</path>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Common/lg_model_01.xml</path>
     </model>
     
     <animation> 
         <type>material</type>
         <object-name>Cone_reflect (Meshed)</object-name>
         <diffuse>
-            <red>8.0</red>
+            <red>1.0</red>
             <green>0.0</green>
             <blue>0.0</blue>
         </diffuse>
@@ -20,22 +24,22 @@
             <blue>0.0</blue>
         </ambient>
         <emission>
-            <red>1.3</red>
+            <red>2.0</red>
             <green>0.0</green>
             <blue>0.0</blue>
             <factor-prop>fdm/jsbsim/systems/warning-lights/cockpit/wl-bus0-bus1-battery-out</factor-prop>
         </emission>
     </animation>
-
+    
     <animation> 
         <type>material</type>
         <object-name>transparent_button (Meshed)</object-name>
         <transparency>
-            <alpha>1.1</alpha>
+            <alpha>0.95</alpha>
             <factor-prop>fdm/jsbsim/systems/warning-lights/cockpit/wl-bus0-bus1-battery-out-transparent</factor-prop>
         </transparency>
         <diffuse>
-            <red>1.0</red>
+            <red>0.5</red>
             <green>0.0</green>
             <blue>0.0</blue>
         </diffuse>
@@ -44,24 +48,24 @@
             <green>0.0</green>
             <blue>0.0</blue>
         </ambient>
-        <emission>
-            <red>0.2</red>
-            <green>0.0</green>
-            <blue>0.0</blue>
-            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
-        </emission>
         <specular>
             <red>1.0</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
+        </specular>
+        <emission>
+            <red>1.5</red>
             <green>0.0</green>
             <blue>0.0</blue>
-        </specular>
+            <factor-prop>fdm/jsbsim/systems/warning-lights/cockpit/wl-bus0-bus1-battery-out</factor-prop>
+        </emission>
     </animation>
     
     <animation> 
         <type>material</type>
         <object-name>light_Sphere (Meshed)</object-name>
         <transparency>
-            <alpha>0.8</alpha>
+            <alpha>0.4</alpha>
         </transparency>
         <diffuse>
             <red>0.1</red>
@@ -98,9 +102,9 @@
             <blue>0.0</blue>
         </ambient>
         <emission>
-            <red>1.5</red>
-            <green>1.0</green>
-            <blue>2.0</blue>
+            <red>2.0</red>
+            <green>0.5</green>
+            <blue>1.5</blue>
             <factor-prop>fdm/jsbsim/systems/warning-lights/cockpit/wl-bus0-bus1-battery-out</factor-prop>
         </emission>
     </animation>
@@ -117,8 +121,9 @@
         <offsets>
             <x-m> 0.03</x-m>
             <y-m> 0.0 </y-m>
-            <z-m> 0.0 </z-m>
+            <z-m> -0.01 </z-m>
         </offsets>
     </model>
+    
     
 </PropertyList>

@@ -23,15 +23,15 @@
         <diffuse>
             <red>0.05</red>
             <green>0.05</green>
-            <blue>0.05v</blue>
+            <blue>0.05</blue>
         </diffuse>
         <ambient>
-            <red>0.2</red>
-            <green>0.2</green>
-            <blue>0.2</blue>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
         </ambient>
         <emission>
-            <red>0.08</red>
+            <red>0.03</red>
             <green>0.00</green>
             <blue>0.01</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
