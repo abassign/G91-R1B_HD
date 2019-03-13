@@ -26,7 +26,6 @@
         <object-name>F_structure_panel_cockpit.001</object-name>
         <object-name>F_structure_panel_cockpit.002</object-name>
         <object-name>F_structure_panel_cockpit.003</object-name>
-        <object-name>swich_light_gun</object-name>
         <object-name>F_Cover_panel_cockpit</object-name>
         <object-name>F_dadi</object-name>
         <object-name>F_dadi.001</object-name>
@@ -82,6 +81,13 @@
             <factor-prop>sim/G91/liveries/active/specular</factor-prop>
         </specular>
     </animation>
+    
+    <effect>
+        <inherits-from>Effects/model-transparent</inherits-from>
+        <object-name>F_canopy_ant_blind</object-name>
+        <object-name>F_canopY_ant.001</object-name>
+        <object-name>swich_light_gun.001</object-name>
+    </effect>
     
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_silver_D5_0</inherits-from>

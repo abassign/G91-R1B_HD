@@ -113,8 +113,15 @@
     </effect>
     
     <effect>
+        <inherits-from>Effects/model-transparent</inherits-from>
+        <object-name>freq window (Meshed)</object-name>
+        <object-name>tune glass (Meshed)</object-name>
+    </effect>
+    
+    <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_silver_D2_1</inherits-from>
         <object-name>freq window (Meshed)</object-name>
+        <object-name>tune glass (Meshed)</object-name>
     </effect>
     
     <animation> 

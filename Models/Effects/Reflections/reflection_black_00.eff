@@ -2,7 +2,10 @@
 
 <PropertyList>
     <name>reflection-black-00</name>
+    <!--
     <inherits-from>Effects/reflect</inherits-from>
+    -->
+    <inherits-from>Effects/material-diffuse</inherits-from>
     <parameters>
     </parameters>
 </PropertyList>

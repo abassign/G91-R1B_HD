@@ -18,8 +18,8 @@ Version:
         -->
         
         <active>
-            <ID>0</ID>
-            <setResolution>0</setResolution>
+            <ID>5</ID>
+            <setResolution>3</setResolution>
             <version>2</version>
         </active>
 
@@ -89,10 +89,10 @@ Version:
             <name_short type="string">Silver R1</name_short>
             <name_long type="string">Silver version, used as a prototype Pinocchio nose (R1)</name_long>
             <luminosity type="float">0.12</luminosity>
-            <reflective type="float">-0.70</reflective>
+            <reflective type="float">-0.53</reflective>
             <PANR1 type="float">1.0</PANR1>
-            <diffuse type="float">0.48</diffuse>
-            <specular type="float">0.28</specular>
+            <diffuse type="float">0.52</diffuse>
+            <specular type="float">0.69</specular>
             <dirty type="float">0.0</dirty>
             <noise>sim/G91/liveries/active/noise</noise>
             <livery_001 type="string">Aircraft/G91-R1B_HD/Models/Liveries/ITA_prot_001.png</livery_001>
@@ -109,10 +109,10 @@ Version:
             <name_short type="string">Silver R1B</name_short>
             <name_long type="string">Silver version R1B with recognition nose (R1B)</name_long>
             <luminosity type="float">0.12</luminosity>
-            <reflective type="float">-0.70</reflective>
+            <reflective type="float">-0.53</reflective>
             <PANR1 type="float">0.0</PANR1>
-            <diffuse type="float">0.48</diffuse>
-            <specular type="float">0.28</specular>
+            <diffuse type="float">0.52</diffuse>
+            <specular type="float">0.69</specular>
             <dirty type="float">0.0</dirty>
             <noise>sim/G91/liveries/active/noise</noise>
             <livery_001 type="string">Aircraft/G91-R1B_HD/Models/Liveries/dds/ITA_prot_001.dds</livery_001>
