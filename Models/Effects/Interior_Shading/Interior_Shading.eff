@@ -2,8 +2,10 @@
 
 <PropertyList>
     <name>G91-interior</name>
+    <!--
     <inherits-from>Effects/model-interior</inherits-from>
-    
+    -->
+    <inherits-from>Effects/material-diffuse</inherits-from>
     <parameters>
     </parameters>
     

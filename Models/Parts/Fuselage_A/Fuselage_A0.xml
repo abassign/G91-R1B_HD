@@ -295,7 +295,6 @@
     <animation>
         <type>pick</type>
         <object-name>A__G91_fuselage_muso_1.014</object-name>
-        <object-name>A__G91_fuselage_muso_1.000</object-name>
         <action>
             <button>0</button>
             <repeatable>false</repeatable>
