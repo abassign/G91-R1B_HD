@@ -36,7 +36,7 @@
         <offset-deg>20</offset-deg>
         <factor>-40</factor>
         <center>
-            <x-m> 0.001</x-m>
+            <x-m> 0.004</x-m>
             <y-m> 0.0</y-m>
             <z-m> 0.0</z-m>
         </center>

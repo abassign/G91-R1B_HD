@@ -9,8 +9,16 @@ var prop = props.globals.initNode("sim/G91/gauge_red_spot_lamp_emission", 0, "DO
 
 
 var prop = props.globals.initNode("sim/G91/re_emit/gauge_phosphorescent_light", 0, "DOUBLE");
+var prop = props.globals.initNode("sim/G91/re_emit/gauge_phosphorescent_light_type_a", 0, "DOUBLE");
+var prop = props.globals.initNode("sim/G91/re_emit/gauge_phosphorescent_light_type_b", 0, "DOUBLE");
+var prop = props.globals.initNode("sim/G91/re_emit/gauge_red_type_a_phosphorescent_light", 0, "DOUBLE");
+var prop = props.globals.initNode("sim/G91/re_emit/gauge_red_type_b_phosphorescent_light", 0, "DOUBLE");
 var prop = props.globals.initNode("sim/G91/re_emit/gauge_red_30_phosphorescent_light", 0, "DOUBLE");
+var prop = props.globals.initNode("sim/G91/re_emit/gauge_red_50_phosphorescent_light", 0, "DOUBLE");
+var prop = props.globals.initNode("sim/G91/re_emit/gauge_red_150_phosphorescent_light", 0, "DOUBLE");
 var prop = props.globals.initNode("sim/G91/re_emit/gauge_red_light", 0, "DOUBLE");
+var prop = props.globals.initNode("sim/G91/re_emit/gauge_UV_light_on_red_light", 0, "DOUBLE");
+var prop = props.globals.initNode("sim/G91/re_emit/gauge_red_light_on_UV_light", 0, "DOUBLE");
 var prop = props.globals.initNode("sim/G91/re_emit/gauge_spot_internal_red_light", 0, "DOUBLE");
 var prop = props.globals.initNode("sim/G91/light/lg_base", 0, "DOUBLE");
 
@@ -20,6 +28,10 @@ var timer_re_emit_green_red_gauges = maketimer(0.5, func() {
     var bus_primary_V = props.globals.getNode("fdm/jsbsim/systems/electric/bus[1]/V",1).getValue();
     var light_by_tension_bus = bus_primary_V / 24.0;
     var pl_emission = -29.7 * math.pow(ambientBlueLight,3) + 6.7 * math.pow(ambientBlueLight,2) - 1.29 * ambientBlueLight + 0.97;
+    var green_type_a = props.globals.getNode("/sim/G91/lights/gauges/green_type_a",1).getValue();
+    var green_type_b = props.globals.getNode("/sim/G91/lights/gauges/green_type_b",1).getValue();
+    var red_type_a = props.globals.getNode("/sim/G91/lights/gauges/red_type_a",1).getValue();
+    var red_type_b = props.globals.getNode("/sim/G91/lights/gauges/red_type_b",1).getValue();
     
     # Use for controlled light for example cabin advisor lights
     setprop("sim/G91/light/lg_base",pl_emission * 0.15 * light_by_tension_bus);
@@ -43,7 +55,15 @@ var timer_re_emit_green_red_gauges = maketimer(0.5, func() {
         pl_phosphorescent_emission = 1.0;
     }
     setprop("sim/G91/re_emit/gauge_phosphorescent_light",pl_phosphorescent_emission * light_by_tension_bus);
+    setprop("sim/G91/re_emit/gauge_phosphorescent_light_type_a",pl_phosphorescent_emission * green_type_a * light_by_tension_bus);
+    setprop("sim/G91/re_emit/gauge_phosphorescent_light_type_b",pl_phosphorescent_emission * green_type_b * light_by_tension_bus);
+    setprop("sim/G91/re_emit/gauge_UV_light_on_red_light",pl_phosphorescent_emission * light_by_tension_bus * 0.2);
     setprop("sim/G91/re_emit/gauge_red_30_phosphorescent_light",(pl_emission * 0.3 + pl_phosphorescent_emission) * light_by_tension_bus);
+    setprop("sim/G91/re_emit/gauge_red_50_phosphorescent_light",(pl_emission * 0.5 + pl_phosphorescent_emission) * light_by_tension_bus);
+    setprop("sim/G91/re_emit/gauge_red_150_phosphorescent_light",(pl_emission * 1.5 + pl_phosphorescent_emission) * light_by_tension_bus);
+    setprop("sim/G91/re_emit/gauge_red_type_a_phosphorescent_light",(pl_emission * red_type_a + pl_phosphorescent_emission) * light_by_tension_bus);
+    setprop("sim/G91/re_emit/gauge_red_type_b_phosphorescent_light",(pl_emission * red_type_b + pl_phosphorescent_emission) * light_by_tension_bus);
+    setprop("sim/G91/re_emit/gauge_red_light_on_UV_light",pl_emission * light_by_tension_bus * 0.2);
    
 });
 timer_re_emit_green_red_gauges.start();

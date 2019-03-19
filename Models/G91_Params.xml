@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 
-<!--
-Version: 
-2  R1B 
-10 R3 
-11 R4
--->
-
 <PropertyList>
+    
+    <models>
+        <active>
+            <cockpit type="int">1</cockpit>
+            <fuselage type="int">1</fuselage>
+            <turbojet type="int">1</turbojet>
+            <stores type="int">1</stores>
+            <accessories type="int">1</accessories>
+        </active>
+    </models>
     
     <name type="string" n="0">Liveries</name>
     
@@ -186,6 +189,15 @@ Version:
             <blue type="float">1.0</blue>
         </acrobatic>
     </smoke>
+    
+    <lights>
+        <gauges>
+            <green_type_a type="float">0.8</green_type_a>
+            <green_type_b type="float">2.5</green_type_b>
+            <red_type_a type="float">0.8</red_type_a>
+            <red_type_b type="float">1.5</red_type_b>
+        </gauges>
+    </lights>
     
     <accessories>
         <staircase type="int">0</staircase>

@@ -6,15 +6,14 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
 
 <PropertyList>
     
-    <model>
-        <path>Aircraft/G91-R1B_HD/Models/Parts/Common/switch_panel_05.ac</path>
-    </model>
+    <path>Aircraft/G91-R1B_HD/Models/Parts/Common/switch_panel_05.ac</path>
+    
     <offsets>
         <x-m>-0.004</x-m>
         <y-m>0.0</y-m>
         <z-m>0.0</z-m>
     </offsets>
-    
+    <!--
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
         <object-name>support (Meshed)</object-name>
@@ -34,20 +33,40 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
         <object-name>nut (Meshed)</object-name>
         <object-name>screew (Meshed)</object-name>
     </effect>
+    -->
+    <effect>
+        <inherits-from>Effects/model-transparent</inherits-from>
+        <object-name>sw_north (Meshed)</object-name>
+        <object-name>sw_south (Meshed)</object-name>
+    </effect>
     
     <animation> 
         <type>material</type>
-        <object-name>screew (Meshed)</object-name>
+        <object-name>sw_north (Meshed)</object-name>
+        <object-name>sw_south (Meshed)</object-name>
+        <transparency>
+            <alpha>0.0</alpha>
+        </transparency>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>pin (Meshed)</object-name>
         <diffuse>
-            <red>0.15</red>
-            <green>0.15</green>
-            <blue>0.15</blue>
+            <red>0.7</red>
+            <green>0.7</green>
+            <blue>0.7</blue>
         </diffuse>
         <ambient>
-            <red>0.2</red>
-            <green>0.2</green>
-            <blue>0.2</blue>
+            <red>0.6</red>
+            <green>0.6</green>
+            <blue>0.6</blue>
         </ambient>
+        <specular>
+            <red>0.7</red>
+            <green>0.7</green>
+            <blue>0.7</blue>
+        </specular>
         <emission>
             <red>0.10</red>
             <green>0.0</green>
@@ -55,27 +74,22 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
-    
+
     <animation> 
         <type>material</type>
-        <object-name>cover (Meshed)</object-name>
+        <object-name>screew (Meshed)</object-name>
         <diffuse>
+            <red>0.25</red>
+            <green>0.20</green>
+            <blue>0.15</blue>
+        </diffuse>
+        <ambient>
             <red>0.1</red>
             <green>0.1</green>
             <blue>0.1</blue>
-        </diffuse>
-        <ambient>
-            <red>0.2</red>
-            <green>0.2</green>
-            <blue>0.2</blue>
         </ambient>
-        <specular>
-            <red>0.2</red>
-            <green>0.2</green>
-            <blue>0.2</blue>
-        </specular>
         <emission>
-            <red>0.08</red>
+            <red>0.10</red>
             <green>0.0</green>
             <blue>0.0</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
@@ -91,9 +105,9 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
             <blue>0.6</blue>
         </diffuse>
         <ambient>
-            <red>0.4</red>
-            <green>0.4</green>
-            <blue>0.4</blue>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
         </ambient>
         <specular>
             <red>0.6</red>
@@ -112,19 +126,19 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
         <type>material</type>
         <object-name>nut (Meshed)</object-name>
         <diffuse>
-            <red>0.7</red>
-            <green>0.7</green>
-            <blue>0.7</blue>
+            <red>0.4</red>
+            <green>0.4</green>
+            <blue>0.4</blue>
         </diffuse>
         <ambient>
-            <red>0.6</red>
-            <green>0.6</green>
-            <blue>0.6</blue>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.3</blue>
         </ambient>
         <specular>
-            <red>0.9</red>
-            <green>0.9</green>
-            <blue>0.9</blue>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
         </specular>
         <emission>
             <red>0.10</red>
@@ -133,24 +147,24 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
-    
+        
     <animation> 
         <type>material</type>
         <object-name>support (Meshed)</object-name>
         <diffuse>
-            <red>0.80</red>
-            <green>0.80</green>
-            <blue>0.80</blue>
+            <red>0.6</red>
+            <green>0.6</green>
+            <blue>0.6</blue>
         </diffuse>
         <ambient>
-            <red>0.7</red>
-            <green>0.7</green>
-            <blue>0.7</blue>
+            <red>0.6</red>
+            <green>0.6</green>
+            <blue>0.6</blue>
         </ambient>
         <specular>
-            <red>0.7</red>
-            <green>0.7</green>
-            <blue>0.7</blue>
+            <red>0.4</red>
+            <green>0.4</green>
+            <blue>0.4</blue>
         </specular>
         <emission>
             <red>0.09</red>
@@ -159,45 +173,19 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
-    
+
     <animation> 
         <type>material</type>
-        <object-name>pin (Meshed)</object-name>
+        <object-name>cover (Meshed)</object-name>
         <diffuse>
-            <red>0.80</red>
-            <green>0.80</green>
-            <blue>0.80</blue>
+            <red>0.15</red>
+            <green>0.15</green>
+            <blue>0.15</blue>
         </diffuse>
         <ambient>
-            <red>0.9</red>
-            <green>0.9</green>
-            <blue>0.9</blue>
-        </ambient>
-        <specular>
-            <red>0.9</red>
-            <green>0.9</green>
-            <blue>0.9</blue>
-        </specular>
-        <emission>
-            <red>0.12</red>
-            <green>0.0</green>
-            <blue>0.0</blue>
-            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
-        </emission>
-    </animation>
-    
-    <animation> 
-        <type>material</type>
-        <object-name>swich_support</object-name>
-        <diffuse>
-            <red>0.6</red>
-            <green>0.6</green>
-            <blue>0.6</blue>
-        </diffuse>
-        <ambient>
-            <red>0.7</red>
-            <green>0.7</green>
-            <blue>0.7</blue>
+            <red>0.15</red>
+            <green>0.15</green>
+            <blue>0.15</blue>
         </ambient>
         <specular>
             <red>0.2</red>
@@ -205,11 +193,11 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
             <blue>0.2</blue>
         </specular>
         <emission>
-            <red>0.10</red>
-            <green>0.0</green>
-            <blue>0.0</blue>
+            <red>0.11</red>
+            <green>0.011</green>
+            <blue>0.011</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
-    
+
 </PropertyList> 

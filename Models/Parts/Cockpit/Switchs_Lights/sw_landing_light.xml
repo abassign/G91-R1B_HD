@@ -72,10 +72,10 @@
             <blue>0.5</blue>
         </specular>
         <emission>
-            <red>0.14</red>
-            <green>0.2</green>
-            <blue>0.04</blue>
-            <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
+            <red-prop>sim/G91/re_emit/gauge_red_50_phosphorescent_light</red-prop>
+            <green-prop>sim/G91/re_emit/gauge_phosphorescent_light</green-prop>
+            <blue>0.0</blue>
+            <factor>0.25</factor>
         </emission>
     </animation>
     

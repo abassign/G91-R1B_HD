@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 
 <PropertyList>
-    
+
     <model>
-        <path>sw_model.xml</path>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Common/switch_panel_05_model.xml</path>
     </model>
     
     <animation>
         <type>pick</type>
         <visible>true</visible>
-        <object-name>sw_north</object-name>
-        <object-name>sw_center</object-name>
+        <object-name>sw_north (Meshed)</object-name>
+        <object-name>pin (Meshed)</object-name>
         <action>
             <button>0</button>
             <repeatable>false</repeatable>
@@ -38,7 +38,7 @@
     <animation>
         <type>pick</type>
         <visible>true</visible>
-        <object-name>sw_south</object-name>
+        <object-name>sw_south (Meshed)</object-name>
         <action>
             <button>0</button>
             <repeatable>false</repeatable>
@@ -65,12 +65,12 @@
     
     <animation>
         <type>rotate</type>
-        <object-name>swich_04</object-name>
+        <object-name>pin (Meshed)</object-name>
         <property>fdm/jsbsim/systems/manual-switches/cockpit/sw-bus0-bus1-battery-pos</property>
-        <offset-deg>-10</offset-deg>
-        <factor>-10</factor>
+        <offset-deg>0</offset-deg>
+        <factor>-20</factor>
         <center>
-            <x-m> 0.0004</x-m>
+            <x-m> 0.004</x-m>
             <y-m> 0.0</y-m>
             <z-m> 0.0</z-m>
         </center>
@@ -81,5 +81,5 @@
         </axis>
     </animation>
             
-            
 </PropertyList> 
+ 

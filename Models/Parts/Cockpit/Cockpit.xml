@@ -5,217 +5,339 @@
     <path>cockpit.ac</path>
     
     <offsets>
-        <x-m>0.0</x-m>
+        <x-m>-3.203</x-m>
         <y-m>0.0</y-m>
-        <z-m>0.78</z-m>
-        <pitch-deg>0.0</pitch-deg>
+        <z-m>0.785</z-m>
+        <pitch-deg>-8.5</pitch-deg>
     </offsets>
     
-    <!-- Materials effects -->
-    
+    <!--
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
-        <object-name>pannelli_laterali</object-name>
-        <object-name>pannelli_laterali.001</object-name>
-        <object-name>pannelli_laterali.004</object-name>
-        <object-name>Support_gauges_01</object-name>
-        <object-name>Support_gauges_012</object-name>
-        <object-name>pannello_centrale</object-name>
+        <object-name>central (Meshed)</object-name>
+        <object-name>lateral_left (Meshed)</object-name>
+        <object-name>lateral_right (Meshed)</object-name>
     </effect>
-    
+
     <effect>
-        <inherits-from>Effects/model-transparent</inherits-from>
-        <object-name>panei_dx_texi.000</object-name>
-        <object-name>panel_Sx_tex.002</object-name>
-    </effect>
-    
-    <!-- interior shadows -->
-   <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
-        <object-name>pannelli_laterali</object-name>
-        <object-name>pannelli_laterali.001</object-name>
-        <object-name>pannelli_laterali.004</object-name>
-        <object-name>pannello_centrale</object-name>
-        <object-name>Support_gauges_01</object-name>
-        <object-name>Support_gauges_012</object-name>
-        <object-name>panei_dx_texi.000</object-name>
-        <object-name>panel_Sx_tex.002</object-name>
+        <object-name>central (Meshed)</object-name>
+        <object-name>lateral_left (Meshed)</object-name>
+        <object-name>lateral_right (Meshed)</object-name>
     </effect>
-    
-    <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Effects/InteriorLightGreyBlu</inherits-from>
-        <object-name>pannello_centrale</object-name>
-    </effect>
-    
+    -->
     <animation> 
         <type>material</type>
-        <object-name>pannelli_laterali</object-name>
-        <object-name>pannelli_laterali.001</object-name>
-        <object-name>pannelli_laterali.004</object-name>
-        <texture>Pictures/G91-Dark-Grey.png</texture>
+        <object-name>lateral_left (Meshed)</object-name>
+        <object-name>lateral_right (Meshed)</object-name>
+        <diffuse>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </diffuse>
         <ambient>
-            <red>0.9</red>
-            <green>0.9</green>
-            <blue>0.9</blue>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
         </ambient>
-        <emission>
-            <red>0.11</red>
-            <green>0.011</green>
-            <blue>0.011</blue>
-            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
-        </emission>
         <specular>
-            <red>0.5</red>
-            <green>0.5</green>
-            <blue>0.5</blue>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
         </specular>
+        <emission>
+            <red-prop>sim/G91/re_emit/gauge_red_light</red-prop>
+            <green>0.0</green>
+            <blue-prop>sim/G91/re_emit/gauge_UV_light_on_red_light</blue-prop>
+            <factor>0.07</factor>
+        </emission>
     </animation>
     
     <animation> 
         <type>material</type>
-        <object-name>Support_gauges_01</object-name>
-        <object-name>Support_gauges_012</object-name>
-        <object-name>pannello_centrale</object-name>
-        <texture>Pictures/InteriorLightGreyBlu.png</texture>
+        <object-name>landing light test base (Meshed)</object-name>
+        <diffuse>
+            <red>0.05</red>
+            <green>0.05</green>
+            <blue>0.05</blue>
+        </diffuse>
         <ambient>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </ambient>
+        <specular>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.3</blue>
+        </specular>
+        <emission>
+            <red-prop>sim/G91/re_emit/gauge_red_light</red-prop>
+            <green>0.0</green>
+            <blue-prop>sim/G91/re_emit/gauge_UV_light_on_red_light</blue-prop>
+            <factor>0.03</factor>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>landing light test text (Meshed)</object-name>
+        <diffuse>
             <red>0.8</red>
             <green>0.8</green>
-            <blue>0.5</blue>
+            <blue>0.8</blue>
+        </diffuse>
+        <ambient>
+            <red>0.7</red>
+            <green>0.7</green>
+            <blue>0.7</blue>
         </ambient>
+        <specular>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </specular>
         <emission>
-            <red>0.15</red>
-            <green>0.015</green>
-            <blue>0.015</blue>
-            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+            <red-prop>sim/G91/re_emit/gauge_red_light</red-prop>
+            <green>0.0</green>
+            <blue-prop>sim/G91/re_emit/gauge_UV_light_on_red_light</blue-prop>
+            <factor>0.12</factor>
         </emission>
     </animation>
     
     <animation> 
         <type>material</type>
-        <object-name>panei_dx_texi.000</object-name>
-        <object-name>panel_Sx_tex.002</object-name>
-        <transparency>
-            <alpha>1.0</alpha>
-        </transparency>
+        <object-name>lateral_right text (Meshed)</object-name>
+        <diffuse>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </diffuse>
         <ambient>
-            <red>0.90</red>
-            <green>0.83</green>
-            <blue>0.63</blue>
+            <red>0.7</red>
+            <green>0.7</green>
+            <blue>0.7</blue>
         </ambient>
+        <specular>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.3</blue>
+        </specular>
         <emission>
+            <red-prop>sim/G91/re_emit/gauge_red_150_phosphorescent_light</red-prop>
+            <green-prop>sim/G91/re_emit/gauge_phosphorescent_light</green-prop>
+            <blue>0.0</blue>
+            <factor>0.18</factor>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>lateral_left text (Meshed)</object-name>
+        <diffuse>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </diffuse>
+        <ambient>
+            <red>0.7</red>
+            <green>0.7</green>
+            <blue>0.7</blue>
+        </ambient>
+        <specular>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.3</blue>
+        </specular>
+        <emission>
+            <red-prop>sim/G91/re_emit/gauge_red_150_phosphorescent_light</red-prop>
+            <green-prop>sim/G91/re_emit/gauge_phosphorescent_light</green-prop>
+            <blue>0.0</blue>
+            <factor>0.18</factor>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>lateral_left grid (Meshed)</object-name>
+        <diffuse>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </diffuse>
+        <ambient>
+            <red>0.7</red>
+            <green>0.7</green>
+            <blue>0.7</blue>
+        </ambient>
+        <specular>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.3</blue>
+        </specular>
+        <emission>
+            <red-prop>sim/G91/re_emit/gauge_red_150_phosphorescent_light</red-prop>
+            <green-prop>sim/G91/re_emit/gauge_phosphorescent_light</green-prop>
+            <blue>0.0</blue>
+            <factor>0.15</factor>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>black 1 (Meshed)</object-name>
+        <object-name>black 2 (Meshed)</object-name>
+        <diffuse>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </diffuse>
+        <ambient>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </ambient>
+        <specular>
             <red>0.2</red>
-            <green>0.15</green>
-            <blue>0.12</blue>
-            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+            <green>0.2</green>
+            <blue>0.2</blue>
+        </specular>
+        <emission>
+            <red-prop>sim/G91/re_emit/gauge_red_light</red-prop>
+            <green>0.0</green>
+            <blue-prop>sim/G91/re_emit/gauge_UV_light_on_red_light</blue-prop>
+            <factor>0.05</factor>
         </emission>
     </animation>
     
     <animation> 
         <type>material</type>
-        <object-name>pannello_centrale.001</object-name>
-        <texture>Pictures/G91-Brown_01.png</texture>
+        <object-name>black 1 text (Meshed)</object-name>
+        <object-name>black 2 text (Meshed)</object-name>
+        <diffuse>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </diffuse>
         <ambient>
-            <red>0.90</red>
-            <green>0.5</green>
+            <red>0.7</red>
+            <green>0.7</green>
+            <blue>0.7</blue>
+        </ambient>
+        <specular>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.3</blue>
+        </specular>
+        <emission>
+            <red-prop>sim/G91/re_emit/gauge_red_150_phosphorescent_light</red-prop>
+            <green-prop>sim/G91/re_emit/gauge_phosphorescent_light</green-prop>
+            <blue>0.0</blue>
+            <factor>0.15</factor>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>central (Meshed)</object-name>
+        <diffuse>
+            <red>0.61</red>
+            <green>0.65</green>
+            <blue>0.67</blue>
+        </diffuse>
+        <ambient>
+            <red>0.3</red>
+            <green>0.3</green>
             <blue>0.3</blue>
         </ambient>
         <specular>
-            <red>1.0</red>
-            <green>0.5</green>
-            <blue>0.5</blue>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
         </specular>
         <emission>
-            <red>0.20</red>
-            <green>0.02</green>
-            <blue>0.02</blue>
+            <red-prop>sim/G91/re_emit/gauge_red_light</red-prop>
+            <green>0.0</green>
+            <blue-prop>sim/G91/re_emit/gauge_UV_light_on_red_light</blue-prop>
+            <factor>0.12</factor>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>screews (Meshed)</object-name>
+        <diffuse>
+            <red>0.7</red>
+            <green>0.7</green>
+            <blue>0.7</blue>
+        </diffuse>
+        <ambient>
+            <red>0.4</red>
+            <green>0.4</green>
+            <blue>0.4</blue>
+        </ambient>
+        <specular>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </specular>
+        <emission>
+            <red-prop>sim/G91/re_emit/gauge_red_light</red-prop>
+            <green>0.0</green>
+            <blue-prop>sim/G91/re_emit/gauge_UV_light_on_red_light</blue-prop>
+            <factor>0.15</factor>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>red (Meshed)</object-name>
+        <diffuse>
+            <red>0.8</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </diffuse>
+        <ambient>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.3</blue>
+        </ambient>
+        <specular>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
+        </specular>
+        <emission>
+            <red>0.15</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
     
     <animation> 
         <type>material</type>
-        <object-name>pannello_centrale.002</object-name>
-        <texture>Pictures/G91-Dark-Grey.png</texture>
+        <object-name>red text (Meshed)</object-name>
+        <diffuse>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </diffuse>
         <ambient>
-            <red>0.90</red>
-            <green>0.83</green>
-            <blue>0.63</blue>
+            <red>0.6</red>
+            <green>0.6</green>
+            <blue>0.6</blue>
         </ambient>
+        <specular>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.3</blue>
+        </specular>
         <emission>
-            <red>0.20</red>
-            <green>0.02</green>
-            <blue>0.02</blue>
-            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
-        </emission>
-    </animation>
-    
-    <animation> 
-        <type>material</type>
-        <object-name>pannello_centrale.003</object-name>
-        <texture>Pictures/G91-Dark-Grey.png</texture>
-        <ambient>
-            <red>0.90</red>
-            <green>0.83</green>
-            <blue>0.63</blue>
-        </ambient>
-        <emission>
-            <red>0.20</red>
-            <green>0.02</green>
-            <blue>0.02</blue>
-            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
-        </emission>
-    </animation>
-    
-    <animation> 
-        <type>material</type>
-        <object-name>pannello_centrale.004</object-name>
-        <texture>Pictures/G91-Dark-Grey.png</texture>
-        <ambient>
-            <red>0.90</red>
-            <green>0.83</green>
-            <blue>0.63</blue>
-        </ambient>
-        <emission>
-            <red>0.20</red>
-            <green>0.02</green>
-            <blue>0.02</blue>
-            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
-        </emission>
-    </animation>
-    
-    <animation> 
-        <type>material</type>
-        <object-name>pannello_inf</object-name>
-        <texture>Pictures/G91-Dark-Grey.png</texture>
-        <ambient>
-            <red>0.90</red>
-            <green>0.83</green>
-            <blue>0.63</blue>
-        </ambient>
-        <emission>
-            <red>0.20</red>
-            <green>0.02</green>
-            <blue>0.02</blue>
-            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
-        </emission>
-    </animation>
-    
-    <animation> 
-        <type>material</type>
-        <object-name>I_Fusion004.000</object-name>
-        <object-name>I_Fusion004.004</object-name>
-        <object-name>I_ironwire.003</object-name>
-        <texture>Pictures/G91-Al_02.png</texture>
-        <ambient>
-            <red>0.70</red>
-            <green>0.60</green>
-            <blue>0.40</blue>
-        </ambient>
-        <emission>
-            <red>0.10</red>
-            <green>0.01</green>
-            <blue>0.01</blue>
-            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+            <red-prop>sim/G91/re_emit/gauge_red_150_phosphorescent_light</red-prop>
+            <green-prop>sim/G91/re_emit/gauge_phosphorescent_light</green-prop>
+            <blue>0.0</blue>
+            <factor>0.15</factor>
         </emission>
     </animation>
     
@@ -224,257 +346,257 @@
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Components/Gear_lever/Gear_lever.xml</path>
         <offsets>
-            <x-m>-3.2095</x-m>
-            <y-m>-0.269</y-m>
-            <z-m>0.074</z-m>
-            <pitch-deg>-8.65</pitch-deg>
+            <x-m>0.010</x-m>
+            <y-m>-0.276</y-m>
+            <z-m>0.071</z-m>
+            <pitch-deg>0.0</pitch-deg>
         </offsets>
     </model>
     
     <!-- Gauges -->
-
+    
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/Altimeter/Altimeter.xml</path>
         <offsets>
-            <x-m>-3.198</x-m>
-            <y-m>-0.1015</y-m>
-            <z-m>0.066</z-m>
-            <pitch-deg>-8.65</pitch-deg>
+            <x-m>0.014</x-m>
+            <y-m>-0.114</y-m>
+            <z-m>0.065</z-m>
+            <pitch-deg>0.0</pitch-deg>
         </offsets>
     </model>
     
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/ADF_8720/ADF_8720.xml</path>
         <offsets>
-            <x-m>-3.221</x-m>
-            <y-m>-0.183</y-m>
-            <z-m>0.150</z-m>
-            <pitch-deg>-8.65</pitch-deg>
+            <x-m>0.006</x-m>
+            <y-m>-0.186</y-m>
+            <z-m>0.151</z-m>
+            <pitch-deg>0.0</pitch-deg>
         </offsets>
     </model>
     
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/Kollsman_ME4/Kollsman_ME4.xml</path>
         <offsets>
-            <x-m>-3.211</x-m>
-            <y-m>-0.0900</y-m>
-            <z-m>0.150</z-m>
-            <pitch-deg>-8.65</pitch-deg>
+            <x-m>0.016</x-m>
+            <y-m>-0.101</y-m>
+            <z-m>0.148</z-m>
+            <pitch-deg>0.0</pitch-deg>
         </offsets>
     </model>
     
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/Allen_MD-1A_Turn_Ind/Allen_MD-1A_Turn_Ind_01.xml</path>
         <offsets>
-            <x-m>-3.190</x-m>
-            <y-m>-0.027</y-m>
+            <x-m>0.020</x-m>
+            <y-m>-0.039</y-m>
             <z-m>0.036</z-m>
-            <pitch-deg>0.0</pitch-deg>
+            <pitch-deg>8.5</pitch-deg>
         </offsets>
     </model>
     
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/Waltham_A-13A_Clock/Waltham_A-13A.xml</path>
         <offsets>
-            <x-m>-3.2</x-m>
-            <y-m>0.038</y-m>
+            <x-m>0.011</x-m>
+            <y-m>0.026</y-m>
             <z-m>0.036</z-m>
-            <pitch-deg>-8.65</pitch-deg>
+            <pitch-deg>0.0</pitch-deg>
         </offsets>
     </model>
-
+    
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/MS-33678-3P/MS-33678-3P-1.xml</path>
         <offsets>
-            <x-m>-3.194</x-m>
-            <y-m>-0.2598</y-m>
-            <z-m>-0.0245</z-m>
-            <pitch-deg>-8.65</pitch-deg>
+            <x-m>0.009</x-m>
+            <y-m>-0.2695</y-m>
+            <z-m>-0.0325</z-m>
+            <pitch-deg>0.0</pitch-deg>
         </offsets>
     </model>
     
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/MS-33678-3P/MS-33678-3P-2.xml</path>
         <offsets>
-            <x-m>-3.190</x-m>
-            <y-m>-0.2731</y-m>
-            <z-m>-0.066</z-m>
-            <pitch-deg>-8.65</pitch-deg>
+            <x-m>0.009</x-m>
+            <y-m>-0.282</y-m>
+            <z-m>-0.072</z-m>
+            <pitch-deg>0.0</pitch-deg>
         </offsets>
     </model>
     
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/MS-33678-3P/MS-33678-3P-3.xml</path>
         <offsets>
-            <x-m>-3.190</x-m>
-            <y-m>-0.250</y-m>
-            <z-m>-0.066</z-m>
-            <pitch-deg>-8.65</pitch-deg>
+            <x-m>0.009</x-m>
+            <y-m>-0.256</y-m>
+            <z-m>-0.072</z-m>
+            <pitch-deg>0.0</pitch-deg>
         </offsets>
     </model>
     
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/Kollsman_Climb_25363/Kollsman_Climb_25363.xml</path>
         <offsets>
-            <x-m>-3.20</x-m>
-            <y-m>0.106</y-m>
-            <z-m>0.055</z-m>
-            <pitch-deg>-8.65</pitch-deg>
+            <x-m>0.011</x-m>
+            <y-m>0.090</y-m>
+            <z-m>0.058</z-m>
+            <pitch-deg>0.0</pitch-deg>
         </offsets>
     </model>
     
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/Bendix_B6_3419_5A_A1_Acc/Bendix_B6_3419_5A_A1_Acc.xml</path>
         <offsets>
-            <x-m>-3.195</x-m>
-            <y-m>-0.1865</y-m>
+            <x-m>0.020</x-m>
+            <y-m>-0.193</y-m>
             <z-m>0.062</z-m>
-            <pitch-deg>0.0</pitch-deg>
+            <pitch-deg>8.5</pitch-deg>
         </offsets>
     </model>
     
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/J8/J8.xml</path>
         <offsets>
-            <x-m>-3.20</x-m>
-            <y-m>0.119</y-m>
-            <z-m>0.145</z-m>
-            <pitch-deg>0.0</pitch-deg>
+            <x-m>0.025</x-m>
+            <y-m>0.112</y-m>
+            <z-m>0.140</z-m>
+            <pitch-deg>8.5</pitch-deg>
         </offsets>
     </model>
-
+    
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/PHI/PHI-Indicator.xml</path>
         <offsets>
-            <x-m>-3.21</x-m>
-            <y-m>0.013</y-m>
-            <z-m>0.133</z-m>
-            <pitch-deg>-8.65</pitch-deg>
+            <x-m>0.012</x-m>
+            <y-m>0.000</y-m>
+            <z-m>0.131</z-m>
+            <pitch-deg>0.0</pitch-deg>
         </offsets>
     </model>
-
+    
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/PHI/PHI-Wind.xml</path>
         <offsets>
-            <x-m>-3.195</x-m>
+            <x-m>0.007</x-m>
             <y-m>-0.188</y-m>
             <z-m>-0.021</z-m>
-            <pitch-deg>-8.65</pitch-deg>
+            <pitch-deg>0.0</pitch-deg>
         </offsets>
     </model>
-
+    
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/RPM_Indicator/RPM_Indicator.xml</path>
         <offsets>
-            <x-m>-3.2188</x-m>
-            <y-m>0.204</y-m>
-            <z-m>0.164</z-m>
-            <pitch-deg>-8.65</pitch-deg>
+            <x-m>0.011</x-m>
+            <y-m>0.198</y-m>
+            <z-m>0.168</z-m>
+            <pitch-deg>0.0</pitch-deg>
         </offsets>
     </model>
     
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/Jet_Temperature/Jet_Temperature.xml</path>
         <offsets>
-            <x-m>-3.210</x-m>
-            <y-m>0.205</y-m>
-            <z-m>0.108</z-m>
-            <pitch-deg>-8.65</pitch-deg>
+            <x-m>0.011</x-m>
+            <y-m>0.196</y-m>
+            <z-m>0.111</z-m>
+            <pitch-deg>0.0</pitch-deg>
         </offsets>
     </model>
     
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/Fuel_Pounds/Fuel_Pounds.xml</path>
         <offsets>
-            <x-m>-3.196</x-m>
+            <x-m>0.016</x-m>
             <y-m>0.196</y-m>
-            <z-m>0.025</z-m>
-            <pitch-deg>-8.65</pitch-deg>
+            <z-m>0.032</z-m>
+            <pitch-deg>0.0</pitch-deg>
         </offsets>
     </model>
     
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/AN_3203_voltmeter/AN_3203_voltmeter.xml</path>
         <offsets>
-            <x-m>-3.188</x-m>
-            <y-m>0.28</y-m>
-            <z-m>-0.049</z-m>
-            <pitch-deg>-8.65</pitch-deg>
+            <x-m>0.011</x-m>
+            <y-m>0.295</y-m>
+            <z-m>-0.046</z-m>
+            <pitch-deg>0.0</pitch-deg>
         </offsets>
     </model>
     
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/Roller-Smith_90702_J1_Amperometer/Roller-Smith_90702_J1_Amperometer.xml</path>
         <offsets>
-            <x-m>-3.186</x-m>
-            <y-m>0.335</y-m>
-            <z-m>-0.065</z-m>
-            <pitch-deg>-8.65</pitch-deg>
+            <x-m>0.011</x-m>
+            <y-m>0.355</y-m>
+            <z-m>-0.056</z-m>
+            <pitch-deg>0.0</pitch-deg>
         </offsets>
     </model>
     
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/Pressure_Gauge/Pressure_Gauge.xml</path>
         <offsets>
-            <x-m>-3.188</x-m>
-            <y-m>0.193</y-m>
-            <z-m>-0.043</z-m>
-            <pitch-deg>-8.65</pitch-deg>
+            <x-m>0.012</x-m>
+            <y-m>0.194</y-m>
+            <z-m>-0.044</z-m>
+            <pitch-deg>0.0</pitch-deg>
         </offsets>
     </model>
     
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/Pressure_Gauge_Emergency/Pressure_Gauge_Emergency.xml</path>
         <offsets>
-            <x-m>-3.188</x-m>
-            <y-m>0.129</y-m>
-            <z-m>-0.043</z-m>
-            <pitch-deg>-8.65</pitch-deg>
+            <x-m>0.012</x-m>
+            <y-m>0.130</y-m>
+            <z-m>-0.044</z-m>
+            <pitch-deg>0.0</pitch-deg>
         </offsets>
     </model>
     
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/Flap_Extended/Flap_Extended.xml</path>
         <offsets>
-            <x-m>-3.196</x-m>
+            <x-m>0.011</x-m>
             <y-m>-0.125</y-m>
             <z-m>0.002</z-m>
-            <pitch-deg>-8.65</pitch-deg>
+            <pitch-deg>0.0</pitch-deg>
         </offsets>
     </model>
     
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/Airbrake_Extended/Airbrake_Extended.xml</path>
         <offsets>
-            <x-m>-3.190</x-m>
+            <x-m>0.011</x-m>
             <y-m>-0.125</y-m>
             <z-m>-0.040</z-m>
-            <pitch-deg>-8.65</pitch-deg>
+            <pitch-deg>0.0</pitch-deg>
         </offsets>
     </model>
     
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/Trim_Indicator/Trim_indicator.xml</path>
         <offsets>
-            <x-m>-3.195</x-m>
+            <x-m>0.010</x-m>
             <y-m>-0.090</y-m>
             <z-m>0.0085</z-m>
-            <pitch-deg>-8.65</pitch-deg>
+            <pitch-deg>0.0</pitch-deg>
         </offsets>
     </model>
     
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/Fire/Fire.xml</path>
         <offsets>
-            <x-m>-3.198985</x-m>
+            <x-m>0.005</x-m>
             <y-m>0.298</y-m>
             <z-m>0.115</z-m>
-            <pitch-deg>-8.5</pitch-deg>
+            <pitch-deg>0.0</pitch-deg>
         </offsets>
     </model>
-
+    
     <!-- Switch and light -->
-
+    
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Switchs_Lights/Frontal_pannel_switchs_lights.xml</path>
     </model>

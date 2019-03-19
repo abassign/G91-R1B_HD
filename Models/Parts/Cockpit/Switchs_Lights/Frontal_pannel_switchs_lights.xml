@@ -7,100 +7,100 @@
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Switchs_Lights/sw_battery.xml</path>
         <offsets>
-            <x-m>-3.19329</x-m>
-            <y-m>0.263</y-m>
-            <z-m>0.02964</z-m>
-            <pitch-deg>-8.5</pitch-deg>
+            <x-m>0.011</x-m>
+            <y-m>0.265</y-m>
+            <z-m>0.025</z-m>
+            <pitch-deg>0.0</pitch-deg>
         </offsets>
     </model>
     
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Switchs_Lights/lg_battery.xml</path>
         <offsets>
-            <x-m>-3.19115</x-m>
-            <y-m>0.268</y-m>
-            <z-m>0.001</z-m>
-            <pitch-deg>-8.5</pitch-deg>
+            <x-m>0.012</x-m>
+            <y-m>0.265</y-m>
+            <z-m>-0.004</z-m>
+            <pitch-deg>0.0</pitch-deg>
         </offsets>
     </model>
     
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Switchs_Lights/sw_generator.xml</path>
         <offsets>
-            <x-m>-3.19355</x-m>
-            <y-m>0.293</y-m>
-            <z-m>0.02960</z-m>
-            <pitch-deg>-8.5</pitch-deg>
+            <x-m>0.011</x-m>
+            <y-m>0.294</y-m>
+            <z-m>0.025</z-m>
+            <pitch-deg>0.0</pitch-deg>
         </offsets>
     </model>
 
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Switchs_Lights/lg_generator.xml</path>
         <offsets>
-            <x-m>-3.19115</x-m>
-            <y-m>0.298</y-m>
-            <z-m>0.001</z-m>
-            <pitch-deg>-8.5</pitch-deg>
+            <x-m>0.012</x-m>
+            <y-m>0.294</y-m>
+            <z-m>-0.004</z-m>
+            <pitch-deg>0.0</pitch-deg>
         </offsets>
     </model>
     
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Switchs_Lights/sw_inv_prim.xml</path>
         <offsets>
-            <x-m>-3.20274</x-m>
-            <y-m>0.26281</y-m>
-            <z-m>0.092</z-m>
-            <pitch-deg>-8.5</pitch-deg>
+            <x-m>0.011</x-m>
+            <y-m>0.260</y-m>
+            <z-m>0.088</z-m>
+            <pitch-deg>0.0</pitch-deg>
         </offsets>
     </model>
     
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Switchs_Lights/lg_inv_prim.xml</path>
         <offsets>
-            <x-m>-3.198985</x-m>
-            <y-m>0.26281</y-m>
-            <z-m>0.063</z-m>
-            <pitch-deg>-8.5</pitch-deg>
+            <x-m>0.012</x-m>
+            <y-m>0.260</y-m>
+            <z-m>0.060</z-m>
+            <pitch-deg>0.0</pitch-deg>
         </offsets>
     </model>
     
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Switchs_Lights/sw_inv_sec.xml</path>
         <offsets>
-            <x-m>-3.20274</x-m>
+            <x-m>0.011</x-m>
             <y-m>0.28632</y-m>
-            <z-m>0.092</z-m>
-            <pitch-deg>-8.5</pitch-deg>
+            <z-m>0.088</z-m>
+            <pitch-deg>0.0</pitch-deg>
         </offsets>
     </model>
 
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Switchs_Lights/lg_inv_sec.xml</path>
         <offsets>
-            <x-m>-3.19898</x-m>
+            <x-m>0.012</x-m>
             <y-m>0.28633</y-m>
-            <z-m>0.063</z-m>
-            <pitch-deg>-8.5</pitch-deg>
+            <z-m>0.060</z-m>
+            <pitch-deg>0.0</pitch-deg>
         </offsets>
     </model>
     
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Switchs_Lights/sw_collect_tank_2_all_tank.xml</path>
         <offsets>
-            <x-m>-3.19</x-m>
-            <y-m>0.152</y-m>
-            <z-m>0.016</z-m>
-            <pitch-deg>-8.5</pitch-deg>
+            <x-m>0.012</x-m>
+            <y-m>0.154</y-m>
+            <z-m>0.018</z-m>
+            <pitch-deg>0.0</pitch-deg>
         </offsets>
     </model>
     
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Switchs_Lights/lg_collect_tank_2_all_tank.xml</path>
         <offsets>
-            <x-m>-3.19</x-m>
-            <y-m>0.1515</y-m>
-            <z-m>0.05</z-m>
-            <pitch-deg>-8.5</pitch-deg>
+            <x-m>0.013</x-m>
+            <y-m>0.154</y-m>
+            <z-m>0.052</z-m>
+            <pitch-deg>0.0</pitch-deg>
         </offsets>
     </model>
     
@@ -109,10 +109,10 @@
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Switchs_Lights/sw_landing_light.xml</path>
         <offsets>
-            <x-m>-3.178</x-m>
-            <y-m>-0.3095</y-m>
-            <z-m>-0.039</z-m>
-            <pitch-deg>-8.5</pitch-deg>
+            <x-m>0.020</x-m>
+            <y-m>-0.320</y-m>
+            <z-m>-0.0515</z-m>
+            <pitch-deg>0.0</pitch-deg>
         </offsets>
     </model>
     
@@ -121,27 +121,27 @@
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Switchs_Lights/sw_canopy_on_off.xml</path>
         <offsets>
-            <x-m>-3.19</x-m>
-            <y-m>-0.384</y-m>
-            <z-m>-0.045</z-m>
-            <pitch-deg>-8.5</pitch-deg>
+            <x-m>0.010</x-m>
+            <y-m>-0.386</y-m>
+            <z-m>-0.054</z-m>
+            <pitch-deg>0.0</pitch-deg>
         </offsets>
     </model>
     
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Switchs_Lights/lg_canopy_light.xml</path>
         <offsets>
-            <x-m>-3.19</x-m>
-            <y-m>-0.328</y-m>
-            <z-m>-0.058</z-m>
-            <pitch-deg>-8.5</pitch-deg>
+            <x-m>0.011</x-m>
+            <y-m>-0.335</y-m>
+            <z-m>-0.066</z-m>
+            <pitch-deg>0.0</pitch-deg>
         </offsets>
     </model>
     
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Switchs_Lights/sw_canopy_open_external.xml</path>
         <offsets>
-            <x-m>-1.217</x-m>
+            <x-m>0.011</x-m>
             <y-m>-0.602</y-m>
             <z-m>-0.19178</z-m>
             <pitch-deg>0.0</pitch-deg>
@@ -152,7 +152,7 @@
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Switchs_Lights/sw_canopy_close_external.xml</path>
         <offsets>
-            <x-m>-1.217</x-m>
+            <x-m>0.011</x-m>
             <y-m>-0.615</y-m>
             <z-m>-0.271</z-m>
             <pitch-deg>0.0</pitch-deg>
@@ -163,90 +163,90 @@
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Switchs_Lights/push_button_landing_gear_test.xml</path>
         <offsets>
-            <x-m>-3.180</x-m>
-            <y-m>-0.318</y-m>
+            <x-m>0.011</x-m>
+            <y-m>-0.32</y-m>
             <z-m>-0.096</z-m>
-            <pitch-deg>-8.5</pitch-deg>
+            <pitch-deg>0.0</pitch-deg>
         </offsets>
     </model>
     
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Switchs_Lights/push_button_off_beeper.xml</path>
         <offsets>
-            <x-m>-3.190</x-m>
-            <y-m>-0.335</y-m>
+            <x-m>0.011</x-m>
+            <y-m>-0.32</y-m>
             <z-m>-0.002</z-m>
-            <pitch-deg>-8.5</pitch-deg>
+            <pitch-deg>0.0</pitch-deg>
         </offsets>
     </model>
     
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Switchs_Lights/push_button_emergency_release_loads.xml</path>
         <offsets>
-            <x-m>-3.1852</x-m>
-            <y-m>-0.089</y-m>
-            <z-m>-0.046</z-m>
-            <pitch-deg>-10</pitch-deg>
+            <x-m>0.011</x-m>
+            <y-m>-0.090</y-m>
+            <z-m>-0.049</z-m>
+            <pitch-deg>0.0</pitch-deg>
         </offsets>
     </model>
     
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Switchs_Lights/lg_low_fuel_pressure.xml</path>
         <offsets>
-            <x-m>-3.19898</x-m>
-            <y-m>0.187</y-m>
-            <z-m>0.070</z-m>
-            <pitch-deg>-8.5</pitch-deg>
+            <x-m>0.013</x-m>
+            <y-m>0.186</y-m>
+            <z-m>0.073</z-m>
+            <pitch-deg>0.0</pitch-deg>
         </offsets>
     </model>
     
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Switchs_Lights/lg_low_oil_pressure.xml</path>
         <offsets>
-            <x-m>-3.19898</x-m>
+            <x-m>0.013</x-m>
             <y-m>0.218</y-m>
-            <z-m>0.070</z-m>
-            <pitch-deg>-8.5</pitch-deg>
+            <z-m>0.073</z-m>
+            <pitch-deg>0.0</pitch-deg>
         </offsets>
     </model>
     
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Switchs_Lights/lg_hydraulic_low_pressure.xml</path>
         <offsets>
-            <x-m>-3.184</x-m>
-            <y-m>0.087</y-m>
-            <z-m>-0.005</z-m>
-            <pitch-deg>-10.0</pitch-deg>
+            <x-m>0.013</x-m>
+            <y-m>0.089</y-m>
+            <z-m>0.006</z-m>
+            <pitch-deg>0.0</pitch-deg>
         </offsets>
     </model>
 
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Switchs_Lights/sw_hydraulic_emerg.xml</path>
         <offsets>
-            <x-m>-3.184</x-m>
-            <y-m>0.087</y-m>
-            <z-m>-0.055</z-m>
-            <pitch-deg>82.0</pitch-deg>
+            <x-m>0.012</x-m>
+            <y-m>0.089</y-m>
+            <z-m>-0.049</z-m>
+            <pitch-deg>90.0</pitch-deg>
         </offsets>
     </model>
     
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Switchs_Lights/lg_elevator_servo_ctrl.xml</path>
         <offsets>
-            <x-m>-3.184</x-m>
+            <x-m>0.013</x-m>
             <y-m>0.236</y-m>
-            <z-m>-0.018</z-m>
-            <pitch-deg>-10.0</pitch-deg>
+            <z-m>-0.009</z-m>
+            <pitch-deg>0.0</pitch-deg>
         </offsets>
     </model>
 
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Switchs_Lights/sw_elevator_servo_ctrl.xml</path>
         <offsets>
-            <x-m>-3.184</x-m>
-            <y-m>0.236</y-m>
-            <z-m>-0.052</z-m>
-            <pitch-deg>-10</pitch-deg>
+            <x-m>0.013</x-m>
+            <y-m>0.2355</y-m>
+            <z-m>-0.0435</z-m>
+            <pitch-deg>0.0</pitch-deg>
         </offsets>
     </model>
 

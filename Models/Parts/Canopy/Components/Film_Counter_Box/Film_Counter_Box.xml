@@ -31,10 +31,10 @@
             <blue>0.1</blue>
         </ambient>
         <emission>
-            <red>0.03</red>
-            <green>0.00</green>
-            <blue>0.01</blue>
-            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+            <red-prop>sim/G91/re_emit/gauge_red_light</red-prop>
+            <green>0.0</green>
+            <blue-prop>sim/G91/re_emit/gauge_UV_light_on_red_light</blue-prop>
+            <factor>0.04</factor>
         </emission>
     </animation>
     
