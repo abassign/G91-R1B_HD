@@ -21,6 +21,9 @@
     <effect>
         <inherits-from>Effects/model-transparent</inherits-from>
         <object-name>glass (Meshed)</object-name>
+        <object-name>cone_A (Meshed)</object-name>
+        <object-name>cone_B</object-name>
+        <object-name>lubber_line (Meshed)</object-name>
     </effect>
 
     <effect>

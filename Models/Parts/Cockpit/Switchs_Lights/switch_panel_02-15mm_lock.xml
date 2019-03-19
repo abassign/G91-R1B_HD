@@ -31,6 +31,12 @@
         <object-name>lock_top (Meshed)</object-name>
     </effect>
     
+    <effect>
+        <inherits-from>Effects/model-transparent</inherits-from>
+        <object-name>switch_N (Meshed)</object-name>
+        <object-name>switch_S (Meshed)</object-name>
+    </effect>
+    
     <animation> 
         <type>material</type>
         <object-name>lock_axis (Meshed)</object-name>

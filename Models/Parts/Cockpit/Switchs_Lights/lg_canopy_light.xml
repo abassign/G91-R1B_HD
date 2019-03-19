@@ -6,9 +6,21 @@
     
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
-        <object-name>box</object-name>
+        <object-name>box (Meshed)</object-name>
+        <object-name>light_cover_border (Meshed)</object-name>
+        <object-name>light_cover (Meshed)</object-name>
     </effect>
     
+    <effect>
+        <inherits-from>Effects/model-transparent</inherits-from>
+        <condition>
+            <property>sim/rendering/rembrandt/enabled</property>
+            <value>true</value>
+        </condition>
+        <object-name>light_cover_border (Meshed)</object-name>
+        <object-name>light_cover (Meshed)</object-name>
+    </effect>
+
     <animation> 
         <type>material</type>
         <object-name>box (Meshed)</object-name>
@@ -73,10 +85,12 @@
         
     <model>
         <condition>
-            <greater-than-equals>
-                <property>fdm/jsbsim/systems/warning-lights/cockpit/lg_canopy_light</property>
-                <value>0.1</value>
-            </greater-than-equals>
+            <and>
+                <greater-than-equals>
+                    <property>fdm/jsbsim/systems/warning-lights/cockpit/lg_canopy_light</property>
+                    <value>0.1</value>
+                </greater-than-equals>
+            <and>
         </condition>
         <name>pb_light_effect</name>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Effects/lights/procedural_light_cockpit_advise_red.xml</path>

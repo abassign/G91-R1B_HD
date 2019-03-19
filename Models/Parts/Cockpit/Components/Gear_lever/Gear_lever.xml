@@ -50,16 +50,20 @@
         <object-name>torus_screew (Meshed)</object-name>
         <object-name>disk (Meshed)</object-name>
     </effect>
-    <!--
+
      <effect>
         <inherits-from>Effects/model-transparent</inherits-from>
+        <condition>
+        <property>sim/rendering/rembrandt/enabled</property>
+            <value>true</value>
+        </condition>
         <object-name>torus 01 (Meshed)</object-name>
         <object-name>torus 02 (Meshed)</object-name>
         <object-name>torus_ring001 (Meshed)</object-name>
         <object-name>torus_central (Meshed)</object-name>
         <object-name>torus_lamp (Meshed)</object-name>
     </effect>
-    -->
+
     <animation> 
         <type>material</type>
         <object-name>torus 01 (Meshed)</object-name>

@@ -10,13 +10,33 @@
         <object-name>lg_red_cover (Meshed)</object-name>
         <object-name>box (Meshed)</object-name>
         <object-name>test_circuit (Meshed)</object-name>
+        <object-name>switch_2_level (Meshed)</object-name>
+        <object-name>switch_2_cone (Meshed)</object-name>
+        <object-name>switch_2_ring (Meshed)</object-name>
+        <object-name>switch_2_base (Meshed)</object-name>
     </effect>
     
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
         <object-name>box (Meshed)</object-name>
         <object-name>test_circuit (Meshed)</object-name>
+        <object-name>switch_2_level (Meshed)</object-name>
+        <object-name>switch_2_cone (Meshed)</object-name>
+        <object-name>switch_2_ring (Meshed)</object-name>
+        <object-name>switch_2_base (Meshed)</object-name>
     </effect>
+    
+    <effect>
+        <inherits-from>Effects/model-transparent</inherits-from>
+        <condition>
+        <property>sim/rendering/rembrandt/enabled</property>
+            <value>true</value>
+        </condition>
+        <object-name>lg_red_cover (Meshed)</object-name>
+        <object-name>lg_fire (Meshed)</object-name>
+        <object-name>lg_red_cover (Meshed)</object-name>
+        <object-name>lg_fire (Meshed)</object-name>
+    </effect>    
     
     <animation> 
         <type>material</type>
