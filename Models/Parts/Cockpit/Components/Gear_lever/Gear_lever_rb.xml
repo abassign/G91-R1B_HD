@@ -20,6 +20,19 @@
         <object-name>torus_screews_lateral (Meshed)</object-name>
         <object-name>torus_screew (Meshed)</object-name>
     </effect>
+    
+    <effect>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
+        <object-name>frontal (Meshed)</object-name>
+        <object-name>frontal_1 (Meshed)</object-name>
+        <object-name>torus_arm_cylinder (Meshed)</object-name>
+        <object-name>torus_arm_ring (Meshed)</object-name>
+        <object-name>torus_support (Meshed)</object-name>
+        <object-name>torus_lateral (Meshed)</object-name>
+        <object-name>torus_screews_lateral (Meshed)</object-name>
+        <object-name>torus_screew (Meshed)</object-name>
+        <object-name>disk (Meshed)</object-name>
+    </effect>
 
     <!-- Materials effects --> 
     <animation>
@@ -36,143 +49,6 @@
         <object-name>torus 01 (Meshed)</object-name>
         <object-name>torus 02 (Meshed)</object-name>
         <object-name>disk (Meshed)</object-name>
-    </animation> 
-
-    <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
-        <object-name>frontal (Meshed)</object-name>
-        <object-name>frontal_1 (Meshed)</object-name>
-        <object-name>torus_arm_cylinder (Meshed)</object-name>
-        <object-name>torus_arm_ring (Meshed)</object-name>
-        <object-name>torus_support (Meshed)</object-name>
-        <object-name>torus_lateral (Meshed)</object-name>
-        <object-name>torus_screews_lateral (Meshed)</object-name>
-        <object-name>torus_screew (Meshed)</object-name>
-        <object-name>disk (Meshed)</object-name>
-    </effect>
-
-     <effect>
-        <inherits-from>Effects/model-transparent</inherits-from>
-        <condition>
-        <property>sim/rendering/rembrandt/enabled</property>
-            <value>true</value>
-        </condition>
-        <object-name>torus 01 (Meshed)</object-name>
-        <object-name>torus 02 (Meshed)</object-name>
-        <object-name>torus_ring001 (Meshed)</object-name>
-        <object-name>torus_central (Meshed)</object-name>
-        <object-name>torus_lamp (Meshed)</object-name>
-    </effect>
-
-    <animation> 
-        <type>material</type>
-        <object-name>torus 01 (Meshed)</object-name>
-        <object-name>torus 02 (Meshed)</object-name>
-        <transparency>
-            <alpha>0.95</alpha>
-            <factor-prop>sim/G91/landingGear/landingGearHandle_light_transparent</factor-prop>
-        </transparency>
-        <diffuse>
-            <red>0.5</red>
-            <green>0.1</green>
-            <blue>0.0</blue>
-        </diffuse>
-        <ambient>
-            <red>0.7</red>
-            <green>0.0</green>
-            <blue>0.0</blue>
-        </ambient>
-        <specular>
-            <red>1.0</red>
-            <green>0.0</green>
-            <blue>0.0</blue>
-        </specular>
-        <emission>
-            <red>0.7</red>
-            <green>0.0</green>
-            <blue>0.0</blue>
-            <factor-prop>sim/G91/landingGear/landingGearHandle_light</factor-prop>
-        </emission>
-    </animation>
-    
-    <animation> 
-        <type>material</type>
-        <object-name>torus_ring001 (Meshed)</object-name>
-        <transparency>
-            <alpha>2.0</alpha>
-            <factor-prop>sim/G91/landingGear/landingGearHandle_shell_transparent</factor-prop>
-        </transparency>
-        <diffuse>
-            <red>0.4</red>
-            <green>0.0</green>
-            <blue>0.0</blue>
-        </diffuse>
-        <ambient>
-            <red>0.7</red>
-            <green>0.0</green>
-            <blue>0.0</blue>
-        </ambient>
-        <specular>
-            <red>0.5</red>
-            <green>0.0</green>
-            <blue>0.0</blue>
-        </specular>
-        <emission>
-            <red>0.9</red>
-            <green>0.5</green>
-            <blue>0.2</blue>
-            <factor-prop>sim/G91/landingGear/landingGearHandle_light</factor-prop>
-        </emission>
-    </animation>
-    
-    <animation> 
-        <type>material</type>
-        <object-name>torus_central (Meshed)</object-name>
-        <transparency>
-            <alpha>1.0</alpha>
-            <factor-prop>sim/G91/landingGear/landingGearHandle_light_transparent</factor-prop>
-        </transparency>
-        <diffuse>
-            <red>0.4</red>
-            <green>0.0</green>
-            <blue>0.0</blue>
-        </diffuse>
-        <ambient>
-            <red>0.6</red>
-            <green>0.0</green>
-            <blue>0.0</blue>
-        </ambient>
-        <specular>
-            <red>0.0</red>
-            <green>0.0</green>
-            <blue>0.0</blue>
-        </specular>
-        <emission>
-            <red>0.8</red>
-            <green>0.2</green>
-            <blue>0.0</blue>
-            <factor-prop>sim/G91/landingGear/landingGearHandle_light</factor-prop>
-        </emission>
-    </animation>
-    
-    <animation> 
-        <type>material</type>
-        <object-name>torus_lamp (Meshed)</object-name>
-        <transparency>
-            <alpha>0.2</alpha>
-            <factor-prop>sim/G91/landingGear/landingGearHandle_shell_transparent</factor-prop>
-        </transparency>
-        <ambient>
-            <red>0.0</red>
-            <green>0.0</green>
-            <blue>0.0</blue>
-        </ambient>
-        <emission>
-            <red>1.0</red>
-            <green>0.2</green>
-            <blue>0.4</blue>
-            <factor-prop>sim/G91/landingGear/landingGearHandle_light</factor-prop>
-        </emission>
     </animation>
     
     <animation> 
@@ -405,5 +281,125 @@
             <z-m> 0.00 </z-m>
         </offsets>
     </model>
+    
+    <effect>
+        <inherits-from>Effects/reflect.eff</inherits-from>
+        <object-name>torus 01 (Meshed)</object-name>
+        <object-name>torus 02 (Meshed)</object-name>
+    </effect>
+    
+    <effect>
+        <inherits-from>Effects/model-transparent</inherits-from>
+        <object-name>torus_ring001 (Meshed)</object-name>
+        <object-name>torus_central (Meshed)</object-name>
+        <object-name>torus_lamp (Meshed)</object-name>
+    </effect>
+
+    <animation> 
+        <type>material</type>
+        <object-name>torus 01 (Meshed)</object-name>
+        <object-name>torus 02 (Meshed)</object-name>
+        <diffuse>
+            <red>0.5</red>
+            <green>0.1</green>
+            <blue>0.0</blue>
+        </diffuse>
+        <ambient>
+            <red>0.7</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </ambient>
+        <specular>
+            <red>1.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </specular>
+        <emission>
+            <red>0.9</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/landingGear/landingGearHandle_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>torus_ring001 (Meshed)</object-name>
+        <transparency>
+            <alpha>1.0</alpha>
+            <factor-prop>sim/G91/landingGear/landingGearHandle_shell_transparent</factor-prop>
+        </transparency>
+        <diffuse>
+            <red>0.4</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </diffuse>
+        <ambient>
+            <red>0.7</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </ambient>
+        <specular>
+            <red>0.5</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </specular>
+        <emission>
+            <red>0.9</red>
+            <green>0.5</green>
+            <blue>0.2</blue>
+            <factor-prop>sim/G91/landingGear/landingGearHandle_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>torus_central (Meshed)</object-name>
+        <transparency>
+            <alpha>0.1</alpha>
+            <factor-prop>sim/G91/landingGear/landingGearHandle_light_transparent</factor-prop>
+        </transparency>
+        <diffuse>
+            <red>0.4</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </diffuse>
+        <ambient>
+            <red>0.6</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </ambient>
+        <specular>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </specular>
+        <emission>
+            <red>0.8</red>
+            <green>0.2</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/landingGear/landingGearHandle_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>torus_lamp (Meshed)</object-name>
+        <transparency>
+            <alpha>0.2</alpha>
+            <factor-prop>sim/G91/landingGear/landingGearHandle_shell_transparent</factor-prop>
+        </transparency>
+        <ambient>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </ambient>
+        <emission>
+            <red>1.0</red>
+            <green>0.2</green>
+            <blue>0.4</blue>
+            <factor-prop>sim/G91/landingGear/landingGearHandle_light</factor-prop>
+        </emission>
+    </animation>
     
 </PropertyList> 

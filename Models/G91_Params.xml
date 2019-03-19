@@ -216,6 +216,11 @@
         </FuelPanels>
     </switchs>
     
+    <aux>
+         <true type="int">1</true>
+         <false type="int">0</false>
+    </aux>
+    
 </PropertyList>
 
 

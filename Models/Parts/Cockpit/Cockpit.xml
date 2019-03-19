@@ -10,7 +10,7 @@
         <z-m>0.785</z-m>
         <pitch-deg>-8.5</pitch-deg>
     </offsets>
-    
+
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
         <object-name>central (Meshed)</object-name>
@@ -365,7 +365,29 @@
     <!-- Components -->
     
     <model>
-        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Components/Gear_lever/Gear_lever.xml</path>
+        <condition>
+            <equals>
+                <property>sim/rendering/rembrandt/enabled</property>
+                <value>true</value>
+            </equals>
+        </condition>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Components/Gear_lever/Gear_lever_rb.xml</path>
+        <offsets>
+            <x-m>0.010</x-m>
+            <y-m>-0.276</y-m>
+            <z-m>0.071</z-m>
+            <pitch-deg>0.0</pitch-deg>
+        </offsets>
+    </model>
+    
+    <model>
+        <condition>
+            <equals>
+                <property>sim/rendering/rembrandt/enabled</property>
+                <value>false</value>
+            </equals>
+        </condition>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Components/Gear_lever/Gear_lever_als.xml</path>
         <offsets>
             <x-m>0.010</x-m>
             <y-m>-0.276</y-m>
