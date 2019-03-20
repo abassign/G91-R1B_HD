@@ -20,6 +20,7 @@ Modified work Copyright 2019 Joshua Davidson (it0uchpods)
         
         <summer name="systems/brake/brake-left-intensity"> <!-- Output to JSB -->
             <input>/controls/gear/brake-left</input>
+            <input>fcs/left-steer-brake</input> <!-- Steering Brake Control -->
             <input>systems/handle-switches/sw-handle-brake-extension</input>
             <clipto>
                 <min>0</min>
@@ -46,6 +47,7 @@ Modified work Copyright 2019 Joshua Davidson (it0uchpods)
         
         <summer name="systems/brake/brake-right-intensity"> <!-- Output to JSB -->
             <input>/controls/gear/brake-right</input>
+            <input>fcs/right-steer-brake</input> <!-- Steering Brake Control -->
             <input>systems/handle-switches/sw-handle-brake-extension</input>
             <clipto>
                 <min>0</min>
