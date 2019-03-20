@@ -100,6 +100,7 @@
         </condition>
     </animation>
     
+    <!--
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
         <object-name>A__G91_fuselage_muso_1.005</object-name>
@@ -131,6 +132,7 @@
         <object-name>panR1b__G91_fuselage_muso_1.023</object-name>
         <object-name>panR1b_antenna_cover.001</object-name>
     </effect>
+    -->
     
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Liveries/liveries_001</inherits-from>

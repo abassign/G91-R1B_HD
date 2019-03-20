@@ -2,6 +2,7 @@
     
     <path>digit3.ac</path>
     
+    <!--
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
         <object-name>box</object-name>
@@ -9,6 +10,7 @@
         <object-name>prism_2</object-name>
         <object-name>prism_3</object-name>
     </effect>
+    -->
     
     <animation> 
         <type>material</type>

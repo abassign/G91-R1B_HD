@@ -11,6 +11,20 @@
         <pitch-deg>0.0</pitch-deg>
     </offsets>
     
+    <!--
+    <effect>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
+        <object-name>C00_sx_airbrake_door.005</object-name>
+        <object-name>C00_dx_airbrake_door.000</object-name>
+        <object-name>C00_lever_a_door.dx</object-name>
+        <object-name>C00_lever_a_door.sx</object-name>
+        <object-name>C00_lever_b_door.sx</object-name>
+        <object-name>C00_lever_b_door.dx.001</object-name>
+        <object-name>lever_airbrake</object-name>
+        <object-name>torsion_bar_airbrake</object-name>
+    </effect>
+    -->
+    
     <animation>
         <name>Torsion-Bar</name>
         <object-name>torsion_bar_airbrake</object-name>
@@ -44,18 +58,6 @@
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_silver_D2_1</inherits-from>
         <object-name>brake-jack-01.001</object-name>
-    </effect>
-    
-    <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
-        <object-name>C00_sx_airbrake_door.005</object-name>
-        <object-name>C00_dx_airbrake_door.000</object-name>
-        <object-name>C00_lever_a_door.dx</object-name>
-        <object-name>C00_lever_a_door.sx</object-name>
-        <object-name>C00_lever_b_door.sx</object-name>
-        <object-name>C00_lever_b_door.dx.001</object-name>
-        <object-name>lever_airbrake</object-name>
-        <object-name>torsion_bar_airbrake</object-name>
     </effect>
     
     <effect>

@@ -12,6 +12,7 @@
         <object-name>Disk_mobile.001</object-name>
     </effect>
     
+    <!--
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
         <object-name>Collimator_screen</object-name>
@@ -48,6 +49,7 @@
         <object-name>screw_gauges01</object-name>
         <object-name>index</object-name>
     </effect>
+    -->
     
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>

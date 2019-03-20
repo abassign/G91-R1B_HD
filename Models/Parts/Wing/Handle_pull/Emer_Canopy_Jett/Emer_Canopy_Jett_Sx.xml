@@ -15,12 +15,14 @@
         <object-name>handle_cockpit02.000</object-name>
     </effect>
     
+    <!--
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
         <object-name>handle_cockpit02.003</object-name>
         <object-name>handle_cockpit02.001</object-name>
         <object-name>wire</object-name>
     </effect>
+    -->
     
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
@@ -41,7 +43,11 @@
     <animation> 
         <type>material</type>
         <object-name>wire</object-name>
-        <texture>Pictures/G91-Dark-Grey.png</texture>
+        <diffuse>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.3</blue>
+        </diffuse>
         <ambient>
             <red>0.6</red>
             <green>0.6</green>
@@ -53,7 +59,11 @@
         <type>material</type>
         <object-name>handle_cockpit02.003</object-name>
         <object-name>handle_cockpit02.001</object-name>
-        <texture>Pictures/G91-Al.png</texture>
+        <diffuse>
+            <red>0.6</red>
+            <green>0.6</green>
+            <blue>0.6</blue>
+        </diffuse>
         <ambient>
             <red>0.6</red>
             <green>0.6</green>

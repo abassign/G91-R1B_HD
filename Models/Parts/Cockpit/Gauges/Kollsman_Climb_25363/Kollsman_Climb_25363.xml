@@ -4,6 +4,7 @@
     
     <path>Kollsman_Climb_25363.ac</path>
     
+    <!--
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
         <object-name>frontal_filet (Meshed)</object-name>
@@ -17,6 +18,7 @@
         <object-name>graduation (Meshed)</object-name>
         <object-name>descriptions</object-name>
     </effect>
+    -->
     
     <effect>
         <inherits-from>Effects/model-transparent</inherits-from>

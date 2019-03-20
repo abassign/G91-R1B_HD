@@ -15,12 +15,14 @@
         <object-name>handle_cockpit02.000</object-name>
     </effect>
     
+    <!--
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
         <object-name>handle_cockpit02.003</object-name>
         <object-name>handle_cockpit02.001</object-name>
         <object-name>wire</object-name>
     </effect>
+    -->
     
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>

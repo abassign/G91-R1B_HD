@@ -2,6 +2,7 @@
     
     <path>Compass_Kollsman_1979U4.ac</path>
 
+    <!--
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
         <object-name>internal_black (Meshed)</object-name>
@@ -17,6 +18,7 @@
         <object-name>lubber_support (Meshed)</object-name>
         <object-name>cone_support (Meshed)</object-name>
     </effect>
+    -->
     
     <effect>
         <inherits-from>Effects/model-transparent</inherits-from>

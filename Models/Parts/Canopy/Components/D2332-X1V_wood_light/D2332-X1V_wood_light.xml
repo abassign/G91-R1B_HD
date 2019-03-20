@@ -69,6 +69,7 @@
         <object-name>support_wood_Plane</object-name>
     </effect>
     
+    <!--
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
         <object-name>cable_sorg_cableIR.001</object-name>
@@ -99,6 +100,7 @@
         <object-name>support_wood.001_Plane.001</object-name>
         <object-name>support_wood_Plane</object-name>
     </effect>
+    -->
 
     <effect>
         <inherits-from>D2332-X1V_wood_light_label</inherits-from>

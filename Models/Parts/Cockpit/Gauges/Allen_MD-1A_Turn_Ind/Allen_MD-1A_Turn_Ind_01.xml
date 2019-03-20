@@ -4,6 +4,7 @@
     
     <path>Allen_MD-1A_Turn_Ind_01.ac</path>
     
+    <!--
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
         <object-name>frontal_filet (Meshed)</object-name>
@@ -20,6 +21,7 @@
         <object-name>back_plane_B (Meshed)</object-name>
         <object-name>rif (Meshed)</object-name>
     </effect>
+    -->
     
     <effect>
         <inherits-from>Effects/model-transparent</inherits-from>

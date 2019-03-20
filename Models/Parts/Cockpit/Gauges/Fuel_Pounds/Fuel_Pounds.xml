@@ -4,6 +4,7 @@
     
     <path>Fuel_Pounds.ac</path>
     
+    <!--
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
         <object-name>wiring (Meshed)</object-name>
@@ -26,6 +27,7 @@
         <object-name>back_plane_2A1</object-name>
         <object-name>back_plane_2A2</object-name>
     </effect>
+    -->
     
     <effect>
         <inherits-from>Effects/model-transparent</inherits-from>

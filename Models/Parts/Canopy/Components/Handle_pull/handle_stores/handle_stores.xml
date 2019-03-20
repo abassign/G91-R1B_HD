@@ -10,12 +10,14 @@
         <z-m>0.0</z-m>
     </offsets>
     
+    <!--
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
         <object-name>block_handle</object-name>
         <object-name>handle_cockpit01</object-name>
         <object-name>handle_cockpit01.002</object-name>
     </effect>
+    -->
     
     <effect>
         <inherits-from>handle_stores</inherits-from>

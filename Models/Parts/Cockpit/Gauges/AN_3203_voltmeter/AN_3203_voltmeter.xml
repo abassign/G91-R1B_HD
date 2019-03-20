@@ -4,6 +4,7 @@
     
     <path>AN_3203_voltmeter.ac</path>
     
+    <!--
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
         <object-name>frontal (Meshed)</object-name>
@@ -19,6 +20,7 @@
         <object-name>color_int_orange (Meshed)</object-name>
         <object-name>color_int_red (Meshed)</object-name>
     </effect>
+    -->
     
     <effect>
         <inherits-from>Effects/model-transparent</inherits-from>

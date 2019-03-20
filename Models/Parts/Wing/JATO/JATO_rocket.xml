@@ -8,6 +8,7 @@
         <z-m>0.0</z-m>
     </offsets>
     
+    <!--
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
         <object-name>ganci_piastra_jato</object-name>
@@ -21,6 +22,7 @@
         <object-name>staffa_jato_post.dx</object-name>
         <object-name>staffa_jato_post.sx</object-name>
     </effect>
+    -->
     
     <animation>
         <type>select</type>
@@ -42,7 +44,11 @@
         <type>material</type>
         <object-name>piastra_jato01</object-name>
         <object-name>piastra_jato02</object-name>
-        <texture>Pictures/G91-Dark-Grey.png</texture>
+        <diffuse>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
+        </diffuse>
         <ambient>
             <red>0.4</red>
             <green>0.4</green>
@@ -56,7 +62,11 @@
         <object-name>staffa_jato_post.ant</object-name>
         <object-name>staffa_jato_post.dx</object-name>
         <object-name>staffa_jato_post.sx</object-name>
-        <texture>Pictures/G91-Al-dark.png</texture>
+        <diffuse>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
+        </diffuse>
         <ambient>
             <red>0.6</red>
             <green>0.6</green>
@@ -80,18 +90,27 @@
         <type>material</type>
         <object-name>rocket</object-name>
         <object-name>rocket_02</object-name>
-        <texture>Pictures/JATO-Rocket-01.png</texture>
         <condition>
             <greater-than-equals>
                 <property>fdm/jsbsim/systems/jato/rocket_number_4</property>
                 <value>1</value>
             </greater-than-equals>
         </condition>
+        <diffuse>
+            <red>0.53</red>
+            <green>0.48</green>
+            <blue>0.35</blue>
+        </diffuse>
         <ambient>
             <red>0.8</red>
             <green>0.8</green>
             <blue>0.8</blue>
         </ambient>
+        <specular>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </specular>
     </animation>
     
     <animation>
@@ -117,11 +136,21 @@
                 <value>1</value>
             </greater-than-equals>
         </condition>
+        <diffuse>
+            <red>0.53</red>
+            <green>0.48</green>
+            <blue>0.35</blue>
+        </diffuse>
         <ambient>
             <red>0.8</red>
             <green>0.8</green>
             <blue>0.8</blue>
         </ambient>
+        <specular>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </specular>
     </animation>
     
     <model>

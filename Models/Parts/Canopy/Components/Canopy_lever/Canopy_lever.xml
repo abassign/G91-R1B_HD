@@ -2,12 +2,14 @@
 
 <path>Canopy_lever.ac</path>
     
+    <!--
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
         <object-name>F_lever_canopy01</object-name>
         <object-name>F_lever_canopy02</object-name>
     </effect>
-    
+    -->
+
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
         <object-name>F_lever_canopy02</object-name>

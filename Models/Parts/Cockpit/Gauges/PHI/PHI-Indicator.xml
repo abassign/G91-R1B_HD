@@ -4,6 +4,7 @@
     
     <path>PHI-Indicator.ac</path>
     
+    <!--
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
         <object-name>screews_01 (Meshed)</object-name>
@@ -40,6 +41,7 @@
         <object-name>arrow_4 (Meshed)</object-name>
         <object-name>frontal_labels (Meshed)</object-name>
     </effect>
+    -->
     
     <effect>
         <inherits-from>Effects/model-transparent</inherits-from>

@@ -4,6 +4,7 @@
     
     <path>Roller-Smith_90702_J1_Amperometer.ac</path>
     
+    <!--
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
         <object-name>frontal (Meshed)</object-name>
@@ -23,6 +24,7 @@
         <object-name>number_50 (Meshed)</object-name>
         <object-name>number_10 (Meshed)</object-name>
     </effect>
+    -->
     
     <effect>
         <inherits-from>Effects/model-transparent</inherits-from>

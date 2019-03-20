@@ -11,6 +11,7 @@
         <pitch-deg>-8.5</pitch-deg>
     </offsets>
 
+    <!--
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
         <object-name>central (Meshed)</object-name>
@@ -28,6 +29,7 @@
         <object-name>red (Meshed)</object-name>
         <object-name>red text (Meshed)</object-name>
     </effect>
+    -->
 
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>

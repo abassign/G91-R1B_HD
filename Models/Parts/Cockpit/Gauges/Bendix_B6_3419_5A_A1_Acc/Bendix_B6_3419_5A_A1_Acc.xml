@@ -4,6 +4,7 @@
     
     <path>Bendix_B6_3419_5A_A1_Acc.ac</path>
     
+    <!--
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
         <object-name>frontal_filet (Meshed)</object-name>
@@ -24,6 +25,7 @@
         <object-name>center (Meshed)</object-name>
         <object-name>Support (Meshed)</object-name>
     </effect>
+    -->
     
     <effect>
         <inherits-from>Effects/model-transparent</inherits-from>

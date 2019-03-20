@@ -8,6 +8,7 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
     
     <path>panel_start.ac</path>
     
+    <!--
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
         <object-name>panel_start01</object-name>
@@ -15,6 +16,7 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
         <object-name>start_panel_map_A1</object-name>
         <object-name>start_panel_map_A2</object-name>
     </effect>
+    -->
     
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>

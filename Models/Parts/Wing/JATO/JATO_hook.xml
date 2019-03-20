@@ -8,6 +8,7 @@
         <z-m>-0.003</z-m>
     </offsets>
     
+    <!--
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
         <object-name>body (Meshed)</object-name>
@@ -23,6 +24,7 @@
         <object-name>chiavistello (Meshed)</object-name>
         <object-name>gancio (Meshed)</object-name>
     </effect>
+    -->
     
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_silver_D5_0</inherits-from>
@@ -32,7 +34,11 @@
     <animation> 
         <type>material</type>
         <object-name>body (Meshed)</object-name>
-        <texture>Pictures/G91-Al.png</texture>
+        <diffuse>
+            <red>0.6</red>
+            <green>0.6</green>
+            <blue>0.6</blue>
+        </diffuse>
         <ambient>
             <red>0.6</red>
             <green>0.6</green>
@@ -43,7 +49,11 @@
     <animation> 
         <type>material</type>
         <object-name>supporto (Meshed)</object-name>
-        <texture>Pictures/AichiInteriorGreyGreen.png</texture>
+        <diffuse>
+            <red>0.40</red>
+            <green>0.45</green>
+            <blue>0.38</blue>
+        </diffuse>
         <ambient>
             <red>0.6</red>
             <green>0.6</green>
@@ -54,7 +64,11 @@
     <animation> 
         <type>material</type>
         <object-name>martinetto_fisso (Meshed)</object-name>
-        <texture>Pictures/G91-Al-dark.png</texture>
+        <diffuse>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.3</blue>
+        </diffuse>
         <ambient>
             <red>0.6</red>
             <green>0.6</green>
@@ -70,7 +84,11 @@
         <object-name>asse_bloccaggio (Meshed)</object-name>
         <object-name>asse_martinetto (Meshed)</object-name>
         <object-name>bilanciere (Meshed)</object-name>
-        <texture>Pictures/G91-Dark-Grey.png</texture>
+        <diffuse>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
+        </diffuse>
         <ambient>
             <red>0.4</red>
             <green>0.4</green>
@@ -83,7 +101,11 @@
         <object-name>bilanciere_bloccaggio (Meshed)</object-name>
         <object-name>chiavistello (Meshed)</object-name>
         <object-name>gancio (Meshed)</object-name>
-        <texture>Pictures/G91-Al-01.png</texture>
+        <diffuse>
+            <red>0.4</red>
+            <green>0.4</green>
+            <blue>0.4</blue>
+        </diffuse>
         <ambient>
             <red>0.8</red>
             <green>0.8</green>

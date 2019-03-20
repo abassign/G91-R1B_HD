@@ -4,6 +4,7 @@
     
     <path>RPM_Indicator.ac</path>
     
+    <!--
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
         <object-name>support (Meshed)</object-name>
@@ -19,6 +20,7 @@
         <object-name>pointer_2_A (Meshed)</object-name>
         <object-name>back_plane_A</object-name>
     </effect>
+    -->
     
     <effect>
         <inherits-from>Effects/model-transparent</inherits-from>

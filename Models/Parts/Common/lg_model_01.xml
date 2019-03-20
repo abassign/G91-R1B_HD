@@ -11,6 +11,7 @@
         <pitch-deg>1.0</pitch-deg>
     </offsets>
     
+    <!--
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
         <object-name>box_button (Meshed)</object-name>
@@ -19,6 +20,7 @@
         <object-name>screew (Meshed)</object-name>
         <object-name>silver_box_button (Meshed)</object-name>
     </effect>
+    -->
     
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>

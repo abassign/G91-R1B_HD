@@ -4,6 +4,7 @@
     
     <path>JATO_Ready_Switch.ac</path>
 
+    <!--
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
         <object-name>cover (Meshed)</object-name>
@@ -15,6 +16,7 @@
         <object-name>support (Meshed)</object-name>
         <object-name>switch (Meshed)</object-name>
     </effect>
+    -->
     
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>

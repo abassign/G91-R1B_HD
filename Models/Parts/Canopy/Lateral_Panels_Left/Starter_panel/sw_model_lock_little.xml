@@ -13,12 +13,14 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
         <z-m>0.0</z-m>
     </offsets>
     
+    <!--
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
         <object-name>toggle_sw_C01</object-name>
         <object-name>toggle_sw_C02</object-name>
         <object-name>toggle_sw_C03</object-name>
     </effect>
+    -->
     
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>

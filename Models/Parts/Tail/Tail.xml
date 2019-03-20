@@ -23,6 +23,7 @@
         <object-name>D_Plate_vertical_wing</object-name>
     </effect>
     
+    <!--
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
         <object-name>A__G91_door_dx_coda.000</object-name>
@@ -56,6 +57,7 @@
         <object-name>D_timone_coda.003</object-name>
         <object-name>A__G91_fuselage_coda.012</object-name>
     </effect>
+    -->
     
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Liveries/liveries_001</inherits-from>

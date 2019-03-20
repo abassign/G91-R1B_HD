@@ -11,6 +11,7 @@
         <pitch-deg>0.0</pitch-deg>
     </offsets>
 
+    <!--
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
         <object-name>A__G91r3_fuselage_weapon_door_dx.001</object-name>
@@ -24,6 +25,7 @@
         <object-name>defa_cannon30mm</object-name>
         <object-name>defa_exhaust_shells2</object-name>
     </effect>
+    -->
 
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Liveries/liveries_001</inherits-from>

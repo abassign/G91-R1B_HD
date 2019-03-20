@@ -4,6 +4,7 @@
     
     <path>kollsman_ME4.ac</path>
     
+    <!--
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
         <object-name>I_ironware</object-name>
@@ -22,6 +23,7 @@
         <object-name>I_hand_red.02</object-name>
         <object-name>InternalCoverBlack</object-name>
     </effect>
+    -->
 
     <effect>
         <inherits-from>Effects/model-transparent</inherits-from>

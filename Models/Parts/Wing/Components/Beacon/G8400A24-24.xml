@@ -4,6 +4,7 @@
     
     <path>G8400A24-24.ac</path>
 
+    <!--
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
         <object-name>base (Meshed)</object-name>
@@ -16,6 +17,7 @@
         <object-name>ring (Meshed)</object-name>
         <object-name>base (Meshed)</object-name>
     </effect>
+    -->
     
     <effect>
         <inherits-from>Effects/model-transparent</inherits-from>

@@ -13,6 +13,7 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
         <z-m>0.0</z-m>
     </offsets>
     
+    <!--
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
         <object-name>switch_cone (Meshed)</object-name>
@@ -23,6 +24,7 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
         <object-name>lock_axis (Meshed)</object-name>
         <object-name>lock_top (Meshed)</object-name>
     </effect>
+    -->
     
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>

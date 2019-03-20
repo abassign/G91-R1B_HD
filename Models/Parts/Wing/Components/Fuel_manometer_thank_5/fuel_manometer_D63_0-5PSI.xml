@@ -4,6 +4,7 @@
     
     <path>fuel_manometer_D63_0-5PSI.ac</path>
     
+    <!--
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
         <object-name>frontal (Meshed)</object-name>
@@ -18,6 +19,7 @@
         <object-name>firm (Meshed)</object-name>
         <object-name>flange (Meshed)</object-name>
     </effect>
+    -->
     
     <effect>
         <inherits-from>Effects/model-transparent</inherits-from>
@@ -138,14 +140,14 @@
         <type>material</type>
         <object-name>arrow (Meshed)</object-name>
         <diffuse>
-            <red>0.0</red>
-            <green>0.0</green>
-            <blue>0.0</blue>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
         </diffuse>
         <ambient>
-            <red>0.1</red>
-            <green>0.1</green>
-            <blue>0.1</blue>
+            <red>0.6</red>
+            <green>0.6</green>
+            <blue>0.6</blue>
         </ambient>
     </animation>
     
@@ -153,14 +155,14 @@
         <type>material</type>
         <object-name>labels (Meshed)</object-name>
         <diffuse>
-            <red>0.0</red>
-            <green>0.0</green>
-            <blue>0.0</blue>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
         </diffuse>
         <ambient>
-            <red>0.1</red>
-            <green>0.1</green>
-            <blue>0.1</blue>
+            <red>0.4</red>
+            <green>0.4</green>
+            <blue>0.4</blue>
         </ambient>
     </animation>
     

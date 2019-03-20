@@ -4,7 +4,8 @@
     
     <path>Airbrake_Extended.ac</path>
     
-   <effect>
+    <!--
+    <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
         <object-name>frontal (Meshed)</object-name>
         <object-name>ring (Meshed)</object-name>
@@ -17,6 +18,7 @@
         <object-name>Airbrake Percent Extended Gen (Meshed)</object-name>
         <object-name>Up Down (Meshed)</object-name>
     </effect>
+    -->
     
     <effect>
         <inherits-from>Effects/model-transparent</inherits-from>
