@@ -23,9 +23,6 @@
     <effect>
         <inherits-from>Effects/model-transparent</inherits-from>
         <object-name>glass (Meshed)</object-name>
-        <object-name>cone_A (Meshed)</object-name>
-        <object-name>cone_B</object-name>
-        <object-name>lubber_line (Meshed)</object-name>
     </effect>
 
     <effect>
@@ -43,21 +40,23 @@
         <object-name>Support (Meshed)</object-name>
         <object-name>lubber_support (Meshed)</object-name>
         <object-name>cone_support (Meshed)</object-name>
-        <object-name>cone_A (Meshed)</object-name>
-        <object-name>cone_B</object-name>
     </effect>    
     
     <animation> 
         <type>material</type>
         <object-name>glass (Meshed)</object-name>
-        <texture>Pictures/G91-Al-Light.png</texture>
         <transparency>
             <alpha>0.1</alpha>
         </transparency>
+        <diffuse>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </diffuse>
         <ambient>
-            <red>0.6</red>
-            <green>0.7</green>
-            <blue>0.6</blue>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
         </ambient>
         <emission>
             <red>0.6</red>
@@ -70,7 +69,11 @@
     <animation> 
         <type>material</type>
         <object-name>internal_black (Meshed)</object-name>
-        <texture>Pictures/G91-Black.png</texture>
+        <diffuse>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </diffuse>
         <ambient>
             <red>0.0</red>
             <green>0.0</green>
@@ -82,30 +85,88 @@
         <type>material</type>
         <object-name>screews_external (Meshed)</object-name>
         <object-name>screews_internal (Meshed)</object-name>
-        <object-name>screews_external_back (Meshed)</object-name>
         <object-name>screews_lamp_cover (Meshed)</object-name>
-        <texture>Pictures/G91-Dark-Grey.png</texture>
+        <diffuse>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
+        </diffuse>
         <ambient>
-            <red>0.6</red>
-            <green>0.6</green>
-            <blue>0.6</blue>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
+        </ambient>
+        <specular>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
+        </specular>
+        <emission>
+            <red>0.03</red>
+            <green>0.00</green>
+            <blue>0.005</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>screews_external_back (Meshed)</object-name>
+        <diffuse>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
+        </diffuse>
+        <ambient>
+            <red>0.</red>
+            <green>0.</green>
+            <blue>0.</blue>
         </ambient>
     </animation>
     
     <animation>
         <type>material</type>
         <object-name>cover_external (Meshed)</object-name>
-        <object-name>cover_lamp (Meshed)</object-name>
-        <texture>Pictures/G91-Dark-Grey.png</texture>
+        <diffuse>
+            <red>0.10</red>
+            <green>0.105</green>
+            <blue>0.10</blue>
+        </diffuse>
         <ambient>
-            <red>0.4</red>
-            <green>0.4</green>
-            <blue>0.4</blue>
+            <red>0.05</red>
+            <green>0.05</green>
+            <blue>0.05</blue>
         </ambient>
         <emission>
-            <red>0.2</red>
+            <red>0.05</red>
             <green>0.00</green>
-            <blue>0.02</blue>
+            <blue>0.01</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation>
+        <type>material</type>
+        <object-name>cover_lamp (Meshed)</object-name>
+        <diffuse>
+            <red>0.15</red>
+            <green>0.15</green>
+            <blue>0.15</blue>
+        </diffuse>
+        <ambient>
+            <red>0.05</red>
+            <green>0.05</green>
+            <blue>0.05</blue>
+        </ambient>
+        <specular>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </specular>
+        <emission>
+            <red>0.06</red>
+            <green>0.00</green>
+            <blue>0.01</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
@@ -113,16 +174,25 @@
     <animation>
         <type>material</type>
         <object-name>lamp_cover (Meshed)</object-name>
-        <texture>Pictures/G91-Dark-Grey.png</texture>
+        <diffuse>
+            <red>0.2</red>
+            <green>0.125</green>
+            <blue>0.06</blue>
+        </diffuse>
         <ambient>
-            <red>0.8</red>
-            <green>0.8</green>
-            <blue>0.8</blue>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.0</blue>
         </ambient>
+        <specular>
+            <red>0.7</red>
+            <green>0.7</green>
+            <blue>0.2</blue>
+        </specular>
         <emission>
-            <red>0.15</red>
+            <red>0.08</red>
             <green>0.00</green>
-            <blue>0.015</blue>
+            <blue>0.01</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
@@ -130,11 +200,15 @@
     <animation>
         <type>material</type>
         <object-name>support (Meshed)</object-name>
-        <texture>Pictures/G91-Dark-Grey.png</texture>
+        <diffuse>
+            <red>0.15</red>
+            <green>0.15</green>
+            <blue>0.15</blue>
+        </diffuse>
         <ambient>
-            <red>0.4</red>
-            <green>0.4</green>
-            <blue>0.4</blue>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
         </ambient>
         <emission>
             <red>0.02</red>
@@ -149,32 +223,19 @@
         <object-name>Support (Meshed)</object-name>
         <object-name>lubber_support (Meshed)</object-name>
         <object-name>cone_support (Meshed)</object-name>
-        <texture>Pictures/G91-Black.png</texture>
+        <diffuse>
+            <red>0.05</red>
+            <green>0.05</green>
+            <blue>0.05</blue>
+        </diffuse>
         <ambient>
             <red>0.0</red>
             <green>0.0</green>
             <blue>0.0</blue>
         </ambient>
         <emission>
-            <red>0.04</red>
-            <green>0.00</green>
-            <blue>0.01</blue>
-            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
-        </emission>
-    </animation>
-    
-    <animation>
-        <type>material</type>
-        <object-name>cone_A (Meshed)</object-name>
-        <texture>Pictures/G91-Black.png</texture>
-        <ambient>
-            <red>0.0</red>
-            <green>0.0</green>
-            <blue>0.0</blue>
-        </ambient>
-        <emission>
-            <red>0.1</red>
-            <green>0.1</green>
+            <red>0.02</red>
+            <green>0.02</green>
             <blue>0.005</blue>
             <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
         </emission>
@@ -182,19 +243,42 @@
     
     <animation>
         <type>material</type>
-        <object-name>cone_B</object-name>
-        <transparency>
-            <alpha>1.0</alpha>
-        </transparency>
+        <object-name>cone_B (Meshed)</object-name>
+        <diffuse>
+            <red>0.05</red>
+            <green>0.05</green>
+            <blue>0.05</blue>
+        </diffuse>
         <ambient>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </ambient>
+        <emission>
+            <red>0.05</red>
+            <green>0.05</green>
+            <blue>0.005</blue>
+            <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation>
+        <type>material</type>
+        <object-name>cone_A (Meshed)</object-name>
+        <diffuse>
             <red>0.90</red>
             <green>0.83</green>
             <blue>0.63</blue>
+        </diffuse>
+        <ambient>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
         </ambient>
         <emission>
-            <red>0.4</red>
-            <green>0.4</green>
-            <blue>0.05</blue>
+            <red>0.25</red>
+            <green>0.25</green>
+            <blue>0.005</blue>
             <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
         </emission>
     </animation>
@@ -202,18 +286,20 @@
     <animation>
         <type>material</type>
         <object-name>lubber_line (Meshed)</object-name>
-        <transparency>
-            <alpha>1.0</alpha>
-        </transparency>
-        <ambient>
+        <diffuse>
             <red>0.90</red>
             <green>0.83</green>
             <blue>0.63</blue>
+        </diffuse>
+        <ambient>
+            <red>0.6</red>
+            <green>0.6</green>
+            <blue>0.6</blue>
         </ambient>
         <emission>
-            <red>0.20</red>
-            <green>0.20</green>
-            <blue>0.02</blue>
+            <red>0.08</red>
+            <green>0.08</green>
+            <blue>0.005</blue>
             <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
         </emission>
     </animation>
@@ -222,13 +308,13 @@
         <type>rotate</type>
         <object-name>cone_support (Meshed)</object-name>
         <object-name>cone_A (Meshed)</object-name>
-        <object-name>cone_B</object-name>
+        <object-name>cone_B (Meshed)</object-name>
         <property>/instrumentation/magnetic-compass/indicated-heading-deg</property>
-        <offset-deg>+90</offset-deg>
+        <offset-deg>0</offset-deg>
         <axis>
             <x>0</x>
             <y>0</y>
-            <z>-1</z>
+            <z>1</z>
         </axis>
         <center>
             <x-m>-0.015</x-m>
@@ -241,7 +327,7 @@
         <type>rotate</type>
         <object-name>cone_support (Meshed)</object-name>
         <object-name>cone_A (Meshed)</object-name>
-        <object-name>cone_B</object-name>
+        <object-name>cone_B (Meshed)</object-name>
         <property>/instrumentation/slip-skid-ball/indicated-slip-skid</property>
         <factor>15.0</factor>
         <min-deg>-30</min-deg>
@@ -262,7 +348,7 @@
         <type>rotate</type>
         <object-name>cone_support (Meshed)</object-name>
         <object-name>cone_A (Meshed)</object-name>
-        <object-name>cone_B</object-name>
+        <object-name>cone_B (Meshed)</object-name>
         <expression>
             <prod>
                 <atan>
