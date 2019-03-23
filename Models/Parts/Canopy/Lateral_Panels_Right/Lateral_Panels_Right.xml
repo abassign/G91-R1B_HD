@@ -1,6 +1,18 @@
 <PropertyList>
 
     <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Lateral_Panels_Right/Ext_Int_Pressure_Gauge/Ext_Int_Pressure_Gauge.xml</path>
+        <offsets>
+            <x-m>-0.154</x-m>
+            <y-m>0.130</y-m>
+            <z-m>0.00</z-m>
+            <roll-deg>0.0</roll-deg>
+            <pitch-deg>-90.0</pitch-deg>
+            <heading-deg>0.0</heading-deg>
+        </offsets>
+    </model>
+
+    <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/PHI/PHI Station Selector.xml</path>
         <offsets>
             <x-m>0.128</x-m>
