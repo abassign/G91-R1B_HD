@@ -51,17 +51,17 @@
             <green>0.05</green>
             <blue>0.05</blue>
         </ambient>
-        <emission>
-            <red>0.05</red>
-            <green>0.04</green>
-            <blue>0.01</blue>
-            <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
-        </emission>
         <specular>
             <red>0.9</red>
             <green>0.9</green>
             <blue>0.9</blue>
         </specular>
+        <emission>
+            <red-prop>sim/G91/re_emit/gauge_red_40_phosphorescent_light</red-prop>
+            <green-prop>sim/G91/re_emit/gauge_phosphorescent_light_50</green-prop>
+            <blue-prop>sim/G91/re_emit/gauge_phosphorescent_light_30</blue-prop>
+            <factor>0.05</factor>
+        </emission>
     </animation>
     
     <animation> 
@@ -80,10 +80,10 @@
             <blue>0.53</blue>
         </ambient>
         <emission>
-            <red>0.15</red>
-            <green>0.12</green>
-            <blue>0.05</blue>
-            <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
+            <red-prop>sim/G91/re_emit/gauge_red_40_phosphorescent_light</red-prop>
+            <green-prop>sim/G91/re_emit/gauge_phosphorescent_light_50</green-prop>
+            <blue-prop>sim/G91/re_emit/gauge_phosphorescent_light_30</blue-prop>
+            <factor>0.4</factor>
         </emission>
     </animation>
 

@@ -419,17 +419,17 @@
             <green>0.45</green>
             <blue>0.4</blue>
         </ambient>
-        <emission>
-            <red>0.35</red>
-            <green>0.05</green>
-            <blue>0.0</blue>
-            <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
-        </emission>
         <specular>
-            <red>0.7</red>
-            <green>0.7</green>
-            <blue>0.7</blue>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
         </specular>
+        <emission>
+            <red-prop>sim/G91/re_emit/gauge_red_40_phosphorescent_light</red-prop>
+            <green-prop>sim/G91/re_emit/gauge_phosphorescent_light_50</green-prop>
+            <blue-prop>sim/G91/re_emit/gauge_phosphorescent_light_30</blue-prop>
+            <factor>0.6</factor>
+        </emission>
     </animation>
     
     <animation> 
@@ -441,17 +441,17 @@
             <green>0.45</green>
             <blue>0.4</blue>
         </ambient>
-        <emission>
-            <red>0.45</red>
-            <green>0.10</green>
-            <blue>0.0</blue>
-            <factor-prop>fdm/jsbsim/systems/gauges/PHI/program/gauge_phosphorescent_light-on-caddy</factor-prop>
-        </emission>
         <specular>
             <red>0.7</red>
             <green>0.7</green>
             <blue>0.7</blue>
         </specular>
+        <emission>
+            <red-prop>sim/G91/re_emit/gauge_red_40_phosphorescent_light</red-prop>
+            <green-prop>sim/G91/re_emit/gauge_phosphorescent_light_50</green-prop>
+            <blue-prop>sim/G91/re_emit/gauge_phosphorescent_light_30</blue-prop>
+            <factor>0.6</factor>
+        </emission>
     </animation>
     
     <animation> 
@@ -467,17 +467,17 @@
             <green>0.8</green>
             <blue>0.7</blue>
         </ambient>
-        <emission>
-            <red>0.30</red>
-            <green>0.08</green>
-            <blue>0.0</blue>
-            <factor-prop>fdm/jsbsim/systems/gauges/PHI/program/gauge_phosphorescent_light-on-caddy</factor-prop>
-        </emission>
         <specular>
             <red>0.7</red>
             <green>0.7</green>
             <blue>0.7</blue>
         </specular>
+        <emission>
+            <red-prop>sim/G91/re_emit/gauge_red_40_phosphorescent_light</red-prop>
+            <green-prop>sim/G91/re_emit/gauge_phosphorescent_light_50</green-prop>
+            <blue-prop>sim/G91/re_emit/gauge_phosphorescent_light_30</blue-prop>
+            <factor>0.3</factor>
+        </emission>
     </animation>
     
     <animation> 

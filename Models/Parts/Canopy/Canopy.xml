@@ -248,10 +248,10 @@
             <blue>0.1</blue>
         </ambient>
         <emission>
-            <red>0.01</red>
-            <green>0.05</green>
-            <blue>0.01</blue>
-            <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
+            <red>0.005</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
     

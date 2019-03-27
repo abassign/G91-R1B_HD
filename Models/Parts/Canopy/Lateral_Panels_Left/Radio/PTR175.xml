@@ -309,10 +309,10 @@
             <blue>0.01</blue>
         </ambient>
         <emission>
-            <red>0.07</red>
-            <green>0.0</green>
-            <blue>0.0</blue>
-            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+            <red-prop>sim/G91/re_emit/gauge_red_40_phosphorescent_light</red-prop>
+            <green-prop>sim/G91/re_emit/gauge_phosphorescent_light_50</green-prop>
+            <blue-prop>sim/G91/re_emit/gauge_phosphorescent_light_30</blue-prop>
+            <factor>0.1</factor>
         </emission>
     </animation>
     
@@ -335,10 +335,10 @@
             <blue>0.6</blue>
         </ambient>
         <emission>
-            <red>0.5</red>
-            <green>0.15</green>
-            <blue>0.0</blue>
-            <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
+            <red-prop>sim/G91/re_emit/gauge_red_40_phosphorescent_light</red-prop>
+            <green-prop>sim/G91/re_emit/gauge_phosphorescent_light_50</green-prop>
+            <blue-prop>sim/G91/re_emit/gauge_phosphorescent_light_30</blue-prop>
+            <factor>0.4</factor>
         </emission>
     </animation>
     
@@ -358,10 +358,10 @@
             <blue>0.6</blue>
         </ambient>
         <emission>
-            <red>0.4</red>
-            <green>0.1</green>
-            <blue>0.0</blue>
-            <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
+            <red-prop>sim/G91/re_emit/gauge_red_40_phosphorescent_light</red-prop>
+            <green-prop>sim/G91/re_emit/gauge_phosphorescent_light_50</green-prop>
+            <blue-prop>sim/G91/re_emit/gauge_phosphorescent_light_30</blue-prop>
+            <factor>0.5</factor>
         </emission>
     </animation>
 
@@ -379,17 +379,42 @@
             <blue>0.2</blue>
         </ambient>
         <emission>
-            <red>0.4</red>
-            <green>0.12</green>
-            <blue>0.0</blue>
-            <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
+            <red-prop>sim/G91/re_emit/gauge_red_40_phosphorescent_light</red-prop>
+            <green-prop>sim/G91/re_emit/gauge_phosphorescent_light_50</green-prop>
+            <blue-prop>sim/G91/re_emit/gauge_phosphorescent_light_30</blue-prop>
+            <factor>0.4</factor>
         </emission>
     </animation>
     
     <animation> 
         <type>material</type>
+        <object-name>UHF A (Meshed)</object-name>
         <object-name>MANUAL A (Meshed)</object-name>
+        <object-name>Selector A (Meshed)</object-name>
+        <diffuse>
+            <red>0.7</red>
+            <green>0.7</green>
+            <blue>0.7</blue>
+        </diffuse>
+        <ambient>
+            <red>1.0</red>
+            <green>0.9</green>
+            <blue>0.6</blue>
+        </ambient>
+        <emission>
+            <red-prop>sim/G91/re_emit/gauge_red_40_phosphorescent_light</red-prop>
+            <green-prop>sim/G91/re_emit/gauge_phosphorescent_light_50</green-prop>
+            <blue-prop>sim/G91/re_emit/gauge_phosphorescent_light_30</blue-prop>
+            <factor>0.4</factor>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
         <object-name>chan selector A (Meshed)</object-name>
+        <object-name>VOL A (Meshed)</object-name>
+        <object-name>CHAN A (Meshed)</object-name>
+        <object-name>CHAN Arrow A (Meshed)</object-name>
         <object-name>knob_freq A (Meshed)</object-name>
         <object-name>knob_function_A (Meshed)</object-name>
         <object-name>vol_knob_A (Meshed)</object-name>
@@ -404,35 +429,10 @@
             <blue>0.6</blue>
         </ambient>
         <emission>
-            <red>0.3</red>
-            <green>0.1</green>
-            <blue>0.0</blue>
-            <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
-        </emission>
-    </animation>
-    
-    <animation> 
-        <type>material</type>
-        <object-name>Selector A (Meshed)</object-name>
-        <object-name>VOL A (Meshed)</object-name>
-        <object-name>CHAN A (Meshed)</object-name>
-        <object-name>CHAN Arrow A (Meshed)</object-name>
-        <object-name>UHF A (Meshed)</object-name>
-        <diffuse>
-            <red>0.7</red>
-            <green>0.7</green>
-            <blue>0.7</blue>
-        </diffuse>
-        <ambient>
-            <red>1.0</red>
-            <green>0.9</green>
-            <blue>0.6</blue>
-        </ambient>
-        <emission>
-            <red>0.25</red>
-            <green>0.09</green>
-            <blue>0.0</blue>
-            <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
+            <red-prop>sim/G91/re_emit/gauge_red_40_phosphorescent_light</red-prop>
+            <green-prop>sim/G91/re_emit/gauge_phosphorescent_light_50</green-prop>
+            <blue-prop>sim/G91/re_emit/gauge_phosphorescent_light_30</blue-prop>
+            <factor>0.5</factor>
         </emission>
     </animation>
     

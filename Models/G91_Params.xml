@@ -193,7 +193,7 @@
     <lights>
         <gauges>
             <green_type_a type="float">0.8</green_type_a>
-            <green_type_b type="float">2.5</green_type_b>
+            <green_type_b type="float">3.0</green_type_b>
             <red_type_a type="float">0.8</red_type_a>
             <red_type_b type="float">1.5</red_type_b>
         </gauges>
