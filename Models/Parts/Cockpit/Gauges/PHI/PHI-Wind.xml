@@ -78,7 +78,7 @@
             <blue>0.1</blue>
         </ambient>
         <emission>
-            <red>0.02</red>
+            <red>0.04</red>
             <green>0.0</green>
             <blue>0.0</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
@@ -101,7 +101,7 @@
             <blue>0.2</blue>
         </ambient>
         <emission>
-            <red>0.04</red>
+            <red>0.05</red>
             <green>0.0</green>
             <blue>0.0</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
@@ -122,7 +122,7 @@
             <blue>0.1</blue>
         </ambient>
         <emission>
-            <red>0.015</red>
+            <red>0.035</red>
             <green>0.0</green>
             <blue>0.0</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>

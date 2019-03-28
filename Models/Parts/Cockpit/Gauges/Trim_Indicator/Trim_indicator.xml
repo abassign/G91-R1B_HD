@@ -66,7 +66,7 @@
             <blue>0.1</blue>
         </ambient>
         <emission>
-            <red>0.02</red>
+            <red>0.025</red>
             <green>0.0</green>
             <blue>0.0</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
@@ -87,7 +87,7 @@
             <blue>0.1</blue>
         </ambient>
         <emission>
-            <red>0.025</red>
+            <red>0.035</red>
             <green>0.0</green>
             <blue>0.0</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
@@ -108,7 +108,7 @@
             <blue>0.1</blue>
         </ambient>
         <emission>
-            <red>0.015</red>
+            <red>0.02</red>
             <green>0.0</green>
             <blue>0.0</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
@@ -129,7 +129,7 @@
             <blue>0.2</blue>
         </ambient>
         <emission>
-            <red>0.015</red>
+            <red>0.04</red>
             <green>0.0</green>
             <blue>0.0</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
@@ -156,7 +156,7 @@
             <red-prop>sim/G91/re_emit/gauge_red_type_b_phosphorescent_light</red-prop>
             <green-prop>sim/G91/re_emit/gauge_phosphorescent_light_type_b</green-prop>
             <blue>0.0</blue>
-            <factor>0.10</factor>
+            <factor>0.1</factor>
         </emission>
     </animation>
     
@@ -198,7 +198,7 @@
             <red-prop>sim/G91/re_emit/gauge_red_type_b_phosphorescent_light</red-prop>
             <green-prop>sim/G91/re_emit/gauge_phosphorescent_light_type_b</green-prop>
             <blue>0.0</blue>
-            <factor>0.12</factor>
+            <factor>0.10</factor>
         </emission>
     </animation>
     
@@ -219,7 +219,7 @@
             <red-prop>sim/G91/re_emit/gauge_red_type_b_phosphorescent_light</red-prop>
             <green-prop>sim/G91/re_emit/gauge_phosphorescent_light_type_b</green-prop>
             <blue>0.0</blue>
-            <factor>0.10</factor>
+            <factor>0.08</factor>
         </emission>
     </animation>
     

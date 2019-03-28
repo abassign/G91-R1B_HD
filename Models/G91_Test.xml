@@ -18,7 +18,7 @@
             </equals>
         </condition>
     </model>
-    
+
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Cockpit.xml</path>
         <condition>
@@ -28,8 +28,6 @@
             </equals>
         </condition>
     </model>
-    
-    <!--
     
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/LandingGearFrontal/LandingGearFrontal.xml</path>

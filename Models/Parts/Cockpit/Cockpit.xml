@@ -640,6 +640,28 @@
         </offsets>
     </model>
     
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/TACAN_arn_21/TACAN_arn_21.xml</path>
+        <offsets>
+            <x-m>0.007</x-m>
+            <y-m>0.0</y-m>
+            <z-m>-0.051</z-m>
+            <pitch-deg>0.0</pitch-deg>
+        </offsets>
+    </model>
+
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/PHI/PHI Doppler.xml</path>
+        <offsets>
+            <x-m>0.02</x-m>
+            <y-m>0.07325</y-m>
+            <z-m>-0.220</z-m>
+            <roll-deg>0.0</roll-deg>
+            <pitch-deg>90.0</pitch-deg>
+            <heading-deg>0.0</heading-deg>
+        </offsets>
+    </model>
+    
     <!-- Switch and light -->
     
     <model>
