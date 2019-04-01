@@ -1,0 +1,515 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+    
+    <path>Collins_C_866_XN10.ac</path>
+    
+    <effect>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
+        <object-name>cover (Meshed)</object-name>
+        <object-name>frontal support A (Meshed)</object-name>
+        <object-name>frontal support B (Meshed)</object-name>
+        <object-name>frontal support back (Meshed)</object-name>
+        <object-name>frontal screew (Meshed)</object-name>
+        <object-name>frontal screew ring (Meshed)</object-name>  
+        <object-name>lamp cover (Meshed)</object-name>
+        <object-name>screew (Meshed)</object-name>
+        <object-name>screew ring (Meshed)</object-name>
+        <object-name>selector black (Meshed)</object-name>
+        <object-name>selector cover (Meshed)</object-name>
+        <object-name>selector lever (Meshed)</object-name>
+        <object-name>selector unit A (Meshed)</object-name>
+        <object-name>selector unit B (Meshed)</object-name>
+        <object-name>selector dec A (Meshed)</object-name>
+        <object-name>selector dec B (Meshed)</object-name>
+        <object-name>switch A (Meshed)</object-name>
+        <object-name>switch B (Meshed)</object-name>
+        <object-name>volume A (Meshed)</object-name>
+        <object-name>volume B (Meshed)</object-name>
+    </effect>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>cover (Meshed)</object-name>
+        <diffuse>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.2</blue>
+        </diffuse>
+        <ambient>
+            <red>0.6</red>
+            <green>0.6</green>
+            <blue>0.6</blue>
+        </ambient>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>frontal support B (Meshed)</object-name>
+        <diffuse>
+            <red>0.28</red>
+            <green>0.28</green>
+            <blue>0.28</blue>
+        </diffuse>
+        <ambient>
+            <red>0.25</red>
+            <green>0.25</green>
+            <blue>0.25</blue>
+        </ambient>
+        <specular>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.3</blue>
+        </specular>
+        <emission>
+            <red>0.06</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>frontal support A (Meshed)</object-name>
+        <diffuse>
+            <red>0.28</red>
+            <green>0.28</green>
+            <blue>0.28</blue>
+        </diffuse>
+        <diffuse>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
+        </diffuse>
+        <ambient>
+            <red>1.0</red>
+            <green>0.9</green>
+            <blue>0.6</blue>
+        </ambient>
+        <emission>
+            <red-prop>sim/G91/re_emit/gauge_red_40_phosphorescent_light</red-prop>
+            <green-prop>sim/G91/re_emit/gauge_phosphorescent_light_50</green-prop>
+            <blue-prop>sim/G91/re_emit/gauge_phosphorescent_light_30</blue-prop>
+            <factor>0.5</factor>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>frontal support back (Meshed)</object-name>
+        <object-name>lamp cover (Meshed)</object-name>
+        <object-name>selector black (Meshed)</object-name>
+        <diffuse>
+            <red>0.28</red>
+            <green>0.28</green>
+            <blue>0.28</blue>
+        </diffuse>
+        <ambient>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
+        </ambient>
+        <specular>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </specular>
+        <emission>
+            <red>0.06</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>frontal screew (Meshed)</object-name>
+        <diffuse>
+            <red>0.28</red>
+            <green>0.28</green>
+            <blue>0.28</blue>
+        </diffuse>
+        <ambient>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
+        </ambient>
+        <specular>
+            <red>0.9</red>
+            <green>0.9</green>
+            <blue>0.9</blue>
+        </specular>
+        <emission>
+            <red>0.09</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>frontal screew ring (Meshed)</object-name>
+        <diffuse>
+            <red>0.28</red>
+            <green>0.28</green>
+            <blue>0.28</blue>
+        </diffuse>
+        <ambient>
+            <red>0.4</red>
+            <green>0.4</green>
+            <blue>0.4</blue>
+        </ambient>
+        <specular>
+            <red>0.9</red>
+            <green>0.9</green>
+            <blue>0.9</blue>
+        </specular>
+        <emission>
+            <red>0.08</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>screew (Meshed)</object-name>
+        <diffuse>
+            <red>0.28</red>
+            <green>0.28</green>
+            <blue>0.28</blue>
+        </diffuse>
+        <ambient>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
+        </ambient>
+        <emission>
+            <red>0.06</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>screew ring (Meshed)</object-name>
+        <diffuse>
+            <red>0.28</red>
+            <green>0.28</green>
+            <blue>0.28</blue>
+        </diffuse>
+        <ambient>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.3</blue>
+        </ambient>
+        <specular>
+            <red>0.9</red>
+            <green>0.9</green>
+            <blue>0.9</blue>
+        </specular>
+        <emission>
+            <red>0.06</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>selector cover (Meshed)</object-name>
+        <diffuse>
+            <red>0.28</red>
+            <green>0.28</green>
+            <blue>0.28</blue>
+        </diffuse>
+        <ambient>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.3</blue>
+        </ambient>
+        <emission>
+            <red>0.08</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>selector lever (Meshed)</object-name>
+        <diffuse>
+            <red>0.28</red>
+            <green>0.28</green>
+            <blue>0.28</blue>
+        </diffuse>
+        <ambient>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
+        </ambient>
+        <specular>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </specular>
+        <emission>
+            <red>0.06</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>selector unit B (Meshed)</object-name>
+        <diffuse>
+            <red>0.28</red>
+            <green>0.28</green>
+            <blue>0.28</blue>
+        </diffuse>
+        <ambient>
+            <red>0.25</red>
+            <green>0.25</green>
+            <blue>0.25</blue>
+        </ambient>
+        <emission>
+            <red>0.04</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>selector dec B (Meshed)</object-name>
+        <diffuse>
+            <red>0.28</red>
+            <green>0.28</green>
+            <blue>0.28</blue>
+        </diffuse>
+        <ambient>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.3</blue>
+        </ambient>
+        <emission>
+            <red>0.05</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>selector unit A (Meshed)</object-name>
+        <diffuse>
+            <red>0.28</red>
+            <green>0.28</green>
+            <blue>0.28</blue>
+        </diffuse>
+        <diffuse>
+            <red>0.35</red>
+            <green>0.35</green>
+            <blue>0.35</blue>
+        </diffuse>
+        <ambient>
+            <red>1.0</red>
+            <green>0.9</green>
+            <blue>0.6</blue>
+        </ambient>
+        <emission>
+            <red-prop>sim/G91/re_emit/gauge_red_40_phosphorescent_light</red-prop>
+            <green-prop>sim/G91/re_emit/gauge_phosphorescent_light_50</green-prop>
+            <blue-prop>sim/G91/re_emit/gauge_phosphorescent_light_30</blue-prop>
+            <factor>0.8</factor>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>selector dec A (Meshed)</object-name>
+        <diffuse>
+            <red>0.28</red>
+            <green>0.28</green>
+            <blue>0.28</blue>
+        </diffuse>
+        <diffuse>
+            <red>0.45</red>
+            <green>0.45</green>
+            <blue>0.45</blue>
+        </diffuse>
+        <ambient>
+            <red>1.0</red>
+            <green>0.9</green>
+            <blue>0.6</blue>
+        </ambient>
+        <emission>
+            <red-prop>sim/G91/re_emit/gauge_red_40_phosphorescent_light</red-prop>
+            <green-prop>sim/G91/re_emit/gauge_phosphorescent_light_50</green-prop>
+            <blue-prop>sim/G91/re_emit/gauge_phosphorescent_light_30</blue-prop>
+            <factor>0.7</factor>
+        </emission>
+    </animation>
+        
+    <animation> 
+        <type>material</type>
+        <object-name>switch A (Meshed)</object-name>
+        <object-name>volume A (Meshed)</object-name>
+        <diffuse>
+            <red>0.28</red>
+            <green>0.28</green>
+            <blue>0.28</blue>
+        </diffuse>
+        <diffuse>
+            <red>0.4</red>
+            <green>0.4</green>
+            <blue>0.4</blue>
+        </diffuse>
+        <ambient>
+            <red>1.0</red>
+            <green>0.9</green>
+            <blue>0.6</blue>
+        </ambient>
+        <emission>
+            <red-prop>sim/G91/re_emit/gauge_red_40_phosphorescent_light</red-prop>
+            <green-prop>sim/G91/re_emit/gauge_phosphorescent_light_50</green-prop>
+            <blue-prop>sim/G91/re_emit/gauge_phosphorescent_light_30</blue-prop>
+            <factor>0.3</factor>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>switch B (Meshed)</object-name>
+        <diffuse>
+            <red>0.28</red>
+            <green>0.28</green>
+            <blue>0.28</blue>
+        </diffuse>
+        <ambient>
+            <red>0.25</red>
+            <green>0.25</green>
+            <blue>0.25</blue>
+        </ambient>
+        <specular>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </specular>
+        <emission>
+            <red>0.065</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>volume B (Meshed)</object-name>
+        <diffuse>
+            <red>0.28</red>
+            <green>0.28</green>
+            <blue>0.28</blue>
+        </diffuse>
+        <ambient>
+            <red>0.15</red>
+            <green>0.15</green>
+            <blue>0.15</blue>
+        </ambient>
+        <specular>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
+        </specular>
+        <emission>
+            <red>0.06</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation>
+        <type>knob</type>
+        <object-name>switch B (Meshed)</object-name>
+        <action>
+            <button>0</button>
+            <binding>
+                <command>property-adjust</command>
+                <property>fdm/jsbsim/systems/gauges/radio/TACAN-ARN-21/switch-turn</property>
+                <factor>1.0</factor>
+                <min>0</min>
+                <max>3</max>                
+                <wrap>false</wrap>
+            </binding>
+        </action>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>switch B (Meshed)</object-name>
+        <object-name>switch A (Meshed)</object-name>
+        <property>fdm/jsbsim/systems/gauges/radio/TACAN-ARN-21/switch-turn</property>
+        <factor>30</factor>
+        <offset-deg>-135</offset-deg>
+        <center>
+            <x-m>0.005</x-m>
+            <y-m>0.042</y-m>
+            <z-m>0.017</z-m>
+        </center>
+        <axis>
+            <x>-1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
+    
+    <animation>
+        <type>knob</type>
+        <object-name>volume B (Meshed)</object-name>
+        <action>
+            <button>0</button>
+            <binding>
+                <command>property-adjust</command>
+                <property>fdm/jsbsim/systems/gauges/radio/TACAN-ARN-21/vol-set</property>
+                <factor>0.1</factor>
+                <min>0</min>
+                <max>1</max>                
+                <wrap>false</wrap>
+            </binding>
+        </action>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>volume B (Meshed)</object-name>
+        <object-name>volume A (Meshed)</object-name>
+        <property>fdm/jsbsim/systems/gauges/radio/TACAN-ARN-21/vol-set</property>
+        <factor>270</factor>
+        <offset-deg>-45</offset-deg>
+        <center>
+            <x-m>0.005</x-m>
+            <y-m>0.042</y-m>
+            <z-m>-0.019</z-m>
+        </center>
+        <axis>
+            <x>-1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
+        
+</PropertyList>

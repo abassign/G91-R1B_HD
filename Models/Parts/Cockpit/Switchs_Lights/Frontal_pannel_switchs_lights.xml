@@ -184,7 +184,7 @@
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Switchs_Lights/push_button_emergency_release_loads.xml</path>
         <offsets>
             <x-m>0.011</x-m>
-            <y-m>-0.090</y-m>
+            <y-m>-0.088</y-m>
             <z-m>-0.049</z-m>
             <pitch-deg>0.0</pitch-deg>
         </offsets>

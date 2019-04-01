@@ -328,10 +328,6 @@
     </model>
     
     <model>
-        <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Components/Panels/Panels_central.xml</path>
-    </model>
-    
-    <model>
         <path>Canopy_Glass.xml</path>
     </model>
     

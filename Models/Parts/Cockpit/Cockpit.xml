@@ -321,14 +321,14 @@
             <blue>0.0</blue>
         </diffuse>
         <ambient>
-            <red>0.3</red>
-            <green>0.3</green>
-            <blue>0.3</blue>
+            <red>0.4</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
         </ambient>
         <specular>
             <red>0.2</red>
-            <green>0.2</green>
-            <blue>0.2</blue>
+            <green>0.0</green>
+            <blue>0.0</blue>
         </specular>
         <emission>
             <red>0.15</red>
@@ -604,7 +604,7 @@
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/Flap_Extended/Flap_Extended.xml</path>
         <offsets>
             <x-m>0.011</x-m>
-            <y-m>-0.125</y-m>
+            <y-m>-0.123</y-m>
             <z-m>0.002</z-m>
             <pitch-deg>0.0</pitch-deg>
         </offsets>
@@ -614,7 +614,7 @@
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/Airbrake_Extended/Airbrake_Extended.xml</path>
         <offsets>
             <x-m>0.011</x-m>
-            <y-m>-0.125</y-m>
+            <y-m>-0.123</y-m>
             <z-m>-0.040</z-m>
             <pitch-deg>0.0</pitch-deg>
         </offsets>
@@ -641,11 +641,31 @@
     </model>
     
     <model>
-        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/TACAN_arn_21/TACAN_arn_21.xml</path>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/TACAN_arn_21/Collins_331_C4.xml</path>
         <offsets>
-            <x-m>0.007</x-m>
+            <x-m>-0.003</x-m>
             <y-m>0.0</y-m>
-            <z-m>-0.051</z-m>
+            <z-m>-0.053</z-m>
+            <pitch-deg>0.0</pitch-deg>
+        </offsets>
+    </model>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/TACAN_arn_21/Collins_C_866_XN10.xml</path>
+        <offsets>
+            <x-m>0.006</x-m>
+            <y-m>0.0</y-m>
+            <z-m>-0.140</z-m>
+            <pitch-deg>0.0</pitch-deg>
+        </offsets>
+    </model>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/frontal_support_2M.xml</path>
+        <offsets>
+            <x-m>0.006</x-m>
+            <y-m>0.0</y-m>
+            <z-m>-0.210</z-m>
             <pitch-deg>0.0</pitch-deg>
         </offsets>
     </model>
@@ -653,9 +673,9 @@
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/PHI/PHI Doppler.xml</path>
         <offsets>
-            <x-m>0.02</x-m>
+            <x-m>0.008</x-m>
             <y-m>0.07325</y-m>
-            <z-m>-0.220</z-m>
+            <z-m>-0.2445</z-m>
             <roll-deg>0.0</roll-deg>
             <pitch-deg>90.0</pitch-deg>
             <heading-deg>0.0</heading-deg>

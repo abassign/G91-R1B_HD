@@ -65,6 +65,7 @@
     <system file="G91-servo-wings"/>
     <system file="G91-gauges"/>
     <system file="G91-warning-lights"/>
+    <system file="TACAN-ARN-21"/>
     
     <!-- for testing -->
     <system file="PHI"/>

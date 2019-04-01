@@ -1,6 +1,8 @@
 [Dolphin]
 HeaderColumnWidths=476,177,208
 PreviewsShown=true
-Timestamp=2019,3,27,21,23,39
+SortOrder=1
+SortRole=modificationtime
+Timestamp=2019,3,28,7,35,17
 Version=4
 ViewMode=1
