@@ -24,10 +24,10 @@
     <property value="0.0">systems/gauges/radio/TACAN-ARN-21/selected-channel-Y</property>
     <property value="0.0">systems/gauges/radio/TACAN-ARN-21/selected-channel-x</property>
     <property value="0.0">systems/gauges/radio/TACAN-ARN-21/bearing</property>
-    <property value="0.0">systems/gauges/radio/TACAN-ARN-21/distance-999-9</property>
-    <property value="0.0">systems/gauges/radio/TACAN-ARN-21/distance-99-9</property>
-    <property value="0.0">systems/gauges/radio/TACAN-ARN-21/distance-9-9</property>
-    <property value="0.0">systems/gauges/radio/TACAN-ARN-21/distance-9</property>  
+    <property value="0.0">systems/gauges/radio/TACAN-ARN-21/distance-000-0</property>
+    <property value="0.0">systems/gauges/radio/TACAN-ARN-21/distance-00-0</property>
+    <property value="0.0">systems/gauges/radio/TACAN-ARN-21/distance-0-0</property>
+    <property value="0.0">systems/gauges/radio/TACAN-ARN-21/distance-0</property>  
     
     <channel name="systems gauges radio TACAN-ARN-21 electric" execrate="32">
         
@@ -106,21 +106,21 @@
                 systems/gauges/radio/TACAN-ARN-21/switch-turn == 3
             </test>
         </switch>
-       
+        
         <switch name="systems/gauges/radio/TACAN-ARN-21/selected-channel-Y">
             <default value="0"/>
             <test logic="AND" value="1">
                 systems/gauges/radio/TACAN-ARN-21/sw-AA == 1
             </test>
         </switch>
-
+        
         <switch name="systems/gauges/radio/TACAN-ARN-21/selected-channel-X">
             <default value="0"/>
             <test logic="AND" value="1">
                 systems/gauges/radio/TACAN-ARN-21/sw-TR == 1
             </test>
         </switch>
-
+        
         <switch name="systems/gauges/radio/TACAN-ARN-21/isServiceable">
             <default value="0"/>
             <test logic="AND" value="1">
@@ -145,7 +145,7 @@
                 systems/gauges/radio/TACAN-ARN-21/isServiceable == 1
             </test>
         </switch>
-
+        
         <fcs_function name="systems/gauges/radio/TACAN-ARN-21/freq-unit">
             <function>
                 <mod>
@@ -179,7 +179,8 @@
         </fcs_function>
         
     </channel>
-
+    
+    
     <channel name="systems gauges radio TACAN-ARN-21 bearing-heading" execrate="8">
         
         <linear_actuator name="systems/gauges/radio/TACAN-ARN-21/indicated-bearing-deg-la">
@@ -198,10 +199,13 @@
         
         <fcs_function name="systems/gauges/radio/TACAN-ARN-21/indicated-heading-deg-calc">
             <function>
-                <difference>
-                    <p>/instrumentation/tacan/indicated-bearing-true-deg</p>
-                    <p>systems/gauges/compass-flux-gate/indicated-bearing-deg</p>
-                </difference>
+                <sum>
+                    <difference>
+                        <p>systems/gauges/compass-flux-gate/indicated-bearing-deg</p>
+                        <p>/instrumentation/tacan/indicated-bearing-true-deg</p>
+                    </difference>
+                    <v>180.0</v>
+                </sum>
             </function>
         </fcs_function>
         
@@ -221,10 +225,89 @@
         
     </channel>
     
+    
     <channel name="systems gauges radio TACAN-ARN-21 distance" execrate="8">
-        <!--
-        /instrumentation/tacan/indicated-distance-nm
-        -->
+        
+        <fcs_function name="systems/gauges/radio/TACAN-ARN-21/distance-0-calc">
+            <function>
+                <integer>
+                    <product>
+                        <difference>
+                            <p>/instrumentation/tacan/indicated-distance-nm</p>
+                            <integer>
+                                <p>/instrumentation/tacan/indicated-distance-nm</p>
+                            </integer>
+                        </difference>
+                        <v>100.0</v>
+                    </product>
+                </integer>
+            </function>
+        </fcs_function>
+        
+        <linear_actuator name="systems/gauges/radio/TACAN-ARN-21/distance-0">
+            <input>systems/gauges/radio/TACAN-ARN-21/distance-0-calc</input>
+            <lag>4.0</lag>
+            <module>100</module>
+        </linear_actuator>
+        
+        <fcs_function name="systems/gauges/radio/TACAN-ARN-21/distance-0-0-calc">
+            <function>
+                <integer>
+                    <mod>
+                        <p>/instrumentation/tacan/indicated-distance-nm</p>
+                        <v>10.0</v>
+                    </mod>
+                </integer>
+            </function>
+        </fcs_function>
+        
+        <linear_actuator name="systems/gauges/radio/TACAN-ARN-21/distance-0-0">
+            <input>systems/gauges/radio/TACAN-ARN-21/distance-0-0-calc</input>
+            <lag>4.0</lag>
+            <module>10</module>
+        </linear_actuator>
+        
+        <fcs_function name="systems/gauges/radio/TACAN-ARN-21/distance-00-0-calc">
+            <function>
+                <integer>
+                    <mod>
+                        <quotient>
+                            <p>/instrumentation/tacan/indicated-distance-nm</p>
+                            <v>10.0</v>
+                        </quotient>
+                        <v>10.0</v>
+                    </mod>
+                </integer>
+            </function>
+        </fcs_function>
+        
+        <linear_actuator name="systems/gauges/radio/TACAN-ARN-21/distance-00-0">
+            <input>systems/gauges/radio/TACAN-ARN-21/distance-00-0-calc</input>
+            <lag>4.0</lag>
+            <module>10</module>
+        </linear_actuator>
+        
+        <fcs_function name="systems/gauges/radio/TACAN-ARN-21/distance-000-0-calc">
+            <function>
+                <integer>
+                    <mod>
+                        <quotient>
+                            <p>/instrumentation/tacan/indicated-distance-nm</p>
+                            <v>100.0</v>
+                        </quotient>
+                        <v>10.0</v>
+                    </mod>
+                </integer>
+            </function>
+        </fcs_function>
+        
+        <linear_actuator name="systems/gauges/radio/TACAN-ARN-21/distance-000-0">
+            <input>systems/gauges/radio/TACAN-ARN-21/distance-000-0-calc</input>
+            <lag>4.0</lag>
+            <module>10</module>
+        </linear_actuator>
+        
     </channel>
-
+    
+    
 </system>

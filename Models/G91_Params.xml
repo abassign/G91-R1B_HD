@@ -223,6 +223,12 @@
          <false type="int">0</false>
     </aux>
     
+    <parts>
+        <cloche>
+            <show type="int">1</show>
+        </cloche>
+    </parts>
+    
 </PropertyList>
 
 

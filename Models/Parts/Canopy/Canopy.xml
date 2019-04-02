@@ -418,6 +418,12 @@
             <pitch-deg>0.0</pitch-deg>
             <heading-deg>0.0</heading-deg>
         </offsets>
+        <condition>
+            <equals>
+                <property>sim/G91/parts/cloche/show</property>
+                <value>1</value>
+            </equals>
+        </condition>
     </model>
     
 </PropertyList>
