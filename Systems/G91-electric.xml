@@ -55,6 +55,8 @@ Description: G91R4 Electric system from "Manuale di pilotaggio (p.56)
     <property value="1">systems/electric/bus[1]/gyrocompass/fuse</property>
     <property value="1">systems/electric/bus[1]/gyrocompass/sw</property>
     <property value="1">systems/electric/bus[1]/gyrocompass/I</property>
+    <property value="1">systems/electric/bus[1]/compass-flux-gate/fuse</property>
+    <property value="0">systems/electric/bus[1]/compass-flux-gate/I</property>
     <property value="1">systems/electric/bus[1]/IFF/fuse</property>
     <property value="1">systems/electric/bus[1]/IFF/sw</property>
     <property value="0.0">systems/electric/bus[1]/IFF/I</property>
@@ -180,6 +182,7 @@ Description: G91R4 Electric system from "Manuale di pilotaggio (p.56)
             <input>systems/electric/bus[1]/fuel-level-indicator/I</input>
             <input>systems/electric/bus[1]/fuel-JPTL/I</input>
             <input>systems/electric/bus[1]/drop-tank-press-on/I</input>
+            <input>systems/electric/bus[1]/compass-flux-gate/I</input>
         </summer>
         
         <summer name="systems/electric/bus[2]/I">

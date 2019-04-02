@@ -278,7 +278,7 @@
             <red-prop>sim/G91/re_emit/gauge_red_type_b_phosphorescent_light</red-prop>
             <green-prop>sim/G91/re_emit/gauge_phosphorescent_light_type_b</green-prop>
             <blue>0.0</blue>
-            <factor>0.12</factor>
+            <factor>0.08</factor>
         </emission>
     </animation>
     
@@ -299,7 +299,7 @@
             <red-prop>sim/G91/re_emit/gauge_red_type_b_phosphorescent_light</red-prop>
             <green-prop>sim/G91/re_emit/gauge_phosphorescent_light_type_b</green-prop>
             <blue>0.0</blue>
-            <factor>0.12</factor>
+            <factor>0.05</factor>
         </emission>
     </animation>
     
@@ -465,7 +465,6 @@
         <object-name>nm 0-0 B (Meshed)</object-name>
         <object-name>nm -0 B (Meshed)</object-name>
         <object-name>off A (Meshed)</object-name>
-        <object-name>nm back (Meshed)</object-name>
         <diffuse>
             <red>0.3</red>
             <green>0.3</green>
@@ -487,6 +486,21 @@
             <blue-prop>sim/G91/re_emit/gauge_phosphorescent_light_30</blue-prop>
             <factor>0.05</factor>
         </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>nm back (Meshed)</object-name>
+        <diffuse>
+            <red>0.05</red>
+            <green>0.05</green>
+            <blue>0.05</blue>
+        </diffuse>
+        <ambient>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </ambient>
     </animation>
     
     <animation> 
@@ -519,5 +533,43 @@
             <z-m> 0.0 </z-m>
         </offsets>
     </model>
+
+    <animation>
+        <type>rotate</type>
+        <object-name>arrow 2 A (Meshed)</object-name>
+        <object-name>arrow 2 B (Meshed)</object-name>
+        <object-name>arrow 2 box (Meshed)</object-name>
+        <property>fdm/jsbsim/systems/gauges/radio/TACAN-ARN-21/indicated-bearing-deg</property>
+        <factor>1.0</factor>
+        <offset-deg>0.0</offset-deg>
+        <center>
+            <x-m>0.005</x-m>
+            <y-m>0.0</y-m>
+            <z-m>0.0</z-m>
+        </center>
+        <axis>
+            <x>-1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
     
+    <animation>
+        <type>rotate</type>
+        <object-name>circle gray (Meshed)</object-name>
+        <property>fdm/jsbsim/systems/gauges/compass-flux-gate/indicated-bearing-deg</property>
+        <factor>1.0</factor>
+        <offset-deg>0.0</offset-deg>
+        <center>
+            <x-m>0.005</x-m>
+            <y-m>0.0</y-m>
+            <z-m>0.0</z-m>
+        </center>
+        <axis>
+            <x>-1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
+
 </PropertyList>

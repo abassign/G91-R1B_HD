@@ -65,7 +65,6 @@
     <system file="G91-servo-wings"/>
     <system file="G91-gauges"/>
     <system file="G91-warning-lights"/>
-    <system file="TACAN-ARN-21"/>
     
     <!-- for testing -->
     <system file="PHI"/>
@@ -73,6 +72,8 @@
     
     <!-- apparatus -->
     <system file="ADF-MARCONI-8283"/>
+    <system file="TACAN-ARN-21"/>
+    <system file="compass-flux-gate"/>
     
     <metrics file="Systems/G91-metrics"/>
     <mass_balance file="Systems/G91-mass-balance"/>

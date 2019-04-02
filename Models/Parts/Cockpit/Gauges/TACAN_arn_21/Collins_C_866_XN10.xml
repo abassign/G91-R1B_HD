@@ -88,9 +88,9 @@
             <blue>0.6</blue>
         </ambient>
         <emission>
-            <red-prop>sim/G91/re_emit/gauge_red_40_phosphorescent_light</red-prop>
-            <green-prop>sim/G91/re_emit/gauge_phosphorescent_light_50</green-prop>
-            <blue-prop>sim/G91/re_emit/gauge_phosphorescent_light_30</blue-prop>
+            <red-prop>sim/G91/re_emit/gauge_red_20_phosphorescent_light</red-prop>
+            <green-prop>sim/G91/re_emit/gauge_phosphorescent_light_30</green-prop>
+            <blue-prop>sim/G91/re_emit/gauge_phosphorescent_light_10</blue-prop>
             <factor>0.5</factor>
         </emission>
     </animation>
@@ -330,9 +330,9 @@
             <blue>0.6</blue>
         </ambient>
         <emission>
-            <red-prop>sim/G91/re_emit/gauge_red_40_phosphorescent_light</red-prop>
-            <green-prop>sim/G91/re_emit/gauge_phosphorescent_light_50</green-prop>
-            <blue-prop>sim/G91/re_emit/gauge_phosphorescent_light_30</blue-prop>
+            <red-prop>sim/G91/re_emit/gauge_red_20_phosphorescent_light</red-prop>
+            <green-prop>sim/G91/re_emit/gauge_phosphorescent_light_30</green-prop>
+            <blue-prop>sim/G91/re_emit/gauge_phosphorescent_light_10</blue-prop>
             <factor>0.8</factor>
         </emission>
     </animation>
@@ -356,9 +356,9 @@
             <blue>0.6</blue>
         </ambient>
         <emission>
-            <red-prop>sim/G91/re_emit/gauge_red_40_phosphorescent_light</red-prop>
-            <green-prop>sim/G91/re_emit/gauge_phosphorescent_light_50</green-prop>
-            <blue-prop>sim/G91/re_emit/gauge_phosphorescent_light_30</blue-prop>
+            <red-prop>sim/G91/re_emit/gauge_red_20_phosphorescent_light</red-prop>
+            <green-prop>sim/G91/re_emit/gauge_phosphorescent_light_30</green-prop>
+            <blue-prop>sim/G91/re_emit/gauge_phosphorescent_light_10</blue-prop>
             <factor>0.7</factor>
         </emission>
     </animation>
@@ -383,9 +383,9 @@
             <blue>0.6</blue>
         </ambient>
         <emission>
-            <red-prop>sim/G91/re_emit/gauge_red_40_phosphorescent_light</red-prop>
-            <green-prop>sim/G91/re_emit/gauge_phosphorescent_light_50</green-prop>
-            <blue-prop>sim/G91/re_emit/gauge_phosphorescent_light_30</blue-prop>
+            <red-prop>sim/G91/re_emit/gauge_red_20_phosphorescent_light</red-prop>
+            <green-prop>sim/G91/re_emit/gauge_phosphorescent_light_30</green-prop>
+            <blue-prop>sim/G91/re_emit/gauge_phosphorescent_light_10</blue-prop>
             <factor>0.3</factor>
         </emission>
     </animation>
@@ -399,9 +399,9 @@
             <blue>0.28</blue>
         </diffuse>
         <ambient>
-            <red>0.25</red>
-            <green>0.25</green>
-            <blue>0.25</blue>
+            <red>0.15</red>
+            <green>0.15</green>
+            <blue>0.15</blue>
         </ambient>
         <specular>
             <red>0.8</red>
@@ -507,6 +507,76 @@
         </center>
         <axis>
             <x>-1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
+    
+    <animation>
+        <type>knob</type>
+        <object-name>selector lever (Meshed)</object-name>
+        <action>
+            <button>0</button>
+            <binding>
+                <command>property-adjust</command>
+                <property>fdm/jsbsim/systems/gauges/radio/TACAN-ARN-21/selector-lever</property>
+                <factor>1</factor>
+                <min>0</min>
+                <max>125</max>                
+                <wrap>true</wrap>
+            </binding>
+        </action>
+    </animation>
+
+    <animation>
+        <type>rotate</type>
+        <object-name>selector lever (Meshed)</object-name>
+        <property>fdm/jsbsim/systems/gauges/radio/TACAN-ARN-21/selector-lever</property>
+        <factor>2.857142857</factor>
+        <offset-deg>0.0</offset-deg>
+        <center>
+            <x-m>0.005</x-m>
+            <y-m>-0.025</y-m>
+            <z-m>-0.002</z-m>
+        </center>
+        <axis>
+            <x>-1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>selector unit B (Meshed)</object-name>
+        <property>fdm/jsbsim/systems/gauges/radio/TACAN-ARN-21/freq-unit</property>
+        <factor>36.0</factor>
+        <offset-deg>0.0</offset-deg>
+        <center>
+            <x-m>0.005</x-m>
+            <y-m>-0.025</y-m>
+            <z-m>-0.002</z-m>
+        </center>
+        <axis>
+            <x>1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>selector dec B (Meshed)</object-name>
+        <property>fdm/jsbsim/systems/gauges/radio/TACAN-ARN-21/freq-dec</property>
+        <factor>27.69230769</factor>
+        <offset-deg>0.0</offset-deg>
+        <center>
+            <x-m>0.005</x-m>
+            <y-m>-0.025</y-m>
+            <z-m>-0.002</z-m>
+        </center>
+        <axis>
+            <x>1</x>
             <y>0</y>
             <z>0</z>
         </axis>

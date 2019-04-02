@@ -177,10 +177,11 @@
             <file>Aircraft/G91-R1B_HD/Models/Parts/LandingGearFrontal/NASAL/frontal_gear_lights.nas</file>
             <file>Aircraft/G91-R1B_HD/Models/Parts/Wing/Components/Beacon/Nasal/beacon_lights.nas</file>
             <!-- Gauges -->
-            <file>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Components/Gear_lever/gear_lever.nas</file>
             <file>Aircraft/G91-R1B_HD/Nasal/Gauges/clock.nas</file>
             <file>Aircraft/G91-R1B_HD/Nasal/Gauges/accelerometer.nas</file>
+            <file>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Components/Gear_lever/gear_lever.nas</file>
             <file>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/J8/J8.nas</file>
+            <file>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/TACAN_arn_21/tacan_arn_21.nas</file>
             <file>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Gauges/SFOM_83A/SFOM_83A_01.nas</file>
             <!-- Stores -->
             <file>Aircraft/G91-R1B_HD/Models/Parts/Stores/Configurator.nas</file>
