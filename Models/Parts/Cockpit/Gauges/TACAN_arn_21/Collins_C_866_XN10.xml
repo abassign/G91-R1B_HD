@@ -455,6 +455,11 @@
                 <max>3</max>                
                 <wrap>false</wrap>
             </binding>
+            <binding>
+                <command>property-assign</command>
+                <property>fdm/jsbsim/systems/gauges/radio/TACAN-ARN-21/freq-chan-manual</property>
+                <value>1</value>
+            </binding>
         </action>
     </animation>
     
@@ -524,6 +529,11 @@
                 <min>0</min>
                 <max>125</max>                
                 <wrap>true</wrap>
+            </binding>
+            <binding>
+                <command>property-assign</command>
+                <property>fdm/jsbsim/systems/gauges/radio/TACAN-ARN-21/freq-chan-manual</property>
+                <value>1</value>
             </binding>
         </action>
     </animation>

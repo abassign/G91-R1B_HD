@@ -383,18 +383,6 @@
     <!-- Panels -->
     
     <model>
-        <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Central_Panels/Central_Panels.xml</path>
-        <offsets>
-            <x-m>-3.185</x-m>
-            <y-m>-0.0</y-m>
-            <z-m>0.0</z-m>
-            <roll-deg>0.0</roll-deg>
-            <pitch-deg>82</pitch-deg>
-            <heading-deg>0</heading-deg>
-        </offsets>
-    </model>
-    
-    <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Lateral_Panels_Left/Lateral_Panels_Left.xml</path>
         <offsets>
             <x-m>-3.0</x-m>
@@ -415,6 +403,20 @@
             <roll-deg>30.0</roll-deg>
             <pitch-deg>8.50</pitch-deg>
             <heading-deg>-7</heading-deg>
+        </offsets>
+    </model>
+    
+    <!-- Cloche -->
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Components/Cloche/cloche.xml</path>
+        <offsets>
+            <x-m>-2.9721944</x-m>
+            <y-m>0.0</y-m>
+            <z-m>-0.4782641</z-m>
+            <roll-deg>0.0</roll-deg>
+            <pitch-deg>0.0</pitch-deg>
+            <heading-deg>0.0</heading-deg>
         </offsets>
     </model>
     

@@ -533,12 +533,46 @@
             <z-m> 0.0 </z-m>
         </offsets>
     </model>
+    
+    <animation>
+        <type>translate</type>
+        <object-name>off A (Meshed)</object-name>
+        <object-name>off B (Meshed)</object-name>
+        <property>fdm/jsbsim/systems/gauges/radio/TACAN-ARN-21/in-range-lag</property>
+        <factor>0.011</factor>
+        <offset-m>0.0</offset-m>
+        <axis>
+            <x>0</x>
+            <y>0</y>
+            <z>1</z>
+        </axis>
+    </animation>
 
     <animation>
         <type>rotate</type>
         <object-name>arrow 2 A (Meshed)</object-name>
         <object-name>arrow 2 B (Meshed)</object-name>
         <object-name>arrow 2 box (Meshed)</object-name>
+        <property>fdm/jsbsim/systems/gauges/radio/TACAN-ARN-21/indicated-heading-deg</property>
+        <factor>1.0</factor>
+        <offset-deg>0.0</offset-deg>
+        <center>
+            <x-m>0.005</x-m>
+            <y-m>0.0</y-m>
+            <z-m>0.0</z-m>
+        </center>
+        <axis>
+            <x>-1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>arrow 1 A (Meshed)</object-name>
+        <object-name>arrow 1 B (Meshed)</object-name>
+        <object-name>arrow 1 box (Meshed)</object-name>
         <property>fdm/jsbsim/systems/gauges/radio/TACAN-ARN-21/indicated-bearing-deg</property>
         <factor>1.0</factor>
         <offset-deg>0.0</offset-deg>

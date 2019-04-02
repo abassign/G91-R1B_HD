@@ -3,6 +3,7 @@
 <system name="ADF Marconi 8283">
     
     <property value="0.0">systems/gauges/radio/TACAN-ARN-21/indicated-bearing-deg</property>
+    <property value="0.0">systems/gauges/radio/TACAN-ARN-21/indicated-heading-deg</property>
     <property value="1.0">systems/gauges/radio/TACAN-ARN-21/isNot-TACAN-Active</property>
     <property value="0.0">systems/gauges/radio/TACAN-ARN-21/operative-start-stop</property>
     <property value="0.0">systems/gauges/radio/TACAN-ARN-21/switch-turn</property>
@@ -13,14 +14,20 @@
     <property value="0.0">systems/gauges/radio/TACAN-ARN-21/vol-set</property>
     <property value="0.0">systems/gauges/radio/TACAN-ARN-21/volume</property>
     <property value="0.0">systems/gauges/radio/TACAN-ARN-21/selector-lever</property>
+    <property value="0.0">systems/gauges/radio/TACAN-ARN-21/freq-chan-manual</property>
     <property value="1.0">systems/gauges/radio/TACAN-ARN-21/freq-chan</property>
     <property value="0.0">systems/gauges/radio/TACAN-ARN-21/freq-dec</property>
     <property value="0.0">systems/gauges/radio/TACAN-ARN-21/freq-unit</property>
     <property value="0.0">systems/gauges/radio/TACAN-ARN-21/operative-heating</property>
     <property value="0.0">systems/gauges/radio/TACAN-ARN-21/isServiceable</property>
+    <property value="0.0">systems/gauges/radio/TACAN-ARN-21/isServiceable-lag</property>
     <property value="0.0">systems/gauges/radio/TACAN-ARN-21/selected-channel-Y</property>
     <property value="0.0">systems/gauges/radio/TACAN-ARN-21/selected-channel-x</property>
-    <property value="0.0">systems/gauges/radio/TACAN-ARN-21/bearing</property>    
+    <property value="0.0">systems/gauges/radio/TACAN-ARN-21/bearing</property>
+    <property value="0.0">systems/gauges/radio/TACAN-ARN-21/distance-999-9</property>
+    <property value="0.0">systems/gauges/radio/TACAN-ARN-21/distance-99-9</property>
+    <property value="0.0">systems/gauges/radio/TACAN-ARN-21/distance-9-9</property>
+    <property value="0.0">systems/gauges/radio/TACAN-ARN-21/distance-9</property>  
     
     <channel name="systems gauges radio TACAN-ARN-21 electric" execrate="32">
         
@@ -127,10 +134,15 @@
             </test>
         </switch>
         
+        <lag_filter name="systems/gauges/radio/TACAN-ARN-21/in-range-lag">
+            <input>/instrumentation/tacan/in-range</input>
+            <c1>3.0</c1>
+        </lag_filter>
+        
         <switch name="systems/gauges/radio/TACAN-ARN-21/isNot-TACAN-Active">
             <default value="1"/>
             <test logic="AND" value="0">
-                /instrumentation/tacan/serviceable == 1
+                systems/gauges/radio/TACAN-ARN-21/isServiceable == 1
             </test>
         </switch>
 
@@ -168,10 +180,10 @@
         
     </channel>
 
-    <channel name="systems gauges radio TACAN-ARN-21 signal" execrate="8">
+    <channel name="systems gauges radio TACAN-ARN-21 bearing-heading" execrate="8">
         
         <linear_actuator name="systems/gauges/radio/TACAN-ARN-21/indicated-bearing-deg-la">
-            <input>/instrumentation/tacan/indicated-bearing-true-deg</input>
+            <input>systems/gauges/radio/ADF-Marconi-8283/indicated-bearing-deg</input>
             <module>360</module>
             <reset>systems/gauges/radio/TACAN-ARN-21/isNot-TACAN-Active</reset>
         </linear_actuator>
@@ -179,11 +191,40 @@
         <actuator name="systems/gauges/radio/TACAN-ARN-21/indicated-bearing-deg">
             <input>systems/gauges/radio/TACAN-ARN-21/indicated-bearing-deg-la</input>
             <lag>1.0</lag>
-            <rate_limit> 30.0 </rate_limit>
+            <rate_limit> 90.0 </rate_limit>
             <deadband_width> 0.5 </deadband_width>
             <hysteresis_width> 0.5 </hysteresis_width>
         </actuator>
         
+        <fcs_function name="systems/gauges/radio/TACAN-ARN-21/indicated-heading-deg-calc">
+            <function>
+                <difference>
+                    <p>/instrumentation/tacan/indicated-bearing-true-deg</p>
+                    <p>systems/gauges/compass-flux-gate/indicated-bearing-deg</p>
+                </difference>
+            </function>
+        </fcs_function>
+        
+        <linear_actuator name="systems/gauges/radio/TACAN-ARN-21/indicated-heading-deg-la">
+            <input>systems/gauges/radio/TACAN-ARN-21/indicated-heading-deg-calc</input>
+            <module>360</module>
+            <reset>systems/gauges/radio/TACAN-ARN-21/isNot-TACAN-Active</reset>
+        </linear_actuator>
+        
+        <actuator name="systems/gauges/radio/TACAN-ARN-21/indicated-heading-deg">
+            <input>systems/gauges/radio/TACAN-ARN-21/indicated-heading-deg-la</input>
+            <lag>1.0</lag>
+            <rate_limit> 90.0 </rate_limit>
+            <deadband_width> 0.5 </deadband_width>
+            <hysteresis_width> 0.5 </hysteresis_width>
+        </actuator>
+        
+    </channel>
+    
+    <channel name="systems gauges radio TACAN-ARN-21 distance" execrate="8">
+        <!--
+        /instrumentation/tacan/indicated-distance-nm
+        -->
     </channel>
 
 </system>
