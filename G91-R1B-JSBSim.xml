@@ -7,6 +7,8 @@
     <!--
     Adriano Bassignana (abassign) Aeromatic and integration with Datcom datas
     Necolatis for aerodynamics with Pro version of Datcom+
+    
+    ATTENTION: FGFS Version is 2019.1 and later
     -->
     
     <fileheader>
@@ -67,15 +69,13 @@
     <system file="G91-warning-lights"/>
     
     <!-- for testing -->
-    <system file="PHI-old"/>
-    <!--
-    <system file="radio-PTR175"/>
     <system file="PHI"/>
+    <system file="radio-PTR175"/>
+    
+    <!-- apparatus -->
     <system file="ADF-MARCONI-8283"/>
     <system file="TACAN-ARN-21"/>
-    -->
-    
-    
+    <system file="compass-flux-gate"/>
     
     <metrics file="Systems/G91-metrics"/>
     <mass_balance file="Systems/G91-mass-balance"/>
