@@ -37,8 +37,8 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
         <type>rotate</type>
         <object-name>pin (Meshed)</object-name>
         <property>fdm/jsbsim/systems/starter/fuel-booster-pump-pos</property>
-        <offset-deg>20</offset-deg>
-        <factor>-20</factor>
+        <offset-deg>15</offset-deg>
+        <factor>-30</factor>
         <center>
             <x-m> 0.004</x-m>
             <y-m> 0.0</y-m>

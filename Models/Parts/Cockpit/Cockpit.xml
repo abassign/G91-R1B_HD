@@ -624,7 +624,7 @@
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/Trim_Indicator/Trim_indicator.xml</path>
         <offsets>
             <x-m>0.010</x-m>
-            <y-m>-0.090</y-m>
+            <y-m>-0.088</y-m>
             <z-m>0.0085</z-m>
             <pitch-deg>0.0</pitch-deg>
         </offsets>

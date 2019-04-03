@@ -224,8 +224,8 @@
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Switchs_Lights/sw_hydraulic_emerg.xml</path>
         <offsets>
             <x-m>0.012</x-m>
-            <y-m>0.089</y-m>
-            <z-m>-0.049</z-m>
+            <y-m>0.087</y-m>
+            <z-m>-0.052</z-m>
             <pitch-deg>90.0</pitch-deg>
         </offsets>
     </model>

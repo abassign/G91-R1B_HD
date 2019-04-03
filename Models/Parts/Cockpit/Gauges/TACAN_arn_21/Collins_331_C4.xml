@@ -555,14 +555,14 @@
         <object-name>arrow 2 box (Meshed)</object-name>
         <property>fdm/jsbsim/systems/gauges/radio/TACAN-ARN-21/indicated-heading-deg</property>
         <factor>1.0</factor>
-        <offset-deg>0.0</offset-deg>
+        <offset-deg>180.0</offset-deg>
         <center>
             <x-m>0.005</x-m>
             <y-m>0.0</y-m>
             <z-m>0.0</z-m>
         </center>
         <axis>
-            <x>1</x>
+            <x>-1</x>
             <y>0</y>
             <z>0</z>
         </axis>

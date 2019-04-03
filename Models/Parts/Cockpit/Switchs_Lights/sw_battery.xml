@@ -68,7 +68,7 @@
         <object-name>pin (Meshed)</object-name>
         <property>fdm/jsbsim/systems/manual-switches/cockpit/sw-bus0-bus1-battery-pos</property>
         <offset-deg>0</offset-deg>
-        <factor>-20</factor>
+        <factor>-15</factor>
         <center>
             <x-m> 0.004</x-m>
             <y-m> 0.0</y-m>

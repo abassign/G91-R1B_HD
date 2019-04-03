@@ -26,8 +26,8 @@
         <type>rotate</type>
         <object-name>pin (Meshed)</object-name>
         <property>fdm/jsbsim/systems/manual-switches/cockpit/sw-internal-power-generator</property>
-        <offset-deg>0</offset-deg>
-        <factor>-20</factor>
+        <offset-deg>15</offset-deg>
+        <factor>-30</factor>
         <center>
             <x-m> 0.004</x-m>
             <y-m> 0.0</y-m>

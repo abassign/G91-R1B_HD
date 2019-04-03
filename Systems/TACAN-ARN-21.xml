@@ -200,11 +200,8 @@
         <fcs_function name="systems/gauges/radio/TACAN-ARN-21/indicated-heading-deg-calc">
             <function>
                 <sum>
-                    <difference>
-                        <p>systems/gauges/compass-flux-gate/indicated-bearing-deg</p>
-                        <p>/instrumentation/tacan/indicated-bearing-true-deg</p>
-                    </difference>
-                    <v>180.0</v>
+                    <p>/instrumentation/tacan/indicated-bearing-true-deg</p>
+                    <p>systems/gauges/compass-flux-gate/indicated-bearing-deg</p>
                 </sum>
             </function>
         </fcs_function>
