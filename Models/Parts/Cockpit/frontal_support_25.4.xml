@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+    
+    <path>frontal_support_25.4.ac</path>
+    
+    <!--
+    <effect>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
+        <object-name>frontal support 02 (Meshed)</object-name>
+        <object-name>frontal support back (Meshed)</object-name>
+        <object-name>frontal screew (Meshed)</object-name>
+        <object-name>frontal screew ring (Meshed)</object-name>  
+    </effect>
+    -->
+    
+    <animation> 
+        <type>material</type>
+        <object-name>frontal support 02 (Meshed)</object-name>
+        <diffuse>
+            <red>0.28</red>
+            <green>0.28</green>
+            <blue>0.28</blue>
+        </diffuse>
+        <ambient>
+            <red>0.15</red>
+            <green>0.15</green>
+            <blue>0.15</blue>
+        </ambient>
+        <specular>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.3</blue>
+        </specular>
+        <emission>
+            <red>0.06</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>frontal support back (Meshed)</object-name>
+        <diffuse>
+            <red>0.15</red>
+            <green>0.15</green>
+            <blue>0.15</blue>
+        </diffuse>
+        <ambient>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </ambient>
+        <specular>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </specular>
+        <emission>
+            <red>0.06</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>frontal screew (Meshed)</object-name>
+        <diffuse>
+            <red>0.28</red>
+            <green>0.28</green>
+            <blue>0.28</blue>
+        </diffuse>
+        <ambient>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
+        </ambient>
+        <specular>
+            <red>0.9</red>
+            <green>0.9</green>
+            <blue>0.9</blue>
+        </specular>
+        <emission>
+            <red>0.09</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>frontal screew ring (Meshed)</object-name>
+        <diffuse>
+            <red>0.28</red>
+            <green>0.28</green>
+            <blue>0.28</blue>
+        </diffuse>
+        <ambient>
+            <red>0.4</red>
+            <green>0.4</green>
+            <blue>0.4</blue>
+        </ambient>
+        <specular>
+            <red>0.9</red>
+            <green>0.9</green>
+            <blue>0.9</blue>
+        </specular>
+        <emission>
+            <red>0.08</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+</PropertyList>

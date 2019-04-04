@@ -249,5 +249,46 @@
             <pitch-deg>0.0</pitch-deg>
         </offsets>
     </model>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Switchs_Lights/lg_pylon-left-rack.xml</path>
+        <offsets>
+            <x-m>-0.0053</x-m>
+            <y-m>-0.090</y-m>
+            <z-m>-0.132</z-m>
+            <pitch-deg>0.0</pitch-deg>
+        </offsets>
+    </model>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Switchs_Lights/lg_pylon-right-rack.xml</path>
+        <offsets>
+            <x-m>-0.0053</x-m>
+            <y-m>0.090</y-m>
+            <z-m>-0.132</z-m>
+            <pitch-deg>0.0</pitch-deg>
+        </offsets>
+    </model>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Switchs_Lights/sw_pylon-left-rack.xml</path>
+        <offsets>
+            <x-m>-0.0053</x-m>
+            <y-m>-0.086</y-m>
+            <z-m>-0.185</z-m>
+            <pitch-deg>90.0</pitch-deg>
+        </offsets>
+    </model>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Switchs_Lights/sw_pylon-right-rack.xml</path>
+        <offsets>
+            <x-m>-0.0053</x-m>
+            <y-m>0.086</y-m>
+            <z-m>-0.185</z-m>
+            <pitch-deg>90.0</pitch-deg>
+        </offsets>
+    </model>
+    
 
 </PropertyList>  

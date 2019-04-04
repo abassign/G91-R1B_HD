@@ -72,9 +72,9 @@
             <blue>0.28</blue>
         </diffuse>
         <ambient>
-            <red>0.25</red>
-            <green>0.25</green>
-            <blue>0.25</blue>
+            <red>0.15</red>
+            <green>0.15</green>
+            <blue>0.15</blue>
         </ambient>
         <specular>
             <red>0.3</red>
@@ -93,14 +93,14 @@
         <type>material</type>
         <object-name>frontal support back (Meshed)</object-name>
         <diffuse>
-            <red>0.28</red>
-            <green>0.28</green>
-            <blue>0.28</blue>
+            <red>0.15</red>
+            <green>0.15</green>
+            <blue>0.15</blue>
         </diffuse>
         <ambient>
-            <red>0.2</red>
-            <green>0.2</green>
-            <blue>0.2</blue>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
         </ambient>
         <specular>
             <red>0.8</red>

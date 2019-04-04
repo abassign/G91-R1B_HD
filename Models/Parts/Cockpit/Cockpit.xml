@@ -28,9 +28,19 @@
         <object-name>screews (Meshed)</object-name>
         <object-name>red (Meshed)</object-name>
         <object-name>red text (Meshed)</object-name>
+        <object-name>tag box sx (Meshed)</object-name>
+        <object-name>tag box dx (Meshed)</object-name>
+        <object-name>central box lateral sx (Meshed)</object-name>
+        <object-name>central box lateral dx (Meshed)</object-name>
+        <object-name>central box lateral internal black sx (Meshed)</object-name>
+        <object-name>central box lateral internal black dx (Meshed)</object-name>
+        <object-name>support bracket Sx (Meshed)</object-name>
+        <object-name>support bracket Dx (Meshed)</object-name>
+        <object-name>tag box sx A (Meshed)</object-name>
+        <object-name>tag box dx A (Meshed)</object-name>
     </effect>
     -->
-
+<!--
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
         <object-name>central (Meshed)</object-name>
@@ -47,8 +57,19 @@
         <object-name>screews (Meshed)</object-name>
         <object-name>red (Meshed)</object-name>
         <object-name>red text (Meshed)</object-name>
+        <object-name>tag box sx (Meshed)</object-name>
+        <object-name>tag box dx (Meshed)</object-name>
+        <object-name>central box lateral sx (Meshed)</object-name>
+        <object-name>central box lateral dx (Meshed)</object-name>
+        <object-name>central box lateral internal black sx (Meshed)</object-name>
+        <object-name>central box lateral internal black dx (Meshed)</object-name>
+        <object-name>support bracket Sx (Meshed)</object-name>
+        <object-name>support bracket Dx (Meshed)</object-name>
+        <object-name>tag box sx A (Meshed)</object-name>
+        <object-name>tag box dx A (Meshed)</object-name>
     </effect>
-
+    -->
+    
     <animation> 
         <type>material</type>
         <object-name>lateral_left (Meshed)</object-name>
@@ -364,6 +385,170 @@
         </emission>
     </animation>
     
+    <!-- Central BOX -->
+    
+    <animation> 
+        <type>material</type>
+        <object-name>tag box sx (Meshed)</object-name>
+        <object-name>tag box dx (Meshed)</object-name>
+        <diffuse>
+            <red>0.15</red>
+            <green>0.15</green>
+            <blue>0.15</blue>
+        </diffuse>
+        <ambient>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
+        </ambient>
+        <specular>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
+        </specular>
+        <emission>
+            <red-prop>sim/G91/re_emit/gauge_red_light</red-prop>
+            <green>0.0</green>
+            <blue-prop>sim/G91/re_emit/gauge_UV_light_on_red_light</blue-prop>
+            <factor>0.05</factor>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>central box lateral sx (Meshed)</object-name>
+        <object-name>central box lateral dx (Meshed)</object-name>
+        <diffuse>
+            <red>0.25</red>
+            <green>0.25</green>
+            <blue>0.25</blue>
+        </diffuse>
+        <ambient>
+            <red>0.25</red>
+            <green>0.25</green>
+            <blue>0.25</blue>
+        </ambient>
+        <specular>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.3</blue>
+        </specular>
+        <emission>
+            <red-prop>sim/G91/re_emit/gauge_red_light</red-prop>
+            <green>0.0</green>
+            <blue-prop>sim/G91/re_emit/gauge_UV_light_on_red_light</blue-prop>
+            <factor>0.06</factor>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>central box lateral internal black sx (Meshed)</object-name>
+        <object-name>central box lateral internal black dx (Meshed)</object-name>
+        <diffuse>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </diffuse>
+        <ambient>
+            <red>0.15</red>
+            <green>0.15</green>
+            <blue>0.15</blue>
+        </ambient>
+        <specular>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
+        </specular>
+        <emission>
+            <red-prop>sim/G91/re_emit/gauge_red_light</red-prop>
+            <green>0.0</green>
+            <blue-prop>sim/G91/re_emit/gauge_UV_light_on_red_light</blue-prop>
+            <factor>0.02</factor>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>support bracket Sx (Meshed)</object-name>
+        <object-name>support bracket Dx (Meshed)</object-name>
+        <diffuse>
+            <red>0.25</red>
+            <green>0.25</green>
+            <blue>0.25</blue>
+        </diffuse>
+        <ambient>
+            <red>0.25</red>
+            <green>0.22</green>
+            <blue>0.2</blue>
+        </ambient>
+        <specular>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </specular>
+        <emission>
+            <red-prop>sim/G91/re_emit/gauge_red_light</red-prop>
+            <green>0.0</green>
+            <blue-prop>sim/G91/re_emit/gauge_UV_light_on_red_light</blue-prop>
+            <factor>0.01</factor>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>tag box sx A (Meshed)</object-name>
+        <object-name>tag box dx A (Meshed)</object-name>
+        <diffuse>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </diffuse>
+        <ambient>
+            <red>0.7</red>
+            <green>0.7</green>
+            <blue>0.7</blue>
+        </ambient>
+        <specular>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.3</blue>
+        </specular>
+        <emission>
+            <red-prop>sim/G91/re_emit/gauge_red_150_phosphorescent_light</red-prop>
+            <green-prop>sim/G91/re_emit/gauge_phosphorescent_light</green-prop>
+            <blue>0.0</blue>
+            <factor>0.14</factor>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>tag box in sx A (Meshed)</object-name>
+        <object-name>tag box in dx A (Meshed)</object-name>
+        <diffuse>
+            <red>0.6</red>
+            <green>0.6</green>
+            <blue>0.6</blue>
+        </diffuse>
+        <ambient>
+            <red>0.6</red>
+            <green>0.6</green>
+            <blue>0.6</blue>
+        </ambient>
+        <specular>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.3</blue>
+        </specular>
+        <emission>
+            <red-prop>sim/G91/re_emit/gauge_red_150_phosphorescent_light</red-prop>
+            <green-prop>sim/G91/re_emit/gauge_phosphorescent_light</green-prop>
+            <blue>0.0</blue>
+            <factor>0.10</factor>
+        </emission>
+    </animation>
+    
     <!-- Components -->
     
     <model>
@@ -645,7 +830,7 @@
         <offsets>
             <x-m>-0.003</x-m>
             <y-m>0.0</y-m>
-            <z-m>-0.053</z-m>
+            <z-m>-0.0475</z-m>
             <pitch-deg>0.0</pitch-deg>
         </offsets>
     </model>
@@ -655,17 +840,17 @@
         <offsets>
             <x-m>0.006</x-m>
             <y-m>0.0</y-m>
-            <z-m>-0.140</z-m>
+            <z-m>-0.130</z-m>
             <pitch-deg>0.0</pitch-deg>
         </offsets>
     </model>
     
     <model>
-        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/frontal_support_2M.xml</path>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/frontal_support_107.95.xml</path>
         <offsets>
             <x-m>0.006</x-m>
             <y-m>0.0</y-m>
-            <z-m>-0.210</z-m>
+            <z-m>-0.2185</z-m>
             <pitch-deg>0.0</pitch-deg>
         </offsets>
     </model>
@@ -673,12 +858,22 @@
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/PHI/PHI Doppler.xml</path>
         <offsets>
-            <x-m>0.008</x-m>
+            <x-m>0.009</x-m>
             <y-m>0.07325</y-m>
-            <z-m>-0.2445</z-m>
+            <z-m>-0.271</z-m>
             <roll-deg>0.0</roll-deg>
             <pitch-deg>90.0</pitch-deg>
             <heading-deg>0.0</heading-deg>
+        </offsets>
+    </model>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/frontal_support_25.4.xml</path>
+        <offsets>
+            <x-m>0.006</x-m>
+            <y-m>0.0</y-m>
+            <z-m>-0.3275</z-m>
+            <pitch-deg>0.0</pitch-deg>
         </offsets>
     </model>
     

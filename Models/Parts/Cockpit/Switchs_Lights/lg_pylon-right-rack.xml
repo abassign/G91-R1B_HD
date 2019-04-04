@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!-- 
+Original work Copyright (c) 2018 Adriano Bassignana (abassign)
+-->
+
+<PropertyList>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Common/lg_model_01.xml</path>
+    </model>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>Cone_reflect (Meshed)</object-name>
+        <diffuse>
+            <red>1.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </diffuse>
+        <ambient>
+            <red>1.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </ambient>
+        <emission>
+            <red>2.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>fdm/jsbsim/systems/warning-lights/cockpit/lg_hydraulic_low_press</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>transparent_button (Meshed)</object-name>
+        <transparency>
+            <alpha>0.95</alpha>
+            <factor-prop>fdm/jsbsim/systems/warning-lights/cockpit/lg_hydraulic_low_press-transparent</factor-prop>
+        </transparency>
+        <diffuse>
+            <red>0.5</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </diffuse>
+        <ambient>
+            <red>0.5</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </ambient>
+        <specular>
+            <red>1.0</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
+        </specular>
+        <emission>
+            <red>1.5</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>fdm/jsbsim/systems/warning-lights/cockpit/lg_hydraulic_low_press</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>light_Sphere (Meshed)</object-name>
+        <transparency>
+            <alpha>0.4</alpha>
+        </transparency>
+        <diffuse>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </diffuse>
+        <ambient>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </ambient>
+        <emission>
+            <red>1.5</red>
+            <green>0.5</green>
+            <blue>0.3</blue>
+            <factor-prop>fdm/jsbsim/systems/warning-lights/cockpit/lg_hydraulic_low_press</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>light_Sphere_hot (Meshed)</object-name>
+        <transparency>
+            <alpha>0.4</alpha>
+        </transparency>
+        <diffuse>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </diffuse>
+        <ambient>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </ambient>
+        <emission>
+            <red>2.0</red>
+            <green>0.5</green>
+            <blue>1.5</blue>
+            <factor-prop>fdm/jsbsim/systems/warning-lights/cockpit/lg_hydraulic_low_press</factor-prop>
+        </emission>
+    </animation>
+    
+    <model>
+        <condition>
+            <greater-than-equals>
+                <property>fdm/jsbsim/systems/warning-lights/cockpit/lg_hydraulic_low_press</property>
+                <value>0.1</value>
+            </greater-than-equals>
+        </condition>
+        <name>pb_light_effect</name>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Effects/lights/procedural_light_cockpit_advise_red.xml</path>
+        <offsets>
+            <x-m> 0.03</x-m>
+            <y-m> 0.0 </y-m>
+            <z-m> 0.0 </z-m>
+        </offsets>
+    </model>
+    
+</PropertyList>
