@@ -1,0 +1,559 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+    
+    <path>IFF_cna62B.ac</path>
+    
+    <effect>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
+        <!--
+        <object-name>cover (Meshed)</object-name>
+        <object-name>frontal support A (Meshed)</object-name>
+        <object-name>frontal support B (Meshed)</object-name>
+        <object-name>frontal support back (Meshed)</object-name>
+        <object-name>frontal screew (Meshed)</object-name>
+        <object-name>frontal screew ring (Meshed)</object-name>
+        <object-name>screew (Meshed)</object-name>  
+        <object-name>lamp cover (Meshed)</object-name>
+        <object-name>number disk black 0009 (Meshed)</object-name>
+        <object-name>number disk black 0090 (Meshed)</object-name>
+        <object-name>number disk white 0009 (Meshed)</object-name>
+        <object-name>number disk white 0090 (Meshed)</object-name>
+        <object-name>number disk black background (Meshed)</object-name>
+        <object-name>selector sx 09 (Meshed)</object-name>
+        <object-name>selector sx axis (Meshed)</object-name>
+        <object-name>selector dx axis (Meshed)</object-name>
+        <object-name>selector dx 09 (Meshed)</object-name>
+        <object-name>sw mode 1 support (Meshed)</object-name>
+        <object-name>sw mode 1 ring (Meshed)</object-name>
+        <object-name>sw mode 1 nut (Meshed)</object-name>
+        <object-name>sw mode 1 pin (Meshed)</object-name>
+        <object-name>sw mode 2 support (Meshed)</object-name>
+        <object-name>sw mode 2 ring (Meshed)</object-name>
+        <object-name>sw mode 2 nut (Meshed)</object-name>
+        <object-name>sw mode 2 pin (Meshed)</object-name>
+        -->
+    </effect>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>cover (Meshed)</object-name>
+        <diffuse>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.1</blue>
+        </diffuse>
+        <ambient>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.1</blue>
+        </ambient>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>frontal support B (Meshed)</object-name>
+        <diffuse>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </diffuse>
+        <ambient>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </ambient>
+        <emission>
+            <red>0.07</red>
+            <green>0.0</green>
+            <blue>0.01</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>frontal support back (Meshed)</object-name>
+        <diffuse>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </diffuse>
+        <ambient>
+            <red>0.05</red>
+            <green>0.05</green>
+            <blue>0.05</blue>
+        </ambient>
+        <emission>
+            <red>0.02</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>frontal support A (Meshed)</object-name>
+        <diffuse>
+            <red>0.28</red>
+            <green>0.28</green>
+            <blue>0.28</blue>
+        </diffuse>
+        <diffuse>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
+        </diffuse>
+        <ambient>
+            <red>1.0</red>
+            <green>0.9</green>
+            <blue>0.6</blue>
+        </ambient>
+        <emission>
+            <red-prop>sim/G91/re_emit/gauge_red_30_phosphorescent_light</red-prop>
+            <green-prop>sim/G91/re_emit/gauge_phosphorescent_light_50</green-prop>
+            <blue-prop>sim/G91/re_emit/gauge_phosphorescent_light_30</blue-prop>
+            <factor>0.5</factor>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>lamp cover (Meshed)</object-name>
+        <object-name>screew (Meshed)</object-name>
+        <diffuse>
+            <red>0.28</red>
+            <green>0.28</green>
+            <blue>0.28</blue>
+        </diffuse>
+        <ambient>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
+        </ambient>
+        <specular>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </specular>
+        <emission>
+            <red>0.06</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>frontal screew (Meshed)</object-name>
+        <diffuse>
+            <red>0.23</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
+        </diffuse>
+        <ambient>
+            <red>0.35</red>
+            <green>0.3</green>
+            <blue>0.3</blue>
+        </ambient>
+        <specular>
+            <red>0.9</red>
+            <green>0.9</green>
+            <blue>0.9</blue>
+        </specular>
+        <emission>
+            <red>0.09</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>frontal screew ring (Meshed)</object-name>
+        <diffuse>
+            <red>0.28</red>
+            <green>0.28</green>
+            <blue>0.28</blue>
+        </diffuse>
+        <ambient>
+            <red>0.4</red>
+            <green>0.4</green>
+            <blue>0.4</blue>
+        </ambient>
+        <specular>
+            <red>0.9</red>
+            <green>0.9</green>
+            <blue>0.9</blue>
+        </specular>
+        <emission>
+            <red>0.08</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>glass (Meshed)</object-name>
+        <transparency>
+            <alpha>0.15</alpha>
+        </transparency>
+        <diffuse>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </diffuse>
+        <ambient>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </ambient>
+        <emission>
+            <red-prop>sim/G91/re_emit/gauge_red_30_phosphorescent_light</red-prop>
+            <green-prop>sim/G91/re_emit/gauge_phosphorescent_light_50</green-prop>
+            <blue-prop>sim/G91/re_emit/gauge_phosphorescent_light_30</blue-prop>
+            <factor>0.7</factor>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>number disk black 0009 (Meshed)</object-name>
+        <object-name>number disk black 0090 (Meshed)</object-name>
+        <object-name>number disk black background (Meshed)</object-name>
+        <diffuse>
+            <red>0.28</red>
+            <green>0.28</green>
+            <blue>0.28</blue>
+        </diffuse>
+        <ambient>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
+        </ambient>
+        <specular>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.3</blue>
+        </specular>
+        <emission>
+            <red>0.06</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>number disk white 0009 (Meshed)</object-name>
+        <object-name>number disk white 0090 (Meshed)</object-name>
+        <diffuse>
+            <red>0.9</red>
+            <green>0.9</green>
+            <blue>0.9</blue>
+        </diffuse>
+        <ambient>
+            <red>0.9</red>
+            <green>0.9</green>
+            <blue>0.9</blue>
+        </ambient>
+        <specular>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.3</blue>
+        </specular>
+        <emission>
+            <red-prop>sim/G91/re_emit/gauge_red_30_phosphorescent_light</red-prop>
+            <green-prop>sim/G91/re_emit/gauge_phosphorescent_light_50</green-prop>
+            <blue-prop>sim/G91/re_emit/gauge_phosphorescent_light_30</blue-prop>
+            <factor>0.4</factor>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>selector sx 09 (Meshed)</object-name>
+        <object-name>selector sx axis (Meshed)</object-name>
+        <object-name>selector dx 09 (Meshed)</object-name>
+        <object-name>selector dx axis (Meshed)</object-name>
+        <diffuse>
+            <red>0.28</red>
+            <green>0.28</green>
+            <blue>0.28</blue>
+        </diffuse>
+        <ambient>
+            <red>0.25</red>
+            <green>0.25</green>
+            <blue>0.25</blue>
+        </ambient>
+        <specular>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
+        </specular>
+        <emission>
+            <red>0.05</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+        
+    <animation> 
+        <type>material</type>
+        <object-name>sw mode1 support (Meshed)</object-name>
+        <object-name>sw mode1 ring (Meshed)</object-name>
+        <object-name>sw mode2 support (Meshed)</object-name>
+        <object-name>sw mode2 ring (Meshed)</object-name>
+        <diffuse>
+            <red>0.4</red>
+            <green>0.4</green>
+            <blue>0.4</blue>
+        </diffuse>
+        <ambient>
+            <red>0.4</red>
+            <green>0.4</green>
+            <blue>0.4</blue>
+        </ambient>
+        <specular>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
+        </specular>
+        <emission>
+            <red>0.09</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>sw mode1 nut (Meshed)</object-name>
+        <object-name>sw mode2 nut (Meshed)</object-name>
+        <diffuse>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </diffuse>
+        <ambient>
+            <red>0.6</red>
+            <green>0.6</green>
+            <blue>0.6</blue>
+        </ambient>
+        <specular>
+            <red>0.7</red>
+            <green>0.7</green>
+            <blue>0.7</blue>
+        </specular>
+        <emission>
+            <red>0.10</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>sw mode1 pin (Meshed)</object-name>
+        <object-name>sw mode2 pin (Meshed)</object-name>
+        <diffuse>
+            <red>0.9</red>
+            <green>0.9</green>
+            <blue>0.9</blue>
+        </diffuse>
+        <ambient>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </ambient>
+        <specular>
+            <red>0.9</red>
+            <green>0.9</green>
+            <blue>0.9</blue>
+        </specular>
+        <emission>
+            <red>0.10</red>
+            <green>0.0</green>
+            <blue>0.02</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation>
+        <type>knob</type>
+        <object-name>selector sx 09 (Meshed)</object-name>
+        <action>
+            <button>0</button>
+            <binding>
+                <command>property-adjust</command>
+                <property>fdm/jsbsim/systems/gauges/radio/IFF-transponder/chan-0090</property>
+                <factor>1</factor>
+                <min>0</min>
+                <max>10</max>                
+                <wrap>true</wrap>
+            </binding>
+        </action>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>selector sx 09 (Meshed)</object-name>
+        <property>fdm/jsbsim/systems/gauges/radio/IFF-transponder/chan-0090</property>
+        <factor>36</factor>
+        <offset-deg>0.0</offset-deg>
+        <center>
+            <x-m>0.000</x-m>
+            <y-m>-0.032</y-m>
+            <z-m>-0.007</z-m>
+        </center>
+        <axis>
+            <x>1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
+    
+    <animation>
+        <type>knob</type>
+        <object-name>selector dx 09 (Meshed)</object-name>
+        <action>
+            <button>0</button>
+            <binding>
+                <command>property-adjust</command>
+                <property>fdm/jsbsim/systems/gauges/radio/IFF-transponder/chan-0009</property>
+                <factor>1</factor>
+                <min>0</min>
+                <max>10</max>                
+                <wrap>true</wrap>
+            </binding>
+        </action>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>selector dx 09 (Meshed)</object-name>
+        <property>fdm/jsbsim/systems/gauges/radio/IFF-transponder/chan-0009</property>
+        <factor>36</factor>
+        <offset-deg>0.0</offset-deg>
+        <center>
+            <x-m>0.000</x-m>
+            <y-m>0.032</y-m>
+            <z-m>-0.007</z-m>
+        </center>
+        <axis>
+            <x>1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>number disk white 0090 (Meshed)</object-name>
+        <property>fdm/jsbsim/systems/gauges/radio/IFF-transponder/chan-0090-pos</property>
+        <factor>36</factor>
+        <offset-deg>0.0</offset-deg>
+        <center>
+            <x-m>-0.013</x-m>
+            <y-m>0.000</y-m>
+            <z-m>-0.008</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>-1</y>
+            <z>0</z>
+        </axis>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>number disk white 0009 (Meshed)</object-name>
+        <property>fdm/jsbsim/systems/gauges/radio/IFF-transponder/chan-0009-pos</property>
+        <factor>36</factor>
+        <offset-deg>0.0</offset-deg>
+        <center>
+            <x-m>-0.013</x-m>
+            <y-m>0.000</y-m>
+            <z-m>-0.008</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>-1</y>
+            <z>0</z>
+        </axis>
+    </animation>
+    
+    <animation>
+        <type>pick</type>
+        <object-name>sw mode1 pin (Meshed)</object-name>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <interval-sec>0.5</interval-sec>
+            <binding>
+                <command>property-toggle</command>
+                <property>fdm/jsbsim/systems/gauges/radio/IFF-transponder/sw-ar</property>
+            </binding>
+        </action>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>sw mode1 pin (Meshed)</object-name>
+        <property>fdm/jsbsim/systems/gauges/radio/IFF-transponder/sw-ar-pos</property>
+        <factor>30</factor>
+        <offset-deg>-15.0</offset-deg>
+        <center>
+            <x-m>0.0085</x-m>
+            <y-m>0.0</y-m>
+            <z-m>0.018</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>-1</y>
+            <z>0</z>
+        </axis>
+    </animation>
+    
+    <animation>
+        <type>pick</type>
+        <object-name>sw mode2 pin (Meshed)</object-name>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <interval-sec>0.5</interval-sec>
+            <binding>
+                <command>property-toggle</command>
+                <property>fdm/jsbsim/systems/gauges/radio/IFF-transponder/sw-ar</property>
+            </binding>
+        </action>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>sw mode2 pin (Meshed)</object-name>
+        <property>fdm/jsbsim/systems/gauges/radio/IFF-transponder/sw-ar-pos</property>
+        <factor>30</factor>
+        <offset-deg>-15.0</offset-deg>
+        <center>
+            <x-m>0.0085</x-m>
+            <y-m>0.0</y-m>
+            <z-m>0.018</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>-1</y>
+            <z>0</z>
+        </axis>
+    </animation>
+    
+</PropertyList>

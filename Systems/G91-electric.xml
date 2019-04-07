@@ -58,7 +58,6 @@ Description: G91R4 Electric system from "Manuale di pilotaggio (p.56)
     <property value="1">systems/electric/bus[1]/compass-flux-gate/fuse</property>
     <property value="0">systems/electric/bus[1]/compass-flux-gate/I</property>
     <property value="1">systems/electric/bus[1]/IFF/fuse</property>
-    <property value="1">systems/electric/bus[1]/IFF/sw</property>
     <property value="0.0">systems/electric/bus[1]/IFF/I</property>
     <property value="1">systems/electric/bus[1]/TACAN/fuse</property>
     <property value="1">systems/electric/bus[1]/TACAN/sw</property>

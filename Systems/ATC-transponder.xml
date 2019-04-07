@@ -1,0 +1,199 @@
+<?xml version="1.0"?>
+
+<system name="IFF transponder 62A">
+    
+    <property value="0.0">systems/gauges/radio/IFF-transponder/operative</property>
+    <property value="0.0">systems/gauges/radio/IFF-transponder/operative-heating</property>
+    <property value="0.0">systems/gauges/radio/IFF-transponder/sw-power</property>
+    <property value="0.0">systems/gauges/radio/IFF-transponder/sw-power-pos</property>
+    <property value="1.0">systems/gauges/radio/IFF-transponder/sw-power-off</property>
+    <property value="0.0">systems/gauges/radio/IFF-transponder/sw-power-stby</property>
+    <property value="0.0">systems/gauges/radio/IFF-transponder/sw-power-low</property>
+    <property value="0.0">systems/gauges/radio/IFF-transponder/sw-power-norm</property>
+    <property value="0.0">systems/gauges/radio/IFF-transponder/sw-power-emer</property>
+    <property value="0.0">systems/gauges/radio/IFF-transponder/sw-mode</property>
+    <property value="0.0">systems/gauges/radio/IFF-transponder/sw-mode-pos</property>
+    <property value="0.0">systems/gauges/radio/IFF-transponder/sw-mode-off</property>
+    <property value="0.0">systems/gauges/radio/IFF-transponder/sw-mode-3A</property>
+    <property value="0.0">systems/gauges/radio/IFF-transponder/sw-mode-8</property>
+    <property value="0.0">systems/gauges/radio/IFF-transponder/sw-mode-0</property>
+    <property value="0.0">systems/gauges/radio/IFF-transponder/push-test</property>
+    <property value="0.0">systems/gauges/radio/IFF-transponder/push-test-togle</property>
+    <property value="0.0">systems/gauges/radio/IFF-transponder/push-test-pos</property>
+    <property value="0.0">systems/gauges/radio/IFF-transponder/push-ident</property>
+    <property value="0.0">systems/gauges/radio/IFF-transponder/push-ident-togle</property>
+    <property value="0.0">systems/gauges/radio/IFF-transponder/push-ident-pos</property>
+    <property value="0.0">systems/gauges/radio/IFF-transponder/sw-ar</property>
+    <property value="0.0">systems/gauges/radio/IFF-transponder/sw-ar-pos</property>
+    <property value="0.0">systems/gauges/radio/IFF-transponder/channel</property>
+    <property value="0.0">systems/gauges/radio/IFF-transponder/chan-9000</property>
+    <property value="0.0">systems/gauges/radio/IFF-transponder/chan-9000-pos</property>
+    <property value="0.0">systems/gauges/radio/IFF-transponder/chan-0900</property>
+    <property value="0.0">systems/gauges/radio/IFF-transponder/chan-0900-pos</property>
+    <property value="0.0">systems/gauges/radio/IFF-transponder/chan-0090</property>
+    <property value="0.0">systems/gauges/radio/IFF-transponder/chan-0090-pos</property>
+    <property value="0.0">systems/gauges/radio/IFF-transponder/chan-0009</property>
+    <property value="0.0">systems/gauges/radio/IFF-transponder/chan-0009-pos</property>
+    <property value="0.0">systems/gauges/radio/IFF-transponder/transmit-on</property>
+    <property value="0.0">systems/gauges/radio/IFF-transponder/transmit-spy-pos</property>
+    
+    
+    <channel name="systems gauges radio IFF transponder electric" execrate="32">
+        
+        <switch name="systems/gauges/radio/IFF-transponder/operative-start-stop">
+            <default value="0"/>
+            <test logic="AND" value="1">
+                systems/electric/bus[1]/IFF/fuse == 1
+                systems/electric/bus[1]/V GE 24.0
+                systems/electric/inv-secondary/V GE 100.0
+                systems/gauges/radio/IFF-transponder/sw-power-off == 0
+            </test>
+        </switch>
+        
+        <switch name="systems/electric/bus[1]/transponder/I">
+            <default value="0.0"/>
+            <test logic="AND" value="1.45">
+                systems/gauges/radio/IFF-transponder/operative-start-stop == 1
+            </test>
+        </switch>
+        
+        <!-- This delay is the time for starting the electronics -->
+        <lag_filter name="systems/gauges/radio/IFF-transponder/operative-heating">
+            <input>systems/gauges/radio/IFF-transponder/operative-start-stop</input>
+            <c1>0.1</c1>
+        </lag_filter>
+        
+        <switch name="systems/gauges/radio/IFF-transponder/operative">
+            <default value="0.0"/>
+            <test logic="AND" value="1.0">
+                systems/gauges/radio/IFF-transponder/operative-heating GT 0.9
+            </test>
+        </switch>
+    
+    </channel>
+    
+    
+    <channel name="systems gauges radio IFF transponder push button" execrate="8">
+
+        <washout_filter name="systems/gauges/radio/IFF-transponder/push-test-washed">
+            <input>systems/gauges/radio/IFF-transponder/push-test-togle</input>
+            <c1>1.0</c1>
+        </washout_filter>
+        
+        <switch name="systems/gauges/radio/IFF-transponder/push-test-togle-norm">
+            <default value="1"/>
+            <test logic="AND" value = "0">
+                systems/gauges/radio/IFF-transponder/push-test-washed LT 0.4
+                systems/gauges/radio/IFF-transponder/push-test-washed GT -0.4
+            </test>
+        </switch>
+        
+        <switch name="systems/gauges/radio/IFF-transponder/push-test-togle-trigger">
+            <default value="systems/gauges/radio/IFF-transponder/push-test-togle-trigger"/>
+            <test logic="AND" value="1">
+                systems/gauges/radio/IFF-transponder/push-test-togle-norm == 1
+                systems/gauges/radio/IFF-transponder/push-test-pos LE 0.05
+                systems/gauges/radio/IFF-transponder/push-test-togle-trigger == 0
+            </test>
+            <test logic="AND" value="0">
+                systems/gauges/radio/IFF-transponder/push-test-pos GT 0.95
+            </test>
+        </switch>
+        
+        <lag_filter name="systems/gauges/radio/IFF-transponder/push-test-pos">
+            <input>systems/gauges/radio/IFF-transponder/push-test-togle-trigger</input>
+            <c1>2.0</c1>
+        </lag_filter>
+
+        <washout_filter name="systems/gauges/radio/IFF-transponder/push-ident-washed">
+            <input>systems/gauges/radio/IFF-transponder/push-ident-togle</input>
+            <c1>1.0</c1>
+        </washout_filter>
+        
+        <switch name="systems/gauges/radio/IFF-transponder/push-ident-togle-norm">
+            <default value="1"/>
+            <test logic="AND" value = "0">
+                systems/gauges/radio/IFF-transponder/push-ident-washed LT 0.6
+                systems/gauges/radio/IFF-transponder/push-ident-washed GT -0.6
+            </test>
+        </switch>
+        
+        <switch name="systems/gauges/radio/IFF-transponder/push-ident-togle-trigger">
+            <default value="systems/gauges/radio/IFF-transponder/push-ident-togle-trigger"/>
+            <test logic="AND" value="1">
+                systems/gauges/radio/IFF-transponder/push-ident-togle-norm == 1
+                systems/gauges/radio/IFF-transponder/push-ident-pos LE 0.05
+                systems/gauges/radio/IFF-transponder/push-ident-togle-trigger == 0
+            </test>
+            <test logic="AND" value="0">
+                systems/gauges/radio/IFF-transponder/push-ident-pos GT 0.95
+            </test>
+        </switch>
+        
+        <lag_filter name="systems/gauges/radio/IFF-transponder/push-ident-pos">
+            <input>systems/gauges/radio/IFF-transponder/push-ident-togle-trigger</input>
+            <c1>4.0</c1>
+        </lag_filter>
+        
+    </channel>
+    
+        
+    <channel name="systems gauges radio IFF transponder switch AR" execrate="8">
+        
+        <lag_filter name="systems/gauges/radio/IFF-transponder/sw-ar-pos">
+            <input>systems/gauges/radio/IFF-transponder/sw-ar</input>
+            <c1>4.0</c1>
+        </lag_filter>
+        
+    </channel>
+    
+    
+    <channel name="systems gauges radio IFF transponder transmit on" execrate="8">
+        
+        <switch name="systems/gauges/radio/IFF-transponder/transmit-spy-pos-active">
+            <default value="0"/>
+            <test logic="AND" value = "1">
+                systems/gauges/radio/IFF-transponder/push-test-pos GT 0.2
+            </test>
+        </switch>
+        
+        <lag_filter name="systems/gauges/radio/IFF-transponder/transmit-spy-pos">
+            <input>systems/gauges/radio/IFF-transponder/transmit-spy-pos-active</input>
+            <c1>4.0</c1>
+        </lag_filter>
+        
+    </channel>
+    
+    
+    <channel name="systems gauges radio IFF transponder select channel" execrate="8">
+    
+        <linear_actuator name="systems/gauges/radio/IFF-transponder/chan-9000-pos">
+            <input>systems/gauges/radio/IFF-transponder/chan-9000</input>
+            <module>10</module>
+            <lag>8.0</lag>
+        </linear_actuator>
+        
+        <linear_actuator name="systems/gauges/radio/IFF-transponder/chan-0900-pos">
+            <input>systems/gauges/radio/IFF-transponder/chan-0900</input>
+            <module>10</module>
+            <lag>8.0</lag>
+        </linear_actuator>
+        
+        <linear_actuator name="systems/gauges/radio/IFF-transponder/chan-0090-pos">
+            <input>systems/gauges/radio/IFF-transponder/chan-0090</input>
+            <module>10</module>
+            <lag>8.0</lag>
+        </linear_actuator>
+        
+        <linear_actuator name="systems/gauges/radio/IFF-transponder/chan-0009-pos">
+            <input>systems/gauges/radio/IFF-transponder/chan-0009</input>
+            <module>10</module>
+            <lag>8.0</lag>
+        </linear_actuator>
+        
+    </channel>
+    
+    
+    
+    
+</system>

@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 
-<system name="ADF Marconi 8283">
+<system name="TACAN ARN 21">
     
     <property value="0.0">systems/gauges/radio/TACAN-ARN-21/indicated-bearing-deg</property>
     <property value="0.0">systems/gauges/radio/TACAN-ARN-21/indicated-heading-deg</property>

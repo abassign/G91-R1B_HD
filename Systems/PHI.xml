@@ -762,7 +762,6 @@
             <c1>0.1</c1>
         </lag_filter>
         
-        
         <switch name="systems/gauges/PHI/wind/advise-light-transparent">
             <default value="0.85"/>
             <test logic="AND" value="systems/warning-lights/transparent-by-bus2-tension">
