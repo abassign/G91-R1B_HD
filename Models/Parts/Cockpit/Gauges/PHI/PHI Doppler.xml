@@ -4,28 +4,6 @@
     
     <path>PHI-Doppler.ac</path>
     
-    <!--
-    <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
-        <object-name>box (Meshed)</object-name>
-        <object-name>box_cover_inf (Meshed)</object-name>
-        <object-name>top (Meshed)</object-name>
-        <object-name>screews_m5 (Meshed)</object-name>
-        <object-name>lamp_ring (Meshed)</object-name>
-        <object-name>labels (Meshed)</object-name>
-        <object-name>top_light (Meshed)</object-name>
-        <object-name>cover_lamp1 (Meshed)</object-name>
-        <object-name>cover_lamp2 (Meshed)</object-name>
-        <object-name>switch_3 (Meshed)</object-name>
-        <object-name>switch_1_ring (Meshed)</object-name>
-        <object-name>switch_1_cone (Meshed)</object-name>
-        <object-name>switch_1_level (Meshed)</object-name>
-        <object-name>switch_2_ring (Meshed)</object-name>
-        <object-name>switch_2_cone (Meshed)</object-name>
-        <object-name>switch_2_level (Meshed)</object-name>
-    </effect>
-    -->
-    
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
         <object-name>box (Meshed)</object-name>

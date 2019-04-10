@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <PropertyList>
-    <name>G91-interior</name>
-    <!--
-    <inherits-from>Effects/model-interior</inherits-from>
-    -->
-    <inherits-from>Effects/material-diffuse</inherits-from>
-    <parameters>
-    </parameters>
-    
+  <name>Effects/material-diffuse</name>
+  <parameters>
+    <material>
+      <color-mode-uniform>0</color-mode-uniform> <!-- DIFFUSE -->
+    </material>
+  </parameters>
+  <inherits-from>Effects/model-default</inherits-from>
+
 </PropertyList>
+
+    

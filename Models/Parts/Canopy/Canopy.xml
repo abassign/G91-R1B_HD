@@ -18,9 +18,8 @@
         <object-name>F_Segg_support.</object-name>
     </effect>
 
-    <!--
     <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
         <object-name>Plane.014</object-name>
         <object-name>F_panel_structure02</object-name>
         <object-name>F_structure_panel_cockpit.000</object-name>
@@ -42,7 +41,6 @@
         <object-name>Handle_up</object-name>
         <object-name>F_Segg_support.</object-name>
     </effect>
-    -->
     
     <!-- Chrome Effects on materials -->
     <effect>

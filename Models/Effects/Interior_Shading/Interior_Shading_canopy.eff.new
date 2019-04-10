@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PropertyList>
+    <name>G91-interior</name>
+    <inherits-from>Effects/model-interior</inherits-from>
+    
+    <parameters>
+    </parameters>
+    
+</PropertyList>
