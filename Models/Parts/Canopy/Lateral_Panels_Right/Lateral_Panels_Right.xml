@@ -84,4 +84,16 @@
         </offsets>
     </model>
     
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Lateral_Panels_Right/Gyro_Compass_start/gyro_compass_start.xml</path>
+        <offsets>
+            <x-m>0.262</x-m>
+            <y-m>0.233</y-m>
+            <z-m>-0.005</z-m>
+            <roll-deg>0.0</roll-deg>
+            <pitch-deg>0.0</pitch-deg>
+            <heading-deg>0.0</heading-deg>
+        </offsets>
+    </model>
+    
 </PropertyList> 

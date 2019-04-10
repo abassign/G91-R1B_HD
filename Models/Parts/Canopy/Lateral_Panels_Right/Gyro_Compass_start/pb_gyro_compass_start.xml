@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Common/push_button_1in_01_black_model.xml</path>
+    </model>
+    
+    <animation>
+        <type>pick</type>
+        <object-name>push_button (Meshed)</object-name>
+        <action>
+            <button>0</button>
+            <binding>
+                <command>property-toggle</command>
+                <property>fdm/jsbsim/systems/manual-switches/cockpit/sw-emergency-release-togle</property>
+            </binding>
+        </action>
+    </animation>
+    
+    <animation>
+        <type>translate</type>
+        <object-name>push_button (Meshed)</object-name>
+        <property>fdm/jsbsim/systems/manual-switches/cockpit/sw-emergency-release-pos</property>
+        <factor>0.005</factor>
+        <offset-m>0.0</offset-m>
+        <axis>
+            <x>-1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
+    
+</PropertyList>
