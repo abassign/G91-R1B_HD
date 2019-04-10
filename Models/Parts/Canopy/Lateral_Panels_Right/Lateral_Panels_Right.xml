@@ -1,97 +1,13 @@
 <PropertyList>
-
-    <model>
-        <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Lateral_Panels_Right/Ext_Int_Pressure_Gauge/Ext_Int_Pressure_Gauge.xml</path>
-        <offsets>
-            <x-m>-0.158</x-m>
-            <y-m>0.128</y-m>
-            <z-m>-0.003</z-m>
-            <roll-deg>-0.5</roll-deg>
-            <pitch-deg>-90.0</pitch-deg>
-            <heading-deg>0.0</heading-deg>
-        </offsets>
-    </model>
     
     <model>
-        <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Lateral_Panels_Right/Bendix_2894_10A/Bendix_2984_10A.xml</path>
-        <offsets>
-            <x-m>-0.126</x-m>
-            <y-m>0.182</y-m>
-            <z-m>0.001</z-m>
-            <roll-deg>-0.5</roll-deg>
-            <pitch-deg>0.5</pitch-deg>
-            <heading-deg>0.0</heading-deg>
-        </offsets>
-    </model>
-    
-    <model>
-        <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Lateral_Panels_Right/Radio_Compass/ADF-Marconi-8283.xml</path>
-        <offsets>
-            <x-m>-0.056</x-m>
-            <y-m>0.182</y-m>
-            <z-m>-0.0055</z-m>
-            <roll-deg>-0.5</roll-deg>
-            <pitch-deg>0.5</pitch-deg>
-            <heading-deg>0.0</heading-deg>
-        </offsets>
-    </model>
-    
-    <model>
-        <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Lateral_Panels_Right/ATC_Transponder/ATC_cna62B.xml</path>
-        <offsets>
-            <x-m>0.099</x-m>
-            <y-m>0.109</y-m>
-            <z-m>-0.005</z-m>
-            <roll-deg>0.0</roll-deg>
-            <pitch-deg>-90.0</pitch-deg>
-            <heading-deg>0.0</heading-deg>
-        </offsets>
-    </model>
-    
-    <model>
-        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/PHI/PHI Station Selector.xml</path>
-        <offsets>
-            <x-m>0.128</x-m>
-            <y-m>0.182</y-m>
-            <z-m>0.0</z-m>
-            <roll-deg>0.0</roll-deg>
-            <pitch-deg>0.0</pitch-deg>
-            <heading-deg>0.0</heading-deg>
-        </offsets>
-    </model>
-    
-    <model>
-        <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Lateral_Panels_Right/ATC_Transponder/IFF_cna62B.xml</path>
-        <offsets>
-            <x-m>0.2275</x-m>
-            <y-m>0.109</y-m>
-            <z-m>-0.005</z-m>
-            <roll-deg>0.0</roll-deg>
-            <pitch-deg>-90.0</pitch-deg>
-            <heading-deg>0.0</heading-deg>
-        </offsets>
-    </model>
-    
-    <model>
-        <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Lateral_Panels_Right/Lighting/lighting_panel.xml</path>
-        <offsets>
-            <x-m>0.2565</x-m>
-            <y-m>0.2335</y-m>
-            <z-m>-0.005</z-m>
-            <roll-deg>0.0</roll-deg>
-            <pitch-deg>0.0</pitch-deg>
-            <heading-deg>0.0</heading-deg>
-        </offsets>
-    </model>
-    
-    <model>
-        <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Lateral_Panels_Right/Gyro_Compass_start/gyro_compass_start.xml</path>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Lateral_Panels_Right/Lateral_panel_right_support/lateral_panel_right_support.xml</path>
         <offsets>
             <x-m>0.262</x-m>
-            <y-m>0.233</y-m>
-            <z-m>-0.005</z-m>
-            <roll-deg>0.0</roll-deg>
-            <pitch-deg>0.0</pitch-deg>
+            <y-m>0.240</y-m>
+            <z-m>-0.007</z-m>
+            <roll-deg>-0.5</roll-deg>
+            <pitch-deg>0.5</pitch-deg>
             <heading-deg>0.0</heading-deg>
         </offsets>
     </model>

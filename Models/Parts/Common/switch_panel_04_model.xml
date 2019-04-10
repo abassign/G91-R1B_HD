@@ -117,7 +117,7 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
         <emission>
             <red>0.12</red>
             <green>0.0</green>
-            <blue-prop>sim/G91/re_emit/gauge_phosphorescent_light_20</blue-prop>
+            <blue-prop>sim/G91/re_emit/gauge_phosphorescent_light_10</blue-prop>
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>

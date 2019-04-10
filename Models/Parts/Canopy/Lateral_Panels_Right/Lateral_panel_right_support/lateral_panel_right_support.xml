@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+    
+    <path>lateral_panel_right_support.ac</path>
+    
+    <effect>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
+        <object-name>back plane (Meshed)</object-name>
+        <object-name></object-name>
+    </effect>
+    
+    <animation>
+        <type>material</type>
+        <object-name>back plane (Meshed)</object-name>
+        <transparency>
+            <alpha>1.0</alpha>
+        </transparency>
+        <diffuse>
+            <red>0.61</red>
+            <green>0.65</green>
+            <blue>0.67</blue>
+        </diffuse>
+        <ambient>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.3</blue>
+        </ambient>
+        <specular>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.3</blue>
+        </specular>
+        <emission>
+            <red>0.03</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>screews 01 (Meshed)</object-name>
+        <diffuse>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
+        </diffuse>
+        <ambient>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
+        </ambient>
+        <specular>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
+        </specular>
+        <emission>
+            <red>0.06</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>rings 01 (Meshed)</object-name>
+        <diffuse>
+            <red>0.7</red>
+            <green>0.7</green>
+            <blue>0.7</blue>
+        </diffuse>
+        <ambient>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
+        </ambient>
+        <specular>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
+        </specular>
+        <emission>
+            <red>0.04</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Lateral_Panels_Right/Ext_Int_Pressure_Gauge/Ext_Int_Pressure_Gauge.xml</path>
+        <offsets>
+            <x-m>-0.4145</x-m>
+            <y-m>-0.1055</y-m>
+            <z-m>0.005</z-m>
+            <roll-deg>0.0</roll-deg>
+            <pitch-deg>-90.0</pitch-deg>
+            <heading-deg>0.0</heading-deg>
+        </offsets>
+    </model>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Lateral_Panels_Right/Bendix_2894_10A/Bendix_2984_10A.xml</path>
+        <offsets>
+            <x-m>-0.3825</x-m>
+            <y-m>-0.0510</y-m>
+            <z-m>0.007</z-m>
+            <roll-deg>0.0</roll-deg>
+            <pitch-deg>0.0</pitch-deg>
+            <heading-deg>0.0</heading-deg>
+        </offsets>
+    </model>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Lateral_Panels_Right/Radio_Compass/ADF-Marconi-8283.xml</path>
+        <offsets>
+            <x-m>-0.3125</x-m>
+            <y-m>-0.0510</y-m>
+            <z-m>0.002</z-m>
+            <roll-deg>0.0</roll-deg>
+            <pitch-deg>0.0</pitch-deg>
+            <heading-deg>0.0</heading-deg>
+        </offsets>
+    </model>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Lateral_Panels_Right/ATC_Transponder/ATC_cna62B.xml</path>
+        <offsets>
+            <x-m>-0.1575</x-m>
+            <y-m>-0.1245</y-m>
+            <z-m>0.002</z-m>
+            <roll-deg>0.0</roll-deg>
+            <pitch-deg>-90.0</pitch-deg>
+            <heading-deg>0.0</heading-deg>
+        </offsets>
+    </model>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/PHI/PHI Station Selector.xml</path>
+        <offsets>
+            <x-m>-0.1285</x-m>
+            <y-m>-0.0510</y-m>
+            <z-m>0.007</z-m>
+            <roll-deg>0.0</roll-deg>
+            <pitch-deg>0.0</pitch-deg>
+            <heading-deg>0.0</heading-deg>
+        </offsets>
+    </model>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Lateral_Panels_Right/ATC_Transponder/IFF_cna62B.xml</path>
+        <offsets>
+            <x-m>-0.029</x-m>
+            <y-m>-0.1245</y-m>
+            <z-m>0.002</z-m>
+            <roll-deg>0.0</roll-deg>
+            <pitch-deg>-90.0</pitch-deg>
+            <heading-deg>0.0</heading-deg>
+        </offsets>
+    </model>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Lateral_Panels_Right/Lighting/lighting_panel.xml</path>
+        <offsets>
+            <x-m>0.0</x-m>
+            <y-m>0.0</y-m>
+            <z-m>0.002</z-m>
+            <roll-deg>0.0</roll-deg>
+            <pitch-deg>0.0</pitch-deg>
+            <heading-deg>0.0</heading-deg>
+        </offsets>
+    </model>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Lateral_Panels_Right/Gyro_Compass_start/gyro_compass_start.xml</path>
+        <offsets>
+            <x-m>0.000</x-m>
+            <y-m>0.0</y-m>
+            <z-m>0.002</z-m>
+            <roll-deg>0.0</roll-deg>
+            <pitch-deg>0.0</pitch-deg>
+            <heading-deg>0.0</heading-deg>
+        </offsets>
+    </model>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Lateral_Panels_Right/Doppler_ground_test/doppler_ground_test.xml</path>
+        <offsets>
+            <x-m>-0.360</x-m>
+            <y-m>-0.027</y-m>
+            <z-m>0.002</z-m>
+            <roll-deg>0.0</roll-deg>
+            <pitch-deg>0.0</pitch-deg>
+            <heading-deg>0.0</heading-deg>
+        </offsets>
+    </model>
+
+</PropertyList>

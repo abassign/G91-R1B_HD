@@ -63,11 +63,6 @@
             <green>0.28</green>
             <blue>0.28</blue>
         </diffuse>
-        <diffuse>
-            <red>0.5</red>
-            <green>0.5</green>
-            <blue>0.5</blue>
-        </diffuse>
         <ambient>
             <red>1.0</red>
             <green>0.9</green>

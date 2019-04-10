@@ -11,36 +11,6 @@
         <pitch-deg>-8.5</pitch-deg>
     </offsets>
 
-    <!--
-    <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
-        <object-name>central (Meshed)</object-name>
-        <object-name>lateral_left (Meshed)</object-name>
-        <object-name>lateral_right (Meshed)</object-name>
-        <object-name>landing light test base (Meshed)</object-name>
-        <object-name>landing light test text (Meshed)</object-name>
-        <object-name>lateral_right text (Meshed)</object-name>
-        <object-name>lateral_left grid (Meshed)</object-name>
-        <object-name>black 1 (Meshed)</object-name>
-        <object-name>black 2 (Meshed)</object-name>
-        <object-name>black 1 text (Meshed)</object-name>
-        <object-name>black 2 text (Meshed)</object-name>
-        <object-name>screews (Meshed)</object-name>
-        <object-name>red (Meshed)</object-name>
-        <object-name>red text (Meshed)</object-name>
-        <object-name>tag box sx (Meshed)</object-name>
-        <object-name>tag box dx (Meshed)</object-name>
-        <object-name>central box lateral sx (Meshed)</object-name>
-        <object-name>central box lateral dx (Meshed)</object-name>
-        <object-name>central box lateral internal black sx (Meshed)</object-name>
-        <object-name>central box lateral internal black dx (Meshed)</object-name>
-        <object-name>support bracket Sx (Meshed)</object-name>
-        <object-name>support bracket Dx (Meshed)</object-name>
-        <object-name>tag box sx A (Meshed)</object-name>
-        <object-name>tag box dx A (Meshed)</object-name>
-    </effect>
-    -->
-<!--
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
         <object-name>central (Meshed)</object-name>
@@ -68,8 +38,7 @@
         <object-name>tag box sx A (Meshed)</object-name>
         <object-name>tag box dx A (Meshed)</object-name>
     </effect>
-    -->
-    
+
     <animation> 
         <type>material</type>
         <object-name>lateral_left (Meshed)</object-name>

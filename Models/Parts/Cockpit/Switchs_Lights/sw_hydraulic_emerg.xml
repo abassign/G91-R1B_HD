@@ -3,7 +3,7 @@
 <PropertyList>
     
     <model>
-        <path>switch_panel_02-15mm_lock.xml</path>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Common/switch_panel_02-15mm_lock_model.xml</path>
     </model>
     
     <animation>
@@ -49,8 +49,8 @@
         <type>rotate</type>
         <object-name>switch_pin (Meshed)</object-name>
         <property>fdm/jsbsim/systems/manual-switches/cockpit/sw-hydraulic-emerg-pos</property>
-        <offset-deg>25</offset-deg>
-        <factor>-50</factor>
+        <offset-deg>15</offset-deg>
+        <factor>-30</factor>
         <center>
             <x-m> 0.0004</x-m>
             <y-m> 0.0</y-m>
@@ -68,11 +68,11 @@
         <object-name>lock_top (Meshed)</object-name>
         <property>fdm/jsbsim/systems/manual-switches/cockpit/sw-hydraulic-emerg-top-pos</property>
         <offset-deg>0</offset-deg>
-        <factor>-90</factor>
+        <factor>70</factor>
         <center>
-            <x-m> -0.015</x-m>
-            <y-m> 0.003</y-m>
-            <z-m> 0.0</z-m>
+            <x-m> 0.019</x-m>
+            <y-m> 0.000</y-m>
+            <z-m> 0.0045</z-m>
         </center>
         <axis>
             <x>0</x>
