@@ -7,7 +7,6 @@
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
         <object-name>back plane (Meshed)</object-name>
-        <object-name></object-name>
     </effect>
     
     <animation>
@@ -192,6 +191,18 @@
         <offsets>
             <x-m>-0.360</x-m>
             <y-m>-0.027</y-m>
+            <z-m>0.002</z-m>
+            <roll-deg>0.0</roll-deg>
+            <pitch-deg>0.0</pitch-deg>Gyro_Compass_start
+            <heading-deg>0.0</heading-deg>
+        </offsets>
+    </model>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Lateral_Panels_Right/Breaker_system/breaker_panel.xml</path>
+        <offsets>
+            <x-m>0.000</x-m>
+            <y-m>0.0</y-m>
             <z-m>0.002</z-m>
             <roll-deg>0.0</roll-deg>
             <pitch-deg>0.0</pitch-deg>
