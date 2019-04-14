@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!-- 
+Original work Copyright (c) 2018 Adriano Bassignana (abassign)
+-->
+
+<PropertyList>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Common/switch_panel_3_pos_model.xml</path>
+    </model>
+    
+    <animation>
+        <type>pick</type>
+        <visible>true</visible>
+        <object-name>sensor 1 (Meshed)</object-name>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <interval-sec>0.5</interval-sec>
+            <binding>
+                <command>property-toggle</command>
+                <property>fdm/jsbsim/systems/clima/sw-set-automatic</property>
+                <step>1</step>
+                <min>0</min>
+                <max>1</max>
+                <wrap>true</wrap>
+            </binding>
+        </action>
+    </animation>
+    
+    <animation>
+        <type>pick</type>
+        <visible>true</visible>
+        <object-name>sensor 2 (Meshed)</object-name>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <interval-sec>0.5</interval-sec>
+            <binding>
+                <command>property-toggle</command>
+                <property>fdm/jsbsim/systems/clima/sw-set-manual-dec</property>
+                <step>1</step>
+                <min>0</min>
+                <max>1</max>
+                <wrap>true</wrap>
+            </binding>
+        </action>
+    </animation>
+    
+    <animation>
+        <type>pick</type>
+        <visible>true</visible>
+        <object-name>sensor 3 (Meshed)</object-name>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <interval-sec>0.5</interval-sec>
+            <binding>
+                <command>property-toggle</command>
+                <property>fdm/jsbsim/systems/clima/sw-set-manual-inc</property>
+                <step>1</step>
+                <min>0</min>
+                <max>1</max>
+                <wrap>true</wrap>
+            </binding>
+        </action>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>pin (Meshed)</object-name>
+        <property>fdm/jsbsim/systems/clima/sw-set-pos_x</property>
+        <offset-deg>0</offset-deg>
+        <factor>20</factor>
+        <center>
+            <x-m> 0.004</x-m>
+            <y-m> 0.0</y-m>
+            <z-m> 0.0</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>1.0</y>
+            <z>0</z>
+        </axis>
+    </animation>     
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>pin (Meshed)</object-name>
+        <property>fdm/jsbsim/systems/clima/sw-set-pos_y</property>
+        <offset-deg>0</offset-deg>
+        <factor>20</factor>
+        <center>
+            <x-m> 0.004</x-m>
+            <y-m> 0.0</y-m>
+            <z-m> 0.0</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>1.0</y>
+            <z>0</z>
+        </axis>
+    </animation> 
+            
+</PropertyList> 
+ 

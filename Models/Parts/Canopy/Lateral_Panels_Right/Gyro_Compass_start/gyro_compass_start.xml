@@ -132,14 +132,14 @@
         <type>material</type>
         <object-name>rings (Meshed)</object-name>
         <diffuse>
-            <red>0.7</red>
-            <green>0.7</green>
-            <blue>0.7</blue>
+            <red>0.4</red>
+            <green>0.4</green>
+            <blue>0.4</blue>
         </diffuse>
         <ambient>
-            <red>0.5</red>
-            <green>0.5</green>
-            <blue>0.5</blue>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.3</blue>
         </ambient>
         <specular>
             <red>0.5</red>

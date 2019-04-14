@@ -13,18 +13,6 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
         <y-m>0.0</y-m>
         <z-m>0.0</z-m>
     </offsets>
-
-    <!--
-    <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
-        <object-name>support (Meshed)</object-name>
-        <object-name>pin (Meshed)</object-name>
-        <object-name>ring (Meshed)</object-name>
-        <object-name>cover (Meshed)</object-name>
-        <object-name>nut (Meshed)</object-name>
-        <object-name>screew (Meshed)</object-name>
-    </effect>
-    -->
     
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
@@ -70,10 +58,10 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
             <blue>0.7</blue>
         </specular>
         <emission>
-            <red-prop>sim/G91/re_emit/gauge_red_70_phosphorescent_light</red-prop>
-            <green-prop>sim/G91/re_emit/gauge_phosphorescent_light_20</green-prop>
-            <blue-prop>sim/G91/re_emit/gauge_phosphorescent_light_30</blue-prop>
-            <factor>0.2</factor>
+            <red>0.10</red>
+            <green>0.02</green>
+            <blue>0.02</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
 
@@ -91,10 +79,10 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
             <blue>0.1</blue>
         </ambient>
         <emission>
-            <red>0.08</red>
-            <green>0.0</green>
-            <blue-prop>sim/G91/re_emit/gauge_phosphorescent_light_10</blue-prop>
-            <factor>sim/G91/re_emit/gauge_red_light</factor>
+            <red>0.07</red>
+            <green>0.01</green>
+            <blue>0.01</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
     
@@ -117,10 +105,10 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
             <blue>0.6</blue>
         </specular>
         <emission>
-            <red-prop>sim/G91/re_emit/gauge_red_70_phosphorescent_light</red-prop>
-            <green-prop>sim/G91/re_emit/gauge_phosphorescent_light_20</green-prop>
-            <blue-prop>sim/G91/re_emit/gauge_phosphorescent_light_30</blue-prop>
-            <factor>0.15</factor>
+            <red>0.07</red>
+            <green>0.01</green>
+            <blue>0.01</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
     
@@ -169,10 +157,10 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
             <blue>0.4</blue>
         </specular>
         <emission>
-            <red-prop>sim/G91/re_emit/gauge_red_70_phosphorescent_light</red-prop>
-            <green-prop>sim/G91/re_emit/gauge_phosphorescent_light_20</green-prop>
-            <blue-prop>sim/G91/re_emit/gauge_phosphorescent_light_30</blue-prop>
-            <factor>0.10</factor>
+            <red>0.05</red>
+            <green>0.01</green>
+            <blue>0.01</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
 

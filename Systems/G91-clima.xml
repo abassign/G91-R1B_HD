@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+
+<system name="Clima">
+    
+    <property value="0.0">systems/clima/sw-set-automatic</property>
+    <property value="0.0">systems/clima/sw-set-manual-dec</property>
+    <property value="0.0">systems/clima/sw-set-manual-inc</property>
+    <property value="0.0">systems/clima/sw-set-pos_x</property>
+    <property value="0.0">systems/clima/sw-set-pos_y</property>
+
+    
+    <channel name="systems clima sw set" execrate="16">
+        
+    </channel>
+    
+</system>
