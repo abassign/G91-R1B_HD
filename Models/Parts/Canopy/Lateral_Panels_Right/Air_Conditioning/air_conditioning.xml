@@ -348,9 +348,9 @@
             <blue>0.3</blue>
         </ambient>
         <specular>
-            <red>0.5</red>
-            <green>0.5</green>
-            <blue>0.5</blue>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
         </specular>
         <emission>
             <red>0.03</red>
@@ -390,19 +390,19 @@
         <type>material</type>
         <object-name>level 3 (Meshed)</object-name>
         <diffuse>
-            <red>0.5</red>
-            <green>0.5</green>
-            <blue>0.5</blue>
+            <red>0.42</red>
+            <green>0.4</green>
+            <blue>0.4</blue>
         </diffuse>
         <ambient>
-            <red>0.9</red>
-            <green>0.9</green>
-            <blue>0.9</blue>
+            <red>0.62</red>
+            <green>0.6</green>
+            <blue>0.6</blue>
         </ambient>
         <specular>
-            <red>0.5</red>
-            <green>0.5</green>
-            <blue>0.5</blue>
+            <red>0.45</red>
+            <green>0.4</green>
+            <blue>0.4</blue>
         </specular>
         <emission>
             <red>0.09</red>
@@ -416,10 +416,11 @@
         <type>knob</type>
         <object-name>level 3 (Meshed)</object-name>
         <action>
+            <button>0</button>
             <binding>
                 <command>property-adjust</command>
                 <property>fdm/jsbsim/systems/climate/reg-canopy-defrost</property>
-                <step>0.1</step>
+                <factor>0.1</factor>
                 <min>0</min>
                 <max>1</max>
                 <wrap>false</wrap>
@@ -430,7 +431,7 @@
     <animation>
         <type>rotate</type>
         <object-name>level 3 (Meshed)</object-name>
-        <property>fdm/jsbsim/systems/climate/reg-canopy-defrost</property>
+        <property>fdm/jsbsim/systems/climate/reg-canopy-defrost-pos</property>
         <offset-deg>-65</offset-deg>
         <factor>220</factor>
         <center>
@@ -447,15 +448,15 @@
     
     <animation>
         <type>knob</type>
-        <object-name>level 1 (Meshed)</object-name>
         <object-name>sphere base (Meshed)</object-name>
         <object-name>sphere screew (Meshed)</object-name>
         <object-name>sphere top (Meshed)</object-name>
         <action>
             <binding>
+                <button>0</button>
                 <command>property-adjust</command>
                 <property>fdm/jsbsim/systems/climate/reg-emerg-ventilation</property>
-                <step>0.1</step>
+                <factor>1</factor>
                 <min>0</min>
                 <max>1</max>
                 <wrap>false</wrap>
@@ -469,7 +470,7 @@
         <object-name>sphere base (Meshed)</object-name>
         <object-name>sphere screew (Meshed)</object-name>
         <object-name>sphere top (Meshed)</object-name>
-        <property>fdm/jsbsim/systems/climate/reg-emerg-ventilation</property>
+        <property>fdm/jsbsim/systems/climate/reg-emerg-ventilation-pos</property>
         <offset-deg>-10</offset-deg>
         <factor>100</factor>
         <center>
@@ -482,7 +483,44 @@
             <y>0</y>
             <z>-1</z>
         </axis>
-    </animation> 
+    </animation>
+    
+    <animation>
+        <type>knob</type>
+        <object-name>air temp selector B (Meshed)</object-name>
+        <action>
+            <button>0</button>
+            <binding>
+                <command>property-adjust</command>
+                <property>fdm/jsbsim/systems/climate/reg-air-temperature</property>
+                <factor>0.1</factor>
+                <min>0</min>
+                <max>1</max>
+                <wrap>false</wrap>
+            </binding>
+        </action>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>air temp selector A (Meshed)</object-name>
+        <object-name>air temp selector B (Meshed)</object-name>
+        <property>fdm/jsbsim/systems/climate/reg-air-temperature-pos</property>
+        <offset-deg>-160</offset-deg>
+        <factor>320</factor>
+        <center>
+            <x-m> 0.055</x-m>
+            <y-m> -0.081</y-m>
+            <z-m> 0.0</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>0</y>
+            <z>-1</z>
+        </axis>
+    </animation>
+    
+    
     
     <model>
         <path>sw_pressuriz.xml</path>

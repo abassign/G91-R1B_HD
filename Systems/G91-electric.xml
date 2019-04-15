@@ -42,6 +42,9 @@ Description: G91R4 Electric system from "Manuale di pilotaggio (p.56)
     <property value="0.0">systems/electric/bus[1]/BP-oil/I</property>
     <property value="1">systems/electric/bus[1]/landig-gear-command/fuse</property>
     <property value="1">systems/electric/bus[1]/air-conditioning-pressurization/fuse</property>
+    <property value="1">systems/electric/bus[1]/air-conditioning-pressurization/I</property>
+    <property value="1">systems/electric/bus[1]/air-conditioning-temperature/fuse</property>
+    <property value="1">systems/electric/bus[1]/air-conditioning-temperature/I</property>
     <property value="1">systems/electric/bus[1]/horizontal-stabilization-corrector/fuse</property>
     <property value="1">systems/electric/bus[1]/vertical-tail-corrector/fuse</property>
     <property value="0">systems/electric/bus[1]/fuel-level-indicator/sw</property>
@@ -96,7 +99,6 @@ Description: G91R4 Electric system from "Manuale di pilotaggio (p.56)
     <property value="1">systems/electric/bus[1]/rockets-on-stations/fuse</property>
     <property value="1">systems/electric/bus[1]/rockets-on-rafters/fuse</property>
     <property value="1">systems/electric/bus[1]/pitot-heating/fuse</property>
-    <property value="0">systems/electric/bus[1]/pitot-heating/sw</property>
     <property value="0.0">systems/electric/bus[1]/pitot-heating/I</property>
     <property value="1">systems/electric/bus[1]/JATO-plate-release/fuse</property>
     <property value="0">systems/electric/bus[1]/JATO-plate-release/sw</property>
@@ -148,6 +150,8 @@ Description: G91R4 Electric system from "Manuale di pilotaggio (p.56)
     <property value="1">systems/electric/bus[2]/cockpit-vibrator/fuse</property>
     <property value="10">systems/electric/inv-primary/I0</property>
     <property value="10">systems/electric/inv-secondary/I0</property>
+    <property value="1">systems/electric/inv-primary/cockpit-air-temp/fuse</property>
+    <property value="0">systems/electric/inv-primary/cockpit-air-temp/I</property>
     
     <channel name="Calculate loads on bus" execrate="8">
         
@@ -182,6 +186,8 @@ Description: G91R4 Electric system from "Manuale di pilotaggio (p.56)
             <input>systems/electric/bus[1]/fuel-JPTL/I</input>
             <input>systems/electric/bus[1]/drop-tank-press-on/I</input>
             <input>systems/electric/bus[1]/compass-flux-gate/I</input>
+            <input>systems/electric/bus[1]/air-conditioning-pressurization/I</input>
+            <input>systems/electric/bus[1]/air-conditioning-temperature/I</input>
         </summer>
         
         <summer name="systems/electric/bus[2]/I">
@@ -512,6 +518,7 @@ Description: G91R4 Electric system from "Manuale di pilotaggio (p.56)
             <input>systems/electric/inv-primary/I0</input>
             <input>systems/electric/bus[1]/turn-indicator/I</input>
             <input>systems/electric/bus[1]/attitude-indicator/I</input>
+            <input>systems/electric/inv-primary/cockpit-air-temp/I</input>
         </summer>
         
         <!-- Emergency primary inverter on Bus1 -->

@@ -13,38 +13,47 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
     <animation>
         <type>pick</type>
         <visible>true</visible>
-        <object-name>sensor 1 (Meshed)</object-name>
+        <object-name>Fillet (Meshed)</object-name>
+        <object-name>pin (Meshed)</object-name>
         <action>
             <button>0</button>
             <repeatable>false</repeatable>
             <interval-sec>0.5</interval-sec>
             <binding>
-                <command>property-toggle</command>
-                <property>fdm/jsbsim/systems/climate/sw-set-automatic</property>
-                <step>1</step>
-                <min>0</min>
-                <max>1</max>
-                <wrap>true</wrap>
+                <command>property-assign</command>
+                <property>fdm/jsbsim/systems/climate/sw-set-off-trigger</property>
+                <value>1</value>
             </binding>
+            <mod-up>
+                <binding>
+                    <command>property-assign</command>
+                    <property>fdm/jsbsim/systems/climate/sw-set-off-trigger</property>
+                    <value>0</value>
+                </binding>
+            </mod-up>
         </action>
     </animation>
     
     <animation>
         <type>pick</type>
         <visible>true</visible>
-        <object-name>sensor 2 (Meshed)</object-name>
+        <object-name>sensor 1 (Meshed)</object-name>
         <action>
             <button>0</button>
             <repeatable>false</repeatable>
             <interval-sec>0.5</interval-sec>
             <binding>
-                <command>property-toggle</command>
-                <property>fdm/jsbsim/systems/climate/sw-set-manual-dec</property>
-                <step>1</step>
-                <min>0</min>
-                <max>1</max>
-                <wrap>true</wrap>
+                <command>property-assign</command>
+                <property>fdm/jsbsim/systems/climate/sw-set-automatic-trigger</property>
+                <value>1</value>
             </binding>
+            <mod-up>
+                <binding>
+                    <command>property-assign</command>
+                    <property>fdm/jsbsim/systems/climate/sw-set-automatic-trigger</property>
+                    <value>0</value>
+                </binding>
+            </mod-up>
         </action>
     </animation>
     
@@ -57,22 +66,49 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
             <repeatable>false</repeatable>
             <interval-sec>0.5</interval-sec>
             <binding>
-                <command>property-toggle</command>
-                <property>fdm/jsbsim/systems/climate/sw-set-manual-inc</property>
-                <step>1</step>
-                <min>0</min>
-                <max>1</max>
-                <wrap>true</wrap>
+                <command>property-assign</command>
+                <property>fdm/jsbsim/systems/climate/sw-set-manual-dec-trigger</property>
+                <value>1</value>
             </binding>
+            <mod-up>
+                <binding>
+                    <command>property-assign</command>
+                    <property>fdm/jsbsim/systems/climate/sw-set-manual-dec-trigger</property>
+                    <value>0</value>
+                </binding>
+            </mod-up>
+        </action>
+    </animation>
+    
+    <animation>
+        <type>pick</type>
+        <visible>true</visible>
+        <object-name>sensor 2 (Meshed)</object-name>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <interval-sec>0.5</interval-sec>
+            <binding>
+                <command>property-assign</command>
+                <property>fdm/jsbsim/systems/climate/sw-set-manual-inc-trigger</property>
+                <value>1</value>
+            </binding>
+            <mod-up>
+                <binding>
+                    <command>property-assign</command>
+                    <property>fdm/jsbsim/systems/climate/sw-set-manual-inc-trigger</property>
+                    <value>0</value>
+                </binding>
+            </mod-up>
         </action>
     </animation>
     
     <animation>
         <type>rotate</type>
         <object-name>pin (Meshed)</object-name>
-        <property>fdm/jsbsim/systems/climate/sw-set-pos_x</property>
+        <property>fdm/jsbsim/systems/climate/sw-set-pos_z</property>
         <offset-deg>0</offset-deg>
-        <factor>20</factor>
+        <factor>-15</factor>
         <center>
             <x-m> 0.004</x-m>
             <y-m> 0.0</y-m>
@@ -80,7 +116,7 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
         </center>
         <axis>
             <x>0</x>
-            <y>1.0</y>
+            <y>1</y>
             <z>0</z>
         </axis>
     </animation>     
@@ -90,7 +126,7 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
         <object-name>pin (Meshed)</object-name>
         <property>fdm/jsbsim/systems/climate/sw-set-pos_y</property>
         <offset-deg>0</offset-deg>
-        <factor>20</factor>
+        <factor>-15</factor>
         <center>
             <x-m> 0.004</x-m>
             <y-m> 0.0</y-m>
@@ -98,8 +134,8 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
         </center>
         <axis>
             <x>0</x>
-            <y>1.0</y>
-            <z>0</z>
+            <y>0</y>
+            <z>1</z>
         </axis>
     </animation> 
             

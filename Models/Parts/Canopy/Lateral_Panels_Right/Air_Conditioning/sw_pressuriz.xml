@@ -24,11 +24,7 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
             <interval-sec>0.5</interval-sec>
             <binding>
                 <command>property-toggle</command>
-                <property>fdm/jsbsim/systems/starter/HE</property>
-                <step>1</step>
-                <min>0</min>
-                <max>1</max>
-                <wrap>true</wrap>
+                <property>fdm/jsbsim/systems/climate/sw-pressuriz</property>
             </binding>
         </action>
     </animation>
@@ -36,7 +32,7 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
     <animation>
         <type>rotate</type>
         <object-name>pin (Meshed)</object-name>
-        <property>fdm/jsbsim/systems/starter/HE-pos</property>
+        <property>fdm/jsbsim/systems/climate/sw-pressuriz-pos</property>
         <offset-deg>15</offset-deg>
         <factor>-30</factor>
         <center>

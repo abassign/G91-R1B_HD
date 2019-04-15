@@ -1,10 +1,21 @@
 <?xml version="1.0"?>
 
-<!--
-Description: G91R4 hydraulics system from "Manuale di pilotaggio (1-11,1-12, etc..)
--->
-
 <system name="lightning">
+    
+    
+    <property value="0">systems/lightning/intensity-bus1-norm</property>
+    <property value="0">systems/lightning/ambient-light-emission-display-correction</property>
+    <property value="0">systems/lightning/landing-light/intensity-norm</property>
+    <property value="0">systems/lightning/landing-light/on</property>
+    <property value="0">systems/lightning/taxiing-light/intensity-norm</property>
+    <property value="0">systems/lightning/taxiing-light/on</property>
+    <property value="0">systems/lightning/beacon/on</property>
+    <property value="0">systems/lightning/beacon/motor</property>
+    <!--
+    <property value="0"></property>
+    <property value="0"></property>
+    -->
+    
     
     <channel name="landing light" execrate="33">
         
