@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+
+<system name="Climate">
+    
+    <property value="0.0">systems/climate/sw-set-automatic</property>
+    <property value="0.0">systems/climate/sw-set-manual-dec</property>
+    <property value="0.0">systems/climate/sw-set-manual-inc</property>
+    <property value="0.0">systems/climate/sw-set-pos_x</property>
+    <property value="0.0">systems/climate/sw-set-pos_y</property>
+    <property value="0.0">systems/climate/reg-canopy-defrost</property>
+    <property value="0.0">systems/climate/reg-emerg-ventilation</property>
+
+    
+    <channel name="systems climate sw set" execrate="16">
+        
+    </channel>
+    
+</system>

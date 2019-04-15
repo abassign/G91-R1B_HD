@@ -20,7 +20,7 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
             <interval-sec>0.5</interval-sec>
             <binding>
                 <command>property-toggle</command>
-                <property>fdm/jsbsim/systems/clima/sw-set-automatic</property>
+                <property>fdm/jsbsim/systems/climate/sw-set-automatic</property>
                 <step>1</step>
                 <min>0</min>
                 <max>1</max>
@@ -39,7 +39,7 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
             <interval-sec>0.5</interval-sec>
             <binding>
                 <command>property-toggle</command>
-                <property>fdm/jsbsim/systems/clima/sw-set-manual-dec</property>
+                <property>fdm/jsbsim/systems/climate/sw-set-manual-dec</property>
                 <step>1</step>
                 <min>0</min>
                 <max>1</max>
@@ -58,7 +58,7 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
             <interval-sec>0.5</interval-sec>
             <binding>
                 <command>property-toggle</command>
-                <property>fdm/jsbsim/systems/clima/sw-set-manual-inc</property>
+                <property>fdm/jsbsim/systems/climate/sw-set-manual-inc</property>
                 <step>1</step>
                 <min>0</min>
                 <max>1</max>
@@ -70,7 +70,7 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
     <animation>
         <type>rotate</type>
         <object-name>pin (Meshed)</object-name>
-        <property>fdm/jsbsim/systems/clima/sw-set-pos_x</property>
+        <property>fdm/jsbsim/systems/climate/sw-set-pos_x</property>
         <offset-deg>0</offset-deg>
         <factor>20</factor>
         <center>
@@ -88,7 +88,7 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
     <animation>
         <type>rotate</type>
         <object-name>pin (Meshed)</object-name>
-        <property>fdm/jsbsim/systems/clima/sw-set-pos_y</property>
+        <property>fdm/jsbsim/systems/climate/sw-set-pos_y</property>
         <offset-deg>0</offset-deg>
         <factor>20</factor>
         <center>

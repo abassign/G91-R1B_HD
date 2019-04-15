@@ -65,7 +65,7 @@
     <system file="G91-servo-wings"/>
     <system file="G91-gauges"/>
     <system file="G91-warning-lights"/>
-    <system file="G91-clima"/>
+    <system file="G91-climate"/>
     
     <!-- for testing -->
     <system file="PHI"/>
