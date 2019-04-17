@@ -28,6 +28,17 @@ var prop = props.globals.initNode("sim/G91/re_emit/gauge_red_70_phosphorescent_l
 var prop = props.globals.initNode("sim/G91/re_emit/gauge_red_100_phosphorescent_light", 0, "DOUBLE");
 var prop = props.globals.initNode("sim/G91/re_emit/gauge_red_150_phosphorescent_light", 0, "DOUBLE");
 var prop = props.globals.initNode("sim/G91/re_emit/gauge_red_light", 0, "DOUBLE");
+var prop = props.globals.initNode("sim/G91/re_emit/gauge_red_40_light_panel", 0, "DOUBLE");
+var prop = props.globals.initNode("sim/G91/re_emit/light_red_console_20_light_panel", 0, "DOUBLE");
+var prop = props.globals.initNode("sim/G91/re_emit/light_red_console_30_light_panel", 0, "DOUBLE");
+var prop = props.globals.initNode("sim/G91/re_emit/light_red_console_40_light_panel", 0, "DOUBLE");
+var prop = props.globals.initNode("sim/G91/re_emit/light_red_console_50_light_panel", 0, "DOUBLE");
+var prop = props.globals.initNode("sim/G91/re_emit/light_panel_10", 0, "DOUBLE");
+var prop = props.globals.initNode("sim/G91/re_emit/light_panel_20", 0, "DOUBLE");
+var prop = props.globals.initNode("sim/G91/re_emit/light_panel_30", 0, "DOUBLE");
+var prop = props.globals.initNode("sim/G91/re_emit/light_panel_50", 0, "DOUBLE");
+var prop = props.globals.initNode("sim/G91/re_emit/light_red_console", 0, "DOUBLE");
+var prop = props.globals.initNode("sim/G91/re_emit/light_panel", 0, "DOUBLE");
 var prop = props.globals.initNode("sim/G91/re_emit/gauge_UV_light_on_red_light", 0, "DOUBLE");
 var prop = props.globals.initNode("sim/G91/re_emit/gauge_red_light_on_UV_light", 0, "DOUBLE");
 var prop = props.globals.initNode("sim/G91/re_emit/gauge_spot_internal_red_light", 0, "DOUBLE");
@@ -36,9 +47,9 @@ var prop = props.globals.initNode("sim/G91/light/lg_base", 0, "DOUBLE");
 var timer_re_emit_green_red_gauges = maketimer(0.5, func() {
 
     var ambientBlueLight = props.globals.getNode("rendering/scene/ambient/blue",1).getValue();
-    var bus_primary_V = props.globals.getNode("fdm/jsbsim/systems/electric/bus[1]/V",1).getValue();
-    var light_by_tension_bus = bus_primary_V / 24.0;
-    var pl_emission = -29.7 * math.pow(ambientBlueLight,3) + 6.7 * math.pow(ambientBlueLight,2) - 1.29 * ambientBlueLight + 0.97;
+    
+    var correction_ambient = -29.7 * math.pow(ambientBlueLight,3) + 6.7 * math.pow(ambientBlueLight,2) - 1.29 * ambientBlueLight + 0.97;
+    
     var red_type_a = props.globals.getNode("/sim/G91/lights/gauges/red_type_a",1).getValue();
     var green_type_a = props.globals.getNode("/sim/G91/lights/gauges/green_type_a",1).getValue();
     var yellow_type_a = props.globals.getNode("/sim/G91/lights/gauges/yellow_type_a",1).getValue();
@@ -50,48 +61,77 @@ var timer_re_emit_green_red_gauges = maketimer(0.5, func() {
     var yellow_type_c = props.globals.getNode("/sim/G91/lights/gauges/yellow_type_c",1).getValue();
     
     # Use for controlled light for example cabin advisor lights
-    setprop("sim/G91/light/lg_base",pl_emission * 0.15 * light_by_tension_bus);
+    setprop("sim/G91/light/lg_base",correction_ambient * 0.15);
     
-    pl_emission = pl_emission * (getprop("sim/G91/gauge_red_spot_lamp_emission")) * 1.2;
-    if (pl_emission <= 0.01) {
-        pl_emission = 0.01;
-    } else if (pl_emission > 1.0) {
-        pl_emission = 1.0;
+    var red_emer_instrument = correction_ambient * (getprop("/fdm/jsbsim/systems/lightning/light-red-emer-instrument")) * 1.2;
+    if (red_emer_instrument <= 0.01) {
+        red_emer_instrument = 0.01;
+    } else if (red_emer_instrument > 1.0) {
+        red_emer_instrument = 1.0;
     }
-    setprop("sim/G91/re_emit/gauge_red_light",pl_emission * light_by_tension_bus);
-    setprop("sim/G91/re_emit/gauge_spot_internal_red_light",pl_emission * 0.05 * light_by_tension_bus);
     
-    var ambientBlueLight = props.globals.getNode("rendering/scene/ambient/blue",1).getValue();
-    var pl_phosphorescent_emission = 0.0;
-    pl_phosphorescent_emission = -29.7 * math.pow(ambientBlueLight,3) + 6.7 * math.pow(ambientBlueLight,2) - 1.29 * ambientBlueLight + 0.97;
-    pl_phosphorescent_emission = pl_phosphorescent_emission * (getprop("sim/G91/gauge_UV_light_spot_lamp_emission")) * 1.2;
+    setprop("sim/G91/re_emit/gauge_red_light",red_emer_instrument);
+    setprop("sim/G91/re_emit/gauge_spot_internal_red_light",red_emer_instrument * 0.05);
+    
+    var light_red_console = correction_ambient * (getprop("/fdm/jsbsim/systems/lightning/light-red-console")) * 2.0;
+    if (light_red_console <= 0.01) {
+        light_red_console = 0.01;
+    } else if (light_red_console > 1.8) {
+        light_red_console = 1.8;
+    }
+    setprop("sim/G91/re_emit/light_red_console",light_red_console);
+    
+    var pl_light_panel = -29.7 * math.pow(ambientBlueLight,3) + 6.7 * math.pow(ambientBlueLight,2) - 1.29 * ambientBlueLight + 0.97;
+    pl_light_panel = pl_light_panel * (getprop("/fdm/jsbsim/systems/lightning/light-panel")) * 1.2;
+    if (pl_light_panel <= 0.1) {
+        pl_light_panel = 0.1;
+    } else if (pl_light_panel > 1.0) {
+        pl_light_panel = 1.0;
+    }
+    setprop("sim/G91/re_emit/light_panel",pl_light_panel);
+    
+    var pl_phosphorescent_emission = -29.7 * math.pow(ambientBlueLight,3) + 6.7 * math.pow(ambientBlueLight,2) - 1.29 * ambientBlueLight + 0.97;
+    pl_phosphorescent_emission = pl_phosphorescent_emission * (getprop("/fdm/jsbsim/systems/lightning/light-uv-instrument")) * 1.2;
     if (pl_phosphorescent_emission <= 0.1) {
         pl_phosphorescent_emission = 0.1;
     } else if (pl_phosphorescent_emission > 1.0) {
         pl_phosphorescent_emission = 1.0;
     }
-    setprop("sim/G91/re_emit/gauge_phosphorescent_light",pl_phosphorescent_emission * light_by_tension_bus);
-    setprop("sim/G91/re_emit/gauge_phosphorescent_light_10",pl_phosphorescent_emission * 0.1 * light_by_tension_bus);
-    setprop("sim/G91/re_emit/gauge_phosphorescent_light_20",pl_phosphorescent_emission * 0.2 * light_by_tension_bus);
-    setprop("sim/G91/re_emit/gauge_phosphorescent_light_30",pl_phosphorescent_emission * 0.3 * light_by_tension_bus);
-    setprop("sim/G91/re_emit/gauge_phosphorescent_light_50",pl_phosphorescent_emission * 0.5 * light_by_tension_bus);
-    setprop("sim/G91/re_emit/gauge_phosphorescent_light_70",pl_phosphorescent_emission * 0.7 * light_by_tension_bus);
-    setprop("sim/G91/re_emit/gauge_phosphorescent_light_type_a",pl_phosphorescent_emission * green_type_a * light_by_tension_bus);
-    setprop("sim/G91/re_emit/gauge_phosphorescent_light_type_b",pl_phosphorescent_emission * green_type_b * light_by_tension_bus);
-    setprop("sim/G91/re_emit/gauge_phosphorescent_light_type_c",pl_phosphorescent_emission * green_type_c * light_by_tension_bus);
-    setprop("sim/G91/re_emit/gauge_UV_light_on_red_light",pl_phosphorescent_emission * light_by_tension_bus * 0.2);
-    setprop("sim/G91/re_emit/gauge_red_20_phosphorescent_light",(pl_emission * 0.2 * (1 - pl_phosphorescent_emission) + pl_phosphorescent_emission * 0.8) * light_by_tension_bus);
-    setprop("sim/G91/re_emit/gauge_red_30_phosphorescent_light",(pl_emission * 0.3 * (1 - pl_phosphorescent_emission) + pl_phosphorescent_emission * 0.7) * light_by_tension_bus);
-    setprop("sim/G91/re_emit/gauge_red_40_phosphorescent_light",(pl_emission * 0.4 * (1 - pl_phosphorescent_emission) + pl_phosphorescent_emission * 0.6) * light_by_tension_bus);
-    setprop("sim/G91/re_emit/gauge_red_50_phosphorescent_light",(pl_emission * 0.5 * (1 - pl_phosphorescent_emission) + pl_phosphorescent_emission * 0.5) * light_by_tension_bus);
-    setprop("sim/G91/re_emit/gauge_red_70_phosphorescent_light",(pl_emission * 0.7 * (1 - pl_phosphorescent_emission) + pl_phosphorescent_emission * 0.3) * light_by_tension_bus);
-    setprop("sim/G91/re_emit/gauge_red_100_phosphorescent_light",(pl_emission + pl_phosphorescent_emission) * light_by_tension_bus);
-    setprop("sim/G91/re_emit/gauge_red_150_phosphorescent_light",(pl_emission * 1.5 + pl_phosphorescent_emission) * light_by_tension_bus);
-    setprop("sim/G91/re_emit/gauge_red_type_a_phosphorescent_light",(pl_emission * red_type_a + pl_phosphorescent_emission * yellow_type_a / ( 1 + pl_emission)) * light_by_tension_bus);
-    setprop("sim/G91/re_emit/gauge_red_type_b_phosphorescent_light",(pl_emission * red_type_b + pl_phosphorescent_emission * yellow_type_b / ( 1 + pl_emission)) * light_by_tension_bus);
-    setprop("sim/G91/re_emit/gauge_red_type_c_phosphorescent_light",(pl_emission * red_type_c + pl_phosphorescent_emission * yellow_type_c / ( 1 + pl_emission)) * light_by_tension_bus);
-    setprop("sim/G91/re_emit/gauge_red_light_on_UV_light",pl_emission * light_by_tension_bus * 0.2);
-   
+    setprop("sim/G91/re_emit/gauge_phosphorescent_light",pl_phosphorescent_emission);
+    
+    setprop("sim/G91/re_emit/gauge_phosphorescent_light_10",pl_phosphorescent_emission * 0.1);
+    setprop("sim/G91/re_emit/gauge_phosphorescent_light_20",pl_phosphorescent_emission * 0.2);
+    setprop("sim/G91/re_emit/gauge_phosphorescent_light_30",pl_phosphorescent_emission * 0.3);
+    setprop("sim/G91/re_emit/gauge_phosphorescent_light_50",pl_phosphorescent_emission * 0.5);
+    setprop("sim/G91/re_emit/gauge_phosphorescent_light_70",pl_phosphorescent_emission * 0.7);
+    setprop("sim/G91/re_emit/gauge_phosphorescent_light_type_a",pl_phosphorescent_emission * green_type_a);
+    setprop("sim/G91/re_emit/gauge_phosphorescent_light_type_b",pl_phosphorescent_emission * green_type_b);
+    setprop("sim/G91/re_emit/gauge_phosphorescent_light_type_c",pl_phosphorescent_emission * green_type_c);
+    setprop("sim/G91/re_emit/gauge_UV_light_on_red_light",pl_phosphorescent_emission * 0.2);
+    setprop("sim/G91/re_emit/gauge_red_20_phosphorescent_light",(red_emer_instrument * 0.2 * (1 - pl_phosphorescent_emission) + pl_phosphorescent_emission * 0.8));
+    setprop("sim/G91/re_emit/gauge_red_30_phosphorescent_light",(red_emer_instrument * 0.3 * (1 - pl_phosphorescent_emission) + pl_phosphorescent_emission * 0.7));
+    setprop("sim/G91/re_emit/gauge_red_40_phosphorescent_light",(red_emer_instrument * 0.4 * (1 - pl_phosphorescent_emission) + pl_phosphorescent_emission * 0.6));
+    setprop("sim/G91/re_emit/gauge_red_50_phosphorescent_light",(red_emer_instrument * 0.5 * (1 - pl_phosphorescent_emission) + pl_phosphorescent_emission * 0.5));
+    setprop("sim/G91/re_emit/gauge_red_70_phosphorescent_light",(red_emer_instrument * 0.7 * (1 - pl_phosphorescent_emission) + pl_phosphorescent_emission * 0.3));
+    setprop("sim/G91/re_emit/gauge_red_100_phosphorescent_light",(red_emer_instrument + pl_phosphorescent_emission));
+    setprop("sim/G91/re_emit/gauge_red_150_phosphorescent_light",(red_emer_instrument * 1.5 + pl_phosphorescent_emission));
+    setprop("sim/G91/re_emit/gauge_red_type_a_phosphorescent_light",(red_emer_instrument * red_type_a + pl_phosphorescent_emission * yellow_type_a / ( 1 + red_emer_instrument)));
+    setprop("sim/G91/re_emit/gauge_red_type_b_phosphorescent_light",(red_emer_instrument * red_type_b + pl_phosphorescent_emission * yellow_type_b / ( 1 + red_emer_instrument)));
+    setprop("sim/G91/re_emit/gauge_red_type_c_phosphorescent_light",(red_emer_instrument * red_type_c + pl_phosphorescent_emission * yellow_type_c / ( 1 + red_emer_instrument)));
+    setprop("sim/G91/re_emit/gauge_red_light_on_UV_light",red_emer_instrument * 0.2);
+    
+    setprop("sim/G91/re_emit/gauge_red_40_light_panel",(red_emer_instrument * 0.4 * (1 - pl_light_panel) + pl_light_panel * 0.6));
+    
+    setprop("sim/G91/re_emit/light_red_console_20_light_panel",(light_red_console * 0.2 * (1 - pl_light_panel) + pl_light_panel * 0.7));
+    setprop("sim/G91/re_emit/light_red_console_30_light_panel",(light_red_console * 0.3 * (1 - pl_light_panel) + pl_light_panel * 0.7));
+    setprop("sim/G91/re_emit/light_red_console_40_light_panel",(light_red_console * 0.4 * (1 - pl_light_panel) + pl_light_panel * 0.6));
+    setprop("sim/G91/re_emit/light_red_console_50_light_panel",(light_red_console * 0.5 * (1 - pl_light_panel) + pl_light_panel * 0.5));
+    
+    setprop("sim/G91/re_emit/light_panel_10",pl_light_panel * 0.1);
+    setprop("sim/G91/re_emit/light_panel_20",pl_light_panel * 0.2);
+    setprop("sim/G91/re_emit/light_panel_30",pl_light_panel * 0.3);
+    setprop("sim/G91/re_emit/light_panel_50",pl_light_panel * 0.5);
+    
 });
 timer_re_emit_green_red_gauges.start();
 

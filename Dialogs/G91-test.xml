@@ -122,7 +122,7 @@
         <layout>hbox</layout>
         <text>
             <halign>left</halign>
-            <label>Gauge UV Lamp Intensity: blu ext light = </label>
+            <label>Gauge UV lamp intensity: blu ext light = </label>
         </text>
         <text>
             <label>99999</label>
@@ -140,7 +140,7 @@
         </empty>
         <slider>
             <name>gauge_UV_light_spot_lamp</name>
-            <property>sim/G91/gauge_UV_light_spot_lamp_emission</property>
+            <property>/fdm/jsbsim/systems/lightning/light-uv-instrument-bright</property>
             <min>0.0</min>
             <max>1.0</max>
             <step>0.01</step>  
@@ -152,7 +152,7 @@
             <label>9999</label>
             <live>true</live>
             <format>(%2.2f) </format>
-            <property>sim/G91/gauge_UV_light_spot_lamp_emission</property>
+            <property>/fdm/jsbsim/systems/lightning/light-uv-instrument</property>
             <color>
                 <red>0.2</red>
                 <green>0.9</green>
@@ -181,7 +181,7 @@
         <layout>hbox</layout>
         <text>
             <halign>left</halign>
-            <label>Gauge red Lamp Intensity: red ext light = </label>
+            <label>Gauge red emergency lamps intensity: red ext light = </label>
         </text>
         <text>
             <label>99999</label>
@@ -199,7 +199,7 @@
         </empty>
         <slider>
             <name>gauge_Red_light_spot_lamp</name>
-            <property>sim/G91/gauge_red_spot_lamp_emission</property>
+            <property>/fdm/jsbsim/systems/lightning/light-red-emer-instrument-bright</property>
             <min>0.0</min>
             <max>1.0</max>
             <step>0.01</step>  
@@ -211,7 +211,7 @@
             <label>9999</label>
             <live>true</live>
             <format>(%2.2f) </format>
-            <property>sim/G91/gauge_red_spot_lamp_emission</property>
+            <property>/fdm/jsbsim/systems/lightning/light-red-emer-instrument</property>
             <color>
                 <red>0.2</red>
                 <green>0.9</green>
@@ -228,6 +228,114 @@
             <live>true</live>
             <format>%2.4f </format>
             <property>sim/G91/re_emit/gauge_red_light</property>
+            <color>
+                <red>0.9</red>
+                <green>0.9</green>
+                <blue>0.9</blue>
+            </color>
+        </text>
+    </group>
+    
+    <group>
+        <layout>hbox</layout>
+        <text>
+            <halign>left</halign>
+            <label>Console light intensity: red light = </label>
+        </text>
+        <text>
+            <label>99999</label>
+            <live>true</live>
+            <format>%2.3f </format>
+            <property>rendering/scene/ambient/red</property>
+            <color>
+                <red>0.9</red>
+                <green>0.9</green>
+                <blue>0.9</blue>
+            </color>
+        </text>
+        <empty>
+            <stretch>true</stretch>
+        </empty>
+        <slider>
+            <name>gauge_Red_light_spot_lamp</name>
+            <property>/fdm/jsbsim/systems/lightning/light-red-console-bright</property>
+            <min>0.0</min>
+            <max>1.0</max>
+            <step>0.01</step>  
+            <binding>
+                <command>dialog-apply</command>
+            </binding>
+        </slider>
+        <text>
+            <label>9999</label>
+            <live>true</live>
+            <format>(%2.2f) </format>
+            <property>/fdm/jsbsim/systems/lightning/light-red-console</property>
+            <color>
+                <red>0.2</red>
+                <green>0.9</green>
+                <blue>0.2</blue>
+            </color>
+        </text>
+        <vrule/>
+        <text>
+            <halign>right</halign>
+            <label> Red light Intensity = </label>
+        </text>
+        <text>
+            <label>99999</label>
+            <live>true</live>
+            <format>%2.4f </format>
+            <property>sim/G91/re_emit/light_red_console</property>
+            <color>
+                <red>0.9</red>
+                <green>0.9</green>
+                <blue>0.9</blue>
+            </color>
+        </text>
+    </group>
+    
+    <group>
+        <layout>hbox</layout>
+        <text>
+            <halign>left</halign>
+            <label>Panel light intensity: red light = </label>
+        </text>
+        <text>
+            <label>99999</label>
+            <live>true</live>
+            <format>%2.3f </format>
+            <property>rendering/scene/ambient/red</property>
+            <color>
+                <red>0.9</red>
+                <green>0.9</green>
+                <blue>0.9</blue>
+            </color>
+        </text>
+        <empty>
+            <stretch>true</stretch>
+        </empty>
+        <text>
+            <label>9999</label>
+            <live>true</live>
+            <format>(%2.2f) </format>
+            <property>/fdm/jsbsim/systems/lightning/light_panel</property>
+            <color>
+                <red>0.2</red>
+                <green>0.9</green>
+                <blue>0.2</blue>
+            </color>
+        </text>
+        <vrule/>
+        <text>
+            <halign>right</halign>
+            <label> Red light Intensity = </label>
+        </text>
+        <text>
+            <label>99999</label>
+            <live>true</live>
+            <format>%2.4f </format>
+            <property>sim/G91/re_emit/light_panel</property>
             <color>
                 <red>0.9</red>
                 <green>0.9</green>

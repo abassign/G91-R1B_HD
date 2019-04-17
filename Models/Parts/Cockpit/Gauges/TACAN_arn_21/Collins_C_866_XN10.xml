@@ -88,9 +88,9 @@
             <blue>0.6</blue>
         </ambient>
         <emission>
-            <red-prop>sim/G91/re_emit/gauge_red_20_phosphorescent_light</red-prop>
-            <green-prop>sim/G91/re_emit/gauge_phosphorescent_light_30</green-prop>
-            <blue-prop>sim/G91/re_emit/gauge_phosphorescent_light_10</blue-prop>
+            <red-prop>sim/G91/re_emit/light_red_console_20_light_panel</red-prop>
+            <green-prop>sim/G91/re_emit/light_panel_30</green-prop>
+            <blue-prop>sim/G91/re_emit/light_panel_10</blue-prop>
             <factor>0.5</factor>
         </emission>
     </animation>
@@ -330,9 +330,9 @@
             <blue>0.6</blue>
         </ambient>
         <emission>
-            <red-prop>sim/G91/re_emit/gauge_red_20_phosphorescent_light</red-prop>
-            <green-prop>sim/G91/re_emit/gauge_phosphorescent_light_30</green-prop>
-            <blue-prop>sim/G91/re_emit/gauge_phosphorescent_light_10</blue-prop>
+            <red-prop>sim/G91/re_emit/light_red_console_20_light_panel</red-prop>
+            <green-prop>sim/G91/re_emit/light_panel_30</green-prop>
+            <blue-prop>sim/G91/re_emit/light_panel_10</blue-prop>
             <factor>0.8</factor>
         </emission>
     </animation>
@@ -356,9 +356,9 @@
             <blue>0.6</blue>
         </ambient>
         <emission>
-            <red-prop>sim/G91/re_emit/gauge_red_20_phosphorescent_light</red-prop>
-            <green-prop>sim/G91/re_emit/gauge_phosphorescent_light_30</green-prop>
-            <blue-prop>sim/G91/re_emit/gauge_phosphorescent_light_10</blue-prop>
+            <red-prop>sim/G91/re_emit/light_red_console_20_light_panel</red-prop>
+            <green-prop>sim/G91/re_emit/light_panel_30</green-prop>
+            <blue-prop>sim/G91/re_emit/light_panel_10</blue-prop>
             <factor>0.7</factor>
         </emission>
     </animation>
@@ -383,9 +383,9 @@
             <blue>0.6</blue>
         </ambient>
         <emission>
-            <red-prop>sim/G91/re_emit/gauge_red_20_phosphorescent_light</red-prop>
-            <green-prop>sim/G91/re_emit/gauge_phosphorescent_light_30</green-prop>
-            <blue-prop>sim/G91/re_emit/gauge_phosphorescent_light_10</blue-prop>
+            <red-prop>sim/G91/re_emit/light_red_console_20_light_panel</red-prop>
+            <green-prop>sim/G91/re_emit/light_panel_30</green-prop>
+            <blue-prop>sim/G91/re_emit/light_panel_10</blue-prop>
             <factor>0.3</factor>
         </emission>
     </animation>

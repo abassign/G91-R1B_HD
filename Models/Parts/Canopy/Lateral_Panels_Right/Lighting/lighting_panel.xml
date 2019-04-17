@@ -35,7 +35,7 @@
             <red>0.04</red>
             <green>0.0</green>
             <blue>0.01</blue>
-            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+            <factor-prop>sim/G91/re_emit/light_red_console</factor-prop>
         </emission>
     </animation>
     
@@ -56,7 +56,7 @@
             <red>0.07</red>
             <green>0.0</green>
             <blue>0.01</blue>
-            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+            <factor-prop>sim/G91/re_emit/light_red_console</factor-prop>
         </emission>
     </animation>
     
@@ -82,7 +82,7 @@
             <red>0.2</red>
             <green>0.0</green>
             <blue>0.01</blue>
-            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+            <factor-prop>sim/G91/re_emit/light_red_console</factor-prop>
         </emission>
     </animation>
     
@@ -110,7 +110,7 @@
             <red>0.06</red>
             <green>0.0</green>
             <blue>0.0</blue>
-            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+            <factor-prop>sim/G91/re_emit/light_red_console</factor-prop>
         </emission>
     </animation>
     
@@ -138,7 +138,7 @@
             <red>0.16</red>
             <green>0.0</green>
             <blue>0.01</blue>
-            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+            <factor-prop>sim/G91/re_emit/light_red_console</factor-prop>
         </emission>
     </animation>
     
@@ -164,7 +164,7 @@
             <red>0.09</red>
             <green>0.0</green>
             <blue>0.0</blue>
-            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+            <factor-prop>sim/G91/re_emit/light_red_console</factor-prop>
         </emission>
     </animation>
     
@@ -190,8 +190,116 @@
             <red>0.06</red>
             <green>0.0</green>
             <blue>0.0</blue>
-            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+            <factor-prop>sim/G91/re_emit/light_red_console</factor-prop>
         </emission>
+    </animation>
+    
+    <animation>
+        <type>knob</type>
+        <object-name>instrument lights A (Meshed)</object-name>
+        <object-name>instrument lights B (Meshed)</object-name>
+        <action>
+            <button>0</button>
+            <binding>
+                <command>property-adjust</command>
+                <property>fdm/jsbsim/systems/lightning/light-uv-instrument-bright</property>
+                <factor>0.1</factor>
+                <min>0</min>
+                <max>1</max>                
+                <wrap>false</wrap>
+            </binding>
+        </action>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>instrument lights A (Meshed)</object-name>
+        <object-name>instrument lights B (Meshed)</object-name>
+        <property>fdm/jsbsim/systems/lightning/light-uv-instrument-bright-pos</property>
+        <factor>210</factor>
+        <offset-deg>-120.0</offset-deg>
+        <center>
+            <x-m>-0.127</x-m>
+            <y-m>-0.026</y-m>
+            <z-m>0.0</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>0</y>
+            <z>-1</z>
+        </axis>
+    </animation>
+    
+    <animation>
+        <type>knob</type>
+        <object-name>console panel lights A (Meshed)</object-name>
+        <object-name>console panel lights B (Meshed)</object-name>
+        <action>
+            <button>0</button>
+            <binding>
+                <command>property-adjust</command>
+                <property>fdm/jsbsim/systems/lightning/light-red-emer-instrument-bright</property>
+                <factor>0.1</factor>
+                <min>0</min>
+                <max>1</max>                
+                <wrap>false</wrap>
+            </binding>
+        </action>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>console panel lights A (Meshed)</object-name>
+        <object-name>console panel lights B (Meshed)</object-name>
+        <property>fdm/jsbsim/systems/lightning/light-red-emer-instrument-bright-pos</property>
+        <factor>210</factor>
+        <offset-deg>-120.0</offset-deg>
+        <center>
+            <x-m>-0.079</x-m>
+            <y-m>-0.024</y-m>
+            <z-m>0.0</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>0</y>
+            <z>-1</z>
+        </axis>
+    </animation>
+    
+    <animation>
+        <type>knob</type>
+        <object-name>console lights A (Meshed)</object-name>
+        <object-name>console lights B (Meshed)</object-name>
+        <action>
+            <button>0</button>
+            <binding>
+                <command>property-adjust</command>
+                <property>fdm/jsbsim/systems/lightning/light-red-console-bright</property>
+                <factor>0.1</factor>
+                <min>0</min>
+                <max>1</max>                
+                <wrap>false</wrap>
+            </binding>
+        </action>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>console lights A (Meshed)</object-name>
+        <object-name>console lights B (Meshed)</object-name>
+        <property>fdm/jsbsim/systems/lightning/light-red-console-bright-pos</property>
+        <factor>210</factor>
+        <offset-deg>-120.0</offset-deg>
+        <center>
+            <x-m>-0.028</x-m>
+            <y-m>-0.024</y-m>
+            <z-m>0.0</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>0</y>
+            <z>-1</z>
+        </axis>
     </animation>
     
     <model>

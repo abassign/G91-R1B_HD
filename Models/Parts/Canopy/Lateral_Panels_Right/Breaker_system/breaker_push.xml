@@ -35,7 +35,7 @@
             <red>0.04</red>
             <green>0.0</green>
             <blue>0.0</blue>
-            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+            <factor-prop>sim/G91/re_emit/light_red_console</factor-prop>
         </emission>
     </animation>
     
@@ -61,7 +61,7 @@
             <red>0.035</red>
             <green>0.0</green>
             <blue>0.0</blue>
-            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+            <factor-prop>sim/G91/re_emit/light_red_console</factor-prop>
         </emission>
     </animation>
     
@@ -87,7 +87,7 @@
             <red>0.04</red>
             <green>0.0</green>
             <blue>0.0</blue>
-            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+            <factor-prop>sim/G91/re_emit/light_red_console</factor-prop>
         </emission>
     </animation>
     
@@ -114,7 +114,7 @@
             <red>0.15</red>
             <green>0.0</green>
             <blue>0.01</blue>
-            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+            <factor-prop>sim/G91/re_emit/light_red_console</factor-prop>
         </emission>
     </animation>
 
@@ -209,7 +209,7 @@
             <red>0.02</red>
             <green>0.0</green>
             <blue>0.0</blue>
-            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+            <factor-prop>sim/G91/re_emit/light_red_console</factor-prop>
         </emission>
     </animation>
 
@@ -304,7 +304,7 @@
             <red>0.08</red>
             <green>0.0</green>
             <blue>0.0</blue>
-            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+            <factor-prop>sim/G91/re_emit/light_red_console</factor-prop>
         </emission>
     </animation>
 

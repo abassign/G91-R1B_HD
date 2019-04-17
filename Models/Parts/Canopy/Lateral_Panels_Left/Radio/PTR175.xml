@@ -2,61 +2,6 @@
 
     <path>PTR175.ac</path>
     
-    <!--
-    <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
-        <object-name>vol_knob_base (Meshed)</object-name>
-        <object-name>vol_knob_mirror (Meshed)</object-name>
-        <object-name>chan selector B (Meshed)</object-name>
-        <object-name>knob_freq_1 (Meshed)</object-name>
-        <object-name>knob_freq_2 (Meshed)</object-name>
-        <object-name>knob_freq_3 (Meshed)</object-name>
-        <object-name>knob_freq_4 (Meshed)</object-name>
-        <object-name>knob_freq_cover (Meshed)</object-name>
-        <object-name>freq_preselect_cover (Meshed)</object-name>
-        <object-name>freq_preselect_screew (Meshed)</object-name>
-        <object-name>screews (Meshed)</object-name>
-        <object-name>cover_lamp (Meshed)</object-name>
-        <object-name>knob_function (Meshed)</object-name>
-        <object-name>knob_function_A (Meshed)</object-name>
-        <object-name>knob_function_arrow (Meshed)</object-name>
-        <object-name>freq_preselect_hinges (Meshed)</object-name>
-        <object-name>box_cover_sup (Meshed)</object-name>
-        <object-name>box_cover_inf (Meshed)</object-name>
-        <object-name>screew internal 01 (Meshed)</object-name>
-        <object-name>screew internal 02 (Meshed)</object-name>
-        <object-name>screew internal 02 (Meshed)</object-name>
-        <object-name>digit B 10000 (Meshed)</object-name>
-        <object-name>digit A 10000 (Meshed)</object-name>
-        <object-name>digit S 10000 (Meshed)</object-name>
-        <object-name>digit B 01000 (Meshed)</object-name>
-        <object-name>digit A 01000 (Meshed)</object-name>
-        <object-name>digit S 01000 (Meshed)</object-name>
-        <object-name>digit B 00100 (Meshed)</object-name>
-        <object-name>digit A 00100 (Meshed)</object-name>
-        <object-name>digit S 00100 (Meshed)</object-name>
-        <object-name>digit B 00010 (Meshed)</object-name>
-        <object-name>digit A 00010 (Meshed)</object-name>
-        <object-name>digit S 00010 (Meshed)</object-name>
-        <object-name>digit B 00001 (Meshed)</object-name>
-        <object-name>digit A 00001 (Meshed)</object-name>
-        <object-name>digit S 00001 (Meshed)</object-name>
-        <object-name>digit point B (Meshed)</object-name>
-        <object-name>digit point A (Meshed)</object-name>
-        <object-name>freq set 11000 (Meshed)</object-name>
-        <object-name>freq set 11000 point A (Meshed)</object-name>
-        <object-name>freq set 00100 (Meshed)</object-name>
-        <object-name>freq set 00100 point A (Meshed)</object-name>
-        <object-name>freq set 00011 (Meshed)</object-name>
-        <object-name>freq set 00011 point A (Meshed)</object-name>
-        <object-name>freq set A (Meshed)</object-name>
-        <object-name>Selector A (Meshed)</object-name>
-        <object-name>freq set 11000 point A</object-name>
-        <object-name>freq set 00100 point A</object-name>
-        <object-name>freq set 00011 point A</object-name>
-    </effect>
-    -->
-    
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
         <object-name>vol_knob_base (Meshed)</object-name>
@@ -169,7 +114,7 @@
             <red>0.25</red>
             <green>0.0</green>
             <blue>0.0</blue>
-            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+            <factor-prop>sim/G91/re_emit/light_red_console</factor-prop>
         </emission>
     </animation>
     
@@ -193,7 +138,7 @@
             <red>0.10</red>
             <green>0.0</green>
             <blue>0.0</blue>
-            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+            <factor-prop>sim/G91/re_emit/light_red_console</factor-prop>
         </emission>
     </animation>
     
@@ -233,7 +178,7 @@
             <red>0.06</red>
             <green>0.0</green>
             <blue>0.0</blue>
-            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+            <factor-prop>sim/G91/re_emit/light_red_console</factor-prop>
         </emission>
     </animation>
     
@@ -261,7 +206,7 @@
             <red>0.1</red>
             <green>0.0</green>
             <blue>0.0</blue>
-            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+            <factor-prop>sim/G91/re_emit/light_red_console</factor-prop>
         </emission>
     </animation>
     
@@ -287,7 +232,7 @@
             <red>0.1</red>
             <green>0.0</green>
             <blue>0.0</blue>
-            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+            <factor-prop>sim/G91/re_emit/light_red_console</factor-prop>
         </emission>
     </animation>
     
@@ -309,9 +254,9 @@
             <blue>0.01</blue>
         </ambient>
         <emission>
-            <red-prop>sim/G91/re_emit/gauge_red_40_phosphorescent_light</red-prop>
-            <green-prop>sim/G91/re_emit/gauge_phosphorescent_light_50</green-prop>
-            <blue-prop>sim/G91/re_emit/gauge_phosphorescent_light_30</blue-prop>
+            <red-prop>sim/G91/re_emit/light_red_console_40_light_panel</red-prop>
+            <green-prop>sim/G91/re_emit/light_panel_50</green-prop>
+            <blue-prop>sim/G91/re_emit/light_panel_30</blue-prop>
             <factor>0.1</factor>
         </emission>
     </animation>
@@ -335,9 +280,9 @@
             <blue>0.6</blue>
         </ambient>
         <emission>
-            <red-prop>sim/G91/re_emit/gauge_red_40_phosphorescent_light</red-prop>
-            <green-prop>sim/G91/re_emit/gauge_phosphorescent_light_50</green-prop>
-            <blue-prop>sim/G91/re_emit/gauge_phosphorescent_light_30</blue-prop>
+            <red-prop>sim/G91/re_emit/light_red_console_40_light_panel</red-prop>
+            <green-prop>sim/G91/re_emit/light_panel_50</green-prop>
+            <blue-prop>sim/G91/re_emit/light_panel_30</blue-prop>
             <factor>0.4</factor>
         </emission>
     </animation>
@@ -358,9 +303,9 @@
             <blue>0.6</blue>
         </ambient>
         <emission>
-            <red-prop>sim/G91/re_emit/gauge_red_40_phosphorescent_light</red-prop>
-            <green-prop>sim/G91/re_emit/gauge_phosphorescent_light_50</green-prop>
-            <blue-prop>sim/G91/re_emit/gauge_phosphorescent_light_30</blue-prop>
+            <red-prop>sim/G91/re_emit/light_red_console_40_light_panel</red-prop>
+            <green-prop>sim/G91/re_emit/light_panel_50</green-prop>
+            <blue-prop>sim/G91/re_emit/light_panel_30</blue-prop>
             <factor>0.5</factor>
         </emission>
     </animation>
@@ -379,9 +324,9 @@
             <blue>0.2</blue>
         </ambient>
         <emission>
-            <red-prop>sim/G91/re_emit/gauge_red_40_phosphorescent_light</red-prop>
-            <green-prop>sim/G91/re_emit/gauge_phosphorescent_light_50</green-prop>
-            <blue-prop>sim/G91/re_emit/gauge_phosphorescent_light_30</blue-prop>
+            <red-prop>sim/G91/re_emit/light_red_console_40_light_panel</red-prop>
+            <green-prop>sim/G91/re_emit/light_panel_50</green-prop>
+            <blue-prop>sim/G91/re_emit/light_panel_30</blue-prop>
             <factor>0.4</factor>
         </emission>
     </animation>
@@ -402,9 +347,9 @@
             <blue>0.6</blue>
         </ambient>
         <emission>
-            <red-prop>sim/G91/re_emit/gauge_red_40_phosphorescent_light</red-prop>
-            <green-prop>sim/G91/re_emit/gauge_phosphorescent_light_50</green-prop>
-            <blue-prop>sim/G91/re_emit/gauge_phosphorescent_light_30</blue-prop>
+            <red-prop>sim/G91/re_emit/light_red_console_40_light_panel</red-prop>
+            <green-prop>sim/G91/re_emit/light_panel_50</green-prop>
+            <blue-prop>sim/G91/re_emit/light_panel_30</blue-prop>
             <factor>0.4</factor>
         </emission>
     </animation>
@@ -429,9 +374,9 @@
             <blue>0.6</blue>
         </ambient>
         <emission>
-            <red-prop>sim/G91/re_emit/gauge_red_40_phosphorescent_light</red-prop>
-            <green-prop>sim/G91/re_emit/gauge_phosphorescent_light_50</green-prop>
-            <blue-prop>sim/G91/re_emit/gauge_phosphorescent_light_30</blue-prop>
+            <red-prop>sim/G91/re_emit/light_red_console_40_light_panel</red-prop>
+            <green-prop>sim/G91/re_emit/light_panel_50</green-prop>
+            <blue-prop>sim/G91/re_emit/light_panel_30</blue-prop>
             <factor>0.5</factor>
         </emission>
     </animation>

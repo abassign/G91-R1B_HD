@@ -4,26 +4,6 @@
     
     <path>PHI-Wind 02.ac</path>
     
-    <!--
-    <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
-        <object-name>frontal (Meshed)</object-name>
-        <object-name>frontal_plate_B (Meshed)</object-name>
-        <object-name>ring (Meshed)</object-name>
-        <object-name>lamp_ring (Meshed)</object-name>
-        <object-name>knob_001 (Meshed)</object-name>
-        <object-name>knob_002 (Meshed)</object-name>
-        <object-name>lamp_cover (Meshed)</object-name>
-        <object-name>arrow_mirror (Meshed)</object-name>
-        <object-name>screews_01 (Meshed)</object-name>
-        <object-name>screews_02 (Meshed)</object-name>
-        <object-name>screews_03 (Meshed)</object-name>
-        <object-name>Curve</object-name>
-        <object-name>Curve.001</object-name>
-        <object-name>Curve.002</object-name>
-    </effect>
-    -->
-    
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
         <object-name>frontal (Meshed)</object-name>
@@ -143,9 +123,9 @@
             <blue>0.53</blue>
         </ambient>
         <emission>
-            <red-prop>sim/G91/re_emit/gauge_red_40_phosphorescent_light</red-prop>
-            <green-prop>sim/G91/re_emit/gauge_phosphorescent_light_50</green-prop>
-            <blue-prop>sim/G91/re_emit/gauge_phosphorescent_light_30</blue-prop>
+            <red-prop>sim/G91/re_emit/gauge_red_40_light_panel</red-prop>
+            <green-prop>sim/G91/re_emit/light_panel_50</green-prop>
+            <blue-prop>sim/G91/re_emit/light_panel_30</blue-prop>
             <factor>0.7</factor>
         </emission>
     </animation>
@@ -232,9 +212,9 @@
             <blue>0.3</blue>
         </ambient>
         <emission>
-            <red-prop>sim/G91/re_emit/gauge_red_40_phosphorescent_light</red-prop>
-            <green-prop>sim/G91/re_emit/gauge_phosphorescent_light_50</green-prop>
-            <blue-prop>sim/G91/re_emit/gauge_phosphorescent_light_30</blue-prop>
+            <red-prop>sim/G91/re_emit/gauge_red_40_light_panel</red-prop>
+            <green-prop>sim/G91/re_emit/light_panel_50</green-prop>
+            <blue-prop>sim/G91/re_emit/light_panel_30</blue-prop>
             <factor>0.6</factor>
         </emission>
     </animation>

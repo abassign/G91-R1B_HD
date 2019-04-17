@@ -16,7 +16,6 @@ Description: G91R4 Electric system from "Manuale di pilotaggio (p.56)
     <property value="1">systems/electric/bus[0]/fire-warning/fuse</property>
     <property value="0">systems/electric/bus[0]/fire-warning/sw</property>
     <property value="1">systems/electric/bus[0]/emergency-canopy-light/fuse</property>
-    <property value="0">systems/electric/bus[0]/emergency-canopy-light/sw</property>
     <property value="0.0">systems/electric/bus[0]/emergency-canopy-light/I</property>
     <property value="1">systems/electric/bus[0]/horizontal-stabilizer-actuator/fuse</property>
     <property value="1">systems/electric/bus[0]/emergency-stabilizer-corrector/fuse</property>
@@ -83,9 +82,12 @@ Description: G91R4 Electric system from "Manuale di pilotaggio (p.56)
     <property value="1">systems/electric/bus[1]/anti-collision-light/fuse</property>
     <property value="0">systems/electric/bus[1]/anti-collision-light/sw</property>
     <property value="0.0">systems/electric/bus[1]/anti-collision-light/I</property>
-    <property value="1">systems/electric/bus[1]/interior-lights/fuse</property>
-    <property value="0">systems/electric/bus[1]/interior-lights/sw</property>
-    <property value="0.0">systems/electric/bus[1]/interior-lights/I</property>
+    <property value="1">systems/electric/bus[1]/instrument-panel-emerg-lights/fuse</property>
+    <property value="0.0">systems/electric/bus[1]/instrument-panel-emerg-lights/I</property>
+    <property value="1">systems/electric/bus[1]/instrument-flood-lights/fuse</property>
+    <property value="0.0">systems/electric/bus[1]/instrument-flood-lights/I</property>
+    <property value="1">systems/electric/bus[1]/console-lights/fuse</property>
+    <property value="0.0">systems/electric/bus[1]/console-lights/I</property>
     <property value="1">systems/electric/bus[1]/additional-tank-pressurization/fuse</property>
     <property value="1">systems/electric/bus[1]/radiogoniometer/fuse</property>
     <property value="0">systems/electric/bus[1]/radiogoniometer/sw</property>
@@ -120,8 +122,6 @@ Description: G91R4 Electric system from "Manuale di pilotaggio (p.56)
     <property value="1">systems/electric/bus[2]/position-lights/fuse</property>
     <property value="0">systems/electric/bus[2]/position-lights/sw</property>
     <property value="0.0">systems/electric/bus[2]/position-lights/I</property>
-    <property value="1">systems/electric/bus[2]/cockpit-lights/fuse</property>
-    <property value="0">systems/electric/bus[2]/cockpit-lights/sw</property>
     <property value="0.0">systems/electric/bus[2]/cockpit-lights/I</property>
     <property value="1">systems/electric/bus[2]/cameras/fuse</property>
     <property value="0">systems/electric/bus[2]/cameras/camera[1]/sw</property>
@@ -148,6 +148,8 @@ Description: G91R4 Electric system from "Manuale di pilotaggio (p.56)
     <property value="1">systems/electric/bus[2]/yaw-damper/fuse</property>
     <property value="1">systems/electric/bus[2]/aileron-vibrator/fuse</property>
     <property value="1">systems/electric/bus[2]/cockpit-vibrator/fuse</property>
+    <property value="1">systems/electric/bus[2]/panel-lights/fuse</property>
+    <property value="0.0">systems/electric/bus[2]/panel-lights/I</property>
     <property value="10">systems/electric/inv-primary/I0</property>
     <property value="10">systems/electric/inv-secondary/I0</property>
     <property value="1">systems/electric/inv-primary/cockpit-air-temp/fuse</property>
@@ -170,7 +172,6 @@ Description: G91R4 Electric system from "Manuale di pilotaggio (p.56)
             <input>systems/electric/bus[1]/TACAN/I</input>
             <input>systems/electric/bus[1]/wing-flap/I</input>
             <input>systems/electric/bus[1]/anti-collision-light/I</input>
-            <input>systems/electric/bus[1]/interior-lights/I</input>
             <input>systems/electric/bus[1]/radiogoniometer/I</input>
             <input>systems/electric/bus[1]/UHF-radio/I</input>
             <input>systems/electric/bus[1]/UHF-radio-emergency/I</input>
@@ -188,12 +189,15 @@ Description: G91R4 Electric system from "Manuale di pilotaggio (p.56)
             <input>systems/electric/bus[1]/compass-flux-gate/I</input>
             <input>systems/electric/bus[1]/air-conditioning-pressurization/I</input>
             <input>systems/electric/bus[1]/air-conditioning-temperature/I</input>
+            <input>systems/electric/bus[1]/instrument-panel-emerg-lights/I</input>
+            <input>systems/electric/bus[1]/instrument-flood-lights/I</input>
+            <input>systems/electric/bus[1]/console-lights/I</input>
         </summer>
         
         <summer name="systems/electric/bus[2]/I">
             <input>systems/electric/bus[2]/doppler/I</input>
             <input>systems/electric/bus[2]/position-lights/I</input>
-            <input>systems/electric/bus[2]/cockpit-lights/I</input>
+            <input>systems/electric/bus[2]/panel-lights/I</input>
             <input>systems/electric/bus[2]/cameras/camera[1]/I</input>
             <input>systems/electric/bus[2]/cameras/camera[2]/I</input>
             <input>systems/electric/bus[2]/cameras/camera[3]/I</input>
