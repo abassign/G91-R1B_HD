@@ -22,7 +22,7 @@
         </condition>
         
         <emissive>false</emissive>
-        <lighting>true</lighting>
+        <lighting>false</lighting>
         <align>billboard</align> <!-- billboard / fixed -->
         <attach>world</attach> <!-- world / local-->
         
@@ -38,14 +38,14 @@
             <phi-min-deg>-10</phi-min-deg>
             <phi-max-deg>10</phi-max-deg>
             <speed-mps>
-                <value>1</value>
-                <spread>1</spread>
+                <value>5</value>
+                <spread>10</spread>
             </speed-mps>
             <rotation-speed>
                 <x-min-deg-sec>00</x-min-deg-sec>
-                <y-min-deg-sec>10</y-min-deg-sec>
+                <y-min-deg-sec>00</y-min-deg-sec>
                 <z-min-deg-sec>00</z-min-deg-sec>
-                <x-max-deg-sec>50</x-max-deg-sec>
+                <x-max-deg-sec>00</x-max-deg-sec>
                 <y-max-deg-sec>00</y-max-deg-sec>
                 <z-max-deg-sec>00</z-max-deg-sec>
             </rotation-speed>
@@ -53,8 +53,8 @@
         
         <counter>
             <particles-per-sec>
-                <value>120</value>
-                <spread>0</spread>
+                <value>400</value>
+                <spread>300</spread>
                 <factor-prop>fdm/jsbsim/systems/jato/smoke_jato_1_particles</factor-prop>
             </particles-per-sec>
         </counter>
@@ -64,8 +64,8 @@
                 <color>
                     <red><value>   0.63 </value></red>
                     <green><value> 0.58 </value></green>
-                    <blue><value>  0.40 </value></blue>
-                    <alpha><value> 8 </value></alpha>
+                    <blue><value>  0.45 </value></blue>
+                    <alpha><value> 0.3 </value></alpha>
                 </color>
                 <size>
                     <value>0.5</value>
@@ -80,12 +80,12 @@
                     <alpha><value> 0.0 </value></alpha>
                 </color>
                 <size>
-                    <value>1</value>
+                    <value>5.0</value>
                 </size>
             </end>
             
             <life-sec>
-                <value>0.3</value>
+                <value>5</value>
             </life-sec>
 
             <mass-kg>0.001</mass-kg>

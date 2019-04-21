@@ -31,7 +31,7 @@
             <blue>0.3</blue>
         </specular>
         <emission>
-            <red>0.03</red>
+            <red>0.06</red>
             <green>0.0</green>
             <blue>0.0</blue>
             <factor-prop>sim/G91/re_emit/light_red_console</factor-prop>
@@ -57,7 +57,7 @@
             <blue>0.5</blue>
         </specular>
         <emission>
-            <red>0.06</red>
+            <red>0.1</red>
             <green>0.0</green>
             <blue>0.0</blue>
             <factor-prop>sim/G91/re_emit/light_red_console</factor-prop>
@@ -83,7 +83,7 @@
             <blue>0.5</blue>
         </specular>
         <emission>
-            <red>0.04</red>
+            <red>0.08</red>
             <green>0.0</green>
             <blue>0.0</blue>
             <factor-prop>sim/G91/re_emit/light_red_console</factor-prop>

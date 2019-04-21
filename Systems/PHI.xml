@@ -21,7 +21,11 @@
     <property value="0.0">systems/gauges/PHI/doppler/switch-right</property>
     <property value="0.0">systems/gauges/PHI/doppler/switch-increase-decrease-pos</property>
     <property value="0.0">systems/gauges/PHI/doppler/switch-left-right-pos</property>
-    
+    <property value="0.0">systems/gauges/PHI/doppler/sw-test-togle</property>
+    <property value="0.0">systems/gauges/PHI/doppler/sw-test-pos</property>
+    <property value="0.0">systems/gauges/PHI/doppler/sw-test-top-togle</property>
+    <property value="0.0">systems/gauges/PHI/doppler/sw-test-top-pos</property>
+
     <property value="0.0">systems/gauges/PHI/control/sequence</property>
     <property value="0.0">systems/gauges/PHI/program/release-togle</property>
     
@@ -985,7 +989,6 @@
                     systems/gauges/PHI/program/route[1]/push-togle-washed GT 0.1
                     systems/gauges/PHI/program/route[1]/push-togle-washed LT -0.1
                 </test>
-                systems/gauges/PHI/program/route-is-pusching == 0
             </test>
             <test logic="AND" value = "0">
                 systems/gauges/PHI/program/route-is-pusching == 1
@@ -1047,7 +1050,6 @@
                     systems/gauges/PHI/program/route[2]/push-togle-washed GT 0.1
                     systems/gauges/PHI/program/route[2]/push-togle-washed LT -0.1
                 </test>
-                systems/gauges/PHI/program/route-is-pusching == 0
             </test>
             <test logic="AND" value = "0">
                 systems/gauges/PHI/program/route-is-pusching == 1
@@ -1109,7 +1111,6 @@
                     systems/gauges/PHI/program/route[3]/push-togle-washed GT 0.1
                     systems/gauges/PHI/program/route[3]/push-togle-washed LT -0.1
                 </test>
-                systems/gauges/PHI/program/route-is-pusching == 0
             </test>
             <test logic="AND" value = "0">
                 systems/gauges/PHI/program/route-is-pusching == 1
@@ -1171,7 +1172,6 @@
                     systems/gauges/PHI/program/route[4]/push-togle-washed GT 0.1
                     systems/gauges/PHI/program/route[4]/push-togle-washed LT -0.1
                 </test>
-                systems/gauges/PHI/program/route-is-pusching == 0
             </test>
             <test logic="AND" value = "0">
                 systems/gauges/PHI/program/route-is-pusching == 1
@@ -1233,7 +1233,6 @@
                     systems/gauges/PHI/program/route[5]/push-togle-washed GT 0.1
                     systems/gauges/PHI/program/route[5]/push-togle-washed LT -0.1
                 </test>
-                systems/gauges/PHI/program/route-is-pusching == 0
             </test>
             <test logic="AND" value = "0">
                 systems/gauges/PHI/program/route-is-pusching == 1
@@ -1580,9 +1579,9 @@
             </test>
         </switch>
         
-        <switch name="systems/gauges/PHI/program/gauge_phosphorescent_light-on-caddy">
+        <switch name="systems/gauges/PHI/program/light_red_console-on-caddy">
             <default value="0.0"/>
-            <test logic="AND" value = "/sim/G91/re_emit/gauge_phosphorescent_light">
+            <test logic="AND" value = "/sim/G91/re_emit/light_red_console">
                 systems/gauges/PHI/program/release-on == 0
             </test>
         </switch>
@@ -1789,6 +1788,15 @@
             <c1>16.0</c1>
         </lag_filter>
         
+        <lag_filter name="systems/gauges/PHI/doppler/sw-test-pos">
+            <input>systems/gauges/PHI/doppler/sw-test-togle</input>
+            <c1>8.0</c1>
+        </lag_filter>
+        
+        <lag_filter name="systems/gauges/PHI/doppler/sw-test-top-pos">
+            <input>systems/gauges/PHI/doppler/sw-test-top-togle</input>
+            <c1>8.0</c1>
+        </lag_filter>
         
     </channel>
 

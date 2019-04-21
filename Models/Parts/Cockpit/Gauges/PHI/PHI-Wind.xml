@@ -123,9 +123,9 @@
             <blue>0.53</blue>
         </ambient>
         <emission>
-            <red-prop>sim/G91/re_emit/gauge_red_40_light_panel</red-prop>
-            <green-prop>sim/G91/re_emit/light_panel_50</green-prop>
-            <blue-prop>sim/G91/re_emit/light_panel_30</blue-prop>
+            <red-prop>sim/G91/re_emit/gauge_red_emer_lamp_3200_console_red_50</red-prop>
+            <green-prop>sim/G91/re_emit/gauge_red_emer_lamp_3200_console_green_50</green-prop>
+            <blue-prop>sim/G91/re_emit/gauge_red_emer_lamp_3200_console_blue_50</blue-prop>
             <factor>0.7</factor>
         </emission>
     </animation>
@@ -212,9 +212,9 @@
             <blue>0.3</blue>
         </ambient>
         <emission>
-            <red-prop>sim/G91/re_emit/gauge_red_40_light_panel</red-prop>
-            <green-prop>sim/G91/re_emit/light_panel_50</green-prop>
-            <blue-prop>sim/G91/re_emit/light_panel_30</blue-prop>
+            <red-prop>sim/G91/re_emit/gauge_red_emer_lamp_3200_console_red_50</red-prop>
+            <green-prop>sim/G91/re_emit/gauge_red_emer_lamp_3200_console_green_50</green-prop>
+            <blue-prop>sim/G91/re_emit/gauge_red_emer_lamp_3200_console_blue_50</blue-prop>
             <factor>0.6</factor>
         </emission>
     </animation>
