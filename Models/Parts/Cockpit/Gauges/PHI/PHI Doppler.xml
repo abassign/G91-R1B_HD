@@ -291,9 +291,9 @@
             <blue>0.0</blue>
         </ambient>
         <emission>
-            <red>1.0</red>
+            <red>0.8</red>
             <green>0.5</green>
-            <blue>0.0</blue>
+            <blue>1.0</blue>
             <factor-prop>/fdm/jsbsim/systems/gauges/PHI/doppler/advise-light-on</factor-prop>
         </emission>
     </animation>

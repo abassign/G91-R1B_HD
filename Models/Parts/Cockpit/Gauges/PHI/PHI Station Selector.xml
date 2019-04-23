@@ -436,64 +436,81 @@
     
     <animation> 
         <type>material</type>
-        <texture>Pictures/G91-Al.png</texture>
         <object-name>lamp_ring (Meshed)</object-name>
-        <ambient>
+        <diffuse>
             <red>0.2</red>
             <green>0.2</green>
             <blue>0.2</blue>
+        </diffuse>
+        <ambient>
+            <red>0.15</red>
+            <green>0.15</green>
+            <blue>0.15</blue>
         </ambient>
+        <specular>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
+        </specular>
         <emission>
-            <red>0.10</red>
+            <red>0.06</red>
             <green>0.0</green>
             <blue>0.0</blue>
             <factor-prop>sim/G91/re_emit/light_red_console</factor-prop>
         </emission>
-        <specular>
-            <red>0.7</red>
-            <green>0.7</green>
-            <blue>0.7</blue>
-        </specular>
     </animation>
     
     <animation> 
         <type>material</type>
         <object-name>lamp_glass (Meshed)</object-name>
-        <texture>Pictures/G91-Yellow_01.png</texture>
         <transparency>
-            <alpha>1.0</alpha>
+            <alpha>0.95</alpha>
             <factor-prop>fdm/jsbsim/systems/gauges/PHI/wind/advise-light-transparent</factor-prop>
         </transparency>
+        <diffuse>
+            <red>0.5</red>
+            <green>0.4</green>
+            <blue>0.0</blue>
+        </diffuse>
         <ambient>
-            <red>0.1</red>
-            <green>0.05</green>
+            <red>0.05</red>
+            <green>0.025</green>
             <blue>0.0</blue>
         </ambient>
+        <specular>
+            <red>0.25</red>
+            <green>0.125</green>
+            <blue>0.0</blue>
+        </specular>
         <emission>
-            <red>0.1</red>
+            <red>0.05</red>
             <green>0.0</green>
             <blue>0.0</blue>
             <factor-prop>sim/G91/re_emit/light_red_console</factor-prop>
         </emission>
-        <specular>
-            <red>0.5</red>
-            <green>0.0</green>
-            <blue>0.0</blue>
-        </specular>
     </animation>
 
     <animation> 
         <type>material</type>
         <object-name>lamp_mirror (Meshed)</object-name>
-        <texture>Pictures/G91-Orange01.png</texture>
-        <ambient>
+        <diffuse>
             <red>1.0</red>
             <green>0.5</green>
             <blue>0.0</blue>
+        </diffuse>
+        <ambient>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
         </ambient>
+        <specular>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </specular>
         <emission>
-            <red>1.0</red>
-            <green>0.5</green>
+            <red>0.7</red>
+            <green>0.35</green>
             <blue>0.0</blue>
             <factor-prop>/fdm/jsbsim/systems/gauges/PHI/wind/advise-light-on</factor-prop>
         </emission>
@@ -502,19 +519,23 @@
     <animation> 
         <type>material</type>
         <object-name>lamp_light (Meshed)</object-name>
-        <texture>Pictures/G91-Al-Light.png</texture>
         <transparency>
             <alpha>0.5</alpha>
         </transparency>
+        <diffuse>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </diffuse>
         <ambient>
-            <red>0.8</red>
-            <green>0.8</green>
-            <blue>0.8</blue>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
         </ambient>
         <emission>
-            <red>1.0</red>
+            <red>0.8</red>
             <green>0.5</green>
-            <blue>0.0</blue>
+            <blue>1.0</blue>
             <factor-prop>/fdm/jsbsim/systems/gauges/PHI/wind/advise-light-on</factor-prop>
         </emission>
     </animation>

@@ -29,10 +29,13 @@
     <property value="0.0">systems/gauges/PHI/control/sequence</property>
     <property value="0.0">systems/gauges/PHI/program/release-togle</property>
     
+    <property value="0.0">systems/gauges/PHI/indicator/is-phi-on</property>
     <property value="0.0">systems/gauges/PHI/indicator/switch-turn</property>
     <property value="0.0">systems/gauges/PHI/indicator/switch-up</property>
     <property value="0.0">systems/gauges/PHI/indicator/switch-turned</property>
     <property value="0.0">systems/gauges/PHI/indicator/switch</property>
+    <property value="0.0">systems/gauges/PHI/indicator/brg</property>
+    <property value="0.0">systems/gauges/PHI/indicator/brg-correct</property>
     <property value="0.0">systems/gauges/PHI/indicator/brg-imposed</property>
     <property value="0.0">systems/gauges/PHI/indicator/is-hold</property>
     <property value="0.0">systems/gauges/PHI/indicator/var-deg</property>
@@ -42,9 +45,12 @@
     <property value="0.0">systems/gauges/PHI/indicator/phi-set-lag</property>
     
     <property value="0.0">systems/gauges/PHI/wind/wd</property>
-    <property value="0.0">systems/gauges/PHI/wind/wd-up</property>
     <property value="0.0">systems/gauges/PHI/wind/ws</property>
-    <property value="0.0">systems/gauges/PHI/wind/ws-up</property>
+    <property value="0.0">systems/gauges/PHI/wind/advise-light-set-prepare-on</property>
+    <property value="0.0">systems/gauges/PHI/wind/advise-light-delay</property>
+    <property value="0.0">systems/gauges/PHI/wind/advise-light-ws-wd-phi-rel-integral</property>
+    <property value="0.0">systems/gauges/PHI/wind/advise-light-on</property>
+    <property value="0.0">systems/gauges/PHI/wind/advise-light-transparent</property>
     
     <property value="80.0">systems/gauges/PHI/dir-div-1AW</property>
     <property value="10.0">systems/gauges/PHI/dir-div-2AW</property>
@@ -77,6 +83,7 @@
     <property value="0.0">systems/gauges/PHI/program/route[4]/push-togle</property>
     <property value="20.0">systems/gauges/PHI/program/route[5]/dist</property>
     <property value="360.0">systems/gauges/PHI/program/route[5]/phi</property>
+    <property value="0.0">systems/gauges/PHI/operative</property>
     <property value="0.0">systems/gauges/PHI/program/route[5]/push-pos</property>
     <property value="0.0">systems/gauges/PHI/program/route[5]/push-togle</property>
     <property value="0.0">systems/gauges/PHI/program/light-intensity-by-bus2-tension-on-caddy</property>
@@ -459,7 +466,7 @@
         <switch name="systems/gauges/PHI/indicator/digit-inc">
             <default value="systems/gauges/PHI/indicator/digit-inc"/>
             <test logic="AND" value="0.1">
-                systems/gauges/PHI/indicator/digit-mil-dif GT 0.0
+                systems/gauges/PHI/indicator/digit-mil-dif GE 0.0
             </test>
             <test logic="AND" value="-0.1">
                 systems/gauges/PHI/indicator/digit-mil-dif LT 0.0
@@ -674,124 +681,127 @@
             <c1>3.0</c1>
         </washout_filter>
         
-        <switch name="systems/gauges/PHI/wind/wd-up">
-            <default value="1"/>
-            <test logic="AND" value="0">
-                systems/gauges/PHI/wind/wd-wa GT -0.1
-                systems/gauges/PHI/wind/wd-wa LT 0.1
-            </test>
-        </switch>
-        
         <washout_filter name="systems/gauges/PHI/wind/ws-wa">
             <input>systems/gauges/PHI/wind/ws</input>
             <c1>3.0</c1>
         </washout_filter>
         
-        <switch name="systems/gauges/PHI/wind/ws-up">
-            <default value="1"/>
-            <test logic="AND" value="0">
-                systems/gauges/PHI/wind/ws-wa GT -0.1
-                systems/gauges/PHI/wind/ws-wa LT 0.1
-            </test>
-        </switch>
+        <washout_filter name="systems/gauges/PHI/indicator/is-phi-operative-wa">
+            <input>systems/gauges/PHI/indicator/is-phi-operative</input>
+            <c1>1.0</c1>
+        </washout_filter>
         
-        <pid name="systems/gauges/PHI/wind/advise-light-wd">
-            <input>systems/gauges/PHI/wind/wd</input>
-            <kp>0.0</kp>
-            <ki>0.0</ki>
-            <kd>1.0</kd>
-        </pid>
-        
-        <pid name="systems/gauges/PHI/wind/advise-light-ws">
-            <input>systems/gauges/PHI/wind/ws</input>
-            <kp>0.0</kp>
-            <ki>0.0</ki>
-            <kd>1.0</kd>
-        </pid>
-        
-        <pid name="systems/gauges/PHI/wind/advise-light-phi">
-            <input>systems/gauges/PHI/indicator/is-phi-on</input>
-            <kp>0.0</kp>
-            <ki>0.0</ki>
-            <kd>1.0</kd>
-        </pid>
-        
-        <pid name="systems/gauges/PHI/wind/advise-light-phi-rel">
+        <washout_filter name="systems/gauges/PHI/program/release-on-wa">
             <input>systems/gauges/PHI/program/release-on</input>
-            <kp>0.0</kp>
-            <ki>0.0</ki>
-            <kd>1.0</kd>
-        </pid>
+            <c1>1.0</c1>
+        </washout_filter>
+        
+        <washout_filter name="systems/gauges/PHI/program/route-is-pusching-wa">
+            <input>systems/gauges/PHI/program/route-is-pusching</input>
+            <c1>1.0</c1>
+        </washout_filter>
         
         <fcs_function name="systems/gauges/PHI/wind/advise-light-ws-wd-phi-rel">
             <function>
-                <sum>
-                    <ifthen>
-                        <p>systems/gauges/PHI/indicator/is-phi-on</p>
-                        <p>systems/gauges/PHI/wind/advise-light-phi</p>
-                        <v>0.0</v>
-                    </ifthen>
-                    <ifthen>
-                        <nq>
-                            <p>systems/gauges/PHI/program/release-on</p>
-                            <v>1</v>
-                        </nq>
-                        <p>systems/gauges/PHI/wind/advise-light-phi-rel</p>
-                        <v>0.0</v>
-                    </ifthen>
-                    <p>systems/gauges/PHI/wind/advise-light-ws</p>
-                    <p>systems/gauges/PHI/wind/advise-light-wd</p>
-                </sum>
+                <product>
+                    <sum>
+                        <ifthen>
+                            <gt>
+                                <p>systems/gauges/PHI/indicator/is-phi-operative-wa</p>
+                                <v>0.1</v>
+                            </gt>
+                            <v>2.0</v>
+                            <v>0.0</v>
+                        </ifthen>
+                        <ifthen>
+                            <lt>
+                                <p>systems/gauges/PHI/program/release-on-wa</p>
+                                <v>-0.1</v>
+                            </lt>
+                            <v>2.0</v>
+                            <v>0.0</v>
+                        </ifthen>
+                        <ifthen>
+                            <gt>
+                                <abs><p>systems/gauges/PHI/wind/ws-wa</p></abs>
+                                <v>0.1</v>
+                            </gt>
+                            <v>1.0</v>
+                            <v>0.0</v>
+                        </ifthen>
+                        <ifthen>
+                            <gt>
+                                <abs><p>systems/gauges/PHI/wind/wd-wa</p></abs>
+                                <v>0.1</v>
+                            </gt>
+                            <v>1.0</v>
+                            <v>0.0</v>
+                        </ifthen>
+                        <ifthen>
+                            <gt>
+                                <p>systems/gauges/PHI/program/route-is-pusching-wa</p>
+                                <v>0.1</v>
+                            </gt>
+                            <v>10.0</v>
+                            <v>0.0</v>
+                        </ifthen>
+                    </sum>
+                    <p>systems/gauges/PHI/indicator/is-phi-operative</p>
+                </product>      
             </function>
         </fcs_function>
         
-        <switch name="systems/gauges/PHI/allarm-on">
+        <integrator name="systems/gauges/PHI/wind/advise-light-ws-wd-phi-rel-integral">
+            <input>systems/gauges/PHI/wind/advise-light-delay</input>
+            <c1>1.0</c1>
+        </integrator>
+        
+        <fcs_function name="systems/gauges/PHI/wind/advise-light-delay">
+            <function>
+                <ifthen>
+                    <and>
+                        <gt>
+                            <p>systems/gauges/PHI/wind/advise-light-ws-wd-phi-rel-integral</p>
+                            <v>0.1</v>
+                        </gt>
+                        <lt>
+                            <p>systems/gauges/PHI/wind/advise-light-set-prepare-on</p>
+                            <v>0.2</v>
+                        </lt>
+                    </and>
+                    <difference>
+                        <p>systems/gauges/PHI/wind/advise-light-ws-wd-phi-rel</p>
+                        <v>0.5</v>
+                    </difference>
+                    <p>systems/gauges/PHI/wind/advise-light-ws-wd-phi-rel</p>
+                </ifthen>
+            </function>
+        </fcs_function>
+        
+        <switch name="systems/gauges/PHI/wind/advise-light-on-time">
             <default value="0"/>
-            <test logic="OR" value="1">
-                systems/gauges/PHI/wind/advise-light-ws-wd-phi-rel == 1
-                <test logic="AND">
-                    systems/gauges/PHI/operative-start-stop == 1
-                    systems/gauges/PHI/operative == 0
-                </test>
+            <test logic="AND" value="1">
+                systems/gauges/PHI/wind/advise-light-ws-wd-phi-rel GE 1.0
             </test>
         </switch>
         
         <lag_filter name="systems/gauges/PHI/wind/advise-light-set-prepare-on">
-            <input>systems/gauges/PHI/allarm-on</input>
+            <input>systems/gauges/PHI/wind/advise-light-on-time</input>
             <c1>2.0</c1>
         </lag_filter>
-        
-        <lag_filter name="systems/gauges/PHI/wind/advise-light-set-on">
-            <input>systems/gauges/PHI/wind/advise-light-set-prepare-on</input>
-            <c1>0.1</c1>
-        </lag_filter>
-        
-        <switch name="systems/gauges/PHI/wind/advise-light-transparent">
-            <default value="0.85"/>
-            <test logic="AND" value="systems/warning-lights/transparent-by-bus2-tension">
-                <test logic="OR">
-                    systems/gauges/PHI/wind/advise-light-set-on GT 0.1
-                    systems/gauges/PHI/wind/advise-light-set-on LT -0.1
-                </test>
-                <test logic="AND">
-                    systems/gauges/PHI/wind/advise-light-set-prepare-on GT -0.1
-                    systems/gauges/PHI/wind/advise-light-set-prepare-on LT 0.1
-                </test>
-            </test>
-        </switch>
-        
         
         <switch name="systems/gauges/PHI/wind/advise-light-on">
             <default value="0.0"/>
             <test logic="AND" value="systems/warning-lights/light-intensity-by-bus2-tension">
-                <test logic="OR">
-                    systems/gauges/PHI/wind/advise-light-set-on GT 0.1
-                    systems/gauges/PHI/wind/advise-light-set-on LT -0.1
-                </test>
-                <test logic="AND">
-                    systems/gauges/PHI/wind/advise-light-set-prepare-on GT -0.1
-                    systems/gauges/PHI/wind/advise-light-set-prepare-on LT 0.1
-                </test>
+                systems/gauges/PHI/wind/advise-light-ws-wd-phi-rel-integral GT 0.5
+                systems/gauges/PHI/wind/advise-light-set-prepare-on LT 0.2
+            </test>
+        </switch>
+
+        <switch name="systems/gauges/PHI/wind/advise-light-transparent">
+            <default value="0.85"/>
+            <test logic="AND" value="systems/warning-lights/transparent-by-bus2-tension">
+                systems/gauges/PHI/wind/advise-light-on GT 0.01
             </test>
         </switch>
         
@@ -1016,9 +1026,9 @@
                 
         <!-- Reprogramming -->
         
-        <switch name="systems/gauges/PHI/program/route[1]/dist">
-            <default value="systems/gauges/PHI/program/route[1]/dist"/>
-            <test logic="AND" value = "systems/gauges/PHI/program/route[0]/dist">
+        <switch name="systems/gauges/PHI/program/route[0]/dist">
+            <default value="systems/gauges/PHI/program/route[0]/dist"/>
+            <test logic="AND" value = "systems/gauges/PHI/program/route[1]/dist">
                 systems/gauges/PHI/program/route-pushed == 1
                 systems/gauges/PHI/program/route-modify == 1
                 systems/gauges/PHI/indicator/is-hold-on == 1
@@ -1026,9 +1036,9 @@
             </test>
         </switch>
         
-        <switch name="systems/gauges/PHI/program/route[1]/phi">
-            <default value="systems/gauges/PHI/program/route[1]/phi"/>
-            <test logic="AND" value = "systems/gauges/PHI/program/route[0]/phi">
+        <switch name="systems/gauges/PHI/program/route[0]/phi">
+            <default value="systems/gauges/PHI/program/route[0]/phi"/>
+            <test logic="AND" value = "systems/gauges/PHI/program/route[1]/phi">
                 systems/gauges/PHI/program/route-pushed == 1
                 systems/gauges/PHI/program/route-modify == 1
                 systems/gauges/PHI/indicator/is-hold-on == 1
@@ -1077,9 +1087,9 @@
         
         <!-- Reprogramming -->
         
-        <switch name="systems/gauges/PHI/program/route[2]/dist">
-            <default value="systems/gauges/PHI/program/route[2]/dist"/>
-            <test logic="AND" value = "systems/gauges/PHI/program/route[0]/dist">
+        <switch name="systems/gauges/PHI/program/route[0]/dist">
+            <default value="systems/gauges/PHI/program/route[0]/dist"/>
+            <test logic="AND" value = "systems/gauges/PHI/program/route[2]/dist">
                 systems/gauges/PHI/program/route-pushed == 2
                 systems/gauges/PHI/program/route-modify == 1
                 systems/gauges/PHI/indicator/is-hold-on == 1
@@ -1087,9 +1097,9 @@
             </test>
         </switch>
         
-        <switch name="systems/gauges/PHI/program/route[2]/phi">
-            <default value="systems/gauges/PHI/program/route[2]/phi"/>
-            <test logic="AND" value = "systems/gauges/PHI/program/route[0]/phi">
+        <switch name="systems/gauges/PHI/program/route[0]/phi">
+            <default value="systems/gauges/PHI/program/route[0]/phi"/>
+            <test logic="AND" value = "systems/gauges/PHI/program/route[2]/phi">
                 systems/gauges/PHI/program/route-pushed == 2
                 systems/gauges/PHI/program/route-modify == 1
                 systems/gauges/PHI/indicator/is-hold-on == 1
@@ -1138,9 +1148,9 @@
         
         <!-- Reprogramming -->
         
-        <switch name="systems/gauges/PHI/program/route[3]/dist">
-            <default value="systems/gauges/PHI/program/route[3]/dist"/>
-            <test logic="AND" value = "systems/gauges/PHI/program/route[0]/dist">
+        <switch name="systems/gauges/PHI/program/route[0]/dist">
+            <default value="systems/gauges/PHI/program/route[0]/dist"/>
+            <test logic="AND" value = "systems/gauges/PHI/program/route[3]/dist">
                 systems/gauges/PHI/program/route-pushed == 3
                 systems/gauges/PHI/program/route-modify == 1
                 systems/gauges/PHI/indicator/is-hold-on == 1
@@ -1148,9 +1158,9 @@
             </test>
         </switch>
         
-        <switch name="systems/gauges/PHI/program/route[3]/phi">
-            <default value="systems/gauges/PHI/program/route[3]/phi"/>
-            <test logic="AND" value = "systems/gauges/PHI/program/route[0]/phi">
+        <switch name="systems/gauges/PHI/program/route[0]/phi">
+            <default value="systems/gauges/PHI/program/route[0]/phi"/>
+            <test logic="AND" value = "systems/gauges/PHI/program/route[3]/phi">
                 systems/gauges/PHI/program/route-pushed == 3
                 systems/gauges/PHI/program/route-modify == 1
                 systems/gauges/PHI/indicator/is-hold-on == 1
@@ -1199,9 +1209,9 @@
         
         <!-- Reprogramming -->
         
-        <switch name="systems/gauges/PHI/program/route[4]/dist">
-            <default value="systems/gauges/PHI/program/route[4]/dist"/>
-            <test logic="AND" value = "systems/gauges/PHI/program/route[0]/dist">
+        <switch name="systems/gauges/PHI/program/route[0]/dist">
+            <default value="systems/gauges/PHI/program/route[0]/dist"/>
+            <test logic="AND" value = "systems/gauges/PHI/program/route[4]/dist">
                 systems/gauges/PHI/program/route-pushed == 4
                 systems/gauges/PHI/program/route-modify == 1
                 systems/gauges/PHI/indicator/is-hold-on == 1
@@ -1209,9 +1219,9 @@
             </test>
         </switch>
         
-        <switch name="systems/gauges/PHI/program/route[4]/phi">
-            <default value="systems/gauges/PHI/program/route[4]/phi"/>
-            <test logic="AND" value = "systems/gauges/PHI/program/route[0]/phi">
+        <switch name="systems/gauges/PHI/program/route[0]/phi">
+            <default value="systems/gauges/PHI/program/route[0]/phi"/>
+            <test logic="AND" value = "systems/gauges/PHI/program/route[4]/phi">
                 systems/gauges/PHI/program/route-pushed == 4
                 systems/gauges/PHI/program/route-modify == 1
                 systems/gauges/PHI/indicator/is-hold-on == 1
@@ -1260,9 +1270,9 @@
         
         <!-- Reprogramming -->
         
-        <switch name="systems/gauges/PHI/program/route[5]/dist">
-            <default value="systems/gauges/PHI/program/route[5]/dist"/>
-            <test logic="AND" value = "systems/gauges/PHI/program/route[0]/dist">
+        <switch name="systems/gauges/PHI/program/route[0]/dist">
+            <default value="systems/gauges/PHI/program/route[0]/dist"/>
+            <test logic="AND" value = "systems/gauges/PHI/program/route[5]/dist">
                 systems/gauges/PHI/program/route-pushed == 5
                 systems/gauges/PHI/program/route-modify == 1
                 systems/gauges/PHI/indicator/is-hold-on == 1
@@ -1270,9 +1280,9 @@
             </test>
         </switch>
         
-        <switch name="systems/gauges/PHI/program/route[5]/phi">
-            <default value="systems/gauges/PHI/program/route[5]/phi"/>
-            <test logic="AND" value = "systems/gauges/PHI/program/route[0]/phi">
+        <switch name="systems/gauges/PHI/program/route[0]/phi">
+            <default value="systems/gauges/PHI/program/route[0]/phi"/>
+            <test logic="AND" value = "systems/gauges/PHI/program/route[5]/phi">
                 systems/gauges/PHI/program/route-pushed == 5
                 systems/gauges/PHI/program/route-modify == 1
                 systems/gauges/PHI/indicator/is-hold-on == 1
@@ -1350,7 +1360,8 @@
         
         <fcs_function name="systems/gauges/PHI/indicator/brg">
             <function>
-                <sum>
+                <difference>
+                    <p>systems/gauges/PHI/attitude/gyrocompass-magnetic-deg-var-linear</p>
                     <ifthen>
                         <and>
                             <p>systems/gauges/PHI/operative</p>
@@ -1367,13 +1378,32 @@
                         </switch>
                         <p>systems/gauges/PHI/program/route[0]/phi</p>
                     </ifthen>
-                    <p>systems/gauges/PHI/attitude/gyrocompass-magnetic-deg-var-linear</p>
-                </sum>
+                </difference>
+            </function>
+        </fcs_function>
+        
+        <fcs_function name="systems/gauges/PHI/indicator/brg-correct">
+            <function>
+                <ifthen>
+                    <and>
+                        <p>systems/gauges/PHI/operative</p>
+                        <p>systems/gauges/PHI/indicator/is-phi-on</p>
+                    </and>
+                    <ifthen>
+                        <p>systems/gauges/PHI/program/route-from</p>
+                        <sum>
+                            <p>systems/gauges/PHI/indicator/brg</p>
+                            <v>180</v>
+                        </sum>
+                        <p>systems/gauges/PHI/indicator/brg</p>
+                    </ifthen>
+                    <p>systems/gauges/PHI/indicator/brg</p>
+                </ifthen>
             </function>
         </fcs_function>
         
         <linear_actuator name="systems/gauges/PHI/indicator/brg-lag">
-            <input>systems/gauges/PHI/indicator/brg</input>
+            <input>systems/gauges/PHI/indicator/brg-correct</input>
             <module>360</module>
         </linear_actuator>
         
@@ -1465,6 +1495,14 @@
             <default value="0.0"/>
             <test logic="AND" value="1.0">
                 systems/gauges/PHI/indicator/switch == 1
+            </test>
+        </switch>
+        
+        <switch name="systems/gauges/PHI/indicator/is-phi-operative">
+            <default value="0.0"/>
+            <test logic="AND" value="1.0">
+                systems/gauges/PHI/indicator/is-phi-on == 1
+                systems/gauges/PHI/operative == 1
             </test>
         </switch>
         
