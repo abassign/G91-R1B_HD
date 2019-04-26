@@ -89,6 +89,7 @@
     <property value="0.0">systems/gauges/PHI/program/light-intensity-by-bus2-tension-on-caddy</property>
     <property value="0.0">systems/gauges/PHI/program/transparent-by-bus2-tension-on-caddy</property>
     <property value="0.0">systems/gauges/PHI/program/release-togle-pos-lag</property>
+    <property value="1.0">systems/gauges/PHI/program/route-manager/starting-route-num</property>
     
     <channel name="systems gauges PHI electric" execrate="32">
         
@@ -452,33 +453,19 @@
             </function>
         </fcs_function>
         
-        <fcs_function name="systems/gauges/PHI/indicator/digit-mil-dif">
-            <function>
-                <difference>
-                    <integer>
-                        <p>systems/gauges/PHI/indicator/mil-direction</p>
-                    </integer>
-                    <p>systems/gauges/PHI/indicator/mil-digit</p>
-                </difference>
-            </function>
-        </fcs_function>
+        <pid name="systems/gauges/PHI/indicator/digit-inc">
+            <input>systems/gauges/PHI/indicator/mil-direction</input>
+            <kp>0.0</kp>
+            <ki>0.0</ki>
+            <kd>1.0</kd>
+        </pid>
         
-        <switch name="systems/gauges/PHI/indicator/digit-inc">
-            <default value="systems/gauges/PHI/indicator/digit-inc"/>
-            <test logic="AND" value="0.1">
-                systems/gauges/PHI/indicator/digit-mil-dif GE 0.0
-            </test>
-            <test logic="AND" value="-0.1">
-                systems/gauges/PHI/indicator/digit-mil-dif LT 0.0
-            </test>
-        </switch>
-                
         <switch name="systems/gauges/PHI/program/route-from">
             <default value="systems/gauges/PHI/program/route-from"/>
-            <test logic="AND" value="1.0">
+            <test logic="AND" value="0.0">
                 systems/gauges/PHI/indicator/digit-inc LE 0.0
             </test>
-            <test logic="AND" value="0.0">
+            <test logic="AND" value="1.0">
                 systems/gauges/PHI/indicator/digit-inc GT 0.0
             </test>
         </switch>
@@ -539,9 +526,6 @@
             <module>10</module>
             <lag>8.0</lag>
             <gain>1.0</gain>
-            <!--
-            <hysteresis>0.1</hysteresis>
-            -->
         </linear_actuator>
         
         <linear_actuator name="systems/gauges/PHI/indicator/digit2AW">
@@ -1384,21 +1368,24 @@
         
         <fcs_function name="systems/gauges/PHI/indicator/brg-correct">
             <function>
-                <ifthen>
-                    <and>
-                        <p>systems/gauges/PHI/operative</p>
-                        <p>systems/gauges/PHI/indicator/is-phi-on</p>
-                    </and>
+                <mod>
                     <ifthen>
-                        <p>systems/gauges/PHI/program/route-from</p>
-                        <sum>
+                        <and>
+                            <p>systems/gauges/PHI/operative</p>
+                            <p>systems/gauges/PHI/indicator/is-phi-on</p>
+                        </and>
+                        <ifthen>
+                            <p>systems/gauges/PHI/program/route-from</p>
+                            <sum>
+                                <p>systems/gauges/PHI/indicator/brg</p>
+                                <v>180</v>
+                            </sum>
                             <p>systems/gauges/PHI/indicator/brg</p>
-                            <v>180</v>
-                        </sum>
+                        </ifthen>
                         <p>systems/gauges/PHI/indicator/brg</p>
                     </ifthen>
-                    <p>systems/gauges/PHI/indicator/brg</p>
-                </ifthen>
+                    <v>360</v>
+                </mod>
             </function>
         </fcs_function>
         
@@ -1415,7 +1402,7 @@
             <deadband_width>1</deadband_width>
             <hysteresis_width>0.5</hysteresis_width>
         </actuator>
-        
+
     </channel>
     
     
