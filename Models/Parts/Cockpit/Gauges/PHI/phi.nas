@@ -5,7 +5,7 @@
 
 var prop = props.globals.initNode("/fdm/jsbsim/systems/gauges/PHI/program/route-manager/starting-route-num", 1, "DOUBLE");
 
-var timer_phi_get_route_data = maketimer(2.5, func() {
+var timer_phi_get_route_data = maketimer(1.0, func() {
 
     var isRouteActivate = getprop("/autopilot/route-manager/active");
     var routeNum = getprop("/autopilot/route-manager/route/num");
@@ -28,6 +28,15 @@ var timer_phi_get_route_data = maketimer(2.5, func() {
                 setprop("/fdm/jsbsim/systems/gauges/PHI/program/route[" ~ i ~ "]/phi",0.0);
             }
         }
+    }
+    
+    var automatic_wind_sw = getprop("/fdm/jsbsim/systems/gauges/PHI/wind/automatic-wind-sw");
+    
+    if (automatic_wind_sw == 1) {
+        var wind_direction = getprop("/environment/wind-from-heading-deg");
+        var wind_speed = getprop("/environment/wind-speed-kt");
+        setprop("/fdm/jsbsim/systems/gauges/PHI/wind/wd",wind_direction);
+        setprop("/fdm/jsbsim/systems/gauges/PHI/wind/ws",wind_speed);
     }
 
 });

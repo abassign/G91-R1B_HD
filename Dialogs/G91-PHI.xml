@@ -6,11 +6,12 @@
     <layout>vbox</layout>
     <default-padding>7</default-padding>
     <modal>false</modal>
-    <width>800</width>
+    <width>600</width>
     
     <!-- title bar -->
     <group>
         <layout>hbox</layout>
+        <default-padding>8</default-padding>
         <empty><stretch>true</stretch></empty>
         <text>
             <label>PHI Gauge route selector</label>
@@ -29,15 +30,23 @@
     </group>
     
     <hrule/>
-
+    
     <group>
         <layout>vbox</layout>
         <group>
             <layout>table</layout>
+            <radio>
+                <row>0</row>
+                <col>0</col>
+                <halign>left</halign>
+                <property>fdm/jsbsim/systems/gauges/PHI/program/route[1]/isPush</property>
+                <live>true</live>
+            </radio>
             <button>
                 <row>0</row>
                 <col>0</col>
                 <legend>Route 1</legend>
+                <halign>right</halign>
                 <binding>
                     <command>property-toggle</command>
                     <property>fdm/jsbsim/systems/gauges/PHI/program/route[1]/push-togle</property>
@@ -83,10 +92,18 @@
                 <property>fdm/jsbsim/systems/gauges/PHI/program/route[1]/dist</property>
                 <halign>center</halign>
             </text>
+            <radio>
+                <row>0</row>
+                <col>1</col>
+                <halign>left</halign>
+                <property>fdm/jsbsim/systems/gauges/PHI/program/route[2]/isPush</property>
+                <live>true</live>
+            </radio>
             <button>
                 <row>0</row>
                 <col>1</col>
                 <legend>Route 2</legend>
+                <halign>right</halign>
                 <binding>
                     <command>property-toggle</command>
                     <property>fdm/jsbsim/systems/gauges/PHI/program/route[2]/push-togle</property>
@@ -132,10 +149,18 @@
                 <property>fdm/jsbsim/systems/gauges/PHI/program/route[2]/dist</property>
                 <halign>center</halign>
             </text>
+            <radio>
+                <row>0</row>
+                <col>2</col>
+                <halign>left</halign>
+                <property>fdm/jsbsim/systems/gauges/PHI/program/route[3]/isPush</property>
+                <live>true</live>
+            </radio>
             <button>
                 <row>0</row>
                 <col>2</col>
                 <legend>Route 3</legend>
+                <halign>right</halign>
                 <binding>
                     <command>property-toggle</command>
                     <property>fdm/jsbsim/systems/gauges/PHI/program/route[3]/push-togle</property>
@@ -181,10 +206,18 @@
                 <property>fdm/jsbsim/systems/gauges/PHI/program/route[3]/dist</property>
                 <halign>center</halign>
             </text>
+            <radio>
+                <row>0</row>
+                <col>3</col>
+                <halign>left</halign>
+                <property>fdm/jsbsim/systems/gauges/PHI/program/route[4]/isPush</property>
+                <live>true</live>
+            </radio>
             <button>
                 <row>0</row>
                 <col>3</col>
                 <legend>Route 4</legend>
+                <halign>right</halign>
                 <binding>
                     <command>property-toggle</command>
                     <property>fdm/jsbsim/systems/gauges/PHI/program/route[4]/push-togle</property>
@@ -230,10 +263,18 @@
                 <property>fdm/jsbsim/systems/gauges/PHI/program/route[4]/dist</property>
                 <halign>center</halign>
             </text>
+            <radio>
+                <row>0</row>
+                <col>4</col>
+                <halign>left</halign>
+                <property>fdm/jsbsim/systems/gauges/PHI/program/route[5]/isPush</property>
+                <live>true</live>
+            </radio>
             <button>
                 <row>0</row>
                 <col>4</col>
                 <legend>Route 5</legend>
+                <halign>right</halign>
                 <binding>
                     <command>property-toggle</command>
                     <property>fdm/jsbsim/systems/gauges/PHI/program/route[5]/push-togle</property>
@@ -279,57 +320,6 @@
                 <property>fdm/jsbsim/systems/gauges/PHI/program/route[5]/dist</property>
                 <halign>center</halign>
             </text>
-            <text>
-                <row>0</row>
-                <col>5</col>
-                <label>Wind</label>
-                <halign>center</halign>
-                <color>
-                    <red>0.6</red>
-                    <green>0.6</green>
-                    <blue>0.6</blue>
-                </color>
-            </text>
-            <text>
-                <row>1</row>
-                <col>5</col>
-                <label>Direction</label>
-                <halign>center</halign>
-                <color>
-                    <red>0.6</red>
-                    <green>0.6</green>
-                    <blue>0.6</blue>
-                </color>
-            </text>
-            <text>
-                <row>2</row>
-                <col>5</col>
-                <label>99999999</label>
-                <live>true</live>
-                <format>%3.0f (deg)</format>
-                <property>fdm/jsbsim/systems/gauges/PHI/wind/wd</property>
-                <halign>center</halign>
-            </text>
-            <text>
-                <row>3</row>
-                <col>5</col>
-                <label>Speed</label>
-                <halign>center</halign>
-                <color>
-                    <red>0.6</red>
-                    <green>0.6</green>
-                    <blue>0.6</blue>
-                </color>
-            </text>
-            <text>
-                <row>4</row>
-                <col>5</col>
-                <label>99999999</label>
-                <live>true</live>
-                <format>%3.0f (nm)</format>
-                <property>fdm/jsbsim/systems/gauges/PHI/wind/ws</property>
-                <halign>center</halign>
-            </text>
         </group>
     </group>
     
@@ -342,28 +332,18 @@
             <text>
                 <row>0</row>
                 <col>0</col>
-                <label>Route selected</label>
+                <label>Wind configuration</label>
                 <halign>left</halign>
                 <color>
-                    <red>0.6</red>
-                    <green>0.6</green>
-                    <blue>0.6</blue>
+                    <red>1</red>
+                    <green>1</green>
+                    <blue>1</blue>
                 </color>
             </text>
             <text>
                 <row>0</row>
                 <col>1</col>
-                <label>9999</label>
-                <live>true</live>
-                <format>%3.0f</format>
-                <property>fdm/jsbsim/systems/gauges/PHI/program/route-pushed</property>
-                <halign>left</halign>
-            </text>
-            
-            <text>
-                <row>0</row>
-                <col>2</col>
-                <label>Cor. wind speed</label>
+                <label>Automatic on/off</label>
                 <halign>left</halign>
                 <color>
                     <red>0.6</red>
@@ -371,19 +351,40 @@
                     <blue>0.6</blue>
                 </color>
             </text>
+            <checkbox>
+                <row>0</row>
+                <col>2</col>
+                <halign>fill</halign>
+                <property>fdm/jsbsim/systems/gauges/PHI/wind/automatic-wind-sw</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </checkbox>
             <text>
                 <row>0</row>
                 <col>3</col>
-                <label>9999</label>
-                <live>true</live>
-                <format>%3.0f</format>
-                <property>fdm/jsbsim/systems/gauges/PHI/wind/correction-wind-speed</property>
+                <label>Direction</label>
                 <halign>left</halign>
+                <color>
+                    <red>0.6</red>
+                    <green>0.6</green>
+                    <blue>0.6</blue>
+                </color>
             </text>
             <text>
                 <row>0</row>
                 <col>4</col>
-                <label>Cor. dir wind</label>
+                <label>99999999</label>
+                <live>true</live>
+                <format>%3.0f (deg)</format>
+                <property>fdm/jsbsim/systems/gauges/PHI/wind/wd</property>
+                <halign>left</halign>
+            </text>
+            <text>
+                <row>0</row>
+                <col>5</col>
+                <label>Speed</label>
                 <halign>left</halign>
                 <color>
                     <red>0.6</red>
@@ -393,14 +394,38 @@
             </text>
             <text>
                 <row>0</row>
-                <col>5</col>
-                <label>9999</label>
+                <col>6</col>
+                <label>99999999</label>
                 <live>true</live>
-                <format>%3.0f</format>
-                <property>fdm/jsbsim/systems/gauges/PHI/wind/correction-wind-dir</property>
+                <format>%3.0f (nm)</format>
+                <property>fdm/jsbsim/systems/gauges/PHI/wind/ws</property>
                 <halign>left</halign>
             </text>
-            
+            <text>
+                <row>0</row>
+                <col>7</col>
+                <label>WCA</label>
+                <halign>left</halign>
+                <color>
+                    <red>0.6</red>
+                    <green>0.6</green>
+                    <blue>0.6</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>8</col>
+                <label>99999999</label>
+                <live>true</live>
+                <format>%3.2f</format>
+                <property>fdm/jsbsim/systems/gauges/PHI/wind/correction-WCA</property>
+                <halign>left</halign>
+                <color>
+                    <red>0.2</red>
+                    <green>1.0</green>
+                    <blue>0.2</blue>
+                </color>
+            </text>
         </group>
     </group>
     
@@ -413,37 +438,63 @@
             <text>
                 <row>0</row>
                 <col>0</col>
-                <label>Doppler command</label>
-                <halign>center</halign>
+                <label>Doppler configuration</label>
+                <halign>left</halign>
+                <color>
+                    <red>1</red>
+                    <green>1</green>
+                    <blue>1</blue>
+                </color>
             </text>
-            
-            <slider>
-                <row>1</row>
-                <col>0</col>
-                <name>doppler_pannel_switch</name>
-                <property>fdm/jsbsim/systems/gauges/PHI/doppler/switch</property>
-                <min>-1.0</min>
-                <max>2.0</max>
-                <step>1</step>  
-                <binding>
-                    <command>dialog-apply</command>
-                </binding>
-            </slider>
-            
-            <slider>
-                <row>1</row>
+            <combo>
+                <row>0</row>
                 <col>1</col>
-                <name>doppler_pannel_switch</name>
-                <property>fdm/jsbsim/systems/gauges/PHI/doppler/switch-scanarea</property>
-                <min>1.0</min>
-                <max>4.0</max>
-                <step>1</step>  
+                <property>fdm/jsbsim/systems/gauges/PHI/doppler/switch-turn-text</property>
+                <value>OFF</value>
+                <value>Rec only</value>
+                <value>ON</value>
+                <value>Test</value>
                 <binding>
                     <command>dialog-apply</command>
                 </binding>
-            </slider>
+                <binding>
+                    <command>nasal</command>
+                    <script>
+                        <![CDATA[
+                            var tag = getprop("fdm/jsbsim/systems/gauges/PHI/doppler/switch-turn-text");
+                            if (tag == "OFF") {
+                                setprop("fdm/jsbsim/systems/gauges/PHI/doppler/switch-turn",0);
+                            } elsif (tag == "Rec only") {
+                                setprop("fdm/jsbsim/systems/gauges/PHI/doppler/switch-turn",1);
+                            } elsif (tag == "ON") {
+                                setprop("fdm/jsbsim/systems/gauges/PHI/doppler/switch-turn",2);
+                            } else {
+                                setprop("fdm/jsbsim/systems/gauges/PHI/doppler/switch-turn",3);
+                            }
+                        ]]>
+                    </script>
+                </binding>
+            </combo>
+            <radio>
+                <row>0</row>
+                <col>3</col>
+                <halign>left</halign>
+                <label>Sea/Land</label>
+                <property>fdm/jsbsim/systems/gauges/PHI/doppler/switch-terrain-sea</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </radio>
+            <radio>
+                <row>0</row>
+                <col>5</col>
+                <halign>left</halign>
+                <label>Allarm</label>
+                <property>fdm/jsbsim/systems/gauges/PHI/doppler/allarm</property>
+                <live>true</live>
+            </radio>
         </group>
     </group>
-    
     
 </PropertyList> 

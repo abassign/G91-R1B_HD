@@ -461,7 +461,7 @@
     <animation>
         <type>rotate</type>
         <object-name>D_equilibratore_sx.002</object-name>
-        <property>fdm/jsbsim/fcs/elevator-left-deg</property>
+        <property>fdm/jsbsim/fcs/pitch-alpha-sum-deg</property>
         <factor>-1</factor>
         <axis>
             <x1-m> 3.81291 </x1-m>
@@ -476,7 +476,7 @@
     <animation>
         <type>rotate</type>
         <object-name>D_equilibratore_dx</object-name>
-        <property>fdm/jsbsim/fcs/elevator-right-deg</property>
+        <property>fdm/jsbsim/fcs/pitch-alpha-sum-deg</property>
         <factor>1</factor>
         <axis>
             <x1-m> 3.81291 </x1-m>
@@ -506,8 +506,9 @@
         <object-name>A_trasmission_command_Alet_sx.009</object-name>
         <object-name>D_wing_support_dx</object-name>
         <object-name>D_wing_support_sx.001</object-name>
-        <property>fdm/jsbsim/fcs/pitch-trim-cmd-rad</property>
-        <factor>57</factor>
+        <property>fdm/jsbsim/fcs/pitch-alpha-trim-deg</property>
+        <factor>1.0</factor>
+        <offset-deg>0.0</offset-deg>
         <axis>
             <x1-m> 3.5 </x1-m>
             <y1-m> 1.0 </y1-m>
@@ -532,7 +533,7 @@
         <object-name>D_DADI_Plate_vertical_wing</object-name>
         <object-name>D_DADI_Plate_vertical_wing_01</object-name>
         <object-name>DADI.027</object-name>
-        <property>fdm/jsbsim/fcs/rudder-pos-deg</property>
+        <property>fdm/jsbsim/fcs/pitch-trim-deg</property>
         <factor>-1</factor>
         <axis>
             <x1-m> 4.22196 </x1-m>

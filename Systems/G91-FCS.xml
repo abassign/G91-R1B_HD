@@ -1,0 +1,322 @@
+<?xml version="1.0"?>
+
+<!--
+
+Adriano Bassignana - Bergamo (Italy) 2019
+
+Bibliography:
+"G91 - Vol.4 - Istruzioni e norme per il montaggio regolazione e manutenzione - Comandi di volo.pdf"
+Pg. 84 Excursion of moving surfaces
+Fondamental data:
+Elevator 12.5° (up) 17.5° (pull)
+Elevator trim 5° (up) 2° (pull)
+Ailerons 15.5° (up) 15.5° (pull)
+Rudder +/- 25°
+Rudder trim +/- 12°
+Flaps 38°
+
+-->
+
+<flight_control>
+    
+    <property value="0.0">fcs/pitch-deg</property>
+    <property value="0.0">fcs/pitch-rad</property>
+    <property value="0.0">fcs/pitch-trim-deg</property>
+    <property value="0.0">fcs/pitch-alpha-trim-deg</property>
+    <property value="0.0">fcs/pitch-alpha-sum-deg</property>
+    
+    <property value="0.0">fcs/left-steer-brake</property>
+    <property value="0.0">fcs/right-steer-brake</property>
+    
+    <property value="17.5">fcs/elevator-max-deg</property>
+    <property value="12.5">fcs/elevator-min-deg</property>
+    <property value="15.0">fcs/ailerons-max-deg</property>
+    <property value="0.2618">fcs/ailerons-max-rad</property>
+    
+    <property value="0.0">/sim/gui/dialogs/autopilot/altitude-active</property>
+    
+    <channel name="Elevators">
+        
+        <fcs_function name="fcs/pitch-alpha-trim-deg">
+            <function>
+                <ifthen>
+                    <ge>
+                        <p>fcs/pitch-trim-cmd-norm</p>
+                        <v>0.0</v>
+                    </ge>
+                    <product>
+                        <p>fcs/pitch-trim-cmd-norm</p>
+                        <v>2.0</v>
+                    </product>
+                    <product>
+                        <p>fcs/pitch-trim-cmd-norm</p>
+                        <v>5.0</v>
+                    </product>
+                </ifthen>
+            </function>
+        </fcs_function>
+
+        <summer name="fcs/pitch-alpha-norm-sum">
+            <input>fcs/elevator-cmd-norm</input>
+            <input>systems/autopilot/pitch-ap-autoswitch-norm</input>
+            <clipto>
+                <min> -1 </min>
+                <max>  1 </max> 
+            </clipto>
+        </summer>
+        
+        <fcs_function name="fcs/pitch-alpha-sum-deg">
+            <function>
+                <ifthen>
+                    <ge>
+                        <p>fcs/pitch-alpha-norm-sum</p>
+                        <v>0.0</v>
+                    </ge>
+                    <product>
+                        <p>fcs/pitch-alpha-norm-sum</p>
+                        <p>fcs/elevator-max-deg</p>
+                    </product>
+                    <product>
+                        <p>fcs/pitch-alpha-norm-sum</p>
+                        <p>fcs/elevator-min-deg</p>
+                    </product>
+                </ifthen>
+            </function>
+        </fcs_function>
+        
+        <summer name="fcs/pitch-deg">
+            <input>fcs/pitch-alpha-sum-deg</input>
+            <input>fcs/pitch-alpha-trim-deg</input>
+        </summer>
+        
+        <pure_gain name="fcs/pitch-rad">
+            <input>fcs/pitch-deg</input>
+            <gain>0.0174533</gain>
+        </pure_gain>
+        
+    </channel>
+    
+    
+    <channel name="Ailerons">
+        
+        <summer name="fcs/roll-input-sum">
+            <input>fcs/aileron-cmd-norm</input>
+            <input>fcs/roll-trim-cmd-norm</input>
+            <input>systems/autopilot/roll-ap-autoswitch-norm</input>
+        </summer>
+        
+        <pure_gain name="fcs/roll-deg-cmd">
+            <input>fcs/roll-input-sum</input>
+            <gain>15</gain>
+            <clipto>
+                <min>-fcs/ailerons-max-deg</min>
+                <max>fcs/ailerons-max-deg</max>
+            </clipto>
+        </pure_gain>
+        
+        <fcs_function name="fcs/aileron-droop">
+            <function>
+                <table>
+                    <independentVar lookup="row">velocities/vc-kts</independentVar>
+                    <tableData>
+                        62  20
+                        74   0
+                    </tableData>
+                </table>
+            </function>
+        </fcs_function>
+        
+        <switch name="fcs/left-aileron-deg-cmd">
+            <default value="fcs/aileron-droop"/>
+            <test value="fcs/roll-deg-cmd">
+                systems/hydraulics/flight-system-psi ge 1500
+            </test>
+        </switch>
+        
+        <switch name="fcs/right-aileron-deg-cmd">
+            <default value="fcs/aileron-droop"/>
+            <test value="-fcs/roll-deg-cmd">
+                systems/hydraulics/flight-system-psi ge 1500
+            </test>
+        </switch>
+        
+        <actuator name="fcs/aileron-left-deg">
+            <input>fcs/left-aileron-deg-cmd</input>
+            <rate_limit>150</rate_limit>
+            <lag>26.7</lag>
+            <output>fcs/left-aileron-pos-deg</output>
+        </actuator>
+        
+        <pure_gain name="fcs/aileron-left-rad">
+            <input>fcs/aileron-left-deg</input>
+            <gain>0.0174533</gain> <!-- Deg to Rad -->
+            <output>fcs/left-aileron-pos-rad</output>
+        </pure_gain>
+        
+        <actuator name="fcs/aileron-right-deg">
+            <input>fcs/right-aileron-deg-cmd</input>
+            <rate_limit>150</rate_limit>
+            <lag>26.7</lag>
+            <output>fcs/right-aileron-pos-deg</output>
+        </actuator>
+        
+        <pure_gain name="fcs/aileron-right-rad">
+            <input>fcs/aileron-right-deg</input>
+            <gain>0.0174533</gain> <!-- Deg to Rad -->
+            <output>fcs/right-aileron-pos-rad</output>
+        </pure_gain>
+        
+        <fcs_function name="fcs/aileron-pos-rad-avg">
+            <description>
+                Make the 2 ailerons into one for aerodynamics. If one fails, you only get half the rolling moment.
+            </description>
+            <function>
+                <sum>
+                    <product>
+                        <property>fcs/aileron-left-rad</property>
+                        <value>0.5</value>
+                    </product>
+                    <product>
+                        <property>fcs/aileron-right-rad</property>
+                        <value>-0.5</value>
+                    </product>
+                </sum>
+            </function>
+        </fcs_function>
+        
+        <pure_gain name="fcs/aileron-pos-deg-avg">
+            <input>fcs/aileron-pos-deg-avg</input>
+            <gain>57.295755</gain> <!-- Rad to Deg -->
+        </pure_gain>
+        
+    </channel>
+    
+    
+    <channel name="Rudder">
+        
+        <summer name="fcs/yaw-input-sum">
+            <input>fcs/rudder-cmd-norm</input>
+            <input>fcs/yaw-trim-cmd-norm</input>
+            <!--input>systems/active-stability/yaw-damper/output</input-->
+        </summer>
+        
+        <pure_gain name="fcs/yaw-deg-cmd">
+            <input>fcs/yaw-input-sum</input>
+            <gain>20</gain>
+        </pure_gain>
+        
+        <switch name="fcs/rudder-deg-cmd">
+            <default value="0"/>
+            <test value="fcs/yaw-deg-cmd">
+                systems/hydraulics/flight-system-psi ge 1500
+            </test>
+        </switch>
+        
+        <actuator name="fcs/rudder-deg">
+            <input>fcs/rudder-deg-cmd</input>
+            <rate_limit>145</rate_limit>
+            <lag>26.7</lag>
+            <output>fcs/rudder-pos-deg</output>
+        </actuator>
+        
+        <pure_gain name="fcs/rudder-rad">
+            <input>fcs/rudder-deg</input>
+            <gain>0.0174533</gain> <!-- Deg to Rad -->
+            <output>fcs/rudder-pos-rad</output>
+        </pure_gain>
+        
+        <pure_gain name="fcs/rudder-trim-deg-cmd">
+            <input>fcs/yaw-trim-cmd-norm</input>
+            <gain>20</gain>
+        </pure_gain>
+        
+        <actuator name="fcs/rudder-trim-deg">
+            <input>fcs/rudder-trim-deg-cmd</input>
+            <rate_limit>75</rate_limit>
+            <lag>26.7</lag>
+            <output>fcs/rudder-trim-pos-deg</output>
+        </actuator>
+        
+    </channel>
+    
+    
+    <channel name="Flaps">
+        
+        <pure_gain name="fcs/flap-pos-gain">
+            <input>fcs/flap-cmd-norm</input>
+            <gain>30.0</gain>
+        </pure_gain>
+        
+        <switch name="fcs/flap-pos-rate">
+            <description>
+                Uses feedback from fcs/flap-pos-deg to alter motor rate to make it work like abassign had scheduled.
+            </description>
+            <default value="0.0"/>
+            <test logic="AND" value="3.75"> <!-- 4 seconds to 15 -->
+                systems/hydraulics/flight-system-psi ge 1500
+                fcs/flap-pos-deg le 15
+            </test>
+            <test value="5"> <!-- 3 seconds to 30 -->
+                systems/hydraulics/flight-system-psi ge 1500
+            </test>
+        </switch>
+        
+        <actuator name="rubbish/flap-pos-deg">
+            <input>fcs/flap-pos-gain</input>
+            <rate_limit>fcs/flap-pos-rate</rate_limit>
+            <output>fcs/flap-pos-deg</output>
+        </actuator>
+        
+        <aerosurface_scale name="rubbish/flap-pos-norm">
+            <input>fcs/flap-pos-deg</input>
+            <domain>
+                <min>0</min>
+                <max>30</max>
+            </domain>
+            <range>
+                <min>0</min>
+                <max>1</max>
+            </range>
+            <output>fcs/flap-pos-norm</output>
+        </aerosurface_scale>
+        
+    </channel>
+    
+    
+    <channel name="Steering Brake Command">
+        
+        <scheduled_gain name="fcs/left-steer-brake">
+            <input>/controls/flight/rudder</input>
+            <table>
+                <independentVar lookup="row">/velocities/groundspeed-kt</independentVar>
+                <tableData>
+                    10 -1.0
+                    60 -0.2
+                    110 -0.0
+                </tableData>
+            </table>
+            <clipto>
+                <min>0</min>
+                <max>1</max>
+            </clipto>
+        </scheduled_gain>
+        
+        <scheduled_gain name="fcs/right-steer-brake">
+            <input>/controls/flight/rudder</input>
+            <table>
+                <independentVar lookup="row">/velocities/groundspeed-kt</independentVar>
+                <tableData>
+                    10  1.0
+                    60  0.2
+                    110  0.0
+                </tableData>
+            </table>
+            <clipto>
+                <min>0</min>
+                <max>1</max>
+            </clipto>
+        </scheduled_gain>
+        
+    </channel>
+    
+</flight_control> 

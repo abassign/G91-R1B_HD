@@ -273,7 +273,7 @@
         <type>rotate</type>
         <object-name>pointer A (Meshed)</object-name>
         <object-name>pointer B (Meshed)</object-name>
-        <property>/instrumentation/vertical-speed-indicator/indicated-speed-fpm</property>
+        <property>/fdm/jsbsim/systems/autopilot/v-up-fpm-lag</property>
         <interpolation>
             <entry><ind>-6000</ind><dep>-185.0</dep></entry>
             <entry><ind>-5000</ind><dep>-155.0</dep></entry>
@@ -292,9 +292,9 @@
             <entry><ind>6000</ind><dep>175.0</dep></entry>
         </interpolation>
         <axis>
-            <x>  -1 </x>
-            <y>  0 </y>
-            <z>  0 </z>
+            <x>-1</x>
+            <y>0</y>
+            <z>0</z>
         </axis>
     </animation>
     

@@ -13,8 +13,7 @@
     <iyz unit="SLUG*FT2">      0.0     </iyz>
     <emptywt unit="LBS" >   6834.0 </emptywt>
     <location name="CG" unit="IN">
-        
-        <x> 205.00 </x>
+        <x> 211.00 </x>
         <y>   0.00 </y>
         <z>   0.00 </z>
     </location>

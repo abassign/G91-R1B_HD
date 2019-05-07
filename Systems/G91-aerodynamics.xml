@@ -1,6 +1,8 @@
 <!-- G91 Aerodynamics -->
 
-<aerodynamics> <!-- Changes by Joshua Davidson (it0uchpods) for stability, and fix some reversed signs -->
+<!-- Changes by Joshua Davidson (it0uchpods) for stability, and fix some reversed signs -->
+
+<aerodynamics> 
     
     <function name="aero/function/ground-effect-factor-lift">
         <description>Change in lift due to ground effect factor</description>
@@ -104,7 +106,7 @@
             <product>
                 <property>aero/qbar-psf</property>
                 <property>metrics/Sw-sqft</property>
-                <property>fcs/elevator-rad</property>
+                <property>fcs/pitch-rad</property>
                 <value>0.2</value>
             </product>
         </function>
@@ -398,6 +400,7 @@
     <property value="-0.01478">aero/constant/Pitch_speedbrake-coefficient</property>
     
     <axis name="PITCH">
+        
         <function name="aero/coefficient/Cm_basic"> <!-- New table by Joshua Davidson (it0uchpods) -->
             <description>
                 Basic_Pitch_moment_coefficient
@@ -433,7 +436,7 @@
                 <property>aero/qbar-psf</property>
                 <property>metrics/Sw-sqft</property>
                 <property>metrics/cbarw-ft</property>
-                <property>fcs/elevator-rad</property>
+                <property>fcs/pitch-rad</property>
                 <property>aero/constant/Pitch_elevator-coefficient</property>
             </product>
         </function>

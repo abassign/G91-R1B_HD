@@ -100,7 +100,7 @@
                         </binding>
                     </item>
                     <item>
-                        <label>PHI Gauge</label>
+                        <label>Gauges</label>
                         <binding>
                             <command>nasal</command>
                             <script>
@@ -110,7 +110,7 @@
                         </binding>
                     </item>
                     <item>
-                        <label>G91 livery</label>
+                        <label>Livery</label>
                         <binding>
                             <command>nasal</command>
                             <script>
@@ -120,7 +120,7 @@
                         </binding>
                     </item>
                     <item>
-                        <label>G91 accessories</label>
+                        <label>Accessories</label>
                         <binding>
                             <command>nasal</command>
                             <script>
@@ -130,11 +130,21 @@
                         </binding>
                     </item>
                     <item>
-                        <label>G91 Help</label>
+                        <label>Help</label>
                         <binding>
                             <command>nasal</command>
                             <script>
                                 test_dialog = gui.Dialog.new("sim/gui/dialogs/G91/Help/dialog","Aircraft/G91-R1B_HD/Dialogs/G91-Help.xml");
+                                test_dialog.open();
+                            </script>
+                        </binding>
+                    </item>
+                    <item>
+                        <label>Pilot assistant</label>
+                        <binding>
+                            <command>nasal</command>
+                            <script>
+                                test_dialog = gui.Dialog.new("sim/gui/dialogs/G91/Autopilot/dialog","Aircraft/G91-R1B_HD/Dialogs/G91-Autopilot.xml");
                                 test_dialog.open();
                             </script>
                         </binding>
@@ -145,13 +155,6 @@
         
         <G91 include="Models/G91_Params.xml"/>
         
-        <systems>
-            <autopilot>
-                <name>Libraries</name>
-                <path>Systems/libraries.xml</path>
-            </autopilot>
-        </systems>
-
     </sim>
     
     <controls>
@@ -201,6 +204,7 @@
     <!-- Key mappings -->
     <input>
         <keyboard>
+            
             <key n="67">
                 <name>C</name>
                 <desc>Toggle Canopy</desc>
@@ -217,6 +221,7 @@
                     </binding>
                 </mod-up>
             </key>
+            
         </keyboard>
     </input>
     

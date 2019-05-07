@@ -47,16 +47,15 @@
     K:             0.12
     -->
     
+    <system file="G91-active-stability"/>
+    <system file="G91-fuel"/>
     <system file="G91-electric"/>
     <system file="G91-manual-switches"/>
     <system file="G91-handle-switches"/>
-    <system file="G91-active-stability"/>
     <system file="G91-hydraulic"/>
     <system file="G91-gear"/>
-    <system file="G91-flight-control"/>
     <system file="G91-brakes"/>
     <system file="G91-lightning"/>
-    <system file="G91-fuel"/>
     <system file="G91-canopy"/>
     <system file="G91-airbrake"/>
     <system file="G91-JATO"/>
@@ -68,6 +67,7 @@
     <system file="G91-gauges"/>
     <system file="G91-warning-lights"/>
     <system file="G91-climate"/>
+    <system file="G91-autopilot"/>
     
     <!-- for testing -->
     <system file="PHI"/>
@@ -82,12 +82,10 @@
     <metrics file="Systems/G91-metrics"/>
     <mass_balance file="Systems/G91-mass-balance"/>
     <ground_reactions file="Systems/G91-ground-reactions"/>
+    <external_reactions file="Systems/G91-external-reactions"/>
     
     <propulsion file="Systems/G91-propulsion"/>
-    
-    <flight_control name="none"/> <!-- See Systems/G91-flight-control.xml -->
-    
-    <aerodynamics file="Systems/G91-aerodynamics.xml"/>
-    <external_reactions file="Systems/G91-external-reactions"/>
+    <flight_control file="Systems/G91-FCS"/>
+    <aerodynamics file="Systems/G91-aerodynamics"/>
 
 </fdm_config>
