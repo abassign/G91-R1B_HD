@@ -1,4 +1,6 @@
 [Dolphin]
-Timestamp=2019,4,28,15,0,0
+SortOrder=1
+SortRole=modificationtime
+Timestamp=2019,5,8,8,21,26
 Version=4
 ViewMode=1

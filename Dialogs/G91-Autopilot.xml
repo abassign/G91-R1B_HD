@@ -52,7 +52,9 @@
                     </checkbox>
                 </group>
             </group>
+            <hrule/>
             <group>
+                <layout>table</layout>
                 <layout>table</layout>
                 <text>
                     <label>Wings Level</label>
@@ -76,18 +78,14 @@
                         </script>
                     </binding>
                 </radio>
-            </group>
-            <hrule/>
-            <group>
-                <layout>table</layout>
                 <text>
                     <label>Maximum wing slope</label>
                     <halign>right</halign>
-                    <row>0</row>
+                    <row>1</row>
                     <col>0</col>
                 </text>
                 <input>
-                    <row>0</row>
+                    <row>1</row>
                     <col>2</col>
                     <property>fdm/jsbsim/systems/autopilot/gui/true-heading-max-wing-slope-deg</property>
                     <live>true</live>
@@ -98,11 +96,11 @@
                 <text>
                     <label>True heading</label>
                     <halign>right</halign>
-                    <row>1</row>
+                    <row>2</row>
                     <col>0</col>
                 </text>
                 <radio>
-                    <row>1</row>
+                    <row>2</row>
                     <col>1</col>
                     <property>fdm/jsbsim/systems/autopilot/gui/true-heading</property>
                     <live>true</live>
@@ -118,7 +116,7 @@
                     </binding>
                 </radio>
                 <input>
-                    <row>1</row>
+                    <row>2</row>
                     <col>2</col>
                     <property>fdm/jsbsim/systems/autopilot/gui/true-heading-deg</property>
                     <live>true</live>
@@ -126,14 +124,28 @@
                         <command>dialog-apply</command>
                     </binding>
                 </input>
+                <button>
+                    <row>2</row>
+                    <col>3</col>
+                    <legend>Set heading</legend>
+                    <halign>fill</halign>
+                    <live>true</live>
+                    <binding>
+                        <command>nasal</command>
+                        <script>
+                            setprop("fdm/jsbsim/systems/autopilot/gui/true-heading-deg",getprop("fdm/jsbsim/systems/autopilot/heading-true-deg"));
+                            setprop("fdm/jsbsim/systems/autopilot/gui/true-heading",1.0);
+                        </script>
+                    </binding>
+                </button>
                 <text>
                     <label>PHI heading</label>
                     <halign>right</halign>
-                    <row>2</row>
+                    <row>3</row>
                     <col>0</col>
                 </text>
                 <radio>
-                    <row>2</row>
+                    <row>3</row>
                     <col>1</col>
                     <property>fdm/jsbsim/systems/autopilot/gui/phi-heading</property>
                     <live>true</live>
@@ -149,7 +161,7 @@
                     </binding>
                 </radio>
                 <text>
-                    <row>2</row>
+                    <row>3</row>
                     <col>2</col>
                     <label>99999</label>
                     <live>true</live>
@@ -226,17 +238,23 @@
             <!-- Pitch/Altitude -->
             <layout>vbox</layout>
             <group>
-                <layout>vbox</layout>
-                <checkbox>
-                    <label>Pitch/Altitude Control</label>
-                    <halign>fill</halign>
-                    <property>fdm/jsbsim/systems/autopilot/gui/altitude-active</property>
-                    <live>true</live>
-                    <binding>
-                        <command>dialog-apply</command>
-                    </binding>
-                </checkbox>
+                <layout>hbox</layout>
+                <group>
+                    <layout>table</layout>
+                    <checkbox>
+                        <row>0</row>
+                        <col>0</col>
+                        <label>Pitch/Altitude Control</label>
+                        <halign>fill</halign>
+                        <property>fdm/jsbsim/systems/autopilot/gui/altitude-active</property>
+                        <live>true</live>
+                        <binding>
+                            <command>dialog-apply</command>
+                        </binding>
+                    </checkbox>
+                </group>
             </group>
+            <hrule/>
             <group>
                 <layout>table</layout>
                 <text>
@@ -270,12 +288,19 @@
                     </binding>
                 </input>
                 <text>
-                    <label>(fpm)</label>
-                    <halign>left</halign>
                     <row>0</row>
                     <col>3</col>
+                    <label>99999</label>
+                    <halign>left</halign>
+                    <live>true</live>
+                    <format>%4.0f (fpm)</format>
+                    <property>fdm/jsbsim/systems/autopilot/vertical-speed-fpm</property>
+                    <color>
+                        <red>0.9</red>
+                        <green>0.9</green>
+                        <blue>0.9</blue>
+                    </color>
                 </text>
-                
                 <text>
                     <label>Pitch Hold</label>
                     <halign>right</halign>
@@ -307,12 +332,19 @@
                     </binding>
                 </input>
                 <text>
-                    <label>(deg)</label>
-                    <halign>left</halign>
                     <row>1</row>
                     <col>3</col>
+                    <label>99999</label>
+                    <halign>left</halign>
+                    <live>true</live>
+                    <format>%3.1f (deg)</format>
+                    <property>fdm/jsbsim/systems/autopilot/pitch-hold-deg-mod</property>
+                    <color>
+                        <red>0.9</red>
+                        <green>0.9</green>
+                        <blue>0.9</blue>
+                    </color>
                 </text>
-                
                 <text>
                     <label>Altitude Hold</label>
                     <halign>right</halign>
@@ -547,8 +579,8 @@
             <label>99999</label>
             <halign>left</halign>
             <live>true</live>
-            <format>Pitch mod (deg): %3.1f</format>
-            <property>fdm/jsbsim/systems/autopilot/pitch-hold-deg-mod</property>
+            <format>Alt (ft): %5.0f</format>
+            <property>fdm/jsbsim/systems/autopilot/h-sl-ft-lag</property>
             <color>
                 <red>0.9</red>
                 <green>0.9</green>
@@ -561,14 +593,44 @@
             <label>99999</label>
             <halign>left</halign>
             <live>true</live>
-            <format>Alt (ft): %5.0f</format>
-            <property>fdm/jsbsim/systems/autopilot/h-sl-ft-lag</property>
+            <format>Heading (deg): %3.1f</format>
+            <property>fdm/jsbsim/systems/autopilot/heading-true-deg</property>
             <color>
                 <red>0.9</red>
                 <green>0.9</green>
                 <blue>0.9</blue>
             </color>
         </text>
+        <!--
+        <text>
+            <row>0</row>
+            <col>4</col>
+            <label>99999</label>
+            <halign>left</halign>
+            <live>true</live>
+            <format>PID 1: %5.3f</format>
+            <property>fdm/jsbsim/systems/autopilot/vertical-speed-ap-pid-norm</property>
+            <color>
+                <red>0.2</red>
+                <green>0.9</green>
+                <blue>0.2</blue>
+            </color>
+        </text>
+        <text>
+            <row>0</row>
+            <col>5</col>
+            <label>99999</label>
+            <halign>left</halign>
+            <live>true</live>
+            <format>PID 2: %5.3f</format>
+            <property>fdm/jsbsim/systems/autopilot/altitude-hold-ap-pid-norm</property>
+            <color>
+                <red>0.9</red>
+                <green>0.9</green>
+                <blue>0.2</blue>
+            </color>
+        </text>
+        -->
     </group>
     <hrule/>
 </PropertyList>

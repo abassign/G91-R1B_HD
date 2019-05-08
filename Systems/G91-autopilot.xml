@@ -35,6 +35,7 @@ Original work Copyright (c) 2019 Adriano Bassignana (abassign)
     <property value="0.5">systems/autopilot/gui/true-heading-max-wing-slope-rad</property>
     <property value="0.0">systems/autopilot/gui/true-heading-turn-direction</property>
     <property value="0.0">systems/autopilot/true-heading-rad</property>
+    <property value="0.0">systems/autopilot/heading-true-deg</property>
     <property value="0.0">systems/autopilot/true-heading-deg-delta</property>
     <property value="5.0">systems/autopilot/true-heading-pid-kp</property>
     <property value="0.0">systems/autopilot/true-heading-pid-ki</property>
@@ -57,24 +58,22 @@ Original work Copyright (c) 2019 Adriano Bassignana (abassign)
     <property value="-0.25">systems/autopilot/pitch-error-coefficient</property>
     <property value="0.0">systems/autopilot/pitch-ap-autoswitch-norm</property>
     
-    <property value="0.0">systems/autopilot/gui/vertical-speed-active</property>
-    <property value="0.5">systems/autopilot/vertical-speed-pid-kp-1</property>
-    <property value="0.2">systems/autopilot/vertical-speed-pid-ki-1</property>
-    <property value="1.5">systems/autopilot/vertical-speed-pid-kd-1</property>
-    <property value="1.0">systems/autopilot/vertical-speed-lag-coefficient-1</property>
-    <property value="1.5">systems/autopilot/vertical-speed-pid-kp-2</property>
-    <property value="0.5">systems/autopilot/vertical-speed-pid-ki-2</property>
-    <property value="2.0">systems/autopilot/vertical-speed-pid-kd-2</property>
-    <property value="0.1">systems/autopilot/vertical-speed-lag-coefficient-2</property>
-    <property value="2.0">systems/autopilot/vertical-speed-error-coefficient</property>
-    <property value="0.0">systems/autopilot/vertical-speed-pitch-error-lag</property>
-    <property value="1.0">systems/autopilot/vertical-speed-fpm-error-lag</property>
+    <property value="0.0">systems/autopilot/vertical-speed-fpm</property>
+    <property value="0.0">systems/autopilot/vertical-speed-active</property>
+    <property value="0.0">systems/autopilot/vertical-speed-pid-saturated</property>
+    <property value="0.4">systems/autopilot/vertical-speed-pid-kp</property>
+    <property value="0.1">systems/autopilot/vertical-speed-pid-ki</property>
+    <property value="0.1">systems/autopilot/vertical-speed-pid-kd</property>
+    <property value="0.4">systems/autopilot/vertical-speed-error-coefficient</property>
+    <property value="1000.0">systems/autopilot/vertical-speed-error-convergence-norm</property>
+    <property value="0.0">systems/autopilot/vertical-speed-pitch-error-gain</property>
     
     <property value="0.5">systems/autopilot/gui/h-sl-ft-lag-coefficient</property>
     <property value="0.0">systems/autopilot/gui/altitude-hold-active</property>
     <property value="0.0">systems/autopilot/altitude-hold-versus-lag</property>
     <property value="2.0">systems/autopilot/altitude-hold-versus-lag-C1</property>
     <property value="0.0">systems/autopilot/altitude-hold-limitator-active</property>
+    <property value="0.0">systems/autopilot/altitude-hold-ap-saturated</property>
     <property value="0.5">systems/autopilot/altitude-hold-lag-coefficient</property>
     <property value="0.1">systems/autopilot/altitude-hold-fdm-lag-coefficient</property>
     <property value="0.0">systems/autopilot/altitude-hold-pitch-error-lag</property>
@@ -128,7 +127,7 @@ Original work Copyright (c) 2019 Adriano Bassignana (abassign)
             </test>
         </switch>
         
-        <switch name="systems/autopilot/gui/vertical-speed-active">
+        <switch name="systems/autopilot/vertical-speed-active">
             <default value="0.0"/>
             <test logic="AND" value="1.0">
                 systems/autopilot/gui/altitude-active == 1.0
@@ -166,6 +165,11 @@ Original work Copyright (c) 2019 Adriano Bassignana (abassign)
         <pure_gain name="systems/autopilot/true-heading-rad">
             <input>systems/autopilot/gui/true-heading-deg</input>
             <gain>0.0174533</gain>
+        </pure_gain>
+        
+        <pure_gain name="systems/autopilot/heading-true-deg">
+            <input>attitude/heading-true-rad</input>
+            <gain>57.2958</gain>
         </pure_gain>
         
         <fcs_function name="systems/autopilot/phi-heading-deg">
@@ -354,8 +358,8 @@ Original work Copyright (c) 2019 Adriano Bassignana (abassign)
                             <p>systems/autopilot/pitch-hold-deg-mod</p>
                         </toradians>
                         <ifthen>
-                            <p>systems/autopilot/gui/vertical-speed-active</p>
-                            <p>systems/autopilot/vertical-speed-pitch-error-lag</p>
+                            <p>systems/autopilot/vertical-speed-active</p>
+                            <p>systems/autopilot/vertical-speed-pitch-error-gain</p>
                             <p>attitude/pitch-rad</p>
                         </ifthen>
                     </ifthen>
@@ -386,72 +390,70 @@ Original work Copyright (c) 2019 Adriano Bassignana (abassign)
         <switch name="systems/autopilot/vertical-speed-reset-integrator">
             <default value="-1"/>
             <test logic="AND" value="0">
-                systems/autopilot/gui/vertical-speed-active == 1
+                systems/autopilot/vertical-speed-active == 1
+                systems/autopilot/vertical-speed-pid-saturated == 0
+            </test>
+            <test logic="AND" value="2">
+                systems/autopilot/vertical-speed-active == 1
+                systems/autopilot/vertical-speed-pid-saturated == 1
             </test>
         </switch>
+        
+        <fcs_function name="systems/autopilot/vertical-speed-fpm">
+            <function>
+                <ifthen>
+                    <and>
+                        <eq><p>systems/autopilot/vertical-speed-active</p><v>1.0</v></eq>
+                        <eq><p>systems/autopilot/gui/altitude-hold-active</p><v>1.0</v></eq>
+                    </and>
+                    <product>
+                        <p>systems/autopilot/altitude-hold-versus</p>
+                        <p>systems/autopilot/gui/vertical-speed-fpm</p>
+                        <p>systems/autopilot/altitude-hold-ap-pid-norm</p>
+                    </product>
+                    <p>systems/autopilot/gui/vertical-speed-fpm</p>
+                </ifthen>
+            </function>
+        </fcs_function>
         
         <fcs_function name="systems/autopilot/vertical-speed-error-norm">
             <function>
-                <product>
+                <atan>
                     <quotient>
                         <difference>
-                            <product>
-                                <p>systems/autopilot/gui/vertical-speed-fpm</p>
-                                <p>systems/autopilot/vertical-speed-fpm-error-lag</p>
-                            </product>
+                            <p>systems/autopilot/vertical-speed-fpm</p>
                             <p>systems/autopilot/v-up-fpm-lag</p>
                         </difference>
-                        <abs><p>systems/autopilot/v-up-fpm-lag</p></abs>
+                        <p>systems/autopilot/vertical-speed-error-convergence-norm</p>
                     </quotient>
-                    <p>systems/autopilot/vertical-speed-error-coefficient</p>
-                </product>
+                </atan>
             </function>
             <clipto>
-                <min>-0.25</min>
-                <max>0.25</max>
+                <min>-1.0</min>
+                <max>1.0</max>
             </clipto>
         </fcs_function>
-        
-        <switch name="systems/autopilot/vertical-speed-pid-kp-select">
-            <default value="systems/autopilot/vertical-speed-pid-kp-2"/>
-            <test logic="AND" value="systems/autopilot/vertical-speed-pid-kp-1">
-                systems/autopilot/gui/vertical-speed-active == 1
-            </test>
-        </switch>
-        
-        <switch name="systems/autopilot/vertical-speed-pid-ki-select">
-            <default value="systems/autopilot/vertical-speed-pid-ki-2"/>
-            <test logic="AND" value="systems/autopilot/vertical-speed-pid-ki-1">
-                systems/autopilot/gui/vertical-speed-active == 1
-            </test>
-        </switch>
-        
-        <switch name="systems/autopilot/vertical-speed-pid-kd-select">
-            <default value="systems/autopilot/vertical-speed-pid-kd-2"/>
-            <test logic="AND" value="systems/autopilot/vertical-speed-pid-kd-1">
-                systems/autopilot/gui/vertical-speed-active == 1
-            </test>
-        </switch>
-        
-        <switch name="systems/autopilot/vertical-speed-lag-coefficient-select">
-            <default value="systems/autopilot/vertical-speed-lag-coefficient-2"/>
-            <test logic="AND" value="systems/autopilot/vertical-speed-lag-coefficient-1">
-                systems/autopilot/gui/vertical-speed-active == 1
-            </test>
-        </switch>
 
         <pid name="systems/autopilot/vertical-speed-ap-pid-norm">
             <input>systems/autopilot/vertical-speed-error-norm</input>
-            <kp>systems/autopilot/vertical-speed-pid-kp-select</kp>
-            <ki>systems/autopilot/vertical-speed-pid-ki-select</ki>
-            <kd>systems/autopilot/vertical-speed-pid-kd-select</kd>
+            <kp>systems/autopilot/vertical-speed-pid-kp</kp>
+            <ki>systems/autopilot/vertical-speed-pid-ki</ki>
+            <kd>systems/autopilot/vertical-speed-pid-kd</kd>
             <trigger>systems/autopilot/vertical-speed-reset-integrator</trigger>
         </pid>
         
-        <lag_filter name="systems/autopilot/vertical-speed-pitch-error-lag">
+        <switch name="systems/autopilot/vertical-speed-pid-saturated">
+            <default value="0"/>
+            <test logic="OR" value="1">
+                systems/autopilot/vertical-speed-ap-pid-norm GE 0.5
+                systems/autopilot/vertical-speed-ap-pid-norm LE -0.5
+            </test>
+        </switch>
+        
+        <pure_gain name="systems/autopilot/vertical-speed-pitch-error-gain">
             <input>systems/autopilot/vertical-speed-ap-pid-norm</input>
-            <c1>systems/autopilot/vertical-speed-lag-coefficient-select</c1>
-        </lag_filter>
+            <gain>systems/autopilot/vertical-speed-error-coefficient</gain>
+        </pure_gain> 
         
         <!-- Altitude hold section -->
         
@@ -498,14 +500,10 @@ Original work Copyright (c) 2019 Adriano Bassignana (abassign)
             <test logic="AND" value="1">
                 <test logic="OR">
                     systems/autopilot/gui/pitch-hold-active == 1
-                    systems/autopilot/gui/vertical-speed-active == 1
+                    systems/autopilot/vertical-speed-active == 1
                 </test>
                 <test logic="AND">
                     systems/autopilot/gui/altitude-hold-active == 1
-                    <!--
-                    systems/autopilot/altitude-hold-error-norm GT -1.0
-                    systems/autopilot/altitude-hold-error-norm LT 1.0
-                    -->
                 </test>
             </test>
         </switch>
@@ -514,6 +512,10 @@ Original work Copyright (c) 2019 Adriano Bassignana (abassign)
             <default value="-1"/>
             <test logic="AND" value="0">
                 systems/autopilot/altitude-hold-limitator-active == 1
+            </test>
+            <test logic="AND" value="2">
+                systems/autopilot/altitude-hold-limitator-active == 1
+                systems/autopilot/altitude-hold-ap-saturated == 1
             </test>
         </switch>
         
@@ -524,6 +526,14 @@ Original work Copyright (c) 2019 Adriano Bassignana (abassign)
             <kd>systems/autopilot/altitude-hold-pid-kd</kd>
             <trigger>systems/autopilot/altitude-hold-reset-integrator</trigger>
         </pid>
+        
+        <switch name="systems/autopilot/altitude-hold-ap-saturated">
+            <default value="0"/>
+            <test logic="OR" value="1">
+                systems/autopilot/vertical-speed-ap-pid-norm GE 1.0
+                systems/autopilot/vertical-speed-ap-pid-norm LE -1.0
+            </test>
+        </switch>
         
         <switch name="systems/autopilot/altitude-hold-ap-pid-norm-active">
             <default value="1"/>
@@ -543,18 +553,6 @@ Original work Copyright (c) 2019 Adriano Bassignana (abassign)
                 systems/autopilot/gui/pitch-hold-active == 1
             </test>
         </switch>
-
-        <lag_filter name="systems/autopilot/vertical-speed-fpm-error-lag-to-switch">
-            <input>systems/autopilot/altitude-hold-ap-pid-norm-active</input>
-            <c1>systems/autopilot/altitude-hold-fdm-lag-coefficient</c1>
-        </lag_filter>
-        
-        <switch name="systems/autopilot/vertical-speed-fpm-error-lag">
-            <default value="1"/>
-            <test logic="AND" value="systems/autopilot/vertical-speed-fpm-error-lag-to-switch">
-                systems/autopilot/gui/vertical-speed-active == 1
-            </test>
-        </switch>
         
         <!-- output select section -->
         
@@ -564,7 +562,7 @@ Original work Copyright (c) 2019 Adriano Bassignana (abassign)
                 systems/autopilot/gui/pitch-hold-active == 1
             </test>
             <test logic="AND" value="systems/autopilot/pitch-error">
-                systems/autopilot/gui/vertical-speed-active == 1
+                systems/autopilot/vertical-speed-active == 1
             </test>
         </switch>
 

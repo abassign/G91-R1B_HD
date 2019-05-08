@@ -1422,39 +1422,7 @@
             <deadband_width>1</deadband_width>
             <hysteresis_width>0.5</hysteresis_width>
         </actuator>
-        
-        <!--
-        <fcs_function name="systems/gauges/PHI/indicator/brg-lag-actuator">
-            <function>
-                <ifthen>
-                    <gt>
-                        <quotient>
-                            <abs><p>systems/gauges/PHI/indicator/brg-lag-actuator-360</p></abs>
-                            <v>360.0</v>
-                        </quotient>
-                        <v>1.0</v>
-                    </gt>
-                    <sum>
-                        <p>systems/gauges/PHI/indicator/brg-lag-actuator-360</p>
-                        <product>
-                            <integer>
-                                <quotient>
-                                    <abs><p>systems/gauges/PHI/indicator/brg-lag-actuator-360</p></abs>
-                                    <v>360.0</v>
-                                </quotient>
-                            </integer>
-                            <ifthen>
-                                <ge><p>systems/gauges/PHI/indicator/brg-lag-actuator-360</p><v>0.0</v></ge>
-                                <v>-360.0</v>
-                                <v>360.0</v>
-                            </ifthen>
-                        </product>
-                    </sum>
-                    <p>systems/gauges/PHI/indicator/brg-lag-actuator-360</p>
-                </ifthen>
-            </function>
-        </fcs_function>
-        -->
+
     </channel>
     
     
