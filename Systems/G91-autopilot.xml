@@ -8,6 +8,8 @@ Original work Copyright (c) 2019 Adriano Bassignana (abassign)
 
 <system>
     
+    <property value="0.0">systems/autopilot/gui/rudder-auto-coordination</property>
+    
     <property value="0.0">systems/autopilot/gui/heading-control</property>
     <property value="0.0">systems/autopilot/gui/wing-leveler</property>
     <property value="0.0">systems/autopilot/gui/true-heading</property>
@@ -24,9 +26,19 @@ Original work Copyright (c) 2019 Adriano Bassignana (abassign)
     <property value="0.0">systems/autopilot/gui/altitude-hold-ft</property>
     <property value="0.0">systems/autopilot/gui/altitude-hold-togle</property>
     
+    <property value="0.0">systems/autopilot/gui/speed-control</property>
+    <property value="0.0">systems/autopilot/gui/speed-throttle</property>
+    <property value="0.0">systems/autopilot/gui/speed-pitch</property>
+    <property value="0.0">systems/autopilot/gui/speed-brake</property>
+    <property value="0.0">systems/autopilot/gui/speed-automatic-flap</property>
+    <property value="0.0">systems/autopilot/gui/speed-automatic-gear</property>
+    <property value="0.0">systems/autopilot/gui/speed-mph</property>
+    <property value="0.0">systems/autopilot/gui/speed-mach</property>
+    
     <property value="0.0">systems/autopilot/wing-leveler-active</property>
     <property value="0.0">systems/autopilot/wing-leveler-ap-on-off</property>
     <property value="0.5">systems/autopilot/wing-leveler-lag-coefficient</property>
+    <property value="-1.0">systems/autopilot/wing-leveler-output-gain</property>
     
     <property value="0.0">systems/autopilot/true-heading-active</property>
     <property value="0.0">systems/autopilot/true-heading-ap-on-off</property>
@@ -38,13 +50,25 @@ Original work Copyright (c) 2019 Adriano Bassignana (abassign)
     <property value="0.0">systems/autopilot/heading-true-deg</property>
     <property value="0.0">systems/autopilot/true-heading-deg-delta</property>
     <property value="5.0">systems/autopilot/true-heading-pid-kp</property>
-    <property value="0.0">systems/autopilot/true-heading-pid-ki</property>
-    <property value="1.5">systems/autopilot/true-heading-pid-kd</property>
+    <property value="0.1">systems/autopilot/true-heading-pid-ki</property>
+    <property value="0.5">systems/autopilot/true-heading-pid-kd</property>
     <property value="0.5">systems/autopilot/true-heading-activate-lag-coefficient</property>
     <property value="0.0">systems/autopilot/phi-heading-active</property>
     <property value="0.0">systems/autopilot/phi-heading-deg</property>
     <property value="0.0">systems/autopilot/phi-heading-rad</property>
     <property value="4.0">systems/autopilot/phi-heading-brg-lag-coefficient</property>
+    <property value="0.0">systems/autopilot/phi-rad-limited</property>
+    
+    <property value="0.0">systems/autopilot/rudder-active</property>
+    <property value="0.0">systems/autopilot/rudder-rad-bias</property>
+    <property value="1.0">systems/autopilot/rudder-Ny-gain</property>
+    <property value="0.1">systems/autopilot/rudder-output-gain</property>
+    <property value="0.0">systems/autopilot/rudder-rad</property>
+    <property value="0.0">systems/autopilot/rudder-deg</property>
+    <property value="0.8">systems/autopilot/rudder-pid-kp</property>
+    <property value="0.8">systems/autopilot/rudder-pid-ki</property>
+    <property value="0.2">systems/autopilot/rudder-pid-kd</property>
+    <property value="0.0">systems/autopilot/rudder-ap-value-norm</property>
     
     <property value="0.0">systems/autopilot/gui/pitch-hold-active</property>
     <property value="0.0">systems/autopilot/gui/pitch-hold-ap-on-off</property>
@@ -87,6 +111,12 @@ Original work Copyright (c) 2019 Adriano Bassignana (abassign)
     <property value="1.5">systems/autopilot/roll-pid-kd</property>
     <property value="0.0">systems/autopilot/roll-ap-autoswitch-norm</property>
     
+    <property value="0.0">systems/autopilot/speed-throttle-active</property>
+    <property value="0.0">systems/autopilot/speed-pitch-active</property>
+    <property value="0.0">systems/autopilot/speed-speed-brake-active</property>
+    <property value="0.0">systems/autopilot/speed-automatic-flap-active</property>
+    <property value="0.0">systems/autopilot/speed-automatic-gear-active</property>
+    
     
     <channel name="Autopilot GUI Interface" execrate="32">
         
@@ -119,6 +149,13 @@ Original work Copyright (c) 2019 Adriano Bassignana (abassign)
             </test>
         </switch>
         
+        <switch name="systems/autopilot/rudder-active">
+            <default value="0.0"/>
+            <test logic="AND" value="1.0">
+                systems/autopilot/gui/rudder-auto-coordination == 1.0
+            </test>
+        </switch>
+
         <switch name="systems/autopilot/gui/pitch-hold-active">
             <default value="0.0"/>
             <test logic="AND" value="1.0">
@@ -143,24 +180,50 @@ Original work Copyright (c) 2019 Adriano Bassignana (abassign)
             </test>
         </switch>
         
+        <switch name="systems/autopilot/speed-throttle-active">
+            <default value="0.0"/>
+            <test logic="AND" value="1.0">
+                systems/autopilot/gui/speed-control == 1.0
+                systems/autopilot/gui/speed-throttle == 1.0
+            </test>
+        </switch>
+        
+        <switch name="systems/autopilot/speed-pitch-active">
+            <default value="0.0"/>
+            <test logic="AND" value="1.0">
+                systems/autopilot/gui/speed-control == 1.0
+                systems/autopilot/gui/speed-pitch == 1.0
+            </test>
+        </switch>
+        
+        <switch name="systems/autopilot/speed-brake-active">
+            <default value="0.0"/>
+            <test logic="AND" value="1.0">
+                systems/autopilot/gui/speed-control == 1.0
+                systems/autopilot/gui/speed-brake == 1.0
+            </test>
+        </switch>
+        
+        <switch name="systems/autopilot/speed-automatic-flap-active">
+            <default value="0.0"/>
+            <test logic="AND" value="1.0">
+                systems/autopilot/gui/speed-control == 1.0
+                systems/autopilot/gui/speed-automatic-flap == 1.0
+            </test>
+        </switch>
+        
+        <switch name="systems/autopilot/speed-automatic-gear-active">
+            <default value="0.0"/>
+            <test logic="AND" value="1.0">
+                systems/autopilot/gui/speed-control == 1.0
+                systems/autopilot/gui/speed-automatic-gear == 1.0
+            </test>
+        </switch>
+        
     </channel>
     
     
     <channel name="Heading control">
-        
-        <switch name="systems/autopilot/wing-leveler-ap-on-off">
-            <default value="-1"/>
-            <test logic="AND" value="0">
-                systems/autopilot/wing-leveler-active == 1
-            </test>
-        </switch>
-        
-        <switch name="systems/autopilot/true-heading-ap-on-off">
-            <default value="-1"/>
-            <test logic="AND" value="0">
-                systems/autopilot/true-heading-active == 1
-            </test>
-        </switch>
         
         <pure_gain name="systems/autopilot/true-heading-rad">
             <input>systems/autopilot/gui/true-heading-deg</input>
@@ -200,39 +263,39 @@ Original work Copyright (c) 2019 Adriano Bassignana (abassign)
             <gain>0.0174533</gain>
         </pure_gain>
         
-        <fcs_function name="systems/autopilot/true-heading-rad-delta-360">
-            <function>
-                <difference>
-                    <p>systems/autopilot/true-heading-rad</p>
-                    <ifthen>
-                        <p>systems/autopilot/phi-heading-active</p>
-                        <p>systems/autopilot/phi-heading-rad</p>
-                        <p>attitude/heading-true-rad</p>
-                    </ifthen>
-                </difference>
-            </function>
-        </fcs_function>
+
+        <switch name="systems/autopilot/true-heading-rad-prop">
+            <default value="systems/autopilot/true-heading-rad"/>
+            <test logic="AND" value="systems/autopilot/phi-heading-rad">
+                systems/autopilot/phi-heading-active == 1
+            </test>
+        </switch>
+        
+        <summer name="systems/autopilot/true-heading-rad-prop-dif">
+            <input>systems/autopilot/true-heading-rad-prop</input>
+            <input>-attitude/heading-true-rad</input>
+        </summer>
         
         <fcs_function name="systems/autopilot/true-heading-rad-delta">
             <function>
                 <ifthen>
-                    <gt><abs><p>systems/autopilot/true-heading-rad-delta-360</p></abs><pi/></gt>
+                    <ge><p>systems/autopilot/true-heading-rad-prop-dif</p><pi/></ge>
+                    <difference>
+                        <p>systems/autopilot/true-heading-rad-prop-dif</p>
+                        <product><pi/><v>2.0</v></product>
+                    </difference>
                     <ifthen>
-                        <lt><p>systems/autopilot/true-heading-rad-delta-360</p><v>0.0</v></lt>
+                        <lt><p>systems/autopilot/true-heading-rad-prop-dif</p><product><pi/><v>-1.0</v></product></lt>
                         <sum>
+                            <p>systems/autopilot/true-heading-rad-prop-dif</p>
                             <product><pi/><v>2.0</v></product>
-                            <p>systems/autopilot/true-heading-rad-delta-360</p>
                         </sum>
-                        <difference>
-                            <product><pi/><v>2.0</v></product>
-                            <p>systems/autopilot/true-heading-rad-delta-360</p>
-                        </difference>
+                        <p>systems/autopilot/true-heading-rad-prop-dif</p>
                     </ifthen>
-                    <p>systems/autopilot/true-heading-rad-delta-360</p>
                 </ifthen>
             </function>
         </fcs_function>
-        
+
         <pure_gain name="systems/autopilot/true-heading-deg-delta">
             <input>systems/autopilot/true-heading-rad-delta</input>
             <gain>57.2958</gain>
@@ -255,6 +318,22 @@ Original work Copyright (c) 2019 Adriano Bassignana (abassign)
             <trigger>systems/autopilot/true-heading-ap-on-off</trigger>
         </pid>
         
+        <switch name="systems/autopilot/true-heading-ap-on-off">
+            <default value="-1"/>
+            <test logic="AND" value="2">
+                <test logic="AND">
+                    systems/autopilot/true-heading-active == 1
+                </test>
+                <test logic="OR">
+                    systems/autopilot/true-heading-rad-delta-lim GE 0.2
+                    systems/autopilot/true-heading-rad-delta-lim LE -0.2
+                </test>
+            </test>
+            <test logic="AND" value="0">
+                systems/autopilot/true-heading-active == 1
+            </test>
+        </switch>
+        
         <pure_gain name="systems/autopilot/true-heading-turn-direction-versus-slope">
             <input>systems/autopilot/true-heading-rad-delta-pid</input>
             <gain>systems/autopilot/true-heading-max-wing-slope-rad</gain>
@@ -272,12 +351,17 @@ Original work Copyright (c) 2019 Adriano Bassignana (abassign)
             <c1>systems/autopilot/true-heading-activate-lag-coefficient</c1>
         </lag_filter>
         
+        <pure_gain name="systems/autopilot/true-heading-turn-direction-versus-slope-sw-lag-deg">
+            <input>systems/autopilot/true-heading-turn-direction-versus-slope-sw-lag</input>
+            <gain>57.2958</gain>
+        </pure_gain>
+        
         <summer name="systems/autopilot/phi-rad-limited">
             <input>attitude/phi-rad</input>
             <input>-systems/autopilot/true-heading-turn-direction-versus-slope-sw-lag</input>
             <clipto>
-                <min>-0.25</min>
-                <max>0.25</max>
+                <min>-1.0</min>
+                <max>1.0</max>
             </clipto>
         </summer>
         
@@ -289,6 +373,23 @@ Original work Copyright (c) 2019 Adriano Bassignana (abassign)
             <trigger>systems/autopilot/wing-leveler-ap-on-off</trigger>
         </pid>
         
+        <switch name="systems/autopilot/wing-leveler-ap-on-off">
+            <default value="-1"/>
+            <test logic="AND" value="2">
+                <test logic="OR">
+                    systems/autopilot/wing-leveler-active == 1
+                    systems/autopilot/true-heading-active == 1
+                </test>
+                <test logic="OR">
+                    systems/autopilot/phi-rad-limited GE 1.0
+                    systems/autopilot/phi-rad-limited LE -1.0
+                </test>
+            </test>
+            <test logic="AND" value="0">
+                systems/autopilot/wing-leveler-active == 1
+            </test>
+        </switch>
+        
         <switch name="systems/autopilot/wing-leveler-ap-autoswitch">
             <default value="0"/>
             <test logic="OR" value="systems/autopilot/wing-leveler-ap-pid">
@@ -297,13 +398,75 @@ Original work Copyright (c) 2019 Adriano Bassignana (abassign)
             </test>
         </switch>
 
-         <!-- output -->
+        <!-- output -->
         
         <pure_gain name="systems/autopilot/roll-ap-autoswitch-norm">
             <input>systems/autopilot/wing-leveler-ap-autoswitch</input>
-            <gain>-1</gain>
+            <gain>systems/autopilot/wing-leveler-output-gain</gain>
         </pure_gain>
 
+    </channel>
+    
+    
+    <channel name="Rudder control">
+        
+        <pure_gain name="systems/autopilot/rudder-rad">
+            <input>accelerations/n-pilot-y-norm</input>
+            <gain>systems/autopilot/rudder-Ny-gain</gain>
+        </pure_gain>
+        
+        <pure_gain name="systems/autopilot/rudder-deg">
+            <input>systems/autopilot/rudder-rad</input>
+            <gain>57.2958</gain>
+        </pure_gain>
+        
+        <summer name="systems/autopilot/rudder-rad-limited">
+            <input>systems/autopilot/rudder-rad</input>
+            <input>systems/autopilot/rudder-rad-bias</input>
+            <clipto>
+                <min>-1.0</min>
+                <max>1.0</max>
+            </clipto>
+        </summer>
+        
+        <switch name="systems/autopilot/rudder-ap-on-off">
+            <default value="-1"/>
+            <test logic="AND" value="2">
+                <test logic="AND">
+                    systems/autopilot/rudder-active == 1
+                </test>
+                <test logic="OR">
+                    systems/autopilot/rudder-rad-limited GE 1.0
+                    systems/autopilot/rudder-rad-limited LE -1.0
+                </test>
+            </test>
+            <test logic="AND" value="0">
+                systems/autopilot/rudder-active == 1
+            </test>
+        </switch>
+        
+        <pid name="systems/autopilot/rudder-ap-pid">
+            <input>systems/autopilot/rudder-rad-limited</input>
+            <kp>systems/autopilot/rudder-pid-kp</kp>
+            <ki>systems/autopilot/rudder-pid-ki</ki>
+            <kd>systems/autopilot/rudder-pid-kd</kd>
+            <trigger>systems/autopilot/rudder-ap-on-off</trigger>
+        </pid>
+        
+        <switch name="systems/autopilot/rudder-ap-value">
+            <default value="0"/>
+            <test logic="OR" value="systems/autopilot/rudder-ap-pid">
+                systems/autopilot/rudder-active == 1
+            </test>
+        </switch>
+
+        <!-- output -->
+        
+        <pure_gain name="systems/autopilot/rudder-ap-value-norm">
+            <input>systems/autopilot/rudder-ap-value</input>
+            <gain>systems/autopilot/rudder-output-gain</gain>
+        </pure_gain>
+        
     </channel>
     
     
@@ -570,6 +733,7 @@ Original work Copyright (c) 2019 Adriano Bassignana (abassign)
     
     
     <channel name="Speed control">
+        
         
         
     </channel>

@@ -18,6 +18,7 @@
             </equals>
         </condition>
     </model>
+
 <!--
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Canopy.xml</path>
@@ -60,7 +61,7 @@
             </equals>
         </condition>
     </model>
-    -->
+
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Tail/Tail.xml</path>
         <condition>
@@ -70,7 +71,7 @@
             </equals>
         </condition>
     </model>
-    <!--
+
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Fuselage_B/Fuselage_B1.xml</path>
         <condition>

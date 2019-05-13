@@ -197,7 +197,7 @@ Flaps 38°
         <summer name="fcs/yaw-input-sum">
             <input>fcs/rudder-cmd-norm</input>
             <input>fcs/yaw-trim-cmd-norm</input>
-            <!--input>systems/active-stability/yaw-damper/output</input-->
+            <input>systems/autopilot/rudder-ap-value-norm</input>
         </summer>
         
         <pure_gain name="fcs/yaw-deg-cmd">
@@ -221,7 +221,7 @@ Flaps 38°
         
         <pure_gain name="fcs/rudder-rad">
             <input>fcs/rudder-deg</input>
-            <gain>0.0174533</gain> <!-- Deg to Rad -->
+            <gain>0.0174533</gain>
             <output>fcs/rudder-pos-rad</output>
         </pure_gain>
         
