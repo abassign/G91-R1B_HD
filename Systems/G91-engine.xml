@@ -180,16 +180,11 @@ Description: G91R2 Canopy automation
             <test logic="AND" value="1">
                 systems/engine/jet-TC-temperature-hight-lag GT 0.9
             </test>
+            <test logic="AND" value="0">
+                systems/engine/jet-TC-temperature-hight-fire-on == 1
+                systems/engine/jet-TC-temperature-hight-lag LT 0.1
+            </test>
         </switch>
-        
-        <integrator name="systems/damage/engine/damage-fire-norm">
-            <input>systems/engine/jet-TC-temperature-hight-fire-display-lag</input>
-            <c1>0.02</c1>
-            <clipto>
-                <min>0</min>
-                <max>1</max>
-            </clipto>
-        </integrator>
 
     </channel>
     

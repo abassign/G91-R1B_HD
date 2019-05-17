@@ -8,7 +8,7 @@ Modify on original Orpheus data by Adriano Bassignana 20150811 (4000 ft GS 550 k
 Inputs:
 name:           ORPHEUS_MK_803
 type:           turbine
-thrust:         4999.552 lb
+thrust:         4999.552 lb (?)
 augmented?      no
 injected?       no
 
@@ -21,7 +21,7 @@ http://wiki.flightgear.org/JSBSim_Engines#FGTurbine
     
     <milthrust>  5900 </milthrust>
     <bypassratio>     1.0   </bypassratio>
-    <tsfc>            1.05  </tsfc>
+    <tsfc>            1.01   </tsfc>
     <bleed>           0.05  </bleed>
     <idlen1>         30.0   </idlen1>
     <idlen2>         40.0   </idlen2>
@@ -81,7 +81,7 @@ http://wiki.flightgear.org/JSBSim_Engines#FGTurbine
             </tableData>
         </table>
     </function>
-    
+
     <function name="propulsion/engine[#]/TSFC_Calculate">
         <description>
             atmosphere/T-R 
@@ -90,17 +90,17 @@ http://wiki.flightgear.org/JSBSim_Engines#FGTurbine
         <table>
             <independentVar lookup="row">atmosphere/T-R</independentVar>
             <tableData>
-                311.67	1.2
-                446.67	1.18
-                455.67	1.15
-                473.67	1.1
-                491.67	1.06
-                509.67	1.02
-                527.67	0.96
-                545.67	0.92
-                563.67	0.86
-                572.67	0.83
-                671.67	0.8
+                311.67	1.14
+                446.67	1.12
+                455.67	1.09
+                473.67	1.05
+                491.67	1.01
+                509.67	0.97
+                527.67	0.91
+                545.67	0.87
+                563.67	0.82
+                572.67	0.79
+                671.67	0.76
             </tableData>
         </table>
     </function>

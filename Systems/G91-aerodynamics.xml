@@ -177,8 +177,8 @@
                     <independentVar lookup="row">velocities/mach</independentVar>
                     <tableData>
                         0.00  0.000
-                        0.81  0.015
-                        1.00  0.045
+                        0.81  0.010
+                        1.00  0.035
                         1.10  0.043
                         2.00  0.035
                     </tableData>

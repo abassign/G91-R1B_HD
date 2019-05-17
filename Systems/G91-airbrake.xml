@@ -7,6 +7,7 @@
     dell'impianto idraulico. In questo modo si ottiene la limitazione dello sforzo, ma anche 
     il rallentamento -->
     
+    <property value="0.0">systems/airbrake/automatic-cmd</property>
     <property value="1.94">systems/airbrake/surfice-cmd-sqft</property>
     <property value="0.8">systems/airbrake/cd_coefficient</property>
     <property value="1.0">systems/airbrake/position_max</property>
@@ -15,8 +16,17 @@
     
     <channel name="Airbrake control" execrate="8">
         
-        <kinematic name="airbrake Control">
+        <summer name="systems/airbrake/command">
             <input>fcs/speedbrake-cmd-norm</input>
+            <input>systems/airbrake/automatic-cmd</input>
+            <clipto>
+                <min>0.0</min>
+                <max>1.0</max>
+            </clipto>
+        </summer>
+        
+        <kinematic name="airbrake Control">
+            <input>systems/airbrake/command</input>
             <noscale/>
             <traverse>
                 <setting>

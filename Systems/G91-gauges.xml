@@ -11,6 +11,9 @@ The C1 lag_filter is less is longer respond time
     <property value="0">systems/gauges/cockpit-attitude-J8-horizon-offset</property>
     <property value="0">systems/gauges/cockpit-attitude-J8-caged-push-trigger</property>
     <property value="0">systems/gauges/cockpit-fire-sw-test-togle</property>
+    <property value="0">systems/gauges/cockpit-fire-light-intensity</property>
+    <property value="0">systems/gauges/cockpit-fire-light-transparent</property>
+    
     
     <channel name="Cockpit Fuel Pounds" execrate="8">
         
@@ -238,8 +241,6 @@ The C1 lag_filter is less is longer respond time
     
     
     <channel name="Fire advisor" execrate="16">
-        
-        systems/engine/jet-TC-temperature-hight-fire-on
         
         <lag_filter name="systems/gauges/cockpit-fire-sw-test-pos">
             <input>systems/gauges/cockpit-fire-sw-test-togle</input>

@@ -3,13 +3,7 @@
 <!-- Autopilot JSBSim
 Original work Copyright (c) 2019 Adriano Bassignana (abassign)
 
-The PID configurator is defined by: Ziegler–Nichols method
-https://en.wikipedia.org/wiki/Ziegler%E2%80%93Nichols_method
-With the four variants:
-Zingler-Nichols Classic
-Possen Integral Rule
-Some Overshoot
-No Overshoot
+<property>/fdm/jsbsim/systems/gauges/cockpit-attitude-J8-horizon-offset</property>
 -->
 
 <system>
@@ -24,9 +18,9 @@ No Overshoot
     
     <property value="0.0">systems/autopilot/gui/altitude-active</property>
     <property value="0.0">systems/autopilot/gui/vertical-speed</property>
-    <property value="1000.0">systems/autopilot/gui/vertical-speed-fpm</property>
+    <property value="0.0">systems/autopilot/gui/vertical-speed-fpm</property>
     <property value="0.0">systems/autopilot/gui/pitch-hold</property>
-    <property value="6.0">systems/autopilot/gui/pitch-hold-deg</property>
+    <property value="5.0">systems/autopilot/gui/pitch-hold-deg</property>
     
     <property value="0.0">systems/autopilot/gui/altitude-hold</property>
     <property value="0.0">systems/autopilot/gui/altitude-hold-ft</property>
@@ -38,10 +32,9 @@ No Overshoot
     <property value="0.0">systems/autopilot/gui/speed-brake</property>
     <property value="0.0">systems/autopilot/gui/speed-automatic-flap</property>
     <property value="0.0">systems/autopilot/gui/speed-automatic-gear</property>
-    <property value="200.0">systems/autopilot/gui/speed-value</property>
-    <property value="1.0">systems/autopilot/gui/speed-set-mph</property>
-    <property value="0.0">systems/autopilot/gui/speed-set-cas</property>
-    <property value="0.0">systems/autopilot/gui/speed-set-mach</property>
+    <property value="200.0">systems/autopilot/gui/speed-mph</property>
+    <property value="0.0">systems/autopilot/gui/speed-mach</property>
+    <property value="0.0">systems/autopilot/gui/speed-true-cas-mph</property>
     
     <property value="0.0">systems/autopilot/wing-leveler-active</property>
     <property value="0.0">systems/autopilot/wing-leveler-ap-on-off</property>
@@ -79,34 +72,24 @@ No Overshoot
     <property value="0.0">systems/autopilot/rudder-ap-value-norm</property>
     
     <property value="0.0">systems/autopilot/gui/pitch-hold-active</property>
-    <property value="0.0">systems/autopilot/pitch-reset-integrator</property>
+    <property value="0.0">systems/autopilot/gui/pitch-hold-ap-on-off</property>
     
     <property value="0.0">systems/autopilot/v-up-fpm</property>
     <property value="0.0">systems/autopilot/elevator-cmd</property>
-    <property value="0.0">systems/autopilot/pitch-hold-deg-lag</property>
-    <property value="1.0">systems/autopilot/pitch-hold-deg-lag-C1</property>
-    <!-- Possen Integral Rule Ku: 2.0 Tu: 8.67 -->
-    <property value="1.4">systems/autopilot/pitch-pid-kp</property>
-    <property value="0.404">systems/autopilot/pitch-pid-ki</property>
-    <property value="0.024">systems/autopilot/pitch-pid-kd</property>
-    <!-- -->
-    <property value="3.0">systems/autopilot/pitch-input-error-coefficient</property>
-    <property value="-2.0">systems/autopilot/pitch-output-error-coefficient</property>
-    <property value="0.0">systems/autopilot/pitch-error</property>
+    <property value="5.0">systems/autopilot/pitch-pid-kp</property>
+    <property value="1.0">systems/autopilot/pitch-pid-ki</property>
+    <property value="5.0">systems/autopilot/pitch-pid-kd</property>
+    <property value="-0.25">systems/autopilot/pitch-error-coefficient</property>
     <property value="0.0">systems/autopilot/pitch-ap-autoswitch-norm</property>
     
     <property value="0.0">systems/autopilot/vertical-speed-fpm</property>
-    <property value="0.0">systems/autopilot/vertical-speed-fpm-lag</property>
-    <property value="1.0">systems/autopilot/vertical-speed-fpm-lag-C1</property>
     <property value="0.0">systems/autopilot/vertical-speed-active</property>
     <property value="0.0">systems/autopilot/vertical-speed-reset-integrator</property>
-    <!-- Possen Integral Rule Ku: 0.130 Tu: 8.67 -->
-    <property value="0.091">systems/autopilot/vertical-speed-pid-kp</property>
-    <property value="0.026">systems/autopilot/vertical-speed-pid-ki</property>
-    <property value="0.002">systems/autopilot/vertical-speed-pid-kd</property>
-    <!-- -->
-    <property value="0.4">systems/autopilot/vertical-speed-output-error-coefficient</property>
-    <property value="0.001">systems/autopilot/vertical-speed-error-input-coefficient</property>
+    <property value="0.4">systems/autopilot/vertical-speed-pid-kp</property>
+    <property value="0.1">systems/autopilot/vertical-speed-pid-ki</property>
+    <property value="0.1">systems/autopilot/vertical-speed-pid-kd</property>
+    <property value="0.4">systems/autopilot/vertical-speed-error-coefficient</property>
+    <property value="1000.0">systems/autopilot/vertical-speed-error-convergence-norm</property>
     <property value="0.0">systems/autopilot/vertical-speed-pitch-error-gain</property>
     
     <property value="0.5">systems/autopilot/gui/h-sl-ft-lag-coefficient</property>
@@ -114,48 +97,36 @@ No Overshoot
     <property value="0.0">systems/autopilot/altitude-hold-versus-lag</property>
     <property value="2.0">systems/autopilot/altitude-hold-versus-lag-C1</property>
     <property value="0.0">systems/autopilot/altitude-hold-limitator-active</property>
+    <property value="0.0">systems/autopilot/altitude-hold-ap-saturated</property>
+    <property value="0.5">systems/autopilot/altitude-hold-lag-coefficient</property>
     <property value="0.1">systems/autopilot/altitude-hold-fdm-lag-coefficient</property>
-    <property value="0.0">systems/autopilot/altitude-hold-pid-gain-lag-sw</property>
-    <!-- Possen Integral Rule Ku: 0.8 Tu: 50 -->
-    <property value="0.480">systems/autopilot/altitude-hold-pid-kp</property>
-    <property value="0.019">systems/autopilot/altitude-hold-pid-ki</property>
-    <property value="0.001">systems/autopilot/altitude-hold-pid-kd</property>
-    <!-- -->
-    <property value="0.0">systems/autopilot/altitude-hold-reset-integrator</property>
-    <!-- Attention is foundamental parameter for stability -->
-    <property value="0.02">systems/autopilot/altitude-hold-input-gain</property>
-    <property value="1.5">systems/autopilot/altitude-hold-output-pow-gain</property>
-    <property value="2.0">systems/autopilot/altitude-hold-output-gain</property>
+    <property value="0.0">systems/autopilot/altitude-hold-pitch-error-lag</property>
+    <property value="1.0">systems/autopilot/altitude-hold-pid-kp</property>
+    <property value="0.0">systems/autopilot/altitude-hold-pid-ki</property>
+    <property value="1.0">systems/autopilot/altitude-hold-pid-kd</property>
+    <property value="0.003">systems/autopilot/altitude-hold-error-coefficient</property>
     
     <property value="3.0">systems/autopilot/roll-pid-kp</property>
     <property value="0.5">systems/autopilot/roll-pid-ki</property>
     <property value="1.5">systems/autopilot/roll-pid-kd</property>
     <property value="0.0">systems/autopilot/roll-ap-autoswitch-norm</property>
     
-    <property value="0.0">systems/autopilot/speed-true-on-air</property>
-    <property value="0.0">systems/autopilot/speed-cas-on-air</property>
-    <property value="0.0">systems/autopilot/speed-mach-on-air</property>
-    <property value="0.0">systems/autopilot/speed-true-on-air-sec</property>
-    <property value="0.0">systems/autopilot/speed-value</property>
+    <property value="0.0">systems/autopilot/speed-true-on-air-mph</property>
+    <property value="0.0">systems/autopilot/speed-cas-on-air-mph</property>
+    <property value="1.0">systems/autopilot/speed-set-cas-mph</property>
+    <property value="0.0">systems/autopilot/speed-true-on-air-mph-sec</property>
     <property value="0.0">systems/autopilot/speed-throttle-active</property>
-    <property value="0.05">systems/autopilot/speed-throttle-input-gain</property>
-    <property value="0.01">systems/autopilot/speed-pitch-input-gain</property>
-    <property value="0.0">systems/autopilot/speed-reset-integrator</property>
-    <!-- Possen Integral Rule Ku: 1.4 Tu: 50.0 -->
-    <property value="0.98">systems/autopilot/speed-kp</property>
-    <property value="0.0.049">systems/autopilot/speed-ki</property>
-    <property value="0.003">systems/autopilot/speed-kd</property>
-    <!-- -->
-    <property value="0.001">systems/autopilot/speed-throttle-output-gain</property>
-    <property value="0.0">systems/autopilot/speed-pitch-pid-gain-sum</property>
-    <property value="-30.0">systems/autopilot/speed-pitch-output-gain</property>
+    <property value="0.003">systems/autopilot/speed-throttle-input-gain</property>
+    <property value="0.0">systems/autopilot/speed-throttle-ap-saturated</property>
+    <property value="1.0">systems/autopilot/speed-throttle-kp</property>
+    <property value="0.01">systems/autopilot/speed-throttle-ki</property>
+    <property value="0.8">systems/autopilot/speed-throttle-kd</property>
+    <property value="0.01">systems/autopilot/speed-throttle-output-gain</property>
     
     <property value="0.0">systems/autopilot/speed-pitch-active</property>
-    <property value="0.0">systems/autopilot/speed-brake-active</property>
+    <property value="0.0">systems/autopilot/speed-speed-brake-active</property>
     <property value="0.0">systems/autopilot/speed-automatic-flap-active</property>
     <property value="0.0">systems/autopilot/speed-automatic-gear-active</property>
-    
-    <property value="0.0">systems/autopilot/descent-ascent-phase</property>
     
     <property value="0.0">systems/autopilot/fuel-total-lbs</property>
     <property value="0.0">systems/autopilot/fuel-droppable-auto</property>
@@ -230,19 +201,6 @@ No Overshoot
             <test logic="AND" value="1.0">
                 systems/autopilot/gui/altitude-active == 1.0
                 systems/autopilot/gui/altitude-hold == 1.0
-            </test>
-        </switch>
-        
-        <switch name="systems/autopilot/altitude-hold-limitator-active">
-            <default value="0"/>
-            <test logic="AND" value="1">
-                <test logic="OR">
-                    systems/autopilot/gui/pitch-hold-active == 1
-                    systems/autopilot/vertical-speed-active == 1
-                </test>
-                <test logic="AND">
-                    systems/autopilot/gui/altitude-hold-active == 1
-                </test>
             </test>
         </switch>
         
@@ -538,6 +496,13 @@ No Overshoot
     
     <channel name="Altitude control">
         
+        <switch name="systems/autopilot/gui/pitch-hold-ap-on-off">
+            <default value="-1"/>
+            <test logic="AND" value="0">
+                systems/autopilot/gui/pitch-hold-active == 1
+            </test>
+        </switch>
+        
         <pure_gain name="systems/autopilot/v-up-fpm">
             <input>velocities/v-down-fps</input>
             <gain>-60</gain>
@@ -560,81 +525,51 @@ No Overshoot
                 <ifthen>
                     <p>systems/autopilot/gui/altitude-hold-active</p>
                     <product>
-                        <p>systems/autopilot/altitude-hold-pid-gain-lag-sw</p>
-                        <abs><p>systems/autopilot/gui/pitch-hold-deg</p></abs>
+                        <p>systems/autopilot/altitude-hold-pitch-error-lag</p>
+                        <product>
+                            <p>systems/autopilot/altitude-hold-versus-lag</p>
+                            <abs><p>systems/autopilot/gui/pitch-hold-deg</p></abs>
+                        </product>
                     </product>
-                    <sum>
-                        <p>systems/autopilot/gui/pitch-hold-deg</p>
-                        <p>systems/autopilot/speed-pitch-pid-gain-sum</p>
-                    </sum>
+                    <p>systems/autopilot/gui/pitch-hold-deg</p>
                 </ifthen>
             </function>
         </fcs_function>
         
-        <lag_filter name="systems/autopilot/pitch-hold-deg-lag">
-            <input>systems/autopilot/pitch-hold-deg-mod</input>
-            <c1>systems/autopilot/pitch-hold-deg-lag-C1</c1>
-            <clipto>
-                <min>-60.0</min>
-                <max>60.0</max>
-            </clipto>
-        </lag_filter>
-        
         <fcs_function name="systems/autopilot/pitch-rad-error">
             <function>
-                <product>
-                    <difference>
+                <difference>
+                    <ifthen>
+                        <p>systems/autopilot/gui/pitch-hold-active</p>
+                        <toradians>
+                            <p>systems/autopilot/pitch-hold-deg-mod</p>
+                        </toradians>
                         <ifthen>
-                            <p>systems/autopilot/gui/pitch-hold-active</p>
-                            <toradians>
-                                <p>systems/autopilot/pitch-hold-deg-mod</p>
-                            </toradians>
-                            <ifthen>
-                                <p>systems/autopilot/vertical-speed-active</p>
-                                <p>systems/autopilot/vertical-speed-pitch-error-gain</p>
-                                <p>attitude/pitch-rad</p>
-                            </ifthen>
+                            <p>systems/autopilot/vertical-speed-active</p>
+                            <p>systems/autopilot/vertical-speed-pitch-error-gain</p>
+                            <p>attitude/pitch-rad</p>
                         </ifthen>
-                        <p>attitude/pitch-rad</p>
-                    </difference>
-                    <p>systems/autopilot/pitch-input-error-coefficient</p>
-                </product>
+                    </ifthen>
+                    <p>attitude/pitch-rad</p>
+                </difference>
             </function>
             <clipto>
-                <min>-1.0</min>
-                <max>1.0</max>
+                <min>-0.25</min>
+                <max>0.25</max>
             </clipto>
         </fcs_function>
         
-        <switch name="systems/autopilot/pitch-reset-integrator">
-            <default value="-1"/>
-            <test logic="AND" value="0">
-                systems/autopilot/gui/pitch-hold-active == 1
-                systems/autopilot/pitch-rad-error LT 1.0
-                systems/autopilot/pitch-rad-error GT -1.0
-            </test>
-            <test logic="AND" value="2">
-                <test logic="AND">
-                    systems/autopilot/gui/pitch-hold-active == 1
-                </test>
-                <test logic="OR">
-                    systems/autopilot/pitch-rad-error GE 1.0
-                    systems/autopilot/pitch-rad-error LE -1.0
-                </test>
-            </test>
-        </switch>
-        
-        <pid name="systems/autopilot/pitch-speed-ap-pid" type="ab3">
+        <pid name="systems/autopilot/pitch-speed-ap-pid">
             <input>systems/autopilot/pitch-rad-error</input>
             <kp>systems/autopilot/pitch-pid-kp</kp>
             <ki>systems/autopilot/pitch-pid-ki</ki>
             <kd>systems/autopilot/pitch-pid-kd</kd>
-            <trigger>systems/autopilot/pitch-reset-integrator</trigger>
+            <trigger>systems/autopilot/gui/pitch-hold-ap-on-off</trigger>
         </pid>
         
         <pure_gain name="systems/autopilot/pitch-error">
             <input>systems/autopilot/pitch-speed-ap-pid</input>
-            <gain>systems/autopilot/pitch-output-error-coefficient</gain>
+            <gain>systems/autopilot/pitch-error-coefficient</gain>
         </pure_gain> 
         
         <!-- Vertical speed section -->
@@ -647,58 +582,34 @@ No Overshoot
                         <eq><p>systems/autopilot/gui/altitude-hold-active</p><v>1.0</v></eq>
                     </and>
                     <product>
-                        <abs><p>systems/autopilot/gui/vertical-speed-fpm</p></abs>
-                        <p>systems/autopilot/altitude-hold-pid-gain-lag-sw</p>
+                        <p>systems/autopilot/altitude-hold-versus</p>
+                        <p>systems/autopilot/gui/vertical-speed-fpm</p>
+                        <p>systems/autopilot/altitude-hold-ap-pid-norm</p>
                     </product>
                     <p>systems/autopilot/gui/vertical-speed-fpm</p>
                 </ifthen>
             </function>
         </fcs_function>
         
-        <lag_filter name="systems/autopilot/vertical-speed-fpm-lag">
-            <input>systems/autopilot/vertical-speed-fpm</input>
-            <c1>systems/autopilot/vertical-speed-fpm-lag-C1</c1>
-            <clipto>
-                <min>-12000.0</min>
-                <max>8000.0</max>
-            </clipto>
-        </lag_filter>
-        
         <fcs_function name="systems/autopilot/vertical-speed-error-norm">
             <function>
-                <product>
-                    <difference>
-                        <p>systems/autopilot/vertical-speed-fpm-lag</p>
-                        <p>systems/autopilot/v-up-fpm</p>
-                    </difference>
-                    <p>systems/autopilot/vertical-speed-error-input-coefficient</p>
-                </product>
+                <atan>
+                    <quotient>
+                        <difference>
+                            <p>systems/autopilot/vertical-speed-fpm</p>
+                            <p>systems/autopilot/v-up-fpm</p>
+                        </difference>
+                        <p>systems/autopilot/vertical-speed-error-convergence-norm</p>
+                    </quotient>
+                </atan>
             </function>
             <clipto>
                 <min>-1.0</min>
                 <max>1.0</max>
             </clipto>
         </fcs_function>
-        
-        <switch name="systems/autopilot/vertical-speed-reset-integrator">
-            <default value="-1"/>
-            <test logic="AND" value="0">
-                systems/autopilot/vertical-speed-active == 1
-                systems/autopilot/vertical-speed-ap-pid-norm LT 1.0
-                systems/autopilot/vertical-speed-ap-pid-norm GT -1.0
-            </test>
-            <test logic="AND" value="2">
-                <test logic="AND">
-                    systems/autopilot/vertical-speed-active == 1
-                </test>
-                <test logic="OR">
-                    systems/autopilot/vertical-speed-ap-pid-norm GE 1.0
-                    systems/autopilot/vertical-speed-ap-pid-norm LE -1.0
-                </test>
-            </test>
-        </switch>
 
-        <pid name="systems/autopilot/vertical-speed-ap-pid-norm" type="ab3">
+        <pid name="systems/autopilot/vertical-speed-ap-pid-norm">
             <input>systems/autopilot/vertical-speed-error-norm</input>
             <kp>systems/autopilot/vertical-speed-pid-kp</kp>
             <ki>systems/autopilot/vertical-speed-pid-ki</ki>
@@ -706,9 +617,27 @@ No Overshoot
             <trigger>systems/autopilot/vertical-speed-reset-integrator</trigger>
         </pid>
         
+        <switch name="systems/autopilot/vertical-speed-reset-integrator">
+            <default value="-1"/>
+            <test logic="AND" value="0">
+                systems/autopilot/vertical-speed-active == 1
+                systems/autopilot/vertical-speed-ap-pid-norm LT 0.5
+                systems/autopilot/vertical-speed-ap-pid-norm GT -0.5
+            </test>
+            <test logic="AND" value="2">
+                <test logic="AND">
+                    systems/autopilot/vertical-speed-active == 1
+                </test>
+                <test logic="OR">
+                    systems/autopilot/vertical-speed-ap-pid-norm GE 0.5
+                    systems/autopilot/vertical-speed-ap-pid-norm LE 0.5
+                </test>
+            </test>
+        </switch>
+        
         <pure_gain name="systems/autopilot/vertical-speed-pitch-error-gain">
             <input>systems/autopilot/vertical-speed-ap-pid-norm</input>
-            <gain>systems/autopilot/vertical-speed-output-error-coefficient</gain>
+            <gain>systems/autopilot/vertical-speed-error-coefficient</gain>
         </pure_gain> 
         
         <!-- Altitude hold section -->
@@ -716,7 +645,13 @@ No Overshoot
         <fcs_function name="systems/autopilot/altitude-hold-versus">
             <function>
                 <ifthen>
-                    <ge><p>systems/autopilot/altitude-hold-pid-gain-lag-sw</p><v>0.0</v></ge>
+                    <ge>
+                        <difference>
+                            <p>systems/autopilot/gui/altitude-hold-ft</p>
+                            <p>systems/autopilot/h-sl-ft-lag</p>
+                        </difference>
+                        <v>0.0</v>
+                    </ge>
                     <v>1.0</v>
                     <v>-1.0</v>
                 </ifthen>
@@ -733,9 +668,10 @@ No Overshoot
                 <product>
                     <difference>
                         <p>systems/autopilot/gui/altitude-hold-ft</p>
-                        <p>position/h-sl-ft</p>
+                        <p>systems/autopilot/h-sl-ft-lag</p>
                     </difference>
-                    <p>systems/autopilot/altitude-hold-input-gain</p>
+                    <p>systems/autopilot/altitude-hold-error-coefficient</p>
+                    <p>systems/autopilot/altitude-hold-versus-lag</p>
                 </product>
             </function>
             <clipto>
@@ -744,25 +680,31 @@ No Overshoot
             </clipto>
         </fcs_function>
         
-        <switch name="systems/autopilot/altitude-hold-reset-integrator">
-            <default value="-1"/>
-            <test logic="AND" value="0">
-                systems/autopilot/altitude-hold-limitator-active == 1
-                systems/autopilot/altitude-hold-error-norm LT 1.0
-                systems/autopilot/altitude-hold-error-norm GT -1.0
-            </test>
-            <test logic="AND" value="-1">
-                <test logic="AND">
-                    systems/autopilot/altitude-hold-limitator-active == 1
-                </test>
+        <switch name="systems/autopilot/altitude-hold-limitator-active">
+            <default value="0"/>
+            <test logic="AND" value="1">
                 <test logic="OR">
-                    systems/autopilot/altitude-hold-error-norm GE 1.0
-                    systems/autopilot/altitude-hold-error-norm LE -1.0
+                    systems/autopilot/gui/pitch-hold-active == 1
+                    systems/autopilot/vertical-speed-active == 1
+                </test>
+                <test logic="AND">
+                    systems/autopilot/gui/altitude-hold-active == 1
                 </test>
             </test>
         </switch>
         
-        <pid name="systems/autopilot/altitude-hold-pid" type="ab3">
+        <switch name="systems/autopilot/altitude-hold-reset-integrator">
+            <default value="-1"/>
+            <test logic="AND" value="0">
+                systems/autopilot/altitude-hold-limitator-active == 1
+            </test>
+            <test logic="AND" value="2">
+                systems/autopilot/altitude-hold-limitator-active == 1
+                systems/autopilot/altitude-hold-ap-saturated == 1
+            </test>
+        </switch>
+        
+        <pid name="systems/autopilot/altitude-hold-ap-pid-norm">
             <input>systems/autopilot/altitude-hold-error-norm</input>
             <kp>systems/autopilot/altitude-hold-pid-kp</kp>
             <ki>systems/autopilot/altitude-hold-pid-ki</ki>
@@ -770,30 +712,33 @@ No Overshoot
             <trigger>systems/autopilot/altitude-hold-reset-integrator</trigger>
         </pid>
         
-        <fcs_function name="systems/autopilot/altitude-hold-pid-gain">
-            <function>
-                <product>
-                    <p>systems/autopilot/altitude-hold-pid</p>
-                    <pow>
-                        <abs><p>systems/autopilot/altitude-hold-error-norm</p></abs>
-                        <p>systems/autopilot/altitude-hold-output-pow-gain</p>
-                    </pow>
-                    <p>systems/autopilot/altitude-hold-output-gain</p>
-                </product>
-            </function>
-            <clipto>
-                <min>-1.0</min>
-                <max>1.0</max>
-            </clipto>
-        </fcs_function>
- 
-        <switch name="systems/autopilot/altitude-hold-pid-gain-lag-sw">
+        <switch name="systems/autopilot/altitude-hold-ap-saturated">
+            <default value="0"/>
+            <test logic="OR" value="1">
+                systems/autopilot/vertical-speed-ap-pid-norm GE 1.0
+                systems/autopilot/vertical-speed-ap-pid-norm LE -1.0
+            </test>
+        </switch>
+        
+        <switch name="systems/autopilot/altitude-hold-ap-pid-norm-active">
             <default value="1"/>
-            <test logic="AND" value="systems/autopilot/altitude-hold-pid-gain">
+            <test logic="AND" value="systems/autopilot/altitude-hold-ap-pid-norm">
                 systems/autopilot/altitude-hold-limitator-active == 1
             </test>
         </switch>
-
+        
+        <lag_filter name="systems/autopilot/altitude-hold-pitch-error-lag-to-switch">
+            <input>systems/autopilot/altitude-hold-ap-pid-norm-active</input>
+            <c1>systems/autopilot/altitude-hold-lag-coefficient</c1>
+        </lag_filter>
+        
+        <switch name="systems/autopilot/altitude-hold-pitch-error-lag">
+            <default value="1"/>
+            <test logic="AND" value="systems/autopilot/altitude-hold-pitch-error-lag-to-switch">
+                systems/autopilot/gui/pitch-hold-active == 1
+            </test>
+        </switch>
+        
         <!-- output select section -->
         
         <switch name="systems/autopilot/pitch-ap-autoswitch-norm">
@@ -880,7 +825,7 @@ No Overshoot
         
         <pure_gain name="systems/autopilot/fuel-mph-residue">
             <input>systems/autopilot/fuel-time-residue-sec</input>
-            <gain>systems/autopilot/speed-true-on-air-sec</gain>
+            <gain>systems/autopilot/speed-true-on-air-mph-sec</gain>
         </pure_gain>
         
         <!-- Droppable tanks -->
@@ -924,7 +869,7 @@ No Overshoot
     
     <channel name="Speed control">
         
-        <fcs_function name="systems/autopilot/speed-true-on-air">
+        <fcs_function name="systems/autopilot/speed-true-on-air-mph">
             <function>
                 <ifthen>
                     <gt><p>velocities/vtrue-kts</p><v>50.0</v></gt>
@@ -934,7 +879,7 @@ No Overshoot
             </function>
         </fcs_function>
         
-        <fcs_function name="systems/autopilot/speed-cas-on-air">
+        <fcs_function name="systems/autopilot/speed-cas-on-air-mph">
             <function>
                 <ifthen>
                     <gt><p>velocities/vc-kts</p><v>50.0</v></gt>
@@ -944,53 +889,24 @@ No Overshoot
             </function>
         </fcs_function>
         
-        <fcs_function name="systems/autopilot/speed-mach-on-air">
-            <function>
-                <ifthen>
-                    <gt><p>velocities/mach</p><v>0.01</v></gt>
-                    <p>velocities/mach</p>
-                    <v>0.0</v>
-                </ifthen>
-            </function>
-        </fcs_function>
-        
-        <pure_gain name="systems/autopilot/speed-true-on-air-sec">
-            <input>systems/autopilot/speed-true-on-air</input>
+        <pure_gain name="systems/autopilot/speed-true-on-air-mph-sec">
+            <input>systems/autopilot/speed-true-on-air-mph</input>
             <gain>0.00027777</gain>
         </pure_gain>
         
-        <switch name="systems/autopilot/speed-value">
-            <default value="systems/autopilot/speed-value"/>
-            <test logic="AND" value="systems/autopilot/speed-true-on-air">
-                systems/autopilot/gui/speed-set-mph == 1
-            </test>
-            <test logic="AND" value="systems/autopilot/speed-cas-on-air">
-                systems/autopilot/gui/speed-set-cas == 1
-            </test>
-            <test logic="AND" value="systems/autopilot/speed-mach-on-air">
-                systems/autopilot/gui/speed-set-mach == 1
-            </test>
-        </switch>
-        
-        <lag_filter name="systems/autopilot/speed-value-lag">
-            <input>systems/autopilot/gui/speed-value</input>
-            <c1>0.2</c1>
-        </lag_filter>
-        
-        <fcs_function name="systems/autopilot/speed-difference-throttle">
+        <fcs_function name="systems/autopilot/speed-mph-difference">
             <function>
                 <ifthen>
                     <p>systems/autopilot/speed-throttle-active</p>
                     <product>
                         <difference>
-                            <p>systems/autopilot/speed-value-lag</p>
-                            <p>systems/autopilot/speed-value</p>
+                            <p>systems/autopilot/gui/speed-mph</p>
+                            <ifthen>
+                                <p>systems/autopilot/speed-set-cas-mph</p>
+                                <p>systems/autopilot/speed-cas-on-air-mph</p>
+                                <p>systems/autopilot/speed-true-on-air-mph</p>
+                            </ifthen>
                         </difference>
-                        <ifthen>
-                            <p>systems/autopilot/gui/speed-set-mach</p>
-                            <v>1000.0</v>
-                            <v>1.0</v>
-                        </ifthen>
                         <p>systems/autopilot/speed-throttle-input-gain</p>
                     </product>
                     <v>0.0</v>
@@ -1002,232 +918,61 @@ No Overshoot
             </clipto>
         </fcs_function>
         
-        <fcs_function name="systems/autopilot/speed-difference-pitch">
-            <function>
-                <ifthen>
-                    <p>systems/autopilot/speed-pitch-active</p>
-                    <product>
-                        <difference>
-                            <p>systems/autopilot/speed-value-lag</p>
-                            <p>systems/autopilot/speed-value</p>
-                        </difference>
-                        <ifthen>
-                            <p>systems/autopilot/gui/speed-set-mach</p>
-                            <v>1000.0</v>
-                            <v>1.0</v>
-                        </ifthen>
-                        <p>systems/autopilot/speed-pitch-input-gain</p>
-                    </product>
-                    <v>0.0</v>
-                </ifthen>
-            </function>
-            <clipto>
-                <min>-1.0</min>
-                <max>1.0</max>
-            </clipto>
-        </fcs_function>
-        
-        <summer name="systems/autopilot/speed-difference">
-            <input>systems/autopilot/speed-difference-throttle</input>
-            <input>systems/autopilot/speed-difference-pitch</input>
-        </summer>
-        
-        <switch name="systems/autopilot/speed-reset-integrator">
+        <switch name="systems/autopilot/speed-throttle-ap-saturated">
             <default value="-1"/>
             <test logic="AND" value="0">
-                <test logic="OR">
-                    systems/autopilot/speed-throttle-active == 1
-                    systems/autopilot/speed-pitch-active == 1
-                </test>
-                <test logic="AND">
-                    systems/autopilot/speed-difference LT 0.1
-                    systems/autopilot/speed-difference GT -0.1
-                </test>
+                systems/autopilot/speed-throttle-active == 1
+                systems/autopilot/speed-mph-difference LT 0.5
+                systems/autopilot/speed-mph-difference GT -0.5
             </test>
             <test logic="AND" value="2">
-                <test logic="OR">
+                <test logic="AND">
                     systems/autopilot/speed-throttle-active == 1
-                    systems/autopilot/speed-pitch-active == 1
                 </test>
                 <test logic="OR">
-                    systems/autopilot/speed-difference GE 0.1
-                    systems/autopilot/speed-difference LE -0.1
+                    systems/autopilot/speed-mph-difference GE 0.5
+                    systems/autopilot/speed-mph-difference LE -0.5
                 </test>
             </test>
         </switch>
         
-        <pid name="systems/autopilot/speed-pid">
-            <input>systems/autopilot/speed-difference</input>
-            <kp>systems/autopilot/speed-kp</kp>
-            <ki>systems/autopilot/speed-ki</ki>
-            <kd>systems/autopilot/speed-kd</kd>
-            <trigger>systems/autopilot/speed-reset-integrator</trigger>
+        <pid name="systems/autopilot/speed-mph-pid">
+            <input>systems/autopilot/speed-mph-difference</input>
+            <kp>systems/autopilot/speed-throttle-kp</kp>
+            <ki>systems/autopilot/speed-throttle-ki</ki>
+            <kd>systems/autopilot/speed-throttle-kd</kd>
+            <trigger>systems/autopilot/speed-throttle-ap-saturated</trigger>
         </pid>
         
-        <pure_gain name="systems/autopilot/speed-throttle-pid-gain">
-            <input>systems/autopilot/speed-pid</input>
+        <pure_gain name="systems/autopilot/speed-mph-pid-gain">
+            <input>systems/autopilot/speed-mph-pid</input>
             <gain>systems/autopilot/speed-throttle-output-gain</gain>
-            <clipto>
-                <min>-1.0</min>
-                <max>1.0</max>
-            </clipto>
         </pure_gain>
         
-        <summer name="systems/autopilot/speed-throttle-pid-gain-sum">
-            <input>systems/autopilot/speed-throttle-pid-gain</input>
+        <summer name="systems/autopilot/speed-mph-pid-gain-sum">
+            <input>systems/autopilot/speed-mph-pid-gain</input>
             <input>/controls/engines/engine/throttle</input>
         </summer>
         
-        <switch name="systems/autopilot/speed-pid-output">
+        <switch name="systems/autopilot/speed-mph-pid-output">
             <default value="/controls/engines/engine/throttle"/>
-            <test logic="AND" value="systems/autopilot/speed-throttle-pid-gain-sum">
+            <test logic="AND" value="systems/autopilot/speed-mph-pid-gain-sum">
                 systems/autopilot/speed-throttle-active == 1
-                systems/autopilot/speed-throttle-pid-gain-sum GE 0.2
-                systems/autopilot/speed-throttle-pid-gain-sum LE 0.94
+                systems/autopilot/speed-mph-pid-gain-sum GE 0.3
+                systems/autopilot/speed-mph-pid-gain-sum LE 0.90
             </test>
             <test logic="AND" value="0.90">
                 systems/autopilot/speed-throttle-active == 1
-                systems/autopilot/speed-throttle-pid-gain-sum GT 0.94
+                systems/autopilot/speed-mph-pid-gain-sum GT 0.90
             </test>
-            <test logic="AND" value="0.2">
+            <test logic="AND" value="0.3">
                 systems/autopilot/speed-throttle-active == 1
-                systems/autopilot/speed-throttle-pid-gain-sum LT 0.2
+                systems/autopilot/speed-mph-pid-gain-sum LT 0.3
             </test>
             <output>/controls/engines/engine/throttle</output>
         </switch>
         
-        <fcs_function name="systems/autopilot/speed-pitch-pid-gain-sum">
-            <function>
-                <ifthen>
-                    <p>systems/autopilot/speed-pitch-active</p>
-                    <product>
-                        <p>systems/autopilot/speed-pid</p>
-                        <p>systems/autopilot/speed-pitch-output-gain</p>
-                    </product>
-                    <v>0.0</v>
-                </ifthen>
-            </function>
-            <clipto>
-                <min>-60.0</min>
-                <max>60.0</max>
-            </clipto>
-        </fcs_function>
-        
     </channel>
     
-    
-    <channel name="Speed airbracke control" execrate="32">
-        
-        <switch name="systems/autopilot/speed-pid-norm">
-            <default value="0"/>
-            <test logic="AND" value="1">
-                systems/autopilot/speed-pid GT 0.1
-            </test>
-            <test logic="AND" value="-1">
-                systems/autopilot/speed-pid LT -0.1
-            </test>
-        </switch>
-        
-        <lag_filter name="systems/autopilot/speed-pid-norm-lag">
-            <input>systems/autopilot/speed-pid-norm</input>
-            <c1>0.1</c1>
-        </lag_filter>
-        
-        <switch name="systems/airbrake/automatic-cmd">
-            <default value="systems/airbrake/automatic-cmd"/>
-            <test logic="AND" value="1">
-                <test logic="OR">
-                    systems/autopilot/speed-throttle-active == 1
-                    systems/autopilot/speed-pitch-active == 1
-                </test>
-                <test logic="AND">
-                    systems/autopilot/speed-brake-active == 1
-                    systems/autopilot/speed-pid-norm == -1
-                    systems/autopilot/speed-pid-norm-lag LT -0.1
-                    systems/autopilot/speed-pid-output LE 0.2
-                </test>
-            </test>
-            <test logic="AND" value="0">
-                <test logic="OR">
-                    systems/autopilot/speed-throttle-active == 0
-                    systems/autopilot/speed-pitch-active == 0
-                    systems/autopilot/speed-pid-output GE 0.3
-                </test>
-                <test logic="AND">
-                    systems/autopilot/speed-pid-norm GE 0
-                    systems/autopilot/speed-pid-norm-lag GE -0.1
-                </test>
-            </test>
-        </switch>
-        
-    </channel>
-    
-    
-    <channel name="Speed flight status" execrate="32">
-    
-        <lag_filter name="systems/autopilot/speed-cas-lag">
-            <input>velocities/vc-kts</input>
-            <c1>0.1</c1>
-        </lag_filter>
-        
-        <lag_filter name="systems/autopilot/altitude-ft-lag">
-            <input>/position/altitude-ft</input>
-            <c1>0.1</c1>
-        </lag_filter>
-
-        <washout_filter name="systems/autopilot/descent-ascent-phase">
-            <input>systems/autopilot/altitude-ft-lag</input>
-            <c1>1.0</c1>
-        </washout_filter>
-        
-        <switch name="systems/autopilot/phase-take-off">
-            <default value="0"/>
-            <test logic="AND" value="1">
-                systems/autopilot/descent-ascent-phase GE 0.1
-                systems/autopilot/speed-cas-lag LT 180.0
-                systems/autopilot/altitude-ft-lag LT 5000.0
-            </test>
-        </switch>
-        
-        <switch name="systems/autopilot/phase-landing">
-            <default value="0"/>
-            <test logic="AND" value="1">
-                systems/autopilot/descent-ascent-phase LE -0.1
-                systems/autopilot/speed-cas-lag LT 180.0
-                systems/autopilot/altitude-ft-lag LT 5000.0
-            </test>
-        </switch>
-        
-    </channel>   
-    
-    <!--
-    <channel name="Speed flap control" execrate="32">
-
-        <switch name="systems/autopilot/speed-flaps">
-            <default value="/controls/flight/flaps"/>
-            <test logic="AND" value="0.33">
-                systems/autopilot/speed-automatic-flap-active == 1
-                systems/autopilot/speed-cas-lag LT 180.0
-                systems/autopilot/phase-take-off == 1
-            </test>
-            <test logic="AND" value="1">
-                systems/autopilot/speed-automatic-flap-active == 1
-                systems/autopilot/speed-cas-lag LT 180.0
-                systems/autopilot/phase-landing == 1
-            </test>
-            <test logic="OR" value="0">
-                <test logic="AND">
-                    systems/autopilot/speed-cas-lag GE 180.0
-                </test>
-                <test logic="AND">
-                    systems/autopilot/phase-landing == 0
-                    systems/autopilot/phase-take-off == 0
-                </test>
-            </test>
-            <output>/controls/flight/flaps</output>
-        </switch>
-
-    </channel>
-    -->
     
 </system>
