@@ -8,7 +8,7 @@
 
         <combustion>
             <name>combustion external</name>
-            <path>Aircraft/G91-R1B_HD/Sounds/MB339-motor-external.wav</path>
+            <path>Aircraft/G91-R1B_HD/Sounds/G91 sound external fly 03.wav</path>
             <mode>looped</mode>
             <condition>
                 <and>
