@@ -179,20 +179,29 @@
             </test>
         </switch>
         
-        <linear_actuator name="systems/gauges/PHI/attitude/gyrocompass-magnetic-deg-var-linear">
+        <linear_actuator name="systems/gauges/PHI/attitude/gyrocompass-magnetic-deg-var-linear-360">
             <input>systems/gauges/PHI/attitude/gyrocompass-magnetic-deg-var</input>
             <module>360</module>
+            <lag>2.0</lag>
             <set>systems/gauges/PHI/attitude/gyrocompass-magnetic-deg-on</set>
         </linear_actuator>
         
-        <actuator name="systems/gauges/PHI/attitude/gyrocompass-magnetic-deg-var-operative-lag">
-            <input>systems/gauges/PHI/attitude/gyrocompass-magnetic-deg-var-linear</input>
-            <lag>2.0</lag>
-            <rate_limit>100</rate_limit>
-            <bias>0.1</bias>
-            <deadband_width>1</deadband_width>
-            <hysteresis_width>0.5</hysteresis_width>
-        </actuator>
+        <fcs_function name="systems/gauges/PHI/attitude/gyrocompass-magnetic-deg-var-linear">
+            <function>
+                <difference>
+                    <p>systems/gauges/PHI/attitude/gyrocompass-magnetic-deg-var-linear-360</p>
+                    <product>
+                        <integer>
+                            <quotient>
+                                <p>systems/gauges/PHI/attitude/gyrocompass-magnetic-deg-var-linear</p>
+                                <v>360.0</v>
+                            </quotient>
+                        </integer>
+                        <v>360.0</v>
+                    </product>
+                </difference>
+            </function>
+        </fcs_function>
         
     </channel>
     
@@ -1359,7 +1368,7 @@
             </function>
         </fcs_function>
         
-        <fcs_function name="systems/gauges/PHI/indicator/brg">
+        <fcs_function name="systems/gauges/PHI/indicator/brg-360">
             <function>
                 <difference>
                     <p>systems/gauges/PHI/attitude/gyrocompass-magnetic-deg-var-linear</p>
@@ -1383,45 +1392,51 @@
             </function>
         </fcs_function>
         
+        <fcs_function name="systems/gauges/PHI/indicator/brg">
+            <function>
+                <difference>
+                    <p>systems/gauges/PHI/indicator/brg-360</p>
+                    <product>
+                        <integer>
+                            <quotient>
+                                <p>systems/gauges/PHI/indicator/brg-360</p>
+                                <v>360.0</v>
+                            </quotient>
+                        </integer>
+                        <v>360.0</v>
+                    </product>
+                </difference>
+            </function>
+        </fcs_function>
+        
         <fcs_function name="systems/gauges/PHI/indicator/brg-correct">
             <function>
-                <mod>
-                    <ifthen>
-                        <and>
-                            <p>systems/gauges/PHI/operative</p>
-                            <p>systems/gauges/PHI/indicator/is-phi-on</p>
-                        </and>
-                        <difference>
-                            <ifthen>
-                                <p>systems/gauges/PHI/program/route-from</p>
-                                <sum>
-                                    <p>systems/gauges/PHI/indicator/brg</p>
-                                    <v>180</v>
-                                </sum>
+                <ifthen>
+                    <and>
+                        <p>systems/gauges/PHI/operative</p>
+                        <p>systems/gauges/PHI/indicator/is-phi-on</p>
+                    </and>
+                    <difference>
+                        <ifthen>
+                            <p>systems/gauges/PHI/program/route-from</p>
+                            <sum>
                                 <p>systems/gauges/PHI/indicator/brg</p>
-                            </ifthen>
-                            <p>systems/gauges/PHI/wind/correction-WCA</p>
-                        </difference>
-                        <p>systems/gauges/PHI/indicator/brg</p>
-                    </ifthen>
-                    <v>360</v>
-                </mod>
+                                <v>180</v>
+                            </sum>
+                            <p>systems/gauges/PHI/indicator/brg</p>
+                        </ifthen>
+                        <p>systems/gauges/PHI/wind/correction-WCA</p>
+                    </difference>
+                    <p>systems/gauges/PHI/indicator/brg</p>
+                </ifthen>
             </function>
         </fcs_function>
         
         <linear_actuator name="systems/gauges/PHI/indicator/brg-lag">
             <input>systems/gauges/PHI/indicator/brg-correct</input>
+            <lag>2.0</lag>
             <module>360</module>
         </linear_actuator>
-        
-        <actuator name="systems/gauges/PHI/indicator/brg-lag-actuator">
-            <input>systems/gauges/PHI/indicator/brg-lag</input>
-            <lag>2.0</lag>
-            <rate_limit>100</rate_limit>
-            <bias>0.1</bias>
-            <deadband_width>1</deadband_width>
-            <hysteresis_width>0.5</hysteresis_width>
-        </actuator>
 
     </channel>
     

@@ -14,6 +14,9 @@ No Overshoot
 
 <system>
     
+    <property value="0.0">systems/autopilot/gui/fly-phase-take-off</property>
+    <property value="0.0">systems/autopilot/gui/fly-phase-landing</property>
+    
     <property value="0.0">systems/autopilot/gui/rudder-auto-coordination</property>
     
     <property value="0.0">systems/autopilot/gui/heading-control</property>
@@ -39,8 +42,8 @@ No Overshoot
     <property value="0.0">systems/autopilot/gui/speed-automatic-flap</property>
     <property value="0.0">systems/autopilot/gui/speed-automatic-gear</property>
     <property value="200.0">systems/autopilot/gui/speed-value</property>
-    <property value="1.0">systems/autopilot/gui/speed-set-mph</property>
-    <property value="0.0">systems/autopilot/gui/speed-set-cas</property>
+    <property value="0.0">systems/autopilot/gui/speed-set-mph</property>
+    <property value="1.0">systems/autopilot/gui/speed-set-cas</property>
     <property value="0.0">systems/autopilot/gui/speed-set-mach</property>
     
     <property value="0.0">systems/autopilot/wing-leveler-active</property>
@@ -61,10 +64,11 @@ No Overshoot
     <property value="0.1">systems/autopilot/true-heading-pid-ki</property>
     <property value="0.5">systems/autopilot/true-heading-pid-kd</property>
     <property value="0.5">systems/autopilot/true-heading-activate-lag-coefficient</property>
+    <property value="0.05">systems/autopilot/true-heading-turn-direction-versus-bias</property>
+    <property value="10.0">systems/autopilot/true-heading-turn-direction-versus-coefficient</property>
     <property value="0.0">systems/autopilot/phi-heading-active</property>
     <property value="0.0">systems/autopilot/phi-heading-deg</property>
     <property value="0.0">systems/autopilot/phi-heading-rad</property>
-    <property value="4.0">systems/autopilot/phi-heading-brg-lag-coefficient</property>
     <property value="0.0">systems/autopilot/phi-rad-limited</property>
     
     <property value="0.0">systems/autopilot/rudder-active</property>
@@ -304,23 +308,29 @@ No Overshoot
         <fcs_function name="systems/autopilot/phi-heading-deg">
             <function>
                 <ifthen>
-                    <p>systems/gauges/PHI/program/route-from</p>
-                    <difference>
-                        <p>systems/gauges/PHI/indicator/brg-correct</p>
-                        <v>180</v>
-                    </difference>
+                    <ge><p>systems/gauges/PHI/program/route-from</p><v>1.0</v></ge>
+                    <ifthen>
+                        <gt><p>systems/gauges/PHI/indicator/brg-correct</p><v>180.0</v></gt>
+                        <difference>
+                            <p>systems/gauges/PHI/indicator/brg-correct</p>
+                            <v>180.0</v>
+                        </difference>
+                        <ifthen>
+                            <lt><p>systems/gauges/PHI/indicator/brg-correct</p><v>180.0</v></lt>
+                            <sum>
+                                <p>systems/gauges/PHI/indicator/brg-correct</p>
+                                <v>180.0</v>
+                            </sum>
+                            <v>0.0</v>
+                        </ifthen>
+                    </ifthen>
                     <p>systems/gauges/PHI/indicator/brg-correct</p>
                 </ifthen>
             </function>
         </fcs_function>
         
-        <lag_filter name="systems/autopilot/phi-heading-deg-lag">
-            <input>systems/autopilot/phi-heading-deg</input>
-            <c1>systems/autopilot/phi-heading-brg-lag-coefficient</c1>
-        </lag_filter>
-        
         <pure_gain name="systems/autopilot/phi-heading-rad">
-            <input>systems/autopilot/phi-heading-deg-lag</input>
+            <input>systems/autopilot/phi-heading-deg</input>
             <gain>0.0174533</gain>
         </pure_gain>
         
@@ -329,18 +339,21 @@ No Overshoot
             <gain>0.0174533</gain>
         </pure_gain>
         
-
-        <switch name="systems/autopilot/true-heading-rad-prop">
-            <default value="systems/autopilot/true-heading-rad"/>
-            <test logic="AND" value="systems/autopilot/phi-heading-rad">
-                systems/autopilot/phi-heading-active == 1
-            </test>
-        </switch>
-        
-        <summer name="systems/autopilot/true-heading-rad-prop-dif">
-            <input>systems/autopilot/true-heading-rad-prop</input>
-            <input>-attitude/heading-true-rad</input>
-        </summer>
+        <fcs_function name="systems/autopilot/true-heading-rad-prop-dif">
+            <function>
+                <ifthen>
+                    <p>systems/autopilot/phi-heading-active</p>
+                    <product>
+                        <p>systems/autopilot/phi-heading-rad</p>
+                        <v>-1.0</v>
+                    </product>
+                    <difference>
+                        <p>systems/autopilot/true-heading-rad</p>
+                        <p>attitude/heading-true-rad</p>
+                    </difference>
+                </ifthen>
+            </function>
+        </fcs_function>
         
         <fcs_function name="systems/autopilot/true-heading-rad-delta">
             <function>
@@ -348,7 +361,7 @@ No Overshoot
                     <ge><p>systems/autopilot/true-heading-rad-prop-dif</p><pi/></ge>
                     <difference>
                         <p>systems/autopilot/true-heading-rad-prop-dif</p>
-                        <product><pi/><v>2.0</v></product>
+                        <product><pi/><v>1.0</v></product>
                     </difference>
                     <ifthen>
                         <lt><p>systems/autopilot/true-heading-rad-prop-dif</p><product><pi/><v>-1.0</v></product></lt>
@@ -376,14 +389,6 @@ No Overshoot
             </clipto>
         </pure_gain>
         
-        <pid name="systems/autopilot/true-heading-rad-delta-pid">
-            <input>systems/autopilot/true-heading-rad-delta-lim</input>
-            <kp>systems/autopilot/true-heading-pid-kp</kp>
-            <ki>systems/autopilot/true-heading-pid-ki</ki>
-            <kd>systems/autopilot/true-heading-pid-kd</kd>
-            <trigger>systems/autopilot/true-heading-ap-on-off</trigger>
-        </pid>
-        
         <switch name="systems/autopilot/true-heading-ap-on-off">
             <default value="-1"/>
             <test logic="AND" value="2">
@@ -400,9 +405,35 @@ No Overshoot
             </test>
         </switch>
         
+        <pid name="systems/autopilot/true-heading-rad-delta-pid">
+            <input>systems/autopilot/true-heading-rad-delta-lim</input>
+            <kp>systems/autopilot/true-heading-pid-kp</kp>
+            <ki>systems/autopilot/true-heading-pid-ki</ki>
+            <kd>systems/autopilot/true-heading-pid-kd</kd>
+            <trigger>systems/autopilot/true-heading-ap-on-off</trigger>
+        </pid>
+        
+        <fcs_function name="systems/autopilot/true-heading-max-wing-slope-rad-correct">
+            <function>
+                <sum>
+                    <product>
+                        <atan>
+                            <product>
+                                <abs><p>systems/autopilot/true-heading-rad-delta</p></abs>
+                                <p>systems/autopilot/true-heading-turn-direction-versus-coefficient</p>
+                            </product>
+                        </atan>
+                        <abs><p>systems/autopilot/true-heading-max-wing-slope-rad</p></abs>
+                        <v>0.63637</v>
+                    </product>
+                    <p>systems/autopilot/true-heading-turn-direction-versus-bias</p>
+                </sum>
+            </function>
+        </fcs_function>
+        
         <pure_gain name="systems/autopilot/true-heading-turn-direction-versus-slope">
             <input>systems/autopilot/true-heading-rad-delta-pid</input>
-            <gain>systems/autopilot/true-heading-max-wing-slope-rad</gain>
+            <gain>systems/autopilot/true-heading-max-wing-slope-rad-correct</gain>
         </pure_gain>
         
         <switch name="systems/autopilot/true-heading-turn-direction-versus-slope-sw">

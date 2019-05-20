@@ -402,7 +402,7 @@
     <animation>
         <type>rotate</type>
         <object-name>frontal_plate_A</object-name>
-        <property>/fdm/jsbsim/systems/gauges/PHI/attitude/gyrocompass-magnetic-deg-var-operative-lag</property>
+        <property>/fdm/jsbsim/systems/gauges/PHI/attitude/gyrocompass-magnetic-deg-var-linear</property>
         <axis>
             <x> 1 </x>
             <y> 0 </y>
@@ -526,7 +526,7 @@
         <type>rotate</type>
         <object-name>knob_003 (Meshed)</object-name>
         <object-name>knob_003_color (Meshed)</object-name>
-        <property>/fdm/jsbsim/systems/gauges/PHI/program/route[0]/phi</property>
+        <property>/fdm/jsbsim/systems/gauges/PHI/indicator/brg-imposed</property>
         <factor>-5</factor>
         <center>
             <x-m>  0.004 </x-m>
@@ -545,7 +545,7 @@
         <object-name>arrow_2 (Meshed)</object-name>
         <object-name>arrow_3 (Meshed)</object-name>
         <object-name>arrow_4 (Meshed)</object-name>
-        <property>/fdm/jsbsim/systems/gauges/PHI/indicator/brg-lag-actuator</property>
+        <property>/fdm/jsbsim/systems/gauges/PHI/indicator/brg-lag</property>
         <axis>
             <x>1</x>
             <y>0</y>
