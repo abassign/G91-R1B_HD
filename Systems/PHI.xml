@@ -68,27 +68,27 @@
     <property value="0.0">systems/gauges/PHI/program/route[0]/phi</property>
     <property value="0.0">systems/gauges/PHI/program/route[0]/push-pos</property>
     <property value="0.0">systems/gauges/PHI/program/route[0]/push-togle</property>
-    <property value="0.0">systems/gauges/PHI/program/route[1]/dist</property>
+    <property value="5.0">systems/gauges/PHI/program/route[1]/dist</property>
     <property value="0.0">systems/gauges/PHI/program/route[1]/phi</property>
     <property value="0.0">systems/gauges/PHI/program/route[1]/push-pos</property>
     <property value="0.0">systems/gauges/PHI/program/route[1]/push-togle</property>
     <property value="0.0">systems/gauges/PHI/program/route[1]/isPush</property>
-    <property value="28.0">systems/gauges/PHI/program/route[2]/dist</property>
+    <property value="10.0">systems/gauges/PHI/program/route[2]/dist</property>
     <property value="45.0">systems/gauges/PHI/program/route[2]/phi</property>
     <property value="0.0">systems/gauges/PHI/program/route[2]/push-pos</property>
     <property value="0.0">systems/gauges/PHI/program/route[2]/push-togle</property>
     <property value="0.0">systems/gauges/PHI/program/route[2]/isPush</property>
-    <property value="20.0">systems/gauges/PHI/program/route[3]/dist</property>
+    <property value="10.0">systems/gauges/PHI/program/route[3]/dist</property>
     <property value="90.0">systems/gauges/PHI/program/route[3]/phi</property>
     <property value="0.0">systems/gauges/PHI/program/route[3]/push-pos</property>
     <property value="0.0">systems/gauges/PHI/program/route[3]/push-togle</property>
     <property value="0.0">systems/gauges/PHI/program/route[3]/isPush</property>
-    <property value="56.0">systems/gauges/PHI/program/route[4]/dist</property>
+    <property value="10.0">systems/gauges/PHI/program/route[4]/dist</property>
     <property value="225.0">systems/gauges/PHI/program/route[4]/phi</property>
     <property value="0.0">systems/gauges/PHI/program/route[4]/push-pos</property>
     <property value="0.0">systems/gauges/PHI/program/route[4]/push-togle</property>
     <property value="0.0">systems/gauges/PHI/program/route[4]/isPush</property>
-    <property value="20.0">systems/gauges/PHI/program/route[5]/dist</property>
+    <property value="10.0">systems/gauges/PHI/program/route[5]/dist</property>
     <property value="360.0">systems/gauges/PHI/program/route[5]/phi</property>
     <property value="0.0">systems/gauges/PHI/program/route[5]/push-pos</property>
     <property value="0.0">systems/gauges/PHI/program/route[5]/push-togle</property>
@@ -97,6 +97,7 @@
     <property value="0.0">systems/gauges/PHI/program/transparent-by-bus2-tension-on-caddy</property>
     <property value="0.0">systems/gauges/PHI/program/release-togle-pos-lag</property>
     <property value="1.0">systems/gauges/PHI/program/route-manager/starting-route-num</property>
+    <property value="0.0">systems/gauges/PHI/program/route-manager/autopush-active</property>
     
     <channel name="systems gauges PHI electric" execrate="32">
         
@@ -973,6 +974,7 @@
                 <test logic="OR">
                     systems/gauges/PHI/program/route[1]/push-togle-washed GT 0.1
                     systems/gauges/PHI/program/route[1]/push-togle-washed LT -0.1
+                    systems/gauges/PHI/program/route-manager/autopush-active-next == 1
                 </test>
             </test>
             <test logic="AND" value = "0">
@@ -1041,6 +1043,7 @@
                 <test logic="OR">
                     systems/gauges/PHI/program/route[2]/push-togle-washed GT 0.1
                     systems/gauges/PHI/program/route[2]/push-togle-washed LT -0.1
+                    systems/gauges/PHI/program/route-manager/autopush-active-next == 2
                 </test>
             </test>
             <test logic="AND" value = "0">
@@ -1109,6 +1112,7 @@
                 <test logic="OR">
                     systems/gauges/PHI/program/route[3]/push-togle-washed GT 0.1
                     systems/gauges/PHI/program/route[3]/push-togle-washed LT -0.1
+                    systems/gauges/PHI/program/route-manager/autopush-active-next == 3
                 </test>
             </test>
             <test logic="AND" value = "0">
@@ -1177,6 +1181,7 @@
                 <test logic="OR">
                     systems/gauges/PHI/program/route[4]/push-togle-washed GT 0.1
                     systems/gauges/PHI/program/route[4]/push-togle-washed LT -0.1
+                    systems/gauges/PHI/program/route-manager/autopush-active-next == 4
                 </test>
             </test>
             <test logic="AND" value = "0">
@@ -1245,6 +1250,7 @@
                 <test logic="OR">
                     systems/gauges/PHI/program/route[5]/push-togle-washed GT 0.1
                     systems/gauges/PHI/program/route[5]/push-togle-washed LT -0.1
+                    systems/gauges/PHI/program/route-manager/autopush-active-next == 5
                 </test>
             </test>
             <test logic="AND" value = "0">
@@ -1348,6 +1354,48 @@
     </channel>    
     
     
+    <channel name="systems gauges PHI select next route" execrate="16">
+        
+        <switch name="systems/gauges/PHI/program/route-manager/autopush-active-next">
+            <default value="systems/gauges/PHI/program/route-manager/autopush-active-next"/>
+            <test logic="AND" value="0.0">
+                systems/gauges/PHI/program/route-manager/autopush-active == 0
+            </test>
+            <test logic="AND" value="2.0">
+                systems/gauges/PHI/program/route-manager/autopush-active == 1
+                systems/gauges/PHI/program/route[1]/isPush == 1
+                systems/gauges/PHI/indicator/mil-digit == 0.0
+                systems/gauges/PHI/indicator/dist GT 0.0
+            </test>
+            <test logic="AND" value="3.0">
+                systems/gauges/PHI/program/route-manager/autopush-active == 1
+                systems/gauges/PHI/program/route[2]/isPush == 1
+                systems/gauges/PHI/indicator/mil-digit == 0.0
+                systems/gauges/PHI/indicator/dist GT 0.0
+            </test>
+            <test logic="AND" value="4.0">
+                systems/gauges/PHI/program/route-manager/autopush-active == 1
+                systems/gauges/PHI/program/route[3]/isPush == 1
+                systems/gauges/PHI/indicator/mil-digit == 0.0
+                systems/gauges/PHI/indicator/dist GT 0.0
+            </test>
+            <test logic="AND" value="5.0">
+                systems/gauges/PHI/program/route-manager/autopush-active == 1
+                systems/gauges/PHI/program/route[4]/isPush == 1
+                systems/gauges/PHI/indicator/mil-digit == 0.0
+                systems/gauges/PHI/indicator/dist GT 0.0
+            </test>
+            <test logic="AND" value="1.0">
+                systems/gauges/PHI/program/route-manager/autopush-active == 1
+                systems/gauges/PHI/program/route[5]/isPush == 1
+                systems/gauges/PHI/indicator/mil-digit == 0.0
+                systems/gauges/PHI/indicator/dist GT 0.0
+            </test>
+        </switch>
+        
+    </channel> 
+    
+    
     <channel name="systems gauges PHI indicator brg" execrate="4">
         
         <fcs_function name="systems/gauges/PHI/program/route-phi">
@@ -1432,11 +1480,10 @@
             </function>
         </fcs_function>
         
-        <linear_actuator name="systems/gauges/PHI/indicator/brg-lag">
-            <input>systems/gauges/PHI/indicator/brg-correct</input>
-            <lag>2.0</lag>
-            <module>360</module>
-        </linear_actuator>
+        <actuator name="systems/gauges/PHI/indicator/brg-lag">
+        <input>systems/gauges/PHI/indicator/brg-correct</input>
+            <rate_limit> 100.0 </rate_limit>
+        </actuator>
 
     </channel>
     

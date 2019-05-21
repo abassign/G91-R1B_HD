@@ -193,7 +193,7 @@
                     <binding>
                         <command>nasal</command>
                         <script>
-                            setprop("fdm/jsbsim/systems/autopilot/gui/true-heading-deg",getprop("fdm/jsbsim/systems/autopilot/heading-true-deg"));
+                            setprop("fdm/jsbsim/systems/autopilot/gui/true-heading-deg",math.round(getprop("fdm/jsbsim/systems/autopilot/heading-true-deg")));
                             setprop("fdm/jsbsim/systems/autopilot/gui/true-heading",1.0);
                             setprop("fdm/jsbsim/systems/autopilot/gui/heading-control",1.0);
                             setprop("fdm/jsbsim/systems/autopilot/gui/wing-leveler",0.0);
@@ -414,7 +414,7 @@
                     <binding>
                         <command>nasal</command>
                         <script>
-                            setprop("fdm/jsbsim/systems/autopilot/gui/altitude-hold-ft",getprop("fdm/jsbsim/systems/autopilot/h-sl-ft-lag"));
+                            setprop("fdm/jsbsim/systems/autopilot/gui/altitude-hold-ft",math.round(getprop("fdm/jsbsim/systems/autopilot/h-sl-ft-lag")));
                             setprop("fdm/jsbsim/systems/autopilot/gui/altitude-hold",1.0);
                         </script>
                     </binding>
@@ -594,7 +594,7 @@
                         if (getprop("fdm/jsbsim/systems/autopilot/gui/speed-set-mph") == 1) {
                             setprop("fdm/jsbsim/systems/autopilot/gui/speed-set-cas",0.0);
                             setprop("fdm/jsbsim/systems/autopilot/gui/speed-set-mach",0.0);
-                            setprop("fdm/jsbsim/systems/autopilot/gui/speed-value",getprop("fdm/jsbsim/systems/autopilot/speed-true-on-air"));
+                            setprop("fdm/jsbsim/systems/autopilot/gui/speed-value",math.round(getprop("fdm/jsbsim/systems/autopilot/speed-true-on-air")));
                         }
                     ]]></script>
                 </binding>
@@ -614,7 +614,7 @@
                         if (getprop("fdm/jsbsim/systems/autopilot/gui/speed-set-cas") == 1) {
                             setprop("fdm/jsbsim/systems/autopilot/gui/speed-set-mph",0.0);
                             setprop("fdm/jsbsim/systems/autopilot/gui/speed-set-mach",0.0);
-                            setprop("fdm/jsbsim/systems/autopilot/gui/speed-value",getprop("fdm/jsbsim/systems/autopilot/speed-cas-on-air"));
+                            setprop("fdm/jsbsim/systems/autopilot/gui/speed-value",math.round(getprop("fdm/jsbsim/systems/autopilot/speed-cas-on-air")));
                         }
                     ]]></script>
                 </binding>
@@ -634,7 +634,7 @@
                         if (getprop("fdm/jsbsim/systems/autopilot/gui/speed-set-mach") == 1) {
                             setprop("fdm/jsbsim/systems/autopilot/gui/speed-set-mph",0.0);
                             setprop("fdm/jsbsim/systems/autopilot/gui/speed-set-cas",0.0);
-                            setprop("fdm/jsbsim/systems/autopilot/gui/speed-value",getprop("fdm/jsbsim/systems/autopilot/speed-mach-on-air"));
+                            setprop("fdm/jsbsim/systems/autopilot/gui/speed-value",math.round(getprop("fdm/jsbsim/systems/autopilot/speed-mach-on-air")));
                         }
                     ]]></script>
                 </binding>
@@ -929,14 +929,14 @@
             <layout>table</layout>
             <button>
                 <row>0</row>
-                <col>6</col>
+                <col>5</col>
                 <legend>Take off</legend>
                 <halign>fill</halign>
                 <live>true</live>
                 <binding>
                     <command>nasal</command>
                     <script>
-                        setprop("fdm/jsbsim/systems/autopilot/gui/true-heading-deg",getprop("fdm/jsbsim/systems/autopilot/heading-true-deg"));
+                        setprop("fdm/jsbsim/systems/autopilot/gui/true-heading-deg",math.round(getprop("fdm/jsbsim/systems/autopilot/heading-true-deg")));
                         setprop("fdm/jsbsim/systems/autopilot/gui/true-heading",1.0);
                         setprop("fdm/jsbsim/systems/autopilot/gui/heading-control",1.0);
                         setprop("fdm/jsbsim/systems/autopilot/gui/wing-leveler",0.0);
@@ -956,6 +956,32 @@
                         setprop("fdm/jsbsim/systems/autopilot/gui/speed-set-cas",1.0);
                         setprop("fdm/jsbsim/systems/autopilot/gui/speed-value",200.0);
                     </script>
+                </binding>
+            </button>
+            <button>
+                <row>0</row>
+                <col>6</col>
+                <legend>PHI Route</legend>
+                <halign>fill</halign>
+                <live>true</live>
+                <binding>
+                    <command>nasal</command>
+                    <script>
+                        setprop("fdm/jsbsim/systems/gauges/PHI/program/route[1]/phi",math.round(getprop("fdm/jsbsim/systems/autopilot/heading-true-deg")));
+                        setprop("fdm/jsbsim/systems/autopilot/gui/heading-control",1.0);
+                        setprop("fdm/jsbsim/systems/autopilot/gui/phi-heading",1.0);
+                        setprop("fdm/jsbsim/systems/autopilot/gui/true-heading",0.0);
+                        setprop("fdm/jsbsim/systems/autopilot/gui/true-heading-max-wing-slope-deg",45.0);
+                        setprop("fdm/jsbsim/systems/gauges/PHI/program/route[1]/dist",10.0);
+                        setprop("fdm/jsbsim/systems/gauges/PHI/wind/automatic-wind-sw",1.0);
+                        setprop("fdm/jsbsim/systems/gauges/PHI/doppler/switch-turn",2.0);
+                        setprop("fdm/jsbsim/systems/gauges/PHI/indicator/switch-turn",1.0);
+                        setprop("fdm/jsbsim/systems/gauges/PHI/program/route-manager/autopush-active",1.0);
+                    </script>
+                </binding>
+                <binding>
+                    <command>property-toggle</command>
+                    <property>fdm/jsbsim/systems/gauges/PHI/program/route[1]/push-togle</property>
                 </binding>
             </button>
         </group>

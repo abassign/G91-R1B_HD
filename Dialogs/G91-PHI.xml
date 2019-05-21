@@ -35,290 +35,252 @@
         <layout>vbox</layout>
         <group>
             <layout>table</layout>
-            <radio>
-                <row>0</row>
+            <text>
+                <row>2</row>
                 <col>0</col>
-                <halign>left</halign>
+                <label>Distance (nm)</label>
+                <halign>center</halign>
+                <color>
+                    <red>0.7</red>
+                    <green>0.7</green>
+                    <blue>0.7</blue>
+                </color>
+            </text>
+            <text>
+                <row>3</row>
+                <col>0</col>
+                <label>Direction (deg)</label>
+                <halign>center</halign>
+                <color>
+                    <red>0.7</red>
+                    <green>0.7</green>
+                    <blue>0.7</blue>
+                </color>
+            </text>
+            <checkbox>
+                <row>0</row>
+                <col>1</col>
+                <halign>center</halign>
                 <property>fdm/jsbsim/systems/gauges/PHI/program/route[1]/isPush</property>
                 <live>true</live>
-            </radio>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </checkbox>
             <button>
-                <row>0</row>
-                <col>0</col>
+                <row>1</row>
+                <col>1</col>
                 <legend>Route 1</legend>
-                <halign>right</halign>
                 <binding>
                     <command>property-toggle</command>
                     <property>fdm/jsbsim/systems/gauges/PHI/program/route[1]/push-togle</property>
                 </binding>
             </button>
-            <text>
-                <row>1</row>
-                <col>0</col>
-                <label>Direction</label>
-                <halign>center</halign>
-                <color>
-                    <red>0.6</red>
-                    <green>0.6</green>
-                    <blue>0.6</blue>
-                </color>
-            </text>
-            <text>
-                <row>2</row>
-                <col>0</col>
-                <label>99999999</label>
-                <live>true</live>
-                <format>%3.0f (deg)</format>
-                <property>fdm/jsbsim/systems/gauges/PHI/program/route[1]/phi</property>
-                <halign>center</halign>
-            </text>
-            <text>
+            <input>
                 <row>3</row>
-                <col>0</col>
-                <label>distance</label>
-                <halign>center</halign>
-                <color>
-                    <red>0.6</red>
-                    <green>0.6</green>
-                    <blue>0.6</blue>
-                </color>
-            </text>
-            <text>
-                <row>4</row>
-                <col>0</col>
-                <label>99999999</label>
-                <live>true</live>
-                <format>%3.0f (nm)</format>
-                <property>fdm/jsbsim/systems/gauges/PHI/program/route[1]/dist</property>
-                <halign>center</halign>
-            </text>
-            <radio>
-                <row>0</row>
                 <col>1</col>
-                <halign>left</halign>
+                <property>fdm/jsbsim/systems/gauges/PHI/program/route[1]/phi</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </input>
+            <input>
+                <row>2</row>
+                <col>1</col>
+                <property>fdm/jsbsim/systems/gauges/PHI/program/route[1]/dist</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </input>
+            <checkbox>
+                <row>0</row>
+                <col>2</col>
+                <halign>center</halign>
                 <property>fdm/jsbsim/systems/gauges/PHI/program/route[2]/isPush</property>
                 <live>true</live>
-            </radio>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </checkbox>
             <button>
-                <row>0</row>
-                <col>1</col>
+                <row>1</row>
+                <col>2</col>
                 <legend>Route 2</legend>
-                <halign>right</halign>
                 <binding>
                     <command>property-toggle</command>
                     <property>fdm/jsbsim/systems/gauges/PHI/program/route[2]/push-togle</property>
                 </binding>
             </button>
             <text>
-                <row>1</row>
-                <col>1</col>
-                <label>Direction</label>
+                <row>3</row>
+                <col>2</col>
+                <label>99999999</label>
+                <live>true</live>
+                <format>%3.0f</format>
+                <property>fdm/jsbsim/systems/gauges/PHI/program/route[2]/phi</property>
                 <halign>center</halign>
                 <color>
-                    <red>0.6</red>
-                    <green>0.6</green>
-                    <blue>0.6</blue>
+                    <red>0.8</red>
+                    <green>0.8</green>
+                    <blue>0.0</blue>
                 </color>
             </text>
             <text>
                 <row>2</row>
-                <col>1</col>
+                <col>2</col>
                 <label>99999999</label>
                 <live>true</live>
-                <format>%3.0f (deg)</format>
-                <property>fdm/jsbsim/systems/gauges/PHI/program/route[2]/phi</property>
-                <halign>center</halign>
-            </text>
-            <text>
-                <row>3</row>
-                <col>1</col>
-                <label>distance</label>
-                <halign>center</halign>
-                <color>
-                    <red>0.6</red>
-                    <green>0.6</green>
-                    <blue>0.6</blue>
-                </color>
-            </text>
-            <text>
-                <row>4</row>
-                <col>1</col>
-                <label>99999999</label>
-                <live>true</live>
-                <format>%3.0f (nm)</format>
+                <format>%3.0f</format>
                 <property>fdm/jsbsim/systems/gauges/PHI/program/route[2]/dist</property>
                 <halign>center</halign>
+                <color>
+                    <red>0.8</red>
+                    <green>0.8</green>
+                    <blue>0.0</blue>
+                </color>
             </text>
-            <radio>
+            <checkbox>
                 <row>0</row>
-                <col>2</col>
-                <halign>left</halign>
+                <col>3</col>
+                <halign>center</halign>
                 <property>fdm/jsbsim/systems/gauges/PHI/program/route[3]/isPush</property>
                 <live>true</live>
-            </radio>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </checkbox>
             <button>
-                <row>0</row>
-                <col>2</col>
+                <row>1</row>
+                <col>3</col>
                 <legend>Route 3</legend>
-                <halign>right</halign>
                 <binding>
                     <command>property-toggle</command>
                     <property>fdm/jsbsim/systems/gauges/PHI/program/route[3]/push-togle</property>
                 </binding>
             </button>
             <text>
-                <row>1</row>
-                <col>2</col>
-                <label>Direction</label>
+                <row>3</row>
+                <col>3</col>
+                <label>99999999</label>
+                <live>true</live>
+                <format>%3.0f</format>
+                <property>fdm/jsbsim/systems/gauges/PHI/program/route[3]/phi</property>
                 <halign>center</halign>
                 <color>
-                    <red>0.6</red>
-                    <green>0.6</green>
-                    <blue>0.6</blue>
+                    <red>0.8</red>
+                    <green>0.8</green>
+                    <blue>0.0</blue>
                 </color>
             </text>
             <text>
                 <row>2</row>
-                <col>2</col>
+                <col>3</col>
                 <label>99999999</label>
                 <live>true</live>
-                <format>%3.0f (deg)</format>
-                <property>fdm/jsbsim/systems/gauges/PHI/program/route[3]/phi</property>
-                <halign>center</halign>
-            </text>
-            <text>
-                <row>3</row>
-                <col>2</col>
-                <label>distance</label>
-                <halign>center</halign>
-                <color>
-                    <red>0.6</red>
-                    <green>0.6</green>
-                    <blue>0.6</blue>
-                </color>
-            </text>
-            <text>
-                <row>4</row>
-                <col>2</col>
-                <label>99999999</label>
-                <live>true</live>
-                <format>%3.0f (nm)</format>
+                <format>%3.0f</format>
                 <property>fdm/jsbsim/systems/gauges/PHI/program/route[3]/dist</property>
                 <halign>center</halign>
+                <color>
+                    <red>0.8</red>
+                    <green>0.8</green>
+                    <blue>0.0</blue>
+                </color>
             </text>
-            <radio>
+            <checkbox>
                 <row>0</row>
-                <col>3</col>
-                <halign>left</halign>
+                <col>4</col>
+                <halign>center</halign>
                 <property>fdm/jsbsim/systems/gauges/PHI/program/route[4]/isPush</property>
                 <live>true</live>
-            </radio>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </checkbox>
             <button>
-                <row>0</row>
-                <col>3</col>
+                <row>1</row>
+                <col>4</col>
                 <legend>Route 4</legend>
-                <halign>right</halign>
                 <binding>
                     <command>property-toggle</command>
                     <property>fdm/jsbsim/systems/gauges/PHI/program/route[4]/push-togle</property>
                 </binding>
             </button>
             <text>
-                <row>1</row>
-                <col>3</col>
-                <label>Direction</label>
+                <row>3</row>
+                <col>4</col>
+                <label>99999999</label>
+                <live>true</live>
+                <format>%3.0f</format>
+                <property>fdm/jsbsim/systems/gauges/PHI/program/route[4]/phi</property>
                 <halign>center</halign>
                 <color>
-                    <red>0.6</red>
-                    <green>0.6</green>
-                    <blue>0.6</blue>
+                    <red>0.8</red>
+                    <green>0.8</green>
+                    <blue>0.0</blue>
                 </color>
             </text>
             <text>
                 <row>2</row>
-                <col>3</col>
+                <col>4</col>
                 <label>99999999</label>
                 <live>true</live>
-                <format>%3.0f (deg)</format>
-                <property>fdm/jsbsim/systems/gauges/PHI/program/route[4]/phi</property>
-                <halign>center</halign>
-            </text>
-            <text>
-                <row>3</row>
-                <col>3</col>
-                <label>distance</label>
-                <halign>center</halign>
-                <color>
-                    <red>0.6</red>
-                    <green>0.6</green>
-                    <blue>0.6</blue>
-                </color>
-            </text>
-            <text>
-                <row>4</row>
-                <col>3</col>
-                <label>99999999</label>
-                <live>true</live>
-                <format>%3.0f (nm)</format>
+                <format>%3.0f</format>
                 <property>fdm/jsbsim/systems/gauges/PHI/program/route[4]/dist</property>
                 <halign>center</halign>
+                <color>
+                    <red>0.8</red>
+                    <green>0.8</green>
+                    <blue>0.0</blue>
+                </color>
             </text>
-            <radio>
+            <checkbox>
                 <row>0</row>
-                <col>4</col>
-                <halign>left</halign>
+                <col>5</col>
+                <halign>center</halign>
                 <property>fdm/jsbsim/systems/gauges/PHI/program/route[5]/isPush</property>
                 <live>true</live>
-            </radio>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </checkbox>
             <button>
-                <row>0</row>
-                <col>4</col>
+                <row>1</row>
+                <col>5</col>
                 <legend>Route 5</legend>
-                <halign>right</halign>
                 <binding>
                     <command>property-toggle</command>
                     <property>fdm/jsbsim/systems/gauges/PHI/program/route[5]/push-togle</property>
                 </binding>
             </button>
             <text>
-                <row>1</row>
-                <col>4</col>
-                <label>Direction</label>
+                <row>3</row>
+                <col>5</col>
+                <label>99999999</label>
+                <live>true</live>
+                <format>%3.0f</format>
+                <property>fdm/jsbsim/systems/gauges/PHI/program/route[5]/phi</property>
                 <halign>center</halign>
                 <color>
-                    <red>0.6</red>
-                    <green>0.6</green>
-                    <blue>0.6</blue>
+                    <red>0.8</red>
+                    <green>0.8</green>
+                    <blue>0.0</blue>
                 </color>
             </text>
             <text>
                 <row>2</row>
-                <col>4</col>
+                <col>5</col>
                 <label>99999999</label>
                 <live>true</live>
-                <format>%3.0f (deg)</format>
-                <property>fdm/jsbsim/systems/gauges/PHI/program/route[5]/phi</property>
-                <halign>center</halign>
-            </text>
-            <text>
-                <row>3</row>
-                <col>4</col>
-                <label>distance</label>
-                <halign>center</halign>
-                <color>
-                    <red>0.6</red>
-                    <green>0.6</green>
-                    <blue>0.6</blue>
-                </color>
-            </text>
-            <text>
-                <row>4</row>
-                <col>4</col>
-                <label>99999999</label>
-                <live>true</live>
-                <format>%3.0f (nm)</format>
+                <format>%3.0f</format>
                 <property>fdm/jsbsim/systems/gauges/PHI/program/route[5]/dist</property>
                 <halign>center</halign>
+                <color>
+                    <red>0.8</red>
+                    <green>0.8</green>
+                    <blue>0.0</blue>
+                </color>
             </text>
         </group>
     </group>
@@ -346,9 +308,9 @@
                 <label>Automatic on/off</label>
                 <halign>left</halign>
                 <color>
-                    <red>0.6</red>
-                    <green>0.6</green>
-                    <blue>0.6</blue>
+                    <red>0.7</red>
+                    <green>0.7</green>
+                    <blue>0.7</blue>
                 </color>
             </text>
             <checkbox>
@@ -367,9 +329,9 @@
                 <label>Direction</label>
                 <halign>left</halign>
                 <color>
-                    <red>0.6</red>
-                    <green>0.6</green>
-                    <blue>0.6</blue>
+                    <red>0.7</red>
+                    <green>0.7</green>
+                    <blue>0.7</blue>
                 </color>
             </text>
             <text>
@@ -377,9 +339,14 @@
                 <col>4</col>
                 <label>99999999</label>
                 <live>true</live>
-                <format>%3.0f (deg)</format>
+                <format>%3.0f</format>
                 <property>fdm/jsbsim/systems/gauges/PHI/wind/wd</property>
                 <halign>left</halign>
+                <color>
+                    <red>0.8</red>
+                    <green>0.8</green>
+                    <blue>0.0</blue>
+                </color>
             </text>
             <text>
                 <row>0</row>
@@ -387,9 +354,9 @@
                 <label>Speed</label>
                 <halign>left</halign>
                 <color>
-                    <red>0.6</red>
-                    <green>0.6</green>
-                    <blue>0.6</blue>
+                    <red>0.7</red>
+                    <green>0.7</green>
+                    <blue>0.7</blue>
                 </color>
             </text>
             <text>
@@ -397,9 +364,14 @@
                 <col>6</col>
                 <label>99999999</label>
                 <live>true</live>
-                <format>%3.0f (nm)</format>
+                <format>%3.0f</format>
                 <property>fdm/jsbsim/systems/gauges/PHI/wind/ws</property>
                 <halign>left</halign>
+                <color>
+                    <red>0.8</red>
+                    <green>0.8</green>
+                    <blue>0.0</blue>
+                </color>
             </text>
             <text>
                 <row>0</row>
@@ -407,9 +379,9 @@
                 <label>WCA</label>
                 <halign>left</halign>
                 <color>
-                    <red>0.6</red>
-                    <green>0.6</green>
-                    <blue>0.6</blue>
+                    <red>0.7</red>
+                    <green>0.7</green>
+                    <blue>0.7</blue>
                 </color>
             </text>
             <text>
@@ -496,5 +468,27 @@
             </radio>
         </group>
     </group>
+    
+    <hrule/>
+    
+    <group>
+        <layout>vbox</layout>
+        <group>
+            <layout>table</layout>
+            <checkbox>
+                <row>0</row>
+                <col>0</col>
+                <label>Autochenge route</label>
+                <halign>fill</halign>
+                <property>fdm/jsbsim/systems/gauges/PHI/program/route-manager/autopush-active</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </checkbox>
+        </group>
+    </group>
+    
+    systems/gauges/PHI/program/route-manager/autopush-active
     
 </PropertyList> 
