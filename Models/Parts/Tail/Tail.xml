@@ -271,38 +271,38 @@
         <type>material</type> 
         <object-name>A_glass_red_est_coda</object-name>
         <object-name>A_glass_red_int_coda</object-name>
-        <texture>Pictures/G91-Red01.png</texture>
+        <texture>Pictures/G91-Yellow01.png</texture>
         <ambient>
             <red>0.8</red>
             <green>0.8</green>
             <blue>0.8</blue>
         </ambient>
         <emission>	
-            <red>1.0</red>	
-            <green>0.0</green>	
-            <blue>0.0</blue>
+            <red>0.714</red>	
+            <green>0.6</green>	
+            <blue>0.18</blue>
             <factor-prop>sim/G91/position_light_glass_emission</factor-prop>
         </emission>
         <transparency>
             <alpha-prop>sim/G91/position_light_transparent</alpha-prop>
-            <factor>1</factor>
-            <offset>0</offset>
+            <factor>0.9</factor>
+            <offset>-0.2</offset>
         </transparency>
     </animation>
     
     <animation> 
         <type>material</type> 
         <object-name>Sphere.007</object-name>
-        <texture>Pictures/G91-Red01.png</texture>
+        <texture>Pictures/G91-Yellow01.png</texture>
         <ambient>
             <red>1.0</red>
             <green>1.0</green>
             <blue>1.0</blue>
         </ambient>
         <emission>	
-            <red>1.0</red>	
-            <green>0.0</green>	
-            <blue>0.0</blue>
+            <red>0.714</red>	
+            <green>0.6</green>	
+            <blue>0.18</blue>
             <factor-prop>sim/G91/position_light_emission</factor-prop>
         </emission>
         <transparency>
@@ -313,8 +313,8 @@
     </animation>
     
     <model>
-        <name>nav-tail-light-red</name>
-        <path>Effects/lights/procedural_light_nav_tail_red.xml</path>
+        <name>nav-tail-light-yellow</name>
+        <path>Effects/lights/procedural_light_nav_tail_yellow.xml</path>
         <offsets>
             <x-m> 4.78</x-m>
             <y-m> -0.05 </y-m>

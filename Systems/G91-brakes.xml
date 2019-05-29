@@ -22,6 +22,7 @@ Modified work Copyright 2019 Joshua Davidson (it0uchpods)
             <input>/controls/gear/brake-left</input>
             <input>fcs/left-steer-brake</input> <!-- Steering Brake Control -->
             <input>systems/handle-switches/sw-handle-brake-extension</input>
+            <input>systems/autopilot/left-steer-brake</input>
             <clipto>
                 <min>0</min>
                 <max>1</max>
@@ -49,6 +50,7 @@ Modified work Copyright 2019 Joshua Davidson (it0uchpods)
             <input>/controls/gear/brake-right</input>
             <input>fcs/right-steer-brake</input> <!-- Steering Brake Control -->
             <input>systems/handle-switches/sw-handle-brake-extension</input>
+            <input>systems/autopilot/right-steer-brake</input>
             <clipto>
                 <min>0</min>
                 <max>1</max>

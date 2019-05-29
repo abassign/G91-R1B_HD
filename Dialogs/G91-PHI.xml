@@ -57,6 +57,17 @@
                     <blue>0.7</blue>
                 </color>
             </text>
+            <text>
+                <row>4</row>
+                <col>0</col>
+                <label>Altitude (ft)</label>
+                <halign>center</halign>
+                <color>
+                    <red>0.7</red>
+                    <green>0.7</green>
+                    <blue>0.7</blue>
+                </color>
+            </text>
             <checkbox>
                 <row>0</row>
                 <col>1</col>
@@ -94,6 +105,15 @@
                     <command>dialog-apply</command>
                 </binding>
             </input>
+            <input>
+                <row>4</row>
+                <col>1</col>
+                <property>fdm/jsbsim/systems/gauges/PHI/program/route[1]/altitude-hold-ft</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </input>
             <checkbox>
                 <row>0</row>
                 <col>2</col>
@@ -114,20 +134,6 @@
                 </binding>
             </button>
             <text>
-                <row>3</row>
-                <col>2</col>
-                <label>99999999</label>
-                <live>true</live>
-                <format>%3.0f</format>
-                <property>fdm/jsbsim/systems/gauges/PHI/program/route[2]/phi</property>
-                <halign>center</halign>
-                <color>
-                    <red>0.8</red>
-                    <green>0.8</green>
-                    <blue>0.0</blue>
-                </color>
-            </text>
-            <text>
                 <row>2</row>
                 <col>2</col>
                 <label>99999999</label>
@@ -141,6 +147,29 @@
                     <blue>0.0</blue>
                 </color>
             </text>
+            <text>
+                <row>3</row>
+                <col>2</col>
+                <label>99999999</label>
+                <live>true</live>
+                <format>%3.0f</format>
+                <property>fdm/jsbsim/systems/gauges/PHI/program/route[2]/phi</property>
+                <halign>center</halign>
+                <color>
+                    <red>0.8</red>
+                    <green>0.8</green>
+                    <blue>0.0</blue>
+                </color>
+            </text>
+            <input>
+                <row>4</row>
+                <col>2</col>
+                <property>fdm/jsbsim/systems/gauges/PHI/program/route[2]/altitude-hold-ft</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </input>
             <checkbox>
                 <row>0</row>
                 <col>3</col>
@@ -161,20 +190,6 @@
                 </binding>
             </button>
             <text>
-                <row>3</row>
-                <col>3</col>
-                <label>99999999</label>
-                <live>true</live>
-                <format>%3.0f</format>
-                <property>fdm/jsbsim/systems/gauges/PHI/program/route[3]/phi</property>
-                <halign>center</halign>
-                <color>
-                    <red>0.8</red>
-                    <green>0.8</green>
-                    <blue>0.0</blue>
-                </color>
-            </text>
-            <text>
                 <row>2</row>
                 <col>3</col>
                 <label>99999999</label>
@@ -188,6 +203,29 @@
                     <blue>0.0</blue>
                 </color>
             </text>
+            <text>
+                <row>3</row>
+                <col>3</col>
+                <label>99999999</label>
+                <live>true</live>
+                <format>%3.0f</format>
+                <property>fdm/jsbsim/systems/gauges/PHI/program/route[3]/phi</property>
+                <halign>center</halign>
+                <color>
+                    <red>0.8</red>
+                    <green>0.8</green>
+                    <blue>0.0</blue>
+                </color>
+            </text>
+            <input>
+                <row>4</row>
+                <col>3</col>
+                <property>fdm/jsbsim/systems/gauges/PHI/program/route[3]/altitude-hold-ft</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </input>
             <checkbox>
                 <row>0</row>
                 <col>4</col>
@@ -208,20 +246,6 @@
                 </binding>
             </button>
             <text>
-                <row>3</row>
-                <col>4</col>
-                <label>99999999</label>
-                <live>true</live>
-                <format>%3.0f</format>
-                <property>fdm/jsbsim/systems/gauges/PHI/program/route[4]/phi</property>
-                <halign>center</halign>
-                <color>
-                    <red>0.8</red>
-                    <green>0.8</green>
-                    <blue>0.0</blue>
-                </color>
-            </text>
-            <text>
                 <row>2</row>
                 <col>4</col>
                 <label>99999999</label>
@@ -235,6 +259,29 @@
                     <blue>0.0</blue>
                 </color>
             </text>
+            <text>
+                <row>3</row>
+                <col>4</col>
+                <label>99999999</label>
+                <live>true</live>
+                <format>%3.0f</format>
+                <property>fdm/jsbsim/systems/gauges/PHI/program/route[4]/phi</property>
+                <halign>center</halign>
+                <color>
+                    <red>0.8</red>
+                    <green>0.8</green>
+                    <blue>0.0</blue>
+                </color>
+            </text>
+            <input>
+                <row>4</row>
+                <col>4</col>
+                <property>fdm/jsbsim/systems/gauges/PHI/program/route[4]/altitude-hold-ft</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </input>
             <checkbox>
                 <row>0</row>
                 <col>5</col>
@@ -255,20 +302,6 @@
                 </binding>
             </button>
             <text>
-                <row>3</row>
-                <col>5</col>
-                <label>99999999</label>
-                <live>true</live>
-                <format>%3.0f</format>
-                <property>fdm/jsbsim/systems/gauges/PHI/program/route[5]/phi</property>
-                <halign>center</halign>
-                <color>
-                    <red>0.8</red>
-                    <green>0.8</green>
-                    <blue>0.0</blue>
-                </color>
-            </text>
-            <text>
                 <row>2</row>
                 <col>5</col>
                 <label>99999999</label>
@@ -282,6 +315,29 @@
                     <blue>0.0</blue>
                 </color>
             </text>
+            <text>
+                <row>3</row>
+                <col>5</col>
+                <label>99999999</label>
+                <live>true</live>
+                <format>%3.0f</format>
+                <property>fdm/jsbsim/systems/gauges/PHI/program/route[5]/phi</property>
+                <halign>center</halign>
+                <color>
+                    <red>0.8</red>
+                    <green>0.8</green>
+                    <blue>0.0</blue>
+                </color>
+            </text>
+            <input>
+                <row>4</row>
+                <col>5</col>
+                <property>fdm/jsbsim/systems/gauges/PHI/program/route[5]/altitude-hold-ft</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </input>
         </group>
     </group>
     

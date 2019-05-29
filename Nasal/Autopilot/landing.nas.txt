@@ -1,0 +1,99 @@
+# http://wiki.flightgear.org/Nasal_library#Positioned_Object_Queries
+# http://wiki.flightgear.org/Nasal_library#findAirportsWithinRange.28.29
+
+var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/airport_select_name", 0, "STRING");
+var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/airport_select_id", 0, "STRING");
+var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/airport_runway_id", 0, "STRING");
+var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/airport_runway_distance", 0, "DOUBLE");
+var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/airport_runway_heading", 0, "DOUBLE");
+
+var airport_select_info = 0.0;
+var airplane_heading_deg = 0.0;
+var runway_select_rwy = 0.0;
+
+var airport_searcher = maketimer(1.0, func() {
+
+    airplane_heading_deg = getprop("/orientation/heading-deg");
+    var airplane = geo.aircraft_position();
+    var apts = findAirportsWithinRange(20);
+    foreach(var apt; apts) {
+        var info = airportinfo(apt.id);
+        setprop("fdm/jsbsim/systems/autopilot/gui/airport_select_id",info.id);
+        setprop("fdm/jsbsim/systems/autopilot/gui/airport_select_name",info.name);
+        
+    }
+
+});
+airport_searcher.start();
+
+
+if (getprop("fdm/jsbsim/systems/autopilot/gui/landing-activate") == 1.0) {
+    
+    
+    
+    var heading_dist_min = 999.0;
+    var runway_select_heading_correct = 0.0;
+    var runway_to_airplane_dist = 0.0;
+    var runway_to_airplane_dist_direct = 0.0;
+    var runway_z = 0.0;
+    foreach(var apt; apts) {
+        print(apt.name, " (", apt.id, ")");
+        var info = airportinfo(apt.id);
+        print("-- Runways of ", info.name, " (", info.id, "): --");
+        foreach(var rwy; keys(info.runways)) {
+            if (info.runways[rwy].length > 1500) {
+                var coord = geo.Coord.new();
+                coord.set_latlon(info.runways[rwy].lat,info.runways[rwy].lon);
+                var heading_correction = info.runways[rwy].heading - airplane.course_to(coord);
+                var heading_dist = math.abs(heading_correction);
+                var heading_correct = info.runways[rwy].heading - heading_correction;
+                if (heading_dist <= heading_dist_min) {
+                    heading_dist_min = heading_dist;
+                    airport_select_info = info;
+                    runway_select_rwy = rwy;
+                    runway_to_airplane_dist = airplane.distance_to(coord) * 0.000621371;
+                    runway_to_airplane_dist_direct = airplane.direct_distance_to(coord) * 0.000621371;
+                    runway_select_heading_correct = info.runways[rwy].heading - heading_correction * 5.0;
+                    runway_z = coord.alt();
+                }
+                print(info.runways[rwy].id, " H: ",
+                math.round(info.runways[rwy].heading)," W: ",
+                math.round(info.runways[rwy].width)," L: ",
+                math.round(info.runways[rwy].length)," d: ",
+                math.round(airplane.distance_to(coord)), " dd: ",
+                math.round(airplane.direct_distance_to(coord)), " ",
+                math.round(coord.course_to(airplane))," ang: ",
+                math.round(math.round(heading_correction)), " ",
+                math.round(math.round(heading_correct)), " ",
+                math.round(airplane_heading_deg - info.runways[rwy].heading)," zr: ",
+                math.round(runway_z)," za: ",
+                math.round(airplane.alt())," zd: ",
+                math.round(airplane.alt() - runway_z)," ");
+            }
+        }
+    }
+    
+    var zdif_ft = (airplane.z() - runway_z) * 3.28084;
+    var zdif_nm = zdif_ft * 0.000189394;
+    var time_impact = zdif_ft / (getprop("fdm/jsbsim/systems/autopilot/v-up-fpm-lag") / 60.0);
+    var distance_to_impact = (getprop("fdm/jsbsim/systems/autopilot/speed-true-on-air") / 3600.0) * time_impact;
+    var slope = math.asin(zdif_nm / runway_to_airplane_dist_direct) * R2D;
+    var vertical_speed_calculate = getprop("fdm/jsbsim/systems/autopilot/speed-true-on-air") * math.sin(slope * D2R);
+    print("* ", airport_select_info.id," ",
+    math.round(airport_select_info.runways[runway_select_rwy].id)," ",
+    math.round(runway_select_heading_correct)," rw dist: ",
+    math.round(runway_to_airplane_dist)," rw dist dir: ",
+    math.round(runway_to_airplane_dist_direct)," slope: ",
+    math.round(slope),"° dis imp: ",
+    math.round(distance_to_impact), " t-imp: ",
+    math.round(time_impact), " vsc: ",
+    math.round(vertical_speed_calculate));
+    
+    setprop("fdm/jsbsim/systems/autopilot/gui/true-heading-deg",runway_select_heading_correct);
+
+    setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed-fpm",-vertical_speed_calculate);
+
+}
+
+
+
