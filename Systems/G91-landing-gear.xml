@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+
+<!-- G91 Landing gear Control System -->
+
+<!-- 
+Original work Copyright (c) 2018 Adriano Bassignana (abassign)
+    Create the program to centralization of the braking system
+-->
+
+<system name="G91 Landing Gear">
+    
+    <property value="0.0">systems/landing-gear/gear-down-command</property>
+    <property value="0.0">systems/landing-gear/gear-down-command-filtered</property>
+    <property value="0.0">systems/landing-gear/gear-down-status</property>
+    <property value="1200.0">systems/landing-gear/hydraulic-min-psi</property>
+    <property value="0.0">systems/landing-gear/allarm-active</property>
+    <property value="0.0">systems/landing-gear/on-ground</property>
+    
+    
+    <channel name="Landing gear activate" execrate="16">
+        
+        <switch name="systems/landing-gear/gear-down-command-filtered">
+            <default value="0"/>
+            <test logic="AND" value="1">
+                systems/landing-gear/gear-down-command GE 0.5
+                systems/hydraulics/flight-system-psi GE systems/landing-gear/hydraulic-min-psi
+            </test>
+            <test logic="AND" value="-1">
+                systems/landing-gear/gear-down-command LE -0.5
+                systems/hydraulics/flight-system-psi GE systems/landing-gear/hydraulic-min-psi
+            </test>
+        </switch>
+        
+        <washout_filter name="systems/landing-gear/gear-down-command-wa">
+            <input>systems/landing-gear/gear-down-command-filtered</input>
+            <c1>3.0</c1>
+        </washout_filter>
+        
+        <switch name="systems/landing-gear/gear-down-status">
+            <default value="/controls/gear/gear-down"/>
+            <test logic="AND" value="1">
+                systems/landing-gear/on-ground == 1
+            </test>
+            <test logic="AND" value="/controls/gear/gear-down">
+                systems/landing-gear/gear-down-command-wa GT -0.1
+                systems/landing-gear/gear-down-command-wa LT 0.1
+            </test>
+            <test logic="AND" value="1">
+                systems/landing-gear/gear-down-command-wa GT 0.1
+            </test>
+            <test logic="AND" value="0">
+                systems/landing-gear/gear-down-command-wa LT -0.1
+            </test>
+            <output>/controls/gear/gear-down</output>
+        </switch>
+        
+    </channel>
+    
+    
+    <channel name="Landing gear allarm" execrate="16">
+        
+        <switch name="systems/landing-gear/allarm-active">
+            <default value="0"/>
+            <test logic="AND" value="1">
+                systems/landing-gear/gear-down-status == 0
+                /controls/engines/engine/throttle LE 0.3
+            </test>
+        </switch>
+        
+    </channel>
+    
+    
+    <channel name="Landing gear on ground" execrate="32">
+        
+        <switch name="systems/landing-gear/on-ground-set">
+            <default value="0"/>
+            <test logic="AND" value="1">
+                systems/landing-gear/gear-down-status == 1
+                gear/unit[0]/compression-ft GT 0.01
+                gear/unit[1]/compression-ft GT 0.01
+                gear/unit[2]/compression-ft GT 0.01
+            </test>
+        </switch>
+        
+        <lag_filter name="systems/landing-gear/on-ground-lag">
+            <input>systems/landing-gear/on-ground-set</input>
+            <c1>0.5</c1>
+        </lag_filter>
+        
+        <switch name="systems/landing-gear/on-ground">
+            <default value="0"/>
+            <test logic="AND" value="1">
+                systems/landing-gear/on-ground-lag GT 0.1
+            </test>
+        </switch>
+        
+    </channel>
+    
+</system>

@@ -148,54 +148,6 @@ Modify the program for gear[0] pivoting
 
     </channel>
     
-<!--
-        <channel name="Nose Wheel Steering">
-        <switch name="position/aircraft-on-ground">
-            <description>Aircraft on ground</description>
-            <default value="0"/>
-            <test value="1" logic="OR">
-                gear/unit[0]/WOW ne 0
-                gear/unit[1]/WOW ne 0
-                gear/unit[2]/WOW ne 0
-            </test>
-        </switch>
-        <switch name="systems/NWS/engaged">
-            <default value="0"/>
-            <test value="1">
-                gear/unit[0]/wheel-speed-fps le 135
-                position/aircraft-on-ground ne 0
-            </test>
-            <output>systems/NWS/engaged</output>
-        </switch>
-
-        <scheduled_gain name="systems/gears/gear[0]/scheduled-steer-pos-deg">
-            <input>fcs/steer-cmd-norm</input>
-            <table>
-                <independentVar lookup="row">gear/unit[0]/wheel-speed-fps</independentVar>
-                <independentVar lookup="column">systems/NWS/engaged</independentVar>
-                <tableData>
-                    0   1
-                    0   0   40
-                    80  0   10
-                    150 0   0
-                </tableData>
-            </table>
-            <output>fcs/steer-pos-deg</output>
-            <clipto>
-                <min>-40.0</min>
-                <max>40.0</max>
-            </clipto>
-        </scheduled_gain>
-
-        <lag_filter name="systems/gears/gear[0]/slip-angle-deg-lag">
-            <input>fcs/steer-pos-deg</input>
-            <c1>2.0</c1>
-        </lag_filter>
-
-    </channel>
-    
-    -->
-    
     
     <channel name="Landing Gear control" execrate="8">
         

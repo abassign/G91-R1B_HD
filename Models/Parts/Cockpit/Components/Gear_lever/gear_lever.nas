@@ -9,8 +9,9 @@ var landingGearFunctions = maketimer(0.1, func() {
     var speedHandle = 0.02;
     var lenghtHarm = 0.15;
     var offsetLight = 0.06;
-    var landingGearHandle_deg = props.globals.getNode("fdm/jsbsim/gear/gear-pos-norm",1).getValue();
-    var direction = props.globals.getNode("fdm/jsbsim/gear/gear-direction",1).getValue();
+    var landingGearHandle_deg = getprop("fdm/jsbsim/gear/gear-pos-norm");
+    var direction = getprop("fdm/jsbsim/gear/gear-direction",1);
+    var isAllarm = getprop("fdm/jsbsim/systems/landing-gear/allarm-active",1);
     var lightOn = 0;
 
     if (direction == 1) {
@@ -23,7 +24,7 @@ var landingGearFunctions = maketimer(0.1, func() {
         setprop("sim/G91/landingGear/landingGearHandle_deg_Z", offsetLight - math.sin(landingGearHandle_deg) * lenghtHarm);
     }
     
-    if (lightOn == 1) {
+    if (lightOn == 1 or isAllarm == 1) {
         var redLightBlowIntensity = props.globals.getNode("sim/G91/light/lg_base",1).getValue();
         redLightBlowIntensity = redLightBlowIntensity * 1.2;
         setprop("sim/G91/landingGear/landingGearHandle_light_blow", redLightBlowIntensity);

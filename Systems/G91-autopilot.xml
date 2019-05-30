@@ -49,6 +49,7 @@ No Overshoot
     <property value="0.0">systems/autopilot/gui/speed-set-mach</property>
     
     <property value="0.0">systems/autopilot/gui/landing-activate</property>
+    <property value="0.1">systems/autopilot/gui/landing-rwy-offset</property>
     
     <property value="0.0">systems/autopilot/wing-leveler-active</property>
     <property value="0.0">systems/autopilot/wing-leveler-ap-on-off</property>
@@ -148,13 +149,13 @@ No Overshoot
     
     <property value="0.0">systems/autopilot/speed-true-on-air</property>
     <property value="0.0">systems/autopilot/speed-cas-on-air</property>
+    <property value="0.0">systems/autopilot/speed-cas-on-air-lag</property>
     <property value="0.0">systems/autopilot/speed-mach-on-air</property>
     <property value="0.0">systems/autopilot/speed-true-on-air-sec</property>
     <property value="0.0">systems/autopilot/speed-value</property>
     <property value="0.0">systems/autopilot/speed-throttle-active</property>
     <property value="0.05">systems/autopilot/speed-throttle-input-gain</property>
     <property value="0.01">systems/autopilot/speed-pitch-input-gain</property>
-    <property value="0.0">systems/autopilot/speed-throttle-automatic</property>
     <property value="0.0">systems/autopilot/speed-reset-integrator</property>
     <!-- Possen Integral Rule Ku: 1.4 Tu: 50.0 -->
     <property value="0.98">systems/autopilot/speed-kp</property>
@@ -1052,6 +1053,11 @@ No Overshoot
             </function>
         </fcs_function>
         
+        <lag_filter name="systems/autopilot/speed-cas-on-air-lag">
+            <input>systems/autopilot/speed-cas-on-air</input>
+            <c1>0.2</c1>
+        </lag_filter>
+        
         <fcs_function name="systems/autopilot/speed-mach-on-air">
             <function>
                 <ifthen>
@@ -1188,6 +1194,9 @@ No Overshoot
         
         <switch name="systems/autopilot/speed-pid-output">
             <default value="/controls/engines/engine/throttle"/>
+            <test logic="AND" value="/controls/engines/engine/throttle">
+                systems/autopilot/speed-throttle-active == 0
+            </test>
             <test logic="AND" value="systems/autopilot/speed-throttle-pid-gain-sum">
                 systems/autopilot/speed-throttle-active == 1
                 systems/autopilot/speed-throttle-pid-gain-sum GE 0.2
@@ -1200,9 +1209,6 @@ No Overshoot
             <test logic="AND" value="0.2">
                 systems/autopilot/speed-throttle-active == 1
                 systems/autopilot/speed-throttle-pid-gain-sum LT 0.2
-            </test>
-            <test logic="AND" value="systems/autopilot/speed-throttle-automatic">
-                systems/autopilot/speed-throttle-active == 0
             </test>
             <output>/controls/engines/engine/throttle</output>
         </switch>
@@ -1312,17 +1318,17 @@ No Overshoot
             <default value="/controls/flight/flaps"/>
             <test logic="AND" value="1">
                 systems/autopilot/speed-automatic-flap-active == 1
-                systems/autopilot/speed-cas-lag LT 160.0
+                systems/autopilot/speed-cas-lag LT 170.0
                 systems/autopilot/phase-landing == 1
             </test>
             <test logic="AND" value="0.33">
                 systems/autopilot/speed-automatic-flap-active == 1
-                systems/autopilot/speed-cas-lag LT 180.0
+                systems/autopilot/speed-cas-lag LT 185.0
                 systems/autopilot/phase-landing == 1
             </test>
             <test logic="AND" value="0">
                 <test logic="OR">
-                    systems/autopilot/speed-cas-lag GE 180.0
+                    systems/autopilot/speed-cas-lag GE 185.0
                     systems/autopilot/phase-landing == 0
                 </test>
             </test>
@@ -1365,6 +1371,25 @@ No Overshoot
         </switch>
 
     </channel>
-
     
+    
+    <channel name="automatic gear" execrate="32">
+        
+        <switch name="systems/landing-gear/gear-down-command">
+            <default value="systems/landing-gear/gear-down-command"/>
+            <test logic="AND" value="1.0">
+                systems/autopilot/speed-automatic-gear-active == 1.0
+                systems/landing-gear/allarm-active == 1.0
+                systems/landing-gear/gear-down-status == 0.0
+            </test>
+            <test logic="AND" value="-1.0">
+                systems/autopilot/speed-automatic-gear-active == 1.0
+                systems/autopilot/speed-cas-on-air-lag GT 185
+                systems/landing-gear/gear-down-status == 1.0
+            </test>
+        </switch>
+        
+    </channel>
+    
+
 </system>
