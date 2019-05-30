@@ -1384,7 +1384,7 @@ No Overshoot
             </test>
             <test logic="AND" value="-1.0">
                 systems/autopilot/speed-automatic-gear-active == 1.0
-                systems/autopilot/speed-cas-on-air-lag GT 185
+                systems/autopilot/speed-cas-on-air-lag GT 180
                 systems/landing-gear/gear-down-status == 1.0
             </test>
         </switch>

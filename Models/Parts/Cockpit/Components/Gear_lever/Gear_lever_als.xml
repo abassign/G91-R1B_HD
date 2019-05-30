@@ -226,7 +226,7 @@
             <interval-sec>0.2</interval-sec>
             <binding>
                 <command>property-toggle</command>
-                <property>fdm/jsbsim/systems/landing-gear/gear-down-command</property>
+                <property>/controls/gear/gear-down</property>
                 <step>1</step>
                 <min>0</min>
                 <max>1</max>
