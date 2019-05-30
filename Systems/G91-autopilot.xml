@@ -49,7 +49,7 @@ No Overshoot
     <property value="0.0">systems/autopilot/gui/speed-set-mach</property>
     
     <property value="0.0">systems/autopilot/gui/landing-activate</property>
-    <property value="0.1">systems/autopilot/gui/landing-rwy-offset</property>
+    <property value="-0.1">systems/autopilot/gui/landing-rwy-offset</property>
     
     <property value="0.0">systems/autopilot/wing-leveler-active</property>
     <property value="0.0">systems/autopilot/wing-leveler-ap-on-off</property>
@@ -154,6 +154,7 @@ No Overshoot
     <property value="0.0">systems/autopilot/speed-true-on-air-sec</property>
     <property value="0.0">systems/autopilot/speed-value</property>
     <property value="0.0">systems/autopilot/speed-throttle-active</property>
+    <property value="-1.0">systems/autopilot/speed-throttle-imposed</property>
     <property value="0.05">systems/autopilot/speed-throttle-input-gain</property>
     <property value="0.01">systems/autopilot/speed-pitch-input-gain</property>
     <property value="0.0">systems/autopilot/speed-reset-integrator</property>
@@ -189,7 +190,7 @@ No Overshoot
     <property value="0.0">systems/autopilot/left-steer-brake</property>
     <property value="0.0">systems/autopilot/right-steer-brake</property>
     <property value="0.0">systems/autopilot/steer-brake</property>
-    <property value="-220.0">systems/autopilot/steer-brake-min-speed</property>
+    <property value="-250.0">systems/autopilot/steer-brake-min-speed</property>
     
     
     <channel name="Autopilot GUI Interface" execrate="32">
@@ -1194,6 +1195,9 @@ No Overshoot
         
         <switch name="systems/autopilot/speed-pid-output">
             <default value="/controls/engines/engine/throttle"/>
+            <test logic="AND" value="systems/autopilot/speed-throttle-imposed">
+                systems/autopilot/speed-throttle-imposed GE 0.0
+            </test>
             <test logic="AND" value="/controls/engines/engine/throttle">
                 systems/autopilot/speed-throttle-active == 0
             </test>
@@ -1206,11 +1210,18 @@ No Overshoot
                 systems/autopilot/speed-throttle-active == 1
                 systems/autopilot/speed-throttle-pid-gain-sum GT 0.94
             </test>
-            <test logic="AND" value="0.2">
+            <test logic="AND" value="0.30">
                 systems/autopilot/speed-throttle-active == 1
                 systems/autopilot/speed-throttle-pid-gain-sum LT 0.2
             </test>
             <output>/controls/engines/engine/throttle</output>
+        </switch>
+        
+        <switch name="systems/autopilot/speed-throttle-imposed">
+            <default value="systems/autopilot/speed-throttle-imposed"/>
+            <test logic="AND" value="-1">
+                systems/autopilot/speed-throttle-imposed GE 0.0
+            </test>
         </switch>
         
         <fcs_function name="systems/autopilot/speed-pitch-pid-gain-sum">
@@ -1327,6 +1338,9 @@ No Overshoot
                 systems/autopilot/phase-landing == 1
             </test>
             <test logic="AND" value="0">
+                <test logic="AND">
+                    systems/autopilot/speed-automatic-flap-active == 1
+                </test>
                 <test logic="OR">
                     systems/autopilot/speed-cas-lag GE 185.0
                     systems/autopilot/phase-landing == 0
@@ -1343,7 +1357,7 @@ No Overshoot
         <fcs_function name="systems/autopilot/steer-brake-modulated">
             <function>
                 <sum>
-                    <v>1.0</v>
+                    <v>1.2</v>
                     <quotient>
                         <p>velocities/vtrue-kts</p>
                         <p>systems/autopilot/steer-brake-min-speed</p>

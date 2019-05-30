@@ -113,7 +113,10 @@
         
     </axis>
     
+    <!--
     <property value="0.0313">aero/constant/Drag_speedbrake-coefficient</property>
+    -->
+    <property value="0.02">aero/constant/Drag_speedbrake-coefficient</property>
     
     <axis name="DRAG">
         <function name="aero/force/Drag_basic">

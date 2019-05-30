@@ -30,10 +30,10 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
             </test>
         </switch>
         
-        <washout_filter name="systems/landing-gear/gear-down-command-wa">
+        <lag_filter name="systems/landing-gear/gear-down-command-lag">
             <input>systems/landing-gear/gear-down-command-filtered</input>
-            <c1>3.0</c1>
-        </washout_filter>
+            <c1>0.3</c1>
+        </lag_filter>
         
         <switch name="systems/landing-gear/gear-down-status">
             <default value="/controls/gear/gear-down"/>
@@ -41,14 +41,14 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
                 systems/landing-gear/on-ground == 1
             </test>
             <test logic="AND" value="/controls/gear/gear-down">
-                systems/landing-gear/gear-down-command-wa GT -0.1
-                systems/landing-gear/gear-down-command-wa LT 0.1
+                systems/landing-gear/gear-down-command-lag GT -0.9
+                systems/landing-gear/gear-down-command-lag LT 0.9
             </test>
             <test logic="AND" value="1">
-                systems/landing-gear/gear-down-command-wa GT 0.1
+                systems/landing-gear/gear-down-command-lag GE 0.9
             </test>
             <test logic="AND" value="0">
-                systems/landing-gear/gear-down-command-wa LT -0.1
+                systems/landing-gear/gear-down-command-lag LE -0.9
             </test>
             <output>/controls/gear/gear-down</output>
         </switch>
@@ -77,8 +77,7 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
                 systems/landing-gear/allarm-active-lag GT 0.9
             </test>
         </switch>
-        
-        
+
     </channel>
     
     
