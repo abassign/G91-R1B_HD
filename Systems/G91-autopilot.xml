@@ -48,9 +48,6 @@ No Overshoot
     <property value="1.0">systems/autopilot/gui/speed-set-cas</property>
     <property value="0.0">systems/autopilot/gui/speed-set-mach</property>
     
-    <property value="0.0">systems/autopilot/gui/landing-activate</property>
-    <property value="-0.1">systems/autopilot/gui/landing-rwy-offset</property>
-    
     <property value="0.0">systems/autopilot/wing-leveler-active</property>
     <property value="0.0">systems/autopilot/wing-leveler-ap-on-off</property>
     <property value="0.5">systems/autopilot/wing-leveler-lag-coefficient</property>
@@ -190,7 +187,10 @@ No Overshoot
     <property value="0.0">systems/autopilot/left-steer-brake</property>
     <property value="0.0">systems/autopilot/right-steer-brake</property>
     <property value="0.0">systems/autopilot/steer-brake</property>
-    <property value="-250.0">systems/autopilot/steer-brake-min-speed</property>
+    <property value="250.0">systems/autopilot/steer-brake-min-speed</property>
+    
+    <property value="0.0">systems/autopilot/gui/landing-activate</property>
+    <property value="0.1">systems/autopilot/gui/landing-rwy-offset</property>
     
     
     <channel name="Autopilot GUI Interface" execrate="32">
@@ -1356,13 +1356,12 @@ No Overshoot
         
         <fcs_function name="systems/autopilot/steer-brake-modulated">
             <function>
-                <sum>
-                    <v>1.2</v>
+                <cos>
                     <quotient>
                         <p>velocities/vtrue-kts</p>
                         <p>systems/autopilot/steer-brake-min-speed</p>
                     </quotient>
-                </sum>
+                </cos>
             </function>
             <clipto>
                 <min>0</min>
@@ -1373,14 +1372,14 @@ No Overshoot
         <switch name="systems/autopilot/left-steer-brake">
             <default value="0"/>
             <test logic="AND" value="systems/autopilot/steer-brake-modulated">
-                systems/autopilot/steer-brake == 1.0
+                systems/autopilot/steer-brake >= 1.0
             </test>
         </switch>
         
         <switch name="systems/autopilot/right-steer-brake">
             <default value="0"/>
             <test logic="AND" value="systems/autopilot/steer-brake-modulated">
-                systems/autopilot/steer-brake == 1.0
+                systems/autopilot/steer-brake >= 1.0
             </test>
         </switch>
 

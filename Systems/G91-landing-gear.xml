@@ -83,25 +83,23 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
     
     <channel name="Landing gear on ground" execrate="32">
         
-        <switch name="systems/landing-gear/on-ground-set">
-            <default value="0"/>
-            <test logic="AND" value="1">
-                systems/landing-gear/gear-down-status == 1
-                gear/unit[0]/compression-ft GT 0.01
-                gear/unit[1]/compression-ft GT 0.01
-                gear/unit[2]/compression-ft GT 0.01
-            </test>
-        </switch>
-        
-        <lag_filter name="systems/landing-gear/on-ground-lag">
-            <input>systems/landing-gear/on-ground-set</input>
-            <c1>0.5</c1>
-        </lag_filter>
-        
         <switch name="systems/landing-gear/on-ground">
             <default value="0"/>
+            <test logic="AND" value="2">
+                systems/landing-gear/gear-down-status == 1
+                gear/unit[0]/compression-ft GT 0.001
+                gear/unit[1]/compression-ft GT 0.001
+                gear/unit[2]/compression-ft GT 0.001
+            </test>
             <test logic="AND" value="1">
-                systems/landing-gear/on-ground-lag GT 0.1
+                <test logic="AND">
+                    systems/landing-gear/gear-down-status == 1
+                </test>
+                <test logic="OR">
+                    gear/unit[0]/compression-ft GT 0.001
+                    gear/unit[1]/compression-ft GT 0.001
+                    gear/unit[2]/compression-ft GT 0.001
+                </test>
             </test>
         </switch>
         
