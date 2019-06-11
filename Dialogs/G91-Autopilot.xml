@@ -6,7 +6,7 @@
     <layout>vbox</layout>
     <default-padding>8</default-padding>
     <modal>false</modal>
-    <width>900</width>
+    <width>1024</width>
     
     <!-- title bar -->
     <group>
@@ -126,6 +126,20 @@
                     </color>
                 </text>
                 <text>
+                    <row>1</row>
+                    <col>5</col>
+                    <label>99999</label>
+                    <live>true</live>
+                    <halign>right</halign>
+                    <format>R %2.1f (nm)</format>
+                    <property>fdm/jsbsim/systems/autopilot/turn-radius-nm-lag</property>
+                    <color>
+                        <red>0.9</red>
+                        <green>0.9</green>
+                        <blue>0.0</blue>
+                    </color>
+                </text>
+                <text>
                     <label>True heading</label>
                     <halign>right</halign>
                     <row>2</row>
@@ -172,7 +186,7 @@
                 </text>
                 <text>
                     <row>2</row>
-                    <col>4</col>
+                    <col>5</col>
                     <label>99999</label>
                     <live>true</live>
                     <halign>right</halign>

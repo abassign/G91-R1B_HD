@@ -35,11 +35,11 @@ G91_Params.xml
             <ID type="int">1</ID>
             <name_short type="string">PAN R1</name_short>
             <name_long type="string">PAN - National Aerobatic with Pinocchio nose (R1)</name_long>
-            <luminosity type="float">-0.18</luminosity>
-            <reflective type="float">-0.57</reflective>
+            <luminosity type="float">0.20</luminosity>
+            <reflective type="float">-0.25</reflective>
             <PANR1 type="float">1.0</PANR1>
-            <diffuse type="float">0.48</diffuse>
-            <specular type="float">0.36</specular>
+            <diffuse type="float">0.01</diffuse>
+            <specular type="float">0.65</specular>
             <dirty type="float">0.0</dirty>
             <noise>sim/G91/liveries/active/noise</noise>
             <livery_001 type="string">Aircraft/G91-R1B_HD/Models/Liveries/pan_1_001.png</livery_001>

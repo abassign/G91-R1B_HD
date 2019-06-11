@@ -8,7 +8,7 @@
         <z-m>-0.45</z-m>
         <pitch-deg>0.0</pitch-deg>
     </offsets>
-
+    
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Cockpit.xml</path>
         <condition>
@@ -28,7 +28,6 @@
             </equals>
         </condition>
     </model>
-
 
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/LandingGearFrontal/LandingGearFrontal.xml</path>
@@ -148,7 +147,7 @@
     </model>
 
     <model>
-        <path>Aircraft/G91-R1B_HD/Models/Accessories/Accessories.xml</path>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Accessories/Accessories.xml</path>
         <condition>
             <equals>
                 <property>sim/G91/models/active/accessories</property>

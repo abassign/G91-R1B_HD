@@ -150,7 +150,7 @@
     </model>
 
     <model>
-        <path>Aircraft/G91-R1B_HD/Models/Accessories/Accessories.xml</path>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Accessories/Accessories.xml</path>
         <condition>
             <equals>
                 <property>sim/G91/models/active/accessories</property>

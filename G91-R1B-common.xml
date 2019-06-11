@@ -49,8 +49,10 @@
                 <float n="12" alias="/gear/gear[1]/rollspeed-ms"/>
                 <float n="13" alias="/gear/gear[2]/rollspeed-ms"/>
                 <float n="14" alias="/controls/engines/engine[0]/throttle"/>
-                <int n="10500" alias="/sim/G91/liveries/multiplay/ID"/>
-                <int n="10501" alias="/sim/G91/liveries/multiplay/resolution"/>
+                <!-- MP for models parts -->
+                <!--
+                <int n="0" alias="/sim/G91/models/active/cockpit"/>
+                -->
             </generic>
         </multiplay>
         
@@ -164,7 +166,6 @@
     </controls>
     
     <nasal>
-        
         <general>
             <!-- Generic -->
             <file>Aircraft/G91-R1B_HD/Nasal/Ambient/ambient_data.nas</file>
@@ -200,6 +201,12 @@
         <tyresmoke>
             <file>Aircraft/G91-R1B_HD/Nasal/tyresmoke.nas</file>
         </tyresmoke>
+        <!--
+        <load>
+            var rplayer = cmdarg();
+            rplayer.getNode("sim/G91/models/active/cockpit",1).alias(rplayer.getNode("sim/multiplay/generic/int[0]"));
+        </load>
+        -->
     </nasal>
     
     <!-- Key mappings -->

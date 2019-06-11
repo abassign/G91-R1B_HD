@@ -58,6 +58,7 @@ No Overshoot
     <property value="0.5">systems/autopilot/true-heading-lag-coefficient</property>
     <property value="30.0">systems/autopilot/gui/true-heading-max-wing-slope-deg</property>
     <property value="0.5">systems/autopilot/gui/true-heading-max-wing-slope-rad</property>
+    <property value="0.5">systems/autopilot/true-heading-max-wing-slope-correction</property>
     <property value="0.0">systems/autopilot/gui/true-heading-turn-direction</property>
     <property value="0.0">systems/autopilot/true-heading-rad</property>
     <property value="0.0">systems/autopilot/heading-true-deg</property>
@@ -192,10 +193,16 @@ No Overshoot
     <property value="0.0">systems/autopilot/gui/landing-activate</property>
     <property value="0.0">systems/autopilot/gui/landing-rwy-h-offset-nm</property>
     <property value="50.0">systems/autopilot/gui/landing-rwy-v-offset-ft</property>
+    <property value="10.0">systems/autopilot/gui/landing-holding-point-dist-nm</property>
+    <property value="5000.0">systems/autopilot/gui/landing-holding-point-h-ft</property>
     
     <property value="0.0">systems/autopilot/landing-gear-activate-blocked</property>
     <property value="0.0">systems/autopilot/landing-gear-set-close</property>
     <property value="0.0">systems/autopilot/landing-gear-action-close</property>
+    
+    <property value="0.0">systems/autopilot/distance-fp</property>
+    <property value="0.0">systems/autopilot/distance-nm</property>
+    <property value="0.0">systems/autopilot/turn-radius-nm</property>
     
     
     <channel name="Autopilot GUI Interface" execrate="32">
@@ -455,7 +462,7 @@ No Overshoot
                             </product>
                         </atan>
                         <abs><p>systems/autopilot/true-heading-max-wing-slope-rad</p></abs>
-                        <v>0.63637</v>
+                        <p>systems/autopilot/true-heading-max-wing-slope-correction</p>
                     </product>
                     <p>systems/autopilot/true-heading-turn-direction-versus-bias</p>
                 </sum>
@@ -920,6 +927,43 @@ No Overshoot
                 systems/autopilot/vertical-speed-active == 1
             </test>
         </switch>
+        
+    </channel>
+    
+    
+    <channel name="distance calculator">
+        
+        <integrator name="systems/autopilot/distance-fp">
+            <input>velocities/u-aero-fps</input>
+            <c1>1.0</c1>
+        </integrator>
+        
+        <pure_gain name="systems/autopilot/distance-nm">
+            <input>systems/autopilot/distance-fp</input>
+            <gain>0.000189394</gain>
+        </pure_gain>
+        
+        <fcs_function name="systems/autopilot/turn-radius-nm">
+            <function>
+                <ifthen>
+                    <ge><abs><p>velocities/r-aero-rad_sec</p></abs><v>0.01</v></ge>
+                    <product>
+                        <quotient>
+                            <p>velocities/u-aero-fps</p>
+                            <p>velocities/r-aero-rad_sec</p>
+                        </quotient>
+                        <v>0.000189394</v>
+                        <cos><p>systems/autopilot/true-heading-turn-direction-versus-slope-sw</p></cos>
+                    </product>
+                    <v>0.0</v>
+                </ifthen>
+            </function>
+        </fcs_function>
+        
+        <lag_filter name="systems/autopilot/turn-radius-nm-lag">
+            <input>systems/autopilot/turn-radius-nm</input>
+            <c1>1.0</c1>
+        </lag_filter>
         
     </channel>
     
