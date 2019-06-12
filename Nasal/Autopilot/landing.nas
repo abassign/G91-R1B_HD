@@ -432,6 +432,8 @@ var airport_searcher = maketimer(timer_delay, func() {
             setprop("fdm/jsbsim/systems/autopilot/gui/speed-automatic-gear",0.0);
             setprop("fdm/jsbsim/systems/autopilot/landing-gear-activate-blocked",0.0);
             setprop("fdm/jsbsim/systems/autopilot/landing-gear-set-close",0.0);
+            setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed",1000.0);
+            setprop("fdm/jsbsim/systems/autopilot/gui/pitch-hold-deg",6.0);
             if (landing_activate_status == 1) {
                 setprop("fdm/jsbsim/systems/autopilot/gui/airport_landing_status","No airport for landing");
             } else {

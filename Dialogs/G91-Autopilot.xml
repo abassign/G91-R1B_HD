@@ -446,7 +446,7 @@
                         <command>nasal</command>
                         <script><![CDATA[
                             if (getprop("fdm/jsbsim/systems/autopilot/gui/altitude-hold") == 1) {
-                                if (getprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed") == 0 and 
+                                if (getprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed") == 0 or 
                                     getprop("fdm/jsbsim/systems/autopilot/gui/pitch-hold") == 0) {
                                     setprop("fdm/jsbsim/systems/autopilot/gui/pitch-hold",1.0);
                                     if (getprop("fdm/jsbsim/systems/autopilot/gui/pitch-hold-deg") < 6.0) {
