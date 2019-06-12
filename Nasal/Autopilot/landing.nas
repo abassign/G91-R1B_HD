@@ -16,7 +16,7 @@ var airport_select = 0;
 var rwy_select = 0;
 
 var airport_searcher_range = 30.0;
-var airport_searcher_min_range = 12.0;
+var airport_searcher_min_range = 0.0;
 var airport_searcher_max_heading = 45.0;
 var airport_searcher_min_delta_altitude = 3000.0;
 var airport_searcher_max_slope = 15.0;
@@ -27,7 +27,6 @@ var airport_select_info = 0.0;
 var runway_select_rwy = 0.0;
 var runway_alt_m = 0.0;
 var landig_status_id = -1;
-var isHolding_reducing_start_distance = 12.0;
 var isHolding_reducing_delta = 0;
 var isHolding_reducing_heading = 0.0;
 var isHolding_reducing_distance = 0.0;
@@ -82,6 +81,7 @@ setlistener("fdm/jsbsim/systems/autopilot/gui/landing-activate", func {
 var airport_searcher = maketimer(timer_delay, func() {
 
     var slope = 0.0;
+    var slope_select = 0.0;
     
     if (landig_status_id <= 1) {
         var apts = findAirportsWithinRange(airport_searcher_range);
@@ -102,10 +102,11 @@ var airport_searcher = maketimer(timer_delay, func() {
                     if (runway_to_airplane_dist_direct > 0.1) {
                         slope = math.asin((runway_to_airplane_delta_alt_ft * 0.000189394) / runway_to_airplane_dist_direct) * R2D;
                     }
-                    if (heading_dist < airport_searcher_max_heading and heading_dist_min > heading_dist and runway_to_airplane_delta_alt_ft >= airport_searcher_min_delta_altitude and runway_to_airplane_dist > airport_searcher_min_range and slope <= airport_searcher_max_slope) {
+                    if (heading_dist < airport_searcher_max_heading and heading_dist_min > heading_dist and runway_to_airplane_delta_alt_ft >= airport_searcher_min_delta_altitude and runway_to_airplane_dist > airport_searcher_min_range) {
                         heading_dist_min = heading_dist;
                         airport_select = airport_info;
                         rwy_select = rwy;
+                        slope_select = slope;
                     }
                 }
             }
@@ -116,7 +117,7 @@ var airport_searcher = maketimer(timer_delay, func() {
             setprop("fdm/jsbsim/systems/autopilot/gui/airport_runway_id",airport_select.runways[rwy_select].id);
             runway_alt_m = geo.elevation(airport_select.runways[rwy_select].lat, airport_select.runways[rwy_select].lon);
             setprop("fdm/jsbsim/systems/autopilot/gui/airport_runway_distance",runway_to_airplane_dist);
-            setprop("fdm/jsbsim/systems/autopilot/gui/airport_runway_airplane_slope",slope);
+            setprop("fdm/jsbsim/systems/autopilot/gui/airport_runway_airplane_slope",slope_select);
             if (landing_activate_status == 1) {
                 # Find an airport
                 landig_status_id = 2;
@@ -190,7 +191,7 @@ var airport_searcher = maketimer(timer_delay, func() {
             holding_point_to_airplane_dist = airplane.distance_to(holding_point) * 0.000621371;
             holding_point_to_airplane_dist_direct = airplane.direct_distance_to(holding_point) * 0.000621371;
             holding_point_to_airplane_delta_alt_ft = airplane.alt() * 3.28084 - (runway_alt_m * 3.28084 + holding_point_h_ft);
-            if (holding_point_to_airplane_dist > 5.0) {
+            if (holding_point_to_airplane_dist > 1.0) {
                 heading_correct = airplane.course_to(holding_point);
                 setprop("fdm/jsbsim/systems/autopilot/gui/airport_runway_airplane_heading_correct",heading_correct);
                 slope = math.asin((holding_point_to_airplane_delta_alt_ft * 0.000189394) / holding_point_to_airplane_dist_direct) * R2D;
@@ -217,7 +218,7 @@ var airport_searcher = maketimer(timer_delay, func() {
             runway_to_airplane_dist = airplane.distance_to(rwy_coord_start) * 0.000621371 + rwy_offset_h_nm;
             setprop("fdm/jsbsim/systems/autopilot/gui/airport_runway_distance",runway_to_airplane_dist);
             var rwy_point_delta_alt_ft = (airplane.alt() - (runway_alt_m + 914.0)) * 3.28084;
-            if ((runway_to_airplane_dist <= isHolding_reducing_start_distance and rwy_point_delta_alt_ft > 500.0 and slope > 4.5) or isHolding_reducing_delta > 0) {
+            if ((runway_to_airplane_dist <= holding_point_distance_nm and rwy_point_delta_alt_ft > 500.0 and slope > 4.5) or isHolding_reducing_delta > 0) {
                 # Set approch point
                 # Direct landing
                 # 3000 ft - 10 nm slope 3-4°
@@ -283,12 +284,12 @@ var airport_searcher = maketimer(timer_delay, func() {
                     }
                 } else if (isHolding_reducing_delta == 7) {
                     isHolding_reducing_distance_rel = getprop("fdm/jsbsim/systems/autopilot/distance-nm") - isHolding_reducing_distance;
-                    if (isHolding_reducing_distance_rel > 3.0 or runway_to_airplane_dist <= isHolding_reducing_start_distance)  {
+                    if (isHolding_reducing_distance_rel > 3.0 or runway_to_airplane_dist <= holding_point_distance_nm)  {
                         # End holding
                         isHolding_reducing_delta = 0;
                     }
                 }
-            } else if (runway_to_airplane_dist > isHolding_reducing_start_distance) {
+            } else if (runway_to_airplane_dist > holding_point_distance_nm) {
                 heading_correction = (airport_select.runways[rwy_select].heading - airplane.course_to(rwy_coord_start)) * 5.0;
                 heading_correct = airport_select.runways[rwy_select].heading - heading_correction;
                 setprop("fdm/jsbsim/systems/autopilot/gui/airport_runway_airplane_heading_correct",heading_correct);
