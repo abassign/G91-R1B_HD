@@ -96,6 +96,15 @@ No Overshoot
     <property value="20.400">systems/autopilot/pitch-pid-kp</property>
     <property value="0.1594">systems/autopilot/pitch-pid-ki</property>
     <property value="0.00996">systems/autopilot/pitch-pid-kd</property>
+    <!-- Posson Integral Rule Ku: 7.33 Tu: 120 -->
+    <!-- Il probelma va corretto è dovuto al fatto che la gestione dell'angolo di discesa
+    richiede un controllo più efficace del proporzionale, mentre varidotto nella gestione
+    normale. Perciò va corretto questo punto e/o gestita la velocità minima per vitare lo stallo -->
+    <!--
+    <property value="5.131">systems/autopilot/pitch-pid-kp</property>
+    <property value="0.1069">systems/autopilot/pitch-pid-ki</property>
+    <property value="0.00641">systems/autopilot/pitch-pid-kd</property>
+    -->
     <!-- -->
     <property value="3.0">systems/autopilot/pitch-input-error-coefficient</property>
     <property value="-0.5">systems/autopilot/pitch-output-error-coefficient</property>

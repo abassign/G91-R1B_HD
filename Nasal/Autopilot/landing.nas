@@ -206,7 +206,7 @@ var airport_searcher = maketimer(timer_delay, func() {
                 landig_status_id = 2.1;
                 setprop("fdm/jsbsim/systems/autopilot/gui/true-heading-max-wing-slope-deg",45.0);
                 setprop("fdm/jsbsim/systems/autopilot/phase-landing",1.0);
-                setprop("fdm/jsbsim/systems/autopilot/gui/speed-value",220.0);
+                setprop("fdm/jsbsim/systems/autopilot/gui/speed-value",180.0);
                 isHolding_reducing_delta = 0;
             }
         } else if (landig_status_id == 2.1) {
@@ -217,10 +217,10 @@ var airport_searcher = maketimer(timer_delay, func() {
             runway_to_airplane_dist = airplane.distance_to(rwy_coord_start) * 0.000621371 + rwy_offset_h_nm;
             setprop("fdm/jsbsim/systems/autopilot/gui/airport_runway_distance",runway_to_airplane_dist);
             var rwy_point_delta_alt_ft = (airplane.alt() - (runway_alt_m + 914.0)) * 3.28084;
-            if ((runway_to_airplane_dist <= isHolding_reducing_start_distance and rwy_point_delta_alt_ft > 500.0) or isHolding_reducing_delta > 0) {
+            if ((runway_to_airplane_dist <= isHolding_reducing_start_distance and rwy_point_delta_alt_ft > 500.0 and slope > 4.5) or isHolding_reducing_delta > 0) {
                 # Set approch point
                 # Direct landing
-                # 3000 ft - 10 nm slope 3°
+                # 3000 ft - 10 nm slope 3-4°
                 # Is near the airport verify the delta
                 # Is necesary the quote reduction
                 if (isHolding_reducing_delta == 0) {
@@ -234,14 +234,14 @@ var airport_searcher = maketimer(timer_delay, func() {
                     isHolding_reducing_distance = getprop("fdm/jsbsim/systems/autopilot/distance-nm");
                 } else if (isHolding_reducing_delta == 1) {
                     isHolding_reducing_distance_rel = getprop("fdm/jsbsim/systems/autopilot/distance-nm") - isHolding_reducing_distance;
-                    if (isHolding_reducing_distance_rel > 0.5 and math.abs(getprop("fdm/jsbsim/systems/autopilot/turn-radius-nm-lag")) < 0.001) {
+                    if (isHolding_reducing_distance_rel > 0.5 and math.abs(getprop("fdm/jsbsim/systems/autopilot/turn-radius-nm-lag")) < 0.1) {
                         # End turn
                         isHolding_reducing_delta = 2;
                         isHolding_reducing_distance = getprop("fdm/jsbsim/systems/autopilot/distance-nm");
                     }
                 } else if (isHolding_reducing_delta == 2) {
                     isHolding_reducing_distance_rel = getprop("fdm/jsbsim/systems/autopilot/distance-nm") - isHolding_reducing_distance;
-                    if (isHolding_reducing_distance_rel > 1.0)  {
+                    if (isHolding_reducing_distance_rel > 0.2)  {
                         # Turn
                         isHolding_reducing_delta = 3;
                         var isHolding_reducing_heading_clipto = isHolding_reducing_heading + 180.0;
@@ -251,7 +251,7 @@ var airport_searcher = maketimer(timer_delay, func() {
                     }
                 } else if (isHolding_reducing_delta == 3) {
                     isHolding_reducing_distance_rel = getprop("fdm/jsbsim/systems/autopilot/distance-nm") - isHolding_reducing_distance;
-                    if (isHolding_reducing_distance_rel > 0.5 and math.abs(getprop("fdm/jsbsim/systems/autopilot/turn-radius-nm-lag")) < 0.001) {
+                    if (isHolding_reducing_distance_rel > 0.5 and math.abs(getprop("fdm/jsbsim/systems/autopilot/turn-radius-nm-lag")) < 0.1) {
                         # End turn
                         isHolding_reducing_delta = 4;
                         isHolding_reducing_distance = getprop("fdm/jsbsim/systems/autopilot/distance-nm");
@@ -268,14 +268,14 @@ var airport_searcher = maketimer(timer_delay, func() {
                     }
                 } else if (isHolding_reducing_delta == 5) {
                     isHolding_reducing_distance_rel = getprop("fdm/jsbsim/systems/autopilot/distance-nm") - isHolding_reducing_distance;
-                    if (isHolding_reducing_distance_rel > 0.5 and math.abs(getprop("fdm/jsbsim/systems/autopilot/turn-radius-nm-lag")) < 0.001) {
+                    if (isHolding_reducing_distance_rel > 0.5 and math.abs(getprop("fdm/jsbsim/systems/autopilot/turn-radius-nm-lag")) < 0.1) {
                         # End turn
                         isHolding_reducing_delta = 6;
                         isHolding_reducing_distance = getprop("fdm/jsbsim/systems/autopilot/distance-nm");
                     }
                 } else if (isHolding_reducing_delta == 6) {
                     isHolding_reducing_distance_rel = getprop("fdm/jsbsim/systems/autopilot/distance-nm") - isHolding_reducing_distance;
-                    if (isHolding_reducing_distance_rel > 1.0)  {
+                    if (isHolding_reducing_distance_rel > 0.2)  {
                         # Turn
                         isHolding_reducing_delta = 7;
                         setprop("fdm/jsbsim/systems/autopilot/gui/true-heading-deg",math.abs(isHolding_reducing_heading));
@@ -307,7 +307,7 @@ var airport_searcher = maketimer(timer_delay, func() {
                 setprop("fdm/jsbsim/systems/autopilot/landing-gear-activate-blocked",1.0);
                 setprop("controls/flight/flaps",1.0);
             }
-            print(" 2.1 > ",runway_to_airplane_dist," ", holding_point_to_airplane_delta_alt_ft, " ", slope, " ", airplane.course_to(rwy_coord_start), " ",isHolding_reducing_delta," ",isHolding_reducing_heading);
+            print(" 2.1 > ",runway_to_airplane_dist," ", holding_point_to_airplane_delta_alt_ft, " ", slope, " ", airplane.course_to(rwy_coord_start), " ",isHolding_reducing_delta," ",isHolding_reducing_heading, " ",math.abs(getprop("fdm/jsbsim/systems/autopilot/turn-radius-nm-lag"))," ",isHolding_reducing_distance_rel);
         } else if (landig_status_id == 2.2) {
             runway_to_airplane_dist_direct = airplane.direct_distance_to(rwy_coord_start) * 0.000621371 + rwy_offset_h_nm;
             if ((airplane.distance_to(rwy_coord_start) * 0.000621371) > 0.4) {

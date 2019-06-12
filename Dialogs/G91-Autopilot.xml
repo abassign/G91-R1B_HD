@@ -415,20 +415,6 @@
                     </color>
                 </text>
                 <text>
-                    <row>2</row>
-                    <col>4</col>
-                    <label>99999</label>
-                    <halign>left</halign>
-                    <live>true</live>
-                    <format>%2.3f</format>
-                    <property>fdm/jsbsim/systems/autopilot/pitch-ap-autoswitch-norm</property>
-                    <color>
-                        <red>0.0</red>
-                        <green>0.9</green>
-                        <blue>0.9</blue>
-                    </color>
-                </text>
-                <text>
                     <label>Altitude Hold</label>
                     <halign>right</halign>
                     <row>3</row>
@@ -1314,7 +1300,7 @@
                 <live>true</live>
                 <property>fdm/jsbsim/systems/autopilot/gui/pid-tu</property>
                 <min>0.0</min>
-                <max>400</max>
+                <max>1000</max>
                 <step>0.01</step>
                 <binding>
                     <command>dialog-apply</command>
@@ -1499,22 +1485,6 @@
                     <blue>0.0</blue>
                 </color>
             </text>
-            <!--
-            <text>
-                <row>0</row>
-                <col>18</col>
-                <label>99999</label>
-                <halign>left</halign>
-                <live>true</live>
-                <format>%1."Pilot Assistant"f</format>
-                <property>fdm/jsbsim/systems/autopilot/systems/autopilot/descent-ascent-phase</property>
-                <color>
-                    <red>0.0</red>
-                    <green>0.9</green>
-                    <blue>0.9</blue>
-                </color>
-            </text>
-            -->
         </group>
         
         
