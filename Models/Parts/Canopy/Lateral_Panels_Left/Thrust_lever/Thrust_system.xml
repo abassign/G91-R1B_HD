@@ -347,8 +347,8 @@
         <type>rotate</type>
         <object-name>lever</object-name>
         <object-name>lever_rotation_bar</object-name>
-        <property>fdm/jsbsim/propulsion/engine/n1</property>
-        <factor>0.8</factor>
+        <property>fdm/jsbsim/fcs/throttle-pos-norm[0]</property>
+        <factor>80.0</factor>
         <offset-deg>-50</offset-deg>
         <axis>
             <x>0</x>
@@ -365,15 +365,15 @@
     <animation>
         <type>rotate</type>
         <object-name>lever</object-name>
-        <property>fdm/jsbsim/propulsion/engine/n1</property>
+        <property>fdm/jsbsim/fcs/throttle-pos-norm[0]</property>
         <factor>1.0</factor>
         <interpolation>
             <entry><ind>0</ind><dep>-5</dep></entry>
-            <entry><ind>12</ind><dep>-5</dep></entry>
-            <entry><ind>24</ind><dep>7</dep></entry>
-            <entry><ind>49</ind><dep>7</dep></entry>
-            <entry><ind>52</ind><dep>0</dep></entry>
-            <entry><ind>100</ind><dep>0</dep></entry>
+            <entry><ind>0.12</ind><dep>-5</dep></entry>
+            <entry><ind>0.24</ind><dep>7</dep></entry>
+            <entry><ind>0.49</ind><dep>7</dep></entry>
+            <entry><ind>0.52</ind><dep>0</dep></entry>
+            <entry><ind>1</ind><dep>0</dep></entry>
         </interpolation>
         <axis>
             <x>1</x>

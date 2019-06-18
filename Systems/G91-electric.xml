@@ -113,6 +113,8 @@ Description: G91R4 Electric system from "Manuale di pilotaggio (p.56)
     <property value="1">systems/electric/bus[1]/drop-tank-press-on/fuse</property>
     <property value="0.0">systems/electric/bus[1]/drop-tank-press-on/I</property>
     <property value="1">systems/electric/bus[1]/fuel-shut-off/fuse</property>
+    <property value="1">systems/electric/bus[1]/ignition-cartridge-starting-fuse</property>
+    <property value="0.0">systems/electric/bus[1]/high-energy-lighter/I</property>
     <property value="1">systems/electric/bus[2]/featuring-gun/fuse</property>
     <property value="1">systems/electric/bus[2]/doppler/fuse</property>
     <property value="0.0">systems/electric/bus[2]/doppler/I</property>
@@ -192,6 +194,7 @@ Description: G91R4 Electric system from "Manuale di pilotaggio (p.56)
             <input>systems/electric/bus[1]/instrument-panel-emerg-lights/I</input>
             <input>systems/electric/bus[1]/instrument-flood-lights/I</input>
             <input>systems/electric/bus[1]/console-lights/I</input>
+            <input>systems/electric/bus[1]/high-energy-lighter/I</input>
         </summer>
         
         <summer name="systems/electric/bus[2]/I">

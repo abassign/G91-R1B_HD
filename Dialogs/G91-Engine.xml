@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+    
+    <name>Engine_dialog</name>
+    <layout>vbox</layout>
+    <default-padding>7</default-padding>
+    <modal>false</modal>
+    <width>400</width>
+    
+    <!-- title bar -->
+    <group>
+        <layout>hbox</layout>
+        <empty><stretch>true</stretch></empty>
+        <text>
+            <label>Engine operation</label>
+        </text>
+        <empty><stretch>true</stretch></empty>
+        <button>
+            <legend/>
+            <key>Esc</key>
+            <pref-width>16</pref-width>
+            <pref-height>16</pref-height>
+            <border>2</border>
+            <binding>
+                <command>dialog-close</command>
+            </binding>
+        </button>
+    </group>
+    
+    <hrule/>
+    
+    <group>
+        <layout>vbox</layout>
+        <group>
+            <layout>table</layout>
+            <button>
+                <row>0</row>
+                <col>0</col>
+                <legend>Engine start</legend>
+                <halign>fill</halign>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+                <binding>
+                    <command>nasal</command>
+                    <script><![CDATA[
+                        setprop("controls/engines/engine[0]/cutoff", 1);
+                        setprop("controls/engines/engine[0]/starter", 1);
+                        setprop("controls/engines/engine[0]/spoolup", 1);
+                        # setprop("/fdm/jsbsim/propulsion/engine[0]/starter",1.0);
+                        setprop("/fdm/jsbsim/propulsion/engine[0]/n1",20.0);
+                            ]]>
+                    </script>
+                </binding>
+            </button>
+        </group>
+    </group>
+    
+    <hrule/>
+    
+</PropertyList>
+    
+    

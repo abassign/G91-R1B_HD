@@ -9,15 +9,15 @@
         </long-description>
         <author>Massimiliano Cuccarano rendering 3D, Adriano Bassignana FDM JSBSim and historical research, Joshua Davidson Flight Control System and JSBsim</author>
         <status>in_progress</status>
-        <aircraft-version>0.1</aircraft-version>
-        <license>GPL 2+</license>
+        <aircraft-version>0.2</aircraft-version>
+        <license>GPL 3+</license>
         <rating>
-            <FDM type="int">2</FDM>
-            <systems type="int">1</systems>
+            <FDM type="int">3</FDM>
+            <systems type="int">4</systems>
             <model type="int">4</model>
-            <cockpit type="int">3</cockpit>
+            <cockpit type="int">4</cockpit>
         </rating>
-        <minimum-fg-version>2017.3</minimum-fg-version>
+        <minimum-fg-version>2019.1</minimum-fg-version>
         <tags>
             <tag>FIAT</tag>
             <tag>single-engine</tag>
@@ -67,6 +67,16 @@
                             <command>nasal</command>
                             <script>
                                 test_dialog = gui.Dialog.new("sim/gui/dialogs/G91/TestSystemsPlane/dialog","Aircraft/G91-R1B_HD/Dialogs/G91-test.xml");
+                                test_dialog.open();
+                            </script>
+                        </binding>
+                    </item>
+                    <item>
+                        <label>Engine</label>
+                        <binding>
+                            <command>nasal</command>
+                            <script>
+                                test_dialog = gui.Dialog.new("sim/gui/dialogs/G91/Engine/dialog","Aircraft/G91-R1B_HD/Dialogs/G91-Engine.xml");
                                 test_dialog.open();
                             </script>
                         </binding>

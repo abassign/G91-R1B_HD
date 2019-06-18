@@ -2,33 +2,6 @@
     
     <path>Thrust_lever.ac</path>
     
-    <!--
-    <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
-        <object-name>Screew cross top M2</object-name>
-        <object-name>Screew cross top M2.001</object-name>
-        <object-name>Screew cross top M2.002</object-name>
-        <object-name>Screew top </object-name>
-        <object-name>Screew top .001</object-name>
-        <object-name>Screew_d</object-name>
-        <object-name>Thrust_lever_01</object-name>
-        <object-name>Thrust_lever_02</object-name>
-        <object-name>Thrust_lever_03</object-name>
-        <object-name>Thrust_lever_04</object-name>
-        <object-name>push_01</object-name>
-        <object-name>push_01a</object-name>
-        <object-name>push_01b</object-name>
-        <object-name>push_02</object-name>
-        <object-name>push_02a</object-name>
-        <object-name>push_02b</object-name>
-        <object-name>push_03a</object-name>
-        <object-name>push_03b</object-name>
-        <object-name>segnature_push_03a</object-name>
-        <object-name>segnature_push_03b</object-name>
-        <object-name>support_push_03</object-name>
-    </effect>
-    -->
-    
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
         <object-name>Screew cross top M2</object-name>
@@ -168,7 +141,6 @@
     
     <animation> 
         <type>material</type>
-        <object-name>push_01</object-name>
         <object-name>push_02</object-name>
         <object-name>push_03a</object-name>
         <object-name>push_03b</object-name>
@@ -190,6 +162,32 @@
             <blue>0.0</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>push_01</object-name>
+        <diffuse>
+            <red>0.8</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </diffuse>
+        <ambient>
+            <red>0.5</red>
+            <green>0.3</green>
+            <blue>0.3</blue>
+        </ambient>
+        <emission>
+            <red>0.15</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+        <specular>
+            <red>0.8</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
+        </specular>
     </animation>
     
     <animation> 
@@ -253,22 +251,11 @@
     </animation>
     
     <animation>
-        <type>translate</type>
-        <object-name>lever</object-name>
-        <offset-m>0.005</offset-m>
-        <axis>
-            <x>0</x>
-            <y>0</y>
-            <z>1</z>
-        </axis>
-    </animation>
-    
-    <animation>
         <type>rotate</type>
         <object-name>lever</object-name>
         <object-name>lever_rotation_bar</object-name>
-        <property>fdm/jsbsim/propulsion/engine/n1</property>
-        <factor>0.8</factor>
+        <property>fdm/jsbsim/fcs/throttle-pos-norm[0]</property>
+        <factor>80.0</factor>
         <offset-deg>-50</offset-deg>
         <axis>
             <x>0</x>
@@ -285,15 +272,16 @@
     <animation>
         <type>rotate</type>
         <object-name>lever</object-name>
-        <property>fdm/jsbsim/propulsion/engine/n1</property>
+        <object-name>lever_rotation_bar</object-name>
+        <property>fdm/jsbsim/fcs/throttle-pos-norm[0]</property>
         <factor>1.0</factor>
         <interpolation>
             <entry><ind>0</ind><dep>-5</dep></entry>
-            <entry><ind>12</ind><dep>-5</dep></entry>
-            <entry><ind>24</ind><dep>7</dep></entry>
-            <entry><ind>49</ind><dep>7</dep></entry>
-            <entry><ind>52</ind><dep>0</dep></entry>
-            <entry><ind>100</ind><dep>0</dep></entry>
+            <entry><ind>0.12</ind><dep>-5</dep></entry>
+            <entry><ind>0.24</ind><dep>7</dep></entry>
+            <entry><ind>0.49</ind><dep>7</dep></entry>
+            <entry><ind>0.52</ind><dep>0</dep></entry>
+            <entry><ind>1</ind><dep>0</dep></entry>
         </interpolation>
         <axis>
             <x>1</x>
@@ -305,6 +293,31 @@
             <y-m>-0.07</y-m>
             <z-m>0.06</z-m>
         </center>
+    </animation>
+    
+    <animation>
+        <type>pick</type>
+        <object-name>push_01</object-name>
+        <action>
+            <button>0</button>
+            <binding>
+                <command>property-toggle</command>
+                <property>fdm/jsbsim/systems/starter/ignition-on-throttle-togle</property>
+            </binding>
+        </action>
+    </animation>
+    
+    <animation>
+        <type>translate</type>
+        <object-name>push_01</object-name>
+        <property>fdm/jsbsim/systems/starter/ignition-on-throttle-pos</property>
+        <factor>-0.005</factor>
+        <offset-m>0.000</offset-m>
+        <axis>
+            <x>-0.48</x>
+            <y>0.19</y>
+            <z>1.0</z>
+        </axis>
     </animation>
     
 </PropertyList>

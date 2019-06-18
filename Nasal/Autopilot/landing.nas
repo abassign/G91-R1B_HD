@@ -1,25 +1,22 @@
 # http://wiki.flightgear.org/Nasal_library#Positioned_Object_Queries
 # http://wiki.flightgear.org/Nasal_library#findAirportsWithinRange.28.29
 
-var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/airport_select_name", 1, "STRING");
-var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/airport_select_id", 1, "STRING");
-var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/airport_runway_id", 1, "STRING");
-var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/airport_landing_status", 1, "STRING");
-var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/airport_landing_status_id", 1, "INT");
-var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/airport_runway_distance", 1, "DOUBLE");
-var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/airport_runway_delta_altitude", 1, "DOUBLE");
-var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/airport_runway_airplane_heading_correct", 1, "DOUBLE");
-var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/airport_runway_airplane_slope", 1, "DOUBLE");
+var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/airport_select_name", "", "STRING");
+var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/airport_select_id", "", "STRING");
+var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/airport_runway_id", "", "STRING");
+var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/airport_landing_status", "Autolanding inactive", "STRING");
+var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/airport_landing_status_id", 0, "INT");
+var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/airport_runway_distance", 0, "DOUBLE");
+var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/airport_runway_delta_altitude", 0, "DOUBLE");
+var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/airport_runway_airplane_heading_correct", 0, "DOUBLE");
+var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/airport_runway_airplane_slope", 0, "DOUBLE");
 
 var landing_activate_status = 0;
 var airport_select = 0;
 var rwy_select = 0;
 
-var airport_searcher_range = 30.0;
-var airport_searcher_min_range = 0.0;
+var airport_searcher_range = 50.0;
 var airport_searcher_max_heading = 45.0;
-var airport_searcher_min_delta_altitude = 3000.0;
-var airport_searcher_max_slope = 15.0;
 
 var timer_delay = 1.0;
 
@@ -86,27 +83,30 @@ var airport_searcher = maketimer(timer_delay, func() {
     if (landig_status_id <= 1) {
         var apts = findAirportsWithinRange(airport_searcher_range);
         var heading_dist_min = 999.0;
-        foreach(var apt; apts) {
-            var airport_info = airportinfo(apt.id);
-            foreach(var rwy; keys(airport_info.runways)) {
-                # Select the minimum runway lenght
-                if (airport_info.runways[rwy].length > 1500.0) {
-                    var airplane = geo.aircraft_position();
-                    var rwy_coord = geo.Coord.new();
-                    rwy_coord.set_latlon(airport_info.runways[rwy].lat,airport_info.runways[rwy].lon);
-                    var runway_to_airplane_dist = airplane.distance_to(rwy_coord) * 0.000621371;
-                    var runway_to_airplane_delta_alt_ft = (airplane.alt() - airport_info.elevation) * 3.28084;
-                    # Search the rwy with minimal heading
-                    var heading_dist = math.abs(airport_info.runways[rwy].heading - airplane.course_to(rwy_coord));
-                    var runway_to_airplane_dist_direct = airplane.direct_distance_to(rwy_coord) * 0.000621371;
-                    if (runway_to_airplane_dist_direct > 0.1) {
-                        slope = math.asin((runway_to_airplane_delta_alt_ft * 0.000189394) / runway_to_airplane_dist_direct) * R2D;
-                    }
-                    if (heading_dist < airport_searcher_max_heading and heading_dist_min > heading_dist and runway_to_airplane_delta_alt_ft >= airport_searcher_min_delta_altitude and runway_to_airplane_dist > airport_searcher_min_range) {
-                        heading_dist_min = heading_dist;
-                        airport_select = airport_info;
-                        rwy_select = rwy;
-                        slope_select = slope;
+        var airplane = geo.aircraft_position();
+        if (apts != nil and airplane != nil) {
+            foreach(var apt; apts) {
+                var airport_info = airportinfo(apt.id);
+                foreach(var rwy; keys(airport_info.runways)) {
+                    # Select the minimum runway lenght
+                    if (airport_info.runways[rwy].length > 1500.0) {
+                        airplane = geo.aircraft_position();
+                        var rwy_coord = geo.Coord.new();
+                        rwy_coord.set_latlon(airport_info.runways[rwy].lat,airport_info.runways[rwy].lon);
+                        var runway_to_airplane_dist = airplane.distance_to(rwy_coord) * 0.000621371;
+                        var runway_to_airplane_delta_alt_ft = (airplane.alt() - airport_info.elevation) * 3.28084;
+                        # Search the rwy with minimal heading
+                        var heading_dist = math.abs(airport_info.runways[rwy].heading - airplane.course_to(rwy_coord));
+                        var runway_to_airplane_dist_direct = airplane.direct_distance_to(rwy_coord) * 0.000621371;
+                        if (math.abs(runway_to_airplane_dist_direct > 0.1)) {
+                            slope = math.atan((runway_to_airplane_delta_alt_ft * 0.000189394) / runway_to_airplane_dist_direct) * R2D;
+                        }
+                        if (heading_dist < airport_searcher_max_heading and heading_dist_min > heading_dist) {
+                            heading_dist_min = heading_dist;
+                            airport_select = airport_info;
+                            rwy_select = rwy;
+                            slope_select = slope;
+                        }
                     }
                 }
             }

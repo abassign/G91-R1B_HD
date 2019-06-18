@@ -186,8 +186,8 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
         <type>translate</type>
         <object-name>starter_C03</object-name>
         <property>fdm/jsbsim/systems/starter/sw-push-pos</property>
-        <factor>0.004</factor>
-        <offset-m>-0.002</offset-m>
+        <factor>0.006</factor>
+        <offset-m>0.000</offset-m>
         <axis>
             <x>0</x>
             <y>0</y>
