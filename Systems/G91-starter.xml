@@ -7,6 +7,7 @@ Description: G91R2 Canopy automation
 <system name="starter">
     
     <property value="0">systems/starter/start-process-active</property>
+    <property value="0">systems/starter/start-process-terminated</property>
     <property value="0">systems/starter/ignition-on-throttle-togle</property>
     <property value="0">systems/starter/ignition-on-throttle-pos</property>
     <property value="0">systems/starter/ignition-on-throttle-washed</property>
@@ -47,6 +48,15 @@ Description: G91R2 Canopy automation
         
         <!-- starter on ignition -->
         
+        <switch>
+            <output>systems/starter/ignition-on-throttle-togle</output>
+            <default value="systems/starter/ignition-on-throttle-togle"/>
+            <test logic="AND" value = "0">
+                systems/starter/ignition-on-throttle-togle == 1
+                systems/starter/start-process-terminated == 1
+            </test>
+        </switch>
+        
         <washout_filter name="systems/starter/ignition-on-throttle-washed">
             <input>systems/starter/ignition-on-throttle-togle</input>
             <c1>1.0</c1>
@@ -64,6 +74,19 @@ Description: G91R2 Canopy automation
             <input>systems/starter/ignition-on-throttle-norm</input>
             <c1>4.0</c1>
         </lag_filter>
+        
+        <pure_gain name="systems/starter/ignition-set-throttle-pos">
+            <input>systems/starter/ignition-on-throttle-pos</input>
+            <gain>0.1</gain>
+        </pure_gain>
+        
+        <switch>
+            <output>/controls/engines/engine[0]/throttle</output>
+            <default value="/controls/engines/engine[0]/throttle"/>
+            <test logic="AND" value = "systems/starter/ignition-set-throttle-pos">
+                systems/starter/ignition-on-throttle-norm == 1
+            </test>
+        </switch>
         
         <switch name="systems/starter/high-energy-lighter-on">
             <default value="0"/>
@@ -160,14 +183,14 @@ Description: G91R2 Canopy automation
         
         <lag_filter name="systems/starter/sw-push-rele-deleyed">
             <input>systems/starter/sw-push-trigger-rele</input>
-            <c1>0.03</c1> <!-- 8 secondi aumentare! -->
+            <c1>0.01</c1> <!-- 8 secondi aumentare! -->
         </lag_filter>
         
         <switch name="systems/starter/sw-push-rele-deleyed-on">
             <default value="0"/>
             <test logic="AND" value="1">
                 systems/starter/sw-push-rele-deleyed LT 0.9
-                systems/starter/sw-push-rele-deleyed GT 0.008
+                systems/starter/sw-push-rele-deleyed GT 0.001
             </test>
         </switch>
         
@@ -188,16 +211,23 @@ Description: G91R2 Canopy automation
                 systems/starter/reset-cartridge-washed LT -0.5
             </test>
             <test logic="AND" value="1">
-                systems/starter/sw-push-trigger GT 0.8
+                systems/starter/sw-push-trigger GT 0.5
                 systems/starter/sw-push-rele-deleyed-on == 0
                 systems/starter/sw-push-rele-deleyed-cartridge == 0
                 systems/starter/sw-push-rele-deleyed-cartridge-washed GT -0.5
                 systems/starter/sw-push-rele-deleyed-cartridge-washed LT 0.5
             </test>
             <test logic="AND" value="2">
-                systems/starter/sw-push-trigger GT 0.8
+                systems/starter/sw-push-trigger GT 0.5
                 systems/starter/sw-push-rele-deleyed-on == 0
                 systems/starter/sw-push-rele-deleyed-cartridge == 1
+                systems/starter/sw-push-rele-deleyed-cartridge-washed GT -0.5
+                systems/starter/sw-push-rele-deleyed-cartridge-washed LT 0.5
+            </test>
+            <test logic="AND" value="9">
+                systems/starter/sw-push-trigger GT 0.5
+                systems/starter/sw-push-rele-deleyed-on == 0
+                systems/starter/sw-push-rele-deleyed-cartridge == 2
                 systems/starter/sw-push-rele-deleyed-cartridge-washed GT -0.5
                 systems/starter/sw-push-rele-deleyed-cartridge-washed LT 0.5
             </test>
@@ -210,44 +240,83 @@ Description: G91R2 Canopy automation
         -->
 
         <switch name="systems/starter/start-process-active">
-            <default value="0"/>
+            <default value="systems/starter/start-process-active"/>
             <test logic="AND" value="1">
-                systems/starter/sw-pushed == 1
+                <test logic="AND">
+                    systems/starter/sw-pushed == 1
+                    systems/starter/sw-push-rele-deleyed-on == 1
+                </test>
+                <test logic="OR">
+                    systems/starter/sw-push-rele-deleyed-cartridge == 1
+                    systems/starter/sw-push-rele-deleyed-cartridge == 2
+                </test>
+            </test>
+            <test logic="AND" value="0">
+                systems/starter/sw-push-rele-deleyed-on == 0
             </test>
         </switch>
         
         <switch>
+            <output>propulsion/active_engine</output>
             <default value="propulsion/active_engine"/>
             <test logic="AND" value="0">
                 systems/starter/start-process-active == 1
+                systems/starter/high-energy-lighter-on == 1
             </test>
             <test logic="AND" value="-1">
-                systems/starter/sw-push-pos GT 0.01
-                systems/starter/sw-push-pos LT 0.05
-            </test>
-            <output>propulsion/active_engine</output>
-        </switch>
-        
-        <switch name="propulsion/cutoff_cmd">
-            <default value="propulsion/cutoff_cmd"/>
-            <test logic="AND" value="1">
-                systems/starter/start-process-active == 1
-                propulsion/engine[0]/n1 LT 15.0
+                systems/starter/start-process-active == 0
+                propulsion/active_engine == 0
             </test>
         </switch>
         
-        <switch name="propulsion/starter_cmd">
+        <switch>
+            <output>propulsion/starter_cmd</output>
             <default value="propulsion/starter_cmd"/>
+            <test logic="AND" value="0">
+                propulsion/active_engine NE 0
+            </test>
             <test logic="AND" value="1">
-                systems/starter/start-process-active == 1
-                propulsion/engine[0]/n1 LT 15.0
+                propulsion/active_engine EQ 0
             </test>
         </switch>
-
-        <switch name="propulsion/engine[0]/n1">
+        
+        <switch>
+            <output>propulsion/cutoff_cmd</output>
+            <default value="propulsion/cutoff_cmd"/>
+            <test logic="AND" value="0">
+                propulsion/active_engine NE 0
+            </test>
+            <test logic="AND" value="1">
+                propulsion/active_engine EQ 0
+                propulsion/engine[0]/n2 LT 20
+            </test>
+            <test logic="AND" value="0">
+                propulsion/active_engine EQ 0
+                propulsion/engine[0]/n2 GT 20
+            </test>
+        </switch>
+        
+        <switch>
+            <output>propulsion/engine[0]/n1</output>
             <default value="propulsion/engine[0]/n1"/>
             <test logic="AND" value="20">
-                systems/starter/sw-push-pos GT 0.8
+                systems/starter/sw-pushed == 1
+                systems/starter/fuel-booster-pump-on == 1
+                propulsion/active_engine EQ 0
+            </test>
+        </switch>
+        
+        <switch name="systems/starter/start-process-terminated">
+            <default value="systems/starter/start-process-terminated"/>
+            <test logic="AND" value="1">
+                propulsion/active_engine EQ 0
+                propulsion/engine[0]/n2 GT 30
+                systems/starter/start-process-terminated == 0
+                systems/starter/start-process-active == 1
+            </test>
+            <test logic="AND" value="0">
+                systems/starter/start-process-active == 0
+                systems/starter/start-process-terminated == 1
             </test>
         </switch>
         

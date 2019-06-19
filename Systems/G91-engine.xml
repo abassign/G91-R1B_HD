@@ -5,18 +5,6 @@ Description: G91R2 Canopy automation
 -->
 
 <system name="Engine systems">
-    
-    <property>propulsion/engine[0]/starter</property>
-    <!--
-    <property>propulsion/engine[0]/cutoff</property>
-    -->
-    
-    <property value="0">systems/engine/cartridge-one/is-load</property>
-    <property value="0">systems/engine/cartridge-one/is-operative</property>
-    <property value="0">systems/engine/cartridge-one/burned</property>
-    <property value="0">systems/engine/cartridge-two/is-load</property>
-    <property value="0">systems/engine/cartridge-two/is-operative</property>
-    <property value="0">systems/engine/cartridge-two/burned</property>
 
     <property value="10020">systems/engine/RPM-max</property>
     <property value="0.0">systems/engine/air-system-pressure</property>
@@ -25,29 +13,6 @@ Description: G91R2 Canopy automation
     <property value="0.0">systems/engine/fire-allert-on</property>
     <property value="0.0">systems/engine/jet-TC-temperature-hight-fire-on</property>
     
-    <channel name="engine systems starter">
-
-        <switch name="systems/engine/start_cmd">
-            <output>propulsion/starter_cmd</output>
-            <default value="0"/>
-            <test logic="AND" value="propulsion/engine[0]/starter">
-                systems/starter/sw-push-pos GT 0.5
-            </test>
-        </switch>
-
-    </channel>
-
-  <!--
-    <switch name="propulsion/cutoff_cmd_">
-        <output>propulsion/cutoff_cmd</output>
-        <default value="0"/>
-        <test value="propulsion/engine[0]/cutoff">
-            systems/starter/sw-push-pos GT 0.5
-            systems/starter/HE-on == 1
-            propulsion/engine[0]/n2 LT 20.0
-        </test>
-    </switch>
-    -->
     
     <channel name="engine systems RPM" execrate="32">
         
