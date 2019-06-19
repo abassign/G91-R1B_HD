@@ -12,7 +12,7 @@ Description: G91R2 Canopy automation
     <property value="0">systems/starter/ignition-on-throttle-pos</property>
     <property value="0">systems/starter/ignition-on-throttle-washed</property>
     <property value="0">systems/starter/high-energy-lighter-on</property>
-    <property value="0">systems/starter/sw-cover-trigger</property>
+    <property value="0">systems/starter/sw-cover-togle</property>
     <property value="0">systems/starter/sw-cover-pos</property>
     <property value="0">systems/starter/sw-pushed</property>
     <property value="0">systems/starter/sw-push-togle</property>
@@ -107,6 +107,11 @@ Description: G91R2 Canopy automation
         
         <!-- Starter push botton -->
         
+        <washout_filter name="systems/starter/sw-cover-togle-washed">
+            <input>systems/starter/sw-cover-togle</input>
+            <c1>2.0</c1>
+        </washout_filter>
+        
         <lag_filter name="systems/starter/sw-cover-pos">
             <input>systems/starter/sw-cover-togle-on</input>
             <c1>8.0</c1>
@@ -115,14 +120,24 @@ Description: G91R2 Canopy automation
         <switch name="systems/starter/sw-cover-togle-on">
             <default value="systems/starter/sw-cover-togle-on"/>
             <test logic="AND" value = "1">
-                systems/starter/sw-cover-trigger == 1
-                systems/starter/sw-cover-togle-on == 0
-                systems/starter/sw-cover-pos LE 0.1
+                <test logic="OR">
+                    systems/starter/sw-cover-togle-washed GT 0.9
+                    systems/starter/sw-cover-togle-washed LT -0.9
+                </test>
+                <test logic="AND">
+                    systems/starter/sw-cover-togle-on == 0
+                    systems/starter/sw-cover-pos LE 0.1
+                </test>
             </test>
             <test logic="AND" value = "0">
-                systems/starter/sw-cover-trigger == 1
-                systems/starter/sw-cover-togle-on == 1
-                systems/starter/sw-cover-pos GE 0.9
+                <test logic="OR">
+                    systems/starter/sw-cover-togle-washed GT 0.9
+                    systems/starter/sw-cover-togle-washed LT -0.9
+                </test>
+                <test logic="AND">
+                    systems/starter/sw-cover-togle-on == 1
+                    systems/starter/sw-cover-pos GE 0.9
+                </test>
             </test>
             <test logic="OR" value = "0">
                 <test logic="AND">

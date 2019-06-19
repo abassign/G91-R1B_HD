@@ -8,16 +8,6 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
     
     <path>starter_sw.ac</path>
     
-    <!--
-    <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
-        <object-name>starter_C01</object-name>
-        <object-name>starter_C02</object-name>
-        <object-name>starter_C03</object-name>
-        <object-name>starter_C04</object-name>
-    </effect>
-    -->
-    
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
         <object-name>starter_C01</object-name>
@@ -138,17 +128,9 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
             <repeatable>false</repeatable>
             <interval-sec>0.2</interval-sec>
             <binding>
-                <command>property-assign</command>
-                <property>fdm/jsbsim/systems/starter/sw-cover-trigger</property>
-                <value>1</value>
+                <command>property-toggle</command>
+                <property>fdm/jsbsim/systems/starter/sw-cover-togle</property>
             </binding>
-            <mod-up>
-                <binding>
-                    <command>property-assign</command>
-                    <property>fdm/jsbsim/systems/starter/sw-cover-trigger</property>
-                    <value>0</value>
-                </binding>
-            </mod-up>
         </action>
     </animation>
 

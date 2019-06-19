@@ -37,22 +37,12 @@
             <button>
                 <row>0</row>
                 <col>0</col>
-                <legend>Engine start</legend>
+                <legend>Engine auto start</legend>
                 <halign>fill</halign>
                 <live>true</live>
                 <binding>
-                    <command>dialog-apply</command>
-                </binding>
-                <binding>
-                    <command>nasal</command>
-                    <script><![CDATA[
-                        setprop("controls/engines/engine[0]/cutoff", 1);
-                        setprop("controls/engines/engine[0]/starter", 1);
-                        setprop("controls/engines/engine[0]/spoolup", 1);
-                        # setprop("/fdm/jsbsim/propulsion/engine[0]/starter",1.0);
-                        setprop("/fdm/jsbsim/propulsion/engine[0]/n1",20.0);
-                            ]]>
-                    </script>
+                    <command>property-toggle</command>
+                    <property>fdm/jsbsim/systems/starter/gui/autostart-activate</property>
                 </binding>
             </button>
         </group>

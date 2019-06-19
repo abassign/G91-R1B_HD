@@ -72,7 +72,7 @@
                         </binding>
                     </item>
                     <item>
-                        <label>Engine</label>
+                        <label>Autostart and Engine</label>
                         <binding>
                             <command>nasal</command>
                             <script>
@@ -180,6 +180,7 @@
             <!-- Generic -->
             <file>Aircraft/G91-R1B_HD/Nasal/Ambient/ambient_data.nas</file>
             <file>Aircraft/G91-R1B_HD/Nasal/Engine/engine_red_emission.nas</file>
+            <file>Aircraft/G91-R1B_HD/Nasal/Engine/engine_starter.nas</file>
             <file>Aircraft/G91-R1B_HD/Nasal/Reflections/Glass_Camera_Reflections.nas</file>
             <file>Aircraft/G91-R1B_HD/Nasal/Reflections/Glass_Canopy_Reflections.nas</file>
             <file>Aircraft/G91-R1B_HD/Nasal/Lights/position_lights.nas</file>
