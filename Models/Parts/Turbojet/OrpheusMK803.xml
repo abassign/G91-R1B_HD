@@ -333,20 +333,8 @@
     <model>
         <path>smoke_start_A.xml</path>
         <offsets>
-            <x-m>  0.75 </x-m>
+            <x-m>  0.72 </x-m>
             <y-m>  -0.8 </y-m>
-            <z-m>  0.52 </z-m>
-            <roll-deg>    0.0 </roll-deg>
-            <pitch-deg>   0.0 </pitch-deg>
-            <heading-deg> 0.0 </heading-deg>
-        </offsets>
-    </model>
-    
-    <model>
-        <path>smoke_start_B.xml</path>
-        <offsets>
-            <x-m>  0.75 </x-m>
-            <y-m>  -1.2 </y-m>
             <z-m>  0.52 </z-m>
             <roll-deg>    0.0 </roll-deg>
             <pitch-deg>   0.0 </pitch-deg>

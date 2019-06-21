@@ -8,8 +8,8 @@
             <y-m>  0.000 </y-m>
             <z-m>  0.000 </z-m>
             <roll-deg>    90.000 </roll-deg>
-            <pitch-deg>   0.000 </pitch-deg>
-            <heading-deg> 20.000 </heading-deg>
+            <pitch-deg>    0.000 </pitch-deg>
+            <heading-deg> 30.000 </heading-deg>
         </offsets>
         
         <texture>Pictures/smoke.png</texture>
@@ -27,19 +27,19 @@
         <attach>world</attach> <!-- world / local-->
         
         <placer>
-            <type>point</type> <!-- sector / segments / point -->
+            <type>segments</type> <!-- sector / segments / point -->
         </placer>
 
         <shooter>
-            <radius-min-m>0.01</radius-min-m>
-            <radius-max-m>0.01</radius-max-m>
-            <theta-min-deg>10</theta-min-deg>
-            <theta-max-deg>10</theta-max-deg>
+            <radius-min-m>0.02</radius-min-m>
+            <radius-max-m>0.02</radius-max-m>
+            <theta-min-deg>-2</theta-min-deg>
+            <theta-max-deg>2</theta-max-deg>
             <phi-min-deg>-2</phi-min-deg>
             <phi-max-deg>2</phi-max-deg>
             <speed-mps>
                 <value>50</value>
-                <spread>2</spread>
+                <spread>10</spread>
             </speed-mps>
             <rotation-speed>
                 <x-min-deg-sec>-90</x-min-deg-sec>
@@ -53,7 +53,7 @@
         
         <counter>
             <particles-per-sec>
-                <value>200</value>
+                <value>500</value>
                 <spread>50</spread>
             </particles-per-sec>
         </counter>
@@ -61,21 +61,21 @@
         <particle>
             <start>
                 <color>
-                    <red><value>   0.3 </value></red>
-                    <green><value> 0.3 </value></green>
-                    <blue><value>  0.3 </value></blue>
-                    <alpha><value> 0.3 </value></alpha>
+                    <red><value>   0.7 </value></red>
+                    <green><value> 0.7 </value></green>
+                    <blue><value>  0.6 </value></blue>
+                    <alpha><value> 0.2 </value></alpha>
                 </color>
                 <size>
-                    <value>0.1</value>
+                    <value>0.02</value>
                 </size>
             </start>
             
             <end>
                 <color>
-                    <red><value>   0.0 </value></red>
-                    <green><value> 0.0 </value></green>
-                    <blue><value>  0.0 </value></blue>
+                    <red><value>   0.7 </value></red>
+                    <green><value> 0.7 </value></green>
+                    <blue><value>  0.6 </value></blue>
                     <alpha><value> 0.0 </value></alpha>
                 </color>
                 <size>
@@ -84,10 +84,10 @@
             </end>
             
             <life-sec>
-                <value>3</value>
+                <value>8</value>
             </life-sec>
 
-            <mass-kg>0.2</mass-kg>
+            <mass-kg>0.30</mass-kg>
             <radius-m>0.4</radius-m>
 
         </particle>

@@ -42,6 +42,37 @@
         </combustion>
         
         <combustion>
+            <name>Startup external explosion</name>
+            <path>Aircraft/G91-R1B_HD/Sounds/G91 startup explosion external.wav</path>
+            <mode>once</mode>
+            <condition>
+                <and>
+                    <greater-than>
+                        <property>fdm/jsbsim/systems/starter/start-starter-gas-lag</property>
+                        <value>0.2</value>
+                    </greater-than>
+                    <equals>
+                        <property>sim/current-view/internal</property>
+                        <value>false</value>
+                    </equals>
+                </and>
+            </condition>
+            <position>
+                <x> 5.185 </x>
+                <y>  0.0 </y>
+                <z>  0.0 </z>
+            </position>
+            <orientation>
+                <x>1.0</x>
+                <y>0.0</y>
+                <z>0.0</z>
+                <inner-angle>180.0</inner-angle>
+                <outer-angle>360.0</outer-angle>
+                <outer-gain>0.5</outer-gain>
+            </orientation>
+        </combustion>
+        
+        <combustion>
             <name>Startup internal</name>
             <path>Aircraft/G91-R1B_HD/Sounds/G91 startup internal.wav</path>
             <mode>once</mode>
@@ -61,6 +92,24 @@
                 <property>/fdm/jsbsim/systems/starter/startup-sound-lag</property>
                 <factor>1.0</factor>
             </volume>
+        </combustion>
+        
+        <combustion>
+            <name>Startup internal explosion</name>
+            <path>Aircraft/G91-R1B_HD/Sounds/G91 startup explosion internal.wav</path>
+            <mode>once</mode>
+            <condition>
+                <and>
+                    <greater-than>
+                        <property>fdm/jsbsim/systems/starter/start-starter-gas-lag</property>
+                        <value>0.2</value>
+                    </greater-than>
+                    <equals>
+                        <property>sim/current-view/internal</property>
+                        <value>true</value>
+                    </equals>
+                </and>
+            </condition>
         </combustion>
         
         <combustion>

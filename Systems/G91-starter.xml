@@ -289,10 +289,18 @@ Description: G91R2 Canopy automation
         </switch>
         
         <switch name="systems/starter/startup-sound">
-            <default value="0"/>
+            <default value="systems/starter/startup-sound"/>
             <test logic="AND" value="1">
                 systems/starter/start-process-active == 1
                 systems/starter/high-energy-lighter-on == 1
+            </test>
+            <test logic="AND" value="1">
+                systems/starter/start-starter-gas-test GE 1
+                systems/starter/startup-sound == 0
+            </test>
+            <test logic="AND" value="0">
+                systems/starter/start-starter-gas-lag LT 0.1
+                systems/starter/startup-sound == 1
             </test>
         </switch>
         
