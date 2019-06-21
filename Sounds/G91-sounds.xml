@@ -5,10 +5,67 @@
 <PropertyList>
     
     <fx>
-
+        
+        <combustion>
+            <name>Startup external</name>
+            <path>Aircraft/G91-R1B_HD/Sounds/G91 startup external.wav</path>
+            <mode>once</mode>
+            <condition>
+                <and>
+                    <greater-than>
+                        <property>/fdm/jsbsim/systems/starter/startup-sound-lag</property>
+                        <value>0.1</value>	
+                    </greater-than>
+                    <equals>
+                        <property>sim/current-view/internal</property>
+                        <value>false</value>
+                    </equals>
+                </and>
+            </condition>
+            <volume>
+                <property>/fdm/jsbsim/systems/starter/startup-sound-lag</property>
+                <factor>1.0</factor>
+            </volume>
+            <position>
+                <x> 5.185 </x>
+                <y>  0.0 </y>
+                <z>  0.0 </z>
+            </position>
+            <orientation>
+                <x>1.0</x>
+                <y>0.0</y>
+                <z>0.0</z>
+                <inner-angle>180.0</inner-angle>
+                <outer-angle>360.0</outer-angle>
+                <outer-gain>0.5</outer-gain>
+            </orientation>
+        </combustion>
+        
+        <combustion>
+            <name>Startup internal</name>
+            <path>Aircraft/G91-R1B_HD/Sounds/G91 startup internal.wav</path>
+            <mode>once</mode>
+            <condition>
+                <and>
+                    <greater-than>
+                        <property>/fdm/jsbsim/systems/starter/startup-sound-lag</property>
+                        <value>0.1</value>	
+                    </greater-than>
+                    <equals>
+                        <property>sim/current-view/internal</property>
+                        <value>true</value>
+                    </equals>
+                </and>
+            </condition>
+            <volume>
+                <property>/fdm/jsbsim/systems/starter/startup-sound-lag</property>
+                <factor>1.0</factor>
+            </volume>
+        </combustion>
+        
         <combustion>
             <name>combustion external</name>
-            <path>Aircraft/G91-R1B_HD/Sounds/G91 sound external fly 03.wav</path>
+            <path>Aircraft/G91-R1B_HD/Sounds/MB339-motor-external.wav</path>
             <mode>looped</mode>
             <condition>
                 <and>
@@ -23,14 +80,14 @@
                 </and>
             </condition>
             <volume>
-                <property>engines/engine[0]/thrust_lb</property>
-                <factor>0.001</factor>
+                <property>/fdm/jsbsim/systems/engine/rpm-norm</property>
+                <factor>1.0</factor>
                 <min>0.0</min>
                 <max>1.0</max>
             </volume>
             <pitch>
-                <property>engines/engine[0]/n1</property>
-                <factor>0.01</factor>
+                <property>/fdm/jsbsim/systems/engine/rpm-norm</property>
+                <factor>1.0</factor>
             </pitch>
             <position>
                 <x> 5.185 </x>
@@ -46,7 +103,7 @@
                 <outer-gain>0.5</outer-gain>
             </orientation>
         </combustion>
-
+        
         <combustion>
             <name>combustion internal </name>
             <path>Aircraft/G91-R1B_HD/Sounds/MB339-motor-internal.wav</path>
@@ -64,14 +121,14 @@
                 </and>
             </condition>
             <volume>
-                <property>engines/engine[0]/thrust_lb</property>
-                <factor>0.001</factor>
+                <property>/fdm/jsbsim/systems/engine/rpm-norm</property>
+                <factor>1.0</factor>
                 <min>0.0</min>
                 <max>1.0</max>
             </volume>
             <pitch>
-                <property>engines/engine[0]/n1</property>
-                <factor>0.01</factor>
+                <property>/fdm/jsbsim/systems/engine/rpm-norm</property>
+                <factor>1.0</factor>
             </pitch>
         </combustion>
         
@@ -86,7 +143,7 @@
                 <max>2.0</max>
             </volume>
         </wind>
-
+        
         <!-- JATO system -->
         
         <jato-burning-internal>
@@ -416,7 +473,7 @@
                 <factor>0.5</factor>
             </volume>
         </canopy_lock_int>
-
+        
     </fx>
     
 </PropertyList>

@@ -71,7 +71,7 @@ var timerEngine_starter = maketimer(1.0, func() {
             setprop("fdm/jsbsim/systems/manual-switches/cockpit/sw-internal-power-generator",1);
             guiAutostartClockTime = 0;
             setprop("fdm/jsbsim/systems/starter/gui/autostart-is-active",9);
-        } else if (guiAutostartIsActive == 9 and guiAutostartClockTime > 5) {
+        } else if (guiAutostartIsActive == 9 and guiAutostartClockTime > 10) {
             print("timerEngine_starter: Prepare the starter procedure 7");
             setprop("fdm/jsbsim/systems/electric/bus[2]/primary-inverter/sw",1);
             setprop("fdm/jsbsim/systems/starter/gui/autostart-is-active",10);

@@ -8,7 +8,7 @@
         <z-m>-0.45</z-m>
         <pitch-deg>0.0</pitch-deg>
     </offsets>
-    
+<!--    
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Cockpit.xml</path>
         <condition>
@@ -28,7 +28,7 @@
             </equals>
         </condition>
     </model>
-
+    -->
 <!--
 
     <model>
@@ -60,7 +60,7 @@
             </equals>
         </condition>
     </model>
-
+    -->
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Tail/Tail.xml</path>
         <condition>
@@ -70,7 +70,7 @@
             </equals>
         </condition>
     </model>
-
+<!--
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Fuselage_B/Fuselage_B1.xml</path>
         <condition>
@@ -122,7 +122,7 @@
             </equals>
         </condition>
     </model>
-    
+    -->
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Turbojet/OrpheusMK803.xml</path>
         <offsets>
@@ -137,7 +137,7 @@
             </equals>
         </condition>
     </model>
-    
+    <!--
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Stores/Stores.xml</path>
         <condition>

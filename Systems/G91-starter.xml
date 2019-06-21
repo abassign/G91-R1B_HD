@@ -8,6 +8,10 @@ Description: G91R2 Canopy automation
     
     <property value="0">systems/starter/start-process-active</property>
     <property value="0">systems/starter/start-process-terminated</property>
+    <property value="0">systems/starter/startup-sound-lag</property>
+    <property value="0">systems/starter/start-starter-gas</property>
+    <property value="0">systems/starter/start-starter-gas-test</property>
+    <property value="0">systems/starter/start-starter-gas-lag</property>
     <property value="0">systems/starter/ignition-on-throttle-togle</property>
     <property value="0">systems/starter/ignition-on-throttle-pos</property>
     <property value="0">systems/starter/ignition-on-throttle-washed</property>
@@ -283,6 +287,40 @@ Description: G91R2 Canopy automation
                 propulsion/active_engine == 0
             </test>
         </switch>
+        
+        <switch name="systems/starter/startup-sound">
+            <default value="0"/>
+            <test logic="AND" value="1">
+                systems/starter/start-process-active == 1
+                systems/starter/high-energy-lighter-on == 1
+            </test>
+        </switch>
+        
+        <lag_filter name="systems/starter/startup-sound-lag">
+            <input>systems/starter/startup-sound</input>
+            <c1>0.1</c1>
+        </lag_filter>
+        
+        <switch name="systems/starter/start-starter-gas">
+            <default value="systems/starter/start-starter-gas"/>
+            <test logic="AND" value="1">
+                systems/starter/start-starter-gas-test GE 1
+                systems/starter/start-starter-gas == 0
+            </test>
+            <test logic="AND" value="1">
+                systems/starter/start-process-active == 1
+                systems/starter/start-starter-gas == 0
+            </test>
+            <test logic="AND" value="0">
+                systems/starter/start-starter-gas-lag LT 0.1
+                systems/starter/start-starter-gas == 1
+            </test>
+        </switch>
+        
+        <washout_filter name="systems/starter/start-starter-gas-lag">
+            <input>systems/starter/start-starter-gas</input>
+            <c1>1.0</c1>
+        </washout_filter>
         
         <switch>
             <output>propulsion/starter_cmd</output>

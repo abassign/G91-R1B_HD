@@ -10,40 +10,6 @@
         <z-m>0.0</z-m>
     </offsets>
     
-    <!-- Color parts -->
-    <!--
-    <effect>
-        <inherits-from>Effects/model-transparent</inherits-from>
-        <object-name>node11</object-name>
-        <object-name>node14</object-name>
-        <object-name>node15</object-name>
-        <object-name>node4</object-name>
-        <object-name>node5</object-name>
-        <object-name>node6</object-name>
-    </effect>
-    
-    <animation> 
-        <type>material</type> 
-        <object-name>node0</object-name>
-        <object-name>node7</object-name>
-        <object-name>node9</object-name>
-        <object-name>node10</object-name>
-        <object-name>node12</object-name>
-        <object-name>node13</object-name>
-        <texture>Pictures/G91-Dark-Grey.png</texture>
-        <ambient>
-            <red>0.0</red>
-            <green>0.0</green>
-            <blue>0.0</blue>
-        </ambient>
-        <diffuse>
-            <red>0.5</red>
-            <green>0.5</green>
-            <blue>0.5</blue>
-        </diffuse>
-    </animation>
-    -->
-    
     <animation> 
         <type>material</type> 
         <object-name>node1</object-name>
@@ -356,6 +322,32 @@
             <x-m> 0.43 </x-m>
             <y-m> -0.305 </y-m>
             <z-m> 0.63 </z-m>
+            <roll-deg>    0.0 </roll-deg>
+            <pitch-deg>   0.0 </pitch-deg>
+            <heading-deg> 0.0 </heading-deg>
+        </offsets>
+    </model>
+    
+    <!-- Starter smoke -->
+    
+    <model>
+        <path>smoke_start_A.xml</path>
+        <offsets>
+            <x-m>  0.75 </x-m>
+            <y-m>  -0.8 </y-m>
+            <z-m>  0.52 </z-m>
+            <roll-deg>    0.0 </roll-deg>
+            <pitch-deg>   0.0 </pitch-deg>
+            <heading-deg> 0.0 </heading-deg>
+        </offsets>
+    </model>
+    
+    <model>
+        <path>smoke_start_B.xml</path>
+        <offsets>
+            <x-m>  0.75 </x-m>
+            <y-m>  -1.2 </y-m>
+            <z-m>  0.52 </z-m>
             <roll-deg>    0.0 </roll-deg>
             <pitch-deg>   0.0 </pitch-deg>
             <heading-deg> 0.0 </heading-deg>

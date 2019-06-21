@@ -8,22 +8,6 @@
         <z-m>0.0</z-m>
     </offsets>
     
-    <!--
-    <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
-        <object-name>ganci_piastra_jato</object-name>
-        <object-name>piastra_jato01</object-name>
-        <object-name>piastra_jato02</object-name>
-        <object-name>rocket</object-name>
-        <object-name>rocket_02</object-name>
-        <object-name>rocket_03</object-name>
-        <object-name>rocket_03.001</object-name>
-        <object-name>staffa_jato_post.ant</object-name>
-        <object-name>staffa_jato_post.dx</object-name>
-        <object-name>staffa_jato_post.sx</object-name>
-    </effect>
-    -->
-    
     <animation>
         <type>select</type>
         <object-name>ganci_piastra_jato</object-name>

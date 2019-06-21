@@ -19,26 +19,28 @@ http://wiki.flightgear.org/JSBSim_Engines#FGTurbine
 
 <turbine_engine name="ORPHEUS_MK_803">
     
-    <milthrust>  5900 </milthrust>
-    <bypassratio>     1.0   </bypassratio>
-    <tsfc>            1.01   </tsfc>
-    <bleed>           0.05  </bleed>
-    <idlen1>         30.0   </idlen1>
-    <idlen2>         35.0   </idlen2>
-    <maxn1>         103.0   </maxn1>
-    <maxn2>         103.0   </maxn2>
-    <augmented>         0   </augmented>
-    <injected>          0   </injected>
-    
+    <milthrust> 5900 </milthrust>
+    <bypassratio> 0.1 </bypassratio>
+    <tsfc> 1.01 </tsfc>
+    <bleed> 0.05 </bleed>
+    <idlen1> 30.0 </idlen1>
+    <idlen2> 35.0 </idlen2>
+    <maxn1> 103.0 </maxn1>
+    <maxn2> 103.0 </maxn2>
+    <augmented> 0 </augmented>
+    <injected> 0 </injected>
+
     <function name="N1SpoolUp">
         <table>
             <independentVar lookup="row">/engines/engine[0]/n1</independentVar>
             <tableData>
-                30  12
-                50  18
-                70  22
-                90  26
-                105 30
+				 24   1.1
+				 28   2.9
+				 46   9.7
+				 68  15.4
+				 80  19.6
+				 94  21.4
+				105  23.6
             </tableData>
         </table>
     </function>
@@ -47,11 +49,13 @@ http://wiki.flightgear.org/JSBSim_Engines#FGTurbine
         <table>
             <independentVar lookup="row">/engines/engine[0]/n1</independentVar>
             <tableData>
-                30  12
-                50  18
-                70  22
-                90  26
-                105 30
+				 24   1.1
+				 28   2.9
+				 46   9.7
+				 68  15.4
+				 80  19.6
+				 94  21.4
+				105  23.6
             </tableData>
         </table>
     </function>
@@ -60,11 +64,13 @@ http://wiki.flightgear.org/JSBSim_Engines#FGTurbine
         <table>
             <independentVar lookup="row">/engines/engine[0]/n2</independentVar>
             <tableData>
-                30  12
-                50  18
-                70  22
-                90  26
-                105 30
+				 24   1.1
+				 28   2.9
+				 46   9.7
+				 68  15.4
+				 80  19.6
+				 94  21.4
+				105  23.6
             </tableData>
         </table>
     </function>
@@ -73,11 +79,13 @@ http://wiki.flightgear.org/JSBSim_Engines#FGTurbine
         <table>
             <independentVar lookup="row">/engines/engine[0]/n2</independentVar>
             <tableData>
-                30  12
-                50  18
-                70  22
-                90  26
-                105 30
+				 24   1.1
+				 28   2.9
+				 46   9.7
+				 68  15.4
+				 80  19.6
+				 94  21.4
+				105  23.6
             </tableData>
         </table>
     </function>
