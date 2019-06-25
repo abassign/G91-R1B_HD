@@ -288,47 +288,64 @@ Description: G91R2 Canopy automation
             </test>
         </switch>
         
+        <switch name="systems/starter/active_engine-sw">
+            <default value="0"/>
+            <test logic="AND" value="1">
+                systems/starter/sw-pushed == 1
+                systems/starter/sw-push-rele-deleyed-on == 1
+                systems/starter/high-energy-lighter-on == 1
+            </test>
+        </switch>
+        
+        <washout_filter name="systems/starter/active_engine-wa">
+            <input>systems/starter/active_engine-sw</input>
+            <c1>0.01</c1>
+        </washout_filter>
+        
         <switch name="systems/starter/startup-sound">
             <default value="systems/starter/startup-sound"/>
+            <test logic="AND" value="0">
+                systems/starter/startup-sound-lag GT 0.1
+                systems/starter/startup-sound-lag LT 0.2
+                systems/starter/startup-sound == 1
+            </test>
+            <test logic="AND" value="0">
+                propulsion/active_engine == -1
+            </test>
             <test logic="AND" value="1">
-                systems/starter/start-process-active == 1
-                systems/starter/high-energy-lighter-on == 1
+                systems/starter/active_engine-wa GT 0.2
             </test>
             <test logic="AND" value="1">
                 systems/starter/start-starter-gas-test GE 1
                 systems/starter/startup-sound == 0
             </test>
-            <test logic="AND" value="0">
-                systems/starter/start-starter-gas-lag LT 0.1
-                systems/starter/startup-sound == 1
-            </test>
         </switch>
         
         <lag_filter name="systems/starter/startup-sound-lag">
             <input>systems/starter/startup-sound</input>
-            <c1>0.1</c1>
+            <c1>0.3</c1>
         </lag_filter>
         
         <switch name="systems/starter/start-starter-gas">
             <default value="systems/starter/start-starter-gas"/>
+            <test logic="AND" value="0">
+                systems/starter/start-starter-gas-lag GT 0.1
+                systems/starter/start-starter-gas-lag LT 0.2
+                systems/starter/start-starter-gas == 1
+            </test>
+            <test logic="AND" value="1">
+                systems/starter/active_engine-wa GT 0.2
+            </test>
             <test logic="AND" value="1">
                 systems/starter/start-starter-gas-test GE 1
                 systems/starter/start-starter-gas == 0
             </test>
-            <test logic="AND" value="1">
-                systems/starter/start-process-active == 1
-                systems/starter/start-starter-gas == 0
-            </test>
-            <test logic="AND" value="0">
-                systems/starter/start-starter-gas-lag LT 0.1
-                systems/starter/start-starter-gas == 1
-            </test>
         </switch>
         
-        <washout_filter name="systems/starter/start-starter-gas-lag">
+        <lag_filter name="systems/starter/start-starter-gas-lag">
             <input>systems/starter/start-starter-gas</input>
-            <c1>1.0</c1>
-        </washout_filter>
+            <c1>0.3</c1>
+        </lag_filter>
         
         <switch>
             <output>propulsion/starter_cmd</output>

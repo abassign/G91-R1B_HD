@@ -7,9 +7,9 @@
             <x-m>  0.000 </x-m>
             <y-m>  0.000 </y-m>
             <z-m>  0.000 </z-m>
-            <roll-deg>    90.000 </roll-deg>
+            <roll-deg>   120.000 </roll-deg>
             <pitch-deg>    0.000 </pitch-deg>
-            <heading-deg> 30.000 </heading-deg>
+            <heading-deg> 40.000 </heading-deg>
         </offsets>
         
         <texture>Pictures/smoke.png</texture>
@@ -17,7 +17,7 @@
         <condition>
             <greater-than>
                 <property>fdm/jsbsim/systems/starter/start-starter-gas-lag</property>
-                <value>0.2</value>
+                <value>0.05</value>
             </greater-than>
         </condition>
         

@@ -1018,8 +1018,8 @@
             <layout>table</layout>
             <button>
                 <row>0</row>
-                <col>4</col>
-                <legend>Take off</legend>
+                <col>0</col>
+                <legend>  Take off </legend>
                 <halign>fill</halign>
                 <live>true</live>
                 <binding>
@@ -1043,13 +1043,56 @@
                         setprop("fdm/jsbsim/systems/autopilot/gui/speed-set-mph",0.0);
                         setprop("fdm/jsbsim/systems/autopilot/gui/speed-set-mach",0.0);
                         setprop("fdm/jsbsim/systems/autopilot/gui/speed-set-cas",1.0);
-                        setprop("fdm/jsbsim/systems/autopilot/gui/speed-value",200.0);
+                        setprop("fdm/jsbsim/systems/autopilot/gui/speed-value",250.0);
                     </script>
                 </binding>
             </button>
-            <button>
+            <text>
+                <row>0</row>
+                <col>1</col>
+                <halign>left</halign>
+            </text>
+            <text>
+                <row>0</row>
+                <col>2</col>
+                <halign>left</halign>
+            </text>
+            <text>
+                <row>0</row>
+                <col>3</col>
+                <halign>left</halign>
+            </text>
+            <text>
+                <row>0</row>
+                <col>4</col>
+                <halign>left</halign>
+            </text>
+            <text>
                 <row>0</row>
                 <col>5</col>
+                <halign>left</halign>
+            </text>
+            <text>
+                <row>0</row>
+                <col>6</col>
+                <halign>left</halign>
+            </text>
+            <text>
+                <row>0</row>
+                <col>7</col>
+                <halign>left</halign>
+            </text>
+            <text>
+                <row>0</row>
+                <col>8</col>
+                <halign>left</halign>
+            </text>
+        </group>
+        <group>
+            <layout>table</layout>
+            <button>
+                <row>0</row>
+                <col>0</col>
                 <legend>PHI Route</legend>
                 <halign>fill</halign>
                 <live>true</live>
@@ -1080,6 +1123,46 @@
                     <property>fdm/jsbsim/systems/gauges/PHI/program/route[1]/push-togle</property>
                 </binding>
             </button>
+            <text>
+                <row>0</row>
+                <col>1</col>
+                <halign>left</halign>
+            </text>
+            <text>
+                <row>0</row>
+                <col>2</col>
+                <halign>left</halign>
+            </text>
+            <text>
+                <row>0</row>
+                <col>3</col>
+                <halign>left</halign>
+            </text>
+            <text>
+                <row>0</row>
+                <col>4</col>
+                <halign>left</halign>
+            </text>
+            <text>
+                <row>0</row>
+                <col>5</col>
+                <halign>left</halign>
+            </text>
+            <text>
+                <row>0</row>
+                <col>6</col>
+                <halign>left</halign>
+            </text>
+            <text>
+                <row>0</row>
+                <col>7</col>
+                <halign>left</halign>
+            </text>
+            <text>
+                <row>0</row>
+                <col>8</col>
+                <halign>left</halign>
+            </text>
         </group>
         <group>
             <!-- Autolanding -->

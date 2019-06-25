@@ -13,8 +13,8 @@
             <condition>
                 <and>
                     <greater-than>
-                        <property>/fdm/jsbsim/systems/starter/startup-sound-lag</property>
-                        <value>0.1</value>	
+                        <property>fdm/jsbsim/systems/starter/startup-sound-lag</property>
+                        <value>0.05</value>	
                     </greater-than>
                     <equals>
                         <property>sim/current-view/internal</property>
@@ -23,8 +23,8 @@
                 </and>
             </condition>
             <volume>
-                <property>/fdm/jsbsim/systems/starter/startup-sound-lag</property>
-                <factor>1.0</factor>
+                <property>fdm/jsbsim/systems/starter/startup-sound-lag</property>
+                <factor>0.1</factor>
             </volume>
             <position>
                 <x> 5.185 </x>
@@ -49,7 +49,7 @@
                 <and>
                     <greater-than>
                         <property>fdm/jsbsim/systems/starter/start-starter-gas-lag</property>
-                        <value>0.2</value>
+                        <value>0.05</value>
                     </greater-than>
                     <equals>
                         <property>sim/current-view/internal</property>
@@ -79,8 +79,8 @@
             <condition>
                 <and>
                     <greater-than>
-                        <property>/fdm/jsbsim/systems/starter/startup-sound-lag</property>
-                        <value>0.1</value>	
+                        <property>fdm/jsbsim/systems/starter/startup-sound-lag</property>
+                        <value>0.05</value>	
                     </greater-than>
                     <equals>
                         <property>sim/current-view/internal</property>
@@ -89,7 +89,7 @@
                 </and>
             </condition>
             <volume>
-                <property>/fdm/jsbsim/systems/starter/startup-sound-lag</property>
+                <property>fdm/jsbsim/systems/starter/startup-sound-lag</property>
                 <factor>1.0</factor>
             </volume>
         </combustion>
@@ -102,7 +102,7 @@
                 <and>
                     <greater-than>
                         <property>fdm/jsbsim/systems/starter/start-starter-gas-lag</property>
-                        <value>0.2</value>
+                        <value>0.05</value>
                     </greater-than>
                     <equals>
                         <property>sim/current-view/internal</property>
