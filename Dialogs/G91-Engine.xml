@@ -45,7 +45,7 @@
                     <property>fdm/jsbsim/systems/starter/gui/autostart-activate</property>
                 </binding>
             </button>
-            
+            <!--
             <button>
                 <row>1</row>
                 <col>0</col>
@@ -57,7 +57,7 @@
                     <property>fdm/jsbsim/systems/starter/start-starter-gas-test</property>
                 </binding>
             </button>
-            
+            -->
         </group>
     </group>
     

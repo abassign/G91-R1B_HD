@@ -197,7 +197,8 @@ No Overshoot
     <property value="0.0">systems/autopilot/left-steer-brake</property>
     <property value="0.0">systems/autopilot/right-steer-brake</property>
     <property value="0.0">systems/autopilot/steer-brake</property>
-    <property value="250.0">systems/autopilot/steer-brake-min-speed</property>
+    <property value="100.0">systems/autopilot/steer-brake-min-speed</property>
+    <property value="-1.0">systems/autopilot/handle-brake-activate</property>
     
     <property value="0.0">systems/autopilot/gui/landing-activate</property>
     <property value="45.0">systems/autopilot/gui/landing-rwy-search-max-heading</property>
@@ -207,7 +208,7 @@ No Overshoot
     <property value="12.0">systems/autopilot/gui/landing-holding-point-dist-nm</property>
     <property value="5000.0">systems/autopilot/gui/landing-holding-point-h-ft</property>
     <property value="1500.0">systems/autopilot/gui/landing-minimal-length-m</property>
-    <property value="5.0">systems/autopilot/gui/landing-max-lateral-wind</property>
+    <property value="10.0">systems/autopilot/gui/landing-max-lateral-wind</property>
     
     <property value="0.0">systems/autopilot/landing-gear-activate-blocked</property>
     <property value="0.0">systems/autopilot/landing-gear-set-close</property>
@@ -429,6 +430,11 @@ No Overshoot
         <pure_gain name="systems/autopilot/true-heading-deg-delta">
             <input>systems/autopilot/true-heading-rad-delta</input>
             <gain>57.2958</gain>
+        </pure_gain>
+        
+        <pure_gain name="systems/autopilot/true-heading-deg-delta-norm">
+            <input>systems/autopilot/true-heading-deg-delta</input>
+            <gain>0.005555</gain>
         </pure_gain>
         
         <pure_gain name="systems/autopilot/true-heading-rad-delta-lim">
@@ -1414,9 +1420,16 @@ No Overshoot
     </channel>
     
     
-    <channel name="Landing brake" execrate="8">
+    <channel name="Landing brake" execrate="16">
         
-        <fcs_function name="systems/autopilot/steer-brake-modulated">
+        <switch name="systems/autopilot/steer-brake-active">
+            <default value="0.0"/>
+            <test logic="AND" value="1.0">
+                systems/autopilot/steer-brake GE 0.5
+            </test>
+        </switch>
+        
+        <fcs_function name="systems/autopilot/steer-brake-antiskid">
             <function>
                 <cos>
                     <quotient>
@@ -1431,20 +1444,127 @@ No Overshoot
             </clipto>
         </fcs_function>
         
-        <switch name="systems/autopilot/left-steer-brake">
-            <default value="0"/>
-            <test logic="AND" value="systems/autopilot/steer-brake-modulated">
-                systems/autopilot/steer-brake >= 1.0
-            </test>
-        </switch>
+        <fcs_function name="systems/autopilot/left-steer-brake">
+            <function>
+                <product>
+                    <p>systems/autopilot/steer-brake-antiskid</p>
+                    <sum>
+                        <p>systems/autopilot/steer-brake-active</p>
+                        <ifthen>
+                            <gt><p>systems/autopilot/steer-brake-active</p><v>0.5</v></gt>
+                            <ifthen>
+                                <lt><p>systems/autopilot/true-heading-deg-delta-norm</p><v>0.0</v></lt>
+                                <v>0.0</v>
+                                <product>
+                                    <p>systems/autopilot/true-heading-deg-delta-norm</p>
+                                    <v>-0.5</v>
+                                </product>
+                            </ifthen>
+                            <ifthen>
+                                <lt><p>systems/autopilot/true-heading-deg-delta-norm</p><v>0.0</v></lt>
+                                <product>
+                                    <p>systems/autopilot/true-heading-deg-delta-norm</p>
+                                    <v>0.5</v>
+                                </product>
+                                <v>0.0</v>
+                            </ifthen>
+                        </ifthen>
+                    </sum>
+                </product>
+            </function>
+            <clipto>
+                <min>0</min>
+                <max>1</max>
+            </clipto>
+        </fcs_function>
         
-        <switch name="systems/autopilot/right-steer-brake">
-            <default value="0"/>
-            <test logic="AND" value="systems/autopilot/steer-brake-modulated">
-                systems/autopilot/steer-brake >= 1.0
+        <fcs_function name="systems/autopilot/right-steer-brake">
+            <function>
+                <product>
+                    <p>systems/autopilot/steer-brake-antiskid</p>
+                    <sum>
+                        <p>systems/autopilot/steer-brake-active</p>
+                        <ifthen>
+                            <gt><p>systems/autopilot/steer-brake-active</p><v>0.5</v></gt>
+                            <ifthen>
+                                <gt><p>systems/autopilot/true-heading-deg-delta-norm</p><v>0.0</v></gt>
+                                <v>0.0</v>
+                                <product>
+                                    <p>systems/autopilot/true-heading-deg-delta-norm</p>
+                                    <v>-0.5</v>
+                                </product>
+                            </ifthen>
+                            <ifthen>
+                                <gt><p>systems/autopilot/true-heading-deg-delta-norm</p><v>0.0</v></gt>
+                                <product>
+                                    <p>systems/autopilot/true-heading-deg-delta-norm</p>
+                                    <v>0.5</v>
+                                </product>
+                                <v>0.0</v>
+                            </ifthen>
+                        </ifthen>
+                    </sum>
+                </product>
+            </function>
+            <clipto>
+                <min>0</min>
+                <max>1</max>
+            </clipto>
+        </fcs_function>
+
+        <washout_filter>
+            <output>systems/autopilot/handle-brake-activate-wa</output>
+            <input>systems/autopilot/handle-brake-activate</input>
+            <c1>1.0</c1>
+        </washout_filter>
+        
+        <switch>
+            <output>systems/autopilot/handle-brake-activate</output>
+            <default value="systems/autopilot/handle-brake-activate"/>
+            <test logic="AND" value="-1">
+                systems/autopilot/handle-brake-activate NE -1
+                systems/autopilot/handle-brake-activate-wa LT 0.5
+                systems/autopilot/handle-brake-activate-wa GT 0.1
+            </test>
+            <test logic="AND" value="-1">
+                systems/autopilot/handle-brake-activate NE -1
+                systems/autopilot/handle-brake-activate-wa GT -0.5
+                systems/autopilot/handle-brake-activate-wa LT -0.1
             </test>
         </switch>
 
+        <switch>
+            <output>systems/handle-switches/sw-handle-brake-trigger</output>
+            <default value="systems/handle-switches/sw-handle-brake-trigger"/>
+            <test logic="OR" value="1">
+                <test logic="AND">
+                    systems/autopilot/handle-brake-activate NE -1
+                    systems/autopilot/handle-brake-activate == 1
+                    systems/handle-switches/sw-handle-brake-pos-status == 0
+                </test>
+                <test logic="AND">
+                    systems/autopilot/handle-brake-activate NE -1
+                    systems/autopilot/handle-brake-activate == 0
+                    systems/handle-switches/sw-handle-brake-pos-status == 2
+                </test>
+            </test>
+            <test logic="AND" value="0">
+                <test logic="AND">
+                    systems/handle-switches/sw-handle-brake-trigger == 1
+                </test>
+                <test logic="OR">
+                    <test logic="AND">
+                        systems/autopilot/handle-brake-activate-wa GE 0.5
+                        systems/autopilot/handle-brake-activate-wa LT 0.8
+                    </test>
+                    <test logic="AND">
+                        systems/autopilot/handle-brake-activate-wa LE -0.5
+                        systems/autopilot/handle-brake-activate-wa GT -0.8
+                    </test>
+                </test>
+            </test>
+        </switch>
+        
     </channel>
     
     

@@ -65,8 +65,8 @@ var airport_searcher = maketimer(1.0, func() {
         var distance_to_airport_min = 9999.0;
         var airplane = geo.aircraft_position();
         var heading_true_deg = getprop("fdm/jsbsim/systems/autopilot/heading-true-deg");
-        var wind_speed = getprop("/environment/wind-speed-kt");
-        var wind_from = getprop("/environment/wind-from-heading-deg");
+        var wind_speed = getprop("/local-weather/METAR/windspeed-kt");
+        var wind_from = getprop("/local-weather/METAR/wind-direction-deg");
         var rwy_coord = geo.Coord.new();
         airport_select = nil;
         if (apts != nil and airplane != nil) {
@@ -138,6 +138,7 @@ var airport_searcher = maketimer(1.0, func() {
                 setprop("fdm/jsbsim/systems/autopilot/gui/speed-set-cas",1.0);
                 setprop("fdm/jsbsim/systems/autopilot/gui/speed-set-mph",0.0);
                 setprop("fdm/jsbsim/systems/autopilot/gui/speed-value",250.0);
+                setprop("fdm/jsbsim/systems/autopilot/speed-throttle-imposed",-1.0);
                 rwy_coord_end.set_latlon(airport_select.runways[rwy_select].lat,airport_select.runways[rwy_select].lon); 
                 rwy_coord_end.apply_course_distance(airport_select.runways[rwy_select].heading,rwy_coord_end_offset);
                 airplane_to_holding_point_alt = airplane.alt() * 3.28084;
@@ -153,6 +154,7 @@ var airport_searcher = maketimer(1.0, func() {
         ## print("Autopilot - airport_searcher - Airport found");
         var runway_to_airplane_dist = 0;
         var holding_point_distance_nm = getprop("fdm/jsbsim/systems/autopilot/gui/landing-holding-point-dist-nm");
+        var holding_point_before_distance_nm = 4.0;
         var holding_point_to_airplane_delta_alt_ft = 0.0;
         var airplane = geo.aircraft_position();
         var runway_to_airplane_delta_alt_ft = 0.0;
@@ -163,7 +165,7 @@ var airport_searcher = maketimer(1.0, func() {
         var altitude_agl_ft = 0.0;
         var rwy_offset_h_nm = getprop("fdm/jsbsim/systems/autopilot/gui/landing-rwy-h-offset-nm");
         var rwy_offset_v_ft = getprop("fdm/jsbsim/systems/autopilot/gui/landing-rwy-v-offset-ft");
-        var holding_point_h_ft = getprop("fdm/jsbsim/systems/autopilot/gui/landing-holding-point-h-ft");
+        var holding_point_h_ft = getprop("fdm/jsbsim/systems/autopilot/gui/landing-holding-point-h-ft"); 
         #
         # Common eleboration
         #
@@ -209,7 +211,13 @@ var airport_searcher = maketimer(1.0, func() {
             if (slope < 5) {
                 var holding_point_to_airplane_dist_for_slope = holding_point_to_airplane_dist - (holding_point_to_airplane_delta_alt_ft/math.tan(slope / R2D));
             }
-            if (holding_point_to_airplane_dist > 2.0) {
+            var heading_correction_for_before_dist = math.abs(geo.normdeg180(getprop("fdm/jsbsim/systems/autopilot/heading-true-deg") - airplane.course_to(rwy_coord_start)));
+            if (heading_correction_for_before_dist < 90) {
+                holding_point_before_distance_nm = 1.8;
+            } else {
+                holding_point_before_distance_nm = 1.8 * (1 + ((heading_correction_for_before_dist - 90.0) / 90.0));
+            }
+            if (holding_point_to_airplane_dist > holding_point_before_distance_nm) {
                 if (slope > 3.0) {
                     setprop("fdm/jsbsim/systems/autopilot/speed-brake-set-active",1.0);
                 } else {
@@ -227,7 +235,7 @@ var airport_searcher = maketimer(1.0, func() {
                 heading_correct = airplane.course_to(holding_point);
                 setprop("fdm/jsbsim/systems/autopilot/gui/airport_runway_airplane_heading_correct",heading_correct);
                 setprop("fdm/jsbsim/systems/autopilot/gui/true-heading-deg",heading_correct);
-                print(" 2.0 > ", holding_point_to_airplane_dist_direct, " ", holding_point_to_airplane_delta_alt_ft, " ",heading_correct," ",slope);
+                print(" 2.0 > ", holding_point_to_airplane_dist_direct, " ", holding_point_to_airplane_delta_alt_ft, " ",heading_correct," ",slope," : ",heading_correction_for_before_dist," ",holding_point_before_distance_nm);
             } else {
                 landig_status_id = 2.1;
                 setprop("fdm/jsbsim/systems/autopilot/gui/true-heading-max-wing-slope-deg",45.0);
@@ -335,13 +343,13 @@ var airport_searcher = maketimer(1.0, func() {
         } else if (landig_status_id == 2.2) {
             runway_to_airplane_dist_direct = airplane.direct_distance_to(rwy_coord_start) * 0.000621371 + rwy_offset_h_nm;
             if ((airplane.distance_to(rwy_coord_start) * 0.000621371) > 0.4) {
-                var heading_factor = 10.0;
                 slope = math.asin(((runway_to_airplane_delta_alt_ft - rwy_offset_v_ft)* 0.000189394) / runway_to_airplane_dist_direct) * R2D;
                 heading_correction = geo.normdeg180(airport_select.runways[rwy_select].heading - airplane.course_to(rwy_coord_start));
-                if (math.abs(heading_correction > 2)) {
-                    heading_factor = 1 + (1 / (heading_correction / 180) / 10.0);
-                }              
-                heading_correct = airport_select.runways[rwy_select].heading - heading_correction * heading_factor;
+                var heading_factor = 1.0;
+                if (math.abs(heading_correction) < 10) {
+                    heading_factor = 10 - math.abs(heading_correction);
+                }            
+                heading_correct = geo.normdeg180(airport_select.runways[rwy_select].heading - heading_correction * heading_factor);
                 setprop("fdm/jsbsim/systems/autopilot/gui/airport_runway_airplane_heading_correct",heading_correct);
                 setprop("fdm/jsbsim/systems/autopilot/gui/true-heading-deg",heading_correct);
                 # Slope correction
@@ -351,7 +359,7 @@ var airport_searcher = maketimer(1.0, func() {
                     slope = slope + (slope - 4) * 1.5;
                 }
                 setprop("fdm/jsbsim/systems/autopilot/gui/pitch-descent-angle-deg",-slope);
-                print(" 2.2 > ", runway_to_airplane_dist_direct, " ", runway_to_airplane_delta_alt_ft, " ", slope, " Heading cor: ", heading_correct, " (",heading_factor,")");
+                print(" 2.2 > ", runway_to_airplane_dist_direct, " ", runway_to_airplane_delta_alt_ft, " ", slope, " Heading cor: ", heading_correct, " (",heading_correction," : ",heading_factor,")");
             } else {
                 landig_status_id = 2.5;
                 setprop("fdm/jsbsim/systems/autopilot/gui/speed-value",50.0);
@@ -394,12 +402,13 @@ var airport_searcher = maketimer(1.0, func() {
                 setprop("fdm/jsbsim/systems/autopilot/gui/pitch-descent-angle",0.0);
                 setprop("fdm/jsbsim/systems/autopilot/gui/pitch-descent-angle-deg",-5.0);
                 setprop("fdm/jsbsim/systems/autopilot/gui/pitch-hold-deg",0.0);
-                setprop("fdm/jsbsim/systems/autopilot/gui/speed-set-mph",1.0);
+                setprop("fdm/jsbsim/systems/autopilot/gui/speed-set-mph",0.0);
                 setprop("fdm/jsbsim/systems/autopilot/gui/speed-set-mach",0.0);
-                setprop("fdm/jsbsim/systems/autopilot/gui/speed-set-cas",0.0);
+                setprop("fdm/jsbsim/systems/autopilot/gui/speed-set-cas",1.0);
                 setprop("fdm/jsbsim/systems/autopilot/gui/speed-value",0.0);
-                setprop("fdm/jsbsim/systems/autopilot/speed-throttle-imposed",0.2);
                 setprop("fdm/jsbsim/systems/autopilot/steer-brake",1.0);
+                setprop("fdm/jsbsim/systems/autopilot/speed-throttle-imposed",0.3);
+                setprop("fdm/jsbsim/systems/autopilot/handle-brake-activate",1);
                 slope = 0.0;
             } else {
                 heading_correction = (airport_select.runways[rwy_select].heading - airplane.course_to(rwy_coord_end)) * 8.0;
@@ -442,22 +451,22 @@ var airport_searcher = maketimer(1.0, func() {
             airport_select = nil;
             # Reset the landing data
             setprop("fdm/jsbsim/systems/autopilot/gui/heading-control",1.0);
-            
             setprop("fdm/jsbsim/systems/autopilot/gui/true-heading",0.0);
             setprop("fdm/jsbsim/systems/autopilot/gui/wing-leveler",1.0);
             setprop("fdm/jsbsim/systems/autopilot/gui/altitude-active",1.0);
             setprop("fdm/jsbsim/systems/autopilot/gui/altitude-hold",1.0);
             setprop("fdm/jsbsim/systems/autopilot/gui/pitch-descent-angle",0.0);
-            setprop("fdm/jsbsim/systems/autopilot/gui/speed-control",0.0);
-            setprop("fdm/jsbsim/systems/autopilot/gui/speed-throttle",0.0);
+            setprop("fdm/jsbsim/systems/autopilot/gui/speed-control",1.0);
+            setprop("fdm/jsbsim/systems/autopilot/gui/speed-throttle",1.0);
             setprop("fdm/jsbsim/systems/autopilot/gui/speed-pitch",0.0);
             setprop("fdm/jsbsim/systems/autopilot/gui/speed-set-mph",0.0);
             setprop("fdm/jsbsim/systems/autopilot/gui/speed-set-mach",0.0);
-            setprop("fdm/jsbsim/systems/autopilot/gui/speed-set-cas",0.0);
-            setprop("fdm/jsbsim/systems/autopilot/gui/speed-value",0.0);
+            setprop("fdm/jsbsim/systems/autopilot/gui/speed-set-cas",1.0);
+            setprop("fdm/jsbsim/systems/autopilot/gui/speed-value",getprop("fdm/jsbsim/systems/autopilot/speed-cas-on-air"));
             setprop("fdm/jsbsim/systems/autopilot/gui/speed-brake",0.0);
             setprop("fdm/jsbsim/systems/autopilot/gui/speed-automatic-flap",0.0);
             setprop("fdm/jsbsim/systems/autopilot/gui/speed-automatic-gear",0.0);
+            setprop("fdm/jsbsim/systems/autopilot/speed-throttle-imposed",-1.0);
             setprop("fdm/jsbsim/systems/autopilot/phase-landing",0.0);
             setprop("fdm/jsbsim/systems/autopilot/speed-brake-set-active",0.0);
             setprop("fdm/jsbsim/systems/autopilot/gui/speed-automatic-gear",0.0);

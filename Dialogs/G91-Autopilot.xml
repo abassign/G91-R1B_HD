@@ -164,7 +164,7 @@
                 <input>
                     <row>2</row>
                     <col>2</col>
-                    <property>fdm/jsbsim/systems/autopilot/gui/true-heading-deg</property>
+                    <property>fdm/jsbsim/systems/autopilot/steer-brake-active</property>
                     <live>true</live>
                     <binding>
                         <command>dialog-apply</command>
@@ -1259,7 +1259,7 @@
             Some Overshoot
             No Overshoot
         -->
-
+<!--
         <hrule/>
         
         <group>
@@ -1570,7 +1570,8 @@
             </text>
         </group>
         
+        -->
         
     </group>
-    
+
 </PropertyList>

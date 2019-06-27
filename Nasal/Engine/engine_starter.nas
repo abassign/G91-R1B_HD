@@ -16,6 +16,7 @@ var timerEngine_starter = maketimer(1.0, func() {
         var startProcessActive = getprop("fdm/jsbsim/systems/starter/start-process-active");
         
         if (guiAutostartIsActive == 0 and engineN2 < 10.0 and startProcessActive == 0.0) {
+            setprop("fdm/jsbsim/systems/autopilot/handle-brake-activate",1);
             print("timerEngine_starter: Autostarting engine procedure ok");
             setprop("fdm/jsbsim/systems/starter/gui/autostart-is-active",1);
             guiAutostartIsActive = 1; 
