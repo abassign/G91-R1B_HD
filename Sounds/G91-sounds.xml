@@ -14,7 +14,7 @@
                 <and>
                     <greater-than>
                         <property>fdm/jsbsim/systems/starter/startup-sound-lag</property>
-                        <value>0.05</value>	
+                        <value>0.001</value>	
                     </greater-than>
                     <equals>
                         <property>sim/current-view/internal</property>
@@ -22,10 +22,6 @@
                     </equals>
                 </and>
             </condition>
-            <volume>
-                <property>fdm/jsbsim/systems/starter/startup-sound-lag</property>
-                <factor>0.1</factor>
-            </volume>
             <position>
                 <x> 5.185 </x>
                 <y>  0.0 </y>
@@ -80,7 +76,7 @@
                 <and>
                     <greater-than>
                         <property>fdm/jsbsim/systems/starter/startup-sound-lag</property>
-                        <value>0.05</value>	
+                        <value>0.001</value>	
                     </greater-than>
                     <equals>
                         <property>sim/current-view/internal</property>
@@ -88,10 +84,6 @@
                     </equals>
                 </and>
             </condition>
-            <volume>
-                <property>fdm/jsbsim/systems/starter/startup-sound-lag</property>
-                <factor>1.0</factor>
-            </volume>
         </combustion>
         
         <combustion>
@@ -136,7 +128,7 @@
             </volume>
             <pitch>
                 <property>/fdm/jsbsim/systems/engine/rpm-norm</property>
-                <factor>1.0</factor>
+                <factor>0.1</factor>
             </pitch>
             <position>
                 <x> 5.185 </x>

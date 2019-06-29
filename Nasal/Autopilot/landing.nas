@@ -407,12 +407,16 @@ var airport_searcher = maketimer(1.0, func() {
                 setprop("fdm/jsbsim/systems/autopilot/gui/speed-set-cas",1.0);
                 setprop("fdm/jsbsim/systems/autopilot/gui/speed-value",0.0);
                 setprop("fdm/jsbsim/systems/autopilot/steer-brake",1.0);
-                setprop("fdm/jsbsim/systems/autopilot/speed-throttle-imposed",0.3);
+                setprop("fdm/jsbsim/systems/autopilot/speed-throttle-imposed",0.1);
                 setprop("fdm/jsbsim/systems/autopilot/handle-brake-activate",1);
                 slope = 0.0;
             } else {
-                heading_correction = (airport_select.runways[rwy_select].heading - airplane.course_to(rwy_coord_end)) * 8.0;
-                heading_correct = airport_select.runways[rwy_select].heading - heading_correction;
+                var heading_factor = 20.0;
+                heading_correction = geo.normdeg180(airport_select.runways[rwy_select].heading - airplane.course_to(rwy_coord_end));
+                if (math.abs(heading_correction > 1)) {
+                    heading_factor = 1 + (1 / (heading_correction / 180) / 10.0);
+                }    
+                heading_correct = airport_select.runways[rwy_select].heading - heading_correction * heading_factor * 2;
                 setprop("fdm/jsbsim/systems/autopilot/gui/airport_runway_airplane_heading_correct",heading_correct);
                 setprop("fdm/jsbsim/systems/autopilot/gui/true-heading-deg",heading_correct);
                 print(" 3.0 > ", getprop("fdm/jsbsim/systems/autopilot/steer-brake-modulated"), " ", getprop("fdm/jsbsim/systems/brake/left-steer-brake-intensity"), " contact: ",gear_unit_contact, " ",heading_correction," ",runway_to_airplane_dist);

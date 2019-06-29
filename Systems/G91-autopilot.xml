@@ -1285,13 +1285,6 @@ No Overshoot
             <output>/controls/engines/engine/throttle</output>
         </switch>
         
-        <switch name="systems/autopilot/speed-throttle-imposed">
-            <default value="systems/autopilot/speed-throttle-imposed"/>
-            <test logic="AND" value="-1">
-                systems/autopilot/speed-throttle-imposed GE 0.0
-            </test>
-        </switch>
-        
         <fcs_function name="systems/autopilot/speed-pitch-pid-gain-sum">
             <function>
                 <ifthen>
@@ -1457,14 +1450,14 @@ No Overshoot
                                 <v>0.0</v>
                                 <product>
                                     <p>systems/autopilot/true-heading-deg-delta-norm</p>
-                                    <v>-0.5</v>
+                                    <v>-1.0</v>
                                 </product>
                             </ifthen>
                             <ifthen>
                                 <lt><p>systems/autopilot/true-heading-deg-delta-norm</p><v>0.0</v></lt>
                                 <product>
                                     <p>systems/autopilot/true-heading-deg-delta-norm</p>
-                                    <v>0.5</v>
+                                    <v>1.0</v>
                                 </product>
                                 <v>0.0</v>
                             </ifthen>
@@ -1491,14 +1484,14 @@ No Overshoot
                                 <v>0.0</v>
                                 <product>
                                     <p>systems/autopilot/true-heading-deg-delta-norm</p>
-                                    <v>-0.5</v>
+                                    <v>-1.0</v>
                                 </product>
                             </ifthen>
                             <ifthen>
                                 <gt><p>systems/autopilot/true-heading-deg-delta-norm</p><v>0.0</v></gt>
                                 <product>
                                     <p>systems/autopilot/true-heading-deg-delta-norm</p>
-                                    <v>0.5</v>
+                                    <v>1.0</v>
                                 </product>
                                 <v>0.0</v>
                             </ifthen>
