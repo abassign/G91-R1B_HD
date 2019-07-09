@@ -190,7 +190,7 @@
                     <label>99999</label>
                     <live>true</live>
                     <halign>right</halign>
-                    <format>[%3.2f] (deg)</format>
+                    <format>[%3.2f]</format>
                     <property>fdm/jsbsim/systems/autopilot/true-heading-deg-delta</property>
                     <color>
                         <red>0.9</red>
@@ -275,47 +275,83 @@
                         </binding>
                     </checkbox>
                     <radio>
-                        <row>0</row>
-                        <col>1</col>
+                        <row>1</row>
+                        <col>0</col>
                         <label>Impact control</label>
+                        <halign>left</halign>
                         <property>fdm/jsbsim/systems/autopilot/gui/impact-control-active</property>
                         <live>true</live>
                         <binding>
                             <command>dialog-apply</command>
                         </binding>
                     </radio>
-                    <input>
-                        <row>0</row>
-                        <col>2</col>
+                    <slider>
+                        <row>1</row>
+                        <col>1</col>
+                        <name>impact_control_ramp_deg</name>
+                        <halign>left</halign>
                         <property>fdm/jsbsim/systems/autopilot/gui/impact-control-ramp-deg</property>
-                        <live>true</live>
+                        <min>0.0</min>
+                        <max>5.0</max>
+                        <step>1.0</step> 
                         <binding>
                             <command>dialog-apply</command>
                         </binding>
-                    </input>
+                    </slider>
                     <text>
-                        <row>0</row>
-                        <col>3</col>
-                        <label>99999</label>
+                        <row>1</row>
+                        <col>2</col>
+                        <label>99999999</label>
                         <halign>left</halign>
                         <live>true</live>
-                        <format>%3.0f (sec)</format>
-                        <property>fdm/jsbsim/systems/autopilot/impact-time</property>
+                        <format>%1.0f (deg)</format>
+                        <property>fdm/jsbsim/systems/autopilot/gui/impact-control-ramp-deg</property>
                         <color>
                             <red>0.9</red>
                             <green>0.9</green>
                             <blue>0.0</blue>
                         </color>
                     </text>
-                    <input>
-                        <row>0</row>
-                        <col>4</col>
-                        <property>fdm/jsbsim/systems/autopilot/gui/impact-min-z-ft</property>
+                    <text>
+                        <row>1</row>
+                        <col>3</col>
+                        <label>9999</label>
+                        <halign>right</halign>
                         <live>true</live>
+                        <format>%2.0f</format>
+                        <property>fdm/jsbsim/systems/autopilot/impact-time</property>
+                        <color>
+                            <red>0.0</red>
+                            <green>0.9</green>
+                            <blue>0.0</blue>
+                        </color>
+                    </text>
+                    <slider>
+                        <row>1</row>
+                        <col>4</col>
+                        <name>impact_min_z_ft</name>
+                        <property>fdm/jsbsim/systems/autopilot/gui/impact-min-z-ft</property>
+                        <min>0.0</min>
+                        <max>600.0</max>
+                        <step>10.0</step> 
                         <binding>
                             <command>dialog-apply</command>
                         </binding>
-                    </input>
+                    </slider>
+                    <text>
+                        <row>1</row>
+                        <col>5</col>
+                        <label>99999999</label>
+                        <halign>left</halign>
+                        <live>true</live>
+                        <format>%4.0f (ft)</format>
+                        <property>fdm/jsbsim/systems/autopilot/gui/impact-min-z-ft</property>
+                        <color>
+                            <red>0.9</red>
+                            <green>0.9</green>
+                            <blue>0.0</blue>
+                        </color>
+                    </text>
                 </group>
             </group>
             <hrule/>
@@ -539,20 +575,6 @@
                         ]]></script>
                     </binding>
                 </button>
-                <text>
-                    <row>4</row>
-                    <col>2</col>
-                    <label>99999</label>
-                    <halign>center</halign>
-                    <live>true</live>
-                    <format>%5.0f</format>
-                    <property>fdm/jsbsim/systems/autopilot/altitude-hold-ft</property>
-                    <color>
-                        <red>0.0</red>
-                        <green>0.8</green>
-                        <blue>0.0</blue>
-                    </color>
-                </text>
                 <text>
                     <row>4</row>
                     <col>3</col>

@@ -549,9 +549,9 @@ var airport_searcher = maketimer(0.5, func() {
             factor_ramp = impact_time / impact_medium_time;
             if (factor_ramp < 0.3) factor_ramp = 0.3;
             var alpha = math.abs((factor_ramp + impact_factor_ramp_old) * 0.5) * 0.1;
-            if (impact_factor_ramp_integral < (factor_ramp + 0.1)) {
+            if (impact_factor_ramp_integral < (factor_ramp + 0.05)) {
                 impact_factor_ramp_integral = impact_factor_ramp_integral + alpha;
-            } else if (impact_factor_ramp_integral >= (factor_ramp - 0.1)) {
+            } else if (impact_factor_ramp_integral >= (factor_ramp - 0.05)) {
                 impact_factor_ramp_integral = impact_factor_ramp_integral - alpha;
             } else {
                 impact_factor_ramp_integral = factor_ramp;
@@ -562,9 +562,9 @@ var airport_searcher = maketimer(0.5, func() {
             factor_ramp = impact_time / impact_medium_time;
             if (factor_ramp < 1.0) factor_ramp = 1.0;
             var alpha = math.abs((factor_ramp + impact_factor_ramp_old) * 0.5) * 0.1;
-            if (impact_factor_ramp_integral < (factor_ramp + 0.1)) {
+            if (impact_factor_ramp_integral < (factor_ramp + 0.02)) {
                 impact_factor_ramp_integral = impact_factor_ramp_integral + alpha;
-            } else if (impact_factor_ramp_integral >= (factor_ramp - 0.1)) {
+            } else if (impact_factor_ramp_integral >= (factor_ramp - 0.02)) {
                 impact_factor_ramp_integral = impact_factor_ramp_integral - alpha;
             } else {
                 impact_factor_ramp_integral = factor_ramp;
