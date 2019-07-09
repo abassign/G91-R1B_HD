@@ -218,6 +218,13 @@ No Overshoot
     <property value="0.0">systems/autopilot/distance-nm</property>
     <property value="0.0">systems/autopilot/turn-radius-nm</property>
     
+    <property value="0.0">systems/autopilot/gui/impact-control-active</property>
+    <property value="5.0">systems/autopilot/gui/impact-control-ramp-deg</property>
+    <property value="300.0">systems/autopilot/gui/impact-min-z-ft</property>
+    <property value="10.0">systems/autopilot/gui/impact-medium-time</property>
+    <property value="0.0">systems/autopilot/impact-allarm</property>
+    <property value="0.0">systems/autopilot/impact-time</property>
+    <property value="0.0">systems/autopilot/impact-dist</property>
     
     <channel name="Autopilot GUI Interface" execrate="32">
         

@@ -164,7 +164,7 @@
                 <input>
                     <row>2</row>
                     <col>2</col>
-                    <property>fdm/jsbsim/systems/autopilot/steer-brake-active</property>
+                    <property>fdm/jsbsim/systems/autopilot/gui/true-heading-deg</property>
                     <live>true</live>
                     <binding>
                         <command>dialog-apply</command>
@@ -274,6 +274,48 @@
                             <command>dialog-apply</command>
                         </binding>
                     </checkbox>
+                    <radio>
+                        <row>0</row>
+                        <col>1</col>
+                        <label>Impact control</label>
+                        <property>fdm/jsbsim/systems/autopilot/gui/impact-control-active</property>
+                        <live>true</live>
+                        <binding>
+                            <command>dialog-apply</command>
+                        </binding>
+                    </radio>
+                    <input>
+                        <row>0</row>
+                        <col>2</col>
+                        <property>fdm/jsbsim/systems/autopilot/gui/impact-control-ramp-deg</property>
+                        <live>true</live>
+                        <binding>
+                            <command>dialog-apply</command>
+                        </binding>
+                    </input>
+                    <text>
+                        <row>0</row>
+                        <col>3</col>
+                        <label>99999</label>
+                        <halign>left</halign>
+                        <live>true</live>
+                        <format>%3.0f (sec)</format>
+                        <property>fdm/jsbsim/systems/autopilot/impact-time</property>
+                        <color>
+                            <red>0.9</red>
+                            <green>0.9</green>
+                            <blue>0.0</blue>
+                        </color>
+                    </text>
+                    <input>
+                        <row>0</row>
+                        <col>4</col>
+                        <property>fdm/jsbsim/systems/autopilot/gui/impact-min-z-ft</property>
+                        <live>true</live>
+                        <binding>
+                            <command>dialog-apply</command>
+                        </binding>
+                    </input>
                 </group>
             </group>
             <hrule/>

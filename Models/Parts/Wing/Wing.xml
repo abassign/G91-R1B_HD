@@ -1508,7 +1508,72 @@
             <entry><ind>0.2</ind><dep>-20</dep></entry>
         </interpolation>
     </animation>
+<!--
+    <animation>
+        <type>locked-track</type>
+        <object-name>B00_sx_damper_01</object-name>
+        <center>
+            <x-m>0.30982</x-m>
+            <y-m>-0.91554</y-m>
+            <z-m>-0.73238</z-m>
+        </center>
+        <lock-axis>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+        </lock-axis>
+        <track-axis>
+            <x>-16</x>
+            <y>-41</y>
+            <z>-1</z>
+        </track-axis>
+        <target-name>B00_sx_Leg_03</target-name>
+        <target-center>
+            <x-m>0.14949</x-m>
+            <y-m>-0.50689</y-m>
+            <z-m>-0.74162</z-m>
+        </target-center>
+    </animation>
     
+    <animation>
+        <type>locked-track</type>
+        <object-name>B00_sx_damper_02</object-name>
+        <center>
+            <x-m>0.14949</x-m>
+            <y-m>-0.50689</y-m>
+            <z-m>-0.74162</z-m>
+        </center>
+        <lock-axis>
+            <x>0</x>
+            <y>0</y>
+            <z>1</z>
+        </lock-axis>
+        <track-axis>
+            <x>16</x>
+            <y>-41</y>
+            <z>-1</z>
+        </track-axis>
+        <target-name>B00_sx_Leg_04</target-name>
+        <target-center>
+            <x-m>0.30982</x-m>
+            <y-m>-0.91554</y-m>
+            <z-m>-0.73238</z-m>
+        </target-center>
+    </animation>
+    
+    <animation>
+        <type>translate</type>
+        <object-name>B00_sx_damper_02</object-name>
+        <property>sim/G91/Test/V0_1A</property>
+        <factor>1.0</factor>
+        <offset-m>0</offset-m>
+        <axis>
+            <x>0.3</x>
+            <y>0.6</y>
+            <z>0.1</z>
+        </axis>
+    </animation>
+    -->
     <!-- SX Main landing gear Spin  -->
     
     <animation>

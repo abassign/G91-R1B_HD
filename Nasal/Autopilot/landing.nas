@@ -35,6 +35,12 @@ var rwy_coord_end_offset = 3000.0;
 var heading_target_active = 0.0;
 var heading_target = 0.0;
 
+var impact_allarm = 0.0;
+var impact_dist = 0.0;
+var impact_time = 0.0;
+var impact_factor_ramp_integral = 0.0;
+var impact_factor_ramp_old = 0.0;
+
 
 setlistener("fdm/jsbsim/systems/autopilot/gui/landing-activate", func {
     if (getprop("fdm/jsbsim/systems/autopilot/gui/landing-activate") == 1) {
@@ -51,7 +57,7 @@ setlistener("fdm/jsbsim/systems/autopilot/gui/landing-activate", func {
 }, 1, 0);
 
 
-var airport_searcher = maketimer(1.0, func() {
+var airport_searcher = maketimer(0.5, func() {
 
     var slope = 0.0;
     var runway_to_airplane_dist = 0.0;
@@ -487,6 +493,92 @@ var airport_searcher = maketimer(1.0, func() {
             setprop("fdm/jsbsim/systems/autopilot/gui/airport_runway_airplane_slope",0.0);
             setprop("fdm/jsbsim/systems/autopilot/gui/airport_landing_status","Autolanding inactive");
         }
+    }
+    
+    # Impact control
+    
+    if (getprop("fdm/jsbsim/systems/autopilot/gui/impact-control-active") and (getprop("velocities/speed-east-fps") != 0 or getprop("velocities/speed-north-fps") != 0)) {
+        var impact_ramp = getprop("fdm/jsbsim/systems/autopilot/gui/impact-control-ramp-deg");
+        var impact_medium_time = getprop("fdm/jsbsim/systems/autopilot/gui/impact-medium-time");
+        var start = geo.aircraft_position();
+        var speed_east_fps  = getprop("velocities/speed-east-fps");
+        var speed_north_fps = getprop("velocities/speed-north-fps");
+        var speed_horz_fps  = math.sqrt((speed_east_fps*speed_east_fps)+(speed_north_fps*speed_north_fps));
+        var speed_down_fps  = getprop("velocities/speed-down-fps") + speed_horz_fps * math.tan(impact_ramp / R2D);
+        var speed_fps       = math.sqrt((speed_horz_fps*speed_horz_fps)+(speed_down_fps*speed_down_fps));
+        var heading = 0;
+        var factor_ramp = 0.0;
+        if (speed_north_fps >= 0) {
+            heading -= math.acos(speed_east_fps/speed_horz_fps)*R2D - 90;
+        } else {
+            heading -= -math.acos(speed_east_fps/speed_horz_fps)*R2D - 90;
+        }
+        heading = geo.normdeg(heading);
+
+        var end = geo.Coord.new(start);
+        end.apply_course_distance(heading, speed_horz_fps*FT2M);
+        end.set_alt(end.alt() - (getprop("fdm/jsbsim/systems/autopilot/gui/impact-min-z-ft")*FT2M)  - speed_down_fps*FT2M);
+
+        var dir_x = end.x()-start.x();
+        var dir_y = end.y()-start.y();
+        var dir_z = end.z()-start.z();
+        var xyz = {"x":start.x(),  "y":start.y(),  "z":start.z()};
+        var dir = {"x":dir_x,      "y":dir_y,      "z":dir_z};
+
+        var geod = get_cart_ground_intersection(xyz, dir);
+        if (geod != nil) {
+            impact_allarm = 1.0;
+            end.set_latlon(geod.lat, geod.lon, geod.elevation);
+            impact_dist = start.direct_distance_to(end)*M2FT;
+            impact_time = impact_dist / speed_fps;
+            
+        } else {
+            impact_allarm = 0;
+            impact_dist = 0.0;
+            impact_time = 0.0;
+            impact_factor_ramp_integral = 0.0;
+        }
+        setprop("fdm/jsbsim/systems/autopilot/impact-allarm",impact_allarm);
+        setprop("fdm/jsbsim/systems/autopilot/impact-dist",impact_dist);
+        setprop("fdm/jsbsim/systems/autopilot/impact-time",impact_time);
+        setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed",0.0);
+        setprop("fdm/jsbsim/systems/autopilot/gui/pitch-hold",0.0);
+        setprop("fdm/jsbsim/systems/autopilot/gui/altitude-hold",0.0);
+        setprop("fdm/jsbsim/systems/autopilot/gui/pitch-descent-angle",1.0);
+        if (impact_allarm > 0 and impact_time < impact_medium_time) {
+            factor_ramp = impact_time / impact_medium_time;
+            if (factor_ramp < 0.3) factor_ramp = 0.3;
+            var alpha = math.abs((factor_ramp + impact_factor_ramp_old) * 0.5) * 0.1;
+            if (impact_factor_ramp_integral < (factor_ramp + 0.1)) {
+                impact_factor_ramp_integral = impact_factor_ramp_integral + alpha;
+            } else if (impact_factor_ramp_integral >= (factor_ramp - 0.1)) {
+                impact_factor_ramp_integral = impact_factor_ramp_integral - alpha;
+            } else {
+                impact_factor_ramp_integral = factor_ramp;
+            }
+            setprop("fdm/jsbsim/systems/autopilot/gui/pitch-descent-angle-deg",impact_ramp / impact_factor_ramp_integral);
+            impact_factor_ramp_old = factor_ramp;
+        } else if (impact_allarm > 0 and impact_time >= impact_medium_time and impact_time < 3.0 * impact_medium_time) {
+            factor_ramp = impact_time / impact_medium_time;
+            if (factor_ramp < 1.0) factor_ramp = 1.0;
+            var alpha = math.abs((factor_ramp + impact_factor_ramp_old) * 0.5) * 0.1;
+            if (impact_factor_ramp_integral < (factor_ramp + 0.1)) {
+                impact_factor_ramp_integral = impact_factor_ramp_integral + alpha;
+            } else if (impact_factor_ramp_integral >= (factor_ramp - 0.1)) {
+                impact_factor_ramp_integral = impact_factor_ramp_integral - alpha;
+            } else {
+                impact_factor_ramp_integral = factor_ramp;
+                impact_factor_ramp_old = factor_ramp;
+            }
+            setprop("fdm/jsbsim/systems/autopilot/gui/pitch-descent-angle-deg",impact_ramp * (-impact_factor_ramp_integral * 0.5));
+            impact_factor_ramp_old = factor_ramp;
+        } else {
+            setprop("fdm/jsbsim/systems/autopilot/gui/pitch-descent-angle-deg",-impact_ramp);
+        }
+        print("# Impact dist: ",impact_dist," time: ",impact_time," Factor ramp:", factor_ramp," integral: ",impact_factor_ramp_integral," diff: ",(factor_ramp - impact_factor_ramp_integral));
+    } else {
+        impact_factor_ramp_integral = 0.0;
+        impact_factor_ramp_old = 0.0;
     }
 
 });
