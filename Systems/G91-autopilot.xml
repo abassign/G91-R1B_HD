@@ -93,20 +93,20 @@ No Overshoot
     <property value="0.0">systems/autopilot/pitch-hold-deg-lag</property>
     <property value="1.0">systems/autopilot/pitch-hold-deg-lag-C1</property>
     <!-- Zingler Integral Rule Ku: 35 Tu: 256 -->
-    <property value="20.400">systems/autopilot/pitch-pid-kp</property>
-    <property value="0.1594">systems/autopilot/pitch-pid-ki</property>
-    <property value="0.00996">systems/autopilot/pitch-pid-kd</property>
+    <property value="20.400">systems/autopilot/pitch-pid-kp-1</property>
+    <property value="0.1594">systems/autopilot/pitch-pid-ki-1</property>
+    <property value="0.00996">systems/autopilot/pitch-pid-kd-1</property>
+    
     <!-- Posson Integral Rule Ku: 7.33 Tu: 120 -->
     <!-- Il probelma va corretto è dovuto al fatto che la gestione dell'angolo di discesa
     richiede un controllo più efficace del proporzionale, mentre varidotto nella gestione
     normale. Perciò va corretto questo punto e/o gestita la velocità minima per vitare lo stallo -->
-    <!--
-    <property value="5.131">systems/autopilot/pitch-pid-kp</property>
-    <property value="0.1069">systems/autopilot/pitch-pid-ki</property>
-    <property value="0.00641">systems/autopilot/pitch-pid-kd</property>
-    -->
+    <property value="5.131">systems/autopilot/pitch-pid-kp-2</property>
+    <property value="0.1069">systems/autopilot/pitch-pid-ki-2</property>
+    <property value="0.00641">systems/autopilot/pitch-pid-kd-2</property>
     <!-- -->
     <property value="3.0">systems/autopilot/pitch-input-error-coefficient</property>
+    <property value="1.0">systems/autopilot/pitch-rad-error-limiter-coefficient</property>
     <property value="-0.5">systems/autopilot/pitch-output-error-coefficient</property>
     <property value="0.0">systems/autopilot/pitch-error</property>
     <property value="0.0">systems/autopilot/pitch-ap-autoswitch-norm</property>
@@ -138,10 +138,10 @@ No Overshoot
     <property value="0.0">systems/autopilot/altitude-hold-limitator-active</property>
     <property value="0.1">systems/autopilot/altitude-hold-fdm-lag-coefficient</property>
     <property value="0.0">systems/autopilot/altitude-hold-pid-gain-lag-sw</property>
-    <!-- Possen Integral Rule Ku: 0.8 Tu: 50 -->
-    <property value="0.480">systems/autopilot/altitude-hold-pid-kp</property>
-    <property value="0.019">systems/autopilot/altitude-hold-pid-ki</property>
-    <property value="0.001">systems/autopilot/altitude-hold-pid-kd</property>
+    <!-- Possen Integral Rule Ku: 0.530 Tu: 10 -->
+    <property value="0.371">systems/autopilot/altitude-hold-pid-kp</property>
+    <property value="0.0927">systems/autopilot/altitude-hold-pid-ki</property>
+    <property value="0.0056">systems/autopilot/altitude-hold-pid-kd</property>
     <!-- -->
     <property value="0.0">systems/autopilot/altitude-hold-reset-integrator</property>
     <!-- Attention is foundamental parameter for stability -->
@@ -219,10 +219,8 @@ No Overshoot
     <property value="0.0">systems/autopilot/turn-radius-nm</property>
     
     <property value="0.0">systems/autopilot/gui/impact-control-active</property>
-    <property value="5.0">systems/autopilot/gui/impact-control-ramp-deg</property>
-    <property value="300.0">systems/autopilot/gui/impact-min-z-ft</property>
-    <property value="10.0">systems/autopilot/gui/impact-medium-time</property>
-    <property value="0.0">systems/autopilot/impact-allarm</property>
+    <property value="200.0">systems/autopilot/gui/impact-min-z-ft</property>
+    <property value="15.0">systems/autopilot/gui/impact-medium-time</property>
     <property value="0.0">systems/autopilot/impact-time</property>
     <property value="0.0">systems/autopilot/impact-dist</property>
     
@@ -704,6 +702,21 @@ No Overshoot
             </clipto>
         </lag_filter>
         
+        <scheduled_gain name="systems/autopilot/pitch-rad-error-limiter">
+            <input>systems/autopilot/pitch-rad-error-limiter-coefficient</input>
+            <table>
+                <independentVar>systems/autopilot/speed-cas-on-air-lag</independentVar>
+                <tableData>
+                    0.0      0.5
+                    160.0    0.3
+                    200.0    0.05
+                    300.0    0.02
+                    800.0    0.01
+                </tableData>
+            </table>
+            <gain>1.0</gain>
+        </scheduled_gain>
+        
         <fcs_function name="systems/autopilot/pitch-rad-error">
             <function>
                 <ifthen>
@@ -737,8 +750,8 @@ No Overshoot
                 </ifthen>
             </function>
             <clipto>
-                <min>-0.5</min>
-                <max>0.5</max>
+                <min>-systems/autopilot/pitch-rad-error-limiter</min>
+                <max>systems/autopilot/pitch-rad-error-limiter</max>
             </clipto>
         </fcs_function>
         
@@ -750,8 +763,8 @@ No Overshoot
                     systems/autopilot/pitch-descent-angle-active == 1
                 </test>
                 <test logic="AND">
-                    systems/autopilot/pitch-rad-error LT 0.5
-                    systems/autopilot/pitch-rad-error GT -0.5
+                    systems/autopilot/pitch-rad-error LT systems/autopilot/pitch-rad-error-limiter
+                    systems/autopilot/pitch-rad-error GT -systems/autopilot/pitch-rad-error-limiter
                 </test>
             </test>
             <test logic="AND" value="2">
@@ -760,17 +773,53 @@ No Overshoot
                     systems/autopilot/pitch-descent-angle-active == 1
                 </test>
                 <test logic="OR">
-                    systems/autopilot/pitch-rad-error GE 0.5
-                    systems/autopilot/pitch-rad-error LE -0.5
+                    systems/autopilot/pitch-rad-error GE systems/autopilot/pitch-rad-error-limiter
+                    systems/autopilot/pitch-rad-error LE -systems/autopilot/pitch-rad-error-limiter
                 </test>
             </test>
         </switch>
         
+        <switch name="systems/autopilot/pitch-pid-kp">
+            <default value="systems/autopilot/pitch-pid-kp-2"/>
+            <test logic="AND" value="systems/autopilot/pitch-pid-kp-1">
+                systems/autopilot/pitch-descent-angle-active == 1
+            </test>
+        </switch>
+        
+        <lag_filter name="systems/autopilot/pitch-pid-kp-lag">
+            <input>systems/autopilot/pitch-pid-kp</input>
+            <c1>0.2</c1>
+        </lag_filter>
+        
+        <switch name="systems/autopilot/pitch-pid-ki">
+            <default value="systems/autopilot/pitch-pid-ki-2"/>
+            <test logic="AND" value="systems/autopilot/pitch-pid-ki-1">
+                systems/autopilot/pitch-descent-angle-active == 1
+            </test>
+        </switch>
+        
+        <lag_filter name="systems/autopilot/pitch-pid-ki-lag">
+            <input>systems/autopilot/pitch-pid-ki</input>
+            <c1>0.2</c1>
+        </lag_filter>
+        
+        <switch name="systems/autopilot/pitch-pid-kd">
+            <default value="systems/autopilot/pitch-pid-kd-2"/>
+            <test logic="AND" value="systems/autopilot/pitch-pid-kd-1">
+                systems/autopilot/pitch-descent-angle-active == 1
+            </test>
+        </switch>
+        
+        <lag_filter name="systems/autopilot/pitch-pid-kd-lag">
+            <input>systems/autopilot/pitch-pid-kd</input>
+            <c1>0.2</c1>
+        </lag_filter>
+        
         <pid name="systems/autopilot/pitch-speed-ap-pid" type="ab3">
             <input>systems/autopilot/pitch-rad-error</input>
-            <kp>systems/autopilot/pitch-pid-kp</kp>
-            <ki>systems/autopilot/pitch-pid-ki</ki>
-            <kd>systems/autopilot/pitch-pid-kd</kd>
+            <kp>systems/autopilot/pitch-pid-kp-lag</kp>
+            <ki>systems/autopilot/pitch-pid-ki-lag</ki>
+            <kd>systems/autopilot/pitch-pid-kd-lag</kd>
             <trigger>systems/autopilot/pitch-reset-integrator</trigger>
         </pid>
         

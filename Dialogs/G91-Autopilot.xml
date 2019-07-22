@@ -290,10 +290,11 @@
                         <col>1</col>
                         <name>impact_control_ramp_deg</name>
                         <halign>left</halign>
-                        <property>fdm/jsbsim/systems/autopilot/gui/impact-control-ramp-deg</property>
-                        <min>0.0</min>
-                        <max>5.0</max>
-                        <step>1.0</step> 
+                        <property>fdm/jsbsim/systems/autopilot/gui/impact-medium-time</property>
+                        <min>5.0</min>
+                        <max>20.0</max>
+                        <step>1</step>
+                        <live>true</live>
                         <binding>
                             <command>dialog-apply</command>
                         </binding>
@@ -304,8 +305,8 @@
                         <label>99999999</label>
                         <halign>left</halign>
                         <live>true</live>
-                        <format>%1.0f (deg)</format>
-                        <property>fdm/jsbsim/systems/autopilot/gui/impact-control-ramp-deg</property>
+                        <format>%1.1f (adr)</format>
+                        <property>fdm/jsbsim/systems/autopilot/gui/impact-medium-time</property>
                         <color>
                             <red>0.9</red>
                             <green>0.9</green>
@@ -318,7 +319,7 @@
                         <label>9999</label>
                         <halign>right</halign>
                         <live>true</live>
-                        <format>%2.0f</format>
+                        <format>%2.0f (s)</format>
                         <property>fdm/jsbsim/systems/autopilot/impact-time</property>
                         <color>
                             <red>0.0</red>
@@ -331,7 +332,7 @@
                         <col>4</col>
                         <name>impact_min_z_ft</name>
                         <property>fdm/jsbsim/systems/autopilot/gui/impact-min-z-ft</property>
-                        <min>0.0</min>
+                        <min>50.0</min>
                         <max>600.0</max>
                         <step>10.0</step> 
                         <binding>
@@ -1323,7 +1324,7 @@
             Some Overshoot
             No Overshoot
         -->
-<!--
+
         <hrule/>
         
         <group>
@@ -1415,7 +1416,7 @@
                 <live>true</live>
                 <property>fdm/jsbsim/systems/autopilot/gui/pid-ku</property>
                 <min>0.0</min>
-                <max>50.0</max>
+                <max>5.0</max>
                 <step>0.01</step>
                 <binding>
                     <command>dialog-apply</command>
@@ -1447,7 +1448,7 @@
                 <live>true</live>
                 <property>fdm/jsbsim/systems/autopilot/gui/pid-tu</property>
                 <min>0.0</min>
-                <max>1000</max>
+                <max>10</max>
                 <step>0.01</step>
                 <binding>
                     <command>dialog-apply</command>
@@ -1510,9 +1511,9 @@
                         setprop("fdm/jsbsim/systems/autopilot/gui/pid-ki",ki);
                         setprop("fdm/jsbsim/systems/autopilot/gui/pid-kd",kd);
                         # Modifiy data part
-                        setprop("fdm/jsbsim/systems/autopilot/pitch-pid-kp",kp);
-                        setprop("fdm/jsbsim/systems/autopilot/pitch-pid-ki",ki);
-                        setprop("fdm/jsbsim/systems/autopilot/pitch-pid-kd",kd);
+                        setprop("fdm/jsbsim/systems/autopilot/altitude-hold-pid-kp",kp);
+                        setprop("fdm/jsbsim/systems/autopilot/altitude-hold-pid-ki",ki);
+                        setprop("fdm/jsbsim/systems/autopilot/altitude-hold-pid-kd",kd);
                     ]]></script>
                 </binding>
             </button>
@@ -1633,8 +1634,6 @@
                 </color>
             </text>
         </group>
-        
-        -->
         
     </group>
 
