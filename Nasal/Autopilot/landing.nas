@@ -629,8 +629,10 @@ var airport_searcher = maketimer(0.5, func() {
         
         var altitude_delta = altitude_actual - (end.alt() * M2FT);
 
-        if (((impact_time / impact_altitude_grain) < 0.6 and (impact_altitude_direction_der_frist > 2.0)) or (impact_altitude_direction_der_frist > 10.0) or (abs(impact_time_dif_0_10) < 10.0)) {
-            if (impact_time < 4.0 or (abs(impact_time_dif_0_10) < 5.0)) {
+        if (((impact_time / impact_altitude_grain) < 0.6 and (impact_altitude_direction_der_frist > 2.0)) 
+        or (impact_altitude_direction_der_frist > 10.0) 
+        or ((abs(impact_time_dif_0_10) < impact_altitude_grain) and (impact_altitude_direction_der_frist > 2.0))) {
+            if (impact_time < 5.0 and abs(impact_time_dif_0_10) < 5.0) {
                 if (impact_ramp < 1.0) impact_ramp = 1.0;
                 impact_ramp_delta = impact_altitude_grain * (0.3 / (0.1 + math.ln((1.0 + math.pow((impact_time/10),2)))));
                 impact_allarm_solution = 1.1;
