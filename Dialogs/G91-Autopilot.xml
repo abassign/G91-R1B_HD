@@ -284,6 +284,12 @@
                         <binding>
                             <command>dialog-apply</command>
                         </binding>
+                        <binding>
+                            <command>nasal</command>
+                            <script>
+                                setprop("fdm/jsbsim/systems/autopilot/gui/pitch-descent-angle",0.0);
+                            </script>
+                        </binding>
                     </radio>
                     <slider>
                         <row>1</row>
@@ -420,7 +426,6 @@
                     <binding>
                         <command>nasal</command>
                         <script>
-                            setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed",0.0);
                             setprop("fdm/jsbsim/systems/autopilot/gui/pitch-descent-angle",0.0);
                         </script>
                     </binding>
@@ -466,7 +471,6 @@
                         <command>nasal</command>
                         <script>
                             setprop("fdm/jsbsim/systems/autopilot/gui/pitch-hold",0.0);
-                            setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed",0.0);
                         </script>
                     </binding>
                 </radio>
@@ -1309,6 +1313,100 @@
                     <red>0.9</red>
                     <green>0.9</green>
                     <blue>0.9</blue>
+                </color>
+            </text>
+        </group>
+        <group>
+            <!-- Autolanding parameters -->
+            <layout>table</layout>
+            <text>
+                <row>0</row>
+                <col>0</col>
+                <label>Hovering distance: </label>
+                <halign>left</halign>
+                <row>0</row>
+                <col>7</col>
+            </text>
+            <slider>
+                <row>0</row>
+                <col>1</col>
+                <live>true</live>
+                <property>fdm/jsbsim/systems/autopilot/gui/landing-holding-point-dist-nm</property>
+                <min>5.0</min>
+                <max>30.0</max>
+                <step>1</step>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+                <binding>
+                    <command>nasal</command>
+                    <script>
+                        var dist = getprop("fdm/jsbsim/systems/autopilot/gui/landing-holding-point-dist-nm");
+                        var elev = getprop("fdm/jsbsim/systems/autopilot/gui/landing-holding-point-h-ft");
+                        setprop("fdm/jsbsim/systems/autopilot/gui/landing-holding-point-slope",math.atan((elev/6076.12)/dist)*R2D);
+                    </script>
+                </binding>
+            </slider>
+            <text>
+                <row>0</row>
+                <col>2</col>
+                <label>99999</label>
+                <halign>left</halign>
+                <live>true</live>
+                <format>%2.0f (nm)</format>
+                <property>fdm/jsbsim/systems/autopilot/gui/landing-holding-point-dist-nm</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.0</blue>
+                </color>
+            </text>
+            <slider>
+                <row>0</row>
+                <col>3</col>
+                <live>true</live>
+                <property>fdm/jsbsim/systems/autopilot/gui/landing-holding-point-h-ft</property>
+                <min>3000.0</min>
+                <max>10000.0</max>
+                <step>500</step>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+                <binding>
+                    <command>nasal</command>
+                    <script>
+                        var dist = getprop("fdm/jsbsim/systems/autopilot/gui/landing-holding-point-dist-nm");
+                        var elev = getprop("fdm/jsbsim/systems/autopilot/gui/landing-holding-point-h-ft");
+                        setprop("fdm/jsbsim/systems/autopilot/gui/landing-holding-point-slope",math.atan((elev/6076.12)/dist)*R2D);
+                    </script>
+                </binding>
+            </slider>
+            <text>
+                <row>0</row>
+                <col>4</col>
+                <label>99999999999999999999999999</label>
+                <halign>left</halign>
+                <live>true</live>
+                <format>Hovering altitude: %5.0f (ft)</format>
+                <property>fdm/jsbsim/systems/autopilot/gui/landing-holding-point-h-ft</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.0</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>5</col>
+                <label>9999999999</label>
+                <halign>left</halign>
+                <live>true</live>
+                <format>Slope: %2.1f (deg)</format>
+                <property>fdm/jsbsim/systems/autopilot/gui/landing-holding-point-slope</property>
+                <color>
+                    <red>0.2</red>
+                    <green>0.9</green>
+                    <blue>0.0</blue>
                 </color>
             </text>
         </group>

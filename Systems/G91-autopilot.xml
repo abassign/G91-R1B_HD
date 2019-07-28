@@ -209,6 +209,7 @@ No Overshoot
     <property value="5000.0">systems/autopilot/gui/landing-holding-point-h-ft</property>
     <property value="1500.0">systems/autopilot/gui/landing-minimal-length-m</property>
     <property value="10.0">systems/autopilot/gui/landing-max-lateral-wind</property>
+    <property value="10.0">systems/autopilot/gui/landing-holding-altitude-min</property>
     
     <property value="0.0">systems/autopilot/landing-gear-activate-blocked</property>
     <property value="0.0">systems/autopilot/landing-gear-set-close</property>
@@ -291,6 +292,7 @@ No Overshoot
             <test logic="AND" value="1.0">
                 systems/autopilot/gui/altitude-active == 1.0
                 systems/autopilot/gui/altitude-hold == 1.0
+                systems/autopilot/pitch-descent-angle-active == 0
             </test>
         </switch>
         
