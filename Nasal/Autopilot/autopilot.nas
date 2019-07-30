@@ -4,6 +4,7 @@
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/airport_select_name", "", "STRING");
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/airport_select_id", "", "STRING");
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/airport_runway_id", "", "STRING");
+var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/airport_nearest_runway", 0, "INT");
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/airport_landing_status", "Autolanding inactive", "STRING");
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/airport_landing_status_id", 0, "INT");
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/airport_runway_distance", 0, "DOUBLE");
@@ -34,10 +35,6 @@ var airplane_to_holding_point_alt = 0.0;
 
 var apt_coord = geo.Coord.new();
 var rwy_coord_start = geo.Coord.new();
-var rwy_coord_start_final_A = geo.Coord.new();
-var rwy_coord_start_final_B = geo.Coord.new();
-var rwy_coord_start_final_C = geo.Coord.new();
-var rwy_coord_start_final_D = geo.Coord.new();
 var rwy_coord_end = geo.Coord.new();
 var rwy_coord_end_offset = 3000.0;
 var heading_target_active = 0.0;
@@ -91,6 +88,7 @@ var airport_searcher = maketimer(0.5, func() {
         var landing_rwy_search_max_heading = getprop("fdm/jsbsim/systems/autopilot/gui/landing-rwy-search-max-heading");
         var landing_minimal_length_m = getprop("fdm/jsbsim/systems/autopilot/gui/landing-minimal-length-m");
         var landing_max_lateral_wind = getprop("fdm/jsbsim/systems/autopilot/gui/landing-max-lateral-wind");
+        var airport_nearest_runway = getprop("fdm/jsbsim/systems/autopilot/gui/airport_nearest_runway");
         var apts = findAirportsWithinRange(landing_rwy_search_distance_max);
         var distance_to_airport_min = 9999.0;
         var airplane = geo.aircraft_position();
@@ -111,13 +109,13 @@ var airport_searcher = maketimer(0.5, func() {
                         if (wind_speed * (1 - math.cos(wind_deviation * d2r)) > landing_max_lateral_wind) {
                             wind_compatibility_ok = 0;
                         }
-                        print("Airport: ",airport.id,
+                        print("Landing 1.0 > Airport: ",airport.id,
                             " ",airport.runways[rwy].id,
                             " ",airport.runways[rwy].length,
-                            " Wind speed: ",wind_speed, " Wind direction: ",wind_from, "Wind deviation: ",wind_deviation, " compatibility: ",wind_compatibility_ok,
+                            " Wind speed: ",wind_speed, " Wind direction: ",wind_from, " Wind deviation: ",wind_deviation, " compatibility: ",wind_compatibility_ok,
                             " Lat wind: ", wind_speed * (1 - math.cos(wind_deviation * d2r)));
                         # Select the sufficient runway lenght
-                        if (airport.runways[rwy].length >= landing_minimal_length_m and wind_compatibility_ok) {
+                        if (airport.runways[rwy].length >= landing_minimal_length_m and (wind_compatibility_ok or airport_nearest_runway)) {
                             rwy_coord.set_latlon(airport.runways[rwy].lat,airport.runways[rwy].lon);
                             runway_to_airplane_dist = airplane.distance_to(rwy_coord) * 0.000621371;
                             # Search the rwy with minimal condition
@@ -133,14 +131,6 @@ var airport_searcher = maketimer(0.5, func() {
         }
         if (airport_select != nil) {
             rwy_coord_start.set_latlon(airport_select.runways[rwy_select].lat,airport_select.runways[rwy_select].lon);
-            rwy_coord_start_final_A.set_latlon(airport_select.runways[rwy_select].lat,airport_select.runways[rwy_select].lon);
-            rwy_coord_start_final_A.apply_course_distance(airport_select.runways[rwy_select].heading - 180,7.0 * 1852.0);
-            rwy_coord_start_final_B.set_latlon(airport_select.runways[rwy_select].lat,airport_select.runways[rwy_select].lon);
-            rwy_coord_start_final_B.apply_course_distance(airport_select.runways[rwy_select].heading - 180,4.0 * 1852.0);
-            rwy_coord_start_final_C.set_latlon(airport_select.runways[rwy_select].lat,airport_select.runways[rwy_select].lon);
-            rwy_coord_start_final_C.apply_course_distance(airport_select.runways[rwy_select].heading - 180,1.0 * 1852.0);
-            rwy_coord_start_final_D.set_latlon(airport_select.runways[rwy_select].lat,airport_select.runways[rwy_select].lon); 
-            rwy_coord_start_final_D.apply_course_distance(airport_select.runways[rwy_select].heading - 180,-1.0 * 1852.0);
             runway_to_airplane_dist = airplane.distance_to(rwy_coord_start) * 0.000621371;
             var runway_to_airplane_delta_alt_ft = (airplane.alt() - airport_select.elevation) * 3.28084;
             if (math.abs(runway_to_airplane_dist > 0.1)) {
@@ -155,6 +145,7 @@ var airport_searcher = maketimer(0.5, func() {
             if (landing_activate_status == 1) {
                 # Find an airport
                 landig_status_id = 2;
+                setprop("fdm/jsbsim/systems/autopilot/gui/pitch-descent-angle",0.0);
                 setprop("fdm/jsbsim/systems/autopilot/gui/altitude-active",1.0);
                 setprop("fdm/jsbsim/systems/autopilot/gui/altitude-hold-ft",math.round(getprop("fdm/jsbsim/systems/autopilot/h-sl-ft-lag")));
                 setprop("fdm/jsbsim/systems/autopilot/gui/altitude-hold",1.0);
@@ -176,6 +167,11 @@ var airport_searcher = maketimer(0.5, func() {
                 setprop("fdm/jsbsim/systems/autopilot/gui/speed-set-mach",0.0);
                 setprop("fdm/jsbsim/systems/autopilot/gui/speed-set-cas",1.0);
                 setprop("fdm/jsbsim/systems/autopilot/gui/speed-set-mph",0.0);
+                if (getprop("fdm/jsbsim/systems/autopilot/speed-cas-on-air") < 250) {
+                    setprop("fdm/jsbsim/systems/autopilot/gui/speed-value",250.0);
+                } else {
+                    setprop("fdm/jsbsim/systems/autopilot/gui/speed-value",getprop("fdm/jsbsim/systems/autopilot/speed-cas-on-air"));
+                }
                 setprop("fdm/jsbsim/systems/autopilot/gui/speed-value",250.0);
                 setprop("fdm/jsbsim/systems/autopilot/speed-throttle-imposed",-1.0);
                 setprop("fdm/jsbsim/systems/autopilot/gui/impact-control-active",2.0);
@@ -239,7 +235,7 @@ var airport_searcher = maketimer(0.5, func() {
         }
         setprop("fdm/jsbsim/systems/autopilot/gui/airport_runway_airplane_slope",slope);
         #
-        # Select and elabotare the landing phase
+        # Select and elaborate the effective landing phase
         #
         if (landig_status_id == 2.0) {
             # Fly to the holding point
@@ -279,6 +275,9 @@ var airport_searcher = maketimer(0.5, func() {
                 setprop("fdm/jsbsim/systems/autopilot/gui/speed-value",180.0);
                 setprop("fdm/jsbsim/systems/autopilot/gui/speed-automatic-gear",0.0);
                 setprop("fdm/jsbsim/systems/autopilot/gui/impact-control-active",2.0);
+                setprop("fdm/jsbsim/systems/autopilot/gui/pitch-descent-angle",0.0);
+                setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed",1.0);
+                setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed-fpm",3000.0);
                 isHolding_reducing_delta = -20;
                 isHolding_reducing_heading = nil;
                 isHolding_reducing_distance_rel = nil;
@@ -431,30 +430,27 @@ var airport_searcher = maketimer(0.5, func() {
                     setprop("fdm/jsbsim/systems/autopilot/gui/impact-control-active",0.0);
                     setprop("fdm/jsbsim/systems/autopilot/landing-gear-activate-blocked",1.0);
                 }
-                slope = math.asin(((runway_to_airplane_delta_alt_ft - rwy_offset_v_ft)* 0.000189394) / runway_to_airplane_dist_direct) * R2D;
+                var rwy_coord_start_final = geo.Coord.new();
+                rwy_coord_start_final.set_latlon(airport_select.runways[rwy_select].lat,airport_select.runways[rwy_select].lon);
+                rwy_coord_start_final.apply_course_distance(airport_select.runways[rwy_select].heading - 180,(runway_to_airplane_dist_direct - 3) * 1852.0);
+                heading_correction = geo.normdeg180(airport_select.runways[rwy_select].heading - airplane.course_to(rwy_coord_start_final));
                 var heading_factor = 1.0;
-                if (runway_to_airplane_dist_direct > 10.0) {
-                    heading_correction = (airport_select.runways[rwy_select].heading - airplane.course_to(rwy_coord_start_final_A));
-                    heading_factor = 0.5 + 2.0 * math.ln(math.abs(1 + heading_correction)); 
-                } else if (runway_to_airplane_dist_direct > 7) {
-                    heading_correction = (airport_select.runways[rwy_select].heading - airplane.course_to(rwy_coord_start_final_B));
-                    heading_factor = 0.7 + 2.0 * math.ln(math.abs(1 + heading_correction)); 
-                } else if (runway_to_airplane_dist_direct > 4) { 
-                    heading_correction = (airport_select.runways[rwy_select].heading - airplane.course_to(rwy_coord_start_final_C));
-                    heading_factor = 1.0 + 4.0 * math.ln(math.abs(1 + heading_correction)); 
-                } else {
-                    heading_correction = (airport_select.runways[rwy_select].heading - airplane.course_to(rwy_coord_start_final_D));
-                    heading_factor = 1.0 + 10.0 * math.ln(math.abs(1 + heading_correction)); 
+                if (runway_to_airplane_dist_direct < 10.0 and runway_to_airplane_dist_direct > 1.0) {
+                    if (math.abs(heading_correction) > 9) {
+                        heading_factor = (10 / runway_to_airplane_dist_direct);
+                    } else {
+                        heading_factor = (10 - math.abs(heading_correction)) * (10 / runway_to_airplane_dist_direct) / 10;
+                    }
                 }
-                var  
                 heading_correct = geo.normdeg180(airport_select.runways[rwy_select].heading - heading_correction * heading_factor);
                 setprop("fdm/jsbsim/systems/autopilot/gui/airport_runway_airplane_heading_correct",heading_correct);
                 setprop("fdm/jsbsim/systems/autopilot/gui/true-heading-deg",heading_correct);
                 # Slope correction
+                slope = math.asin(((runway_to_airplane_delta_alt_ft - rwy_offset_v_ft)* 0.000189394) / runway_to_airplane_dist_direct) * R2D;
                 if (slope < 3.4) {
                     landing_slope_integral = slope + (slope - 3.5) * 3.0;
                 } else if (slope > 3.6) {
-                    landing_slope_integral = slope + (slope - 3.5) * 1.5;
+                    landing_slope_integral = slope + (slope - 3.5) * 3.0;
                 }
                 setprop("fdm/jsbsim/systems/autopilot/gui/pitch-descent-angle-deg",-landing_slope_integral);
                 print("Landing 2.2 >"
@@ -488,14 +484,22 @@ var airport_searcher = maketimer(0.5, func() {
                 slope = math.asin((runway_to_airplane_delta_alt_ft * 0.000189394) / rwy_coord_end_to_airplane_dist_direct) * R2D;
                 var factor_reducing_slope = 5.0;
                 altitude_agl_ft = getprop("/position/altitude-agl-ft");
-                if (altitude_agl_ft <= 100.0 and altitude_agl_ft > 10.0) {
-                    slope = 10.0 * ((1+math.atan(slope/100.0))*factor_reducing_slope-factor_reducing_slope);
-                    if (slope > 2.0) slope = 2.0;
+                if (altitude_agl_ft <= 100.0 and altitude_agl_ft > 0.0) {
+                    slope = 70.0 * ((1+math.atan(slope/100.0))*factor_reducing_slope-factor_reducing_slope);
+                    if (slope > 2.0) {
+                        slope = 2.0;
+                    } else {
+                        slope = 0.5 + slope * 1 / (100 - altitude_agl_ft);
+                    }
                 } else {
                     slope = 2.0;
                 }
-                heading_correction = airport_select.runways[rwy_select].heading - airplane.course_to(rwy_coord_end);
-                heading_factor = 4.0 + 20.0 * math.ln(math.abs(1 + heading_correction));
+                var rwy_coord_start_final = geo.Coord.new();
+                rwy_coord_start_final.set_latlon(airport_select.runways[rwy_select].lat,airport_select.runways[rwy_select].lon);
+                rwy_coord_start_final.apply_course_distance(airport_select.runways[rwy_select].heading - 180,(runway_to_airplane_dist_direct - 3) * 1852.0);
+                heading_correction = geo.normdeg180(airport_select.runways[rwy_select].heading - airplane.course_to(rwy_coord_start_final));
+                var heading_factor = 1.0;
+                heading_factor = (10 - math.abs(heading_correction));
                 heading_correct = airport_select.runways[rwy_select].heading - heading_correction * heading_factor;
                 setprop("fdm/jsbsim/systems/autopilot/gui/airport_runway_airplane_heading_correct",heading_correct);
                 setprop("fdm/jsbsim/systems/autopilot/gui/true-heading-deg",heading_correct);
@@ -526,7 +530,8 @@ var airport_searcher = maketimer(0.5, func() {
                 slope = 0.0;
             } else {
                 heading_correction = (airport_select.runways[rwy_select].heading - airplane.course_to(rwy_coord_end));
-                heading_factor = 5 + 5.0 * math.ln(math.abs(1 + heading_correction));
+                var heading_factor = 1.0;
+                heading_factor = (10 - math.abs(heading_correction));
                 heading_correct = airport_select.runways[rwy_select].heading - heading_correction * heading_factor;
                 setprop("fdm/jsbsim/systems/autopilot/gui/airport_runway_airplane_heading_correct",heading_correct);
                 setprop("fdm/jsbsim/systems/autopilot/gui/true-heading-deg",heading_correct);

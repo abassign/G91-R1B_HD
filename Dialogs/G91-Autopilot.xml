@@ -1247,9 +1247,20 @@
                     <property>fdm/jsbsim/systems/autopilot/gui/landing-activate</property>
                 </binding>
             </button>
-            <text>
+            <radio>
                 <row>0</row>
                 <col>1</col>
+                <label>Near RW</label>
+                <property>fdm/jsbsim/systems/autopilot/gui/airport_nearest_runway</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </radio>
+            <text>
+                <row>0</row>
+                <col>2</col>
+                <label>9999999999999999999999999</label>
                 <property>fdm/jsbsim/systems/autopilot/gui/airport_landing_status</property>
                 <live>true</live>
                 <halign>left</halign>

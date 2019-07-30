@@ -5,7 +5,7 @@ G91_Params.xml
 -->
 
 <PropertyList>
-    
+
     <models>
         <active>
             <cockpit type="int">1</cockpit>
@@ -15,7 +15,7 @@ G91_Params.xml
             <accessories type="int">1</accessories>
         </active>
     </models>
-    
+
     <name type="string" n="0">Liveries</name>
     
     <liveries>
