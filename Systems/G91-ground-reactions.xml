@@ -28,7 +28,7 @@ Modified work Copyright 2019 Joshua Davidson (it0uchpods)
  
     <contact type="BOGEY" name="LEFT_MAIN">
         <location unit="IN">
-            <x> 219.61 </x>
+            <x> 221.0 </x>  <!-- 219.61 from blueprint -->
             <y> -54.4 </y>
             <z> 0.0 </z>
         </location>
@@ -44,7 +44,7 @@ Modified work Copyright 2019 Joshua Davidson (it0uchpods)
     
     <contact type="BOGEY" name="RIGHT_MAIN">
         <location unit="IN">
-            <x> 219.61 </x>
+            <x> 221.0 </x>  <!-- 219.61 from blueprint -->
             <y>  54.4 </y>
             <z> 0.0 </z>
         </location>

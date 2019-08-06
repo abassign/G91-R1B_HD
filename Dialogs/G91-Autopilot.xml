@@ -274,6 +274,19 @@
                             <command>dialog-apply</command>
                         </binding>
                     </checkbox>
+                    <text>
+                        <row>0</row>
+                        <col>2</col>
+                        <label>999999999999999</label>
+                        <halign>left</halign>
+                        <live>true</live>
+                        <property>fdm/jsbsim/systems/autopilot/gui/impact-control-geo-is-nil</property>
+                        <color>
+                            <red>0.8</red>
+                            <green>0.0</green>
+                            <blue>0.0</blue>
+                        </color>
+                    </text>
                     <radio>
                         <row>1</row>
                         <col>0</col>

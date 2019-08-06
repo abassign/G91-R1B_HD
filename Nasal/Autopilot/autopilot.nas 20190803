@@ -1,8 +1,6 @@
 # http://wiki.flightgear.org/Nasal_library#Positioned_Object_Queries
 # http://wiki.flightgear.org/Nasal_library#findAirportsWithinRange.28.29
 
-var timeStep = 0.5;
-
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/airport_select_name", "", "STRING");
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/airport_select_id", "", "STRING");
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/airport_runway_id", "", "STRING");
@@ -56,8 +54,7 @@ var impact_time_prec = 1.0;
 var impact_altitude_hold = 0;
 var impact_vertical_speed_max_fpm = -100000.0;
 var impact_vertical_speed_fpm = 0.0;
-var impact_altitude_hold_inserted_delay_max = 10;
-var impact_altitude_hold_inserted_delay = impact_altitude_hold_inserted_delay_max;
+var impact_altitude_hold_inserted_delay = 0;
 var impact_altitude_prec_ft = -100000.0;
 var impact_altitude_future_prec_ft = -100000.0;
 var impact_altitude_grain = 1.0;
@@ -82,7 +79,7 @@ setlistener("fdm/jsbsim/systems/autopilot/gui/landing-activate", func {
 }, 1, 0);
 
 
-var pilot_assistant = maketimer(timeStep, func() {
+var pilot_assistant = maketimer(0.5, func() {
 
     var slope = 0.0;
     var runway_to_airplane_dist = 0.0;
@@ -631,7 +628,6 @@ var pilot_assistant = maketimer(timeStep, func() {
         var impact_medium_time_gui = getprop("fdm/jsbsim/systems/autopilot/gui/impact-medium-time");
         var impact_ramp_min = -(21 - impact_medium_time_gui);
         impact_altitude_grain_media_size = impact_medium_time_gui;
-        impact_altitude_hold_inserted_delay_max = math.round(0.5 + impact_medium_time_gui);
         var impact_min_z_ft = getprop("fdm/jsbsim/systems/autopilot/gui/impact-min-z-ft") * impact_altitude_grain * 1.2;
         var impact_time_delta = 0.0;
         var altitude_hold_inserted = getprop("fdm/jsbsim/systems/autopilot/gui/altitude-hold");
@@ -649,9 +645,7 @@ var pilot_assistant = maketimer(timeStep, func() {
         var impact_allarm_solution = 0;
         var impact_ramp_delta = 0.0;
         var impact_ramp_max = 24.0 * (speed_cas / 200.0);
-        var future_time = 1 + (speed_cas / 120.0);
-        var end_alt = 0.0;
-        var end_future_alt =0.0;
+        var future_time = 1 + (speed_cas / 120);
         
         setprop("fdm/jsbsim/systems/autopilot/gui/impact-control-geo-is-nil","");
         
@@ -669,33 +663,27 @@ var pilot_assistant = maketimer(timeStep, func() {
         
         var end = geo.Coord.new(start);
         var end_future = geo.Coord.new(start);
-        end.apply_course_distance(heading, speed_horz_fps * FT2M);
-        end_future.apply_course_distance(heading, future_time * speed_horz_fps * FT2M);
-        end.set_alt(end.alt() - (impact_min_z_ft * FT2M) - speed_down_fps * FT2M);
-        end_future.set_alt(end_future.alt() - (impact_min_z_ft * FT2M) - future_time * speed_down_fps * FT2M);
+        end.apply_course_distance(heading, speed_horz_fps*FT2M);
+        end_future.apply_course_distance(heading, future_time * speed_horz_fps*FT2M);
+        end.set_alt(end.alt() - (impact_min_z_ft * FT2M) - speed_down_fps*FT2M);
+        end_future.set_alt(end_future.alt() - (impact_min_z_ft * FT2M) - future_time * speed_down_fps*FT2M);
         var end_10 = geo.Coord.new(start);
-        end_10.apply_course_distance(heading, speed_horz_fps * FT2M);
-        end_10.set_alt(end_10.alt() - (impact_min_z_ft * FT2M) - speed_down_10_fps * FT2M);
+        end_10.apply_course_distance(heading, speed_horz_fps*FT2M);
+        end_10.set_alt(end_10.alt() - (impact_min_z_ft * FT2M) - speed_down_10_fps*FT2M);
         
         var dir_x = end.x()-start.x();
         var dir_y = end.y()-start.y();
         var dir_z = end.z()-start.z();
-        var dir_future_x = end_future.x()-start.x();
-        var dir_future_y = end_future.y()-start.y();
-        var dir_future_z = end_future.z()-start.z();
         var dir_10_z = end_10.z()-start.z();
-        var xyz = {"x":start.x(),"y":start.y(),"z":start.z()};
-        var dir = {"x":dir_x,"y":dir_y,"z":dir_z};
-        var dir_future = {"x":dir_future_x,"y":dir_future_y,"z":dir_future_z};
-        var dir_10 = {"x":dir_x,"y":dir_y,"z":dir_10_z};
+        var xyz = {"x":start.x(),  "y":start.y(),  "z":start.z()};
+        var dir = {"x":dir_x,      "y":dir_y,      "z":dir_z};
+        var dir_10 = {"x":dir_x,      "y":dir_y,      "z":dir_10_z};
 
         var geod = get_cart_ground_intersection(xyz, dir);
-        var geod_future = get_cart_ground_intersection(xyz, dir_future);
         var geod_10 = get_cart_ground_intersection(xyz, dir_10);
         
-        if (geod != nil and geod_future != nil and speed_fps > 1.0) {
+        if (geod != nil and speed_fps > 1.0) {
             end.set_latlon(geod.lat, geod.lon, geod.elevation);
-            end_future.set_latlon(geod_future.lat, geod_future.lon, geod_future.elevation);
             impact_dist = start.direct_distance_to(end) * M2FT;
             impact_time = impact_dist / speed_fps;
             if (geod_10 != nil) {
@@ -716,7 +704,6 @@ var pilot_assistant = maketimer(timeStep, func() {
                 impact_altitude_future_prec_ft = (end_future.alt() * M2FT);
             }
             impact_altitude_grain_media[impact_altitude_grain_media_pivot] = (((end.alt() * M2FT ) - impact_altitude_prec_ft) + ((end_future.alt() * M2FT ) - impact_altitude_future_prec_ft)) / 2;
-            ### print("###: ",speed_horz_fps," ",speed_down_fps," ",future_time," ", end.alt() * M2FT ," ",end_future.alt() * M2FT);
             impact_altitude_grain_media_pivot = impact_altitude_grain_media_pivot + 1;
             if (impact_altitude_grain_media_pivot >= impact_altitude_grain_media_size) {
                 impact_altitude_grain_media_pivot = 0;
@@ -756,7 +743,7 @@ var pilot_assistant = maketimer(timeStep, func() {
         
         if (impact_control_active > 0 and geod != nil) {
             if (((impact_time < 8.0) and (impact_time_dif_0_10 > -0.25) and (impact_is_in_security_zone == 0 or (impact_is_in_security_zone == 1 and impact_time_dif_0_10 < 1.0)))
-            and ((((impact_time / impact_altitude_grain) < 0.9) and math.abs(impact_altitude_direction_der_frist) > 1)
+            and (((impact_time / impact_altitude_grain) < 0.9 and (impact_altitude_direction_der_frist > 2.0)) 
             or (impact_altitude_direction_der_frist > 5.0) 
             or ((abs(impact_time_dif_0_10) < impact_altitude_grain) and (impact_altitude_direction_der_frist > 2.0)))) {
                 if (((impact_time < 5.0) and (abs(impact_time_dif_0_10) < 4.0))
@@ -766,7 +753,7 @@ var pilot_assistant = maketimer(timeStep, func() {
                         setprop("fdm/jsbsim/systems/autopilot/speed-brake-set-active",0.0);
                     }
                     if (impact_ramp < 1.0) impact_ramp = 1.0;
-                    impact_ramp_delta = impact_altitude_grain * (0.3 / (0.1 + math.ln((1.0 + math.pow((impact_time/10),2.0)))));
+                    impact_ramp_delta = impact_altitude_grain * (0.3 / (0.1 + math.ln((1.0 + math.pow((impact_time/10),2)))));
                     impact_allarm_solution = 1.1;
                 } else {
                     if (speed_cas < 220 and getprop("fdm/jsbsim/systems/autopilot/gui/speed-value") < 220) {
@@ -774,30 +761,32 @@ var pilot_assistant = maketimer(timeStep, func() {
                         setprop("fdm/jsbsim/systems/autopilot/speed-brake-set-active",0.0);
                     }
                     if (impact_ramp < 1.0 and impact_altitude_direction_der_frist > 20.0) impact_ramp = 1.0;
-                    impact_ramp_delta = impact_altitude_grain * (0.3 / (0.1 + math.ln((1.0 + math.pow((impact_time/10),3.0)))));
+                    impact_ramp_delta = impact_altitude_grain * (0.1 / (0.1 + math.ln((1.0 + math.pow((impact_time/10),3)))));
                     impact_allarm_solution = 1.2;
                 }
                 if (impact_time_delta > 0.05) {
-                    impact_ramp = impact_ramp + 1.0 * impact_ramp_delta / (0.5 * impact_medium_time_gui);
-                } else if (impact_time_delta < -0.02) {
-                    impact_ramp = impact_ramp - 1.0 * impact_ramp_delta / (0.5 * impact_medium_time_gui);
+                    impact_ramp = impact_ramp + impact_ramp_delta / (0.5 * impact_medium_time_gui);
+                } else if (impact_time_delta < -0.05) {
+                    impact_ramp = impact_ramp + 10.0 * (impact_time_delta / impact_medium_time_gui);
                 }
                 if (impact_ramp > impact_ramp_max) impact_ramp = impact_ramp_max;
                 setprop("fdm/jsbsim/systems/autopilot/gui/pitch-descent-angle",1.0);
                 setprop("fdm/jsbsim/systems/autopilot/gui/pitch-descent-angle-deg",impact_ramp);
-                impact_altitude_hold_inserted_delay = impact_altitude_hold_inserted_delay_max;
+                
                 if (impact_vertical_speed_max_fpm >= 0) {
                     impact_vertical_speed_fpm = 0.0;
+                    impact_altitude_hold_inserted_delay = 0;
                     setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed-fpm",impact_vertical_speed_max_fpm);
                     impact_vertical_speed_max_fpm = -100000.0;
                 }
+                
                 # Debug
-                print(sprintf("## Impact CTRL: %.1f",impact_allarm_solution)," (",impact_altitude_hold,")",sprintf(" IR: %.2f",impact_ramp),sprintf(" IR Delta: %.2f",impact_ramp_delta),sprintf(" impact_time: %.2f",impact_time),sprintf(" | %.2f",impact_time_dif_0_10),sprintf(" | %.2f",impact_time_delta),sprintf(" IAG: %.2f",impact_altitude_grain),sprintf(" IAD: %.2f",impact_altitude_direction_der_frist),sprintf(" A: %.2f",impact_time / impact_altitude_grain),sprintf(" B: %.2f",impact_medium_time_gui)," alt:",math.round(end.alt() * M2FT)," alt delta: ",math.round(altitude_delta),sprintf(" Sec: %.0f",impact_is_in_security_zone),sprintf(" ImpZ: %.0f",impact_min_z_ft));
+                print(sprintf("## Impact CTRL: %.1f",impact_allarm_solution)," (",impact_altitude_hold,")",sprintf(" IR: %.2f",impact_ramp),sprintf(" IR Delta: %.2f",impact_ramp_delta),sprintf(" impact_time: %.2f",impact_time),sprintf(" | %.2f",impact_time_dif_0_10),sprintf(" IAG: %.2f",impact_altitude_grain),sprintf(" IAD: %.2f",impact_altitude_direction_der_frist),sprintf(" A: %.2f",impact_time / impact_altitude_grain),sprintf(" B: %.2f",impact_medium_time_gui)," alt:",math.round(end.alt() * M2FT)," alt delta: ",math.round(altitude_delta),sprintf(" Sec: %.0f",impact_is_in_security_zone),sprintf(" ImpZ: %.0f",impact_min_z_ft));
             } else if (impact_control_active == 1) {
                 # If is altitude_hold_inserted is True is necessary verify is convenient violate the rule
                 # Is work only impact_control_active == 1, the type 2 no.
                 if (impact_is_in_security_zone) {
-                    if (impact_altitude_hold_inserted_delay == 1) {
+                    if (impact_altitude_hold_inserted_delay > 3) {
                         impact_altitude_hold = 1;
                         if (impact_vertical_speed_max_fpm <= -100000.0) {
                             impact_vertical_speed_max_fpm = getprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed-fpm");
@@ -813,30 +802,31 @@ var pilot_assistant = maketimer(timeStep, func() {
                             setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed-fpm",impact_vertical_speed_fpm);
                         }
                     } else {
-                        if (impact_altitude_hold_inserted_delay > 1) impact_altitude_hold_inserted_delay = impact_altitude_hold_inserted_delay - 1;
+                        impact_altitude_hold_inserted_delay = impact_altitude_hold_inserted_delay + 1;
                     }
                 } else {
                     impact_altitude_hold = 0;
                     impact_vertical_speed_fpm = 0.0;
-                    if (impact_altitude_hold_inserted_delay > 1) impact_altitude_hold_inserted_delay = impact_altitude_hold_inserted_delay - 1;
+                    impact_altitude_hold_inserted_delay = 0;
                 }
                 var alpha = 0.0;
                 if (impact_altitude_hold == 0) {
                     if (altitude_delta > impact_min_z_ft) {
-                        alpha = (impact_min_z_ft - altitude_delta) / speed_fps;
-                        impact_ramp_delta = (alpha * 10 / impact_medium_time_gui) / impact_altitude_hold_inserted_delay;
+                        alpha = (altitude_delta - impact_min_z_ft) / speed_fps;
+                        impact_ramp_delta = alpha * 30 / impact_medium_time_gui;
                         impact_allarm_solution = 2.1;
                     } else {
-                        alpha = (impact_min_z_ft - altitude_delta) / speed_fps;
-                        impact_ramp_delta = (alpha * 30 / impact_medium_time_gui) / impact_altitude_hold_inserted_delay;
+                        alpha = (altitude_delta - impact_min_z_ft) / speed_fps;
+                        impact_ramp_delta = alpha * 10 / impact_medium_time_gui;
                         impact_allarm_solution = 2.2;
                     }
-                    impact_ramp = impact_ramp_delta;
+                    impact_ramp = - impact_ramp_delta;
                     if (impact_ramp < impact_ramp_min) impact_ramp = impact_ramp_min;
                     setprop("fdm/jsbsim/systems/autopilot/gui/pitch-descent-angle",1.0);
                     setprop("fdm/jsbsim/systems/autopilot/gui/pitch-descent-angle-deg",impact_ramp);
                     if (impact_vertical_speed_max_fpm >= 0) {
                         impact_vertical_speed_fpm = 0.0;
+                        impact_altitude_hold_inserted_delay = 0;
                         setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed-fpm",impact_vertical_speed_max_fpm);
                         impact_vertical_speed_max_fpm = -100000.0;
                     }
@@ -860,7 +850,7 @@ var pilot_assistant = maketimer(timeStep, func() {
         impact_factor_ramp_old = 0.0;
         impact_altitude_grain_media_pivot = 0;
         impact_altitude_prec_ft = -100000.0;
-        impact_altitude_hold_inserted_delay = impact_altitude_hold_inserted_delay_max;
+        impact_altitude_hold_inserted_delay = 0;
         impact_vertical_speed_fpm = 0.0;
         if (impact_vertical_speed_max_fpm >= 0) {
             setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed-fpm",impact_vertical_speed_max_fpm);

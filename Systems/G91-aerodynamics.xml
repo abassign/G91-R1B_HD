@@ -412,6 +412,7 @@
                 <property>aero/qbar-psf</property>
                 <property>metrics/Sw-sqft</property>
                 <property>metrics/cbarw-ft</property>
+                <value>1.3</value> <!-- Tuning factor abassign 20190806 -->
                 <table>
                     <independentVar lookup="row">aero/alpha-deg</independentVar>
                     <tableData>

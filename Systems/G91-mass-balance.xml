@@ -2,7 +2,7 @@
 
 <mass_balance>
     <description>
-        CG Empty (39%) : 17.71 ft (5.40 m) or 212"
+        CG Empty (39%) : 17.71 ft (5.40 m) or 212" - 211"
         CG Full load (20%) : 15.16 ft (4.62 m) or 181"
     </description>
     <ixx unit="SLUG*FT2">   5324.8701  </ixx>
@@ -13,9 +13,9 @@
     <iyz unit="SLUG*FT2">      0.0     </iyz>
     <emptywt unit="LBS" >   6834.0 </emptywt>
     <location name="CG" unit="IN">
-        <x> 211.00 </x>
+        <x> 212.00 </x>
         <y>   0.00 </y>
-        <z>   0.00 </z>
+        <z>   -0.10 </z>
     </location>
     
     <pointmass name="hardPointDxExternal">
