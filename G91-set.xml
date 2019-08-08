@@ -9,7 +9,7 @@
     
     <sim>
         
-        <description>Fiat G91-R1B (JSBSim)</description>
+        <description>Fiat G91 generic (JSBSim)</description>
         
         <startup>
             <splash-texture>Aircraft/G91-R1B_HD/Splash/G91-Space.png</splash-texture>
@@ -19,7 +19,7 @@
         <!-- JSBSim start file -->
         <aero>G91-R1B-JSBSim</aero>
         <model>
-            <path>Aircraft/G91-R1B_HD/Models/G91-R1B.xml</path>
+            <path>Aircraft/G91-R1B_HD/Models/G91.xml</path>
         </model>
             
     </sim>

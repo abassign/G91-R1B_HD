@@ -716,7 +716,7 @@ var pilot_assistant = maketimer(timeStep, func() {
                 impact_altitude_future_prec_ft = (end_future.alt() * M2FT);
             }
             impact_altitude_grain_media[impact_altitude_grain_media_pivot] = (((end.alt() * M2FT ) - impact_altitude_prec_ft) + ((end_future.alt() * M2FT ) - impact_altitude_future_prec_ft)) / 2;
-            ### print("###: ",speed_horz_fps," ",speed_down_fps," ",future_time," ", end.alt() * M2FT ," ",end_future.alt() * M2FT);
+            ## print("###: ",speed_horz_fps," ",speed_down_fps," ",future_time," ", end.alt() * M2FT ," ",end_future.alt() * M2FT," ",((end.alt() * M2FT ) - impact_altitude_prec_ft)," ", ((end_future.alt() * M2FT ) - impact_altitude_future_prec_ft));
             impact_altitude_grain_media_pivot = impact_altitude_grain_media_pivot + 1;
             if (impact_altitude_grain_media_pivot >= impact_altitude_grain_media_size) {
                 impact_altitude_grain_media_pivot = 0;
@@ -728,8 +728,14 @@ var pilot_assistant = maketimer(timeStep, func() {
                 impact_altitude_direction_der_frist = impact_altitude_direction_der_frist + impact_altitude_grain_media[i];
                 ### print("###: ",i,sprintf(" IAG: %.1f",impact_altitude_grain_media[i]),sprintf(" IAD: %.1f",impact_altitude_direction_der_frist));
             }
-            impact_altitude_grain = impact_altitude_grain / impact_altitude_grain_media_size;
             impact_altitude_direction_der_frist = impact_altitude_direction_der_frist / impact_altitude_grain_media_size;
+            
+            if (impact_altitude_direction_der_frist >= 0) {
+                impact_altitude_grain = (impact_altitude_grain / impact_altitude_grain_media_size) * (3.0 * math.log10(1 + math.abs(impact_altitude_direction_der_frist)));
+            } else {
+                impact_altitude_grain = (impact_altitude_grain / impact_altitude_grain_media_size) * (3.0 * math.log10(2));
+            }
+            
             if (impact_altitude_grain <= 1.0) {
                 impact_altitude_grain = 1.0;
             } else {
