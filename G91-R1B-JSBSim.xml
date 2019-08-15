@@ -69,12 +69,11 @@
     <system file="G91-climate"/>
     <system file="G91-landing-gear"/>
     <system file="G91-autopilot"/>
-    
-    <!-- for testing -->
+    <system file="G91-dragchute"/>
     <system file="PHI"/>
-    <system file="radio-PTR175"/>
     
     <!-- apparatus -->
+    <system file="radio-PTR175"/>
     <system file="ADF-MARCONI-8283"/>
     <system file="TACAN-ARN-21"/>
     <system file="compass-flux-gate"/>

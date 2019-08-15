@@ -93,4 +93,17 @@
         </direction>
     </force>
     
+    <force name="DragChute" frame="BODY">
+        <location unit="IN">
+            <x> 401.0 </x>
+            <y> 0.0 </y>
+            <z> 24.0 </z>
+        </location>
+        <direction>
+            <x> -1.0 </x>
+            <y> 0.0 </y>
+            <z> 0.0 </z>
+        </direction>
+    </force>
+    
 </external_reactions>

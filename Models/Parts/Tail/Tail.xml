@@ -641,11 +641,7 @@
             <interval-sec>0.2</interval-sec>
             <binding>
                 <command>property-toggle</command>
-                <property>/controls/switches/ParachutePanelOpen</property>
-                <step>1</step>
-                <min>0</min>
-                <max>1</max>
-                <wrap>true</wrap>
+                <property>fdm/jsbsim/systems/dragchute/sw-reset</property>
             </binding>
         </action>
     </animation>
@@ -653,7 +649,7 @@
     <animation>
         <type>rotate</type>
         <object-name>A__G91_fuselage_coda.005</object-name>
-        <property>/controls/switches/ParachutePanelOpen</property>
+        <property>fdm/jsbsim/systems/dragchute/door-chute</property>
         <factor>120</factor>
         <axis>
             <x1-m> 4.75524 </x1-m>

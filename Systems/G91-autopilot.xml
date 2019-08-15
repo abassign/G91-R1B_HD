@@ -201,12 +201,14 @@ No Overshoot
     <property value="-1.0">systems/autopilot/handle-brake-activate</property>
     
     <property value="0.0">systems/autopilot/gui/landing-activate</property>
-    <property value="45.0">systems/autopilot/gui/landing-rwy-search-max-heading</property>
+    <property value="0.0">systems/autopilot/gui/landig-status-id</property>
+    <property value="60.0">systems/autopilot/gui/landing-rwy-search-max-heading</property>
     <property value="50.0">systems/autopilot/gui/landing-rwy-search-distance-max</property>
-    <property value="0.0">systems/autopilot/gui/landing-rwy-h-offset-nm</property>
-    <property value="50.0">systems/autopilot/gui/landing-rwy-v-offset-ft</property>
+    <property value="0.2">systems/autopilot/gui/landing-rwy-h-offset-nm</property>
+    <property value="0.0">systems/autopilot/gui/landing-rwy-v-offset-ft</property>
     <property value="12.0">systems/autopilot/gui/landing-holding-point-dist-nm</property>
     <property value="5000.0">systems/autopilot/gui/landing-holding-point-h-ft</property>
+    <property value="1.0">systems/autopilot/gui/landing-short-profile</property>
     <property value="1500.0">systems/autopilot/gui/landing-minimal-length-m</property>
     <property value="10.0">systems/autopilot/gui/landing-max-lateral-wind</property>
     <property value="10.0">systems/autopilot/gui/landing-holding-altitude-min</property>
@@ -1638,7 +1640,7 @@ No Overshoot
             <default value="systems/landing-gear/gear-down-command"/>
             <test logic="AND" value="1.0">
                 systems/autopilot/speed-automatic-gear-active == 1.0
-                systems/autopilot/speed-cas-on-air-lag LE 170
+                systems/autopilot/speed-cas-on-air-lag LE 165
                 systems/landing-gear/gear-down-status == 0.0
             </test>
             <test logic="AND" value="-1.0">

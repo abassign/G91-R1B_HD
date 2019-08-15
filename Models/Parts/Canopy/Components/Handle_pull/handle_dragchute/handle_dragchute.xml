@@ -16,15 +16,6 @@
         <object-name>handle_cockpit03.001</object-name>
     </effect>
     
-    <!--
-    <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
-        <object-name>handle_cockpit03</object-name>
-        <object-name>handle_cockpit03.002</object-name>
-        <object-name>handle_cockpit03.003</object-name>
-    </effect>
-    -->
-    
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
         <object-name>handle_cockpit03.001</object-name>
@@ -94,7 +85,7 @@
             <interval-sec>0.2</interval-sec>
             <binding>
                 <command>property-toggle</command>
-                <property>/sim/G91/handle/handle_dragchute_flag</property>
+                <property>fdm/jsbsim/systems/handle-switches/sw-handle-dragchute-trigger</property>
             </binding>
         </action>
     </animation>
@@ -105,7 +96,7 @@
         <object-name>handle_cockpit03.002</object-name>
         <object-name>handle_cockpit03.003</object-name>
         <object-name>handle_cockpit03</object-name>
-        <property>/sim/G91/handle/handle_dragchute_flag</property>
+        <property>fdm/jsbsim/systems/handle-switches/sw-handle-dragchute-pos</property>
         <factor>0.1</factor>
         <offset-m>0.0</offset-m>
         <axis>

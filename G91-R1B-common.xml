@@ -121,6 +121,7 @@
                             </script>
                         </binding>
                     </item>
+                    
                     <item>
                         <label>Livery</label>
                         <binding>
@@ -131,6 +132,7 @@
                             </script>
                         </binding>
                     </item>
+                    
                     <item>
                         <label>Accessories</label>
                         <binding>
@@ -206,18 +208,14 @@
             <!-- Autopilot -->
             <file>Aircraft/G91-R1B_HD/Nasal/Autopilot/autopilot.nas</file>
         </general>
+        
         <canvas_gauges>
             <file>Aircraft/G91-R1B_HD/Models/Liveries/set_livery.nas</file>
         </canvas_gauges>
+        
         <tyresmoke>
             <file>Aircraft/G91-R1B_HD/Nasal/tyresmoke.nas</file>
         </tyresmoke>
-        <!--
-        <load>
-            var rplayer = cmdarg();
-            rplayer.getNode("sim/G91/models/active/cockpit",1).alias(rplayer.getNode("sim/multiplay/generic/int[0]"));
-        </load>
-        -->
     </nasal>
     
     <!-- Key mappings -->
@@ -239,6 +237,18 @@
                         <value>0</value>
                     </binding>
                 </mod-up>
+            </key>
+            
+            <key n="261">
+                <name>F5</name>
+                <desc>noop</desc>
+                <repeatable type="bool">false</repeatable>
+                <binding>
+                    <command>nasal</command>
+                    <script>
+                        f16.chute();
+                    </script>
+                </binding>
             </key>
             
         </keyboard>

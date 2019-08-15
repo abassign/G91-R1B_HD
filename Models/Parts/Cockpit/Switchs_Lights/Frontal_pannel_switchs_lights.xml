@@ -141,9 +141,9 @@
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Switchs_Lights/sw_canopy_open_external.xml</path>
         <offsets>
-            <x-m>0.011</x-m>
-            <y-m>-0.602</y-m>
-            <z-m>-0.19178</z-m>
+            <x-m>1.9355</x-m>
+            <y-m>-0.6015</y-m>
+            <z-m>-0.4881</z-m>
             <pitch-deg>0.0</pitch-deg>
             <heading-deg>-90</heading-deg>
         </offsets>
@@ -152,9 +152,9 @@
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Switchs_Lights/sw_canopy_close_external.xml</path>
         <offsets>
-            <x-m>0.011</x-m>
+            <x-m>1.922</x-m>
             <y-m>-0.615</y-m>
-            <z-m>-0.271</z-m>
+            <z-m>-0.567</z-m>
             <pitch-deg>0.0</pitch-deg>
             <heading-deg>-90</heading-deg>
         </offsets>

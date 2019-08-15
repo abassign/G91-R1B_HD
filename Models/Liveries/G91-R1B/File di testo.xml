@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+    <sim>
+        <model> 
+            <livery>
+                <name type="string">ITA 3-37 R1B</name>
+                <owner type="string">AMI</owner>
+                <texture-fuselage>Liveries/G91-R1B/ITA_2_37_001.png</texture-fuselage>
+                <texture-wings>Liveries/G91-R1B/ITA_2_37_002.png</texture-wings>
+            </livery>
+        </model>
+    </sim>
+</PropertyList> 

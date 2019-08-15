@@ -1,0 +1,119 @@
+<?xml version="1.0"?>  
+
+<system name="dragchute">
+    
+    <property value="0">systems/dragchute/status</property>
+    <property value="0">systems/dragchute/active</property>
+    <property value="0">systems/dragchute/activate</property>
+    <property value="0">systems/dragchute/open-phase</property>
+    <property value="0">systems/dragchute/sw-reset</property>
+    <property value="0">systems/dragchute/reset</property>
+    <property value="0">systems/dragchute/door-chute</property>
+    <property value="50">systems/dragchute/chute-area-sqft</property>
+    <property value="0">systems/dragchute/magnitude</property>
+    
+
+    <channel name="handle dragchute" execrate="16">
+        
+        <switch name="systems/dragchute/status">
+            <default value="systems/dragchute/status"/>
+            <test logic="AND" value="1">
+                systems/handle-switches/sw-handle-dragchute-status == 1
+                systems/dragchute/door-chute LT 0.1
+                systems/dragchute/status == 0
+                systems/dragchute/reset == 0
+            </test>
+            <test logic="AND" value="0">
+                systems/dragchute/reset == 1
+            </test>
+            <test logic="AND" value="2">
+                systems/dragchute/active == 1
+                systems/dragchute/reset == 0
+                velocities/vc-kts GE 200
+            </test>
+        </switch>
+        
+        <switch name="systems/dragchute/active">
+            <default value="systems/dragchute/active"/>
+            <test logic="AND" value="1">
+                systems/dragchute/status == 1
+                velocities/vtrue-kts GE 25
+            </test>
+            <test logic="OR" value="0">
+                systems/dragchute/reset == 1
+                velocities/vtrue-kts LT 25
+            </test>
+            <test logic="AND" value="0">
+                systems/dragchute/status == 2
+            </test>
+        </switch>
+        
+        <switch>
+            <default value="systems/handle-switches/sw-handle-dragchute-trigger"/>
+            <test logic="AND" value="0">
+                systems/dragchute/reset == 1
+            </test>
+            <test logic="AND" value="1">
+                systems/dragchute/activate == 1
+                systems/dragchute/reset == 0
+            </test>
+            <output>systems/handle-switches/sw-handle-dragchute-trigger</output>
+        </switch>
+
+        <switch>
+            <default value="systems/dragchute/activate"/>
+            <test logic="AND" value="0">
+                systems/dragchute/activate == 1
+                systems/dragchute/status GT 0
+            </test>
+            <output>systems/dragchute/activate</output>
+        </switch>
+
+        <washout_filter name="systems/dragchute/sw-reset-washed">
+            <input>systems/dragchute/sw-reset</input>
+            <c1>1.0</c1>
+        </washout_filter>
+        
+        <switch name="systems/dragchute/reset">
+            <default value="1"/>
+            <test logic="AND" value = "0">
+                systems/dragchute/sw-reset-washed LT 0.6
+                systems/dragchute/sw-reset-washed GT -0.6
+            </test>
+        </switch>
+        
+        <lag_filter name="systems/dragchute/door-chute">
+            <input>systems/dragchute/status</input>
+            <c1>4.0</c1>
+            <clipto>
+                <min>0.0</min>
+                <max>1.0</max>
+            </clipto>
+        </lag_filter>
+        
+        <lag_filter name="systems/dragchute/open-phase">
+            <input>systems/dragchute/active</input>
+            <c1>2.0</c1>
+        </lag_filter>
+        
+        <fcs_function name="systems/dragchute/magnitude">
+            <function>
+                <description>Induced drag by tail chute</description>
+                <ifthen>
+                    <p>systems/dragchute/active</p>
+                    <product>
+                        <p>aero/qbar-psf</p>
+                        <p>systems/dragchute/chute-area-sqft</p>
+                        <p>systems/dragchute/open-phase</p>
+                        <v>0.5</v>
+                    </product>
+                    <v>0.0</v>
+                </ifthen>
+            </function>
+            <output>external_reactions/DragChute/magnitude</output>
+        </fcs_function>
+        
+    </channel>
+
+    
+</system>

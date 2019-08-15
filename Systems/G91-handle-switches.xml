@@ -9,10 +9,16 @@ Modify the "handle brake" channel
 
 <system name="Manual handle switches"> 
     
+    
     <property value="0.0">systems/handle-switches/sw-handle-brake-trigger</property>
     <property value="0.0">systems/handle-switches/sw-brake-parking</property>
     <property value="0.0">systems/handle-switches/sw-handle-brake-pos-rotate</property>
     <property value="0.0">systems/handle-switches/sw-handle-brake-extension</property>
+    <property value="0.0">systems/handle-switches/sw-handle-dragchute-trigger</property>
+    <property value="0.0">systems/handle-switches/sw-handle-dragchute-activate</property>
+    <property value="0.0">systems/handle-switches/sw-handle-dragchute-status</property>
+    <property value="0.0">systems/handle-switches/sw-handle-dragchute-pos</property>
+    
     
     <channel name="handle brake" execrate="16">
         
@@ -85,6 +91,7 @@ Modify the "handle brake" channel
         
     </channel>
     
+    
     <channel name="handle brake extension handle" execrate="4">
         
         <lag_filter name="systems/handle-switches/sw-handle-brake-extension">
@@ -117,5 +124,35 @@ Modify the "handle brake" channel
         </switch>
         
     </channel>
+    
+    
+    <channel name="handle dragchute" execrate="16">
+    
+        <switch name="systems/handle-switches/sw-handle-dragchute-status">
+            <default value="0"/>
+            <test logic="AND" value="1">
+                systems/handle-switches/sw-handle-dragchute-pos GT 0.8
+            </test>
+        </switch>
+        
+        <switch name="systems/handle-switches/sw-handle-dragchute-command">
+            <default value="systems/handle-switches/sw-handle-dragchute-command"/>
+            <test logic="OR" value="1">
+                systems/handle-switches/sw-handle-dragchute-trigger == 1
+                systems/handle-switches/sw-handle-dragchute-activate == 1
+            </test>
+            <test logic="OR" value="0">
+                systems/handle-switches/sw-handle-dragchute-trigger == 0
+                systems/handle-switches/sw-handle-dragchute-activate == 0
+            </test>
+        </switch>
+        
+        <lag_filter name="systems/handle-switches/sw-handle-dragchute-pos">
+            <input>systems/handle-switches/sw-handle-dragchute-command</input>
+            <c1>1.5</c1>
+        </lag_filter>
+        
+    </channel>
+    
     
 </system>
