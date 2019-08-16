@@ -9,8 +9,10 @@
     <property value="0">systems/dragchute/sw-reset</property>
     <property value="0">systems/dragchute/reset</property>
     <property value="0">systems/dragchute/door-chute</property>
-    <property value="50">systems/dragchute/chute-area-sqft</property>
+    <property value="75">systems/dragchute/chute-area-sqft</property>
     <property value="0">systems/dragchute/magnitude</property>
+    <property value="0">systems/dragchute/open-big-chute</property>
+    <property value="0">systems/dragchute/open-little-chute</property>
     
 
     <channel name="handle dragchute" execrate="16">
@@ -94,6 +96,23 @@
         <lag_filter name="systems/dragchute/open-phase">
             <input>systems/dragchute/active</input>
             <c1>2.0</c1>
+        </lag_filter>
+        
+        <lag_filter name="systems/dragchute/open-little-chute">
+            <input>systems/dragchute/active</input>
+            <c1>2.0</c1>
+        </lag_filter>
+        
+        <switch name="systems/dragchute/open-big-chute-start">
+            <default value="0"/>
+            <test logic="AND" value = "1">
+                systems/dragchute/open-little-chute GT 0.8
+            </test>
+        </switch>
+        
+        <lag_filter name="systems/dragchute/open-big-chute">
+            <input>systems/dragchute/open-big-chute-start</input>
+            <c1>0.5</c1>
         </lag_filter>
         
         <fcs_function name="systems/dragchute/magnitude">

@@ -4,24 +4,6 @@
     
     <path>Pressure_Gauge.ac</path>
     
-    <!--
-    <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
-        <object-name>frontal (Meshed)</object-name>
-        <object-name>ring (Meshed)</object-name>
-        <object-name>screews (Meshed)</object-name>
-        <object-name>back_plane_1A1</object-name>
-        <object-name>back_plane_1A2</object-name>
-        <object-name>back_plane_2A1</object-name>
-        <object-name>back_plane_2B (Meshed)</object-name>
-        <object-name>pointer_1B (Meshed)</object-name>
-        <object-name>frontal_internal_B (Meshed)</object-name>
-        <object-name>color_int_white</object-name>
-        <object-name>color_int_blue</object-name>
-        <object-name>color_int_white_point</object-name>
-    </effect>
-    -->
-    
     <effect>
         <inherits-from>Effects/model-transparent</inherits-from>
         <object-name>glass (Meshed)</object-name>

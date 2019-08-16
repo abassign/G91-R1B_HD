@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+    
+    <path>dragchute.ac</path>
+    
+    <offsets>
+        <x-m>6.0</x-m>
+        <y-m>0.0</y-m>
+        <z-m>0.4</z-m>
+        <roll-deg>0.0</roll-deg>
+        <pitch-deg>0.0</pitch-deg>
+        <heading-deg>-90.0</heading-deg>
+    </offsets>
+    
+    <animation>
+        <name>main_dragchute</name>
+        <object-name>principal_parachute</object-name>
+        <object-name>small_parachute</object-name>
+        <object-name>strung001a</object-name>
+        <object-name>string001b</object-name>
+        <object-name>string001c</object-name>
+        <object-name>string002</object-name>
+    </animation>
+    
+    <animation>
+        <name>big_dragchute</name>
+        <object-name>strung001a</object-name>
+        <object-name>string001c</object-name>
+        <object-name>principal_parachute</object-name>
+    </animation>
+    
+    <animation>
+        <name>little_dragchute</name>
+        <object-name>small_parachute</object-name>
+        <object-name>string002</object-name>
+    </animation>
+
+    <animation> 
+        <type>material</type> 
+        <object-name>principal_parachute</object-name>
+        <diffuse>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.3</blue>
+        </diffuse>
+        <ambient>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
+        </ambient>
+        <transparency>
+            <alpha>0.9</alpha>
+        </transparency>
+    </animation>
+    
+    <animation> 
+        <type>material</type> 
+        <object-name>small_parachute</object-name>
+        <diffuse>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.3</blue>
+        </diffuse>
+        <ambient>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
+        </ambient>
+        <transparency>
+            <alpha>0.85</alpha>
+        </transparency>
+    </animation>
+    
+    <animation> 
+        <type>material</type> 
+        <object-name>strung001a</object-name>
+        <object-name>string001b</object-name>
+        <object-name>string001c</object-name>
+        <object-name>string002</object-name>
+        <diffuse>
+            <red>0.6</red>
+            <green>0.6</green>
+            <blue>0.6</blue>
+        </diffuse>
+        <ambient>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
+        </ambient>
+        <transparency>
+            <alpha>1.0</alpha>
+        </transparency>
+    </animation>
+    
+    <animation>
+        <object-name>main_dragchute</object-name>
+        <type>rotate</type>
+        <property>fdm/jsbsim/aero/beta-deg</property>
+        <factor>1.0</factor>
+        <offset-deg>0.0</offset-deg>
+        <center>
+            <x-m>0.0</x-m>
+            <y-m>0.0</y-m>
+            <z-m>0.0</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>0</y>
+            <z>1</z>
+        </axis>
+    </animation>
+    
+    <animation>
+        <object-name>main_dragchute</object-name>
+        <type>rotate</type>
+        <property>fdm/jsbsim/aero/alpha-deg</property>
+        <factor>1.0</factor>
+        <offset-deg>0.0</offset-deg>
+        <center>
+            <x-m>0.0</x-m>
+            <y-m>0.0</y-m>
+            <z-m>0.0</z-m>
+        </center>
+        <axis>
+            <x>1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
+    
+    <animation>
+        <object-name>little_dragchute</object-name>
+        <type>rotate</type>
+        <property>fdm/jsbsim/aero/beta-deg</property>
+        <factor>0.2</factor>
+        <offset-deg>0.0</offset-deg>
+        <center>
+            <x-m>12.0</x-m>
+            <y-m>0.0</y-m>
+            <z-m>0.0</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>0</y>
+            <z>1</z>
+        </axis>
+    </animation>
+    
+    <animation>
+        <object-name>little_dragchute</object-name>
+        <type>rotate</type>
+        <property>fdm/jsbsim/aero/alpha-deg</property>
+        <factor>0.2</factor>
+        <offset-deg>0.0</offset-deg>
+        <center>
+            <x-m>12.0</x-m>
+            <y-m>0.0</y-m>
+            <z-m>0.0</z-m>
+        </center>
+        <axis>
+            <x>1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
+    
+    <animation>
+        <type>scale</type>
+        <name>big_dragchute</name>
+        <property>fdm/jsbsim/systems/dragchute/open-big-chute</property>
+        <x-min>0.10</x-min>
+        <y-min>1.00</y-min>
+        <z-min>0.10</z-min>
+        <x-factor>1.0</x-factor>
+        <y-factor>1.0</y-factor>
+        <z-factor>1.0</z-factor>
+    </animation>
+    
+    <animation>
+        <type>scale</type>
+        <object-name>little_dragchute</object-name>
+        <property>fdm/jsbsim/systems/dragchute/open-little-chute</property>
+        <x-min>0.10</x-min>
+        <y-min>1.00</y-min>
+        <z-min>0.10</z-min>
+        <x-factor>1.0</x-factor>
+        <y-factor>1.0</y-factor>
+        <z-factor>1.0</z-factor>
+    </animation>
+    
+</PropertyList>

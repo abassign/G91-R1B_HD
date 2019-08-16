@@ -23,42 +23,6 @@
         <object-name>D_Plate_vertical_wing</object-name>
     </effect>
     
-    <!--
-    <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
-        <object-name>A__G91_door_dx_coda.000</object-name>
-        <object-name>A__G91_door_sx_coda.002</object-name>
-        <object-name>J_jato_support</object-name>
-        <object-name>exit_smoke_001_tube</object-name>
-        <object-name>exit_smoke.003</object-name>
-        <object-name>exit_smoke.002</object-name>
-        <object-name>D_wing_longherone_dx.004</object-name>
-        <object-name>D_wing_longherone_sx.003</object-name>
-        <object-name>A__G91_fuselage_coda.003</object-name>
-        <object-name>A__G91_fuselage_coda.004</object-name>
-        <object-name>A__G91_fuselage_coda.000</object-name>
-        <object-name>A__G91_fuselage_coda.001</object-name>
-        <object-name>A__G91_fuselage_coda.008</object-name>
-        <object-name>A__G91_fuselage_coda.009</object-name>
-        <object-name>A__G91_fuselage_coda.010</object-name>
-        <object-name>A__G91_fuselage_insideTUbe</object-name>
-        <object-name>A_trasmission_command_Alet_sx.007</object-name>
-        <object-name>A_trasmission_command_Alet_sx.008</object-name>
-        <object-name>A_trasmission_command_Alet_sx.009</object-name>
-        <object-name>A_trasmission_command_Alet_sx.010</object-name>
-        <object-name>D__longherone_timone_coda</object-name>
-        <object-name>DADI.027</object-name>
-        <object-name>D_bar_node2.000</object-name>
-        <object-name>D_bar_node2.001</object-name>
-        <object-name>D_bar_node3.001</object-name>
-        <object-name>presa28v_01</object-name>
-        <object-name>presa28v_box</object-name>
-        <object-name>D_timone_coda.002</object-name>
-        <object-name>D_timone_coda.003</object-name>
-        <object-name>A__G91_fuselage_coda.012</object-name>
-    </effect>
-    -->
-    
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Liveries/liveries_001</inherits-from>
         <object-name>A__G91_fuselage_coda.002</object-name>
@@ -660,5 +624,15 @@
             <z2-m> 0.00500 </z2-m>
         </axis>
     </animation>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Tail/Dragchute.xml</path>
+        <condition>
+            <equals>
+                <property>fdm/jsbsim/systems/dragchute/active</property>
+                <value>1</value>
+            </equals>
+        </condition>
+    </model>
     
 </PropertyList>
