@@ -22,6 +22,7 @@ Modify the program for gear[0] pivoting
     <property value="-1.0">systems/gears/gear[0]/landingGearSteerLimitationFy-sign</property>
     <property value="5.0">systems/gears/gear[0]/steering-angle-deg-limiter-force</property>
     <property value="2.0">systems/gears/gear[0]/steering-angle-deg-limiter-force-exp</property>
+    <property value="0.0">systems/gear/lever-rotation</property>
     
     
     <channel name="Landing Gear[0] steer" execrate="1">
@@ -221,6 +222,11 @@ Modify the program for gear[0] pivoting
             </test>
             <output>gear/gear-direction-sound</output>
         </switch>
+        
+        <lag_filter name="systems/gear/lever-rotation-lag">
+            <input>gear/gear-cmd-norm</input>
+            <c1>3.0</c1>
+        </lag_filter>
         
     </channel>
     

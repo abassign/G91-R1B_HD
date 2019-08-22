@@ -497,7 +497,7 @@
         <object-name>D_DADI_Plate_vertical_wing</object-name>
         <object-name>D_DADI_Plate_vertical_wing_01</object-name>
         <object-name>DADI.027</object-name>
-        <property>fdm/jsbsim/fcs/pitch-trim-deg</property>
+        <property>fdm/jsbsim/fcs/rudder-pos-deg</property>
         <factor>-1</factor>
         <axis>
             <x1-m> 4.22196 </x1-m>
