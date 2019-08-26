@@ -1134,44 +1134,78 @@
             <text>
                 <row>0</row>
                 <col>1</col>
+                <label>999999999999999999999999999999999999999999999</label>
+                <property>fdm/jsbsim/systems/autopilot/gui/take-off-status</property>
+                <live>true</live>
                 <halign>left</halign>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.0</blue>
+                </color>
             </text>
-            <text>
+            <radio>
                 <row>0</row>
                 <col>2</col>
-                <halign>left</halign>
-            </text>
-            <text>
+                <label>Altitude top</label>
+                <property>fdm/jsbsim/systems/autopilot/gui/take-off-altitude-top-active</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </radio>
+            <input>
                 <row>0</row>
                 <col>3</col>
-                <halign>left</halign>
-            </text>
-            <text>
+                <property>fdm/jsbsim/systems/autopilot/gui/take-off-altitude-top</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </input>
+            <radio>
                 <row>0</row>
                 <col>4</col>
-                <halign>left</halign>
-            </text>
-            <text>
+                <label>Heading to</label>
+                <property>fdm/jsbsim/systems/autopilot/gui/take-off-to-heading-active</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </radio>
+            <input>
                 <row>0</row>
                 <col>5</col>
-                <halign>left</halign>
-            </text>
-            <text>
+                <property>fdm/jsbsim/systems/autopilot/gui/take-off-to-heading</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </input>
+            <radio>
                 <row>0</row>
                 <col>6</col>
-                <halign>left</halign>
-            </text>
-            <text>
+                <label>Cruise speed</label>
+                <property>fdm/jsbsim/systems/autopilot/gui/take-off-cruise-speed-active</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </radio>
+            <input>
                 <row>0</row>
                 <col>7</col>
-                <halign>left</halign>
-            </text>
-            <text>
-                <row>0</row>
-                <col>8</col>
-                <halign>left</halign>
-            </text>
+                <property>fdm/jsbsim/systems/autopilot/gui/take-off-cruise-speed</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </input>
+            
         </group>
+        
+        <hrule/>
+        
         <group>
             <layout>table</layout>
             <button>
@@ -1248,6 +1282,9 @@
                 <halign>left</halign>
             </text>
         </group>
+        
+        <hrule/>
+        
         <group>
             <!-- Autolanding -->
             <layout>table</layout>

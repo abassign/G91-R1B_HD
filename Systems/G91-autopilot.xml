@@ -97,7 +97,7 @@ No Overshoot
     <property value="0.1594">systems/autopilot/pitch-pid-ki-1</property>
     <property value="0.00996">systems/autopilot/pitch-pid-kd-1</property>
     
-    <!-- Posson Integral Rule Ku: 7.33 Tu: 120 -->
+    <!-- Pessen Integral Rule PID Ku: 7.33 Tu: 120 -->
     <!-- Il probelma va corretto è dovuto al fatto che la gestione dell'angolo di discesa
     richiede un controllo più efficace del proporzionale, mentre varidotto nella gestione
     normale. Perciò va corretto questo punto e/o gestita la velocità minima per vitare lo stallo -->
@@ -120,7 +120,7 @@ No Overshoot
     <property value="1.0">systems/autopilot/vertical-speed-fpm-lag-C1</property>
     <property value="0.0">systems/autopilot/vertical-speed-active</property>
     <property value="0.0">systems/autopilot/vertical-speed-reset-integrator</property>
-    <!-- Possen Integral Rule Ku: 0.130 Tu: 8.67 -->
+    <!-- Pessen Integral Rule PID Ku: 0.130 Tu: 8.67 -->
     <property value="0.091">systems/autopilot/vertical-speed-pid-kp</property>
     <property value="0.026">systems/autopilot/vertical-speed-pid-ki</property>
     <property value="0.002">systems/autopilot/vertical-speed-pid-kd</property>
@@ -138,7 +138,7 @@ No Overshoot
     <property value="0.0">systems/autopilot/altitude-hold-limitator-active</property>
     <property value="0.1">systems/autopilot/altitude-hold-fdm-lag-coefficient</property>
     <property value="0.0">systems/autopilot/altitude-hold-pid-gain-lag-sw</property>
-    <!-- Possen Integral Rule Ku: 0.530 Tu: 10 -->
+    <!-- Pessen Integral Rule PID Ku: 0.530 Tu: 10 -->
     <property value="0.371">systems/autopilot/altitude-hold-pid-kp</property>
     <property value="0.0927">systems/autopilot/altitude-hold-pid-ki</property>
     <property value="0.0056">systems/autopilot/altitude-hold-pid-kd</property>
@@ -165,7 +165,7 @@ No Overshoot
     <property value="0.05">systems/autopilot/speed-throttle-input-gain</property>
     <property value="0.01">systems/autopilot/speed-pitch-input-gain</property>
     <property value="0.0">systems/autopilot/speed-reset-integrator</property>
-    <!-- Possen Integral Rule Ku: 1.4 Tu: 50.0 -->
+    <!-- Pessen Integral Rule PID Ku: 1.4 Tu: 50.0 -->
     <property value="0.98">systems/autopilot/speed-kp</property>
     <property value="0.0.049">systems/autopilot/speed-ki</property>
     <property value="0.003">systems/autopilot/speed-kd</property>
@@ -176,6 +176,7 @@ No Overshoot
     
     <property value="0.0">systems/autopilot/speed-pitch-active</property>
     <property value="0.0">systems/autopilot/speed-brake-set-active</property>
+    <property value="0.0">systems/autopilot/steer-brake-antiskid</property>
     <property value="0.0">systems/autopilot/speed-automatic-flap-active</property>
     <property value="0.0">systems/autopilot/speed-automatic-gear-active</property>
     
@@ -196,7 +197,7 @@ No Overshoot
     
     <property value="0.0">systems/autopilot/left-steer-brake</property>
     <property value="0.0">systems/autopilot/right-steer-brake</property>
-    <property value="0.0">systems/autopilot/steer-brake</property>
+    <property value="0.0">systems/autopilot/steer-brake-active</property>
     <property value="100.0">systems/autopilot/steer-brake-min-speed</property>
     <property value="-1.0">systems/autopilot/handle-brake-activate</property>
     
@@ -214,6 +215,12 @@ No Overshoot
     <property value="10.0">systems/autopilot/gui/landing-holding-altitude-min</property>
     
     <property value="0.0">systems/autopilot/gui/take-off-activate</property>
+    <property value="15000.0">systems/autopilot/gui/take-off-altitude-top</property>
+    <property value="0.0">systems/autopilot/gui/take-off-altitude-top-active</property>
+    <property value="0.0">systems/autopilot/gui/take-off-to-heading</property>
+    <property value="0.0">systems/autopilot/gui/take-off-to-heading-active</property>
+    <property value="350.0">systems/autopilot/gui/take-off-cruise-speed</property>
+    <property value="0.0">systems/autopilot/gui/take-off-cruise-speed-active</property>
     
     <property value="0.0">systems/autopilot/landing-gear-activate-blocked</property>
     <property value="0.0">systems/autopilot/landing-gear-set-close</property>
@@ -1477,10 +1484,10 @@ No Overshoot
     
     <channel name="Landing brake" execrate="16">
         
-        <switch name="systems/autopilot/steer-brake-active">
+        <switch name="systems/autopilot/steer-brake-activate">
             <default value="0.0"/>
             <test logic="AND" value="1.0">
-                systems/autopilot/steer-brake GE 0.5
+                systems/autopilot/steer-brake-active GE 0.5
             </test>
         </switch>
         
@@ -1503,28 +1510,28 @@ No Overshoot
             <function>
                 <product>
                     <p>systems/autopilot/steer-brake-antiskid</p>
-                    <sum>
-                        <p>systems/autopilot/steer-brake-active</p>
+                    <ifthen>
+                        <gt><p>systems/autopilot/steer-brake-activate</p><v>0.5</v></gt>
                         <ifthen>
-                            <gt><p>systems/autopilot/steer-brake-active</p><v>0.5</v></gt>
-                            <ifthen>
-                                <lt><p>systems/autopilot/true-heading-deg-delta-norm</p><v>0.0</v></lt>
-                                <v>0.0</v>
+                            <lt><p>systems/autopilot/true-heading-deg-delta-norm</p><v>0.0</v></lt>
+                            <sum>
+                                <p>systems/autopilot/steer-brake-activate</p>
                                 <product>
                                     <p>systems/autopilot/true-heading-deg-delta-norm</p>
-                                    <v>-1.0</v>
+                                    <v>-20.0</v>
                                 </product>
-                            </ifthen>
-                            <ifthen>
-                                <lt><p>systems/autopilot/true-heading-deg-delta-norm</p><v>0.0</v></lt>
-                                <product>
-                                    <p>systems/autopilot/true-heading-deg-delta-norm</p>
-                                    <v>1.0</v>
-                                </product>
-                                <v>0.0</v>
-                            </ifthen>
+                            </sum>
+                            <p>systems/autopilot/true-heading-deg-delta-norm</p>
                         </ifthen>
-                    </sum>
+                        <ifthen>
+                            <lt><p>systems/autopilot/true-heading-deg-delta-norm</p><v>0.0</v></lt>
+                            <product>
+                                <p>systems/autopilot/true-heading-deg-delta-norm</p>
+                                <v>-10.0</v>
+                            </product>
+                            <v>0.0</v>
+                        </ifthen>
+                    </ifthen>
                 </product>
             </function>
             <clipto>
@@ -1537,28 +1544,28 @@ No Overshoot
             <function>
                 <product>
                     <p>systems/autopilot/steer-brake-antiskid</p>
-                    <sum>
-                        <p>systems/autopilot/steer-brake-active</p>
+                    <ifthen>
+                        <gt><p>systems/autopilot/steer-brake-activate</p><v>0.5</v></gt>
                         <ifthen>
-                            <gt><p>systems/autopilot/steer-brake-active</p><v>0.5</v></gt>
-                            <ifthen>
-                                <gt><p>systems/autopilot/true-heading-deg-delta-norm</p><v>0.0</v></gt>
-                                <v>0.0</v>
+                            <gt><p>systems/autopilot/true-heading-deg-delta-norm</p><v>0.0</v></gt>
+                            <sum>
+                                <p>systems/autopilot/steer-brake-activate</p>
                                 <product>
                                     <p>systems/autopilot/true-heading-deg-delta-norm</p>
-                                    <v>-1.0</v>
+                                    <v>20.0</v>
                                 </product>
-                            </ifthen>
-                            <ifthen>
-                                <gt><p>systems/autopilot/true-heading-deg-delta-norm</p><v>0.0</v></gt>
-                                <product>
-                                    <p>systems/autopilot/true-heading-deg-delta-norm</p>
-                                    <v>1.0</v>
-                                </product>
-                                <v>0.0</v>
-                            </ifthen>
+                            </sum>
+                            <p>systems/autopilot/steer-brake-activate</p>
                         </ifthen>
-                    </sum>
+                        <ifthen>
+                            <gt><p>systems/autopilot/true-heading-deg-delta-norm</p><v>0.0</v></gt>
+                            <product>
+                                <p>systems/autopilot/true-heading-deg-delta-norm</p>
+                                <v>10.0</v>
+                            </product>
+                            <v>0.0</v>
+                        </ifthen>
+                    </ifthen>
                 </product>
             </function>
             <clipto>
@@ -1629,15 +1636,7 @@ No Overshoot
             <input>systems/autopilot/landing-gear-set-close</input>
             <c1>0.5</c1>
         </lag_filter>
-<!--
-        <switch name="systems/autopilot/landing-gear-set-close">
-            <default value="systems/autopilot/landing-gear-set-close"/>
-            <test logic="AND" value="0.0">
-                systems/autopilot/landing-gear-action-close LE 0.4
-                systems/autopilot/landing-gear-action-close GE 0.1
-            </test>
-        </switch>
--->
+
         <switch name="systems/landing-gear/gear-down-command">
             <default value="systems/landing-gear/gear-down-command"/>
             <test logic="AND" value="1.0">
