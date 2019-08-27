@@ -409,42 +409,23 @@ No Overshoot
             <gain>0.0174533</gain>
         </pure_gain>
         
-        <fcs_function name="systems/autopilot/true-heading-rad-prop-dif">
-            <function>
-                <ifthen>
-                    <p>systems/autopilot/phi-heading-active</p>
-                    <product>
-                        <p>systems/autopilot/phi-heading-rad</p>
-                        <v>-1.0</v>
-                    </product>
-                    <difference>
-                        <p>systems/autopilot/true-heading-rad</p>
-                        <p>attitude/heading-true-rad</p>
-                    </difference>
-                </ifthen>
-            </function>
-        </fcs_function>
+        <pure_gain name="systems/autopilot/true-heading-rad-delta-phi">
+            <input>systems/autopilot/phi-heading-rad</input>
+            <gain>-1</gain>
+        </pure_gain>
         
-        <fcs_function name="systems/autopilot/true-heading-rad-delta">
-            <function>
-                <ifthen>
-                    <ge><p>systems/autopilot/true-heading-rad-prop-dif</p><pi/></ge>
-                    <difference>
-                        <p>systems/autopilot/true-heading-rad-prop-dif</p>
-                        <product><pi/><v>1.0</v></product>
-                    </difference>
-                    <ifthen>
-                        <lt><p>systems/autopilot/true-heading-rad-prop-dif</p><product><pi/><v>-1.0</v></product></lt>
-                        <sum>
-                            <p>systems/autopilot/true-heading-rad-prop-dif</p>
-                            <product><pi/><v>2.0</v></product>
-                        </sum>
-                        <p>systems/autopilot/true-heading-rad-prop-dif</p>
-                    </ifthen>
-                </ifthen>
-            </function>
-        </fcs_function>
-
+        <angle name="systems/autopilot/true-heading-rad-delta-true-heading" unit="RAD">
+            <source_angle unit="RAD">attitude/heading-true-rad</source_angle>
+            <target_angle unit="RAD">systems/autopilot/true-heading-rad</target_angle>
+        </angle>
+        
+        <switch name="systems/autopilot/true-heading-rad-delta">
+            <default value="systems/autopilot/true-heading-rad-delta-true-heading"/>
+            <test logic="AND" value="systems/autopilot/true-heading-rad-delta-phi">
+                systems/autopilot/phi-heading-active == 1
+            </test>
+        </switch>
+        
         <pure_gain name="systems/autopilot/true-heading-deg-delta">
             <input>systems/autopilot/true-heading-rad-delta</input>
             <gain>57.2958</gain>

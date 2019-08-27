@@ -8,6 +8,7 @@
     il rallentamento -->
     
     <property value="0.0">systems/airbrake/automatic-cmd</property>
+    <property value="0.0">systems/airbrake/manual-cmd</property>
     <property value="1.94">systems/airbrake/surfice-cmd-sqft</property>
     <property value="0.8">systems/airbrake/cd_coefficient</property>
     <property value="1.0">systems/airbrake/position_max</property>
@@ -19,6 +20,7 @@
         <summer name="systems/airbrake/command">
             <input>fcs/speedbrake-cmd-norm</input>
             <input>systems/airbrake/automatic-cmd</input>
+            <input>systems/airbrake/manual-cmd</input>
             <clipto>
                 <min>0.0</min>
                 <max>1.0</max>
