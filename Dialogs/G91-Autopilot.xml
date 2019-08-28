@@ -1299,9 +1299,15 @@
                     <property>fdm/jsbsim/systems/autopilot/gui/landing-activate</property>
                 </binding>
             </button>
-            <radio>
+            <text>
                 <row>0</row>
                 <col>1</col>
+                <halign>left</halign>
+                <label>Airport selector: </label>
+            </text>
+            <radio>
+                <row>0</row>
+                <col>2</col>
                 <label>Near RW</label>
                 <property>fdm/jsbsim/systems/autopilot/gui/airport_nearest_runway</property>
                 <live>true</live>
@@ -1311,7 +1317,7 @@
             </radio>
             <radio>
                 <row>0</row>
-                <col>2</col>
+                <col>3</col>
                 <label>Short prof</label>
                 <property>fdm/jsbsim/systems/autopilot/gui/landing-short-profile</property>
                 <live>true</live>
@@ -1321,100 +1327,13 @@
             </radio>
             <text>
                 <row>0</row>
-                <col>3</col>
-                <label>999999</label>
-                <halign>left</halign>
-                <live>true</live>
-                <format>[%1.1f] </format>
-                <property>fdm/jsbsim/systems/autopilot/gui/landig-status-id</property>
-                <color>
-                    <red>0.9</red>
-                    <green>0.9</green>
-                    <blue>0.0</blue>
-                </color>
-            </text>
-            <text>
-                <row>0</row>
                 <col>4</col>
-                <label>999999999999999999999999999999999999999999999</label>
-                <property>fdm/jsbsim/systems/autopilot/gui/airport_landing_status</property>
-                <live>true</live>
-                <halign>left</halign>
-                <color>
-                    <red>0.9</red>
-                    <green>0.9</green>
-                    <blue>0.0</blue>
-                </color>
-            </text>
-            <text>
-                <row>0</row>
-                <col>5</col>
-                <label>9999999999999999</label>
-                <halign>left</halign>
-                <live>true</live>
-                <format>Dist. %3.1f (nm)</format>
-                <property>fdm/jsbsim/systems/autopilot/gui/airport_runway_distance</property>
-                <color>
-                    <red>0.9</red>
-                    <green>0.9</green>
-                    <blue>0.9</blue>
-                </color>
-            </text>
-            <text>
-                <row>0</row>
-                <col>6</col>
-                <label>9999999999999999</label>
-                <halign>left</halign>
-                <live>true</live>
-                <format>Delta %5.0f (ft)</format>
-                <property>fdm/jsbsim/systems/autopilot/gui/airport_runway_delta_altitude</property>
-                <color>
-                    <red>0.9</red>
-                    <green>0.9</green>
-                    <blue>0.9</blue>
-                </color>
-            </text>
-            <text>
-                <row>0</row>
-                <col>7</col>
-                <label>999999999999999</label>
-                <halign>left</halign>
-                <live>true</live>
-                <format>Head %3.0f (deg)</format>
-                <property>fdm/jsbsim/systems/autopilot/gui/airport_runway_airplane_heading_correct</property>
-                <color>
-                    <red>0.9</red>
-                    <green>0.9</green>
-                    <blue>0.9</blue>
-                </color>
-            </text>
-            <text>
-                <row>0</row>
-                <col>8</col>
-                <label>999999999999999</label>
-                <halign>left</halign>
-                <live>true</live>
-                <format>Slope %2.1f (deg)</format>
-                <property>fdm/jsbsim/systems/autopilot/gui/airport_runway_airplane_slope</property>
-                <color>
-                    <red>0.9</red>
-                    <green>0.9</green>
-                    <blue>0.9</blue>
-                </color>
-            </text>
-        </group>
-        <group>
-            <!-- Autolanding parameters -->
-            <layout>table</layout>
-            <text>
-                <row>0</row>
-                <col>0</col>
-                <label>Ranway min lenght: </label>
+                <label>Ranway min lenght:</label>
                 <halign>left</halign>
             </text>
             <slider>
                 <row>0</row>
-                <col>1</col>
+                <col>5</col>
                 <live>true</live>
                 <property>fdm/jsbsim/systems/autopilot/gui/landing-minimal-length-m</property>
                 <min>1000.0</min>
@@ -1436,8 +1355,8 @@
             </slider>
             <text>
                 <row>0</row>
-                <col>2</col>
-                <label>99999</label>
+                <col>6</col>
+                <label>9999999999</label>
                 <halign>left</halign>
                 <live>true</live>
                 <format>%4.0f (ft)</format>
@@ -1448,15 +1367,20 @@
                     <blue>0.0</blue>
                 </color>
             </text>
+        </group>
+            
+        <group>
+            <!-- Autolanding parameters -->
+            <layout>table</layout>
             <text>
                 <row>0</row>
-                <col>3</col>
-                <label>Hovering distance: </label>
+                <col>0</col>
+                <label>Hovering distance:</label>
                 <halign>left</halign>
             </text>
             <slider>
                 <row>0</row>
-                <col>4</col>
+                <col>1</col>
                 <live>true</live>
                 <property>fdm/jsbsim/systems/autopilot/gui/landing-holding-point-dist-nm</property>
                 <min>5.0</min>
@@ -1476,8 +1400,8 @@
             </slider>
             <text>
                 <row>0</row>
-                <col>5</col>
-                <label>99999</label>
+                <col>2</col>
+                <label>9999999999</label>
                 <halign>left</halign>
                 <live>true</live>
                 <format>%2.0f (nm)</format>
@@ -1490,13 +1414,18 @@
             </text>
             <text>
                 <row>0</row>
-                <col>6</col>
-                <label>Hovering alt: </label>
+                <col>3</col>
+                <label>Hovering alt:</label>
+                <halign>left</halign>
+            </text>
+            <text>
+                <row>0</row>
+                <col>4</col>
                 <halign>left</halign>
             </text>
             <slider>
                 <row>0</row>
-                <col>7</col>
+                <col>5</col>
                 <live>true</live>
                 <property>fdm/jsbsim/systems/autopilot/gui/landing-holding-point-h-ft</property>
                 <min>3000.0</min>
@@ -1516,8 +1445,8 @@
             </slider>
             <text>
                 <row>0</row>
-                <col>8</col>
-                <label>99999</label>
+                <col>6</col>
+                <label>9999999999</label>
                 <halign>left</halign>
                 <live>true</live>
                 <format>%5.0f (ft)</format>
@@ -1528,18 +1457,92 @@
                     <blue>0.0</blue>
                 </color>
             </text>
+        </group>
+        
+        <group>
+            <!-- Autolanding status -->
+            <layout>table</layout>
             <text>
                 <row>0</row>
-                <col>10</col>
-                <label>9999999999</label>
+                <col>0</col>
+                <label>999999999999999</label>
                 <halign>left</halign>
                 <live>true</live>
-                <format>Slope: %2.1f (deg)</format>
-                <property>fdm/jsbsim/systems/autopilot/gui/landing-holding-point-slope</property>
+                <format>Status: [% 2.1f] </format>
+                <property>fdm/jsbsim/systems/autopilot/gui/landig-status-id</property>
                 <color>
-                    <red>0.2</red>
+                    <red>0.9</red>
                     <green>0.9</green>
                     <blue>0.0</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>1</col>
+                <label>9999999999999999999999999999999999999999999999999999999</label>
+                <property>fdm/jsbsim/systems/autopilot/gui/airport_landing_status</property>
+                <live>true</live>
+                <halign>left</halign>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.0</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>2</col>
+                <label>9999999999999999</label>
+                <halign>left</halign>
+                <live>true</live>
+                <format>Dist. %3.1f (nm)</format>
+                <property>fdm/jsbsim/systems/autopilot/gui/airport_runway_distance</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.9</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>3</col>
+                <label>9999999999999999</label>
+                <halign>left</halign>
+                <live>true</live>
+                <format>Delta %5.0f (ft)</format>
+                <property>fdm/jsbsim/systems/autopilot/gui/airport_runway_delta_altitude</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.9</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>4</col>
+                <label>999999999999999</label>
+                <halign>left</halign>
+                <live>true</live>
+                <format>Head %3.0f (deg)</format>
+                <property>fdm/jsbsim/systems/autopilot/gui/airport_runway_airplane_heading_correct</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.9</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>5</col>
+                <label>999999999999999</label>
+                <halign>left</halign>
+                <live>true</live>
+                <format>Slope %2.1f (deg)</format>
+                <property>fdm/jsbsim/systems/autopilot/gui/airport_runway_airplane_slope</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.9</blue>
                 </color>
             </text>
         </group>

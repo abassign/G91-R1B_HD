@@ -1489,31 +1489,35 @@ No Overshoot
         
         <fcs_function name="systems/autopilot/left-steer-brake">
             <function>
-                <product>
-                    <p>systems/autopilot/steer-brake-antiskid</p>
-                    <ifthen>
-                        <gt><p>systems/autopilot/steer-brake-activate</p><v>0.5</v></gt>
+                <ifthen>
+                    <gt><p>systems/autopilot/steer-brake-active</p><v>0.5</v></gt>
+                    <product>
+                        <p>systems/autopilot/steer-brake-antiskid</p>
                         <ifthen>
-                            <lt><p>systems/autopilot/true-heading-deg-delta-norm</p><v>0.0</v></lt>
-                            <sum>
-                                <p>systems/autopilot/steer-brake-activate</p>
+                            <gt><p>systems/autopilot/steer-brake-activate</p><v>0.5</v></gt>
+                            <ifthen>
+                                <lt><p>systems/autopilot/true-heading-deg-delta-norm</p><v>0.0</v></lt>
+                                <sum>
+                                    <p>systems/autopilot/steer-brake-activate</p>
+                                    <product>
+                                        <p>systems/autopilot/true-heading-deg-delta-norm</p>
+                                        <v>-20.0</v>
+                                    </product>
+                                </sum>
+                                <p>systems/autopilot/true-heading-deg-delta-norm</p>
+                            </ifthen>
+                            <ifthen>
+                                <lt><p>systems/autopilot/true-heading-deg-delta-norm</p><v>0.0</v></lt>
                                 <product>
                                     <p>systems/autopilot/true-heading-deg-delta-norm</p>
-                                    <v>-20.0</v>
+                                    <v>-10.0</v>
                                 </product>
-                            </sum>
-                            <p>systems/autopilot/true-heading-deg-delta-norm</p>
+                                <v>0.0</v>
+                            </ifthen>
                         </ifthen>
-                        <ifthen>
-                            <lt><p>systems/autopilot/true-heading-deg-delta-norm</p><v>0.0</v></lt>
-                            <product>
-                                <p>systems/autopilot/true-heading-deg-delta-norm</p>
-                                <v>-10.0</v>
-                            </product>
-                            <v>0.0</v>
-                        </ifthen>
-                    </ifthen>
-                </product>
+                    </product>
+                    <v>0.0</v>
+                </ifthen>
             </function>
             <clipto>
                 <min>0</min>
@@ -1523,31 +1527,35 @@ No Overshoot
         
         <fcs_function name="systems/autopilot/right-steer-brake">
             <function>
-                <product>
-                    <p>systems/autopilot/steer-brake-antiskid</p>
-                    <ifthen>
-                        <gt><p>systems/autopilot/steer-brake-activate</p><v>0.5</v></gt>
+                <ifthen>
+                    <gt><p>systems/autopilot/steer-brake-active</p><v>0.5</v></gt>
+                    <product>
+                        <p>systems/autopilot/steer-brake-antiskid</p>
                         <ifthen>
-                            <gt><p>systems/autopilot/true-heading-deg-delta-norm</p><v>0.0</v></gt>
-                            <sum>
+                            <gt><p>systems/autopilot/steer-brake-activate</p><v>0.5</v></gt>
+                            <ifthen>
+                                <gt><p>systems/autopilot/true-heading-deg-delta-norm</p><v>0.0</v></gt>
+                                <sum>
+                                    <p>systems/autopilot/steer-brake-activate</p>
+                                    <product>
+                                        <p>systems/autopilot/true-heading-deg-delta-norm</p>
+                                        <v>20.0</v>
+                                    </product>
+                                </sum>
                                 <p>systems/autopilot/steer-brake-activate</p>
+                            </ifthen>
+                            <ifthen>
+                                <gt><p>systems/autopilot/true-heading-deg-delta-norm</p><v>0.0</v></gt>
                                 <product>
                                     <p>systems/autopilot/true-heading-deg-delta-norm</p>
-                                    <v>20.0</v>
+                                    <v>10.0</v>
                                 </product>
-                            </sum>
-                            <p>systems/autopilot/steer-brake-activate</p>
+                                <v>0.0</v>
+                            </ifthen>
                         </ifthen>
-                        <ifthen>
-                            <gt><p>systems/autopilot/true-heading-deg-delta-norm</p><v>0.0</v></gt>
-                            <product>
-                                <p>systems/autopilot/true-heading-deg-delta-norm</p>
-                                <v>10.0</v>
-                            </product>
-                            <v>0.0</v>
-                        </ifthen>
-                    </ifthen>
-                </product>
+                    </product>
+                    <v>0.0</v>
+                </ifthen>
             </function>
             <clipto>
                 <min>0</min>
