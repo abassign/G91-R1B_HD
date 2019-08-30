@@ -1468,7 +1468,7 @@ No Overshoot
         <switch name="systems/autopilot/steer-brake-activate">
             <default value="0.0"/>
             <test logic="AND" value="1.0">
-                systems/autopilot/steer-brake-active GE 0.5
+                systems/autopilot/steer-brake-active GE 2.0
             </test>
         </switch>
         
@@ -1630,7 +1630,7 @@ No Overshoot
             <default value="systems/landing-gear/gear-down-command"/>
             <test logic="AND" value="1.0">
                 systems/autopilot/speed-automatic-gear-active == 1.0
-                systems/autopilot/speed-cas-on-air-lag LE 165
+                systems/autopilot/speed-cas-on-air-lag LE 170
                 systems/landing-gear/gear-down-status == 0.0
             </test>
             <test logic="AND" value="-1.0">
