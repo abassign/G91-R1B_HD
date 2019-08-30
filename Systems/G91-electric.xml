@@ -6,6 +6,7 @@ Description: G91R4 Electric system from "Manuale di pilotaggio (p.56)
 
 <system name="electric-system">
     
+    <property value="0">systems/electric/bus[0]/battery-V</property>
     <property value="34">systems/electric/bus[0]/battery-AH</property>
     <property value="2937600">systems/electric/bus[0]/battery-capacity-initial-J</property>
     <property value="2937600">systems/electric/bus[0]/battery-capacity-max-J</property>
