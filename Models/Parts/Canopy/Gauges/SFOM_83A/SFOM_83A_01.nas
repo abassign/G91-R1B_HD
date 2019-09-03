@@ -31,7 +31,7 @@ sfom83A_child = sfom83A_root.createChild("image")
         .setSize(384,384);
 
 var setCross = func() {
-    sfom83A_child.setTranslation(xOffset * 10000.0 + 67.0, (0.8 - yOffset) * 11000.0 + valButton);
+    sfom83A_child.setTranslation(xOffset * 10000 + 67, yOffset * (-11100) + valButton);
 }
 
 var color_cross_SFOM83A = func() {

@@ -206,7 +206,7 @@ var setCanvas = func() {
     cw.addPlacement({"node": "tank_260lb_tail_01"});
     cw.addPlacement({"node": "PAN_tank_sx.004"});
     cw.addPlacement({"node": "PAN_tank_sx_003"});
-    
+
     # Fuselage extra
     cw.addPlacement({"node": "A__G91r3_fuselage_weapon.door"});
 

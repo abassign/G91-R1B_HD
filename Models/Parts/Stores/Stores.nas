@@ -6,10 +6,15 @@ var prop = props.globals.initNode("sim/G91/stores/lastStoreBalObj", "", "STRING"
 var prop = props.globals.initNode("sim/G91/stores/lastStoreBalObjDataPath", "", "STRING");
 
 # Drop trigger for store in the station
-var prop = props.globals.initNode("sim/G91/stores/stationSxExternalDropFromStation", 0, "DOUBLE");
 var prop = props.globals.initNode("sim/G91/stores/stationSxInternalDropFromStation", 0, "DOUBLE");
+var prop = props.globals.initNode("sim/G91/stores/stationSxExternalDropFromStation", 0, "DOUBLE");
 var prop = props.globals.initNode("sim/G91/stores/stationDxInternalDropFromStation", 0, "DOUBLE");
 var prop = props.globals.initNode("sim/G91/stores/stationDxExternalDropFromStation", 0, "DOUBLE");
+
+var prop = props.globals.initNode("sim/G91/stores/stationSxInternalDropped", 0, "DOUBLE");
+var prop = props.globals.initNode("sim/G91/stores/stationSxExternalDropped", 0, "DOUBLE");
+var prop = props.globals.initNode("sim/G91/stores/stationDxInternalDropped", 0, "DOUBLE");
+var prop = props.globals.initNode("sim/G91/stores/stationDxExternalDropped", 0, "DOUBLE");
 
 # Weight for fuel thank (lbs)
 var prop = props.globals.initNode("sim/G91/stores/stationSxExternalContent/level-lbs", 0, "DOUBLE");
@@ -290,6 +295,7 @@ var storesTank = maketimer(1, func() {
     
     if (tankSx_Selected == 0 and typeLoadSx == 10) {
         setprop("sim/G91/stores/stationSxInternalDropFromStation", 1);
+        setprop("sim/G91/stores/stationSxInternalDropped",10);
         setprop("sim/G91/stores/handleRequestToLoadStation", -2);
     }
     if (tankSx_Selected > 0 and typeLoadSx != 10) {
@@ -303,6 +309,7 @@ var storesTank = maketimer(1, func() {
     }
     if (tankDx_Selected == 0 and typeLoadDx == 10) {
         setprop("sim/G91/stores/stationDxInternalDropFromStation", 1);
+        setprop("sim/G91/stores/stationDxInternalDropped",10);
         setprop("sim/G91/stores/handleRequestToLoadStation", -3)
     }
     if (tankDx_Selected > 0 and typeLoadDx != 10) {

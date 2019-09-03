@@ -8,13 +8,12 @@ var delayCycleGeneral = 0;
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/airport_select_name", "", "STRING");
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/airport_select_id", "", "STRING");
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/airport_runway_id", "", "STRING");
-var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/landing-scan-airport", 1, "INT");
+var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/landing-scan-airport",1,"INT");
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/airport_select_name_direct","","STRING");
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/airport_select_name_direct_old","","STRING");
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct/status",0,"INT");
+var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct_rw_id",0,"INT");
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct/rws","", "STRING");
-var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct/rw_select",0,"INT");
-var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct/rw_airport_select","", "STRING");
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct_max_distance",800,"DOUBLE");
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/airport_select_name_direct_extended","", "STRING");
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/airport_nearest_runway", 0, "INT");
@@ -28,8 +27,6 @@ var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/airport_runw
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/impact-control-geo-is-nil","");
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/landing-minimal-length-m", 1000, "DOUBLE");
 var prop = props.globals.initNode("fdm/jsbsim/systems/dragchute/active-view", 0, "DOUBLE");
-var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/landing-holding-point-dist-nm", 14, "DOUBLE");
-var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/landing-holding-point-h-ft", 5000, "DOUBLE");
 
 var d2r = 0.0174533;
 var landing_activate_status = 0;
@@ -126,94 +123,65 @@ var pilot_assistant = func {
         var landing_minimal_length_m = getprop("fdm/jsbsim/systems/autopilot/gui/landing-minimal-length-m");
         var landing_max_lateral_wind = getprop("fdm/jsbsim/systems/autopilot/gui/landing-max-lateral-wind");
         var airport_nearest_runway = getprop("fdm/jsbsim/systems/autopilot/gui/airport_nearest_runway");
+        var apts = nil;
+        if (airport_select_id_direct != nil and getprop("fdm/jsbsim/systems/autopilot/gui/landing-scan-airport") == 0) {
+            apts = [airport_select_id_direct];
+        } else {
+            apts = findAirportsWithinRange(landing_rwy_search_distance_max);
+            airport_select_id_direct = nil;
+        }
         var distance_to_airport_min = 9999.0;
         var airplane = geo.aircraft_position();
         var heading_true_deg = getprop("fdm/jsbsim/systems/autopilot/heading-true-deg");
         var wind_speed = getprop("/local-weather/METAR/wind-strength-kt"); print("###1: ", wind_speed);
         var wind_from = getprop("/local-weather/METAR/wind-direction-deg"); print("###2: ", wind_from);
         var rwy_coord = geo.Coord.new();
-        var apts = nil;
-        if (airport_select_id_direct != nil) {
-            apts = [airport_select_id_direct];
-            print("## 2 airport_select_id_direct: ",airport_select_id_direct.id);
-        } else {
-            apts = findAirportsWithinRange(landing_rwy_search_distance_max);
-        }
+        airport_select = nil;
+        rwy_select = nil;
+        setprop("fdm/jsbsim/systems/autopilot/gui/airport_select_name_direct_extended","-- No airport --");
         if (apts != nil and airplane != nil) {
-            rwy_select = nil;
             foreach(var apt; apts) {
-                print("## 3 : ",apt.id);
                 var airport = airportinfo(apt.id);
-                # Select the airport nearest in the frontal direction or direct
+                # Select the airport in the frontal direction
                 apt_coord.set_latlon(airport.lat,airport.lon);
-                if (getprop("fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct/rw_select") == 0) {
-                    if ((math.abs(geo.normdeg(heading_true_deg-airplane.course_to(apt_coord))) <= landing_rwy_search_max_heading)
-                        or getprop("fdm/jsbsim/systems/autopilot/gui/landing-scan-airport") == 0) {
+                if (airport_select_id_direct == nil) {
+                    if (math.abs(geo.normdeg(heading_true_deg-airplane.course_to(apt_coord))) <= landing_rwy_search_max_heading) {
                         foreach(var rwy; keys(airport.runways)) {
-                            if (airport.runways[rwy].length >= landing_minimal_length_m) {
-                                var wind_compatibility_ok = 1;
-                                if (airport_nearest_runway == 0) {
-                                    var wind_deviation = math.abs(geo.normdeg(wind_from - airport.runways[rwy].heading));
-                                    if (wind_speed * (1 - math.cos(wind_deviation * d2r)) > landing_max_lateral_wind) {
-                                        wind_compatibility_ok = 0;
-                                    }
-                                }
-                                if (wind_compatibility_ok) {
-                                    rwy_coord.set_latlon(airport.runways[rwy].lat,airport.runways[rwy].lon);
-                                    runway_to_airplane_dist = airplane.distance_to(rwy_coord) * 0.000621371;
-                                    if (distance_to_airport_min > runway_to_airplane_dist) {
-                                        distance_to_airport_min = runway_to_airplane_dist;
-                                        airport_select = airport;
-                                        rwy_select = rwy;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            if (airport_select != nil and airport_select.id != getprop("fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct/rw_airport_select")) {
-                print("## 4 : ",airport_select.id);
-                setprop("fdm/jsbsim/systems/autopilot/gui/airport_select_name_direct",airport_select.id);
-                setprop("fdm/jsbsim/systems/autopilot/gui/airport_select_name_direct_extended",airport_select.name);
-                # Create the runway list for manual selection
-                # Cleaning the list
-                setprop("fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct/rw_airport_select",airport_select.id);
-                setprop("fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct/rw_select",0);
-                var airport_select_id_direct_node = props.globals.getNode("/fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct", 1);
-                var rws_node = airport_select_id_direct_node.getNode("rws", 1);
-                rws_node.removeChildren("value");
-                # Create the Runway list
-                var index = -1;
-                foreach(var rwy; keys(airport_select.runways)) {
-                    if (airport_select.runways[rwy].length >= landing_minimal_length_m) {
-                        index = index + 1;
-                        var wind_compatibility_ok = "W ok";
-                        if (airport_nearest_runway == 0) {
-                            var wind_deviation = math.abs(geo.normdeg(wind_from - airport_select.runways[rwy].heading));
+                            var wind_deviation = math.abs(geo.normdeg(wind_from - airport.runways[rwy].heading));
+                            var wind_compatibility_ok = 1;
                             if (wind_speed * (1 - math.cos(wind_deviation * d2r)) > landing_max_lateral_wind) {
-                                wind_compatibility_ok = "---";
+                                wind_compatibility_ok = 0;
+                            }
+                            print("Landing 1.0 > Airport: ",airport.id,
+                                " ",airport.runways[rwy].id,
+                                " ",airport.runways[rwy].length,
+                                " Wind speed: ",wind_speed, " Wind direction: ",wind_from, " Wind deviation: ",wind_deviation, " compatibility: ",wind_compatibility_ok,
+                                " Lat wind: ", wind_speed * (1 - math.cos(wind_deviation * d2r)));
+                            # Select the sufficient runway lenght
+                            if (airport.runways[rwy].length >= landing_minimal_length_m and (wind_compatibility_ok or airport_nearest_runway)) {
+                                rwy_coord.set_latlon(airport.runways[rwy].lat,airport.runways[rwy].lon);
+                                runway_to_airplane_dist = airplane.distance_to(rwy_coord) * 0.000621371;
+                                # Search the rwy with minimal condition
+                                if (distance_to_airport_min > runway_to_airplane_dist) {
+                                    distance_to_airport_min = runway_to_airplane_dist;
+                                    setprop("fdm/jsbsim/systems/autopilot/gui/airport_select_name_direct_old",airport.id);
+                                    setprop("fdm/jsbsim/systems/autopilot/gui/airport_select_name_direct",airport.id);
+                                    setprop("fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct/status",1);
+                                    setprop("fdm/jsbsim/systems/autopilot/gui/airport_select_name_direct_extended",airport.name);
+                                    airport_select = airport;
+                                    rwy_select = rwy;
+                                    print("### 4: ",airport.id," ",rwy);
+                                }
                             }
                         }
-                        setprop("fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct/rws/value[" ~ index ~ "]",airport_select.runways[rwy].id ~ " " ~ airport_select.runways[rwy].length ~ " " ~ wind_compatibility_ok);
                     }
+                } else {
+                    airport_select = airport;
+                    rwy_select = airport_select_id_direct_rw;
+                    setprop("fdm/jsbsim/systems/autopilot/gui/airport_select_name_direct_extended",airport.name);
                 }
-                gui.dialog_update("pilot-assistant");
-            } else if (airport_select == nil) {
-                setprop("fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct/rw_airport_select","");
-                var airport_select_id_direct_node = props.globals.getNode("/fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct", 1);
-                var rws_node = airport_select_id_direct_node.getNode("rws", 1);
-                rws_node.removeChildren("value");
-                gui.dialog_update("pilot-assistant");
-                setprop("fdm/jsbsim/systems/autopilot/gui/airport_select_name_direct_extended","-- No Airport --");
-            }
-            
-            # Manual Runway select
-            if (airport_select != nil and getprop("fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct/rw_select") == 1) {
-                rwy_select = substr(getprop("fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct/rw"),0,2);
             }
         }
-     
         if (airport_select != nil and rwy_select != nil and size(rwy_select) == 2) {
             rwy_coord_start.set_latlon(airport_select.runways[rwy_select].lat,airport_select.runways[rwy_select].lon);
             runway_to_airplane_dist = airplane.distance_to(rwy_coord_start) * 0.000621371;
@@ -408,7 +376,7 @@ var pilot_assistant = func {
             setprop("fdm/jsbsim/systems/autopilot/gui/pitch-descent-angle",0.0);
             setprop("fdm/jsbsim/systems/autopilot/gui/pitch-descent-angle-deg",0.0);
             setprop("fdm/jsbsim/systems/autopilot/gui/pitch-hold",1.0);
-            setprop("fdm/jsbsim/systems/autopilot/gui/pitch-hold-deg",4.0);
+            setprop("fdm/jsbsim/systems/autopilot/gui/pitch-hold-deg",-3.0);
             setprop("fdm/jsbsim/systems/autopilot/landing-gear-activate-blocked",0.0);
             setprop("fdm/jsbsim/systems/autopilot/landing-gear-set-close",1.0);
             holding_point_h_ft = math.sin(holding_point_slope_avg / R2D) * runway_to_airplane_dist_direct_mem * 6076.12;
@@ -440,7 +408,7 @@ var pilot_assistant = func {
                 # Delay
                 isHolding_reducing_delta = isHolding_reducing_delta + 1;
             }
-            if ((math.abs(slope - holding_point_slope_avg)) < 1 and (getprop("fdm/jsbsim/systems/autopilot/speed-cas-on-air") <= 200.0) and isHolding_reducing_terminated == 0) {
+            if ((math.abs(slope - holding_point_slope_avg)) < 1.0 and (getprop("fdm/jsbsim/systems/autopilot/speed-cas-on-air") <= 200.0) and isHolding_reducing_terminated == 0) {
                 isHolding_reducing_terminated = 1;
                 setprop("fdm/jsbsim/systems/airbrake/manual-cmd",0.0);
                 setprop("fdm/jsbsim/systems/autopilot/gui/true-heading-max-wing-slope-deg",30.0);
@@ -1063,7 +1031,7 @@ var pilot_assistant = func {
         setprop("fdm/jsbsim/systems/autopilot/gui/airport_runway_airplane_slope",0.0);
         setprop("fdm/jsbsim/systems/autopilot/gui/airport_landing_status","Autolanding inactive");
         setprop("fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct/status",0);
-        # setprop("fdm/jsbsim/systems/autopilot/gui/airport_select_name_direct","");
+        setprop("fdm/jsbsim/systems/autopilot/gui/airport_select_name_direct","");
     }
     
     #
@@ -1382,32 +1350,60 @@ setlistener("fdm/jsbsim/systems/autopilot/gui/take-off-activate", func {
 
 setlistener("fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct/status", func {
     if (getprop("fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct/status") == 1) {
-        if (getprop("fdm/jsbsim/systems/autopilot/gui/landing-scan-airport") == 1 and airport_select != nil) {
-            setprop("fdm/jsbsim/systems/autopilot/gui/airport_select_name_direct",airport_select.id);
-            airport_select_id_direct = nil;
-        } else {
-            var airport_name = string.uc(getprop("fdm/jsbsim/systems/autopilot/gui/airport_select_name_direct"));
-            if (size(airport_name) == 4) {
-                airport_select_id_direct = nil;
-                var airport = airportinfo(airport_name);
-                if (airport != nil) {
-                    var apt_coord = geo.Coord.new();
-                    apt_coord.set_latlon(airport.lat,airport.lon);
-                    var airplane = geo.aircraft_position();
-                    if (airplane.distance_to(apt_coord) * 0.000621371 <= getprop("fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct_max_distance")) {
-                        airport_select_id_direct = airport;
-                        landig_departure_status_id = 1.0;
-                        if (getprop("fdm/jsbsim/systems/autopilot/gui/airport_select_name_direct") != airport_select.id) {
-                            setprop("fdm/jsbsim/systems/autopilot/gui/airport_select_name_direct",airport_select.id);
+        setprop("fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct/rw","");
+        gui.dialog_update("pilot-assistant");
+        var airport_name = string.uc(getprop("fdm/jsbsim/systems/autopilot/gui/airport_select_name_direct"));
+        print("## 1: ",airport_name);
+        if (airport_name != nil) {
+            var airport = airportinfo(airport_name);
+            if (airport != nil) {
+                print("## 2: ",airport.id);
+                var apt_coord = geo.Coord.new();
+                apt_coord.set_latlon(airport.lat,airport.lon);
+                var airplane = geo.aircraft_position();
+                print("## 3: ",airplane.distance_to(apt_coord) * 0.000621371);
+                var airport_select_id_direct_node = props.globals.getNode("/fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct", 1);
+                var rws_node = airport_select_id_direct_node.getNode("rws", 1);
+                rws_node.removeChildren("value");
+                if (airplane.distance_to(apt_coord) * 0.000621371 <= getprop("fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct_max_distance")) {
+                    print("## 4: ");
+                    setprop("fdm/jsbsim/systems/autopilot/gui/airport_select_name_direct",airport_name);
+                    var wind_speed = getprop("/local-weather/METAR/wind-strength-kt");
+                    var wind_from = getprop("/local-weather/METAR/wind-direction-deg");
+                    var landing_max_lateral_wind = getprop("fdm/jsbsim/systems/autopilot/gui/landing-max-lateral-wind");
+                    var landing_minimal_length_m = getprop("fdm/jsbsim/systems/autopilot/gui/landing-minimal-length-m");
+                    var index = -1;
+                    foreach(var rwy; keys(airport.runways)) {
+                        var wind_deviation = math.abs(geo.normdeg(wind_from - airport.runways[rwy].heading));
+                        var wind_compatibility_ok = 1;
+                        if (wind_speed * (1 - math.cos(wind_deviation * d2r)) > landing_max_lateral_wind) {
+                            wind_compatibility_ok = 0;
                         }
-                        print("## 1 airport_select_id_direct: ",airport_select_id_direct.id);
-                        setprop("fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct/rw_select",0);
+                        # Select the sufficient runway lenght
+                        if (airport.runways[rwy].length >= landing_minimal_length_m) {
+                            index = index + 1;
+                            setprop("fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct/rws/value[" ~ index ~ "]",airport.runways[rwy].id ~ " " ~ airport.runways[rwy].length ~ " " ~ wind_compatibility_ok);
+                            airport_select_id_direct = airport;
+                        }
                     }
+                    gui.dialog_update("pilot-assistant");
                 }
+            } else {
+                setprop("fdm/jsbsim/systems/autopilot/gui/airport_select_name_direct","");
             }
+        } else {
+            setprop("fdm/jsbsim/systems/autopilot/gui/airport_select_name_direct","");
         }
+        setprop("fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct/status",0);
+        setprop("fdm/jsbsim/systems/autopilot/gui/landing-activate",0);
     }
-    setprop("fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct/status",0);
+}, 1, 0);
+
+setlistener("fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct/rw", func {
+    if (getprop("fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct/rw") != nil) {
+        airport_select_id_direct_rw = substr(getprop("fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct/rw"),0,2);
+        print("### 3: ", airport_select_id_direct_rw);
+    }
 }, 1, 0);   
 
 setlistener("fdm/jsbsim/systems/autopilot/gui/landing-holding-point-dist-nm", func {
@@ -1430,16 +1426,6 @@ setlistener("fdm/jsbsim/systems/autopilot/gui/landing-holding-point-h-ft", func 
         setprop("fdm/jsbsim/systems/autopilot/gui/landing-holding-point-dist-nm",dist);
     }
     setprop("fdm/jsbsim/systems/autopilot/gui/landing-holding-point-slope",5.0);
-}, 1, 0);
-
-setlistener("fdm/jsbsim/systems/autopilot/gui/landing-scan-airport", func {
-    var scan = getprop("fdm/jsbsim/systems/autopilot/gui/landing-scan-airport");
-    if (scan == 1) {
-        airport_select_id_direct = nil;
-        setprop("fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct/rw_select",0);
-    } else {
-        setprop("fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct/rw_select",0);
-    }
 }, 1, 0);
 
 pilot_assistantTimer = maketimer(timeStep, pilot_assistant);

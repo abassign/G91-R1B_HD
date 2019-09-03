@@ -25,7 +25,7 @@ G91_Params.xml
         -->
         
         <active>
-            <ID>2</ID>
+            <ID>3</ID>
             <setResolution>3</setResolution>
             <version>2</version>
         </active>

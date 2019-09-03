@@ -2,7 +2,7 @@
 
 <PropertyList>
     
-    <name>PHI_Autopilot</name>
+    <name>pilot-assistant</name>
     <layout>vbox</layout>
     <default-padding>8</default-padding>
     <modal>false</modal>
@@ -1123,6 +1123,7 @@
             <button>
                 <row>0</row>
                 <col>0</col>
+                <pref-width>120</pref-width>
                 <legend>  Take off </legend>
                 <halign>fill</halign>
                 <live>true</live>
@@ -1157,6 +1158,7 @@
             <input>
                 <row>0</row>
                 <col>3</col>
+                <pref-width>60</pref-width>
                 <property>fdm/jsbsim/systems/autopilot/gui/take-off-altitude-top</property>
                 <live>true</live>
                 <binding>
@@ -1176,6 +1178,7 @@
             <input>
                 <row>0</row>
                 <col>5</col>
+                <pref-width>50</pref-width>
                 <property>fdm/jsbsim/systems/autopilot/gui/take-off-to-heading</property>
                 <live>true</live>
                 <binding>
@@ -1195,6 +1198,7 @@
             <input>
                 <row>0</row>
                 <col>7</col>
+                <pref-width>50</pref-width>
                 <property>fdm/jsbsim/systems/autopilot/gui/take-off-cruise-speed</property>
                 <live>true</live>
                 <binding>
@@ -1211,6 +1215,7 @@
             <button>
                 <row>0</row>
                 <col>0</col>
+                <pref-width>120</pref-width>
                 <legend>PHI Route</legend>
                 <halign>fill</halign>
                 <live>true</live>
@@ -1291,24 +1296,21 @@
             <button>
                 <row>0</row>
                 <col>0</col>
+                <pref-width>120</pref-width>
                 <legend>Auto landing</legend>
                 <halign>fill</halign>
                 <live>true</live>
                 <binding>
-                    <command>property-toggle</command>
-                    <property>fdm/jsbsim/systems/autopilot/gui/landing-activate</property>
+                    <command>nasal</command>
+                    <script>
+                        setprop("fdm/jsbsim/systems/autopilot/gui/landing-activate",1);
+                    </script>
                 </binding>
             </button>
-            <text>
-                <row>0</row>
-                <col>1</col>
-                <halign>left</halign>
-                <label>Airport selector: </label>
-            </text>
             <radio>
                 <row>0</row>
-                <col>2</col>
-                <label>Near RW</label>
+                <col>1</col>
+                <label>Nearest RW</label>
                 <property>fdm/jsbsim/systems/autopilot/gui/airport_nearest_runway</property>
                 <live>true</live>
                 <binding>
@@ -1317,7 +1319,7 @@
             </radio>
             <radio>
                 <row>0</row>
-                <col>3</col>
+                <col>2</col>
                 <label>Short prof</label>
                 <property>fdm/jsbsim/systems/autopilot/gui/landing-short-profile</property>
                 <live>true</live>
@@ -1327,13 +1329,14 @@
             </radio>
             <text>
                 <row>0</row>
-                <col>4</col>
-                <label>Ranway min lenght:</label>
+                <col>3</col>
+                <label>Min len:</label>
                 <halign>left</halign>
             </text>
             <slider>
                 <row>0</row>
-                <col>5</col>
+                <col>4</col>
+                <pref-width>50</pref-width>
                 <live>true</live>
                 <property>fdm/jsbsim/systems/autopilot/gui/landing-minimal-length-m</property>
                 <min>1000.0</min>
@@ -1355,7 +1358,7 @@
             </slider>
             <text>
                 <row>0</row>
-                <col>6</col>
+                <col>5</col>
                 <label>9999999999</label>
                 <halign>left</halign>
                 <live>true</live>
@@ -1367,15 +1370,26 @@
                     <blue>0.0</blue>
                 </color>
             </text>
+            <radio>
+                <row>0</row>
+                <col>6</col>
+                <label>Scan</label>
+                <property>fdm/jsbsim/systems/autopilot/gui/landing-scan-airport</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </radio>
             <text>
                 <row>0</row>
                 <col>7</col>
-                <label>Direct airport sel:</label>
+                <label>Direct airport id:</label>
                 <halign>left</halign>
             </text>
             <input>
                 <row>0</row>
                 <col>8</col>
+                <pref-width>50</pref-width>
                 <property>fdm/jsbsim/systems/autopilot/gui/airport_select_name_direct</property>
                 <live>true</live>
                 <binding>
@@ -1384,11 +1398,45 @@
                 <binding>
                     <command>nasal</command>
                     <script>
-                        setprop("fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct",1);
+                        if (getprop("fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct/status") == 0) {
+                            setprop("fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct/status",1);
+                        }
                     </script>
                 </binding>
             </input>
-            
+            <text>
+                <row>0</row>
+                <col>9</col>
+                <label>99999999999999999999</label>
+                <halign>left</halign>
+                <live>true</live>
+                <property>fdm/jsbsim/systems/autopilot/gui/airport_select_name_direct_extended</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.0</blue>
+                </color>
+            </text>
+            <combo>
+                <row>0</row>
+                <col>10</col>
+                <pref-width>120</pref-width>
+                <halign>left</halign>
+                <name>rw-selector</name>
+                <property>fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct/rw</property>
+                <editable>false</editable>
+                <properties>fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct/rws</properties>
+                <binding>
+                    <command>dialog-apply</command>
+                    <object-name>rw-selector</object-name>
+                </binding>
+                <binding>
+                    <command>nasal</command>
+                    <script>
+                        setprop("fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct/rw_select",1);
+                    </script>
+                </binding>
+            </combo>
         </group>
         
         <group>

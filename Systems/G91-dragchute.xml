@@ -13,6 +13,7 @@
     <property value="0">systems/dragchute/magnitude</property>
     <property value="0">systems/dragchute/open-big-chute</property>
     <property value="0">systems/dragchute/open-little-chute</property>
+    <property value="0">systems/dragchute/active-view</property>
     
 
     <channel name="handle dragchute" execrate="16">
@@ -49,6 +50,11 @@
                 systems/dragchute/status == 2
             </test>
         </switch>
+        
+        <lag_filter name="systems/dragchute/active-view">
+            <input>systems/dragchute/active</input>
+            <c1>0.2</c1>
+        </lag_filter>
         
         <switch>
             <default value="systems/handle-switches/sw-handle-dragchute-trigger"/>

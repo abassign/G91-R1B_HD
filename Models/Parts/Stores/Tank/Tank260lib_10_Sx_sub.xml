@@ -3,12 +3,11 @@
 <PropertyList>
     
     <path>Tanks.ac</path>
-    <nopreview/>
 
     <offsets>
         <x-m>-1.78</x-m>
-        <y-m>2.025</y-m>
-        <z-m>-0.449</z-m>
+        <y-m>-2.025</y-m>
+        <z-m>-1.449</z-m>
         <pitch-offset>-2.5</pitch-offset>
     </offsets>
 
@@ -63,7 +62,7 @@
             <blue>0.4</blue>
         </ambient>
     </animation>
-
+    <!--
     <animation>
         <type>select</type>
         <nopreview/>
@@ -74,7 +73,7 @@
         <object-name>tank_260lb_tail_01</object-name>
         <condition>
             <equals>
-                <property>/fdm/jsbsim/systems/stations/stationDxInternal/TypeLoadDropped</property>
+                <property>sim/G91/stores/stationSxInternalDropped</property>
                 <value>10</value>
             </equals>
         </condition>
@@ -87,10 +86,10 @@
         <object-name>PAN_tank_sx_003</object-name>
         <condition> 
             <equals>
-                <property>/fdm/jsbsim/systems/stations/stationDxInternal/TypeLoadDropped</property>
+                <property>sim/G91/stores/stationSxInternalDropped</property>
                 <value>11</value>
             </equals>
         </condition>
     </animation>
-
+    -->
 </PropertyList>
