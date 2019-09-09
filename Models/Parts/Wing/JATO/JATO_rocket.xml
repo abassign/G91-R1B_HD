@@ -80,23 +80,9 @@
             <blue>0.35</blue>
         </diffuse>
         <ambient>
-            <red>0.4</red>
-            <green>0.4</green>
-            <blue>0.4</blue>
-        </ambient>
-        <specular>
-            <red>0.2</red>
-            <green>0.2</green>
-            <blue>0.2</blue>
-        </specular>        <diffuse>
             <red>0.53</red>
             <green>0.48</green>
             <blue>0.35</blue>
-        </diffuse>
-        <ambient>
-            <red>0.4</red>
-            <green>0.4</green>
-            <blue>0.4</blue>
         </ambient>
         <specular>
             <red>0.2</red>
@@ -127,9 +113,9 @@
             <blue>0.35</blue>
         </diffuse>
         <ambient>
-            <red>0.4</red>
-            <green>0.4</green>
-            <blue>0.4</blue>
+            <red>0.53</red>
+            <green>0.48</green>
+            <blue>0.35</blue>
         </ambient>
         <specular>
             <red>0.2</red>

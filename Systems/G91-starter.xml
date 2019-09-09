@@ -388,7 +388,7 @@ Description: G91R2 Canopy automation
             <default value="systems/starter/start-process-terminated"/>
             <test logic="AND" value="1">
                 propulsion/active_engine EQ 0
-                propulsion/engine[0]/n2 GT 30
+                propulsion/engine[0]/n2 GT 40
                 systems/starter/start-process-terminated == 0
                 systems/starter/start-process-active == 1
             </test>
@@ -579,6 +579,6 @@ Description: G91R2 Canopy automation
         </switch>
         
     </channel>
-    
-    
+        
+        
 </system>

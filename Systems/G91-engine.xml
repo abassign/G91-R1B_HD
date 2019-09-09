@@ -13,6 +13,7 @@ Description: G91R2 Canopy automation
     <property value="0.0">systems/engine/air-compression-service-on</property>
     <property value="0.0">systems/engine/fire-allert-on</property>
     <property value="0.0">systems/engine/jet-TC-temperature-hight-fire-on</property>
+    <property value="0.0">systems/engine/air-compression-fuel-tank-psi</property>
     
     
     <channel name="engine systems RPM" execrate="32">

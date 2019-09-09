@@ -200,6 +200,7 @@ No Overshoot
     <property value="0.0">systems/autopilot/steer-brake-active</property>
     <property value="100.0">systems/autopilot/steer-brake-min-speed</property>
     <property value="-1.0">systems/autopilot/handle-brake-activate</property>
+    <property value="0.0">systems/autopilot/handle-brake-release</property>
     
     <property value="0.0">systems/autopilot/gui/landing-activate</property>
     <property value="0.0">systems/autopilot/gui/landig-status-id</property>
@@ -232,6 +233,10 @@ No Overshoot
     <property value="15.0">systems/autopilot/gui/impact-medium-time</property>
     <property value="0.0">systems/autopilot/impact-time</property>
     <property value="0.0">systems/autopilot/impact-dist</property>
+    
+    <property value="1.0">systems/autopilot/pid-test-kp</property>
+    <property value="0.1">systems/autopilot/pid-test-ki</property>
+    <property value="0.05">systems/autopilot/pid-test-kd</property>
     
     <channel name="Autopilot GUI Interface" execrate="32">
         
@@ -1582,6 +1587,20 @@ No Overshoot
         </switch>
 
         <switch>
+            <output>systems/autopilot/handle-brake-release</output>
+            <default value="systems/autopilot/handle-brake-release"/>
+            <test logic="AND" value="2">
+                systems/autopilot/handle-brake-release == 1
+            </test>
+            <test logic="AND" value="3">
+                systems/autopilot/handle-brake-release == 2
+            </test>
+            <test logic="AND" value="0">
+                systems/autopilot/handle-brake-release == 3
+            </test>
+        </switch>
+
+        <switch>
             <output>systems/handle-switches/sw-handle-brake-trigger</output>
             <default value="systems/handle-switches/sw-handle-brake-trigger"/>
             <test logic="OR" value="1">
@@ -1594,6 +1613,9 @@ No Overshoot
                     systems/autopilot/handle-brake-activate NE -1
                     systems/autopilot/handle-brake-activate == 0
                     systems/handle-switches/sw-handle-brake-pos-status == 2
+                </test>
+                <test logic="AND">
+                    systems/autopilot/handle-brake-release == 2
                 </test>
             </test>
             <test logic="AND" value="0">
@@ -1608,6 +1630,9 @@ No Overshoot
                     <test logic="AND">
                         systems/autopilot/handle-brake-activate-wa LE -0.5
                         systems/autopilot/handle-brake-activate-wa GT -0.8
+                    </test>
+                    <test logic="AND">
+                        systems/autopilot/handle-brake-release == 3
                     </test>
                 </test>
             </test>

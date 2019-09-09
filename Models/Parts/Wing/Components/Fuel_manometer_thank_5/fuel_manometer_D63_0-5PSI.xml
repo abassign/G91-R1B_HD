@@ -170,7 +170,7 @@
         <type>rotate</type>
         <object-name>arrow (Meshed)</object-name>
         <property>fdm/jsbsim/systems/engine/air-compression-fuel-tank-psi</property>
-        <factor>27</factor>
+        <factor>54</factor>
         <offset-deg>45</offset-deg>
         <axis>
             <x>-1</x>
