@@ -230,8 +230,8 @@ var pilot_assistant = func {
      
         if (airport_select != nil and rwy_select != nil and size(rwy_select) == 2) {
             var landing_rwy_h_offset_nm = - 0.2;
-            if (airport.runways[rwy_select].length > 1000) {
-                landing_rwy_h_offset_nm = - ((2000.0 - airport.runways[rwy_select].length) / 10000);
+            if (airport_select.runways[rwy_select].length > 1000) {
+                landing_rwy_h_offset_nm = - ((2000.0 - airport_select.runways[rwy_select].length) / 10000);
             }
             setprop("fdm/jsbsim/systems/autopilot/gui/landing-rwy-h-offset-nm",landing_rwy_h_offset_nm);
             rwy_coord_start.set_latlon(airport_select.runways[rwy_select].lat,airport_select.runways[rwy_select].lon);
@@ -794,7 +794,7 @@ var pilot_assistant = func {
                 rwy_coord_start_final.apply_course_distance(airport_select.runways[rwy_select].heading - 180,(runway_to_airplane_dist_direct - 3) * 1852.0);
                 heading_correction = geo.normdeg180(airport_select.runways[rwy_select].heading - airplane.course_to(rwy_coord_end));
                 var heading_factor = 1.8;
-                heading_factor = (10 - math.abs(heading_correction)) * (1.8 / 0.2);
+                heading_factor = math.abs(heading_correction) * 10.0;
                 if (heading_factor > 50.0) heading_factor = 50.0;
                 heading_correct = geo.normdeg180(airport_select.runways[rwy_select].heading - heading_correction * heading_factor);
                 setprop("fdm/jsbsim/systems/autopilot/gui/airport_runway_airplane_heading_correct",heading_correct);

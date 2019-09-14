@@ -1653,12 +1653,12 @@ No Overshoot
         <switch name="systems/autopilot/landing-gear-set-open">
             <default value="systems/autopilot/landing-gear-set-open"/>
             <test logic="AND" value="0.0">
+                systems/autopilot/landing-gear-set-open-blocked == 1
+            </test>
+            <test logic="AND" value="0.0">
                 systems/autopilot/landing-gear-set-open == 1
                 systems/landing-gear/gear-down-status GE 1.0
                 systems/autopilot/speed-cas-on-air-lag LE 185
-            </test>
-            <test logic="AND" value="0.0">
-                systems/autopilot/landing-gear-set-open-blocked == 1
             </test>
         </switch>
         
@@ -1712,7 +1712,7 @@ No Overshoot
             </test>
             <test logic="AND" value="-1.0">
                 systems/autopilot/landing-gear-action-close GE 0.5
-                systems/autopilot/landing-gear-activate-blocked == 1.0
+                systems/autopilot/landing-gear-activate-blocked == 0.0
                 systems/landing-gear/gear-down-status GE 1.0
                 systems/landing-gear/on-ground == 0
             </test>
