@@ -1,0 +1,57 @@
+<includeonly>{{infobox aircraft
+| name           = FIAT G.91-R1B
+| aircraft       = G.91-R1B
+| image          = Fgfs-20190307000440.jpg
+| image2         = FIATG.91R1B_upper_cockpit_view.jpeg
+| type           = Bomber aircraft/Reconnaissance aircraft
+| config         = Low wing aircraft/Retractable gear aircraft/Tricycle landing gear aircraft
+| propulsion     = Single-engine aircraft/Jet aircraft
+| manufacturer   = FIAT Aviazione
+| authors        = Massimiliano Cuccarano (Initial model)/Adriano Bassignana (Nasal, FDM, Systems)/Adriano Bassignana (3D, Nasal, Systems, Sound, misc)
+| fdm            = JSBSim
+| fgname         = G91R1B
+| status-fdm     = 4
+| status-systems = 3
+| status-cockpit = 4
+| status-model   = 4
+| devel-repo     = https://github.com/abassign/G91-R1B_HD
+| navbar         = 1
+| wikipedia      = Fiat_G.91
+}}</includeonly>
+<noinclude>
+[[Category:Aircraft infobox documentation]]
+</noinclude>
+
+{{:{{PAGENAME}}/info}}
+
+{{note|This aircraft is currently in development}}
+
+'''FIAT G.91-R1B''' - light fighter-bomber "''Light Weight Strike Fighter''" and reconnaissance aircraft
+
+== About ==
+
+The Fiat G.91 is an Italian jet fighter aircraft designed and built by Fiat Aviazione, which later merged into Aeritalia. The G.91 has its origins in the NATO-organised NBMR-1 competition in 1953, which sought a light fighter-bomber "Light Weight Strike Fighter" to be adopted as standard equipment across the air forces of the various NATO nations. After reviewing multiple submissions, the G.91 was picked as the winning design of the NBMR-1 competition.
+
+The G.91 entered into operational service with the Italian Air Force in 1961, and with the West German Luftwaffe in the following year.[1] Various other nations adopted it, such as the Portuguese Air Force, who made extensive use of the type during the Portuguese Colonial War in Africa. The G.91 enjoyed a long service life that extended over 35 years.
+
+The G.91 remained in production for 19 years, during which a total of 756 aircraft were completed, including the prototypes and pre-production models. The assembly lines were finally closed in 1977.
+
+Several versions have been made, the one that is reproduced is the R1/B, an updated variant of the R4 NATO, built on the specifications of the Italian Military Aviation (AMI). The R1/B was the last produced version of the G.91 and was used by the National Acrobatic Patrol to replace some aircraft lost during the acrobatic activity.
+
+== Philosophy of realization of the simulated model ==
+
+The project was started about 5 years ago at the request of some Italian friends who used the Flight Gear flight simulator. From the beginning the goddess was to create a hyper-real simulated model, that is, a model that reproduced, in the most faithful way possible, all aspects of the real plane. This ambitious goal was made possible by the possession of the technical and maintenance manuals for the aircraft and the help of various associations of ex-pilots and maintenance workers who operated in the flight groups of the G.91.
+The quality of the simulated aircraft is high both in the external 3D model and in the cockpit, in all the analog instrumentation present on board and in the electrical, hydraulic and fuel systems.
+
+The first two years of development were mainly used for collecting information material, drawings, manuals and testimonials from pilots. Then slowly we started by creating various parts, for example the first was the front landing gear, useful for learning some 3D modeling techniques and XML and JSBSim scripting. I personally think that a good model should always start from landing gear and not from the fuselage as many do. The reason is that the cart is a complex part that has a precise and easily measurable size. Its construction subsequently allows easy sizing of all the other parts. A mistake in this model was not to start initially with the cockpit and canopy as these parts are also critical in terms of size and constrain the correct sizing of the fuselage. The engine was also built in the early stages of the project using the original blue-prints, which made it possible to make the subsequent construction of the rear section easier.
+
+From the beginning the JSBSim program was used for FDM, this allowed us to obtain a high dynamic fidelity, but also reduce the need to use NASAL for many system functions. In the development it was verified that JSBSim is much more productive than NASAL especially for the parts that operate in real-time regime. The reason is mainly due to the poor documentation of NASAL and to its lack of adequate debugging support. JSBSim is a functional 'data driven' language written in XML that makes it more difficult to make errors of a logical nature and this was an important aspect of realizing good code.
+
+I believe that this project can teach a lot to those who want to try and build high-fidelity aircraft. I think it is useful to list some points that may be useful for other authors:
+
+* Using dense polygons we do not believe that it is a crime and does not produce a real slowdown of the PC on which the aircraft is run. But it has the result of obtaining a pleasant and realistic aircraft both externally and internally. The G.91R1/B has more than 3 million polygons and always flies rather well on machines of the current generation (2019). Obviously it is not a plane to fly with PC 10 years ago with I3 and Intel GPU with 2GB of RAM, although many pilots have told us that it still flies even in these low configurations.
+* Avoid using textures for the cockpit and the gauges mounted inside. It seems a contradiction, but from the tests performed it has been verified that the best performances are achieved by avoiding, when possible, the use of textures for coloring the smaller parts and the creation of the gauges dials, as already explained in other articles. This fact has made the G.91R1/B one of the most vectorial planes of FGFS in which the textures are present mainly for liveries.
+* Unfortunately, the extensive use of vector coloring does not seem to allow the correct use of Rembrandt, while for Compositor some tests have been made that appear to be promising, even though Compositor is still in development.
+* The GUI is currently made without the use of canvases, the reason is due to the fact that writing a GUI in canvas requires a lot more work than it does in XML, maybe in the future someone will do it, even if I suggest creating a framework that is more consistent and better documented for GUI in canvas, perhaps directly using the XML and not the NASAL script language.
+* The Documentation folder has been created in various parts, both in the direcory root of the project and in the individual parts. This allows anyone to take the files used and modify them and access the documentation files used. This procedure is unfortunately rare in FGFS and makes it even more difficult to update an aircraft.
+* The 3D models were made in Blender for the parts with double curvature (fuselage, canopy, tanks etc ..), while Freecad was used for the parts for which the use of CAD is convenient, and for example the inside of the cockpit and some specific objects. In documentation there are all the CAD parts in Freecad format in order to be able to modify them by anyone who wants to do it.
