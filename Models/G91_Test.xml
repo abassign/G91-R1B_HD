@@ -39,7 +39,7 @@
             </equals>
         </condition>
     </model>
-    -->
+
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Wing/Wing.xml</path>
         <condition>
@@ -49,7 +49,7 @@
             </equals>
         </condition>
     </model>
-    <!--
+
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Fuselage_A/Fuselage_A0.xml</path>
         <condition>
@@ -119,6 +119,7 @@
             </equals>
         </condition>
     </model>
+    -->
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Turbojet/OrpheusMK803.xml</path>
         <offsets>
@@ -133,7 +134,7 @@
             </equals>
         </condition>
     </model>
-    -->
+    
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Stores/Stores.xml</path>
         <condition>

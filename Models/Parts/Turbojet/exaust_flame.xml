@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+
+    <particlesystem>
+        <name>exaust_flame</name>
+       
+        <offsets>
+            <x-m>  0.000 </x-m>
+            <y-m>  0.000 </y-m>
+            <z-m>  0.000 </z-m>
+            <roll-deg>    0.000 </roll-deg>
+            <pitch-deg>   90.000 </pitch-deg>
+            <heading-deg> 0.000 </heading-deg>
+        </offsets>
+       
+        <texture>Pictures/smoke.png</texture>
+       
+        <condition>
+            <greater-than>
+                <property>fdm/jsbsim/systems/engine/rpm-norm</property>
+                <value>0.1</value>
+            </greater-than>
+        </condition>
+       
+        <emissive>true</emissive>
+        <lighting>false</lighting>
+        <align>fixed</align> <!-- billboard / fixed -->
+        <attach>local</attach> <!-- world / local-->
+       
+        <placer>
+            <type>point</type> <!-- sector / segments / point -->
+        </placer>
+
+        <shooter>
+            <radius-min-m>0.1</radius-min-m>
+            <radius-max-m>0.15</radius-max-m>
+            <theta-min-deg>4</theta-min-deg>
+            <theta-max-deg>5</theta-max-deg>
+            <phi-min-deg>-2</phi-min-deg>
+            <phi-max-deg>2</phi-max-deg>
+            <speed-mps>
+                <value>-0.001</value>
+                <spread>0.0001</spread>
+            </speed-mps>
+            <rotation-speed>
+                <x-min-deg-sec>00</x-min-deg-sec>
+                <y-min-deg-sec>00</y-min-deg-sec>
+                <z-min-deg-sec>00</z-min-deg-sec>
+                <x-max-deg-sec>2000</x-max-deg-sec>
+                <y-max-deg-sec>00</y-max-deg-sec>
+                <z-max-deg-sec>00</z-max-deg-sec>
+            </rotation-speed>
+        </shooter>
+       
+        <counter>
+            <particles-per-sec>
+                <value>800</value>
+                <spread>200</spread>
+                <factor-prop>fdm/jsbsim/systems/engine/rpm-norm</factor-prop>
+            </particles-per-sec>
+        </counter>
+       
+        <particle>
+            <start>
+                <color>
+                    <red><value>   0.63 </value></red>
+                    <green><value> 0.3 </value></green>
+                    <blue><value>  0.0 </value></blue>
+                    <alpha><value> 0.1 </value></alpha>
+                </color>
+                <size>
+                    <value>0.35</value>
+                </size>
+            </start>
+           
+            <end>
+                <color>
+                    <red><value>   0.9 </value></red>
+                    <green><value> 0.2 </value></green>
+                    <blue><value>  0.0 </value></blue>
+                    <alpha><value> 0.0 </value></alpha>
+                </color>
+                <size>
+                    <value>0.35</value>
+                </size>
+            </end>
+           
+            <life-sec>
+                <value>0.01</value>
+            </life-sec>
+
+            <mass-kg>0.1</mass-kg>
+            <radius-m>0.1</radius-m>
+
+        </particle>
+       
+        <program>
+            <fluid>air</fluid>         <!-- air / water -->
+            <gravity>false</gravity>
+            <wind>false</wind>
+        </program>
+       
+    </particlesystem>
+
+</PropertyList> 

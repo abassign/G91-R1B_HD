@@ -1135,6 +1135,20 @@
             <text>
                 <row>0</row>
                 <col>1</col>
+                <label>9999999</label>
+                <halign>left</halign>
+                <live>true</live>
+                <format>[% 2.1f] </format>
+                <property>fdm/jsbsim/systems/autopilot/gui/landig-status-id</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.0</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>2</col>
                 <label>999999999999999999999999999999999999999999999</label>
                 <property>fdm/jsbsim/systems/autopilot/gui/take-off-status</property>
                 <live>true</live>
@@ -1147,7 +1161,7 @@
             </text>
             <radio>
                 <row>0</row>
-                <col>2</col>
+                <col>3</col>
                 <label>Jato</label>
                 <property>fdm/jsbsim/systems/autopilot/gui/take-off-jato-active</property>
                 <live>true</live>
@@ -1157,7 +1171,7 @@
             </radio>
             <radio>
                 <row>0</row>
-                <col>3</col>
+                <col>4</col>
                 <label>Altitude top</label>
                 <property>fdm/jsbsim/systems/autopilot/gui/take-off-altitude-top-active</property>
                 <live>true</live>
@@ -1167,7 +1181,7 @@
             </radio>
             <input>
                 <row>0</row>
-                <col>4</col>
+                <col>5</col>
                 <pref-width>60</pref-width>
                 <property>fdm/jsbsim/systems/autopilot/gui/take-off-altitude-top</property>
                 <live>true</live>
@@ -1177,7 +1191,7 @@
             </input>
             <radio>
                 <row>0</row>
-                <col>5</col>
+                <col>6</col>
                 <label>Heading to</label>
                 <property>fdm/jsbsim/systems/autopilot/gui/take-off-to-heading-active</property>
                 <live>true</live>
@@ -1187,8 +1201,8 @@
             </radio>
             <input>
                 <row>0</row>
-                <col>6</col>
-                <pref-width>50</pref-width>
+                <col>7</col>
+                <pref-width>40</pref-width>
                 <property>fdm/jsbsim/systems/autopilot/gui/take-off-to-heading</property>
                 <live>true</live>
                 <binding>
@@ -1197,7 +1211,7 @@
             </input>
             <radio>
                 <row>0</row>
-                <col>7</col>
+                <col>8</col>
                 <label>Cruise speed</label>
                 <property>fdm/jsbsim/systems/autopilot/gui/take-off-cruise-speed-active</property>
                 <live>true</live>
@@ -1207,8 +1221,8 @@
             </radio>
             <input>
                 <row>0</row>
-                <col>8</col>
-                <pref-width>50</pref-width>
+                <col>9</col>
+                <pref-width>40</pref-width>
                 <property>fdm/jsbsim/systems/autopilot/gui/take-off-cruise-speed</property>
                 <live>true</live>
                 <binding>
@@ -1455,10 +1469,10 @@
             <text>
                 <row>0</row>
                 <col>0</col>
-                <label>999999999999999</label>
+                <label>9999999</label>
                 <halign>left</halign>
                 <live>true</live>
-                <format>Status: [% 2.1f] </format>
+                <format>[% 2.1f] </format>
                 <property>fdm/jsbsim/systems/autopilot/gui/landig-status-id</property>
                 <color>
                     <red>0.9</red>

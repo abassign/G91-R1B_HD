@@ -155,6 +155,7 @@ No Overshoot
     <property value="0.0">systems/autopilot/roll-ap-autoswitch-norm</property>
     
     <property value="0.0">systems/autopilot/speed-true-on-air</property>
+    <property value="0.0">systems/autopilot/speed-true-on-air-ms-inv</property>
     <property value="0.0">systems/autopilot/speed-cas-on-air</property>
     <property value="0.0">systems/autopilot/speed-cas-on-air-lag</property>
     <property value="0.0">systems/autopilot/speed-mach-on-air</property>
@@ -202,16 +203,6 @@ No Overshoot
     <property value="-1.0">systems/autopilot/handle-brake-activate</property>
     <property value="0.0">systems/autopilot/handle-brake-release</property>
     
-    <property value="0.0">systems/autopilot/gui/landing-activate</property>
-    <property value="0.0">systems/autopilot/gui/landig-status-id</property>
-    <property value="60.0">systems/autopilot/gui/landing-rwy-search-max-heading</property>
-    <property value="50.0">systems/autopilot/gui/landing-rwy-search-distance-max</property>
-    <property value="0.0">systems/autopilot/gui/landing-rwy-h-offset-nm</property>
-    <property value="-50.0">systems/autopilot/gui/landing-rwy-v-offset-ft</property>
-    <property value="1.0">systems/autopilot/gui/landing-short-profile</property>
-    <property value="10.0">systems/autopilot/gui/landing-max-lateral-wind</property>
-    <property value="10.0">systems/autopilot/gui/landing-holding-altitude-min</property>
-    
     <property value="0.0">systems/autopilot/gui/take-off-activate</property>
     <property value="15000.0">systems/autopilot/gui/take-off-altitude-top</property>
     <property value="0.0">systems/autopilot/gui/take-off-altitude-top-active</property>
@@ -222,17 +213,14 @@ No Overshoot
     
     <property value="0.0">systems/autopilot/landing-gear-activate-blocked</property>
     <property value="0.0">systems/autopilot/landing-gear-set-close</property>
+    <property value="0.0">systems/autopilot/landing-gear-set-open</property>
+    <property value="0.0">systems/autopilot/landing-gear-set-open-blocked</property>
     <property value="0.0">systems/autopilot/landing-gear-action-close</property>
+    <property value="0.0">systems/autopilot/landing-gear-action-open</property>
     
     <property value="0.0">systems/autopilot/distance-fp</property>
     <property value="0.0">systems/autopilot/distance-nm</property>
     <property value="0.0">systems/autopilot/turn-radius-nm</property>
-    
-    <property value="0.0">systems/autopilot/gui/impact-control-active</property>
-    <property value="200.0">systems/autopilot/gui/impact-min-z-ft</property>
-    <property value="15.0">systems/autopilot/gui/impact-medium-time</property>
-    <property value="0.0">systems/autopilot/impact-time</property>
-    <property value="0.0">systems/autopilot/impact-dist</property>
     
     <property value="1.0">systems/autopilot/pid-test-kp</property>
     <property value="0.1">systems/autopilot/pid-test-ki</property>
@@ -1164,6 +1152,11 @@ No Overshoot
             </function>
         </fcs_function>
         
+        <pure_gain name="systems/autopilot/speed-true-on-air-ms-inv">
+            <input>systems/autopilot/speed-true-on-air</input>
+            <gain>-0.00027777777</gain>
+        </pure_gain>
+        
         <fcs_function name="systems/autopilot/speed-cas-on-air">
             <function>
                 <ifthen>
@@ -1643,29 +1636,98 @@ No Overshoot
     
     <channel name="automatic gear" execrate="32">
         
-        <lag_filter name="systems/autopilot/landing-gear-action-close">
+        <switch name="systems/autopilot/landing-gear-set-close">
+            <default value="systems/autopilot/landing-gear-set-close"/>
+            <test logic="AND" value="0.0">
+                systems/autopilot/landing-gear-set-close == 1
+                systems/landing-gear/gear-down-status == 0.0
+                systems/landing-gear/on-ground == 0
+            </test>
+        </switch>
+        
+        <washout_filter name="systems/autopilot/landing-gear-action-close">
             <input>systems/autopilot/landing-gear-set-close</input>
-            <c1>0.5</c1>
-        </lag_filter>
+            <c1>1.0</c1>
+        </washout_filter>
+        
+        <switch name="systems/autopilot/landing-gear-set-open">
+            <default value="systems/autopilot/landing-gear-set-open"/>
+            <test logic="AND" value="0.0">
+                systems/autopilot/landing-gear-set-open == 1
+                systems/landing-gear/gear-down-status GE 1.0
+                systems/autopilot/speed-cas-on-air-lag LE 185
+            </test>
+            <test logic="AND" value="0.0">
+                systems/autopilot/landing-gear-set-open-blocked == 1
+            </test>
+        </switch>
+        
+        <switch name="systems/autopilot/landing-gear-set-open-blocked">
+            <default value="systems/autopilot/landing-gear-set-open-blocked"/>
+            <test logic="OR" value="0">
+                systems/autopilot/landing-gear-set-close == 1
+                systems/autopilot/speed-automatic-gear-active == 1
+            </test>
+            <test logic="AND" value="1">
+                systems/autopilot/landing-gear-set-open == 1
+                systems/landing-gear/gear-down-status GE 0.9
+            </test>
+        </switch>
+        
+        <washout_filter name="systems/autopilot/landing-gear-action-open">
+            <input>systems/autopilot/landing-gear-set-open</input>
+            <c1>1.0</c1>
+        </washout_filter>
+        
+        <switch name="systems/autopilot/landing-gear-activate-blocked">
+            <default value="systems/autopilot/landing-gear-activate-blocked"/>
+            <test logic="AND" value="1.0">
+                systems/autopilot/landing-gear-set-open == 1
+                systems/autopilot/landing-gear-activate-blocked == 0
+            </test>
+            <test logic="AND" value="1.0">
+                systems/autopilot/landing-gear-set-close == 1
+                systems/autopilot/landing-gear-activate-blocked == 0
+            </test>
+            <test logic="AND" value="0.0">
+                systems/autopilot/speed-automatic-gear-active == 1
+                systems/autopilot/landing-gear-activate-blocked == 1
+            </test>
+        </switch>
+        
+        <switch name="systems/autopilot/speed-automatic-gear-active">
+            <default value="systems/autopilot/speed-automatic-gear-active"/>
+            <test logic="OR" value="0.0">
+                systems/autopilot/landing-gear-set-close == 1
+                systems/autopilot/landing-gear-set-open == 1
+            </test>
+        </switch>
 
         <switch name="systems/landing-gear/gear-down-command">
             <default value="systems/landing-gear/gear-down-command"/>
             <test logic="AND" value="1.0">
+                systems/autopilot/landing-gear-action-open GE 0.5
+                systems/autopilot/landing-gear-activate-blocked == 1.0
+                systems/landing-gear/gear-down-status == 0
+            </test>
+            <test logic="AND" value="-1.0">
+                systems/autopilot/landing-gear-action-close GE 0.5
+                systems/autopilot/landing-gear-activate-blocked == 1.0
+                systems/landing-gear/gear-down-status GE 1.0
+                systems/landing-gear/on-ground == 0
+            </test>
+            <test logic="AND" value="1.0">
                 systems/autopilot/speed-automatic-gear-active == 1.0
+                systems/autopilot/landing-gear-activate-blocked == 0.0
                 systems/autopilot/speed-cas-on-air-lag LE 170
                 systems/landing-gear/gear-down-status == 0.0
             </test>
             <test logic="AND" value="-1.0">
                 systems/autopilot/speed-automatic-gear-active == 1.0
                 systems/autopilot/landing-gear-activate-blocked == 0.0
-                systems/autopilot/speed-cas-on-air-lag GT 185
+                systems/autopilot/speed-cas-on-air-lag GT 180
                 systems/landing-gear/gear-down-status GE 1.0
-            </test>
-            <test logic="AND" value="-1.0">
-                systems/autopilot/speed-automatic-gear-active == 0.0
-                systems/autopilot/landing-gear-activate-blocked == 0.0
-                systems/landing-gear/gear-down-status GE 1.0
-                systems/autopilot/landing-gear-action-close GE 0.6
+                systems/landing-gear/on-ground == 0
             </test>
         </switch>
         
