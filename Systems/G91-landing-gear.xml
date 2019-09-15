@@ -10,6 +10,9 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
 <system name="G91 Landing Gear">
     
     <property value="0.0">systems/landing-gear/gear-down-command</property>
+    <property value="0.0">systems/landing-gear/gear-down-manual-command-filtered</property>
+    <property value="0.0">systems/landing-gear/gear-command-open</property>
+    <property value="0.0">systems/landing-gear/gear-command-close</property>
     <property value="0.0">systems/landing-gear/gear-down-command-filtered</property>
     <property value="0.0">systems/landing-gear/gear-down-status</property>
     <property value="1200.0">systems/landing-gear/hydraulic-min-psi</property>
@@ -18,14 +21,34 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
     
     <channel name="Landing gear activate" execrate="16">
         
-        <switch name="systems/landing-gear/gear-down-command-filtered">
+        <switch name="systems/landing-gear/gear-down-manual-command-filtered">
             <default value="0"/>
             <test logic="AND" value="1">
                 systems/landing-gear/gear-down-command GE 0.5
-                systems/hydraulics/flight-system-psi GE systems/landing-gear/hydraulic-min-psi
             </test>
             <test logic="AND" value="-1">
                 systems/landing-gear/gear-down-command LE -0.5
+            </test>
+        </switch>
+        
+        <switch name="systems/landing-gear/gear-down-command-filtered">
+            <default value="0"/>
+            <test logic="AND" value="1">
+                systems/landing-gear/gear-down-manual-command-filtered == 1
+                systems/hydraulics/flight-system-psi GE systems/landing-gear/hydraulic-min-psi
+            </test>
+            <test logic="AND" value="-1">
+                systems/landing-gear/gear-down-manual-command-filtered == -1
+                systems/hydraulics/flight-system-psi GE systems/landing-gear/hydraulic-min-psi
+            </test>
+            <test logic="AND" value="1">
+                systems/landing-gear/gear-command-open == 1
+                systems/landing-gear/gear-command-close == 0
+                systems/hydraulics/flight-system-psi GE systems/landing-gear/hydraulic-min-psi
+            </test>
+            <test logic="AND" value="-1">
+                systems/landing-gear/gear-command-open == 0
+                systems/landing-gear/gear-command-close == 1
                 systems/hydraulics/flight-system-psi GE systems/landing-gear/hydraulic-min-psi
             </test>
         </switch>

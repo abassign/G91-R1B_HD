@@ -126,9 +126,9 @@
         <object-name>D_timone_coda.003</object-name>
         <texture>Pictures/G91-Al-Light.png</texture>
         <ambient>
-            <red>0.8</red>
-            <green>0.8</green>
-            <blue>0.8</blue>
+            <red>0.6</red>
+            <green>0.6</green>
+            <blue>0.6</blue>
         </ambient>
     </animation>
     
@@ -179,7 +179,6 @@
     <animation> 
         <type>material</type>
         <object-name>A__G91_fuselage_insideTUbe</object-name>
-        <object-name>A__G91_fuselage_coda.000</object-name>
         <object-name>A__G91_fuselage_coda.009</object-name>
         <object-name>A__G91_fuselage_coda.010</object-name>
         <object-name>A__G91_fuselage_coda.012</object-name>
@@ -203,6 +202,17 @@
             <red>0.3</red>
             <green>0.3</green>
             <blue>0.3</blue>
+        </ambient>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>A__G91_fuselage_coda.000</object-name>
+        <texture>Pictures/G91-Al-Light.png</texture>
+        <ambient>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
         </ambient>
     </animation>
     
