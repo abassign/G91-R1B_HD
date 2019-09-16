@@ -114,6 +114,7 @@ No Overshoot
     <property value="0.0">systems/autopilot/pitch-descent-angle-active</property>
     <property value="0.0">systems/autopilot/pitch-descent-angle-deg</property>
     <property value="0.0">systems/autopilot/pitch-descent-angle-deg-lag</property>
+    <property value="0.5">systems/autopilot/pitch-rad-error-limiter-gain</property>
     
     <property value="0.0">systems/autopilot/vertical-speed-fpm</property>
     <property value="0.0">systems/autopilot/vertical-speed-fpm-lag</property>
@@ -166,10 +167,10 @@ No Overshoot
     <property value="0.05">systems/autopilot/speed-throttle-input-gain</property>
     <property value="0.01">systems/autopilot/speed-pitch-input-gain</property>
     <property value="0.0">systems/autopilot/speed-reset-integrator</property>
-    <!-- Pessen Integral Rule PID Ku: 1.4 Tu: 50.0 -->
-    <property value="0.98">systems/autopilot/speed-kp</property>
-    <property value="0.0.049">systems/autopilot/speed-ki</property>
-    <property value="0.003">systems/autopilot/speed-kd</property>
+    <!-- Pessen Integral Rule PID Ku: 0.4 Tu: 4.670 -->
+    <property value="0.28">systems/autopilot/speed-kp</property>
+    <property value="0.15">systems/autopilot/speed-ki</property>
+    <property value="0.009">systems/autopilot/speed-kd</property>
     <!-- -->
     <property value="0.001">systems/autopilot/speed-throttle-output-gain</property>
     <property value="0.0">systems/autopilot/speed-pitch-pid-gain-sum</property>
@@ -690,13 +691,13 @@ No Overshoot
                 <independentVar>systems/autopilot/speed-cas-on-air-lag</independentVar>
                 <tableData>
                     0.0      0.5
-                    160.0    0.3
-                    200.0    0.2
+                    160.0    0.2
+                    200.0    0.15
                     300.0    0.1
                     800.0    0.05
                 </tableData>
             </table>
-            <gain>1.0</gain>
+            <gain>systems/autopilot/pitch-rad-error-limiter-gain</gain>
         </scheduled_gain>
         
         <fcs_function name="systems/autopilot/pitch-rad-error">
@@ -1299,8 +1300,13 @@ No Overshoot
             </clipto>
         </pure_gain>
         
-        <summer name="systems/autopilot/speed-throttle-pid-gain-sum">
+        <lag_filter name="systems/autopilot/speed-throttle-pid-gain-lag">
             <input>systems/autopilot/speed-throttle-pid-gain</input>
+            <c1>0.5</c1>
+        </lag_filter>
+        
+        <summer name="systems/autopilot/speed-throttle-pid-gain-sum">
+            <input>systems/autopilot/speed-throttle-pid-gain-lag</input>
             <input>/controls/engines/engine/throttle</input>
         </summer>
         
@@ -1405,6 +1411,16 @@ No Overshoot
                 <test logic="AND">
                     systems/autopilot/speed-brake-active == 0
                 </test>
+            </test>
+        </switch>
+        
+        <switch name="systems/autopilot/pitch-rad-error-limiter-gain">
+            <default value="systems/autopilot/pitch-rad-error-limiter-gain"/>
+            <test logic="AND" value="0.5">
+                systems/airbrake/automatic-cmd == 0
+            </test>
+            <test logic="AND" value="1.0">
+                systems/airbrake/automatic-cmd == 1
             </test>
         </switch>
         

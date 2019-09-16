@@ -1760,7 +1760,7 @@
                 <live>true</live>
                 <property>fdm/jsbsim/systems/autopilot/gui/pid-ku</property>
                 <min>0.0</min>
-                <max>50.0</max>
+                <max>10.0</max>
                 <step>0.01</step>
                 <binding>
                     <command>dialog-apply</command>
@@ -1855,9 +1855,9 @@
                         setprop("fdm/jsbsim/systems/autopilot/gui/pid-ki",ki);
                         setprop("fdm/jsbsim/systems/autopilot/gui/pid-kd",kd);
                         # Modifiy data part
-                        setprop("fdm/jsbsim/systems/autopilot/pid-test-kp",kp);
-                        setprop("fdm/jsbsim/systems/autopilot/pid-test-ki",ki);
-                        setprop("fdm/jsbsim/systems/autopilot/pid-test-kd",kd);
+                        setprop("fdm/jsbsim/systems/autopilot/speed-kp",kp);
+                        setprop("fdm/jsbsim/systems/autopilot/speed-ki",ki);
+                        setprop("fdm/jsbsim/systems/autopilot/speed-kd",kd);
                     ]]></script>
                 </binding>
             </button>
