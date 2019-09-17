@@ -1,5 +1,9 @@
 [Dolphin]
+SortOrder=1
 SortRole=modificationtime
-Timestamp=2019,8,10,16,6,21
+Timestamp=2019,9,17,19,48,18
 Version=4
 ViewMode=1
+
+[Settings]
+HiddenFilesShown=true

@@ -121,6 +121,7 @@
         <texture>Pictures/G91-Black.png</texture>
         <object-name>defa_cannon30mm_tube</object-name>
         <object-name>defa_cannon30mm</object-name>
+        <object-name>TUBO</object-name>
         <ambient>
             <red>0.8</red>
             <green>0.8</green>

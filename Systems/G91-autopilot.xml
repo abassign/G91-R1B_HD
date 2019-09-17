@@ -107,14 +107,15 @@ No Overshoot
     <!-- -->
     <property value="3.0">systems/autopilot/pitch-input-error-coefficient</property>
     <property value="1.0">systems/autopilot/pitch-rad-error-limiter-coefficient</property>
-    <property value="-0.5">systems/autopilot/pitch-output-error-coefficient</property>
+    <property value="0.5">systems/autopilot/pitch-rad-error-limiter-gain</property>
+    <property value="-1.5">systems/autopilot/pitch-output-error-coefficient</property>
+    <property value="0.0">systems/autopilot/pitch-output-error-coefficient-gain</property>
     <property value="0.0">systems/autopilot/pitch-error</property>
     <property value="0.0">systems/autopilot/pitch-ap-autoswitch-norm</property>
     <property value="0.1">systems/autopilot/pitch-descent-input-error-coefficient</property>
     <property value="0.0">systems/autopilot/pitch-descent-angle-active</property>
     <property value="0.0">systems/autopilot/pitch-descent-angle-deg</property>
     <property value="0.0">systems/autopilot/pitch-descent-angle-deg-lag</property>
-    <property value="0.5">systems/autopilot/pitch-rad-error-limiter-gain</property>
     
     <property value="0.0">systems/autopilot/vertical-speed-fpm</property>
     <property value="0.0">systems/autopilot/vertical-speed-fpm-lag</property>
@@ -690,11 +691,11 @@ No Overshoot
             <table>
                 <independentVar>systems/autopilot/speed-cas-on-air-lag</independentVar>
                 <tableData>
-                    0.0      0.5
-                    160.0    0.2
-                    200.0    0.15
-                    300.0    0.1
-                    800.0    0.05
+                    0.0      0.1
+                    160.0    0.1
+                    200.0    0.08
+                    300.0    0.05
+                    800.0    0.02
                 </tableData>
             </table>
             <gain>systems/autopilot/pitch-rad-error-limiter-gain</gain>
@@ -806,10 +807,28 @@ No Overshoot
             <trigger>systems/autopilot/pitch-reset-integrator</trigger>
         </pid>
         
+        <fcs_function name="systems/autopilot/pitch-error">
+            <function>
+                <product>
+                    <p>systems/autopilot/pitch-speed-ap-pid</p>
+                    <ifthen>
+                        <eq><p>systems/autopilot/pitch-output-error-coefficient-gain</p><v>0</v></eq>
+                        <p>systems/autopilot/pitch-output-error-coefficient</p>
+                        <product>
+                            <p>systems/autopilot/pitch-output-error-coefficient</p>
+                            <p>systems/autopilot/pitch-output-error-coefficient-gain</p>
+                        </product>
+                    </ifthen>
+                </product>
+            </function>
+        </fcs_function>
+        
+        <!--
         <pure_gain name="systems/autopilot/pitch-error">
             <input>systems/autopilot/pitch-speed-ap-pid</input>
             <gain>systems/autopilot/pitch-output-error-coefficient</gain>
         </pure_gain> 
+        -->
         
         <!-- Vertical speed section -->
         
@@ -1413,7 +1432,7 @@ No Overshoot
                 </test>
             </test>
         </switch>
-        
+        <!--
         <switch name="systems/autopilot/pitch-rad-error-limiter-gain">
             <default value="systems/autopilot/pitch-rad-error-limiter-gain"/>
             <test logic="AND" value="0.5">
@@ -1423,7 +1442,7 @@ No Overshoot
                 systems/airbrake/automatic-cmd == 1
             </test>
         </switch>
-        
+        -->
     </channel>
     
     

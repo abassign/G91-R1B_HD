@@ -1047,22 +1047,27 @@ var pilot_assistant = func {
             setprop("fdm/jsbsim/systems/autopilot/gui/true-heading-deg",heading_correct);
             setprop("fdm/jsbsim/systems/autopilot/steer-brake-active",1);
             setprop("/controls/flight/flaps",0.33);
+            if (getprop("fdm/jsbsim/systems/jato/combustion-on") == 1) {
+                setprop("fdm/jsbsim/systems/autopilot/pitch-output-error-coefficient-gain",2);
+            } else {
+                setprop("fdm/jsbsim/systems/autopilot/pitch-output-error-coefficient-gain",0);
+            }
             if (speed_cas < 80) {
                 setprop("fdm/jsbsim/systems/autopilot/gui/pitch-hold-deg",0.0);
             } else if (speed_cas < 110) {
-                setprop("fdm/jsbsim/systems/autopilot/gui/pitch-hold-deg",1.0);
+                setprop("fdm/jsbsim/systems/autopilot/gui/pitch-hold-deg",2.0);
             } else {
                 if (speed_cas < 180) {
-                    var pitchDeg = 8 - ((180 - speed_cas) / 10.0);
+                    var pitchDeg = 9 - ((180 - speed_cas) / 10.0);
                     setprop("fdm/jsbsim/systems/autopilot/gui/pitch-hold-deg",pitchDeg);
                 }
             }
-            if (getprop("fdm/jsbsim/systems/autopilot/gui/take-off-jato-active") == 1 and altitude_agl_ft > 30.0) {
+            if (getprop("fdm/jsbsim/systems/autopilot/gui/take-off-jato-active") == 1 and altitude_agl_ft > 10.0) {
                 setprop("fdm/jsbsim/systems/autopilot/landing-gear-set-close",1.0);
             }
             if (altitude_agl_ft > 600.0 and speed_cas > 180) {
                 landig_departure_status_id = 10.5;
-                setprop("fdm/jsbsim/systems/autopilot/gui/pitch-descent-angle",0.0);
+                setprop("fdm/jsbsim/systems/autopilot/gui/pitch-descent-angle",1.0);
                 setprop("fdm/jsbsim/systems/autopilot/gui/pitch-descent-angle-deg",0.0);
                 setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed",1.0);
                 setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed-fpm",2000.0);
@@ -1073,20 +1078,25 @@ var pilot_assistant = func {
                 setprop("/controls/flight/flaps",0.0);
                 setprop("fdm/jsbsim/systems/autopilot/gui/impact-control-active",1.0);
                 setprop("fdm/jsbsim/systems/autopilot/gui/speed-automatic-gear",1.0);
+                setprop("fdm/jsbsim/systems/autopilot/pitch-output-error-coefficient-gain",0);
             }
             print("Departure 10.3 >"
             ,sprintf(" Dist (nm): %6.1f",runway_to_airplane_dist)
             ,sprintf(" Heading: %7.1f",heading_correct)
-            ,sprintf(" H. cor: %6.1f",heading_correction)
-            ,sprintf(" Gear contact: %.0f",gear_unit_contact)
-            ,sprintf(" Gear brake antiskid: %6.2f",getprop("fdm/jsbsim/systems/autopilot/steer-brake-antiskid"))
-            ,sprintf(" heading norm: %6.2f",getprop("fdm/jsbsim/systems/autopilot/true-heading-deg-delta-norm"))
+            ,sprintf(" cor: %6.1f",heading_correction)
+            ,sprintf(" norm: %6.2f",getprop("fdm/jsbsim/systems/autopilot/true-heading-deg-delta-norm"))
+            ,sprintf(" Gear cnt: %.0f",gear_unit_contact)
+            ,sprintf(" ABS: %6.2f",getprop("fdm/jsbsim/systems/autopilot/steer-brake-antiskid"))
             ,sprintf(" (%6.0f kts)",getprop("fdm/jsbsim/velocities/vtrue-kts"))
             ,sprintf(" left int: %6.2f",getprop("fdm/jsbsim/systems/brake/left-steer-brake-intensity"))
             ,sprintf(" (%6.2f)",getprop("fdm/jsbsim/systems/autopilot/left-steer-brake"))
             ,sprintf(" right int: %6.2f",getprop("fdm/jsbsim/systems/brake/right-steer-brake-intensity"))
             ,sprintf(" (%6.2f)",getprop("fdm/jsbsim/systems/autopilot/right-steer-brake"))
-            ,sprintf(" Alt agl: (%5f)",altitude_agl_ft)
+            ,sprintf(" Alt agl: %4.0f",altitude_agl_ft)
+            ,sprintf(" Pitch: %3.1f",getprop("fdm/jsbsim/systems/autopilot/gui/pitch-hold-deg"))
+            ,sprintf(" Er: %1.2f",getprop("fdm/jsbsim/systems/autopilot/pitch-rad-error"))
+            ,sprintf(" | %2.0f",getprop("fdm/jsbsim/systems/autopilot/pitch-reset-integrator"))
+            ,sprintf(" | %1.2f",getprop("fdm/jsbsim/systems/autopilot/pitch-error"))
             );
         } else if (landig_departure_status_id == 10.5) {
             var altitude_agl_ft = getprop("/position/altitude-agl-ft");
