@@ -8,6 +8,7 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
 Modified work Copyright 2019 Joshua Davidson (it0uchpods)
     Modify the program forfcs/left/right-steer-brake-intensity
     for keyboard integration ( , and . )
+Modified work Copyright 2019 Adriano Bassignana
 -->
 
 <system name="G91 BCS">

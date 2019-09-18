@@ -1,6 +1,9 @@
 <!-- G91 Aerodynamics -->
 
-<!-- Changes by Joshua Davidson (it0uchpods) for stability, and fix some reversed signs -->
+<!--
+Based work by Adriano Bassignana (abassign) 2016-2019
+Changes by Joshua Davidson (it0uchpods) for stability, and fix some reversed signs
+-->
 
 <aerodynamics> 
     

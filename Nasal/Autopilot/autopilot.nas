@@ -652,7 +652,7 @@ var pilot_assistant = func {
                 rwy_coord_start_final.apply_course_distance(airport_select.runways[rwy_select].heading - 180,(runway_to_airplane_dist_direct - 3) * 1852.0);
                 heading_correction = geo.normdeg180(airport_select.runways[rwy_select].heading - airplane.course_to(rwy_coord_start_final));
                 var heading_factor = 0.2;
-                if (runway_to_airplane_dist_direct < 10.0) {
+                if (runway_to_airplane_dist_direct < 12.0) {
                     if (math.abs(heading_correction) >= 10) {
                         heading_factor = (18 / runway_to_airplane_dist_direct);
                     } else {
