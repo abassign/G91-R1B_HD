@@ -108,7 +108,7 @@ No Overshoot
     <property value="3.0">systems/autopilot/pitch-input-error-coefficient</property>
     <property value="1.0">systems/autopilot/pitch-rad-error-limiter-coefficient</property>
     <property value="0.5">systems/autopilot/pitch-rad-error-limiter-gain</property>
-    <property value="-1.5">systems/autopilot/pitch-output-error-coefficient</property>
+    <property value="-0.5">systems/autopilot/pitch-output-error-coefficient</property>
     <property value="0.0">systems/autopilot/pitch-output-error-coefficient-gain</property>
     <property value="0.0">systems/autopilot/pitch-error</property>
     <property value="0.0">systems/autopilot/pitch-ap-autoswitch-norm</property>
@@ -807,16 +807,31 @@ No Overshoot
             <trigger>systems/autopilot/pitch-reset-integrator</trigger>
         </pid>
         
+        <lag_filter name="systems/autopilot/pitch-output-error-coefficient-gain-lag">
+            <input>systems/autopilot/pitch-output-error-coefficient-gain</input>
+            <c1>0.2</c1>
+        </lag_filter>
+        
+        <switch name="systems/autopilot/pitch-output-error-coefficient-gain">
+            <default value="systems/autopilot/pitch-output-error-coefficient-gain"/>
+            <test logic="AND" value="0">
+                systems/autopilot/pitch-output-error-coefficient-gain GT 0.1
+            </test>
+        </switch>
+        
         <fcs_function name="systems/autopilot/pitch-error">
             <function>
                 <product>
                     <p>systems/autopilot/pitch-speed-ap-pid</p>
                     <ifthen>
-                        <eq><p>systems/autopilot/pitch-output-error-coefficient-gain</p><v>0</v></eq>
+                        <lt><p>systems/autopilot/pitch-output-error-coefficient-gain-lag</p><v>0.1</v></lt>
                         <p>systems/autopilot/pitch-output-error-coefficient</p>
                         <product>
                             <p>systems/autopilot/pitch-output-error-coefficient</p>
-                            <p>systems/autopilot/pitch-output-error-coefficient-gain</p>
+                            <sum>
+                                <v>1.0</v>
+                                <p>systems/autopilot/pitch-output-error-coefficient-gain-lag</p>
+                            </sum>
                         </product>
                     </ifthen>
                 </product>
@@ -1389,14 +1404,14 @@ No Overshoot
             <input>systems/autopilot/speed-pid-norm</input>
             <c1>0.1</c1>
         </lag_filter>
-        <!--
-        <switch name="systems/autopilot/gui/pitch-hold-deg-mem">
-            <default value="systems/autopilot/gui/pitch-hold-mem"/>
-            <test logic="AND" value="systems/autopilot/gui/pitch-hold-deg">
+
+        <switch name="systems/autopilot/pitch-output-error-coefficient-gain">
+            <default value="systems/autopilot/pitch-output-error-coefficient-gain"/>
+            <test logic="AND" value="100.0">
                 systems/airbrake/automatic-cmd == 1
             </test>
         </switch>
-        -->
+
         <switch name="systems/airbrake/automatic-cmd">
             <default value="systems/airbrake/automatic-cmd"/>
             <test logic="AND" value="1">
@@ -1409,7 +1424,7 @@ No Overshoot
                 </test>
                 <test logic="AND">
                     systems/autopilot/speed-throttle-active == 1
-                    systems/autopilot/speed-throttle-pid-gain-sum LT 0.2
+                    systems/autopilot/speed-throttle-pid-gain-sum LT 0.3
                     systems/autopilot/speed-brake-active == 1
                     systems/autopilot/speed-pid-norm == -1
                     systems/autopilot/speed-pid-norm-lag LT -0.1
@@ -1432,17 +1447,7 @@ No Overshoot
                 </test>
             </test>
         </switch>
-        <!--
-        <switch name="systems/autopilot/pitch-rad-error-limiter-gain">
-            <default value="systems/autopilot/pitch-rad-error-limiter-gain"/>
-            <test logic="AND" value="0.5">
-                systems/airbrake/automatic-cmd == 0
-            </test>
-            <test logic="AND" value="1.0">
-                systems/airbrake/automatic-cmd == 1
-            </test>
-        </switch>
-        -->
+        
     </channel>
     
     

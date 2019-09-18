@@ -855,7 +855,7 @@ var pilot_assistant = func {
                 setprop("fdm/jsbsim/systems/autopilot/handle-brake-activate",1);
                 setprop("fdm/jsbsim/systems/autopilot/landing-gear-set-open",1.0);
                 defaultViewInTheEvent = nil;
-                delayCycleGeneral = 100;
+                delayCycleGeneral = 50;
                 slope = 0.0;
             } else {
                 heading_correction = (airport_select.runways[rwy_select].heading - airplane.course_to(rwy_coord_end));
@@ -892,7 +892,7 @@ var pilot_assistant = func {
             setprop("fdm/jsbsim/systems/autopilot/gui/true-heading-deg",heading_correct);
             setprop("fdm/jsbsim/systems/autopilot/gui/speed-automatic-gear",1.0);
             delayCycleGeneral = delayCycleGeneral - 1;
-            if (delayCycleGeneral <= 0) landig_departure_status_id = -1;
+            if (delayCycleGeneral <= 0) landig_departure_status_id = 0;
             print("Landing 4.0 >"
             ,sprintf(" Dist (nm): % 6.1f",runway_to_airplane_dist)
             ,sprintf(" Heading: % 7.1f",heading_correct)
@@ -1056,9 +1056,7 @@ var pilot_assistant = func {
             setprop("fdm/jsbsim/systems/autopilot/steer-brake-active",1);
             setprop("/controls/flight/flaps",0.33);
             if (getprop("fdm/jsbsim/systems/jato/combustion-on") == 1) {
-                setprop("fdm/jsbsim/systems/autopilot/pitch-output-error-coefficient-gain",2);
-            } else {
-                setprop("fdm/jsbsim/systems/autopilot/pitch-output-error-coefficient-gain",0);
+                setprop("fdm/jsbsim/systems/autopilot/pitch-output-error-coefficient-gain",100.0);
             }
             if (speed_cas < 80) {
                 setprop("fdm/jsbsim/systems/autopilot/gui/pitch-hold-deg",0.0);
@@ -1086,7 +1084,6 @@ var pilot_assistant = func {
                 setprop("/controls/flight/flaps",0.0);
                 setprop("fdm/jsbsim/systems/autopilot/gui/impact-control-active",1.0);
                 setprop("fdm/jsbsim/systems/autopilot/gui/speed-automatic-gear",1.0);
-                setprop("fdm/jsbsim/systems/autopilot/pitch-output-error-coefficient-gain",0);
             }
             print("Departure 10.3 >"
             ,sprintf(" Dist (nm): %6.1f",runway_to_airplane_dist)
