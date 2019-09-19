@@ -6,27 +6,32 @@
         <name>exaust_flame</name>
        
         <offsets>
-            <x-m>  0.000 </x-m>
+            <x-m>  -0.050 </x-m>
             <y-m>  0.000 </y-m>
             <z-m>  0.000 </z-m>
             <roll-deg>    0.000 </roll-deg>
-            <pitch-deg>   90.000 </pitch-deg>
+            <pitch-deg>   190.000 </pitch-deg>
             <heading-deg> 0.000 </heading-deg>
         </offsets>
        
         <texture>Pictures/smoke.png</texture>
        
         <condition>
-            <greater-than>
-                <property>fdm/jsbsim/systems/engine/rpm-norm</property>
-                <value>0.1</value>
-            </greater-than>
+            <and>
+                <greater-than>
+                    <property>fdm/jsbsim/systems/engine/rpm-norm</property>
+                    <value>0.05</value>
+                </greater-than>
+                <less-than>
+                    <property>fdm/jsbsim/velocities/vtrue-kts</property>
+                    <value>80.0</value>
+                </less-than>
+            </and>
         </condition>
-       
         <emissive>true</emissive>
         <lighting>false</lighting>
-        <align>fixed</align> <!-- billboard / fixed -->
-        <attach>local</attach> <!-- world / local-->
+        <align>billboard</align> <!-- billboard / fixed -->
+        <attach>world</attach> <!-- world / local-->
        
         <placer>
             <type>point</type> <!-- sector / segments / point -->
@@ -35,7 +40,7 @@
         <shooter>
             <radius-min-m>0.1</radius-min-m>
             <radius-max-m>0.15</radius-max-m>
-            <theta-min-deg>4</theta-min-deg>
+            <theta-min-deg>-5</theta-min-deg>
             <theta-max-deg>5</theta-max-deg>
             <phi-min-deg>-2</phi-min-deg>
             <phi-max-deg>2</phi-max-deg>
@@ -55,8 +60,8 @@
        
         <counter>
             <particles-per-sec>
-                <value>800</value>
-                <spread>200</spread>
+                <value>400</value>
+                <spread>100</spread>
                 <factor-prop>fdm/jsbsim/systems/engine/rpm-norm</factor-prop>
             </particles-per-sec>
         </counter>
@@ -64,10 +69,10 @@
         <particle>
             <start>
                 <color>
-                    <red><value>   0.63 </value></red>
-                    <green><value> 0.3 </value></green>
-                    <blue><value>  0.0 </value></blue>
-                    <alpha><value> 0.1 </value></alpha>
+                    <red><property>fdm/jsbsim/systems/engine/effects-red-exaust-gas-rpm-norm</property></red>
+                    <green><property>fdm/jsbsim/systems/engine/effects-green-exaust-gas-rpm-norm</property></green>
+                    <blue><property>fdm/jsbsim/systems/engine/effects-blue-exaust-gas-rpm-norm</property></blue>
+                    <alpha><property>fdm/jsbsim/systems/engine/effects-transparent-vtrue</property></alpha>
                 </color>
                 <size>
                     <value>0.35</value>
@@ -76,13 +81,13 @@
            
             <end>
                 <color>
-                    <red><value>   0.9 </value></red>
-                    <green><value> 0.2 </value></green>
-                    <blue><value>  0.0 </value></blue>
+                    <red><property>fdm/jsbsim/systems/engine/effects-red-exaust-gas-rpm-norm</property></red>
+                    <green><property>fdm/jsbsim/systems/engine/effects-green-exaust-gas-rpm-norm</property></green>
+                    <blue><property>fdm/jsbsim/systems/engine/effects-blue-exaust-gas-rpm-norm</property></blue>
                     <alpha><value> 0.0 </value></alpha>
                 </color>
                 <size>
-                    <value>0.35</value>
+                    <value>0.1</value>
                 </size>
             </end>
            

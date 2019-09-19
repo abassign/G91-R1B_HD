@@ -235,7 +235,7 @@ var pilot_assistant = func {
             }
         }
      
-        if (airport_select != nil and rwy_select != nil and size(rwy_select) == 2) {
+        if (airport_select != nil and rwy_select != nil and airport_select.runways[rwy_select] != nil and size(rwy_select) == 2) {
             var landing_rwy_h_offset_nm = - 0.1;
             if (airport_select.runways[rwy_select].length > 1000) {
                 landing_rwy_h_offset_nm = - ((2000.0 - airport_select.runways[rwy_select].length) / 10000);

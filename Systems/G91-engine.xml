@@ -14,6 +14,11 @@ Description: G91R2 Canopy automation
     <property value="0.0">systems/engine/fire-allert-on</property>
     <property value="0.0">systems/engine/jet-TC-temperature-hight-fire-on</property>
     <property value="0.0">systems/engine/air-compression-fuel-tank-psi</property>
+    <property value="0.0">systems/engine/effects-external-light-contrast</property>
+    <property value="0.0">systems/engine/effects-transparent-vtrue</property>
+    <property value="0.0">systems/engine/effects-red-exaust-gas-rpm-norm</property>
+    <property value="0.0">systems/engine/effects-green-exaust-gas-rpm-norm</property>
+    <property value="0.0">systems/engine/effects-blue-exaust-gas-rpm-norm</property>
     
     
     <channel name="engine systems RPM" execrate="32">
@@ -153,6 +158,78 @@ Description: G91R2 Canopy automation
             </test>
         </switch>
 
+    </channel>
+    
+    
+    <channel name="engine effects" execrate="32">
+        
+        <fcs_function name="systems/engine/effects-external-light-contrast">
+            <function>
+                <interpolate1d>
+                    <p>/rendering/scene/ambient/blue</p>
+                    <v>0.0</v> <v>0.5</v>
+                    <v>0.5</v> <v>0.2</v>
+                    <v>1.0</v> <v>0.1</v>
+                </interpolate1d>
+            </function>
+        </fcs_function>
+        
+        <fcs_function name="systems/engine/effects-transparent-vtrue">
+            <function>
+                <interpolate1d>
+                    <p>velocities/vtrue-kts</p>
+                    <v>0.0</v> <v>0.05</v>
+                    <v>30.0</v> <v>0.025</v>
+                    <v>80.0</v> <v>0.0</v>
+                </interpolate1d>
+            </function>
+        </fcs_function>
+        
+        <fcs_function name="systems/engine/effects-red-exaust-gas-rpm-norm">
+            <function>
+                <product>
+                    <v>15.0</v>
+                    <p>systems/engine/effects-external-light-contrast</p>
+                    <interpolate1d>
+                        <p>systems/engine/rpm-norm</p>
+                        <v>0.0</v> <v>0.5</v>
+                        <v>0.5</v> <v>0.15</v>
+                        <v>1.0</v> <v>0.1</v>
+                    </interpolate1d>
+                </product>
+            </function>
+        </fcs_function>
+        
+        <fcs_function name="systems/engine/effects-green-exaust-gas-rpm-norm">4
+            <function>
+                <product>
+                    <v>15.0</v>
+                    <p>systems/engine/effects-external-light-contrast</p>
+                    <interpolate1d>
+                        <p>systems/engine/rpm-norm</p>
+                        <v>0.0</v> <v>0.1</v>
+                        <v>0.5</v> <v>0.1</v>
+                        <v>1.0</v> <v>0.0</v>
+                    </interpolate1d>
+                </product>
+            </function>
+        </fcs_function>
+        
+        <fcs_function name="systems/engine/effects-blue-exaust-gas-rpm-norm">
+            <function>
+                <product>
+                    <v>15.0</v>
+                    <p>systems/engine/effects-external-light-contrast</p>
+                    <interpolate1d>
+                        <p>systems/engine/rpm-norm</p>
+                        <v>0.0</v> <v>0.05</v>
+                        <v>0.5</v> <v>0.15</v>
+                        <v>1.0</v> <v>0.6</v>
+                    </interpolate1d>
+                </product>
+            </function>
+        </fcs_function>
+        
     </channel>
     
     
