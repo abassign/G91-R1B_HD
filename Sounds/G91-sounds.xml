@@ -110,10 +110,10 @@
             <mode>looped</mode>
             <condition>
                 <and>
-                    <equals>
-                        <property>engines/engine/running</property>
+                    <greater-than>
+                        <property>/fdm/jsbsim/propulsion/engine/fuel-flow-rate-gph</property>
                         <value>1</value>	
-                    </equals>
+                    </greater-than>
                     <equals>
                         <property>sim/current-view/internal</property>
                         <value>false</value>
@@ -151,10 +151,10 @@
             <mode>looped</mode>
             <condition>
                 <and>
-                    <equals>
-                        <property>engines/engine/running</property>
+                    <greater-than>
+                        <property>/fdm/jsbsim/propulsion/engine/fuel-flow-rate-gph</property>
                         <value>1</value>	
-                    </equals>
+                    </greater-than>
                     <equals>
                         <property>sim/current-view/internal</property>
                         <value>true</value>

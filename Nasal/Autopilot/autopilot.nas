@@ -185,7 +185,7 @@ var pilot_assistant = func {
                                         ,sprintf(" Dist (nm): %2.1f",runway_to_airplane_dist)
                                         ,sprintf(" H: %2.0f",airport_heading)
                                         ," RW: ",airport_select.runways[rwy].id
-                                        ,sprintf(" L: %4.0f",airport.runways[rwy].length)
+                                        ,sprintf(" L: %4.0f",airport_select.runways[rwy].length)
                                     );
                                 }
                             }
@@ -1080,7 +1080,7 @@ var pilot_assistant = func {
                 setprop("fdm/jsbsim/systems/autopilot/gui/pitch-hold",0.0);
                 setprop("fdm/jsbsim/systems/autopilot/gui/pitch-hold-deg",6.0);
                 setprop("fdm/jsbsim/systems/autopilot/speed-brake-set-active",0);
-                setprop("fdm/jsbsim/systems/autopilot/gui/true-heading-deg",math.round(getprop("fdm/jsbsim/systems/autopilot/heading-true-deg")));
+                setprop("fdm/jsbsim/systems/autopilot/gui/true-heading-deg",heading_correct);
                 setprop("/controls/flight/flaps",0.0);
                 setprop("fdm/jsbsim/systems/autopilot/gui/impact-control-active",1.0);
                 setprop("fdm/jsbsim/systems/autopilot/gui/speed-automatic-gear",1.0);
