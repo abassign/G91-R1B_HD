@@ -62,11 +62,11 @@
                     <label>Fiat G91</label>
                     <enabled type="bool">true</enabled>
                     <item>
-                        <label>Test systems plane</label>
+                        <label>Pilot assistant</label>
                         <binding>
                             <command>nasal</command>
                             <script>
-                                test_dialog = gui.Dialog.new("sim/gui/dialogs/G91/TestSystemsPlane/dialog","Aircraft/G91-R1B_HD/Dialogs/G91-test.xml");
+                                test_dialog = gui.Dialog.new("sim/gui/dialogs/G91/Autopilot/dialog","Aircraft/G91-R1B_HD/Dialogs/G91-Pilot-Assistant.xml");
                                 test_dialog.open();
                             </script>
                         </binding>
@@ -121,7 +121,6 @@
                             </script>
                         </binding>
                     </item>
-                    
                     <item>
                         <label>Livery</label>
                         <binding>
@@ -132,7 +131,6 @@
                             </script>
                         </binding>
                     </item>
-                    
                     <item>
                         <label>Accessories</label>
                         <binding>
@@ -154,11 +152,11 @@
                         </binding>
                     </item>
                     <item>
-                        <label>Pilot assistant</label>
+                        <label>Test systems plane</label>
                         <binding>
                             <command>nasal</command>
                             <script>
-                                test_dialog = gui.Dialog.new("sim/gui/dialogs/G91/Autopilot/dialog","Aircraft/G91-R1B_HD/Dialogs/G91-Autopilot.xml");
+                                test_dialog = gui.Dialog.new("sim/gui/dialogs/G91/TestSystemsPlane/dialog","Aircraft/G91-R1B_HD/Dialogs/G91-test.xml");
                                 test_dialog.open();
                             </script>
                         </binding>
@@ -206,7 +204,7 @@
             <!-- Test -->
             <file>Aircraft/G91-R1B_HD/Nasal/light-manager.nas</file>
             <!-- Autopilot -->
-            <file>Aircraft/G91-R1B_HD/Nasal/Autopilot/autopilot.nas</file>
+            <file>Aircraft/G91-R1B_HD/Nasal/pilot_assitant.nas</file>
         </general>
         
         <canvas_gauges>
