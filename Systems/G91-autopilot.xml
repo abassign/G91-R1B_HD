@@ -123,7 +123,7 @@ No Overshoot
     <property value="0.0">systems/autopilot/pitch-output-error-coefficient-gain</property>
     <property value="0.0">systems/autopilot/pitch-output-error-coefficient-gain-active</property>
     <property value="0.0">systems/autopilot/pitch-output-error-coefficient-gain-speedbrake</property>
-    <property value="3.0">systems/autopilot/pitch-output-error-coefficient-gain-speedbrake-value</property>
+    <property value="2.0">systems/autopilot/pitch-output-error-coefficient-gain-speedbrake-value</property>
     <property value="0.0">systems/autopilot/pitch-control-active</property>
     <property value="0.0">systems/autopilot/pitch-error</property>
     <property value="0.0">systems/autopilot/pitch-ap-autoswitch-norm</property>
@@ -1507,21 +1507,22 @@ No Overshoot
             <function>
                 <ifthen>
                     <and>
-                        <gt><p>fcs/speedbrake-pos-norm</p><v>0.1</v></gt>
-                        <or>
-                            <eq><p>systems/autopilot/pitch-control-active</p><v>1.0</v></eq>
-                            <eq><p>systems/airbrake/automatic-cmd</p><v>1.0</v></eq>
-                        </or>
+                        <gt><p>systems/airbrake/speedbrake-pos-norm</p><v>0.1</v></gt>
+                        <eq><p>systems/autopilot/pitch-control-active</p><v>1.0</v></eq>
                     </and>
                     <product>
                         <p>systems/autopilot/pitch-output-error-coefficient-gain-speedbrake-value</p>
-                        <quotient>
-                            <v>220.0</v>
-                            <p>systems/autopilot/speed-cas-on-air-lag</p>
-                        </quotient>
-                        <p>fcs/speedbrake-pos-norm</p>
+                        <p>systems/airbrake/speedbrake-pos-norm</p>
+                        <ifthen>
+                            <gt><p>systems/autopilot/speed-cas-on-air-lag</p><v>80.0</v></gt>
+                            <quotient>
+                                <v>220.0</v>
+                                <p>systems/autopilot/speed-cas-on-air-lag</p>
+                            </quotient>
+                            <v>0.4</v>
+                        </ifthen>
                     </product>
-                    <p>systems/autopilot/pitch-output-error-coefficient-gain-speedbrake</p>
+                    <v>0.0</v>
                 </ifthen>
             </function>
         </fcs_function>
