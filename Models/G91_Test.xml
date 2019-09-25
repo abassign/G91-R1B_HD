@@ -18,6 +18,7 @@
             </equals>
         </condition>
     </model>
+
 <!--
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Canopy.xml</path>
@@ -100,6 +101,7 @@
             </and>
         </condition>
     </model>
+    -->
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/LandingGearFrontal/LandingGearFrontal.xml</path>
         <condition>
@@ -109,7 +111,7 @@
             </equals>
         </condition>
     </model>    
-    
+    <!--
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Airbrake/Airbrake.xml</path>
         <condition>

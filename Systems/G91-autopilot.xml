@@ -93,9 +93,14 @@ No Overshoot
     <property value="0.0">systems/autopilot/pitch-hold-deg-lag</property>
     <property value="1.0">systems/autopilot/pitch-hold-deg-lag-C1</property>
     <!-- Zingler Integral Rule Ku: 35 Tu: 256 -->
+    <!--
     <property value="20.400">systems/autopilot/pitch-pid-kp-1</property>
     <property value="0.1594">systems/autopilot/pitch-pid-ki-1</property>
     <property value="0.00996">systems/autopilot/pitch-pid-kd-1</property>
+    -->
+    <property value="10.0">systems/autopilot/pitch-pid-kp-1</property>
+    <property value="0.2">systems/autopilot/pitch-pid-ki-1</property>
+    <property value="0.005">systems/autopilot/pitch-pid-kd-1</property>
     <!-- Pessen Integral Rule PID Ku: 7.33 Tu: 120 -->
     <!-- Il probelma va corretto è dovuto al fatto che la gestione dell'angolo di discesa
     richiede un controllo più efficace del proporzionale, mentre varidotto nella gestione
@@ -117,6 +122,7 @@ No Overshoot
     <property value="-0.38">systems/autopilot/pitch-output-error-coefficient</property> <!-- -0.5 -->
     <property value="0.0">systems/autopilot/pitch-output-error-coefficient-gain</property>
     <property value="0.0">systems/autopilot/pitch-output-error-coefficient-gain-active</property>
+    <property value="0.0">systems/autopilot/pitch-output-error-coefficient-gain-speedbrake</property>
     <property value="5.0">systems/autopilot/pitch-output-error-coefficient-gain-speedbrake-value</property>
     <property value="0.0">systems/autopilot/pitch-control-active</property>
     <property value="0.0">systems/autopilot/pitch-error</property>
@@ -141,7 +147,8 @@ No Overshoot
     <property value="0.0">systems/autopilot/vertical-speed-pitch-error-gain</property>
     
     <property value="0.5">systems/autopilot/gui/h-sl-ft-lag-coefficient</property>
-    <property value="0.0">systems/autopilot/gui/altitude-hold-active</property>
+    <property value="0.0">systems/autopilot/altitude-hold-active</property>
+    <property value="0.0">systems/autopilot/altitude-hold-suspended</property>
     <property value="0.0">systems/autopilot/altitude-hold-ft</property>
     <property value="0.0">systems/autopilot/altitude-hold-ft-dif</property>
     <property value="0.0">systems/autopilot/altitude-hold-versus-lag</property>
@@ -307,7 +314,7 @@ No Overshoot
             </test>
         </switch>
         
-        <switch name="systems/autopilot/gui/altitude-hold-active">
+        <switch name="systems/autopilot/altitude-hold-active">
             <default value="0.0"/>
             <test logic="AND" value="1.0">
                 systems/autopilot/gui/altitude-active == 1.0
@@ -324,7 +331,7 @@ No Overshoot
                     systems/autopilot/vertical-speed-active == 1
                 </test>
                 <test logic="AND">
-                    systems/autopilot/gui/altitude-hold-active == 1
+                    systems/autopilot/altitude-hold-active == 1
                 </test>
             </test>
         </switch>
@@ -648,13 +655,21 @@ No Overshoot
             <input>position/h-sl-ft</input>
             <c1>systems/autopilot/gui/h-sl-ft-lag-coefficient</c1>
         </lag_filter>
-
+        
+        <lag_filter name="systems/autopilot/altitude-hold-suspended-lag">
+            <input>systems/autopilot/altitude-hold-suspended</input>
+            <c1>1.0</c1>
+        </lag_filter>
+        
         <!-- Pitch section -->
         
         <fcs_function name="systems/autopilot/pitch-hold-deg-mod">
             <function>
                 <ifthen>
-                    <p>systems/autopilot/gui/altitude-hold-active</p>
+                    <and>
+                        <eq><p>systems/autopilot/altitude-hold-active</p><v>1.0</v></eq>
+                        <lt><p>systems/autopilot/altitude-hold-suspended-lag</p><v>0.5</v></lt>
+                    </and>
                     <product>
                         <p>systems/autopilot/altitude-hold-pid-gain-lag-sw</p>
                         <abs><p>systems/autopilot/gui/pitch-hold-deg</p></abs>
@@ -699,10 +714,13 @@ No Overshoot
         <fcs_function name="systems/autopilot/pitch-descent-angle-deg-sign">
             <function>
                 <ifthen>
-                    <p>systems/autopilot/gui/altitude-hold-active</p>
+                    <and>
+                        <eq><p>systems/autopilot/altitude-hold-active</p><v>1.0</v></eq>
+                        <lt><p>systems/autopilot/altitude-hold-suspended-lag</p><v>0.5</v></lt>
+                    </and>
                     <product>
                         <p>systems/autopilot/altitude-hold-versus-lag</p>
-                        <p>systems/autopilot/gui/pitch-descent-angle-deg</p>
+                        <abs><p>systems/autopilot/gui/pitch-descent-angle-deg</p></abs>
                     </product>
                     <p>systems/autopilot/gui/pitch-descent-angle-deg</p>
                 </ifthen>
@@ -874,24 +892,36 @@ No Overshoot
             <c1>0.6</c1>
         </lag_filter>
         
-        <fcs_function name="systems/autopilot/pitch-error">
+        <fcs_function name="systems/autopilot/pitch-output-error-coefficient-gain-used">
             <function>
-                <product>
-                    <p>systems/autopilot/pitch-speed-ap-pid</p>
-                    <ifthen>
+                <ifthen>
+                    <and>
                         <lt><p>systems/autopilot/pitch-output-error-coefficient-gain-active-lag</p><v>0.1</v></lt>
+                        <lt><p>systems/autopilot/pitch-output-error-coefficient-gain-speedbrake</p><v>0.1</v></lt>
+                    </and>
+                    <p>systems/autopilot/pitch-output-error-coefficient</p>
+                    <product>
                         <p>systems/autopilot/pitch-output-error-coefficient</p>
-                        <product>
-                            <p>systems/autopilot/pitch-output-error-coefficient</p>
-                            <sum>
-                                <v>1.0</v>
+                        <sum>
+                            <v>1.0</v>
+                            <ifthen>
+                                <gt>
+                                    <p>systems/autopilot/pitch-output-error-coefficient-gain-active-lag</p>
+                                    <p>systems/autopilot/pitch-output-error-coefficient-gain-speedbrake</p>
+                                </gt>
                                 <p>systems/autopilot/pitch-output-error-coefficient-gain-active-lag</p>
-                            </sum>
-                        </product>
-                    </ifthen>
-                </product>
+                                <p>systems/autopilot/pitch-output-error-coefficient-gain-speedbrake</p>
+                            </ifthen>
+                        </sum>
+                    </product>
+                </ifthen>
             </function>
         </fcs_function>
+        
+        <pure_gain name="systems/autopilot/pitch-error">
+            <input>systems/autopilot/pitch-speed-ap-pid</input>
+            <gain>systems/autopilot/pitch-output-error-coefficient-gain-used</gain>
+        </pure_gain>
         
         <!-- Vertical speed section -->
         
@@ -900,7 +930,7 @@ No Overshoot
                 <ifthen>
                     <and>
                         <eq><p>systems/autopilot/vertical-speed-active</p><v>1.0</v></eq>
-                        <eq><p>systems/autopilot/gui/altitude-hold-active</p><v>1.0</v></eq>
+                        <eq><p>systems/autopilot/altitude-hold-active</p><v>1.0</v></eq>
                     </and>
                     <product>
                         <abs><p>systems/autopilot/gui/vertical-speed-fpm</p></abs>
@@ -1473,7 +1503,7 @@ No Overshoot
             </test>
         </switch>
         
-        <fcs_function name="systems/autopilot/pitch-output-error-coefficient-gain">
+        <fcs_function name="systems/autopilot/pitch-output-error-coefficient-gain-speedbrake">
             <function>
                 <ifthen>
                     <and>
@@ -1488,7 +1518,7 @@ No Overshoot
                         </quotient>
                         <p>fcs/speedbrake-pos-norm</p>
                     </product>
-                    <p>systems/autopilot/pitch-output-error-coefficient-gain</p>
+                    <p>systems/autopilot/pitch-output-error-coefficient-gain-speedbrake</p>
                 </ifthen>
             </function>
         </fcs_function>
@@ -1508,8 +1538,8 @@ No Overshoot
             <c1>0.1</c1>
         </lag_filter>
         
-        <switch name="systems/autopilot/pitch-output-error-coefficient-gain">
-            <default value="systems/autopilot/pitch-output-error-coefficient-gain"/>
+        <switch name="systems/autopilot/pitch-output-error-coefficient-gain-speedbrake">
+            <default value="systems/autopilot/pitch-output-error-coefficient-gain-speedbrake"/>
             <test logic="OR" value="0.0">
                 systems/airbrake/automatic-cmd == 0
                 fcs/speedbrake-pos-norm LT 0.1

@@ -132,7 +132,7 @@
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_silver_D2_1</inherits-from>
         <object-name>gear-front-jack-02</object-name>
-        <object-name>Cylinder.004</object-name>
+        <object-name>Cylinder.005</object-name>
     </effect>
     
     <effect>
@@ -776,7 +776,7 @@
         <object-name>gear-front-jack-014</object-name>
         <object-name>gear-front-jack-015</object-name>
         <object-name>gear-front-jack-015.002</object-name>
-        <property>gear/gear[0]/compression-m-calc</property>
+        <property>fdm/jsbsim/gear/unit[0]/compression-ft</property>
         <center>
             <x-m>-3.0297</x-m>
             <y-m>0   </y-m>
@@ -790,24 +790,28 @@
         <interpolation>
             <entry><ind>0.0</ind><dep>15</dep></entry>
             <entry><ind>0.02</ind><dep>-0</dep></entry>
-            <entry><ind>0.03</ind><dep>-15</dep></entry>
-            <entry><ind>0.04</ind><dep>-20</dep></entry>
-            <entry><ind>0.1</ind><dep>-30</dep></entry>
-            <entry><ind>1.0</ind><dep>-32</dep></entry>
+            <entry><ind>0.03</ind><dep>-25</dep></entry>
+            <entry><ind>0.04</ind><dep>-30</dep></entry>
+            <entry><ind>0.1</ind><dep>-35</dep></entry>
+            <entry><ind>1.0</ind><dep>-40</dep></entry>
         </interpolation>
     </animation>
     
     <animation>
         <type>translate</type>
-        <object-name>Cylinder.004</object-name>
-        <property>gear/gear[0]/compression-m-calc</property>
-        <factor>0.13</factor>
-        <offset-m>-0.03</offset-m>
+        <object-name>Cylinder.005</object-name>
+        <property>fdm/jsbsim/gear/unit[0]/compression-ft</property>
         <axis>
             <x>0</x>
             <y>0</y>
             <z>1</z>
         </axis>
+        <interpolation>
+            <entry><ind>0.0</ind><dep>-0.03</dep></entry>
+            <entry><ind>0.02</ind><dep>0.04</dep></entry>
+            <entry><ind>0.03</ind><dep>0.07</dep></entry>
+            <entry><ind>1.0</ind><dep>0.08</dep></entry>
+        </interpolation>
     </animation>
     
     <!-- Steering -->
@@ -849,7 +853,7 @@
                     </less-than>
                 </or>
                 <greater-than>
-                    <property>gear/gear[0]/compression-m-calc</property>
+                    <property>fdm/jsbsim/gear/unit[0]/compression-ft</property>
                     <value>0</value>
                 </greater-than>
             </and>
