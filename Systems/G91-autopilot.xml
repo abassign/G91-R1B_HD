@@ -123,7 +123,7 @@ No Overshoot
     <property value="0.0">systems/autopilot/pitch-output-error-coefficient-gain</property>
     <property value="0.0">systems/autopilot/pitch-output-error-coefficient-gain-active</property>
     <property value="0.0">systems/autopilot/pitch-output-error-coefficient-gain-speedbrake</property>
-    <property value="5.0">systems/autopilot/pitch-output-error-coefficient-gain-speedbrake-value</property>
+    <property value="3.0">systems/autopilot/pitch-output-error-coefficient-gain-speedbrake-value</property>
     <property value="0.0">systems/autopilot/pitch-control-active</property>
     <property value="0.0">systems/autopilot/pitch-error</property>
     <property value="0.0">systems/autopilot/pitch-ap-autoswitch-norm</property>
@@ -1466,7 +1466,7 @@ No Overshoot
     </channel>
     
     
-    <channel name="Speed airbracke control" execrate="32">
+    <channel name="Speed bracke control" execrate="32">
         
         <lag_filter name="systems/autopilot/speed-brake-set-activate-lag">
             <input>systems/autopilot/speed-brake-set-activate</input>
@@ -1508,7 +1508,10 @@ No Overshoot
                 <ifthen>
                     <and>
                         <gt><p>fcs/speedbrake-pos-norm</p><v>0.1</v></gt>
-                        <eq><p>systems/autopilot/pitch-control-active</p><v>1.0</v></eq>
+                        <or>
+                            <eq><p>systems/autopilot/pitch-control-active</p><v>1.0</v></eq>
+                            <eq><p>systems/airbrake/automatic-cmd</p><v>1.0</v></eq>
+                        </or>
                     </and>
                     <product>
                         <p>systems/autopilot/pitch-output-error-coefficient-gain-speedbrake-value</p>
@@ -1537,14 +1540,6 @@ No Overshoot
             <input>systems/autopilot/speed-pid-norm</input>
             <c1>0.1</c1>
         </lag_filter>
-        
-        <switch name="systems/autopilot/pitch-output-error-coefficient-gain-speedbrake">
-            <default value="systems/autopilot/pitch-output-error-coefficient-gain-speedbrake"/>
-            <test logic="OR" value="0.0">
-                systems/airbrake/automatic-cmd == 0
-                fcs/speedbrake-pos-norm LT 0.1
-            </test>
-        </switch>
 
         <switch name="systems/airbrake/automatic-cmd">
             <default value="systems/airbrake/automatic-cmd"/>
