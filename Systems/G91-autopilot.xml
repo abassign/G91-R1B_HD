@@ -124,6 +124,8 @@ No Overshoot
     <property value="0.0">systems/autopilot/pitch-output-error-coefficient-gain-active</property>
     <property value="0.0">systems/autopilot/pitch-output-error-coefficient-gain-speedbrake</property>
     <property value="2.0">systems/autopilot/pitch-output-error-coefficient-gain-speedbrake-value</property>
+    <property value="0.0">systems/autopilot/pitch-output-error-coefficient-gain-flap</property>
+    <property value="2.0">systems/autopilot/pitch-output-error-coefficient-gain-flap-value</property>
     <property value="0.0">systems/autopilot/pitch-control-active</property>
     <property value="0.0">systems/autopilot/pitch-error</property>
     <property value="0.0">systems/autopilot/pitch-ap-autoswitch-norm</property>
@@ -221,14 +223,6 @@ No Overshoot
     <property value="100.0">systems/autopilot/steer-brake-min-speed</property>
     <property value="-1.0">systems/autopilot/handle-brake-activate</property>
     <property value="0.0">systems/autopilot/handle-brake-release</property>
-    
-    <property value="0.0">systems/autopilot/gui/take-off-activate</property>
-    <property value="15000.0">systems/autopilot/gui/take-off-altitude-top</property>
-    <property value="0.0">systems/autopilot/gui/take-off-altitude-top-active</property>
-    <property value="0.0">systems/autopilot/gui/take-off-to-heading</property>
-    <property value="0.0">systems/autopilot/gui/take-off-to-heading-active</property>
-    <property value="350.0">systems/autopilot/gui/take-off-cruise-speed</property>
-    <property value="0.0">systems/autopilot/gui/take-off-cruise-speed-active</property>
     
     <property value="0.0">systems/autopilot/landing-gear-set-close</property>
     <property value="0.0">systems/autopilot/landing-gear-set-close-blocked</property>
@@ -892,29 +886,33 @@ No Overshoot
             <c1>0.6</c1>
         </lag_filter>
         
+        <switch name="systems/autopilot/pitch-output-error-coefficient-gain-active-max">
+            <default value="systems/autopilot/pitch-output-error-coefficient-gain-active-max"/>
+            <test logic="AND" value="0">
+                systems/autopilot/pitch-output-error-coefficient-gain-active-lag LT 0.1
+                systems/autopilot/pitch-output-error-coefficient-gain-speedbrake LT 0.1
+                systems/autopilot/pitch-output-error-coefficient-gain-flap LT 0.1
+            </test>
+            <test logic="AND" value="systems/autopilot/pitch-output-error-coefficient-gain-active-lag">
+                systems/autopilot/pitch-output-error-coefficient-gain-active-lag GT systems/autopilot/pitch-output-error-coefficient-gain-active-max
+            </test>
+            <test logic="AND" value="systems/autopilot/pitch-output-error-coefficient-gain-speedbrake">
+                systems/autopilot/pitch-output-error-coefficient-gain-speedbrake GT systems/autopilot/pitch-output-error-coefficient-gain-active-max
+            </test>
+            <test logic="AND" value="systems/autopilot/pitch-output-error-coefficient-gain-flap">
+                systems/autopilot/pitch-output-error-coefficient-gain-flap GT systems/autopilot/pitch-output-error-coefficient-gain-active-max
+            </test>
+        </switch>
+        
         <fcs_function name="systems/autopilot/pitch-output-error-coefficient-gain-used">
             <function>
-                <ifthen>
-                    <and>
-                        <lt><p>systems/autopilot/pitch-output-error-coefficient-gain-active-lag</p><v>0.1</v></lt>
-                        <lt><p>systems/autopilot/pitch-output-error-coefficient-gain-speedbrake</p><v>0.1</v></lt>
-                    </and>
+                <product>
                     <p>systems/autopilot/pitch-output-error-coefficient</p>
-                    <product>
-                        <p>systems/autopilot/pitch-output-error-coefficient</p>
-                        <sum>
-                            <v>1.0</v>
-                            <ifthen>
-                                <gt>
-                                    <p>systems/autopilot/pitch-output-error-coefficient-gain-active-lag</p>
-                                    <p>systems/autopilot/pitch-output-error-coefficient-gain-speedbrake</p>
-                                </gt>
-                                <p>systems/autopilot/pitch-output-error-coefficient-gain-active-lag</p>
-                                <p>systems/autopilot/pitch-output-error-coefficient-gain-speedbrake</p>
-                            </ifthen>
-                        </sum>
-                    </product>
-                </ifthen>
+                    <sum>
+                        <p>systems/autopilot/pitch-output-error-coefficient-gain-active-max</p>
+                        <v>1.0</v>
+                    </sum>
+                </product>
             </function>
         </fcs_function>
         
@@ -1646,6 +1644,30 @@ No Overshoot
             </test>
             <output>/controls/flight/flaps</output>
         </switch>
+        
+        <fcs_function name="systems/autopilot/pitch-output-error-coefficient-gain-flap">
+            <function>
+                <ifthen>
+                    <and>
+                        <gt><p>systems/autopilot/speed-flaps</p><v>0.1</v></gt>
+                        <eq><p>systems/autopilot/pitch-control-active</p><v>1.0</v></eq>
+                    </and>
+                    <product>
+                        <p>systems/autopilot/pitch-output-error-coefficient-gain-flap-value</p>
+                        <sum>
+                            <v>1.0</v>
+                            <abs>
+                                <toradians> 
+                                    <p>systems/autopilot/true-heading-turn-direction-versus-slope-sw-lag-deg</p>
+                                </toradians>
+                            </abs>
+                        </sum>
+                        <p>systems/autopilot/speed-flaps</p>
+                    </product>
+                    <v>0.0</v>
+                </ifthen>
+            </function>
+        </fcs_function>
 
     </channel>
     

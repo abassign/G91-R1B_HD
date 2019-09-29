@@ -862,7 +862,7 @@
                 <binding>
                     <command>nasal</command>
                     <script><![CDATA[
-                        if (getprop("fdm/jsbsim/systems/autopilot/gui/speed-value") < 1.0) {
+                        if (getprop("fdm/jsbsim/systems/autopilot/gui/speed-value") < 2.0) {
                             setprop("fdm/jsbsim/systems/autopilot/gui/speed-set-cas",0.0);
                             setprop("fdm/jsbsim/systems/autopilot/gui/speed-set-mph",0.0);
                             setprop("fdm/jsbsim/systems/autopilot/gui/speed-set-mach",1.0);
