@@ -595,7 +595,7 @@ var pilot_assistant = func {
                 setprop("fdm/jsbsim/systems/autopilot/gui/true-heading-max-wing-slope-deg",40.0);
                 setprop("fdm/jsbsim/systems/autopilot/gui/pitch-hold",1.0);
                 setprop("fdm/jsbsim/systems/autopilot/gui/pitch-hold-deg",0.0);
-                setprop("fdm/jsbsim/systems/autopilot/gui/speed-automatic-flap",1.0);
+                setprop("fdm/jsbsim/systems/autopilot/gui/speed-automatic-flap",0.0);
                 setprop("fdm/jsbsim/systems/autopilot/landing-gear-set-close",1.0);
                 setprop("fdm/jsbsim/systems/autopilot/gui/speed-automatic-gear",0.0);
                 setprop("fdm/jsbsim/systems/autopilot/speed-brake-set-deactivate",1.0);
@@ -627,6 +627,7 @@ var pilot_assistant = func {
                     setprop("fdm/jsbsim/systems/autopilot/gui/pitch-hold",1.0);
                 }
                 if (runway_to_airplane_dist_direct <= 10.0 and runway_to_airplane_dist_direct > 8.0) {
+                    setprop("fdm/jsbsim/systems/autopilot/gui/speed-automatic-flap",1.0);
                     setprop("fdm/jsbsim/systems/autopilot/speed-brake-set-activate",1.0);
                     setprop("fdm/jsbsim/systems/autopilot/gui/pitch-descent-angle",0.0);
                     setprop("fdm/jsbsim/systems/autopilot/gui/pitch-descent-angle-deg",0.0);
