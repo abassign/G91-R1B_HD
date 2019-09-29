@@ -1512,6 +1512,14 @@ No Overshoot
                     </and>
                     <product>
                         <p>systems/autopilot/pitch-output-error-coefficient-gain-speedbrake-value</p>
+                        <sum>
+                            <v>1.0</v>
+                            <abs>
+                                <toradians> 
+                                    <p>systems/autopilot/true-heading-turn-direction-versus-slope-sw-lag-deg</p>
+                                </toradians>
+                            </abs>
+                        </sum>
                         <p>systems/airbrake/speedbrake-pos-norm</p>
                         <ifthen>
                             <gt><p>systems/autopilot/speed-cas-on-air-lag</p><v>80.0</v></gt>
