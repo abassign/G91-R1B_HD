@@ -147,6 +147,10 @@ var pilot_assistant = func {
     var runway_to_airplane_dist = 0.0;
     var speed_cas = getprop("fdm/jsbsim/systems/autopilot/speed-cas-on-air");
     
+    #### Provvisory replece JSBSim random generator is not work now
+    setprop("fdm/jsbsim/systems/dragchute/rnd-number-alpha",1 - (2 * rand()));
+    setprop("fdm/jsbsim/systems/dragchute/rnd-number-beta",1 - (2 * rand()));
+    
     if (landig_departure_status_id == 1) {
         var landing_rwy_search_distance_max = getprop("fdm/jsbsim/systems/autopilot/gui/landing-rwy-search-distance-max");
         var landing_rwy_search_max_heading = getprop("fdm/jsbsim/systems/autopilot/gui/landing-rwy-search-max-heading");
@@ -501,7 +505,7 @@ var pilot_assistant = func {
                 # Delay
                 isHolding_reducing_delta = isHolding_reducing_delta + 1;
             }
-            if ((math.abs(slope - holding_point_slope_avg)) < 1.0 and (getprop("fdm/jsbsim/systems/autopilot/speed-cas-on-air") <= 190.0) and isHolding_reducing_terminated == 0) {
+            if ((math.abs(slope - holding_point_slope_avg)) < 1.5 and (getprop("fdm/jsbsim/systems/autopilot/speed-cas-on-air") <= 190.0) and isHolding_reducing_terminated == 0) {
                 isHolding_reducing_terminated = 1;
                 if (getprop("fdm/jsbsim/systems/autopilot/gui/landing-short-profile") > 0.0) {
                     exit_21 = 1;

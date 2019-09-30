@@ -5,9 +5,9 @@
     <path>dragchute.ac</path>
     
     <offsets>
-        <x-m>6.0</x-m>
+        <x-m>4.7</x-m>
         <y-m>0.0</y-m>
-        <z-m>0.4</z-m>
+        <z-m>0.1</z-m>
         <roll-deg>0.0</roll-deg>
         <pitch-deg>0.0</pitch-deg>
         <heading-deg>-90.0</heading-deg>
@@ -96,7 +96,7 @@
     <animation>
         <object-name>main_dragchute</object-name>
         <type>rotate</type>
-        <property>fdm/jsbsim/aero/beta-deg</property>
+        <property>fdm/jsbsim/systems/dragchute/beta-deg</property>
         <factor>1.0</factor>
         <offset-deg>0.0</offset-deg>
         <center>
@@ -114,7 +114,7 @@
     <animation>
         <object-name>main_dragchute</object-name>
         <type>rotate</type>
-        <property>fdm/jsbsim/aero/alpha-deg</property>
+        <property>fdm/jsbsim/systems/dragchute/alpha-deg</property>
         <factor>1.0</factor>
         <offset-deg>0.0</offset-deg>
         <center>
@@ -132,11 +132,11 @@
     <animation>
         <object-name>little_dragchute</object-name>
         <type>rotate</type>
-        <property>fdm/jsbsim/aero/beta-deg</property>
+        <property>fdm/jsbsim/systems/dragchute/beta-deg</property>
         <factor>0.2</factor>
         <offset-deg>0.0</offset-deg>
         <center>
-            <x-m>12.0</x-m>
+            <x-m>0.0</x-m>
             <y-m>0.0</y-m>
             <z-m>0.0</z-m>
         </center>
@@ -150,11 +150,11 @@
     <animation>
         <object-name>little_dragchute</object-name>
         <type>rotate</type>
-        <property>fdm/jsbsim/aero/alpha-deg</property>
+        <property>fdm/jsbsim/systems/dragchute/alpha-deg</property>
         <factor>0.2</factor>
         <offset-deg>0.0</offset-deg>
         <center>
-            <x-m>12.0</x-m>
+            <x-m>0.0</x-m>
             <y-m>0.0</y-m>
             <z-m>0.0</z-m>
         </center>

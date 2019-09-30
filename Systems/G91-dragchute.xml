@@ -14,6 +14,12 @@
     <property value="0">systems/dragchute/open-big-chute</property>
     <property value="0">systems/dragchute/open-little-chute</property>
     <property value="0">systems/dragchute/active-view</property>
+    <property value="0">systems/dragchute/rnd-number-alpha</property>
+    <property value="0">systems/dragchute/rnd-number-beta</property>
+    <property value="3.0">systems/dragchute/deg-rnd-scale</property>
+    <property value="1.0">systems/dragchute/deg-rnd-lag-coefficient</property>
+    <property value="0">systems/dragchute/beta-deg</property>
+    <property value="0">systems/dragchute/alpha-deg</property>
     
 
     <channel name="handle dragchute" execrate="16">
@@ -32,7 +38,7 @@
             <test logic="AND" value="2">
                 systems/dragchute/active == 1
                 systems/dragchute/reset == 0
-                velocities/vc-kts GE 200
+                velocities/vc-kts GE 220
             </test>
         </switch>
         
@@ -139,6 +145,72 @@
         </fcs_function>
         
     </channel>
+    
+    
+    <channel name="handle dragchute random effect" execrate="30">
+        
+        <fcs_function name="systems/dragchute/beta-deg-rnd">
+            <function>
+                <product>
+                    <p>systems/dragchute/rnd-number-beta</p>
+                    <product>
+                        <quotient>
+                            <sum>
+                                <p>systems/autopilot/speed-cas-on-air</p>
+                                <v>-250.0</v>
+                            </sum>
+                            <v>-250.0</v>
+                        </quotient>
+                        <p>systems/dragchute/deg-rnd-scale</p>
+                    </product>
+                </product>
+            </function>
+        </fcs_function>
+        
+        <fcs_function name="systems/dragchute/alpha-deg-rnd">
+            <function>
+                <product>
+                    <p>systems/dragchute/rnd-number-alpha</p>
+                    <product>
+                        <quotient>
+                            <sum>
+                                <p>systems/autopilot/speed-cas-on-air</p>
+                                <v>-250.0</v>
+                            </sum>
+                            <v>-250.0</v>
+                        </quotient>
+                        <p>systems/dragchute/deg-rnd-scale</p>
+                    </product>
+                </product>
+            </function>
+        </fcs_function>
+        
+    </channel>
 
+    
+    <channel name="handle dragchute alpha and beta" execrate="4">
+        
+        <summer name="systems/dragchute/alpha-deg-rnd-sum">
+            <input>aero/alpha-deg</input>
+            <input>systems/dragchute/alpha-deg-rnd</input>
+        </summer>
+        
+        <summer name="systems/dragchute/beta-deg-rnd-sum">
+            <input>aero/beta-deg</input>
+            <input>systems/dragchute/beta-deg-rnd</input>
+        </summer>
+        
+        <lag_filter name="systems/dragchute/beta-deg">
+            <input>systems/dragchute/beta-deg-rnd</input>
+            <c1>systems/dragchute/deg-rnd-lag-coefficient</c1>
+        </lag_filter>
+        
+        <lag_filter name="systems/dragchute/alpha-deg">
+            <input>systems/dragchute/alpha-deg-rnd</input>
+            <c1>systems/dragchute/deg-rnd-lag-coefficient</c1>
+        </lag_filter>
+        
+    </channel>
+    
     
 </system>
