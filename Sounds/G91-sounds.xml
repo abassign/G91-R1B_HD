@@ -346,6 +346,36 @@
             </volume>
         </rumble>
         
+        <landing-gear-beeper>
+            <name>landing-gear-beeper</name>
+            <path>Aircraft/G91-R1B_HD/Sounds/landing-gear-beeper.wav</path>
+            <mode>looped</mode>
+            <condition>
+                <equals>
+                    <property>fdm/jsbsim/systems/landing-gear/allarm-beep-active</property>
+                    <value>1</value>
+                </equals>
+            </condition>
+            <volume>
+                <factor>1.0</factor>
+            </volume>
+            <position>
+                <x> 5.185 </x>
+                <y>  0.0 </y>
+                <z>  0.0 </z>
+            </position>
+            <orientation>
+                <x>1.0</x>
+                <y>0.0</y>
+                <z>0.0</z>
+                <inner-angle>180.0</inner-angle>
+                <outer-angle>360.0</outer-angle>
+                <outer-gain>0.5</outer-gain>
+            </orientation>
+        </landing-gear-beeper>
+        
+        <!-- Flap -->
+        
         <flaps-tear>
             <name>flaps-tear</name>
             <path>Aircraft/G91-R1B_HD/Sounds/flaps-tear.wav</path>

@@ -35,7 +35,7 @@
             <button>0</button>
             <binding>
                 <command>property-toggle</command>
-                <property>fdm/jsbsim/systems/manual-switches/cockpit/sw-landing-light-test-togle</property>
+                <property>fdm/jsbsim/systems/manual-switches/cockpit/sw-landing-gear-beeper-off</property>
             </binding>
         </action>
     </animation>
@@ -43,7 +43,7 @@
     <animation>
         <type>translate</type>
         <object-name>push_button (Meshed)</object-name>
-        <property>fdm/jsbsim/systems/manual-switches/cockpit/sw-landing-light-test-pos</property>
+        <property>fdm/jsbsim/systems/manual-switches/cockpit/sw-landing-gear-beeper-off-pos</property>
         <factor>0.005</factor>
         <offset-m>0.0</offset-m>
         <axis>
