@@ -43,7 +43,7 @@ No Overshoot
     <property value="0.0">systems/autopilot/gui/speed-brake</property>
     <property value="0.0">systems/autopilot/gui/speed-automatic-flap</property>
     <property value="0.0">systems/autopilot/gui/speed-automatic-gear</property>
-    <property value="200.0">systems/autopilot/gui/speed-value</property>
+    <property value="250.0">systems/autopilot/gui/speed-value</property>
     <property value="0.0">systems/autopilot/gui/speed-set-mph</property>
     <property value="1.0">systems/autopilot/gui/speed-set-cas</property>
     <property value="0.0">systems/autopilot/gui/speed-set-mach</property>
@@ -1625,22 +1625,18 @@ No Overshoot
             <default value="/controls/flight/flaps"/>
             <test logic="AND" value="1">
                 systems/autopilot/speed-automatic-flap-active == 1
-                systems/autopilot/speed-cas-lag LT 170.0
-                systems/autopilot/phase-landing == 1
+                systems/autopilot/speed-cas-lag LT 165.0
+                systems/autopilot/phase-landing GE 1
             </test>
             <test logic="AND" value="0.33">
                 systems/autopilot/speed-automatic-flap-active == 1
                 systems/autopilot/speed-cas-lag LT 185.0
-                systems/autopilot/phase-landing == 1
+                systems/autopilot/phase-landing LE 1
             </test>
             <test logic="AND" value="0">
-                <test logic="AND">
-                    systems/autopilot/speed-automatic-flap-active == 1
-                </test>
-                <test logic="OR">
-                    systems/autopilot/speed-cas-lag GE 185.0
-                    systems/autopilot/phase-landing == 0
-                </test>
+                systems/autopilot/speed-automatic-flap-active == 1
+                systems/autopilot/speed-cas-lag GE 190.0
+                systems/autopilot/phase-landing LE 1
             </test>
             <output>/controls/flight/flaps</output>
         </switch>
