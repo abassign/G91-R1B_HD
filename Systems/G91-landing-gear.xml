@@ -92,7 +92,7 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
         
         <lag_filter name="systems/landing-gear/allarm-active-lag">
             <input>systems/landing-gear/allarm-active-set</input>
-            <c1>0.2</c1>
+            <c1>1.0</c1>
         </lag_filter>
         
         <switch name="systems/landing-gear/allarm-active">
@@ -103,15 +103,37 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
                 systems/electric/bus[1]/V GT 18.0
             </test>
         </switch>
+
+        <washout_filter name="systems/landing-gear/allarm-active-washed">
+            <input>systems/landing-gear/allarm-active</input>
+            <c1>1.0</c1>
+        </washout_filter>
         
-        <switch name="systems/landing-gear/allarm-beep-active">
-            <default value="0"/>
-            <test logic="AND" value="1">
-                systems/landing-gear/allarm-active == 1
-                systems/manual-switches/cockpit/sw-landing-gear-beeper-off == 0
+        <switch name="systems/landing-gear/allarm-active-washed-event">
+            <default value="1"/>
+            <test logic="AND" value = "0">
+                systems/landing-gear/allarm-active-washed LT 0.6
+                systems/landing-gear/allarm-active-washed GT -0.6
             </test>
         </switch>
 
+        <switch name="systems/landing-gear/allarm-beep-active">
+            <default value="systems/landing-gear/allarm-beep-active"/>
+            <test logic="AND" value="1">
+                systems/landing-gear/allarm-active-washed-event == 1
+                systems/landing-gear/allarm-beep-active == 0
+                systems/landing-gear/allarm-active == 1
+            </test>
+            <test logic="AND" value="0">
+                systems/landing-gear/allarm-beep-active == 1
+                systems/landing-gear/allarm-active == 0
+            </test>
+            <test logic="AND" value="0">
+                systems/landing-gear/allarm-beep-active == 1
+                systems/manual-switches/cockpit/sw-landing-gear-beeper-off == 1
+            </test>
+        </switch>
+        
     </channel>
     
     

@@ -35,7 +35,7 @@
             <button>0</button>
             <binding>
                 <command>property-toggle</command>
-                <property>fdm/jsbsim/systems/manual-switches/cockpit/sw-landing-gear-beeper-off</property>
+                <property>fdm/jsbsim/systems/manual-switches/cockpit/sw-landing-gear-beeper-off-togle</property>
             </binding>
         </action>
     </animation>
