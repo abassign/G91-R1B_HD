@@ -261,7 +261,7 @@ var pilot_assistant = func {
             isAirport_and_rw_selected = 1;
             var landing_rwy_h_offset_nm = - 0.1;
             if (airport_select.runways[rwy_select].length > 1000) {
-                landing_rwy_h_offset_nm = - ((2000.0 - airport_select.runways[rwy_select].length) / 6000);
+                landing_rwy_h_offset_nm = - ((2000.0 - airport_select.runways[rwy_select].length) / 8000);
             }
             setprop("fdm/jsbsim/systems/autopilot/gui/landing-rwy-h-offset-nm",landing_rwy_h_offset_nm);
             rwy_coord_start.set_latlon(airport_select.runways[rwy_select].lat,airport_select.runways[rwy_select].lon);
@@ -648,12 +648,20 @@ var pilot_assistant = func {
             ,sprintf(" isHolding_reducing_delta: % 3.0f",isHolding_reducing_delta)
             ,sprintf(" is Term: %.0f",isHolding_reducing_terminated));
         } else if (landig_departure_status_id == 2.2) {
+            var wind_speed = getprop("/local-weather/METAR/wind-strength-kt");
+            var wind_from = getprop("/local-weather/METAR/wind-direction-deg");
+            var wind_deviation = math.abs(geo.normdeg(wind_from - airport_select.runways[rwy_select].heading));
+            var wind_frontal = wind_speed * (math.cos(wind_deviation * d2r));
+            var wind_lateral = wind_speed * (math.sin(wind_deviation * d2r));
+            var distance_to_leave = 0.8 - (wind_frontal * 20) / 1000.0;
+            if (distance_to_leave < 0.4) distance_to_leave = 0.4;
+            print("#### Wind speed: ",wind_speed," from: ",wind_from," deviation: ",wind_deviation," frontal: ",wind_frontal,"lateral: ", wind_lateral," leave: ",distance_to_leave);
             var altitude_agl_ft = getprop("/position/altitude-agl-ft");
             # PID controller section
             var kp = getprop("fdm/jsbsim/systems/autopilot/pid-test-kp"); kp = 30.0;
             var ki = getprop("fdm/jsbsim/systems/autopilot/pid-test-ki"); ki = 1.0;
             var kd = getprop("fdm/jsbsim/systems/autopilot/pid-test-kd"); kd = 0.5;
-            if (((airplane.distance_to(rwy_coord_start) * 0.000621371) < 0.8 and altitude_agl_ft < 250.0) == 0) {
+            if (((airplane.distance_to(rwy_coord_start) * 0.000621371) < distance_to_leave and altitude_agl_ft < 250.0) == 0) {
                 if (runway_to_airplane_dist_direct > 10.0) {
                     setprop("fdm/jsbsim/systems/autopilot/gui/pitch-descent-angle",0.0);
                     setprop("fdm/jsbsim/systems/autopilot/gui/pitch-descent-angle-deg",0.0);
@@ -819,15 +827,22 @@ var pilot_assistant = func {
                 
             } else {
                 var runway_end_to_airplane_dist_direct = airplane.direct_distance_to(rwy_coord_end) * 0.000621371;
-                var slope_target = 2.5;
+                var slope_target = 2.0;
+                var wing_level_active = 0;
                 slope = getprop("fdm/jsbsim/attitude/theta-deg");
                 altitude_agl_ft = getprop("/position/altitude-agl-ft");
-                if (altitude_agl_ft <= 300.0 and altitude_agl_ft > 30.0) {
-                    slope_target = 2.5 - 7.0 * (altitude_agl_ft / 300.0);
+                setprop("fdm/jsbsim/systems/autopilot/pitch-output-error-coefficient-gain",2.0);
+                if (altitude_agl_ft <= 250.0 and altitude_agl_ft > 100.0) {
+                    slope_target = 2.0 - 10.0 * (altitude_agl_ft / 300.0);
                     setprop("fdm/jsbsim/systems/autopilot/gui/speed-value",100.0);
-                } else if (altitude_agl_ft <= 30.0) {
-                    slope_target = 4.5 - 2 * (altitude_agl_ft / 30.0);
+                } else if (altitude_agl_ft <= 100.0 and altitude_agl_ft > 20.0) {
+                    slope_target = 3.0 - 3 * (altitude_agl_ft / 100.0);
+                    setprop("fdm/jsbsim/systems/autopilot/gui/speed-value",70.0);
+                    wing_level_active = 1;
+                } else if (altitude_agl_ft <= 20.0) {
+                    slope_target = 4.5 - 3 * (altitude_agl_ft / 20.0);
                     setprop("fdm/jsbsim/systems/autopilot/gui/speed-value",50.0);
+                    wing_level_active = 1;
                 }
                 landing_slope_delta = slope - slope_target;
                 if (landing_slope_delta > 0.1) {
@@ -855,7 +870,17 @@ var pilot_assistant = func {
                 }
                 heading_correct = geo.normdeg180(airport_select.runways[rwy_select].heading - heading_correction * heading_factor);
                 setprop("fdm/jsbsim/systems/autopilot/gui/airport_runway_airplane_heading_correct",heading_correct);
-                setprop("fdm/jsbsim/systems/autopilot/gui/true-heading-deg",heading_correct);
+                if (wing_level_active == 1) {
+                    setprop("fdm/jsbsim/systems/autopilot/gui/true-heading",0.0);
+                    setprop("fdm/jsbsim/systems/autopilot/gui/phi-heading",0.0);
+                    setprop("fdm/jsbsim/systems/autopilot/gui/wing-leveler",1.0);
+                    setprop("fdm/jsbsim/systems/autopilot/rudder-der",heading_correction * heading_factor * 0.5);
+                } else {
+                    setprop("fdm/jsbsim/systems/autopilot/gui/true-heading",1.0);
+                    setprop("fdm/jsbsim/systems/autopilot/gui/phi-heading",0.0);
+                    setprop("fdm/jsbsim/systems/autopilot/gui/wing-leveler",0.0);
+                    setprop("fdm/jsbsim/systems/autopilot/gui/true-heading-deg",heading_correct);
+                }
                 print("Landing 2.5 >"
                 ,sprintf(" Dist (nm): %6.1f",runway_to_airplane_dist_direct)
                 ,sprintf(" to end (nm): %6.1f",runway_end_to_airplane_dist_direct)
@@ -888,6 +913,9 @@ var pilot_assistant = func {
                 setprop("fdm/jsbsim/systems/autopilot/handle-brake-activate",1);
                 setprop("fdm/jsbsim/systems/autopilot/landing-gear-set-open",1.0);
                 setprop("fdm/jsbsim/systems/autopilot/phase-landing",2.0);
+                setprop("fdm/jsbsim/systems/autopilot/gui/true-heading",1.0);
+                setprop("fdm/jsbsim/systems/autopilot/gui/phi-heading",0.0);
+                setprop("fdm/jsbsim/systems/autopilot/gui/wing-leveler",0.0);
                 defaultViewInTheEvent = nil;
                 delayCycleGeneral = 50;
                 slope = 0.0;

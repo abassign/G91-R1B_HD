@@ -77,6 +77,7 @@ No Overshoot
     <property value="0.0">systems/autopilot/rudder-active</property>
     <property value="0.0">systems/autopilot/rudder-rad-bias</property>
     <property value="1.0">systems/autopilot/rudder-Ny-gain</property>
+    <property value="0.0">systems/autopilot/rudder-der</property>
     <property value="0.1">systems/autopilot/rudder-output-gain</property>
     <property value="0.0">systems/autopilot/rudder-rad</property>
     <property value="0.0">systems/autopilot/rudder-deg</property>
@@ -616,9 +617,14 @@ No Overshoot
             <trigger>systems/autopilot/rudder-ap-on-off</trigger>
         </pid>
         
+        <summer name="systems/autopilot/rudder-ap-pid-sum">
+            <input>systems/autopilot/rudder-ap-pid</input>
+            <input>systems/autopilot/rudder-der</input>
+        </summer>
+        
         <switch name="systems/autopilot/rudder-ap-value">
             <default value="0"/>
-            <test logic="OR" value="systems/autopilot/rudder-ap-pid">
+            <test logic="OR" value="systems/autopilot/rudder-ap-pid-sum">
                 systems/autopilot/rudder-active == 1
             </test>
         </switch>
