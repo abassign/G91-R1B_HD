@@ -207,6 +207,9 @@
                     <binding>
                         <command>nasal</command>
                         <script>
+                            if (getprop("fdm/jsbsim/systems/autopilot/gui/true-heading-deg") == 0.0) {
+                                setprop("fdm/jsbsim/systems/autopilot/gui/true-heading-deg",math.round(getprop("fdm/jsbsim/systems/autopilot/heading-true-deg")));
+                            }
                             setprop("fdm/jsbsim/systems/autopilot/gui/true-heading-deg",math.round(0.5 + getprop("fdm/jsbsim/systems/autopilot/gui/true-heading-deg")) - 5);
                             setprop("fdm/jsbsim/systems/autopilot/gui/true-heading",1.0);
                             setprop("fdm/jsbsim/systems/autopilot/gui/heading-control",1.0);
@@ -243,6 +246,9 @@
                     <binding>
                         <command>nasal</command>
                         <script>
+                            if (getprop("fdm/jsbsim/systems/autopilot/gui/true-heading-deg") == 0.0) {
+                                setprop("fdm/jsbsim/systems/autopilot/gui/true-heading-deg",math.round(getprop("fdm/jsbsim/systems/autopilot/heading-true-deg")));
+                            }
                             setprop("fdm/jsbsim/systems/autopilot/gui/true-heading-deg",math.round(0.5 + getprop("fdm/jsbsim/systems/autopilot/gui/true-heading-deg")) + 5);
                             setprop("fdm/jsbsim/systems/autopilot/gui/true-heading",1.0);
                             setprop("fdm/jsbsim/systems/autopilot/gui/heading-control",1.0);

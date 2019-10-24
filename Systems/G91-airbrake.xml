@@ -83,7 +83,7 @@
         
         <scheduled_gain name="magnitude">
             <input>aero/qbar-psf</input>
-            <gain>1.0</gain>
+            <gain>1.2</gain>
             <table>
                 <independentVar>systems/airbrake/speedbrake-pos-norm</independentVar>
                 <tableData>

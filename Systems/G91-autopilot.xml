@@ -51,7 +51,7 @@ No Overshoot
     <property value="0.0">systems/autopilot/wing-leveler-active</property>
     <property value="0.0">systems/autopilot/wing-leveler-ap-on-off</property>
     <property value="0.5">systems/autopilot/wing-leveler-lag-coefficient</property>
-    <property value="-1.0">systems/autopilot/wing-leveler-output-gain</property>
+    <property value="-3.0">systems/autopilot/wing-leveler-output-gain</property>
     
     <property value="0.0">systems/autopilot/true-heading-active</property>
     <property value="0.0">systems/autopilot/true-heading-ap-on-off</property>
@@ -122,6 +122,7 @@ No Overshoot
     <property value="0.5">systems/autopilot/pitch-rad-error-limiter-gain</property>
     <property value="-0.38">systems/autopilot/pitch-output-error-coefficient</property> <!-- -0.5 -->
     <property value="0.0">systems/autopilot/pitch-output-error-coefficient-gain</property>
+    <property value="3.0">systems/autopilot/pitch-descent-angle-active-coefficient-gain</property>
     <property value="0.0">systems/autopilot/pitch-output-error-coefficient-gain-active</property>
     <property value="0.0">systems/autopilot/pitch-output-error-coefficient-gain-speedbrake</property>
     <property value="2.0">systems/autopilot/pitch-output-error-coefficient-gain-speedbrake-value</property>
@@ -237,6 +238,7 @@ No Overshoot
     <property value="1.0">systems/autopilot/pid-test-kp</property>
     <property value="0.1">systems/autopilot/pid-test-ki</property>
     <property value="0.05">systems/autopilot/pid-test-kd</property>
+    
     
     <channel name="Autopilot GUI Interface" execrate="32">
         
@@ -695,21 +697,23 @@ No Overshoot
             <function>
                 <ifthen>
                     <gt><p>velocities/vtrue-fps</p><v>10.0</v></gt>
-                    <difference>
-                        <v>90.0</v>
-                        <todegrees>
-                            <acos>
-                                <quotient>
-                                    <p>velocities/h-dot-fps</p>
-                                    <p>velocities/vtrue-fps</p>
-                                </quotient>
-                            </acos>
-                        </todegrees>
-                    </difference>
+                    <todegrees>
+                        <atan>
+                            <quotient>
+                                <p>velocities/h-dot-fps</p>
+                                <p>velocities/vtrue-fps</p>
+                            </quotient>
+                        </atan>
+                    </todegrees>
                     <v>0.0</v>
                 </ifthen>
             </function>
         </fcs_function>
+        
+        <lag_filter name="systems/autopilot/pitch-descent-angle-deg-real-lag">
+            <input>systems/autopilot/pitch-descent-angle-deg-real</input>
+            <c1>systems/autopilot/pitch-hold-deg-lag-C1</c1>
+        </lag_filter>
         
         <fcs_function name="systems/autopilot/pitch-descent-angle-deg-sign">
             <function>
@@ -815,7 +819,7 @@ No Overshoot
         
         <switch name="systems/autopilot/pitch-output-error-coefficient-gain">
             <default value="systems/autopilot/pitch-output-error-coefficient-gain"/>
-            <test logic="AND" value="3.0">
+            <test logic="AND" value="systems/autopilot/pitch-descent-angle-active-coefficient-gain">
                 systems/autopilot/pitch-descent-angle-active == 1
             </test>
         </switch>
@@ -1317,7 +1321,7 @@ No Overshoot
         
         <lag_filter name="systems/autopilot/speed-value-lag">
             <input>systems/autopilot/gui/speed-value</input>
-            <c1>0.2</c1>
+            <c1>0.4</c1>
         </lag_filter>
         
         <fcs_function name="systems/autopilot/speed-difference-throttle">
@@ -1600,7 +1604,7 @@ No Overshoot
     
         <lag_filter name="systems/autopilot/speed-cas-lag">
             <input>velocities/vc-kts</input>
-            <c1>0.5</c1>
+            <c1>0.4</c1>
         </lag_filter>
         
         <lag_filter name="systems/autopilot/altitude-ft-lag">
@@ -1631,7 +1635,7 @@ No Overshoot
             <default value="/controls/flight/flaps"/>
             <test logic="AND" value="1">
                 systems/autopilot/speed-automatic-flap-active == 1
-                systems/autopilot/speed-cas-lag LT 165.0
+                systems/autopilot/speed-cas-lag LT 170.0
                 systems/autopilot/phase-landing GE 1
             </test>
             <test logic="AND" value="0.33">
@@ -1641,7 +1645,7 @@ No Overshoot
             </test>
             <test logic="AND" value="0">
                 systems/autopilot/speed-automatic-flap-active == 1
-                systems/autopilot/speed-cas-lag GE 190.0
+                systems/autopilot/speed-cas-lag GE 195.0
                 systems/autopilot/phase-landing LE 1
             </test>
             <output>/controls/flight/flaps</output>
