@@ -50,6 +50,7 @@ var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/take-off-to-
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/take-off-to-heading-active", 0.0, "DOUBLE");
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/take-off-cruise-speed", 350.0, "DOUBLE");
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/take-off-cruise-speed-active", 0.0, "DOUBLE");
+var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/debug-active", 0, "INT");
 
 var d2r = 0.0174533;
 var landing_activate_status = 0;
@@ -144,6 +145,8 @@ var impact_altitude_grain_media_pivot = 0;
 var impact_altitude_grain_media_media_pivot = 0;
 var defaultViewInTheEvent = nil;
 
+var debugActive = 0;
+
 
 var pilot_assistant = func {
     
@@ -158,6 +161,7 @@ var pilot_assistant = func {
     }
     pilot_assistantTimer.restart(timeStep / timeStepDivisor);
     
+    debugActive = getprop("fdm/jsbsim/systems/autopilot/gui/debug-active");
     var speed_cas = getprop("fdm/jsbsim/systems/autopilot/speed-cas-on-air");
     airplane = geo.aircraft_position();
     
@@ -324,8 +328,8 @@ var pilot_assistant = func {
                 setprop("fdm/jsbsim/systems/autopilot/gui/speed-automatic-flap",0.0);
                 setprop("fdm/jsbsim/systems/autopilot/gui/speed-throttle",1.0);
                 setprop("fdm/jsbsim/systems/autopilot/gui/speed-pitch",0.0);
-                if (speed_select == -1.0) {
-                    if (speed_select < 2.0) {
+                if (speed_select <= -1.0) {
+                    if (speed_select < 2.0 and speed_select > 0.0) {
                         setprop("fdm/jsbsim/systems/autopilot/gui/speed-set-mach",1.0);
                         setprop("fdm/jsbsim/systems/autopilot/gui/speed-set-cas",0.0);
                         setprop("fdm/jsbsim/systems/autopilot/gui/speed-set-mph",0.0);
@@ -334,12 +338,11 @@ var pilot_assistant = func {
                         setprop("fdm/jsbsim/systems/autopilot/gui/speed-set-mach",0.0);
                         setprop("fdm/jsbsim/systems/autopilot/gui/speed-set-cas",1.0);
                         setprop("fdm/jsbsim/systems/autopilot/gui/speed-set-mph",0.0);
-                        if (getprop("fdm/jsbsim/systems/autopilot/gui/speed-value") < 250) {
-                            setprop("fdm/jsbsim/systems/autopilot/gui/speed-value",250.0);
+                        if (getprop("fdm/jsbsim/systems/autopilot/gui/speed-value") < 350) {
+                            setprop("fdm/jsbsim/systems/autopilot/gui/speed-value",350.0);
                         } else {
-                            setprop("fdm/jsbsim/systems/autopilot/gui/speed-value",speed_select);
+                            setprop("fdm/jsbsim/systems/autopilot/gui/speed-value",getprop("fdm/jsbsim/systems/autopilot/gui/speed-value"));
                         }
-                        speed_select = -1.0;
                     }
                 } else {
                     setprop("fdm/jsbsim/systems/autopilot/gui/speed-set-mach",0.0);
@@ -347,7 +350,9 @@ var pilot_assistant = func {
                     setprop("fdm/jsbsim/systems/autopilot/gui/speed-set-mph",0.0);
                     if (getprop("fdm/jsbsim/systems/autopilot/gui/speed-value") < 250) {
                         setprop("fdm/jsbsim/systems/autopilot/gui/speed-value",250.0);
-                    }
+                    } else {
+                        setprop("fdm/jsbsim/systems/autopilot/gui/speed-value",speed_select);
+                    } 
                 }
                 setprop("fdm/jsbsim/systems/autopilot/speed-throttle-imposed",-1.0);
                 setprop("fdm/jsbsim/systems/autopilot/gui/impact-control-active",2.0);
@@ -462,19 +467,21 @@ var pilot_assistant = func {
                 heading_correct = airplane.course_to(holding_point);
                 setprop("fdm/jsbsim/systems/autopilot/gui/airport_runway_airplane_heading_correct",heading_correct);
                 setprop("fdm/jsbsim/systems/autopilot/gui/true-heading-deg",heading_correct);
-                print("Landing 2.0 >"
-                ,sprintf(" Hoding dist (nm): %5.1f",holding_point_to_airplane_dist_direct)
-                ,sprintf(" Alt: %5.0f",altitude_for_holding_point)
-                ,sprintf(" Delta: %.0f",holding_point_to_airplane_delta_alt_ft)
-                ,sprintf(" Slope: %.1f",slope)
-                ,sprintf(" | Heading cor: %4.1f",heading_correct)
-                ,sprintf(" Heading correction: %4.1f",heading_correction_deg_for_before_dist)
-                ,sprintf(" Hld. pt to plane (nm): %4.1f",holding_point_to_airplane_dist)
-                ,sprintf(" Hld. pt (nm): %3.1f",holding_point_before_distance_nm)
-                ,sprintf(" Dis R: %3.1f",dist_to_reduce_h)
-                ,sprintf(" CAS: %6.1f",speed_cas)
-                ,sprintf(" SB: %1.2f",getprop("fdm/jsbsim/systems/airbrake/position"))
-                );
+                if (debugActive >= 1) {
+                    print("Landing 2.0 >"
+                    ,sprintf(" Hoding dist (nm): %5.1f",holding_point_to_airplane_dist_direct)
+                    ,sprintf(" Alt: %5.0f",altitude_for_holding_point)
+                    ,sprintf(" Delta: %.0f",holding_point_to_airplane_delta_alt_ft)
+                    ,sprintf(" Slope: %.1f",slope)
+                    ,sprintf(" | Heading cor: %4.1f",heading_correct)
+                    ,sprintf(" Heading correction: %4.1f",heading_correction_deg_for_before_dist)
+                    ,sprintf(" Hld. pt to plane (nm): %4.1f",holding_point_to_airplane_dist)
+                    ,sprintf(" Hld. pt (nm): %3.1f",holding_point_before_distance_nm)
+                    ,sprintf(" Dis R: %3.1f",dist_to_reduce_h)
+                    ,sprintf(" CAS: %6.1f",speed_cas)
+                    ,sprintf(" SB: %1.2f",getprop("fdm/jsbsim/systems/airbrake/position"))
+                    );
+                }
             } else {
                 if (math.abs(holding_point_to_airplane_delta_alt_ft) < 500.0 and math.abs(speed_cas - 190) < 40.0) {
                     landing_20_skip_to_22 = 1;
@@ -668,15 +675,17 @@ var pilot_assistant = func {
                     }
                 }
             }
-            print("Landing 2.1 >"
-            ,sprintf(" Dist (nm): %6.1f",runway_to_airplane_dist)
-            ,sprintf(" Alt (ft): %5.0f",(runway_to_airplane_delta_alt_ft - rwy_offset_v_ft))
-            ,sprintf(" Alt delta (ft): %5.0f",rwy_point_delta_alt_ft)
-            ,sprintf(" Slope: %3.1f",slope)
-            ,sprintf(" holding_point_h_ft (ft): %5.0f",holding_point_h_ft)
-            ,sprintf(" isHolding_reducing_delta: %3.0f",isHolding_reducing_delta)
-            ,sprintf(" is Term: %.0f",isHolding_reducing_terminated)
-            ,sprintf(" CAS: %6.1f",speed_cas));
+            if (debugActive >= 1) {
+                print("Landing 2.1 >"
+                ,sprintf(" Dist (nm): %6.1f",runway_to_airplane_dist)
+                ,sprintf(" Alt (ft): %5.0f",(runway_to_airplane_delta_alt_ft - rwy_offset_v_ft))
+                ,sprintf(" Alt delta (ft): %5.0f",rwy_point_delta_alt_ft)
+                ,sprintf(" Slope: %3.1f",slope)
+                ,sprintf(" holding_point_h_ft (ft): %5.0f",holding_point_h_ft)
+                ,sprintf(" isHolding_reducing_delta: %3.0f",isHolding_reducing_delta)
+                ,sprintf(" is Term: %.0f",isHolding_reducing_terminated)
+                ,sprintf(" CAS: %6.1f",speed_cas));
+            }
         } else if (landig_departure_status_id == 2.2) {
             var wind_speed = getprop("/environment/wind-speed-kt");
             var wind_from = getprop("/environment/wind-from-heading-deg");
@@ -858,37 +867,38 @@ var pilot_assistant = func {
                     }
                 }
                 setprop("fdm/jsbsim/systems/autopilot/gui/pitch-hold-deg",landing_slope);
-                
-                print("Landing 2.2.",landing_22_subStatus,">",
-                ,sprintf(" Dist: %6.1f",runway_to_airplane_dist_direct_nm)
-                ,sprintf(" %6.2f",runway_to_airplane_dist)
-                ,sprintf(" Dh: %5.0f",delta_h_ft)
-                ,sprintf(" | %5.0f",altitude_agl_ft)
-                ,sprintf(" Slp: %4.2f",landing_slope)
-                ,sprintf(" (%4.2f ",slope_adv)
-                ,sprintf(" %4.2f ",landing_22_slope_target)
-                ,sprintf(" [%4.2f",- getprop("fdm/jsbsim/systems/autopilot/pitch-descent-angle-deg-real-lag"))
-                ,sprintf(" |%4.2f]",landing_22_slope_dif_adv)
-                ,sprintf(" Er: %4.2f ",error)
-                ,sprintf(" %4.2f ",landing_slope_integrate)
-                ,sprintf(" %4.2f ",derivate)
-                ,sprintf(" %4.2f ",landing_22_pitch_output_error_coefficient_gain)
-                ,sprintf(" | %4.1f ",landing_22_discending_ftm)
-                ,sprintf(" %1.2f ",weitght_norm)
-                ,sprintf(" %2.3f ",min_to_term)
-                ,")"
-                ,sprintf(" Hd: %4.1f",heading_correct)
-                ,sprintf(" cr: %4.2f",heading_correction_deg)
-                ,sprintf(" fct: %2.2f",heading_factor)
-                ,sprintf(" dgm: %3.2f",heading_correction_deg_mod)
-                ,sprintf(" Dis: %4.1f",distance_to_leave)
-                ,sprintf(" off: %1.2f",rwy_offset_h_nm)
-                ,sprintf(" | %3.1f",rwy_offset_v_ft)
-                ,sprintf(" CAS: %6.1f",speed_cas)
-                ,sprintf(" | %6.1f",cas_max)
-                ,sprintf(" wd: %3.1f",wind_frontal)
-                ,sprintf(" | %3.1f",wind_lateral)
-                );
+                if (debugActive >= 1) {
+                    print("Landing 2.2.",landing_22_subStatus,">",
+                    ,sprintf(" Dist: %6.1f",runway_to_airplane_dist_direct_nm)
+                    ,sprintf(" %6.2f",runway_to_airplane_dist)
+                    ,sprintf(" Dh: %5.0f",delta_h_ft)
+                    ,sprintf(" | %5.0f",altitude_agl_ft)
+                    ,sprintf(" Slp: %4.2f",landing_slope)
+                    ,sprintf(" (%4.2f ",slope_adv)
+                    ,sprintf(" %4.2f ",landing_22_slope_target)
+                    ,sprintf(" [%4.2f",- getprop("fdm/jsbsim/systems/autopilot/pitch-descent-angle-deg-real-lag"))
+                    ,sprintf(" |%4.2f]",landing_22_slope_dif_adv)
+                    ,sprintf(" Er: %4.2f ",error)
+                    ,sprintf(" %4.2f ",landing_slope_integrate)
+                    ,sprintf(" %4.2f ",derivate)
+                    ,sprintf(" %4.2f ",landing_22_pitch_output_error_coefficient_gain)
+                    ,sprintf(" | %4.1f ",landing_22_discending_ftm)
+                    ,sprintf(" %1.2f ",weitght_norm)
+                    ,sprintf(" %2.3f ",min_to_term)
+                    ,")"
+                    ,sprintf(" Hd: %4.1f",heading_correct)
+                    ,sprintf(" cr: %4.2f",heading_correction_deg)
+                    ,sprintf(" fct: %2.2f",heading_factor)
+                    ,sprintf(" dgm: %3.2f",heading_correction_deg_mod)
+                    ,sprintf(" Dis: %4.1f",distance_to_leave)
+                    ,sprintf(" off: %1.2f",rwy_offset_h_nm)
+                    ,sprintf(" | %3.1f",rwy_offset_v_ft)
+                    ,sprintf(" CAS: %6.1f",speed_cas)
+                    ,sprintf(" | %6.1f",cas_max)
+                    ,sprintf(" wd: %3.1f",wind_frontal)
+                    ,sprintf(" | %3.1f",wind_lateral)
+                    );
+                }
             } else {
                 landig_departure_status_id = 3.0;
                 landing_30_brake_stop = 0;
@@ -962,23 +972,25 @@ var pilot_assistant = func {
                     defaultViewInTheEvent = view.index;
                     view.setView(view.indexof("Dragchute view"));
                 }
-                print("Landing 3.0 >"
-                ,sprintf(" Dist (nm): %6.1f",runway_to_airplane_dist)
-                ,sprintf(" | %6.1f",runway_end_to_airplane_dist)
-                ,sprintf(" Heading: %7.1f",heading_correct)
-                ,sprintf(" H. cor: %6.2f",heading_correction_deg_mod)
-                ,sprintf(" H. factor: %6.2f",heading_factor)
-                ,sprintf(" Gear contact: %.0f",gear_unit_contact)
-                ,sprintf(" Gear brake antiskid: %6.2f",getprop("fdm/jsbsim/systems/autopilot/steer-brake-antiskid"))
-                ,sprintf(" heading norm: %6.2f",getprop("fdm/jsbsim/systems/autopilot/true-heading-deg-delta-norm"))
-                ,sprintf(" (%6.0f kts)",getprop("fdm/jsbsim/velocities/vtrue-kts"))
-                ,sprintf(" left int: %6.2f",getprop("fdm/jsbsim/systems/brake/left-steer-brake-intensity"))
-                ,sprintf(" (%6.2f)",getprop("fdm/jsbsim/systems/autopilot/left-steer-brake"))
-                ,sprintf(" right int: %6.2f",getprop("fdm/jsbsim/systems/brake/right-steer-brake-intensity"))
-                ,sprintf(" (%6.2f)",getprop("fdm/jsbsim/systems/autopilot/right-steer-brake"))
-                ,sprintf(" Dragchute: %0f",getprop("fdm/jsbsim/systems/dragchute/magnitude"))
-                ,sprintf(" | BS: %1.0f",getprop("/controls/gear/brake-parking"))
-                );
+                if (debugActive >= 1) {
+                    print("Landing 3.0 >"
+                    ,sprintf(" Dist (nm): %6.1f",runway_to_airplane_dist)
+                    ,sprintf(" | %6.1f",runway_end_to_airplane_dist)
+                    ,sprintf(" Heading: %7.1f",heading_correct)
+                    ,sprintf(" H. cor: %6.2f",heading_correction_deg_mod)
+                    ,sprintf(" H. factor: %6.2f",heading_factor)
+                    ,sprintf(" Gear contact: %.0f",gear_unit_contact)
+                    ,sprintf(" Gear brake antiskid: %6.2f",getprop("fdm/jsbsim/systems/autopilot/steer-brake-antiskid"))
+                    ,sprintf(" heading norm: %6.2f",getprop("fdm/jsbsim/systems/autopilot/true-heading-deg-delta-norm"))
+                    ,sprintf(" (%6.0f kts)",getprop("fdm/jsbsim/velocities/vtrue-kts"))
+                    ,sprintf(" left int: %6.2f",getprop("fdm/jsbsim/systems/brake/left-steer-brake-intensity"))
+                    ,sprintf(" (%6.2f)",getprop("fdm/jsbsim/systems/autopilot/left-steer-brake"))
+                    ,sprintf(" right int: %6.2f",getprop("fdm/jsbsim/systems/brake/right-steer-brake-intensity"))
+                    ,sprintf(" (%6.2f)",getprop("fdm/jsbsim/systems/autopilot/right-steer-brake"))
+                    ,sprintf(" Dragchute: %0f",getprop("fdm/jsbsim/systems/dragchute/magnitude"))
+                    ,sprintf(" | BS: %1.0f",getprop("/controls/gear/brake-parking"))
+                    );
+                }
             }
         } else if (landig_departure_status_id == 4.0) {
             var rwy_coord_end_final = geo.Coord.new();
@@ -1000,21 +1012,23 @@ var pilot_assistant = func {
             }
             delayCycleGeneral = delayCycleGeneral - 1;
             if (delayCycleGeneral <= 0) landig_departure_status_id = 0;
-            print("Landing 4.0 >"
-            ,sprintf(" Dist (nm): %6.1f",runway_to_airplane_dist)
-            ,sprintf(" | %6.1f",runway_end_to_airplane_dist)
-            ,sprintf(" Heading: %7.1f",heading_correct)
-            ,sprintf(" H. cor: %6.1f",heading_correction_deg_mod)
-            ,sprintf(" Gear contact: %.0f",gear_unit_contact)
-            ,sprintf(" Gear brake antiskid: % 6.2f",getprop("fdm/jsbsim/systems/autopilot/steer-brake-antiskid"))
-            ,sprintf(" heading norm: %6.2f",getprop("fdm/jsbsim/systems/autopilot/true-heading-deg-delta-norm"))
-            ,sprintf(" (%6.0f kts)",getprop("fdm/jsbsim/velocities/vtrue-kts"))
-            ,sprintf(" left int: %6.2f",getprop("fdm/jsbsim/systems/brake/left-steer-brake-intensity"))
-            ,sprintf(" (%6.2f)",getprop("fdm/jsbsim/systems/autopilot/left-steer-brake"))
-            ,sprintf(" right int: %6.2f",getprop("fdm/jsbsim/systems/brake/right-steer-brake-intensity"))
-            ,sprintf(" (%6.2f)",getprop("fdm/jsbsim/systems/autopilot/right-steer-brake"))
-            ,sprintf(" | BS: %1.0f",getprop("/controls/gear/brake-parking"))
-            );
+            if (debugActive >= 1) {
+                print("Landing 4.0 >"
+                ,sprintf(" Dist (nm): %6.1f",runway_to_airplane_dist)
+                ,sprintf(" | %6.1f",runway_end_to_airplane_dist)
+                ,sprintf(" Heading: %7.1f",heading_correct)
+                ,sprintf(" H. cor: %6.1f",heading_correction_deg_mod)
+                ,sprintf(" Gear contact: %.0f",gear_unit_contact)
+                ,sprintf(" Gear brake antiskid: % 6.2f",getprop("fdm/jsbsim/systems/autopilot/steer-brake-antiskid"))
+                ,sprintf(" heading norm: %6.2f",getprop("fdm/jsbsim/systems/autopilot/true-heading-deg-delta-norm"))
+                ,sprintf(" (%6.0f kts)",getprop("fdm/jsbsim/velocities/vtrue-kts"))
+                ,sprintf(" left int: %6.2f",getprop("fdm/jsbsim/systems/brake/left-steer-brake-intensity"))
+                ,sprintf(" (%6.2f)",getprop("fdm/jsbsim/systems/autopilot/left-steer-brake"))
+                ,sprintf(" right int: %6.2f",getprop("fdm/jsbsim/systems/brake/right-steer-brake-intensity"))
+                ,sprintf(" (%6.2f)",getprop("fdm/jsbsim/systems/autopilot/right-steer-brake"))
+                ,sprintf(" | BS: %1.0f",getprop("/controls/gear/brake-parking"))
+                );
+            }
         }
         #
         # Output
@@ -1108,17 +1122,10 @@ var pilot_assistant = func {
                         }
                     }
                 }
-            } else {
-                landig_departure_status_id = -1.0;
-            } 
-            if (airport_select != nil) {
-                landig_departure_status_id = 10.1;
-                setprop("fdm/jsbsim/systems/starter/gui/autostart-activate",1);
-                setprop("fdm/jsbsim/systems/autopilot/gui/speed-automatic-gear",1.0);
-            } else {
-                departure_msg = "Search airport and runway";
-                print("Departure 10.0 > Search airport and runway");
             }
+            landig_departure_status_id = 10.1;
+            setprop("fdm/jsbsim/systems/starter/gui/autostart-activate",1);
+            setprop("fdm/jsbsim/systems/autopilot/gui/speed-automatic-gear",1.0);
         } else if (landig_departure_status_id == 10.1) {
             departure_msg = "Motor and electric starting";
             setprop("fdm/jsbsim/systems/autopilot/speed-brake-set-activate",1.0);
@@ -1135,7 +1142,9 @@ var pilot_assistant = func {
             setprop("controls/engines/engine/throttle",0.9);
             setprop("fdm/jsbsim/systems/autopilot/speed-brake-set-activate",1.0);
             if (getprop("fdm/jsbsim/propulsion/engine[0]/n2") > 85) {
-                landig_departure_status_id = 10.3;
+                landig_departure_status_id = 10.30;
+                heading_target_active = 0;
+                heading_target = 0.0;
                 setprop("fdm/jsbsim/systems/autopilot/gui/pitch-descent-angle",0.0);
                 setprop("fdm/jsbsim/systems/autopilot/gui/pitch-descent-angle-deg",0.0);
                 setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed",0.0);
@@ -1163,14 +1172,34 @@ var pilot_assistant = func {
                 setprop("fdm/jsbsim/systems/autopilot/gui/speed-automatic-gear",1.0);
                 setprop("fdm/jsbsim/systems/autopilot/phase-landing",0.0);
             }
-        } else if (landig_departure_status_id == 10.3) {
+        } else if (landig_departure_status_id >= 10.30 and landig_departure_status_id <= 10.39) {
             var altitude_agl_ft = getprop("/position/altitude-agl-ft");
-            rwy_coord_end.set_latlon(airport_select.runways[rwy_select].lat,airport_select.runways[rwy_select].lon); 
-            rwy_coord_end.apply_course_distance(airport_select.runways[rwy_select].heading,rwy_coord_end_offset);
+            if (landig_departure_status_id == 10.30) {
+                if (airport_select == nil) {
+                    heading_target_active = 1;
+                    heading_target = getprop("fdm/jsbsim/systems/autopilot/heading-true-deg");
+                    rwy_coord_end_offset = 3000.0;
+                    var ac_pos = geo.aircraft_position();
+                    rwy_coord_end.set_latlon(ac_pos.lat(),ac_pos.lon());
+                    rwy_coord_end.apply_course_distance(getprop("fdm/jsbsim/systems/autopilot/heading-true-deg"),rwy_coord_end_offset);
+                    landig_departure_status_id = 10.31
+                } else {
+                    rwy_coord_end_offset = airport_select.runways[rwy_select].length;
+                    rwy_coord_end.set_latlon(airport_select.runways[rwy_select].lat,airport_select.runways[rwy_select].lon);
+                    heading_target_active = 1;
+                    heading_target = airport_select.runways[rwy_select].heading;
+                    rwy_coord_end.apply_course_distance(heading_target,rwy_coord_end_offset);
+                    landig_departure_status_id = 10.32
+                }
+            }
             runway_to_airplane_dist = airplane.distance_to(rwy_coord_end) * 0.000621371;
-            heading_correction_deg = (airport_select.runways[rwy_select].heading - airplane.course_to(rwy_coord_end));
+            if (gear_unit_contact > 0) {
+                heading_correction_deg = (heading_target - airplane.course_to(rwy_coord_end));
+            } else {
+                heading_correction_deg = 0.0;
+            }
             var heading_factor = 1 / math.log10(1.05 + math.abs(heading_correction_deg));
-            heading_correct = airport_select.runways[rwy_select].heading - heading_correction_deg * heading_factor;
+            heading_correct = heading_target - heading_correction_deg * heading_factor;
             var speed_cas = getprop("fdm/jsbsim/systems/autopilot/speed-cas-on-air");
             setprop("fdm/jsbsim/systems/autopilot/gui/airport_runway_airplane_heading_correct",heading_correct);
             setprop("fdm/jsbsim/systems/autopilot/gui/true-heading-deg",heading_correct);
@@ -1210,27 +1239,30 @@ var pilot_assistant = func {
                 setprop("fdm/jsbsim/systems/autopilot/gui/impact-control-active",1.0);
                 setprop("fdm/jsbsim/systems/autopilot/landing-gear-set-close",1.0);
             }
-            print("Departure 10.3 >"
-            ,sprintf(" Dist (nm): %6.1f",runway_to_airplane_dist)
-            ,sprintf(" Heading: %7.1f",heading_correct)
-            ,sprintf(" cor: %6.1f",heading_correction_deg)
-            ,sprintf(" norm: %6.2f",getprop("fdm/jsbsim/systems/autopilot/true-heading-deg-delta-norm"))
-            ,sprintf(" Gear cnt: %.0f",gear_unit_contact)
-            ,sprintf(" ABS: %6.2f",getprop("fdm/jsbsim/systems/autopilot/steer-brake-antiskid"))
-            ,sprintf(" (%6.0f kts)",getprop("fdm/jsbsim/velocities/vtrue-kts"))
-            ,sprintf(" left int: %6.2f",getprop("fdm/jsbsim/systems/brake/left-steer-brake-intensity"))
-            ,sprintf(" (%6.2f)",getprop("fdm/jsbsim/systems/autopilot/left-steer-brake"))
-            ,sprintf(" right int: %6.2f",getprop("fdm/jsbsim/systems/brake/right-steer-brake-intensity"))
-            ,sprintf(" (%6.2f)",getprop("fdm/jsbsim/systems/autopilot/right-steer-brake"))
-            ,sprintf(" Alt agl: %4.0f",altitude_agl_ft)
-            ,sprintf(" Pitch: %3.1f",getprop("fdm/jsbsim/systems/autopilot/gui/pitch-hold-deg"))
-            ,sprintf(" Er: %1.2f",getprop("fdm/jsbsim/systems/autopilot/pitch-rad-error"))
-            ,sprintf(" | %2.0f",getprop("fdm/jsbsim/systems/autopilot/pitch-reset-integrator"))
-            ,sprintf(" | %1.2f",getprop("fdm/jsbsim/systems/autopilot/pitch-error"))
-            );
+            if (debugActive >= 1) {
+                print("Departure 10.3 >"
+                ,sprintf(" Dist to end (nm): %6.1f",runway_to_airplane_dist)
+                ,sprintf(" Heading: %7.1f",heading_correct)
+                ,sprintf(" cor: %6.1f",heading_correction_deg)
+                ,sprintf(" norm: %6.2f",getprop("fdm/jsbsim/systems/autopilot/true-heading-deg-delta-norm"))
+                ,sprintf(" Gear cnt: %.0f",gear_unit_contact)
+                ,sprintf(" ABS: %6.2f",getprop("fdm/jsbsim/systems/autopilot/steer-brake-antiskid"))
+                ,sprintf(" (%6.0f kts)",getprop("fdm/jsbsim/velocities/vtrue-kts"))
+                ,sprintf(" left int: %6.2f",getprop("fdm/jsbsim/systems/brake/left-steer-brake-intensity"))
+                ,sprintf(" (%6.2f)",getprop("fdm/jsbsim/systems/autopilot/left-steer-brake"))
+                ,sprintf(" right int: %6.2f",getprop("fdm/jsbsim/systems/brake/right-steer-brake-intensity"))
+                ,sprintf(" (%6.2f)",getprop("fdm/jsbsim/systems/autopilot/right-steer-brake"))
+                ,sprintf(" Alt agl: %4.0f",altitude_agl_ft)
+                ,sprintf(" Pitch: %3.1f",getprop("fdm/jsbsim/systems/autopilot/gui/pitch-hold-deg"))
+                ,sprintf(" Er: %1.2f",getprop("fdm/jsbsim/systems/autopilot/pitch-rad-error"))
+                ,sprintf(" | %2.0f",getprop("fdm/jsbsim/systems/autopilot/pitch-reset-integrator"))
+                ,sprintf(" | %1.2f",getprop("fdm/jsbsim/systems/autopilot/pitch-error"))
+                );
+            }
         } else if (landig_departure_status_id == 10.5) {
             var altitude_agl_ft = getprop("/position/altitude-agl-ft");
             if (altitude_agl_ft > 200 and getprop("fdm/jsbsim/systems/autopilot/speed-cas-on-air-lag") > 185) {
+                # Take-Off procedure end
                 if (getprop("fdm/jsbsim/systems/autopilot/gui/take-off-altitude-top-active") > 0) {
                     setprop("fdm/jsbsim/systems/autopilot/gui/altitude-hold",1.0);
                     if (isAirport_and_rw_selected == -1) {
@@ -1244,6 +1276,10 @@ var pilot_assistant = func {
                     setprop("fdm/jsbsim/systems/autopilot/gui/true-heading",1.0);
                     setprop("fdm/jsbsim/systems/autopilot/gui/true-heading-deg",getprop("fdm/jsbsim/systems/autopilot/gui/take-off-to-heading"));
                     setprop("fdm/jsbsim/systems/autopilot/gui/take-off-to-heading-active",0.0);
+                } else if (heading_target_active == 1) {
+                    setprop("fdm/jsbsim/systems/autopilot/gui/true-heading-deg",heading_target);
+                } else {
+                    setprop("fdm/jsbsim/systems/autopilot/gui/true-heading-deg",math.round(getprop("fdm/jsbsim/systems/autopilot/heading-true-deg")));
                 }
                 if (getprop("fdm/jsbsim/systems/autopilot/gui/take-off-cruise-speed-active") > 0) {
                     if (getprop("fdm/jsbsim/systems/autopilot/gui/take-off-cruise-speed") <= 1 and getprop("fdm/jsbsim/systems/autopilot/gui/take-off-cruise-speed") > 0.0) {
@@ -1261,6 +1297,8 @@ var pilot_assistant = func {
                     setprop("fdm/jsbsim/systems/autopilot/gui/speed-value",getprop("fdm/jsbsim/systems/autopilot/gui/take-off-cruise-speed"));
                     setprop("fdm/jsbsim/systems/autopilot/gui/take-off-cruise-speed-active",0.0);
                 }
+                heading_target_active = 0;
+                heading_target = 0.0;
                 if (isAirport_and_rw_selected == -1) {
                     airport_select = isAirport_airport_id_save;
                     rwy_select = isAirport_airport_rw_save;
@@ -1282,15 +1320,19 @@ var pilot_assistant = func {
         #
         var take_off_status = "";
         if (landig_departure_status_id >= 10.1) {
-            take_off_status = airport_select.id ~ " | " ~ airport_select.runways[rwy_select].id ~ " | " ~ departure_msg;
+            if (airport_select == nil) {
+                take_off_status = "[No airport] " ~ departure_msg;
+            } else {
+                take_off_status = "[" ~airport_select.id ~ "|" ~ airport_select.runways[rwy_select].id ~ "] " ~ departure_msg;
+            }
         }
         if (landig_departure_status_id == 10) {
-            take_off_status = "Airport not found";
+            take_off_status = "Search airport";
         } else if (landig_departure_status_id == 10.1)  {
-            take_off_status = "Find airport " ~ take_off_status;
+            take_off_status = "Swich on " ~ take_off_status;
         } else if (landig_departure_status_id == 10.2)  {
-            take_off_status = "Start from airport " ~ take_off_status;
-        } else if (landig_departure_status_id == 10.3)  {
+            take_off_status = "Swich on " ~ take_off_status;
+        } else if (landig_departure_status_id >= 10.30 and landig_departure_status_id <= 10.39)  {
             take_off_status = "Leave airport " ~ take_off_status;
         } else if (landig_departure_status_id == 10.5) {
             take_off_status = "Take off completed";
@@ -1311,7 +1353,7 @@ var pilot_assistant = func {
         landing_40_brake_stop = 0;
         # Reset the landing data
         setprop("fdm/jsbsim/systems/autopilot/gui/heading-control",1.0);
-        setprop("fdm/jsbsim/systems/autopilot/gui/wing-leveler",1.0);
+        setprop("fdm/jsbsim/systems/autopilot/gui/wing-leveler",0.0);
         setprop("fdm/jsbsim/systems/autopilot/gui/altitude-active",1.0);
         setprop("fdm/jsbsim/systems/autopilot/gui/altitude-hold",1.0);
         setprop("fdm/jsbsim/systems/autopilot/gui/altitude-hold-ft",math.round(getprop("fdm/jsbsim/systems/autopilot/h-sl-ft-lag")));
@@ -1499,10 +1541,13 @@ var pilot_assistant = func {
             and (altitude_hold_inserted_ft > (end.alt() * M2FT + ( 2.0 * impact_min_z_ft)))
             and (altitude_actual > (end.alt() * M2FT));
         
+        var impactAllert = getprop("fdm/jsbsim/systems/autopilot/gui/impact-control-allert");
+            
         if (impact_control_active > 0 and geod != nil) {
             if ((impact_allarm_solution_delay > 0) 
                 or (((impact_time < 5.0) and (impact_time_dif_0_10 > -0.25) and (impact_is_in_security_zone == 0 or (impact_is_in_security_zone == 1 and impact_time_dif_0_10 < 1.0)))
-                    and ((((impact_time / impact_altitude_grain) < 0.8) and math.abs(impact_altitude_direction_der_frist) > 1) or (impact_altitude_direction_der_frist > 5.0)))) {
+                    and ((((impact_time / impact_altitude_grain) < 0.8) and math.abs(impact_altitude_direction_der_frist) > 1) or (impact_altitude_direction_der_frist > 5.0))
+                    and impactAllert == 1)) {
                 if (((impact_time < 3.0) and (abs(impact_time_dif_0_10) < 4.0))
                     or ((impact_time < 5.0) and (abs(impact_time_dif_0_10) < 0.5))) {
                     if (speed_cas < 270 and getprop("fdm/jsbsim/systems/autopilot/gui/speed-value") < 270) {
@@ -1548,7 +1593,9 @@ var pilot_assistant = func {
                     impact_vertical_speed_max_fpm = -100000.0;
                 }
                 # Debug
-                print(sprintf("## Impact CTRL: %.1f",impact_allarm_solution)," (",impact_altitude_hold,")",sprintf(" IR: %.2f",impact_ramp),sprintf(" | %.2f",descent_angle_deg_offset),sprintf(" IR Delta: %.2f",impact_ramp_delta),sprintf(" impact_time: %.2f",impact_time),sprintf(" | %.2f",impact_time_dif_0_10),sprintf(" | %.2f",impact_time_delta),sprintf(" IAG: %.2f",impact_altitude_grain)," | ",impact_altitude_grain_media_size,sprintf(" | %.2f",impact_altitude_grain_avg),sprintf(" IAD: %.2f",impact_altitude_direction_der_frist),sprintf(" A: %.2f",impact_time / impact_altitude_grain),sprintf(" B: %.2f",impact_medium_time_gui)," alt:",math.round(end.alt() * M2FT)," alt delta: ",math.round(altitude_delta),sprintf(" Sec: %.0f",impact_is_in_security_zone),sprintf(" ImpZ: %.0f",impact_min_z_ft));
+                if (debugActive >= 1) {
+                    print(sprintf("## Impact CTRL: %.1f",impact_allarm_solution)," (",impact_altitude_hold,")",sprintf(" IR: %.2f",impact_ramp),sprintf(" | %.2f",descent_angle_deg_offset),sprintf(" IR Delta: %.2f",impact_ramp_delta),sprintf(" impact_time: %.2f",impact_time),sprintf(" | %.2f",impact_time_dif_0_10),sprintf(" | %.2f",impact_time_delta),sprintf(" IAG: %.2f",impact_altitude_grain)," | ",impact_altitude_grain_media_size,sprintf(" | %.2f",impact_altitude_grain_avg),sprintf(" IAD: %.2f",impact_altitude_direction_der_frist),sprintf(" A: %.2f",impact_time / impact_altitude_grain),sprintf(" B: %.2f",impact_medium_time_gui)," alt:",math.round(end.alt() * M2FT)," alt delta: ",math.round(altitude_delta),sprintf(" Sec: %.0f",impact_is_in_security_zone),sprintf(" ImpZ: %.0f",impact_min_z_ft));
+                }
             } else if (impact_control_active == 1) {
                 impact_allarm_solution_delay = 0;
                 # If is altitude_hold_inserted is True is necessary verify is convenient violate the rule
@@ -1613,16 +1660,22 @@ var pilot_assistant = func {
                     }
                 }
                 # Debug
-                print(sprintf("## Impact CTRL: %.1f",impact_allarm_solution)," (",impact_altitude_hold,")",sprintf(" IR: %.2f",impact_ramp),sprintf(" | %.2f",descent_angle_deg_offset),sprintf(" IR Delta: %.2f",impact_ramp_delta),sprintf(" impact_time: %.2f",impact_time),sprintf(" | %.2f",impact_time_dif_0_10),sprintf(" IAG: %.2f",impact_altitude_grain)," | ",impact_altitude_grain_media_size,sprintf(" | %.2f",impact_altitude_grain_avg),sprintf(" IAD: %.2f",impact_altitude_direction_der_frist),sprintf(" A: %.2f",impact_time / impact_altitude_grain),sprintf(" B: %.2f",impact_medium_time_gui)," alt:",math.round(end.alt() * M2FT)," alt delta: ",math.round(altitude_delta),sprintf(" alpha: %.2f",alpha),sprintf(" VVSp: %.2f",impact_vertical_speed_fpm),sprintf(" VVSpMx: %.1f",impact_vertical_speed_max_fpm),sprintf(" D: %.1f",impact_altitude_hold_inserted_delay),sprintf(" Sec: %.0f",impact_is_in_security_zone),sprintf(" ImpZ: %.0f",impact_min_z_ft));
+                if (debugActive >= 1) {
+                    print(sprintf("## Impact CTRL: %.1f",impact_allarm_solution)," (",impact_altitude_hold,")",sprintf(" IR: %.2f",impact_ramp),sprintf(" | %.2f",descent_angle_deg_offset),sprintf(" IR Delta: %.2f",impact_ramp_delta),sprintf(" impact_time: %.2f",impact_time),sprintf(" | %.2f",impact_time_dif_0_10),sprintf(" IAG: %.2f",impact_altitude_grain)," | ",impact_altitude_grain_media_size,sprintf(" | %.2f",impact_altitude_grain_avg),sprintf(" IAD: %.2f",impact_altitude_direction_der_frist),sprintf(" A: %.2f",impact_time / impact_altitude_grain),sprintf(" B: %.2f",impact_medium_time_gui)," alt:",math.round(end.alt() * M2FT)," alt delta: ",math.round(altitude_delta),sprintf(" alpha: %.2f",alpha),sprintf(" VVSp: %.2f",impact_vertical_speed_fpm),sprintf(" VVSpMx: %.1f",impact_vertical_speed_max_fpm),sprintf(" D: %.1f",impact_altitude_hold_inserted_delay),sprintf(" Sec: %.0f",impact_is_in_security_zone),sprintf(" ImpZ: %.0f",impact_min_z_ft));
+                }
             } else {
                 impact_allarm_solution = 3.0;
                 if (impact_control_active == 1) {
-                    print(sprintf("## Impact CTRL: %.1f",impact_allarm_solution));
+                    if (debugActive >= 1) {
+                        print(sprintf("## Impact CTRL: %.1f",impact_allarm_solution));
+                    }
                 }
             }
         } else {
             if (impact_control_active > 0 and geod == nil) {
-                print("## Impact CTRL: ERROR no data GEO (geod is nill)");
+                if (debugActive >= 1) {
+                    print("## Impact CTRL: ERROR no data GEO (geod is nill)");
+                }
                 setprop("fdm/jsbsim/systems/autopilot/gui/impact-control-geo-is-nil","No data GEO");
             }
         }
@@ -1691,7 +1744,6 @@ setlistener("fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct/status", 
                         if (getprop("fdm/jsbsim/systems/autopilot/gui/airport_select_name_direct") != airport_select_id_direct.id) {
                             setprop("fdm/jsbsim/systems/autopilot/gui/airport_select_name_direct",airport_select_id_direct.id);
                         }
-                        print("## 1 airport_select_id_direct: ",airport_select_id_direct.id);
                         setprop("fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct/rw_select",0);
                     }
                 }

@@ -30,6 +30,28 @@
     
     <hrule/>
     
+    <group>
+        <layout>hbox</layout>
+        <text>
+            <label>Auopilot debug active</label>
+            <halign>right</halign>
+            <row>0</row>
+            <col>0</col>
+        </text>
+        <checkbox>
+            <row>0</row>
+            <col>1</col>
+            <halign>fill</halign>
+            <property>fdm/jsbsim/systems/autopilot/gui/debug-active</property>
+            <live>true</live>
+            <binding>
+                <command>dialog-apply</command>
+            </binding>
+        </checkbox>
+    </group>
+    
+    <hrule/>
+    
     <!-- Hydraulic pressure test -->
     <group>
         <layout>hbox</layout>

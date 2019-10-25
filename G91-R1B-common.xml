@@ -205,6 +205,7 @@
             <file>Aircraft/G91-R1B_HD/Nasal/light-manager.nas</file>
             <!-- Autopilot -->
             <file>Aircraft/G91-R1B_HD/Nasal/pilot_assitant.nas</file>
+            <file>Aircraft/G91-R1B_HD/Nasal/pilot_impact_control.nas</file>
         </general>
         
         <canvas_gauges>

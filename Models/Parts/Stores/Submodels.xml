@@ -29,8 +29,8 @@
         <name>stationSxInternal_Tank260lit</name>
         <model>Aircraft/G91-R1B_HD/Models/Parts/Stores/Tank/Tank260lib_10_Sx_sub.xml</model>
         <trigger>sim/G91/stores/stationSxInternalDropFromStation</trigger>
-        <repeat>false</repeat>
-        <count>100</count>
+        <repeat>true</repeat>
+        <count>1</count>
         <delay>0.1</delay>
         <speed>0</speed>
         <slaved>false</slaved>
@@ -58,8 +58,8 @@
         <name>stationDxInternal_Tank260lit</name>
         <model>Aircraft/G91-R1B_HD/Models/Parts/Stores/Tank/Tank260lib_10_Dx_sub.xml</model>
         <trigger>sim/G91/stores/stationDxInternalDropFromStation</trigger>
-        <repeat>false</repeat>
-        <count>100</count>
+        <repeat>true</repeat>
+        <count>1</count>
         <delay>0.1</delay>
         <speed>0</speed>
         <slaved>false</slaved>

@@ -51,7 +51,7 @@ No Overshoot
     <property value="0.0">systems/autopilot/wing-leveler-active</property>
     <property value="0.0">systems/autopilot/wing-leveler-ap-on-off</property>
     <property value="0.5">systems/autopilot/wing-leveler-lag-coefficient</property>
-    <property value="-3.0">systems/autopilot/wing-leveler-output-gain</property>
+    <property value="-1.0">systems/autopilot/wing-leveler-output-gain</property>
     
     <property value="0.0">systems/autopilot/true-heading-active</property>
     <property value="0.0">systems/autopilot/true-heading-ap-on-off</property>

@@ -10,6 +10,19 @@
         <z-m>-1.449</z-m>
         <pitch-offset>-2.5</pitch-offset>
     </offsets>
+    
+    <nasal>
+        <load><![CDATA[
+            props.globals.initNode("sim/G91/liveries/active/test/emissionSub", 1, "DOUBLE");
+            var n = getprop("sim/G91/liveries/active/test/emissionSub");
+            setprop("sim/G91/liveries/active/test/emissionSub",n + 1);
+        ]]></load>
+        <unload><![CDATA[
+            var n = getprop("sim/G91/liveries/active/test/emissionSub");
+            setprop("sim/G91/liveries/active/test/emissionSub",n + 1);
+            print("Bye, bye! from tank_260lib_10_Sx_sub")
+        ]]></unload>
+    </nasal>
 
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Liveries/liveries_002</inherits-from>
