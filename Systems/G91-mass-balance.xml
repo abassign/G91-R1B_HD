@@ -5,12 +5,22 @@
         CG Empty (39%) : 17.71 ft (5.40 m) or 212" - 211"
         CG Full load (20%) : 15.16 ft (4.62 m) or 181"
     </description>
+    <!--
     <ixx unit="SLUG*FT2">   5324.8701  </ixx>
     <iyy unit="SLUG*FT2">  12406.2168  </iyy>
     <izz unit="SLUG*FT2">  13853.4443  </izz>
     <ixy unit="SLUG*FT2">      0.0     </ixy>
     <ixz unit="SLUG*FT2">    594.9233  </ixz>
     <iyz unit="SLUG*FT2">      0.0     </iyz>
+    -->
+    <!-- Test parameters 2019-10-25 Adriano Bassignana -->
+    <ixx unit="SLUG*FT2">  14000.0  </ixx>
+    <iyy unit="SLUG*FT2">  28000.0  </iyy>
+    <izz unit="SLUG*FT2">  32000.0  </izz>
+    <ixy unit="SLUG*FT2">      0.0     </ixy>
+    <ixz unit="SLUG*FT2">    594.9233  </ixz>
+    <iyz unit="SLUG*FT2">      0.0     </iyz>
+    <!--  -->
     <emptywt unit="LBS" >   6834.0 </emptywt>
     <location name="CG" unit="IN">
         <x> 212.00 </x>
