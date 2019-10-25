@@ -13,15 +13,18 @@
     <ixz unit="SLUG*FT2">    594.9233  </ixz>
     <iyz unit="SLUG*FT2">      0.0     </iyz>
     -->
-    <!-- Test parameters 2019-10-25 Adriano Bassignana -->
-    <ixx unit="SLUG*FT2">  14000.0  </ixx>
-    <iyy unit="SLUG*FT2">  28000.0  </iyy>
-    <izz unit="SLUG*FT2">  32000.0  </izz>
-    <ixy unit="SLUG*FT2">      0.0     </ixy>
-    <ixz unit="SLUG*FT2">    594.9233  </ixz>
-    <iyz unit="SLUG*FT2">      0.0     </iyz>
+    <!--
+    Test parameters 2019-10-25 Adriano Bassignana
+    Similar to MB339 Tensor with 40% increment for scale effect
+    -->
+    <ixx unit="SLUG*FT2">10000</ixx>
+    <iyy unit="SLUG*FT2">20200</iyy>
+    <izz unit="SLUG*FT2">23500</izz>
+    <ixy unit="SLUG*FT2">0.0</ixy>
+    <ixz unit="SLUG*FT2">594.9233</ixz>
+    <iyz unit="SLUG*FT2">0.0</iyz>
     <!--  -->
-    <emptywt unit="LBS" >   6834.0 </emptywt>
+    <emptywt unit="LBS" >6834.0</emptywt>
     <location name="CG" unit="IN">
         <x> 212.00 </x>
         <y>   0.00 </y>
