@@ -726,11 +726,6 @@ var pilot_assistant = func {
                 var rwy_coord_end_final = geo.Coord.new();
                 var ku = 15.0;
                 var tu = 15.0;
-                ku = 2.0;
-                tu = 10.0;
-                var kp = 0.6 * ku;
-                var ki = 1.2 * ku / tu;
-                var kd = 3.0 * ku * tu / 40;
                 
                 if (runway_to_airplane_dist_direct_nm > 10.0) {
                     setprop("fdm/jsbsim/systems/autopilot/gui/speed-automatic-flap",1.0);
@@ -823,6 +818,8 @@ var pilot_assistant = func {
                     setprop("fdm/jsbsim/systems/autopilot/gui/pitch-hold",1.0);
                 } else if (runway_to_airplane_dist <= 2.0 and runway_to_airplane_dist > 0.8 and runway_to_airplane_dist_der > 0.0) {
                     landing_22_subStatus = 3;
+                    ku = 5.0;
+                    tu = 10.0;
                     pitch_output_error_coefficient_gain = 1.5 + (wind_speed / 30);
                     cas_max = 135.0 - wind_frontal_active + (15 * weitght_norm);
                     if (landing_22_slope_target < -3.5) landing_22_slope_target = landing_22_slope_target + 0.01;
@@ -832,6 +829,8 @@ var pilot_assistant = func {
                     setprop("fdm/jsbsim/systems/autopilot/gui/pitch-hold",1.0);
                 } else if (((runway_to_airplane_dist <= 0.8 and runway_to_airplane_dist_der > 0.0 and runway_to_airplane_delta_alt_ft > rwy_offset_v_ft and landing_22_subStatus <= 4) or (landing_22_subStatus == 4 and runway_to_airplane_dist_der > 0.0)) and min_to_term > 0.01)  {
                     landing_22_subStatus = 4;
+                    ku = 2.0;
+                    tu = 10.0;
                     pitch_output_error_coefficient_gain = 1.5 * (1 + weitght_norm);
                     cas_max = 120.0 - wind_frontal_active + (5 * weitght_norm);
                     if (landing_22_slope_target < -3.5) landing_22_slope_target = landing_22_slope_target + 0.01;
@@ -841,6 +840,8 @@ var pilot_assistant = func {
                     setprop("fdm/jsbsim/systems/autopilot/gui/pitch-hold",1.0);
                 } else if ((runway_to_airplane_dist_der <= 0.0 or landing_22_subStatus == 5 or min_to_term <= 0.01) and altitude_agl_ft > 40.0 and speed_cas > 20.0 and landing_22_subStatus <= 5) {
                     landing_22_subStatus = 5;
+                    ku = 1.0;
+                    tu = 10.0;
                     cas_max = 110.0 - wind_frontal_active + (5 * weitght_norm);
                     slope = landing_22_slope_dif_adv - getprop("fdm/jsbsim/systems/autopilot/pitch-descent-angle-deg-real-lag");
                     setprop("fdm/jsbsim/systems/autopilot/gui/pitch-hold",0.0);
@@ -850,6 +851,8 @@ var pilot_assistant = func {
                     setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed-fpm",landing_22_discending_ftm);
                 } else if ((altitude_agl_ft <= 40.0 or landing_22_subStatus == 6) and speed_cas > 20.0) {
                     landing_22_subStatus = 6;
+                    ku = 1.0;
+                    tu = 10.0;
                     cas_max = 50.0 - wind_frontal_active;
                     slope = landing_22_slope_dif_adv - getprop("fdm/jsbsim/systems/autopilot/pitch-descent-angle-deg-real-lag");
                     setprop("fdm/jsbsim/systems/autopilot/gui/pitch-hold",0.0);
@@ -858,7 +861,6 @@ var pilot_assistant = func {
                     landing_22_discending_ftm = (-150.0) - (100.0 * weitght_norm * (altitude_agl_ft / 40.0));
                     setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed-fpm",landing_22_discending_ftm);
                 }
-                
                 # Slope ADV for input filter to PID
                 landing_22_slope_adv.insert(-1,slope);
                 var landing_22_slope_adv_dif = slope;
@@ -879,6 +881,9 @@ var pilot_assistant = func {
                     setprop("fdm/jsbsim/systems/autopilot/gui/speed-value",cas_max);
                     
                     # PID controller section
+                    var kp = 0.6 * ku;
+                    var ki = 1.2 * ku / tu;
+                    var kd = 3.0 * ku * tu / 40;
                     error = landing_22_slope_target - slope_adv;
                     landing_slope_integrate = landing_slope_integrate + error * (timeStep / timeStepDivisor);
                     derivate = (error - landing_slope_previous_error) / (timeStep / timeStepDivisor);
