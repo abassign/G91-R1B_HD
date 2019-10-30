@@ -487,6 +487,20 @@
                     <label>99999</label>
                     <halign>left</halign>
                     <live>true</live>
+                    <format>For vert. spd: %3.1f</format>
+                    <property>fdm/jsbsim/systems/autopilot/pitch-hold-deg-mod</property>
+                    <color>
+                        <red>0.0</red>
+                        <green>0.9</green>
+                        <blue>0.0</blue>
+                    </color>
+                </text>
+                <text>
+                    <row>1</row>
+                    <col>4</col>
+                    <label>99999</label>
+                    <halign>left</halign>
+                    <live>true</live>
                     <format>%3.1f (deg)</format>
                     <property>fdm/jsbsim/attitude/theta-deg</property>
                     <color>
@@ -648,7 +662,7 @@
                     <format>Sign factor %4.1f</format>
                     <property>fdm/jsbsim/systems/autopilot/altitude-hold-versus-lag</property>
                     <color>
-                        <red>0.8</red>
+                        <red>0.0</red>
                         <green>0.8</green>
                         <blue>0.0</blue>
                     </color>
@@ -1709,7 +1723,7 @@
             Some Overshoot
             No Overshoot
         -->
-<!--
+
         <hrule/>
         
         <group>
@@ -1801,7 +1815,7 @@
                 <live>true</live>
                 <property>fdm/jsbsim/systems/autopilot/gui/pid-ku</property>
                 <min>0.0</min>
-                <max>100.0</max>
+                <max>10.0</max>
                 <step>0.01</step>
                 <binding>
                     <command>dialog-apply</command>
@@ -1833,7 +1847,7 @@
                 <live>true</live>
                 <property>fdm/jsbsim/systems/autopilot/gui/pid-tu</property>
                 <min>0.0</min>
-                <max>100</max>
+                <max>20</max>
                 <step>0.01</step>
                 <binding>
                     <command>dialog-apply</command>
@@ -1896,9 +1910,9 @@
                         setprop("fdm/jsbsim/systems/autopilot/gui/pid-ki",ki);
                         setprop("fdm/jsbsim/systems/autopilot/gui/pid-kd",kd);
                         # Modifiy data part
-                        setprop("fdm/jsbsim/systems/autopilot/pitch-pid-kp-1",kp);
-                        setprop("fdm/jsbsim/systems/autopilot/pitch-pid-ki-1",ki);
-                        setprop("fdm/jsbsim/systems/autopilot/pitch-pid-kd-1",kd);
+                        setprop("fdm/jsbsim/systems/autopilot/altitude-hold-pid-kp",kp);
+                        setprop("fdm/jsbsim/systems/autopilot/altitude-hold-pid-ki",ki);
+                        setprop("fdm/jsbsim/systems/autopilot/altitude-hold-pid-kd",kd);
                     ]]></script>
                 </binding>
             </button>
@@ -2019,7 +2033,7 @@
                 </color>
             </text>
         </group>
-        -->
+
 
     </group>
 

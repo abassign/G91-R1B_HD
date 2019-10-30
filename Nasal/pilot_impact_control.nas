@@ -83,13 +83,17 @@ var pilot_impact_control = func {
     }
     
     var impactTime_0 = calculate_impact_time(aircraftPosition, speed_fps, heading, speed_horz_fps, speed_down_fps);
-    if (impactTime_0 < impact_control_medium_time and impactTime_0 > -1) {
-        impact_allert = 1;
-        impactTime_0_time_delayed = impact_control_medium_time;
-    } else if (impactTime_0 > impact_control_medium_time and impactTime_0 < (impact_control_medium_time * 2)) {
-        impact_allert = 2;
-        impactTime_0_time_delayed = impact_control_medium_time;
-    } else if (impactTime_0_time_delayed <= 1.0) {
+    if (impactTime_0 != nil) {
+        if (impactTime_0 < impact_control_medium_time and impactTime_0 > -1) {
+            impact_allert = 1;
+            impactTime_0_time_delayed = impact_control_medium_time;
+        } else if (impactTime_0 > impact_control_medium_time and impactTime_0 < (impact_control_medium_time * 2)) {
+            impact_allert = 2;
+            impactTime_0_time_delayed = impact_control_medium_time;
+        } else if (impactTime_0_time_delayed <= 1.0) {
+            impact_allert = 0;
+        }
+    } else {
         impact_allert = 0;
     }
     
@@ -97,11 +101,7 @@ var pilot_impact_control = func {
     
     setprop("fdm/jsbsim/systems/autopilot/gui/impact-control-allert",impact_allert);
     
-    print("#### Pilot Impact Control"
-        ,sprintf(" time 0 (s): %3.1f",impactTime_0)
-        ,sprintf(" Allert: %1.0f",impact_allert)
-        ,sprintf(" Delay: %3.1f",impactTime_0_time_delayed)
-    );
+    #### print("#### Pilot Impact Control",sprintf(" time 0 (s): %3.1f",impactTime_0),sprintf(" Allert: %1.0f",impact_allert),sprintf(" Delay: %3.1f",impactTime_0_time_delayed));
     
 }
 

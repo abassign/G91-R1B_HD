@@ -5,7 +5,6 @@
     <property value="0">systems/dragchute/status</property>
     <property value="0">systems/dragchute/active</property>
     <property value="0">systems/dragchute/activate</property>
-    <property value="0">systems/dragchute/open-phase</property>
     <property value="0">systems/dragchute/sw-reset</property>
     <property value="0">systems/dragchute/reset</property>
     <property value="0">systems/dragchute/door-chute</property>
@@ -31,6 +30,7 @@
                 systems/dragchute/door-chute LT 0.1
                 systems/dragchute/status == 0
                 systems/dragchute/reset == 0
+                systems/dragchute/activate == 1
             </test>
             <test logic="AND" value="0">
                 systems/dragchute/reset == 1
@@ -44,16 +44,14 @@
         
         <switch name="systems/dragchute/active">
             <default value="systems/dragchute/active"/>
-            <test logic="AND" value="1">
-                systems/dragchute/status == 1
-                velocities/vtrue-kts GE 25
-            </test>
             <test logic="OR" value="0">
                 systems/dragchute/reset == 1
                 velocities/vtrue-kts LT 25
-            </test>
-            <test logic="AND" value="0">
                 systems/dragchute/status == 2
+            </test>
+            <test logic="AND" value="1">
+                systems/dragchute/status GE 1
+                velocities/vtrue-kts GE 40
             </test>
         </switch>
         
@@ -61,7 +59,7 @@
             <input>systems/dragchute/active</input>
             <c1>0.2</c1>
         </lag_filter>
-        
+
         <switch>
             <default value="systems/handle-switches/sw-handle-dragchute-trigger"/>
             <test logic="AND" value="0">
@@ -105,11 +103,6 @@
             </clipto>
         </lag_filter>
         
-        <lag_filter name="systems/dragchute/open-phase">
-            <input>systems/dragchute/active</input>
-            <c1>2.0</c1>
-        </lag_filter>
-        
         <lag_filter name="systems/dragchute/open-little-chute">
             <input>systems/dragchute/active</input>
             <c1>2.0</c1>
@@ -124,7 +117,7 @@
         
         <lag_filter name="systems/dragchute/open-big-chute">
             <input>systems/dragchute/open-big-chute-start</input>
-            <c1>0.5</c1>
+            <c1>0.3</c1>
         </lag_filter>
         
         <fcs_function name="systems/dragchute/magnitude">
@@ -135,7 +128,7 @@
                     <product>
                         <p>aero/qbar-psf</p>
                         <p>systems/dragchute/chute-area-sqft</p>
-                        <p>systems/dragchute/open-phase</p>
+                        <p>systems/dragchute/open-big-chute</p>
                         <v>0.5</v>
                     </product>
                     <v>0.0</v>

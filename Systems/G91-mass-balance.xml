@@ -15,8 +15,9 @@
     -->
     <!--
     Test parameters 2019-10-25 Adriano Bassignana
-    Similar to MB339 Tensor with 40% increment for scale effect
+    Similar to MB339 Tensor
     -->
+    
     <ixx unit="SLUG*FT2">10000</ixx>
     <iyy unit="SLUG*FT2">20200</iyy>
     <izz unit="SLUG*FT2">23500</izz>

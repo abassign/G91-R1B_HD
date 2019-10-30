@@ -443,7 +443,10 @@ Changes by Joshua Davidson (it0uchpods) for stability, and fix some reversed sig
                 <property>aero/qbar-psf</property>
                 <property>metrics/Sw-sqft</property>
                 <property>metrics/cbarw-ft</property>
-                <property>fcs/pitch-rad</property>
+                <sum>
+                    <property>systems/autopilot/elevator-cmd</property>
+                    <property>fcs/pitch-rad</property>
+                </sum>
                 <property>aero/constant/Pitch_elevator-coefficient</property>
             </product>
         </function>

@@ -240,13 +240,12 @@
             
             <key n="261">
                 <name>F5</name>
-                <desc>noop</desc>
+                <desc>Drag Chute</desc>
                 <repeatable type="bool">false</repeatable>
+                <interval-sec>0.2</interval-sec>
                 <binding>
-                    <command>nasal</command>
-                    <script>
-                        f16.chute();
-                    </script>
+                    <command>property-toggle</command>
+                    <property>fdm/jsbsim/systems/handle-switches/sw-handle-dragchute-trigger</property>
                 </binding>
             </key>
             
