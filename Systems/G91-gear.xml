@@ -34,7 +34,8 @@ Modify the program for gear[0] pivoting
             <test value="0" logic="AND">
                 position/h-agl-ft gt 12
             </test>
-            <!--<output>gear/gear-pos-norm</output>-->
+            <output>gear/gear-cmd-norm</output>
+            <output>gear/gear-pos-norm</output>
             <output>/controls/gear/gear-down</output>
         </switch>
          
