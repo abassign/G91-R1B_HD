@@ -34,10 +34,10 @@ Modify the program for gear[0] pivoting
             <test value="0" logic="AND">
                 position/h-agl-ft gt 12
             </test>
-            <output>gear/gear-pos-norm</output>
+            <!--<output>gear/gear-pos-norm</output>-->
             <output>/controls/gear/gear-down</output>
         </switch>
-             
+         
         <fcs_function name="systems/gears/nop-1">
             <function>
                 <v>1</v> 
@@ -181,7 +181,7 @@ Modify the program for gear[0] pivoting
     
     <channel name="Landing Gear control" execrate="8" execute="systems/gears/init-passed">
         
-        <kinematic name="gear/gear-pos-norm">
+        <kinematic name="Gear Control">
             <input>gear/gear-cmd-norm</input>
             <traverse>
                 <setting>
@@ -193,8 +193,9 @@ Modify the program for gear[0] pivoting
                     <time>     12 </time>
                 </setting>
             </traverse>
+            <output>gear/gear-pos-norm</output>
         </kinematic>
-        
+                
         <switch name="Set gear direction">
             <default value="0"/>
             <test logic="AND" value="1">
