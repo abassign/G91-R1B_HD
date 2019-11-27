@@ -24,6 +24,35 @@ Modify the program for gear[0] pivoting
     <property value="2.0">systems/gears/gear[0]/steering-angle-deg-limiter-force-exp</property>
     <property value="0.0">systems/gear/lever-rotation</property>
     
+    <property value="0">systems/gears/init-passed</property>
+    <property value="1">systems/gears/init-in-progress</property>
+    
+    <channel name="Init" execrate="1" execute="systems/gears/init-in-progress">
+        
+        <switch name="systems/gears/nop-0">
+            <default value="1"/>
+            <test value="0" logic="AND">
+                position/h-agl-ft gt 12
+            </test>
+            <output>gear/gear-pos-norm</output>
+            <output>/controls/gear/gear-down</output>
+        </switch>
+             
+        <fcs_function name="systems/gears/nop-1">
+            <function>
+                <v>1</v> 
+            </function>
+            <output>systems/gears/init-passed</output>
+        </fcs_function>
+        
+        <fcs_function name="systems/gears/nop-2">
+            <function>
+                <v>0</v> 
+            </function>
+            <output>systems/gears/init-in-progress</output>
+        </fcs_function>
+        
+    </channel>
     
     <channel name="Landing Gear[0] steer" execrate="1">
         <!-- Calcolare una reazione quando lo steer supera 40° 
@@ -150,9 +179,9 @@ Modify the program for gear[0] pivoting
     </channel>
     
     
-    <channel name="Landing Gear control" execrate="8">
+    <channel name="Landing Gear control" execrate="8" execute="systems/gears/init-passed">
         
-        <kinematic name="Gear Control">
+        <kinematic name="gear/gear-pos-norm">
             <input>gear/gear-cmd-norm</input>
             <traverse>
                 <setting>
@@ -164,7 +193,6 @@ Modify the program for gear[0] pivoting
                     <time>     12 </time>
                 </setting>
             </traverse>
-            <output>gear/gear-pos-norm</output>
         </kinematic>
         
         <switch name="Set gear direction">
