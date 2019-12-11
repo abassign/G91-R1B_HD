@@ -45,13 +45,15 @@
     K:             0.12
     -->
     
+    <system file="G91-context"/>
     <system file="G91-active-stability"/>
     <system file="G91-fuel"/>
     <system file="G91-electric"/>
     <system file="G91-manual-switches"/>
     <system file="G91-handle-switches"/>
     <system file="G91-hydraulic"/>
-    <system file="G91-gear"/>
+    <system file="G91-gears"/>
+    <system file="G91-landing-gear"/>
     <system file="G91-brakes"/>
     <system file="G91-lightning"/>
     <system file="G91-canopy"/>
@@ -65,7 +67,6 @@
     <system file="G91-gauges"/>
     <system file="G91-warning-lights"/>
     <system file="G91-climate"/>
-    <system file="G91-landing-gear"/>
     <system file="G91-autopilot"/>
     <system file="G91-dragchute"/>
     <system file="PHI"/>

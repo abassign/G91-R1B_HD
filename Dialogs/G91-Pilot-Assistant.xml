@@ -318,6 +318,20 @@
                     </checkbox>
                     <text>
                         <row>0</row>
+                        <col>1</col>
+                        <label>99999</label>
+                        <halign>left</halign>
+                        <live>true</live>
+                        <format>%3.1f (elev)</format>
+                        <property>fdm/jsbsim/fcs/pitch-deg</property>
+                        <color>
+                            <red>0.0</red>
+                            <green>0.8</green>
+                            <blue>0.0</blue>
+                        </color>
+                    </text>
+                    <text>
+                        <row>0</row>
                         <col>2</col>
                         <label>999999999999999</label>
                         <halign>left</halign>
@@ -342,7 +356,7 @@
                         <binding>
                             <command>nasal</command>
                             <script>
-                                setprop("fdm/jsbsim/systems/autopilot/gui/pitch-descent-angle",0.0);
+                                setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle",0.0);
                             </script>
                         </binding>
                     </radio>
@@ -379,7 +393,7 @@
                         <col>3</col>
                         <name>impact_min_z_ft</name>
                         <property>fdm/jsbsim/systems/autopilot/gui/impact-min-z-ft</property>
-                        <min>100.0</min>
+                        <min>00.0</min>
                         <max>500.0</max>
                         <step>10.0</step> 
                         <binding>
@@ -397,6 +411,60 @@
                         <color>
                             <red>0.9</red>
                             <green>0.9</green>
+                            <blue>0.0</blue>
+                        </color>
+                    </text>
+                    <text>
+                        <row>2</row>
+                        <col>0</col>
+                        <halign>left</halign>
+                        <label>Time to impact</label>
+                    </text>
+                    <text>
+                        <row>2</row>
+                        <col>1</col>
+                        <label>999999</label>
+                        <halign>left</halign>
+                        <live>true</live>
+                        <format>[%3.0f]</format>
+                        <property>fdm/jsbsim/systems/autopilot/gui/impact-control-status</property>
+                        <color>
+                            <red>0.0</red>
+                            <green>0.8</green>
+                            <blue>0.0</blue>
+                        </color>
+                    </text>
+                    <text>
+                        <row>2</row>
+                        <col>2</col>
+                        <label>999999999</label>
+                        <halign>left</halign>
+                        <live>true</live>
+                        <format>%2.1f s</format>
+                        <property>fdm/jsbsim/systems/autopilot/gui/impact-time</property>
+                        <color>
+                            <red>0.0</red>
+                            <green>0.8</green>
+                            <blue>0.0</blue>
+                        </color>
+                    </text>
+                    <text>
+                        <row>2</row>
+                        <col>3</col>
+                        <halign>left</halign>
+                        <label>Allert</label>
+                    </text>
+                    <text>
+                        <row>2</row>
+                        <col>4</col>
+                        <label>999999999</label>
+                        <halign>left</halign>
+                        <live>true</live>
+                        <format>%2.2f</format>
+                        <property>fdm/jsbsim/systems/autopilot/gui/impact-control-allert</property>
+                        <color>
+                            <red>0.0</red>
+                            <green>0.8</green>
                             <blue>0.0</blue>
                         </color>
                     </text>
@@ -422,8 +490,15 @@
                     <binding>
                         <command>nasal</command>
                         <script>
-                            setprop("fdm/jsbsim/systems/autopilot/gui/pitch-hold",0.0);
-                            setprop("fdm/jsbsim/systems/autopilot/gui/pitch-descent-angle",0.0);
+                            if (getprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed") == 1) {
+                                setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle",0.0);
+                                setprop("fdm/jsbsim/systems/autopilot/gui/pitch-alpha",0.0);
+                            } else {
+                            if (getprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle") == 0 and
+                                getprop("fdm/jsbsim/systems/autopilot/gui/pitch-alpha") == 0) {
+                                    setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle",1.0);
+                                }
+                            }
                         </script>
                     </binding>
                 </radio>
@@ -451,66 +526,7 @@
                     </color>
                 </text>
                 <text>
-                    <label>Pitch Hold</label>
-                    <halign>right</halign>
-                    <row>1</row>
-                    <col>0</col>
-                </text>
-                <radio>
-                    <row>1</row>
-                    <col>1</col>
-                    <property>fdm/jsbsim/systems/autopilot/gui/pitch-hold</property>
-                    <live>true</live>
-                    <binding>
-                        <command>dialog-apply</command>
-                    </binding>
-                    <binding>
-                        <command>nasal</command>
-                        <script>
-                            setprop("fdm/jsbsim/systems/autopilot/gui/pitch-descent-angle",0.0);
-                            setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed",0.0);
-                        </script>
-                    </binding>
-                </radio>
-                <input>
-                    <row>1</row>
-                    <col>2</col>
-                    <property>fdm/jsbsim/systems/autopilot/gui/pitch-hold-deg</property>
-                    <live>true</live>
-                    <binding>
-                        <command>dialog-apply</command>
-                    </binding>
-                </input>
-                <text>
-                    <row>1</row>
-                    <col>3</col>
-                    <label>99999</label>
-                    <halign>left</halign>
-                    <live>true</live>
-                    <format>For vert. spd: %3.1f</format>
-                    <property>fdm/jsbsim/systems/autopilot/pitch-hold-deg-mod</property>
-                    <color>
-                        <red>0.0</red>
-                        <green>0.9</green>
-                        <blue>0.0</blue>
-                    </color>
-                </text>
-                <text>
-                    <row>1</row>
-                    <col>4</col>
-                    <label>99999</label>
-                    <halign>left</halign>
-                    <live>true</live>
-                    <format>%3.1f (deg)</format>
-                    <property>fdm/jsbsim/attitude/theta-deg</property>
-                    <color>
-                        <red>0.9</red>
-                        <green>0.9</green>
-                        <blue>0.0</blue>
-                    </color>
-                </text>
-                <text>
-                    <label>Descent angle</label>
+                    <label>Slope angle</label>
                     <halign>right</halign>
                     <row>2</row>
                     <col>0</col>
@@ -518,7 +534,7 @@
                 <radio>
                     <row>2</row>
                     <col>1</col>
-                    <property>fdm/jsbsim/systems/autopilot/gui/pitch-descent-angle</property>
+                    <property>fdm/jsbsim/systems/autopilot/gui/pitch-angle</property>
                     <live>true</live>
                     <binding>
                         <command>dialog-apply</command>
@@ -526,15 +542,22 @@
                     <binding>
                         <command>nasal</command>
                         <script>
-                            setprop("fdm/jsbsim/systems/autopilot/gui/pitch-hold",0.0);
-                            setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed",0.0);
+                            if (getprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle") == 1) {
+                                setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed",0.0);
+                                setprop("fdm/jsbsim/systems/autopilot/gui/pitch-alpha",0.0);
+                            } else {
+                            if (getprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle") == 0 and
+                                getprop("fdm/jsbsim/systems/autopilot/gui/pitch-alpha") == 0) {
+                                    setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed",1.0);
+                                }
+                            }
                         </script>
                     </binding>
                 </radio>
                 <input>
                     <row>2</row>
                     <col>2</col>
-                    <property>fdm/jsbsim/systems/autopilot/gui/pitch-descent-angle-deg</property>
+                    <property>fdm/jsbsim/systems/autopilot/gui/pitch-angle-deg</property>
                     <live>true</live>
                     <binding>
                         <command>dialog-apply</command>
@@ -546,8 +569,8 @@
                     <label>9999999999</label>
                     <halign>left</halign>
                     <live>true</live>
-                    <format>%3.1f (deg)</format>
-                    <property>fdm/jsbsim/systems/autopilot/pitch-descent-angle-deg-real</property>
+                    <format>%3.2f (deg)</format>
+                    <property>fdm/jsbsim/systems/autopilot/pitch-angle-absolute-deg-lag</property>
                     <color>
                         <red>0.9</red>
                         <green>0.9</green>
@@ -555,7 +578,7 @@
                     </color>
                 </text>
                 <text>
-                    <label>Altitude Hold</label>
+                    <label>Alpha angle</label>
                     <halign>right</halign>
                     <row>3</row>
                     <col>0</col>
@@ -563,29 +586,80 @@
                 <radio>
                     <row>3</row>
                     <col>1</col>
-                    <property>fdm/jsbsim/systems/autopilot/gui/altitude-hold</property>
+                    <property>fdm/jsbsim/systems/autopilot/gui/pitch-alpha</property>
                     <live>true</live>
                     <binding>
                         <command>dialog-apply</command>
                     </binding>
                     <binding>
                         <command>nasal</command>
-                        <script><![CDATA[
-                            if (getprop("fdm/jsbsim/systems/autopilot/gui/altitude-hold") == 1) {
-                                if (getprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed") == 0 or 
-                                    getprop("fdm/jsbsim/systems/autopilot/gui/pitch-hold") == 0) {
-                                    setprop("fdm/jsbsim/systems/autopilot/gui/pitch-hold",1.0);
-                                    setprop("fdm/jsbsim/systems/autopilot/gui/pitch-descent-angle",0.0);
-                                    if (getprop("fdm/jsbsim/systems/autopilot/gui/pitch-hold-deg") < 6.0) {
-                                        setprop("fdm/jsbsim/systems/autopilot/gui/pitch-hold-deg",6.0);
-                                    }
+                        <script>
+                            if (getprop("fdm/jsbsim/systems/autopilot/gui/pitch-alpha") == 1) {
+                                setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed",0.0);
+                                setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle",0.0);
+                            } else {
+                            if (getprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed") == 0 and
+                                getprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle") == 0) {
+                                    setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed",1.0);
                                 }
                             }
-                        ]]></script>
+                        </script>
                     </binding>
                 </radio>
                 <input>
                     <row>3</row>
+                    <col>2</col>
+                    <property>fdm/jsbsim/systems/autopilot/gui/pitch-alpha-deg</property>
+                    <live>true</live>
+                    <binding>
+                        <command>dialog-apply</command>
+                    </binding>
+                </input>
+                <text>
+                    <row>3</row>
+                    <col>3</col>
+                    <label>9999999999</label>
+                    <halign>left</halign>
+                    <live>true</live>
+                    <format>%3.2f (deg)</format>
+                    <property>fdm/jsbsim/aero/alpha-deg</property>
+                    <color>
+                        <red>0.9</red>
+                        <green>0.9</green>
+                        <blue>0.0</blue>
+                    </color>
+                </text>
+                <text>
+                    <row>3</row>
+                    <col>4</col>
+                    <label>9</label>
+                    <halign>left</halign>
+                    <live>true</live>
+                    <format>(sup %1d)</format>
+                    <property>fdm/jsbsim/systems/autopilot/pitch-alpha-super-activate</property>
+                    <color>
+                        <red>0.9</red>
+                        <green>0.0</green>
+                        <blue>0.0</blue>
+                    </color>
+                </text>
+                <text>
+                    <label>Altitude Hold</label>
+                    <halign>right</halign>
+                    <row>4</row>
+                    <col>0</col>
+                </text>
+                <radio>
+                    <row>4</row>
+                    <col>1</col>
+                    <property>fdm/jsbsim/systems/autopilot/gui/altitude-hold</property>
+                    <live>true</live>
+                    <binding>
+                        <command>dialog-apply</command>
+                    </binding>
+                </radio>
+                <input>
+                    <row>4</row>
                     <col>2</col>
                     <property>fdm/jsbsim/systems/autopilot/gui/altitude-hold-ft</property>
                     <live>true</live>
@@ -594,7 +668,7 @@
                     </binding>
                 </input>
                 <text>
-                    <row>3</row>
+                    <row>4</row>
                     <col>3</col>
                     <label>99999</label>
                     <halign>left</halign>
@@ -608,39 +682,32 @@
                     </color>
                 </text>
                 <button>
-                    <row>4</row>
+                    <row>5</row>
                     <col>0</col>
                     <legend>Set altitude</legend>
                     <halign>fill</halign>
                     <live>true</live>
                     <binding>
                         <command>nasal</command>
-                        <script>
+                        <script><![CDATA[
                             setprop("fdm/jsbsim/systems/autopilot/gui/altitude-hold-ft",math.round(getprop("fdm/jsbsim/systems/autopilot/h-sl-ft-lag")));
                             setprop("fdm/jsbsim/systems/autopilot/gui/altitude-hold",1.0);
-                        </script>
-                    </binding>
-                    <binding>
-                        <command>nasal</command>
-                        <script><![CDATA[
-                            if (getprop("fdm/jsbsim/systems/autopilot/gui/altitude-hold") == 1) {
-                                if (getprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed") == 0) {
-                                    setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed",1);
-                                    setprop("fdm/jsbsim/systems/autopilot/gui/pitch-hold",0.0);
-                                    setprop("fdm/jsbsim/systems/autopilot/gui/pitch-descent-angle",0.0);
-                                    if (math.abs(getprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed-fpm")) < 100.0) {
-                                        setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed-fpm",1000.0);
-                                    }
+                            if (getprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed") == 0 and 
+                                getprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle") == 0 and 
+                                getprop("fdm/jsbsim/systems/autopilot/gui/pitch-alpha") == 0) {
+                                setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed",1);
+                                if (math.abs(getprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed-fpm")) < 100.0) {
+                                    setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed-fpm",500.0);
                                 }
-                                if (getprop("fdm/jsbsim/systems/autopilot/gui/altitude-active") == 0) {
-                                    setprop("fdm/jsbsim/systems/autopilot/gui/altitude-active",1.0);
-                                }
+                            }
+                            if (getprop("fdm/jsbsim/systems/autopilot/gui/altitude-active") == 0) {
+                                setprop("fdm/jsbsim/systems/autopilot/gui/altitude-active",1.0);
                             }
                         ]]></script>
                     </binding>
                 </button>
                 <text>
-                    <row>4</row>
+                    <row>5</row>
                     <col>2</col>
                     <label>99999</label>
                     <halign>left</halign>
@@ -654,13 +721,13 @@
                     </color>
                 </text>
                 <text>
-                    <row>4</row>
+                    <row>5</row>
                     <col>3</col>
                     <label>99999</label>
                     <halign>left</halign>
                     <live>true</live>
-                    <format>Sign factor %4.1f</format>
-                    <property>fdm/jsbsim/systems/autopilot/altitude-hold-versus-lag</property>
+                    <format>Sign factor %4.2f</format>
+                    <property>fdm/jsbsim/systems/autopilot/altitude-hold-pid-gain-lag-sw</property>
                     <color>
                         <red>0.0</red>
                         <green>0.8</green>
@@ -747,8 +814,7 @@
                                 setprop("fdm/jsbsim/systems/autopilot/gui/speed-throttle",0.0);
                                 setprop("fdm/jsbsim/systems/autopilot/gui/altitude-hold",0.0);
                                 setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed",0.0);
-                                setprop("fdm/jsbsim/systems/autopilot/gui/pitch-hold",1.0);
-                                setprop("fdm/jsbsim/systems/autopilot/gui/pitch-descent-angle",0.0);
+                                setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle",0.0);
                             } else {
                                 setprop("fdm/jsbsim/systems/autopilot/gui/speed-throttle",1.0);
                             }
@@ -1723,7 +1789,7 @@
             Some Overshoot
             No Overshoot
         -->
-
+<!--
         <hrule/>
         
         <group>
@@ -1847,7 +1913,7 @@
                 <live>true</live>
                 <property>fdm/jsbsim/systems/autopilot/gui/pid-tu</property>
                 <min>0.0</min>
-                <max>20</max>
+                <max>10</max>
                 <step>0.01</step>
                 <binding>
                     <command>dialog-apply</command>
@@ -1910,9 +1976,9 @@
                         setprop("fdm/jsbsim/systems/autopilot/gui/pid-ki",ki);
                         setprop("fdm/jsbsim/systems/autopilot/gui/pid-kd",kd);
                         # Modifiy data part
-                        setprop("fdm/jsbsim/systems/autopilot/altitude-hold-pid-kp",kp);
-                        setprop("fdm/jsbsim/systems/autopilot/altitude-hold-pid-ki",ki);
-                        setprop("fdm/jsbsim/systems/autopilot/altitude-hold-pid-kd",kd);
+                        setprop("fdm/jsbsim/systems/autopilot/pitch-alpha-pid-kp",kp);
+                        setprop("fdm/jsbsim/systems/autopilot/pitch-alpha-pid-ki",ki);
+                        setprop("fdm/jsbsim/systems/autopilot/pitch-alpha-pid-kd",kd);
                     ]]></script>
                 </binding>
             </button>
@@ -1976,64 +2042,8 @@
                     <blue>0.0</blue>
                 </color>
             </text>
-            <text>
-                <row>0</row>
-                <col>14</col>
-                <label>99999</label>
-                <halign>left</halign>
-                <live>true</live>
-                <format>%1.3f</format>
-                <property>fdm/jsbsim/systems/autopilot/pitch-rad-error</property>
-                <color>
-                    <red>0.2</red>
-                    <green>0.9</green>
-                    <blue>0.0</blue>
-                </color>
-            </text>
-            <text>
-                <row>0</row>
-                <col>15</col>
-                <label>99999</label>
-                <halign>left</halign>
-                <live>true</live>
-                <format>%1.3f</format>
-                <property>fdm/jsbsim/systems/autopilot/pitch-reset-integrator</property>
-                <color>
-                    <red>0.0</red>
-                    <green>0.9</green>
-                    <blue>0.0</blue>
-                </color>
-            </text>
-            <text>
-                <row>0</row>
-                <col>16</col>
-                <label>99999</label>
-                <halign>left</halign>
-                <live>true</live>
-                <format>%2.3f</format>
-                <property>fdm/jsbsim/systems/autopilot/pitch-speed-ap-pid</property>
-                <color>
-                    <red>0.0</red>
-                    <green>0.9</green>
-                    <blue>0.0</blue>
-                </color>
-            </text>
-            <text>
-                <row>0</row>
-                <col>17</col>
-                <label>99999</label>
-                <halign>left</halign>
-                <live>true</live>
-                <format>%2.3f</format>
-                <property>fdm/jsbsim/systems/autopilot/pitch-error</property>
-                <color>
-                    <red>0.0</red>
-                    <green>0.9</green>
-                    <blue>0.0</blue>
-                </color>
-            </text>
         </group>
-
+        -->
 
     </group>
 

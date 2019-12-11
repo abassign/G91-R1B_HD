@@ -21,10 +21,6 @@
     <property value="0">systems/lightning/taxiing-light/on</property>
     <property value="0">systems/lightning/beacon/on</property>
     <property value="0">systems/lightning/beacon/motor</property>
-    <!--
-    <property value="0"></property>
-    <property value="0"></property>
-    -->
     
     
     <channel name="light uv instrument" execrate="32">

@@ -110,7 +110,6 @@ Changes by Joshua Davidson (it0uchpods) for stability, and fix some reversed sig
                 <property>aero/qbar-psf</property>
                 <property>metrics/Sw-sqft</property>
                 <property>fcs/pitch-rad</property>
-                <value>0.2</value>
             </product>
         </function>
         
@@ -443,10 +442,7 @@ Changes by Joshua Davidson (it0uchpods) for stability, and fix some reversed sig
                 <property>aero/qbar-psf</property>
                 <property>metrics/Sw-sqft</property>
                 <property>metrics/cbarw-ft</property>
-                <sum>
-                    <property>systems/autopilot/elevator-cmd</property>
-                    <property>fcs/pitch-rad</property>
-                </sum>
+                <property>fcs/pitch-rad</property>
                 <property>aero/constant/Pitch_elevator-coefficient</property>
             </product>
         </function>

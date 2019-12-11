@@ -145,7 +145,7 @@
         <fcs_function name="systems/dragchute/beta-deg-rnd">
             <function>
                 <product>
-                    <p>systems/dragchute/rnd-number-beta</p>
+                    <random mean="0.0" stddev="2.0"/>
                     <product>
                         <quotient>
                             <sum>
@@ -163,7 +163,7 @@
         <fcs_function name="systems/dragchute/alpha-deg-rnd">
             <function>
                 <product>
-                    <p>systems/dragchute/rnd-number-alpha</p>
+                    <random mean="0.0" stddev="2.0"/>
                     <product>
                         <quotient>
                             <sum>

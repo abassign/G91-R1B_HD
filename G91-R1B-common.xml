@@ -112,6 +112,16 @@
                         </binding>
                     </item>
                     <item>
+                        <label>Special effects</label>
+                        <binding>
+                            <command>nasal</command>
+                            <script>
+                                test_dialog = gui.Dialog.new("sim/gui/dialogs/G91/Acro/dialog","Aircraft/G91-R1B_HD/Dialogs/G91-Effects.xml");
+                                test_dialog.open();
+                            </script>
+                        </binding>
+                    </item>
+                    <item>
                         <label>Gauges</label>
                         <binding>
                             <command>nasal</command>
@@ -169,12 +179,6 @@
         
     </sim>
     
-    <controls>
-        <gear>
-            <brake-parking>0</brake-parking>
-        </gear>
-    </controls>
-    
     <nasal>
         <general>
             <!-- Generic -->
@@ -215,6 +219,19 @@
         <tyresmoke>
             <file>Aircraft/G91-R1B_HD/Nasal/tyresmoke.nas</file>
         </tyresmoke>
+
+        <set-gear-down-script>
+            <script>
+                if(getprop("/sim/presets/onground")) {
+                    setprop("controls/gear/gear-down", "true");
+                } else {
+                    setprop("controls/gear/gear-down", "false");
+                }
+                print("#### initialize > controls/gear/gear-down set to true");
+                print("#### initialize > /sim/presets/onground:",getprop("/sim/presets/onground"),":");
+            </script>
+        </set-gear-down-script>
+
     </nasal>
     
     <!-- Key mappings -->

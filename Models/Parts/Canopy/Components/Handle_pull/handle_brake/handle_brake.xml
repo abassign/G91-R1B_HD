@@ -16,14 +16,6 @@
         <object-name>handle_cockpit02.000</object-name>
     </effect>
     
-    <!--
-    <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
-        <object-name>handle_cockpit02.003</object-name>
-        <object-name>handle_cockpit02.001</object-name>
-    </effect>
-    -->
-    
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
         <object-name>handle_cockpit02.003</object-name>
@@ -74,17 +66,13 @@
             <repeatable>false</repeatable>
             <interval-sec>1.0</interval-sec>
             <binding>
-                <command>property-assign</command>
+                <command>property-toggle</command>
                 <property>fdm/jsbsim/systems/handle-switches/sw-handle-brake-trigger</property>
-                <value>1</value>
+                <step>1</step>
+                <min>0</min>
+                <max>1</max>
+                <wrap>false</wrap>
             </binding>
-            <mod-up>
-                <binding>
-                    <command>property-assign</command>
-                    <property>fdm/jsbsim/systems/handle-switches/sw-handle-brake-trigger</property>
-                    <value>0</value>
-                </binding>
-            </mod-up>
         </action>
     </animation>
     

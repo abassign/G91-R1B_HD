@@ -22,14 +22,52 @@ Modify the program for gear[0] pivoting
     <property value="-1.0">systems/gears/gear[0]/landingGearSteerLimitationFy-sign</property>
     <property value="5.0">systems/gears/gear[0]/steering-angle-deg-limiter-force</property>
     <property value="2.0">systems/gears/gear[0]/steering-angle-deg-limiter-force-exp</property>
-    <property value="0.0">systems/gear/lever-rotation</property>
+    
+    <property value="0.0">systems/gears/induced-turbulence</property>
+    <property value="0.2">systems/gears/induced-turbulence-intensity</property>
+    <property value="8.0">systems/gears/induced-turbulence-lag-C1</property>
+    <property value="0.0">systems/gears/induced-turbulence-lag</property>
+    
+    <property value="0.0">systems/gears/preset-onground</property>
     
     
-    <channel name="Landing Gear[0] steer" execrate="1">
+    <!-- Code for testing, is not possible the correct use o this channel because
+    when /sim/presets/ is defined the JSBSim in not jat in time to receive the value
+    that return e nil. But I leave this code for future implementations -->
+    <!--
+    <channel name="preset onground">
+        
+        <switch name="systems/gears/preset-onground">
+            <default value="0"/>
+            <test logic="AND" value="1">
+                /sim/presets/onground == 1
+            </test>
+        </switch>
+        
+        <washout_filter name="systems/gears/preset-onground-wa">
+            <input>systems/gears/preset-onground</input>
+            <c1>1.0</c1>
+        </washout_filter>
+
+        <switch>
+            <default value="/controls/gear/gear-down"/>
+            <test logic="AND" value="systems/gears/preset-onground">
+                <test logic="OR">
+                    systems/gears/preset-onground-wa GT 0.1
+                    systems/gears/preset-onground-wa LT -0.1
+                </test>
+            </test>
+            <output>/controls/gear/gear-down</output>
+        </switch>
+
+    </channel>
+    -->
+    
+    
+    <channel name="Landing Gear[0] steer" execrate="4">
         <!-- Calcolare una reazione quando lo steer supera 40° 
         Punto di applicazione è il carrello anteriore il valore deve essere tale da ridurre lo steer e riportarlo a 40° è quindi un attuatore
         -->
-        
         <fcs_function name="systems/gears/gear[0]/is-stationary">
             <function>
                 <ifthen>
@@ -146,13 +184,13 @@ Modify the program for gear[0] pivoting
             </function>
             <output>external_reactions/LandingGearSteerLimitationFy/magnitude</output>
         </fcs_function>
-
+        
     </channel>
     
     
-    <channel name="Landing Gear control" execrate="8">
+    <channel name="Landing Gear control" execrate="4">
         
-        <kinematic name="Gear Control">
+        <kinematic name="gear/gear-pos-norm">
             <input>gear/gear-cmd-norm</input>
             <traverse>
                 <setting>
@@ -164,10 +202,9 @@ Modify the program for gear[0] pivoting
                     <time>     12 </time>
                 </setting>
             </traverse>
-            <output>gear/gear-pos-norm</output>
         </kinematic>
         
-        <switch name="Set gear direction">
+        <switch name="systems/gears/gear-direction-sound">
             <default value="0"/>
             <test logic="AND" value="1">
                 gear/gear-cmd-norm EQ 0
@@ -179,22 +216,27 @@ Modify the program for gear[0] pivoting
                 gear/gear-pos-norm GT 0
                 gear/gear-pos-norm LT 1
             </test>
-            <output>gear/gear-direction</output>
         </switch>
         
-        <fcs_function name="gear sound roumble">
+        <fcs_function name="systems/gears/gear-pos-norm-sound-roumble">
             <function>
-                <product>
-                    <p>gear/gear-pos-norm</p>
-                    <p>aero/qbar-psf</p>
-                    <v>0.002</v>
-                </product>
+                <sum>
+                    <product>
+                        <v>0.3</v>
+                        <p>gear/gear-pos-norm</p>
+                    </product>
+                    <abs>
+                        <product>
+                            <p>systems/gears/induced-turbulence-lag</p>
+                            <v>50.0</v>
+                        </product>
+                    </abs>
+                </sum>
             </function>
-            <output>gear/gear-pos-norm-sound-roumble</output>
         </fcs_function>
         
-        <kinematic name="Gear Control Sound">
-            <input>gear/gear-cmd-norm</input>
+        <kinematic name="gear/gear-pos-norm-sound">
+            <input>gear/gear-pos-norm</input>
             <traverse>
                 <setting>
                     <position> 0 </position>
@@ -205,10 +247,9 @@ Modify the program for gear[0] pivoting
                     <time>     17.5 </time>
                 </setting>
             </traverse>
-            <output>gear/gear-pos-norm-sound</output>
         </kinematic>
         
-        <switch name="Set gear direction sound">
+        <switch name="gear/gear-direction-sound">
             <default value="0"/>
             <test logic="AND" value="1">
                 gear/gear-cmd-norm EQ 0
@@ -220,10 +261,38 @@ Modify the program for gear[0] pivoting
                 gear/gear-pos-norm-sound GT 0
                 gear/gear-pos-norm-sound LT 1
             </test>
-            <output>gear/gear-direction-sound</output>
         </switch>
         
-        <lag_filter name="systems/gear/lever-rotation-lag">
+        <fcs_function name="systems/gears/induced-turbulence">
+            <function>
+                <product>
+                    <product>
+                        <p>gear/gear-pos-norm</p>
+                        <p>aero/qbar-psf</p>
+                        <random/>
+                        <p>systems/gears/induced-turbulence-intensity</p>
+                    </product>
+                    <table>
+                        <independentVar>aero/qbar-psf</independentVar>
+                        <tableData>
+                            0.0 0
+                            6.53 0.008
+                            26.1 0.006
+                            104.0 0.002
+                            418.0 0.001
+                            1671.0 0.0005
+                        </tableData>
+                    </table>
+                </product>
+            </function>
+        </fcs_function>
+        
+        <lag_filter name="systems/gears/induced-turbulence-lag">
+            <input>systems/gears/induced-turbulence</input>
+            <c1>systems/gears/induced-turbulence-lag-C1</c1>
+        </lag_filter>
+        
+        <lag_filter name="systems/gears/lever-rotation-lag">
             <input>gear/gear-cmd-norm</input>
             <c1>3.0</c1>
         </lag_filter>
@@ -364,6 +433,7 @@ Modify the program for gear[0] pivoting
             </table>
         </product>
     </function>
+    
     
 </system>
 

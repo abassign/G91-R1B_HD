@@ -10,7 +10,7 @@ var landingGearFunctions = maketimer(0.1, func() {
     var lenghtHarm = 0.15;
     var offsetLight = 0.06;
     var landingGearHandle_deg = getprop("fdm/jsbsim/gear/gear-pos-norm");
-    var direction = getprop("fdm/jsbsim/gear/gear-direction");
+    var direction = getprop("fdm/jsbsim/systems/gears/gear-direction-sound");
     var isAllarm = getprop("fdm/jsbsim/systems/landing-gear/allarm-active");
     var lightOn = 0;
 

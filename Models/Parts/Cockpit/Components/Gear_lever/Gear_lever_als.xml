@@ -200,7 +200,7 @@
         <type>rotate</type>
         <object-name>LandinGearLeverage</object-name>
         <object-name>procedural_light_cockpit_landing_gear_handle_spot_red_bottom</object-name>
-        <property>fdm/jsbsim/systems/gear/lever-rotation-lag</property>
+        <property>fdm/jsbsim/systems/gears/lever-rotation-lag</property>
         <factor>50</factor>
         <offset-deg>-25</offset-deg>
         <center>

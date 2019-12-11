@@ -6,7 +6,7 @@
     <layout>vbox</layout>
     <default-padding>7</default-padding>
     <modal>false</modal>
-    <width>700</width>
+    <width>1000</width>
     
     <!-- title bar -->
     <group>
@@ -577,8 +577,8 @@
         <slider>
             <name>sim_G91_Test_V0_10A</name>
             <property>sim/G91/Test/V0_10A</property>
-            <min>-20.0</min>
-            <max>20.0</max>
+            <min>-10.0</min>
+            <max>10.0</max>
             <step>0.1</step>  
             <binding>
                 <command>dialog-apply</command>
@@ -835,5 +835,135 @@
             </binding>
         </checkbox>
     </group>
+    
+        <hrule/>
+    
+    <group>
+        <layout>table</layout>
+        
+        <text>
+            <row>0</row>
+            <col>0</col>
+            <halign>left</halign>
+            <label>impact-control-active</label>
+        </text>
+        <text>
+            <row>0</row>
+            <col>1</col>
+            <label>9999999</label>
+            <live>true</live>
+            <format>%2.3f</format>
+            <property>fdm/jsbsim/systems/autopilot/gui/impact-control-active</property>
+            <color>
+                <red>0.9</red>
+                <green>0.9</green>
+                <blue>0.9</blue>
+            </color>
+        </text>
+        
+        <text>
+            <row>0</row>
+            <col>2</col>
+            <halign>left</halign>
+            <label>impact-control-allert</label>
+        </text>
+        <text>
+            <row>0</row>
+            <col>3</col>
+            <label>9999999</label>
+            <live>true</live>
+            <format>%2.3f</format>
+            <property>fdm/jsbsim/systems/autopilot/gui/impact-control-allert</property>
+            <color>
+                <red>0.9</red>
+                <green>0.9</green>
+                <blue>0.9</blue>
+            </color>
+        </text>
+        
+        <text>
+            <row>0</row>
+            <col>4</col>
+            <halign>left</halign>
+            <label>impact-time-0</label>
+        </text>
+        <text>
+            <row>0</row>
+            <col>5</col>
+            <label>9999999</label>
+            <live>true</live>
+            <format>%2.3f</format>
+            <property>fdm/jsbsim/systems/autopilot/gui/impact-time-0</property>
+            <color>
+                <red>0.9</red>
+                <green>0.9</green>
+                <blue>0.9</blue>
+            </color>
+        </text>
+        
+        <text>
+            <row>0</row>
+            <col>6</col>
+            <halign>left</halign>
+            <label>...impact-Time-0-time-delayed</label>
+        </text>
+        <text>
+            <row>0</row>
+            <col>7</col>
+            <label>9999999</label>
+            <live>true</live>
+            <format>%2.3f</format>
+            <property>fdm/jsbsim/systems/autopilot/gui/impact-Time-0-time-delayed</property>
+            <color>
+                <red>0.9</red>
+                <green>0.9</green>
+                <blue>0.9</blue>
+            </color>
+        </text>
+        
+        
+        <text>
+            <row>1</row>
+            <col>0</col>
+            <halign>left</halign>
+            <label>...gui/vertical-speed-fpm</label>
+        </text>
+        <text>
+            <row>1</row>
+            <col>1</col>
+            <label>9999999</label>
+            <live>true</live>
+            <format>%2.3f</format>
+            <property>fdm/jsbsim/systems/autopilot/gui/vertical-speed-fpm</property>
+            <color>
+                <red>0.9</red>
+                <green>0.9</green>
+                <blue>0.9</blue>
+            </color>
+        </text>
+        
+        <text>
+            <row>1</row>
+            <col>2</col>
+            <halign>left</halign>
+            <label>...impact-rugosity-value</label>
+        </text>
+        <text>
+            <row>1</row>
+            <col>3</col>
+            <label>9999999</label>
+            <live>true</live>
+            <format>%2.3f</format>
+            <property>fdm/jsbsim/systems/autopilot/gui/impact-rugosity-value</property>
+            <color>
+                <red>0.9</red>
+                <green>0.9</green>
+                <blue>0.9</blue>
+            </color>
+        </text>
+
+        
+    </group>
+
     
 </PropertyList>

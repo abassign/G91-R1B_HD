@@ -8,10 +8,8 @@ Description: G91R2 Canopy automation
     
     <property value="0">systems/starter/start-process-active</property>
     <property value="0">systems/starter/start-process-terminated</property>
-    <property value="0">systems/starter/startup-sound-lag</property>
     <property value="0">systems/starter/start-starter-gas</property>
     <property value="0">systems/starter/start-starter-gas-test</property>
-    <property value="0">systems/starter/start-starter-gas-lag</property>
     <property value="0">systems/starter/ignition-on-throttle-togle</property>
     <property value="0">systems/starter/ignition-on-throttle-pos</property>
     <property value="0">systems/starter/ignition-on-throttle-washed</property>

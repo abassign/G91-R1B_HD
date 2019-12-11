@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+
+<!--
+Original work Copyright (c) 2018-2019 Adriano Bassignana (abassign)
+Create the program to centralization of the braking system
+Modify the program for steer limitation
+Modified work Copyright 2019 Joshua Davidson (it0uchpods)
+Modify the program for gear[0] pivoting
+-->
+
+
+<system name="gears">

@@ -435,7 +435,7 @@
     <animation>
         <type>rotate</type>
         <object-name>D_equilibratore_sx.002</object-name>
-        <property>fdm/jsbsim/fcs/pitch-alpha-sum-deg</property>
+        <property>fdm/jsbsim/fcs/pitch-deg</property>
         <factor>-1</factor>
         <axis>
             <x1-m> 3.81291 </x1-m>
@@ -450,7 +450,7 @@
     <animation>
         <type>rotate</type>
         <object-name>D_equilibratore_dx</object-name>
-        <property>fdm/jsbsim/fcs/pitch-alpha-sum-deg</property>
+        <property>fdm/jsbsim/fcs/pitch-deg</property>
         <factor>1</factor>
         <axis>
             <x1-m> 3.81291 </x1-m>

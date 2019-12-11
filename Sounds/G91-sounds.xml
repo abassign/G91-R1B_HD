@@ -250,7 +250,7 @@
             <condition>
                 <and>
                     <equals>
-                        <property>/fdm/jsbsim/gear/gear-direction-sound</property>
+                        <property>fdm/jsbsim/systems/gears/gear-direction-sound</property>
                         <value>1</value>
                     </equals>
                     <property>sim/current-view/internal</property>
@@ -268,7 +268,7 @@
             <condition>
                 <and>
                     <equals>
-                        <property>fdm/jsbsim/gear/gear-direction-sound</property>
+                        <property>fdm/jsbsim/systems/gears/gear-direction-sound</property>
                         <value>-1</value>
                     </equals>
                     <property>sim/current-view/internal</property>
@@ -290,8 +290,8 @@
                 </equals>
             </condition>
             <volume>
-                <property>fdm/jsbsim/gear/gear-pos-norm-sound-roumble</property>
-                <factor>3.0</factor>
+                <property>fdm/jsbsim/systems/gears/gear-pos-norm-sound-roumble</property>
+                <factor>5.0</factor>
             </volume>
         </rumble>
         

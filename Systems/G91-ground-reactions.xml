@@ -114,12 +114,12 @@ Modified work Copyright 2019 Joshua Davidson (it0uchpods)
         <location unit="IN">
             <x> 327 </x>
             <y> 0 </y>
-            <z>  -13.6 </z>
+            <z>  -23.6 </z>
         </location>
-        <static_friction>  0.80 </static_friction>
-        <dynamic_friction> 0.50 </dynamic_friction>
-        <spring_coeff unit="LBS/FT">                10000 </spring_coeff>
-        <damping_coeff unit="LBS/FT/SEC">            2000 </damping_coeff>
-        <damping_coeff_rebound unit="LBS/FT/SEC">   40000 </damping_coeff_rebound>
+        <static_friction>  1.80 </static_friction>
+        <dynamic_friction> 1.50 </dynamic_friction>
+        <spring_coeff unit="LBS/FT">               1000000 </spring_coeff>
+        <damping_coeff unit="LBS/FT/SEC">          1000 </damping_coeff>
+        <damping_coeff_rebound unit="LBS/FT/SEC">  1000 </damping_coeff_rebound>
     </contact>
 </ground_reactions>

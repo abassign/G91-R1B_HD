@@ -34,7 +34,13 @@ Flaps 38°
     <property value="15.0">fcs/ailerons-max-deg</property>
     <property value="0.2618">fcs/ailerons-max-rad</property>
     
+    <property value="1.0">fcs/aero-int-turbulence-active</property>
+    <property value="0.0">fcs/aero-int-turbulence-elevator</property>
+    <property value="0.0">fcs/aero-int-turbulence-gear</property>
+    <property value="0.0">fcs/aero-int-turbulence-flap</property>
+    
     <property value="0.0">/sim/gui/dialogs/autopilot/altitude-active</property>
+    
     
     <channel name="Elevators">
         
@@ -59,40 +65,53 @@ Flaps 38°
 
         <summer name="fcs/pitch-alpha-norm-sum">
             <input>fcs/elevator-cmd-norm</input>
-            <input>systems/autopilot/pitch-ap-autoswitch-norm</input>
             <clipto>
                 <min> -1 </min>
                 <max>  1 </max> 
             </clipto>
         </summer>
         
-        <fcs_function name="fcs/pitch-alpha-sum-deg">
+        <fcs_function name="fcs/pitch-alpha-sum-rad">
             <function>
-                <ifthen>
-                    <ge>
-                        <p>fcs/pitch-alpha-norm-sum</p>
-                        <v>0.0</v>
-                    </ge>
-                    <product>
-                        <p>fcs/pitch-alpha-norm-sum</p>
-                        <p>fcs/elevator-max-deg</p>
-                    </product>
-                    <product>
-                        <p>fcs/pitch-alpha-norm-sum</p>
-                        <p>fcs/elevator-min-deg</p>
-                    </product>
-                </ifthen>
+                <product>
+                    <sum>
+                        <ifthen>
+                            <ge><p>fcs/pitch-alpha-norm-sum</p><v>0.0</v></ge>
+                            <product>
+                                <p>fcs/pitch-alpha-norm-sum</p>
+                                <p>fcs/elevator-max-deg</p>
+                            </product>
+                            <product>
+                                <p>fcs/pitch-alpha-norm-sum</p>
+                                <p>fcs/elevator-min-deg</p>
+                            </product>
+                        </ifthen>
+                        <p>fcs/pitch-alpha-trim-deg</p>
+                    </sum>
+                    <v>0.0174533</v>
+                </product>
             </function>
+            <clipto>
+                <min>-0.2181662</min>
+                <max>0.3054326</max> 
+            </clipto>
         </fcs_function>
         
-        <summer name="fcs/pitch-deg">
-            <input>fcs/pitch-alpha-sum-deg</input>
-            <input>fcs/pitch-alpha-trim-deg</input>
+        <summer name="fcs/pitch-rad">
+            <input>fcs/pitch-alpha-sum-rad</input>
+            <input>fcs/pitch-autopilot-rad</input>
+            <input>fcs/aero-int-turbulence-elevator</input>
+            <input>fcs/aero-int-turbulence-gear</input>
+            <input>fcs/aero-int-turbulence-flap</input>
+            <clipto>
+                <min>-0.2181662</min>
+                <max>0.3054326</max> 
+            </clipto>
         </summer>
         
-        <pure_gain name="fcs/pitch-rad">
-            <input>fcs/pitch-deg</input>
-            <gain>0.0174533</gain>
+        <pure_gain name="fcs/pitch-deg">
+            <input>fcs/pitch-rad</input>
+            <gain>57.2958</gain>
         </pure_gain>
         
     </channel>
@@ -319,5 +338,21 @@ Flaps 38°
         </scheduled_gain>
         
     </channel>
+    
+    
+    <channel name="Effects">
+        
+        <pure_gain name="fcs/aero-int-turbulence-elevator">
+            <input>systems/airbrake/induced-turbulence-lag</input>
+            <gain>fcs/aero-int-turbulence-active</gain>
+        </pure_gain>
+
+        <pure_gain name="fcs/aero-int-turbulence-gear">
+            <input>systems/gears/induced-turbulence-lag</input>
+            <gain>fcs/aero-int-turbulence-active</gain>
+        </pure_gain>
+
+    </channel>
+    
     
 </flight_control> 
