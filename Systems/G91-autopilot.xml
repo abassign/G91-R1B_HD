@@ -30,13 +30,16 @@ No Overshoot
     <property value="0.0">systems/autopilot/gui/pitch-alpha-deg</property>
     <property value="0.0">systems/autopilot/gui/altitude-active</property>
     <property value="0.0">systems/autopilot/gui/vertical-speed</property>
-    <property value="1000.0">systems/autopilot/gui/vertical-speed-fpm</property>
+    <property value="2500.0">systems/autopilot/gui/vertical-speed-fpm</property>
     <property value="1.0">systems/autopilot/gui/pitch-angle</property>
     <property value="0.0">systems/autopilot/gui/pitch-angle-deg</property>
     
     <property value="0.0">systems/autopilot/gui/altitude-hold</property>
     <property value="0.0">systems/autopilot/gui/altitude-hold-ft</property>
     <property value="0.0">systems/autopilot/gui/altitude-hold-togle</property>
+    
+    <property value="0.0">systems/autopilot/gui/altitude-QFE</property>
+    <property value="1000.0">systems/autopilot/gui/altitude-QFE-ft</property>
     
     <property value="0.0">systems/autopilot/gui/speed-control</property>
     <property value="1.0">systems/autopilot/gui/speed-throttle</property>
@@ -64,8 +67,10 @@ No Overshoot
     <property value="0.0">systems/autopilot/propulsion-specific-con</property>
     
     <!-- Altitude section -->
+    <property value="0.0">systems/autopilot/altitude-alt-terrain</property>
     <property value="0.0">systems/autopilot/altitude-hold-active</property>
-    <property value="0.0">systems/autopilot/altitude-hold-ft</property>
+    <property value="0.0">systems/autopilot/altitude-hold-ft-lag</property>
+    <property value="0.1">systems/autopilot/altitude-hold-ft-lag-C1</property>
     <property value="0.0">systems/autopilot/altitude-hold-ft-dif</property>
     <property value="0.0">systems/autopilot/altitude-hold-versus-lag</property>
     <property value="2.0">systems/autopilot/altitude-hold-versus-lag-C1</property>
@@ -81,6 +86,20 @@ No Overshoot
     <property value="1.0">systems/autopilot/altitude-hold-input-gain</property>
     <property value="2.0">systems/autopilot/altitude-hold-output-pow-gain</property>
     <property value="0.005">systems/autopilot/altitude-hold-output-gain</property>
+    
+    <!-- Altitude QFE section -->
+    <property value="0.0">systems/autopilot/altitude-QFE-active</property>
+    <property value="0.0">systems/autopilot/altitude-QFE-ft-lag</property>
+    <property value="0.1">systems/autopilot/altitude-QFE-ft-lag-C1</property>
+    <property value="0.0">systems/autopilot/altitude-QFE-impact-elev-ft</property>
+    <property value="0.5">systems/autopilot/altitude-QFE-impact-elev-ft-C1</property>
+    <property value="0.0">systems/autopilot/altitude-QFE-impact-elev-intensity</property>
+    <property value="0.0">systems/autopilot/altitude-QFE-impact-elev-intensity-lag</property>
+    <property value="0.5">systems/autopilot/altitude-QFE-impact-elev-intensity-C1</property>
+    <property value="0.0">systems/autopilot/altitude-QFE-impact-elev-intensity-active</property>
+    <property value="0.0">systems/autopilot/altitude-QFE-impact-elev-neutre</property>
+    <!-- Impact control -->
+    <property value="0.0">systems/autopilot/gui/impact-control-active</property>
     
     <!-- Fuel section -->
     <property value="0.0">systems/autopilot/fuel-total-lbs</property>
@@ -157,6 +176,7 @@ No Overshoot
     <property value="0.5">systems/autopilot/pitch-output-error-coefficient-gain-flap-value</property>
     <property value="0.0">systems/autopilot/pitch-control-active</property>
     <property value="0.0">systems/autopilot/pitch-angle-active</property>
+    <property value="0.0">systems/autopilot/pitch-angle-deg</property>
     <property value="1.0">systems/autopilot/pitch-angle-absolute-deg-lag-C1</property>
     <property value="2.0">systems/autopilot/pitch-angle-deg-lag-C1</property>
     <property value="1.0">systems/autopilot/pitch-angle-limiter-factor</property>
@@ -197,6 +217,7 @@ No Overshoot
     <property value="0.0">systems/autopilot/roll-ap-autoswitch-norm</property>
     <!-- Speed section -->
     <property value="0.0">systems/autopilot/speed-true-on-air</property>
+    <property value="0.0">systems/autopilot/speed-true-on-terrain-fps</property>
     <property value="0.0">systems/autopilot/speed-true-on-air-ms-inv</property>
     <property value="0.0">systems/autopilot/speed-cas-on-air</property>
     <property value="0.0">systems/autopilot/speed-cas-on-air-lag</property>
@@ -230,6 +251,7 @@ No Overshoot
     <!-- Vertical speed section -->
     <property value="2.0">systems/autopilot/vertical-speed-fps-lag-C1</property>
     <property value="0.0">systems/autopilot/vertical-speed-active</property>
+    <property value="0.0">systems/autopilot/vertical-speed-fpm</property>
     <property value="0.0">systems/autopilot/vertical-speed-reset-integrator</property>
     <!-- PID -->
     <property value="1.5">systems/autopilot/vertical-speed-pid-kp</property>
@@ -332,6 +354,14 @@ No Overshoot
             </test>
         </switch>
         
+        <switch name="systems/autopilot/altitude-QFE-active">
+            <default value="0.0"/>
+            <test logic="AND" value="1.0">
+                systems/autopilot/gui/altitude-active == 1.0
+                systems/autopilot/gui/altitude-QFE == 1.0
+            </test>
+        </switch>
+        
         <switch name="systems/autopilot/altitude-hold-limitator-active">
             <default value="0"/>
             <test logic="AND" value="1">
@@ -339,8 +369,9 @@ No Overshoot
                     systems/autopilot/pitch-angle-active == 1
                     systems/autopilot/vertical-speed-active == 1
                 </test>
-                <test logic="AND">
+                <test logic="OR">
                     systems/autopilot/altitude-hold-active == 1
+                    systems/autopilot/altitude-QFE-active == 1
                 </test>
             </test>
         </switch>
@@ -473,6 +504,145 @@ No Overshoot
             <gain>57.2958</gain>
         </pure_gain>
         
+        <!-- Speed section -->
+        
+        <fcs_function name="systems/autopilot/speed-true-on-air">
+            <function>
+                <ifthen>
+                    <gt><p>velocities/vtrue-kts</p><v>0.1</v></gt>
+                    <p>velocities/vtrue-kts</p>
+                    <v>0.0</v>
+                </ifthen>
+            </function>
+        </fcs_function>
+        
+        <fcs_function name="systems/autopilot/speed-true-fps">
+            <function>
+                <product>
+                    <p>velocities/vtrue-kts</p>
+                    <v>1.46667</v>
+                </product>
+            </function>
+        </fcs_function>
+        
+        <fcs_function name="systems/autopilot/speed-true-on-terrain-fps">
+            <function>
+                <abs>
+                    <product>
+                        <p>velocities/vtrue-kts</p>
+                        <cos><p>systems/autopilot/pitch-angle-rad-sign</p></cos>
+                        <v>1.46667</v>
+                    </product>
+                </abs>
+            </function>
+        </fcs_function>
+        
+        <!-- altitude section -->
+        
+        <switch name="systems/autopilot/altitude-hold-ft">
+            <default value="systems/autopilot/gui/altitude-hold-ft"/>
+            <test logic="AND" value="systems/gauges/PHI/program/route-altitude-hold-ft">
+                systems/autopilot/phi-heading-active == 1
+            </test>
+        </switch>
+        
+        <lag_filter name="systems/autopilot/altitude-hold-ft-lag">
+            <input>systems/autopilot/altitude-hold-ft</input>
+            <c1>systems/autopilot/altitude-hold-ft-lag-C1</c1>
+        </lag_filter>
+        
+        <lag_filter name="systems/autopilot/altitude-QFE-impact-elev-intensity-lag">
+            <input>systems/autopilot/altitude-QFE-impact-elev-intensity</input>
+            <c1>systems/autopilot/altitude-QFE-impact-elev-intensity-C1</c1>
+        </lag_filter>
+        
+        <fcs_function name="systems/autopilot/altitude-QFE-impact-elev-intensity-fuzy-1-0">
+            <function>
+                <quotient>
+                    <difference>
+                        <v>1.57079632679</v>
+                        <atan>
+                            <difference>
+                                <p>systems/autopilot/altitude-QFE-impact-elev-intensity-lag</p>
+                                <v>0.5</v>
+                            </difference>
+                        </atan>
+                    </difference>
+                    <v>1.57079632679</v>
+                </quotient>
+            </function>
+        </fcs_function>
+        
+        <fcs_function name="systems/autopilot/altitude-QFE-impact-elev-intensity-fuzy-0-1">
+            <function>
+                <quotient>
+                    <atan>
+                        <difference>
+                            <p>systems/autopilot/altitude-QFE-impact-elev-intensity-lag</p>
+                            <v>0.5</v>
+                        </difference>
+                    </atan>
+                    <v>1.57079632679</v>
+                </quotient>
+            </function>
+        </fcs_function>
+        
+        <summer name="systems/autopilot/altitude-alt-terrain">
+            <input>position/h-sl-ft</input>
+            <input>-/position/altitude-agl-ft</input>
+        </summer>
+        
+        <fcs_function name="systems/autopilot/altitude-QFE-ft-hold">
+            <function>
+                <ifthen>
+                    <gt><p>systems/autopilot/altitude-hold-active</p><v>0.5</v></gt>
+                    <difference>
+                        <p>systems/autopilot/altitude-hold-ft-lag</p>
+                        <p>systems/autopilot/altitude-alt-terrain</p>
+                    </difference>
+                    <p>systems/autopilot/gui/altitude-QFE-ft</p>
+                </ifthen>
+            </function>
+        </fcs_function>
+        
+        <lag_filter name="systems/autopilot/altitude-QFE-ft-lag">
+            <input>systems/autopilot/altitude-QFE-ft-hold</input>
+            <c1>systems/autopilot/altitude-QFE-ft-lag-C1</c1>
+        </lag_filter>
+        
+        <fcs_function name="systems/autopilot/pitch-angle-deg">
+            <function>
+                <ifthen>
+                    <gt><p>systems/autopilot/gui/impact-control-active</p><v>0.5</v></gt>
+                    <sum>
+                        <v>1.0</v>
+                        <product>
+                            <p>systems/autopilot/gui/pitch-angle-deg</p>
+                            <p>systems/autopilot/altitude-QFE-impact-elev-intensity-lag</p>
+                        </product>
+                    </sum>
+                    <p>systems/autopilot/gui/pitch-angle-deg</p>
+                </ifthen>
+            </function>
+        </fcs_function>
+        
+        <fcs_function name="systems/autopilot/vertical-speed-fpm">
+            <function>
+                <ifthen>
+                    <gt><p>systems/autopilot/gui/impact-control-active</p><v>0.5</v></gt>
+                    <sum>
+                        <v>1.0</v>
+                        <product>
+                            <p>systems/autopilot/gui/vertical-speed-fpm</p>
+                            <p>systems/autopilot/altitude-QFE-impact-elev-intensity-lag</p>
+                            <v>2.0</v>
+                        </product>
+                    </sum>
+                    <p>systems/autopilot/gui/vertical-speed-fpm</p>
+                </ifthen>
+            </function>
+        </fcs_function>
+        
     </channel>
     
     
@@ -482,9 +652,6 @@ No Overshoot
             <default value="systems/autopilot/pitch-output-error-coefficient-gain-active"/>
             <test logic="AND" value="systems/autopilot/pitch-output-error-coefficient-gain">
                 systems/autopilot/pitch-output-error-coefficient-gain GE 0.1
-                <!-- ? verificare
-                systems/autopilot/pitch-output-error-coefficient-gain-active-lag LT 0.1
-                -->
             </test>
             <test logic="AND" value="0">
                 systems/autopilot/pitch-output-error-coefficient-gain-lag LT 0.1
@@ -514,6 +681,7 @@ No Overshoot
                 systems/autopilot/pitch-output-error-coefficient-gain-active-lag LT 0.1
                 systems/autopilot/pitch-output-error-coefficient-gain-speedbrake LT 0.1
                 systems/autopilot/pitch-output-error-coefficient-gain-flap LT 0.1
+                systems/autopilot/altitude-QFE-impact-elev-intensity-active LT 1.0
             </test>
             <test logic="AND" value="systems/autopilot/pitch-output-error-coefficient-gain-active-lag">
                 systems/autopilot/pitch-output-error-coefficient-gain-active-lag GT systems/autopilot/pitch-output-error-coefficient-gain-active-max
@@ -523,6 +691,10 @@ No Overshoot
             </test>
             <test logic="AND" value="systems/autopilot/pitch-output-error-coefficient-gain-flap">
                 systems/autopilot/pitch-output-error-coefficient-gain-flap GT systems/autopilot/pitch-output-error-coefficient-gain-active-max
+            </test>
+            <test logic="AND" value="systems/autopilot/altitude-QFE-impact-elev-intensity">
+                systems/autopilot/altitude-QFE-impact-elev-intensity-active GE 1.0
+                systems/autopilot/altitude-QFE-impact-elev-intensity-lag GT systems/autopilot/pitch-output-error-coefficient-gain-active-max
             </test>
         </switch>
         
@@ -807,18 +979,21 @@ No Overshoot
             <function>
                 <toradians>
                     <ifthen>
-                        <eq><p>systems/autopilot/altitude-hold-active</p><v>1.0</v></eq>
+                        <or>
+                            <eq><p>systems/autopilot/altitude-hold-active</p><v>1.0</v></eq>
+                            <eq><p>systems/autopilot/altitude-QFE-active</p><v>1.0</v></eq>
+                        </or>
                         <product>
                             <p>systems/autopilot/altitude-hold-pid-gain-lag-sw</p>
                             <ifthen>
-                                <lt><abs><p>systems/autopilot/gui/pitch-angle-deg</p></abs><v>0.5</v></lt>
+                                <lt><abs><p>systems/autopilot/pitch-angle-deg</p></abs><v>0.5</v></lt>
                                 <v>2.0</v>
-                                <abs><p>systems/autopilot/gui/pitch-angle-deg</p></abs>
+                                <abs><p>systems/autopilot/pitch-angle-deg</p></abs>
                             </ifthen>
                         </product>
                         <ifthen>
                             <eq><p>systems/autopilot/pitch-angle-active</p><v>1.0</v></eq>
-                            <p>systems/autopilot/gui/pitch-angle-deg</p>
+                            <p>systems/autopilot/pitch-angle-deg</p>
                             <p>systems/autopilot/pitch-angle-absolute-deg-lag</p>
                         </ifthen>
                     </ifthen>
@@ -919,18 +1094,21 @@ No Overshoot
             <function>
                 <quotient>
                     <ifthen>
-                        <eq><p>systems/autopilot/altitude-hold-active</p><v>1.0</v></eq>
+                        <or>
+                            <eq><p>systems/autopilot/altitude-hold-active</p><v>1.0</v></eq>
+                            <eq><p>systems/autopilot/altitude-QFE-active</p><v>1.0</v></eq>
+                        </or>
                         <product>
                             <p>systems/autopilot/altitude-hold-pid-gain-lag-sw</p>
                             <ifthen>
-                                <lt><abs><p>systems/autopilot/gui/vertical-speed-fpm</p></abs><v>200.0</v></lt>
+                                <lt><abs><p>systems/autopilot/vertical-speed-fpm</p></abs><v>200.0</v></lt>
                                 <v>500.0</v>
-                                <abs><p>systems/autopilot/gui/vertical-speed-fpm</p></abs>
+                                <abs><p>systems/autopilot/vertical-speed-fpm</p></abs>
                             </ifthen>
                         </product>
                         <ifthen>
                             <eq><p>systems/autopilot/vertical-speed-active</p><v>1.0</v></eq>
-                            <p>systems/autopilot/gui/vertical-speed-fpm</p>
+                            <p>systems/autopilot/vertical-speed-fpm</p>
                             <p>systems/autopilot/v-up-fpm-lag</p>
                         </ifthen>
                     </ifthen>
@@ -1049,20 +1227,58 @@ No Overshoot
             <c1>systems/autopilot/altitude-hold-versus-lag-C1</c1>
         </lag_filter>
         
-        <switch name="systems/autopilot/altitude-hold-ft">
-            <default value="systems/autopilot/gui/altitude-hold-ft"/>
-            <test logic="AND" value="systems/gauges/PHI/program/route-altitude-hold-ft">
-                systems/autopilot/phi-heading-active == 1
-            </test>
-        </switch>
+        <lag_filter name="systems/autopilot/altitude-QFE-impact-elev-ft-lag">
+            <input>systems/autopilot/altitude-QFE-impact-elev-ft</input>
+            <c1>systems/autopilot/altitude-QFE-impact-elev-ft-C1</c1>
+        </lag_filter>
         
-        <summer name="systems/autopilot/altitude-hold-ft-dif">
-            <input>systems/autopilot/altitude-hold-ft</input>
-            <input>-position/h-sl-ft</input>
-        </summer>
+        <fcs_function name="systems/autopilot/altitude-selected-ft-dif">
+            <function>
+                <ifthen>
+                    <gt><p>systems/autopilot/altitude-QFE-impact-elev-neutre</p><v>0.1</v></gt>
+                    <v>0.0</v>
+                    <sum>
+                        <product>
+                            <p>systems/autopilot/altitude-QFE-impact-elev-intensity-fuzy-0-1</p>
+                            <difference>
+                                <sum>
+                                    <p>systems/autopilot/altitude-QFE-ft-lag</p>
+                                    <p>systems/autopilot/altitude-QFE-impact-elev-ft-lag</p>
+                                </sum>
+                                <p>position/h-sl-ft</p>
+                            </difference>
+                        </product>
+                        <product>
+                            <p>systems/autopilot/altitude-QFE-impact-elev-intensity-fuzy-1-0</p>
+                            <difference>
+                                <p>systems/autopilot/altitude-QFE-ft-lag</p>
+                                <p>/position/altitude-agl-ft</p>
+                            </difference>
+                        </product>
+                    </sum>
+                </ifthen>
+            </function>
+        </fcs_function>
+        
+        <fcs_function name="systems/autopilot/altitude-QFE-impact-elev-intensity-active">
+            <function>
+                <ifthen>
+                    <le><p>systems/autopilot/altitude-hold-active</p><v>0.5</v></le>
+                    <ifthen>
+                        <and>
+                            <gt><p>systems/autopilot/altitude-QFE-impact-elev-ft-lag</p><v>0.5</v></gt>
+                            <gt><p>systems/autopilot/altitude-QFE-impact-elev-intensity-lag</p><v>1.0</v></gt>
+                        </and>
+                        <v>1.0</v>
+                        <v>0.0</v>
+                    </ifthen>
+                    <v>0.0</v>
+                </ifthen>
+            </function>
+        </fcs_function>
         
         <pure_gain name="systems/autopilot/altitude-hold-error-norm">
-            <input>systems/autopilot/altitude-hold-ft-dif</input>
+            <input>systems/autopilot/altitude-selected-ft-dif</input>
             <gain>systems/autopilot/altitude-hold-input-gain</gain>
             <clipto>
                 <min>-1.0</min>
@@ -1089,7 +1305,7 @@ No Overshoot
         </switch>
         
         <pid name="systems/autopilot/altitude-hold-pid">
-            <input>systems/autopilot/altitude-hold-ft-dif</input>
+            <input>systems/autopilot/altitude-selected-ft-dif</input>
             <kp>systems/autopilot/altitude-hold-pid-kp</kp>
             <ki type="ab3">systems/autopilot/altitude-hold-pid-ki</ki>
             <kd>systems/autopilot/altitude-hold-pid-kd</kd>
@@ -1421,16 +1637,6 @@ No Overshoot
     
     <channel name="Speed control">
         
-        <fcs_function name="systems/autopilot/speed-true-on-air">
-            <function>
-                <ifthen>
-                    <gt><p>velocities/vtrue-kts</p><v>50.0</v></gt>
-                    <p>velocities/vtrue-kts</p>
-                    <v>0.0</v>
-                </ifthen>
-            </function>
-        </fcs_function>
-        
         <pure_gain name="systems/autopilot/speed-true-on-air-ms-inv">
             <input>systems/autopilot/speed-true-on-air</input>
             <gain>-0.00027777777</gain>
@@ -1439,7 +1645,7 @@ No Overshoot
         <fcs_function name="systems/autopilot/speed-cas-on-air">
             <function>
                 <ifthen>
-                    <gt><p>velocities/vc-kts</p><v>50.0</v></gt>
+                    <gt><p>velocities/vc-kts</p><v>0.1</v></gt>
                     <p>velocities/vc-kts</p>
                     <v>0.0</v>
                 </ifthen>

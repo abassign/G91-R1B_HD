@@ -1,0 +1,300 @@
+# Pilot Impact control system for advert and resolv collision situations
+#
+# 2019-10-25 Adriano Bassignana
+# GPL 2.0+
+
+var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/impact-control-active", 0, "INT");
+var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/impact-control-freeze", 0, "INT");
+var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/impact-pitch-alpha", 0, "DOUBLE");
+var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/impact-time", 0, "DOUBLE");
+var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/impact-time-array-dim", 30, "INT");
+var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/impact-time-derivate", 0, "DOUBLE");
+var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/impact-time-time-delayed", 0, "DOUBLE");
+var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/impact-rugosity-value", 0, "DOUBLE");
+
+var speed_fps = 0.0; 
+var speed_horz_fps = 0.0;
+var speed_down_fps = 0.0;
+var min_z_ft = 0.0;
+var min_z_ft_lag = 0.0;
+var min_z_ft_lag_factor = 1.0;
+
+var imp_cnt_med_time = 0.0;
+var speed_cas = 0.0;
+
+var timeStep = 1.0;
+var timeStepDivisor = 1.0;
+var delayCycleGeneral = 0;
+
+var imp_cnt_active = 0;
+var imp_cnt_frz = 1;
+var imp_cnt_frz_old = 0;
+var imp_al = 0.0;
+var imp_al_lag = 0.0;
+var reduction_coeff = 2.0;
+
+var delta_time = 1.0;
+var imp_T_calc_time_delayed = 0.0;
+
+var imp_T_calc = 0.0;
+var imp_T_calc_avr = 0.0;
+var imp_T_calc_ist_avr = 0.0;
+var imp_T_calc_array = std.Vector.new();
+var imp_T_calc_array_dim = 0.0;
+var imp_T_calc_der = 0.0;
+var imp_T_calc_rugosity = 0.0;
+
+var imp_T0 = 0.0;
+var imp_T1 = 0.0;
+var imp_T2 = 0.0;
+
+var alpha_lag = 0.0;
+var alpha_gain = 5.0;
+var pitch_angle_absolute_deg = 0.0;
+var imp_al_mod = 0.0;
+
+
+var calculate_imp_time = func(aircraftPosition, heading, aSpeed_down_fps) {
+    var end = geo.Coord.new(aircraftPosition);
+    end.apply_course_distance(heading, speed_horz_fps * FT2M);
+    end.set_alt(end.alt() - aSpeed_down_fps * FT2M);
+    
+    var dir_x = end.x()-aircraftPosition.x();
+    var dir_y = end.y()-aircraftPosition.y();
+    var dir_z = end.z()-aircraftPosition.z();
+    var zMod = aircraftPosition.z() - min_z_ft_lag * FT2M;
+    var xyz = {"x":aircraftPosition.x(),"y":aircraftPosition.y(),"z":zMod};
+    var dir = {"x":dir_x,"y":dir_y,"z":dir_z};
+
+    var geod = get_cart_ground_intersection(xyz, dir);
+    if (geod != nil and math.abs(speed_fps) > 0.1) {
+        var elevationCorrect = geod.elevation;
+        end.set_latlon(geod.lat, geod.lon, elevationCorrect);
+        var dist = aircraftPosition.direct_distance_to(end) * M2FT;
+        var time_to_impact = dist / speed_fps;
+        if (time_to_impact < 0.1) time_to_impact = 0.1;
+        return time_to_impact;
+    } else {
+        return -1;
+    }
+}
+
+
+var analyze_imp_time = func() {
+    var debugActive = getprop("fdm/jsbsim/systems/autopilot/gui/debug-active");
+    imp_cnt_med_time = getprop("fdm/jsbsim/systems/autopilot/gui/impact-medium-time");
+    imp_T_calc_array_dim = getprop("fdm/jsbsim/systems/autopilot/gui/impact-time-array-dim");
+    speed_cas = getprop("fdm/jsbsim/systems/autopilot/speed-cas-on-air");
+    
+    imp_T_calc_array_dim = imp_cnt_med_time * math.round(0.2 / delta_time); ## Test, verificare
+    if (imp_T_calc_array_dim < 5) imp_T_calc_array_dim = 5;
+    var alpha_lag_inc = 0.6;
+    alpha_lag_inc = delta_time * (1 + imp_T_calc_rugosity) * alpha_lag_inc * 20.0 / (imp_cnt_med_time);
+    
+    min_z_ft = getprop("fdm/jsbsim/systems/autopilot/gui/impact-min-z-ft");
+    
+    if (math.abs(min_z_ft_lag - min_z_ft) > (1.2 * min_z_ft_lag_factor)) {
+        min_z_ft_lag = min_z_ft;
+    } else if (min_z_ft_lag > min_z_ft) {
+        min_z_ft_lag = min_z_ft_lag - min_z_ft_lag_factor;
+    } else {
+        min_z_ft_lag = min_z_ft_lag + min_z_ft_lag_factor;
+    }
+    
+    #
+    # Calculate aircraft position and velocity vector
+    #
+    
+    var aircraftPosition = geo.aircraft_position();
+    speed_down_fps  = getprop("velocities/speed-down-fps");
+    var speed_east_fps  = getprop("velocities/speed-east-fps");
+    var speed_north_fps = getprop("velocities/speed-north-fps");
+    speed_horz_fps  = math.sqrt((speed_east_fps * speed_east_fps) + (speed_north_fps * speed_north_fps));
+    speed_fps = math.sqrt((speed_horz_fps * speed_horz_fps) + (speed_down_fps * speed_down_fps));
+    var heading = 0;
+    var imp_pitch_alpha = 0.0;
+    if (speed_horz_fps > 0.1 or speed_horz_fps < -0.1) {
+        if (speed_north_fps >= 0) {
+            heading -= math.acos(speed_east_fps/speed_horz_fps)*R2D - 90;
+        } else {
+            heading -= -math.acos(speed_east_fps/speed_horz_fps)*R2D - 90;
+        }
+    }
+    heading = geo.normdeg(heading);
+    
+    #
+    # Situation analisys
+    #
+    
+    imp_T1 = calculate_imp_time(aircraftPosition, heading, speed_down_fps);
+    if (imp_T1 < 0.0) imp_T1 = 0.0;
+    
+    imp_T0 = calculate_imp_time(aircraftPosition, heading, 0);
+    if (imp_T0 < 0.0) imp_T0 = 0.0;
+    
+    imp_T2 = calculate_imp_time(aircraftPosition, heading, speed_down_fps * 1.5);
+    if (imp_T2 < 0.0) imp_T2 = 0.0;
+    
+    imp_T_calc_ist_avr = (imp_T0 + imp_T1 + imp_T2) / 3;
+    if (imp_T0 < imp_cnt_med_time) {
+        imp_T_calc = (0.0 + imp_T1 + imp_T2) / 3;
+    } else {
+        imp_T_calc = (imp_T1 + imp_T2) / 2;
+    }
+    if (imp_T_calc < 0.5 and imp_T0 > 0.0 and imp_T0 < imp_cnt_med_time) imp_T_calc = imp_T0;
+    
+    #
+    # Calculate derivate and rugosity
+    #
+    imp_T_calc_der = 0.0;
+    imp_T_calc_rugosity = 0.0;
+    imp_cnt_frz_old = imp_cnt_frz;
+    imp_cnt_frz = 0;
+    imp_al = 0.0;
+    imp_T_calc_avr = imp_T_calc;
+    
+    if (imp_T_calc > 0) {
+        while(imp_T_calc_array.size() >= imp_T_calc_array_dim and imp_T_calc_array.size() >= 3) {
+            var j = imp_T_calc_array.pop(0);
+        }
+        imp_T_calc_array.append(imp_T_calc);
+        if (imp_T_calc_array.size() >= 2) {
+            var i = 0;
+            var imp_T_calc_der_val_prec = 0.0;
+            foreach (var value; imp_T_calc_array.vector) {
+                if (i == 0) {
+                    imp_T_calc_der_val_prec = value;
+                } else {
+                    imp_T_calc_der = imp_T_calc_der + (value - imp_T_calc_der_val_prec) / delta_time;
+                    imp_T_calc_der_val_prec = value;
+                    imp_T_calc_rugosity = imp_T_calc_rugosity + math.log10(1 + math.abs(imp_T_calc_der));
+                    imp_T_calc_avr = imp_T_calc_avr + value;
+                }
+                i = i + 1;
+            }
+            imp_T_calc_avr = imp_T_calc_avr / imp_T_calc_array.size();
+            imp_T_calc_der = imp_T_calc_der / imp_T_calc_array.size();
+            imp_T_calc_rugosity = imp_T_calc_rugosity / imp_T_calc_array.size();
+            if (imp_T_calc_avr < 0) {
+                if (imp_T_calc > (imp_cnt_med_time / (1 + imp_T_calc_rugosity))) imp_cnt_frz = 1;
+            } else {
+                if (imp_T_calc_avr > imp_cnt_med_time and imp_T_calc > (imp_cnt_med_time / (1 + imp_T_calc_rugosity))) imp_cnt_frz = 1;
+            }
+        }
+    } else {
+        if (imp_T_calc_array.size() > 0) {
+            var j = imp_T_calc_array.pop(0);
+        } else {
+            imp_cnt_frz = 1;
+        }
+    }
+    
+    # Freeze filter
+    if (imp_T_calc > ( 2.0 * imp_cnt_med_time) and imp_cnt_frz_old == 1) {
+        imp_cnt_frz = 1;
+    }
+    
+    if (imp_T_calc_avr >= 0.0 and imp_cnt_frz == 0) {
+        if (imp_T_calc_avr < imp_cnt_med_time * 2.0) {
+            imp_al = (10 / (5 * math.ln((imp_T_calc_avr + 0.81) * 1.6 - 0.2)));
+        }
+        imp_al_mod = imp_al * alpha_gain * ( 1.0 + 2.0 * imp_T_calc_rugosity);
+        
+        pitch_angle_absolute_deg = getprop("fdm/jsbsim/systems/autopilot/pitch-angle-absolute-deg-lag");
+        
+        if (math.abs(imp_al_mod) <= (reduction_coeff * delta_time * (1 + imp_T_calc_rugosity))) {
+            imp_al_lag = imp_al_mod;
+        } else if (imp_al_lag > imp_al_mod) {
+            var vartarget_ang = 0.0;
+            var orizontal_ang_dist = (pitch_angle_absolute_deg - vartarget_ang) * 0.2;
+            imp_al_lag = imp_al_lag - (reduction_coeff * (1 + (300 / speed_cas)) * delta_time * 2 * (1 + imp_T_calc_rugosity)) * orizontal_ang_dist;
+        } else {
+            var coeff_positive = (reduction_coeff * (1.2 - math.log10(0.5 * math.abs(pitch_angle_absolute_deg) + 1)) * delta_time * 1.2 * (1 + imp_T_calc_rugosity));
+            if (pitch_angle_absolute_deg >= 30.0 and speed_cas < 250) {
+                imp_al_lag = imp_al_lag - coeff_positive * 2.0;
+            } else {
+                imp_al_lag = imp_al_lag + coeff_positive * ((0.5 + (speed_cas / 250)));
+            }
+        }
+        
+        if (imp_T_calc_der < -1.0) {
+            imp_pitch_alpha = imp_al_lag * (1 + math.log10(-imp_T_calc_der));
+        } else {
+            imp_pitch_alpha = imp_al_lag;
+        }
+        
+    } else {
+        imp_al_lag = 0.0;
+        imp_pitch_alpha = 0.0;
+    }
+    
+    if (math.abs(imp_pitch_alpha - alpha_lag) >= alpha_lag_inc) {
+        if (imp_pitch_alpha < alpha_lag) {
+            alpha_lag = alpha_lag - alpha_lag_inc * 3.0;
+        } else {
+            alpha_lag = alpha_lag + alpha_lag_inc;
+        }
+        imp_cnt_frz = 0;
+    }
+    
+    #
+    # Report the response
+    #
+    setprop("fdm/jsbsim/systems/autopilot/gui/impact-pitch-alpha",alpha_lag);
+    setprop("fdm/jsbsim/systems/autopilot/gui/impact-time",imp_T_calc_avr);
+    setprop("fdm/jsbsim/systems/autopilot/gui/impact-time-derivate",imp_T_calc_der);
+    setprop("fdm/jsbsim/systems/autopilot/gui/impact-time-rugosity",imp_T_calc_rugosity);
+    setprop("fdm/jsbsim/systems/autopilot/gui/impact-time-time-delayed",imp_T_calc_time_delayed);
+    setprop("fdm/jsbsim/systems/autopilot/gui/impact-control-freeze",imp_cnt_frz);
+    pitch_angle_absolute_deg = getprop("fdm/jsbsim/systems/autopilot/pitch-angle-absolute-deg-lag");
+    if (debugActive >= 0) {
+        print(sprintf("Pilot Impact ctl > ")
+            ,sprintf(" DT: %1.2f",delta_time)
+            ,sprintf(" Dim: %2d",imp_T_calc_array.size())
+            ,sprintf(" T Med: %3.1f",imp_cnt_med_time)
+            ,sprintf(" alpha_lag_in: %3.2f",alpha_lag_inc)
+            ,sprintf(" freeze: %1d",imp_cnt_frz)
+            ,sprintf(" T_calc: %3.1f",imp_T_calc)
+            ,sprintf(" T_calc_avr: %3.1f",imp_T_calc_avr)
+            ,sprintf(" allert: %3.1f",imp_al)
+            ,sprintf(" alpha: %3.1f",alpha_lag)
+            ,sprintf(" : %3.1f",(1.2 - math.log10(0.5 * math.abs(pitch_angle_absolute_deg) + 1)))
+            ,sprintf(" : %3.1f",pitch_angle_absolute_deg)
+            ,sprintf(" (imp lag: %3.1f",imp_al_lag)
+            ,sprintf(" | imp_al_mod: %3.1f",imp_al_mod)
+            ,sprintf(" | %3.1f)",imp_pitch_alpha)
+            ,sprintf(" der: %3.1f",imp_T_calc_der)
+            ,sprintf(" rug: %3.1f",imp_T_calc_rugosity)
+            ,sprintf(" | impact T0: %3.1f",imp_T0)
+            ,sprintf(" T1: %3.1f",imp_T1)
+            ,sprintf(" T2: %3.1f",imp_T2)
+            ,sprintf(" T Dif: %3.1f",imp_T0 - imp_T_calc_ist_avr)
+        );
+    }
+    
+}
+
+
+var pilot_imp_control = func() {
+    
+    imp_cnt_active = getprop("fdm/jsbsim/systems/autopilot/gui/impact-control-active");
+    analyze_imp_time();
+    
+    if (imp_cnt_active == 0) {
+        timeStepDivisor = 1;
+    } else {
+        if (imp_al >= 0.5) {
+            timeStepDivisor = 5;
+        } else {
+            timeStepDivisor = 2;
+        }
+    }
+    delta_time = timeStep / timeStepDivisor;
+    pilot_imp_controlTimer.restart(delta_time);
+
+}
+
+
+var pilot_imp_controlTimer = maketimer(delta_time, pilot_imp_control);
+pilot_imp_controlTimer.singleShot = 1;
+pilot_imp_controlTimer.start();

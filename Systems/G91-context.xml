@@ -36,15 +36,7 @@ More informatiion on intial conditions is in the:
                 context/simulation/is-starting == 1
             </test>
         </switch>
-        
-        <switch>
-            <default value="/controls/gear/gear-down"/>
-            <test logic="AND" value="1">
-                context/simulation/is-starting == 1
-            </test>
-            <output>/controls/gear/gear-down</output>
-        </switch>
-        
+
     </channel>
     
         

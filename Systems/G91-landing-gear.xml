@@ -4,7 +4,7 @@
 
 <!-- 
 Original work Copyright (c) 2018 Adriano Bassignana (abassign)
-    Create the program to centralization of the braking system
+Create the program to centralization of the braking system
 -->
 
 <system name="G91 Landing Gear">
@@ -60,9 +60,6 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
         
         <switch name="systems/landing-gear/gear-down-status">
             <default value="/controls/gear/gear-down"/>
-            <test logic="AND" value="1">
-                context/gears/on-ground == 1
-            </test>
             <test logic="AND" value="/controls/gear/gear-down">
                 systems/landing-gear/gear-down-command-lag GT -0.9
                 systems/landing-gear/gear-down-command-lag LT 0.9
@@ -102,7 +99,7 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
                 systems/electric/bus[1]/V GT 18.0
             </test>
         </switch>
-
+        
         <washout_filter name="systems/landing-gear/allarm-active-washed">
             <input>systems/landing-gear/allarm-active</input>
             <c1>1.0</c1>
@@ -115,7 +112,7 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
                 systems/landing-gear/allarm-active-washed GT -0.6
             </test>
         </switch>
-
+        
         <switch name="systems/landing-gear/allarm-beep-active">
             <default value="systems/landing-gear/allarm-beep-active"/>
             <test logic="AND" value="1">

@@ -224,11 +224,12 @@
             <script>
                 if(getprop("/sim/presets/onground")) {
                     setprop("controls/gear/gear-down", "true");
+                    setprop("/controls/gear/brake-parking",1);
+                    print("#### initialize > controls/gear/gear-down set to true");
                 } else {
                     setprop("controls/gear/gear-down", "false");
+                    print("#### initialize > controls/gear/gear-down set to false");
                 }
-                print("#### initialize > controls/gear/gear-down set to true");
-                print("#### initialize > /sim/presets/onground:",getprop("/sim/presets/onground"),":");
             </script>
         </set-gear-down-script>
 

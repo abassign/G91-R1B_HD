@@ -31,39 +31,6 @@ Modify the program for gear[0] pivoting
     <property value="0.0">systems/gears/preset-onground</property>
     
     
-    <!-- Code for testing, is not possible the correct use o this channel because
-    when /sim/presets/ is defined the JSBSim in not jat in time to receive the value
-    that return e nil. But I leave this code for future implementations -->
-    <!--
-    <channel name="preset onground">
-        
-        <switch name="systems/gears/preset-onground">
-            <default value="0"/>
-            <test logic="AND" value="1">
-                /sim/presets/onground == 1
-            </test>
-        </switch>
-        
-        <washout_filter name="systems/gears/preset-onground-wa">
-            <input>systems/gears/preset-onground</input>
-            <c1>1.0</c1>
-        </washout_filter>
-
-        <switch>
-            <default value="/controls/gear/gear-down"/>
-            <test logic="AND" value="systems/gears/preset-onground">
-                <test logic="OR">
-                    systems/gears/preset-onground-wa GT 0.1
-                    systems/gears/preset-onground-wa LT -0.1
-                </test>
-            </test>
-            <output>/controls/gear/gear-down</output>
-        </switch>
-
-    </channel>
-    -->
-    
-    
     <channel name="Landing Gear[0] steer" execrate="4">
         <!-- Calcolare una reazione quando lo steer supera 40° 
         Punto di applicazione è il carrello anteriore il valore deve essere tale da ridurre lo steer e riportarlo a 40° è quindi un attuatore

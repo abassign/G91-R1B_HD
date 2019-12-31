@@ -355,9 +355,30 @@
                         </binding>
                         <binding>
                             <command>nasal</command>
-                            <script>
-                                setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle",0.0);
-                            </script>
+                            <script><![CDATA[
+                                var speed_cas = getprop("fdm/jsbsim/systems/autopilot/speed-cas-on-air");
+                                if (speed_cas != nil and getprop("fdm/jsbsim/systems/autopilot/gui/impact-control-active") > 0) {
+                                    setprop("fdm/jsbsim/systems/autopilot/gui/speed-control",1.0);
+                                    if (getprop("fdm/jsbsim/systems/autopilot/gui/speed-set-cas") == 1) {
+                                        if (getprop("fdm/jsbsim/systems/autopilot/gui/speed-value") < 250) {
+                                            setprop("fdm/jsbsim/systems/autopilot/gui/speed-value",250);
+                                        }
+                                    } else if (getprop("fdm/jsbsim/systems/autopilot/gui/speed-set-mach") == 1) {
+                                        if (getprop("fdm/jsbsim/systems/autopilot/gui/speed-value") < 0.4) {
+                                            setprop("fdm/jsbsim/systems/autopilot/gui/speed-value",0.4);
+                                        }
+                                    } else if (getprop("fdm/jsbsim/systems/autopilot/gui/speed-set-mph") == 1) {
+                                        setprop("fdm/jsbsim/systems/autopilot/gui/speed-set-cas",1);
+                                        setprop("fdm/jsbsim/systems/autopilot/gui/speed-set-mach",0);
+                                        setprop("fdm/jsbsim/systems/autopilot/gui/speed-set-mph",0);
+                                        if (speed_cas < 250.0) {
+                                            setprop("fdm/jsbsim/systems/autopilot/gui/speed-value",250);
+                                        } else {
+                                            setprop("fdm/jsbsim/systems/autopilot/gui/speed-value",math.round(speed_cas));
+                                        }
+                                    }
+                                }
+                            ]]></script>
                         </binding>
                     </radio>
                     <slider>
@@ -367,7 +388,7 @@
                         <halign>left</halign>
                         <property>fdm/jsbsim/systems/autopilot/gui/impact-medium-time</property>
                         <min>5.0</min>
-                        <max>20.0</max>
+                        <max>30.0</max>
                         <step>1</step>
                         <live>true</live>
                         <binding>
@@ -380,7 +401,7 @@
                         <label>99999999</label>
                         <halign>left</halign>
                         <live>true</live>
-                        <format>%1.1f (adr)</format>
+                        <format>%1.1f (Delay)</format>
                         <property>fdm/jsbsim/systems/autopilot/gui/impact-medium-time</property>
                         <color>
                             <red>0.9</red>
@@ -393,9 +414,9 @@
                         <col>3</col>
                         <name>impact_min_z_ft</name>
                         <property>fdm/jsbsim/systems/autopilot/gui/impact-min-z-ft</property>
-                        <min>00.0</min>
-                        <max>500.0</max>
-                        <step>10.0</step> 
+                        <min>0.0</min>
+                        <max>1000.0</max>
+                        <step>50.0</step> 
                         <binding>
                             <command>dialog-apply</command>
                         </binding>
@@ -411,60 +432,6 @@
                         <color>
                             <red>0.9</red>
                             <green>0.9</green>
-                            <blue>0.0</blue>
-                        </color>
-                    </text>
-                    <text>
-                        <row>2</row>
-                        <col>0</col>
-                        <halign>left</halign>
-                        <label>Time to impact</label>
-                    </text>
-                    <text>
-                        <row>2</row>
-                        <col>1</col>
-                        <label>999999</label>
-                        <halign>left</halign>
-                        <live>true</live>
-                        <format>[%3.0f]</format>
-                        <property>fdm/jsbsim/systems/autopilot/gui/impact-control-status</property>
-                        <color>
-                            <red>0.0</red>
-                            <green>0.8</green>
-                            <blue>0.0</blue>
-                        </color>
-                    </text>
-                    <text>
-                        <row>2</row>
-                        <col>2</col>
-                        <label>999999999</label>
-                        <halign>left</halign>
-                        <live>true</live>
-                        <format>%2.1f s</format>
-                        <property>fdm/jsbsim/systems/autopilot/gui/impact-time</property>
-                        <color>
-                            <red>0.0</red>
-                            <green>0.8</green>
-                            <blue>0.0</blue>
-                        </color>
-                    </text>
-                    <text>
-                        <row>2</row>
-                        <col>3</col>
-                        <halign>left</halign>
-                        <label>Allert</label>
-                    </text>
-                    <text>
-                        <row>2</row>
-                        <col>4</col>
-                        <label>999999999</label>
-                        <halign>left</halign>
-                        <live>true</live>
-                        <format>%2.2f</format>
-                        <property>fdm/jsbsim/systems/autopilot/gui/impact-control-allert</property>
-                        <color>
-                            <red>0.0</red>
-                            <green>0.8</green>
                             <blue>0.0</blue>
                         </color>
                     </text>
@@ -526,6 +493,20 @@
                     </color>
                 </text>
                 <text>
+                    <row>0</row>
+                    <col>4</col>
+                    <label>99999</label>
+                    <halign>left</halign>
+                    <live>true</live>
+                    <format>[%4.0f]</format>
+                    <property>fdm/jsbsim/systems/autopilot/vertical-speed-fpm</property>
+                    <color>
+                        <red>0.9</red>
+                        <green>0.0</green>
+                        <blue>0.0</blue>
+                    </color>
+                </text>
+                <text>
                     <label>Slope angle</label>
                     <halign>right</halign>
                     <row>2</row>
@@ -546,7 +527,7 @@
                                 setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed",0.0);
                                 setprop("fdm/jsbsim/systems/autopilot/gui/pitch-alpha",0.0);
                             } else {
-                            if (getprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle") == 0 and
+                                if (getprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle") == 0 and
                                 getprop("fdm/jsbsim/systems/autopilot/gui/pitch-alpha") == 0) {
                                     setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed",1.0);
                                 }
@@ -578,6 +559,20 @@
                     </color>
                 </text>
                 <text>
+                    <row>2</row>
+                    <col>4</col>
+                    <label>9999999</label>
+                    <halign>left</halign>
+                    <live>true</live>
+                    <format>[%3.2f]</format>
+                    <property>fdm/jsbsim/systems/autopilot/pitch-angle-deg</property>
+                    <color>
+                        <red>0.9</red>
+                        <green>0.0</green>
+                        <blue>0.0</blue>
+                    </color>
+                </text>
+                <text>
                     <label>Alpha angle</label>
                     <halign>right</halign>
                     <row>3</row>
@@ -597,6 +592,7 @@
                             if (getprop("fdm/jsbsim/systems/autopilot/gui/pitch-alpha") == 1) {
                                 setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed",0.0);
                                 setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle",0.0);
+                                setprop("fdm/jsbsim/systems/autopilot/gui/altitude-QFE",0.0)
                             } else {
                             if (getprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed") == 0 and
                                 getprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle") == 0) {
@@ -657,6 +653,14 @@
                     <binding>
                         <command>dialog-apply</command>
                     </binding>
+                    <binding>
+                        <command>nasal</command>
+                        <script>
+                            if (getprop("fdm/jsbsim/systems/autopilot/gui/altitude-hold") == 1) {
+                                setprop("fdm/jsbsim/systems/autopilot/gui/altitude-QFE",0.0);
+                            }
+                        </script>
+                    </binding>
                 </radio>
                 <input>
                     <row>4</row>
@@ -668,7 +672,7 @@
                     </binding>
                 </input>
                 <text>
-                    <row>4</row>
+                <row>4</row>
                     <col>3</col>
                     <label>99999</label>
                     <halign>left</halign>
@@ -681,8 +685,106 @@
                         <blue>0.0</blue>
                     </color>
                 </text>
-                <button>
+                <text>
+                    <label>Altitude QFE</label>
+                    <halign>right</halign>
                     <row>5</row>
+                    <col>0</col>
+                </text>
+                <radio>
+                    <row>5</row>
+                    <col>1</col>
+                    <property>fdm/jsbsim/systems/autopilot/gui/altitude-QFE</property>
+                    <live>true</live>
+                    <binding>
+                        <command>dialog-apply</command>
+                    </binding>
+                    <binding>
+                        <command>nasal</command>
+                        <script><![CDATA[
+                            if (getprop("fdm/jsbsim/systems/autopilot/gui/altitude-QFE") == 1) {
+                                setprop("fdm/jsbsim/systems/autopilot/gui/altitude-hold",0.0);
+                                setprop("fdm/jsbsim/systems/autopilot/gui/pitch-alpha",0.0);
+                                setprop("fdm/jsbsim/systems/autopilot/gui/impact-control-active",1.0);
+                                if (getprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle") > 0.5) {
+                                    if (getprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle-deg") < 6.0) {
+                                        setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle-deg",6.0);
+                                    }
+                                } else if (getprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed") > 0.5) {
+                                    if (getprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed-fpm") < 2500.0) {
+                                        setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed-fpm",2500.0);
+                                    }
+                                } else {
+                                    setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle",1.0);
+                                    if (getprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle-deg") < 6.0) {
+                                        setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle-deg",6.0);
+                                    }
+                                }
+                            }
+                        ]]></script>
+                    </binding>
+                </radio>
+                <input>
+                    <row>5</row>
+                    <col>2</col>
+                    <property>fdm/jsbsim/systems/autopilot/gui/altitude-QFE-ft</property>
+                    <live>true</live>
+                    <binding>
+                        <command>dialog-apply</command>
+                    </binding>
+                    <binding>
+                        <command>nasal</command>
+                        <script><![CDATA[
+                            if (getprop("fdm/jsbsim/systems/autopilot/gui/altitude-QFE-ft") < 150.0) {
+                                setprop("fdm/jsbsim/systems/autopilot/gui/altitude-QFE-ft",200.0);
+                            }
+                        ]]></script>
+                    </binding>
+                </input>
+                <text>
+                    <row>5</row>
+                    <col>3</col>
+                    <label>99999</label>
+                    <halign>left</halign>
+                    <live>true</live>
+                    <format>QFE %5.0f (ft)</format>
+                    <property>/position/altitude-agl-ft</property>
+                    <color>
+                        <red>0.9</red>
+                        <green>0.9</green>
+                        <blue>0.0</blue>
+                    </color>
+                </text>
+                <text>
+                    <row>5</row>
+                    <col>4</col>
+                    <label>9999999</label>
+                    <halign>left</halign>
+                    <live>true</live>
+                    <format>[%5.0f]</format>
+                    <property>fdm/jsbsim/systems/autopilot/altitude-QFE-ft-lag</property>
+                    <color>
+                        <red>0.9</red>
+                        <green>0.0</green>
+                        <blue>0.0</blue>
+                    </color>
+                </text>
+                <text>
+                    <row>5</row>
+                    <col>5</col>
+                    <label>9999999</label>
+                    <halign>left</halign>
+                    <live>true</live>
+                    <format>(%3.1f)</format>
+                    <property>fdm/jsbsim/systems/autopilot/altitude-QFE-impact-elev-intensity-lag</property>
+                    <color>
+                        <red>0.0</red>
+                        <green>0.9</green>
+                        <blue>0.0</blue>
+                    </color>
+                </text>
+                <button>
+                    <row>6</row>
                     <col>0</col>
                     <legend>Set altitude</legend>
                     <halign>fill</halign>
@@ -692,6 +794,9 @@
                         <script><![CDATA[
                             setprop("fdm/jsbsim/systems/autopilot/gui/altitude-hold-ft",math.round(getprop("fdm/jsbsim/systems/autopilot/h-sl-ft-lag")));
                             setprop("fdm/jsbsim/systems/autopilot/gui/altitude-hold",1.0);
+                            setprop("fdm/jsbsim/systems/autopilot/gui/altitude-QFE",0.0);
+                            setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle-deg",6.0);
+                            setprop("fdm/jsbsim/systems/autopilot/gui/speed-control",1.0);
                             if (getprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed") == 0 and 
                                 getprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle") == 0 and 
                                 getprop("fdm/jsbsim/systems/autopilot/gui/pitch-alpha") == 0) {
@@ -707,13 +812,13 @@
                     </binding>
                 </button>
                 <text>
-                    <row>5</row>
+                    <row>6</row>
                     <col>2</col>
-                    <label>99999</label>
+                    <label>99999999999</label>
                     <halign>left</halign>
                     <live>true</live>
-                    <format>Diffference %5.0f (ft)</format>
-                    <property>fdm/jsbsim/systems/autopilot/altitude-hold-ft-dif</property>
+                    <format>Diff. %5.0f (ft)</format>
+                    <property>fdm/jsbsim/systems/autopilot/altitude-selected-ft-dif</property>
                     <color>
                         <red>0.8</red>
                         <green>0.8</green>
@@ -721,15 +826,15 @@
                     </color>
                 </text>
                 <text>
-                    <row>5</row>
+                    <row>6</row>
                     <col>3</col>
-                    <label>99999</label>
-                    <halign>left</halign>
+                    <label>99999999999999</label>
+                    <halign>right</halign>
                     <live>true</live>
-                    <format>Sign factor %4.2f</format>
-                    <property>fdm/jsbsim/systems/autopilot/altitude-hold-pid-gain-lag-sw</property>
+                    <format>Alt. Terrain %5.0f (ft)</format>
+                    <property>fdm/jsbsim/systems/autopilot/altitude-alt-terrain</property>
                     <color>
-                        <red>0.0</red>
+                        <red>0.8</red>
                         <green>0.8</green>
                         <blue>0.0</blue>
                     </color>
