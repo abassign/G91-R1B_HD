@@ -5,7 +5,8 @@
 
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/impact-control-active", 0, "INT");
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/impact-control-freeze", 1, "INT");
-var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/impact-min-z-ft", 400.0, "DOUBLE");
+var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/impact-min-z-ft", 200.0, "DOUBLE");
+var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/impact-min-z-ft-mod", 0.0, "DOUBLE");
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/impact-medium-time", 15.0, "DOUBLE");
 
 var timeStep = 1.0;
@@ -97,12 +98,15 @@ var analyze_imp_time = func() {
     imp_medium_time = getprop("fdm/jsbsim/systems/autopilot/gui/impact-medium-time");
     imp_cnt_min_time = imp_medium_time * (1 + intensity_calc_lag) / 2.0;
     neutre_lag_factor = imp_medium_time / 2.0;
-    
+    speed_horz_fps = getprop("fdm/jsbsim/systems/autopilot/velocity-on-ground-fps-lag");
+    speed_horz_mph = getprop("fdm/jsbsim/systems/autopilot/velocity-on-ground-mph-lag");
     #
     # Min altitude
     #
-    imp_min_z_ft = getprop("fdm/jsbsim/systems/autopilot/gui/impact-min-z-ft");
-    
+    var speed_horz_Coef = (speed_horz_mph / 160.0) - 1.0;
+    if (speed_horz_Coef < 0.0) speed_horz_Coef = 0.0;
+    imp_min_z_ft = getprop("fdm/jsbsim/systems/autopilot/gui/impact-min-z-ft") * speed_horz_Coef;
+    setprop("fdm/jsbsim/systems/autopilot/gui/impact-min-z-ft-mod",imp_min_z_ft);
     #
     # Calculate aircraft position and velocity vector
     #
@@ -110,7 +114,6 @@ var analyze_imp_time = func() {
     pitch_angle_tan = math.tan(pitch_angle_deg * 0.0174533);
     
     speed_down_fps  = getprop("velocities/speed-down-fps");
-    speed_horz_fps = getprop("fdm/jsbsim/systems/autopilot/speed-true-on-terrain-fps");
     speed_fps = getprop("fdm/jsbsim/systems/autopilot/speed-true-fps");
     var heading = getprop("fdm/jsbsim/systems/autopilot/heading-true-deg");
     var imp_pitch_alpha = 0.0;
@@ -172,7 +175,7 @@ var analyze_imp_time = func() {
                     if (radar_elev_h_T0_ft[i] > 0) radar_prec_T0_sign = 1 else radar_prec_T0_sign = -1;
                     if (radar_elev_Hsl_ft[i] > radar_elev_T0_max and radar_elev_time[i] <= imp_medium_time) radar_elev_T0_max = radar_elev_Hsl_ft[i];
                 }
-                ## print("## radar T0 radar_elev_h_T0_ft: ",radar_elev_h_T0_ft[i]," | "," radar_elev_Hsl_ft: ", radar_elev_Hsl_ft[i], " | ",h_sl_ft," | ",i," | radar_prec_T0_sign: ",radar_prec_T0_sign, " radar_elev_T0_max: ",radar_elev_T0_max);
+                ## print("## radar T0 h: ",h / FT2M," radar_elev_h_T0_ft: ",radar_elev_h_T0_ft[i]," | "," radar_elev_Hsl_ft: ", radar_elev_Hsl_ft[i], " | ",h_sl_ft," | ",i," | radar_prec_T0_sign: ",radar_prec_T0_sign, " radar_elev_T0_max: ",radar_elev_T0_max);
                 # Calculate T1
                 radar_elev_h_T1_ft[i] = h_sl_ft + (radar_elev_time[i] * speed_horz_fps * pitch_angle_tan) - radar_elev_Hsl_ft[i];
                 if (radar_chn_T1_sign == -1) {

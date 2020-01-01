@@ -57,6 +57,8 @@ No Overshoot
     <!-- System data section -->
     <property value="0.0">systems/autopilot/v-up-fpm</property>
     <property value="0.0">systems/autopilot/velocity-on-ground-fps</property>
+    <property value="0.0">systems/autopilot/velocity-on-ground-fps-lag</property>
+    <property value="0.0">systems/autopilot/velocity-on-ground-mph-lag</property>
     <property value="1.0">systems/autopilot/pid-test-kp</property>
     <property value="0.1">systems/autopilot/pid-test-ki</property>
     <property value="0.05">systems/autopilot/pid-test-kd</property>
@@ -164,7 +166,10 @@ No Overshoot
     
     <!-- Pitch section -->
     <property value="0.0">systems/autopilot/pitch-angle-absolute-rad</property>
+    <property value="0.0">systems/autopilot/pitch-angle-absolute-rad-lag</property>
+    <property value="8.0">systems/autopilot/pitch-angle-absolute-rad-lag-C1</property>
     <property value="0.0">systems/autopilot/pitch-angle-absolute-deg</property>
+    <property value="0.0">systems/autopilot/pitch-angle-absolute-deg-lag</property>
     <property value="0.0">systems/autopilot/pitch-error-limiter-rad</property>
     <property value="1.0">systems/autopilot/pitch-error-limiter-coefficient</property>
     <property value="1.5">systems/autopilot/pitch-error-limiter-gain</property>
@@ -177,7 +182,6 @@ No Overshoot
     <property value="0.0">systems/autopilot/pitch-control-active</property>
     <property value="0.0">systems/autopilot/pitch-angle-active</property>
     <property value="0.0">systems/autopilot/pitch-angle-deg</property>
-    <property value="1.0">systems/autopilot/pitch-angle-absolute-deg-lag-C1</property>
     <property value="2.0">systems/autopilot/pitch-angle-deg-lag-C1</property>
     <property value="1.0">systems/autopilot/pitch-angle-limiter-factor</property>
     <property value="1.5">systems/autopilot/pitch-angle-pid-kp</property>
@@ -217,7 +221,6 @@ No Overshoot
     <property value="0.0">systems/autopilot/roll-ap-autoswitch-norm</property>
     <!-- Speed section -->
     <property value="0.0">systems/autopilot/speed-true-on-air</property>
-    <property value="0.0">systems/autopilot/speed-true-on-terrain-fps</property>
     <property value="0.0">systems/autopilot/speed-true-on-air-ms-inv</property>
     <property value="0.0">systems/autopilot/speed-cas-on-air</property>
     <property value="0.0">systems/autopilot/speed-cas-on-air-lag</property>
@@ -453,6 +456,26 @@ No Overshoot
             </function>
         </fcs_function>
         
+        <lag_filter name="systems/autopilot/velocity-on-ground-fps-lag">
+            <input>systems/autopilot/velocity-on-ground-fps</input>
+            <c1>1.0</c1>
+        </lag_filter>
+        
+        <pure_gain name="systems/autopilot/velocity-on-ground-mph-lag">
+            <input>systems/autopilot/velocity-on-ground-fps-lag</input>
+            <gain>0.681818</gain>
+        </pure_gain>
+        
+        <pure_gain name="systems/autopilot/v-up-fps">
+            <input>velocities/v-down-fps</input>
+            <gain>-1.0</gain>
+        </pure_gain>
+        
+        <pure_gain name="systems/autopilot/v-up-fps">
+            <input>velocities/v-down-fps</input>
+            <gain>-1.0</gain>
+        </pure_gain>
+        
         <pure_gain name="systems/autopilot/v-up-fps">
             <input>velocities/v-down-fps</input>
             <gain>-1.0</gain>
@@ -468,36 +491,40 @@ No Overshoot
             <gain>60.0</gain>
         </pure_gain>
         
-        <lag_filter name="systems/autopilot/velocity-on-ground-fps-lag">
-            <input>systems/autopilot/velocity-on-ground-fps</input>
-            <c1>0.5</c1>
-        </lag_filter>
-        
-        <fcs_function name="systems/autopilot/pitch-angle-absolute-rad-lag">
+        <fcs_function name="systems/autopilot/pitch-angle-absolute-rad">
             <function>
-                <product>
-                    <cos>
-                        <toradians>
-                            <p>systems/autopilot/true-heading-turn-direction-versus-slope-sw-lag-deg</p>
-                        </toradians>
-                    </cos>
-                    <ifthen>
-                        <gt><abs><p>systems/autopilot/velocity-on-ground-fps-lag</p></abs><v>1.0</v></gt>
-                        <atan>
-                            <quotient>
-                                <p>systems/autopilot/v-up-fps-lag</p>
-                                <p>systems/autopilot/velocity-on-ground-fps-lag</p>
-                            </quotient>
-                        </atan>
+                <ifthen>
+                    <le><abs><p>systems/autopilot/velocity-on-ground-fps-lag</p></abs><v>1.0</v></le>
+                    <v>0.0</v>
+                    <product>
+                        <cos>
+                            <toradians>
+                                <p>systems/autopilot/true-heading-turn-direction-versus-slope-sw-lag-deg</p>
+                            </toradians>
+                        </cos>
                         <ifthen>
-                            <ge><p>systems/autopilot/velocity-on-ground-fps-lag</p><v>0.0</v></ge>
-                            <v>0.5</v>
-                            <v>-0.5</v>
+                            <gt><abs><p>systems/autopilot/velocity-on-ground-fps-lag</p></abs><v>1.0</v></gt>
+                            <atan>
+                                <quotient>
+                                    <p>systems/autopilot/v-up-fps-lag</p>
+                                    <p>systems/autopilot/velocity-on-ground-fps-lag</p>
+                                </quotient>
+                            </atan>
+                            <ifthen>
+                                <ge><p>systems/autopilot/velocity-on-ground-fps-lag</p><v>0.0</v></ge>
+                                <v>0.5</v>
+                                <v>-0.5</v>
+                            </ifthen>
                         </ifthen>
-                    </ifthen>
-                </product>
+                    </product>
+                </ifthen>
             </function>
         </fcs_function>
+        
+        <lag_filter name="systems/autopilot/pitch-angle-absolute-rad-lag">
+            <input>systems/autopilot/pitch-angle-absolute-rad</input>
+            <c1>systems/autopilot/pitch-angle-absolute-rad-lag-C1</c1>
+        </lag_filter>
 
         <pure_gain name="systems/autopilot/pitch-angle-absolute-deg-lag">
             <input>systems/autopilot/pitch-angle-absolute-rad-lag</input>
@@ -522,18 +549,6 @@ No Overshoot
                     <p>velocities/vtrue-kts</p>
                     <v>1.46667</v>
                 </product>
-            </function>
-        </fcs_function>
-        
-        <fcs_function name="systems/autopilot/speed-true-on-terrain-fps">
-            <function>
-                <abs>
-                    <product>
-                        <p>velocities/vtrue-kts</p>
-                        <cos><p>systems/autopilot/pitch-angle-rad-sign</p></cos>
-                        <v>1.46667</v>
-                    </product>
-                </abs>
             </function>
         </fcs_function>
         

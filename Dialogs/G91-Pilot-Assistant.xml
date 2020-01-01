@@ -828,14 +828,28 @@
                 <text>
                     <row>6</row>
                     <col>3</col>
-                    <label>99999999999999</label>
+                    <label>999999999999</label>
                     <halign>right</halign>
                     <live>true</live>
-                    <format>Alt. Terrain %5.0f (ft)</format>
+                    <format>Alt. Ter. %5.0f (ft)</format>
                     <property>fdm/jsbsim/systems/autopilot/altitude-alt-terrain</property>
                     <color>
                         <red>0.8</red>
                         <green>0.8</green>
+                        <blue>0.0</blue>
+                    </color>
+                </text>
+                <text>
+                    <row>6</row>
+                    <col>4</col>
+                    <label>99999999999999999999</label>
+                    <halign>right</halign>
+                    <live>true</live>
+                    <format>    Bias h %5.0f (ft)</format>
+                    <property>fdm/jsbsim/systems/autopilot/gui/impact-min-z-ft-mod</property>
+                    <color>
+                        <red>0.0</red>
+                        <green>0.9</green>
                         <blue>0.0</blue>
                     </color>
                 </text>
@@ -1121,6 +1135,26 @@
                 <live>true</live>
                 <format>%1.3f</format>
                 <property>fdm/jsbsim/systems/autopilot/speed-mach-on-air</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.0</blue>
+                </color>
+            </text>
+            <text>
+                <label>On ground</label>
+                <halign>right</halign>
+                <row>0</row>
+                <col>11</col>
+            </text>
+            <text>
+                <row>0</row>
+                <col>12</col>
+                <label>99999999999</label>
+                <halign>left</halign>
+                <live>true</live>
+                <format>%3.1f (fps)</format>
+                <property>fdm/jsbsim/systems/autopilot/velocity-on-ground-mph-lag</property>
                 <color>
                     <red>0.9</red>
                     <green>0.9</green>
