@@ -33,7 +33,7 @@
     <group>
         <layout>hbox</layout>
         <text>
-            <label>Auopilot debug active</label>
+            <label>Log for debug active</label>
             <halign>right</halign>
             <row>0</row>
             <col>0</col>
@@ -42,7 +42,7 @@
             <row>0</row>
             <col>1</col>
             <halign>fill</halign>
-            <property>fdm/jsbsim/systems/autopilot/gui/debug-active</property>
+            <property>sim/G91/testing/log</property>
             <live>true</live>
             <binding>
                 <command>dialog-apply</command>

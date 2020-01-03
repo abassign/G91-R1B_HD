@@ -47,7 +47,6 @@ var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/take-off-to-
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/take-off-to-heading-active", 0.0, "DOUBLE");
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/take-off-cruise-speed", 350.0, "DOUBLE");
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/take-off-cruise-speed-active", 0.0, "DOUBLE");
-var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/debug-active", 0, "INT");
 
 var delayCycleGeneral = 0;
 var delayLandingSearch = 0.0;
@@ -117,12 +116,14 @@ var heading_target = 0.0;
 
 var defaultViewInTheEvent = nil;
 
-var debugActive = 1;
+var testing_log_active = 0;
+var testing_level = 0;
 
 
 var pilot_assistant = func {
     
-    debugActive = getprop("fdm/jsbsim/systems/autopilot/gui/debug-active");
+    testing_log_active = getprop("sim/G91/testing/log");
+    testing_level = getprop("sim/G91/testing/level");
     var speed_cas = getprop("fdm/jsbsim/systems/autopilot/speed-cas-on-air");
     airplane = geo.aircraft_position();
     
@@ -441,7 +442,7 @@ var pilot_assistant = func {
                 heading_correct = airplane.course_to(holding_point);
                 setprop("fdm/jsbsim/systems/autopilot/gui/airport_runway_airplane_heading_correct",heading_correct);
                 setprop("fdm/jsbsim/systems/autopilot/gui/true-heading-deg",heading_correct);
-                if (debugActive >= 1) {
+                if (testing_log_active >= 1) {
                     print("Landing 2.0 >"
                     ,sprintf(" Hoding dist (nm): %5.1f",holding_point_to_airplane_dist_direct)
                     ,sprintf(" Alt: %5.0f",altitude_for_holding_point)
@@ -656,7 +657,7 @@ var pilot_assistant = func {
                     }
                 }
             }
-            if (debugActive >= 1) {
+            if (testing_log_active >= 1) {
                 print("Landing 2.1 >"
                 ,sprintf(" Dist (nm): %6.1f",runway_to_airplane_dist)
                 ,sprintf(" Alt (ft): %5.0f",(runway_to_airplane_delta_alt_ft - rwy_offset_v_ft))
@@ -874,7 +875,7 @@ var pilot_assistant = func {
                         setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle-deg",landing_slope);
                     }
                 }
-                if (debugActive >= 1) {
+                if (testing_log_active >= 1) {
                     print("Landing 2.2.",landing_22_subStatus,">",
                     ,sprintf(" Dist: %6.1f",runway_to_airplane_dist_direct_nm)
                     ,sprintf(" %6.2f",runway_to_airplane_dist)
@@ -979,7 +980,7 @@ var pilot_assistant = func {
                     defaultViewInTheEvent = view.index;
                     view.setView(view.indexof("Dragchute view"));
                 }
-                if (debugActive >= 1) {
+                if (testing_log_active >= 1) {
                     print("Landing 3.0 >"
                     ,sprintf(" Dist (nm): %6.1f",runway_to_airplane_dist)
                     ,sprintf(" | %6.1f",runway_end_to_airplane_dist)
@@ -1020,7 +1021,7 @@ var pilot_assistant = func {
             }
             delayCycleGeneral = delayCycleGeneral - 1;
             if (delayCycleGeneral <= 0) pilot_ass_status_id = 0;
-            if (debugActive >= 1) {
+            if (testing_log_active >= 1) {
                 print("Landing 4.0 >"
                 ,sprintf(" Dist (nm): %6.1f",runway_to_airplane_dist)
                 ,sprintf(" | %6.1f",runway_end_to_airplane_dist)
@@ -1132,10 +1133,12 @@ var pilot_assistant = func {
                 }
             }
             
-            pilot_ass_status_id = 10.1;
-            
-#### Only for take-off test 
-#### pilot_ass_status_id = 10.2;
+            if (testing_level >= 1) {
+                # Bypass the swotch-on phase
+                pilot_ass_status_id = 10.2;
+            } else {
+                pilot_ass_status_id = 10.1;
+            }
 
             setprop("fdm/jsbsim/systems/starter/gui/autostart-activate",1);
             setprop("fdm/jsbsim/systems/autopilot/gui/speed-automatic-gear",1.0);
@@ -1279,7 +1282,7 @@ var pilot_assistant = func {
                 setprop("fdm/jsbsim/systems/autopilot/gui/impact-control-active",1.0);
                 setprop("fdm/jsbsim/systems/autopilot/landing-gear-set-close",1.0);
             }
-            if (debugActive >= 1) {
+            if (testing_log_active >= 1) {
                 print(sprintf("Departure %2.2f > ",pilot_ass_status_id)
                 ,sprintf(" Dist to end (nm): %6.1f",runway_to_airplane_dist)
                 ,sprintf(" Heading: %7.1f",heading_correct)

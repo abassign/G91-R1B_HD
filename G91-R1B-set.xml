@@ -21,6 +21,13 @@
         <model>
             <path>Aircraft/G91-R1B_HD/Models/G91-R1B.xml</path>
         </model>
+        
+        <G91>
+            <testing>
+                <level type="int">0</level>
+                <log type="int">0</log>
+            </testing>
+        </G91>
             
     </sim>
 

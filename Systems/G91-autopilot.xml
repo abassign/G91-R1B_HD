@@ -1250,8 +1250,8 @@ No Overshoot
         <fcs_function name="systems/autopilot/altitude-selected-ft-dif">
             <function>
                 <ifthen>
-                    <gt><p>systems/autopilot/altitude-QFE-impact-elev-neutre</p><v>0.1</v></gt>
-                    <v>0.0</v>
+                    <gt><p>systems/autopilot/altitude-QFE-impact-elev-neutre</p><v>0.01</v></gt>
+                    <v>1.0</v>
                     <sum>
                         <product>
                             <p>systems/autopilot/altitude-QFE-impact-elev-intensity-fuzy-0-1</p>
