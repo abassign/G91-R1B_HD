@@ -123,7 +123,10 @@ var testing_level = 0;
 var pilot_assistant = func {
     
     testing_log_active = getprop("sim/G91/testing/log");
+    if (testing_log_active == nil) testing_log_active = 0;
     testing_level = getprop("sim/G91/testing/level");
+    if (testing_level == nil) testing_level = 0;
+    
     var speed_cas = getprop("fdm/jsbsim/systems/autopilot/speed-cas-on-air");
     airplane = geo.aircraft_position();
     

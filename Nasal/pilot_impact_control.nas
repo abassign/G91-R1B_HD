@@ -95,6 +95,7 @@ var setIntensty_calc_lag = func(aIntensity_calc,intensity_calc_lag_incr,intensit
 var analyze_imp_time = func() {
     
     testing_log_active = getprop("sim/G91/testing/log");
+    if (testing_log_active == nil) testing_log_active = 0;
     
     #
     # Min time for start the anti-impact procedure
