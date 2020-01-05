@@ -296,7 +296,7 @@ var pilot_assistant = func {
                 setprop("fdm/jsbsim/systems/autopilot/gui/speed-automatic-flap",0.0);
                 setprop("fdm/jsbsim/systems/autopilot/gui/speed-throttle",1.0);
                 setprop("fdm/jsbsim/systems/autopilot/gui/speed-pitch",0.0);
-                if (speed_select <= -1.0) {
+                if (speed_select <= 0.0) {
                     if (speed_select < 2.0 and speed_select > 0.0) {
                         setprop("fdm/jsbsim/systems/autopilot/gui/speed-set-mach",1.0);
                         setprop("fdm/jsbsim/systems/autopilot/gui/speed-set-cas",0.0);
@@ -773,8 +773,8 @@ var pilot_assistant = func {
                     tu = 10.0;
                     pitch_output_error_coefficient_gain = 1.5 + (wind_speed / 30);
                     cas_max = 135.0 - wind_frontal_active + (15 * weitght_norm);
-                    if (landing_22_slope_target < -3.45) landing_22_slope_target = landing_22_slope_target + 0.02;
-                    if (landing_22_slope_target > -3.55) landing_22_slope_target = landing_22_slope_target - 0.02;
+                    if (landing_22_slope_target < -3.65) landing_22_slope_target = landing_22_slope_target + 0.02;
+                    if (landing_22_slope_target > -3.75) landing_22_slope_target = landing_22_slope_target - 0.02;
                     slope = - math.asin((delta_h_ft * 0.000189394) / (runway_to_airplane_dist + 0.25)) * R2D;
                     landing_22_slope_dif_adv = (landing_22_slope_dif_adv + slope + getprop("fdm/jsbsim/systems/autopilot/pitch-angle-absolute-deg-lag")) / 2.0;
                 } else if (((runway_to_airplane_dist <= 0.8 and runway_to_airplane_dist_der > 0.0 and runway_to_airplane_delta_alt_ft > rwy_offset_v_ft and landing_22_subStatus <= 4) or (landing_22_subStatus == 4 and runway_to_airplane_dist_der > 0.0)) and min_to_term > 0.01)  {
@@ -783,9 +783,9 @@ var pilot_assistant = func {
                     ku = 5.0;
                     tu = 10.0;
                     pitch_output_error_coefficient_gain = 1.5 * (1 + weitght_norm);
-                    cas_max = 120.0 - wind_frontal_active + (5 * weitght_norm);
-                    if (landing_22_slope_target < -3.45) landing_22_slope_target = landing_22_slope_target + 0.02;
-                    if (landing_22_slope_target > -3.55) landing_22_slope_target = landing_22_slope_target - 0.02;
+                    cas_max = 110.0 - wind_frontal_active + (5 * weitght_norm);
+                    if (landing_22_slope_target < -3.65) landing_22_slope_target = landing_22_slope_target + 0.02;
+                    if (landing_22_slope_target > -3.75) landing_22_slope_target = landing_22_slope_target - 0.02;
                     slope = - math.asin((delta_h_ft * 0.000189394) / (runway_to_airplane_dist + 0.3)) * R2D;
                     landing_22_slope_dif_adv = (landing_22_slope_dif_adv + slope + getprop("fdm/jsbsim/systems/autopilot/pitch-angle-absolute-deg-lag")) / 2.0;
                 } else if ((runway_to_airplane_dist_der <= 0.0 or landing_22_subStatus == 5 or min_to_term <= 0.01) and altitude_agl_ft > 30.0 and speed_cas > 20.0 and landing_22_subStatus <= 5) {
@@ -895,8 +895,7 @@ var pilot_assistant = func {
                     ,sprintf(" %4.2f ",landing_22_pitch_output_error_coefficient_gain)
                     ,sprintf(" | %4.1f ",landing_22_discending_ftm)
                     ,sprintf(" %1.2f ",weitght_norm)
-                    ,sprintf(" %2.3f ",min_to_term)
-                    ,")"
+                    ,sprintf(" %2.3f)",min_to_term)
                     ,sprintf(" Hd: %4.1f",heading_correct)
                     ,sprintf(" cr: %4.2f",heading_correction_deg)
                     ,sprintf(" fct: %2.2f",heading_factor)
@@ -1260,8 +1259,8 @@ var pilot_assistant = func {
             } else if (speed_cas < 120 and altitude_agl_ft < 20.0) {
                 pilot_ass_status_id = 10.34;
                 if (isJatoOn == 1) {
-                    pitchDeg = 0.0 + (speed_cas - 50.0) / 50.0;
-                    if (pitchDeg > 0.5) pitchDeg = 0.5;
+                    pitchDeg = 6.0 + (speed_cas - 50.0) / 50.0;
+                    if (pitchDeg > 8.0) pitchDeg = 8.0;
                 } else {
                     pitchDeg = 4.0 + (speed_cas - 50.0) / 30.0;
                     if (pitchDeg > 6.0) pitchDeg = 6.0;
@@ -1271,8 +1270,8 @@ var pilot_assistant = func {
                 pilot_ass_status_id = 10.35;
                 pitchDeg = getprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle-deg");
                 if (isJatoOn == 1) {
-                    pitchDeg = 2.0 + ((speed_cas - 50.0) / 50.0) / ( 1 + factorGain);
-                    if (pitchDeg > 2.0) pitchDeg = 2.0;
+                    pitchDeg = 1.0 + ((speed_cas - 50.0) / 50.0) / ( 1 + factorGain);
+                    if (pitchDeg > 3.0) pitchDeg = 3.0;
                 } else {
                     pitchDeg = 2.0 + (speed_cas - 50.0) / 50.0;
                     if (pitchDeg > 3.0) pitchDeg = 3.0;
