@@ -780,7 +780,7 @@ var pilot_assistant = func {
                 } else if (((runway_to_airplane_dist <= 0.8 and runway_to_airplane_dist_der > 0.0 and runway_to_airplane_delta_alt_ft > rwy_offset_v_ft and landing_22_subStatus <= 4) or (landing_22_subStatus == 4 and runway_to_airplane_dist_der > 0.0)) and min_to_term > 0.01)  {
                     landing_22_subStatus = 4;
                     impact_cnt_limiter = 10.0;
-                    ku = 5.0;
+                    ku = 6.0;
                     tu = 10.0;
                     pitch_output_error_coefficient_gain = 1.5 * (1 + weitght_norm);
                     cas_max = 110.0 - wind_frontal_active + (5 * weitght_norm);
@@ -788,10 +788,10 @@ var pilot_assistant = func {
                     if (landing_22_slope_target > -3.75) landing_22_slope_target = landing_22_slope_target - 0.02;
                     slope = - math.asin((delta_h_ft * 0.000189394) / (runway_to_airplane_dist + 0.3)) * R2D;
                     landing_22_slope_dif_adv = (landing_22_slope_dif_adv + slope + getprop("fdm/jsbsim/systems/autopilot/pitch-angle-absolute-deg-lag")) / 2.0;
-                } else if ((runway_to_airplane_dist_der <= 0.0 or landing_22_subStatus == 5 or min_to_term <= 0.01) and altitude_agl_ft > 30.0 and speed_cas > 20.0 and landing_22_subStatus <= 5) {
+                } else if ((runway_to_airplane_dist_der <= 0.0 or landing_22_subStatus == 5 or min_to_term <= 0.01) and altitude_agl_ft > 20.0 and speed_cas > 20.0 and landing_22_subStatus <= 5) {
                     landing_22_subStatus = 5;
                     impact_cnt_limiter = 10.0;
-                    ku = 5.0;
+                    ku = 6.0;
                     tu = 10.0;
                     cas_max = 110.0 - wind_frontal_active + (5 * weitght_norm);
                     slope = landing_22_slope_dif_adv - getprop("fdm/jsbsim/systems/autopilot/pitch-angle-absolute-deg-lag");
@@ -802,7 +802,7 @@ var pilot_assistant = func {
                         setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle-deg",-1.0 - (2.0 * altitude_agl_ft / 100.0));
                     }
                     
-                } else if ((altitude_agl_ft <= 30.0 or landing_22_subStatus == 6) and speed_cas > 20.0) {
+                } else if ((altitude_agl_ft <= 20.0 or landing_22_subStatus == 6) and speed_cas > 20.0) {
                     landing_22_subStatus = 6;
                     impact_cnt_limiter = 10.0;
                     ku = 8.0; # ku = 5.0;
@@ -810,7 +810,7 @@ var pilot_assistant = func {
                     cas_max = 50.0 - wind_frontal_active;
                     slope = landing_22_slope_dif_adv - getprop("fdm/jsbsim/systems/autopilot/pitch-angle-absolute-deg-lag");
                     setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle",1.0);
-                    setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle-deg",0.0);
+                    setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle-deg",0.5);
                 }
                 
                 
@@ -1262,8 +1262,8 @@ var pilot_assistant = func {
                     pitchDeg = 6.0 + (speed_cas - 50.0) / 50.0;
                     if (pitchDeg > 8.0) pitchDeg = 8.0;
                 } else {
-                    pitchDeg = 4.0 + (speed_cas - 50.0) / 30.0;
-                    if (pitchDeg > 6.0) pitchDeg = 6.0;
+                    pitchDeg = 2.0 + (speed_cas - 50.0) / 30.0;
+                    if (pitchDeg > 4.0) pitchDeg = 4.0;
                 }
                 setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle-deg",pitchDeg);
             } else if (altitude_agl_ft < 400.0 or isJatoOn == 1) {
