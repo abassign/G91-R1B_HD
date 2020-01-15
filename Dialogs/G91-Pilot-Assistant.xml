@@ -501,9 +501,9 @@
                     <format>[%4.0f]</format>
                     <property>fdm/jsbsim/systems/autopilot/vertical-speed-fpm</property>
                     <color>
-                        <red>0.9</red>
-                        <green>0.0</green>
-                        <blue>0.0</blue>
+                        <red>0.8</red>
+                        <green>0.8</green>
+                        <blue>0.8</blue>
                     </color>
                 </text>
                 <text>
@@ -567,9 +567,9 @@
                     <format>[%3.2f]</format>
                     <property>fdm/jsbsim/systems/autopilot/pitch-angle-deg</property>
                     <color>
-                        <red>0.9</red>
-                        <green>0.0</green>
-                        <blue>0.0</blue>
+                        <red>0.8</red>
+                        <green>0.8</green>
+                        <blue>0.8</blue>
                     </color>
                 </text>
                 <text>
@@ -634,9 +634,9 @@
                     <format>(sup %1d)</format>
                     <property>fdm/jsbsim/systems/autopilot/pitch-alpha-super-activate</property>
                     <color>
-                        <red>0.9</red>
-                        <green>0.0</green>
-                        <blue>0.0</blue>
+                        <red>0.8</red>
+                        <green>0.8</green>
+                        <blue>0.8</blue>
                     </color>
                 </text>
                 <text>
@@ -764,9 +764,9 @@
                     <format>[%5.0f]</format>
                     <property>fdm/jsbsim/systems/autopilot/altitude-QFE-ft-lag</property>
                     <color>
-                        <red>0.9</red>
-                        <green>0.0</green>
-                        <blue>0.0</blue>
+                        <red>0.8</red>
+                        <green>0.8</green>
+                        <blue>0.8</blue>
                     </color>
                 </text>
                 <text>
@@ -1067,6 +1067,7 @@
                 <binding>
                     <command>nasal</command>
                     <script><![CDATA[
+                        setprop("fdm/jsbsim/systems/autopilot/gui/speed-set-best-by-altitude",0.0);
                         if (getprop("fdm/jsbsim/systems/autopilot/gui/speed-value") < 2.0) {
                             setprop("fdm/jsbsim/systems/autopilot/gui/speed-set-cas",0.0);
                             setprop("fdm/jsbsim/systems/autopilot/gui/speed-set-mph",0.0);
@@ -1081,15 +1082,39 @@
                     ]]></script>
                 </binding>
             </input>
+            <radio>
+                <row>0</row>
+                <col>5</col>
+                <label>Optimize</label>
+                <property>fdm/jsbsim/systems/autopilot/gui/speed-set-best-by-altitude</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </radio>
+            <text>
+                <row>0</row>
+                <col>6</col>
+                <label>9999999</label>
+                <halign>left</halign>
+                <live>true</live>
+                <format>[%3.2f]</format>
+                <property>fdm/jsbsim/systems/autopilot/speed-best-by-altitude</property>
+                <color>
+                    <red>0.8</red>
+                    <green>0.8</green>
+                    <blue>0.8</blue>
+                </color>
+            </text>
             <text>
                 <label>TAS</label>
                 <halign>right</halign>
                 <row>0</row>
-                <col>5</col>
+                <col>7</col>
             </text>
             <text>
                 <row>0</row>
-                <col>6</col>
+                <col>8</col>
                 <label>99999</label>
                 <halign>left</halign>
                 <live>true</live>
@@ -1105,11 +1130,11 @@
                 <label>CAS</label>
                 <halign>right</halign>
                 <row>0</row>
-                <col>7</col>
+                <col>9</col>
             </text>
             <text>
                 <row>0</row>
-                <col>8</col>
+                <col>10</col>
                 <label>99999</label>
                 <halign>left</halign>
                 <live>true</live>
@@ -1125,11 +1150,11 @@
                 <label>Mach</label>
                 <halign>right</halign>
                 <row>0</row>
-                <col>9</col>
+                <col>11</col>
             </text>
             <text>
                 <row>0</row>
-                <col>10</col>
+                <col>12</col>
                 <label>99999</label>
                 <halign>left</halign>
                 <live>true</live>
@@ -1145,11 +1170,11 @@
                 <label>On ground</label>
                 <halign>right</halign>
                 <row>0</row>
-                <col>11</col>
+                <col>13</col>
             </text>
             <text>
                 <row>0</row>
-                <col>12</col>
+                <col>14</col>
                 <label>99999999999</label>
                 <halign>left</halign>
                 <live>true</live>
@@ -1367,7 +1392,27 @@
                 <halign>left</halign>
                 <live>true</live>
                 <format>%4.0f</format>
-                <property>fdm/jsbsim/systems/autopilot/fuel-mph-residue</property>
+                <property>fdm/jsbsim/systems/autopilot/fuel-nm-residue</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.0</blue>
+                </color>
+            </text>
+            <text>
+                <label>Lib/nm</label>
+                <halign>left</halign>
+                <row>0</row>
+                <col>11</col>
+            </text>
+            <text>
+                <row>0</row>
+                <col>12</col>
+                <label>99999</label>
+                <halign>left</halign>
+                <live>true</live>
+                <format>%2.2f</format>
+                <property>fdm/jsbsim/systems/autopilot/fuel-lbs-formiles</property>
                 <color>
                     <red>0.9</red>
                     <green>0.9</green>
@@ -1928,7 +1973,7 @@
             Some Overshoot
             No Overshoot
         -->
-<!--
+
         <hrule/>
         
         <group>
@@ -2115,9 +2160,9 @@
                         setprop("fdm/jsbsim/systems/autopilot/gui/pid-ki",ki);
                         setprop("fdm/jsbsim/systems/autopilot/gui/pid-kd",kd);
                         # Modifiy data part
-                        setprop("fdm/jsbsim/systems/autopilot/pitch-alpha-pid-kp",kp);
-                        setprop("fdm/jsbsim/systems/autopilot/pitch-alpha-pid-ki",ki);
-                        setprop("fdm/jsbsim/systems/autopilot/pitch-alpha-pid-kd",kd);
+                        setprop("fdm/jsbsim/systems/autopilot/speed-kp",kp);
+                        setprop("fdm/jsbsim/systems/autopilot/speed-ki",ki);
+                        setprop("fdm/jsbsim/systems/autopilot/speed-kd",kd);
                     ]]></script>
                 </binding>
             </button>
@@ -2182,7 +2227,7 @@
                 </color>
             </text>
         </group>
-        -->
+
 
     </group>
 

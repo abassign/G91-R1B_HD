@@ -36,7 +36,6 @@ No Overshoot
     
     <property value="0.0">systems/autopilot/gui/altitude-hold</property>
     <property value="0.0">systems/autopilot/gui/altitude-hold-ft</property>
-    <property value="0.0">systems/autopilot/gui/altitude-hold-togle</property>
     
     <property value="0.0">systems/autopilot/gui/altitude-QFE</property>
     <property value="1000.0">systems/autopilot/gui/altitude-QFE-ft</property>
@@ -51,6 +50,7 @@ No Overshoot
     <property value="0.0">systems/autopilot/gui/speed-set-mph</property>
     <property value="1.0">systems/autopilot/gui/speed-set-cas</property>
     <property value="0.0">systems/autopilot/gui/speed-set-mach</property>
+    <property value="0.0">systems/autopilot/gui/speed-set-best-by-altitude</property>
     
     <property value="0.5">systems/autopilot/gui/h-sl-ft-lag-coefficient</property>
     
@@ -114,6 +114,7 @@ No Overshoot
     <property value="0.0">systems/autopilot/fuel-time-residue-sec</property>
     <property value="0.0">systems/autopilot/fuel-time-residue-h</property>
     <property value="0.0">systems/autopilot/fuel-nm-residue</property>
+    <property value="0.0">systems/autopilot/fuel-lbs-formiles</property>
     
     <!-- Landing gear section -->
     <property value="0.0">systems/autopilot/landing-gear-set-close</property>
@@ -215,6 +216,7 @@ No Overshoot
     <property value="-0.2">systems/autopilot/pitch-alpha-output-error-coefficient</property>
     
     <!-- Roll section -->
+    <property value="0.0">systems/autopilot/speed-difference</property>
     <property value="3.0">systems/autopilot/roll-pid-kp</property>
     <property value="0.5">systems/autopilot/roll-pid-ki</property>
     <property value="1.5">systems/autopilot/roll-pid-kd</property>
@@ -231,12 +233,23 @@ No Overshoot
     <property value="-1.0">systems/autopilot/speed-throttle-imposed</property>
     <property value="0.01">systems/autopilot/speed-pitch-input-gain</property>
     <property value="0.0">systems/autopilot/speed-reset-integrator</property>
-    <property value="0.05">systems/autopilot/speed-throttle-input-gain</property>
     <!--PID -->
+    <!--
+    <property value="0.05">systems/autopilot/speed-throttle-input-gain</property>
     <property value="0.5">systems/autopilot/speed-kp</property>
     <property value="0.1">systems/autopilot/speed-ki</property>
     <property value="0.5">systems/autopilot/speed-kd</property>
     <property value="0.005">systems/autopilot/speed-throttle-output-gain</property>
+    -->
+    <property value="1.0">systems/autopilot/speed-throttle-input-gain</property>
+    <property value="7.0">systems/autopilot/speed-kp</property>
+    <property value="0.1">systems/autopilot/speed-ki</property>
+    <property value="0.2">systems/autopilot/speed-kd</property>
+    <property value="7.0">systems/autopilot/speed-kp-optimize</property>
+    <property value="1.0">systems/autopilot/speed-ki-optimize</property>
+    <property value="0.2">systems/autopilot/speed-kd-optimize</property>
+    <property value="1.0">systems/autopilot/speed-throttle-output-gain</property>
+    
     <property value="0.0">systems/autopilot/speed-pitch-pid-gain-sum</property>
     <property value="-30.0">systems/autopilot/speed-pitch-output-gain</property>
     <property value="0.0">systems/autopilot/speed-pitch-active</property>
@@ -245,6 +258,8 @@ No Overshoot
     <property value="0.0">systems/autopilot/steer-brake-antiskid</property>
     <property value="0.0">systems/autopilot/speed-automatic-flap-active</property>
     <property value="0.0">systems/autopilot/speed-automatic-gear-active</property>
+    <property value="0.0">systems/autopilot/speed-best-by-altitude</property>
+    <property value="-0.002">systems/autopilot/vertical-speed-anti-stall-lim-max</property>
     
     <property value="0.0">systems/autopilot/left-steer-brake</property>
     <property value="0.0">systems/autopilot/right-steer-brake</property>
@@ -552,6 +567,25 @@ No Overshoot
             </function>
         </fcs_function>
         
+        <switch name="systems/autopilot/speed-throttle-limiter">
+            <default value="0.0"/>
+            <test logic="AND" value="1.0">
+                systems/engine/jet-TC-temperature-hight == 1.0
+            </test>
+        </switch>
+        
+        <lag_filter name="systems/autopilot/speed-throttle-limiter-lag">
+            <input>systems/autopilot/speed-throttle-limiter</input>
+            <c1>0.1</c1>
+        </lag_filter>
+        
+        <switch name="systems/autopilot/speed-throttle-max">
+            <default value="0.94"/>
+            <test logic="AND" value="0.92">
+                systems/autopilot/speed-throttle-limiter-lag GT 0.01
+            </test>
+        </switch>
+        
         <!-- altitude section -->
         
         <switch name="systems/autopilot/altitude-hold-ft">
@@ -625,6 +659,14 @@ No Overshoot
             <c1>systems/autopilot/altitude-QFE-ft-lag-C1</c1>
         </lag_filter>
         
+        <switch name="systems/autopilot/gui/pitch-angle-deg-mod">
+            <default value="systems/autopilot/gui/pitch-angle-deg"/>
+            <test logic="AND" value="systems/autopilot/pitch-angle-active-best-by-altitude">
+                systems/autopilot/gui/speed-set-best-by-altitude == 1
+                systems/autopilot/gui/pitch-angle-deg GT systems/autopilot/pitch-angle-active-best-by-altitude
+            </test>
+        </switch>
+        
         <fcs_function name="systems/autopilot/pitch-angle-deg">
             <function>
                 <ifthen>
@@ -632,14 +674,22 @@ No Overshoot
                     <sum>
                         <v>1.0</v>
                         <product>
-                            <p>systems/autopilot/gui/pitch-angle-deg</p>
+                            <p>systems/autopilot/gui/pitch-angle-deg-mod</p>
                             <p>systems/autopilot/altitude-QFE-impact-elev-intensity-lag</p>
                         </product>
                     </sum>
-                    <p>systems/autopilot/gui/pitch-angle-deg</p>
+                    <p>systems/autopilot/gui/pitch-angle-deg-mod</p>
                 </ifthen>
             </function>
         </fcs_function>
+        
+        <switch name="systems/autopilot/gui/vertical-speed-fpm-mod">
+            <default value="systems/autopilot/gui/vertical-speed-fpm"/>
+            <test logic="AND" value="systems/autopilot/vertical-speed-best-by-altitude">
+                systems/autopilot/gui/speed-set-best-by-altitude == 1.0
+                systems/autopilot/gui/vertical-speed-fpm GT systems/autopilot/vertical-speed-best-by-altitude
+            </test>
+        </switch>
         
         <fcs_function name="systems/autopilot/vertical-speed-fpm">
             <function>
@@ -648,15 +698,42 @@ No Overshoot
                     <sum>
                         <v>1.0</v>
                         <product>
-                            <p>systems/autopilot/gui/vertical-speed-fpm</p>
+                            <p>systems/autopilot/gui/vertical-speed-fpm-mod</p>
                             <p>systems/autopilot/altitude-QFE-impact-elev-intensity-lag</p>
                             <v>2.0</v>
                         </product>
                     </sum>
-                    <p>systems/autopilot/gui/vertical-speed-fpm</p>
+                    <p>systems/autopilot/gui/vertical-speed-fpm-mod</p>
                 </ifthen>
             </function>
         </fcs_function>
+        
+        <fcs_function name="systems/autopilot/vertical-speed-anti-stall-calc-rad">
+            <function>
+                <ifthen>
+                    <and>
+                        <gt><abs><p>forces/fwz-aero-lbs</p></abs><v>1000.0</v></gt>
+                        <le><p>context/gears/on-ground</p><v>0.5</v></le>
+                        <ge><p>systems/autopilot/speed-pid-output</p><p>systems/autopilot/speed-throttle-max</p></ge>
+                    </and>
+                    <atan>
+                        <quotient>
+                            <sum>
+                                <p>forces/fbz-total-lbs</p>
+                                <p>forces/fwz-aero-lbs</p>
+                            </sum>
+                            <abs><p>forces/fwz-aero-lbs</p></abs>
+                        </quotient>
+                    </atan>
+                    <v>0.0</v>
+                </ifthen>
+            </function>
+        </fcs_function>
+        
+        <lag_filter name="systems/autopilot/vertical-speed-anti-stall-calc-rad-lag">
+            <input>systems/autopilot/vertical-speed-anti-stall-calc-rad</input>
+            <c1>0.1</c1>
+        </lag_filter>
         
     </channel>
     
@@ -1001,7 +1078,10 @@ No Overshoot
                         <product>
                             <p>systems/autopilot/altitude-hold-pid-gain-lag-sw</p>
                             <ifthen>
-                                <lt><abs><p>systems/autopilot/pitch-angle-deg</p></abs><v>0.5</v></lt>
+                                <and>
+                                    <lt><abs><p>systems/autopilot/pitch-angle-deg</p></abs><v>2.0</v></lt>
+                                    <le><p>systems/autopilot/gui/speed-set-best-by-altitude</p><v>0.5</v></le>
+                                </and>
                                 <v>2.0</v>
                                 <abs><p>systems/autopilot/pitch-angle-deg</p></abs>
                             </ifthen>
@@ -1016,13 +1096,36 @@ No Overshoot
             </function>
         </fcs_function>
         
-        <lag_filter name="systems/autopilot/pitch-angle-rad-sign-lag">
-            <input>systems/autopilot/pitch-angle-rad-sign</input>
-            <c1>0.5</c1>
+        <fcs_function name="systems/autopilot/pitch-angle-rad-sign-cor">
+            <function>
+                <ifthen>
+                    <and>
+                        <gt><p>systems/autopilot/gui/speed-set-best-by-altitude</p><v>0.5</v></gt>
+                        <lt><p>systems/autopilot/vertical-speed-anti-stall-calc-rad-lag</p><p>systems/autopilot/vertical-speed-anti-stall-lim-max</p></lt>
+                    </and>
+                    <product>
+                        <p>systems/autopilot/vertical-speed-anti-stall-calc-rad-lag</p>
+                        <v>20.0</v>
+                    </product>
+                    <p>systems/autopilot/pitch-angle-rad-sign</p>
+                </ifthen>
+            </function>
+        </fcs_function>
+        
+        <switch name="systems/autopilot/pitch-angle-rad-sign-cor-lag-C1">
+            <default value="0.5"/>
+            <test logic="AND" value="0.05">
+                systems/autopilot/gui/speed-set-best-by-altitude GE 0.5
+            </test>
+        </switch>
+        
+        <lag_filter name="systems/autopilot/pitch-angle-rad-sign-cor-lag">
+            <input>systems/autopilot/pitch-angle-rad-sign-cor</input>
+            <c1>systems/autopilot/pitch-angle-rad-sign-cor-lag-C1</c1>
         </lag_filter>
         
         <summer name="systems/autopilot/pitch-angle-rad-error">
-            <input>systems/autopilot/pitch-angle-rad-sign-lag</input>
+            <input>systems/autopilot/pitch-angle-rad-sign-cor-lag</input>
             <input>-systems/autopilot/pitch-angle-absolute-rad-lag</input>
         </summer>
         
@@ -1116,7 +1219,10 @@ No Overshoot
                         <product>
                             <p>systems/autopilot/altitude-hold-pid-gain-lag-sw</p>
                             <ifthen>
-                                <lt><abs><p>systems/autopilot/vertical-speed-fpm</p></abs><v>200.0</v></lt>
+                                <and>
+                                    <lt><abs><p>systems/autopilot/vertical-speed-fpm</p></abs><v>500.0</v></lt>
+                                    <le><p>systems/autopilot/gui/speed-set-best-by-altitude</p><v>0.5</v></le>
+                                </and>
                                 <v>500.0</v>
                                 <abs><p>systems/autopilot/vertical-speed-fpm</p></abs>
                             </ifthen>
@@ -1500,7 +1606,7 @@ No Overshoot
     </channel>
     
     
-    <channel name="distance calculator">
+    <channel name="distance calculator" execrate="8">
         
         <integrator name="systems/autopilot/distance-fp">
             <input>velocities/u-aero-fps</input>
@@ -1560,7 +1666,7 @@ No Overshoot
         
         <lag_filter name="systems/autopilot/fuel-flow-rate-pps-lag">
             <input>propulsion/engine/fuel-flow-rate-pps</input>
-            <c1>0.1</c1>
+            <c1>0.01</c1>
         </lag_filter>
         
         <pure_gain name="systems/autopilot/fuel-flow-rate-lbhr">
@@ -1606,10 +1712,23 @@ No Overshoot
             </function>
         </fcs_function>
         
-        <pure_gain name="systems/autopilot/fuel-mph-residue">
+        <pure_gain name="systems/autopilot/fuel-nm-residue">
             <input>systems/autopilot/fuel-time-residue-sec</input>
             <gain>systems/autopilot/speed-true-on-air-sec</gain>
         </pure_gain>
+        
+        <fcs_function name="systems/autopilot/fuel-lbs-formiles">
+            <function>
+                <ifthen>
+                    <gt><p>systems/autopilot/speed-true-on-air-sec</p><v>0.001</v></gt>
+                    <quotient>
+                        <p>systems/autopilot/fuel-flow-rate-pps-lag</p>
+                        <p>systems/autopilot/speed-true-on-air-sec</p>
+                    </quotient>
+                    <v>0.0</v>
+                </ifthen>
+            </function>
+        </fcs_function>
         
         <!-- Droppable tanks -->
         
@@ -1700,25 +1819,33 @@ No Overshoot
             </test>
         </switch>
         
-        <lag_filter name="systems/autopilot/speed-value-lag">
-            <input>systems/autopilot/gui/speed-value</input>
+        <switch name="systems/autopilot/speed-value-mod">
+            <default value="systems/autopilot/gui/speed-value"/>
+            <test logic="AND" value="systems/autopilot/speed-best-by-altitude">
+                systems/autopilot/gui/speed-set-best-by-altitude == 1.0
+            </test>
+        </switch>
+        
+        <lag_filter name="systems/autopilot/speed-value-target-lag">
+            <input>systems/autopilot/speed-value-mod</input>
             <c1>0.2</c1>
         </lag_filter>
         
         <fcs_function name="systems/autopilot/speed-difference-throttle">
             <function>
                 <ifthen>
-                    <p>systems/autopilot/speed-throttle-active</p>
+                    <and>
+                        <p>systems/autopilot/speed-throttle-active</p>
+                        <gt><p>systems/autopilot/speed-value-target-lag</p><v>1.0</v></gt>
+                    </and>
                     <product>
-                        <difference>
-                            <p>systems/autopilot/speed-value-lag</p>
-                            <p>systems/autopilot/speed-value</p>
-                        </difference>
-                        <ifthen>
-                            <p>systems/autopilot/gui/speed-set-mach</p>
-                            <v>1000.0</v>
-                            <v>1.0</v>
-                        </ifthen>
+                        <quotient>
+                            <difference>
+                                <p>systems/autopilot/speed-value-target-lag</p>
+                                <p>systems/autopilot/speed-value</p>
+                            </difference>
+                            <p>systems/autopilot/speed-value-target-lag</p>
+                        </quotient>
                         <p>systems/autopilot/speed-throttle-input-gain</p>
                     </product>
                     <v>0.0</v>
@@ -1733,17 +1860,18 @@ No Overshoot
         <fcs_function name="systems/autopilot/speed-difference-pitch">
             <function>
                 <ifthen>
-                    <p>systems/autopilot/speed-pitch-active</p>
+                    <and>
+                        <p>systems/autopilot/speed-pitch-active</p>
+                        <gt><p>systems/autopilot/speed-value-target-lag</p><v>1.0</v></gt>
+                    </and>
                     <product>
-                        <difference>
-                            <p>systems/autopilot/speed-value-lag</p>
-                            <p>systems/autopilot/speed-value</p>
-                        </difference>
-                        <ifthen>
-                            <p>systems/autopilot/gui/speed-set-mach</p>
-                            <v>1000.0</v>
-                            <v>1.0</v>
-                        </ifthen>
+                        <quotient>
+                            <difference>
+                                <p>systems/autopilot/speed-value-target-lag</p>
+                                <p>systems/autopilot/speed-value</p>
+                            </difference>
+                            <p>systems/autopilot/speed-value-target-lag</p>
+                        </quotient>
                         <p>systems/autopilot/speed-pitch-input-gain</p>
                     </product>
                     <v>0.0</v>
@@ -1761,15 +1889,15 @@ No Overshoot
         </summer>
         
         <switch name="systems/autopilot/speed-reset-integrator">
-            <default value="-1"/>
+            <default value="0"/>
             <test logic="AND" value="0">
                 <test logic="OR">
                     systems/autopilot/speed-throttle-active == 1
                     systems/autopilot/speed-pitch-active == 1
                 </test>
                 <test logic="AND">
-                    systems/autopilot/speed-difference LT 0.1
-                    systems/autopilot/speed-difference GT -0.1
+                    systems/autopilot/speed-difference LT 0.5
+                    systems/autopilot/speed-difference GT -0.5
                 </test>
             </test>
             <test logic="AND" value="1">
@@ -1778,17 +1906,44 @@ No Overshoot
                     systems/autopilot/speed-pitch-active == 1
                 </test>
                 <test logic="OR">
-                    systems/autopilot/speed-difference GE 0.1
-                    systems/autopilot/speed-difference LE -0.1
+                    systems/autopilot/speed-difference GE 0.5
+                    systems/autopilot/speed-difference LE -0.5
                 </test>
+            </test>
+        </switch>
+        
+        <switch name="systems/autopilot/speed-kp-mod">
+            <default value="systems/autopilot/speed-kp"/>
+            <test logic="AND" value="systems/autopilot/speed-kp-optimize">
+                systems/autopilot/gui/speed-set-best-by-altitude == 1.0
+                systems/autopilot/speed-difference LT 0.15
+                systems/autopilot/speed-difference GT -0.15
+            </test>
+        </switch>
+        
+        <switch name="systems/autopilot/speed-ki-mod">
+            <default value="systems/autopilot/speed-ki"/>
+            <test logic="AND" value="systems/autopilot/speed-ki-optimize">
+                systems/autopilot/gui/speed-set-best-by-altitude == 1.0
+                systems/autopilot/speed-difference LT 0.15
+                systems/autopilot/speed-difference GT -0.15
+            </test>
+        </switch>
+        
+        <switch name="systems/autopilot/speed-kd-mod">
+            <default value="systems/autopilot/speed-kd"/>
+            <test logic="AND" value="systems/autopilot/speed-kd-optimize">
+                systems/autopilot/gui/speed-set-best-by-altitude == 1.0
+                systems/autopilot/speed-difference LT 0.15
+                systems/autopilot/speed-difference GT -0.15
             </test>
         </switch>
         
         <pid name="systems/autopilot/speed-pid">
             <input>systems/autopilot/speed-difference</input>
-            <kp>systems/autopilot/speed-kp</kp>
-            <ki>systems/autopilot/speed-ki</ki>
-            <kd>systems/autopilot/speed-kd</kd>
+            <kp>systems/autopilot/speed-kp-mod</kp>
+            <ki>systems/autopilot/speed-ki-mod</ki>
+            <kd>systems/autopilot/speed-kd-mod</kd>
             <trigger>systems/autopilot/speed-reset-integrator</trigger>
         </pid>
         
@@ -1801,36 +1956,26 @@ No Overshoot
             </clipto>
         </pure_gain>
         
-        <lag_filter name="systems/autopilot/speed-throttle-pid-gain-lag">
-            <input>systems/autopilot/speed-throttle-pid-gain</input>
-            <c1>0.5</c1>
-        </lag_filter>
-        
-        <summer name="systems/autopilot/speed-throttle-pid-gain-sum">
-            <input>systems/autopilot/speed-throttle-pid-gain-lag</input>
-            <input>/controls/engines/engine/throttle</input>
-        </summer>
-        
         <switch name="systems/autopilot/speed-pid-output">
             <default value="/controls/engines/engine/throttle"/>
             <test logic="AND" value="systems/autopilot/speed-throttle-imposed">
                 systems/autopilot/speed-throttle-imposed GE 0.0
             </test>
             <test logic="AND" value="/controls/engines/engine/throttle">
-                systems/autopilot/speed-throttle-active == 0
+                systems/autopilot/speed-throttle-active == 0.0
             </test>
-            <test logic="AND" value="systems/autopilot/speed-throttle-pid-gain-sum">
-                systems/autopilot/speed-throttle-active == 1
-                systems/autopilot/speed-throttle-pid-gain-sum GE 0.2
-                systems/autopilot/speed-throttle-pid-gain-sum LE 0.94
+            <test logic="AND" value="systems/autopilot/speed-throttle-pid-gain">
+                systems/autopilot/speed-throttle-active == 1.0
+                systems/autopilot/speed-throttle-pid-gain GE 0.2
+                systems/autopilot/speed-throttle-pid-gain LE systems/autopilot/speed-throttle-max
             </test>
-            <test logic="AND" value="0.90">
-                systems/autopilot/speed-throttle-active == 1
-                systems/autopilot/speed-throttle-pid-gain-sum GT 0.94
+            <test logic="AND" value="systems/autopilot/speed-throttle-max">
+                systems/autopilot/speed-throttle-active == 1.0
+                systems/autopilot/speed-throttle-pid-gain GT systems/autopilot/speed-throttle-max
             </test>
             <test logic="AND" value="0.30">
-                systems/autopilot/speed-throttle-active == 1
-                systems/autopilot/speed-throttle-pid-gain-sum LT 0.2
+                systems/autopilot/speed-throttle-active == 1.0
+                systems/autopilot/speed-throttle-pid-gain LT 0.2
             </test>
             <output>/controls/engines/engine/throttle</output>
         </switch>
@@ -1954,7 +2099,7 @@ No Overshoot
                 </test>
                 <test logic="AND">
                     systems/autopilot/speed-throttle-active == 1
-                    systems/autopilot/speed-throttle-pid-gain-sum LT 0.3
+                    systems/autopilot/speed-throttle-pid-gain LT 0.3
                     systems/autopilot/speed-brake-active == 1
                     systems/autopilot/speed-pid-norm == -1
                     systems/autopilot/speed-pid-norm-lag LT -0.1
@@ -1964,7 +2109,7 @@ No Overshoot
             <test logic="AND" value="0">
                 <test logic="AND">
                     systems/autopilot/speed-throttle-active == 1
-                    systems/autopilot/speed-throttle-pid-gain-sum GT 0.25
+                    systems/autopilot/speed-throttle-pid-gain GT 0.25
                     systems/autopilot/speed-brake-active == 1
                     systems/autopilot/speed-pid-norm GE 0
                     systems/autopilot/speed-pid-norm-lag GE -0.1
@@ -2271,5 +2416,182 @@ No Overshoot
         
     </channel>
     
+    
+    <channel name="conversion tables" execrate="32">
+    
+        <!--
+        
+        <table name="lookup-CAS-MACH">
+            <independentVar lookup="row">systems/autopilot/altitude-ft-lag</independentVar>
+            <independentVar lookup="column">systems/autopilot/speed-cas-on-air-lag</independentVar>
+            <tableData>
+                    0        100        200        300        400        500        600
+                0      0        0.151      0.302	  0.454	     0.605	    0.756	   0.907
+                5000   0        0.166	   0.331	  0.495	     0.658	    0.819	   0.979
+                10000  0        0.182	   0.363	  0.541	     0.716	    0.888	   1.056
+                20000  0        0.222	   0.440	  0.651	     0.854	    1.047	   1.233
+                30000  0        0.276	   0.541	  0.791	     1.023	    1.238	   1.441
+                40000  0        0.347	   0.672	  0.965	     1.228	    1.464	   1.682
+            </tableData>
+        </table>
+        
+        <table name="lookup-TAS-MAC">
+            <independentVar lookup="row">systems/autopilot/altitude-ft-lag</independentVar>
+            <independentVar lookup="column">systems/autopilot/speed-mach-on-air</independentVar>
+            <tableData>
+                    0        100        200        300        400        500        600
+                0	   0        0.151      0.302      0.454	     0.605	    0.756	   0.907
+                5000   0        0.154      0.308      0.462      0.615      0.769      0.923
+                10000  0        0.157      0.313      0.470      0.627      0.783      0.940
+                20000  0        0.163      0.326      0.488      0.651      0.814      0.977
+                30000  0        0.170      0.339      0.509      0.679      0.848      1.018
+                40000  0        0.174      0.349      0.523      0.697      0.872      1.046
+            </tableData>
+        </table>
+        
+        <table name="Lookup-MAC-CAS">
+            <independentVar lookup="row">systems/autopilot/altitude-ft-lag</independentVar>
+            <independentVar lookup="column">systems/autopilot/speed-mach-on-air</independentVar>
+            <tableData>
+                    0        0,3      0,4      0,5      0,6      0,7      0,75      0,8      0,85      0,9
+                0	   0      198	   264	    330	     396	  463	   496	     529	  562	    595
+                5000   0      181	   242	    303	     364	  426	   457	     488	  519	    550
+                10000  0      165	   220	    276	     333	  390	   419	     448	  477	    507
+                20000  0      135	   181	    227	     275	  323	   348	     373	  398	    423
+                30000  0      108	   146	    184	     223	  263	   283	     304	  325	    346
+                40000  0       86	   116	    146	     177	  209	   225	     242	  259	    277
+            </tableData>
+        </table>
+        
+        -->
+        
+        <fcs_function name="systems/autopilot/speed-best-by-altitude">
+            <function>
+                <product>
+                    <ifthen>
+                        <gt><p>systems/autopilot/altitude-hold-active</p><v>0.5</v></gt>
+                        <ifthen>
+                            <gt><p>systems/autopilot/altitude-hold-pid-gain</p><v>-0.05</v></gt>
+                            <table>
+                                <independentVar lookup="row">systems/autopilot/altitude-ft-lag</independentVar>
+                                <tableData>
+                                    0	   1.0
+                                    5000   1.0
+                                    10000  1.0
+                                    20000  1.10
+                                    30000  1.15
+                                    40000  1.00
+                                </tableData>
+                            </table>
+                            <v>1.0</v>
+                        </ifthen>
+                        <v>1.0</v>
+                    </ifthen>
+                    <ifthen>
+                        <eq><p>systems/autopilot/gui/speed-set-mach</p><v>1.0</v></eq>
+                        <table>
+                            <independentVar lookup="row">systems/autopilot/altitude-ft-lag</independentVar>
+                            <tableData>
+                                0	   0.30
+                                5000   0.40
+                                10000  0.45
+                                20000  0.60
+                                30000  0.75
+                                40000  0.80
+                            </tableData>
+                        </table>
+                        <ifthen>
+                            <eq><p>systems/autopilot/gui/speed-set-cas</p><v>1.0</v></eq>
+                            <table>
+                                <independentVar lookup="row">systems/autopilot/altitude-ft-lag</independentVar>
+                                <tableData>
+                                    0	   198
+                                    5000   264
+                                    10000  248
+                                    20000  275
+                                    30000  283
+                                    40000  242
+                                </tableData>
+                            </table>
+                            <ifthen>
+                                <eq><p>systems/autopilot/gui/speed-set-mph</p><v>1.0</v></eq>
+                                <table>
+                                    <independentVar lookup="row">systems/autopilot/altitude-ft-lag</independentVar>
+                                    <tableData>
+                                        0	   198
+                                        5000   260
+                                        10000  287
+                                        20000  370
+                                        30000  442
+                                        40000  459
+                                    </tableData>
+                                </table>
+                                <v>0.0</v>
+                            </ifthen>
+                        </ifthen>
+                    </ifthen>
+                </product>
+            </function>
+        </fcs_function>
 
+        <fcs_function name="systems/autopilot/vertical-speed-best-by-altitude">
+            <function>
+                <product>
+                    <ifthen>
+                        <and>
+                            <gt><p>systems/autopilot/altitude-hold-active</p><v>0.5</v></gt>
+                            <gt><p>systems/autopilot/altitude-hold-pid-gain</p><v>0.2</v></gt>
+                            <gt><p>systems/autopilot/speed-difference</p><v>0.01</v></gt>
+                        </and>
+                        <table>
+                            <independentVar lookup="row">systems/autopilot/speed-difference</independentVar>
+                            <tableData>
+                               -1.0     1
+                                0       1
+                                0.1     0.9
+                                0.2     0.1
+                                1.0     0.1
+                            </tableData>
+                        </table>
+                        <v>1.0</v>
+                    </ifthen>
+                    <table>
+                        <independentVar lookup="row">systems/autopilot/altitude-ft-lag</independentVar>
+                        <tableData>
+                            0	   3000
+                            5000   3000
+                            10000  2500
+                            20000  2000
+                            30000  1500
+                            40000  1000
+                        </tableData>
+                    </table>
+                </product>
+            </function>
+        </fcs_function>
+        
+        <fcs_function name="systems/autopilot/pitch-angle-active-best-by-altitude">
+            <function>
+                <ifthen>
+                    <gt><abs><p>systems/autopilot/velocity-on-ground-fps-lag</p></abs><v>1.0</v></gt>
+                    <product>
+                        <atan>
+                            <quotient>
+                                <quotient>
+                                    <p>systems/autopilot/vertical-speed-best-by-altitude</p>
+                                    <v>60.0</v>
+                                </quotient>
+                                <p>systems/autopilot/velocity-on-ground-fps-lag</p>
+                            </quotient>
+                        </atan>
+                        <v>57.2958</v>
+                    </product>
+                    <v>0.0</v>
+                </ifthen>
+            </function>
+        </fcs_function>
+        
+    </channel>
+    
+    
 </system>

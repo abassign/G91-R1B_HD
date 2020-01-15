@@ -1,0 +1,24 @@
+== About ==
+
+Pilot Assistant (PA) is an application created to allow the automation of certain flight phases in order to be able to more comfortably manage some advanced functions included in the G91. Obviously, each airplane pilot can choose the automatic functions he deems most suitable for the type of flight he wants to perform.
+=== PA is not an autopliot! ===
+The G91R1B is a typical bomber fighter born in the 50s of the last century that had no particular device for navigation automation except for the presence of the pitch damper and the yaw damper. Therefore inserting an autopilot would have been an unacceptable historical inaccuracy for this project. <BR> For this reason I wanted to create the PA that tries to reproduce, with a simple expert system, a real pilot. For this reason, the structure of the configuration panel is made by topics and not by functions and many actions that the PA performs are done with the same approach as the real pilot. For example, the landing phase on the runway takes place following a slope (3.5-4 degrees) with respect to the start runway coordinates. This method is more imprecise, but very similar to what happens in the reality of VFR flight. Same method for take-off which is divided into various phases according to the height with the ground and speed. There is also a very useful "impact control" function that analyzes the terrain every second, in the quietest phases of the flight, or every 0.5-0.2 seconds in the presence of obstacles by means of a constant detection of the altitude with the distance. <BR> The more particular functions will be presented during the explanation of the various modules.
+=== Is it fun to use PA? ===
+It is a very personal answer, I liked it a lot because it allowed me to better understand how to improve the aerodynamic characteristics of the plane in the various flight phases, making very precise and reproducible tests. But at the same time it also allowed me to "look out of the cockpit" and observe the synthetic panorama produced by FGFS ... and therefore dream.
+
+== Configuration of the Pilot Assistant panel ==
+
+From the '' Fiat G91 '' menu the first item is '' Pilot assistant '', click on the item and the panel opens.
+The panel has an important width of 1024 pixels, this means that it can be easily used with 2K monitors, with smaller monitors it will tend to completely cover the view, but I don't think it is a problem as PA programming is only necessary in a few stages of the flight.
+
+<Pannel>
+
+The panel starts with two menus side by side, the left one manages the heading, the right one the pitch and the altitude. Under the two panels side by side, speed, fuel control and thrust are managed.
+
+Three other sections define the phases respectively:
+* Take Off
+* PHI Route
+* Auto landing
+
+==Heading control==
+

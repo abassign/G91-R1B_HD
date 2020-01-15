@@ -296,6 +296,9 @@ var pilot_assistant = func {
                 setprop("fdm/jsbsim/systems/autopilot/gui/speed-automatic-flap",0.0);
                 setprop("fdm/jsbsim/systems/autopilot/gui/speed-throttle",1.0);
                 setprop("fdm/jsbsim/systems/autopilot/gui/speed-pitch",0.0);
+                setprop("fdm/jsbsim/systems/autopilot/gui/speed-set-best-by-altitude",1.0);
+                
+                
                 if (speed_select <= 0.0) {
                     if (speed_select < 2.0 and speed_select > 0.0) {
                         setprop("fdm/jsbsim/systems/autopilot/gui/speed-set-mach",1.0);
@@ -411,6 +414,7 @@ var pilot_assistant = func {
                 landing_20_dist_to_reduce_v_cas = landing_20_app_v;
             }
             if (landing_20_dist_to_reduce_v == 1) {
+                setprop("fdm/jsbsim/systems/autopilot/gui/speed-set-best-by-altitude",0.0);
                 setprop("fdm/jsbsim/systems/autopilot/gui/speed-set-mach",0.0);
                 setprop("fdm/jsbsim/systems/autopilot/gui/speed-set-cas",1.0);
                 setprop("fdm/jsbsim/systems/autopilot/gui/speed-set-mph",0.0);
@@ -482,6 +486,7 @@ var pilot_assistant = func {
                 setprop("fdm/jsbsim/systems/airbrake/manual-cmd",0.0);
                 setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle",0.0);
                 setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle-deg",0.0);
+                setprop("fdm/jsbsim/systems/autopilot/gui/speed-set-best-by-altitude",0.0);
                 isHolding_reducing_delta = -20;
                 isHolding_reducing_heading = nil;
                 isHolding_reducing_distance_rel = nil;
@@ -1367,6 +1372,7 @@ var pilot_assistant = func {
                 }
                 setprop("fdm/jsbsim/systems/autopilot/gui/impact-control-active",1.0);
                 setprop("fdm/jsbsim/systems/autopilot/gui/speed-automatic-gear",1.0);
+                setprop("fdm/jsbsim/systems/autopilot/gui/speed-set-best-by-altitude",1.0);
             }
         }
         #
@@ -1440,6 +1446,7 @@ var pilot_assistant = func {
         setprop("fdm/jsbsim/systems/autopilot/gui/airport_landing_status","Autolanding inactive");
         setprop("fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct/status",0);
         setprop("fdm/jsbsim/systems/autopilot/gui/take-off-jato-active",0);
+        setprop("fdm/jsbsim/systems/autopilot/gui/speed-set-best-by-altitude",0.0);
     }
     setprop("fdm/jsbsim/systems/autopilot/gui/landig-status-id",pilot_ass_status_id);
 
