@@ -131,12 +131,33 @@
                             </script>
                         </binding>
                     </item>
+                    <!--
                     <item>
                         <label>Livery</label>
                         <binding>
                             <command>nasal</command>
                             <script>
+                                aircraft.livery.dialog.toggle();
+                            </script>
+                        </binding>
+                    </item>
+                    <item>
+                        <label>Livery by Canvas</label>
+                        <binding>
+                            <command>nasal</command>
+                            <script>
                                 test_dialog = gui.Dialog.new("sim/gui/dialogs/G91/Livery/dialog","Aircraft/G91-R1B_HD/Dialogs/G91-Livery.xml");
+                                test_dialog.open();
+                            </script>
+                        </binding>
+                    </item>
+                    -->
+                    <item>
+                        <label>Livery</label>
+                        <binding>
+                            <command>nasal</command>
+                            <script>
+                                test_dialog = gui.Dialog.new("sim/gui/dialogs/G91/Livery/dialog","Aircraft/G91-R1B_HD/Dialogs/G91-Livery-canvas.xml");
                                 test_dialog.open();
                             </script>
                         </binding>
@@ -174,7 +195,7 @@
                 </menu>
             </default>
         </menubar>
-        
+
         <G91 include="Models/G91_Params.xml"/>
         
     </sim>
@@ -210,16 +231,14 @@
             <!-- Autopilot -->
             <file>Aircraft/G91-R1B_HD/Nasal/pilot_assitant.nas</file>
             <file>Aircraft/G91-R1B_HD/Nasal/pilot_impact_control.nas</file>
+            <!-- Liveries -->
+            <file>Aircraft/G91-R1B_HD/Nasal/set_livery.nas</file>
         </general>
-        
-        <canvas_gauges>
-            <file>Aircraft/G91-R1B_HD/Models/Liveries/set_livery.nas</file>
-        </canvas_gauges>
         
         <tyresmoke>
             <file>Aircraft/G91-R1B_HD/Nasal/tyresmoke.nas</file>
         </tyresmoke>
-
+        
         <set-gear-down-script>
             <script>
                 if(getprop("/sim/presets/onground")) {
@@ -232,7 +251,7 @@
                 }
             </script>
         </set-gear-down-script>
-
+        
     </nasal>
     
     <!-- Key mappings -->

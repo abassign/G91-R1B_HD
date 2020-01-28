@@ -401,7 +401,7 @@
                         <label>99999999</label>
                         <halign>left</halign>
                         <live>true</live>
-                        <format>%1.1f (Delay)</format>
+                        <format>%1.1f (Advance)</format>
                         <property>fdm/jsbsim/systems/autopilot/gui/impact-medium-time</property>
                         <color>
                             <red>0.9</red>
@@ -1307,14 +1307,28 @@
                 </color>
             </text>
             <text>
+                <row>0</row>
+                <col>2</col>
+                <label>99999</label>
+                <halign>left</halign>
+                <live>true</live>
+                <format>(%1.2f)</format>
+                <property>fdm/jsbsim/systems/autopilot/thrust-weight-ratio</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.0</blue>
+                </color>
+            </text>
+            <text>
                 <label>Throttle n1 (%)</label>
                 <halign>left</halign>
                 <row>0</row>
-                <col>2</col>
+                <col>3</col>
             </text>
             <slider>
                 <row>0</row>
-                <col>3</col>
+                <col>4</col>
                 <name>Throttle power</name>
                 <live>true</live>
                 <property>controls/engines/engine/throttle</property>
@@ -1327,7 +1341,7 @@
             </slider>
             <text>
                 <row>0</row>
-                <col>4</col>
+                <col>5</col>
                 <label>99999</label>
                 <halign>left</halign>
                 <live>true</live>
@@ -1343,11 +1357,11 @@
                 <label>Fuel/Thrust</label>
                 <halign>left</halign>
                 <row>0</row>
-                <col>5</col>
+                <col>6</col>
             </text>
             <text>
                 <row>0</row>
-                <col>6</col>
+                <col>7</col>
                 <label>99999</label>
                 <halign>left</halign>
                 <live>true</live>
@@ -1363,11 +1377,11 @@
                 <label>Time res. (s)</label>
                 <halign>left</halign>
                 <row>0</row>
-                <col>7</col>
+                <col>8</col>
             </text>
             <text>
                 <row>0</row>
-                <col>8</col>
+                <col>9</col>
                 <label>99999</label>
                 <halign>left</halign>
                 <live>true</live>
@@ -1383,11 +1397,11 @@
                 <label>Distance res. (nm)</label>
                 <halign>left</halign>
                 <row>0</row>
-                <col>9</col>
+                <col>10</col>
             </text>
             <text>
                 <row>0</row>
-                <col>10</col>
+                <col>11</col>
                 <label>99999</label>
                 <halign>left</halign>
                 <live>true</live>
@@ -1403,11 +1417,11 @@
                 <label>Lib/nm</label>
                 <halign>left</halign>
                 <row>0</row>
-                <col>11</col>
+                <col>12</col>
             </text>
             <text>
                 <row>0</row>
-                <col>12</col>
+                <col>13</col>
                 <label>99999</label>
                 <halign>left</halign>
                 <live>true</live>

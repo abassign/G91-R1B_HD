@@ -20,6 +20,9 @@
         <aero>G91-R1B-JSBSim</aero>
         <model>
             <path>Aircraft/G91-R1B_HD/Models/G91-R1B.xml</path>
+            <livery>
+                <file type="string"/>
+            </livery>
         </model>
         
         <G91>

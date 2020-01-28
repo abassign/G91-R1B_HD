@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+    
+    <sim>
+        <model>
+            <livery>
+                <name type="string">PAN - National Aerobatic (R1)</name>
+                <texture-fuselage>pan_1_001.png</texture-fuselage>
+                <texture-wings>pan_1_002.png</texture-wings>
+                <luminosity type="float">0.12</luminosity>
+                <reflective type="float">-0.42</reflective>
+            </livery>
+        </model>
+    </sim>
+    
+</PropertyList> 

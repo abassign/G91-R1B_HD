@@ -2,13 +2,27 @@
 
 <PropertyList>
     
+    <nasal>
+        <load><![CDATA[
+            print("###### Hello, I'm the helipad!");
+            var timer = maketimer(5, func(){
+                print("I'm still here!");
+            });
+            timer.start();
+        ]]></load>
+        <unload><![CDATA[
+            timer.stop();
+            print("Bye, bye!")
+        ]]></unload>
+    </nasal>
+    
     <offsets>
         <x-m>0.0</x-m>
         <y-m>0.0</y-m>
         <z-m>-0.45</z-m>
         <pitch-deg>0.0</pitch-deg>
     </offsets>
-
+<!--
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Cockpit.xml</path>
         <condition>
@@ -18,6 +32,7 @@
             </equals>
         </condition>
     </model>
+-->
 <!--
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Canopy.xml</path>
@@ -51,7 +66,6 @@
         </condition>
     </model>
 
-<!--
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Fuselage_A/Fuselage_A0.xml</path>
         <condition>
@@ -61,7 +75,6 @@
             </equals>
         </condition>
     </model>
-    -->
 
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Tail/Tail.xml</path>
@@ -73,7 +86,6 @@
         </condition>
     </model>
 
-<!--
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Fuselage_B/Fuselage_B1.xml</path>
         <condition>
@@ -89,6 +101,7 @@
             </and>
         </condition>
     </model>
+    
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Fuselage_B/Fuselage_B3.xml</path>
         <condition>
@@ -104,7 +117,6 @@
             </and>
         </condition>
     </model>
-    -->
 
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/LandingGearFrontal/LandingGearFrontal.xml</path>
@@ -115,7 +127,6 @@
             </equals>
         </condition>
     </model>
-
 
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Airbrake/Airbrake.xml</path>
@@ -152,7 +163,6 @@
         </condition>
     </model>
 
-<!--
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Accessories/Accessories.xml</path>
         <condition>
@@ -162,6 +172,6 @@
             </equals>
         </condition>
     </model>
-    -->
+
 </PropertyList>
     

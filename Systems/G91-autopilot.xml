@@ -32,7 +32,7 @@ No Overshoot
     <property value="0.0">systems/autopilot/gui/vertical-speed</property>
     <property value="2500.0">systems/autopilot/gui/vertical-speed-fpm</property>
     <property value="1.0">systems/autopilot/gui/pitch-angle</property>
-    <property value="0.0">systems/autopilot/gui/pitch-angle-deg</property>
+    <property value="6.0">systems/autopilot/gui/pitch-angle-deg</property>
     
     <property value="0.0">systems/autopilot/gui/altitude-hold</property>
     <property value="0.0">systems/autopilot/gui/altitude-hold-ft</property>
@@ -92,7 +92,8 @@ No Overshoot
     <!-- Altitude QFE section -->
     <property value="0.0">systems/autopilot/altitude-QFE-active</property>
     <property value="0.0">systems/autopilot/altitude-QFE-ft-lag</property>
-    <property value="0.1">systems/autopilot/altitude-QFE-ft-lag-C1</property>
+    <!-- 0.1 -->
+    <property value="0.3">systems/autopilot/altitude-QFE-ft-lag-C1</property>
     <property value="0.0">systems/autopilot/altitude-QFE-impact-elev-ft</property>
     <property value="0.5">systems/autopilot/altitude-QFE-impact-elev-ft-C1</property>
     <property value="0.0">systems/autopilot/altitude-QFE-impact-elev-intensity</property>
@@ -258,6 +259,7 @@ No Overshoot
     <property value="0.0">systems/autopilot/steer-brake-antiskid</property>
     <property value="0.0">systems/autopilot/speed-automatic-flap-active</property>
     <property value="0.0">systems/autopilot/speed-automatic-gear-active</property>
+    <property value="0.0">systems/autopilot/speed-best-by-altitude-set</property>
     <property value="0.0">systems/autopilot/speed-best-by-altitude</property>
     <property value="-0.002">systems/autopilot/vertical-speed-anti-stall-lim-max</property>
     
@@ -434,6 +436,91 @@ No Overshoot
             </test>
         </switch>
         
+        <!-- speed-set-best-by-altitude section -->
+        
+        <washout_filter name="systems/autopilot/speed-set-best-by-altitude-wa">
+            <input>systems/autopilot/gui/speed-set-best-by-altitude</input>
+            <c1>1.0</c1>
+        </washout_filter>
+        
+        <switch name="systems/autopilot/speed-set-best-by-altitude-togle">
+            <default value="1.0"/>
+            <test logic="AND" value = "0.0">
+                systems/autopilot/speed-set-best-by-altitude-wa LT 0.6
+                systems/autopilot/speed-set-best-by-altitude-wa GT -0.6
+            </test>
+        </switch>
+        
+        <switch name="systems/autopilot/speed-best-by-altitude-set">
+            <default value="systems/autopilot/speed-best-by-altitude-set"/>
+            <test logic="AND" value="0.0">
+                systems/autopilot/speed-set-best-by-altitude-togle == 1.0
+                systems/autopilot/gui/speed-set-best-by-altitude == 0.0
+            </test>
+            <test logic="AND" value="1.0">
+                systems/autopilot/speed-set-best-by-altitude-togle == 1.0
+                systems/autopilot/gui/speed-set-best-by-altitude == 1.0
+            </test>
+        </switch>
+        
+        <switch name="systems/autopilot/gui/speed-set-best-by-altitude">
+            <default value="systems/autopilot/gui/speed-set-best-by-altitude"/>
+            <test logic="AND" value="1.0">
+                systems/autopilot/gui/speed-set-best-by-altitude == 0.0
+                systems/autopilot/speed-best-by-altitude-set == 1.0
+            </test>
+            <test logic="AND" value="0.0">
+                systems/autopilot/gui/speed-set-best-by-altitude == 1.0
+                systems/autopilot/speed-best-by-altitude-set == 0.0
+            </test>
+        </switch>
+        
+        <switch name="systems/autopilot/gui/vertical-speed">
+            <default value="systems/autopilot/gui/vertical-speed"/>
+            <test logic="AND" value = "0.0">
+                systems/autopilot/speed-set-best-by-altitude-togle == 1
+                systems/autopilot/speed-best-by-altitude-set == 1
+            </test>
+        </switch>
+        
+        <switch name="systems/autopilot/gui/pitch-angle">
+            <default value="systems/autopilot/gui/pitch-angle"/>
+            <test logic="AND" value = "1.0">
+                systems/autopilot/speed-set-best-by-altitude-togle == 1
+                systems/autopilot/speed-best-by-altitude-set == 1
+            </test>
+        </switch>
+        
+        <switch name="systems/autopilot/gui/pitch-angle-deg">
+            <default value="systems/autopilot/gui/pitch-angle-deg"/>
+            <test logic="AND" value = "6.0">
+                systems/autopilot/speed-set-best-by-altitude-togle == 1
+                systems/autopilot/speed-best-by-altitude-set == 1
+            </test>
+        </switch>
+        
+        <switch name="systems/autopilot/gui/pitch-alpha">
+            <default value="systems/autopilot/gui/pitch-alpha"/>
+            <test logic="AND" value = "0.0">
+                systems/autopilot/speed-set-best-by-altitude-togle == 1
+                systems/autopilot/speed-best-by-altitude-set == 1
+            </test>
+        </switch>
+        
+        <fcs_function name="systems/autopilot/thrust-weight-ratio">
+            <function>
+                <quotient>
+                    <p>propulsion/engine/thrust-lbs</p>
+                    <p>inertia/weight-lbs</p>
+                </quotient>
+            </function>
+        </fcs_function>
+        
+    </channel>
+    
+    
+    <channel name="Auxiliary data" execrate="8">
+        
         <scheduled_gain name="systems/autopilot/pitch-error-limiter-rad">
             <input>systems/autopilot/pitch-error-limiter-coefficient</input>
             <table>
@@ -448,11 +535,6 @@ No Overshoot
             </table>
             <gain>systems/autopilot/pitch-error-limiter-gain</gain>
         </scheduled_gain>
-        
-    </channel>
-    
-    
-    <channel name="Auxiliary data" execrate="8">
         
         <fcs_function name="systems/autopilot/velocity-on-ground-fps">
             <function>
@@ -641,14 +723,20 @@ No Overshoot
             <input>-/position/altitude-agl-ft</input>
         </summer>
         
+        <summer name="systems/autopilot/altitude-hold-to-terrain">
+            <input>systems/autopilot/altitude-hold-ft-lag</input>
+            <input>-systems/autopilot/altitude-alt-terrain</input>
+        </summer>
+        
         <fcs_function name="systems/autopilot/altitude-QFE-ft-hold">
             <function>
                 <ifthen>
                     <gt><p>systems/autopilot/altitude-hold-active</p><v>0.5</v></gt>
-                    <difference>
-                        <p>systems/autopilot/altitude-hold-ft-lag</p>
-                        <p>systems/autopilot/altitude-alt-terrain</p>
-                    </difference>
+                    <ifthen>
+                        <ge><p>systems/autopilot/altitude-hold-to-terrain</p><p>systems/autopilot/gui/altitude-QFE-ft</p></ge>
+                        <p>systems/autopilot/altitude-hold-to-terrain</p>
+                        <p>systems/autopilot/gui/altitude-QFE-ft</p>
+                    </ifthen>
                     <p>systems/autopilot/gui/altitude-QFE-ft</p>
                 </ifthen>
             </function>
@@ -662,7 +750,7 @@ No Overshoot
         <switch name="systems/autopilot/gui/pitch-angle-deg-mod">
             <default value="systems/autopilot/gui/pitch-angle-deg"/>
             <test logic="AND" value="systems/autopilot/pitch-angle-active-best-by-altitude">
-                systems/autopilot/gui/speed-set-best-by-altitude == 1
+                systems/autopilot/speed-best-by-altitude-set == 1
                 systems/autopilot/gui/pitch-angle-deg GT systems/autopilot/pitch-angle-active-best-by-altitude
             </test>
         </switch>
@@ -686,7 +774,7 @@ No Overshoot
         <switch name="systems/autopilot/gui/vertical-speed-fpm-mod">
             <default value="systems/autopilot/gui/vertical-speed-fpm"/>
             <test logic="AND" value="systems/autopilot/vertical-speed-best-by-altitude">
-                systems/autopilot/gui/speed-set-best-by-altitude == 1.0
+                systems/autopilot/speed-best-by-altitude-set == 1.0
                 systems/autopilot/gui/vertical-speed-fpm GT systems/autopilot/vertical-speed-best-by-altitude
             </test>
         </switch>
@@ -1080,7 +1168,7 @@ No Overshoot
                             <ifthen>
                                 <and>
                                     <lt><abs><p>systems/autopilot/pitch-angle-deg</p></abs><v>2.0</v></lt>
-                                    <le><p>systems/autopilot/gui/speed-set-best-by-altitude</p><v>0.5</v></le>
+                                    <le><p>systems/autopilot/speed-best-by-altitude-set</p><v>0.5</v></le>
                                 </and>
                                 <v>2.0</v>
                                 <abs><p>systems/autopilot/pitch-angle-deg</p></abs>
@@ -1100,7 +1188,7 @@ No Overshoot
             <function>
                 <ifthen>
                     <and>
-                        <gt><p>systems/autopilot/gui/speed-set-best-by-altitude</p><v>0.5</v></gt>
+                        <gt><p>systems/autopilot/speed-best-by-altitude-set</p><v>0.5</v></gt>
                         <lt><p>systems/autopilot/vertical-speed-anti-stall-calc-rad-lag</p><p>systems/autopilot/vertical-speed-anti-stall-lim-max</p></lt>
                     </and>
                     <product>
@@ -1114,8 +1202,12 @@ No Overshoot
         
         <switch name="systems/autopilot/pitch-angle-rad-sign-cor-lag-C1">
             <default value="0.5"/>
+            <test logic="AND" value="0.3">
+                systems/autopilot/speed-best-by-altitude-set GE 0.5
+                systems/autopilot/vertical-speed-anti-stall-calc-rad-lag LT systems/autopilot/vertical-speed-anti-stall-lim-max
+            </test>
             <test logic="AND" value="0.05">
-                systems/autopilot/gui/speed-set-best-by-altitude GE 0.5
+                systems/autopilot/speed-best-by-altitude-set GE 0.5
             </test>
         </switch>
         
@@ -1221,7 +1313,7 @@ No Overshoot
                             <ifthen>
                                 <and>
                                     <lt><abs><p>systems/autopilot/vertical-speed-fpm</p></abs><v>500.0</v></lt>
-                                    <le><p>systems/autopilot/gui/speed-set-best-by-altitude</p><v>0.5</v></le>
+                                    <le><p>systems/autopilot/speed-best-by-altitude-set</p><v>0.5</v></le>
                                 </and>
                                 <v>500.0</v>
                                 <abs><p>systems/autopilot/vertical-speed-fpm</p></abs>
@@ -1822,7 +1914,7 @@ No Overshoot
         <switch name="systems/autopilot/speed-value-mod">
             <default value="systems/autopilot/gui/speed-value"/>
             <test logic="AND" value="systems/autopilot/speed-best-by-altitude">
-                systems/autopilot/gui/speed-set-best-by-altitude == 1.0
+                systems/autopilot/speed-best-by-altitude-set == 1.0
             </test>
         </switch>
         
@@ -1915,27 +2007,27 @@ No Overshoot
         <switch name="systems/autopilot/speed-kp-mod">
             <default value="systems/autopilot/speed-kp"/>
             <test logic="AND" value="systems/autopilot/speed-kp-optimize">
-                systems/autopilot/gui/speed-set-best-by-altitude == 1.0
-                systems/autopilot/speed-difference LT 0.15
-                systems/autopilot/speed-difference GT -0.15
+                systems/autopilot/speed-best-by-altitude-set == 1.0
+                systems/autopilot/speed-difference LT 0.03
+                systems/autopilot/speed-difference GT -0.03
             </test>
         </switch>
         
         <switch name="systems/autopilot/speed-ki-mod">
             <default value="systems/autopilot/speed-ki"/>
             <test logic="AND" value="systems/autopilot/speed-ki-optimize">
-                systems/autopilot/gui/speed-set-best-by-altitude == 1.0
-                systems/autopilot/speed-difference LT 0.15
-                systems/autopilot/speed-difference GT -0.15
+                systems/autopilot/speed-best-by-altitude-set == 1.0
+                systems/autopilot/speed-difference LT 0.03
+                systems/autopilot/speed-difference GT -0.03
             </test>
         </switch>
         
         <switch name="systems/autopilot/speed-kd-mod">
             <default value="systems/autopilot/speed-kd"/>
             <test logic="AND" value="systems/autopilot/speed-kd-optimize">
-                systems/autopilot/gui/speed-set-best-by-altitude == 1.0
-                systems/autopilot/speed-difference LT 0.15
-                systems/autopilot/speed-difference GT -0.15
+                systems/autopilot/speed-best-by-altitude-set == 1.0
+                systems/autopilot/speed-difference LT 0.03
+                systems/autopilot/speed-difference GT -0.03
             </test>
         </switch>
         
@@ -2470,21 +2562,19 @@ No Overshoot
                 <product>
                     <ifthen>
                         <gt><p>systems/autopilot/altitude-hold-active</p><v>0.5</v></gt>
-                        <ifthen>
-                            <gt><p>systems/autopilot/altitude-hold-pid-gain</p><v>-0.05</v></gt>
-                            <table>
-                                <independentVar lookup="row">systems/autopilot/altitude-ft-lag</independentVar>
-                                <tableData>
-                                    0	   1.0
-                                    5000   1.0
-                                    10000  1.0
-                                    20000  1.10
-                                    30000  1.15
-                                    40000  1.00
-                                </tableData>
-                            </table>
-                            <v>1.0</v>
-                        </ifthen>
+                        <table>
+                            <independentVar lookup="row">systems/autopilot/altitude-ft-lag</independentVar>
+                            <independentVar lookup="column">systems/autopilot/altitude-hold-pid-gain</independentVar>
+                            <tableData>
+                                      -0.10   0.00   0.10
+                                0	   1.00   1.00   1.00
+                                5000   1.00   1.00   1.00
+                                10000  1.00   1.00   1.00
+                                20000  1.00   1.10   1.10
+                                30000  1.00   1.15   1.15
+                                40000  1.00   1.05   1.05
+                            </tableData>
+                        </table>
                         <v>1.0</v>
                     </ifthen>
                     <ifthen>
@@ -2562,7 +2652,7 @@ No Overshoot
                             5000   3000
                             10000  2500
                             20000  2000
-                            30000  1500
+                            30000  1200
                             40000  1000
                         </tableData>
                     </table>

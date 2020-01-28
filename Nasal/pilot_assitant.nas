@@ -52,7 +52,7 @@ var delayCycleGeneral = 0;
 var delayLandingSearch = 0.0;
 
 var d2r = 0.0174533;
-var airplane_efficenty = 30.0;
+var airplane_efficenty = 32.0;
 var airplane_distance_speed_reduction_nm = 5.0;
 var landing_activate_status = 0;
 var take_off_activate_status = 0;
@@ -296,8 +296,7 @@ var pilot_assistant = func {
                 setprop("fdm/jsbsim/systems/autopilot/gui/speed-automatic-flap",0.0);
                 setprop("fdm/jsbsim/systems/autopilot/gui/speed-throttle",1.0);
                 setprop("fdm/jsbsim/systems/autopilot/gui/speed-pitch",0.0);
-                setprop("fdm/jsbsim/systems/autopilot/gui/speed-set-best-by-altitude",1.0);
-                
+                setprop("fdm/jsbsim/systems/autopilot/speed-best-by-altitude-set",1.0);
                 
                 if (speed_select <= 0.0) {
                     if (speed_select < 2.0 and speed_select > 0.0) {
@@ -414,7 +413,7 @@ var pilot_assistant = func {
                 landing_20_dist_to_reduce_v_cas = landing_20_app_v;
             }
             if (landing_20_dist_to_reduce_v == 1) {
-                setprop("fdm/jsbsim/systems/autopilot/gui/speed-set-best-by-altitude",0.0);
+                setprop("fdm/jsbsim/systems/autopilot/speed-best-by-altitude-set",0.0);
                 setprop("fdm/jsbsim/systems/autopilot/gui/speed-set-mach",0.0);
                 setprop("fdm/jsbsim/systems/autopilot/gui/speed-set-cas",1.0);
                 setprop("fdm/jsbsim/systems/autopilot/gui/speed-set-mph",0.0);
@@ -486,7 +485,7 @@ var pilot_assistant = func {
                 setprop("fdm/jsbsim/systems/airbrake/manual-cmd",0.0);
                 setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle",0.0);
                 setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle-deg",0.0);
-                setprop("fdm/jsbsim/systems/autopilot/gui/speed-set-best-by-altitude",0.0);
+                setprop("fdm/jsbsim/systems/autopilot/speed-best-by-altitude-set",0.0);
                 isHolding_reducing_delta = -20;
                 isHolding_reducing_heading = nil;
                 isHolding_reducing_distance_rel = nil;
@@ -515,7 +514,7 @@ var pilot_assistant = func {
             }
             var rwy_point_delta_alt_ft = (airplane.alt() - runway_alt_m_select) * 3.28084 - holding_point_h_ft;
             # Calculate the difference altitude
-            if (math.abs(rwy_point_delta_alt_ft) < 500 and isHolding_reducing_terminated == 0) {
+            if (math.abs(rwy_point_delta_alt_ft) < 600.0 and isHolding_reducing_terminated == 0) {
                 isHolding_reducing_terminated = 1;
             } else if (math.abs(rwy_point_delta_alt_ft) < 1500 and isHolding_reducing_terminated == 0) {
                 setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed-fpm",1500.0);
@@ -755,7 +754,16 @@ var pilot_assistant = func {
                 var pitch_output_error_coefficient_gain = 2.0;
                 var weitght_norm = getprop("fdm/jsbsim/inertia/weight-lbs") / 10000.0;
                 var slope_adv = 0.0;
-                if (runway_to_airplane_dist_direct_nm > 12.0) {
+                if ((altitude_agl_ft <= 20.0 and landing_22_subStatus == 5) or landing_22_subStatus == 6) {
+                    landing_22_subStatus = 6;
+                    impact_cnt_limiter = 10.0;
+                    ku = 8.0; # ku = 5.0;
+                    tu = 5.0; # tu = 10.0;
+                    cas_max = 50.0;
+                    slope = landing_22_slope_dif_adv - getprop("fdm/jsbsim/systems/autopilot/pitch-angle-absolute-deg-lag");
+                    setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle",1.0);
+                    setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle-deg",0.5);
+                } else if (runway_to_airplane_dist_direct_nm > 12.0) {
                     landing_22_subStatus = 1;
                     pitch_output_error_coefficient_gain = 0.5;
                     cas_max = 180.0 - wind_frontal_active;
@@ -774,8 +782,8 @@ var pilot_assistant = func {
                 } else if (runway_to_airplane_dist <= 2.0 and runway_to_airplane_dist > 0.8 and runway_to_airplane_dist_der > 0.0) {
                     landing_22_subStatus = 3;
                     impact_cnt_limiter = 10.0;
-                    ku = 5.0;
-                    tu = 10.0;
+                    ku = 8.0;
+                    tu = 5.0;
                     pitch_output_error_coefficient_gain = 1.5 + (wind_speed / 30);
                     cas_max = 135.0 - wind_frontal_active + (15 * weitght_norm);
                     if (landing_22_slope_target < -3.65) landing_22_slope_target = landing_22_slope_target + 0.02;
@@ -806,22 +814,8 @@ var pilot_assistant = func {
                     } else {
                         setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle-deg",-1.0 - (2.0 * altitude_agl_ft / 100.0));
                     }
-                    
-                } else if ((altitude_agl_ft <= 20.0 or landing_22_subStatus == 6) and speed_cas > 20.0) {
-                    landing_22_subStatus = 6;
-                    impact_cnt_limiter = 10.0;
-                    ku = 8.0; # ku = 5.0;
-                    tu = 5.0; # tu = 10.0;
-                    cas_max = 50.0 - wind_frontal_active;
-                    slope = landing_22_slope_dif_adv - getprop("fdm/jsbsim/systems/autopilot/pitch-angle-absolute-deg-lag");
-                    setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle",1.0);
-                    setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle-deg",0.5);
                 }
-                
-                
-                print("#### Slope: ",slope," landing_22_slope_dif_adv: ",landing_22_slope_dif_adv);
-                
-                
+
                 # Slope ADV for input filter to PID
                 landing_22_slope_adv.insert(-1,slope);
                 var landing_22_slope_adv_dif = slope;
@@ -1251,7 +1245,7 @@ var pilot_assistant = func {
                 } 
             }
             setprop("fdm/jsbsim/systems/autopilot/pitch-output-error-coefficient-gain",factorGain);
-            if ((speed_cas < 60.0 or (isJatoOn and speed_cas < 90.0)) and altitude_agl_ft < 5.0) {
+            if (speed_cas < 70.0) {
                 pilot_ass_status_id = 10.33;
                 if (isJatoOn == 1) {
                     pitchDeg = -1.5 + (speed_cas - 50.0) / 50.0;
@@ -1261,22 +1255,32 @@ var pilot_assistant = func {
                     if (pitchDeg > 3.0) pitchDeg = 3.0;
                 }
                 setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle-deg",pitchDeg);
-            } else if (speed_cas < 120 and altitude_agl_ft < 20.0) {
+            } else if (speed_cas < 160 and altitude_agl_ft < 8.0) {
                 pilot_ass_status_id = 10.34;
                 if (isJatoOn == 1) {
-                    pitchDeg = 6.0 + (speed_cas - 50.0) / 50.0;
-                    if (pitchDeg > 8.0) pitchDeg = 8.0;
+                    pitchDeg = 9.0 + (speed_cas - 50.0) / 50.0;
+                    if (pitchDeg > 11.0) pitchDeg = 11.0;
                 } else {
-                    pitchDeg = 2.0 + (speed_cas - 50.0) / 30.0;
-                    if (pitchDeg > 4.0) pitchDeg = 4.0;
+                    pitchDeg = 10.0 + (speed_cas - 50.0) / 30.0;
+                    if (pitchDeg > 10.0) pitchDeg = 11.0;
+                }
+                setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle-deg",pitchDeg);
+            } else if (speed_cas < 160 and altitude_agl_ft < 20.0) {
+                pilot_ass_status_id = 10.35;
+                if (isJatoOn == 1) {
+                    pitchDeg = 7.0 + (speed_cas - 50.0) / 50.0;
+                    if (pitchDeg > 9.0) pitchDeg = 9.0;
+                } else {
+                    pitchDeg = 3.5 + (speed_cas - 50.0) / 30.0;
+                    if (pitchDeg > 5.0) pitchDeg = 5.0;
                 }
                 setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle-deg",pitchDeg);
             } else if (altitude_agl_ft < 400.0 or isJatoOn == 1) {
-                pilot_ass_status_id = 10.35;
+                pilot_ass_status_id = 10.36;
                 pitchDeg = getprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle-deg");
                 if (isJatoOn == 1) {
-                    pitchDeg = 1.0 + ((speed_cas - 50.0) / 50.0) / ( 1 + factorGain);
-                    if (pitchDeg > 3.0) pitchDeg = 3.0;
+                    pitchDeg = 2.0 + ((speed_cas - 50.0) / 50.0) / ( 1 + factorGain);
+                    if (pitchDeg > 4.0) pitchDeg = 4.0;
                 } else {
                     pitchDeg = 2.0 + (speed_cas - 50.0) / 50.0;
                     if (pitchDeg > 3.0) pitchDeg = 3.0;
@@ -1310,12 +1314,12 @@ var pilot_assistant = func {
         } else if (pilot_ass_status_id == 10.5) {
             impact_cnt_limiter = 10.0;
             var cas_on_air_lag = getprop("fdm/jsbsim/systems/autopilot/speed-cas-on-air-lag");
-            setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle",0.0);
-            setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle-deg",0.0);
-            setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed",1.0);
-            setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed-fpm",1000.0);
+            setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle",1.0);
+            setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle-deg",6.0);
+            setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed",0.0);
+            setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed-fpm",2000.0);
             var altitude_agl_ft = getprop("/position/altitude-agl-ft");
-            if (altitude_agl_ft >= 400.0 and cas_on_air_lag > 130.0) {
+            if (altitude_agl_ft >= 1500.0 and cas_on_air_lag > 130.0) {
                 # Take-Off procedure end
                 if (getprop("fdm/jsbsim/systems/autopilot/gui/take-off-altitude-top-active") > 0) {
                     setprop("fdm/jsbsim/systems/autopilot/gui/altitude-hold",1.0);
@@ -1326,6 +1330,9 @@ var pilot_assistant = func {
                         setprop("fdm/jsbsim/systems/autopilot/gui/altitude-hold-ft",getprop("fdm/jsbsim/systems/autopilot/gui/take-off-altitude-top"));
                     }
                     setprop("fdm/jsbsim/systems/autopilot/gui/take-off-altitude-top-active",0.0);
+                } else {
+                    if (getprop("fdm/jsbsim/systems/autopilot/gui/altitude-hold-ft") < 10000.0) setprop("fdm/jsbsim/systems/autopilot/gui/altitude-hold-ft",10000.0);
+                    setprop("fdm/jsbsim/systems/autopilot/gui/altitude-hold",1.0);
                 }
                 if (getprop("fdm/jsbsim/systems/autopilot/gui/take-off-to-heading-active") > 0) {
                     setprop("fdm/jsbsim/systems/autopilot/gui/true-heading",1.0);
@@ -1366,13 +1373,13 @@ var pilot_assistant = func {
                     landing_activate_status = 1;
                     setprop("fdm/jsbsim/systems/autopilot/gui/landing-scan-airport",0);
                 } else {
-                    pilot_ass_status_id = 0.0;
+                    pilot_ass_status_id = -1.0;
                     altitude_top_select = -1.0;
                     speed_select = -1.0;
                 }
                 setprop("fdm/jsbsim/systems/autopilot/gui/impact-control-active",1.0);
                 setprop("fdm/jsbsim/systems/autopilot/gui/speed-automatic-gear",1.0);
-                setprop("fdm/jsbsim/systems/autopilot/gui/speed-set-best-by-altitude",1.0);
+                setprop("fdm/jsbsim/systems/autopilot/speed-best-by-altitude-set",1.0);
             }
         }
         #
@@ -1383,7 +1390,7 @@ var pilot_assistant = func {
             if (airport_select == nil) {
                 take_off_status = "[No airport] " ~ departure_msg;
             } else {
-                take_off_status = "[" ~airport_select.id ~ "|" ~ airport_select.runways[rwy_select].id ~ "] " ~ departure_msg;
+                take_off_status = "[" ~ airport_select.id ~ "|" ~ airport_select.runways[rwy_select].id ~ "] " ~ departure_msg ~ sprintf(" (%2.2f) ",pilot_ass_status_id);
             }
         }
         if (pilot_ass_status_id == 10) {
@@ -1446,7 +1453,7 @@ var pilot_assistant = func {
         setprop("fdm/jsbsim/systems/autopilot/gui/airport_landing_status","Autolanding inactive");
         setprop("fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct/status",0);
         setprop("fdm/jsbsim/systems/autopilot/gui/take-off-jato-active",0);
-        setprop("fdm/jsbsim/systems/autopilot/gui/speed-set-best-by-altitude",0.0);
+        setprop("fdm/jsbsim/systems/autopilot/speed-best-by-altitude-set",0.0);
     }
     setprop("fdm/jsbsim/systems/autopilot/gui/landig-status-id",pilot_ass_status_id);
 

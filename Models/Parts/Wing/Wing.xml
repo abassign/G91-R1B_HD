@@ -45,7 +45,7 @@
         <object-name>B00_barra di rotazione.001</object-name>
         <object-name>B00_sx_barra di rotazione</object-name>
     </effect>
-    
+
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
         <object-name>A__G91_fuselage_muso_1.025</object-name>
@@ -187,7 +187,7 @@
     </effect>
     
     <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Liveries/liveries_001</inherits-from>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Liveries_Canvas/liveries_001</inherits-from>
         <object-name>A__G91_fuselage_int.weapon.door.001</object-name>
         <object-name>m00_door_01.1</object-name>
         <object-name>m00_door_02</object-name>
@@ -226,7 +226,7 @@
         <object-name>tank_cap</object-name>
         <object-name>tank_cap1</object-name>
     </effect>
-    
+
     <animation> 
         <type>material</type>
         <object-name>A__G91_fuselage_int.weapon.door.001</object-name>
@@ -277,7 +277,7 @@
     </animation>
     
     <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Liveries/liveries_002</inherits-from>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Liveries_Canvas/liveries_002</inherits-from>
         <object-name>A_wing_dx.000</object-name>
         <object-name>A_wing_sx.000</object-name>
         <object-name>A_wing_dx.002</object-name>

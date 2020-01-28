@@ -2,6 +2,19 @@
 
 <PropertyList>
     
+    <nasal>
+        ########################################################################################
+        # WARNING : The on-load Nasal is not executed when this file is loaded as the
+        # user aircraft.
+        #
+        <load><![CDATA[
+            var livery_update = aircraft.livery_update.new("Aircraft/G91-R1B_HD/Models/Liveries");
+        ]]></load>
+        <unload><![CDATA[
+            livery_update.stop();
+        ]]></unload>
+    </nasal>
+    
     <offsets>
         <x-m>0.0</x-m>
         <y-m>0.0</y-m>

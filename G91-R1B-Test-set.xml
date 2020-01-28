@@ -20,12 +20,14 @@
         <aero>G91-R1B-JSBSim-test</aero>
         <model>
             <path>Aircraft/G91-R1B_HD/Models/G91_Test.xml</path>
+            <livery>
+                <file type="string"/>
+            </livery>
         </model>
-        
         <G91>
             <testing>
                 <level type="int">1</level>
-                <log type="int">1</log>
+                <log type="int">0</log>
             </testing>
         </G91>
         

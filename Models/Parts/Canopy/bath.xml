@@ -4,4 +4,108 @@
     
     <path>vasca.ac</path>
     
+    <effect>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
+        <object-name>PANEL</object-name>
+        <object-name>Cylinder.002</object-name>
+        <object-name>F_Segg_support.</object-name>
+        <object-name>Plane.004</object-name>
+        <object-name>Plane.012</object-name>
+        <object-name>Plane.014</object-name>
+        <object-name>Plane.016</object-name>
+        <object-name>Plane.017</object-name>
+        <object-name>Plane.020</object-name>
+        <object-name>Plane.021</object-name>
+        <object-name>Plane.026</object-name>
+        <object-name>Plane.010</object-name>
+        <object-name>Plane.003</object-name>
+        <object-name>Plane.015</object-name>
+        <object-name>Plane.015</object-name>
+    </effect>
+    
+    <animation> 
+        <type>material</type> 
+        <object-name>Cylinder.002</object-name>
+        <object-name>F_Segg_support.</object-name>
+        <object-name>Plane.004</object-name>
+        <object-name>Plane.012</object-name>
+        <object-name>Plane.014</object-name>
+        <object-name>Plane.016</object-name>
+        <object-name>Plane.017</object-name>
+        <object-name>Plane.020</object-name>
+        <object-name>Plane.021</object-name>
+        <object-name>Plane.026</object-name>
+        <diffuse>
+            <red>0.6</red>
+            <green>0.6</green>
+            <blue>0.6</blue>
+        </diffuse>
+        <ambient>
+            <red>0.6</red>
+            <green>0.6</green>
+            <blue>0.6</blue>
+        </ambient>
+    </animation>
+    
+    <animation> 
+        <type>material</type> 
+        <object-name>PANEL</object-name>
+        <diffuse>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.35</blue>
+        </diffuse>
+        <ambient>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.3</blue>
+        </ambient>
+    </animation>
+    
+    <animation> 
+        <type>material</type> 
+        <object-name>Plane.010</object-name>
+        <object-name>Plane.003</object-name>
+        <diffuse>
+            <red>0.4</red>
+            <green>0.4</green>
+            <blue>0.45</blue>
+        </diffuse>
+        <ambient>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
+        </ambient>
+    </animation>
+    
+    <animation> 
+        <type>material</type> 
+        <object-name>Plane.015</object-name>
+        <diffuse>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.3</blue>
+        </diffuse>
+        <ambient>
+            <red>0.4</red>
+            <green>0.4</green>
+            <blue>0.4</blue>
+        </ambient>
+    </animation>
+    
+    <animation> 
+        <type>material</type> 
+        <object-name>Screew</object-name>
+        <diffuse>
+            <red>0.4</red>
+            <green>0.4</green>
+            <blue>0.4</blue>
+        </diffuse>
+        <ambient>
+            <red>0.4</red>
+            <green>0.4</green>
+            <blue>0.4</blue>
+        </ambient>
+    </animation>
+    
 </PropertyList>

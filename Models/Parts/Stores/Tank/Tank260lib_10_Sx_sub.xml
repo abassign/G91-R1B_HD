@@ -25,7 +25,7 @@
     </nasal>
 
     <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Liveries/liveries_002</inherits-from>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Liveries_Canvas/liveries_002</inherits-from>
         <object-name>tank_260lb_sub_01</object-name>
         <object-name>tank_260lb_sup_01</object-name>
         <object-name>tank_260lb_tail_01</object-name>

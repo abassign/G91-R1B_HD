@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+    
+    <sim>
+        <model>
+            <livery>
+                <name type="string">Italian siver with rec. nose</name>
+                <texture-fuselage>ITA_prot_001.png</texture-fuselage>
+                <texture-wings>ITA_prot_002.png</texture-wings>
+                <luminosity type="float">0.12</luminosity>
+                <reflective type="float">-0.42</reflective>
+            </livery>
+        </model>
+    </sim>
+    
+</PropertyList> 

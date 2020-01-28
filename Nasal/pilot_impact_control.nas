@@ -7,7 +7,7 @@ var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/impact-contr
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/impact-control-freeze", 1, "INT");
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/impact-min-z-ft", 200.0, "DOUBLE");
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/impact-min-z-ft-mod", 0.0, "DOUBLE");
-var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/impact-medium-time", 10.0, "DOUBLE");
+var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/impact-medium-time", 15.0, "DOUBLE");
 
 var timeStep = 1.0;
 var timeStepDivisor = 1.0;
@@ -110,8 +110,7 @@ var analyze_imp_time = func() {
     # Min altitude
     #
     imp_min_z_ft = getprop("fdm/jsbsim/systems/autopilot/gui/impact-min-z-ft") * complex_factor;
-    var speed_horz_Coef = (speed_horz_mph / 160.0) - 1.0;
-    if (speed_horz_Coef < 0.0) speed_horz_Coef = 0.0;
+    var speed_horz_Coef = 1.0 + (speed_horz_mph / 160.0);
     imp_min_z_ft = imp_min_z_ft * speed_horz_Coef;
     var imp_min_z_ft_delta = imp_min_z_ft_factor * delta_time * math.ln(1.0 + 2.0 * math.abs(imp_min_z_ft - imp_min_z_ft_lag));
     if (math.abs(imp_min_z_ft - imp_min_z_ft_lag) > imp_min_z_ft_delta) {

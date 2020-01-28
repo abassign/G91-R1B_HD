@@ -3,6 +3,7 @@
 <PropertyList>
     
     <path>LandingGearFrontal.ac</path>
+    <texture-path>Aircraft/G91-R1B_HD/Models/Liveries</texture-path>
     
     <offsets>
         <x-m>0.0</x-m>
@@ -102,7 +103,7 @@
     <!-- Material assignment -->
     
     <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Liveries/liveries_002</inherits-from>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Liveries_Canvas/liveries_001</inherits-from>
         <object-name>gear_door_dx.001</object-name>
         <object-name>gear_door_sx.000</object-name>
         <object-name>PlanLight.front.001</object-name>
@@ -142,8 +143,6 @@
         <object-name>Light_sx.reflectivepart</object-name>
         <object-name>Light_dx._reflectivepart.001</object-name>
         <object-name>Light_dx._reflectivepart</object-name>
-        <object-name>Light_sx</object-name>
-        <object-name>Light_dx</object-name>
     </effect>
     
     <!-- Transparent -->
@@ -161,7 +160,26 @@
         <type>material</type> 
         <object-name>scatola</object-name>
         <object-name>centine.001</object-name>
-        <texture>Pictures/AichiInteriorGreyGreen.png</texture>
+        <diffuse>
+            <red>0.4</red>
+            <green>0.55</green>
+            <blue>0.38</blue>
+        </diffuse>
+        <ambient>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.3</blue>
+        </ambient>
+    </animation>
+    
+    <animation> 
+        <type>material</type> 
+        <object-name>centine</object-name>
+        <diffuse>
+            <red>0.4</red>
+            <green>0.55</green>
+            <blue>0.38</blue>
+        </diffuse>
         <ambient>
             <red>0.4</red>
             <green>0.4</green>
@@ -171,23 +189,16 @@
     
     <animation> 
         <type>material</type> 
-        <object-name>centine</object-name>
-        <texture>Pictures/AichiInteriorGreyGreen.png</texture>
-        <ambient>
-            <red>0.6</red>
-            <green>0.6</green>
-            <blue>0.6</blue>
-        </ambient>
-    </animation>
-    
-    <animation> 
-        <type>material</type> 
         <object-name>gear-front-jack-015</object-name>
-        <texture>Pictures/G91-Black.png</texture>
+        <diffuse>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.12</blue>
+        </diffuse>
         <ambient>
-            <red>0.8</red>
-            <green>0.8</green>
-            <blue>0.8</blue>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
         </ambient>
     </animation>
     
@@ -211,7 +222,11 @@
         <object-name>BezierCurve.015</object-name>
         <object-name>cable_light_dx.001</object-name>
         <object-name>cable_light_sx.001</object-name>
-        <texture>Pictures/G91-Black.png</texture>
+        <diffuse>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </diffuse>
         <ambient>
             <red>0.2</red>
             <green>0.2</green>
@@ -871,19 +886,25 @@
     </animation>
     
     <!-- External emission landing light Sx (Landing) -->
-    
+
     <animation> 
         <type>blend</type>
         <property>sim/G91/glass_camera_reflections</property>
         <factor>1.0</factor>
         <object-name>Galss_light_sx</object-name>
     </animation>
-    
+
     <animation>
         <type>material</type>
-        <object-name>Light_sx.reflectivepart</object-name>
         <object-name>Galss_light_sx</object-name>
-        <texture>Pictures/G91-LightFrontal01.png</texture>
+        <transparency>
+            <alpha>0.3</alpha>
+        </transparency>
+        <diffuse>
+            <red>1.0</red>
+            <green>0.97</green>
+            <blue>0.83</blue>
+        </diffuse>
         <emission>	
             <red>1.0</red>	
             <green>1.0</green>	
@@ -891,9 +912,9 @@
             <factor-prop>sim/G91/lightning/landing-light/intensity</factor-prop>
         </emission>
         <ambient>
-            <red>2.0</red>
-            <green>2.0</green>
-            <blue>2.0</blue>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
         </ambient>
         <specular>
             <red>0.5</red>
@@ -902,11 +923,66 @@
         </specular>
     </animation>
     
+    <animation>
+        <type>material</type>
+        <object-name>Light_sx.reflectivepart</object-name>
+        <emission>	
+            <red>1.0</red>	
+            <green>1.0</green>	
+            <blue>1.0</blue>
+            <factor-prop>sim/G91/lightning/landing-light/intensity</factor-prop>
+        </emission>
+        <ambient>
+            <red>0.9</red>
+            <green>0.9</green>
+            <blue>0.9</blue>
+        </ambient>
+        <specular>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
+        </specular>
+    </animation>
+    
+    <animation>
+        <type>material</type>
+        <object-name>Light_sx</object-name>
+        <diffuse>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
+        </diffuse>
+        <emission>	
+            <red>0.5</red>	
+            <green>0.5</green>	
+            <blue>0.5</blue>
+            <factor-prop>sim/G91/lightning/landing-light/intensity</factor-prop>
+        </emission>
+        <ambient>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
+        </ambient>
+        <specular>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.3</blue>
+        </specular>
+    </animation>
+    
     <animation> 
-        <type>material</type> 
+        <type>material</type>
+        <object-name>Light_Sphere_dx</object-name>
         <object-name>Light_Sphere_dx.001</object-name>
         <object-name>Light_Sphere_dx.003</object-name>
-        <texture>Pictures/G91-LightFrontal01.png</texture>
+        <transparency>
+            <alpha>0.3</alpha>
+        </transparency>
+        <diffuse>
+            <red>1.0</red>
+            <green>0.97</green>
+            <blue>0.83</blue>
+        </diffuse>
         <transparency>
             <alpha>1.0</alpha>
             <factor-prop>fdm/jsbsim/systems/lightning/landing-light/intensity-norm</factor-prop>
@@ -918,9 +994,9 @@
             <factor-prop>sim/G91/lightning/landing-light/intensity_bulb</factor-prop>
         </emission>
         <ambient>
-            <red>2.0</red>
-            <green>2.0</green>
-            <blue>2.0</blue>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
         </ambient>
         <specular>
             <red>0.5</red>
@@ -952,8 +1028,14 @@
     <animation>
         <type>material</type>
         <object-name>glass_light_dx</object-name>
-        <object-name>Light_dx._reflectivepart</object-name>
-        <texture>Pictures/G91-LightFrontal01.png</texture>
+        <transparency>
+            <alpha>0.3</alpha>
+        </transparency>
+        <diffuse>
+            <red>1.0</red>
+            <green>0.97</green>
+            <blue>0.83</blue>
+        </diffuse>
         <emission>	
             <red>1.0</red>	
             <green>1.0</green>	
@@ -961,9 +1043,9 @@
             <factor-prop>sim/G91/lightning/taxiing-light/intensity</factor-prop>
         </emission>
         <ambient>
-            <red>2.0</red>
-            <green>2.0</green>
-            <blue>2.0</blue>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
         </ambient>
         <specular>
             <red>0.5</red>
@@ -972,11 +1054,65 @@
         </specular>
     </animation>
     
+    <animation>
+        <type>material</type>
+        <object-name>Light_dx._reflectivepart</object-name>
+        <emission>	
+            <red>1.0</red>	
+            <green>1.0</green>	
+            <blue>1.0</blue>
+            <factor-prop>sim/G91/lightning/taxiing-light/intensity</factor-prop>
+        </emission>
+        <ambient>
+            <red>0.9</red>
+            <green>0.9</green>
+            <blue>0.9</blue>
+        </ambient>
+        <specular>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
+        </specular>
+    </animation>
+    
+    <animation>
+        <type>material</type>
+        <object-name>Light_dx</object-name>
+        <diffuse>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
+        </diffuse>
+        <emission>	
+            <red>0.5</red>	
+            <green>0.5</green>	
+            <blue>0.5</blue>
+            <factor-prop>sim/G91/lightning/taxiing-light/intensity</factor-prop>
+        </emission>
+        <ambient>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
+        </ambient>
+        <specular>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.3</blue>
+        </specular>
+    </animation>
+    
     <animation> 
         <type>material</type> 
         <object-name>Light_Sphere_dx.002</object-name>
         <object-name>Light_Sphere_dx.004</object-name>
-        <texture>Pictures/G91-LightFrontal01.png</texture>
+        <transparency>
+            <alpha>0.3</alpha>
+        </transparency>
+        <diffuse>
+            <red>1.0</red>
+            <green>0.97</green>
+            <blue>0.83</blue>
+        </diffuse>
         <transparency>
             <alpha>1.0</alpha>
             <factor-prop>fdm/jsbsim/systems/lightning/taxiing-light/intensity-norm</factor-prop>
@@ -988,9 +1124,9 @@
             <factor-prop>sim/G91/lightning/taxiing-light/intensity_bulb</factor-prop>
         </emission>
         <ambient>
-            <red>2.0</red>
-            <green>2.0</green>
-            <blue>2.0</blue>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
         </ambient>
         <specular>
             <red>0.5</red>

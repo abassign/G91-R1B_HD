@@ -28,13 +28,13 @@
     -->
 
     <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Liveries/liveries_001</inherits-from>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Liveries_Canvas/liveries_001</inherits-from>
         <object-name>A__G91r3_fuselage_weapon_door_sx.</object-name>
         <object-name>A__G91r3_fuselage_weapon_door_dx</object-name>
     </effect>
     
     <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Liveries/liveries_002</inherits-from>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Liveries_Canvas/liveries_002</inherits-from>
         <object-name>A__G91r3_fuselage_weapon.door</object-name>
     </effect>
 
