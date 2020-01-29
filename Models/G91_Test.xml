@@ -4,15 +4,19 @@
     
     <nasal>
         <load><![CDATA[
-            print("###### Hello, I'm the helipad!");
-            var timer = maketimer(5, func(){
-                print("I'm still here!");
-            });
-            timer.start();
+            if(! contains(globals, "m2000_mp"))
+            {
+                var import = func (file, module) {
+                    file = string.normpath(file);
+                    var local_file = globals.io.dirname(caller()[2]) ~ file;
+                    var path = (globals.io.stat(local_file) != nil) ? local_file : resolvepath(file);
+                    globals.io.load_nasal(path, module);
+                };
+                import("Aircraft/G91-R1B_HD/Nasal/set_livery.nas","set_livery");set_livery;
+            }
         ]]></load>
         <unload><![CDATA[
-            timer.stop();
-            print("Bye, bye!")
+
         ]]></unload>
     </nasal>
     

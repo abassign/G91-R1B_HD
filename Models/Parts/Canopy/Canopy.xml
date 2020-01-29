@@ -166,9 +166,9 @@
             <blue>0.43</blue>
         </diffuse>
         <ambient>
-            <red>0.6</red>
-            <green>0.6</green>
-            <blue>0.6</blue>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
         </ambient>
     </animation>
     
@@ -204,39 +204,93 @@
         <type>material</type>
         <object-name>F_canopY_ant.004</object-name>
         <diffuse>
-            <red>0.4</red>
-            <green>0.4</green>
-            <blue>0.4</blue>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </diffuse>
+        <ambient>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </ambient>
+        <emission>
+            <red>0.003</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    
+    
+    <animation> 
+        <type>material</type>
+        <object-name>A_curva</object-name>
+        <diffuse>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </diffuse>
+        <ambient>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </ambient>
+        <emission>
+            <red>0.001</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>F_dadi canopy_ant.001</object-name>
+        <object-name>F_dadi canopy_ant.002</object-name>
+        <object-name>F_dadi canopy_ant.003</object-name>
+        <object-name>F_dadi canopy_ant.005</object-name>
+        <object-name>F_dadi canopy_ant.006</object-name>
+        <object-name>F_dadi canopy_ant.008</object-name>
+        <object-name>F_dadi canopy_ant</object-name>
+        <diffuse>
+            <red>0.18</red>
+            <green>0.15</green>
+            <blue>0.15</blue>
+        </diffuse>
+        <ambient>
+            <red>0.15</red>
+            <green>0.15</green>
+            <blue>0.15</blue>
+        </ambient>
+        <emission>
+            <red>0.003</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>F_livetto.026</object-name>
+        <diffuse>
+            <red>0.25</red>
+            <green>0.25</green>
+            <blue>0.25</blue>
         </diffuse>
         <ambient>
             <red>0.3</red>
             <green>0.3</green>
             <blue>0.3</blue>
         </ambient>
-        <emission>
-            <red>0.015</red>
-            <green>0.0</green>
-            <blue>0.0</blue>
-            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
-        </emission>
-    </animation>
-    
-    <animation> 
-        <type>material</type>
-        <object-name>F_dadi canopy_ant.005</object-name>
-        <object-name>F_dadi canopy_ant.003</object-name>
-        <diffuse>
+        <specular>
             <red>0.3</red>
-            <green>0.25</green>
-            <blue>0.25</blue>
-        </diffuse>
-        <ambient>
-            <red>0.4</red>
-            <green>0.4</green>
+            <green>0.3</green>
             <blue>0.4</blue>
-        </ambient>
+        </specular>
         <emission>
-            <red>0.018</red>
+            <red>0.003</red>
             <green>0.0</green>
             <blue>0.0</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
@@ -245,12 +299,7 @@
     
     <animation> 
         <type>material</type>
-        <object-name>F_dadi canopy_ant</object-name>
-        <object-name>F_dadi canopy_ant.001</object-name>
-        <object-name>F_dadi canopy_ant.002</object-name>
         <object-name>Plane.001</object-name>
-        <object-name>F_livetto.026</object-name>
-        <object-name>F_dadi canopy_ant.008</object-name>
         <object-name>F_air_tube01.003</object-name>
         <object-name>F_air_tube02</object-name>
         <object-name>Cylinder</object-name>
@@ -321,17 +370,17 @@
         <object-name>F_defrosters.005</object-name>
         <object-name>A__G91_fuselage_int.weapon.door.005</object-name>
         <diffuse>
-            <red>0.6</red>
-            <green>0.6</green>
-            <blue>0.6</blue>
+            <red>0.4</red>
+            <green>0.4</green>
+            <blue>0.4</blue>
         </diffuse>
         <ambient>
-            <red>0.5</red>
-            <green>0.5</green>
-            <blue>0.5</blue>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
         </ambient>
         <emission>
-            <red>0.025</red>
+            <red>0.015</red>
             <green>0.0</green>
             <blue>0.0</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
@@ -342,19 +391,18 @@
         <type>material</type>
         <object-name>F_canopY_ant.006</object-name>
         <object-name>Tunnel_cable</object-name>
-        <object-name>F_dadi canopy_ant.005</object-name>
         <diffuse>
-            <red>0.3</red>
-            <green>0.3</green>
-            <blue>0.3</blue>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
         </diffuse>
         <ambient>
-            <red>0.3</red>
-            <green>0.3</green>
-            <blue>0.3</blue>
+            <red>0.15</red>
+            <green>0.12</green>
+            <blue>0.12</blue>
         </ambient>
         <emission>
-            <red>0.02</red>
+            <red>0.005</red>
             <green>0.0</green>
             <blue>0.0</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
@@ -429,14 +477,14 @@
         <type>material</type>
         <object-name>fuselage_int.weapon.door.002</object-name>
         <diffuse>
-            <red>0.31</red>
-            <green>0.305</green>
-            <blue>0.3</blue>
+            <red>0.22</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
         </diffuse>
         <ambient>
-            <red>0.3</red>
-            <green>0.3</green>
-            <blue>0.3</blue>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
         </ambient>
         <emission>
             <red>0.01</red>
@@ -513,17 +561,17 @@
         <type>material</type>
         <object-name>F_canopY_ant.002</object-name>
         <diffuse>
-            <red>0.25</red>
-            <green>0.25</green>
-            <blue>0.25</blue>
+            <red>0.10</red>
+            <green>0.10</green>
+            <blue>0.10</blue>
         </diffuse>
         <ambient>
-            <red>0.3</red>
-            <green>0.3</green>
-            <blue>0.3</blue>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
         </ambient>
         <emission>
-            <red>0.002</red>
+            <red>0.001</red>
             <green>0.0</green>
             <blue>0.0</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
@@ -534,14 +582,14 @@
         <type>material</type>
         <object-name>F_canopY_ant.007</object-name>
         <diffuse>
-            <red>0.35</red>
-            <green>0.35</green>
-            <blue>0.35</blue>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
         </diffuse>
         <ambient>
-            <red>0.3</red>
-            <green>0.3</green>
-            <blue>0.3</blue>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
         </ambient>
         <emission>
             <red>0.001</red>
