@@ -82,7 +82,7 @@ Create the program to centralization of the braking system
             <default value="0"/>
             <test logic="AND" value="1">
                 systems/landing-gear/gear-down-status == 0
-                /controls/engines/engine/throttle LE 0.27
+                /controls/engines/engine/throttle LE 0.20
             </test>
         </switch>
         

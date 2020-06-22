@@ -41,9 +41,9 @@
                 <label>Distance (nm)</label>
                 <halign>center</halign>
                 <color>
-                    <red>0.7</red>
-                    <green>0.7</green>
-                    <blue>0.7</blue>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.9</blue>
                 </color>
             </text>
             <text>
@@ -52,9 +52,9 @@
                 <label>Direction (deg)</label>
                 <halign>center</halign>
                 <color>
-                    <red>0.7</red>
-                    <green>0.7</green>
-                    <blue>0.7</blue>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.9</blue>
                 </color>
             </text>
             <text>
@@ -63,9 +63,9 @@
                 <label>Altitude (ft)</label>
                 <halign>center</halign>
                 <color>
-                    <red>0.7</red>
-                    <green>0.7</green>
-                    <blue>0.7</blue>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.9</blue>
                 </color>
             </text>
             <checkbox>
@@ -95,6 +95,12 @@
                 <binding>
                     <command>dialog-apply</command>
                 </binding>
+                <binding>
+                    <command>nasal</command>
+                    <script>
+                        setprop("/autopilot/route-manager/active",0);
+                    </script>
+                </binding>
             </input>
             <input>
                 <row>2</row>
@@ -104,6 +110,12 @@
                 <binding>
                     <command>dialog-apply</command>
                 </binding>
+                <binding>
+                    <command>nasal</command>
+                    <script>
+                        setprop("/autopilot/route-manager/active",0);
+                    </script>
+                </binding>
             </input>
             <input>
                 <row>4</row>
@@ -112,6 +124,26 @@
                 <live>true</live>
                 <binding>
                     <command>dialog-apply</command>
+                </binding>
+                <binding>
+                    <command>nasal</command>
+                    <script>
+                        <![CDATA[
+                            if (getprop("fdm/jsbsim/systems/gauges/PHI/program/route[1]/altitude-hold-ft") <= 1.0)
+                                setprop("fdm/jsbsim/systems/gauges/PHI/program/route[1]/altitude-hold-ft",getprop("fdm/jsbsim/systems/autopilot/gui/altitude-hold-ft"));
+                            alt = getprop("fdm/jsbsim/systems/gauges/PHI/program/route[1]/altitude-hold-ft");
+                            if (alt > 1.0) {
+                                if (getprop("fdm/jsbsim/systems/gauges/PHI/program/route[2]/altitude-hold-ft") <= 1.0)
+                                    setprop("fdm/jsbsim/systems/gauges/PHI/program/route[2]/altitude-hold-ft",alt);
+                                if (getprop("fdm/jsbsim/systems/gauges/PHI/program/route[3]/altitude-hold-ft") <= 1.0)
+                                    setprop("fdm/jsbsim/systems/gauges/PHI/program/route[3]/altitude-hold-ft",alt);
+                                if (getprop("fdm/jsbsim/systems/gauges/PHI/program/route[4]/altitude-hold-ft") <= 1.0)
+                                    setprop("fdm/jsbsim/systems/gauges/PHI/program/route[4]/altitude-hold-ft",alt);
+                                if (getprop("fdm/jsbsim/systems/gauges/PHI/program/route[5]/altitude-hold-ft") <= 1.0)
+                                    setprop("fdm/jsbsim/systems/gauges/PHI/program/route[5]/altitude-hold-ft",alt);
+                            }
+                        ]]>
+                    </script>
                 </binding>
             </input>
             <checkbox>
@@ -133,34 +165,36 @@
                     <property>fdm/jsbsim/systems/gauges/PHI/program/route[2]/push-togle</property>
                 </binding>
             </button>
-            <text>
-                <row>2</row>
-                <col>2</col>
-                <label>99999999</label>
-                <live>true</live>
-                <format>%3.0f</format>
-                <property>fdm/jsbsim/systems/gauges/PHI/program/route[2]/dist</property>
-                <halign>center</halign>
-                <color>
-                    <red>0.8</red>
-                    <green>0.8</green>
-                    <blue>0.0</blue>
-                </color>
-            </text>
-            <text>
+            <input>
                 <row>3</row>
                 <col>2</col>
-                <label>99999999</label>
-                <live>true</live>
-                <format>%3.0f</format>
                 <property>fdm/jsbsim/systems/gauges/PHI/program/route[2]/phi</property>
-                <halign>center</halign>
-                <color>
-                    <red>0.8</red>
-                    <green>0.8</green>
-                    <blue>0.0</blue>
-                </color>
-            </text>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+                <binding>
+                    <command>nasal</command>
+                    <script>
+                        setprop("/autopilot/route-manager/active",0);
+                    </script>
+                </binding>
+            </input>
+            <input>
+                <row>2</row>
+                <col>2</col>
+                <property>fdm/jsbsim/systems/gauges/PHI/program/route[2]/dist</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+                <binding>
+                    <command>nasal</command>
+                    <script>
+                        setprop("/autopilot/route-manager/active",0);
+                    </script>
+                </binding>
+            </input>
             <input>
                 <row>4</row>
                 <col>2</col>
@@ -168,6 +202,24 @@
                 <live>true</live>
                 <binding>
                     <command>dialog-apply</command>
+                </binding>
+                <binding>
+                    <command>nasal</command>
+                    <script>
+                        <![CDATA[
+                            if (getprop("fdm/jsbsim/systems/gauges/PHI/program/route[2]/altitude-hold-ft") <= 1.0)
+                                setprop("fdm/jsbsim/systems/gauges/PHI/program/route[2]/altitude-hold-ft",getprop("fdm/jsbsim/systems/autopilot/gui/altitude-hold-ft"));
+                            alt = getprop("fdm/jsbsim/systems/gauges/PHI/program/route[2]/altitude-hold-ft");
+                            if (alt > 1.0) {
+                                if (getprop("fdm/jsbsim/systems/gauges/PHI/program/route[3]/altitude-hold-ft") <= 1.0)
+                                    setprop("fdm/jsbsim/systems/gauges/PHI/program/route[3]/altitude-hold-ft",alt);
+                                if (getprop("fdm/jsbsim/systems/gauges/PHI/program/route[4]/altitude-hold-ft") <= 1.0)
+                                    setprop("fdm/jsbsim/systems/gauges/PHI/program/route[4]/altitude-hold-ft",alt);
+                                if (getprop("fdm/jsbsim/systems/gauges/PHI/program/route[5]/altitude-hold-ft") <= 1.0)
+                                    setprop("fdm/jsbsim/systems/gauges/PHI/program/route[5]/altitude-hold-ft",alt);
+                            }
+                        ]]>
+                    </script>
                 </binding>
             </input>
             <checkbox>
@@ -189,34 +241,36 @@
                     <property>fdm/jsbsim/systems/gauges/PHI/program/route[3]/push-togle</property>
                 </binding>
             </button>
-            <text>
-                <row>2</row>
-                <col>3</col>
-                <label>99999999</label>
-                <live>true</live>
-                <format>%3.0f</format>
-                <property>fdm/jsbsim/systems/gauges/PHI/program/route[3]/dist</property>
-                <halign>center</halign>
-                <color>
-                    <red>0.8</red>
-                    <green>0.8</green>
-                    <blue>0.0</blue>
-                </color>
-            </text>
-            <text>
+            <input>
                 <row>3</row>
                 <col>3</col>
-                <label>99999999</label>
-                <live>true</live>
-                <format>%3.0f</format>
                 <property>fdm/jsbsim/systems/gauges/PHI/program/route[3]/phi</property>
-                <halign>center</halign>
-                <color>
-                    <red>0.8</red>
-                    <green>0.8</green>
-                    <blue>0.0</blue>
-                </color>
-            </text>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+                <binding>
+                    <command>nasal</command>
+                    <script>
+                        setprop("/autopilot/route-manager/active",0);
+                    </script>
+                </binding>
+            </input>
+            <input>
+                <row>2</row>
+                <col>3</col>
+                <property>fdm/jsbsim/systems/gauges/PHI/program/route[3]/dist</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+                <binding>
+                    <command>nasal</command>
+                    <script>
+                        setprop("/autopilot/route-manager/active",0);
+                    </script>
+                </binding>
+            </input>
             <input>
                 <row>4</row>
                 <col>3</col>
@@ -224,6 +278,22 @@
                 <live>true</live>
                 <binding>
                     <command>dialog-apply</command>
+                </binding>
+                <binding>
+                    <command>nasal</command>
+                    <script>
+                        <![CDATA[
+                            if (getprop("fdm/jsbsim/systems/gauges/PHI/program/route[3]/altitude-hold-ft") <= 1.0)
+                                setprop("fdm/jsbsim/systems/gauges/PHI/program/route[3]/altitude-hold-ft",getprop("fdm/jsbsim/systems/autopilot/gui/altitude-hold-ft"));
+                            alt = getprop("fdm/jsbsim/systems/gauges/PHI/program/route[3]/altitude-hold-ft");
+                            if (alt > 1.0) {
+                                if (getprop("fdm/jsbsim/systems/gauges/PHI/program/route[4]/altitude-hold-ft") <= 1.0)
+                                    setprop("fdm/jsbsim/systems/gauges/PHI/program/route[4]/altitude-hold-ft",alt);
+                                if (getprop("fdm/jsbsim/systems/gauges/PHI/program/route[5]/altitude-hold-ft") <= 1.0)
+                                    setprop("fdm/jsbsim/systems/gauges/PHI/program/route[5]/altitude-hold-ft",alt);
+                            }
+                        ]]>
+                    </script>
                 </binding>
             </input>
             <checkbox>
@@ -245,34 +315,36 @@
                     <property>fdm/jsbsim/systems/gauges/PHI/program/route[4]/push-togle</property>
                 </binding>
             </button>
-            <text>
-                <row>2</row>
-                <col>4</col>
-                <label>99999999</label>
-                <live>true</live>
-                <format>%3.0f</format>
-                <property>fdm/jsbsim/systems/gauges/PHI/program/route[4]/dist</property>
-                <halign>center</halign>
-                <color>
-                    <red>0.8</red>
-                    <green>0.8</green>
-                    <blue>0.0</blue>
-                </color>
-            </text>
-            <text>
+            <input>
                 <row>3</row>
                 <col>4</col>
-                <label>99999999</label>
-                <live>true</live>
-                <format>%3.0f</format>
                 <property>fdm/jsbsim/systems/gauges/PHI/program/route[4]/phi</property>
-                <halign>center</halign>
-                <color>
-                    <red>0.8</red>
-                    <green>0.8</green>
-                    <blue>0.0</blue>
-                </color>
-            </text>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+                <binding>
+                    <command>nasal</command>
+                    <script>
+                        setprop("/autopilot/route-manager/active",0);
+                    </script>
+                </binding>
+            </input>
+            <input>
+                <row>2</row>
+                <col>4</col>
+                <property>fdm/jsbsim/systems/gauges/PHI/program/route[4]/dist</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+                <binding>
+                    <command>nasal</command>
+                    <script>
+                        setprop("/autopilot/route-manager/active",0);
+                    </script>
+                </binding>
+            </input>
             <input>
                 <row>4</row>
                 <col>4</col>
@@ -280,6 +352,20 @@
                 <live>true</live>
                 <binding>
                     <command>dialog-apply</command>
+                </binding>
+                <binding>
+                    <command>nasal</command>
+                    <script>
+                        <![CDATA[
+                            if (getprop("fdm/jsbsim/systems/gauges/PHI/program/route[4]/altitude-hold-ft") <= 1.0)
+                                setprop("fdm/jsbsim/systems/gauges/PHI/program/route[4]/altitude-hold-ft",getprop("fdm/jsbsim/systems/autopilot/gui/altitude-hold-ft"));
+                            alt = getprop("fdm/jsbsim/systems/gauges/PHI/program/route[4]/altitude-hold-ft");
+                            if (alt > 1.0) {
+                                if (getprop("fdm/jsbsim/systems/gauges/PHI/program/route[5]/altitude-hold-ft") <= 1.0)
+                                    setprop("fdm/jsbsim/systems/gauges/PHI/program/route[5]/altitude-hold-ft",alt);
+                            }
+                        ]]>
+                    </script>
                 </binding>
             </input>
             <checkbox>
@@ -301,13 +387,83 @@
                     <property>fdm/jsbsim/systems/gauges/PHI/program/route[5]/push-togle</property>
                 </binding>
             </button>
-            <text>
+            <input>
+                <row>3</row>
+                <col>5</col>
+                <property>fdm/jsbsim/systems/gauges/PHI/program/route[5]/phi</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+                <binding>
+                    <command>nasal</command>
+                    <script>
+                        setprop("/autopilot/route-manager/active",0);
+                    </script>
+                </binding>
+            </input>
+            <input>
                 <row>2</row>
                 <col>5</col>
-                <label>99999999</label>
-                <live>true</live>
-                <format>%3.0f</format>
                 <property>fdm/jsbsim/systems/gauges/PHI/program/route[5]/dist</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+                <binding>
+                    <command>nasal</command>
+                    <script>
+                        setprop("/autopilot/route-manager/active",0);
+                    </script>
+                </binding>
+            </input>
+            <input>
+                <row>4</row>
+                <col>5</col>
+                <property>fdm/jsbsim/systems/gauges/PHI/program/route[5]/altitude-hold-ft</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+                <binding>
+                    <command>nasal</command>
+                    <script>
+                        <![CDATA[
+                            if (getprop("fdm/jsbsim/systems/gauges/PHI/program/route[5]/altitude-hold-ft") <= 1.0)
+                                setprop("fdm/jsbsim/systems/gauges/PHI/program/route[5]/altitude-hold-ft",getprop("fdm/jsbsim/systems/autopilot/gui/altitude-hold-ft"));
+                        ]]>
+                    </script>
+                </binding>
+            </input>
+            <text>
+                <row>0</row>
+                <col>6</col>
+                <live>true</live>
+                <text>Aux</text>
+                <halign>center</halign>
+                <color>
+                    <red>0.8</red>
+                    <green>0.8</green>
+                    <blue>0.0</blue>
+                </color>
+            </text>
+            <text>
+                <row>1</row>
+                <col>6</col>
+                <live>true</live>
+                <text>         </text>
+                <halign>center</halign>
+                <color>
+                    <red>0.8</red>
+                    <green>0.8</green>
+                    <blue>0.0</blue>
+                </color>
+            </text>
+            <text>
+                <row>2</row>
+                <col>6</col>
+                <live>true</live>
+                <text>         </text>
                 <halign>center</halign>
                 <color>
                     <red>0.8</red>
@@ -317,11 +473,9 @@
             </text>
             <text>
                 <row>3</row>
-                <col>5</col>
-                <label>99999999</label>
+                <col>6</col>
                 <live>true</live>
-                <format>%3.0f</format>
-                <property>fdm/jsbsim/systems/gauges/PHI/program/route[5]/phi</property>
+                <text>         </text>
                 <halign>center</halign>
                 <color>
                     <red>0.8</red>
@@ -329,18 +483,245 @@
                     <blue>0.0</blue>
                 </color>
             </text>
-            <input>
+            <button>
                 <row>4</row>
-                <col>5</col>
-                <property>fdm/jsbsim/systems/gauges/PHI/program/route[5]/altitude-hold-ft</property>
+                <col>6</col>
+                <legend>Clear</legend>
+                <binding>
+                    <command>nasal</command>
+                    <script>
+                        <![CDATA[
+                            setprop("fdm/jsbsim/systems/gauges/PHI/program/route[1]/altitude-hold-ft",0.0);
+                            setprop("fdm/jsbsim/systems/gauges/PHI/program/route[2]/altitude-hold-ft",0.0);
+                            setprop("fdm/jsbsim/systems/gauges/PHI/program/route[3]/altitude-hold-ft",0.0);
+                            setprop("fdm/jsbsim/systems/gauges/PHI/program/route[4]/altitude-hold-ft",0.0);
+                            setprop("fdm/jsbsim/systems/gauges/PHI/program/route[5]/altitude-hold-ft",0.0);
+                        ]]>
+                    </script>
+                </binding>
+            </button>
+        </group>
+    </group>
+    
+    <hrule/>
+    
+    <group>
+        <layout>vbox</layout>
+        <group>
+            <layout>table</layout>
+            <text>
+                <row>0</row>
+                <col>0</col>
+                <label>Magnetic declination (D)</label>
+                <halign>left</halign>
+                <color>
+                    <red>1</red>
+                    <green>1</green>
+                    <blue>1</blue>
+                </color>
+            </text>
+            <radio>
+                <row>0</row>
+                <col>1</col>
+                <halign>center</halign>
+                <label>Automatic</label>
+                <property>fdm/jsbsim/systems/gauges/PHI/programmer/declination-automatic</property>
                 <live>true</live>
                 <binding>
                     <command>dialog-apply</command>
                 </binding>
+            </radio>
+            <input>
+                <row>0</row>
+                <col>2</col>
+                <property>fdm/jsbsim/systems/gauges/PHI/indicator/var-deg</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+                <binding>
+                    <command>nasal</command>
+                    <script>
+                        <![CDATA[
+                            setprop("fdm/jsbsim/systems/gauges/PHI/programmer/declination-automatic",0);
+                        ]]>
+                    </script>
+                </binding>
             </input>
+            <text>
+                <row>0</row>
+                <col>3</col>
+                <label>999999</label>
+                <live>true</live>
+                <halign>right</halign>
+                <format>[%3.1f]</format>
+                <property>/instrumentation/heading-indicator/offset-deg</property>
+                <color>
+                    <red>0.8</red>
+                    <green>0.8</green>
+                    <blue>0.8</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>4</col>
+                <label>        </label>
+                <halign>left</halign>
+                <color>
+                    <red>1</red>
+                    <green>1</green>
+                    <blue>1</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>5</col>
+                <label>        </label>
+                <halign>left</halign>
+                <color>
+                    <red>1</red>
+                    <green>1</green>
+                    <blue>1</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>6</col>
+                <label>        </label>
+                <halign>left</halign>
+                <color>
+                    <red>1</red>
+                    <green>1</green>
+                    <blue>1</blue>
+                </color>
+            </text>
         </group>
     </group>
     
+    <hrule/>
+    
+    <group>
+        <layout>vbox</layout>
+        <group>
+            <layout>table</layout>
+            <text>
+                <row>0</row>
+                <col>0</col>
+                <label>Route type</label>
+                <halign>left</halign>
+                <color>
+                    <red>1</red>
+                    <green>1</green>
+                    <blue>1</blue>
+                </color>
+            </text>
+            <radio>
+                <row>0</row>
+                <col>1</col>
+                <halign>left</halign>
+                <label>From route management</label>
+                <property>/autopilot/route-manager/active</property>
+                <live>true</live>
+            </radio>
+            <radio>
+                <row>0</row>
+                <col>2</col>
+                <halign>left</halign>
+                <label>Loop</label>
+                <property>fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-loop</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+                <binding>
+                    <command>nasal</command>
+                    <script>
+                        if (getprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-loop") == 1) {
+                            if (getprop("/autopilot/route-manager/active") == 1) {
+                                setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-loop",0);
+                            }
+                            setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-manual",0);
+                            setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-circuit-left",0);
+                            setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-circuit-right",0);
+                        }
+                    </script>
+                </binding>
+            </radio>
+            <radio>
+                <row>0</row>
+                <col>3</col>
+                <halign>left</halign>
+                <label>Circuit left</label>
+                <property>fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-circuit-left</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+                <binding>
+                    <command>nasal</command>
+                    <script>
+                        if (getprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-circuit-left") == 1) {
+                            if (getprop("/autopilot/route-manager/active") == 1) {
+                                setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-circuit-left",0);
+                            }
+                            setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-manual",0);
+                            setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-loop",0);
+                            setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-circuit-right",0);
+                        }
+                    </script>
+                </binding>
+            </radio>
+            <radio>
+                <row>0</row>
+                <col>4</col>
+                <halign>left</halign>
+                <label>Circuit right</label>
+                <property>fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-circuit-right</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+                <binding>
+                    <command>nasal</command>
+                    <script>
+                        if (getprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-circuit-right") == 1) {
+                            if (getprop("/autopilot/route-manager/active") == 1) {
+                                setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-circuit-right",0);
+                            }
+                            setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-manual",0);
+                            setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-loop",0);
+                            setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-circuit-left",0);
+                        }
+                    </script>
+                </binding>
+            </radio>
+            <radio>
+                <row>0</row>
+                <col>5</col>
+                <halign>left</halign>
+                <label>Manual</label>
+                <property>fdm/jsbsim/systems/gauges/PHI/programmer/route-manual</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+                <binding>
+                    <command>nasal</command>
+                    <script>
+                        if (getprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-manual") == 1) {
+                            if (getprop("/autopilot/route-manager/active") == 1) {
+                                setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-manual",0);
+                            }
+                            setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-loop",0);
+                            setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-circuit-left",0);
+                            setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-circuit-right",0);
+                        }
+                    </script>
+                </binding>
+            </radio>
+        </group>
+    </group>
+            
     <hrule/>
     
     <group>
@@ -524,27 +905,5 @@
             </radio>
         </group>
     </group>
-    
-    <hrule/>
-    
-    <group>
-        <layout>vbox</layout>
-        <group>
-            <layout>table</layout>
-            <checkbox>
-                <row>0</row>
-                <col>0</col>
-                <label>Autochenge route</label>
-                <halign>fill</halign>
-                <property>fdm/jsbsim/systems/gauges/PHI/program/route-manager/autopush-active</property>
-                <live>true</live>
-                <binding>
-                    <command>dialog-apply</command>
-                </binding>
-            </checkbox>
-        </group>
-    </group>
-    
-    systems/gauges/PHI/program/route-manager/autopush-active
     
 </PropertyList> 

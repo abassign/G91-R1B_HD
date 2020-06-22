@@ -4,7 +4,7 @@
 
     <path>procedural_light.ac</path>
     <nopreview/>
-
+    <noshadow>
     <effect>
         <inherits-from>procedural_light_canopy_spot_red_large</inherits-from>
         <object-name>procedural_light</object-name>

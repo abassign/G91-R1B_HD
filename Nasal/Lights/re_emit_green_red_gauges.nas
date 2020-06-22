@@ -134,11 +134,11 @@ var timer_re_emit_green_red_gauges = maketimer(0.5, func() {
     setprop("sim/G91/re_emit/gauge_red_emer_lamp_3200_console_green_20",(red_emer_instrument * (1 - light_red_console) * 0.05 + light_red_console * 0.4));
     setprop("sim/G91/re_emit/gauge_red_emer_lamp_3200_console_blue_20",(red_emer_instrument * (1 - light_red_console) * 0.01 + light_red_console * 0.2));
     setprop("sim/G91/re_emit/gauge_red_emer_lamp_3200_console_red_50",(red_emer_instrument * (1 - light_red_console) * 0.5 + light_red_console * 0.5));
-    setprop("sim/G91/re_emit/gauge_red_emer_lamp_3200_console_green_50",(red_emer_instrument * (1 - light_red_console) * 0.1 + light_red_console * 0.4));
-    setprop("sim/G91/re_emit/gauge_red_emer_lamp_3200_console_blue_50",(red_emer_instrument * (1 - light_red_console) * 0.02 + light_red_console * 0.2));
+    setprop("sim/G91/re_emit/gauge_red_emer_lamp_3200_console_green_50",(red_emer_instrument * (1 - light_red_console) * 0.1 + light_red_console * 0.45));
+    setprop("sim/G91/re_emit/gauge_red_emer_lamp_3200_console_blue_50",(red_emer_instrument * (1 - light_red_console) * 0.02 + light_red_console * 0.35));
     setprop("sim/G91/re_emit/gauge_console_lamp_3200_console_red_50",(light_red_console * (1 - light_red_console) * 0.5 + light_red_console * 0.5));
-    setprop("sim/G91/re_emit/gauge_console_lamp_3200_console_green_50",(light_red_console * (1 - light_red_console) * 0.1 + light_red_console * 0.4));
-    setprop("sim/G91/re_emit/gauge_console_lamp_3200_console_blue_50",(light_red_console * (1 - light_red_console) * 0.02 + light_red_console * 0.2));
+    setprop("sim/G91/re_emit/gauge_console_lamp_3200_console_green_50",(light_red_console * (1 - light_red_console) * 0.3 + light_red_console * 0.4));
+    setprop("sim/G91/re_emit/gauge_console_lamp_3200_console_blue_50",(light_red_console * (1 - light_red_console) * 0.2 + light_red_console * 0.2));
     
     setprop("sim/G91/re_emit/gauge_red_100_phosphorescent_light",(red_emer_instrument + pl_phosphorescent_emission));
     setprop("sim/G91/re_emit/gauge_red_150_phosphorescent_light",(red_emer_instrument * 1.5 + pl_phosphorescent_emission));

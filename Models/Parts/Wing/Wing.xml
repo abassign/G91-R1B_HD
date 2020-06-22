@@ -187,7 +187,7 @@
     </effect>
     
     <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Liveries_Canvas/liveries_001</inherits-from>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Liveries/liveries_001</inherits-from>
         <object-name>A__G91_fuselage_int.weapon.door.001</object-name>
         <object-name>m00_door_01.1</object-name>
         <object-name>m00_door_02</object-name>
@@ -277,7 +277,7 @@
     </animation>
     
     <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Liveries_Canvas/liveries_002</inherits-from>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Liveries/liveries_002</inherits-from>
         <object-name>A_wing_dx.000</object-name>
         <object-name>A_wing_sx.000</object-name>
         <object-name>A_wing_dx.002</object-name>
@@ -1804,6 +1804,7 @@
     
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Stores/Hardpoints/hardpoints.xml</path>
+        <usage>interior</usage>
         <offsets>
             <x-m>0.0</x-m>
             <y-m>0.0</y-m>
@@ -1831,7 +1832,7 @@
     
     <model>
         <path>Aircraft/Generic/Effects/tyre-smoke-stbd.xml</path>
-        <name>tyre-smoke-s</name>
+        <name>tyre-smoke-s-stbd</name>
         <offsets>
             <x-m>0.31</x-m>
             <y-m>1.15</y-m>
@@ -1843,7 +1844,8 @@
     
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Wing/Components/Beacon/G8400A24-24.xml</path>
-        <name>tyre-smoke-s</name>
+        <name>beacon</name>
+        <usage>interior</usage>
         <offsets>
             <x-m>0.015</x-m>
             <y-m>0.0</y-m>
@@ -1856,7 +1858,8 @@
     
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Wing/Components/Fuel_manometer_thank_5/fuel_manometer_D63_0-5PSI.xml</path>
-        <name>tyre-smoke-s</name>
+        <name>fuel-manometer</name>
+        <usage>interior</usage>
         <offsets>
             <x-m>0.892</x-m>
             <y-m>-0.628</y-m>

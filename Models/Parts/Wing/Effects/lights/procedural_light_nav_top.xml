@@ -4,7 +4,7 @@
 
     <path>procedural_light.ac</path>
     <nopreview/>
-
+    <noshadow>
     <effect>
         <inherits-from>procedural-light-nav-top</inherits-from>
         <object-name>procedural_light</object-name>

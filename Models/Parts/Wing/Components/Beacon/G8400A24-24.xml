@@ -3,21 +3,6 @@
 <PropertyList>
     
     <path>G8400A24-24.ac</path>
-
-    <!--
-    <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
-        <object-name>base (Meshed)</object-name>
-        <object-name>screews (Meshed)</object-name>
-        <object-name>base-rotante (Meshed)</object-name>
-        <object-name>top (Meshed)</object-name>
-        <object-name>top-gasket (Meshed)</object-name>
-        <object-name>contact (Meshed)</object-name>
-        <object-name>support (Meshed)</object-name>
-        <object-name>ring (Meshed)</object-name>
-        <object-name>base (Meshed)</object-name>
-    </effect>
-    -->
     
     <effect>
         <inherits-from>Effects/model-transparent</inherits-from>
@@ -347,6 +332,7 @@
     
     <model>
         <name>beacon-01 (Meshed)</name>
+        <usage>interior</usage>
         <path>Effects/lights/beacon-01.xml</path>
         <offsets>
             <x-m> 0.0 </x-m>
@@ -359,6 +345,7 @@
     
     <model>
         <name>beacon-02 (Meshed)</name>
+        <usage>interior</usage>
         <path>Effects/lights/beacon-02.xml</path>
         <offsets>
             <x-m> 0.0 </x-m>
@@ -371,6 +358,7 @@
     
     <model>
         <name>cover (Meshed)</name>
+        <usage>interior</usage>
         <path>Effects/lights/beacon-00.xml</path>
         <offsets>
             <x-m> 0.0 </x-m>

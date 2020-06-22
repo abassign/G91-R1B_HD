@@ -4,23 +4,6 @@
     
     <path>fuel_manometer_D63_0-5PSI.ac</path>
     
-    <!--
-    <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
-        <object-name>frontal (Meshed)</object-name>
-        <object-name>box (Meshed)</object-name>
-        <object-name>back_plane_B (Meshed)</object-name>
-        <object-name>screws (Meshed)</object-name>
-        <object-name>axis (Meshed)</object-name>
-        <object-name>arrow (Meshed)</object-name>
-        <object-name>stop (Meshed)</object-name>
-        <object-name>labels (Meshed)</object-name>
-        <object-name>blue (Meshed)</object-name>
-        <object-name>firm (Meshed)</object-name>
-        <object-name>flange (Meshed)</object-name>
-    </effect>
-    -->
-    
     <effect>
         <inherits-from>Effects/model-transparent</inherits-from>
         <object-name>glass (Meshed)</object-name>

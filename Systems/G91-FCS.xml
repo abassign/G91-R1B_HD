@@ -34,6 +34,8 @@ Flaps 38°
     <property value="15.0">fcs/ailerons-max-deg</property>
     <property value="0.2618">fcs/ailerons-max-rad</property>
     
+    <property value="0.0">fcs/pitch-autopilot-rapid-rad</property>
+    <property value="0.0">fcs/pitch-autopilot-rapid-rad-delay</property>
     <property value="1.0">fcs/aero-int-turbulence-active</property>
     <property value="0.0">fcs/aero-int-turbulence-elevator</property>
     <property value="0.0">fcs/aero-int-turbulence-gear</property>
@@ -97,9 +99,36 @@ Flaps 38°
             </clipto>
         </fcs_function>
         
+        <lag_filter name="fcs/pitch-autopilot-rapid-rad-lag">
+            <input>fcs/pitch-autopilot-rapid-rad</input>
+            <c1>1.0</c1>
+        </lag_filter>
+        
+        <switch name="fcs/pitch-autopilot-rapid-rad-delay">
+            <default value="fcs/pitch-autopilot-rapid-rad-delay"/>
+            <test logic="OR" value="1.0">
+                fcs/pitch-autopilot-rapid-rad GT 0.01
+                fcs/pitch-autopilot-rapid-rad LT -0.01
+            </test>
+        </switch>
+        
+        <lag_filter name="fcs/pitch-autopilot-rapid-rad-delay-lag">
+            <input>fcs/pitch-autopilot-rapid-rad-delay</input>
+            <c1>1.0</c1>
+        </lag_filter>
+        
+        <switch name="fcs/pitch-autopilot-rapid-rad">
+            <default value="fcs/pitch-autopilot-rapid-rad"/>
+            <test logic="AND" value="0.0">
+                fcs/pitch-autopilot-rapid-rad-delay-lag GT 0.05
+                fcs/pitch-autopilot-rapid-rad-delay-lag GT 0.15
+            </test>
+        </switch>
+        
         <summer name="fcs/pitch-rad">
             <input>fcs/pitch-alpha-sum-rad</input>
             <input>fcs/pitch-autopilot-rad</input>
+            <input>fcs/pitch-autopilot-rapid-rad-lag</input>
             <input>fcs/aero-int-turbulence-elevator</input>
             <input>fcs/aero-int-turbulence-gear</input>
             <input>fcs/aero-int-turbulence-flap</input>

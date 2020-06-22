@@ -17,7 +17,7 @@
     -->
 
     <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Liveries_Canvas/liveries_002</inherits-from>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Liveries/liveries_002</inherits-from>
         <object-name>hp_dx_int_01_external</object-name>
         <object-name>hp_sx_int_01_external</object-name>
         <object-name>hp_dx_int_PAN_external</object-name>

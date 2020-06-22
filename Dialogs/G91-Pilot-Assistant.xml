@@ -43,7 +43,7 @@
                         <row>0</row>
                         <col>0</col>
                         <label>Heading Control</label>
-                        <halign>fill</halign>
+                        <halign>left</halign>
                         <property>fdm/jsbsim/systems/autopilot/gui/heading-control</property>
                         <live>true</live>
                         <binding>
@@ -62,17 +62,93 @@
                         <row>0</row>
                         <col>1</col>
                         <label>Auto Coordination</label>
+                        <halign>left</halign>
                         <property>fdm/jsbsim/systems/autopilot/gui/rudder-auto-coordination</property>
                         <live>true</live>
                         <binding>
                             <command>dialog-apply</command>
                         </binding>
                     </radio>
+                    <radio>
+                        <row>1</row>
+                        <col>0</col>
+                        <halign>left</halign>
+                        <label>PHI heading</label>
+                        <property>fdm/jsbsim/systems/autopilot/gui/phi-heading</property>
+                        <live>true</live>
+                        <binding>
+                            <command>dialog-apply</command>
+                        </binding>
+                        <binding>
+                            <command>nasal</command>
+                            <script>
+                                setprop("fdm/jsbsim/systems/autopilot/gui/true-heading",0.0);
+                                setprop("fdm/jsbsim/systems/autopilot/gui/wing-leveler",0.0);
+                            </script>
+                        </binding>
+                    </radio>
+                    <text>
+                        <row>1</row>
+                        <col>1</col>
+                        <label>99999999999</label>
+                        <live>true</live>
+                        <format>%3.2f (deg)</format>
+                        <property>fdm/jsbsim/systems/autopilot/phi-heading-deg</property>
+                        <color>
+                            <red>0.9</red>
+                            <green>0.9</green>
+                            <blue>0.0</blue>
+                        </color>
+                    </text>
+                    <checkbox>
+                        <row>1</row>
+                        <col>2</col>
+                        <property>fdm/jsbsim/systems/gauges/PHI/program/route[1]/isPush</property>
+                        <live>true</live>
+                        <binding>
+                            <command>dialog-apply</command>
+                        </binding>
+                    </checkbox>
+                    <checkbox>
+                        <row>1</row>
+                        <col>3</col>
+                        <property>fdm/jsbsim/systems/gauges/PHI/program/route[2]/isPush</property>
+                        <live>true</live>
+                        <binding>
+                            <command>dialog-apply</command>
+                        </binding>
+                    </checkbox>
+                    <checkbox>
+                        <row>1</row>
+                        <col>4</col>
+                        <property>fdm/jsbsim/systems/gauges/PHI/program/route[3]/isPush</property>
+                        <live>true</live>
+                        <binding>
+                            <command>dialog-apply</command>
+                        </binding>
+                    </checkbox>
+                    <checkbox>
+                        <row>1</row>
+                        <col>5</col>
+                        <property>fdm/jsbsim/systems/gauges/PHI/program/route[4]/isPush</property>
+                        <live>true</live>
+                        <binding>
+                            <command>dialog-apply</command>
+                        </binding>
+                    </checkbox>
+                    <checkbox>
+                        <row>1</row>
+                        <col>6</col>
+                        <property>fdm/jsbsim/systems/gauges/PHI/program/route[5]/isPush</property>
+                        <live>true</live>
+                        <binding>
+                            <command>dialog-apply</command>
+                        </binding>
+                    </checkbox>
                 </group>
             </group>
             <hrule/>
             <group>
-                <layout>table</layout>
                 <layout>table</layout>
                 <text>
                     <label>Wings Level</label>
@@ -102,21 +178,46 @@
                     <row>1</row>
                     <col>0</col>
                 </text>
-                <input>
+                <slider>
                     <row>1</row>
                     <col>1</col>
+                    <name>max_wing_slope_deg</name>
+                    <halign>center</halign>
                     <property>fdm/jsbsim/systems/autopilot/gui/true-heading-max-wing-slope-deg</property>
+                    <min>20.0</min>
+                    <max>75.0</max>
+                    <step>5</step>
                     <live>true</live>
                     <binding>
                         <command>dialog-apply</command>
                     </binding>
-                </input>
+                </slider>
                 <text>
                     <row>1</row>
                     <col>2</col>
                     <label>999999999999</label>
                     <live>true</live>
                     <halign>right</halign>
+                    <format>%3.0f (deg)</format>
+                    <property>fdm/jsbsim/systems/autopilot/gui/true-heading-max-wing-slope-deg</property>
+                    <color>
+                        <red>0.9</red>
+                        <green>0.9</green>
+                        <blue>0.0</blue>
+                    </color>
+                </text>
+                <text>
+                    <label>Real wing slope</label>
+                    <halign>right</halign>
+                    <row>2</row>
+                    <col>0</col>
+                </text>
+                <text>
+                    <row>2</row>
+                    <col>1</col>
+                    <label>999999999999</label>
+                    <live>true</live>
+                    <halign>center</halign>
                     <format>%3.1f (deg)</format>
                     <property>fdm/jsbsim/systems/autopilot/true-heading-turn-direction-versus-slope-sw-lag-deg</property>
                     <color>
@@ -126,8 +227,8 @@
                     </color>
                 </text>
                 <text>
-                    <row>1</row>
-                    <col>3</col>
+                    <row>2</row>
+                    <col>2</col>
                     <label>999999999999</label>
                     <live>true</live>
                     <halign>right</halign>
@@ -142,11 +243,11 @@
                 <text>
                     <label>True heading</label>
                     <halign>right</halign>
-                    <row>2</row>
+                    <row>3</row>
                     <col>0</col>
                 </text>
                 <radio>
-                    <row>2</row>
+                    <row>3</row>
                     <col>1</col>
                     <property>fdm/jsbsim/systems/autopilot/gui/true-heading</property>
                     <live>true</live>
@@ -162,7 +263,7 @@
                     </binding>
                 </radio>
                 <input>
-                    <row>2</row>
+                    <row>3</row>
                     <col>1</col>
                     <property>fdm/jsbsim/systems/autopilot/gui/true-heading-deg</property>
                     <live>true</live>
@@ -171,7 +272,7 @@
                     </binding>
                 </input>
                 <text>
-                    <row>2</row>
+                    <row>3</row>
                     <col>2</col>
                     <label>999999999999</label>
                     <live>true</live>
@@ -185,8 +286,8 @@
                     </color>
                 </text>
                 <text>
-                    <row>2</row>
-                    <col>3</col>
+                    <row>4</row>
+                    <col>2</col>
                     <label>999999999999</label>
                     <live>true</live>
                     <halign>right</halign>
@@ -199,28 +300,36 @@
                     </color>
                 </text>
                 <button>
-                    <row>3</row>
+                    <row>5</row>
                     <col>0</col>
                     <legend>Left - 5 (deg)</legend>
                     <halign>fill</halign>
                     <live>true</live>
                     <binding>
                         <command>nasal</command>
-                        <script>
+                        <script><![CDATA[
                             if (getprop("fdm/jsbsim/systems/autopilot/gui/true-heading-deg") == 0.0) {
                                 setprop("fdm/jsbsim/systems/autopilot/gui/true-heading-deg",math.round(getprop("fdm/jsbsim/systems/autopilot/heading-true-deg")));
                             }
                             setprop("fdm/jsbsim/systems/autopilot/gui/true-heading-deg",math.round(0.5 + getprop("fdm/jsbsim/systems/autopilot/gui/true-heading-deg")) - 5);
+                            var true_heading_deg = getprop("fdm/jsbsim/systems/autopilot/gui/true-heading-deg");
+                            if (true_heading_deg >= 360.0) {
+                                setprop("fdm/jsbsim/systems/autopilot/gui/true-heading-deg",true_heading_deg - 360.0);
+                            } else if (true_heading_deg < 0.0) {
+                                setprop("fdm/jsbsim/systems/autopilot/gui/true-heading-deg",360 - true_heading_deg);
+                            } else {
+                                setprop("fdm/jsbsim/systems/autopilot/gui/true-heading-deg",true_heading_deg);
+                            }
                             setprop("fdm/jsbsim/systems/autopilot/gui/true-heading",1.0);
                             setprop("fdm/jsbsim/systems/autopilot/gui/heading-control",1.0);
                             setprop("fdm/jsbsim/systems/autopilot/gui/wing-leveler",0.0);
                             setprop("fdm/jsbsim/systems/autopilot/gui/phi-heading",0.0);
                             setprop("fdm/jsbsim/systems/autopilot/gui/rudder-auto-coordination",1.0);
-                        </script>
+                        ]]></script>
                     </binding>
                 </button>
                 <button>
-                    <row>3</row>
+                    <row>5</row>
                     <col>1</col>
                     <legend>Set actual heading</legend>
                     <halign>fill</halign>
@@ -238,61 +347,34 @@
                     </binding>
                 </button>
                 <button>
-                    <row>3</row>
+                    <row>5</row>
                     <col>2</col>
                     <legend>Right + 5 (deg)</legend>
                     <halign>fill</halign>
                     <live>true</live>
                     <binding>
                         <command>nasal</command>
-                        <script>
+                        <script><![CDATA[
                             if (getprop("fdm/jsbsim/systems/autopilot/gui/true-heading-deg") == 0.0) {
                                 setprop("fdm/jsbsim/systems/autopilot/gui/true-heading-deg",math.round(getprop("fdm/jsbsim/systems/autopilot/heading-true-deg")));
                             }
                             setprop("fdm/jsbsim/systems/autopilot/gui/true-heading-deg",math.round(0.5 + getprop("fdm/jsbsim/systems/autopilot/gui/true-heading-deg")) + 5);
+                            var true_heading_deg = getprop("fdm/jsbsim/systems/autopilot/gui/true-heading-deg");
+                            if (true_heading_deg >= 360.0) {
+                                setprop("fdm/jsbsim/systems/autopilot/gui/true-heading-deg",true_heading_deg - 360.0);
+                            } else if (true_heading_deg <= -360.0) {
+                                setprop("fdm/jsbsim/systems/autopilot/gui/true-heading-deg",360 - true_heading_deg);
+                            } else {
+                                setprop("fdm/jsbsim/systems/autopilot/gui/true-heading-deg",true_heading_deg);
+                            }
                             setprop("fdm/jsbsim/systems/autopilot/gui/true-heading",1.0);
                             setprop("fdm/jsbsim/systems/autopilot/gui/heading-control",1.0);
                             setprop("fdm/jsbsim/systems/autopilot/gui/wing-leveler",0.0);
                             setprop("fdm/jsbsim/systems/autopilot/gui/phi-heading",0.0);
                             setprop("fdm/jsbsim/systems/autopilot/gui/rudder-auto-coordination",1.0);
-                        </script>
+                        ]]></script>
                     </binding>
                 </button>
-                <text>
-                    <label>PHI heading</label>
-                    <halign>right</halign>
-                    <row>4</row>
-                    <col>0</col>
-                </text>
-                <radio>
-                    <row>4</row>
-                    <col>1</col>
-                    <property>fdm/jsbsim/systems/autopilot/gui/phi-heading</property>
-                    <live>true</live>
-                    <binding>
-                        <command>dialog-apply</command>
-                    </binding>
-                    <binding>
-                        <command>nasal</command>
-                        <script>
-                            setprop("fdm/jsbsim/systems/autopilot/gui/true-heading",0.0);
-                            setprop("fdm/jsbsim/systems/autopilot/gui/wing-leveler",0.0);
-                        </script>
-                    </binding>
-                </radio>
-                <text>
-                    <row>4</row>
-                    <col>2</col>
-                    <label>99999</label>
-                    <live>true</live>
-                    <format>%3.2f (deg)</format>
-                    <property>fdm/jsbsim/systems/autopilot/phi-heading-deg</property>
-                    <color>
-                        <red>0.9</red>
-                        <green>0.9</green>
-                        <blue>0.0</blue>
-                    </color>
-                </text>
             </group>
         </group>
         
@@ -387,8 +469,8 @@
                         <name>impact_control_ramp_deg</name>
                         <halign>left</halign>
                         <property>fdm/jsbsim/systems/autopilot/gui/impact-medium-time</property>
-                        <min>5.0</min>
-                        <max>30.0</max>
+                        <min>10.0</min>
+                        <max>60.0</max>
                         <step>1</step>
                         <live>true</live>
                         <binding>
@@ -412,13 +494,24 @@
                     <slider>
                         <row>1</row>
                         <col>3</col>
-                        <name>impact_min_z_ft</name>
-                        <property>fdm/jsbsim/systems/autopilot/gui/impact-min-z-ft</property>
-                        <min>0.0</min>
+                        <name>impact_control_ramp_deg</name>
+                        <halign>left</halign>
+                        <property>fdm/jsbsim/systems/autopilot/gui/altitude-QFE-impact-ft</property>
+                        <min>200.0</min>
                         <max>1000.0</max>
-                        <step>50.0</step> 
+                        <step>10</step>
+                        <live>true</live>
                         <binding>
                             <command>dialog-apply</command>
+                        </binding>
+                        <binding>
+                            <command>nasal</command>
+                            <script><![CDATA[
+                                if (getprop("fdm/jsbsim/systems/autopilot/gui/altitude-QFE-impact-ft") < 200.0) {
+                                    setprop("fdm/jsbsim/systems/autopilot/gui/altitude-QFE-impact-ft",200.0);
+                                }
+                                setprop("fdm/jsbsim/systems/autopilot/gui/altitude-QFE-ft",getprop("fdm/jsbsim/systems/autopilot/gui/altitude-QFE-impact-ft"));
+                            ]]></script>
                         </binding>
                     </slider>
                     <text>
@@ -427,8 +520,8 @@
                         <label>99999999</label>
                         <halign>left</halign>
                         <live>true</live>
-                        <format>%4.0f (ft)</format>
-                        <property>fdm/jsbsim/systems/autopilot/gui/impact-min-z-ft</property>
+                        <format>%5.0f (QFE)</format>
+                        <property>fdm/jsbsim/systems/autopilot/gui/altitude-QFE-impact-ft</property>
                         <color>
                             <red>0.9</red>
                             <green>0.9</green>
@@ -572,6 +665,7 @@
                         <blue>0.8</blue>
                     </color>
                 </text>
+                <!-- Alpha angle
                 <text>
                     <label>Alpha angle</label>
                     <halign>right</halign>
@@ -625,20 +719,7 @@
                         <blue>0.0</blue>
                     </color>
                 </text>
-                <text>
-                    <row>3</row>
-                    <col>4</col>
-                    <label>9</label>
-                    <halign>left</halign>
-                    <live>true</live>
-                    <format>(sup %1d)</format>
-                    <property>fdm/jsbsim/systems/autopilot/pitch-alpha-super-activate</property>
-                    <color>
-                        <red>0.8</red>
-                        <green>0.8</green>
-                        <blue>0.8</blue>
-                    </color>
-                </text>
+                -->
                 <text>
                     <label>Altitude Hold</label>
                     <halign>right</halign>
@@ -672,9 +753,9 @@
                     </binding>
                 </input>
                 <text>
-                <row>4</row>
+                    <row>4</row>
                     <col>3</col>
-                    <label>99999</label>
+                    <label>9999999999</label>
                     <halign>left</halign>
                     <live>true</live>
                     <format>%5.0f (ft)</format>
@@ -683,6 +764,20 @@
                         <red>0.9</red>
                         <green>0.9</green>
                         <blue>0.0</blue>
+                    </color>
+                </text>
+                <text>
+                    <row>4</row>
+                    <col>4</col>
+                    <label>9</label>
+                    <halign>left</halign>
+                    <live>true</live>
+                    <format>[%5.0f]</format>
+                    <property>fdm/jsbsim/systems/autopilot/altitude-hold-ft</property>
+                    <color>
+                        <red>0.8</red>
+                        <green>0.8</green>
+                        <blue>0.8</blue>
                     </color>
                 </text>
                 <text>
@@ -735,16 +830,17 @@
                     <binding>
                         <command>nasal</command>
                         <script><![CDATA[
-                            if (getprop("fdm/jsbsim/systems/autopilot/gui/altitude-QFE-ft") < 150.0) {
+                            if (getprop("fdm/jsbsim/systems/autopilot/gui/altitude-QFE-ft") < 200.0) {
                                 setprop("fdm/jsbsim/systems/autopilot/gui/altitude-QFE-ft",200.0);
                             }
+                            setprop("fdm/jsbsim/systems/autopilot/gui/altitude-QFE-impact-ft",getprop("fdm/jsbsim/systems/autopilot/gui/altitude-QFE-ft"));
                         ]]></script>
                     </binding>
                 </input>
                 <text>
                     <row>5</row>
                     <col>3</col>
-                    <label>99999</label>
+                    <label>99999999999999</label>
                     <halign>left</halign>
                     <live>true</live>
                     <format>QFE %5.0f (ft)</format>
@@ -762,7 +858,7 @@
                     <halign>left</halign>
                     <live>true</live>
                     <format>[%5.0f]</format>
-                    <property>fdm/jsbsim/systems/autopilot/altitude-QFE-ft-lag</property>
+                    <property>fdm/jsbsim/systems/autopilot/altitude-QFE-ft-mod</property>
                     <color>
                         <red>0.8</red>
                         <green>0.8</green>
@@ -771,20 +867,18 @@
                 </text>
                 <text>
                     <row>5</row>
-                    <col>5</col>
-                    <label>9999999</label>
-                    <halign>left</halign>
+                    <col>4</col>
+                    <label>9</label>
                     <live>true</live>
-                    <format>(%3.1f)</format>
-                    <property>fdm/jsbsim/systems/autopilot/altitude-QFE-impact-elev-intensity-lag</property>
+                    <property>fdm/jsbsim/systems/autopilot/altitude-QFE-set-active-text</property>
                     <color>
-                        <red>0.0</red>
-                        <green>0.9</green>
-                        <blue>0.0</blue>
+                        <red>1</red>
+                        <green>1</green>
+                        <blue>1</blue>
                     </color>
                 </text>
                 <button>
-                    <row>6</row>
+                    <row>7</row>
                     <col>0</col>
                     <legend>Set altitude</legend>
                     <halign>fill</halign>
@@ -792,8 +886,10 @@
                     <binding>
                         <command>nasal</command>
                         <script><![CDATA[
-                            setprop("fdm/jsbsim/systems/autopilot/gui/altitude-hold-ft",math.round(getprop("fdm/jsbsim/systems/autopilot/h-sl-ft-lag")));
+                            setprop("fdm/jsbsim/systems/autopilot/gui/altitude-active",1.0);
                             setprop("fdm/jsbsim/systems/autopilot/gui/altitude-hold",1.0);
+                            setprop("fdm/jsbsim/systems/autopilot/gui/altitude-hold-ft",math.round(getprop("fdm/jsbsim/systems/autopilot/h-sl-ft-lag")));
+                            setprop("fdm/jsbsim/systems/autopilot/gui/impact-control-active",1.0);
                             setprop("fdm/jsbsim/systems/autopilot/gui/altitude-QFE",0.0);
                             setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle-deg",6.0);
                             setprop("fdm/jsbsim/systems/autopilot/gui/speed-control",1.0);
@@ -805,16 +901,13 @@
                                     setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed-fpm",500.0);
                                 }
                             }
-                            if (getprop("fdm/jsbsim/systems/autopilot/gui/altitude-active") == 0) {
-                                setprop("fdm/jsbsim/systems/autopilot/gui/altitude-active",1.0);
-                            }
                         ]]></script>
                     </binding>
                 </button>
                 <text>
-                    <row>6</row>
+                    <row>7</row>
                     <col>2</col>
-                    <label>99999999999</label>
+                    <label>9999999999999999</label>
                     <halign>left</halign>
                     <live>true</live>
                     <format>Diff. %5.0f (ft)</format>
@@ -826,9 +919,9 @@
                     </color>
                 </text>
                 <text>
-                    <row>6</row>
+                    <row>7</row>
                     <col>3</col>
-                    <label>999999999999</label>
+                    <label>99999999999999999999</label>
                     <halign>right</halign>
                     <live>true</live>
                     <format>Alt. Ter. %5.0f (ft)</format>
@@ -840,12 +933,12 @@
                     </color>
                 </text>
                 <text>
-                    <row>6</row>
+                    <row>7</row>
                     <col>4</col>
                     <label>99999999999999999999</label>
                     <halign>right</halign>
                     <live>true</live>
-                    <format>    Bias h %5.0f (ft)</format>
+                    <format>Min alt. %5.0f (ft)</format>
                     <property>fdm/jsbsim/systems/autopilot/gui/impact-min-z-ft-mod</property>
                     <color>
                         <red>0.0</red>
@@ -949,7 +1042,7 @@
                 <radio>
                     <row>0</row>
                     <col>6</col>
-                    <property>fdm/jsbsim/systems/autopilot/gui/speed-brake</property>
+                    <property>fdm/jsbsim/systems/autopilot/gui/speed-automatic-brake</property>
                     <live>true</live>
                     <binding>
                         <command>dialog-apply</command>
@@ -1051,7 +1144,7 @@
                         if (getprop("fdm/jsbsim/systems/autopilot/gui/speed-set-mach") == 1) {
                             setprop("fdm/jsbsim/systems/autopilot/gui/speed-set-mph",0.0);
                             setprop("fdm/jsbsim/systems/autopilot/gui/speed-set-cas",0.0);
-                            setprop("fdm/jsbsim/systems/autopilot/gui/speed-value",math.round(getprop("fdm/jsbsim/systems/autopilot/speed-mach-on-air")));
+                            setprop("fdm/jsbsim/systems/autopilot/gui/speed-value",sprintf("%1.2f",getprop("fdm/jsbsim/systems/autopilot/speed-mach-on-air")));
                         }
                     ]]></script>
                 </binding>
@@ -1099,7 +1192,7 @@
                 <halign>left</halign>
                 <live>true</live>
                 <format>[%3.2f]</format>
-                <property>fdm/jsbsim/systems/autopilot/speed-best-by-altitude</property>
+                <property>fdm/jsbsim/systems/autopilot/speed-value-target-lag</property>
                 <color>
                     <red>0.8</red>
                     <green>0.8</green>
@@ -1442,13 +1535,23 @@
             <button>
                 <row>0</row>
                 <col>0</col>
-                <pref-width>120</pref-width>
+                <pref-width>90</pref-width>
                 <legend>  Take off </legend>
                 <halign>fill</halign>
                 <live>true</live>
                 <binding>
-                    <command>property-toggle</command>
-                    <property>fdm/jsbsim/systems/autopilot/gui/take-off-activate</property>
+                    <command>nasal</command>
+                    <script>
+                        if (getprop("/sim/presets/onground")) {
+                            if (getprop("fdm/jsbsim/systems/autopilot/gui/take-off-activate") == 1) {
+                                setprop("fdm/jsbsim/systems/autopilot/gui/take-off-activate",0);
+                            } else {
+                                setprop("fdm/jsbsim/systems/autopilot/gui/take-off-activate",1);
+                            }
+                        } else {
+                            setprop("fdm/jsbsim/systems/autopilot/gui/take-off-activate",0);
+                        }
+                    </script>
                 </binding>
             </button>
             <text>
@@ -1558,77 +1661,327 @@
             <button>
                 <row>0</row>
                 <col>0</col>
-                <pref-width>120</pref-width>
+                <pref-width>100</pref-width>
                 <legend>PHI Route</legend>
                 <halign>fill</halign>
                 <live>true</live>
                 <binding>
-                    <command>nasal</command>
-                    <script>
-                        setprop("fdm/jsbsim/systems/gauges/PHI/program/route[1]/phi",math.round(getprop("fdm/jsbsim/systems/autopilot/heading-true-deg")));
-                        setprop("fdm/jsbsim/systems/autopilot/gui/heading-control",1.0);
-                        setprop("fdm/jsbsim/systems/autopilot/gui/phi-heading",1.0);
-                        setprop("fdm/jsbsim/systems/autopilot/gui/true-heading",0.0);
-                        setprop("fdm/jsbsim/systems/autopilot/gui/true-heading-max-wing-slope-deg",45.0);
-                        setprop("fdm/jsbsim/systems/gauges/PHI/program/route[1]/dist",10.0);
-                        setprop("fdm/jsbsim/systems/gauges/PHI/wind/automatic-wind-sw",1.0);
-                        setprop("fdm/jsbsim/systems/gauges/PHI/doppler/switch-turn",2.0);
-                        setprop("fdm/jsbsim/systems/gauges/PHI/indicator/switch-turn",1.0);
-                        setprop("fdm/jsbsim/systems/gauges/PHI/program/route-manager/autopush-active",1.0);
-                        var altitude = math.round(getprop("fdm/jsbsim/systems/autopilot/gui/altitude-hold-ft"));
-                        setprop("fdm/jsbsim/systems/gauges/PHI/program/route-altitude-hold-ft",altitude);
-                        setprop("fdm/jsbsim/systems/gauges/PHI/program/route[1]/altitude-hold-ft",altitude);
-                        setprop("fdm/jsbsim/systems/gauges/PHI/program/route[2]/altitude-hold-ft",altitude);
-                        setprop("fdm/jsbsim/systems/gauges/PHI/program/route[3]/altitude-hold-ft",altitude);
-                        setprop("fdm/jsbsim/systems/gauges/PHI/program/route[4]/altitude-hold-ft",altitude);
-                        setprop("fdm/jsbsim/systems/gauges/PHI/program/route[5]/altitude-hold-ft",altitude);
-                    </script>
+                    <command>property-toggle</command>
+                    <property>fdm/jsbsim/systems/gauges/PHI/program/route-manager/autopush-prepare-active</property>
                 </binding>
                 <binding>
-                    <command>property-toggle</command>
-                    <property>fdm/jsbsim/systems/gauges/PHI/program/route[1]/push-togle</property>
+                    <command>nasal</command>
+                    <script>
+                        <![CDATA[
+                            var heading_true_deg = math.round(getprop("fdm/jsbsim/systems/autopilot/heading-true-deg"));
+                            if (getprop("fdm/jsbsim/systems/gauges/PHI/program/route-manager/autopush-prepare-active") == 1) {
+                                setprop("fdm/jsbsim/systems/autopilot/gui/true-heading-max-wing-slope-deg",45.0);
+                                setprop("fdm/jsbsim/systems/autopilot/gui/heading-control",1.0);
+                                setprop("fdm/jsbsim/systems/autopilot/gui/true-heading",0.0);
+                                setprop("fdm/jsbsim/systems/autopilot/gui/phi-heading",1.0);
+                                setprop("fdm/jsbsim/systems/gauges/PHI/wind/automatic-wind-sw",1.0);
+                                setprop("fdm/jsbsim/systems/gauges/PHI/doppler/switch-turn",2.0);
+                                setprop("fdm/jsbsim/systems/gauges/PHI/indicator/switch-turn",1.0);
+                                setprop("fdm/jsbsim/systems/gauges/PHI/program/route-manager/autopush-next",-1);
+                                setprop("fdm/jsbsim/systems/gauges/PHI/program/route-manager/autopush-active",1);
+                            } else {
+                                setprop("fdm/jsbsim/systems/autopilot/gui/heading-control",1.0);
+                                setprop("fdm/jsbsim/systems/gauges/PHI/program/route-manager/autopush-active",0);
+                                setprop("fdm/jsbsim/systems/autopilot/gui/true-heading-deg",heading_true_deg);
+                                setprop("fdm/jsbsim/systems/autopilot/gui/phi-heading",0.0);
+                                setprop("fdm/jsbsim/systems/autopilot/gui/true-heading",1.0);
+                                setprop("fdm/jsbsim/systems/gauges/PHI/program/route-manager/autopush-next",-2.0);
+                            }
+                        ]]>
+                    </script>
                 </binding>
             </button>
             <text>
                 <row>0</row>
                 <col>1</col>
+                <label>9999999</label>
+                <live>true</live>
+                <format>%2.0f | </format>
+                <property>fdm/jsbsim/systems/gauges/PHI/program/status</property>
                 <halign>left</halign>
+                <color>
+                    <red>0.8</red>
+                    <green>0.8</green>
+                    <blue>0.0</blue>
+                </color>
             </text>
             <text>
                 <row>0</row>
                 <col>2</col>
-                <halign>left</halign>
+                <label>99999999999999</label>
+                <live>true</live>
+                <format>%3.0f (nm) |</format>
+                <property>fdm/jsbsim/systems/gauges/PHI/indicator/mil-digit</property>
+                <halign>center</halign>
+                <color>
+                    <red>1.0</red>
+                    <green>1.0</green>
+                    <blue>0.0</blue>
+                </color>
             </text>
-            <text>
+            <radio>
                 <row>0</row>
                 <col>3</col>
-                <halign>left</halign>
-            </text>
+                <label>R1</label>
+                <halign>right</halign>
+                <property>fdm/jsbsim/systems/gauges/PHI/program/route[1]/isPush</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </radio>
             <text>
                 <row>0</row>
                 <col>4</col>
-                <halign>left</halign>
+                <label>9999</label>
+                <live>true</live>
+                <format>%3.0f</format>
+                <property>fdm/jsbsim/systems/gauges/PHI/program/route[1]/dist</property>
+                <halign>center</halign>
+                <color>
+                    <red>0.8</red>
+                    <green>0.8</green>
+                    <blue>0.0</blue>
+                </color>
             </text>
             <text>
                 <row>0</row>
                 <col>5</col>
-                <halign>left</halign>
+                <label>999999</label>
+                <live>true</live>
+                <format>%3.0f | </format>
+                <property>fdm/jsbsim/systems/gauges/PHI/program/route[1]/phi</property>
+                <halign>center</halign>
+                <color>
+                    <red>0.8</red>
+                    <green>0.8</green>
+                    <blue>0.0</blue>
+                </color>
             </text>
-            <text>
+            <radio>
                 <row>0</row>
                 <col>6</col>
-                <halign>left</halign>
-            </text>
+                <label>R2</label>
+                <halign>right</halign>
+                <property>fdm/jsbsim/systems/gauges/PHI/program/route[2]/isPush</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </radio>
             <text>
                 <row>0</row>
                 <col>7</col>
-                <halign>left</halign>
+                <label>9999</label>
+                <live>true</live>
+                <format>%3.0f</format>
+                <property>fdm/jsbsim/systems/gauges/PHI/program/route[2]/dist</property>
+                <halign>center</halign>
+                <color>
+                    <red>0.8</red>
+                    <green>0.8</green>
+                    <blue>0.0</blue>
+                </color>
             </text>
             <text>
                 <row>0</row>
                 <col>8</col>
-                <halign>left</halign>
+                <label>999999</label>
+                <live>true</live>
+                <format>%3.0f | </format>
+                <property>fdm/jsbsim/systems/gauges/PHI/program/route[2]/phi</property>
+                <halign>center</halign>
+                <color>
+                    <red>0.8</red>
+                    <green>0.8</green>
+                    <blue>0.0</blue>
+                </color>
             </text>
+            <radio>
+                <row>0</row>
+                <col>9</col>
+                <label>R3</label>
+                <halign>right</halign>
+                <property>fdm/jsbsim/systems/gauges/PHI/program/route[3]/isPush</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </radio>
+            <text>
+                <row>0</row>
+                <col>10</col>
+                <label>9999</label>
+                <live>true</live>
+                <format>%3.0f</format>
+                <property>fdm/jsbsim/systems/gauges/PHI/program/route[3]/dist</property>
+                <halign>center</halign>
+                <color>
+                    <red>0.8</red>
+                    <green>0.8</green>
+                    <blue>0.0</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>11</col>
+                <label>999999</label>
+                <live>true</live>
+                <format>%3.0f | </format>
+                <property>fdm/jsbsim/systems/gauges/PHI/program/route[3]/phi</property>
+                <halign>center</halign>
+                <color>
+                    <red>0.8</red>
+                    <green>0.8</green>
+                    <blue>0.0</blue>
+                </color>
+            </text>
+            <radio>
+                <row>0</row>
+                <col>12</col>
+                <label>R4</label>
+                <halign>right</halign>
+                <property>fdm/jsbsim/systems/gauges/PHI/program/route[4]/isPush</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </radio>
+            <text>
+                <row>0</row>
+                <col>13</col>
+                <label>9999</label>
+                <live>true</live>
+                <format>%3.0f</format>
+                <property>fdm/jsbsim/systems/gauges/PHI/program/route[4]/dist</property>
+                <halign>center</halign>
+                <color>
+                    <red>0.8</red>
+                    <green>0.8</green>
+                    <blue>0.0</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>14</col>
+                <label>999999</label>
+                <live>true</live>
+                <format>%3.0f | </format>
+                <property>fdm/jsbsim/systems/gauges/PHI/program/route[4]/phi</property>
+                <halign>center</halign>
+                <color>
+                    <red>0.8</red>
+                    <green>0.8</green>
+                    <blue>0.0</blue>
+                </color>
+            </text>
+            <radio>
+                <row>0</row>
+                <col>15</col>
+                <label>R5</label>
+                <halign>right</halign>
+                <property>fdm/jsbsim/systems/gauges/PHI/program/route[5]/isPush</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </radio>
+            <text>
+                <row>0</row>
+                <col>16</col>
+                <label>9999</label>
+                <live>true</live>
+                <format>%3.0f</format>
+                <property>fdm/jsbsim/systems/gauges/PHI/program/route[5]/dist</property>
+                <halign>center</halign>
+                <color>
+                    <red>0.8</red>
+                    <green>0.8</green>
+                    <blue>0.0</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>17</col>
+                <label>999999</label>
+                <live>true</live>
+                <format>%3.0f | </format>
+                <property>fdm/jsbsim/systems/gauges/PHI/program/route[5]/phi</property>
+                <halign>center</halign>
+                <color>
+                    <red>0.8</red>
+                    <green>0.8</green>
+                    <blue>0.0</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>18</col>
+                <label>9999999999999</label>
+                <live>true</live>
+                <format>Wind dir: %3.0f</format>
+                <property>fdm/jsbsim/systems/gauges/PHI/wind/wd</property>
+                <halign>left</halign>
+                <color>
+                    <red>0.8</red>
+                    <green>0.8</green>
+                    <blue>0.0</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>19</col>
+                <label>99999999999</label>
+                <live>true</live>
+                <format>speed: %3.0f</format>
+                <property>fdm/jsbsim/systems/gauges/PHI/wind/ws</property>
+                <halign>left</halign>
+                <color>
+                    <red>0.8</red>
+                    <green>0.8</green>
+                    <blue>0.0</blue>
+                </color>
+            </text>
+            <radio>
+                <row>0</row>
+                <col>20</col>
+                <label>Dop.</label>
+                <halign>center</halign>
+                <property>fdm/jsbsim/systems/gauges/PHI/doppler/switch-turn</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+                <binding>
+                    <command>nasal</command>
+                    <script>
+                        <![CDATA[
+                            var tag = getprop("fdm/jsbsim/systems/gauges/PHI/doppler/switch-turn");
+                            if (tag <= 1) {
+                                setprop("fdm/jsbsim/systems/gauges/PHI/doppler/switch-turn",0);
+                            } else {
+                                setprop("fdm/jsbsim/systems/gauges/PHI/doppler/switch-turn",2);
+                            }
+                        ]]>
+                    </script>
+                </binding>
+            </radio>
+            <radio>
+                <row>0</row>
+                <col>21</col>
+                <halign>left</halign>
+                <label>Sea/Land</label>
+                <property>fdm/jsbsim/systems/gauges/PHI/doppler/switch-terrain-sea</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </radio>
         </group>
         
         <hrule/>
@@ -1639,20 +1992,31 @@
             <button>
                 <row>0</row>
                 <col>0</col>
-                <pref-width>120</pref-width>
+                <pref-width>90</pref-width>
                 <legend>Auto landing</legend>
                 <halign>fill</halign>
                 <live>true</live>
                 <binding>
                     <command>nasal</command>
                     <script>
-                        setprop("fdm/jsbsim/systems/autopilot/gui/landing-activate",1);
+                        if (getprop("fdm/jsbsim/systems/autopilot/gui/landing-activate") == 0) {
+                            setprop("fdm/jsbsim/systems/autopilot/gui/landing-activate",1);
+                        } else {
+                            setprop("fdm/jsbsim/systems/autopilot/gui/landing-activate",0);
+                        }
                     </script>
                 </binding>
             </button>
             <radio>
                 <row>0</row>
                 <col>1</col>
+                <label>Active</label>
+                <property>fdm/jsbsim/systems/autopilot/gui/landing-activate-status</property>
+                <live>true</live>
+            </radio>
+            <radio>
+                <row>0</row>
+                <col>2</col>
                 <label>Nearest RW</label>
                 <property>fdm/jsbsim/systems/autopilot/gui/airport_nearest_runway</property>
                 <live>true</live>
@@ -1662,7 +2026,7 @@
             </radio>
             <radio>
                 <row>0</row>
-                <col>2</col>
+                <col>3</col>
                 <label>Short prof</label>
                 <property>fdm/jsbsim/systems/autopilot/gui/landing-short-profile</property>
                 <live>true</live>
@@ -1672,13 +2036,13 @@
             </radio>
             <text>
                 <row>0</row>
-                <col>3</col>
+                <col>4</col>
                 <label>Min len:</label>
                 <halign>left</halign>
             </text>
             <slider>
                 <row>0</row>
-                <col>4</col>
+                <col>5</col>
                 <pref-width>50</pref-width>
                 <live>true</live>
                 <property>fdm/jsbsim/systems/autopilot/gui/landing-minimal-length-m</property>
@@ -1701,11 +2065,11 @@
             </slider>
             <text>
                 <row>0</row>
-                <col>5</col>
+                <col>6</col>
                 <label>9999999999</label>
                 <halign>left</halign>
                 <live>true</live>
-                <format>%4.0f (ft)</format>
+                <format>%4.0f (m)</format>
                 <property>fdm/jsbsim/systems/autopilot/gui/landing-minimal-length-m</property>
                 <color>
                     <red>0.9</red>
@@ -1715,7 +2079,7 @@
             </text>
             <radio>
                 <row>0</row>
-                <col>6</col>
+                <col>7</col>
                 <label>Scan</label>
                 <property>fdm/jsbsim/systems/autopilot/gui/landing-scan-airport</property>
                 <live>true</live>
@@ -1725,13 +2089,13 @@
             </radio>
             <text>
                 <row>0</row>
-                <col>7</col>
+                <col>8</col>
                 <label>Direct id:</label>
                 <halign>left</halign>
             </text>
             <input>
                 <row>0</row>
-                <col>8</col>
+                <col>9</col>
                 <pref-width>55</pref-width>
                 <property>fdm/jsbsim/systems/autopilot/gui/airport_select_name_direct</property>
                 <live>true</live>
@@ -1741,6 +2105,7 @@
                 <binding>
                     <command>nasal</command>
                     <script>
+                        setprop("fdm/jsbsim/systems/autopilot/gui/landing-scan-airport",0);
                         if (getprop("fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct/status") == 0) {
                             setprop("fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct/status",1);
                         }
@@ -1749,7 +2114,7 @@
             </input>
             <text>
                 <row>0</row>
-                <col>9</col>
+                <col>10</col>
                 <label>999999999999999999999999999</label>
                 <halign>left</halign>
                 <live>true</live>
@@ -1762,7 +2127,7 @@
             </text>
             <combo>
                 <row>0</row>
-                <col>10</col>
+                <col>11</col>
                 <pref-width>130</pref-width>
                 <halign>left</halign>
                 <name>rw-selector</name>
@@ -1866,6 +2231,20 @@
                     <red>0.9</red>
                     <green>0.9</green>
                     <blue>0.9</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>6</col>
+                <label>999999999999999</label>
+                <halign>left</halign>
+                <live>true</live>
+                <format>[%2.1f]</format>
+                <property>fdm/jsbsim/systems/autopilot/landing-slope-target</property>
+                <color>
+                    <red>0.8</red>
+                    <green>0.8</green>
+                    <blue>0.8</blue>
                 </color>
             </text>
         </group>
@@ -1975,110 +2354,23 @@
             </text>
         </group>
     
-        
         <!-- PID configurator -->
-        
-        <!--
-            The PID configurator is defined by: Ziegler–Nichols method
-            https://en.wikipedia.org/wiki/Ziegler%E2%80%93Nichols_method
-            With the four variants:
-            Zingler-Nichols Classic
-            Possen Integral Rule
-            Some Overshoot
-            No Overshoot
-        -->
-<!--
         <hrule/>
-        
         <group>
             <layout>table</layout>
-            <radio>
-                <row>0</row>
-                <col>0</col>
-                <label>Zingler-Nichols Classic</label>
-                <property>fdm/jsbsim/systems/autopilot/gui/pid-czn</property>
-                <live>true</live>
-                <binding>
-                    <command>dialog-apply</command>
-                </binding>
-                <binding>
-                    <command>nasal</command>
-                    <script>
-                        setprop("fdm/jsbsim/systems/autopilot/gui/pid-pir",0.0);
-                        setprop("fdm/jsbsim/systems/autopilot/gui/pid-so",0.0);
-                        setprop("fdm/jsbsim/systems/autopilot/gui/pid-no",0.0);
-                    </script>
-                </binding>
-            </radio>
-            <radio>
-                <row>0</row>
-                <col>1</col>
-                <label>Possen Integral Rule</label>
-                <property>fdm/jsbsim/systems/autopilot/gui/pid-pir</property>
-                <live>true</live>
-                <binding>
-                    <command>dialog-apply</command>
-                </binding>
-                <binding>
-                    <command>nasal</command>
-                    <script>
-                        setprop("fdm/jsbsim/systems/autopilot/gui/pid-czn",0.0);
-                        setprop("fdm/jsbsim/systems/autopilot/gui/pid-so",0.0);
-                        setprop("fdm/jsbsim/systems/autopilot/gui/pid-no",0.0);
-                    </script>
-                </binding>
-            </radio>
-            <radio>
-                <row>0</row>
-                <col>2</col>
-                <label>Some Overshoot</label>
-                <property>fdm/jsbsim/systems/autopilot/gui/pid-so</property>
-                <live>true</live>
-                <binding>
-                    <command>dialog-apply</command>
-                </binding>
-                <binding>
-                    <command>nasal</command>
-                    <script>
-                        setprop("fdm/jsbsim/systems/autopilot/gui/pid-czn",0.0);
-                        setprop("fdm/jsbsim/systems/autopilot/gui/pid-pir",0.0);
-                        setprop("fdm/jsbsim/systems/autopilot/gui/pid-no",0.0);
-                    </script>
-                </binding>
-            </radio>
-            <radio>
-                <row>0</row>
-                <col>3</col>
-                <label>No Overshoot</label>
-                <property>fdm/jsbsim/systems/autopilot/gui/pid-no</property>
-                <live>true</live>
-                <binding>
-                    <command>dialog-apply</command>
-                </binding>
-                <binding>
-                    <command>nasal</command>
-                    <script>
-                        setprop("fdm/jsbsim/systems/autopilot/gui/pid-czn",0.0);
-                        setprop("fdm/jsbsim/systems/autopilot/gui/pid-pir",0.0);
-                        setprop("fdm/jsbsim/systems/autopilot/gui/pid-so",0.0);
-                    </script>
-                </binding>
-            </radio>
-        </group>
-        <group>
-            <layout>table</layout>
+            
             <text>
-                <label>Ku</label>
+                <label>Pitch angle</label>
                 <halign>left</halign>
                 <row>0</row>
                 <col>0</col>
             </text>
             <slider>
                 <row>0</row>
-                <col>2</col>
+                <col>1</col>
                 <live>true</live>
-                <property>fdm/jsbsim/systems/autopilot/gui/pid-ku</property>
-                <min>0.0</min>
+                <property>fdm/jsbsim/systems/autopilot/pitch-angle-pid-kp-set</property>
+                <min>0</min>
                 <max>10.0</max>
                 <step>0.01</step>
                 <binding>
@@ -2087,31 +2379,25 @@
             </slider>
             <text>
                 <row>0</row>
-                <col>3</col>
-                <label>99999</label>
+                <col>2</col>
+                <label>99999999</label>
                 <halign>left</halign>
                 <live>true</live>
-                <format>%2.3f</format>
-                <property>fdm/jsbsim/systems/autopilot/gui/pid-ku</property>
+                <format>Kp %2.2f</format>
+                <property>fdm/jsbsim/systems/autopilot/pitch-angle-pid-kp-set</property>
                 <color>
                     <red>0.9</red>
                     <green>0.9</green>
                     <blue>0.9</blue>
                 </color>
             </text>
-            <text>
-                <label>Tu</label>
-                <halign>left</halign>
-                <row>0</row>
-                <col>4</col>
-            </text>
             <slider>
                 <row>0</row>
-                <col>5</col>
+                <col>3</col>
                 <live>true</live>
-                <property>fdm/jsbsim/systems/autopilot/gui/pid-tu</property>
-                <min>0.0</min>
-                <max>10</max>
+                <property>fdm/jsbsim/systems/autopilot/pitch-angle-pid-ki-set</property>
+                <min>0</min>
+                <max>10.0</max>
                 <step>0.01</step>
                 <binding>
                     <command>dialog-apply</command>
@@ -2119,129 +2405,547 @@
             </slider>
             <text>
                 <row>0</row>
-                <col>6</col>
-                <label>99999</label>
+                <col>4</col>
+                <label>99999999</label>
                 <halign>left</halign>
                 <live>true</live>
-                <format>%2.3f</format>
-                <property>fdm/jsbsim/systems/autopilot/gui/pid-tu</property>
+                <format>Ki %2.2f</format>
+                <property>fdm/jsbsim/systems/autopilot/pitch-angle-pid-ki-set</property>
                 <color>
                     <red>0.9</red>
                     <green>0.9</green>
                     <blue>0.9</blue>
                 </color>
             </text>
-            <button>
+            <slider>
                 <row>0</row>
-                <col>7</col>
-                <legend>Calculate</legend>
-                <halign>fill</halign>
+                <col>5</col>
                 <live>true</live>
+                <property>fdm/jsbsim/systems/autopilot/pitch-angle-pid-kd-set</property>
+                <min>0</min>
+                <max>80.0</max>
+                <step>0.1</step>
                 <binding>
-                    <command>nasal</command>
-                    <script><![CDATA[
-                        var ku = getprop("fdm/jsbsim/systems/autopilot/gui/pid-ku");
-                        var tu = getprop("fdm/jsbsim/systems/autopilot/gui/pid-tu");
-                        var kp = 0.0;
-                        var ki = 0.0;
-                        var kd = 0.0;
-                        if (getprop("fdm/jsbsim/systems/autopilot/gui/pid-pir") == 1) {
-                            kp = 0.7 * ku;
-                            if (tu > 0.01) {
-                                ki = 1.75 * ku / tu;
-                                kd = 21.0 * (ku / tu) / 200.0;
-                            }
-                        } else if (getprop("fdm/jsbsim/systems/autopilot/gui/pid-so") == 1) {
-                            kp = 0.33 * ku;
-                            if (tu > 0.01) {
-                                ki = 0.666 * ku / tu;
-                                kd = 0.1 * (ku / tu);
-                            }
-                        } else if (getprop("fdm/jsbsim/systems/autopilot/gui/pid-no") == 1) {
-                            kp = 0.2 * ku;
-                            if (tu > 0.01) {
-                                ki = (2.0/5.0) * ku / tu;
-                                kd = (ku / tu) / 15.0;
-                            }
-                        } else {
-                            kp = 0.6 * ku;
-                            if (tu > 0.01) {
-                                ki = 1.2 * ku / tu;
-                                kd = 3.0 * (ku / tu) / 40.0;
-                            }
-                        }
-                        setprop("fdm/jsbsim/systems/autopilot/gui/pid-kp",kp);
-                        setprop("fdm/jsbsim/systems/autopilot/gui/pid-ki",ki);
-                        setprop("fdm/jsbsim/systems/autopilot/gui/pid-kd",kd);
-                        # Modifiy data part
-                        setprop("fdm/jsbsim/systems/autopilot/speed-kp",kp);
-                        setprop("fdm/jsbsim/systems/autopilot/speed-ki",ki);
-                        setprop("fdm/jsbsim/systems/autopilot/speed-kd",kd);
-                    ]]></script>
+                    <command>dialog-apply</command>
                 </binding>
-            </button>
+            </slider>
             <text>
-                <label>Kp</label>
+                <row>0</row>
+                <col>6</col>
+                <label>99999999</label>
                 <halign>left</halign>
+                <live>true</live>
+                <format>Kd %2.2f</format>
+                <property>fdm/jsbsim/systems/autopilot/pitch-angle-pid-kd-set</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.9</blue>
+                </color>
+            </text>
+            <slider>
                 <row>0</row>
                 <col>8</col>
-            </text>
+                <live>true</live>
+                <property>fdm/jsbsim/systems/autopilot/pitch-output-coefficient</property>
+                <min>-0.2</min>
+                <max>0.0</max>
+                <step>0.01</step>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </slider>
             <text>
                 <row>0</row>
+                <col>9</col>
+                <label>99999999</label>
+                <halign>left</halign>
+                <live>true</live>
+                <format>Gain %2.3f</format>
+                <property>fdm/jsbsim/systems/autopilot/pitch-output-coefficient-mod</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.9</blue>
+                </color>
+            </text>
+            
+            <text>
+                <label>Vertical speed</label>
+                <halign>left</halign>
+                <row>1</row>
+                <col>0</col>
+            </text>
+            <slider>
+                <row>1</row>
+                <col>1</col>
+                <live>true</live>
+                <property>fdm/jsbsim/systems/autopilot/vertical-speed-pid-kp-set</property>
+                <min>0.0</min>
+                <max>10.0</max>
+                <step>0.1</step>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </slider>
+            <text>
+                <row>1</row>
+                <col>2</col>
+                <label>99999999</label>
+                <halign>left</halign>
+                <live>true</live>
+                <format>kp %2.3f</format>
+                <property>fdm/jsbsim/systems/autopilot/vertical-speed-pid-kp-set</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.9</blue>
+                </color>
+            </text>
+            <slider>
+                <row>1</row>
+                <col>3</col>
+                <live>true</live>
+                <property>fdm/jsbsim/systems/autopilot/vertical-speed-pid-ki-set</property>
+                <min>0.0</min>
+                <max>10.0</max>
+                <step>0.1</step>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </slider>
+            <text>
+                <row>1</row>
+                <col>4</col>
+                <label>99999999</label>
+                <halign>left</halign>
+                <live>true</live>
+                <format>ki %2.3f</format>
+                <property>fdm/jsbsim/systems/autopilot/vertical-speed-pid-ki-set</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.9</blue>
+                </color>
+            </text>
+            <slider>
+                <row>1</row>
+                <col>5</col>
+                <live>true</live>
+                <property>fdm/jsbsim/systems/autopilot/vertical-speed-pid-kd-set</property>
+                <min>0.0</min>
+                <max>10.0</max>
+                <step>0.1</step>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </slider>
+            <text>
+                <row>1</row>
+                <col>6</col>
+                <label>99999999</label>
+                <halign>left</halign>
+                <live>true</live>
+                <format>kd %2.3f</format>
+                <property>fdm/jsbsim/systems/autopilot/vertical-speed-pid-kd-set</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.9</blue>
+                </color>
+            </text>
+            <slider>
+                <row>1</row>
+                <col>8</col>
+                <live>true</live>
+                <property>fdm/jsbsim/systems/autopilot/vertical-speed-output-error-coefficient</property>
+                <min>-1.0</min>
+                <max>1.0</max>
+                <step>0.05</step>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </slider>
+            <text>
+                <row>1</row>
+                <col>9</col>
+                <label>99999999</label>
+                <halign>left</halign>
+                <live>true</live>
+                <format>Gain %2.3f</format>
+                <property>fdm/jsbsim/systems/autopilot/vertical-speed-output-error-coefficient</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.9</blue>
+                </color>
+            </text>
+            
+            <text>
+                <label>Throttle</label>
+                <halign>left</halign>
+                <row>2</row>
+                <col>0</col>
+            </text>
+            <slider>
+                <row>2</row>
+                <col>1</col>
+                <live>true</live>
+                <property>fdm/jsbsim/systems/autopilot/speed-throttle-pid-ku</property>
+                <min>0.0</min>
+                <max>50.0</max>
+                <step>0.1</step>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </slider>
+            <text>
+                <row>2</row>
+                <col>2</col>
+                <label>99999999</label>
+                <halign>left</halign>
+                <live>true</live>
+                <format>Ku %2.2f</format>
+                <property>fdm/jsbsim/systems/autopilot/speed-throttle-pid-ku</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.9</blue>
+                </color>
+            </text>
+            <slider>
+                <row>2</row>
+                <col>3</col>
+                <live>true</live>
+                <property>fdm/jsbsim/systems/autopilot/speed-throttle-pid-tu</property>
+                <min>0.0</min>
+                <max>40.0</max>
+                <step>0.01</step>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </slider>
+            <text>
+                <row>2</row>
+                <col>4</col>
+                <label>99999999</label>
+                <halign>left</halign>
+                <live>true</live>
+                <format>Tu %2.2f</format>
+                <property>fdm/jsbsim/systems/autopilot/speed-throttle-pid-tu</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.9</blue>
+                </color>
+            </text>
+            <text>
+                <row>2</row>
+                <col>5</col>
+                <label>99999999</label>
+                <halign>left</halign>
+                <live>true</live>
+                <format>Kp %2.2f</format>
+                <property>fdm/jsbsim/systems/autopilot/speed-throttle-pid-kp</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.9</blue>
+                </color>
+            </text>
+            <text>
+                <row>2</row>
+                <col>6</col>
+                <label>99999999</label>
+                <halign>left</halign>
+                <live>true</live>
+                <format>ki %2.3f</format>
+                <property>fdm/jsbsim/systems/autopilot/speed-throttle-pid-ki</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.9</blue>
+                </color>
+            </text>
+            <text>
+                <row>2</row>
+                <col>7</col>
+                <label>99999999</label>
+                <halign>left</halign>
+                <live>true</live>
+                <format>kd %2.3f</format>
+                <property>fdm/jsbsim/systems/autopilot/speed-throttle-pid-kd</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.9</blue>
+                </color>
+            </text>
+            <slider>
+                <row>2</row>
+                <col>8</col>
+                <live>true</live>
+                <property>fdm/jsbsim/systems/autopilot/speed-throttle-output-gain</property>
+                <min>-1.0</min>
+                <max>0.0</max>
+                <step>0.01</step>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </slider>
+            <text>
+                <row>2</row>
                 <col>9</col>
                 <label>99999</label>
                 <halign>left</halign>
                 <live>true</live>
-                <format>%2.3f</format>
-                <property>fdm/jsbsim/systems/autopilot/gui/pid-kp</property>
+                <format>Gain %2.2f</format>
+                <property>fdm/jsbsim/systems/autopilot/speed-throttle-output-gain</property>
                 <color>
                     <red>0.9</red>
                     <green>0.9</green>
-                    <blue>0.0</blue>
+                    <blue>0.9</blue>
+                </color>
+            </text>
+            
+            <text>
+                <label>Alt. hold</label>
+                <halign>left</halign>
+                <row>3</row>
+                <col>0</col>
+            </text>
+            <slider>
+                <row>3</row>
+                <col>1</col>
+                <live>true</live>
+                <property>fdm/jsbsim/systems/autopilot/altitude-hold-pid-kp</property>
+                <min>0.0</min>
+                <max>5.0</max>
+                <step>0.01</step>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </slider>
+            <text>
+                <row>3</row>
+                <col>2</col>
+                <label>99999999</label>
+                <halign>left</halign>
+                <live>true</live>
+                <format>kp %2.3f</format>
+                <property>fdm/jsbsim/systems/autopilot/altitude-hold-pid-kp</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.9</blue>
+                </color>
+            </text>
+            <slider>
+                <row>3</row>
+                <col>3</col>
+                <live>true</live>
+                <property>fdm/jsbsim/systems/autopilot/altitude-hold-pid-ki</property>
+                <min>0.0</min>
+                <max>1.0</max>
+                <step>0.01</step>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </slider>
+            <text>
+                <row>3</row>
+                <col>4</col>
+                <label>99999999</label>
+                <halign>left</halign>
+                <live>true</live>
+                <format>ki %2.3f</format>
+                <property>fdm/jsbsim/systems/autopilot/altitude-hold-pid-ki</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.9</blue>
+                </color>
+            </text>
+            <slider>
+                <row>3</row>
+                <col>5</col>
+                <live>true</live>
+                <property>fdm/jsbsim/systems/autopilot/altitude-hold-pid-kd</property>
+                <min>0.0</min>
+                <max>20.0</max>
+                <step>0.01</step>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </slider>
+            <text>
+                <row>3</row>
+                <col>6</col>
+                <label>99999999</label>
+                <halign>left</halign>
+                <live>true</live>
+                <format>kd %2.3f</format>
+                <property>fdm/jsbsim/systems/autopilot/altitude-hold-pid-kd</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.9</blue>
+                </color>
+            </text>
+            <slider>
+                <row>3</row>
+                <col>8</col>
+                <live>true</live>
+                <property>fdm/jsbsim/systems/autopilot/altitude-hold-output-gain</property>
+                <min>-2.0</min>
+                <max>2.0</max>
+                <step>0.05</step>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </slider>
+            <text>
+                <row>3</row>
+                <col>9</col>
+                <label>99999999</label>
+                <halign>left</halign>
+                <live>true</live>
+                <format>Gain %2.3f</format>
+                <property>fdm/jsbsim/systems/autopilot/altitude-hold-output-gain</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.9</blue>
+                </color>
+            </text>
+            
+            <text>
+                <label>Landig PID</label>
+                <halign>left</halign>
+                <row>4</row>
+                <col>0</col>
+            </text>
+            <slider>
+                <row>4</row>
+                <col>1</col>
+                <live>true</live>
+                <property>fdm/jsbsim/systems/autopilot/landing-PID-ku</property>
+                <min>0</min>
+                <max>20.0</max>
+                <step>0.1</step>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </slider>
+            <text>
+                <row>4</row>
+                <col>2</col>
+                <label>99999999</label>
+                <halign>left</halign>
+                <live>true</live>
+                <format>Ku %2.2f</format>
+                <property>fdm/jsbsim/systems/autopilot/landing-PID-ku</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.9</blue>
+                </color>
+            </text>
+            <slider>
+                <row>4</row>
+                <col>3</col>
+                <live>true</live>
+                <property>fdm/jsbsim/systems/autopilot/landing-PID-tu</property>
+                <min>0.1</min>
+                <max>50.0</max>
+                <step>0.1</step>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </slider>
+            <text>
+                <row>4</row>
+                <col>4</col>
+                <label>99999999</label>
+                <halign>left</halign>
+                <live>true</live>
+                <format>Tu %2.2f</format>
+                <property>fdm/jsbsim/systems/autopilot/landing-PID-tu</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.9</blue>
                 </color>
             </text>
             <text>
-                <label>Ki</label>
-                <halign>left</halign>
-                <row>0</row>
-                <col>10</col>
-            </text>
-            <text>
-                <row>0</row>
-                <col>11</col>
-                <label>99999</label>
+                <row>4</row>
+                <col>5</col>
+                <label>99999999</label>
                 <halign>left</halign>
                 <live>true</live>
-                <format>%2.4f</format>
-                <property>fdm/jsbsim/systems/autopilot/gui/pid-ki</property>
+                <format>Kp %2.2f</format>
+                <property>fdm/jsbsim/systems/autopilot/landing-PID-kp</property>
                 <color>
                     <red>0.9</red>
                     <green>0.9</green>
-                    <blue>0.0</blue>
+                    <blue>0.9</blue>
                 </color>
             </text>
             <text>
-                <label>Kd</label>
-                <halign>left</halign>
-                <row>0</row>
-                <col>12</col>
-            </text>
-            <text>
-                <row>0</row>
-                <col>13</col>
-                <label>99999</label>
+                <row>4</row>
+                <col>6</col>
+                <label>99999999</label>
                 <halign>left</halign>
                 <live>true</live>
-                <format>%2.5f</format>
-                <property>fdm/jsbsim/systems/autopilot/gui/pid-kd</property>
+                <format>Ki %2.2f</format>
+                <property>fdm/jsbsim/systems/autopilot/landing-PID-ki</property>
                 <color>
                     <red>0.9</red>
                     <green>0.9</green>
-                    <blue>0.0</blue>
+                    <blue>0.9</blue>
+                </color>
+            </text>
+            <text>
+                <row>4</row>
+                <col>7</col>
+                <label>99999999</label>
+                <halign>left</halign>
+                <live>true</live>
+                <format>Kd %2.2f</format>
+                <property>fdm/jsbsim/systems/autopilot/landing-PID-kd</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.9</blue>
+                </color>
+            </text>
+            <slider>
+                <row>4</row>
+                <col>8</col>
+                <live>true</live>
+                <property>fdm/jsbsim/systems/autopilot/landing-PID-gain</property>
+                <min>-4.0</min>
+                <max>4.0</max>
+                <step>0.01</step>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </slider>
+            <text>
+                <row>4</row>
+                <col>9</col>
+                <label>9999999999</label>
+                <halign>left</halign>
+                <live>true</live>
+                <format>Gain %2.2f</format>
+                <property>fdm/jsbsim/systems/autopilot/landing-PID-gain</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.9</blue>
                 </color>
             </text>
         </group>
--->
 
     </group>
 

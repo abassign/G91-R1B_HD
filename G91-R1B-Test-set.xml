@@ -20,15 +20,12 @@
         <aero>G91-R1B-JSBSim-test</aero>
         <model>
             <path>Aircraft/G91-R1B_HD/Models/G91_Test.xml</path>
-            <livery>
-                <file type="string"/>
-            </livery>
         </model>
         
         <G91>
             <testing>
                 <level type="int">1</level>
-                <log type="int">0</log>
+                <log type="int">1</log>
             </testing>
         </G91>
         
@@ -39,5 +36,267 @@
             <running>true</running>
         </engine>
     </engines>
-        
+    
+    <!-- declare the JSBSim object for corret visibility in the log -->
+    
+    <fdm>
+        <jsbsim>
+            <systems>
+                <autopilot>
+                    <pitch-output-error-coefficient-gain type="float">0.0</pitch-output-error-coefficient-gain>
+                    <altitude-selected-ft-dif type="float">0.0</altitude-selected-ft-dif>
+                    <altitude-QFE-impact-elev-ft type="float">0.0</altitude-QFE-impact-elev-ft>
+                    <altitude-QFE-impact-elev-ft-lag type="float">0.0</altitude-QFE-impact-elev-ft-lag>
+                    <altitude-QFE-impact-elev-intensity type="float">0.0</altitude-QFE-impact-elev-intensity>
+                    <altitude-QFE-impact-elev-complex-factor type="float">0.0</altitude-QFE-impact-elev-complex-factor>
+                    <pitch-angle-absolute-deg-lag type="float">0.0</pitch-angle-absolute-deg-lag>
+                    <pilot-impact-control-t0 type="float">0.0</pilot-impact-control-t0>
+                    <pilot-impact-control-t1 type="float">0.0</pilot-impact-control-t1>
+                    <pilot-impact-control-t2 type="float">0.0</pilot-impact-control-t2>
+                    <pilot-impact-control-t3 type="float">0.0</pilot-impact-control-t3>
+                    <pilot-impact-control-t4 type="float">0.0</pilot-impact-control-t4>
+                    <altitude-type-selector type="float">0.0</altitude-type-selector>
+                    <landing22-pid-p type="float">0.0</landing22-pid-p>
+                    <landing22-pid-i type="float">0.0</landing22-pid-i>
+                    <landing22-pid-d type="float">0.0</landing22-pid-d>
+                    <landing22-landing-slope type="float">0.0</landing22-landing-slope>
+                    <landing-slope-target type="float">0.0</landing-slope-target>
+                </autopilot>
+            </systems>
+        </jsbsim>    
+    </fdm>
+
+    <logging>
+        <log>
+            <filename>/home/abassign/.fgfs/Export/log-flay.csv</filename>
+            <enabled>true</enabled>
+            <interval-ms>1000</interval-ms>
+            <delimiter>;</delimiter>
+            <entry>
+                <enabled>true</enabled>
+                <title>h-sl-ft-lag</title>
+                <property>/fdm/jsbsim/systems/autopilot/h-sl-ft-lag</property>
+            </entry>
+            <entry>
+                <enabled>true</enabled>
+                <title>h-QFE-ft</title>
+                <property>/position/altitude-agl-ft</property>
+            </entry>
+            <entry>
+                <enabled>true</enabled>
+                <title>pitch-angle-absolute</title>
+                <property>fdm/jsbsim/systems/autopilot/pitch-angle-absolute-deg-lag</property>
+            </entry>
+            <!-- Altitude control -->
+            <entry>
+                <enabled>true</enabled><ref></ref>
+                <title>pitch-angle-rad-error</title>
+                <property>fdm/jsbsim/systems/autopilot/pitch-angle-rad-error-limiter</property>
+            </entry>
+            <entry>
+                <enabled>true</enabled><ref></ref>
+                <title>pitch-error-limiter</title>
+                <property>fdm/jsbsim/systems/autopilot/pitch-error-limiter-rad</property>
+            </entry>
+            <entry>
+                <enabled>true</enabled><ref></ref>
+                <title>pitch-angle-pid</title>
+                <property>fdm/jsbsim/systems/autopilot/pitch-angle-pid</property>
+            </entry>
+            <entry>
+                <enabled>true</enabled><ref></ref>
+                <title>pitch-angle-error-gain</title>
+                <property>fdm/jsbsim/systems/autopilot/pitch-angle-error-gain-lag</property>
+            </entry>
+            <entry>
+                <enabled>true</enabled><ref></ref>
+                <title>pitch-angle-pid-kp</title>
+                <property>fdm/jsbsim/systems/autopilot/pitch-angle-pid-kp</property>
+            </entry>
+            <entry>
+                <enabled>true</enabled><ref></ref>
+                <title>pitch-angle-pid-ki</title>
+                <property>fdm/jsbsim/systems/autopilot/pitch-angle-pid-ki</property>
+            </entry>
+            <entry>
+                <enabled>true</enabled><ref></ref>
+                <title>pitch-angle-pid-kd</title>
+                <property>fdm/jsbsim/systems/autopilot/pitch-angle-pid-kd</property>
+            </entry>
+            <entry>
+                <enabled>true</enabled><ref></ref>
+                <title>pitch-output-coefficient</title>
+                <property>fdm/jsbsim/systems/autopilot/pitch-output-coefficient-mod</property>
+            </entry>
+            <entry>
+                <enabled>true</enabled><ref></ref>
+                <title>pitch-output-gain</title>
+                <property>fdm/jsbsim/systems/autopilot/pitch-output-error-coefficient-gain-active-max-lag</property>
+            </entry>
+            <entry>
+                <enabled>true</enabled><ref></ref>
+                <title>selected-ft-dif</title>
+                <property>fdm/jsbsim/systems/autopilot/altitude-selected-ft-dif</property>
+            </entry>
+            <!-- landing section -->
+            <entry>
+                <enabled>true</enabled><ref></ref>
+                <title>anti-stall-calc-rad</title>
+                <property>fdm/jsbsim/systems/autopilot/vertical-speed-anti-stall-calc-rad-lag</property>
+            </entry>
+            <entry>
+                <enabled>true</enabled><ref></ref>
+                <title>speed-best-by-altitude</title>
+                <property>/fdm/jsbsim/systems/autopilot/speed-best-by-altitude</property>
+            </entry>
+            <entry>
+                <enabled>true</enabled><ref></ref>
+                <title>pitch-angle-deg</title>
+                <property>fdm/jsbsim/systems/autopilot/pitch-angle-deg</property>
+            </entry>
+            <entry>
+                <enabled>true</enabled><ref></ref>
+                <title>rw-airplane_slope</title>
+                <property>fdm/jsbsim/systems/autopilot/gui/airport_runway_airplane_slope</property>
+            </entry>
+            <entry>
+                <enabled>true</enabled><ref></ref>
+                <title>airport-runway-dist</title>
+                <property>fdm/jsbsim/systems/autopilot/gui/airport_runway_distance</property>
+            </entry>
+            <entry>
+                <enabled>true</enabled><ref></ref>
+                <title>landing-altitude_agl_ft</title>
+                <property>fdm/jsbsim/systems/autopilot/landing-altitude_agl_ft</property>
+            </entry>
+            <entry>
+                <enabled>true</enabled><ref></ref>
+                <title>landig-status-id</title>
+                <property>fdm/jsbsim/systems/autopilot/gui/landig-status-id</property>
+            </entry>
+            <entry>
+                <enabled>true</enabled><ref></ref>
+                <title>landing-slope-error</title>
+                <property>fdm/jsbsim/systems/autopilot/landing-slope-error</property>
+            </entry>
+            <entry>
+                <enabled>true</enabled><ref></ref>
+                <title>landing22-pid-p</title>
+                <property>fdm/jsbsim/systems/autopilot/landing22-pid-p</property>
+            </entry>
+            <entry>
+                <enabled>true</enabled><ref></ref>
+                <title>landing22-pid-i</title>
+                <property>fdm/jsbsim/systems/autopilot/landing22-pid-i</property>
+            </entry>
+            <entry>
+                <enabled>true</enabled><ref></ref>
+                <title>landing22-pid-d</title>
+                <property>fdm/jsbsim/systems/autopilot/landing22-pid-d</property>
+            </entry>
+            <entry>
+                <enabled>true</enabled><ref></ref>
+                <title>landing22-landing-slope</title>
+                <property>fdm/jsbsim/systems/autopilot/landing22-landing-slope</property>
+            </entry>
+            <entry>
+                <enabled>true</enabled><ref></ref>
+                <title>landing22-landing-slope-target</title>
+                <property>fdm/jsbsim/systems/autopilot/landing-slope-target</property>
+            </entry>
+            <!-- speed section -->
+            <entry>
+                <enabled>true</enabled><ref></ref>
+                <title>speed-cas-on-air</title>
+                <property>fdm/jsbsim/systems/autopilot/speed-cas-on-air</property>
+            </entry>
+            <entry>
+                <enabled>true</enabled><ref></ref>
+                <title>speed-value</title>
+                <property>fdm/jsbsim/systems/autopilot/speed-value</property>
+            </entry>
+            <entry>
+                <enabled>true</enabled><ref></ref>
+                <title>speed-value-target</title>
+                <property>fdm/jsbsim/systems/autopilot/speed-value-target-lag</property>
+            </entry>
+            <entry>
+                <enabled>true</enabled><ref></ref>
+                <title>speed-difference</title>
+                <property>fdm/jsbsim/systems/autopilot/speed-difference</property>
+            </entry>
+            <entry>
+                <enabled>true</enabled><ref></ref>
+                <title>speed-pid</title>
+                <property>fdm/jsbsim/systems/autopilot/speed-pid</property>
+            </entry>
+            <entry>
+                <enabled>true</enabled><ref></ref>
+                <title>throttle-pid-gain</title>
+                <property>fdm/jsbsim/systems/autopilot/speed-throttle-pid-gain</property>
+            </entry>
+            <entry>
+                <enabled>true</enabled><ref></ref>
+                <title>speed-pid-output-throttle</title>
+                <property>fdm/jsbsim/systems/autopilot/speed-pid-output-throttle-lag</property>
+            </entry>
+            <!-- Impact control section -->
+            <entry>
+                <enabled>true</enabled><ref></ref>
+                <title>impact-elev-ft</title>
+                <property>fdm/jsbsim/systems/autopilot/altitude-QFE-impact-elev-ft-lag</property>
+            </entry>
+            <entry>
+                <enabled>true</enabled><ref></ref>
+                <title>impact-elev-intensity</title>
+                <property>fdm/jsbsim/systems/autopilot/altitude-QFE-impact-elev-intensity-lag</property>
+            </entry>
+            <entry>
+                <enabled>true</enabled><ref></ref>
+                <title>pilot-impact-control-t0</title>
+                <property>fdm/jsbsim/systems/autopilot/pilot-impact-control-t0</property>
+            </entry>
+            <entry>
+                <enabled>true</enabled><ref></ref>
+                <title>pilot-impact-control-t1</title>
+                <property>fdm/jsbsim/systems/autopilot/pilot-impact-control-t1</property>
+            </entry>
+            <entry>
+                <enabled>true</enabled><ref></ref>
+                <title>pilot-impact-control-t2</title>
+                <property>fdm/jsbsim/systems/autopilot/pilot-impact-control-t2</property>
+            </entry>
+            <entry>
+                <enabled>true</enabled><ref></ref>
+                <title>pilot-impact-control-t3</title>
+                <property>fdm/jsbsim/systems/autopilot/pilot-impact-control-t3</property>
+            </entry>
+            <entry>
+                <enabled>true</enabled><ref></ref>
+                <title>pilot-impact-control-t4</title>
+                <property>fdm/jsbsim/systems/autopilot/pilot-impact-control-t4</property>
+            </entry>
+            <entry>
+                <enabled>true</enabled><ref></ref>
+                <title>pilot-impact-control-complex</title>
+                <property>fdm/jsbsim/systems/autopilot/altitude-QFE-impact-elev-complex-factor</property>
+            </entry>
+            <entry>
+                <enabled>true</enabled><ref></ref>
+                <title>D1</title>
+                <property>fdm/jsbsim/systems/autopilot/altitude-hold-error-norm</property>
+            </entry>
+            <entry>
+                <enabled>true</enabled><ref></ref>
+                <title>D2</title>
+                <property>fdm/jsbsim/systems/autopilot/altitude-hold-pid-gain-lag-sw</property>
+            </entry>
+            <entry>
+                <enabled>true</enabled><ref></ref>
+                <title>D3</title>
+                <property>fdm/jsbsim/systems/autopilot/altitude-type-selector</property>
+            </entry>
+        </log>
+    </logging>
+
 </PropertyList>

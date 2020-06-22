@@ -27,7 +27,7 @@
     </animation>
 
     <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Liveries_Canvas/liveries_001</inherits-from>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Liveries/liveries_001</inherits-from>
         <object-name>F_CANPOPY.005</object-name>
     </effect>
     
@@ -59,13 +59,13 @@
         <object-name>F_CANPOPY_guarn.2.001</object-name>
         <object-name>F_blocksistem</object-name>
     </effect>
-    
+
     <effect>
         <inherits-from>Effects/model-transparent</inherits-from>
         <object-name>F_glass_est_tettuccio</object-name>
         <object-name>F_glass_int_tettuccio</object-name>
     </effect>
-    
+
     <!-- Chrome Effects on materials -->
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_silver_D2_1</inherits-from>

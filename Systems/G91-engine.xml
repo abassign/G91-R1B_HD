@@ -112,7 +112,7 @@ Description: G91R2 Canopy automation
         
         <lag_filter name="systems/gauges/cockpit-jet-temperature-display-C">
             <input>systems/engine/jet-TC-temperature-C</input>
-            <c1>0.05</c1>
+            <c1>0.1</c1>
         </lag_filter>
         
     </channel>
@@ -123,7 +123,7 @@ Description: G91R2 Canopy automation
         <switch name="systems/engine/jet-TC-temperature-hight">
             <default value="0"/>
             <test logic="OR" value="1">
-                systems/engine/jet-TC-temperature-C GT 730
+                systems/engine/jet-TC-temperature-C GT 750.0
             </test>
         </switch>
         
@@ -199,7 +199,7 @@ Description: G91R2 Canopy automation
             </function>
         </fcs_function>
         
-        <fcs_function name="systems/engine/effects-green-exaust-gas-rpm-norm">4
+        <fcs_function name="systems/engine/effects-green-exaust-gas-rpm-norm">
             <function>
                 <product>
                     <v>15.0</v>

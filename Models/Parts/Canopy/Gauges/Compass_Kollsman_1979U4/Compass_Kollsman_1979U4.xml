@@ -1,24 +1,6 @@
 <PropertyList>
     
     <path>Compass_Kollsman_1979U4.ac</path>
-
-    <!--
-    <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
-        <object-name>internal_black (Meshed)</object-name>
-        <object-name>screews_external (Meshed)</object-name>
-        <object-name>screews_internal (Meshed)</object-name>
-        <object-name>screews_external_back (Meshed)</object-name>
-        <object-name>screews_lamp_cover (Meshed)</object-name>
-        <object-name>cover_external (Meshed)</object-name>
-        <object-name>cover_lamp (Meshed)</object-name>
-        <object-name>lamp_cover (Meshed)</object-name>
-        <object-name>support (Meshed)</object-name>
-        <object-name>Support (Meshed)</object-name>
-        <object-name>lubber_support (Meshed)</object-name>
-        <object-name>cone_support (Meshed)</object-name>
-    </effect>
-    -->
     
     <effect>
         <inherits-from>Effects/model-transparent</inherits-from>
@@ -60,7 +42,7 @@
         </ambient>
         <emission>
             <red>0.6</red>
-            <green>0.2</green>
+            <green>0.6</green>
             <blue>0.0</blue>
             <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
         </emission>
@@ -235,7 +217,7 @@
         </ambient>
         <emission>
             <red-prop>sim/G91/re_emit/gauge_red_10_phosphorescent_light</red-prop>
-            <green>0.0</green>
+            <green-prop>sim/G91/re_emit/gauge_phosphorescent_light_10</green-prop>
             <blue>0.0</blue>
             <factor>0.1</factor>
         </emission>
@@ -256,7 +238,7 @@
         </ambient>
         <emission>
             <red-prop>sim/G91/re_emit/gauge_red_10_phosphorescent_light</red-prop>
-            <green>0.0</green>
+            <green-prop>sim/G91/re_emit/gauge_phosphorescent_light_10</green-prop>
             <blue>0.0</blue>
             <factor>0.1</factor>
         </emission>
@@ -276,8 +258,8 @@
             <blue>0.5</blue>
         </ambient>
         <emission>
-            <red-prop>sim/G91/re_emit/gauge_red_30_phosphorescent_light</red-prop>
-            <green-prop>sim/G91/re_emit/gauge_phosphorescent_light_10</green-prop>
+            <red-prop>sim/G91/re_emit/gauge_red_40_phosphorescent_light</red-prop>
+            <green-prop>sim/G91/re_emit/gauge_red_40_phosphorescent_light</green-prop>
             <blue>0.0</blue>
             <factor>0.5</factor>
         </emission>
@@ -298,7 +280,7 @@
         </ambient>
         <emission>
             <red-prop>sim/G91/re_emit/gauge_red_50_phosphorescent_light</red-prop>
-            <green>0.0</green>
+            <green-prop>sim/G91/re_emit/gauge_phosphorescent_light_50</green-prop>
             <blue>0.0</blue>
             <factor>0.3</factor>
         </emission>

@@ -46,7 +46,7 @@
     
     <!-- Chrome Effects on materials -->
     <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Liveries_Canvas/liveries_001</inherits-from>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Liveries/liveries_001</inherits-from>
         <object-name>F_canopY_ant</object-name>
         <object-name>A__G91_fuselage_canopy</object-name>
     </effect>
@@ -95,7 +95,7 @@
             <alpha>0.2</alpha>
         </transparency>
         <diffuse>
-            <red>0.0</red>
+            <red>0.4</red>
             <green>0.4</green>
             <blue>0.0</blue>
         </diffuse>

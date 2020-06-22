@@ -103,7 +103,7 @@
     <!-- Material assignment -->
     
     <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Liveries_Canvas/liveries_001</inherits-from>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Liveries/liveries_001</inherits-from>
         <object-name>gear_door_dx.001</object-name>
         <object-name>gear_door_sx.000</object-name>
         <object-name>PlanLight.front.001</object-name>

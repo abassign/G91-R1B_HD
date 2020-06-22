@@ -6,6 +6,13 @@
         <path>Aircraft/G91-R1B_HD/Models/Parts/Common/lg_model_01.xml</path>
     </model>
     
+    <effect>
+        <inherits-from>Effects/model-transparent</inherits-from>
+        <object-name>transparent_button (Meshed)</object-name>
+        <object-name>light_Sphere (Meshed)</object-name>
+        <object-name>light_Sphere_hot (Meshed)</object-name>
+    </effect>
+    
     <animation> 
         <type>material</type>
         <object-name>Cone_reflect (Meshed)</object-name>

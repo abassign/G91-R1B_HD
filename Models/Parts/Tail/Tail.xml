@@ -24,7 +24,7 @@
     </effect>
     
     <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Liveries_Canvas/liveries_001</inherits-from>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Liveries/liveries_001</inherits-from>
         <object-name>A__G91_fuselage_coda.002</object-name>
         <object-name>A__G91_fuselage_coda.005</object-name>
         <object-name>A__G91_fuselage_coda.006</object-name>
@@ -82,7 +82,7 @@
     </animation>
     
     <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Liveries_Canvas/liveries_002</inherits-from>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Liveries/liveries_002</inherits-from>
         <object-name>D_wing_sx_.001</object-name>
         <object-name>D_wing_sx.000</object-name>
         <object-name>D_wing_dx_.000</object-name>

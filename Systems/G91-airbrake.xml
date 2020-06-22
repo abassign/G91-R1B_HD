@@ -15,7 +15,7 @@
     <property value="10.0">systems/airbrake/jack-stroke</property>
     <property value="0.0">systems/airbrake/speedbrake-pos-norm</property>
     <property value="0.0">systems/airbrake/induced-turbulence</property>
-    <property value="0.1">systems/airbrake/induced-turbulence-intensity</property>
+    <property value="0.002">systems/airbrake/induced-turbulence-intensity</property>
     <property value="8.0">systems/airbrake/induced-turbulence-lag-C1</property>
     <property value="0.0">systems/airbrake/induced-turbulence-lag</property>
     
@@ -64,35 +64,6 @@
             <output>systems/airbrake/sound-roumble</output>
         </fcs_function>
         
-        <fcs_function name="systems/airbrake/induced-turbulence">
-            <function>
-                <product>
-                    <product>
-                        <p>systems/airbrake/speedbrake-pos-norm</p>
-                        <p>aero/qbar-psf</p>
-                        <random mean="0.0" stddev="1.0"/>
-                        <p>systems/airbrake/induced-turbulence-intensity</p>
-                    </product>
-                    <table>
-                        <independentVar>aero/qbar-psf</independentVar>
-                        <tableData>
-                            0.0 0
-                            6.53 0.008
-                            26.1 0.006
-                            104.0 0.002
-                            418.0 0.001
-                            1671.0 0.0005
-                        </tableData>
-                    </table>
-                </product>
-            </function>
-        </fcs_function>
-        
-        <lag_filter name="systems/airbrake/induced-turbulence-lag">
-            <input>systems/airbrake/induced-turbulence</input>
-            <c1>systems/airbrake/induced-turbulence-lag-C1</c1>
-        </lag_filter>
-        
         <summer>
             <input>systems/airbrake/speedbrake-pos-norm</input>
             <input>systems/airbrake/hydraulics_flux</input>
@@ -114,7 +85,7 @@
             </clipto>
         </integrator>
         
-        <scheduled_gain name="magnitude">
+        <scheduled_gain name="systems/airbrake/speedbrake-magnitude">
             <input>aero/qbar-psf</input>
             <gain>1.2</gain>
             <table>
@@ -157,6 +128,40 @@
             <output>external_reactions/Airbrake/location-z-in</output>
         </fcs_function>
         
+    </channel>
+    
+    
+    <channel name="Airbrake induced turbulence" execrate="4">
+    
+        <fcs_function name="systems/airbrake/induced-turbulence">
+            <function>
+                <product>
+                    <product>
+                        <p>systems/airbrake/speedbrake-pos-norm</p>
+                        <p>aero/qbar-psf</p>
+                        <random mean="0.0" stddev="1.0"/>
+                        <p>systems/airbrake/induced-turbulence-intensity</p>
+                    </product>
+                    <table>
+                        <independentVar>aero/qbar-psf</independentVar>
+                        <tableData>
+                            0.0 0
+                            6.53 0.008
+                            26.1 0.004
+                            104.0 0.002
+                            418.0 0.001
+                            1671.0 0.0005
+                        </tableData>
+                    </table>
+                </product>
+            </function>
+        </fcs_function>
+        
+        <lag_filter name="systems/airbrake/induced-turbulence-lag">
+            <input>systems/airbrake/induced-turbulence</input>
+            <c1>systems/airbrake/induced-turbulence-lag-C1</c1>
+        </lag_filter>
+    
     </channel>
     
     

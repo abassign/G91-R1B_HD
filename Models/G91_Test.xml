@@ -2,31 +2,13 @@
 
 <PropertyList>
     
-    <nasal>
-        <load><![CDATA[
-            if(! contains(globals, "m2000_mp"))
-            {
-                var import = func (file, module) {
-                    file = string.normpath(file);
-                    var local_file = globals.io.dirname(caller()[2]) ~ file;
-                    var path = (globals.io.stat(local_file) != nil) ? local_file : resolvepath(file);
-                    globals.io.load_nasal(path, module);
-                };
-                import("Aircraft/G91-R1B_HD/Nasal/set_livery.nas","set_livery");set_livery;
-            }
-        ]]></load>
-        <unload><![CDATA[
-
-        ]]></unload>
-    </nasal>
-    
     <offsets>
         <x-m>0.0</x-m>
         <y-m>0.0</y-m>
         <z-m>-0.45</z-m>
         <pitch-deg>0.0</pitch-deg>
     </offsets>
-<!--
+
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Cockpit.xml</path>
         <condition>
@@ -36,8 +18,8 @@
             </equals>
         </condition>
     </model>
--->
-<!--
+
+    <!--
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Canopy.xml</path>
         <condition>
@@ -48,7 +30,7 @@
         </condition>
     </model>
     -->
-
+    <!--
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/LandingGearFrontal/LandingGearFrontal.xml</path>
         <condition>
@@ -58,7 +40,7 @@
             </equals>
         </condition>
     </model>
-
+    -->
 
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Wing/Wing.xml</path>
@@ -70,6 +52,7 @@
         </condition>
     </model>
 
+    <!--
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Fuselage_A/Fuselage_A0.xml</path>
         <condition>
@@ -79,7 +62,8 @@
             </equals>
         </condition>
     </model>
-
+    -->
+    <!--
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Tail/Tail.xml</path>
         <condition>
@@ -89,7 +73,8 @@
             </equals>
         </condition>
     </model>
-
+    -->
+<!--
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Fuselage_B/Fuselage_B1.xml</path>
         <condition>
@@ -105,7 +90,6 @@
             </and>
         </condition>
     </model>
-    
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Fuselage_B/Fuselage_B3.xml</path>
         <condition>
@@ -121,7 +105,8 @@
             </and>
         </condition>
     </model>
-
+    -->
+    <!--
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/LandingGearFrontal/LandingGearFrontal.xml</path>
         <condition>
@@ -131,7 +116,8 @@
             </equals>
         </condition>
     </model>
-
+    -->
+    <!--
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Airbrake/Airbrake.xml</path>
         <condition>
@@ -141,7 +127,8 @@
             </equals>
         </condition>
     </model>
-
+    -->
+    <!--
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Turbojet/OrpheusMK803.xml</path>
         <offsets>
@@ -166,7 +153,8 @@
             </equals>
         </condition>
     </model>
-
+    -->
+<!--
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Accessories/Accessories.xml</path>
         <condition>
@@ -176,6 +164,6 @@
             </equals>
         </condition>
     </model>
-
+    -->
 </PropertyList>
     

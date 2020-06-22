@@ -29,13 +29,6 @@
         <object-name>box_button_top (Meshed)</object-name>
     </effect>
     
-    <effect>
-        <inherits-from>Effects/model-transparent</inherits-from>
-        <object-name>transparent_button (Meshed)</object-name>
-        <object-name>light_Sphere (Meshed)</object-name>
-        <object-name>light_Sphere_hot (Meshed)</object-name>
-    </effect>
-    
     <animation> 
         <type>material</type>
         <object-name>box_button (Meshed)</object-name>
