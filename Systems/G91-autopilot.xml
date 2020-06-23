@@ -2299,7 +2299,7 @@ No Overshoot
         <switch name="systems/autopilot/speed-pid-output-throttle">
             <default value="/controls/engines/engine/throttle"/>
             <test logic="AND" value="systems/autopilot/speed-throttle-imposed-lag">
-                systems/autopilot/speed-throttle-imposed GE 0.0
+                systems/autopilot/speed-throttle-imposed GE 0.05
             </test>
             <test logic="AND" value="/controls/engines/engine/throttle">
                 systems/autopilot/speed-throttle-active == 0.0
@@ -2321,9 +2321,18 @@ No Overshoot
         
         <lag_filter name="systems/autopilot/speed-pid-output-throttle-lag">
             <input>systems/autopilot/speed-pid-output-throttle</input>
-            <c1>4.0</c1>
-            <output>/controls/engines/engine/throttle</output>
+            <c1>0.5</c1>
         </lag_filter>
+        
+        <switch>
+            <default value="/controls/engines/engine/throttle"/>
+            <test logic="OR" value="systems/autopilot/speed-pid-output-throttle-lag">
+                systems/autopilot/speed-throttle-active GT 0.0
+                systems/autopilot/speed-throttle-imposed GE 0.05
+            </test>
+            <output>/controls/engines/engine/throttle</output>
+        </switch>
+        
         
         <fcs_function name="systems/autopilot/speed-pitch-pid-gain-sum">
             <function>

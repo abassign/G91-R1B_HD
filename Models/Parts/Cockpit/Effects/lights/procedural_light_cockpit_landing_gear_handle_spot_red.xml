@@ -4,7 +4,7 @@
 
     <path>procedural_light.ac</path>
     <nopreview/>
-    <noshadow>
+    <noshadow/>
     <effect>
         <inherits-from>procedural_light_cockpit_landing_gear_handle_spot_red</inherits-from>
         <object-name>procedural_light</object-name>

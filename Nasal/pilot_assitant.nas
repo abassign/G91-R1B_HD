@@ -54,8 +54,8 @@ var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/landing-rwy-
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/landing-PID-kp", 15.0, "DOUBLE");
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/landing-PID-ki", 0.1, "DOUBLE");
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/landing-PID-kd", 15.0, "DOUBLE");
-var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/landing-PID-ku", 8.0, "DOUBLE");
-var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/landing-PID-tu", 80.0, "DOUBLE");
+var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/landing-PID-ku", 20.0, "DOUBLE");
+var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/landing-PID-tu", 50.0, "DOUBLE");
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/landing-PID-gain", 1.0, "DOUBLE");
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/landing-slope-target", 0.0, "DOUBLE");
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/landing-slope-error", 0.0, "DOUBLE");
@@ -849,13 +849,15 @@ var pilot_assistant = func {
                         landing_22_set_cas = 180.0;
                         if (landing_22_set_cas_lag < (landing_22_set_cas - 2)) landing_22_set_cas_lag = landing_22_set_cas_lag + 1.0 * delta_time;
                         if (landing_22_set_cas_lag > (landing_22_set_cas + 2)) landing_22_set_cas_lag = landing_22_set_cas_lag - 1.0 * delta_time;
+                        error = 0.0;
+                        landing_slope_integrate = 0.0;
                     }
                 }
                 
                 if (landing_22_subStatus == 2) {
-                    if (runway_to_airplane_dist_direct_nm <= 1.0) {
+                    if (runway_to_airplane_dist_direct_nm <= 2.0) {
                         landing_22_subStatus = 6;
-                        landing_22_slope_target_proposed = -3.0;
+                        landing_22_slope_target_proposed = -2.5;
                     } else {
                         pitch_output_error_coefficient_gain = 1.0;
                         delta_slope_rate = 0.5;
@@ -877,6 +879,7 @@ var pilot_assistant = func {
                             tu = tu * ( 0.5 + 0.5 * (runway_to_airplane_dist_direct_nm / 7.0));
                             gain_landing_mod = gain_landing * ( 0.3 + 0.7 * (runway_to_airplane_dist_direct_nm / 7.0));
                         }
+                        error = landing_22_slope_target - landing_22_slope_adv_value;
                         if (landing_22_set_cas_lag < (landing_22_set_cas - 1)) landing_22_set_cas_lag = landing_22_set_cas_lag + 0.8 * delta_time;
                         if (landing_22_set_cas_lag > (landing_22_set_cas + 1)) landing_22_set_cas_lag = landing_22_set_cas_lag - 0.8 * delta_time;
                     }
@@ -886,21 +889,18 @@ var pilot_assistant = func {
                     if (runway_to_airplane_dist > 0.20) {
                         var delta_slope_rate = 0.03;
                         pitch_output_error_coefficient_gain = 1.5;
-                        delta_h_vs_dist_ft = - (runway_to_airplane_dist_direct_nm - 0.2) * math.tan(landing_22_slope_target_proposed/R2D)/0.000189394;
-                        var landing_22_slope_target_proposed_mod = landing_22_slope_target_proposed + 0.8 - math.atan((delta_h_ft - delta_h_vs_dist_ft) / runway_to_airplane_dist) * R2D;
-                        landing_22_set_cas = 120.0 + (15 * weitght_norm);
-                        pitch_output_error_coefficient_gain = 1.2;
+                        landing_22_h = delta_h_ft * 0.000189394;
+                        landing_22_slope = - math.atan(landing_22_h / landing_point_distance_nm) * R2D;
+                        delta_h_vs_dist_ft = - runway_to_airplane_dist_direct_nm * math.tan(landing_22_slope_target_proposed/R2D)/0.000189394;
+                        if (landing_22_slope_target < (landing_22_slope_target_proposed - 0.1)) landing_22_slope_target = landing_22_slope_target + delta_slope_rate * delta_time;
+                        if (landing_22_slope_target > (landing_22_slope_target_proposed + 0.1)) landing_22_slope_target = landing_22_slope_target - delta_slope_rate * delta_time;
+                        error = - math.atan((landing_22_h - (delta_h_vs_dist_ft * 0.000189394)) / runway_to_airplane_dist) * R2D;
+                        landing_22_set_cas = 120 + 35.0 * (runway_to_airplane_dist_direct_nm / 7.0);
                         if (landing_22_set_cas_lag < (landing_22_set_cas - 3)) landing_22_set_cas_lag = landing_22_set_cas_lag + 5.0 * delta_time;
-                        if (landing_22_set_cas_lag > (landing_22_set_cas + 3)) landing_22_set_cas_lag = landing_22_set_cas_lag - 5.0 * delta_time;
-                        if (landing_22_slope_target < (landing_22_slope_target_proposed_mod - 0.1)) landing_22_slope_target = landing_22_slope_target + 0.5 * delta_slope_rate * delta_time;
-                        if (landing_22_slope_target > (landing_22_slope_target_proposed_mod + 0.1)) landing_22_slope_target = landing_22_slope_target - delta_slope_rate * delta_time;
-                        landing_22_pitch_slope = landing_22_slope_target;
-                        setprop("fdm/jsbsim/systems/autopilot/pitch-output-error-coefficient-gain",pitch_output_error_coefficient_gain);
-                        setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle-deg",landing_22_slope_target);
-                        error = landing_22_slope_target - landing_22_slope_adv_value;
-                        setprop("fdm/jsbsim/systems/autopilot/landing-slope-error",error);
-                        setprop("fdm/jsbsim/systems/autopilot/landing-slope-target",landing_22_slope_target);
-                        setprop("fdm/jsbsim/systems/autopilot/gui/speed-value",landing_22_set_cas_lag);
+                        if (landing_22_set_cas_lag > (landing_22_set_cas + 3)) landing_22_set_cas_lag = landing_22_set_cas_lag - 5.0 * delta_time; 
+                        ku = ku * ( 0.03 + 0.97 * (runway_to_airplane_dist_direct_nm / 7.0));
+                        tu = tu * ( 0.5 + 0.5 * (runway_to_airplane_dist_direct_nm / 7.0));
+                        gain_landing_mod = gain_landing * ( 0.3 + 0.7 * (runway_to_airplane_dist_direct_nm / 7.0));
                     } else {
                         landing_22_subStatus = 7;
                     }
@@ -920,8 +920,8 @@ var pilot_assistant = func {
                         landing_22_pitch_slope = landing_22_slope_target;
                         setprop("fdm/jsbsim/systems/autopilot/pitch-output-error-coefficient-gain",pitch_output_error_coefficient_gain);
                         setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle-deg",landing_22_slope_target);
-                        error = landing_22_slope_target - landing_22_slope_adv_value;
-                        setprop("fdm/jsbsim/systems/autopilot/landing-slope-error",error);
+                        landing_22_subStatus_error_lag = landing_22_slope_target - landing_22_slope_adv_value;
+                        setprop("fdm/jsbsim/systems/autopilot/landing-slope-error",landing_22_subStatus_error_lag);
                         setprop("fdm/jsbsim/systems/autopilot/landing-slope-target",landing_22_slope_target);
                         setprop("fdm/jsbsim/systems/autopilot/gui/speed-value",landing_22_set_cas_lag);
                     } else {
@@ -931,7 +931,7 @@ var pilot_assistant = func {
                 
                 if (landing_22_subStatus == 8) {
                     var delta_slope_rate = 0.5;
-                    landing_22_slope_target_proposed = -1.0 - 1.5 * delta_h_ft / 60.0;
+                    landing_22_slope_target_proposed = -1.3 - 1.5 * delta_h_ft / 60.0;
                     landing_22_set_cas = 60.0;
                     pitch_output_error_coefficient_gain = 1.5;
                     delta_h_vs_dist_ft = - runway_to_airplane_dist_direct_nm * math.tan(landing_22_slope_target_proposed/R2D)/0.000189394;
@@ -942,8 +942,8 @@ var pilot_assistant = func {
                     landing_22_pitch_slope = landing_22_slope_target;
                     setprop("fdm/jsbsim/systems/autopilot/pitch-output-error-coefficient-gain",pitch_output_error_coefficient_gain);
                     setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle-deg",landing_22_slope_target);
-                    error = landing_22_slope_target - landing_22_slope_adv_value;
-                    setprop("fdm/jsbsim/systems/autopilot/landing-slope-error",error);
+                    landing_22_subStatus_error_lag = landing_22_slope_target - landing_22_slope_adv_value;
+                    setprop("fdm/jsbsim/systems/autopilot/landing-slope-error",landing_22_subStatus_error_lag);
                     setprop("fdm/jsbsim/systems/autopilot/landing-slope-target",landing_22_slope_target);
                     setprop("fdm/jsbsim/systems/autopilot/gui/speed-value",landing_22_set_cas_lag);
                 }
@@ -958,7 +958,7 @@ var pilot_assistant = func {
                 landing_22_slope_adv_value = landing_22_slope_adv_acc / landing_22_slope_adv.size();
                 setprop("fdm/jsbsim/systems/autopilot/gui/airport_runway_airplane_slope",landing_22_slope_adv_value);
                 
-                if (landing_22_subStatus <= 5) {
+                if (landing_22_subStatus <= 6) {
                     
                     var kp = 0.6 * ku;
                     var ki = 1.2 * ku / tu;
@@ -970,12 +970,6 @@ var pilot_assistant = func {
                     setprop("fdm/jsbsim/systems/autopilot/landing-PID-kd",kd);
 
                     #// PID controller section
-                    if (landing_22_subStatus <= 1) {
-                        error = 0.0;
-                        landing_slope_integrate = 0.0;
-                    } else {
-                        error = landing_22_slope_target - landing_22_slope_adv_value;
-                    }
                     var error_gradient = 0.5 * math.abs(error);
                     if (landing_22_subStatus_error_lag < (error - 0.01)) landing_22_subStatus_error_lag = landing_22_subStatus_error_lag + error_gradient * delta_time;
                     if (landing_22_subStatus_error_lag > (error + 0.01)) landing_22_subStatus_error_lag = landing_22_subStatus_error_lag - error_gradient * delta_time;
@@ -1048,12 +1042,12 @@ var pilot_assistant = func {
                         ,sprintf(" Dist: %6.1f",runway_to_airplane_dist_direct_nm)
                         ,sprintf(" %6.2f",runway_to_airplane_dist)
                         ,sprintf(" Dh: %5.0f",delta_h_ft)
-                        ,sprintf(" | %5.0f",altitude_agl_ft)
+                        ,sprintf(" dt: %5.0f ",delta_h_vs_dist_ft)
+                        ,sprintf(" agl: %5.0f",altitude_agl_ft)
                         ,sprintf(" Slp: %4.2f",landing_22_pitch_slope)
                         ,sprintf(" PID sl: %4.2f ",landing_22_slope_adv_value)
                         ,sprintf(" stp %4.2f ",landing_22_slope_target_proposed)
                         ,sprintf(" st %4.2f ",landing_22_slope_target)
-                        ,sprintf(" dt %4.2f ",delta_h_vs_dist_ft)
                         ,sprintf(" Er: %4.2f ",landing_22_subStatus_error_lag)
                         #,sprintf(" ku %4.2f",ku)
                         #,sprintf(" tu %4.2f",tu)
@@ -1080,7 +1074,7 @@ var pilot_assistant = func {
                         #,sprintf(" wd: %3.1f",wind_frontal)
                         #,sprintf(" | %3.1f",wind_lateral)
                         ,sprintf(" Thr: pid %2.2f",getprop("fdm/jsbsim/systems/autopilot/speed-throttle-pid-gain"))
-                        ,sprintf(" | %2.2f",getprop("fdm/jsbsim/systems/autopilot/speed-pid-output-throttle-lag"))
+                        ,sprintf(" | %2.2f",getprop("fdm/jsbsim/systems/autopilot/speed-pid-output-throttle"))
                         ,sprintf(" |stm %2.2f",getprop("fdm/jsbsim/systems/autopilot/speed-throttle-max"))
                         ,sprintf(" |sti %2.2f",getprop("fdm/jsbsim/systems/autopilot/speed-throttle-imposed"))
                         ,sprintf(" |sd %2.2f",getprop("fdm/jsbsim/systems/autopilot/speed-difference"))
