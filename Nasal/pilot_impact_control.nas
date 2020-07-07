@@ -395,9 +395,14 @@ var analyze_imp_time = func() {
         elevation = radar_elv_T3_max;
     }
     if ((intensity_T3_lag - 0.1) > intensity_T3) {
-        intensity_T3_lag = intensity_T3_lag - 0.3 * delta_time;
+        # intensity_T3_lag = intensity_T3_lag - 0.3 * delta_time;
     } else if ((intensity_T3_lag + 0.1) < intensity_T3) {
-        intensity_T3_lag = intensity_T3_lag + 0.2 * delta_time;
+        # intensity_T3_lag = intensity_T3_lag + 0.2 * delta_time;
+    }
+    if ((intensity_T3_lag - 0.1) > intensity_T3) {
+        intensity_T3_lag = intensity_T3_lag - 0.06 * delta_time;
+    } else if ((intensity_T3_lag + 0.1) < intensity_T3) {
+        intensity_T3_lag = intensity_T3_lag + 0.04 * delta_time;
     }
 
     if (elevation_max < elevation and imp_time_T3 < ((imp_medium_time / 5.0) * imp_medium_time)) {
@@ -421,6 +426,12 @@ var analyze_imp_time = func() {
         intensity_T4_lag = intensity_T4_lag + 0.2 * delta_time;
     }
     
+    if (intensity_T3_lag < 0.8) {
+        setprop("fdm/jsbsim/systems/autopilot/altitude-QFE-impact-elev-to-oriz",1);
+    } else {
+        setprop("fdm/jsbsim/systems/autopilot/altitude-QFE-impact-elev-to-oriz",0);
+    }
+    
     setprop("fdm/jsbsim/systems/autopilot/altitude-QFE-impact-elev-complex-factor",complex_factor);
     
     intensity = (intensity_T0_lag + intensity_T1_lag + intensity_T2_lag + intensity_T3_lag + intensity_T4_lag) * complex_factor / 8.0;
@@ -429,6 +440,7 @@ var analyze_imp_time = func() {
     # 1.5 - 0.7
     intensity = (complex_factor / 1.2) * math.atan(intensity/0.5);
     
+    # setIntensty_calc_lag(intensity, 0.3 * complex_factor,0.05 * complex_factor,speed_cas_on_air);
     setIntensty_calc_lag(intensity, 0.3 * complex_factor,0.05 * complex_factor,speed_cas_on_air);
     
     if (imp_cnt_active == 1) {
@@ -462,6 +474,8 @@ var analyze_imp_time = func() {
               ,sprintf(" complex: %2.1f",complex_factor)
               ,sprintf(" | %5.0f",radar_elv_sum_der)
         );
+    }
+    if (testing_log_active >= 1) {
         setprop("fdm/jsbsim/systems/autopilot/pilot-impact-control-t0",intensity_T0_lag);
         setprop("fdm/jsbsim/systems/autopilot/pilot-impact-control-t1",intensity_T1_lag);
         setprop("fdm/jsbsim/systems/autopilot/pilot-impact-control-t2",intensity_T2_lag);

@@ -5,7 +5,11 @@ var prop = props.globals.initNode("fdm/jsbsim/systems/starter/gui/autostart-is-a
 var prop = props.globals.initNode("fdm/jsbsim/systems/starter/gui/autostart-clock-time", 0, "INT");
 var prop = props.globals.initNode("fdm/jsbsim/systems/starter/gui/autostart-status-is-ok", 0, "INT");
 
-var timerEngine_starter = maketimer(1.0, func() {
+var timeStep = 1.0;
+var speed_up = 1;
+
+    
+var timerEngine_starter = func() {
 
     var engineN1 = getprop("fdm/jsbsim/propulsion/engine[0]/n1");
     var engineN2 = getprop("fdm/jsbsim/propulsion/engine[0]/n2");
@@ -15,6 +19,7 @@ var timerEngine_starter = maketimer(1.0, func() {
     var inverterPrimaryV = getprop("fdm/jsbsim/systems/electric/inv-primary/V");
     var inverterSecondaryV = getprop("fdm/jsbsim/systems/electric/inv-secondary/V");
     var autostart_status_is_ok = 0;
+    speed_up = getprop("/sim/speed-up");
     
     if (engineN1 >= 0.38 and engineN2 >= 0.38 and bus0V >= 0.26 and bus1V >= 0.26 and bus2V >= 0.26 and inverterPrimaryV >= 110 and inverterSecondaryV >= 110) {
         setprop("fdm/jsbsim/systems/starter/gui/autostart-status-is-ok",1);
@@ -116,6 +121,16 @@ var timerEngine_starter = maketimer(1.0, func() {
         print(msgOutput," clk: ",guiAutostartClockTime," is Active: ",guiAutostartIsActive," N1: ",engineN1," N2: ",engineN2," Bus0 V: ",bus0V," Bus1 V: ",bus1V," Bus2 V: ",bus2V," inv 1 V: ",inverterPrimaryV," inv 2 V: ",inverterSecondaryV);
     }
 
-});
+};
 
-timerEngine_starter.start();
+
+var timerEngine_starter_control = func() {
+    
+    timerEngine_starterTimer.restart(timeStep / speed_up);
+    timerEngine_starter();
+    
+}
+
+var timerEngine_starterTimer = maketimer(timeStep, timerEngine_starter_control);
+timerEngine_starterTimer.singleShot = 1;
+timerEngine_starterTimer.start();

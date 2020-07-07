@@ -55,11 +55,13 @@
                     <pilot-impact-control-t2 type="float">0.0</pilot-impact-control-t2>
                     <pilot-impact-control-t3 type="float">0.0</pilot-impact-control-t3>
                     <pilot-impact-control-t4 type="float">0.0</pilot-impact-control-t4>
+                    <altitude-QFE-impact-elev-to-oriz type="float">0.0</altitude-QFE-impact-elev-to-oriz>
                     <altitude-type-selector type="float">0.0</altitude-type-selector>
                     <landing22-pid-p type="float">0.0</landing22-pid-p>
                     <landing22-pid-i type="float">0.0</landing22-pid-i>
                     <landing22-pid-d type="float">0.0</landing22-pid-d>
                     <landing22-landing-slope type="float">0.0</landing22-landing-slope>
+                    <landing22-dif-dh-dt type="float">0.0</landing22-dif-dh-dt>
                     <landing-slope-target type="float">0.0</landing-slope-target>
                 </autopilot>
             </systems>
@@ -204,6 +206,11 @@
                 <title>landing22-landing-slope-target</title>
                 <property>fdm/jsbsim/systems/autopilot/landing-slope-target</property>
             </entry>
+            <entry>
+                <enabled>true</enabled><ref></ref>
+                <title>landing22-dif-dh-dt</title>
+                <property>fdm/jsbsim/systems/autopilot/landing22-dif-dh-dt</property>
+            </entry>
             <!-- speed section -->
             <entry>
                 <enabled>true</enabled><ref></ref>
@@ -295,6 +302,11 @@
                 <enabled>true</enabled><ref></ref>
                 <title>D3</title>
                 <property>fdm/jsbsim/systems/autopilot/altitude-type-selector</property>
+            </entry>
+            <entry>
+                <enabled>true</enabled><ref></ref>
+                <title>impact-elev-to-oriz</title>
+                <property>fdm/jsbsim/systems/autopilot/altitude-QFE-impact-elev-to-oriz-wa</property>
             </entry>
         </log>
     </logging>

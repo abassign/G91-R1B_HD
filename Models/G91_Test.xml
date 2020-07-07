@@ -18,30 +18,7 @@
             </equals>
         </condition>
     </model>
-
-    <!--
-    <model>
-        <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Canopy.xml</path>
-        <condition>
-            <equals>
-                <property>sim/G91/models/active/cockpit</property>
-                <value>1</value>
-            </equals>
-        </condition>
-    </model>
-    -->
-    <!--
-    <model>
-        <path>Aircraft/G91-R1B_HD/Models/Parts/LandingGearFrontal/LandingGearFrontal.xml</path>
-        <condition>
-            <equals>
-                <property>sim/G91/models/active/fuselage</property>
-                <value>1</value>
-            </equals>
-        </condition>
-    </model>
-    -->
-
+    
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Wing/Wing.xml</path>
         <condition>
@@ -52,7 +29,28 @@
         </condition>
     </model>
 
+    <!-- Optional section -->
     <!--
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Canopy.xml</path>
+        <condition>
+            <equals>
+                <property>sim/G91/models/active/cockpit</property>
+                <value>1</value>
+            </equals>
+        </condition>
+    </model>
+
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/LandingGearFrontal/LandingGearFrontal.xml</path>
+        <condition>
+            <equals>
+                <property>sim/G91/models/active/fuselage</property>
+                <value>1</value>
+            </equals>
+        </condition>
+    </model>
+
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Fuselage_A/Fuselage_A0.xml</path>
         <condition>
@@ -62,8 +60,7 @@
             </equals>
         </condition>
     </model>
-    -->
-    <!--
+
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Tail/Tail.xml</path>
         <condition>
@@ -73,8 +70,7 @@
             </equals>
         </condition>
     </model>
-    -->
-<!--
+
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Fuselage_B/Fuselage_B1.xml</path>
         <condition>
@@ -90,6 +86,7 @@
             </and>
         </condition>
     </model>
+    
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Fuselage_B/Fuselage_B3.xml</path>
         <condition>
@@ -105,8 +102,7 @@
             </and>
         </condition>
     </model>
-    -->
-    <!--
+
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/LandingGearFrontal/LandingGearFrontal.xml</path>
         <condition>
@@ -116,8 +112,7 @@
             </equals>
         </condition>
     </model>
-    -->
-    <!--
+
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Airbrake/Airbrake.xml</path>
         <condition>
@@ -127,8 +122,7 @@
             </equals>
         </condition>
     </model>
-    -->
-    <!--
+
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Turbojet/OrpheusMK803.xml</path>
         <offsets>
@@ -153,8 +147,7 @@
             </equals>
         </condition>
     </model>
-    -->
-<!--
+
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Accessories/Accessories.xml</path>
         <condition>

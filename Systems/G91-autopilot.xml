@@ -29,9 +29,9 @@ No Overshoot
     <property value="0.0">systems/autopilot/gui/pitch-alpha</property>
     <property value="0.0">systems/autopilot/gui/pitch-alpha-deg</property>
     <property value="0.0">systems/autopilot/gui/altitude-active</property>
-    <property value="0.0">systems/autopilot/gui/vertical-speed</property>
+    <property value="1.0">systems/autopilot/gui/vertical-speed</property>
     <property value="2500.0">systems/autopilot/gui/vertical-speed-fpm</property>
-    <property value="1.0">systems/autopilot/gui/pitch-angle</property>
+    <property value="0.0">systems/autopilot/gui/pitch-angle</property>
     <property value="6.0">systems/autopilot/gui/pitch-angle-deg</property>
     
     <property value="0.0">systems/autopilot/gui/altitude-hold</property>
@@ -77,6 +77,7 @@ No Overshoot
     <property value="0.1">systems/autopilot/altitude-hold-fdm-lag-coefficient</property>
     <property value="0.0">systems/autopilot/altitude-hold-pid-gain-lag-sw</property>
     <property value="0.0">systems/autopilot/altitude-type-selector</property>
+    <property value="1.1">systems/autopilot/altitude-type-selector-complex-set</property>
     <!-- 
     <property value="0.924">systems/autopilot/altitude-hold-pid-kp</property>
     <property value="0.0622">systems/autopilot/altitude-hold-pid-ki</property>
@@ -96,9 +97,11 @@ No Overshoot
     <property value="0.0">systems/autopilot/altitude-QFE-ft-mod</property>
     <property value="0.0">systems/autopilot/altitude-QFE-impact-elev-intensity</property>
     <property value="0.0">systems/autopilot/altitude-QFE-impact-elev-intensity-lag</property>
+    <property value="1.0">systems/autopilot/altitude-QFE-impact-elev-intensity-lag-min</property>
     <property value="0.5">systems/autopilot/altitude-QFE-impact-elev-intensity-C1</property>
     <property value="0.0">systems/autopilot/altitude-QFE-impact-elev-intensity-active</property>
     <property value="0.0">systems/autopilot/altitude-QFE-impact-elev-complex-factor</property>
+    <property value="0.0">systems/autopilot/altitude-QFE-impact-elev-to-oriz</property>
     <!-- Impact control -->
     <property value="0.0">systems/autopilot/gui/impact-control-active</property>
     <!-- Fuel section -->
@@ -173,20 +176,16 @@ No Overshoot
     <property value="0.3">systems/autopilot/pitch-output-error-coefficient-gain-speedbrake-value</property>
     <property value="0.0">systems/autopilot/pitch-output-error-coefficient-gain-flap</property>
     <property value="0.3">systems/autopilot/pitch-output-error-coefficient-gain-flap-value</property>
+    <property value="0.0">systems/autopilot/pitch-output-error-coefficient-gain-gear</property>
+    <property value="0.4">systems/autopilot/pitch-output-error-coefficient-gain-gear-value</property>
     <property value="0.0">systems/autopilot/pitch-output-error-coefficient-gain-turn</property>
     <property value="120.0">systems/autopilot/pitch-output-error-coefficient-gain-turn-value</property>
     <property value="0.0">systems/autopilot/pitch-control-active</property>
     <property value="0.0">systems/autopilot/pitch-angle-active</property>
-    <!--
-    <property value="6.0">systems/autopilot/pitch-angle-pid-kp-set</property>
-    <property value="1.7">systems/autopilot/pitch-angle-pid-ki-set</property>
-    <property value="11.0">systems/autopilot/pitch-angle-pid-kd-set</property>
-    <property value="-0.06">systems/autopilot/pitch-output-coefficient</property>
-    -->
-    <property value="10.0">systems/autopilot/pitch-angle-pid-kp-set</property>
-    <property value="4.0">systems/autopilot/pitch-angle-pid-ki-set</property>
-    <property value="60.0">systems/autopilot/pitch-angle-pid-kd-set</property>
-    <property value="-0.03">systems/autopilot/pitch-output-coefficient</property>
+    <property value="5.0">systems/autopilot/pitch-angle-pid-kp-set</property>
+    <property value="0.5">systems/autopilot/pitch-angle-pid-ki-set</property>
+    <property value="20.0">systems/autopilot/pitch-angle-pid-kd-set</property>
+    <property value="-0.08">systems/autopilot/pitch-output-coefficient</property>
     <!-- Alpha -->
     <property value="0.0">systems/autopilot/pitch-alpha-active</property>
     <property value="0.0">systems/autopilot/pitch-alpha-input-deg</property>
@@ -238,7 +237,10 @@ No Overshoot
     <property value="0.0">systems/autopilot/vertical-speed-reset-integrator</property>
     <property value="2.0">systems/autopilot/vertical-speed-pid-kp-set</property>
     <property value="0.8">systems/autopilot/vertical-speed-pid-ki-set</property>
+    <!--
     <property value="6.3">systems/autopilot/vertical-speed-pid-kd-set</property>
+    -->
+    <property value="4.0">systems/autopilot/vertical-speed-pid-kd-set</property>
     <property value="0.1">systems/autopilot/vertical-speed-output-error-coefficient</property>
     
     <property value="0.0">systems/autopilot/left-steer-brake</property>
@@ -331,8 +333,8 @@ No Overshoot
             <default value="0"/>
             <test logic="AND" value="1">
                 <test logic="OR">
-                    systems/autopilot/pitch-angle-active == 1
-                    systems/autopilot/vertical-speed-active == 1
+                    systems/autopilot/pitch-angle-active == 1.0
+                    systems/autopilot/vertical-speed-active == 1.0
                 </test>
                 <test logic="OR">
                     systems/autopilot/altitude-hold-active == 1
@@ -419,12 +421,19 @@ No Overshoot
                 systems/autopilot/speed-best-by-altitude-set == 0.0
             </test>
         </switch>
-        
+
         <switch name="systems/autopilot/gui/vertical-speed">
             <default value="systems/autopilot/gui/vertical-speed"/>
-            <test logic="AND" value = "0.0">
+            <test logic="AND" value = "1.0">
                 systems/autopilot/speed-set-best-by-altitude-togle == 1
                 systems/autopilot/speed-best-by-altitude-set == 1
+                systems/autopilot/gui/pitch-angle == 0
+            </test>
+            <test logic="AND" value = "1.0">
+                systems/autopilot/speed-set-best-by-altitude-togle == 1
+                systems/autopilot/speed-best-by-altitude-set == 1
+                systems/autopilot/gui/vertical-speed == 0
+                systems/autopilot/gui/pitch-angle == 0
             </test>
         </switch>
         
@@ -433,9 +442,10 @@ No Overshoot
             <test logic="AND" value = "1.0">
                 systems/autopilot/speed-set-best-by-altitude-togle == 1
                 systems/autopilot/speed-best-by-altitude-set == 1
+                systems/autopilot/gui/vertical-speed == 0
             </test>
         </switch>
-        
+
         <switch name="systems/autopilot/gui/pitch-angle-deg">
             <default value="systems/autopilot/gui/pitch-angle-deg"/>
             <test logic="AND" value = "6.0">
@@ -663,13 +673,17 @@ No Overshoot
                         <gt><p>systems/autopilot/gui/impact-control-active</p><v>0.5</v></gt>
                         <ge><p>systems/autopilot/altitude-QFE-impact-elev-intensity-lag</p><v>0.6</v></ge>
                     </and>
-                    <sum>
-                        <v>1.0</v>
-                        <product>
-                            <p>systems/autopilot/gui/pitch-angle-deg-mod</p>
-                            <p>systems/autopilot/altitude-QFE-impact-elev-intensity-lag</p>
-                        </product>
-                    </sum>
+                    <ifthen>
+                        <gt><p>systems/autopilot/altitude-QFE-impact-elev-to-oriz</p><v>0.5</v></gt>
+                        <v>0.0</v>
+                        <sum>
+                            <v>1.0</v>
+                            <product>
+                                <p>systems/autopilot/gui/pitch-angle-deg-mod</p>
+                                <p>systems/autopilot/altitude-QFE-impact-elev-intensity-lag</p>
+                            </product>
+                        </sum>
+                    </ifthen>
                     <p>systems/autopilot/gui/pitch-angle-deg-mod</p>
                 </ifthen>
             </function>
@@ -780,13 +794,25 @@ No Overshoot
             </test>
         </switch>
         
-        <switch name="systems/autopilot/pitch-output-error-coefficient-gain-active-max-QFE">
-            <default value="0.0"/>
-            <test logic="AND" value="systems/autopilot/altitude-QFE-impact-elev-intensity-lag">
-                systems/autopilot/altitude-QFE-impact-elev-intensity-active GE 1.0
-                systems/autopilot/altitude-QFE-impact-elev-intensity-lag GT systems/autopilot/pitch-output-error-coefficient-gain-active-max
-            </test>
-        </switch>
+        <fcs_function name="systems/autopilot/pitch-output-error-coefficient-gain-active-max-QFE">
+            <function>
+                <ifthen>
+                    <ge><p>systems/autopilot/altitude-QFE-impact-elev-intensity-active</p><v>1.0</v></ge>
+                    <product>
+                        <interpolate1d>
+                            <p>systems/autopilot/altitude-QFE-impact-elev-intensity-lag</p>
+                            <v>0.0</v><v>1.0</v>
+                            <v>1.0</v><v>1.2</v>
+                            <v>2.0</v><v>1.5</v>
+                            <v>3.0</v><v>1.2</v>
+                            <v>4.0</v><v>2.5</v>
+                        </interpolate1d>
+                        <v>1.0</v>
+                    </product>
+                    <v>1.0</v>
+                </ifthen>
+            </function>
+        </fcs_function>
 
         <switch name="systems/autopilot/pitch-output-error-coefficient-gain-active-max">
             <default value="0.0"/>
@@ -796,6 +822,7 @@ No Overshoot
                 systems/autopilot/pitch-output-error-coefficient-gain-active GT systems/autopilot/pitch-output-error-coefficient-gain-flap
                 systems/autopilot/pitch-output-error-coefficient-gain-active GT systems/autopilot/pitch-output-error-coefficient-gain-active-max-QFE
                 systems/autopilot/pitch-output-error-coefficient-gain-active GT systems/autopilot/pitch-output-error-coefficient-gain-turn
+                systems/autopilot/pitch-output-error-coefficient-gain-active GT systems/autopilot/pitch-output-error-coefficient-gain-gear
             </test>
             <test logic="AND" value="systems/autopilot/pitch-output-error-coefficient-gain-speedbrake">
                 systems/autopilot/pitch-output-error-coefficient-gain-speedbrake GT 0.1
@@ -803,6 +830,7 @@ No Overshoot
                 systems/autopilot/pitch-output-error-coefficient-gain-speedbrake GT systems/autopilot/pitch-output-error-coefficient-gain-flap
                 systems/autopilot/pitch-output-error-coefficient-gain-speedbrake GT systems/autopilot/pitch-output-error-coefficient-gain-active-max-QFE
                 systems/autopilot/pitch-output-error-coefficient-gain-speedbrake GT systems/autopilot/pitch-output-error-coefficient-gain-turn
+                systems/autopilot/pitch-output-error-coefficient-gain-speedbrake GT systems/autopilot/pitch-output-error-coefficient-gain-gear
             </test>
             <test logic="AND" value="systems/autopilot/pitch-output-error-coefficient-gain-flap">
                 systems/autopilot/pitch-output-error-coefficient-gain-flap GT 0.1
@@ -810,6 +838,7 @@ No Overshoot
                 systems/autopilot/pitch-output-error-coefficient-gain-flap GT systems/autopilot/pitch-output-error-coefficient-gain-speedbrake
                 systems/autopilot/pitch-output-error-coefficient-gain-flap GT systems/autopilot/pitch-output-error-coefficient-gain-active-max-QFE
                 systems/autopilot/pitch-output-error-coefficient-gain-flap GT systems/autopilot/pitch-output-error-coefficient-gain-turn
+                systems/autopilot/pitch-output-error-coefficient-gain-flap GT systems/autopilot/pitch-output-error-coefficient-gain-gear
             </test>
             <test logic="AND" value="systems/autopilot/pitch-output-error-coefficient-gain-active-max-QFE">
                 systems/autopilot/pitch-output-error-coefficient-gain-active-max-QFE GT 0.1
@@ -817,6 +846,7 @@ No Overshoot
                 systems/autopilot/pitch-output-error-coefficient-gain-active-max-QFE GT systems/autopilot/pitch-output-error-coefficient-gain-speedbrake
                 systems/autopilot/pitch-output-error-coefficient-gain-active-max-QFE GT systems/autopilot/pitch-output-error-coefficient-gain-flap
                 systems/autopilot/pitch-output-error-coefficient-gain-active-max-QFE GT systems/autopilot/pitch-output-error-coefficient-gain-turn
+                systems/autopilot/pitch-output-error-coefficient-gain-active-max-QFE GT systems/autopilot/pitch-output-error-coefficient-gain-gear
             </test>
             <test logic="AND" value="systems/autopilot/pitch-output-error-coefficient-gain-turn">
                 systems/autopilot/pitch-output-error-coefficient-gain-turn GT 0.1
@@ -824,6 +854,15 @@ No Overshoot
                 systems/autopilot/pitch-output-error-coefficient-gain-turn GT systems/autopilot/pitch-output-error-coefficient-gain-speedbrake
                 systems/autopilot/pitch-output-error-coefficient-gain-turn GT systems/autopilot/pitch-output-error-coefficient-gain-flap
                 systems/autopilot/pitch-output-error-coefficient-gain-turn GT systems/autopilot/pitch-output-error-coefficient-gain-active-max-QFE
+                systems/autopilot/pitch-output-error-coefficient-gain-turn GT systems/autopilot/pitch-output-error-coefficient-gain-gear
+            </test>
+            <test logic="AND" value="systems/autopilot/pitch-output-error-coefficient-gain-gear">
+                systems/autopilot/pitch-output-error-coefficient-gain-gear GT 0.1
+                systems/autopilot/pitch-output-error-coefficient-gain-gear GT systems/autopilot/pitch-output-error-coefficient-gain-active
+                systems/autopilot/pitch-output-error-coefficient-gain-gear GT systems/autopilot/pitch-output-error-coefficient-gain-speedbrake
+                systems/autopilot/pitch-output-error-coefficient-gain-gear GT systems/autopilot/pitch-output-error-coefficient-gain-flap
+                systems/autopilot/pitch-output-error-coefficient-gain-gear GT systems/autopilot/pitch-output-error-coefficient-gain-active-max-QFE
+                systems/autopilot/pitch-output-error-coefficient-gain-gear GT systems/autopilot/pitch-output-error-coefficient-gain-turn
             </test>
         </switch>
         
@@ -1154,6 +1193,25 @@ No Overshoot
     
     <channel name="Altitude control">
         
+        <!-- Impact control system -->
+        
+        <washout_filter name="systems/autopilot/altitude-QFE-impact-elev-to-oriz-wa">
+            <input>systems/autopilot/altitude-QFE-impact-elev-to-oriz</input>
+            <c1>0.2</c1>
+        </washout_filter>
+        
+        <fcs_function name="systems/autopilot/pitch-angle-pid-kp-set-mod">
+            <function>
+                <quotient>
+                    <p>systems/autopilot/pitch-angle-pid-kp-set</p>
+                    <sum>
+                        <abs><p>systems/autopilot/altitude-QFE-impact-elev-to-oriz-wa</p></abs>
+                        <v>1.0</v>
+                    </sum>
+                </quotient>
+            </function>
+        </fcs_function>
+        
         <!-- Pitch angle section -->
         
         <fcs_function name="systems/autopilot/pitch-angle-rad-sign">
@@ -1220,7 +1278,7 @@ No Overshoot
         
         <pid name="systems/autopilot/pitch-angle-pid">
             <input>systems/autopilot/pitch-angle-rad-error-limiter</input>
-            <kp>systems/autopilot/pitch-angle-pid-kp-set</kp>
+            <kp>systems/autopilot/pitch-angle-pid-kp-set-mod</kp>
             <ki>systems/autopilot/pitch-angle-pid-ki-set</ki>
             <kd>systems/autopilot/pitch-angle-pid-kd-set</kd>
             <trigger>systems/autopilot/pitch-angle-reset-integrator</trigger>
@@ -1413,7 +1471,7 @@ No Overshoot
         </fcs_function>
 
         <!-- Altitude hold section -->
-        
+
         <switch name="systems/autopilot/altitude-QFE-impact-elev-ft-norm">
             <default value="systems/autopilot/altitude-QFE-impact-elev-ft"/>
             <test logic="AND" value="systems/autopilot/altitude-hold-ft">
@@ -1433,7 +1491,7 @@ No Overshoot
                     <ifthen>
                         <and>
                             <gt><p>systems/autopilot/altitude-QFE-impact-elev-ft-lag</p><v>0.5</v></gt>
-                            <gt><p>systems/autopilot/altitude-QFE-impact-elev-intensity-lag</p><v>1.0</v></gt>
+                            <gt><p>systems/autopilot/altitude-QFE-impact-elev-intensity-lag</p><p>systems/autopilot/altitude-QFE-impact-elev-intensity-lag-min</p></gt>
                         </and>
                         <v>1.0</v>
                         <v>0.0</v>
@@ -1489,17 +1547,17 @@ No Overshoot
             <default value="0"/>
             <test logic="AND" value="1"> <!-- Impact control active -->
                 systems/autopilot/gui/impact-control-active GT 0.5
-                systems/autopilot/altitude-QFE-impact-elev-intensity-complex-lag GE 1.1
+                systems/autopilot/altitude-QFE-impact-elev-intensity-complex-lag GE systems/autopilot/altitude-type-selector-complex-set
                 systems/autopilot/gui/altitude-QFE == 0.0
             </test>
             <test logic="AND" value="2"> <!-- Impact control with QFE automatic -->
                 systems/autopilot/gui/impact-control-active GT 0.5
-                systems/autopilot/altitude-QFE-impact-elev-intensity-complex-lag LT 1.1
+                systems/autopilot/altitude-QFE-impact-elev-intensity-complex-lag LT systems/autopilot/altitude-type-selector-complex-set
                 systems/autopilot/altitude-hold-to-terrain-ft LT systems/autopilot/altitude-QFE-ft-mod
                 systems/autopilot/gui/altitude-QFE == 0.0
             </test>
             <test logic="AND" value="3"> <!-- Impact control selector with QFE automatic stop -->
-                systems/autopilot/altitude-QFE-impact-elev-intensity-complex-lag GE 1.1
+                systems/autopilot/altitude-QFE-impact-elev-intensity-complex-lag GE systems/autopilot/altitude-type-selector-complex-set
                 systems/autopilot/gui/altitude-QFE == 1.0
             </test>
             <test logic="AND" value="4"> <!-- QFE control section type 3 -->
@@ -2313,7 +2371,7 @@ No Overshoot
                 systems/autopilot/speed-throttle-active == 1.0
                 systems/autopilot/speed-throttle-pid-gain GT systems/autopilot/speed-throttle-max
             </test>
-            <test logic="AND" value="0.10">
+            <test logic="AND" value="0.25">
                 systems/autopilot/speed-throttle-active == 1.0
                 systems/autopilot/speed-throttle-pid-gain LT 0.2
             </test>
@@ -2332,7 +2390,6 @@ No Overshoot
             </test>
             <output>/controls/engines/engine/throttle</output>
         </switch>
-        
         
         <fcs_function name="systems/autopilot/speed-pitch-pid-gain-sum">
             <function>
@@ -2766,6 +2823,41 @@ No Overshoot
             </test>
         </switch>
         
+        <fcs_function name="systems/autopilot/pitch-output-error-coefficient-gain-gear">
+            <function>
+                <ifthen>
+                    <and>
+                        <gt><p>gear/gear-pos-norm</p><v>0.1</v></gt>
+                        <eq><p>systems/autopilot/pitch-control-active</p><v>1.0</v></eq>
+                    </and>
+                    <sum>
+                        <product>
+                            <p>systems/autopilot/pitch-output-error-coefficient-gain-gear-value</p>
+                            <sum>
+                                <v>1.0</v>
+                                <abs>
+                                    <toradians> 
+                                        <p>systems/autopilot/true-heading-turn-direction-versus-slope-sw-lag-deg</p>
+                                    </toradians>
+                                </abs>
+                            </sum>
+                            <p>gear/gear-pos-norm</p>
+                            <ifthen>
+                                <gt><p>systems/autopilot/speed-cas-on-air</p><v>80.0</v></gt>
+                                <quotient>
+                                    <p>systems/autopilot/speed-cas-on-air</p>
+                                    <v>220.0</v>
+                                </quotient>
+                                <v>0.35</v>
+                            </ifthen>
+                        </product>
+                        <v>1.0</v>
+                    </sum>
+                    <v>0.0</v>
+                </ifthen>
+            </function>
+        </fcs_function>
+        
     </channel>
     
     
@@ -2927,7 +3019,7 @@ No Overshoot
                             <quotient>
                                 <quotient>
                                     <p>systems/autopilot/vertical-speed-best-by-altitude</p>
-                                    <v>60.0</v>
+                                    <v>50.0</v>
                                 </quotient>
                                 <p>systems/autopilot/velocity-on-ground-fps-lag</p>
                             </quotient>
