@@ -58,9 +58,23 @@
                             </script>
                         </binding>
                     </checkbox>
-                    <radio>
+                    <text>
                         <row>0</row>
                         <col>1</col>
+                        <label>999999999999</label>
+                        <live>true</live>
+                        <halign>right</halign>
+                        <format>%3.2f (deg)</format>
+                        <property>fdm/jsbsim/systems/autopilot/true-heading-deg-delta</property>
+                        <color>
+                            <red>0.2</red>
+                            <green>0.9</green>
+                            <blue>0.2</blue>
+                        </color>
+                    </text>
+                    <radio>
+                        <row>1</row>
+                        <col>0</col>
                         <label>Auto Coordination</label>
                         <halign>left</halign>
                         <property>fdm/jsbsim/systems/autopilot/gui/rudder-auto-coordination</property>
@@ -71,6 +85,25 @@
                     </radio>
                     <radio>
                         <row>1</row>
+                        <col>1</col>
+                        <label>Wings Level</label>
+                        <halign>right</halign>
+                        <property>fdm/jsbsim/systems/autopilot/gui/wing-leveler</property>
+                        <live>true</live>
+                        <binding>
+                            <command>dialog-apply</command>
+                        </binding>
+                        <binding>
+                            <command>nasal</command>
+                            <script>
+                                setprop("fdm/jsbsim/systems/autopilot/gui/true-heading",0.0);
+                                setprop("fdm/jsbsim/systems/autopilot/gui/phi-heading",0.0);
+                                setprop("fdm/jsbsim/systems/autopilot/gui/true-heading-deg",math.round(getprop("fdm/jsbsim/systems/autopilot/heading-true-deg")));
+                            </script>
+                        </binding>
+                    </radio>
+                    <radio>
+                        <row>2</row>
                         <col>0</col>
                         <halign>left</halign>
                         <label>PHI heading</label>
@@ -88,7 +121,7 @@
                         </binding>
                     </radio>
                     <text>
-                        <row>1</row>
+                        <row>2</row>
                         <col>1</col>
                         <label>99999999999</label>
                         <live>true</live>
@@ -101,8 +134,8 @@
                         </color>
                     </text>
                     <checkbox>
-                        <row>1</row>
-                        <col>2</col>
+                        <row>2</row>
+                        <col>3</col>
                         <property>fdm/jsbsim/systems/gauges/PHI/program/route[1]/isPush</property>
                         <live>true</live>
                         <binding>
@@ -110,8 +143,8 @@
                         </binding>
                     </checkbox>
                     <checkbox>
-                        <row>1</row>
-                        <col>3</col>
+                        <row>2</row>
+                        <col>4</col>
                         <property>fdm/jsbsim/systems/gauges/PHI/program/route[2]/isPush</property>
                         <live>true</live>
                         <binding>
@@ -119,8 +152,8 @@
                         </binding>
                     </checkbox>
                     <checkbox>
-                        <row>1</row>
-                        <col>4</col>
+                        <row>2</row>
+                        <col>5</col>
                         <property>fdm/jsbsim/systems/gauges/PHI/program/route[3]/isPush</property>
                         <live>true</live>
                         <binding>
@@ -128,8 +161,8 @@
                         </binding>
                     </checkbox>
                     <checkbox>
-                        <row>1</row>
-                        <col>5</col>
+                        <row>2</row>
+                        <col>6</col>
                         <property>fdm/jsbsim/systems/gauges/PHI/program/route[4]/isPush</property>
                         <live>true</live>
                         <binding>
@@ -137,8 +170,8 @@
                         </binding>
                     </checkbox>
                     <checkbox>
-                        <row>1</row>
-                        <col>6</col>
+                        <row>2</row>
+                        <col>7</col>
                         <property>fdm/jsbsim/systems/gauges/PHI/program/route[5]/isPush</property>
                         <live>true</live>
                         <binding>
@@ -151,35 +184,13 @@
             <group>
                 <layout>table</layout>
                 <text>
-                    <label>Wings Level</label>
-                    <halign>right</halign>
-                    <row>0</row>
-                    <col>0</col>
-                </text>
-                <radio>
-                    <row>0</row>
-                    <col>1</col>
-                    <property>fdm/jsbsim/systems/autopilot/gui/wing-leveler</property>
-                    <live>true</live>
-                    <binding>
-                        <command>dialog-apply</command>
-                    </binding>
-                    <binding>
-                        <command>nasal</command>
-                        <script>
-                            setprop("fdm/jsbsim/systems/autopilot/gui/true-heading",0.0);
-                            setprop("fdm/jsbsim/systems/autopilot/gui/phi-heading",0.0);
-                        </script>
-                    </binding>
-                </radio>
-                <text>
                     <label>Maximum wing slope</label>
                     <halign>right</halign>
-                    <row>1</row>
+                    <row>0</row>
                     <col>0</col>
                 </text>
                 <slider>
-                    <row>1</row>
+                    <row>0</row>
                     <col>1</col>
                     <name>max_wing_slope_deg</name>
                     <halign>center</halign>
@@ -193,7 +204,7 @@
                     </binding>
                 </slider>
                 <text>
-                    <row>1</row>
+                    <row>0</row>
                     <col>2</col>
                     <label>999999999999</label>
                     <live>true</live>
@@ -209,11 +220,11 @@
                 <text>
                     <label>Real wing slope</label>
                     <halign>right</halign>
-                    <row>2</row>
+                    <row>1</row>
                     <col>0</col>
                 </text>
                 <text>
-                    <row>2</row>
+                    <row>1</row>
                     <col>1</col>
                     <label>999999999999</label>
                     <live>true</live>
@@ -227,7 +238,7 @@
                     </color>
                 </text>
                 <text>
-                    <row>2</row>
+                    <row>1</row>
                     <col>2</col>
                     <label>999999999999</label>
                     <live>true</live>
@@ -243,11 +254,11 @@
                 <text>
                     <label>True heading</label>
                     <halign>right</halign>
-                    <row>3</row>
+                    <row>2</row>
                     <col>0</col>
                 </text>
                 <radio>
-                    <row>3</row>
+                    <row>2</row>
                     <col>1</col>
                     <property>fdm/jsbsim/systems/autopilot/gui/true-heading</property>
                     <live>true</live>
@@ -263,7 +274,7 @@
                     </binding>
                 </radio>
                 <input>
-                    <row>3</row>
+                    <row>2</row>
                     <col>1</col>
                     <property>fdm/jsbsim/systems/autopilot/gui/true-heading-deg</property>
                     <live>true</live>
@@ -272,7 +283,7 @@
                     </binding>
                 </input>
                 <text>
-                    <row>3</row>
+                    <row>2</row>
                     <col>2</col>
                     <label>999999999999</label>
                     <live>true</live>
@@ -285,22 +296,8 @@
                         <blue>0.0</blue>
                     </color>
                 </text>
-                <text>
-                    <row>4</row>
-                    <col>2</col>
-                    <label>999999999999</label>
-                    <live>true</live>
-                    <halign>right</halign>
-                    <format>%3.2f (deg)</format>
-                    <property>fdm/jsbsim/systems/autopilot/true-heading-deg-delta</property>
-                    <color>
-                        <red>0.2</red>
-                        <green>0.9</green>
-                        <blue>0.2</blue>
-                    </color>
-                </text>
                 <button>
-                    <row>5</row>
+                    <row>4</row>
                     <col>0</col>
                     <legend>Left - 5 (deg)</legend>
                     <halign>fill</halign>
@@ -329,7 +326,7 @@
                     </binding>
                 </button>
                 <button>
-                    <row>5</row>
+                    <row>4</row>
                     <col>1</col>
                     <legend>Set actual heading</legend>
                     <halign>fill</halign>
@@ -347,7 +344,7 @@
                     </binding>
                 </button>
                 <button>
-                    <row>5</row>
+                    <row>4</row>
                     <col>2</col>
                     <legend>Right + 5 (deg)</legend>
                     <halign>fill</halign>
@@ -390,7 +387,7 @@
                     <checkbox>
                         <row>0</row>
                         <col>0</col>
-                        <label>Pitch/Altitude Control</label>
+                        <label>Pitch/Altitude Ctrl</label>
                         <halign>fill</halign>
                         <property>fdm/jsbsim/systems/autopilot/gui/altitude-active</property>
                         <live>true</live>

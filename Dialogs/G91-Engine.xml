@@ -44,6 +44,12 @@
                     <command>property-toggle</command>
                     <property>fdm/jsbsim/systems/starter/gui/autostart-activate</property>
                 </binding>
+                <binding>
+                    <command>nasal</command>
+                    <script>
+                        setprop("fdm/jsbsim/systems/oxygen/cylinder-refilled-flow-rate",20);
+                    </script>
+                </binding>
             </button>
         </group>
     </group>

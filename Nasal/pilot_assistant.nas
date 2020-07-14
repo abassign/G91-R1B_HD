@@ -1424,7 +1424,7 @@ var pilot_assistant = func {
                 } else {
                     pilot_ass_status_id = 10.1;
                 }
-                if (airport_select.runways[rwy].length < 1500.0) {
+                if (airport_select.runways[rwy_select].length < 1500.0) {
                     setprop("fdm/jsbsim/systems/autopilot/gui/take-off-jato-active",1);
                 } else {
                     setprop("fdm/jsbsim/systems/autopilot/gui/take-off-jato-active",0);
@@ -1440,6 +1440,8 @@ var pilot_assistant = func {
             if (getprop("fdm/jsbsim/systems/starter/gui/autostart-status-is-ok") == 1) {
                 pilot_ass_status_id = 10.2;
             }
+            #// Oxigen refill, is faster and non in logical sequence, but is only for initialize the Oxygen system
+            setprop("fdm/jsbsim/systems/oxygen/cylinder-refilled-flow-rate",20);
         } else if (pilot_ass_status_id == 10.2) {
             departure_msg = "Motor acc. N2:" ~ sprintf(" %3.0f",getprop("fdm/jsbsim/propulsion/engine[0]/n2"));
             print("Departure 10.2 > ", departure_msg);
@@ -1539,7 +1541,7 @@ var pilot_assistant = func {
                         setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle",0);
                         setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle-deg",6.0);
                         setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed",1);
-                        setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed-fpm",0.0);
+                        setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed-fpm",-2000.0);
                     }
                 }
             }

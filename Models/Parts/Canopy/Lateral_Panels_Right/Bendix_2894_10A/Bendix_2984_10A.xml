@@ -8,6 +8,7 @@
         <inherits-from>Effects/model-transparent</inherits-from>
         <object-name>glass (Meshed)</object-name>
         <object-name>glass flow (Meshed)</object-name>
+        <object-name>test switch (Meshed)</object-name>
     </effect>
     
     <effect>
@@ -37,6 +38,14 @@
         <object-name>white_level_A (Meshed)</object-name>
         <object-name>white_level_B (Meshed)</object-name>
     </effect>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>test switch (Meshed)</object-name>
+        <transparency>
+            <alpha>0.0</alpha>
+        </transparency>
+    </animation>
     
     <animation> 
         <type>material</type>
@@ -181,7 +190,7 @@
     <animation> 
         <type>material</type>
         <object-name>glass (Meshed)</object-name>
-        <object-name>glass mon (Meshed)</object-name>
+        <object-name>glass flow (Meshed)</object-name>
         <transparency>
             <alpha>0.15</alpha>
         </transparency>
@@ -368,7 +377,96 @@
     
     <animation> 
         <type>material</type>
-        <object-name>white_level_A (Meshed)</object-name>
+        <object-name>flow flap white 01 (Meshed)</object-name>
+        <object-name>flow flap white 02 (Meshed)</object-name>
+        <diffuse>
+            <red>0.9</red>
+            <green>0.9</green>
+            <blue>0.9</blue>
+        </diffuse>
+        <ambient>
+            <red>1.0</red>
+            <green>0.95</green>
+            <blue>0.8</blue>
+        </ambient>
+        <emission>
+            <red-prop>sim/G91/re_emit/gauge_red_emer_lamp_3200_console_red_20</red-prop>
+            <green-prop>sim/G91/re_emit/gauge_red_emer_lamp_3200_console_green_10</green-prop>
+            <blue-prop>sim/G91/re_emit/gauge_red_emer_lamp_3200_console_blue_10</blue-prop>
+            <factor>0.4</factor>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>flow membrane violet (Meshed)</object-name>
+        <diffuse>
+            <red>0.93</red>
+            <green>0.51</green>
+            <blue>0.93</blue>
+        </diffuse>
+        <ambient>
+            <red>1.0</red>
+            <green>0.95</green>
+            <blue>0.8</blue>
+        </ambient>
+        <emission>
+            <red-prop>sim/G91/re_emit/gauge_console_lamp_3200_console_red_50</red-prop>
+            <green-prop>sim/G91/re_emit/gauge_console_lamp_3200_console_green_20</green-prop>
+            <blue-prop>sim/G91/re_emit/gauge_console_lamp_3200_console_blue_50</blue-prop>
+            <factor>0.3</factor>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>flow membrane silver (Meshed)</object-name>
+        <diffuse>
+            <red>0.95</red>
+            <green>0.95</green>
+            <blue>0.95</blue>
+        </diffuse>
+        <ambient>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+        </ambient>
+        <specular>
+            <red>1</red>
+            <green>1</green>
+            <blue>1</blue>
+        </specular>
+        <emission>
+            <red-prop>sim/G91/re_emit/gauge_console_lamp_3200_console_red_50</red-prop>
+            <green-prop>sim/G91/re_emit/gauge_console_lamp_3200_console_green_50</green-prop>
+            <blue-prop>sim/G91/re_emit/gauge_console_lamp_3200_console_blue_50</blue-prop>
+            <factor>0.4</factor>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>flow membrane black (Meshed)</object-name>
+        <diffuse>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </diffuse>
+        <ambient>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
+        </ambient>
+        <emission>
+            <red-prop>sim/G91/re_emit/gauge_console_lamp_3200_console_red_10</red-prop>
+            <green-prop>sim/G91/re_emit/gauge_console_lamp_3200_console_green_10</green-prop>
+            <blue-prop>sim/G91/re_emit/gauge_console_lamp_3200_console_blue_10</blue-prop>
+            <factor>0.2</factor>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
         <object-name>white_level_B (Meshed)</object-name>
         <object-name>red_level_B (Meshed)</object-name>
         <object-name>green_level_B (Meshed)</object-name>
@@ -388,9 +486,9 @@
             <blue>0.2</blue>
         </specular>
         <emission>
-            <red>0.2</red>
-            <green>0.06</green>
-            <blue>0.06</blue>
+            <red>0.1</red>
+            <green>0.05</green>
+            <blue>0.05</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_emer_20_red_console</factor-prop>
         </emission>
     </animation>
@@ -414,9 +512,9 @@
             <blue>0.2</blue>
         </specular>
         <emission>
-            <red>0.2</red>
-            <green>0.06</green>
-            <blue>0.06</blue>
+            <red>0.12</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_emer_20_red_console</factor-prop>
         </emission>
     </animation>
@@ -466,11 +564,169 @@
             <blue>0.4</blue>
         </specular>
         <emission>
-            <red>0.06</red>
-            <green>0.04</green>
+            <red>0.02</red>
+            <green>0.06</green>
             <blue>0.0</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_emer_20_red_console</factor-prop>
         </emission>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>arrow A (Meshed)</object-name>
+        <object-name>arrow B (Meshed)</object-name>
+        <property>fdm/jsbsim/systems/oxygen/cylinder-pressure-psi</property>
+        <factor>1.0</factor>
+        <interpolation>
+            <entry><ind>0</ind><dep>0</dep></entry>
+            <entry><ind>100</ind><dep>90</dep></entry>
+            <entry><ind>500</ind><dep>175</dep></entry>
+        </interpolation>
+        <center>
+            <x-m>0.0275</x-m><y-m>-0.040</y-m><z-m>0.0</z-m>
+        </center>
+        <axis>
+            <x>0</x><y>0</y><z>-1</z>
+        </axis>
+    </animation>
+    
+    <animation>
+        <type>pick</type>
+        <object-name>green_level_A (Meshed)</object-name>
+        <object-name>green_level_B (Meshed)</object-name>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <interval-sec>0.5</interval-sec>
+            <binding>
+                <command>property-toggle</command>
+                <property>fdm/jsbsim/systems/oxygen/oxygen-supply-togle</property>
+            </binding>
+        </action>
+    </animation>
+
+    <animation>
+        <type>rotate</type>
+        <object-name>green_level_A (Meshed)</object-name>
+        <object-name>green_level_B (Meshed)</object-name>
+        <property>fdm/jsbsim/systems/oxygen/oxygen-supply-sw-lag</property>
+        <factor>-60</factor>
+        <offset-deg>30</offset-deg>
+        <center>
+            <x-m>0.055</x-m><y-m>0.0</y-m><z-m>-0.004</z-m>
+        </center>
+        <axis>
+            <x>0</x><y>1</y><z>0</z>
+        </axis>
+    </animation>
+    
+    <animation>
+        <type>pick</type>
+        <object-name>white_level_A (Meshed)</object-name>
+        <object-name>white_level_B (Meshed)</object-name>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <interval-sec>0.5</interval-sec>
+            <binding>
+                <command>property-toggle</command>
+                <property>fdm/jsbsim/systems/oxygen/diluter-demand-togle</property>
+            </binding>
+        </action>
+    </animation>
+
+    <animation>
+        <type>rotate</type>
+        <object-name>white_level_A (Meshed)</object-name>
+        <object-name>white_level_B (Meshed)</object-name>
+        <property>fdm/jsbsim/systems/oxygen/diluter-demand-sw-lag</property>
+        <factor>-60</factor>
+        <offset-deg>30</offset-deg>
+        <center>
+            <x-m>0.055</x-m><y-m>0.0</y-m><z-m>-0.004</z-m>
+        </center>
+        <axis>
+            <x>0</x><y>1</y><z>0</z>
+        </axis>
+    </animation>
+
+    <animation>
+        <type>pick</type>
+        <object-name>red_level_A (Meshed)</object-name>
+        <object-name>red_level_B (Meshed)</object-name>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <interval-sec>0.5</interval-sec>
+            <binding>
+                <command>property-toggle</command>
+                <property>fdm/jsbsim/systems/oxygen/oxygen-mode-togle</property>
+            </binding>
+        </action>
+    </animation>
+    
+    <animation>
+        <type>pick</type>
+        <object-name>test switch (Meshed)</object-name>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <interval-sec>0.5</interval-sec>
+            <binding>
+                <command>property-assign</command>
+                <property>fdm/jsbsim/systems/oxygen/oxygen-mode-togle</property>
+                <value>-1</value>
+            </binding>
+        </action>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>red_level_A (Meshed)</object-name>
+        <object-name>red_level_B (Meshed)</object-name>
+        <property>fdm/jsbsim/systems/oxygen/oxygen-mode-sw-lag</property>
+        <factor>-30</factor>
+        <offset-deg>0.0</offset-deg>
+        <center>
+            <x-m>0.055</x-m><y-m>0.0</y-m><z-m>-0.004</z-m>
+        </center>
+        <axis>
+            <x>0</x><y>1</y><z>0</z>
+        </axis>
+    </animation>
+    
+    <animation>
+        <type>translate</type>
+        <object-name>flow flap white 01 (Meshed)</object-name>
+        <property>fdm/jsbsim/systems/oxygen/flow-indicator-mov-2</property>
+        <factor>-0.004</factor>
+        <offset-m>0.0</offset-m>
+        <axis>
+            <x>1</x><y>0</y><z>0</z>
+        </axis>
+    </animation>
+    
+    <animation>
+        <type>translate</type>
+        <object-name>flow flap white 02 (Meshed)</object-name>
+        <property>fdm/jsbsim/systems/oxygen/flow-indicator-mov-2</property>
+        <factor>0.004</factor>
+        <offset-m>0.0</offset-m>
+        <axis>
+            <x>1</x><y>0</y><z>0</z>
+        </axis>
+    </animation>
+    
+    <animation>
+        <type>translate</type>
+        <object-name>flow membrane silver (Meshed)</object-name>
+        <object-name>flow membrane violet (Meshed)</object-name>
+        <property>fdm/jsbsim/systems/oxygen/flow-indicator-mov-1</property>
+        <factor>0.003</factor>
+        <offset-m>0.0</offset-m>
+        <axis>
+            <x>0</x><y>0</y><z>1</z>
+        </axis>
     </animation>
 
 

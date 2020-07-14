@@ -58,7 +58,7 @@
         
         <menubar>
             <default>
-                <menu n="10">
+                <menu n="12">
                     <label>Fiat G91</label>
                     <enabled type="bool">true</enabled>
                     <item>
@@ -67,6 +67,16 @@
                             <command>nasal</command>
                             <script>
                                 test_dialog = gui.Dialog.new("sim/gui/dialogs/G91/Autopilot/dialog","Aircraft/G91-R1B_HD/Dialogs/G91-Pilot-Assistant.xml");
+                                test_dialog.open();
+                            </script>
+                        </binding>
+                    </item>
+                    <item>
+                        <label>Configuration</label>
+                        <binding>
+                            <command>nasal</command>
+                            <script>
+                                test_dialog = gui.Dialog.new("sim/gui/dialogs/G91/Configuration/dialog","Aircraft/G91-R1B_HD/Dialogs/G91-Configuration.xml");
                                 test_dialog.open();
                             </script>
                         </binding>

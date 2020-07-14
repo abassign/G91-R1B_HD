@@ -36,6 +36,130 @@
         <group>
             <layout>table</layout>
             <text>
+                <row>0</row>
+                <col>0</col>
+                <label>Route type</label>
+                <halign>left</halign>
+                <color>
+                    <red>1</red>
+                    <green>1</green>
+                    <blue>1</blue>
+                </color>
+            </text>
+            <radio>
+                <row>0</row>
+                <col>1</col>
+                <halign>left</halign>
+                <label>From route management</label>
+                <property>/autopilot/route-manager/active</property>
+                <live>true</live>
+            </radio>
+            <radio>
+                <row>0</row>
+                <col>2</col>
+                <halign>left</halign>
+                <label>Loop</label>
+                <property>fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-loop</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+                <binding>
+                    <command>nasal</command>
+                    <script>
+                        if (getprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-loop") == 1) {
+                            if (getprop("/autopilot/route-manager/active") == 1) {
+                                setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-loop",0);
+                            }
+                            setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-manual",0);
+                            setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-circuit-left",0);
+                            setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-circuit-right",0);
+                        }
+                    </script>
+                </binding>
+            </radio>
+            <radio>
+                <row>0</row>
+                <col>3</col>
+                <halign>left</halign>
+                <label>Circuit left</label>
+                <property>fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-circuit-left</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+                <binding>
+                    <command>nasal</command>
+                    <script>
+                        if (getprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-circuit-left") == 1) {
+                            if (getprop("/autopilot/route-manager/active") == 1) {
+                                setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-circuit-left",0);
+                            }
+                            setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-manual",0);
+                            setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-loop",0);
+                            setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-circuit-right",0);
+                        }
+                    </script>
+                </binding>
+            </radio>
+            <radio>
+                <row>0</row>
+                <col>4</col>
+                <halign>left</halign>
+                <label>Circuit right</label>
+                <property>fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-circuit-right</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+                <binding>
+                    <command>nasal</command>
+                    <script>
+                        if (getprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-circuit-right") == 1) {
+                            if (getprop("/autopilot/route-manager/active") == 1) {
+                                setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-circuit-right",0);
+                            }
+                            setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-manual",0);
+                            setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-loop",0);
+                            setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-circuit-left",0);
+                        }
+                    </script>
+                </binding>
+            </radio>
+            <radio>
+                <row>0</row>
+                <col>5</col>
+                <halign>left</halign>
+                <label>Manual</label>
+                <property>fdm/jsbsim/systems/gauges/PHI/programmer/route-manual</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+                <binding>
+                    <command>nasal</command>
+                    <script>
+                        if (getprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-manual") == 1) {
+                            if (getprop("/autopilot/route-manager/active") == 1) {
+                                setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-manual",0);
+                            }
+                            setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-loop",0);
+                            setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-circuit-left",0);
+                            setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-circuit-right",0);
+                        }
+                    </script>
+                </binding>
+            </radio>
+        </group>
+    </group>
+            
+    <hrule/>
+    
+    <group>
+        <layout>vbox</layout>
+        <group>
+            <layout>table</layout>
+            <text>
                 <row>2</row>
                 <col>0</col>
                 <label>Distance (nm)</label>
@@ -598,130 +722,6 @@
         </group>
     </group>
     
-    <hrule/>
-    
-    <group>
-        <layout>vbox</layout>
-        <group>
-            <layout>table</layout>
-            <text>
-                <row>0</row>
-                <col>0</col>
-                <label>Route type</label>
-                <halign>left</halign>
-                <color>
-                    <red>1</red>
-                    <green>1</green>
-                    <blue>1</blue>
-                </color>
-            </text>
-            <radio>
-                <row>0</row>
-                <col>1</col>
-                <halign>left</halign>
-                <label>From route management</label>
-                <property>/autopilot/route-manager/active</property>
-                <live>true</live>
-            </radio>
-            <radio>
-                <row>0</row>
-                <col>2</col>
-                <halign>left</halign>
-                <label>Loop</label>
-                <property>fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-loop</property>
-                <live>true</live>
-                <binding>
-                    <command>dialog-apply</command>
-                </binding>
-                <binding>
-                    <command>nasal</command>
-                    <script>
-                        if (getprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-loop") == 1) {
-                            if (getprop("/autopilot/route-manager/active") == 1) {
-                                setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-loop",0);
-                            }
-                            setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-manual",0);
-                            setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-circuit-left",0);
-                            setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-circuit-right",0);
-                        }
-                    </script>
-                </binding>
-            </radio>
-            <radio>
-                <row>0</row>
-                <col>3</col>
-                <halign>left</halign>
-                <label>Circuit left</label>
-                <property>fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-circuit-left</property>
-                <live>true</live>
-                <binding>
-                    <command>dialog-apply</command>
-                </binding>
-                <binding>
-                    <command>nasal</command>
-                    <script>
-                        if (getprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-circuit-left") == 1) {
-                            if (getprop("/autopilot/route-manager/active") == 1) {
-                                setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-circuit-left",0);
-                            }
-                            setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-manual",0);
-                            setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-loop",0);
-                            setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-circuit-right",0);
-                        }
-                    </script>
-                </binding>
-            </radio>
-            <radio>
-                <row>0</row>
-                <col>4</col>
-                <halign>left</halign>
-                <label>Circuit right</label>
-                <property>fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-circuit-right</property>
-                <live>true</live>
-                <binding>
-                    <command>dialog-apply</command>
-                </binding>
-                <binding>
-                    <command>nasal</command>
-                    <script>
-                        if (getprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-circuit-right") == 1) {
-                            if (getprop("/autopilot/route-manager/active") == 1) {
-                                setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-circuit-right",0);
-                            }
-                            setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-manual",0);
-                            setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-loop",0);
-                            setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-circuit-left",0);
-                        }
-                    </script>
-                </binding>
-            </radio>
-            <radio>
-                <row>0</row>
-                <col>5</col>
-                <halign>left</halign>
-                <label>Manual</label>
-                <property>fdm/jsbsim/systems/gauges/PHI/programmer/route-manual</property>
-                <live>true</live>
-                <binding>
-                    <command>dialog-apply</command>
-                </binding>
-                <binding>
-                    <command>nasal</command>
-                    <script>
-                        if (getprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-manual") == 1) {
-                            if (getprop("/autopilot/route-manager/active") == 1) {
-                                setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-manual",0);
-                            }
-                            setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-loop",0);
-                            setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-circuit-left",0);
-                            setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-circuit-right",0);
-                        }
-                    </script>
-                </binding>
-            </radio>
-        </group>
-    </group>
-            
     <hrule/>
     
     <group>

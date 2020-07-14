@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+    
+    <name>Configuration_dialog</name>
+    <layout>vbox</layout>
+    <default-padding>7</default-padding>
+    <modal>false</modal>
+    <width>1024</width>
+    
+    <!-- title bar -->
+    <group>
+        <layout>hbox</layout>
+        <default-padding>8</default-padding>
+        <empty><stretch>true</stretch></empty>
+        <text>
+            <label>Configuration</label>
+        </text>
+        <empty><stretch>true</stretch></empty>
+        <button>
+            <legend/>
+            <key>Esc</key>
+            <pref-width>16</pref-width>
+            <pref-height>16</pref-height>
+            <border>2</border>
+            <binding>
+                <command>dialog-close</command>
+            </binding>
+        </button>
+    </group>
+    
+    <hrule/>
+    
+    <group>
+        <layout>vbox</layout>
+        <group>
+            <layout>table</layout>
+            <text>
+                <label>Fuel</label>
+                <halign>left</halign>
+                <row>0</row>
+                <col>0</col>
+            </text>
+        </group>
+    </group>
+    
+    <hrule/>
+    
+    <group>
+        <layout>vbox</layout>
+        <group>
+            <layout>table</layout>
+            <text>
+                <label>Oxygen</label>
+                <pref-width>100</pref-width>
+                <halign>left</halign>
+                <row>0</row>
+                <col>0</col>
+            </text>
+            <button>
+                <row>0</row>
+                <col>1</col>
+                <pref-width>90</pref-width>
+                <legend> Fill Oxygen </legend>
+                <halign>fill</halign>
+                <live>true</live>
+                <binding>
+                    <command>nasal</command>
+                    <script>
+                        setprop("fdm/jsbsim/systems/oxygen/cylinder-refilled-flow-rate",10);
+                    </script>
+                </binding>
+            </button>
+            <text>
+                <row>0</row>
+                <col>2</col>
+                <label>9999999999</label>
+                <halign>left</halign>
+                <live>true</live>
+                <format>%3.1f psi</format>
+                <property>fdm/jsbsim/systems/oxygen/cylinder-pressure-psi</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.0</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>3</col>
+                <label>9999999999</label>
+                <halign>left</halign>
+                <live>true</live>
+                <format>[%3.1f bar]</format>
+                <property>fdm/jsbsim/systems/oxygen/cylinder-pressure-bar</property>
+                <color>
+                    <red>0.8</red>
+                    <green>0.8</green>
+                    <blue>0.8</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>4</col>
+                <label>9999999999999</label>
+                <halign>left</halign>
+                <live>true</live>
+                <format>Res %3.0f lit</format>
+                <property>fdm/jsbsim/systems/oxygen/oxygen-in-the-cylinder-lit</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.0</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>5</col>
+                <label>9999999999999999</label>
+                <halign>left</halign>
+                <live>true</live>
+                <format>Flux %2.1f lit/min</format>
+                <property>fdm/jsbsim/systems/oxygen/pilot-comsumption-lt-on-min</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.0</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>6</col>
+                <label>999999999999999</label>
+                <halign>left</halign>
+                <live>true</live>
+                <format>Time %4.1f min</format>
+                <property>fdm/jsbsim/systems/oxygen/pilot-oxigen-time-res-min</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.0</blue>
+                </color>
+            </text>
+            <radio>
+                <row>0</row>
+                <col>8</col>
+                <label>On-Off</label>
+                <property>fdm/jsbsim/systems/oxygen/oxygen-supply-togle</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </radio>
+            <radio>
+                <row>0</row>
+                <col>10</col>
+                <label>Dil. 100%</label>
+                <property>fdm/jsbsim/systems/oxygen/diluter-demand-togle</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </radio>
+            <text>
+                <row>0</row>
+                <col>11</col>
+                <label>999999999999999</label>
+                <halign>left</halign>
+                <live>true</live>
+                <format>Danger %3.0f sec</format>
+                <property>fdm/jsbsim/systems/oxygen/pilot-loss-of-consciousness-risk-sec-res</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.0</blue>
+                </color>
+            </text>
+            <checkbox>
+                <row>0</row>
+                <col>12</col>
+                <property>fdm/jsbsim/systems/oxygen/pilot-loss-of-consciousness-blackout-active</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </checkbox>
+            <radio>
+                <row>0</row>
+                <col>13</col>
+                <label>Blackout</label>
+                <property>fdm/jsbsim/systems/oxygen/pilot-loss-of-consciousness-black-vision</property>
+                <live>true</live>
+            </radio>
+            
+            systems/oxygen/pilot-loss-of-consciousness-blackout-active
+        </group>
+    </group>
+    
+</PropertyList> 

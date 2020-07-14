@@ -71,6 +71,7 @@
     <system file="G91-climate"/>
     <system file="G91-autopilot"/>
     <system file="G91-dragchute"/>
+    <system file="G91-oxygen"/>
     <system file="PHI"/>
     
     <!-- apparatus -->

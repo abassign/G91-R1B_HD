@@ -1,8 +1,8 @@
 # Veusz saved document (version 3.2.1)
-# Saved at 2020-07-07T22:32:42.308595
+# Saved at 2020-07-10T09:48:43.772219
 
-AddImportPath(u'/home/abassign')
-ImportFileCSV(u'Software/veusz-3.2.1-linux-x86_64/Export/log-flay.csv', delimiter=u';', headermode=u'1st', linked=True)
+AddImportPath(u'/home/abassign/github/G91-R1B_HD/Documentation/Testing')
+ImportFileCSV(u'../../../../Software/veusz-3.2.1-linux-x86_64/Export/log-flay.csv', delimiter=u';', headermode=u'1st', linked=True)
 Set('colorTheme', u'default-latest')
 Set('StyleSheet/axis-function/autoRange', u'next-tick')
 Add('page', name=u'page1', autoadd=False)

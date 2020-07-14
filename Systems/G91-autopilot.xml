@@ -702,16 +702,19 @@ No Overshoot
                 <ifthen>
                     <and>
                         <gt><p>systems/autopilot/gui/impact-control-active</p><v>0.5</v></gt>
-                        <gt><p>systems/autopilot/gui/altitude-QFE</p><v>0.5</v></gt>
+                        <ge><p>systems/autopilot/altitude-QFE-impact-elev-intensity-lag</p><v>0.6</v></ge>
                     </and>
-                    <sum>
-                        <v>1.0</v>
+                    <ifthen>
+                        <gt><p>systems/autopilot/altitude-QFE-impact-elev-to-oriz</p><v>0.5</v></gt>
+                        <v>0.0</v>
                         <product>
                             <p>systems/autopilot/gui/vertical-speed-fpm-mod</p>
-                            <p>systems/autopilot/altitude-QFE-impact-elev-intensity-lag</p>
-                            <v>2.0</v>
+                            <sum>
+                                <v>1.0</v>
+                                <p>systems/autopilot/altitude-QFE-impact-elev-intensity-lag</p>
+                            </sum>
                         </product>
-                    </sum>
+                    </ifthen>
                     <p>systems/autopilot/gui/vertical-speed-fpm-mod</p>
                 </ifthen>
             </function>

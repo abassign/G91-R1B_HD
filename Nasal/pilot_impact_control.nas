@@ -426,7 +426,7 @@ var analyze_imp_time = func() {
         intensity_T4_lag = intensity_T4_lag + 0.2 * delta_time;
     }
     
-    if (intensity_T3_lag < 0.8) {
+    if (intensity_T0_lag < 0.8) {
         setprop("fdm/jsbsim/systems/autopilot/altitude-QFE-impact-elev-to-oriz",1);
     } else {
         setprop("fdm/jsbsim/systems/autopilot/altitude-QFE-impact-elev-to-oriz",0);
