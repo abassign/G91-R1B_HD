@@ -406,9 +406,9 @@
             <blue>0.93</blue>
         </diffuse>
         <ambient>
-            <red>1.0</red>
-            <green>0.95</green>
-            <blue>0.8</blue>
+            <red>0.6</red>
+            <green>0.55</green>
+            <blue>0.6</blue>
         </ambient>
         <emission>
             <red-prop>sim/G91/re_emit/gauge_console_lamp_3200_console_red_50</red-prop>

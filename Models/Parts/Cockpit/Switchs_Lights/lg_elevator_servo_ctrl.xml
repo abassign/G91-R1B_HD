@@ -119,10 +119,16 @@
     
     <model>
         <condition>
-            <greater-than-equals>
-                <property>fdm/jsbsim/systems/warning-lights/cockpit/lg-elevator_servo_ctrl-off</property>
-                <value>0.1</value>
-            </greater-than-equals>
+            <and>
+                <greater-than-equals>
+                    <property>fdm/jsbsim/systems/warning-lights/cockpit/lg-elevator_servo_ctrl-off</property>
+                    <value>0.1</value>
+                </greater-than-equals>
+                <equals>
+                    <property>sim/G91/models/effects/als</property>
+                    <value>1</value>
+                </equals>
+            </and>
         </condition>
         <name>pb_light_effect</name>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Effects/lights/procedural_light_cockpit_advise_yellow.xml</path>

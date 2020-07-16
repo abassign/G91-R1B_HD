@@ -27,8 +27,21 @@
                 <level type="int">0</level>
                 <log type="int">0</log>
             </testing>
+            <models>
+                <active>
+                    <cockpit type="int">1</cockpit>
+                    <canopy type="int">1</canopy>
+                    <fuselage type="int">1</fuselage>
+                    <turbojet type="int">1</turbojet>
+                    <stores type="int">1</stores>
+                    <accessories type="int">1</accessories>
+                </active>
+                <effects>
+                    <als type="int">1</als>
+                </effects>
+            </models>
         </G91>
-            
+
     </sim>
 
     <engines>

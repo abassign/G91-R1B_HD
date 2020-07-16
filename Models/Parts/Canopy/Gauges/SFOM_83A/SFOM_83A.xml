@@ -674,16 +674,6 @@
             <z>  0 </z>
         </axis>
     </animation>
-<!-- test 
-    <model>
-        <name>gun_cross_effect</name>
-        <path>procedural_light_gun_cross.xml</path>
-        <offsets>
-            <x-m> 0.0</x-m>
-            <y-m> 0.0 </y-m>
-            <z-m> 0.12 </z-m>
-        </offsets>
-    </model>
-    -->
+
 </PropertyList>
 

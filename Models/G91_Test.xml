@@ -20,6 +20,16 @@
     </model>
     
     <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Canopy.xml</path>
+        <condition>
+            <equals>
+                <property>sim/G91/models/active/canopy</property>
+                <value>1</value>
+            </equals>
+        </condition>
+    </model>
+    
+    <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Wing/Wing.xml</path>
         <condition>
             <equals>
@@ -28,19 +38,7 @@
             </equals>
         </condition>
     </model>
-
-    <!-- Optional section -->
     
-    <model>
-        <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Canopy.xml</path>
-        <condition>
-            <equals>
-                <property>sim/G91/models/active/cockpit</property>
-                <value>1</value>
-            </equals>
-        </condition>
-    </model>
-<!--
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/LandingGearFrontal/LandingGearFrontal.xml</path>
         <condition>
@@ -157,6 +155,6 @@
             </equals>
         </condition>
     </model>
-    -->
+
 </PropertyList>
     

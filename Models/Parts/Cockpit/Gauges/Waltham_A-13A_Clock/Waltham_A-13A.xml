@@ -3,28 +3,6 @@
 <PropertyList>
     
     <path>Waltham_A-13A.ac</path>
-    
-    <!--
-    <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
-        <object-name>frontal_all (Meshed)</object-name>
-        <object-name>border_internal (Meshed)</object-name>
-        <object-name>center (Meshed)</object-name>
-        <object-name>screews (Meshed)</object-name>
-        <object-name>back_plane_B (Meshed)</object-name>
-        <object-name>back_plane_A</object-name>
-        <object-name>Arrow_1B (Meshed)</object-name>
-        <object-name>Arrow_2B (Meshed)</object-name>
-        <object-name>Arrow_3B (Meshed)</object-name>
-        <object-name>Arrow_4B (Meshed)</object-name>
-        <object-name>Arrow_1A (Meshed)</object-name>
-        <object-name>Arrow_2A (Meshed)</object-name>
-        <object-name>Arrow_3A (Meshed)</object-name>
-        <object-name>Arrow_4A (Meshed)</object-name>
-        <object-name>knob_001 (Meshed)</object-name>
-        <object-name>knob_002 (Meshed)</object-name>
-    </effect>
-    -->
 
     <effect>
         <inherits-from>Effects/model-transparent</inherits-from>
@@ -334,6 +312,12 @@
     </animation>
     
     <model>
+        <condition>
+            <equals>
+                <property>sim/G91/models/effects/als</property>
+                <value>1</value>
+            </equals>
+        </condition>
         <name>procedural_light_cockpit_gauge_spot_red</name>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Effects/lights/procedural_light_cockpit_gauge_spot_red.xml</path>
         <offsets>

@@ -86,6 +86,10 @@
                     <property>fdm/jsbsim/systems/warning-lights/cockpit/lg_canopy_light</property>
                     <value>0.1</value>
                 </greater-than-equals>
+                <equals>
+                    <property>sim/G91/models/effects/als</property>
+                    <value>1</value>
+                </equals>
             </and>
         </condition>
         <name>pb_light_effect</name>

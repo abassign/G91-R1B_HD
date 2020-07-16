@@ -171,7 +171,7 @@
     <!-- Material assignment -->
     
     <effect>
-        <inherits-from>Effects/model-transparent</inherits-from>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/exterior/exterior-glass-reflection-oblo-camera</inherits-from>
         <object-name>Cristallo_down</object-name>
         <object-name>Cristallo_oblo_front</object-name>
         <object-name>Cristallo_sx_dx</object-name>
@@ -198,19 +198,23 @@
         <object-name>Cristallo_oblo_front</object-name>
         <object-name>Cristallo_sx_dx</object-name>
         <object-name>Cristallo_sx_dx.001</object-name>
-        <texture>Pictures/G91-Dark-Grey.png</texture>
         <transparency>
-            <alpha>0.8</alpha>
+            <alpha>0.9</alpha>
         </transparency>
+        <diffuse>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
+        </diffuse>
         <ambient>
-            <red>0.3</red>
-            <green>0.3</green>
-            <blue>0.25</blue>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.0</blue>
         </ambient>
         <specular>
-            <red>1.0</red>
-            <green>1.0</green>
-            <blue>0.8</blue>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.0</blue>
         </specular>
     </animation>
     

@@ -1013,6 +1013,12 @@
             <y-m> -0.21 </y-m>
             <z-m> -1.18 </z-m>
         </offsets>
+        <condition>
+            <equals>
+                <property>sim/G91/models/effects/als</property>
+                <value>1</value>
+            </equals>
+        </condition>
     </model>
     
     
@@ -1143,6 +1149,12 @@
             <y-m> 0.21 </y-m>
             <z-m> -1.18 </z-m>
         </offsets>
+        <condition>
+            <equals>
+                <property>sim/G91/models/effects/als</property>
+                <value>1</value>
+            </equals>
+        </condition>
     </model>
     
     <!-- Landing light Dx Sx -->

@@ -1069,7 +1069,7 @@
     <!-- Explain the syntax at: http://wiki.flightgear.org/ALS_technical_notes#ALS_procedural_lights -->
     
     <effect>
-        <inherits-from>Effects/model-transparent</inherits-from>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/exterior/exterior-glass-reflection-beacon</inherits-from>
         <object-name>A00_wing_light.glass_sx</object-name>
         <object-name>A00_light_sphere_sx</object-name>
         <object-name>A00_light_sphere_dx</object-name>
@@ -1131,7 +1131,7 @@
     <!-- Red navigation light on port side (left) -->
     
     <effect>
-        <inherits-from>Effects/model-transparent</inherits-from>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/exterior/exterior-glass-reflection-beacon</inherits-from>
         <name>nav-light-left</name>
         <object-name>A00_wing_light.glass_dx</object-name>
         <object-name>A00_light_sphere_dx</object-name>
@@ -1145,6 +1145,12 @@
             <y-m> -4.32</y-m>
             <z-m> -0.75</z-m>
         </offsets>
+        <condition>
+            <equals>
+                <property>sim/G91/models/effects/als</property>
+                <value>1</value>
+            </equals>
+        </condition>
     </model>
     
     <animation> 
@@ -1208,6 +1214,12 @@
             <y-m> 4.315</y-m>
             <z-m> -0.75</z-m>
         </offsets>
+        <condition>
+            <equals>
+                <property>sim/G91/models/effects/als</property>
+                <value>1</value>
+            </equals>
+        </condition>
     </model>
     
     <!--Animations -->
@@ -1804,7 +1816,6 @@
     
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Stores/Hardpoints/hardpoints.xml</path>
-        <usage>interior</usage>
         <offsets>
             <x-m>0.0</x-m>
             <y-m>0.0</y-m>
@@ -1845,7 +1856,6 @@
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Wing/Components/Beacon/G8400A24-24.xml</path>
         <name>beacon</name>
-        <usage>interior</usage>
         <offsets>
             <x-m>0.015</x-m>
             <y-m>0.0</y-m>

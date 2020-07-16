@@ -191,9 +191,186 @@
                 <property>fdm/jsbsim/systems/oxygen/pilot-loss-of-consciousness-black-vision</property>
                 <live>true</live>
             </radio>
-            
-            systems/oxygen/pilot-loss-of-consciousness-blackout-active
         </group>
     </group>
+    
+    <hrule/>
+    
+    <group>
+        <layout>vbox</layout>
+        <group>
+            <layout>table</layout>
+            <text>
+                <row>0</row>
+                <col>0</col>
+                <label>Hydraulic circuit</label>
+                <pref-width>100</pref-width>
+                <halign>left</halign>
+            </text>
+            <text>
+                <row>0</row>
+                <col>2</col>
+                <label>99999999999999999999</label>
+                <live>true</live>
+                <format>Pressure %5.1f psi</format>
+                <property>fdm/jsbsim/systems/hydraulics/flight-system-psi</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.9</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>3</col>
+                <label>99999999999999</label>
+                <live>true</live>
+                <format>[%4.2f bar]</format>
+                <property>fdm/jsbsim/systems/hydraulics/pump_flow_rate</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.9</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>4</col>
+                <label>9999999999999999999999</label>
+                <live>true</live>
+                <format>Lost flow rate %4.2f</format>
+                <property>fdm/jsbsim/systems/hydraulics/lost_flow_rate</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.9</blue>
+                </color>
+            </text>
+            <text>
+                <label>Hydraulic pressure lost</label>
+                <pref-width>100</pref-width>
+                <halign>left</halign>
+                <row>0</row>
+                <col>5</col>
+            </text>
+            <slider>
+                <row>0</row>
+                <col>6</col>
+                <name>hydraulic_pressure_loss</name>
+                <property>fdm/jsbsim/systems/hydraulics/lost-performance-system</property>
+                <min>0.1</min>
+                <max>1.0</max>
+                <step>0.01</step>  
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </slider>
+            <text>
+                <row>0</row>
+                <col>7</col>
+                <label>9999</label>
+                <live>true</live>
+                <format>%2.2f</format>
+                <property>fdm/jsbsim/systems/hydraulics/lost-performance-system</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.0</blue>
+                </color>
+            </text>
+        </group>
+    </group>
+    
+    <hrule/>
+    
+    <group>
+        <layout>table</layout>
+        <text>
+            <label>Models components</label>
+            <halign>left</halign>
+            <row>0</row>
+            <col>0</col>
+        </text>
+
+        <checkbox>
+            <row>0</row>
+            <col>1</col>
+            <label>Cockpit</label>
+            <halign>fill</halign>
+            <property>sim/G91/models/active/cockpit</property>
+            <live>true</live>
+            <binding>
+                <command>dialog-apply</command>
+            </binding>
+        </checkbox>
+        <checkbox>
+            <row>0</row>
+            <col>2</col>
+            <label>Canopy</label>
+            <halign>fill</halign>
+            <property>sim/G91/models/active/canopy</property>
+            <live>true</live>
+            <binding>
+                <command>dialog-apply</command>
+            </binding>
+        </checkbox>
+        <checkbox>
+            <row>0</row>
+            <col>3</col>
+            <label>Fuselage</label>
+            <halign>fill</halign>
+            <property>sim/G91/models/active/fuselage</property>
+            <live>true</live>
+            <binding>
+                <command>dialog-apply</command>
+            </binding>
+        </checkbox>
+        <checkbox>
+            <row>0</row>
+            <col>4</col>
+            <label>Turbojet</label>
+            <halign>fill</halign>
+            <property>sim/G91/models/active/turbojet</property>
+            <live>true</live>
+            <binding>
+                <command>dialog-apply</command>
+            </binding>
+        </checkbox>
+        <checkbox>
+            <row>0</row>
+            <col>5</col>
+            <label>Stores</label>
+            <halign>fill</halign>
+            <property>sim/G91/models/active/stores</property>
+            <live>true</live>
+            <binding>
+                <command>dialog-apply</command>
+            </binding>
+        </checkbox>
+        <checkbox>
+            <row>0</row>
+            <col>6</col>
+            <label>Accessories</label>
+            <halign>fill</halign>
+            <property>sim/G91/models/active/accessories</property>
+            <live>true</live>
+            <binding>
+                <command>dialog-apply</command>
+            </binding>
+        </checkbox>
+        <checkbox>
+            <row>0</row>
+            <col>7</col>
+            <label>Als active</label>
+            <halign>fill</halign>
+            <property>sim/G91/models/effects/als</property>
+            <live>true</live>
+            <binding>
+                <command>dialog-apply</command>
+            </binding>
+        </checkbox>
+    </group>
+    
+    <hrule/>
     
 </PropertyList> 

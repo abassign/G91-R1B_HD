@@ -235,7 +235,7 @@
     <!-- Tail Lights -->
     
     <effect>
-        <inherits-from>Effects/model-transparent</inherits-from>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/exterior/exterior-glass-reflection-beacon</inherits-from>
         <object-name>A_glass_red_est_coda</object-name>
         <object-name>A_glass_red_int_coda</object-name>
         <object-name>Sphere.007</object-name>
@@ -245,11 +245,15 @@
         <type>material</type> 
         <object-name>A_glass_red_est_coda</object-name>
         <object-name>A_glass_red_int_coda</object-name>
-        <texture>Pictures/G91-Yellow01.png</texture>
+        <diffuse>
+            <red>0.714</red>	
+            <green>0.6</green>	
+            <blue>0.0</blue>
+        </diffuse>
         <ambient>
-            <red>0.8</red>
-            <green>0.8</green>
-            <blue>0.8</blue>
+            <red>0.714</red>	
+            <green>0.6</green>	
+            <blue>0.0</blue>
         </ambient>
         <emission>	
             <red>0.714</red>	
@@ -262,12 +266,21 @@
             <factor>0.9</factor>
             <offset>-0.2</offset>
         </transparency>
+        <specular>
+            <red>0.1</red>
+            <green>0.08</green>
+            <blue>0.0</blue>
+        </specular>
     </animation>
     
     <animation> 
         <type>material</type> 
         <object-name>Sphere.007</object-name>
-        <texture>Pictures/G91-Yellow01.png</texture>
+        <diffuse>
+            <red>0.714</red>	
+            <green>0.6</green>	
+            <blue>0.0</blue>
+        </diffuse>
         <ambient>
             <red>1.0</red>
             <green>1.0</green>
@@ -290,14 +303,20 @@
         <name>nav-tail-light-yellow</name>
         <path>Effects/lights/procedural_light_nav_tail_yellow.xml</path>
         <offsets>
-            <x-m> 4.78</x-m>
+            <x-m> 4.80</x-m>
             <y-m> -0.05 </y-m>
             <z-m> 0.29 </z-m>
         </offsets>
+        <condition>
+            <equals>
+                <property>sim/G91/models/effects/als</property>
+                <value>1</value>
+            </equals>
+        </condition>
     </model>
     
     <effect>
-        <inherits-from>Effects/model-transparent</inherits-from>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/exterior/exterior-glass-reflection-beacon</inherits-from>
         <object-name>A_glass_white_est_coda</object-name>
         <object-name>A_glass_white_int_coda</object-name>
         <object-name>Sphere.006</object-name>
@@ -307,11 +326,15 @@
         <type>material</type> 
         <object-name>A_glass_white_est_coda</object-name>
         <object-name>A_glass_white_int_coda</object-name>
-        <texture>Pictures/G91-Yellow01.png</texture>
+        <diffuse>
+            <red>0.714</red>	
+            <green>0.6</green>	
+            <blue>0.0</blue>
+        </diffuse>
         <ambient>
-            <red>0.8</red>
-            <green>0.8</green>
-            <blue>0.8</blue>
+            <red>0.714</red>	
+            <green>0.6</green>	
+            <blue>0.0</blue>
         </ambient>
         <emission>	
             <red>0.714</red>	
@@ -324,12 +347,21 @@
             <factor>0.9</factor>
             <offset>-0.2</offset>
         </transparency>
+        <specular>
+            <red>0.1</red>
+            <green>0.08</green>
+            <blue>0.0</blue>
+        </specular>
     </animation>
     
     <animation> 
         <type>material</type> 
         <object-name>Sphere.006</object-name>
-        <texture>Pictures/G91-Yellow01.png</texture>
+        <diffuse>
+            <red>0.714</red>	
+            <green>0.6</green>	
+            <blue>0.0</blue>
+        </diffuse>
         <ambient>
             <red>1.0</red>
             <green>1.0</green>
@@ -347,17 +379,23 @@
             <offset>0</offset>
         </transparency>
     </animation>
-    
+
     <model>
         <name>nav-tail-light-yellow</name>
         <path>Effects/lights/procedural_light_nav_tail_yellow.xml</path>
         <offsets>
-            <x-m> 4.78</x-m>
+            <x-m> 4.80</x-m>
             <y-m> 0.05 </y-m>
             <z-m> 0.29 </z-m>
         </offsets>
+        <condition>
+            <equals>
+                <property>sim/G91/models/effects/als</property>
+                <value>1</value>
+            </equals>
+        </condition>
     </model>
-    
+
     <!-- Objects animation -->
     
     <animation>

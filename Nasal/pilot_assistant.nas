@@ -1442,6 +1442,7 @@ var pilot_assistant = func {
             }
             #// Oxigen refill, is faster and non in logical sequence, but is only for initialize the Oxygen system
             setprop("fdm/jsbsim/systems/oxygen/cylinder-refilled-flow-rate",20);
+            setprop("fdm/jsbsim/systems/oxygen/pilot-loss-of-consciousness-blackout-active",1);
         } else if (pilot_ass_status_id == 10.2) {
             departure_msg = "Motor acc. N2:" ~ sprintf(" %3.0f",getprop("fdm/jsbsim/propulsion/engine[0]/n2"));
             print("Departure 10.2 > ", departure_msg);
@@ -1645,6 +1646,7 @@ var pilot_assistant = func {
             setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed-fpm",2500.0);
             if (altitude_agl_ft >= 1500.0 and cas_on_air_lag > 130.0) {
                 #// Take-Off procedure end
+                setprop("fdm/jsbsim/systems/oxygen/oxygen-supply-togle",1);
                 if (getprop("fdm/jsbsim/systems/autopilot/gui/take-off-altitude-top-active") > 0) {
                     setprop("fdm/jsbsim/systems/autopilot/gui/altitude-hold",1.0);
                     setprop("fdm/jsbsim/systems/autopilot/gui/altitude-QFE",0.0);

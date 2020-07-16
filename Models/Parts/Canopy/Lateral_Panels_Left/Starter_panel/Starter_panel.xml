@@ -201,19 +201,5 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
         </offsets>
     </model>
 
-    <!-- only for testing -->
-    <model>
-        <name>procedural_light_canopy_spot_red_sx_1</name>
-        <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Effects/lights/procedural_light_canopy_spot_red_large.xml</path>
-        <offsets>
-            <x-m> 0.00</x-m>
-            <y-m> 0.00 </y-m>
-            <z-m> 0.05 </z-m>
-            <roll-deg>0.0</roll-deg>
-            <pitch-deg>-90.0</pitch-deg>
-            <heading-deg>0.0</heading-deg>
-        </offsets>
-    </model>
-
     
 </PropertyList>
