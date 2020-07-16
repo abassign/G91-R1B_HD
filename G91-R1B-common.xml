@@ -243,6 +243,16 @@
             </script>
         </set-gear-down-script>
         
+        <test-compositor>
+            <script>
+                if(getprop("/sim/rendering/default-compositor") == "Compositor/als") {
+                    setprop("sim/G91/models/effects/als",0);
+                } else {
+                    setprop("sim/G91/models/effects/als",1);
+                }
+            </script>
+        </test-compositor>
+        
     </nasal>
     
     <!-- Key mappings -->

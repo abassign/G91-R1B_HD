@@ -26,6 +26,7 @@
             <testing>
                 <level type="int">1</level>
                 <log type="int">1</log>
+                <logging type="int">1</logging>
             </testing>
             <models>
                 <active>
@@ -84,7 +85,7 @@
     <logging>
         <log>
             <filename>/home/abassign/.fgfs/Export/log-flay.csv</filename>
-            <enabled>true</enabled>
+            <enabled>/sim/G91/testing/logging</enabled>
             <interval-ms>1000</interval-ms>
             <delimiter>;</delimiter>
             <entry>
