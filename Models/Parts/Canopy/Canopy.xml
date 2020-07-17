@@ -88,6 +88,13 @@
         <object-name>A__G91_fuselage_canopy.004</object-name>
     </effect>
     
+    <animation>
+        <type>noshadow</type>
+        <object-name>F_canopy_ant_blind</object-name>
+        <object-name>F_canopY_ant.001</object-name>
+        <object-name>swich_light_gun.001</object-name>
+    </animation>
+    
     <animation> 
         <type>material</type> 
         <object-name>F_canopy_ant_blind</object-name>
@@ -110,7 +117,7 @@
         <type>material</type>
         <object-name>F_canopY_ant.001</object-name>
         <transparency>
-            <alpha>0.1</alpha>
+            <alpha>0.15</alpha>
         </transparency>
         <diffuse>
             <red>1.0</red>

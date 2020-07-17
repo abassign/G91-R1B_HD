@@ -44,6 +44,11 @@
         <inherits-from>Effects/reflect</inherits-from>
         <object-name>selector_1_light (Meshed)</object-name>
     </effect>
+    
+    <animation>
+        <type>noshadow</type>
+        <object-name>PHI_wind_advise_light_on</object-name>
+    </animation>
 
     <animation> 
         <type>material</type>
@@ -542,16 +547,10 @@
     
     <model>
         <condition>
-            <and>
-                <greater-than-equals>
-                    <property>/fdm/jsbsim/systems/gauges/PHI/wind/advise-light-on</property>
-                    <value>0.1</value>
-                </greater-than-equals>
-                <equals>
-                    <property>sim/G91/models/effects/als</property>
-                    <value>1</value>
-                </equals>
-            </and>
+            <greater-than-equals>
+                <property>/fdm/jsbsim/systems/gauges/PHI/wind/advise-light-on</property>
+                <value>0.1</value>
+            </greater-than-equals>
         </condition>
         <name>PHI_wind_advise_light_on</name>
         <path>procedural_light_PHI_yellow.xml</path>

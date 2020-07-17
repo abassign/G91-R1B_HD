@@ -21,8 +21,9 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
         <object-name>pin (Meshed)</object-name>
         <object-name>ring (Meshed)</object-name>
         <object-name>cover (Meshed)</object-name>
+        <object-name>swich_support</object-name>
     </effect>
-    
+
     <animation> 
         <type>material</type>
         <object-name>cover (Meshed)</object-name>

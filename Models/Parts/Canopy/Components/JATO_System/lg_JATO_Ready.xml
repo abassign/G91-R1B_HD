@@ -10,6 +10,11 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
         <path>Aircraft/G91-R1B_HD/Models/Parts/Common/lg_model_01.xml</path>
     </model>
     
+    <animation>
+        <type>noshadow</type>
+        <object-name>pb_light_effect</object-name>
+    </animation>
+    
     <animation> 
         <type>material</type>
         <object-name>Cone_reflect (Meshed)</object-name>
@@ -111,16 +116,10 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
     
     <model>
         <condition>
-            <and>
-                <greater-than-equals>
-                    <property>fdm/jsbsim/systems/jato/lg-ready-on</property>
-                    <value>0.5</value>
-                </greater-than-equals>
-                <equals>
-                    <property>sim/G91/models/effects/als</property>
-                    <value>1</value>
-                </equals>
-            </and>
+            <greater-than-equals>
+                <property>fdm/jsbsim/systems/jato/lg-ready-on</property>
+                <value>0.5</value>
+            </greater-than-equals>
         </condition>
         <name>pb_light_effect</name>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Effects/lights/procedural_light_cockpit_advise_blue.xml</path>

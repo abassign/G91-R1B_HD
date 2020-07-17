@@ -4,7 +4,7 @@
 
     <path>procedural_light.ac</path>
     <nopreview/>
-
+    
     <effect>
         <inherits-from>procedural_light_cockpit_gauge_spot_blue</inherits-from>
         <object-name>procedural_light</object-name>

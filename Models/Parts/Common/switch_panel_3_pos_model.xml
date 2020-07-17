@@ -21,9 +21,8 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
         <object-name>nut (Meshed)</object-name>
         <object-name>Fillet (Meshed)</object-name>
         <object-name>Chamfer (Meshed)</object-name>
-        Fillet
     </effect>
-
+    
     <effect>
         <inherits-from>Effects/model-transparent</inherits-from>
         <object-name>sensor 1 (Meshed)</object-name>

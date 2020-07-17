@@ -29,7 +29,7 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
         <object-name>sw_north (Meshed)</object-name>
         <object-name>sw_south (Meshed)</object-name>
     </effect>
-    
+
     <animation> 
         <type>material</type>
         <object-name>sw_north (Meshed)</object-name>

@@ -12,32 +12,6 @@
         <pitch-deg>0.0</pitch-deg>
     </offsets>
     
-    <!--
-    <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
-        <object-name>gear-front-jack-015</object-name>
-        <object-name>BezierCurve</object-name>
-        <object-name>BezierCurve.001</object-name>
-        <object-name>BezierCurve.002</object-name>
-        <object-name>BezierCurve.003</object-name>
-        <object-name>BezierCurve.004</object-name>
-        <object-name>BezierCurve.005</object-name>
-        <object-name>BezierCurve.006</object-name>
-        <object-name>BezierCurve.007</object-name>
-        <object-name>BezierCurve.008</object-name>
-        <object-name>BezierCurve.009</object-name>
-        <object-name>BezierCurve.010</object-name>
-        <object-name>BezierCurve.011</object-name>
-        <object-name>BezierCurve.012</object-name>
-        <object-name>BezierCurve.013</object-name>
-        <object-name>BezierCurve.014</object-name>
-        <object-name>BezierCurve.015</object-name>
-        <object-name>scatola</object-name>
-        <object-name>centine</object-name>
-        <object-name>centine.001</object-name>
-    </effect>
-    -->
-    
     <animation>
         <name>GearSup</name>
         <object-name>gear-front-jack-03</object-name>
@@ -98,6 +72,12 @@
         <object-name>Cylinder.009</object-name>
         <object-name>Cylinder.010</object-name>
         <object-name>Cylinder.011</object-name>
+    </animation>
+    
+    <animation>
+        <type>noshadow</type>
+        <object-name>procedural-light-gear-white-right</object-name>
+        <object-name>procedural-light-gear-white-left</object-name>
     </animation>
     
     <!-- Material assignment -->
@@ -1013,12 +993,6 @@
             <y-m> -0.21 </y-m>
             <z-m> -1.18 </z-m>
         </offsets>
-        <condition>
-            <equals>
-                <property>sim/G91/models/effects/als</property>
-                <value>1</value>
-            </equals>
-        </condition>
     </model>
     
     
@@ -1149,12 +1123,6 @@
             <y-m> 0.21 </y-m>
             <z-m> -1.18 </z-m>
         </offsets>
-        <condition>
-            <equals>
-                <property>sim/G91/models/effects/als</property>
-                <value>1</value>
-            </equals>
-        </condition>
     </model>
     
     <!-- Landing light Dx Sx -->

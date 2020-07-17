@@ -61,18 +61,18 @@
     </effect>
 
     <effect>
-        <inherits-from>Effects/model-transparent</inherits-from>
-        <object-name>F_glass_est_tettuccio</object-name>
-        <object-name>F_glass_int_tettuccio</object-name>
-    </effect>
-
-    <!-- Chrome Effects on materials -->
-    <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_silver_D2_1</inherits-from>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/exterior/exterior-glass</inherits-from>
         <object-name>F_glass_est_tettuccio</object-name>
         <object-name>F_glass_int_tettuccio</object-name>
     </effect>
     
+    <animation>
+        <type>noshadow</type>
+        <object-name>F_glass_est_tettuccio</object-name>
+        <object-name>F_glass_int_tettuccio</object-name>
+    </animation>
+    
+    <!-- Chrome Effects on materials -->
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading_canopy</inherits-from>
         <object-name>F_CANPOPY</object-name>
@@ -81,7 +81,7 @@
         <object-name>F_CANPOPY.003</object-name>
         <object-name>F_CANPOPY.004</object-name>
     </effect>
-
+    
     <animation> 
         <type>material</type> 
         <object-name>F_glass_est_tettuccio</object-name>

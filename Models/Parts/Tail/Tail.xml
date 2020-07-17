@@ -132,6 +132,12 @@
         </ambient>
     </animation>
     
+    <animation>
+        <type>noshadow</type>
+        <object-name>nav-tail-light-yellow-dx</object-name>
+        <object-name>nav-tail-light-yellow-sx</object-name>
+    </animation>
+    
     <animation> 
         <type>material</type>
         <object-name>D_timone_coda.002</object-name>
@@ -300,19 +306,13 @@
     </animation>
     
     <model>
-        <name>nav-tail-light-yellow</name>
+        <name>nav-tail-light-yellow-sx</name>
         <path>Effects/lights/procedural_light_nav_tail_yellow.xml</path>
         <offsets>
             <x-m> 4.80</x-m>
             <y-m> -0.05 </y-m>
             <z-m> 0.29 </z-m>
         </offsets>
-        <condition>
-            <equals>
-                <property>sim/G91/models/effects/als</property>
-                <value>1</value>
-            </equals>
-        </condition>
     </model>
     
     <effect>
@@ -381,19 +381,13 @@
     </animation>
 
     <model>
-        <name>nav-tail-light-yellow</name>
+        <name>nav-tail-light-yellow-dx</name>
         <path>Effects/lights/procedural_light_nav_tail_yellow.xml</path>
         <offsets>
             <x-m> 4.80</x-m>
             <y-m> 0.05 </y-m>
             <z-m> 0.29 </z-m>
         </offsets>
-        <condition>
-            <equals>
-                <property>sim/G91/models/effects/als</property>
-                <value>1</value>
-            </equals>
-        </condition>
     </model>
 
     <!-- Objects animation -->

@@ -5,22 +5,30 @@
     <path>fire.ac</path>
     
     <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
+        <inherits-from>Effects/model-transparent</inherits-from>
+        <object-name>lg_red_cover (Meshed)</object-name>
+        <object-name>lg_fire (Meshed)</object-name>
+    </effect>
+    
+    <animation>
+        <type>noshadow</type>
         <object-name>box (Meshed)</object-name>
         <object-name>test_circuit (Meshed)</object-name>
+        <object-name>lg_red_cover (Meshed)</object-name>
+        <object-name>lg_fire (Meshed)</object-name>
+        <object-name>lg_red_cover (Meshed)</object-name>
+        <object-name>lg_fire (Meshed)</object-name>
         <object-name>switch_2_level (Meshed)</object-name>
         <object-name>switch_2_cone (Meshed)</object-name>
         <object-name>switch_2_ring (Meshed)</object-name>
         <object-name>switch_2_base (Meshed)</object-name>
-    </effect>
+    </animation>
     
-    <effect>
-        <inherits-from>Effects/model-transparent</inherits-from>
-        <object-name>lg_red_cover (Meshed)</object-name>
-        <object-name>lg_fire (Meshed)</object-name>
-        <object-name>lg_red_cover (Meshed)</object-name>
-        <object-name>lg_fire (Meshed)</object-name>
-    </effect>    
+    <animation>
+        <type>noshadow</type>
+        <name>pb_light_effect</name>
+        <name>procedural_light_cockpit_gauge_spot_red</name>
+    </animation>
     
     <animation> 
         <type>material</type>
@@ -270,16 +278,10 @@
         
     <model>
         <condition>
-            <and>
-                <greater-than-equals>
-                    <property>fdm/jsbsim/systems/gauges/cockpit-fire-light-intensity</property>
-                    <value>0.1</value>
-                </greater-than-equals>
-                <equals>
-                    <property>sim/G91/models/effects/als</property>
-                    <value>1</value>
-                </equals>
-            </and>
+            <greater-than-equals>
+                <property>fdm/jsbsim/systems/gauges/cockpit-fire-light-intensity</property>
+                <value>0.1</value>
+            </greater-than-equals>
         </condition>
         <name>pb_light_effect</name>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Effects/lights/procedural_light_cockpit_advise_red.xml</path>
@@ -292,16 +294,10 @@
     
     <model>
         <condition>
-            <and>
-                <greater-than-equals>
-                    <property>fdm/jsbsim/systems/gauges/cockpit-fire-light-intensity</property>
-                    <value>0.1</value>
-                </greater-than-equals>
-                <equals>
-                    <property>sim/G91/models/effects/als</property>
-                    <value>1</value>
-                </equals>
-            </and>
+            <greater-than-equals>
+                <property>fdm/jsbsim/systems/gauges/cockpit-fire-light-intensity</property>
+                <value>0.1</value>
+            </greater-than-equals>
         </condition>
         <name>pb_light_effect</name>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Effects/lights/procedural_light_cockpit_advise_red.xml</path>
@@ -313,12 +309,6 @@
     </model>
     
     <model>
-        <condition>
-            <equals>
-                <property>sim/G91/models/effects/als</property>
-                <value>1</value>
-            </equals>
-        </condition>
         <name>procedural_light_cockpit_gauge_spot_red</name>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Effects/lights/procedural_light_cockpit_gauge_spot_red.xml</path>
         <offsets>

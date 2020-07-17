@@ -3,20 +3,13 @@
 <PropertyList>
     
     <path>lg_canopy_light.ac</path>
-    
-    <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
-        <object-name>box (Meshed)</object-name>
-        <object-name>light_cover_border (Meshed)</object-name>
-        <object-name>light_cover (Meshed)</object-name>
-    </effect>
-    
-    <effect>
-        <inherits-from>Effects/model-transparent</inherits-from>
-        <object-name>light_cover_border (Meshed)</object-name>
-        <object-name>light_cover (Meshed)</object-name>
-    </effect>
 
+    <animation>
+        <type>noshadow</type>
+        <object-name>pb_light_effect</object-name>
+        <object-name>Cone_reflect (Meshed)</object-name>
+    </animation>
+    
     <animation> 
         <type>material</type>
         <object-name>box (Meshed)</object-name>
@@ -81,16 +74,10 @@
         
     <model>
         <condition>
-            <and>
-                <greater-than-equals>
-                    <property>fdm/jsbsim/systems/warning-lights/cockpit/lg_canopy_light</property>
-                    <value>0.1</value>
-                </greater-than-equals>
-                <equals>
-                    <property>sim/G91/models/effects/als</property>
-                    <value>1</value>
-                </equals>
-            </and>
+            <greater-than-equals>
+                <property>fdm/jsbsim/systems/warning-lights/cockpit/lg_canopy_light</property>
+                <value>0.1</value>
+            </greater-than-equals>
         </condition>
         <name>pb_light_effect</name>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Effects/lights/procedural_light_cockpit_advise_red.xml</path>

@@ -6,12 +6,11 @@
         <path>Aircraft/G91-R1B_HD/Models/Parts/Common/lg_model_01.xml</path>
     </model>
     
-    <effect>
-        <inherits-from>Effects/model-transparent</inherits-from>
-        <object-name>transparent_button (Meshed)</object-name>
-        <object-name>light_Sphere (Meshed)</object-name>
-        <object-name>light_Sphere_hot (Meshed)</object-name>
-    </effect>
+    <animation>
+        <type>noshadow</type>
+        <object-name>pb_light_effect</object-name>
+        <object-name>Cone_reflect (Meshed)</object-name>
+    </animation>
     
     <animation> 
         <type>material</type>
@@ -114,16 +113,10 @@
     
     <model>
         <condition>
-            <and>
-                <greater-than-equals>
-                    <property>fdm/jsbsim/systems/warning-lights/cockpit/lg_collect_tank_2_all_tank</property>
-                    <value>0.1</value>
-                </greater-than-equals>
-                <equals>
-                    <property>sim/G91/models/effects/als</property>
-                    <value>1</value>
-                </equals>
-            </and>
+            <greater-than-equals>
+                <property>fdm/jsbsim/systems/warning-lights/cockpit/lg_collect_tank_2_all_tank</property>
+                <value>0.1</value>
+            </greater-than-equals>
         </condition>
         <name>pb_light_effect</name>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Effects/lights/procedural_light_cockpit_advise_blue.xml</path>

@@ -521,28 +521,6 @@
     <!-- Components -->
     
     <model>
-        <condition>
-            <equals>
-                <property>sim/rendering/rembrandt/enabled</property>
-                <value>true</value>
-            </equals>
-        </condition>
-        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Components/Gear_lever/Gear_lever_rb.xml</path>
-        <offsets>
-            <x-m>0.010</x-m>
-            <y-m>-0.276</y-m>
-            <z-m>0.071</z-m>
-            <pitch-deg>0.0</pitch-deg>
-        </offsets>
-    </model>
-    
-    <model>
-        <condition>
-            <equals>
-                <property>sim/rendering/rembrandt/enabled</property>
-                <value>false</value>
-            </equals>
-        </condition>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Components/Gear_lever/Gear_lever_als.xml</path>
         <offsets>
             <x-m>0.010</x-m>
@@ -553,7 +531,7 @@
     </model>
     
     <!-- Gauges -->
-    
+
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/Altimeter/Altimeter.xml</path>
         <offsets>
@@ -563,7 +541,7 @@
             <pitch-deg>0.0</pitch-deg>
         </offsets>
     </model>
-    
+
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/ADF_8720/ADF_8720.xml</path>
         <offsets>
@@ -603,7 +581,7 @@
             <pitch-deg>0.0</pitch-deg>
         </offsets>
     </model>
-    
+
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/MS-33678-3P/MS-33678-3P-1.xml</path>
         <offsets>
@@ -663,7 +641,7 @@
             <pitch-deg>8.5</pitch-deg>
         </offsets>
     </model>
-    
+
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/PHI/PHI-Indicator.xml</path>
         <offsets>
@@ -683,7 +661,7 @@
             <pitch-deg>0.0</pitch-deg>
         </offsets>
     </model>
-    
+
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/RPM_Indicator/RPM_Indicator.xml</path>
         <offsets>
@@ -693,7 +671,7 @@
             <pitch-deg>0.0</pitch-deg>
         </offsets>
     </model>
-    
+
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/Jet_Temperature/Jet_Temperature.xml</path>
         <offsets>
@@ -703,7 +681,7 @@
             <pitch-deg>0.0</pitch-deg>
         </offsets>
     </model>
-    
+
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/Fuel_Pounds/Fuel_Pounds.xml</path>
         <offsets>
@@ -733,7 +711,7 @@
             <pitch-deg>0.0</pitch-deg>
         </offsets>
     </model>
-    
+   
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/Pressure_Gauge/Pressure_Gauge.xml</path>
         <offsets>
@@ -783,7 +761,7 @@
             <pitch-deg>0.0</pitch-deg>
         </offsets>
     </model>
-    
+
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/Fire/Fire.xml</path>
         <offsets>
@@ -845,7 +823,7 @@
             <pitch-deg>0.0</pitch-deg>
         </offsets>
     </model>
-    
+
     <!-- Switch and light -->
     
     <model>

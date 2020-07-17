@@ -3,6 +3,11 @@
 <PropertyList>
     
     <path>MS-33678-3P.ac</path>
+    
+    <animation>
+        <type>noshadow</type>
+        <object-name>procedural_light_cockpit_gauge_spot_red</object-name>
+    </animation>
 
     <animation> 
         <type>material</type>
@@ -74,12 +79,6 @@
     </animation>
     
     <model>
-        <condition>
-            <equals>
-                <property>sim/G91/models/effects/als</property>
-                <value>1</value>
-            </equals>
-        </condition>
         <name>procedural_light_cockpit_gauge_spot_red</name>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Effects/lights/procedural_light_cockpit_gauge_spot_red.xml</path>
         <offsets>

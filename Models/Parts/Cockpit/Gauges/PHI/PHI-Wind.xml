@@ -29,6 +29,12 @@
         <object-name>lamp_light (Meshed)</object-name>
     </effect>
     
+    <animation>
+        <type>noshadow</type>
+        <object-name>procedural_light_cockpit_gauge_spot_red</object-name>
+        <object-name>PHI_wind_advise_light_on</object-name>
+    </animation>
+    
     <animation> 
         <type>material</type>
         <object-name>cover (Meshed)</object-name>
@@ -322,16 +328,10 @@
     
     <model>
         <condition>
-            <and>
-                <greater-than-equals>
-                    <property>/fdm/jsbsim/systems/gauges/PHI/wind/advise-light-on</property>
-                    <value>0.1</value>
-                </greater-than-equals>
-                <equals>
-                    <property>sim/G91/models/effects/als</property>
-                    <value>1</value>
-                </equals>
-            </and>
+            <greater-than-equals>
+                <property>/fdm/jsbsim/systems/gauges/PHI/wind/advise-light-on</property>
+                <value>0.1</value>
+            </greater-than-equals>
         </condition>
         <name>PHI_wind_advise_light_on</name>
         <path>procedural_light_PHI_yellow.xml</path>
@@ -344,12 +344,6 @@
     </model>
 
     <model>
-        <condition>
-            <equals>
-                <property>sim/G91/models/effects/als</property>
-                <value>1</value>
-            </equals>
-        </condition>
         <name>procedural_light_cockpit_gauge_spot_red</name>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Effects/lights/procedural_light_cockpit_gauge_spot_red.xml</path>
         <offsets>
