@@ -356,6 +356,10 @@
         <type>noshadow</type>
         <object-name>nav-light-left</object-name>
         <object-name>nav-light-right</object-name>
+        <object-name>A00_wing_light.glass_sx</object-name>
+        <object-name>A00_light_sphere_sx</object-name>
+        <object-name>A00_light_sphere_dx</object-name>
+        <object-name>A00_wing_light.glass_dx</object-name>
     </animation>
     
     <animation> 
@@ -1078,7 +1082,6 @@
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/exterior/exterior-glass</inherits-from>
         <object-name>A00_wing_light.glass_sx</object-name>
         <object-name>A00_light_sphere_sx</object-name>
-        <object-name>A00_light_sphere_dx</object-name>
     </effect>
     
     <animation> 
@@ -1091,8 +1094,8 @@
         </diffuse>
         <ambient>
             <red>0.8</red>
-            <green>0.8</green>
-            <blue>0.8</blue>
+            <green>0.0</green>
+            <blue>0.0</blue>
         </ambient>
         <emission>	
             <red>1.0</red>	
@@ -1103,7 +1106,7 @@
         <transparency>
             <alpha-prop>sim/G91/position_light_transparent</alpha-prop>
             <factor>1</factor>
-            <offset>0</offset>
+            <offset>0.1</offset>
         </transparency>
     </animation>
     
@@ -1162,9 +1165,9 @@
             <blue>0.19</blue>
         </diffuse>
         <ambient>
-            <red>0.8</red>
+            <red>0.0</red>
             <green>0.8</green>
-            <blue>0.8</blue>
+            <blue>0.0</blue>
         </ambient>
         <emission>	
             <red>0.0</red>	
@@ -1175,7 +1178,7 @@
         <transparency>
             <alpha-prop>sim/G91/position_light_transparent</alpha-prop>
             <factor>1</factor>
-            <offset>0</offset>
+            <offset>0.1</offset>
         </transparency>
     </animation>
     

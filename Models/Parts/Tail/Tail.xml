@@ -49,7 +49,6 @@
     <animation> 
         <type>material</type>
         <object-name>A__G91_fuselage_coda.002</object-name>
-        <object-name>A__G91_fuselage_coda.005</object-name>
         <object-name>A__G91_fuselage_coda.006</object-name>
         <object-name>A__G91_door_dx_coda.001</object-name>
         <object-name>A__G91_door_sx_coda.000</object-name>
@@ -73,6 +72,37 @@
             <blue>1.0</blue>
             <factor-prop>sim/G91/liveries/active/diffuse</factor-prop>
         </diffuse>
+        <!--
+        <ambient>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
+        </ambient>
+        -->
+        <specular>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+            <factor-prop>sim/G91/liveries/active/specular</factor-prop>
+        </specular>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>A__G91_fuselage_coda.005</object-name>
+        <diffuse>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+            <factor-prop>sim/G91/liveries/active/diffuse</factor-prop>
+        </diffuse>
+        <!--
+        <ambient>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
+        </ambient>
+        -->
         <specular>
             <red>1.0</red>
             <green>1.0</green>
@@ -136,6 +166,11 @@
         <type>noshadow</type>
         <object-name>nav-tail-light-yellow-dx</object-name>
         <object-name>nav-tail-light-yellow-sx</object-name>
+        <object-name>A_glass_red_est_coda</object-name>
+        <object-name>A_glass_red_int_coda</object-name>
+        <object-name>A_glass_white_est_coda</object-name>
+        <object-name>A_glass_white_int_coda</object-name>
+        <object-name>A__G91_light_coda-reflect.000</object-name>
     </animation>
     
     <animation> 
@@ -241,20 +276,26 @@
     <!-- Tail Lights -->
     
     <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/exterior/exterior-glass-reflection-beacon</inherits-from>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/exterior/exterior-glass</inherits-from>
         <object-name>A_glass_red_est_coda</object-name>
         <object-name>A_glass_red_int_coda</object-name>
-        <object-name>Sphere.007</object-name>
+        <object-name>A_glass_white_est_coda</object-name>
+        <object-name>A_glass_white_int_coda</object-name>
     </effect>
     
     <animation> 
         <type>material</type> 
         <object-name>A_glass_red_est_coda</object-name>
         <object-name>A_glass_red_int_coda</object-name>
+        <transparency>
+            <alpha-prop>sim/G91/position_light_transparent</alpha-prop>
+            <factor>0.8</factor>
+            <offset>0.1</offset>
+        </transparency>
         <diffuse>
-            <red>0.714</red>	
-            <green>0.6</green>	
-            <blue>0.0</blue>
+            <red>0.9</red>	
+            <green>0.5</green>	
+            <blue>0.1</blue>
         </diffuse>
         <ambient>
             <red>0.714</red>	
@@ -262,16 +303,11 @@
             <blue>0.0</blue>
         </ambient>
         <emission>	
-            <red>0.714</red>	
-            <green>0.6</green>	
-            <blue>0.18</blue>
+            <red>0.9</red>	
+            <green>0.5</green>	
+            <blue>0.1</blue>
             <factor-prop>sim/G91/position_light_glass_emission</factor-prop>
         </emission>
-        <transparency>
-            <alpha-prop>sim/G91/position_light_transparent</alpha-prop>
-            <factor>0.9</factor>
-            <offset>-0.2</offset>
-        </transparency>
         <specular>
             <red>0.1</red>
             <green>0.08</green>
@@ -282,10 +318,15 @@
     <animation> 
         <type>material</type> 
         <object-name>Sphere.007</object-name>
+        <transparency>
+            <alpha-prop>sim/G91/position_light_transparent</alpha-prop>
+            <factor>1</factor>
+            <offset>0.5</offset>
+        </transparency>
         <diffuse>
-            <red>0.714</red>	
-            <green>0.6</green>	
-            <blue>0.0</blue>
+            <red>0.9</red>	
+            <green>0.5</green>	
+            <blue>0.1</blue>
         </diffuse>
         <ambient>
             <red>1.0</red>
@@ -293,16 +334,11 @@
             <blue>1.0</blue>
         </ambient>
         <emission>	
-            <red>0.714</red>	
-            <green>0.6</green>	
-            <blue>0.18</blue>
+            <red>0.9</red>	
+            <green>0.8</green>	
+            <blue>0.6</blue>
             <factor-prop>sim/G91/position_light_emission</factor-prop>
         </emission>
-        <transparency>
-            <alpha-prop>sim/G91/position_light_transparent</alpha-prop>
-            <factor>1</factor>
-            <offset>0</offset>
-        </transparency>
     </animation>
     
     <model>
@@ -316,20 +352,24 @@
     </model>
     
     <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/exterior/exterior-glass-reflection-beacon</inherits-from>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/exterior/exterior-glass</inherits-from>
         <object-name>A_glass_white_est_coda</object-name>
         <object-name>A_glass_white_int_coda</object-name>
-        <object-name>Sphere.006</object-name>
     </effect>
     
     <animation> 
         <type>material</type> 
         <object-name>A_glass_white_est_coda</object-name>
         <object-name>A_glass_white_int_coda</object-name>
+        <transparency>
+            <alpha-prop>sim/G91/position_light_transparent</alpha-prop>
+            <factor>0.8</factor>
+            <offset>0.1</offset>
+        </transparency>
         <diffuse>
-            <red>0.714</red>	
-            <green>0.6</green>	
-            <blue>0.0</blue>
+            <red>0.9</red>	
+            <green>0.5</green>	
+            <blue>0.1</blue>
         </diffuse>
         <ambient>
             <red>0.714</red>	
@@ -337,16 +377,11 @@
             <blue>0.0</blue>
         </ambient>
         <emission>	
-            <red>0.714</red>	
-            <green>0.6</green>	
-            <blue>0.18</blue>
+            <red>0.9</red>	
+            <green>0.5</green>	
+            <blue>0.1</blue>
             <factor-prop>sim/G91/position_light_glass_emission</factor-prop>
         </emission>
-        <transparency>
-            <alpha-prop>sim/G91/position_light_transparent</alpha-prop>
-            <factor>0.9</factor>
-            <offset>-0.2</offset>
-        </transparency>
         <specular>
             <red>0.1</red>
             <green>0.08</green>
@@ -357,10 +392,15 @@
     <animation> 
         <type>material</type> 
         <object-name>Sphere.006</object-name>
+        <transparency>
+            <alpha-prop>sim/G91/position_light_transparent</alpha-prop>
+            <factor>1</factor>
+            <offset>0.5</offset>
+        </transparency>
         <diffuse>
-            <red>0.714</red>	
-            <green>0.6</green>	
-            <blue>0.0</blue>
+            <red>0.9</red>	
+            <green>0.5</green>	
+            <blue>0.1</blue>
         </diffuse>
         <ambient>
             <red>1.0</red>
@@ -373,11 +413,6 @@
             <blue>0.18</blue>
             <factor-prop>sim/G91/position_light_emission</factor-prop>
         </emission>
-        <transparency>
-            <alpha-prop>sim/G91/position_light_transparent</alpha-prop>
-            <factor>1</factor>
-            <offset>0</offset>
-        </transparency>
     </animation>
 
     <model>

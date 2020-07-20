@@ -13,9 +13,9 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
         <y-m>0.0</y-m>
         <z-m>0.0</z-m>
     </offsets>
-    
+
     <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_chrome</inherits-from>
         <object-name>support (Meshed)</object-name>
         <object-name>pin (Meshed)</object-name>
         <object-name>ring (Meshed)</object-name>
@@ -38,10 +38,10 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
             <alpha>0.0</alpha>
         </transparency>
     </animation>
-    
+  
     <animation> 
         <type>material</type>
-        <object-name>pin (Meshed)</object-name>
+        <object-name>pin (Meshed)</object-name>>
         <diffuse>
             <red>0.7</red>
             <green>0.7</green>

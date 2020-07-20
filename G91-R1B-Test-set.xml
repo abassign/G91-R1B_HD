@@ -30,12 +30,12 @@
             </testing>
             <models>
                 <active>
-                    <cockpit type="int">0</cockpit>
-                    <canopy type="int">0</canopy>
+                    <cockpit type="int">1</cockpit>
+                    <canopy type="int">1</canopy>
                     <fuselage type="int">1</fuselage>
-                    <turbojet type="int">0</turbojet>
-                    <stores type="int">0</stores>
-                    <accessories type="int">0</accessories>
+                    <turbojet type="int">1</turbojet>
+                    <stores type="int">1</stores>
+                    <accessories type="int">1</accessories>
                 </active>
                 <effects>
                     <als type="int">1</als>

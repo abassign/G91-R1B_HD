@@ -92,21 +92,21 @@
                         </binding>
                     </item>
                     <item>
-                        <label>JATO System</label>
-                        <binding>
-                            <command>nasal</command>
-                            <script>
-                                test_dialog = gui.Dialog.new("sim/gui/dialogs/G91/JATO/dialog","Aircraft/G91-R1B_HD/Dialogs/G91-JATO.xml");
-                                test_dialog.open();
-                            </script>
-                        </binding>
-                    </item>
-                    <item>
                         <label>Electric System</label>
                         <binding>
                             <command>nasal</command>
                             <script>
                                 test_dialog = gui.Dialog.new("sim/gui/dialogs/G91/Electric/dialog","Aircraft/G91-R1B_HD/Dialogs/G91-Electric.xml");
+                                test_dialog.open();
+                            </script>
+                        </binding>
+                    </item>
+                    <item>
+                        <label>JATO System</label>
+                        <binding>
+                            <command>nasal</command>
+                            <script>
+                                test_dialog = gui.Dialog.new("sim/gui/dialogs/G91/JATO/dialog","Aircraft/G91-R1B_HD/Dialogs/G91-JATO.xml");
                                 test_dialog.open();
                             </script>
                         </binding>

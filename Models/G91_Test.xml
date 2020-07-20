@@ -18,7 +18,7 @@
             </equals>
         </condition>
     </model>
-    
+<!--
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Canopy.xml</path>
         <condition>
@@ -28,7 +28,7 @@
             </equals>
         </condition>
     </model>
-    
+
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Wing/Wing.xml</path>
         <condition>
@@ -39,6 +39,16 @@
         </condition>
     </model>
     
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Tail/Tail.xml</path>
+        <condition>
+            <equals>
+                <property>sim/G91/models/active/fuselage</property>
+                <value>1</value>
+            </equals>
+        </condition>
+    </model>
+
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/LandingGearFrontal/LandingGearFrontal.xml</path>
         <condition>
@@ -51,16 +61,6 @@
 
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Fuselage_A/Fuselage_A0.xml</path>
-        <condition>
-            <equals>
-                <property>sim/G91/models/active/fuselage</property>
-                <value>1</value>
-            </equals>
-        </condition>
-    </model>
-
-    <model>
-        <path>Aircraft/G91-R1B_HD/Models/Parts/Tail/Tail.xml</path>
         <condition>
             <equals>
                 <property>sim/G91/models/active/fuselage</property>
@@ -155,6 +155,6 @@
             </equals>
         </condition>
     </model>
-
+    -->
 </PropertyList>
     

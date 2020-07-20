@@ -10,6 +10,9 @@
         <type>noshadow</type>
         <object-name>pb_light_effect</object-name>
         <object-name>Cone_reflect (Meshed)</object-name>
+        <object-name>transparent_button (Meshed)</object-name>
+        <object-name>light_Sphere (Meshed)</object-name>
+        <object-name>light_Sphere_hot (Meshed)</object-name>
     </animation>
     
     <animation> 
@@ -21,8 +24,8 @@
             <blue>0.0</blue>
         </diffuse>
         <ambient>
-            <red>0.0</red>
-            <green>0.0</green>
+            <red>0.3</red>
+            <green>0.2</green>
             <blue>0.0</blue>
         </ambient>
         <specular>
@@ -51,8 +54,8 @@
             <blue>0.0</blue>
         </diffuse>
         <ambient>
-            <red>0.0</red>
-            <green>0.0</green>
+            <red>0.3</red>
+            <green>0.2</green>
             <blue>0.0</blue>
         </ambient>
         <specular>
@@ -86,7 +89,7 @@
         </ambient>
         <emission>
             <red>0.8</red>
-            <green>0.4</green>
+            <green>0.8</green>
             <blue>0.3</blue>
             <factor-prop>fdm/jsbsim/systems/warning-lights/cockpit/wl-inverter-primary-off</factor-prop>
         </emission>
@@ -110,7 +113,7 @@
         </ambient>
         <emission>
             <red>1.5</red>
-            <green>0.5</green>
+            <green>2.0</green>
             <blue>2.0</blue>
             <factor-prop>fdm/jsbsim/systems/warning-lights/cockpit/wl-inverter-primary-off</factor-prop>
         </emission>

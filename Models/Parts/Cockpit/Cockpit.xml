@@ -39,6 +39,47 @@
         <object-name>tag box dx A (Meshed)</object-name>
     </effect>
 
+    <light>
+        <name>test-spotlight</name>
+        <type>point</type>
+        <position>
+            <x-m>-2.9</x-m>
+            <y-m>0.0</y-m>
+            <z-m>0.0</z-m>
+        </position>
+        <direction>
+            <x>-1.0</x>
+            <y>0.0</y>
+            <z>0.0</z>
+        </direction>
+        <ambient>
+            <r>0.0</r>
+            <g>0.0</g>
+            <b>0.0</b>
+            <a>1</a>
+        </ambient>
+        <diffuse>
+            <r>0.1</r>
+            <g>0.1</g>
+            <b>0.1</b>
+            <a>1</a>
+        </diffuse>
+        <specular>
+            <r>0.9</r>
+            <g>0.9</g>
+            <b>0.9</b>
+            <a>1</a>
+        </specular>
+        <attenuation>
+            <c>1.0</c>
+            <l>0.09</l>
+            <q>0.032</q>
+        </attenuation>
+        <spot-exponent>5</spot-exponent>
+        <spot-cutoff>0</spot-cutoff>
+        <range-m>200</range-m>
+    </light>
+
     <animation> 
         <type>material</type>
         <object-name>lateral_left (Meshed)</object-name>
@@ -825,9 +866,9 @@
     </model>
 
     <!-- Switch and light -->
-    
+
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Switchs_Lights/Frontal_pannel_switchs_lights.xml</path>
     </model>
-    
+
 </PropertyList> 

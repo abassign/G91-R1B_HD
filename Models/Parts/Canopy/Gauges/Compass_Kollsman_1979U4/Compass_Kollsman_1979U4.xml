@@ -6,27 +6,26 @@
         <inherits-from>Effects/model-transparent</inherits-from>
         <object-name>glass (Meshed)</object-name>
     </effect>
-
-    <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
-        <object-name>glass (Meshed)</object-name>
-        <object-name>internal_black (Meshed)</object-name>
-        <object-name>screews_external (Meshed)</object-name>
-        <object-name>screews_internal (Meshed)</object-name>
-        <object-name>screews_external_back (Meshed)</object-name>
-        <object-name>screews_lamp_cover (Meshed)</object-name>
-        <object-name>cover_external (Meshed)</object-name>
-        <object-name>cover_lamp (Meshed)</object-name>
-        <object-name>lamp_cover (Meshed)</object-name>
-        <object-name>support (Meshed)</object-name>
-        <object-name>Support (Meshed)</object-name>
-        <object-name>lubber_support (Meshed)</object-name>
-        <object-name>cone_support (Meshed)</object-name>
-    </effect>
     
     <animation>
         <type>noshadow</type>
         <object-name>procedural_light_canopy_spot_red</object-name>
+        <object-name>glass (Meshed)</object-name>
+        <object-name>cone_A (Meshed)</object-name>
+        <object-name>cone_B (Meshed)</object-name>
+        <object-name>internal_black (Meshed)</object-name>
+        <object-name>screews_external (Meshed)</object-name>
+        <object-name>screews_internal (Meshed)</object-name>
+        <object-name>screews_external_back (Meshed)</object-name>
+        <object-name>screews_back (Meshed)</object-name>
+        <object-name>screews_lamp_cover (Meshed)</object-name>
+        <object-name>cover_lamp (Meshed)</object-name>
+        <object-name>lamp_cover (Meshed)</object-name>
+        <object-name>cone_support (Meshed)</object-name>
+        <object-name>screews_externa_back_fixed (Meshed)</object-name>
+        <object-name>firm_back (Meshed)</object-name>
+        <object-name>label_back</object-name>
+        <object-name>lubber_line (Meshed)</object-name>
     </animation>
     
     <animation> 
@@ -105,9 +104,40 @@
             <blue>0.2</blue>
         </diffuse>
         <ambient>
-            <red>0.</red>
-            <green>0.</green>
-            <blue>0.</blue>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.3</blue>
+        </ambient>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>screews_externa_back_fixed (Meshed)</object-name>
+        <object-name>screews_back (Meshed)</object-name>
+        <diffuse>
+            <red>0.4</red>
+            <green>0.4</green>
+            <blue>0.4</blue>
+        </diffuse>
+        <ambient>
+            <red>0.7</red>
+            <green>0.7</green>
+            <blue>0.7</blue>
+        </ambient>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>firm_back (Meshed)</object-name>
+        <diffuse>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
+        </diffuse>
+        <ambient>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
         </ambient>
     </animation>
     

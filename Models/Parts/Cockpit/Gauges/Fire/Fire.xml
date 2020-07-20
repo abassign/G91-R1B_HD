@@ -5,17 +5,17 @@
     <path>fire.ac</path>
     
     <effect>
-        <inherits-from>Effects/model-transparent</inherits-from>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/exterior/exterior-glass</inherits-from>
         <object-name>lg_red_cover (Meshed)</object-name>
         <object-name>lg_fire (Meshed)</object-name>
     </effect>
     
     <animation>
         <type>noshadow</type>
+        <object-name>pb_light_effect</object-name>
+        <object-name>procedural_light_cockpit_gauge_spot_red</object-name>
         <object-name>box (Meshed)</object-name>
         <object-name>test_circuit (Meshed)</object-name>
-        <object-name>lg_red_cover (Meshed)</object-name>
-        <object-name>lg_fire (Meshed)</object-name>
         <object-name>lg_red_cover (Meshed)</object-name>
         <object-name>lg_fire (Meshed)</object-name>
         <object-name>switch_2_level (Meshed)</object-name>
@@ -24,11 +24,17 @@
         <object-name>switch_2_base (Meshed)</object-name>
     </animation>
     
-    <animation>
-        <type>noshadow</type>
-        <name>pb_light_effect</name>
-        <name>procedural_light_cockpit_gauge_spot_red</name>
-    </animation>
+    <effect>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
+        <object-name>box (Meshed)</object-name>
+        <object-name>test_circuit (Meshed)</object-name>
+        <object-name>lg_red_cover (Meshed)</object-name>
+        <object-name>lg_fire (Meshed)</object-name>
+        <object-name>switch_2_level (Meshed)</object-name>
+        <object-name>switch_2_cone (Meshed)</object-name>
+        <object-name>switch_2_ring (Meshed)</object-name>
+        <object-name>switch_2_base (Meshed)</object-name>
+    </effect>
     
     <animation> 
         <type>material</type>
@@ -205,7 +211,7 @@
         <type>material</type>
         <object-name>lg_red_cover (Meshed)</object-name>
         <transparency>
-            <alpha>1.0</alpha>
+            <alpha>0.5</alpha>
         </transparency>
         <diffuse>
             <red>0.8</red>
@@ -213,14 +219,14 @@
             <blue>0.0</blue>
         </diffuse>
         <ambient>
-            <red>0.1</red>
-            <green>0.1</green>
-            <blue>0.1</blue>
+            <red>0.3</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
         </ambient>
         <specular>
-            <red>0.5</red>
-            <green>0.5</green>
-            <blue>0.5</blue>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
         </specular>
         <emission>
             <red>0.8</red>
@@ -239,7 +245,7 @@
             <blue>0.0</blue>
         </diffuse>
         <ambient>
-            <red>0.0</red>
+            <red>0.2</red>
             <green>0.0</green>
             <blue>0.0</blue>
         </ambient>
@@ -259,19 +265,19 @@
             <factor-prop>fdm/jsbsim/systems/gauges/cockpit-fire-light-transparent</factor-prop>
         </transparency>
         <diffuse>
-            <red>1</red>
-            <green>1</green>
-            <blue>1</blue>
+            <red>0.3</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
         </diffuse>
         <ambient>
-            <red>1</red>
+            <red>0.5</red>
             <green>0.0</green>
             <blue>0.0</blue>
         </ambient>
         <emission>
             <red>0.9</red>
             <green>0.9</green>
-            <blue>0.9</blue>
+            <blue>0.6</blue>
             <factor-prop>fdm/jsbsim/systems/gauges/cockpit-fire-light-intensity</factor-prop>
         </emission>
     </animation>
