@@ -11,8 +11,8 @@
         <object-name>test switch (Meshed)</object-name>
     </effect>
     
-    <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
+    <animation>
+        <type>noshadow</type>
         <object-name>arrow B (Meshed)</object-name>
         <object-name>axis (Meshed)</object-name>
         <object-name>box_cover_adapter (Meshed)</object-name>
@@ -37,7 +37,10 @@
         <object-name>screws internal (Meshed)</object-name>
         <object-name>white_level_A (Meshed)</object-name>
         <object-name>white_level_B (Meshed)</object-name>
-    </effect>
+        <object-name>glass (Meshed)</object-name>
+        <object-name>glass flow (Meshed)</object-name>
+        <object-name>test switch (Meshed)</object-name>
+    </animation>
     
     <animation> 
         <type>material</type>

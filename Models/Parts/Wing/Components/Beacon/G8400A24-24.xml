@@ -386,38 +386,4 @@
         </offsets>
     </model>
     
-    <light>
-      <name>Top Beacon Compositor</name>
-      <type>point</type>
-      <position>
-        <x-m>-3.015</x-m>
-        <y-m>0.0</y-m>
-        <z-m>-1.0</z-m>
-      </position>
-      <ambient>
-        <r>1.0</r>
-        <g>0.0</g>
-        <b>0.0</b>
-        <a>1</a>
-      </ambient>
-      <diffuse>
-        <r>1.0</r>
-        <g>0.0</g>
-        <b>0.0</b>
-        <a>1</a>
-      </diffuse>
-      <specular>
-        <r>0.95</r>
-        <g>0.0</g>
-        <b>0.0</b>
-        <a>1</a>
-      </specular>
-      <attenuation>
-        <c>1.0</c>
-        <l>2.25</l>
-        <q>12.0</q>
-      </attenuation>
-      <range-m>2.5</range-m>
-    </light>
-    
 </PropertyList>

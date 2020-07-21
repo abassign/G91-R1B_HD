@@ -9,9 +9,21 @@
         <object-name>breaker screews (Meshed)</object-name>
         <object-name>breaker rings (Meshed)</object-name>
         <object-name>breaker body (Meshed)</object-name>
-        <object-name>text (Meshed)</object-name>
+        <object-name>text 01 (Meshed)</object-name>
+        <object-name>text 02 (Meshed)</object-name>
         <object-name>Extrude (Meshed)</object-name>
     </effect>
+    
+    <animation>
+        <type>noshadow</type>
+        <object-name>breaker screews (Meshed)</object-name>
+        <object-name>breaker rings (Meshed)</object-name>
+        <object-name>breaker body (Meshed)</object-name>
+        <object-name>text (Meshed)</object-name>
+        <object-name>text 01 (Meshed)</object-name>
+        <object-name>text 02 (Meshed)</object-name>
+        <object-name>Extrude (Meshed)</object-name>
+    </animation>
 
     <animation> 
         <type>material</type>
@@ -117,6 +129,80 @@
             <factor-prop>sim/G91/re_emit/light_red_console</factor-prop>
         </emission>
     </animation>
+    
+    <animation>
+        <type>noshadow</type>
+        <object-name>breaker b 01-01 (Meshed)</object-name>
+        <object-name>breaker b 01-02 (Meshed)</object-name>
+        <object-name>breaker b 01-03 (Meshed)</object-name>
+        <object-name>breaker b 01-04 (Meshed)</object-name>
+        <object-name>breaker b 01-05 (Meshed)</object-name>
+        <object-name>breaker b 01-06 (Meshed)</object-name>
+        <object-name>breaker b 01-07 (Meshed)</object-name>
+        <object-name>breaker b 01-08 (Meshed)</object-name>
+        <object-name>breaker b 01-09 (Meshed)</object-name>
+        <object-name>breaker b 01-10 (Meshed)</object-name>
+        <object-name>breaker b 01-11 (Meshed)</object-name>
+        <object-name>breaker b 01-12 (Meshed)</object-name>
+        <object-name>breaker b 02-01 (Meshed)</object-name>
+        <object-name>breaker b 02-02 (Meshed)</object-name>
+        <object-name>breaker b 02-03 (Meshed)</object-name>
+        <object-name>breaker b 02-04 (Meshed)</object-name>
+        <object-name>breaker b 02-05 (Meshed)</object-name>
+        <object-name>breaker b 02-06 (Meshed)</object-name>
+        <object-name>breaker b 02-07 (Meshed)</object-name>
+        <object-name>breaker b 02-08 (Meshed)</object-name>
+        <object-name>breaker b 02-09 (Meshed)</object-name>
+        <object-name>breaker b 02-10 (Meshed)</object-name>
+        <object-name>breaker b 02-11 (Meshed)</object-name>
+        <object-name>breaker b 02-12 (Meshed)</object-name>
+        <object-name>breaker b 02-13 (Meshed)</object-name>
+        <object-name>breaker b 02-14 (Meshed)</object-name>
+        <object-name>breaker b 03-01 (Meshed)</object-name>
+        <object-name>breaker b 03-02 (Meshed)</object-name>
+        <object-name>breaker b 03-03 (Meshed)</object-name>
+        <object-name>breaker b 03-04 (Meshed)</object-name>
+        <object-name>breaker b 03-05 (Meshed)</object-name>
+        <object-name>breaker b 03-06 (Meshed)</object-name>
+        <object-name>breaker b 03-07 (Meshed)</object-name>
+        <object-name>breaker b 03-08 (Meshed)</object-name>
+        <object-name>breaker b 03-09 (Meshed)</object-name>
+        <object-name>breaker b 03-10 (Meshed)</object-name>
+        <object-name>breaker b 03-11 (Meshed)</object-name>
+        <object-name>breaker b 03-12 (Meshed)</object-name>
+        <object-name>breaker b 03-13 (Meshed)</object-name>
+        <object-name>breaker b 03-14 (Meshed)</object-name>
+        <object-name>breaker b 03-15 (Meshed)</object-name>
+        <object-name>breaker b 03-16 (Meshed)</object-name>
+        <object-name>breaker b 04-01 (Meshed)</object-name>
+        <object-name>breaker b 04-02 (Meshed)</object-name>
+        <object-name>breaker b 04-03 (Meshed)</object-name>
+        <object-name>breaker b 04-04 (Meshed)</object-name>
+        <object-name>breaker b 04-05 (Meshed)</object-name>
+        <object-name>breaker b 04-06 (Meshed)</object-name>
+        <object-name>breaker b 04-07 (Meshed)</object-name>
+        <object-name>breaker b 04-08 (Meshed)</object-name>
+        <object-name>breaker b 04-09 (Meshed)</object-name>
+        <object-name>breaker b 04-10 (Meshed)</object-name>
+        <object-name>breaker b 04-11 (Meshed)</object-name>
+        <object-name>breaker b 04-12 (Meshed)</object-name>
+        <object-name>breaker b 04-13 (Meshed)</object-name>
+        <object-name>breaker b 04-14 (Meshed)</object-name>
+        <object-name>breaker b 04-15 (Meshed)</object-name>
+        <object-name>breaker b 04-16 (Meshed)</object-name>
+        <object-name>breaker b 05-01 (Meshed)</object-name>
+        <object-name>breaker b 05-02 (Meshed)</object-name>
+        <object-name>breaker b 05-03 (Meshed)</object-name>
+        <object-name>breaker b 05-04 (Meshed)</object-name>
+        <object-name>breaker b 05-05 (Meshed)</object-name>
+        <object-name>breaker b 05-06 (Meshed)</object-name>
+        <object-name>breaker b 05-07 (Meshed)</object-name>
+        <object-name>breaker b 05-08 (Meshed)</object-name>
+        <object-name>breaker b 05-09 (Meshed)</object-name>
+        <object-name>breaker b 05-10 (Meshed)</object-name>
+        <object-name>breaker b 05-11 (Meshed)</object-name>
+        <object-name>breaker b 05-12 (Meshed)</object-name>
+    </animation>
 
     <animation> 
         <type>material</type>
@@ -211,6 +297,80 @@
             <blue>0.0</blue>
             <factor-prop>sim/G91/re_emit/light_red_console</factor-prop>
         </emission>
+    </animation>
+    
+    <animation>
+        <type>noshadow</type>
+        <object-name>breaker w 01-01 (Meshed)</object-name>
+        <object-name>breaker w 01-02 (Meshed)</object-name>
+        <object-name>breaker w 01-03 (Meshed)</object-name>
+        <object-name>breaker w 01-04 (Meshed)</object-name>
+        <object-name>breaker w 01-05 (Meshed)</object-name>
+        <object-name>breaker w 01-06 (Meshed)</object-name>
+        <object-name>breaker w 01-07 (Meshed)</object-name>
+        <object-name>breaker w 01-08 (Meshed)</object-name>
+        <object-name>breaker w 01-09 (Meshed)</object-name>
+        <object-name>breaker w 01-10 (Meshed)</object-name>
+        <object-name>breaker w 01-11 (Meshed)</object-name>
+        <object-name>breaker w 01-12 (Meshed)</object-name>
+        <object-name>breaker w 02-01 (Meshed)</object-name>
+        <object-name>breaker w 02-02 (Meshed)</object-name>
+        <object-name>breaker w 02-03 (Meshed)</object-name>
+        <object-name>breaker w 02-04 (Meshed)</object-name>
+        <object-name>breaker w 02-05 (Meshed)</object-name>
+        <object-name>breaker w 02-06 (Meshed)</object-name>
+        <object-name>breaker w 02-07 (Meshed)</object-name>
+        <object-name>breaker w 02-08 (Meshed)</object-name>
+        <object-name>breaker w 02-09 (Meshed)</object-name>
+        <object-name>breaker w 02-10 (Meshed)</object-name>
+        <object-name>breaker w 02-11 (Meshed)</object-name>
+        <object-name>breaker w 02-12 (Meshed)</object-name>
+        <object-name>breaker w 02-13 (Meshed)</object-name>
+        <object-name>breaker w 02-14 (Meshed)</object-name>
+        <object-name>breaker w 03-01 (Meshed)</object-name>
+        <object-name>breaker w 03-02 (Meshed)</object-name>
+        <object-name>breaker w 03-03 (Meshed)</object-name>
+        <object-name>breaker w 03-04 (Meshed)</object-name>
+        <object-name>breaker w 03-05 (Meshed)</object-name>
+        <object-name>breaker w 03-06 (Meshed)</object-name>
+        <object-name>breaker w 03-07 (Meshed)</object-name>
+        <object-name>breaker w 03-08 (Meshed)</object-name>
+        <object-name>breaker w 03-09 (Meshed)</object-name>
+        <object-name>breaker w 03-10 (Meshed)</object-name>
+        <object-name>breaker w 03-11 (Meshed)</object-name>
+        <object-name>breaker w 03-12 (Meshed)</object-name>
+        <object-name>breaker w 03-13 (Meshed)</object-name>
+        <object-name>breaker w 03-14 (Meshed)</object-name>
+        <object-name>breaker w 03-15 (Meshed)</object-name>
+        <object-name>breaker w 03-16 (Meshed)</object-name>
+        <object-name>breaker w 04-01 (Meshed)</object-name>
+        <object-name>breaker w 04-02 (Meshed)</object-name>
+        <object-name>breaker w 04-03 (Meshed)</object-name>
+        <object-name>breaker w 04-04 (Meshed)</object-name>
+        <object-name>breaker w 04-05 (Meshed)</object-name>
+        <object-name>breaker w 04-06 (Meshed)</object-name>
+        <object-name>breaker w 04-07 (Meshed)</object-name>
+        <object-name>breaker w 04-08 (Meshed)</object-name>
+        <object-name>breaker w 04-09 (Meshed)</object-name>
+        <object-name>breaker w 04-10 (Meshed)</object-name>
+        <object-name>breaker w 04-11 (Meshed)</object-name>
+        <object-name>breaker w 04-12 (Meshed)</object-name>
+        <object-name>breaker w 04-13 (Meshed)</object-name>
+        <object-name>breaker w 04-14 (Meshed)</object-name>
+        <object-name>breaker w 04-15 (Meshed)</object-name>
+        <object-name>breaker w 04-16 (Meshed)</object-name>
+        <object-name>breaker w 05-01 (Meshed)</object-name>
+        <object-name>breaker w 05-02 (Meshed)</object-name>
+        <object-name>breaker w 05-03 (Meshed)</object-name>
+        <object-name>breaker w 05-04 (Meshed)</object-name>
+        <object-name>breaker w 05-05 (Meshed)</object-name>
+        <object-name>breaker w 05-06 (Meshed)</object-name>
+        <object-name>breaker w 05-07 (Meshed)</object-name>
+        <object-name>breaker w 05-08 (Meshed)</object-name>
+        <object-name>breaker w 05-09 (Meshed)</object-name>
+        <object-name>breaker w 05-10 (Meshed)</object-name>
+        <object-name>breaker w 05-11 (Meshed)</object-name>
+        <object-name>breaker w 05-12 (Meshed)</object-name>
     </animation>
 
     <animation> 

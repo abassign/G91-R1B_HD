@@ -2,8 +2,10 @@
     
     <path>ADF-Marconi-8283.ac</path>
     
-    <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
+    <animation>
+        <type>noshadow</type>
+        <object-name>freq window (Meshed)</object-name>
+        <object-name>tune glass (Meshed)</object-name>
         <object-name>box_cover_sup (Meshed)</object-name>
         <object-name>box_cover_adapter (Meshed)</object-name>
         <object-name>box_cover_inf (Meshed)</object-name>
@@ -16,7 +18,6 @@
         <object-name>freq drum A (Meshed)</object-name>
         <object-name>freq drum B (Meshed)</object-name>
         <object-name>freq dime (Meshed)</object-name>
-        <object-name>gain (Meshed)</object-name>
         <object-name>tune ring (Meshed)</object-name>
         <object-name>tune frontal 01 (Meshed)</object-name>
         <object-name>tune back (Meshed)</object-name>
@@ -26,19 +27,15 @@
         <object-name>tune screws (Meshed)</object-name>
         <object-name>tune legenda A (Meshed)</object-name>
         <object-name>screws block (Meshed)</object-name>
-        <object-name>crank arm (Meshed)</object-name>
-        <object-name>crank sxis (Meshed)</object-name>
-        <object-name>crank knob (Meshed)</object-name>
-        <object-name>crank rod (Meshed)</object-name>
         <object-name>switch ON lever (Meshed)</object-name>
         <object-name>switch ON nut (Meshed)</object-name>
         <object-name>switch ON screw (Meshed)</object-name>
+        <object-name>switch CW lever (Meshed)</object-name>
         <object-name>switch CW nut (Meshed)</object-name>
         <object-name>switch CW screw (Meshed)</object-name>
-        <object-name>switch CW lever (Meshed)</object-name>
+        <object-name>switch ADF lever (Meshed)</object-name>
         <object-name>switch ADF nut (Meshed)</object-name>
         <object-name>switch ADF screw (Meshed)</object-name>
-        <object-name>switch ADF lever (Meshed)</object-name>
         <object-name>switch dim push base (Meshed)</object-name>
         <object-name>switch dim push top (Meshed)</object-name>
         <object-name>lamp support top 02 (Meshed)</object-name>
@@ -55,7 +52,12 @@
         <object-name>box_cover_sup A (Meshed)</object-name>
         <object-name>box_cover_sup (Meshed)</object-name>
         <object-name>freq band selector (Meshed)</object-name>
-    </effect>
+        <object-name>gain (Meshed)</object-name>
+        <object-name>crank arm (Meshed)</object-name>
+        <object-name>crank sxis (Meshed)</object-name>
+        <object-name>crank knob (Meshed)</object-name>
+        <object-name>crank rod (Meshed)</object-name>
+    </animation>
     
     <effect>
         <inherits-from>Effects/model-transparent</inherits-from>

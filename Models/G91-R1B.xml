@@ -173,6 +173,49 @@
             </equals>
         </condition>
     </model>
+    
+    <!-- effects for cabin -->
+    
+    <light>
+        <name>test-spotlight</name>
+        <type>point</type>
+        <position>
+            <x-m>-2.7</x-m>
+            <y-m>0.0</y-m>
+            <z-m>0.0</z-m>
+        </position>
+        <direction>
+            <x>-1.0</x>
+            <y>0.0</y>
+            <z>0.0</z>
+        </direction>
+        <ambient>
+            <r>0.0</r>
+            <g>0.0</g>
+            <b>0.0</b>
+            <a>1</a>
+        </ambient>
+        <diffuse>
+            <r>0.1</r>
+            <g>0.1</g>
+            <b>0.1</b>
+            <a>1</a>
+        </diffuse>
+        <specular>
+            <r>0.5</r>
+            <g>0.5</g>
+            <b>0.5</b>
+            <a>1</a>
+        </specular>
+        <attenuation>
+            <c>1.0</c>
+            <l>0.09</l>
+            <q>0.032</q>
+        </attenuation>
+        <spot-exponent>5</spot-exponent>
+        <spot-cutoff>0</spot-cutoff>
+        <range-m>3</range-m>
+    </light>
 
 </PropertyList>
     

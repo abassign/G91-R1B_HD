@@ -14,14 +14,17 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
         <z-m>0.0</z-m>
     </offsets>
     
-    <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
+    <animation>
+        <type>noshadow</type>
         <object-name>pin (Meshed)</object-name>
         <object-name>ring (Meshed)</object-name>
         <object-name>nut (Meshed)</object-name>
         <object-name>Fillet (Meshed)</object-name>
         <object-name>Chamfer (Meshed)</object-name>
-    </effect>
+        <object-name>sensor 1 (Meshed)</object-name>
+        <object-name>sensor 2 (Meshed)</object-name>
+        <object-name>sensor 3 (Meshed)</object-name>
+    </animation>
     
     <effect>
         <inherits-from>Effects/model-transparent</inherits-from>

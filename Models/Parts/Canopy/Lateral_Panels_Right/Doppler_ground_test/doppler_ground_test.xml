@@ -4,11 +4,11 @@
     
     <path>doppler_ground_test.ac</path>
     
-    <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
+    <animation>
+        <type>noshadow</type>
         <object-name>square (Meshed)</object-name>
         <object-name>text A (Meshed)</object-name>
-    </effect>
+    </animation>
     
     <animation> 
         <type>material</type>

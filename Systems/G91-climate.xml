@@ -201,7 +201,7 @@
                 
         <lag_filter name="systems/climate/sw-set-pos_y">
             <input>systems/climate/sw-set-y</input>
-            <c1>2.0</c1>
+            <c1>4.0</c1>
         </lag_filter>
         
         <switch name="systems/climate/sw-set-z">
@@ -219,7 +219,7 @@
         
         <lag_filter name="systems/climate/sw-set-pos_z">
             <input>systems/climate/sw-set-z</input>
-            <c1>2.0</c1>
+            <c1>4.0</c1>
         </lag_filter>
         
     </channel>
@@ -229,7 +229,7 @@
         
         <lag_filter name="systems/climate/sw-pressuriz-pos">
             <input>systems/climate/sw-pressuriz</input>
-            <c1>2.0</c1>
+            <c1>4.0</c1>
         </lag_filter>
         
         <switch name="systems/climate/sw-pressuriz-active">
@@ -256,7 +256,7 @@
         
         <lag_filter name="systems/climate/sw-pilot-heat-pos">
             <input>systems/climate/sw-pilot-heat</input>
-            <c1>2.0</c1>
+            <c1>4.0</c1>
         </lag_filter>
         
         <switch name="systems/climate/sw-pilot-heat-active">

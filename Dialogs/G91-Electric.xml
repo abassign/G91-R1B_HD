@@ -400,7 +400,7 @@
                 <row>0</row>
                 <col>3</col>
                 <halign>fill</halign>
-                <property>fdm/jsbsim/systems/electric/bus[1]/anti-collision-light/sw</property>
+                <property>fdm/jsbsim/systems/manual-switches/lateral_panel_right/lightning/sw-anticollision-togle</property>
                 <live>true</live>
                 <binding>
                     <command>dialog-apply</command>
@@ -416,7 +416,7 @@
                 <row>0</row>
                 <col>5</col>
                 <halign>fill</halign>
-                <property>fdm/jsbsim/systems/manual-switches/cockpit/sw-beacon-light</property>
+                <property>fdm/jsbsim/systems/manual-switches/lateral_panel_right/lightning/sw-flasher-togle</property>
                 <live>true</live>
                 <binding>
                     <command>dialog-apply</command>

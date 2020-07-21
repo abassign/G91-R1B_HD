@@ -206,7 +206,7 @@
         <switch name="systems/lightning/beacon/on">
             <default value="0"/>
             <test logic="AND" value="systems/lightning/intensity-bus1-norm">
-                systems/manual-switches/cockpit/sw-beacon-light-pos GT 0.85
+                systems/manual-switches/lateral_panel_right/lightning/sw-flasher-on == 1
                 systems/electric/bus[1]/anti-collision-light/fuse == 1
             </test>
         </switch>
@@ -222,6 +222,12 @@
                 systems/lightning/beacon/on GT 0.1
             </test>
         </switch>
+
+    </channel>
+    
+    <channel name="position lights" execrate="32">
+
+
 
     </channel>
     

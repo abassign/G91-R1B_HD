@@ -2,7 +2,7 @@
 
 <PropertyList>
     
-    <path>canopy.ac</path>
+    <path>canopy_new.ac</path>
     
     <offsets>
         <x-m>0.0</x-m>
@@ -11,6 +11,7 @@
         <pitch-deg>0.0</pitch-deg>
     </offsets>
     
+    <!--
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading_canopy</inherits-from>
         <object-name>F_test_abitacolo1</object-name>
@@ -43,14 +44,157 @@
         <object-name>F_Segg_support.</object-name>
         <object-name>A__G91_fuselage_canopy.001</object-name>
     </effect>
+    -->
+    
+    <animation>
+        <type>noshadow</type>
+        <object-name>anticollision cave (Meshed)</object-name>
+        <object-name>anticollision glass (Meshed)</object-name>
+        <object-name>anticollision lamp (Meshed)</object-name>
+        <object-name>anticollision mirror (Meshed)</object-name>
+        <object-name>anticollision screws (Meshed)</object-name>
+        <object-name>F_dadi</object-name>
+        <object-name>F_dadi.001</object-name>
+        <object-name>F_dadi.002</object-name>
+        <object-name>F_dadi.003</object-name>
+        <object-name>F_dadi.005</object-name>
+        <object-name>F_dadi.006</object-name>
+        <object-name>F_dadi.007</object-name>
+        <object-name>F_dadi.008</object-name>
+        <object-name>F_dadi canopy_ant.001</object-name>
+        <object-name>F_dadi canopy_ant.002</object-name>
+        <object-name>F_dadi canopy_ant.003</object-name>
+        <object-name>F_dadi canopy_ant.005</object-name>
+        <object-name>F_dadi canopy_ant.006</object-name>
+        <object-name>F_dadi canopy_ant.008</object-name>
+        <object-name>F_dadi canopy_ant</object-name>
+        <object-name>F_Segg_support.</object-name>
+    </animation>
     
     <!-- Chrome Effects on materials -->
+    <!--
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Liveries/liveries_001</inherits-from>
         <object-name>F_canopY_ant</object-name>
         <object-name>A__G91_fuselage_canopy</object-name>
     </effect>
+    -->
     
+    <animation> 
+        <type>material</type>
+        <object-name>anticollision mirror (Meshed)</object-name>
+        <diffuse>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+        </diffuse>
+        <ambient>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+        </ambient>
+        <emission>
+            <red>0.9</red>
+            <green>0.9</green>
+            <blue>0.9</blue>
+            <factor-prop>sim/G91/position_light_glass_emission</factor-prop>
+        </emission>
+    </animation>
+
+    <animation> 
+        <type>material</type>
+        <object-name>anticollision glass (Meshed)</object-name>
+        <transparency>
+            <alpha-prop>sim/G91/position_light_transparent</alpha-prop>
+            <factor>0.5</factor>
+            <offset>0.0</offset>
+        </transparency>
+        <diffuse>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+        </diffuse>
+        <ambient>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </ambient>
+        <emission>	
+            <red>0.5</red>	
+            <green>0.5</green>	
+            <blue>0.4</blue>
+            <factor-prop>sim/G91/position_light_glass_emission</factor-prop>
+        </emission>
+    </animation>
+
+    <animation> 
+        <type>material</type> 
+        <object-name>anticollision lamp (Meshed)</object-name>
+        <transparency>
+            <alpha-prop>sim/G91/position_light_transparent</alpha-prop>
+            <factor>1</factor>
+            <offset>0</offset>
+        </transparency>
+        <diffuse>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </diffuse>
+        <ambient>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.3</blue>
+        </ambient>
+        <emission>	
+            <red>1.0</red>	
+            <green>1.0</green>	
+            <blue>1.0</blue>
+            <factor-prop>sim/G91/position_light_emission</factor-prop>
+        </emission>
+    </animation>
+
+    <animation> 
+        <type>material</type> 
+        <object-name>anticollision cave (Meshed)</object-name>
+        <diffuse>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+        </diffuse>
+        <ambient>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+        </ambient>
+        <emission>	
+            <red>0.7</red>	
+            <green>0.7</green>	
+            <blue>0.7</blue>
+            <factor-prop>sim/G91/position_light_emission</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>anticollision screws (Meshed)</object-name>
+        <diffuse>
+            <red>0.6</red>
+            <green>0.6</green>
+            <blue>0.6</blue>
+        </diffuse>
+        <ambient>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
+        </ambient>
+        <emission>	
+            <red>0.3</red>	
+            <green>0.3</green>	
+            <blue>0.3</blue>
+            <factor-prop>sim/G91/position_light_glass_emission</factor-prop>
+        </emission>
+    </animation>
+
     <animation> 
         <type>material</type>
         <object-name>F_canopY_ant</object-name>

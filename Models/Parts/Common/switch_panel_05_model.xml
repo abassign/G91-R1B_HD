@@ -23,6 +23,15 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
         <object-name>nut (Meshed)</object-name>
         <object-name>screew (Meshed)</object-name>
     </effect>
+    
+    <animation>
+        <type>noshadow</type>
+        <object-name>support (Meshed)</object-name>
+        <object-name>pin (Meshed)</object-name>
+        <object-name>ring (Meshed)</object-name>
+        <object-name>nut (Meshed)</object-name>
+        <object-name>screew (Meshed)</object-name>
+    </animation>
 
     <effect>
         <inherits-from>Effects/model-transparent</inherits-from>

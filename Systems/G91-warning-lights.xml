@@ -112,7 +112,6 @@
         
     </channel>
 
-    
     <function name="systems/warning-lights/light-intensity-by-battery-tension">
         <table>
             <independentVar>systems/electric/bus[0]/V</independentVar>

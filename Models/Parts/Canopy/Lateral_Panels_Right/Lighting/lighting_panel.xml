@@ -4,10 +4,11 @@
     
     <path>lighting_panel.ac</path>
     
-    <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
+    <animation>
+        <type>noshadow</type>
         <object-name>frontal support back (Meshed)</object-name>
         <object-name>frontal support B (Meshed)</object-name>
+        <object-name>frontal support A (Meshed)</object-name>
         <object-name>instrument lights B (Meshed)</object-name>
         <object-name>instrument lights A (Meshed)</object-name>
         <object-name>console lights B (Meshed)</object-name>
@@ -16,7 +17,7 @@
         <object-name>console panel lights A (Meshed)</object-name>
         <object-name>frontal screews (Meshed)</object-name>
         <object-name>screews (Meshed)</object-name>
-    </effect>
+    </animation>
     
     <animation> 
         <type>material</type>
