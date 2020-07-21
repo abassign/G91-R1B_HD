@@ -204,6 +204,7 @@
             <!-- Lights -->
             <file>Aircraft/G91-R1B_HD/Models/Parts/LandingGearFrontal/NASAL/frontal_gear_lights.nas</file>
             <file>Aircraft/G91-R1B_HD/Models/Parts/Wing/Components/Beacon/Nasal/beacon_lights.nas</file>
+            <file>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Nasal/anticollision_lights.nas</file>
             <!-- Gauges -->
             <file>Aircraft/G91-R1B_HD/Nasal/Gauges/clock.nas</file>
             <file>Aircraft/G91-R1B_HD/Nasal/Gauges/accelerometer.nas</file>

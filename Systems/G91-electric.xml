@@ -81,8 +81,9 @@ Description: G91R4 Electric system from "Manuale di pilotaggio (p.56)
     <property value="0.0">systems/electric/bus[1]/wing-flap/I</property>
     <property value="1">systems/electric/bus[1]/electric-limiter-tamper-jet/fuse</property>
     <property value="1">systems/electric/bus[1]/anti-collision-light/fuse</property>
-    <property value="0">systems/electric/bus[1]/anti-collision-light/sw</property>
     <property value="0.0">systems/electric/bus[1]/anti-collision-light/I</property>
+    <property value="1">systems/electric/bus[1]/beacon-light/fuse</property>
+    <property value="0.0">systems/electric/bus[1]/beacon-light/I</property>
     <property value="1">systems/electric/bus[1]/instrument-panel-emerg-lights/fuse</property>
     <property value="0.0">systems/electric/bus[1]/instrument-panel-emerg-lights/I</property>
     <property value="1">systems/electric/bus[1]/instrument-flood-lights/fuse</property>
@@ -180,6 +181,8 @@ Description: G91R4 Electric system from "Manuale di pilotaggio (p.56)
             <input>systems/electric/bus[1]/UHF-radio-emergency/I</input>
             <input>systems/electric/bus[1]/pitot-heating/I</input>
             <input>systems/electric/bus[1]/beacon/I</input>
+            <input>systems/electric/bus[1]/anticollision/I</input>
+            <input>systems/electric/bus[1]/beacon-light/I</input>
             <input>systems/electric/bus[1]/starter/I</input>
             <input>systems/electric/bus[1]/primary-inverter/I</input>
             <input>systems/electric/bus[1]/secondary-inverter/I</input>

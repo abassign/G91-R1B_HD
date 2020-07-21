@@ -2,7 +2,7 @@
 
 <PropertyList>
     
-    <path>canopy_new.ac</path>
+    <path>canopy.ac</path>
     
     <offsets>
         <x-m>0.0</x-m>
@@ -72,13 +72,12 @@
     </animation>
     
     <!-- Chrome Effects on materials -->
-    <!--
+
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Liveries/liveries_001</inherits-from>
         <object-name>F_canopY_ant</object-name>
         <object-name>A__G91_fuselage_canopy</object-name>
     </effect>
-    -->
     
     <animation> 
         <type>material</type>
@@ -97,7 +96,7 @@
             <red>0.9</red>
             <green>0.9</green>
             <blue>0.9</blue>
-            <factor-prop>sim/G91/position_light_glass_emission</factor-prop>
+            <factor-prop>sim/G91/lightning/anticollision-light/intensity_mirror</factor-prop>
         </emission>
     </animation>
 
@@ -105,8 +104,8 @@
         <type>material</type>
         <object-name>anticollision glass (Meshed)</object-name>
         <transparency>
-            <alpha-prop>sim/G91/position_light_transparent</alpha-prop>
-            <factor>0.5</factor>
+            <alpha-prop>sim/G91/lightning/anticollision-light/transparent_cover</alpha-prop>
+            <factor>0.4</factor>
             <offset>0.0</offset>
         </transparency>
         <diffuse>
@@ -120,10 +119,10 @@
             <blue>0.8</blue>
         </ambient>
         <emission>	
-            <red>0.5</red>	
-            <green>0.5</green>	
-            <blue>0.4</blue>
-            <factor-prop>sim/G91/position_light_glass_emission</factor-prop>
+            <red>0.3</red>	
+            <green>0.3</green>	
+            <blue>0.2</blue>
+            <factor-prop>sim/G91/lightning/anticollision-light/emission_cover</factor-prop>
         </emission>
     </animation>
 
@@ -131,9 +130,9 @@
         <type>material</type> 
         <object-name>anticollision lamp (Meshed)</object-name>
         <transparency>
-            <alpha-prop>sim/G91/position_light_transparent</alpha-prop>
+            <alpha-prop>sim/G91/lightning/anticollision-light/transparent_glass</alpha-prop>
             <factor>1</factor>
-            <offset>0</offset>
+            <offset>-0.2</offset>
         </transparency>
         <diffuse>
             <red>0.8</red>
@@ -146,10 +145,10 @@
             <blue>0.3</blue>
         </ambient>
         <emission>	
-            <red>1.0</red>	
-            <green>1.0</green>	
-            <blue>1.0</blue>
-            <factor-prop>sim/G91/position_light_emission</factor-prop>
+            <red>1.2</red>	
+            <green>1.2</green>	
+            <blue>1.2</blue>
+            <factor-prop>sim/G91/lightning/anticollision-light/intensity_bulb</factor-prop>
         </emission>
     </animation>
 
@@ -162,15 +161,15 @@
             <blue>1.0</blue>
         </diffuse>
         <ambient>
-            <red>1.0</red>
-            <green>1.0</green>
-            <blue>1.0</blue>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
         </ambient>
         <emission>	
-            <red>0.7</red>	
-            <green>0.7</green>	
-            <blue>0.7</blue>
-            <factor-prop>sim/G91/position_light_emission</factor-prop>
+            <red>0.8</red>	
+            <green>0.8</green>	
+            <blue>0.8</blue>
+            <factor-prop>sim/G91/lightning/anticollision-light/intensity_mirror</factor-prop>
         </emission>
     </animation>
     
@@ -191,9 +190,21 @@
             <red>0.3</red>	
             <green>0.3</green>	
             <blue>0.3</blue>
-            <factor-prop>sim/G91/position_light_glass_emission</factor-prop>
+            <factor-prop>sim/G91/lightning/anticollision-light/intensity_mirror</factor-prop>
         </emission>
     </animation>
+    
+    <model>
+        <name>anticollision glass (Meshed)</name>
+        <path>Effects/lights/anticollision-00.xml</path>
+        <offsets>
+            <x-m> -0.595 </x-m>
+            <y-m> 0.0 </y-m>
+            <z-m> 0.400 </z-m>
+            <heading-deg>0</heading-deg>
+            <pitch-deg>0</pitch-deg>
+        </offsets>
+    </model>
 
     <animation> 
         <type>material</type>

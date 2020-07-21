@@ -24,7 +24,7 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
             <interval-sec>0.5</interval-sec>
             <binding>
                 <command>property-toggle</command>
-                <property>systems/manual-switches/lateral_panel_right/lightning/sw-anticollision-togle</property>
+                <property>fdm/jsbsim/systems/manual-switches/lateral_panel_right/lightning/sw-anticollision-togle</property>
                 <step>1</step>
                 <min>0</min>
                 <max>1</max>

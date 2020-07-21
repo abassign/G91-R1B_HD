@@ -207,7 +207,7 @@
             <default value="0"/>
             <test logic="AND" value="systems/lightning/intensity-bus1-norm">
                 systems/manual-switches/lateral_panel_right/lightning/sw-flasher-on == 1
-                systems/electric/bus[1]/anti-collision-light/fuse == 1
+                systems/electric/bus[1]/beacon-light/fuse == 1
             </test>
         </switch>
         
@@ -215,19 +215,31 @@
             <input>systems/lightning/beacon/on</input>
             <c1>2.0</c1>
         </lag_filter>
-
-        <switch name="systems/electric/bus[1]/beacon/I">
-            <default value="0"/>
-            <test logic="AND" value="3">
-                systems/lightning/beacon/on GT 0.1
-            </test>
-        </switch>
+        
+        <pure_gain name="systems/electric/bus[1]/beacon/I">
+            <input>systems/lightning/beacon/on</input>
+            <gain>3.0</gain>
+        </pure_gain>
 
     </channel>
     
     <channel name="position lights" execrate="32">
 
-
+        
+        <switch name="systems/lightning/anticollision/on">
+            <default value="0"/>
+            <test logic="AND" value="systems/lightning/intensity-bus1-norm">
+                systems/manual-switches/lateral_panel_right/lightning/sw-anticollision-on == 1
+                systems/electric/bus[1]/anti-collision-light/fuse == 1
+            </test>
+        </switch>
+        
+        <pure_gain name="systems/electric/bus[1]/anticollision/I">
+            <input>systems/lightning/anticollision/on</input>
+            <gain>3.0</gain>
+        </pure_gain>
+        
+        
 
     </channel>
     

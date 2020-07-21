@@ -8,8 +8,6 @@ var prop = props.globals.initNode("sim/G91/lightning/beacon-light/intensity_bulb
 var prop = props.globals.initNode("sim/G91/lightning/beacon-light/transparent_cover", 0, "DOUBLE");
 var prop = props.globals.initNode("sim/G91/lightning/beacon-light/transparent_glass", 0, "DOUBLE");
 
-var prop = props.globals.initNode("sim/G91/Test/V0_10A", 0, "DOUBLE");
-
 var beacon_lights = maketimer(0.1, func() {
     var beacon_light = props.globals.getNode("fdm/jsbsim/systems/lightning/beacon/on",1).getValue();
     var ambientRedLight = props.globals.getNode("/rendering/scene/ambient/red",1).getValue();
