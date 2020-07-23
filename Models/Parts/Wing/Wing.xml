@@ -192,7 +192,7 @@
         <object-name>staffa001_door_dx.003</object-name>
         <object-name>supporto_jato</object-name>
     </effect>
-    
+    <!--
     <animation>
         <type>noshadow</type>
         <object-name>A__G91_fuselage_muso_1.025</object-name>
@@ -332,6 +332,7 @@
         <object-name>staffa001_door_dx.003</object-name>
         <object-name>supporto_jato</object-name>
     </animation>
+    -->
     
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Liveries/liveries_001</inherits-from>
@@ -373,7 +374,7 @@
         <object-name>tank_cap</object-name>
         <object-name>tank_cap1</object-name>
     </effect>
-    
+    <!--
     <animation>
         <type>noshadow</type>
         <object-name>A__G91_fuselage_int.weapon.door.001</object-name>
@@ -414,7 +415,8 @@
         <object-name>tank_cap</object-name>
         <object-name>tank_cap1</object-name>
     </animation>
-
+    -->
+    
     <animation> 
         <type>material</type>
         <object-name>A__G91_fuselage_int.weapon.door.001</object-name>
@@ -464,6 +466,7 @@
         </specular>
     </animation>
     
+    <!--
     <animation>
         <type>noshadow</type>
         <object-name>A__G91_fuselage_int.weapon.door.001</object-name>
@@ -500,6 +503,7 @@
         <object-name>B00_sx_door_bis.002</object-name>
         <object-name>A__G91_fuselage_int.weapon.door.007</object-name>
     </animation>
+    -->
     
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Liveries/liveries_002</inherits-from>

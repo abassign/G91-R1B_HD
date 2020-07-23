@@ -676,4 +676,63 @@
         
     </group>
     
+    <hrule/>
+    
+    <group>
+        <layout>hbox</layout>
+        <group>
+            <layout>table</layout>
+            <text>
+                <label>Compositor lights</label>
+                <halign>right</halign>
+                <row>0</row>
+                <col>0</col>
+            </text>
+            <radio>
+                <row>0</row>
+                <col>1</col>
+                <halign>fill</halign>
+                <label>uv-dx-sw</label>
+                <property>sim/G91/lights/Compositor/canopy-uv-dx-sw</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </radio>
+            <radio>
+                <row>0</row>
+                <col>2</col>
+                <halign>fill</halign>
+                <label>uv-sx-sw</label>
+                <property>sim/G91/lights/Compositor/canopy-uv-sx-sw</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </radio>
+            <radio>
+                <row>0</row>
+                <col>3</col>
+                <halign>fill</halign>
+                <label>gray</label>
+                <property>sim/G91/lights/Compositor/canopy-ambient-gray-sw</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </radio>
+            <radio>
+                <row>0</row>
+                <col>4</col>
+                <halign>fill</halign>
+                <label>red</label>
+                <property>sim/G91/lights/Compositor/canopy-ambient-red-sw</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </radio>
+        </group>
+    </group>
+    
 </PropertyList>

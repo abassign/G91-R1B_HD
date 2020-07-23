@@ -26,7 +26,7 @@ G91_Params.xml
         
         <active>
             <ID>5</ID>
-            <setResolution>3</setResolution>
+            <setResolution>1</setResolution>
             <version>2</version>
             <normalmap_enabled>0</normalmap_enabled>
         </active>

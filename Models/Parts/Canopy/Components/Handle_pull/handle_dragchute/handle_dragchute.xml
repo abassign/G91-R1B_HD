@@ -10,12 +10,12 @@
         <z-m>0.0</z-m>
         <roll-deg>-20.0</roll-deg>
     </offsets>
-    
+    <!--
     <effect>
         <inherits-from>handle_dragchute</inherits-from>
         <object-name>handle_cockpit03.001</object-name>
     </effect>
-    
+    -->
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
         <object-name>handle_cockpit03.001</object-name>

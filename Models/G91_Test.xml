@@ -179,12 +179,12 @@
     <!-- effects for cabin -->
     
     <light>
-        <name>test-spotlight</name>
+        <name>test-spotlight-0</name>
         <type>point</type>
         <position>
             <x-m>-2.7</x-m>
             <y-m>0.0</y-m>
-            <z-m>0.0</z-m>
+            <z-m>0.9</z-m>
         </position>
         <direction>
             <x>-1.0</x>
@@ -192,21 +192,21 @@
             <z>0.0</z>
         </direction>
         <ambient>
-            <r>0.01</r>
-            <g>0.01</g>
-            <b>0.01</b>
+            <r>0.0</r>
+            <g>0.0</g>
+            <b>0.0</b>
             <a>1</a>
         </ambient>
         <diffuse>
-            <r>0.01</r>
-            <g>0.01</g>
-            <b>0.01</b>
+            <r>0.2</r>
+            <g>0.0</g>
+            <b>0.0</b>
             <a>1</a>
         </diffuse>
         <specular>
-            <r>0.001</r>
-            <g>0.001</g>
-            <b>0.001</b>
+            <r>0.0</r>
+            <g>0.0</g>
+            <b>0.0</b>
             <a>1</a>
         </specular>
         <attenuation>
@@ -214,10 +214,50 @@
             <l>0.09</l>
             <q>0.032</q>
         </attenuation>
-        <spot-exponent>5</spot-exponent>
-        <spot-cutoff>0</spot-cutoff>
-        <range-m>3</range-m>
+        <range-m>5</range-m>
     </light>
     
+    <!-- Compositor canopy lights test -->
+
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Composer/canopy-uv-dx.xml</path>
+        <condition>
+            <equals>
+                <property>sim/G91/lights/Compositor/canopy-uv-dx-sw</property>
+                <value>1</value>
+            </equals>
+        </condition>
+    </model>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Composer/canopy-uv-sx.xml</path>
+        <condition>
+            <equals>
+                <property>sim/G91/lights/Compositor/canopy-uv-sx-sw</property>
+                <value>1</value>
+            </equals>
+        </condition>
+    </model>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Composer/canopy-ambient-red.xml</path>
+        <condition>
+            <equals>
+                <property>sim/G91/lights/Compositor/canopy-ambient-red-sw</property>
+                <value>1</value>
+            </equals>
+        </condition>
+    </model>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Composer/canopy-ambient-gray.xml</path>
+        <condition>
+            <equals>
+                <property>sim/G91/lights/Compositor/canopy-ambient-gray-sw</property>
+                <value>1</value>
+            </equals>
+        </condition>
+    </model>
+
 </PropertyList>
     

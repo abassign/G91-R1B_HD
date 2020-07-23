@@ -12,7 +12,7 @@
         <description>Fiat G91-R1B (JSBSim)</description>
         
         <startup>
-            <splash-texture>Aircraft/G91-R1B_HD/Splash/G91-Space.png</splash-texture>
+            <splash-texture>Aircraft/G91-R1B_HD/Splash/splash 20100724.png</splash-texture>
         </startup>
         
         <flight-model>jsb</flight-model>
