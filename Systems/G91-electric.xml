@@ -124,7 +124,6 @@ Description: G91R4 Electric system from "Manuale di pilotaggio (p.56)
     <property value="1">systems/electric/bus[2]/primary-inverter/fuse</property>
     <property value="0">systems/electric/bus[2]/primary-inverter/sw</property>
     <property value="1">systems/electric/bus[2]/position-lights/fuse</property>
-    <property value="0">systems/electric/bus[2]/position-lights/sw</property>
     <property value="0.0">systems/electric/bus[2]/position-lights/I</property>
     <property value="0.0">systems/electric/bus[2]/cockpit-lights/I</property>
     <property value="1">systems/electric/bus[2]/cameras/fuse</property>

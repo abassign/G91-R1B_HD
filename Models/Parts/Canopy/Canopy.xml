@@ -96,7 +96,7 @@
             <red>0.9</red>
             <green>0.9</green>
             <blue>0.9</blue>
-            <factor-prop>sim/G91/lightning/anticollision-light/intensity_mirror</factor-prop>
+            <factor-prop>fdm/jsbsim/systems/lightning/ambient-light-anticollision-intensity</factor-prop>
         </emission>
     </animation>
 
@@ -104,8 +104,8 @@
         <type>material</type>
         <object-name>anticollision glass (Meshed)</object-name>
         <transparency>
-            <alpha-prop>sim/G91/lightning/anticollision-light/transparent_cover</alpha-prop>
-            <factor>0.4</factor>
+            <alpha-prop>fdm/jsbsim/systems/lightning/ambient-light-anticollision-glass</alpha-prop>
+            <factor>1.0</factor>
             <offset>0.0</offset>
         </transparency>
         <diffuse>
@@ -119,10 +119,10 @@
             <blue>0.8</blue>
         </ambient>
         <emission>	
-            <red>0.3</red>	
-            <green>0.3</green>	
-            <blue>0.2</blue>
-            <factor-prop>sim/G91/lightning/anticollision-light/emission_cover</factor-prop>
+            <red>0.5</red>	
+            <green>0.5</green>	
+            <blue>0.5</blue>
+            <factor-prop>fdm/jsbsim/systems/lightning/ambient-light-anticollision-intensity</factor-prop>
         </emission>
     </animation>
 
@@ -130,9 +130,9 @@
         <type>material</type> 
         <object-name>anticollision lamp (Meshed)</object-name>
         <transparency>
-            <alpha-prop>sim/G91/lightning/anticollision-light/transparent_glass</alpha-prop>
-            <factor>1</factor>
-            <offset>-0.2</offset>
+            <alpha-prop>fdm/jsbsim/systems/lightning/ambient-light-anticollision-glass-lamp</alpha-prop>
+            <factor>1.2</factor>
+            <offset>0.0</offset>
         </transparency>
         <diffuse>
             <red>0.8</red>
@@ -148,7 +148,7 @@
             <red>1.2</red>	
             <green>1.2</green>	
             <blue>1.2</blue>
-            <factor-prop>sim/G91/lightning/anticollision-light/intensity_bulb</factor-prop>
+            <factor-prop>fdm/jsbsim/systems/lightning/ambient-light-anticollision-intensity</factor-prop>
         </emission>
     </animation>
 
@@ -166,10 +166,10 @@
             <blue>0.5</blue>
         </ambient>
         <emission>	
-            <red>0.8</red>	
-            <green>0.8</green>	
-            <blue>0.8</blue>
-            <factor-prop>sim/G91/lightning/anticollision-light/intensity_mirror</factor-prop>
+            <red>0.7</red>	
+            <green>0.7</green>	
+            <blue>0.7</blue>
+            <factor-prop>fdm/jsbsim/systems/lightning/ambient-light-anticollision-intensity</factor-prop>
         </emission>
     </animation>
     
@@ -190,7 +190,7 @@
             <red>0.3</red>	
             <green>0.3</green>	
             <blue>0.3</blue>
-            <factor-prop>sim/G91/lightning/anticollision-light/intensity_mirror</factor-prop>
+            <factor-prop>fdm/jsbsim/systems/lightning/ambient-light-anticollision-intensity</factor-prop>
         </emission>
     </animation>
     
@@ -200,7 +200,7 @@
         <offsets>
             <x-m> -0.595 </x-m>
             <y-m> 0.0 </y-m>
-            <z-m> 0.400 </z-m>
+            <z-m> 0.396 </z-m>
             <heading-deg>0</heading-deg>
             <pitch-deg>0</pitch-deg>
         </offsets>
@@ -382,8 +382,6 @@
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
-    
-    
     
     <animation> 
         <type>material</type>

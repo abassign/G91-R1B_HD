@@ -27,7 +27,7 @@
         ]]></unload>
     </nasal>
     
-<!--
+
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Cockpit.xml</path>
         <condition>
@@ -37,7 +37,7 @@
             </equals>
         </condition>
     </model>
-    -->
+<!--
     
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Canopy.xml</path>
@@ -175,7 +175,7 @@
             </equals>
         </condition>
     </model>
-
+    -->
     <!-- effects for cabin -->
     
     <light>
@@ -192,21 +192,21 @@
             <z>0.0</z>
         </direction>
         <ambient>
-            <r>0.0</r>
-            <g>0.0</g>
-            <b>0.0</b>
+            <r>0.01</r>
+            <g>0.01</g>
+            <b>0.01</b>
             <a>1</a>
         </ambient>
         <diffuse>
-            <r>0.1</r>
-            <g>0.1</g>
-            <b>0.1</b>
+            <r>0.01</r>
+            <g>0.01</g>
+            <b>0.01</b>
             <a>1</a>
         </diffuse>
         <specular>
-            <r>0.5</r>
-            <g>0.5</g>
-            <b>0.5</b>
+            <r>0.001</r>
+            <g>0.001</g>
+            <b>0.001</b>
             <a>1</a>
         </specular>
         <attenuation>

@@ -288,8 +288,8 @@
         <object-name>A_glass_red_est_coda</object-name>
         <object-name>A_glass_red_int_coda</object-name>
         <transparency>
-            <alpha-prop>sim/G91/position_light_transparent</alpha-prop>
-            <factor>0.8</factor>
+            <alpha-prop>fdm/jsbsim/systems/lightning/ambient-position-lights-intensity</alpha-prop>
+            <factor>1.0</factor>
             <offset>0.1</offset>
         </transparency>
         <diffuse>
@@ -303,10 +303,10 @@
             <blue>0.0</blue>
         </ambient>
         <emission>	
-            <red>0.9</red>	
-            <green>0.5</green>	
-            <blue>0.1</blue>
-            <factor-prop>sim/G91/position_light_glass_emission</factor-prop>
+            <red>0.45</red>	
+            <green>0.25</green>	
+            <blue>0.05</blue>
+            <factor-prop>fdm/jsbsim/systems/lightning/ambient-position-lights-intensity</factor-prop>
         </emission>
         <specular>
             <red>0.1</red>
@@ -319,9 +319,9 @@
         <type>material</type> 
         <object-name>Sphere.007</object-name>
         <transparency>
-            <alpha-prop>sim/G91/position_light_transparent</alpha-prop>
-            <factor>1</factor>
-            <offset>0.5</offset>
+            <alpha-prop>fdm/jsbsim/systems/lightning/ambient-position-lights-glass-lamp</alpha-prop>
+            <factor>1.2</factor>
+            <offset>0</offset>
         </transparency>
         <diffuse>
             <red>0.9</red>	
@@ -337,7 +337,7 @@
             <red>0.9</red>	
             <green>0.8</green>	
             <blue>0.6</blue>
-            <factor-prop>sim/G91/position_light_emission</factor-prop>
+            <factor-prop>fdm/jsbsim/systems/lightning/ambient-position-lights-intensity</factor-prop>
         </emission>
     </animation>
     
@@ -362,8 +362,8 @@
         <object-name>A_glass_white_est_coda</object-name>
         <object-name>A_glass_white_int_coda</object-name>
         <transparency>
-            <alpha-prop>sim/G91/position_light_transparent</alpha-prop>
-            <factor>0.8</factor>
+            <alpha-prop>fdm/jsbsim/systems/lightning/ambient-position-lights-intensity</alpha-prop>
+            <factor>1.0</factor>
             <offset>0.1</offset>
         </transparency>
         <diffuse>
@@ -377,10 +377,10 @@
             <blue>0.0</blue>
         </ambient>
         <emission>	
-            <red>0.9</red>	
-            <green>0.5</green>	
-            <blue>0.1</blue>
-            <factor-prop>sim/G91/position_light_glass_emission</factor-prop>
+            <red>0.45</red>	
+            <green>0.25</green>	
+            <blue>0.05</blue>
+            <factor-prop>fdm/jsbsim/systems/lightning/ambient-position-lights-intensity</factor-prop>
         </emission>
         <specular>
             <red>0.1</red>
@@ -393,7 +393,7 @@
         <type>material</type> 
         <object-name>Sphere.006</object-name>
         <transparency>
-            <alpha-prop>sim/G91/position_light_transparent</alpha-prop>
+            <alpha-prop>fdm/jsbsim/systems/lightning/ambient-position-lights-glass-lamp</alpha-prop>
             <factor>1</factor>
             <offset>0.5</offset>
         </transparency>
@@ -408,10 +408,10 @@
             <blue>1.0</blue>
         </ambient>
         <emission>	
-            <red>0.714</red>	
-            <green>0.6</green>	
-            <blue>0.18</blue>
-            <factor-prop>sim/G91/position_light_emission</factor-prop>
+            <red>0.9</red>	
+            <green>0.8</green>	
+            <blue>0.6</blue>
+            <factor-prop>fdm/jsbsim/systems/lightning/ambient-position-lights-intensity</factor-prop>
         </emission>
     </animation>
 

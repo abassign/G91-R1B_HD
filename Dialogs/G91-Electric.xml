@@ -391,6 +391,22 @@
         <group>
             <layout>table</layout>
             <text>
+                <label>Position lights intensity</label>
+                <halign>right</halign>
+                <row>0</row>
+                <col>0</col>
+            </text>
+            <checkbox>
+                <row>0</row>
+                <col>1</col>
+                <halign>fill</halign>
+                <property>fdm/jsbsim/systems/manual-switches/lateral_panel_right/lightning/sw-position-intensity-togle</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </checkbox>
+            <text>
                 <label>Anticollision light</label>
                 <halign>right</halign>
                 <row>0</row>
@@ -406,15 +422,25 @@
                     <command>dialog-apply</command>
                 </binding>
             </checkbox>
+            <radio>
+                <row>0</row>
+                <col>4</col>
+                <label>Fuse</label>
+                <property>fdm/jsbsim/systems/electric/bus[2]/position-lights/fuse</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </radio>
             <text>
                 <label>Beacon</label>
                 <halign>right</halign>
                 <row>0</row>
-                <col>4</col>
+                <col>6</col>
             </text>
             <checkbox>
                 <row>0</row>
-                <col>5</col>
+                <col>7</col>
                 <halign>fill</halign>
                 <property>fdm/jsbsim/systems/manual-switches/lateral_panel_right/lightning/sw-flasher-togle</property>
                 <live>true</live>

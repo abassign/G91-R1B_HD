@@ -2,6 +2,7 @@
 
 <system name="lightning">
 
+    <property value="1.0">systems/lightning/unit</property>
     <property value="0">systems/lightning/light-uv-instrument</property>
     <property value="0">systems/lightning/light-uv-instrument-bright</property>
     <property value="0">systems/lightning/light-uv-instrument-bright-pos</property>
@@ -21,6 +22,15 @@
     <property value="0">systems/lightning/taxiing-light/on</property>
     <property value="0">systems/lightning/beacon/on</property>
     <property value="0">systems/lightning/beacon/motor</property>
+    <property value="0">systems/lightning/anticollision/on</property>
+    <property value="0">systems/lightning/ambient-light-anticollision-procedural</property>
+    <property value="0">systems/lightning/ambient-light-anticollision-intensity</property>
+    <property value="0">systems/lightning/ambient-light-anticollision-glass</property>
+    <property value="0">systems/lightning/ambient-light-anticollision-glass-lamp</property>
+    <property value="0">systems/lightning/ambient-position-lights-procedural</property>
+    <property value="0">systems/lightning/ambient-position-lights-intensity</property>
+    <property value="0">systems/lightning/ambient-position-lights-glass</property>
+    <property value="0">systems/lightning/ambient-position-lights-glass-lamp</property>
     
     
     <channel name="light uv instrument" execrate="32">
@@ -223,9 +233,9 @@
 
     </channel>
     
-    <channel name="position lights" execrate="32">
+    
+    <channel name="anticollision lights" execrate="32">
 
-        
         <switch name="systems/lightning/anticollision/on">
             <default value="0"/>
             <test logic="AND" value="systems/lightning/intensity-bus1-norm">
@@ -236,31 +246,190 @@
         
         <pure_gain name="systems/electric/bus[1]/anticollision/I">
             <input>systems/lightning/anticollision/on</input>
-            <gain>3.0</gain>
+            <gain>2.0</gain>
         </pure_gain>
         
+        <scheduled_gain name="systems/lightning/ambient-light-anticollision-intensity">
+            <input>systems/lightning/anticollision/on</input>
+            <table>
+                <independentVar>/rendering/scene/ambient/red</independentVar>
+                <tableData>
+                    0.0 1.00
+                    0.2 0.90
+                    0.4 0.80
+                    0.6 0.70
+                    0.8 0.65
+                    1.0 0.60
+                </tableData>
+            </table>
+            <gain>1.0</gain>
+        </scheduled_gain>
         
+        <scheduled_gain name="systems/lightning/ambient-light-anticollision-glass">
+            <input>systems/lightning/anticollision/on</input>
+            <table>
+                <independentVar>systems/lightning/ambient-light-anticollision-intensity</independentVar>
+                <tableData>
+                    0.0 0.00
+                    0.2 0.10
+                    0.4 0.20
+                    0.6 0.30
+                    0.8 0.20
+                    1.0 0.10
+                </tableData>
+            </table>
+            <gain>1.0</gain>
+        </scheduled_gain>
+        
+        <scheduled_gain name="systems/lightning/ambient-light-anticollision-glass-lamp">
+            <input>systems/lightning/anticollision/on</input>
+            <table>
+                <independentVar>systems/lightning/ambient-light-anticollision-intensity</independentVar>
+                <tableData>
+                    0.0 0.30
+                    0.2 0.50
+                    0.4 0.70
+                    0.6 0.80
+                    0.8 0.90
+                    1.0 1.00
+                </tableData>
+            </table>
+            <gain>1.0</gain>
+        </scheduled_gain>
+        
+        <scheduled_gain name="systems/lightning/ambient-light-anticollision-procedural">
+            <input>systems/lightning/anticollision/on</input>
+            <table>
+                <independentVar>/rendering/scene/ambient/red</independentVar>
+                <tableData>
+                    0.00 1.00
+                    0.15 0.50
+                    0.40 0.05
+                    0.60 0.00
+                    0.80 0.00
+                    1.00 0.00
+                </tableData>
+            </table>
+            <gain>0.7</gain>
+        </scheduled_gain>
 
     </channel>
     
-    <channel name="ambient lighting corection" execrate="64">
+    
+    <channel name="position lights" execrate="32">
 
-        <fcs_function name="systems/lightning/ambient-light-emission-display-correction">
-            <function>
-                <interpolate1d>
-                    <p>/rendering/scene/ambient/blue</p>
-                    <v> 0.0 </v>  <v> 0.3 </v>
-                    <v> 0.2 </v>  <v> 0.35 </v>
-                    <v> 0.4 </v>  <v> 0.4 </v>
-                    <v> 0.6 </v>  <v> 0.6 </v>
-                    <v> 0.8 </v>  <v> 0.9 </v>
-                    <v> 1.0 </v>  <v> 1.0 </v>
-                </interpolate1d>
-            </function>
-        </fcs_function>
+        <switch name="systems/lightning/position-lights/on">
+            <default value="0"/>
+            <test logic="AND" value="systems/lightning/intensity-bus2-norm">
+                systems/electric/bus[2]/position-lights/fuse == 1
+            </test>
+        </switch>
+        
+        <switch name="systems/manual-switches/lateral_panel_right/lightning/position-intensity">
+            <default value="0.7"/>
+            <test logic="AND" value="1.0">
+                systems/manual-switches/lateral_panel_right/lightning/sw-position-intensity-on == 1
+            </test>
+        </switch>
+        
+        <pure_gain name="systems/lightning/position-lights/on-intensity">
+            <input>systems/manual-switches/lateral_panel_right/lightning/position-intensity</input>
+            <gain>systems/lightning/position-lights/on</gain>
+        </pure_gain>
+        
+        <pure_gain name="systems/electric/bus[2]/position-lights/I">
+            <input>systems/lightning/position-lights/on-intensity</input>
+            <gain>4.0</gain>
+        </pure_gain>
+        
+        <scheduled_gain name="systems/lightning/ambient-position-lights-intensity">
+            <input>systems/lightning/position-lights/on-intensity</input>
+            <table>
+                <independentVar>/rendering/scene/ambient/red</independentVar>
+                <tableData>
+                    0.0 1.00
+                    0.2 0.90
+                    0.4 0.80
+                    0.6 0.70
+                    0.8 0.65
+                    1.0 0.60
+                </tableData>
+            </table>
+            <gain>1.0</gain>
+        </scheduled_gain>
+        
+        <scheduled_gain name="systems/lightning/ambient-position-lights-glass">
+            <input>systems/lightning/unit</input>
+            <table>
+                <independentVar>systems/lightning/position-lights/on-intensity</independentVar>
+                <tableData>
+                    0.0 0.90
+                    0.2 0.85
+                    0.4 0.80
+                    0.6 0.75
+                    0.8 0.70
+                    1.0 0.70
+                </tableData>
+            </table>
+            <gain>1.0</gain>
+        </scheduled_gain>
+        
+        <scheduled_gain name="systems/lightning/ambient-position-lights-glass-lamp">
+            <input>systems/lightning/unit</input>
+            <table>
+                <independentVar>systems/lightning/position-lights/on-intensity</independentVar>
+                <tableData>
+                    0.0 0.30
+                    0.2 0.50
+                    0.4 0.70
+                    0.6 0.80
+                    0.8 0.90
+                    1.0 1.00
+                </tableData>
+            </table>
+            <gain>1.0</gain>
+        </scheduled_gain>
+        
+        <scheduled_gain name="systems/lightning/ambient-position-lights-procedural">
+            <input>systems/lightning/ambient-position-lights-intensity</input>
+            <table>
+                <independentVar>/rendering/scene/ambient/red</independentVar>
+                <tableData>
+                    0.00 1.00
+                    0.15 0.50
+                    0.40 0.05
+                    0.60 0.00
+                    0.80 0.00
+                    1.00 0.00
+                </tableData>
+            </table>
+            <gain>0.7</gain>
+        </scheduled_gain>
 
     </channel>
+    
+    
+    <channel name="ambient lighting corection" execrate="64">
+        
+        <scheduled_gain name="systems/lightning/ambient-light-emission-display-correction">
+            <input>systems/lightning/unit</input>
+            <table>
+                <independentVar>/rendering/scene/ambient/blue</independentVar>
+                <tableData>
+                    0.0 0.30
+                    0.2 0.35
+                    0.4 0.40
+                    0.6 0.60
+                    0.8 0.90
+                    1.0 1.00
+                </tableData>
+            </table>
+            <gain>1.0</gain>
+        </scheduled_gain>
+    
+    </channel>
 
+    
     <function name="systems/lightning/intensity-bus1-norm">
         <table>
             <independentVar>systems/electric/bus[1]/V</independentVar>

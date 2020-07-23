@@ -40,11 +40,18 @@
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/glass-chrome</inherits-from>
         <object-name>A00_wing_light.cone_dx</object-name>
-        <object-name>A00_wing_light.cone_dx</object-name>
         <object-name>A00_wing_light.cone_sx.mesh</object-name>
         <object-name>B00_barra di rotazione.001</object-name>
         <object-name>B00_sx_barra di rotazione</object-name>
     </effect>
+    
+    <animation>
+        <type>noshadow</type>
+        <object-name>A00_wing_light.cone_dx</object-name>
+        <object-name>A00_wing_light.cone_sx.mesh</object-name>
+        <object-name>B00_barra di rotazione.001</object-name>
+        <object-name>B00_sx_barra di rotazione</object-name>
+    </animation>
 
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
@@ -186,6 +193,146 @@
         <object-name>supporto_jato</object-name>
     </effect>
     
+    <animation>
+        <type>noshadow</type>
+        <object-name>A__G91_fuselage_muso_1.025</object-name>
+        <object-name>A__rotto.005</object-name>
+        <object-name>A00.flap.dx.004</object-name>
+        <object-name>A00.flap.dx.005</object-name>
+        <object-name>A00.flap.dx.006</object-name>
+        <object-name>A00.flap.dx.007</object-name>
+        <object-name>A00.flap.sx.000</object-name>
+        <object-name>A00.flap.sx.002</object-name>
+        <object-name>A00.flap.sx.003</object-name>
+        <object-name>A00.flap.sx.01</object-name>
+        <object-name>A00_Guide001_Dx_flap</object-name>
+        <object-name>A00_Guide001_sx_flap.001</object-name>
+        <object-name>A00_Guide002_Dx_flap.</object-name>
+        <object-name>A00_Guide002_sx_flap.001</object-name>
+        <object-name>A00_wing_light.support_dx</object-name>
+        <object-name>A00_wing_light.support_sx</object-name>
+        <object-name>A__G91_fuselage_int</object-name>
+        <object-name>A__G91_fuselage_int.weapon.door.002</object-name>
+        <object-name>A_flap_dx.006</object-name>
+        <object-name>A_flap_sx.005</object-name>
+        <object-name>A_trasmission_command_Alet_sx.000</object-name>
+        <object-name>A_trasmission_command_Alet_sx.001</object-name>
+        <object-name>A_trasmission_command_Alet_sx.002</object-name>
+        <object-name>A_trasmission_command_Alet_sx.003</object-name>
+        <object-name>A_trasmission_command_Alet_sx.004</object-name>
+        <object-name>A_trasmission_command_Alet_sx.005</object-name>
+        <object-name>A_trasmission_command_Alet_sx.006</object-name>
+        <object-name>A_wing_dx.001</object-name>
+        <object-name>A_wing_dx.003</object-name>
+        <object-name>A_wing_dx.004</object-name>
+        <object-name>A_wing_longherone_dx.001</object-name>
+        <object-name>A_wing_longherone_sx</object-name>
+        <object-name>A_wing_sx.001</object-name>
+        <object-name>A_wing_sx.003</object-name>
+        <object-name>A_wing_sx.006</object-name>
+        <object-name>B00_Asse_dx_door_bis.001</object-name>
+        <object-name>B00_beam_gear_dx.002</object-name>
+        <object-name>B00_beam_gear_dx_01.002</object-name>
+        <object-name>B00_beam_gear_dx_02.002</object-name>
+        <object-name>B00_beam_gear_sx</object-name>
+        <object-name>B00_beam_gear_sx_01</object-name>
+        <object-name>B00_beam_gear_sx_02</object-name>
+        <object-name>B00_box_gear_door</object-name>
+        <object-name>B00_c_sx_door_bis</object-name>
+        <object-name>B00_c_sx_door_bis.001</object-name>
+        <object-name>B00_cable01_gear_dx.001</object-name>
+        <object-name>B00_cable01_gear_dx.004</object-name>
+        <object-name>B00_cable01_gear_sx.003</object-name>
+        <object-name>B00_cable01_gear_sx.004</object-name>
+        <object-name>B00_cable02_gear_dx.002</object-name>
+        <object-name>B00_cable02_gear_sx</object-name>
+        <object-name>B00_cable03_gear_dx.002</object-name>
+        <object-name>B00_cable03_gear_sx</object-name>
+        <object-name>B00_cable_gear_sx_gen</object-name>
+        <object-name>B00_dx_Leg_01.000</object-name>
+        <object-name>B00_dx_Leg_01.002</object-name>
+        <object-name>B00_dx_Leg_02.002</object-name>
+        <object-name>B00_dx_Leg_03.002</object-name>
+        <object-name>B00_dx_Leg_04.002</object-name>
+        <object-name>B00_dx_bolt_01.002</object-name>
+        <object-name>B00_dx_bolt_02.002</object-name>
+        <object-name>B00_dx_bolt_03.001</object-name>
+        <object-name>B00_dx_bolt_04.002</object-name>
+        <object-name>B00_dx_bolt_05.002</object-name>
+        <object-name>B00_dx_bolt_06.002</object-name>
+        <object-name>B00_dx_bolt_07.002</object-name>
+        <object-name>B00_dx_brake:01.002</object-name>
+        <object-name>B00_dx_brakes02.002</object-name>
+        <object-name>B00_dx_brakes03.002</object-name>
+        <object-name>B00_dx_brakes04.002</object-name>
+        <object-name>B00_dx_damper_01.002</object-name>
+        <object-name>B00_dx_damper_02.002</object-name>
+        <object-name>B00_dx_door_02.000</object-name>
+        <object-name>B00_dx_door_02.001</object-name>
+        <object-name>B00_dx_door_02.008</object-name>
+        <object-name>B00_dx_gear_support_.002</object-name>
+        <object-name>B00_dx_gear_support_02.002</object-name>
+        <object-name>B00_dx_hub_01.003</object-name>
+        <object-name>B00_dx_hub_01.004</object-name>
+        <object-name>B00_dx_leg_04.002</object-name>
+        <object-name>B00_dx_microswich.002</object-name>
+        <object-name>B00_dx_support_01.002</object-name>
+        <object-name>B00_dx_support_02.002</object-name>
+        <object-name>B00_dx_support_03.004</object-name>
+        <object-name>B00_dx_support_03.005</object-name>
+        <object-name>B00_dx_tire_01.002</object-name>
+        <object-name>B00_sx_Leg_01</object-name>
+        <object-name>B00_sx_Leg_02</object-name>
+        <object-name>B00_sx_Leg_03</object-name>
+        <object-name>B00_sx_Leg_04</object-name>
+        <object-name>B00_sx_bolt_01</object-name>
+        <object-name>B00_sx_bolt_02</object-name>
+        <object-name>B00_sx_bolt_03</object-name>
+        <object-name>B00_sx_bolt_04</object-name>
+        <object-name>B00_sx_bolt_05</object-name>
+        <object-name>B00_sx_bolt_06</object-name>
+        <object-name>B00_sx_bolt_07</object-name>
+        <object-name>B00_sx_brake:01</object-name>
+        <object-name>B00_sx_brakes02</object-name>
+        <object-name>B00_sx_brakes03</object-name>
+        <object-name>B00_sx_brakes04</object-name>
+        <object-name>B00_sx_damper_01</object-name>
+        <object-name>B00_sx_damper_02</object-name>
+        <object-name>B00_sx_door_02.1</object-name>
+        <object-name>B00_sx_door_bis.001</object-name>
+        <object-name>B00_sx_gear_support_</object-name>
+        <object-name>B00_sx_gear_support_02</object-name>
+        <object-name>B00_sx_hub_01</object-name>
+        <object-name>B00_sx_hub_02</object-name>
+        <object-name>B00_sx_leg_04</object-name>
+        <object-name>B00_sx_microswich</object-name>
+        <object-name>B00_sx_support_01</object-name>
+        <object-name>B00_sx_support_02</object-name>
+        <object-name>B00_sx_support_03</object-name>
+        <object-name>B00_sx_support_03.001</object-name>
+        <object-name>B00_sx_tire_01</object-name>
+        <object-name>Circle.001</object-name>
+        <object-name>Circle.003</object-name>
+        <object-name>Cube.004</object-name>
+        <object-name>F_door_em_canopyDX.000</object-name>
+        <object-name>F_door_em_canopyDX.004a.001</object-name>
+        <object-name>F_door_em_canopyDX.005</object-name>
+        <object-name>F_door_em_canopySX.000</object-name>
+        <object-name>F_door_em_canopySX.005</object-name>
+        <object-name>Rivethead 2</object-name>
+        <object-name>Rivethead 2.001</object-name>
+        <object-name>plate_box_01.000</object-name>
+        <object-name>plate_box_01.001</object-name>
+        <object-name>plate_box_01.002</object-name>
+        <object-name>plate_box_01.003</object-name>
+        <object-name>plate_box_02</object-name>
+        <object-name>staffa001_door_dx</object-name>
+        <object-name>staffa001_door_dx.001</object-name>
+        <object-name>staffa001_door_dx.001</object-name>
+        <object-name>staffa001_door_dx.003</object-name>
+        <object-name>supporto_jato</object-name>
+    </animation>
+    
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Liveries/liveries_001</inherits-from>
         <object-name>A__G91_fuselage_int.weapon.door.001</object-name>
@@ -226,6 +373,47 @@
         <object-name>tank_cap</object-name>
         <object-name>tank_cap1</object-name>
     </effect>
+    
+    <animation>
+        <type>noshadow</type>
+        <object-name>A__G91_fuselage_int.weapon.door.001</object-name>
+        <object-name>m00_door_01.1</object-name>
+        <object-name>m00_door_02</object-name>
+        <object-name>m00_door_dx01</object-name>
+        <object-name>m00_door_dx03</object-name>
+        <object-name>m00_door_sx01</object-name>
+        <object-name>m00_door_sx03</object-name>
+        <object-name>m00_platelight</object-name>
+        <object-name>m00_door_sx03.001</object-name>
+        <object-name>m00_door_dx03.001</object-name>
+        <object-name>F__door_02</object-name>
+        <object-name>F__door_03</object-name>
+        <object-name>F__door_02.001</object-name>
+        <object-name>F__door_03</object-name>
+        <object-name>F__door_03.002</object-name>
+        <object-name>F__door_em_canopy01</object-name>
+        <object-name>F__door_em_canopy01.002</object-name>
+        <object-name>F_door_em_canopyDX.001</object-name>
+        <object-name>F_door_em_canopyDX.002</object-name>
+        <object-name>F_door_em_canopyDX.004</object-name>
+        <object-name>F_door_em_canopyDX.004a</object-name>
+        <object-name>F_door_em_canopySX.001</object-name>
+        <object-name>F_door_em_canopySX.002</object-name>
+        <object-name>F_door_em_canopySX.004</object-name>
+        <object-name>F_door_em_canopySX.004a</object-name>
+        <object-name>F_door_em_canopySX.005</object-name>
+        <object-name>F_handle_armydoorDX</object-name>
+        <object-name>F_handle_armydoorSX</object-name>
+        <object-name>B00_sx_door_01.001</object-name>
+        <object-name>B00_dx_door_01.000</object-name>
+        <object-name>B00_Asse_dx_door_bis</object-name>
+        <object-name>B00_sx_door_bis.002</object-name>
+        <object-name>A__G91_fuselage_int.weapon.door.007</object-name>
+        <object-name>m00_door_01.2</object-name>
+        <object-name>m00_door_dx03.002</object-name>
+        <object-name>tank_cap</object-name>
+        <object-name>tank_cap1</object-name>
+    </animation>
 
     <animation> 
         <type>material</type>
@@ -274,6 +462,43 @@
             <blue>1.0</blue>
             <factor-prop>sim/G91/liveries/active/specular</factor-prop>
         </specular>
+    </animation>
+    
+    <animation>
+        <type>noshadow</type>
+        <object-name>A__G91_fuselage_int.weapon.door.001</object-name>
+        <object-name>m00_door_01.1</object-name>
+        <object-name>m00_door_02</object-name>
+        <object-name>m00_door_dx01</object-name>
+        <object-name>m00_door_dx03</object-name>
+        <object-name>m00_door_sx01</object-name>
+        <object-name>m00_door_sx03</object-name>
+        <object-name>m00_platelight</object-name>
+        <object-name>m00_door_sx03.001</object-name>
+        <object-name>m00_door_dx03.001</object-name>
+        <object-name>F__door_02</object-name>
+        <object-name>F__door_03</object-name>
+        <object-name>F__door_02.001</object-name>
+        <object-name>F__door_03</object-name>
+        <object-name>F__door_03.002</object-name>
+        <object-name>F__door_em_canopy01</object-name>
+        <object-name>F__door_em_canopy01.002</object-name>
+        <object-name>F_door_em_canopyDX.001</object-name>
+        <object-name>F_door_em_canopyDX.002</object-name>
+        <object-name>F_door_em_canopyDX.004</object-name>
+        <object-name>F_door_em_canopyDX.004a</object-name>
+        <object-name>F_door_em_canopySX.001</object-name>
+        <object-name>F_door_em_canopySX.002</object-name>
+        <object-name>F_door_em_canopySX.004</object-name>
+        <object-name>F_door_em_canopySX.004a</object-name>
+        <object-name>F_door_em_canopySX.005</object-name>
+        <object-name>F_handle_armydoorDX</object-name>
+        <object-name>F_handle_armydoorSX</object-name>
+        <object-name>B00_sx_door_01.001</object-name>
+        <object-name>B00_dx_door_01.000</object-name>
+        <object-name>B00_Asse_dx_door_bis</object-name>
+        <object-name>B00_sx_door_bis.002</object-name>
+        <object-name>A__G91_fuselage_int.weapon.door.007</object-name>
     </animation>
     
     <effect>
@@ -1084,60 +1309,81 @@
         <object-name>A00_light_sphere_sx</object-name>
     </effect>
     
-    <animation> 
+    <animation>
         <type>material</type> 
         <object-name>A00_wing_light.glass_sx</object-name>
+        <transparency>
+            <alpha-prop>fdm/jsbsim/systems/lightning/ambient-position-lights-glass</alpha-prop>
+            <factor>1</factor>
+            <offset>0.0</offset>
+        </transparency>
         <diffuse>
-            <red>1.0</red>
+            <red>0.74</red>
             <green>0.0</green>
-            <blue>0.0</blue>
+            <blue>0.19</blue>
         </diffuse>
         <ambient>
-            <red>0.8</red>
+            <red>0.3</red>
             <green>0.0</green>
             <blue>0.0</blue>
         </ambient>
         <emission>	
-            <red>1.0</red>	
+            <red>0.5</red>	
             <green>0.0</green>	
             <blue>0.0</blue>
-            <factor-prop>sim/G91/position_light_glass_emission</factor-prop>
+            <factor-prop>fdm/jsbsim/systems/lightning/ambient-position-lights-intensity</factor-prop>
         </emission>
-        <transparency>
-            <alpha-prop>sim/G91/position_light_transparent</alpha-prop>
-            <factor>1</factor>
-            <offset>0.1</offset>
-        </transparency>
     </animation>
     
     <animation> 
-        <type>material</type> 
-        <object-name>A00_light_sphere_sx</object-name>
+        <type>material</type>
+        <object-name>A00_wing_light.cone_sx</object-name>
         <diffuse>
             <red>1.0</red>
-            <green>0.0</green>
-            <blue>0.0</blue>
+            <green>1.0</green>
+            <blue>1.0</blue>
         </diffuse>
         <ambient>
             <red>1.0</red>
             <green>1.0</green>
             <blue>1.0</blue>
         </ambient>
+        <emission>
+            <red>0.8</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>fdm/jsbsim/systems/lightning/ambient-position-lights-intensity</factor-prop>
+        </emission>
+    </animation>
+
+    <animation> 
+        <type>material</type> 
+        <object-name>A00_light_sphere_sx</object-name>
+        <transparency>
+            <alpha-prop>fdm/jsbsim/systems/lightning/ambient-position-lights-glass-lamp</alpha-prop>
+            <factor>1.2</factor>
+            <offset>0.0</offset>
+        </transparency>
+        <diffuse>
+            <red>0.74</red>
+            <green>0.0</green>
+            <blue>0.1</blue>
+        </diffuse>
+        <ambient>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
+        </ambient>
         <emission>	
-            <red>1.0</red>	
+            <red>1.2</red>	
             <green>0.0</green>	
             <blue>0.0</blue>
-            <factor-prop>sim/G91/position_light_emission</factor-prop>
+            <factor-prop>fdm/jsbsim/systems/lightning/ambient-position-lights-intensity</factor-prop>
         </emission>
-        <transparency>
-            <alpha-prop>sim/G91/position_light_transparent</alpha-prop>
-            <factor>1</factor>
-            <offset>0</offset>
-        </transparency>
     </animation>
     
     
-    <!-- Red navigation light on port side (left) -->
+    <!-- Green navigation light on port side (right) -->
     
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/exterior/exterior-glass</inherits-from>
@@ -1159,6 +1405,11 @@
     <animation> 
         <type>material</type> 
         <object-name>A00_wing_light.glass_dx</object-name>
+        <transparency>
+            <alpha-prop>fdm/jsbsim/systems/lightning/ambient-position-lights-glass</alpha-prop>
+            <factor>1.0</factor>
+            <offset>0.0</offset>
+        </transparency>
         <diffuse>
             <red>0.0</red>
             <green>0.74</green>
@@ -1166,46 +1417,62 @@
         </diffuse>
         <ambient>
             <red>0.0</red>
-            <green>0.8</green>
+            <green>0.3</green>
             <blue>0.0</blue>
         </ambient>
         <emission>	
             <red>0.0</red>	
-            <green>1.0</green>	
+            <green>0.5</green>	
             <blue>0.0</blue>
-            <factor-prop>sim/G91/position_light_glass_emission</factor-prop>
+            <factor-prop>fdm/jsbsim/systems/lightning/ambient-position-lights-intensity</factor-prop>
         </emission>
-        <transparency>
-            <alpha-prop>sim/G91/position_light_transparent</alpha-prop>
-            <factor>1</factor>
-            <offset>0.1</offset>
-        </transparency>
     </animation>
     
     <animation> 
-        <type>material</type> 
-        <object-name>A00_light_sphere_dx</object-name>
+        <type>material</type>
+        <object-name>A00_wing_light.cone_dx</object-name>
         <diffuse>
-            <red>0.0</red>
-            <green>0.74</green>
-            <blue>0.19</blue>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
         </diffuse>
         <ambient>
             <red>1.0</red>
             <green>1.0</green>
             <blue>1.0</blue>
         </ambient>
-        <emission>	
-            <red>0.0</red>	
-            <green>1.0</green>	
+        <emission>
+            <red>0.8</red>
+            <green>0.0</green>
             <blue>0.0</blue>
-            <factor-prop>sim/G91/position_light_emission</factor-prop>
+            <factor-prop>fdm/jsbsim/systems/lightning/ambient-position-lights-intensity</factor-prop>
         </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type> 
+        <object-name>A00_light_sphere_dx</object-name>
         <transparency>
-            <alpha-prop>sim/G91/position_light_transparent</alpha-prop>
-            <factor>1</factor>
+            <alpha-prop>fdm/jsbsim/systems/lightning/ambient-position-lights-glass-lamp</alpha-prop>
+            <factor>1.2</factor>
             <offset>0</offset>
         </transparency>
+        <diffuse>
+            <red>0.0</red>
+            <green>0.74</green>
+            <blue>0.1</blue>
+        </diffuse>
+        <ambient>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
+        </ambient>
+        <emission>	
+            <red>0.0</red>	
+            <green>1.2</green>	
+            <blue>0.0</blue>
+            <factor-prop>fdm/jsbsim/systems/lightning/ambient-position-lights-intensity</factor-prop>
+        </emission>
     </animation>
     
     <!-- Green navigation light on port side (right) -->
