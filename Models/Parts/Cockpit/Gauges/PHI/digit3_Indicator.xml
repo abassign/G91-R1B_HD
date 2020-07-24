@@ -2,15 +2,19 @@
     
     <path>digit3.ac</path>
     
-    <!--
-    <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
+    <animation>
+        <type>noshadow</type>
         <object-name>box</object-name>
         <object-name>prism_1</object-name>
         <object-name>prism_2</object-name>
         <object-name>prism_3</object-name>
-    </effect>
-    -->
+        <object-name>digit_1B</object-name>
+        <object-name>digit_2B</object-name>
+        <object-name>digit_3B</object-name>
+        <object-name>digit_1A</object-name>
+        <object-name>digit_2A</object-name>
+        <object-name>digit_3A</object-name>
+    </animation>
     
     <animation> 
         <type>material</type>

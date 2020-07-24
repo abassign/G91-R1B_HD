@@ -2,7 +2,7 @@
 
 <PropertyList>
     <light>
-        <name>canopy-ambient-red</name>
+        <name>canopy-uv-sx</name>
         <type>point</type>
         <position>
             <x-m>-2.7</x-m>
@@ -11,8 +11,8 @@
         </position>
         <direction>
             <x>-1.0</x>
-            <y>-0.3</y>
-            <z>0.1</z>
+            <y>0.0</y>
+            <z>0.0</z>
         </direction>
         <ambient>
             <r>0.00</r>
@@ -21,15 +21,15 @@
             <a>1</a>
         </ambient>
         <diffuse>
-            <r>0.05</r>
-            <g>0.01</g>
+            <r>0.0</r>
+            <g>0.0</g>
             <b>0.0</b>
             <a>1</a>
         </diffuse>
         <specular>
-            <r>0.000</r>
-            <g>0.000</g>
-            <b>0.000</b>
+            <r>0.5</r>
+            <g>0.5</g>
+            <b>0.5</b>
             <a>1</a>
         </specular>
         <attenuation>

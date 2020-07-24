@@ -4,14 +4,15 @@
     
     <path>PHI-Wind 02.ac</path>
     
-    <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
-        <object-name>frontal (Meshed)</object-name>
+    <animation>
+        <type>noshadow</type>
+        <object-name>lamp_glass (Meshed)</object-name>
+        <object-name>lamp_light (Meshed)</object-name>
+        <object-name>procedural_light_cockpit_gauge_spot_red</object-name>
+        <object-name>PHI_wind_advise_light_on</object-name>
         <object-name>frontal_plate_B (Meshed)</object-name>
         <object-name>ring (Meshed)</object-name>
         <object-name>lamp_ring (Meshed)</object-name>
-        <object-name>knob_001 (Meshed)</object-name>
-        <object-name>knob_002 (Meshed)</object-name>
         <object-name>lamp_cover (Meshed)</object-name>
         <object-name>arrow_mirror (Meshed)</object-name>
         <object-name>screews_01 (Meshed)</object-name>
@@ -21,19 +22,13 @@
         <object-name>Curve</object-name>
         <object-name>Curve.001</object-name>
         <object-name>Curve.002</object-name>
-    </effect>
+    </animation>
     
     <effect>
         <inherits-from>Effects/model-transparent</inherits-from>
         <object-name>lamp_glass (Meshed)</object-name>
         <object-name>lamp_light (Meshed)</object-name>
     </effect>
-    
-    <animation>
-        <type>noshadow</type>
-        <object-name>procedural_light_cockpit_gauge_spot_red</object-name>
-        <object-name>PHI_wind_advise_light_on</object-name>
-    </animation>
     
     <animation> 
         <type>material</type>

@@ -215,6 +215,16 @@
             </equals>
         </condition>
     </model>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Composer/canopy-ambient-gray-specular.xml</path>
+        <condition>
+            <equals>
+                <property>sim/G91/lights/Compositor/canopy-ambient-gray-specular-sw</property>
+                <value>1</value>
+            </equals>
+        </condition>
+    </model>
 
 </PropertyList>
     

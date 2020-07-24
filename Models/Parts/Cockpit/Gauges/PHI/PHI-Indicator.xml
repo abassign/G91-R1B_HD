@@ -9,24 +9,20 @@
         <object-name>glass (Meshed)</object-name>
     </effect>
     
-    <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
+     <animation>
+        <type>noshadow</type>
+        <object-name>cover (Meshed)</object-name>
+        <object-name>glass (Meshed)</object-name>
         <object-name>screews_01 (Meshed)</object-name>
         <object-name>screews_02 (Meshed)</object-name>
         <object-name>screews_03 (Meshed)</object-name>
         <object-name>screews_04 (Meshed)</object-name>
         <object-name>screews_05 (Meshed)</object-name>
-        <object-name>frontal (Meshed)</object-name>
         <object-name>back_frontal (Meshed)</object-name>
-        <object-name>knob_001 (Meshed)</object-name>
         <object-name>knob_001_color (Meshed)</object-name>
-        <object-name>knob_002 (Meshed)</object-name>
         <object-name>knob_002_color (Meshed)</object-name>
-        <object-name>knob_003 (Meshed)</object-name>
         <object-name>knob_003_color (Meshed)</object-name>
-        <object-name>knob_004 (Meshed)</object-name>
         <object-name>knob_004_color (Meshed)</object-name>
-        <object-name>knob_001_A (Meshed)</object-name>
         <object-name>knob_001_A_color (Meshed)</object-name>
         <object-name>frontal_mark_knob_001 (Meshed)</object-name>
         <object-name>NWE_ref (Meshed)</object-name>
@@ -44,7 +40,7 @@
         <object-name>arrow_3 (Meshed)</object-name>
         <object-name>arrow_4 (Meshed)</object-name>
         <object-name>frontal_labels (Meshed)</object-name>
-    </effect>    
+    </animation>
     
     <animation> 
         <type>material</type>
@@ -158,7 +154,7 @@
         <type>material</type>
         <object-name>glass (Meshed)</object-name>
         <transparency>
-            <alpha>0.15</alpha>
+            <alpha>0.1</alpha>
         </transparency>
         <diffuse>
             <red>0.8</red>

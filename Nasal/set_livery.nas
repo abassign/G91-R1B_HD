@@ -21,6 +21,7 @@ var anti_reflective_area = {};
 var ar_root = nil;
 
 var dirtySet = 0;
+var normalMapEnable = 0;
 
 var livery_001 = "";
 var livery_002 = "";
@@ -300,6 +301,12 @@ var setLivery = func() {
         }
     }
     
+    if (normalMapEnable == 0) {
+        setprop("sim/G91/liveries/active/normalmap_enabled_Msg","No normal map");
+    } else {
+        setprop("sim/G91/liveries/active/normalmap_enabled_Msg","Yes Normal map");
+    }
+    
     if (ca_root != nil) {
         foreach(var image; [livery_001, dirty_001]) {
             print("set_livery.nas image: ",image," (",size(image),")");
@@ -454,6 +461,7 @@ var getActiveData = func() {
     setprop("sim/G91/liveries/active/ambient",diffuse);
     setprop("sim/G91/liveries/active/specular",specular);
     setprop("sim/G91/liveries/active/dirty",dirty);
+    setprop("sim/G91/liveries/active/normalmap_enabled",normalMapEnable);
     setprop("sim/G91/liveries/active/noise",noise);
     setprop("sim/G91/liveries/active/version",version);
     setprop("sim/G91/liveries/active/ID",idSelect);
@@ -495,9 +503,16 @@ setlistener("sim/G91/liveries/active/dirtySet", func {
     if(inExecution == 0) {
         dirtySet = props.globals.getNode("sim/G91/liveries/active/dirtySet",1).getValue();
         print("set_livery.nas setlistener dirtySet: ",dirtySet);
-        call(getActiveData,[]);
-        call(changeResolution,[]);
-        call(setCanvas,[]);
+        call(setLivery,[]);
+    }
+    
+}, 1, 1);
+
+setlistener("sim/G91/liveries/active/normalmap_enabled", func {
+
+    if(inExecution == 0) {
+        normalMapEnable = props.globals.getNode("sim/G91/liveries/active/normalmap_enabled",1).getValue();
+        print("set_livery.nas setlistener normalmap_enabled: ",normalMapEnable);
         call(setLivery,[]);
     }
     

@@ -10,7 +10,7 @@ http://wiki.flightgear.org/Howto:Adding_a_canvas_to_a_GUI_dialog
     <layout>vbox</layout>
     <default-padding>7</default-padding>
     <modal>false</modal>
-    <width>400</width>
+    <width>500</width>
     
     <!-- title bar -->
     
@@ -345,6 +345,30 @@ http://wiki.flightgear.org/Howto:Adding_a_canvas_to_a_GUI_dialog
                     <blue>0.9</blue>
                 </color>
                 <property>sim/G91/liveries/active/dirtyMsg</property>
+            </text>
+            <button>
+                <row>5</row>
+                <col>1</col>
+                <legend>Normal map</legend>
+                <binding>
+                    <command>property-toggle</command>
+                    <property>sim/G91/liveries/active/normalmap_enabled</property>
+                </binding>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </button>
+            <text>
+                <row>5</row>
+                <col>2</col>
+                <halign>left</halign>
+                <live>true</live>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.9</blue>
+                </color>
+                <property>sim/G91/liveries/active/normalmap_enabled_Msg</property>
             </text>
             
         </group>

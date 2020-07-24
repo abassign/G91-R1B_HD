@@ -19,6 +19,7 @@
                     var path = (globals.io.stat(local_file) != nil) ? local_file : resolvepath(file);
                     globals.io.load_nasal(path, module);
                 };
+                print("set_livery.nas call from multiplayer");
                 import("Aircraft/G91-R1B_HD/Nasal/set_livery.nas","set_livery");set_livery;
             }
         ]]></load>
@@ -48,7 +49,7 @@
             </equals>
         </condition>
     </model>
-
+    -->
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Wing/Wing.xml</path>
         <condition>
@@ -58,7 +59,7 @@
             </equals>
         </condition>
     </model>
-    
+    <!--
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Tail/Tail.xml</path>
         <condition>
@@ -176,46 +177,6 @@
         </condition>
     </model>
     -->
-    <!-- effects for cabin -->
-    
-    <light>
-        <name>test-spotlight-0</name>
-        <type>point</type>
-        <position>
-            <x-m>-2.7</x-m>
-            <y-m>0.0</y-m>
-            <z-m>0.9</z-m>
-        </position>
-        <direction>
-            <x>-1.0</x>
-            <y>0.0</y>
-            <z>0.0</z>
-        </direction>
-        <ambient>
-            <r>0.0</r>
-            <g>0.0</g>
-            <b>0.0</b>
-            <a>1</a>
-        </ambient>
-        <diffuse>
-            <r>0.2</r>
-            <g>0.0</g>
-            <b>0.0</b>
-            <a>1</a>
-        </diffuse>
-        <specular>
-            <r>0.0</r>
-            <g>0.0</g>
-            <b>0.0</b>
-            <a>1</a>
-        </specular>
-        <attenuation>
-            <c>1.0</c>
-            <l>0.09</l>
-            <q>0.032</q>
-        </attenuation>
-        <range-m>5</range-m>
-    </light>
     
     <!-- Compositor canopy lights test -->
 
@@ -254,6 +215,16 @@
         <condition>
             <equals>
                 <property>sim/G91/lights/Compositor/canopy-ambient-gray-sw</property>
+                <value>1</value>
+            </equals>
+        </condition>
+    </model>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Composer/canopy-ambient-gray-specular.xml</path>
+        <condition>
+            <equals>
+                <property>sim/G91/lights/Compositor/canopy-ambient-gray-specular-sw</property>
                 <value>1</value>
             </equals>
         </condition>
