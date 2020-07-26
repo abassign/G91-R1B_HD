@@ -16,12 +16,9 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
 
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_chrome</inherits-from>
-        <object-name>support (Meshed)</object-name>
         <object-name>pin (Meshed)</object-name>
         <object-name>ring (Meshed)</object-name>
-        <object-name>cover (Meshed)</object-name>
         <object-name>nut (Meshed)</object-name>
-        <object-name>screew (Meshed)</object-name>
     </effect>
     
     <animation>
@@ -83,14 +80,14 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
             <blue>0.15</blue>
         </diffuse>
         <ambient>
-            <red>0.1</red>
-            <green>0.1</green>
-            <blue>0.1</blue>
+            <red>0.4</red>
+            <green>0.4</green>
+            <blue>0.4</blue>
         </ambient>
         <emission>
-            <red>0.07</red>
-            <green>0.01</green>
-            <blue>0.01</blue>
+            <red>0.12</red>
+            <green>0.02</green>
+            <blue>0.02</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>

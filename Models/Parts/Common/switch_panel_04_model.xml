@@ -15,14 +15,14 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
         <z-m>0.0</z-m>
     </offsets>
     
-    <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
+    <animation>
+        <type>noshadow</type>
         <object-name>support (Meshed)</object-name>
         <object-name>pin (Meshed)</object-name>
         <object-name>ring (Meshed)</object-name>
         <object-name>cover (Meshed)</object-name>
         <object-name>swich_support</object-name>
-    </effect>
+    </animation> 
 
     <animation> 
         <type>material</type>

@@ -72,13 +72,6 @@
             <blue>1.0</blue>
             <factor-prop>sim/G91/liveries/active/diffuse</factor-prop>
         </diffuse>
-        <!--
-        <ambient>
-            <red>0.5</red>
-            <green>0.5</green>
-            <blue>0.5</blue>
-        </ambient>
-        -->
         <specular>
             <red>1.0</red>
             <green>1.0</green>
@@ -96,17 +89,10 @@
             <blue>1.0</blue>
             <factor-prop>sim/G91/liveries/active/diffuse</factor-prop>
         </diffuse>
-        <!--
-        <ambient>
+        <specular>
             <red>0.5</red>
             <green>0.5</green>
             <blue>0.5</blue>
-        </ambient>
-        -->
-        <specular>
-            <red>1.0</red>
-            <green>1.0</green>
-            <blue>1.0</blue>
             <factor-prop>sim/G91/liveries/active/specular</factor-prop>
         </specular>
     </animation>
@@ -281,6 +267,8 @@
         <object-name>A_glass_red_int_coda</object-name>
         <object-name>A_glass_white_est_coda</object-name>
         <object-name>A_glass_white_int_coda</object-name>
+        <object-name>Sphere.007</object-name>
+        <object-name>Sphere.006</object-name>
     </effect>
     
     <animation> 
@@ -288,22 +276,22 @@
         <object-name>A_glass_red_est_coda</object-name>
         <object-name>A_glass_red_int_coda</object-name>
         <transparency>
-            <alpha-prop>fdm/jsbsim/systems/lightning/ambient-position-lights-intensity</alpha-prop>
-            <factor>1.0</factor>
-            <offset>0.1</offset>
+            <alpha-prop>fdm/jsbsim/systems/lightning/ambient-position-lights-glass</alpha-prop>
+            <factor>0.9</factor>
+            <offset>0.0</offset>
         </transparency>
         <diffuse>
-            <red>0.9</red>	
-            <green>0.5</green>	
-            <blue>0.1</blue>
+            <red>0.7</red>	
+            <green>0.4</green>	
+            <blue>0.0</blue>
         </diffuse>
         <ambient>
-            <red>0.714</red>	
-            <green>0.6</green>	
+            <red>0.3</red>	
+            <green>0.15</green>	
             <blue>0.0</blue>
         </ambient>
         <emission>	
-            <red>0.45</red>	
+            <red>0.55</red>	
             <green>0.25</green>	
             <blue>0.05</blue>
             <factor-prop>fdm/jsbsim/systems/lightning/ambient-position-lights-intensity</factor-prop>
@@ -320,7 +308,7 @@
         <object-name>Sphere.007</object-name>
         <transparency>
             <alpha-prop>fdm/jsbsim/systems/lightning/ambient-position-lights-glass-lamp</alpha-prop>
-            <factor>1.2</factor>
+            <factor>1.0</factor>
             <offset>0</offset>
         </transparency>
         <diffuse>
@@ -334,9 +322,9 @@
             <blue>1.0</blue>
         </ambient>
         <emission>	
-            <red>0.9</red>	
+            <red>1.0</red>	
             <green>0.8</green>	
-            <blue>0.6</blue>
+            <blue>0.4</blue>
             <factor-prop>fdm/jsbsim/systems/lightning/ambient-position-lights-intensity</factor-prop>
         </emission>
     </animation>
@@ -362,22 +350,22 @@
         <object-name>A_glass_white_est_coda</object-name>
         <object-name>A_glass_white_int_coda</object-name>
         <transparency>
-            <alpha-prop>fdm/jsbsim/systems/lightning/ambient-position-lights-intensity</alpha-prop>
-            <factor>1.0</factor>
-            <offset>0.1</offset>
+            <alpha-prop>fdm/jsbsim/systems/lightning/ambient-position-lights-glass</alpha-prop>
+            <factor>0.9</factor>
+            <offset>0.0</offset>
         </transparency>
         <diffuse>
-            <red>0.9</red>	
-            <green>0.5</green>	
-            <blue>0.1</blue>
+            <red>0.7</red>	
+            <green>0.4</green>	
+            <blue>0.0</blue>
         </diffuse>
         <ambient>
-            <red>0.714</red>	
-            <green>0.6</green>	
+            <red>0.3</red>	
+            <green>0.15</green>	
             <blue>0.0</blue>
         </ambient>
         <emission>	
-            <red>0.45</red>	
+            <red>0.55</red>	
             <green>0.25</green>	
             <blue>0.05</blue>
             <factor-prop>fdm/jsbsim/systems/lightning/ambient-position-lights-intensity</factor-prop>
@@ -394,8 +382,8 @@
         <object-name>Sphere.006</object-name>
         <transparency>
             <alpha-prop>fdm/jsbsim/systems/lightning/ambient-position-lights-glass-lamp</alpha-prop>
-            <factor>1</factor>
-            <offset>0.5</offset>
+            <factor>1.0</factor>
+            <offset>0.0</offset>
         </transparency>
         <diffuse>
             <red>0.9</red>	
@@ -408,9 +396,9 @@
             <blue>1.0</blue>
         </ambient>
         <emission>	
-            <red>0.9</red>	
+            <red>1.0</red>	
             <green>0.8</green>	
-            <blue>0.6</blue>
+            <blue>0.4</blue>
             <factor-prop>fdm/jsbsim/systems/lightning/ambient-position-lights-intensity</factor-prop>
         </emission>
     </animation>

@@ -355,7 +355,7 @@
                     1.0 0.60
                 </tableData>
             </table>
-            <gain>1.0</gain>
+            <gain>1.2</gain>
         </scheduled_gain>
         
         <scheduled_gain name="systems/lightning/ambient-position-lights-glass">
@@ -403,7 +403,7 @@
                     1.00 0.00
                 </tableData>
             </table>
-            <gain>0.7</gain>
+            <gain>0.55</gain>
         </scheduled_gain>
 
     </channel>

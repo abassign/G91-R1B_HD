@@ -28,7 +28,7 @@
         ]]></unload>
     </nasal>
     
-
+<!--
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Cockpit.xml</path>
         <condition>
@@ -38,8 +38,7 @@
             </equals>
         </condition>
     </model>
-<!--
-    
+
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Canopy.xml</path>
         <condition>
@@ -59,7 +58,7 @@
             </equals>
         </condition>
     </model>
-    <!--
+
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Tail/Tail.xml</path>
         <condition>
@@ -69,7 +68,7 @@
             </equals>
         </condition>
     </model>
-
+    <!--
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/LandingGearFrontal/LandingGearFrontal.xml</path>
         <condition>
