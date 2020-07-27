@@ -369,10 +369,12 @@
         <object-name>B00_Asse_dx_door_bis</object-name>
         <object-name>B00_sx_door_bis.002</object-name>
         <object-name>A__G91_fuselage_int.weapon.door.007</object-name>
+        <!--
         <object-name>m00_door_01.2</object-name>
         <object-name>m00_door_dx03.002</object-name>
         <object-name>tank_cap</object-name>
         <object-name>tank_cap1</object-name>
+        -->
     </effect>
     <!--
     <animation>
@@ -1490,6 +1492,22 @@
         </offsets>
     </model>
     
+    <!-- Remove Tank inlet -->
+    
+    <animation>
+        <type>select</type>
+        <object-name>m00_door_01.2</object-name>
+        <object-name>m00_door_dx03.002</object-name>
+        <object-name>tank_cap</object-name>
+        <object-name>tank_cap1</object-name>
+        <condition>
+            <greater-than>
+                <value>0</value>
+                <value>1</value>
+            </greater-than>
+        </condition>
+    </animation>
+        
     <!--Animations -->
     
     <animation>
@@ -2148,16 +2166,16 @@
     </model>
     
     <!-- Fuel inlet -->
-    
+
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Wing/Components/Fuel_inlet/fuel_inlet_a.xml</path>
         <name>fuel-inlet-a</name>
         <offsets>
             <x-m>-0.785</x-m>
-            <y-m>0.21</y-m>
-            <z-m>0.308</z-m>
+            <y-m>0.211</y-m>
+            <z-m>0.302</z-m>
             <pitch-deg>-1.0</pitch-deg>
-            <roll-deg>-11.5</roll-deg>
+            <roll-deg>-13</roll-deg>
             <heading-deg>0.0</heading-deg>
         </offsets>
     </model>
@@ -2166,13 +2184,13 @@
         <path>Aircraft/G91-R1B_HD/Models/Parts/Wing/Components/Fuel_inlet/fuel_inlet_b.xml</path>
         <name>fuel-inlet-b</name>
         <offsets>
-            <x-m>0.038</x-m>
-            <y-m>0.226</y-m>
-            <z-m>0.303</z-m>
+            <x-m>0.0385</x-m>
+            <y-m>0.224</y-m>
+            <z-m>0.298</z-m>
             <pitch-deg>0.5</pitch-deg>
             <roll-deg>-16</roll-deg>
             <heading-deg>0.0</heading-deg>
         </offsets>
     </model>
-    
+
 </PropertyList>
