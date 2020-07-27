@@ -3,27 +3,14 @@
     
     <path>Aircraft/G91-R1B_HD/Models/Parts/Switchs_Lights/push_button_0.75in_01.ac</path>
     
-    <!--
-    <effect>
+    <animation>
+        <type>noshadow</type>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
         <object-name>cover (Meshed)</object-name>
         <object-name>push_button (Meshed)</object-name>
         <object-name>ring (Meshed)</object-name>
-    </effect>
-    -->
-
-    <animation>
-        <type>material</type>
-        <object-name>ring_black (Meshed)</object-name>
-        <object-name>JATO_box</object-name>
-        <texture>Pictures/G91-Black.png</texture>
-        <ambient>
-            <red>0.2</red>
-            <green>0.2</green>
-            <blue>0.2</blue>
-        </ambient>
     </animation>
-    
+
     <animation>
         <type>material</type>
         <object-name>cover (Meshed)</object-name>

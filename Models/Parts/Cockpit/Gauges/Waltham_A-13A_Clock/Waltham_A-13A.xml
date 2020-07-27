@@ -9,8 +9,10 @@
         <object-name>glass (Meshed)</object-name>
     </effect>
     
-    <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
+    <animation>
+        <type>noshadow</type>
+        <object-name>procedural_light_cockpit_gauge_spot_red</object-name>
+        <object-name>cover (Meshed)</object-name>
         <object-name>frontal_all (Meshed)</object-name>
         <object-name>border_internal (Meshed)</object-name>
         <object-name>center (Meshed)</object-name>
@@ -26,13 +28,10 @@
         <object-name>Arrow_2B (Meshed)</object-name>
         <object-name>Arrow_3B (Meshed)</object-name>
         <object-name>Arrow_4B (Meshed)</object-name>
+        <!--
         <object-name>knob_001 (Meshed)</object-name>
         <object-name>knob_002 (Meshed)</object-name>
-    </effect>
-    
-    <animation>
-        <type>noshadow</type>
-        <object-name>procedural_light_cockpit_gauge_spot_red</object-name>
+        -->
     </animation>
     
     <animation> 

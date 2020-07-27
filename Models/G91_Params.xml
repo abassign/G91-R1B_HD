@@ -156,11 +156,11 @@ G91_Params.xml
             <reloads type="float">0.0</reloads>
             <name_short type="string">Luftwaffe R3 c/n 535</name_short>
             <name_long type="string">Luftwaffe FUS G-91R/3 c/n 535 (R3)</name_long>
-            <luminosity type="float">0.0</luminosity>
-            <reflective type="float">-0.92</reflective>
+            <luminosity type="float">0.28</luminosity>
+            <reflective type="float">-0.86</reflective>
             <PANR1 type="float">0.0</PANR1>
-            <diffuse type="float">0.50</diffuse>
-            <specular type="float">0.06</specular>
+            <diffuse type="float">1.0</diffuse>
+            <specular type="float">0.0</specular>
             <dirty type="float">0.0</dirty>
             <noise>sim/G91/liveries/active/noise</noise>
             <livery_001 type="string">Aircraft/G91-R1B_HD/Models/Liveries/R3/GER_1962_001.png</livery_001>

@@ -9,10 +9,11 @@
         <object-name>glass (Meshed)</object-name>
     </effect>
     
-    <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
+    <animation>
+        <type>noshadow</type>
+        <object-name>procedural_light_cockpit_gauge_spot_red</object-name>
         <object-name>glass (Meshed)</object-name>
-        <object-name>frontal (Meshed)</object-name>
+        <object-name>Cover (Meshed)</object-name>
         <object-name>screews_01 (Meshed)</object-name>
         <object-name>screews_02 (Meshed)</object-name>
         <object-name>black_ring (Meshed)</object-name>
@@ -29,13 +30,11 @@
         <object-name>sphere_B (Meshed)</object-name>
         <object-name>airplane_A (Meshed)</object-name>
         <object-name>bank_index (Meshed)</object-name>
-        <object-name>Support (Meshed)</object-name>
         <object-name>marker (Meshed)</object-name>
-    </effect>
-    
-    <animation>
-        <type>noshadow</type>
-        <object-name>procedural_light_cockpit_gauge_spot_red</object-name>
+        <!--
+        <object-name>frontal (Meshed)</object-name>
+        <object-name>Support (Meshed)</object-name>
+        -->
     </animation>
     
     <animation> 

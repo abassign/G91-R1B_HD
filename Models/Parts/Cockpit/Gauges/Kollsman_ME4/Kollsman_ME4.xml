@@ -9,8 +9,10 @@
         <object-name>I_glass</object-name>
     </effect>
     
-    <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
+    <animation>
+        <type>noshadow</type>
+        <object-name>procedural_light_cockpit_gauge_spot_red</object-name>
+        <object-name>I_ExtenalCover</object-name>
         <object-name>I_ironware</object-name>
         <object-name>I_ironware.003</object-name>
         <object-name>I_knurl</object-name>
@@ -26,11 +28,6 @@
         <object-name>I_plate_03BIS</object-name>
         <object-name>I_hand_red</object-name>
         <object-name>I_hand_red.02</object-name>
-    </effect>
-    
-    <animation>
-        <type>noshadow</type>
-        <object-name>procedural_light_cockpit_gauge_spot_red</object-name>
     </animation>
     
     <animation> 
@@ -48,7 +45,6 @@
         </ambient>
     </animation>
     
-        
     <animation> 
         <type>material</type>
         <object-name>InternalCoverBlack</object-name>

@@ -10,8 +10,12 @@
         <object-name>glass_torus (Meshed)</object-name>
     </effect>
     
-    <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
+    <animation>
+        <type>noshadow</type>
+        <name>procedural_light_cockpit_gauge_spot_red</name>
+        <object-name>glass (Meshed)</object-name>
+        <object-name>glass_torus (Meshed)</object-name>
+        <object-name>cover (Meshed)</object-name>
         <object-name>frontal_filet (Meshed)</object-name>
         <object-name>screews (Meshed)</object-name>
         <object-name>frontal_mask_B (Meshed)</object-name>
@@ -25,17 +29,12 @@
         <object-name>frontal_mask_A (Meshed)</object-name>
         <object-name>back_plane_B (Meshed)</object-name>
         <object-name>rif (Meshed)</object-name>
-    </effect>
-    
-    <animation>
-        <type>noshadow</type>
-        <name>procedural_light_cockpit_gauge_spot_red</name>
     </animation>
     
     <animation> 
         <type>material</type>
         <object-name>cover (Meshed)</object-name>
-                <diffuse>
+        <diffuse>
             <red>0.67</red>
             <green>0.67</green>
             <blue>0.67</blue>

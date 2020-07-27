@@ -2153,7 +2153,7 @@
         <path>Aircraft/G91-R1B_HD/Models/Parts/Wing/Components/Fuel_inlet/fuel_inlet_a.xml</path>
         <name>fuel-inlet-a</name>
         <offsets>
-            <x-m>-0.79</x-m>
+            <x-m>-0.785</x-m>
             <y-m>0.21</y-m>
             <z-m>0.308</z-m>
             <pitch-deg>-1.0</pitch-deg>
@@ -2166,11 +2166,11 @@
         <path>Aircraft/G91-R1B_HD/Models/Parts/Wing/Components/Fuel_inlet/fuel_inlet_b.xml</path>
         <name>fuel-inlet-b</name>
         <offsets>
-            <x-m>0.028</x-m>
-            <y-m>0.22</y-m>
+            <x-m>0.038</x-m>
+            <y-m>0.226</y-m>
             <z-m>0.303</z-m>
             <pitch-deg>0.5</pitch-deg>
-            <roll-deg>-15</roll-deg>
+            <roll-deg>-16</roll-deg>
             <heading-deg>0.0</heading-deg>
         </offsets>
     </model>

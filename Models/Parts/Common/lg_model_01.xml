@@ -18,20 +18,6 @@
         <object-name>light_Sphere_hot (Meshed)</object-name>
     </effect>
 
-    <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
-        <object-name>button_base (Meshed)</object-name>
-        <object-name>light_Sphere (Meshed)</object-name>
-        <object-name>light_Sphere_hot (Meshed)</object-name>
-        <object-name>screew (Meshed)</object-name>
-        <object-name>ring (Meshed)</object-name>
-        <object-name>box_button_top (Meshed)</object-name>
-        <object-name>Cone_reflect (Meshed)</object-name>
-        <object-name>transparent_button (Meshed)</object-name>
-        <object-name>light_Sphere (Meshed)</object-name>
-        <object-name>light_Sphere_hot (Meshed)</object-name>
-    </effect>
-
     <animation>
         <type>noshadow</type>
         <object-name>button_base (Meshed)</object-name>
@@ -40,6 +26,11 @@
         <object-name>screew (Meshed)</object-name>
         <object-name>ring (Meshed)</object-name>
         <object-name>box_button_top (Meshed)</object-name>
+        <object-name>Cone_reflect (Meshed)</object-name>
+        <object-name>transparent_button (Meshed)</object-name>
+        <!--
+        <object-name>box_button (Meshed)</object-name>
+        -->
     </animation>
     
     <animation> 

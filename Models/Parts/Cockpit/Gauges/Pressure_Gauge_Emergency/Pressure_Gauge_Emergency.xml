@@ -8,9 +8,11 @@
         <inherits-from>Effects/model-transparent</inherits-from>
         <object-name>glass (Meshed)</object-name>
     </effect>
-
-    <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
+    
+    <animation>
+        <type>noshadow</type>
+        <object-name>procedural_light_cockpit_gauge_spot_red</object-name>
+        <object-name>cover (Meshed)</object-name>
         <object-name>frontal (Meshed)</object-name>
         <object-name>ring (Meshed)</object-name>
         <object-name>screews (Meshed)</object-name>
@@ -23,11 +25,6 @@
         <object-name>frontal_internal_A_A</object-name>
         <object-name>color_ext_green</object-name>
         <object-name>color_ext_white</object-name>
-    </effect>
-    
-    <animation>
-        <type>noshadow</type>
-        <object-name>procedural_light_cockpit_gauge_spot_red</object-name>
     </animation>
 
     <animation> 

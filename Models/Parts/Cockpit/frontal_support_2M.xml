@@ -3,15 +3,17 @@
 <PropertyList>
     
     <path>frontal_support_2M.ac</path>
-    
-    <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
+
+    <animation>
+        <type>noshadow</type>
         <object-name>cover (Meshed)</object-name>
         <object-name>frontal support 02 (Meshed)</object-name>
         <object-name>frontal support back (Meshed)</object-name>
         <object-name>frontal screew (Meshed)</object-name>
-        <object-name>frontal screew ring (Meshed)</object-name>  
-    </effect>
+        <object-name>frontal screew ring (Meshed)</object-name>
+        <object-name>lamp cover (Meshed)</object-name>
+        <object-name>selector black (Meshed)</object-name>
+    </animation>
     
     <animation> 
         <type>material</type>

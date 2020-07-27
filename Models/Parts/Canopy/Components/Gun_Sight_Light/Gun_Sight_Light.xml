@@ -4,14 +4,10 @@
     
     <path>knob_type_01.ac</path>
 
-    <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
-        <object-name>Swicht_gun_01</object-name>
-    </effect>
-    
     <animation>
         <type>noshadow</type>
         <object-name>procedural_light_cockpit_gauge_spot_red</object-name>
+        <object-name>Swicht_gun_01</object-name>
     </animation>
     
     <animation> 

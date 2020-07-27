@@ -24,13 +24,13 @@
         <object-name>handle_cockpit01.001</object-name>
     </effect>
     
-    <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
+    <animation>
+        <type>noshadow</type>
         <object-name>handle_cockpit01.001</object-name>
         <object-name>block_handle</object-name>
         <object-name>handle_cockpit01</object-name>
         <object-name>handle_cockpit01.002</object-name>
-    </effect>
+    </animation>
     
     <animation> 
         <type>material</type>

@@ -4,23 +4,13 @@
         <path>Film_Counter_Gauge_model.xml</path>
     </model>
     
-    <!--
-    <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
+    <animation>
+        <type>noshadow</type>
         <object-name>forward (Meshed)</object-name>
         <object-name>port (Meshed)</object-name>
         <object-name>vertic (Meshed)</object-name>
         <object-name>stbd (Meshed)</object-name>
-    </effect>
-    -->
-    
-    <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
-        <object-name>forward (Meshed)</object-name>
-        <object-name>port (Meshed)</object-name>
-        <object-name>vertic (Meshed)</object-name>
-        <object-name>stbd (Meshed)</object-name>
-    </effect>
+    </animation>
     
     <animation>
         <type>select</type>

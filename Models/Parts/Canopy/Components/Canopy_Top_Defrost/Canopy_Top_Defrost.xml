@@ -11,23 +11,13 @@
         <object-name>tubo_CUF_CANPOPY.000</object-name>
     </animation>
     
-    <!--
-    <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
+    <animation>
+        <type>noshadow</type>
         <object-name>F_CANPOPY.008_CUF_CANPOPY.001</object-name>
         <object-name>F_CANPOPY.012_CUF_CANPOPY.010</object-name>
         <object-name>tubo.001_CUF_CANPOPY.004</object-name>
         <object-name>tubo_CUF_CANPOPY.000</object-name>
-    </effect>
-    -->
-    
-    <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading_canopy</inherits-from>
-        <object-name>F_CANPOPY.008_CUF_CANPOPY.001</object-name>
-        <object-name>F_CANPOPY.012_CUF_CANPOPY.010</object-name>
-        <object-name>tubo.001_CUF_CANPOPY.004</object-name>
-        <object-name>tubo_CUF_CANPOPY.000</object-name>
-    </effect>
+    </animation>
     
     <animation> 
         <type>material</type>

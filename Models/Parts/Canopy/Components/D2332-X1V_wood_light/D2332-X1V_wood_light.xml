@@ -36,8 +36,8 @@
         <object-name>support_wood_Plane</object-name>
     </animation>
     
-    <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading_canopy</inherits-from>
+    <animation>
+        <type>noshadow</type>
         <object-name>cable_sorg_cableIR.001</object-name>
         <object-name>Circle.001_cableIR</object-name>
         <object-name>Circle.002_Circle.004</object-name>
@@ -46,12 +46,10 @@
         <object-name>F_CANPOPY.011_CUF_CANPOPY.008</object-name>
         <object-name>F_dadi_canopy_ant.000_Circle.008</object-name>
         <object-name>F_dadi_canopy_ant.001_Circle.009</object-name>
-        <object-name>light.001_Circle.007</object-name>
         <object-name>light.002_Circle.010</object-name>
         <object-name>light.003_Circle.011</object-name>
         <object-name>light_cable</object-name>
         <object-name>light_cable.001</object-name>
-        <object-name>light_Circle</object-name>
         <object-name>light_support01.001_Circle.003</object-name>
         <object-name>light_support01_Circle.001</object-name>
         <object-name>light_support02.001_Circle.002</object-name>
@@ -67,40 +65,11 @@
         <object-name>screew_group01_Plane.042</object-name>
         <object-name>support_wood.001_Plane.001</object-name>
         <object-name>support_wood_Plane</object-name>
-    </effect>
-    
-    <!--
-    <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
-        <object-name>cable_sorg_cableIR.001</object-name>
-        <object-name>Circle.001_cableIR</object-name>
-        <object-name>Circle.002_Circle.004</object-name>
-        <object-name>Circle.003_Circle.006</object-name>
-        <object-name>F_CANPOPY.009_CUF_CANPOPY.002</object-name>
-        <object-name>F_CANPOPY.011_CUF_CANPOPY.008</object-name>
-        <object-name>F_dadi_canopy_ant.000_Circle.008</object-name>
-        <object-name>F_dadi_canopy_ant.001_Circle.009</object-name>
+        <!--
         <object-name>light.001_Circle.007</object-name>
-        <object-name>light_cable</object-name>
-        <object-name>light_cable.001</object-name>
         <object-name>light_Circle</object-name>
-        <object-name>light_support01.001_Circle.003</object-name>
-        <object-name>light_support01_Circle.001</object-name>
-        <object-name>light_support02.001_Circle.002</object-name>
-        <object-name>light_support02_Circle.005</object-name>
-        <object-name>light_support03.001_Cube.001</object-name>
-        <object-name>light_support03_Cube</object-name>
-        <object-name>plate_txt_reflect.001_CUF_CANPOPY.003</object-name>
-        <object-name>plate_txt_reflect_CUF_CANPOPY.009</object-name>
-        <object-name>screew_group01.001_Plane.002</object-name>
-        <object-name>screew_group01.002_Plane.004</object-name>
-        <object-name>screew_group01.003_Sphere</object-name>
-        <object-name>screew_group01.004_Sphere.001</object-name>
-        <object-name>screew_group01_Plane.042</object-name>
-        <object-name>support_wood.001_Plane.001</object-name>
-        <object-name>support_wood_Plane</object-name>
-    </effect>
-    -->
+        -->
+    </animation>
 
     <effect>
         <inherits-from>D2332-X1V_wood_light_label</inherits-from>

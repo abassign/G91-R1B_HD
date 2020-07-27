@@ -7,6 +7,9 @@
     <animation>
         <type>noshadow</type>
         <object-name>procedural_light_cockpit_gauge_spot_red</object-name>
+        <object-name>Cover</object-name>
+        <object-name>Frontal</object-name>
+        <object-name>Cylynder-15-18</object-name>
     </animation>
     
     <animation> 
