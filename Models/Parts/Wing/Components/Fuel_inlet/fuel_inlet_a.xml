@@ -7,6 +7,11 @@
     </model>
     
     <animation>
+        <type>noshadow</type>
+        <object-name>flux effect (Meshed)</object-name>
+    </animation>
+    
+    <animation>
         <type>pick</type>
         <visible>true</visible>
         <object-name>cover screew (Meshed)</object-name>
@@ -53,5 +58,29 @@
             <z>-1</z>
         </axis>
     </animation>
+    
+    <animation>
+        <type>material</type> 
+        <object-name>flux effect (Meshed)</object-name>
+        <transparency>
+            <alpha>0.0</alpha>
+        </transparency>
+        <diffuse>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </diffuse>
+    </animation>
+
+    <model>
+        <name>flux effect (Meshed)</name>
+        <path>Effects/lights/fuel_inlet_a.xml</path>
+        <offsets>
+            <x-m> 0.0 </x-m>
+            <y-m> 0.0 </y-m>
+            <z-m> 0.0 </z-m>
+            <pitch-deg>0</pitch-deg>
+        </offsets>
+    </model>
     
 </PropertyList>

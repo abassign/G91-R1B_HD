@@ -22,13 +22,17 @@
     <property value="0.0">systems/fuel/inlet-b-togle</property>
     <property value="0.0">systems/fuel/inlet-b-pos</property>
     <property value="0.0">systems/fuel/inlet-b-open</property>
-    <property value="1.0">systems/fuel/refueling-operative</property>
-    <property value="10.0">systems/fuel/refuel-inlet-a-flow-rate-max-pps</property>
+    <property value="0.0">systems/fuel/refueling-operative</property>
+    <property value="0.0">systems/fuel/tank-all-full</property>
+    <property value="5.0">systems/fuel/refuel-inlet-a-flow-rate-max-pps</property>
     <property value="0.0">systems/fuel/refuel-inlet-a-flow-rate-pps</property>
     <property value="0.0">systems/fuel/refuel-inlet-a-flow-rate-pps-lag</property>
-    <property value="10.0">systems/fuel/refuel-inlet-b-flow-rate-max-pps</property>
+    <property value="5.0">systems/fuel/refuel-inlet-b-flow-rate-max-pps</property>
     <property value="0.0">systems/fuel/refuel-inlet-b-flow-rate-pps</property>
     <property value="0.0">systems/fuel/refuel-inlet-b-flow-rate-pps-lag</property>
+    <property value="0.0">systems/fuel/refuel-inlet-a-flow-rate-pps-lag-effect</property>
+    <property value="0.0">systems/fuel/refuel-inlet-b-flow-rate-pps-lag-effect</property>
+    <property value="1.0">systems/fuel/refuel-inlet-flow-scale-effect</property>
     
     <!-- Collector Tank 6 level-maintenance for droppable tank 3-4 -->
     <channel name="To Tank6">
@@ -96,6 +100,7 @@
         <summer>
             <input>systems/fuel/from-tank6-to-tank0</input>
             <input>-systems/fuel/from-tank0-to-tank5</input>
+            <input>systems/fuel/refuel-inlet-a-flow-rate-pps-lag</input>
             <output>propulsion/tank[0]/external-flow-rate-pps</output>
         </summer>
         
@@ -107,7 +112,7 @@
         <!-- from Collector Tank 1 to Tank2 -->
         <switch name="systems/fuel/from-tank1-to-tank2">
             <default value="0"/>
-            <test logic="AND" value="1.5">
+            <test logic="AND" value="3.0">
                 propulsion/tank[1]/contents-lbs GT 2
                 propulsion/tank[1]/contents-lbs GT propulsion/tank[2]/contents-lbs
                 propulsion/tank[2]/contents-lbs LT 560
@@ -125,7 +130,7 @@
         
         <switch name="systems/fuel/from-tank2-to-tank1">
             <default value="0"/>
-            <test logic="AND" value="1.5">
+            <test logic="AND" value="3.0">
                 propulsion/tank[2]/contents-lbs GT 2
                 propulsion/tank[2]/contents-lbs GT propulsion/tank[1]/contents-lbs
                 propulsion/tank[1]/contents-lbs LT 560
@@ -154,7 +159,6 @@
         <summer>
             <input>systems/fuel/from-tank1-to-tank2</input>
             <input>-systems/fuel/from-tank2-to-tank1</input>
-            <input>systems/fuel/refuel-inlet-a-flow-rate-pps-lag</input>
             <input>systems/fuel/refuel-inlet-b-flow-rate-pps-lag</input>
             <output>propulsion/tank[2]/external-flow-rate-pps</output>
         </summer>
@@ -278,37 +282,48 @@
     
     <channel name="fuel refill" execrate="8">
         
+        <switch name="systems/fuel/tank-all-full">
+            <default value="systems/fuel/tank-all-full"/>
+            <test logic="OR" value="0">
+                propulsion/tank[0]/pct-full LE 95.0
+                propulsion/tank[1]/pct-full LE 95.0
+                propulsion/tank[2]/pct-full LE 95.0
+                propulsion/tank[5]/pct-full LE 95.0
+            </test>
+            <test logic="AND" value="1">
+                propulsion/tank[0]/pct-full GE 98.0
+                propulsion/tank[1]/pct-full GE 98.0
+                propulsion/tank[2]/pct-full GE 98.0
+                propulsion/tank[5]/pct-full GE 98.0
+            </test>
+        </switch>
+        
         <switch name="systems/fuel/refueling-operative">
             <default value="systems/fuel/refueling-operative"/>
             <test logic="AND" value="1">
-                propulsion/tank[2]/pct-full LE 98.0
+                systems/fuel/tank-all-full == 0
                 <test logic="OR">
                     systems/fuel/inlet-a-open == 1
                     systems/fuel/inlet-b-open == 1
                 </test>
             </test>
             <test logic="AND" value="0">
-                systems/fuel/refueling-operative == 1.0
-                <test logic="OR">
-                    propulsion/tank[2]/pct-full GT 98.0
-                    <test logic="AND">
-                        systems/fuel/inlet-a-open == 0
-                        systems/fuel/inlet-b-open == 0
-                    </test>
-                </test>
+                systems/fuel/refueling-operative == 1
+                systems/fuel/tank-all-full == 1
             </test>
         </switch>
         
         <lag_filter name="systems/fuel/inlet-a-pos">
             <input>systems/fuel/inlet-a-togle</input>
-            <c1>0.5</c1>
+            <c1>2.0</c1>
         </lag_filter>
         
         <switch name="systems/fuel/inlet-a-togle">
             <default value="systems/fuel/inlet-a-togle"/>
             <test logic="AND" value="0">
                 systems/fuel/inlet-a-togle == 1
-                systems/fuel/refueling-operative == 1
+                systems/fuel/refueling-operative == 0
+                systems/fuel/tank-all-full == 1
             </test>
         </switch>
         
@@ -321,14 +336,15 @@
         
         <lag_filter name="systems/fuel/inlet-b-pos">
             <input>systems/fuel/inlet-b-togle</input>
-            <c1>0.5</c1>
+            <c1>2.0</c1>
         </lag_filter>
         
         <switch name="systems/fuel/inlet-b-togle">
             <default value="systems/fuel/inlet-b-togle"/>
             <test logic="AND" value="0">
                 systems/fuel/inlet-b-togle == 1
-                systems/fuel/refueling-operative == 1
+                systems/fuel/refueling-operative == 0
+                systems/fuel/tank-all-full == 1
             </test>
         </switch>
         
@@ -339,26 +355,76 @@
             </test>
         </switch>
         
+        <switch name="systems/fuel/refuel-inlet-a-flow-rate-max-pps-lim">
+            <default value="systems/fuel/refuel-inlet-a-flow-rate-max-pps"/>
+            <test logic="AND" value="0">
+                propulsion/tank[0]/pct-full GE 99.0
+                systems/fuel/tank-all-full == 0
+                systems/fuel/refueling-operative == 1
+            </test>
+        </switch>
+        
         <pure_gain name="systems/fuel/refuel-inlet-a-flow-rate-pps">
-            <input>systems/fuel/refuel-inlet-a-flow-rate-max-pps</input>
+            <input>systems/fuel/refuel-inlet-a-flow-rate-max-pps-lim</input>
             <gain>systems/fuel/inlet-a-open</gain>
         </pure_gain>
         
         <lag_filter name="systems/fuel/refuel-inlet-a-flow-rate-pps-lag">
             <input>systems/fuel/refuel-inlet-a-flow-rate-pps</input>
-            <c1>0.5</c1>
+            <c1>0.8</c1>
         </lag_filter>
         
+        <scheduled_gain name="systems/fuel/refuel-inlet-a-flow-rate-pps-lag-effect">
+            <input>systems/fuel/refuel-inlet-flow-scale-effect</input>
+            <table>
+                <independentVar>systems/fuel/refuel-inlet-a-flow-rate-pps-lag</independentVar>
+                <tableData>
+                    0.0	0.00
+                    0.1	0.20
+                    0.2	0.30
+                    0.5	0.40
+                    1.0	0.90
+                    9.0	1.00
+                </tableData>
+            </table>
+            <gain>systems/lightning/ambient-light-emission-display-correction</gain>
+        </scheduled_gain>
+        
+        <switch name="systems/fuel/refuel-inlet-b-flow-rate-max-pps-lim">
+            <default value="systems/fuel/refuel-inlet-b-flow-rate-max-pps"/>
+            <test logic="AND" value="0">
+                propulsion/tank[2]/pct-full GE 99.0
+                systems/fuel/tank-all-full == 0
+                systems/fuel/refueling-operative == 1
+            </test>
+        </switch>
+        
         <pure_gain name="systems/fuel/refuel-inlet-b-flow-rate-pps">
-            <input>systems/fuel/refuel-inlet-b-flow-rate-max-pps</input>
+            <input>systems/fuel/refuel-inlet-b-flow-rate-max-pps-lim</input>
             <gain>systems/fuel/inlet-b-open</gain>
         </pure_gain>
         
         <lag_filter name="systems/fuel/refuel-inlet-b-flow-rate-pps-lag">
             <input>systems/fuel/refuel-inlet-b-flow-rate-pps</input>
-            <c1>0.5</c1>
+            <c1>0.8</c1>
         </lag_filter>
-        
+
+        <scheduled_gain name="systems/fuel/refuel-inlet-b-flow-rate-pps-lag-effect">
+            <input>systems/fuel/refuel-inlet-flow-scale-effect</input>
+            <table>
+                <independentVar>systems/fuel/refuel-inlet-b-flow-rate-pps-lag</independentVar>
+                <tableData>
+                    0.0	0.00
+                    0.1	0.20
+                    0.2	0.30
+                    0.5	0.40
+                    1.0	0.90
+                    9.0	1.00
+                </tableData>
+            </table>
+            <gain>systems/lightning/ambient-light-emission-display-correction</gain>
+        </scheduled_gain>
+
     </channel>
     
 </system>
