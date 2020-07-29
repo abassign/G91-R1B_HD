@@ -68,6 +68,30 @@
             </orientation>
         </combustion>
         
+        <silence>
+            <name>Silence in the cabin</name>
+            <path>Aircraft/G91-R1B_HD/Sounds/G91 silence internal runway.wav</path>
+            <mode>looped</mode>
+            <condition>
+                <and>
+                    <greater-than>
+                        <property>/fdm/jsbsim/systems/electric/bus[1]/sound-lag</property>
+                        <value>1.0</value>	
+                    </greater-than>
+                    <equals>
+                        <property>sim/current-view/internal</property>
+                        <value>true</value>
+                    </equals>
+                </and>
+            </condition>
+            <volume>
+                <property>fdm/jsbsim/systems/electric/bus[1]/sound-lag</property>
+                <factor>0.05</factor>
+                <min>0.0</min>
+                <max>1.0</max>
+            </volume>
+        </silence>
+        
         <combustion>
             <name>Startup internal</name>
             <path>Aircraft/G91-R1B_HD/Sounds/G91 startup internal.wav</path>
@@ -278,7 +302,7 @@
                 <factor>1.3</factor>
             </volume>
         </gear>
-        
+        <!--
         <rumble>
             <name>gear rumble</name>
             <mode>looped</mode>
@@ -294,7 +318,7 @@
                 <factor>5.0</factor>
             </volume>
         </rumble>
-        
+        -->
         <rumble>
             <name>rumble0</name>
             <mode>looped</mode>

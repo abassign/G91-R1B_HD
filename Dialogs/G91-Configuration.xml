@@ -37,9 +37,369 @@
             <layout>table</layout>
             <text>
                 <label>Fuel</label>
+                <pref-width>100</pref-width>
                 <halign>left</halign>
                 <row>0</row>
                 <col>0</col>
+                <color>
+                    <red>0.0</red>
+                    <green>1.0</green>
+                    <blue>1.0</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>1</col>
+                <pref-width>70</pref-width>
+                <label>Fuel to load</label>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.9</blue>
+                </color>
+            </text>
+            <slider>
+                <row>0</row>
+                <col>2</col>
+                <name>fuel_man-flux_b</name>
+                <property>fdm/jsbsim/systems/fuel/fuel-to-load-lb</property>
+                <min>0</min>
+                <max>2750</max>
+                <step>50</step>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+                <binding>
+                    <command>nasal</command>
+                    <script>
+                        setprop("fdm/jsbsim/systems/fuel/fuel-to-load-conf",1);
+                        setprop("fdm/jsbsim/systems/fuel/fuel-to-load-conf-end",0);
+                        setprop("fdm/jsbsim/systems/fuel/fuel-to-loaded-lb",0);
+                    </script>
+                </binding>
+            </slider>
+            <text>
+                <row>0</row>
+                <col>3</col>
+                <label>99999999</label>
+                <live>true</live>
+                <format>%4.0f lb</format>
+                <property>fdm/jsbsim/systems/fuel/fuel-to-load-lb</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.0</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>4</col>
+                <label>99999999</label>
+                <live>true</live>
+                <format>Loaded %4.0f lb</format>
+                <property>fdm/jsbsim/systems/fuel/fuel-to-loaded-lb</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.9</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>6</col>
+                <label> | </label>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.0</blue>
+                </color>
+            </text>
+            <radio>
+                <row>0</row>
+                <col>7</col>
+                <label>Ext tank</label>
+                <property>fdm/jsbsim/systems/fuel/external-tank-active</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+                <binding>
+                    <command>property-assign</command>
+                    <property>fdm/jsbsim/systems/fuel/external-tank-active-conf</property>
+                    <value>1</value>
+                </binding>
+            </radio>
+            <text>
+                <row>0</row>
+                <col>8</col>
+                <label>9999999</label>
+                <live>true</live>
+                <format>%4.0f lb</format>
+                <property>fdm/jsbsim/systems/fuel/external-tank-content-lb</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.9</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>9</col>
+                <label> | </label>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.0</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>10</col>
+                <label>Fuel in all tanks</label>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.9</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>11</col>
+                <label>9999999</label>
+                <live>true</live>
+                <format>%4.0f lb</format>
+                <property>fdm/jsbsim/systems/fuel/fuel-content-all-tank-lb</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.0</blue>
+                </color>
+            </text>
+            <text>
+                <label> </label>
+                <pref-width>100</pref-width>
+                <halign>left</halign>
+                <row>1</row>
+                <col>0</col>
+                <color>
+                    <red>0.0</red>
+                    <green>1.0</green>
+                    <blue>1.0</blue>
+                </color>
+            </text>
+            <text>
+                <label>Tank 0</label>
+                <pref-width>70</pref-width>
+                <halign>left</halign>
+                <row>1</row>
+                <col>1</col>
+            </text>
+            <slider>
+                <row>1</row>
+                <col>2</col>
+                <name>fuel_flux_a</name>
+                <property>fdm/jsbsim/systems/fuel/fuel-man-flux-a-pps-slider</property>
+                <min>-1.55</min>
+                <max>1.5</max>
+                <step>0.05</step>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+                <binding>
+                    <command>nasal</command>
+                    <script><![CDATA[
+                        if (getprop("fdm/jsbsim/systems/fuel/fuel-to-load-conf") == 0) {
+                            var pps_Slider = getprop("fdm/jsbsim/systems/fuel/fuel-man-flux-a-pps-slider");
+                            if (pps_Slider >= -0.05 and pps_Slider <= 0.05) {
+                                setprop("fdm/jsbsim/systems/fuel/fuel-man-flux-a-pps-slider",0);
+                                pps_Slider = 0.0;
+                            }
+                            setprop("fdm/jsbsim/systems/fuel/fuel-man-flux-a-pps",10.0 * math.tan(pps_Slider));
+                        } else {
+                            setprop("fdm/jsbsim/systems/fuel/fuel-man-flux-a-pps-slider",0);
+                        }
+                    ]]></script>
+                </binding>
+            </slider>
+            <text>
+                <row>1</row>
+                <col>3</col>
+                <label>9999999999999</label>
+                <live>true</live>
+                <format>flux %3.0f pps</format>
+                <property>fdm/jsbsim/systems/fuel/fuel-man-flux-a-pps</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.0</blue>
+                </color>
+            </text>
+            <text>
+                <row>1</row>
+                <col>4</col>
+                <label>999999999999</label>
+                <live>true</live>
+                <format>cont %4.0f lb</format>
+                <property>fdm/jsbsim/systems/fuel/fuel-content-a-lb</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.9</blue>
+                </color>
+            </text>
+            <text>
+                <label>Tank 1-2-5</label>
+                <halign>left</halign>
+                <row>1</row>
+                <col>5</col>
+            </text>
+            <slider>
+                <row>1</row>
+                <col>6</col>
+                <name>fuel_man-flux_b</name>
+                <property>fdm/jsbsim/systems/fuel/fuel-man-flux-b-pps-slider</property>
+                <min>-1.55</min>
+                <max>1.5</max>
+                <step>0.05</step>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+                <binding>
+                    <command>nasal</command>
+                    <script><![CDATA[
+                        if (getprop("fdm/jsbsim/systems/fuel/fuel-to-load-conf") == 0) {
+                            var pps_Slider = getprop("fdm/jsbsim/systems/fuel/fuel-man-flux-b-pps-slider");
+                            if (pps_Slider >= -0.05 and pps_Slider <= 0.05) {
+                                setprop("fdm/jsbsim/systems/fuel/fuel-man-flux-b-pps-slider",0);
+                                pps_Slider = 0.0;
+                            }
+                            setprop("fdm/jsbsim/systems/fuel/fuel-man-flux-b-pps",10.0 * math.tan(pps_Slider));
+                        } else {
+                            setprop("fdm/jsbsim/systems/fuel/fuel-man-flux-b-pps-slider",0);
+                        }
+                    ]]></script>
+                </binding>
+            </slider>
+            <text>
+                <row>1</row>
+                <col>7</col>
+                <label>9999999999999</label>
+                <live>true</live>
+                <format>flux %3.0f pps</format>
+                <property>fdm/jsbsim/systems/fuel/fuel-man-flux-b-pps</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.0</blue>
+                </color>
+            </text>
+            <text>
+                <row>1</row>
+                <col>8</col>
+                <label>999999999999</label>
+                <live>true</live>
+                <format>cont %4.0f lb</format>
+                <property>fdm/jsbsim/systems/fuel/fuel-content-b-lb</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.9</blue>
+                </color>
+            </text>
+        </group>
+    </group>
+    
+    <hrule/>
+    
+    <group>
+        <layout>vbox</layout>
+        <group>
+            <layout>table</layout>
+            <text>
+                <row>0</row>
+                <col>0</col>
+                <label>Hydraulic circuit</label>
+                <pref-width>100</pref-width>
+                <halign>left</halign>
+                <color>
+                    <red>0.0</red>
+                    <green>1.0</green>
+                    <blue>1.0</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>2</col>
+                <label>99999999999999999999</label>
+                <live>true</live>
+                <format>Pressure %5.1f psi</format>
+                <property>fdm/jsbsim/systems/hydraulics/flight-system-psi</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.9</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>3</col>
+                <label>99999999999999</label>
+                <live>true</live>
+                <format>[%4.2f bar]</format>
+                <property>fdm/jsbsim/systems/hydraulics/pump_flow_rate</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.9</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>4</col>
+                <label>9999999999999999999999</label>
+                <live>true</live>
+                <format>Leak flow rate %4.2f</format>
+                <property>fdm/jsbsim/systems/hydraulics/lost_flow_rate</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.9</blue>
+                </color>
+            </text>
+            <text>
+                <label>Hydraulic pressure leak</label>
+                <pref-width>100</pref-width>
+                <halign>left</halign>
+                <row>0</row>
+                <col>5</col>
+            </text>
+            <slider>
+                <row>0</row>
+                <col>6</col>
+                <name>hydraulic_pressure_loss</name>
+                <property>fdm/jsbsim/systems/hydraulics/lost-performance-system</property>
+                <min>0.1</min>
+                <max>1.0</max>
+                <step>0.01</step>  
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </slider>
+            <text>
+                <row>0</row>
+                <col>7</col>
+                <label>9999</label>
+                <live>true</live>
+                <format>%2.2f</format>
+                <property>fdm/jsbsim/systems/hydraulics/lost-performance-system</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.0</blue>
+                </color>
             </text>
         </group>
     </group>
@@ -56,6 +416,11 @@
                 <halign>left</halign>
                 <row>0</row>
                 <col>0</col>
+                <color>
+                    <red>0.0</red>
+                    <green>1.0</green>
+                    <blue>1.0</blue>
+                </color>
             </text>
             <button>
                 <row>0</row>
@@ -197,99 +562,17 @@
     <hrule/>
     
     <group>
-        <layout>vbox</layout>
-        <group>
-            <layout>table</layout>
-            <text>
-                <row>0</row>
-                <col>0</col>
-                <label>Hydraulic circuit</label>
-                <pref-width>100</pref-width>
-                <halign>left</halign>
-            </text>
-            <text>
-                <row>0</row>
-                <col>2</col>
-                <label>99999999999999999999</label>
-                <live>true</live>
-                <format>Pressure %5.1f psi</format>
-                <property>fdm/jsbsim/systems/hydraulics/flight-system-psi</property>
-                <color>
-                    <red>0.9</red>
-                    <green>0.9</green>
-                    <blue>0.9</blue>
-                </color>
-            </text>
-            <text>
-                <row>0</row>
-                <col>3</col>
-                <label>99999999999999</label>
-                <live>true</live>
-                <format>[%4.2f bar]</format>
-                <property>fdm/jsbsim/systems/hydraulics/pump_flow_rate</property>
-                <color>
-                    <red>0.9</red>
-                    <green>0.9</green>
-                    <blue>0.9</blue>
-                </color>
-            </text>
-            <text>
-                <row>0</row>
-                <col>4</col>
-                <label>9999999999999999999999</label>
-                <live>true</live>
-                <format>Lost flow rate %4.2f</format>
-                <property>fdm/jsbsim/systems/hydraulics/lost_flow_rate</property>
-                <color>
-                    <red>0.9</red>
-                    <green>0.9</green>
-                    <blue>0.9</blue>
-                </color>
-            </text>
-            <text>
-                <label>Hydraulic pressure lost</label>
-                <pref-width>100</pref-width>
-                <halign>left</halign>
-                <row>0</row>
-                <col>5</col>
-            </text>
-            <slider>
-                <row>0</row>
-                <col>6</col>
-                <name>hydraulic_pressure_loss</name>
-                <property>fdm/jsbsim/systems/hydraulics/lost-performance-system</property>
-                <min>0.1</min>
-                <max>1.0</max>
-                <step>0.01</step>  
-                <binding>
-                    <command>dialog-apply</command>
-                </binding>
-            </slider>
-            <text>
-                <row>0</row>
-                <col>7</col>
-                <label>9999</label>
-                <live>true</live>
-                <format>%2.2f</format>
-                <property>fdm/jsbsim/systems/hydraulics/lost-performance-system</property>
-                <color>
-                    <red>0.9</red>
-                    <green>0.9</green>
-                    <blue>0.0</blue>
-                </color>
-            </text>
-        </group>
-    </group>
-    
-    <hrule/>
-    
-    <group>
         <layout>table</layout>
         <text>
             <label>Models components</label>
             <halign>left</halign>
             <row>0</row>
             <col>0</col>
+            <color>
+                <red>0.0</red>
+                <green>1.0</green>
+                <blue>1.0</blue>
+            </color>
         </text>
 
         <checkbox>

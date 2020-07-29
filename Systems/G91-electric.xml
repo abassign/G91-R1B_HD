@@ -157,6 +157,7 @@ Description: G91R4 Electric system from "Manuale di pilotaggio (p.56)
     <property value="10">systems/electric/inv-secondary/I0</property>
     <property value="1">systems/electric/inv-primary/cockpit-air-temp/fuse</property>
     <property value="0">systems/electric/inv-primary/cockpit-air-temp/I</property>
+    <property value="0">systems/electric/bus[1]/sound-lag</property>
     
     <channel name="Calculate loads on bus" execrate="8">
         
@@ -462,6 +463,12 @@ Description: G91R4 Electric system from "Manuale di pilotaggio (p.56)
             <input>systems/electric/bus[1]/I</input>
             <gain>systems/electric/bus[1]/V</gain>
         </pure_gain>
+        
+        <lag_filter name="systems/electric/bus[1]/sound-lag">
+            <input>systems/electric/bus[1]/V</input>
+            <c1>0.5</c1>
+        </lag_filter>
+        
         
     </channel>
     
