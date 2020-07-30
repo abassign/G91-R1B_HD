@@ -275,7 +275,7 @@
             <factor>0.12</factor>
         </emission>
     </animation>
-    
+
     <animation> 
         <type>material</type>
         <object-name>screews (Meshed)</object-name>
@@ -353,9 +353,9 @@
             <factor>0.15</factor>
         </emission>
     </animation>
-    
+
     <!-- Central BOX -->
-    
+
     <animation> 
         <type>material</type>
         <object-name>tag box sx (Meshed)</object-name>
@@ -517,9 +517,9 @@
             <factor>0.10</factor>
         </emission>
     </animation>
-    
+
     <!-- Components -->
-    
+
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Components/Gear_lever/Gear_lever_als.xml</path>
         <offsets>
@@ -529,7 +529,7 @@
             <pitch-deg>0.0</pitch-deg>
         </offsets>
     </model>
-    
+
     <!-- Gauges -->
 
     <model>
@@ -551,7 +551,7 @@
             <pitch-deg>0.0</pitch-deg>
         </offsets>
     </model>
-    
+
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/Kollsman_ME4/Kollsman_ME4.xml</path>
         <offsets>
@@ -561,7 +561,7 @@
             <pitch-deg>0.0</pitch-deg>
         </offsets>
     </model>
-    
+
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/Allen_MD-1A_Turn_Ind/Allen_MD-1A_Turn_Ind_01.xml</path>
         <offsets>
@@ -591,7 +591,7 @@
             <pitch-deg>0.0</pitch-deg>
         </offsets>
     </model>
-    
+
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/MS-33678-3P/MS-33678-3P-2.xml</path>
         <offsets>

@@ -1,6 +1,6 @@
 AC3Db
-MATERIAL "DefaultWhite" rgb 1.000 1.000 1.000  amb 0.200 0.200 0.200  emis 0.000 0.000 0.000  spec 0.500 0.500 0.500  shi 10 trans 0.000
-MATERIAL "Normal" rgb 1.000 1.000 1.000  amb 0.200 0.200 0.200  emis 0.000 0.000 0.000  spec 0.500 0.500 0.500  shi 10 trans 0.000
+MATERIAL "DefaultWhite" rgb 1.0000 1.0000 1.0000  amb 0.0000 0.0000 0.0000  emis 0.0000 0.0000 0.0000  spec 0.0000 0.0000 0.0000  shi 10 trans 0.0000
+MATERIAL "Normal" rgb 0.8750 0.8750 0.8750  amb 0.0000 0.0000 0.0000  emis 0.0000 0.0000 0.0000  spec 0.0000 0.0000 0.0000  shi 0 trans 0.0000
 OBJECT world
 name "Blender_exporter_v2.11__OrpheusMK803.ac"
 kids 16

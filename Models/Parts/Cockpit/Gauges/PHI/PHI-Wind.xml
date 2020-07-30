@@ -348,7 +348,7 @@
     </model>
 
     <model>
-        <name>procedural_light_cockpit_gauge_spot_red</name>
+        <object-name>procedural_light_cockpit_gauge_spot_red</object-name>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Effects/lights/procedural_light_cockpit_gauge_spot_red.xml</path>
         <offsets>
             <x-m> 0.03</x-m>

@@ -1,4 +1,4 @@
-
+<?xml version="1.0"?>
 
 <PropertyList>
     
@@ -10,44 +10,179 @@
         <z-m>0.0</z-m>
     </offsets>
     
+    <animation>
+        <type>noshadow</type>
+        <object-name>node0</object-name>
+        <object-name>node1</object-name>
+        <object-name>node2</object-name>
+        <object-name>node3</object-name>
+        <object-name>node4</object-name>
+        <object-name>node5</object-name>
+        <object-name>node6</object-name>
+        <object-name>node7</object-name>
+        <object-name>node8</object-name>
+        <object-name>node9</object-name>
+        <object-name>node10</object-name>
+        <object-name>node11</object-name>
+        <object-name>node12</object-name>
+        <object-name>node14</object-name>
+        <object-name>node15</object-name>
+    </animation>
+    
     <animation> 
-        <type>material</type> 
+        <type>material</type>
+        <object-name>node0</object-name>
+        <ambient>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
+            <factor-prop>sim/G91/engine_internal_light_low</factor-prop>
+        </ambient>
+        <diffuse>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+            <factor-prop>sim/G91/engine_internal_light_low</factor-prop>
+        </diffuse>
+        <specular>
+            <red>0.6</red>
+            <green>0.6</green>
+            <blue>0.6</blue>
+            <factor-prop>sim/G91/engine_internal_light_low</factor-prop>
+        </specular>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
         <object-name>node1</object-name>
         <object-name>node2</object-name>
         <object-name>node8</object-name>
-        <texture>Pictures/G91-Al-Light.png</texture>
         <ambient>
-            <red>0.2</red>
-            <green>0.2</green>
-            <blue>0.2</blue>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
+            <factor-prop>sim/G91/engine_internal_light</factor-prop>
         </ambient>
         <diffuse>
             <red>0.5</red>
             <green>0.5</green>
             <blue>0.5</blue>
+            <factor-prop>sim/G91/engine_internal_light</factor-prop>
         </diffuse>
+        <specular>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
+            <factor-prop>sim/G91/engine_internal_light</factor-prop>
+        </specular>
     </animation>
     
     <animation> 
         <type>material</type> 
         <object-name>node3</object-name>
-        <texture>Pictures/G91-Al.png</texture>
+        <ambient>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
+            <factor-prop>sim/G91/engine_internal_light_low</factor-prop>
+        </ambient>
+        <diffuse>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
+            <factor-prop>sim/G91/engine_internal_light_low</factor-prop>
+        </diffuse>
+        <specular>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
+            <factor-prop>sim/G91/engine_internal_light_low</factor-prop>
+        </specular>
+    </animation>
+    
+    <animation>
+        <type>material</type> 
+        <object-name>node4</object-name>
+        <emission>
+            <red>0.03</red>	
+            <green>0.0</green>	
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/engengine_red_emission</factor-prop>
+        </emission>
+        <ambient>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+            <factor-prop>sim/G91/engine_internal_light</factor-prop>
+        </ambient>
+        <diffuse>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </diffuse>
+        <specular>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
+        </specular>
+    </animation>
+    
+    <animation>
+        <type>material</type> 
+        <object-name>node5</object-name>
+        <emission>	
+            <red>0.08</red>	
+            <green>0.008</green>	
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/engengine_red_emission</factor-prop>
+        </emission>
+        <ambient>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+            <factor-prop>sim/G91/engine_internal_light</factor-prop>
+        </ambient>
+        <diffuse>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </diffuse>
+        <specular>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
+        </specular>
+    </animation>
+    
+    <animation>
+        <type>material</type> 
+        <object-name>node6</object-name>
+        <emission>	
+            <red-prop>fdm/jsbsim/systems/engine/effects-red-exaust-gas-rpm-norm</red-prop>
+            <green-prop>fdm/jsbsim/systems/engine/effects-green-exaust-gas-rpm-norm</green-prop>
+            <blue-prop>fdm/jsbsim/systems/engine/effects-blue-exaust-gas-rpm-norm</blue-prop>
+            <factor>0.08</factor>
+        </emission>
+        <diffuse>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </diffuse>
         <ambient>
             <red>0.0</red>
             <green>0.0</green>
             <blue>0.0</blue>
         </ambient>
         <diffuse>
-            <red>0.5</red>
-            <green>0.5</green>
-            <blue>0.5</blue>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
         </diffuse>
     </animation>
     
-    <animation> 
+    <animation>
         <type>material</type> 
-        <object-name>node11</object-name>
-        <texture>Pictures/G91-Al-Light.png</texture>
+        <object-name>node7</object-name>
         <ambient>
             <red>0.0</red>
             <green>0.0</green>
@@ -57,14 +192,134 @@
             <red>0.2</red>
             <green>0.2</green>
             <blue>0.2</blue>
+            <factor-prop>sim/G91/engine_internal_light</factor-prop>
         </diffuse>
+        <specular>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </specular>
     </animation>
     
-        <!-- Chrome Effects on materials -->
-    <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Glass/glass-chrome</inherits-from>
+    <animation>
+        <type>material</type> 
+        <object-name>node9</object-name>
+        <ambient>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </ambient>
+        <diffuse>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+            <factor-prop>sim/G91/engine_internal_light</factor-prop>
+        </diffuse>
+        <specular>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </specular>
+    </animation>
+    
+    <animation> 
+        <type>material</type> 
         <object-name>node11</object-name>
-    </effect>
+        <ambient>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
+            <factor-prop>sim/G91/engine_internal_light_hight</factor-prop>
+        </ambient>
+        <diffuse>
+            <red>0.9</red>
+            <green>0.9</green>
+            <blue>0.9</blue>
+            <factor-prop>sim/G91/engine_internal_light_hight</factor-prop>
+        </diffuse>
+        <specular>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+            <factor-prop>sim/G91/engine_internal_light_hight</factor-prop>
+        </specular>
+    </animation>
+    
+    <animation> 
+        <type>material</type> 
+        <object-name>node12</object-name>
+        <object-name>node13</object-name>
+        <ambient>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
+            <factor-prop>sim/G91/engine_internal_light</factor-prop>
+        </ambient>
+        <diffuse>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
+            <factor-prop>sim/G91/engine_internal_light</factor-prop>
+        </diffuse>
+        <specular>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
+            <factor-prop>sim/G91/engine_internal_light</factor-prop>
+        </specular>
+    </animation>
+        
+    <animation>
+        <type>material</type> 
+        <object-name>node14</object-name>
+        <emission>	
+            <red>0.03</red>	
+            <green>0.01</green>	
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/engengine_red_emission</factor-prop>
+        </emission>
+        <diffuse>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </diffuse>
+        <ambient>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </ambient>
+        <specular>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </specular>
+    </animation>
+    
+    <animation>
+        <type>material</type> 
+        <object-name>node15</object-name>
+        <emission>	
+            <red>0.02</red>	
+            <green>0.005</green>	
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/engengine_red_emission</factor-prop>
+        </emission>
+        <ambient>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </ambient>
+        <diffuse>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </diffuse>
+        <specular>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </specular>
+    </animation>
     
     <!-- Engine rotate blades -->
     
@@ -84,8 +339,8 @@
         <factor>25</factor>
         <center>
             <x-m>-0.8</x-m>
-            <y-m>-0.30</y-m>
-            <z-m>0.62</z-m>
+            <y-m>-0.30537</y-m>
+            <z-m>0.62424</z-m>
         </center>
         <axis>
             <x>1</x>
@@ -110,8 +365,8 @@
         <factor>-10</factor>
         <center>
             <x-m>-0.8</x-m>
-            <y-m>-0.30</y-m>
-            <z-m>0.62</z-m>
+            <y-m>-0.30537</y-m>
+            <z-m>0.62424</z-m>
         </center>
         <axis>
             <x>1</x>
@@ -133,153 +388,17 @@
             </or>
         </condition>
         <property>engines/engine/n1</property>
-        <factor>25</factor>
+        <factor>33</factor>
         <center>
             <x-m>-0.8</x-m>
-            <y-m>-0.30</y-m>
-            <z-m>0.62</z-m>
+            <y-m>-0.30537</y-m>
+            <z-m>0.62424</z-m>
         </center>
         <axis>
             <x>1</x>
-            <y>0</y>
-            <z>0</z>
+            <y>0.005</y>
+            <z>0.005</z>
         </axis>
-    </animation>
-    
-    <animation>
-        <type>material</type> 
-        <object-name>node14</object-name>
-        <texture>Pictures/G91-Dark-Grey.png</texture>
-        <emission>	
-            <red>0.09</red>	
-            <green>0.03</green>	
-            <blue>0.0</blue>
-            <factor-prop>sim/G91/engengine_red_emission</factor-prop>
-        </emission>
-        <ambient>
-            <red>0.0</red>
-            <green>0.0</green>
-            <blue>0.0</blue>
-        </ambient>
-        <diffuse>
-            <red>0.0</red>
-            <green>0.0</green>
-            <blue>0.0</blue>
-        </diffuse>
-    </animation>
-    
-    <animation>
-        <type>material</type> 
-        <object-name>node15</object-name>
-        <texture>Pictures/G91-Dark-Grey.png</texture>
-        <emission>	
-            <red>0.08</red>	
-            <green>0.02</green>	
-            <blue>0.0</blue>
-            <factor-prop>sim/G91/engengine_red_emission</factor-prop>
-        </emission>
-        <ambient>
-            <red>0.0</red>
-            <green>0.0</green>
-            <blue>0.0</blue>
-        </ambient>
-        <diffuse>
-            <red>0.0</red>
-            <green>0.0</green>
-            <blue>0.0</blue>
-        </diffuse>
-    </animation>
-    
-    <animation>
-        <type>material</type> 
-        <object-name>node4</object-name>
-        <texture>Pictures/G91-Dark-Grey.png</texture>
-        <emission>
-            <red>0.01</red>	
-            <green>0.0</green>	
-            <blue>0.0</blue>
-            <factor-prop>sim/G91/engengine_red_emission</factor-prop>
-        </emission>
-        <ambient>
-            <red>0.0</red>
-            <green>0.0</green>
-            <blue>0.0</blue>
-        </ambient>
-        <diffuse>
-            <red>0.1</red>
-            <green>0.1</green>
-            <blue>0.1</blue>
-        </diffuse>
-    </animation>
-    
-    <animation>
-        <type>material</type> 
-        <object-name>node5</object-name>
-        <texture>Pictures/G91-Dark-Grey.png</texture>
-        <emission>	
-            <red>0.20</red>	
-            <green>0.012</green>	
-            <blue>0.0</blue>
-            <factor-prop>sim/G91/engengine_red_emission</factor-prop>
-        </emission>
-        <ambient>
-            <red>0.0</red>
-            <green>0.0</green>
-            <blue>0.0</blue>
-        </ambient>
-        <diffuse>
-            <red>0.0</red>
-            <green>0.0</green>
-            <blue>0.0</blue>
-        </diffuse>
-    </animation>
-    
-    <animation>
-        <type>material</type> 
-        <object-name>node6</object-name>
-        <diffuse>
-            <red>0.0</red>
-            <green>0.0</green>
-            <blue>0.0</blue>
-        </diffuse>
-        <emission>	
-            <red-prop>fdm/jsbsim/systems/engine/effects-red-exaust-gas-rpm-norm</red-prop>
-            <green-prop>fdm/jsbsim/systems/engine/effects-green-exaust-gas-rpm-norm</green-prop>
-            <blue-prop>fdm/jsbsim/systems/engine/effects-blue-exaust-gas-rpm-norm</blue-prop>
-            <factor>0.1</factor>
-        </emission>
-        <ambient>
-            <red>0.0</red>
-            <green>0.0</green>
-            <blue>0.0</blue>
-        </ambient>
-        <diffuse>
-            <red>0.0</red>
-            <green>0.0</green>
-            <blue>0.0</blue>
-        </diffuse>
-    </animation>
-    
-    <animation>
-        <type>material</type> 
-        <object-name>node10</object-name>
-        <texture>Pictures/G91-Dark-Grey.png</texture>
-        <emission>	
-            <red>0.03</red>	
-            <green>0.0</green>	
-            <blue>0.0</blue>
-            <factor-prop>sim/G91/engengine_red_emission</factor-prop>
-        </emission>
-        <ambient>
-            <red>0.1</red>
-            <green>0.1</green>
-            <blue>0.1</blue>
-        </ambient>
-        <diffuse>
-            <red>0.0</red>
-            <green>0.0</green>
-            <blue>0.0</blue>
-        </diffuse>
     </animation>
     
     <!-- Fire flame  and smoke -->

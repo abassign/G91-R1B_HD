@@ -611,6 +611,17 @@
         <checkbox>
             <row>0</row>
             <col>4</col>
+            <label>Tail</label>
+            <halign>fill</halign>
+            <property>sim/G91/models/active/tail</property>
+            <live>true</live>
+            <binding>
+                <command>dialog-apply</command>
+            </binding>
+        </checkbox>
+        <checkbox>
+            <row>0</row>
+            <col>5</col>
             <label>Turbojet</label>
             <halign>fill</halign>
             <property>sim/G91/models/active/turbojet</property>
@@ -621,7 +632,7 @@
         </checkbox>
         <checkbox>
             <row>0</row>
-            <col>5</col>
+            <col>6</col>
             <label>Stores</label>
             <halign>fill</halign>
             <property>sim/G91/models/active/stores</property>
@@ -632,7 +643,7 @@
         </checkbox>
         <checkbox>
             <row>0</row>
-            <col>6</col>
+            <col>7</col>
             <label>Accessories</label>
             <halign>fill</halign>
             <property>sim/G91/models/active/accessories</property>

@@ -27,7 +27,6 @@
 
         ]]></unload>
     </nasal>
-    
 <!--
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Cockpit.xml</path>
@@ -39,7 +38,7 @@
         </condition>
     </model>
     -->
-<!--
+    <!--
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Canopy.xml</path>
         <condition>
@@ -64,12 +63,12 @@
         <path>Aircraft/G91-R1B_HD/Models/Parts/Tail/Tail.xml</path>
         <condition>
             <equals>
-                <property>sim/G91/models/active/fuselage</property>
+                <property>sim/G91/models/active/tail</property>
                 <value>1</value>
             </equals>
         </condition>
     </model>
-    <!--
+
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/LandingGearFrontal/LandingGearFrontal.xml</path>
         <condition>
@@ -157,6 +156,7 @@
         </condition>
     </model>
 
+<!--
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Stores/Stores.xml</path>
         <condition>
@@ -177,7 +177,6 @@
         </condition>
     </model>
     -->
-    
     <!-- Compositor canopy lights test -->
 
     <model>

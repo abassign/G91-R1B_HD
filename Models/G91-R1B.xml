@@ -81,7 +81,7 @@
         <path>Aircraft/G91-R1B_HD/Models/Parts/Tail/Tail.xml</path>
         <condition>
             <equals>
-                <property>sim/G91/models/active/fuselage</property>
+                <property>sim/G91/models/active/tail</property>
                 <value>1</value>
             </equals>
         </condition>

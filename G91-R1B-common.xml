@@ -194,6 +194,7 @@
             <!-- Generic -->
             <file>Aircraft/G91-R1B_HD/Nasal/Ambient/ambient_data.nas</file>
             <file>Aircraft/G91-R1B_HD/Nasal/Engine/engine_red_emission.nas</file>
+            <file>Aircraft/G91-R1B_HD/Nasal/Engine/engine_internal_light.nas</file>
             <file>Aircraft/G91-R1B_HD/Nasal/Engine/engine_starter.nas</file>
             <file>Aircraft/G91-R1B_HD/Nasal/Reflections/Glass_Camera_Reflections.nas</file>
             <file>Aircraft/G91-R1B_HD/Nasal/Reflections/Glass_Canopy_Reflections.nas</file>
@@ -246,7 +247,7 @@
                     setprop("sim/G91/models/effects/als",0);
                 } else {
                     setprop("sim/G91/models/effects/als",1);
-                }
+                }                
             </script>
         </test-compositor>
         
