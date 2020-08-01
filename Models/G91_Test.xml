@@ -156,7 +156,6 @@
         </condition>
     </model>
 
-<!--
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Stores/Stores.xml</path>
         <condition>
@@ -176,7 +175,7 @@
             </equals>
         </condition>
     </model>
-    -->
+
     <!-- Compositor canopy lights test -->
 
     <model>

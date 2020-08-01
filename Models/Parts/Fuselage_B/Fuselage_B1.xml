@@ -11,14 +11,11 @@
         <pitch-deg>0.0</pitch-deg>
     </offsets>
 
-    <!--
-    <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
+    <animation>
+        <type>noshadow</type>
         <object-name>A__G91_fuselage_01up.000</object-name>
         <object-name>A__G91_fuselage_weapon_01up.002</object-name>
         <object-name>A__G91_fuselage_weapon_01up.003</object-name>
-        <object-name>A__G91_fuselage_weapon_door_dx.002</object-name>
-        <object-name>A__G91_fuselage_weapon_door_sx.002</object-name>
         <object-name>browning.024</object-name>
         <object-name>browning.025</object-name>
         <object-name>browning.026</object-name>
@@ -74,8 +71,11 @@
         <object-name>weapons.007</object-name>
         <object-name>weapons.008</object-name>
         <object-name>weapons.009</object-name>
-    </effect>
-    -->
+        <!--
+        <object-name>A__G91_fuselage_weapon_door_dx.002</object-name>
+        <object-name>A__G91_fuselage_weapon_door_sx.002</object-name>
+        -->
+    </animation>
 
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Liveries/liveries_001</inherits-from>
@@ -102,7 +102,6 @@
             <factor-prop>sim/G91/liveries/active/specular</factor-prop>
         </specular>
     </animation>
-
     
     <animation> 
         <type>material</type>
@@ -317,7 +316,7 @@
         <object-name>weapon_structure_dx_02.001</object-name>
         <object-name>weapon_structure_dx_03.001</object-name>
         <object-name>weapon_structure_dx_04.001</object-name>
-        <property>sim/G91/switchs/ArmyPanels/ArmyPanelSx_timing</property>
+        <property>fdm/jsbsim/systems/guns/compartment/sw-open-door-pos-dx</property>
         <factor>-150</factor>
         <axis>
             <x1-m> -2.6982 </x1-m>
@@ -359,7 +358,7 @@
         <object-name>weapon_structure_sx_02.001</object-name>
         <object-name>weapon_structure_sx_03.001</object-name>
         <object-name>weapon_structure_sx_04.001</object-name>
-        <property>sim/G91/switchs/ArmyPanels/ArmyPanelDx_timing</property>
+        <property>fdm/jsbsim/systems/guns/compartment/sw-open-door-pos-sx</property>
         <factor>150</factor>
         <axis>
             <x1-m> -2.6982 </x1-m>

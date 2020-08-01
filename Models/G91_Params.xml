@@ -98,9 +98,9 @@ G91_Params.xml
             <name_short type="string">Silver R1</name_short>
             <name_long type="string">Silver version, used as a prototype Pinocchio nose (R1)</name_long>
             <luminosity type="float">0.15</luminosity>
-            <reflective type="float">-0.34</reflective>
+            <reflective type="float">-0.74</reflective>
             <PANR1 type="float">1.0</PANR1>
-            <diffuse type="float">0.80</diffuse>
+            <diffuse type="float">0.89</diffuse>
             <specular type="float">0.0</specular>
             <dirty type="float">0.0</dirty>
             <noise>sim/G91/liveries/active/noise</noise>
@@ -118,9 +118,9 @@ G91_Params.xml
             <name_short type="string">Silver R1B</name_short>
             <name_long type="string">Silver version R1B with recognition nose (R1B)</name_long>
             <luminosity type="float">0.15</luminosity>
-            <reflective type="float">-0.34</reflective>
+            <reflective type="float">-0.74</reflective>
             <PANR1 type="float">0.0</PANR1>
-            <diffuse type="float">0.80</diffuse>
+            <diffuse type="float">0.89</diffuse>
             <specular type="float">0.0</specular>
             <dirty type="float">0.0</dirty>
             <noise>sim/G91/liveries/active/noise</noise>
@@ -157,12 +157,12 @@ G91_Params.xml
             <reloads type="float">0.0</reloads>
             <name_short type="string">Luftwaffe R3 c/n 535</name_short>
             <name_long type="string">Luftwaffe FUS G-91R/3 c/n 535 (R3)</name_long>
-            <luminosity type="float">0.28</luminosity>
-            <reflective type="float">-0.86</reflective>
+            <luminosity type="float">0.04</luminosity>
+            <reflective type="float">-0.82</reflective>
             <PANR1 type="float">0.0</PANR1>
-            <diffuse type="float">1.0</diffuse>
-            <specular type="float">0.0</specular>
-            <dirty type="float">0.0</dirty>
+            <diffuse type="float">0.33</diffuse>
+            <specular type="float">0.09</specular>
+            <dirty type="float">1.0</dirty>
             <noise>sim/G91/liveries/active/noise</noise>
             <livery_001 type="string">Aircraft/G91-R1B_HD/Models/Liveries/R3/GER_1962_001.png</livery_001>
             <livery_002 type="string">Aircraft/G91-R1B_HD/Models/Liveries/R3/GER_1962_002.png</livery_002>

@@ -11,9 +11,8 @@
         <pitch-deg>0.0</pitch-deg>
     </offsets>
 
-    <!--
-    <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
+    <animation>
+        <type>noshadow</type>
         <object-name>A__G91r3_fuselage_weapon_door_dx.001</object-name>
         <object-name>A__G91r3_fuselage_weapon_door_sx..001</object-name>
         <object-name>weapons.000</object-name>
@@ -24,8 +23,7 @@
         <object-name>defa_body1</object-name>
         <object-name>defa_cannon30mm</object-name>
         <object-name>defa_exhaust_shells2</object-name>
-    </effect>
-    -->
+    </animation>
 
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Liveries/liveries_001</inherits-from>
@@ -138,7 +136,7 @@
         <type>rotate</type>
         <object-name>A__G91r3_fuselage_weapon_door_dx</object-name>
         <object-name>A__G91r3_fuselage_weapon_door_dx.001</object-name>
-        <property>sim/G91/switchs/ArmyPanels/ArmyPanelSx_timing</property>
+        <property>fdm/jsbsim/systems/guns/compartment/sw-open-door-pos-dx</property>
         <factor>100</factor>
         <axis>
             <x1-m> -2.50418 </x1-m>
@@ -154,7 +152,7 @@
         <type>rotate</type>
         <object-name>A__G91r3_fuselage_weapon_door_sx.</object-name>
         <object-name>A__G91r3_fuselage_weapon_door_sx..001</object-name>
-        <property>sim/G91/switchs/ArmyPanels/ArmyPanelDx_timing</property>
+        <property>fdm/jsbsim/systems/guns/compartment/sw-open-door-pos-sx</property>
         <factor>-100</factor>
         <axis>
             <x1-m> -2.47955 </x1-m>

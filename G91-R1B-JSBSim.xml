@@ -72,6 +72,8 @@
     <system file="G91-autopilot"/>
     <system file="G91-dragchute"/>
     <system file="G91-oxygen"/>
+    <system file="G91-camera"/>
+    <system file="G91-guns"/>
     <system file="PHI"/>
     
     <!-- apparatus -->

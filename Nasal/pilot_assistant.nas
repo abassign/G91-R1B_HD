@@ -1704,7 +1704,7 @@ var pilot_assistant = func {
                     speed_select = -1.0;
                 }
                 setprop("fdm/jsbsim/systems/autopilot/gui/impact-control-active",1.0);
-                setprop("fdm/jsbsim/systems/autopilot/gui/speed-automatic-gear",1.0);
+                setprop("fdm/jsbsim/systems/autopilot/gui/speed-automatic-gear",0.0);
                 setprop("fdm/jsbsim/systems/autopilot/speed-best-by-altitude-set",1.0);
             }
         }

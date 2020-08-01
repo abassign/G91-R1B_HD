@@ -8,7 +8,7 @@
         <z-m>0.0</z-m>
         <pitch-deg>0.0</pitch-deg>
     </offsets>
-    
+<!--
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Stores/Tank/Tank260lib_10_Dx.xml</path>
     </model>
@@ -16,5 +16,13 @@
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Stores/Tank/Tank260lib_10_Sx.xml</path>
     </model>
+    -->
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Stores/Tank/tank-900-lb-Dx.xml</path>
+    </model>
     
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Stores/Tank/tank-900-lb-Sx.xml</path>
+    </model>
+
 </PropertyList>

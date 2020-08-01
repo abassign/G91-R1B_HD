@@ -192,6 +192,7 @@
         <object-name>staffa001_door_dx.003</object-name>
         <object-name>supporto_jato</object-name>
     </effect>
+    
     <!--
     <animation>
         <type>noshadow</type>
@@ -1229,15 +1230,7 @@
             <interval-sec>0.2</interval-sec>
             <binding>
                 <command>property-toggle</command>
-                <property>sim/G91/switchs/ArmyPanels/ArmyPanelDx</property>
-                <min>0</min>
-                <max>1</max>
-            </binding>
-            <binding>
-                <command>property-interpolate</command>
-                <property>sim/G91/switchs/ArmyPanels/ArmyPanelDx_timing</property>
-                <property>sim/G91/switchs/ArmyPanels/ArmyPanelDx</property>
-                <time>2</time>
+                <property>fdm/jsbsim/systems/guns/compartment/sw-open-handle-togle-sx</property>
             </binding>
         </action>
     </animation>
@@ -1245,7 +1238,7 @@
     <animation>
         <type>rotate</type>
         <object-name>F_handle_armydoorSX</object-name>
-        <property>sim/G91/switchs/ArmyPanels/ArmyPanelDx_timing</property>
+        <property>fdm/jsbsim/systems/guns/compartment/sw-open-handle-pos-sx</property>
         <factor>150</factor>
         <center>
             <x-m> -1.43247 </x-m>
@@ -1270,15 +1263,7 @@
             <interval-sec>0.2</interval-sec>
             <binding>
                 <command>property-toggle</command>
-                <property>sim/G91/switchs/ArmyPanels/ArmyPanelSx</property>
-                <min>0</min>
-                <max>1</max>
-            </binding>
-            <binding>
-                <command>property-interpolate</command>
-                <property>sim/G91/switchs/ArmyPanels/ArmyPanelSx_timing</property>
-                <property>sim/G91/switchs/ArmyPanels/ArmyPanelSx</property>
-                <time>2</time>
+                <property>fdm/jsbsim/systems/guns/compartment/sw-open-handle-togle-dx</property>
             </binding>
         </action>
     </animation>
@@ -1286,7 +1271,7 @@
     <animation>
         <type>rotate</type>
         <object-name>F_handle_armydoorDX</object-name>
-        <property>sim/G91/switchs/ArmyPanels/ArmyPanelSx_timing</property>
+        <property>fdm/jsbsim/systems/guns/compartment/sw-open-handle-pos-dx</property>
         <factor>150</factor>
         <center>
             <x-m> -1.43255 </x-m>

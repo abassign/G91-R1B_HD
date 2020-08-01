@@ -13,6 +13,107 @@
     </offsets>
     
     <animation>
+        <type>noshadow</type>
+        <!-- GearSup -->
+        <!--
+        <object-name>gear-front-jack-03</object-name>
+        <object-name>gear-front-jack-018.001</object-name>
+        <object-name>gear-front-jack-018.002</object-name>
+        -->
+        <!-- GearPivot -->
+        <object-name>Cube</object-name>
+        <object-name>gear-front-jack-018</object-name>
+        <object-name>gear-front-jack-016</object-name>
+        <object-name>Plane.002</object-name>
+        <object-name>Plane.003</object-name>
+        <object-name>Cylinder.001</object-name>
+        <object-name>Cylinder.002</object-name>
+        <object-name>Cylinder.003</object-name>
+        <object-name>Cylinder.004</object-name>
+        <object-name>Cylinder.006</object-name>
+        <object-name>Cylinder.007</object-name>
+        <!--
+        <object-name>Cylinder.005</object-name>
+        <object-name>gear-front-jack-013</object-name>
+        -->
+        <!-- GearWheel -->
+        <object-name>gear-front-jack-014</object-name>
+        <!--
+        <object-name>gear-front-jack-015.002</object-name>
+        <object-name>gear-front-jack-015</object-name>
+        -->
+        <!-- GearFrontalDoor -->
+        <object-name>Light_dx</object-name>
+        <object-name>Light_Sphere_dx</object-name>
+        <object-name>Light_Sphere_dx.001</object-name>
+        <object-name>Light_Sphere_dx.002</object-name>
+        <object-name>Light_Sphere_dx.003</object-name>
+        <object-name>Light_Sphere_dx.004</object-name>
+        <object-name>Light_dx.001</object-name>
+        <object-name>Light_dx.002</object-name>
+        <object-name>Light_dx._reflectivepart</object-name>
+        <object-name>Light_dx._reflectivepart.001</object-name>
+        <object-name>Light_sx</object-name>
+        <object-name>Light_sx.reflectivepart</object-name>
+        <object-name>PlanLight.front</object-name>
+        <object-name>Circle.001</object-name>
+        <object-name>Circle.002</object-name>
+        <object-name>Circle.005</object-name>
+        <object-name>Circle.006</object-name>
+        <object-name>Circle.007</object-name>
+        <object-name>Galss_light_sx</object-name>
+        <object-name>glass_light_dx</object-name>
+        <object-name>Circle</object-name>
+        <object-name>Cylinder.007</object-name>
+        <object-name>Cylinder.008</object-name>
+        <object-name>Cylinder.009</object-name>
+        <object-name>Cylinder.010</object-name>
+        <object-name>Cylinder.011</object-name>
+        <!--
+        <object-name>PlanLight.front.001</object-name>
+        -->
+        <!-- Lights -->
+        <object-name>procedural-light-gear-white-right</object-name>
+        <object-name>procedural-light-gear-white-left</object-name>
+        <!-- Cables -->
+        <object-name>BezierCurve</object-name>
+        <object-name>BezierCurve.001</object-name>
+        <object-name>BezierCurve.002</object-name>
+        <object-name>BezierCurve.003</object-name>
+        <object-name>BezierCurve.004</object-name>
+        <object-name>BezierCurve.005</object-name>
+        <object-name>BezierCurve.006</object-name>
+        <object-name>BezierCurve.007</object-name>
+        <object-name>BezierCurve.008</object-name>
+        <object-name>BezierCurve.009</object-name>
+        <object-name>BezierCurve.010</object-name>
+        <object-name>BezierCurve.011</object-name>
+        <object-name>BezierCurve.012</object-name>
+        <object-name>BezierCurve.013</object-name>
+        <object-name>BezierCurve.014</object-name>
+        <object-name>BezierCurve.015</object-name>
+        <object-name>cable_light_dx.001</object-name>
+        <object-name>cable_light_sx.001</object-name>
+        <!-- gear doors -->
+        <object-name>plate_box_01.003</object-name>
+        <object-name>plate_door_Sx01..001</object-name>
+        <object-name>DADI</object-name>
+        <object-name>DADI.018</object-name>
+        <object-name>gear_door_sx.000</object-name>
+        <object-name>gear_door_sx.001</object-name>
+        <object-name>plate_box_01.001</object-name>
+        <object-name>plate_door_Sx02</object-name>
+        <object-name>DADI.005</object-name>
+        <object-name>DADI.009</object-name>
+        <object-name>DADI.012</object-name>
+        <object-name>bloc_nod_2</object-name>
+        <!--
+        <object-name>gear_door_dx.001</object-name>
+        <object-name>gear_door_dx</object-name>
+        -->
+    </animation>
+    
+    <animation>
         <name>GearSup</name>
         <object-name>gear-front-jack-03</object-name>
         <object-name>gear-front-jack-018.001</object-name>
@@ -72,12 +173,6 @@
         <object-name>Cylinder.009</object-name>
         <object-name>Cylinder.010</object-name>
         <object-name>Cylinder.011</object-name>
-    </animation>
-    
-    <animation>
-        <type>noshadow</type>
-        <object-name>procedural-light-gear-white-right</object-name>
-        <object-name>procedural-light-gear-white-left</object-name>
     </animation>
     
     <!-- Material assignment -->
