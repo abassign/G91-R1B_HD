@@ -213,8 +213,10 @@
             <file>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Gauges/SFOM_83A/SFOM_83A_01.nas</file>
             <file>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/PHI/phi.nas</file>
             <!-- Stores -->
+            <!--
             <file>Aircraft/G91-R1B_HD/Models/Parts/Stores/Configurator.nas</file>
             <file>Aircraft/G91-R1B_HD/Models/Parts/Stores/Stores.nas</file>
+            -->
             <!-- Autopilot -->
             <file>Aircraft/G91-R1B_HD/Nasal/pilot_assistant.nas</file>
             <file>Aircraft/G91-R1B_HD/Nasal/pilot_impact_control.nas</file>

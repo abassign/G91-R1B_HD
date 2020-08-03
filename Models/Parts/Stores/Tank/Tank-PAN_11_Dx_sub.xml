@@ -1,31 +1,32 @@
 <?xml version="1.0"?>
 
 <PropertyList>
-        
-    <path>Tanks.ac</path>
-    <nopreview/>
-
+    
+    <path>tank-PAN.ac</path>
+    
     <offsets>
         <x-m>-1.78</x-m>
-        <y-m>-2.025</y-m>
-        <z-m>-0.449</z-m>
+        <y-m>2.025</y-m>
+        <z-m>-1.449</z-m>
         <pitch-offset>-2.5</pitch-offset>
     </offsets>
+    
+    <animation>
+        <type>noshadow</type>
+        <object-name>tank_260lb_hook_01</object-name>
+        <object-name>tank_260lb_hook_02</object-name>
+    </animation>
 
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Liveries/liveries_002</inherits-from>
-        <object-name>tank_260lb_sub_01</object-name>
-        <object-name>tank_260lb_sup_01</object-name>
-        <object-name>tank_260lb_tail_01</object-name>
         <object-name>PAN_tank_sx.004</object-name>
         <object-name>PAN_tank_sx_003</object-name>
     </effect>
 
     <animation> 
         <type>material</type>
-        <object-name>tank_260lb_sub_01</object-name>
-        <object-name>tank_260lb_sup_01</object-name>
-        <object-name>tank_260lb_tail_01</object-name>
+        <object-name>PAN_tank_sx.004</object-name>
+        <object-name>PAN_tank_sx_003</object-name>
         <diffuse>
             <red>1.0</red>
             <green>1.0</green>
@@ -60,35 +61,6 @@
             <green>0.4</green>
             <blue>0.4</blue>
         </ambient>
-    </animation>
-
-    <animation>
-        <type>select</type>
-        <nopreview/>
-        <object-name>tank_260lb_hook_01</object-name>
-        <object-name>tank_260lb_hook_02</object-name>
-        <object-name>tank_260lb_sub_01</object-name>
-        <object-name>tank_260lb_sup_01</object-name>
-        <object-name>tank_260lb_tail_01</object-name>
-        <condition> 
-            <equals>
-                <property>/fdm/jsbsim/systems/stations/stationSxInternal/TypeLoad</property>
-                <value>10</value>
-            </equals>
-        </condition>
-    </animation>
-    
-    <animation>
-        <type>select</type>
-        <nopreview/>
-        <object-name>PAN_tank_sx.004</object-name>
-        <object-name>PAN_tank_sx_003</object-name>
-        <condition> 
-            <equals>
-                <property>/fdm/jsbsim/systems/stations/stationSxInternal/TypeLoad</property>
-                <value>11</value>
-            </equals>
-        </condition>
     </animation>
 
 </PropertyList>

@@ -95,29 +95,19 @@
             <text>
                 <row>0</row>
                 <col>4</col>
-                <label>99999999</label>
+                <label>99999999999999999</label>
                 <live>true</live>
-                <format>Loaded %4.0f lb</format>
-                <property>fdm/jsbsim/systems/fuel/fuel-to-loaded-lb</property>
+                <format>Loaded internal %4.0f lb</format>
+                <property>fdm/jsbsim/systems/fuel/fuel-content-all-internal-tank-lb</property>
                 <color>
                     <red>0.9</red>
                     <green>0.9</green>
                     <blue>0.9</blue>
                 </color>
             </text>
-            <text>
+            <checkbox>
                 <row>0</row>
                 <col>6</col>
-                <label> | </label>
-                <color>
-                    <red>0.9</red>
-                    <green>0.9</green>
-                    <blue>0.0</blue>
-                </color>
-            </text>
-            <radio>
-                <row>0</row>
-                <col>7</col>
                 <label>Ext tank</label>
                 <property>fdm/jsbsim/systems/fuel/external-tank-active</property>
                 <live>true</live>
@@ -129,10 +119,60 @@
                     <property>fdm/jsbsim/systems/fuel/external-tank-active-conf</property>
                     <value>1</value>
                 </binding>
+            </checkbox>
+            <radio>
+                <row>0</row>
+                <col>7</col>
+                <label>450lb</label>
+                <property>fdm/jsbsim/systems/fuel/external-tank-active-type-450lb</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+                <binding>
+                    <command>nasal</command>
+                    <script>
+                        if (getprop("fdm/jsbsim/systems/fuel/external-tank-active-type-450lb") == 1) {
+                            if (getprop("fdm/jsbsim/systems/fuel/external-tank-active-type-900lb") == 1) {
+                                setprop("fdm/jsbsim/systems/fuel/external-tank-active-type-900lb",0);
+                            }
+                        }
+                    </script>
+                </binding>
+                <binding>
+                    <command>property-assign</command>
+                    <property>fdm/jsbsim/systems/fuel/external-tank-active-conf</property>
+                    <value>1</value>
+                </binding>
+            </radio>
+            <radio>
+                <row>0</row>
+                <col>8</col>
+                <label>900lb</label>
+                <property>fdm/jsbsim/systems/fuel/external-tank-active-type-900lb</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+                <binding>
+                    <command>nasal</command>
+                    <script>
+                        if (getprop("fdm/jsbsim/systems/fuel/external-tank-active-type-900lb") == 1) {
+                            if (getprop("fdm/jsbsim/systems/fuel/external-tank-active-type-450lb") == 1) {
+                                setprop("fdm/jsbsim/systems/fuel/external-tank-active-type-450lb",0);
+                            }
+                        }
+                    </script>
+                </binding>
+                <binding>
+                    <command>property-assign</command>
+                    <property>fdm/jsbsim/systems/fuel/external-tank-active-conf</property>
+                    <value>1</value>
+                </binding>
             </radio>
             <text>
                 <row>0</row>
-                <col>8</col>
+                <col>9</col>
                 <label>9999999</label>
                 <live>true</live>
                 <format>%4.0f lb</format>
@@ -145,8 +185,8 @@
             </text>
             <text>
                 <row>0</row>
-                <col>9</col>
-                <label> | </label>
+                <col>10</col>
+                <label> </label>
                 <color>
                     <red>0.9</red>
                     <green>0.9</green>
@@ -155,7 +195,7 @@
             </text>
             <text>
                 <row>0</row>
-                <col>10</col>
+                <col>11</col>
                 <label>Fuel in all tanks</label>
                 <color>
                     <red>0.9</red>
@@ -165,10 +205,10 @@
             </text>
             <text>
                 <row>0</row>
-                <col>11</col>
-                <label>9999999</label>
+                <col>12</col>
+                <label>999999999</label>
                 <live>true</live>
-                <format>%4.0f lb</format>
+                <format>%5.0f lb</format>
                 <property>fdm/jsbsim/systems/fuel/fuel-content-all-tank-lb</property>
                 <color>
                     <red>0.9</red>
@@ -226,9 +266,9 @@
             <text>
                 <row>1</row>
                 <col>3</col>
-                <label>9999999999999</label>
+                <label>99999999999999</label>
                 <live>true</live>
-                <format>flux %3.0f pps</format>
+                <format> flux %3.0f pps</format>
                 <property>fdm/jsbsim/systems/fuel/fuel-man-flux-a-pps</property>
                 <color>
                     <red>0.9</red>
@@ -250,7 +290,7 @@
                 </color>
             </text>
             <text>
-                <label>Tank 1-2-5</label>
+                <label>Tank 1-2-5 </label>
                 <halign>left</halign>
                 <row>1</row>
                 <col>5</col>

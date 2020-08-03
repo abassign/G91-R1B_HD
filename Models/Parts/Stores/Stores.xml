@@ -8,21 +8,67 @@
         <z-m>0.0</z-m>
         <pitch-deg>0.0</pitch-deg>
     </offsets>
-<!--
+
+    <!-- Tanks -->
+    
     <model>
-        <path>Aircraft/G91-R1B_HD/Models/Parts/Stores/Tank/Tank260lib_10_Dx.xml</path>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Stores/Tank/Tank450lb_10_Dx.xml</path>
+        <condition>
+            <equals>
+                <property>fdm/jsbsim/systems/store/stations/dx/internal/type</property>
+                <value>10</value>
+            </equals>
+        </condition>
     </model>
     
     <model>
-        <path>Aircraft/G91-R1B_HD/Models/Parts/Stores/Tank/Tank260lib_10_Sx.xml</path>
-    </model>
-    -->
-    <model>
-        <path>Aircraft/G91-R1B_HD/Models/Parts/Stores/Tank/tank-900-lb-Dx.xml</path>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Stores/Tank/Tank450lb_10_Sx.xml</path>
+        <condition>
+            <equals>
+                <property>fdm/jsbsim/systems/store/stations/sx/internal/type</property>
+                <value>10</value>
+            </equals>
+        </condition>
     </model>
     
     <model>
-        <path>Aircraft/G91-R1B_HD/Models/Parts/Stores/Tank/tank-900-lb-Sx.xml</path>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Stores/Tank/Tank-PAN_11_Dx.xml</path>
+        <condition>
+            <equals>
+                <property>fdm/jsbsim/systems/store/stations/dx/internal/type</property>
+                <value>11</value>
+            </equals>
+        </condition>
+    </model>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Stores/Tank/Tank-PAN_11_Sx.xml</path>
+        <condition>
+            <equals>
+                <property>fdm/jsbsim/systems/store/stations/sx/internal/type</property>
+                <value>11</value>
+            </equals>
+        </condition>
+    </model>
+
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Stores/Tank/Tank900lb_12_Dx.xml</path>
+        <condition> 
+            <equals>
+                <property>fdm/jsbsim/systems/store/stations/dx/internal/type</property>
+                <value>12</value>
+            </equals>
+        </condition>
+    </model>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Stores/Tank/Tank900lb_12_Sx.xml</path>
+        <condition> 
+            <equals>
+                <property>fdm/jsbsim/systems/store/stations/sx/internal/type</property>
+                <value>12</value>
+            </equals>
+        </condition>
     </model>
 
 </PropertyList>

@@ -1542,7 +1542,7 @@ var pilot_assistant = func {
                         setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle",0);
                         setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle-deg",6.0);
                         setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed",1);
-                        setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed-fpm",-2000.0);
+                        setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed-fpm",-1000.0);
                     }
                 }
             }
@@ -1562,7 +1562,7 @@ var pilot_assistant = func {
                         setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle",0);
                         setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle-deg",6.0);
                         setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed",1);
-                        setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed-fpm",3500.0);
+                        setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed-fpm",4000.0);
                     };
                 }
             }

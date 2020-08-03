@@ -44,6 +44,7 @@
     <property value="0.0">systems/fuel/fuel-man-flux-pct-to-tank0-pps</property>
     <property value="0.0">systems/fuel/fuel-man-flux-b-pps</property>
     <property value="0.0">systems/fuel/fuel-content-b-lb</property>
+    <property value="0.0">systems/fuel/fuel-content-all-internal-tank-lb</property>
     <property value="0.0">systems/fuel/fuel-man-flux-b-pps-slider</property>
     <property value="0.0">systems/fuel/fuel-man-flux-pct-to-tank1-pps</property>
     <property value="0.0">systems/fuel/fuel-man-flux-pct-to-tank2-pps</property>
@@ -51,6 +52,14 @@
     <property value="0.0">systems/fuel/external-tank-content-lb</property>
     <property value="0.0">systems/fuel/external-tank-active</property>
     <property value="0.0">systems/fuel/external-tank-active-conf</property>
+    <property value="1.0">systems/fuel/external-tank-active-type-450lb</property>
+    <property value="0.0">systems/fuel/external-tank-active-type-900lb</property>
+    <property value="0.0">systems/fuel/external-tank-acrobatic</property>
+    <property value="0.0">systems/fuel/external-tank-3-fuel-target-load</property>
+    <property value="0.0">systems/fuel/external-tank-3-fuel-load-pps</property>
+    <property value="0.0">systems/fuel/external-tank-4-fuel-target-load</property>
+    <property value="0.0">systems/fuel/external-tank-4-fuel-load-pps</property>
+    
     
     <!-- Collector Tank 6 level-maintenance for droppable tank 3-4 -->
     <channel name="To Tank6">
@@ -82,11 +91,13 @@
         <!-- Total flux from Tank 3 and 4 to Tank 6 -->
         <summer>
             <input>-systems/fuel/from-tank3-to-tank6</input>
+            <input>systems/fuel/external-tank-3-fuel-load-pps</input>
             <output>propulsion/tank[3]/external-flow-rate-pps</output>
         </summer>
         
         <summer>
             <input>-systems/fuel/from-tank4-to-tank6</input>
+            <input>systems/fuel/external-tank-4-fuel-load-pps</input>
             <output>propulsion/tank[4]/external-flow-rate-pps</output>
         </summer>
         
@@ -630,6 +641,13 @@
             <input>propulsion/tank[4]/contents-lbs</input>
         </summer>
         
+        <summer name="systems/fuel/fuel-content-all-internal-tank-lb">
+            <input>systems/fuel/fuel-content-b-lb</input>
+            <input>systems/fuel/fuel-content-a-lb</input>
+            <input>propulsion/tank[6]/contents-lbs</input>
+            <input>propulsion/tank[7]/contents-lbs</input>
+        </summer>
+        
         <summer name="systems/fuel/fuel-content-all-tank-lb">
             <input>systems/fuel/fuel-content-b-lb</input>
             <input>systems/fuel/fuel-content-a-lb</input>
@@ -642,7 +660,8 @@
         
         <summer name="systems/fuel/fuel-to-load-lb-target-dif">
             <input>-systems/fuel/fuel-to-load-lb</input>
-            <input>systems/fuel/fuel-content-all-tank-lb</input>
+            <input>systems/fuel/fuel-content-a-lb</input>
+            <input>systems/fuel/fuel-content-b-lb</input>
         </summer>
         
         <switch name="systems/fuel/fuel-to-load-lb-target-dif">
@@ -719,7 +738,75 @@
             </test>
         </switch>
         
-        <!-- External tanks -->
+    </channel>
+    
+    
+    <channel name="external tanks" execrate="32">
+        
+        <!-- 
+        External tanks
+        The management method is to use the variable systems/fuel/external-tank-active-conf
+        as a trigger for the modification of the station,
+        At the end of this sequence the trigger is reset to state 0
+        The changes will be made in the JSBSim form "G91-store"
+        -->
+        
+        <!-- external-tank-active in funtion of "/consumables/fuel/tank[x]/selected" status -->
+        
+        <washout_filter name="systems/fuel/external-tank-3-select-wa">
+            <input>/consumables/fuel/tank[3]/selected</input>
+            <c1>1.0</c1>
+        </washout_filter>
+        
+        <washout_filter name="systems/fuel/external-tank-4-select-wa">
+            <input>/consumables/fuel/tank[4]/selected</input>
+            <c1>1.0</c1>
+        </washout_filter>
+        
+        <switch name="systems/fuel/external-tank-active-conf-system">
+            <default value="0"/>
+            <test logic="AND" value="1">
+                systems/fuel/external-tank-active-conf == 0
+                <test logic="OR">
+                    systems/fuel/external-tank-3-select-wa GT 0.1
+                    systems/fuel/external-tank-4-select-wa GT 0.1
+                </test>
+            </test>
+            <test logic="AND" value="-1">
+                systems/fuel/external-tank-active-conf == 0
+                <test logic="OR">
+                    systems/fuel/external-tank-3-select-wa LT -0.1
+                    systems/fuel/external-tank-4-select-wa LT -0.1
+                </test>
+            </test>
+        </switch>
+        
+        <switch name="systems/fuel/external-tank-active-conf">
+            <default value="systems/fuel/external-tank-active-conf"/>
+            <test logic="OR" value="1">
+                systems/fuel/external-tank-active-conf-system == 1
+                systems/fuel/external-tank-active-conf-system == -1
+            </test>
+        </switch>
+        
+        <!-- Note: in acrobatic configuration, external tank is not active -->
+        
+        <switch name="systems/fuel/external-tank-active">
+            <default value="systems/fuel/external-tank-active"/>
+            <test logic="AND" value="1">
+                systems/fuel/external-tank-active-conf-system == 1
+            </test>
+            <test logic="AND" value="0">
+                systems/fuel/external-tank-active-conf-system == -1
+            </test>
+            <test logic="AND" value="0">
+                systems/fuel/external-tank-active == 1
+                systems/fuel/external-tank-active-conf == 1
+                systems/fuel/external-tank-acrobatic == 1
+            </test>
+        </switch>
+        
+        <!-- Selected status of consumables fuel tank -->
         
         <switch>
             <default value="/consumables/fuel/tank[3]/selected"/>
@@ -751,21 +838,379 @@
             <output>/consumables/fuel/tank[4]/selected</output>
         </switch>
         
-        <switch name="systems/fuel/external-tank-active">
-            <default value="systems/fuel/external-tank-active"/>
+        <!-- Station Sx internal -->
+        
+        <switch name="systems/store/stations/sx/internal/type">
+            <default value="systems/store/stations/sx/internal/type"/>
+            <test logic="AND" value="10">
+                systems/fuel/external-tank-active-conf == 1
+                systems/fuel/external-tank-active-type-450lb == 1
+                /consumables/fuel/tank[3]/selected == 1
+            </test>
+            <test logic="AND" value="11">
+                systems/fuel/external-tank-active-conf == 1
+                systems/fuel/external-tank-acrobatic == 1
+                systems/store/stations/sx/internal/type NE 11
+            </test>
+            <test logic="AND" value="12">
+                systems/fuel/external-tank-active-conf == 1
+                systems/fuel/external-tank-active-type-900lb == 1
+                /consumables/fuel/tank[3]/selected == 1
+            </test>
             <test logic="AND" value="0">
-                systems/fuel/external-tank-active == 1
-                <test logic="AND">
-                    /consumables/fuel/tank[3]/selected == 0
-                    /consumables/fuel/tank[4]/selected == 0
+                systems/fuel/external-tank-active-conf == 1
+                /consumables/fuel/tank[3]/selected == 0
+            </test>
+        </switch>
+        
+        <switch name="systems/stations/stationSxInternal/typeHardpoint">
+            <default value="systems/stations/stationSxInternal/typeHardpoint"/>
+            <test logic="AND" value="1">
+                systems/fuel/external-tank-active-conf == 1
+                <test logic="OR">
+                    systems/store/stations/sx/internal/type == 10
+                    systems/store/stations/sx/internal/type == 12
                 </test>
             </test>
+            <test logic="AND" value="2">
+                systems/fuel/external-tank-active-conf == 1
+                systems/store/stations/sx/internal/type == 11
+            </test>
+            <test logic="AND" value="0">
+                systems/fuel/external-tank-active-conf == 1
+            </test>
+        </switch>
+        
+        <switch name="systems/stations/stationSxInternal/typeHook">
+            <default value="systems/stations/stationSxInternal/typeHook"/>
             <test logic="AND" value="1">
-                systems/fuel/external-tank-active == 0
+                systems/fuel/external-tank-active-conf == 1
                 <test logic="OR">
-                    /consumables/fuel/tank[3]/selected == 1
-                    /consumables/fuel/tank[4]/selected == 1
+                    systems/store/stations/sx/internal/type == 10
+                    systems/store/stations/sx/internal/type == 12
                 </test>
+            </test>
+            <test logic="AND" value="2">
+                systems/fuel/external-tank-active-conf == 1
+                systems/store/stations/sx/internal/type == 11
+            </test>
+            <test logic="AND" value="0">
+                systems/fuel/external-tank-active-conf == 1
+            </test>
+        </switch>
+        
+        <switch name="systems/stations/stationSxInternal/Weight">
+            <default value="systems/stations/stationSxInternal/Weight"/>
+            <test logic="AND" value="70">
+                systems/fuel/external-tank-active-conf == 1
+                systems/store/stations/sx/internal/type == 10
+            </test>
+            <test logic="AND" value="50">
+                systems/fuel/external-tank-active-conf == 1
+                systems/store/stations/sx/internal/type == 11
+            </test>
+            <test logic="AND" value="120">
+                systems/fuel/external-tank-active-conf == 1
+                systems/store/stations/sx/internal/type == 12
+            </test>
+            <test logic="AND" value="0">
+                systems/fuel/external-tank-active-conf == 1
+            </test>
+        </switch>
+        
+        <switch name="systems/stations/stationSxInternal/Cd">
+            <default value="systems/stations/stationSxInternal/Cd"/>
+            <test logic="AND" value="0.2">
+                systems/fuel/external-tank-active-conf == 1
+                systems/store/stations/sx/internal/type == 10
+            </test>
+            <test logic="AND" value="0.15">
+                systems/fuel/external-tank-active-conf == 1
+                systems/store/stations/sx/internal/type == 11
+            </test>
+            <test logic="AND" value="0.30">
+                systems/fuel/external-tank-active-conf == 1
+                systems/store/stations/sx/internal/type == 12
+            </test>
+            <test logic="AND" value="0">
+                systems/fuel/external-tank-active-conf == 1
+            </test>
+        </switch>
+        
+        <switch name="systems/stations/stationSxInternal/Count">
+            <default value="systems/stations/stationSxInternal/Count"/>
+            <test logic="AND" value="1">
+                systems/fuel/external-tank-active-conf == 1
+                <test logic="OR">
+                    systems/store/stations/sx/internal/type == 10
+                    systems/store/stations/sx/internal/type == 11
+                    systems/store/stations/sx/internal/type == 12
+                </test>
+            </test>
+            <test logic="AND" value="0">
+                systems/fuel/external-tank-active-conf == 1
+            </test>
+        </switch>
+
+        <switch name="systems/fuel/external-tank-3-fuel-target-load">
+            <default value="systems/fuel/external-tank-3-fuel-target-load"/>
+            <test logic="AND" value="450">
+                systems/fuel/external-tank-active-conf == 1
+                systems/store/stations/sx/internal/type == 10
+            </test>
+            <test logic="AND" value="0">
+                systems/fuel/external-tank-active-conf == 1
+                systems/store/stations/sx/internal/type == 11
+            </test>
+            <test logic="AND" value="900">
+                systems/fuel/external-tank-active-conf == 1
+                systems/store/stations/sx/internal/type == 12
+            </test>
+            <test logic="AND" value="0">
+                systems/fuel/external-tank-active-conf == 1
+            </test>
+        </switch>
+        
+        <!-- Station Dx internal -->
+        
+        <switch name="systems/store/stations/dx/internal/type">
+            <default value="systems/store/stations/dx/internal/type"/>
+            <test logic="AND" value="10">
+                systems/fuel/external-tank-active-conf == 1
+                systems/fuel/external-tank-active-type-450lb == 1
+                /consumables/fuel/tank[4]/selected == 1
+            </test>
+            <test logic="AND" value="11">
+                systems/fuel/external-tank-active-conf == 1
+                systems/fuel/external-tank-acrobatic == 1
+                systems/store/stations/dx/internal/type NE 11
+            </test>
+            <test logic="AND" value="12">
+                systems/fuel/external-tank-active-conf == 1
+                systems/fuel/external-tank-active-type-900lb == 1
+                /consumables/fuel/tank[4]/selected == 1
+            </test>
+            <test logic="AND" value="0">
+                systems/fuel/external-tank-active-conf == 1
+                /consumables/fuel/tank[4]/selected == 0
+            </test>
+        </switch>
+
+        <switch name="systems/stations/stationDxInternal/typeHardpoint">
+            <default value="systems/stations/stationDxInternal/typeHardpoint"/>
+            <test logic="AND" value="1">
+                systems/fuel/external-tank-active-conf == 1
+                <test logic="OR">
+                    systems/store/stations/dx/internal/type == 10
+                    systems/store/stations/dx/internal/type == 12
+                </test>
+            </test>
+            <test logic="AND" value="2">
+                systems/fuel/external-tank-active-conf == 1
+                systems/store/stations/dx/internal/type == 11
+            </test>
+            <test logic="AND" value="0">
+                systems/fuel/external-tank-active-conf == 1
+            </test>
+        </switch>
+        
+        <switch name="systems/stations/stationDxInternal/typeHook">
+            <default value="systems/stations/stationDxInternal/typeHook"/>
+            <test logic="AND" value="1">
+                systems/fuel/external-tank-active-conf == 1
+                <test logic="OR">
+                    systems/store/stations/dx/internal/type == 10
+                    systems/store/stations/dx/internal/type == 12
+                </test>
+            </test>
+            <test logic="AND" value="2">
+                systems/fuel/external-tank-active-conf == 1
+                systems/store/stations/dx/internal/type == 11
+            </test>
+            <test logic="AND" value="0">
+                systems/fuel/external-tank-active-conf == 1
+            </test>
+        </switch>
+        
+        <switch name="systems/stations/stationDxInternal/Weight">
+            <default value="systems/stations/stationDxInternal/Weight"/>
+            <test logic="AND" value="70">
+                systems/fuel/external-tank-active-conf == 1
+                systems/store/stations/dx/internal/type == 10
+            </test>
+            <test logic="AND" value="50">
+                systems/fuel/external-tank-active-conf == 1
+                systems/store/stations/dx/internal/type == 11
+            </test>
+            <test logic="AND" value="120">
+                systems/fuel/external-tank-active-conf == 1
+                systems/store/stations/dx/internal/type == 12
+            </test>
+            <test logic="AND" value="0">
+                systems/fuel/external-tank-active-conf == 1
+            </test>
+        </switch>
+        
+        <switch name="systems/stations/stationDxInternal/Cd">
+            <default value="systems/stations/stationDxInternal/Cd"/>
+            <test logic="AND" value="0.2">
+                systems/fuel/external-tank-active-conf == 1
+                systems/store/stations/dx/internal/type == 10
+            </test>
+            <test logic="AND" value="0.15">
+                systems/fuel/external-tank-active-conf == 1
+                systems/store/stations/dx/internal/type == 11
+            </test>
+            <test logic="AND" value="0.30">
+                systems/fuel/external-tank-active-conf == 1
+                systems/store/stations/dx/internal/type == 12
+            </test>
+            <test logic="AND" value="0">
+                systems/fuel/external-tank-active-conf == 1
+            </test>
+        </switch>
+        
+        <switch name="systems/stations/stationDxInternal/Count">
+            <default value="systems/stations/stationDxInternal/Count"/>
+            <test logic="AND" value="1">
+                systems/fuel/external-tank-active-conf == 1
+                <test logic="OR">
+                    systems/store/stations/dx/internal/type == 10
+                    systems/store/stations/dx/internal/type == 11
+                    systems/store/stations/dx/internal/type == 12
+                </test>
+            </test>
+            <test logic="AND" value="0">
+                systems/fuel/external-tank-active-conf == 1
+            </test>
+        </switch>
+        
+        <switch name="systems/fuel/external-tank-4-fuel-target-load">
+            <default value="systems/fuel/external-tank-4-fuel-target-load"/>
+            <test logic="AND" value="450">
+                systems/fuel/external-tank-active-conf == 1
+                systems/store/stations/dx/internal/type == 10
+            </test>
+            <test logic="AND" value="0">
+                systems/fuel/external-tank-active-conf == 1
+                systems/store/stations/dx/internal/type == 11
+            </test>
+            <test logic="AND" value="900">
+                systems/fuel/external-tank-active-conf == 1
+                systems/store/stations/dx/internal/type == 12
+            </test>
+            <test logic="AND" value="0">
+                systems/fuel/external-tank-active-conf == 1
+            </test>
+        </switch>
+        
+        <!-- Load/unload the fuel -->
+        
+        <summer name="systems/fuel/external-tank-3-fuel-load-diff">
+            <input>systems/fuel/external-tank-3-fuel-target-load</input>
+            <input>-propulsion/tank[3]/contents-lbs</input>
+        </summer>
+        
+        <switch name="systems/fuel/external-tank-3-fuel-load-active">
+            <default value="systems/fuel/external-tank-3-fuel-load-active"/>
+            <test logic="AND" value="1.0">
+                systems/fuel/external-tank-active-conf == 1
+                <test logic="OR">
+                    systems/fuel/external-tank-3-fuel-load-diff GT 1.0
+                    systems/fuel/external-tank-3-fuel-load-diff LT -1.0
+                </test>
+            </test>
+            <test logic="AND" value="0.0">
+                systems/fuel/external-tank-3-fuel-load-active == 1
+                systems/fuel/external-tank-active-conf == 0
+                <test logic="AND">
+                    systems/fuel/external-tank-3-fuel-load-diff LT 3.0
+                    systems/fuel/external-tank-3-fuel-load-diff GT -3.0
+                </test>
+            </test>
+        </switch>
+        
+        <fcs_function name="systems/fuel/external-tank-3-fuel-load-pps">
+            <function>
+                <ifthen>
+                    <eq><p>systems/fuel/external-tank-3-fuel-load-active</p><v>1.0</v></eq>
+                    <table>
+                        <independentVar>systems/fuel/external-tank-3-fuel-load-diff</independentVar>
+                        <tableData>
+                          -1000.0 -1000.0
+                           -100.0  -500.0
+                            -50.0  -150.0
+                             -5.0   -20.0
+                              5.0    10.0
+                             50.0    50.0
+                            100.0   250.0
+                           1000.0   500.0
+                        </tableData>
+                    </table>
+                    <v>0.0</v>
+                </ifthen>
+            </function>
+        </fcs_function>
+        
+        <summer name="systems/fuel/external-tank-4-fuel-load-diff">
+            <input>systems/fuel/external-tank-4-fuel-target-load</input>
+            <input>-propulsion/tank[4]/contents-lbs</input>
+        </summer>
+        
+        <switch name="systems/fuel/external-tank-4-fuel-load-active">
+            <default value="systems/fuel/external-tank-4-fuel-load-active"/>
+            <test logic="AND" value="1.0">
+                systems/fuel/external-tank-active-conf == 1
+                <test logic="OR">
+                    systems/fuel/external-tank-4-fuel-load-diff GT 1.0
+                    systems/fuel/external-tank-4-fuel-load-diff LT -1.0
+                </test>
+            </test>
+            <test logic="AND" value="0.0">
+                systems/fuel/external-tank-4-fuel-load-active == 1
+                systems/fuel/external-tank-active-conf == 0
+                <test logic="AND">
+                    systems/fuel/external-tank-4-fuel-load-diff LT 3.0
+                    systems/fuel/external-tank-4-fuel-load-diff GT -3.0
+                </test>
+            </test>
+        </switch>
+        
+        <fcs_function name="systems/fuel/external-tank-4-fuel-load-pps">
+            <function>
+                <ifthen>
+                    <eq><p>systems/fuel/external-tank-4-fuel-load-active</p><v>1.0</v></eq>
+                    <table>
+                        <independentVar>systems/fuel/external-tank-4-fuel-load-diff</independentVar>
+                        <tableData>
+                          -1000.0 -1000.0
+                           -100.0  -500.0
+                            -50.0  -150.0
+                             -5.0   -20.0
+                              5.0    10.0
+                             50.0    50.0
+                            100.0   250.0
+                           1000.0   500.0
+                        </tableData>
+                    </table>
+                    <v>0.0</v>
+                </ifthen>
+            </function>
+        </fcs_function>
+        
+        <!-- End configuration and reset triggers -->
+        
+        <switch name="systems/fuel/external-tank-set-active">
+            <default value="systems/fuel/external-tank-set-active"/>
+            <test logic="AND" value="0">
+                systems/fuel/external-tank-set-active == 1
+            </test>
+        </switch>
+        
+        <switch name="systems/fuel/external-tank-acrobatic">
+            <default value="systems/fuel/external-tank-acrobatic"/>
+            <test logic="AND" value="0">
+                systems/fuel/external-tank-acrobatic == 1
             </test>
         </switch>
         

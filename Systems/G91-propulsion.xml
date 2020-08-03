@@ -68,7 +68,7 @@
             <y> 79.92 </y>
             <z> -36.61 </z>
         </location>
-        <capacity unit="LBS"> 450.00 </capacity>
+        <capacity unit="LBS"> 900.00 </capacity>
         <contents unit="LBS"> 0.00 </contents>
     </tank>
     
@@ -79,7 +79,7 @@
             <y> -79.92 </y>
             <z> -36.61 </z>
         </location>
-        <capacity unit="LBS"> 450.00 </capacity>
+        <capacity unit="LBS"> 900.00 </capacity>
         <contents unit="LBS"> 0.00 </contents>
     </tank>
     

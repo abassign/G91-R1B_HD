@@ -342,6 +342,8 @@ var storesTank = maketimer(1, func() {
     var typeLoadSx = props.globals.getNode("sim/G91/stores/stationSxInternalTypeLoad",1).getValue();
     var typeLoadDx = props.globals.getNode("sim/G91/stores/stationDxInternalTypeLoad",1).getValue();
     
+    # Tank 450lb section
+    
     if (tankSx_Selected == 0 and typeLoadSx == 10) {
         setprop("sim/G91/stores/stationSxInternalDropFromStation", 1);
         setprop("sim/G91/stores/stationSxInternalDropped",10);
@@ -370,7 +372,38 @@ var storesTank = maketimer(1, func() {
         var content = props.globals.getNode("/consumables/fuel/tank[3]/level-lbs",1).getValue();
         setprop("sim/G91/stores/stationDxInternalContent/level-lbs", content);
     }
+    
+    # Tank 900lb section
 
+    if (tankSx_Selected == 0 and typeLoadSx == 12) {
+        setprop("sim/G91/stores/stationSxInternalDropFromStation", 1);
+        setprop("sim/G91/stores/stationSxInternalDropped",12);
+        setprop("sim/G91/stores/handleRequestToLoadStation", -2);
+    }
+    if (tankSx_Selected > 0 and typeLoadSx != 12) {
+        setprop("sim/G91/stores/handleRequestToLoadType", 12);
+        setprop("sim/G91/stores/handleRequestToLoadStation", 2);
+        setprop("sim/G91/stores/stationSxInternalDropFromStation", 0);
+    }
+    if (tankSx_Selected > 0 and typeLoadSx == 12) {
+        var content = props.globals.getNode("/consumables/fuel/tank[4]/level-lbs",1).getValue();
+        setprop("sim/G91/stores/stationSxInternalContent/level-lbs", content);
+    }
+    if (tankDx_Selected == 0 and typeLoadDx == 12) {
+        setprop("sim/G91/stores/stationDxInternalDropFromStation", 1);
+        setprop("sim/G91/stores/stationDxInternalDropped",12);
+        setprop("sim/G91/stores/handleRequestToLoadStation", -3)
+    }
+    if (tankDx_Selected > 0 and typeLoadDx != 12) {
+        setprop("sim/G91/stores/handleRequestToLoadType", 12);
+        setprop("sim/G91/stores/handleRequestToLoadStation", 3);
+        setprop("sim/G91/stores/stationDxInternalDropFromStation", 0);
+    }
+    if (tankDx_Selected > 0 and typeLoadDx == 12) {
+        var content = props.globals.getNode("/consumables/fuel/tank[3]/level-lbs",1).getValue();
+        setprop("sim/G91/stores/stationDxInternalContent/level-lbs", content);
+    }
+    
 });
 storesTank.start();
 

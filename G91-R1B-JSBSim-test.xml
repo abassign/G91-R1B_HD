@@ -64,7 +64,6 @@
     <system file="G91-starter"/>
     <system file="G91-engine"/>
     <system file="G91-engine-sound"/>
-    <system file="G91-stations"/>
     <system file="G91-servo-wings"/>
     <system file="G91-gauges"/>
     <system file="G91-warning-lights"/>
@@ -74,6 +73,8 @@
     <system file="G91-oxygen"/>
     <system file="G91-camera"/>
     <system file="G91-guns"/>
+    <system file="G91-store"/>
+    <system file="G91-stations"/>
     <system file="PHI"/>
     
     <!-- apparatus -->
