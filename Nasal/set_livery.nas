@@ -1,5 +1,23 @@
 # From: http://wiki.flightgear.org/Howto:Dynamic_Liveries_via_Canvas
 
+var prop = props.globals.initNode("sim/G91/liveries/active/ID", "INT");
+var prop = props.globals.initNode("sim/G91/liveries/active/name_short", 0, "STRING");
+var prop = props.globals.initNode("sim/G91/liveries/active/name_long", 0, "STRING");
+var prop = props.globals.initNode("sim/G91/liveries/active/livery_001", 0, "STRING");
+var prop = props.globals.initNode("sim/G91/liveries/active/livery_002", 0, "STRING");
+var prop = props.globals.initNode("sim/G91/liveries/active/dirty_001", 0, "STRING");
+var prop = props.globals.initNode("sim/G91/liveries/active/dirty_002", 0, "STRING");
+var prop = props.globals.initNode("sim/G91/liveries/active/anti_reflective", 0, "DOUBLE");
+var prop = props.globals.initNode("sim/G91/liveries/active/luminosity", 0, "DOUBLE");
+var prop = props.globals.initNode("sim/G91/liveries/active/reflective", 0, "DOUBLE");
+var prop = props.globals.initNode("sim/G91/liveries/active/PANR1", 0, "INT");
+var prop = props.globals.initNode("sim/G91/liveries/active/diffuse", 0, "DOUBLE");
+var prop = props.globals.initNode("sim/G91/liveries/active/specular", 0, "DOUBLE");
+var prop = props.globals.initNode("sim/G91/liveries/active/dirty", 0, "DOUBLE");
+var prop = props.globals.initNode("sim/G91/liveries/active/normalmap_enabled", 0, "INT");
+var prop = props.globals.initNode("sim/G91/liveries/active/version", "INT");
+var prop = props.globals.initNode("sim/G91/liveries/active/pushed", 0, "DOUBLE");
+
 var inExecution = 0;
 
 var resolutionSet = 0;
@@ -207,6 +225,12 @@ var setCanvas = func() {
     cw.addPlacement({"node": "tank_260lb_tail_01"});
     cw.addPlacement({"node": "PAN_tank_sx.004"});
     cw.addPlacement({"node": "PAN_tank_sx_003"});
+    # Tank 900lb
+    cw.addPlacement({"node": "body_up"});
+    cw.addPlacement({"node": "body_down"});
+    cw.addPlacement({"node": "orizontal-pin (Meshed)"});
+    cw.addPlacement({"node": "vertical-pin-dx (Meshed)"});
+    cw.addPlacement({"node": "vertical-pin-sx (Meshed)"});
 
     # Fuselage extra
     cw.addPlacement({"node": "A__G91r3_fuselage_weapon.door"});
@@ -405,7 +429,6 @@ var getActiveData = func() {
                 liverys[i].getNode("diffuse").setValue(props.globals.getNode("sim/G91/liveries/active/diffuse",1).getValue());
                 liverys[i].getNode("specular").setValue(props.globals.getNode("sim/G91/liveries/active/specular",1).getValue());
                 liverys[i].getNode("dirty").setValue(props.globals.getNode("sim/G91/liveries/active/dirty",1).getValue());
-                liverys[i].getNode("noise").setValue(props.globals.getNode("sim/G91/liveries/active/noise",1).getValue());
                 liverys[i].getNode("version").setValue(props.globals.getNode("sim/G91/liveries/active/version",1).getValue());
                 print("*2 isPushed: ", i," v: ",debug.dump(liverys[i].getNode("luminosity")));
                 break;
@@ -440,13 +463,19 @@ var getActiveData = func() {
     var diffuse = liverys[id].getNode("diffuse").getValue();
     var specular = liverys[id].getNode("specular").getValue();
     var dirty = liverys[id].getNode("dirty").getValue();
-    var noise = liverys[id].getNode("noise").getValue();
+    var normalmap_enabled = liverys[id].getNode("normalmap_enabled").getValue();
     var version = liverys[id].getNode("version").getValue();
     
     print("set_livery.nas getActiveData setLivery id: ",id," livery_001: ",livery_001);
     print("set_livery.nas getActiveData setLivery id: ",id," livery_002: ",livery_002);
     print("set_livery.nas getActiveData setLivery id: ",id," dirty_001: ",dirty_001);
     print("set_livery.nas getActiveData setLivery id: ",id," dirty_002: ",dirty_002);
+    print("set_livery.nas getActiveData setLivery id: ",id," name_short: ",name_short);
+    print("set_livery.nas getActiveData setLivery id: ",id," name_long: ",name_long);
+    print("set_livery.nas getActiveData setLivery id: ",id," luminosity: ",luminosity);
+    print("set_livery.nas getActiveData setLivery id: ",id," reflective: ",reflective);
+    print("set_livery.nas getActiveData setLivery id: ",id," diffuse: ",diffuse);
+    print("set_livery.nas getActiveData setLivery id: ",id," specular: ",specular);
     
     setprop("sim/G91/liveries/active/name_short",name_short);
     setprop("sim/G91/liveries/active/name_long",name_long);
@@ -458,11 +487,10 @@ var getActiveData = func() {
     setprop("sim/G91/liveries/active/luminosity",luminosity);
     setprop("sim/G91/liveries/active/reflective",reflective);
     setprop("sim/G91/liveries/active/PANR1",PANR1);
-    setprop("sim/G91/liveries/active/ambient",diffuse);
+    setprop("sim/G91/liveries/active/diffuse",diffuse);
     setprop("sim/G91/liveries/active/specular",specular);
     setprop("sim/G91/liveries/active/dirty",dirty);
     setprop("sim/G91/liveries/active/normalmap_enabled",normalMapEnable);
-    setprop("sim/G91/liveries/active/noise",noise);
     setprop("sim/G91/liveries/active/version",version);
     setprop("sim/G91/liveries/active/ID",idSelect);
     setprop("sim/G91/liveries/active/pushed",0.0);

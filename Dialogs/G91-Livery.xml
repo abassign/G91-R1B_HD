@@ -346,6 +346,13 @@ http://wiki.flightgear.org/Howto:Adding_a_canvas_to_a_GUI_dialog
                 </color>
                 <property>sim/G91/liveries/active/dirtyMsg</property>
             </text>
+            
+            <text>
+                <row>5</row>
+                <col>0</col>
+                <label>Set normal map</label>
+                <halign>left</halign>
+            </text>
             <button>
                 <row>5</row>
                 <col>1</col>

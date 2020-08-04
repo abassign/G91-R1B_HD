@@ -21,7 +21,7 @@
             <reflect-map-enabled type="int">1</reflect-map-enabled>
             <reflection-correction type="float"><use>sim/G91/liveries/active/reflective</use></reflection-correction>
             <reflection-rainbow type="float">0.0</reflection-rainbow>
-            <reflection-noise type="float"><use>sim/G91/liveries/active/noise</use></reflection-noise>
+            <reflection-noise type="float">0.0</reflection-noise>
             <reflection-dynamic type="int">1</reflection-dynamic>
             <dirt-enabled>0</dirt-enabled>
             <dirt-factor type="float" n="0">0.0></dirt-factor>

@@ -28,8 +28,6 @@ G91_Params.xml
         <active>
             <ID>5</ID>
             <setResolution>3</setResolution>
-            <version>2</version>
-            <normalmap_enabled>0</normalmap_enabled>
         </active>
 
         <livery n="1">
@@ -43,12 +41,12 @@ G91_Params.xml
             <diffuse type="float">0.41</diffuse>
             <specular type="float">0.07</specular>
             <dirty type="float">0.0</dirty>
-            <noise>sim/G91/liveries/active/noise</noise>
             <livery_001 type="string">Aircraft/G91-R1B_HD/Models/Liveries/pan_1_001.png</livery_001>
             <livery_002 type="string">Aircraft/G91-R1B_HD/Models/Liveries/pan_1_002.png</livery_002>
             <dirty_001 type="string">Aircraft/G91-R1B_HD/Models/Liveries/dirty_01_4k.png</dirty_001>
             <dirty_002 type="string">Aircraft/G91-R1B_HD/Models/Liveries/dirty_02_4k.png</dirty_002>
             <anti_reflective type="string">Aircraft/G91-R1B_HD/Models/Liveries/G91_Dark_Grey_128.png</anti_reflective>
+            <normalmap_enabled>0</normalmap_enabled>
             <version>2</version>
         </livery>
         
@@ -63,12 +61,12 @@ G91_Params.xml
             <diffuse type="float">0.41</diffuse>
             <specular type="float">0.07</specular>
             <dirty type="float">0.0</dirty>
-            <noise>sim/G91/liveries/active/noise</noise>
             <livery_001 type="string">Aircraft/G91-R1B_HD/Models/Liveries/pan_1_001.png</livery_001>
             <livery_002 type="string">Aircraft/G91-R1B_HD/Models/Liveries/pan_1_002.png</livery_002>
             <dirty_001 type="string">Aircraft/G91-R1B_HD/Models/Liveries/dirty_01_4k.png</dirty_001>
             <dirty_002 type="string">Aircraft/G91-R1B_HD/Models/Liveries/dirty_02_4k.png</dirty_002>
             <anti_reflective type="string">Aircraft/G91-R1B_HD/Models/Liveries/G91_Dark_Grey_128.png</anti_reflective>
+            <normalmap_enabled>0</normalmap_enabled>
             <version>2</version>
         </livery>
         
@@ -83,12 +81,12 @@ G91_Params.xml
             <diffuse type="float">0.71</diffuse>
             <specular type="float">0.11</specular>
             <dirty type="float">0.0</dirty>
-            <noise>sim/G91/liveries/active/noise</noise>
             <livery_001 type="string">Aircraft/G91-R1B_HD/Models/Liveries/ITA_2_37_001.png</livery_001>
             <livery_002 type="string">Aircraft/G91-R1B_HD/Models/Liveries/ITA_2_37_002.png</livery_002>
             <dirty_001 type="string">Aircraft/G91-R1B_HD/Models/Liveries/dirty_01_4k.png</dirty_001>
             <dirty_002 type="string">Aircraft/G91-R1B_HD/Models/Liveries/dirty_02_4k.png</dirty_002>
             <anti_reflective type="string">Aircraft/G91-R1B_HD/Models/Liveries/G91_Dark_Grey_128.png</anti_reflective>
+            <normalmap_enabled>0</normalmap_enabled>
             <version>2</version>
         </livery>
         
@@ -98,17 +96,17 @@ G91_Params.xml
             <name_short type="string">Silver R1</name_short>
             <name_long type="string">Silver version, used as a prototype Pinocchio nose (R1)</name_long>
             <luminosity type="float">0.15</luminosity>
-            <reflective type="float">-0.74</reflective>
+            <reflective type="float">-0.60</reflective>
             <PANR1 type="float">1.0</PANR1>
             <diffuse type="float">0.89</diffuse>
-            <specular type="float">0.0</specular>
+            <specular type="float">0.2</specular>
             <dirty type="float">0.0</dirty>
-            <noise>sim/G91/liveries/active/noise</noise>
             <livery_001 type="string">Aircraft/G91-R1B_HD/Models/Liveries/ITA_prot_001.png</livery_001>
             <livery_002 type="string">Aircraft/G91-R1B_HD/Models/Liveries/ITA_prot_002.png</livery_002>
             <dirty_001 type="string">Aircraft/G91-R1B_HD/Models/Liveries/dirty_01_4k.png</dirty_001>
             <dirty_002 type="string">Aircraft/G91-R1B_HD/Models/Liveries/dirty_02_4k.png</dirty_002>
             <anti_reflective type="string">Aircraft/G91-R1B_HD/Models/Liveries/G91_Dark_Grey_128.png</anti_reflective>
+            <normalmap_enabled>0</normalmap_enabled>
             <version>2</version>
         </livery>
         
@@ -118,17 +116,17 @@ G91_Params.xml
             <name_short type="string">Silver R1B</name_short>
             <name_long type="string">Silver version R1B with recognition nose (R1B)</name_long>
             <luminosity type="float">0.15</luminosity>
-            <reflective type="float">-0.74</reflective>
+            <reflective type="float">-0.60</reflective>
             <PANR1 type="float">0.0</PANR1>
             <diffuse type="float">0.89</diffuse>
-            <specular type="float">0.0</specular>
+            <specular type="float">0.2</specular>
             <dirty type="float">0.0</dirty>
-            <noise>sim/G91/liveries/active/noise</noise>
             <livery_001 type="string">Aircraft/G91-R1B_HD/Models/Liveries/dds/ITA_prot_001.dds</livery_001>
             <livery_002 type="string">Aircraft/G91-R1B_HD/Models/Liveries/dds/ITA_prot_002.dds</livery_002>
             <dirty_001 type="string">Aircraft/G91-R1B_HD/Models/Liveries/dirty_01_4k.png</dirty_001>
             <dirty_002 type="string">Aircraft/G91-R1B_HD/Models/Liveries/dirty_02_4k.png</dirty_002>
             <anti_reflective type="string">Aircraft/G91-R1B_HD/Models/Liveries/G91_Dark_Grey_128.png</anti_reflective>
+            <normalmap_enabled>0</normalmap_enabled>
             <version>2</version>
         </livery>
         
@@ -140,15 +138,15 @@ G91_Params.xml
             <luminosity type="float">0.0</luminosity>
             <reflective type="float">-0.92</reflective>
             <PANR1 type="float">0.0</PANR1>
-            <diffuse type="float">0.50</diffuse>
+            <diffuse type="float">0.76</diffuse>
             <specular type="float">0.06</specular>
             <dirty type="float">0.0</dirty>
-            <noise>sim/G91/liveries/active/noise</noise>
             <livery_001 type="string">Aircraft/G91-R1B_HD/Models/Liveries/R3/poto_01.png</livery_001>
             <livery_002 type="string">Aircraft/G91-R1B_HD/Models/Liveries/R3/poto_02.png</livery_002>
             <dirty_001 type="string">Aircraft/G91-R1B_HD/Models/Liveries/dirty_01_4k.png</dirty_001>
             <dirty_002 type="string">Aircraft/G91-R1B_HD/Models/Liveries/dirty_02_4k.png</dirty_002>
             <anti_reflective type="string">Aircraft/G91-R1B_HD/Models/Liveries/G91_Dark_Grey_128.png</anti_reflective>
+            <normalmap_enabled>0</normalmap_enabled>
             <version>10</version>
         </livery>
         
@@ -158,17 +156,17 @@ G91_Params.xml
             <name_short type="string">Luftwaffe R3 c/n 535</name_short>
             <name_long type="string">Luftwaffe FUS G-91R/3 c/n 535 (R3)</name_long>
             <luminosity type="float">0.04</luminosity>
-            <reflective type="float">-0.82</reflective>
+            <reflective type="float">-0.77</reflective>
             <PANR1 type="float">0.0</PANR1>
-            <diffuse type="float">0.33</diffuse>
-            <specular type="float">0.09</specular>
+            <diffuse type="float">0.80</diffuse>
+            <specular type="float">0.20</specular>
             <dirty type="float">1.0</dirty>
-            <noise>sim/G91/liveries/active/noise</noise>
             <livery_001 type="string">Aircraft/G91-R1B_HD/Models/Liveries/R3/GER_1962_001.png</livery_001>
             <livery_002 type="string">Aircraft/G91-R1B_HD/Models/Liveries/R3/GER_1962_002.png</livery_002>
             <dirty_001 type="string">Aircraft/G91-R1B_HD/Models/Liveries/dirty_01_4k.png</dirty_001>
             <dirty_002 type="string">Aircraft/G91-R1B_HD/Models/Liveries/dirty_02_4k.png</dirty_002>
             <anti_reflective type="string">Aircraft/G91-R1B_HD/Models/Liveries/G91_Dark_Grey_128.png</anti_reflective>
+            <normalmap_enabled>0</normalmap_enabled>
             <version>10</version>
         </livery>
         

@@ -19,7 +19,6 @@
         <object-name>hooks-b</object-name>
         <object-name>Fusion004 (Mirror #1) (Meshed)</object-name>
         <object-name>Cilindro021 (Meshed)</object-name>
-        <object-name>flux effect (Meshed)</object-name>
         <object-name>cover (Meshed)</object-name>
         <object-name>cover screew (Meshed)</object-name>
         <object-name>screews (Meshed)</object-name>
@@ -27,6 +26,7 @@
         <object-name>external pipe (Meshed)</object-name>
         <object-name>screews (Meshed)</object-name>
         <object-name>support (Meshed)</object-name>
+        <object-name>shadow_fake</object-name>
         <!--
         <object-name>bottom (Meshed)</object-name>
         <object-name>central (Meshed)</object-name>
@@ -36,12 +36,20 @@
         <object-name>orizontal-pin (Meshed)</object-name>
         -->
     </animation>
-
+    
+    <!--
+    <effect>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Liveries/liveries_002</inherits-from>
+        <object-name>body (Meshed)</object-name>
+        <object-name>orizontal-pin (Meshed)</object-name>
+        <object-name>vertical-pin-dx (Meshed)</object-name>
+        <object-name>vertical-pin-sx (Meshed)</object-name>
+    </effect>
+    -->
+    
     <animation> 
         <type>material</type>
-        <object-name>bottom (Meshed)</object-name>
-        <object-name>central (Meshed)</object-name>
-        <object-name>frontal (Meshed)</object-name>
+        <object-name>body (Meshed)</object-name>
         <object-name>orizontal-pin (Meshed)</object-name>
         <object-name>vertical-pin-dx (Meshed)</object-name>
         <object-name>vertical-pin-sx (Meshed)</object-name>
@@ -106,6 +114,7 @@
     <animation> 
         <type>material</type>
         <object-name>Fusion004 (Mirror #1) (Meshed)</object-name>
+        <object-name>shadow_fake</object-name>
         <diffuse>
             <red>0.3</red>
             <green>0.3</green>
@@ -164,27 +173,6 @@
             <red>0.7</red>
             <green>0.7</green>
             <blue>0.7</blue>
-        </specular>
-    </animation>
-    
-    <animation> 
-        <type>material</type>
-        <object-name>internal pipe (Meshed)</object-name>
-        <object-name>external pipe (Meshed)</object-name>
-        <diffuse>
-            <red>0.3</red>
-            <green>0.3</green>
-            <blue>0.3</blue>
-        </diffuse>
-        <ambient>
-            <red>0.2</red>
-            <green>0.2</green>
-            <blue>0.2</blue>
-        </ambient>
-        <specular>
-            <red>0.3</red>
-            <green>0.3</green>
-            <blue>0.3</blue>
         </specular>
     </animation>
     
