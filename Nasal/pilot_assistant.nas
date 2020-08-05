@@ -1528,7 +1528,7 @@ var pilot_assistant = func {
             }
 
             if (pilot_ass_status_id == 10.33) {
-                if (speed_cas >= 110.0) {
+                if (speed_cas >= 130.0 or runway_to_airplane_dist_nm < 0.2) {
                     pilot_ass_status_id = 10.34;
                 } else {
                     if (isJatoActive == 1) {

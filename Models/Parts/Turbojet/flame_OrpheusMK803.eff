@@ -4,9 +4,9 @@
     <name>AB-flame</name>
     <inherits-from>Effects/thrust-flame</inherits-from>
     <parameters>
+        <base_flame_density type="float">0.0</base_flame_density>
+        <thrust_density type="float"><use>fdm/jsbsim/systems/engine/effects-thrust-flame-thrust_density</use></thrust_density>
         <base_flame_b type="float">0.235</base_flame_b>
-        <base_flame_density type="float">1.0</base_flame_density>
-        <thrust_density type="float"><use>sim/G91/Test/V0_1B</use></thrust_density>
         <base_flame_g type="float">0.235</base_flame_g>
         <base_flame_r type="float">0.937</base_flame_r>
         <deflection_coeff type="float">0</deflection_coeff>
@@ -16,10 +16,10 @@
         <flame_color_low_b type="float">0.139</flame_color_low_b>
         <flame_color_low_g type="float">0.100</flame_color_low_g>
         <flame_color_low_r type="float">0.917</flame_color_low_r>
-        <flame_radius_fraction type="float"><use>sim/G91/Test/V0_1D</use></flame_radius_fraction>
+        <flame_radius_fraction type="float">0.0</flame_radius_fraction>
         <noise_scale type="float">1.2</noise_scale>
-        <noise_strength type="float"><use>sim/G91/Test/V0_1C</use></noise_strength>
-        <thrust_collimation type="float"><use>sim/G91/Test/V0_1A</use></thrust_collimation>
+        <noise_strength type="float">0.3</noise_strength>
+        <thrust_collimation type="float">4.0</thrust_collimation>
 		<shock_frequency>0.5</shock_frequency>
         <use_noise type="int">1</use_noise>
         <use_shocks type="int">1</use_shocks>

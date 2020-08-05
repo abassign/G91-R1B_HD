@@ -229,6 +229,21 @@ Description: G91R2 Canopy automation
             </function>
         </fcs_function>
         
+        <fcs_function name="systems/engine/effects-thrust-flame-thrust_density">
+            <function>
+                <product>
+                    <v>0.002</v>
+                    <p>propulsion/engine/n2</p>
+                    <interpolate1d>
+                        <p>systems/engine/effects-external-light-contrast</p>
+                        <v>0.0</v> <v>1.0</v>
+                        <v>0.3</v> <v>0.4</v>
+                        <v>1.0</v> <v>0.0</v>
+                    </interpolate1d>
+                </product>
+            </function>
+        </fcs_function>
+        
     </channel>
     
     
