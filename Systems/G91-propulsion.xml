@@ -64,7 +64,7 @@
     <!-- Auxiliary Tank Right (Droppable fuel tank) -->
     <tank type="FUEL" number="3">
         <location unit="IN">
-            <x> 212.50 </x>
+            <x> 210.00 </x>
             <y> 79.92 </y>
             <z> -36.61 </z>
         </location>
@@ -75,7 +75,7 @@
     <!-- Auxiliary Tank Left (Droppable fuel tank) -->
     <tank type="FUEL" number="4">
         <location unit="IN">
-            <x> 212.50 </x>
+            <x> 210.00 </x>
             <y> -79.92 </y>
             <z> -36.61 </z>
         </location>

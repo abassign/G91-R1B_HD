@@ -1191,8 +1191,8 @@ var pilot_assistant = func {
                 setprop("fdm/jsbsim/systems/autopilot/gui/impact-control-active",0.0);
                 setprop("fdm/jsbsim/systems/autopilot/altitude-QFE-active",0.0);
                 setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle",1.0);
-                setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle-deg",-5.0);
-                setprop("fdm/jsbsim/systems/autopilot/landing-slope-target",-5.0);
+                setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle-deg",-9.0);
+                setprop("fdm/jsbsim/systems/autopilot/landing-slope-target",-9.0);
                 setprop("fdm/jsbsim/systems/autopilot/gui/speed-value",30.0);
                 setprop("fdm/jsbsim/systems/autopilot/steer-brake-active",2);
                 setprop("fdm/jsbsim/systems/dragchute/activate",1.0);
@@ -1223,7 +1223,6 @@ var pilot_assistant = func {
                 setprop("fdm/jsbsim/systems/autopilot/gui/speed-value",0.0);
                 setprop("fdm/jsbsim/systems/autopilot/steer-brake-active",2);
                 setprop("fdm/jsbsim/systems/autopilot/speed-throttle-imposed",0.1);
-                setprop("fdm/jsbsim/systems/handle-switches/sw-handle-brake-activate",1);
                 setprop("fdm/jsbsim/systems/autopilot/landing-gear-set-open",1.0);
                 setprop("fdm/jsbsim/systems/autopilot/phase-landing",2.0);
                 setprop("fdm/jsbsim/systems/autopilot/gui/true-heading",1.0);
@@ -1251,6 +1250,10 @@ var pilot_assistant = func {
                         setprop("/controls/gear/brake-parking",1);
                         landing_30_brake_stop = 1;
                     }
+                }
+                #// Dragchute activate
+                if (gear_unit_contact >= 2 and getprop("fdm/jsbsim/systems/dragchute/status") == 0.0) {
+                    setprop("fdm/jsbsim/systems/handle-switches/sw-handle-brake-activate",1);
                 }
                 #// Dragchute camera view
                 if (getprop("fdm/jsbsim/systems/dragchute/active-view") > 0.01 and defaultViewInTheEvent == nil) {
@@ -1562,7 +1565,7 @@ var pilot_assistant = func {
                         setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle",0);
                         setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle-deg",6.0);
                         setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed",1);
-                        setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed-fpm",4000.0);
+                        setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed-fpm",3000.0);
                     };
                 }
             }

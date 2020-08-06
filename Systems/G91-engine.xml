@@ -167,8 +167,8 @@ Description: G91R2 Canopy automation
                 <interpolate1d>
                     <p>/rendering/scene/ambient/blue</p>
                     <v>0.0</v> <v>0.5</v>
-                    <v>0.5</v> <v>0.2</v>
-                    <v>1.0</v> <v>0.1</v>
+                    <v>0.5</v> <v>0.1</v>
+                    <v>1.0</v> <v>0.05</v>
                 </interpolate1d>
             </function>
         </fcs_function>

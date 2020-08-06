@@ -23,7 +23,6 @@ More informatiion on intial conditions is in the:
     <property value="0.0">context/gears/on-ground</property>
     <property value="0.0">context/gears/wow</property>
     
-    
     <channel name="Simulation status" execrate="240">
         
         <switch name="context/simulation/is-starting">

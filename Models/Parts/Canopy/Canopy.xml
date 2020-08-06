@@ -798,6 +798,22 @@
         </ambient>
     </animation>
     
+    <!-- Animations -->
+
+    <animation>
+        <type>pick</type>
+        <visible>true</visible>
+        <object-name>F_structure_panel_cockpit.000</object-name>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <binding>
+                <command>property-toggle</command>
+                <property>sim/G91/parts/SFOM_83A/show</property>
+            </binding>
+        </action>
+    </animation>
+    
     <!-- Gauges -->
     
     <model>
@@ -807,6 +823,12 @@
             <y-m>0.0005</y-m>
             <z-m>0.285</z-m>
         </offsets>
+        <condition>
+            <equals>
+                <property>sim/G91/parts/SFOM_83A/show</property>
+                <value>1</value>
+            </equals>
+        </condition>
     </model>
     
     <model>

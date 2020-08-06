@@ -28,28 +28,26 @@
         <object-name>support (Meshed)</object-name>
         <object-name>shadow_fake</object-name>
         <!--
-        <object-name>bottom (Meshed)</object-name>
-        <object-name>central (Meshed)</object-name>
-        <object-name>frontal (Meshed)</object-name>
+        <object-name>body (Meshed)</object-name>
         <object-name>vertical-pin-dx (Meshed)</object-name>
         <object-name>vertical-pin-sx (Meshed)</object-name>
         <object-name>orizontal-pin (Meshed)</object-name>
         -->
     </animation>
     
-    <!--
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Liveries/liveries_002</inherits-from>
-        <object-name>body (Meshed)</object-name>
+        <object-name>tank_cover_top</object-name>
+        <object-name>tank_cover_downa</object-name>
         <object-name>orizontal-pin (Meshed)</object-name>
         <object-name>vertical-pin-dx (Meshed)</object-name>
         <object-name>vertical-pin-sx (Meshed)</object-name>
     </effect>
-    -->
     
     <animation> 
         <type>material</type>
-        <object-name>body (Meshed)</object-name>
+        <object-name>tank_cover_top</object-name>
+        <object-name>tank_cover_downa</object-name>
         <object-name>orizontal-pin (Meshed)</object-name>
         <object-name>vertical-pin-dx (Meshed)</object-name>
         <object-name>vertical-pin-sx (Meshed)</object-name>
@@ -99,9 +97,9 @@
             <factor-prop>sim/G91/liveries/active/diffuse</factor-prop>
         </diffuse>
         <ambient>
-            <red>0.6</red>
-            <green>0.6</green>
-            <blue>0.6</blue>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
         </ambient>
         <specular>
             <red>0.2</red>

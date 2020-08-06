@@ -36,6 +36,28 @@
             <row>0</row>
             <col>0</col>
             <halign>fill</halign>
+            <property>sim/G91/parts/SFOM_83A/show</property>
+            <live>true</live>
+            <binding>
+                <command>dialog-apply</command>
+            </binding>
+        </checkbox>
+        <text>
+            <label>Show / hide SFOM 83A</label>
+            <halign>right</halign>
+            <row>0</row>
+            <col>1</col>
+        </text>
+    </group>
+    
+    <hrule/>
+    
+    <group>
+        <layout>table</layout>
+        <checkbox>
+            <row>0</row>
+            <col>0</col>
+            <halign>fill</halign>
             <property>sim/G91/parts/cloche/show</property>
             <live>true</live>
             <binding>
@@ -43,7 +65,7 @@
             </binding>
         </checkbox>
         <text>
-            <label>Show cloche</label>
+            <label>Show / hide cloche</label>
             <halign>right</halign>
             <row>0</row>
             <col>1</col>

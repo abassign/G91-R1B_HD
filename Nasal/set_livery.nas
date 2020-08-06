@@ -226,8 +226,8 @@ var setCanvas = func() {
     cw.addPlacement({"node": "PAN_tank_sx.004"});
     cw.addPlacement({"node": "PAN_tank_sx_003"});
     # Tank 900lb
-    cw.addPlacement({"node": "body_up"});
-    cw.addPlacement({"node": "body_down"});
+    cw.addPlacement({"node": "tank_cover_top"});
+    cw.addPlacement({"node": "tank_cover_downa"});
     cw.addPlacement({"node": "orizontal-pin (Meshed)"});
     cw.addPlacement({"node": "vertical-pin-dx (Meshed)"});
     cw.addPlacement({"node": "vertical-pin-sx (Meshed)"});
