@@ -17,12 +17,17 @@
         <object-name>swich_04</object-name>
     </effect>
     
-    <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
+    <animation>
+        <type>noshadow</type>
         <object-name>swich_01</object-name>
         <object-name>swich_02</object-name>
         <object-name>swich_03</object-name>
         <object-name>swich_04</object-name>
+        <object-name>sw_center</object-name>
+        <object-name>sw_north</object-name>
+        <object-name>sw_south</object-name>
+        <object-name>sw_est</object-name>
+        <object-name>sw_west</object-name>
     </effect>
     
     <animation> 

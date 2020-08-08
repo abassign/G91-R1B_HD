@@ -13,6 +13,10 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
     <animation>
         <type>noshadow</type>
         <object-name>pb_light_effect</object-name>
+        <object-name>Cone_reflect (Meshed)</object-name>
+        <object-name>transparent_button (Meshed)</object-name>
+        <object-name>light_Sphere (Meshed)</object-name>
+        <object-name>light_Sphere_hot (Meshed)</object-name>
     </animation>
     
     <animation> 

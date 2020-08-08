@@ -970,7 +970,8 @@ var pilot_assistant = func {
                             landing_22_set_cas = 155.0 + 25 * impact_ctl_speed_increment_norm;
                             if (landing_22_set_cas > 200.0) landing_22_set_cas = 200.0;
                         } else {
-                            landing_22_set_cas = 120 + 35.0 * (runway_to_airplane_dist_nm / landing_22_subStatus_2_2_dist_nm);
+                            ### landing_22_set_cas = 120 + 35.0 * (runway_to_airplane_dist_nm / landing_22_subStatus_2_2_dist_nm);
+                            landing_22_set_cas = 120 + 35.0 * (runway_to_airplane_dist_nm / landing_22_subStatus_2_2_dist_nm) + (50.0 * weitght_norm);
                             ku = ku * ( 0.08 + 0.92 * (runway_to_airplane_dist_nm / landing_22_subStatus_2_2_dist_nm));
                             tu = tu * ( 0.5 + 0.5 * (runway_to_airplane_dist_nm / landing_22_subStatus_2_2_dist_nm));
                             gain_landing_mod = gain_landing * ( 0.3 + 0.7 * (runway_to_airplane_dist_nm / landing_22_subStatus_2_2_dist_nm));
@@ -988,9 +989,10 @@ var pilot_assistant = func {
                 if (landing_22_subStatus == 3) {
                     if (delta_h_ft > 80) {
                         var delta_slope_rate = 1.0;
-                        landing_22_set_cas = 115.0 + (15 * weitght_norm);
+                        ### landing_22_set_cas = 115.0 + (20 * weitght_norm);
+                        landing_22_set_cas = 125.0 + (50.0 * weitght_norm);
                         pitch_output_error_coefficient_gain = 1.5;
-                        landing_22_slope_target_proposed = -1.5 - 1.8 * delta_h_ft / 80.0;
+                        landing_22_slope_target_proposed = -2.5 - 1.8 * delta_h_ft / 80.0;
                         if (landing_22_slope_target_proposed < -2.5) landing_22_slope_target_proposed = -2.5;
                         delta_h_vs_dist_ft = delta_h_ft;
                         if (landing_22_set_cas_lag < (landing_22_set_cas - 3)) landing_22_set_cas_lag = landing_22_set_cas_lag + 5.0 * delta_time;
@@ -1012,18 +1014,21 @@ var pilot_assistant = func {
                 
                 if (landing_22_subStatus == 4) {
                     var delta_slope_rate = 0.5;
+                    var slope_target_speed = 0.1;
                     if (altitude_agl_ft > 15) {
-                        landing_22_slope_target_proposed = -1.5 - 6.0 * altitude_agl_ft / 80.0;
+                        landing_22_slope_target_proposed = -3.0 - 6.0 * altitude_agl_ft / 80.0;
                     } else {
-                        landing_22_slope_target_proposed = -1.5 - 0.8 * altitude_agl_ft / 10.0;
+                        slope_target_speed = 0.2;
+                        landing_22_slope_target_proposed = -2.5 - 0.8 * altitude_agl_ft / 10.0;
                     }
-                    landing_22_set_cas = 115.0;
+                    ### landing_22_set_cas = 115.0;
+                    landing_22_set_cas = 125.0 + (50.0 * weitght_norm);
                     pitch_output_error_coefficient_gain = 1.5;
                     delta_h_vs_dist_ft = delta_h_ft;
                     if (landing_22_set_cas_lag < (landing_22_set_cas - 3)) landing_22_set_cas_lag = landing_22_set_cas_lag + 5.0 * delta_time;
                     if (landing_22_set_cas_lag > (landing_22_set_cas + 3)) landing_22_set_cas_lag = landing_22_set_cas_lag - 5.0 * delta_time;
-                    if (landing_22_slope_target < (landing_22_slope_target_proposed - 0.1)) landing_22_slope_target = landing_22_slope_target + delta_slope_rate * delta_time;
-                    if (landing_22_slope_target > (landing_22_slope_target_proposed + 0.1)) landing_22_slope_target = landing_22_slope_target - delta_slope_rate * delta_time;
+                    if (landing_22_slope_target < (landing_22_slope_target_proposed - slope_target_speed)) landing_22_slope_target = landing_22_slope_target + delta_slope_rate * delta_time;
+                    if (landing_22_slope_target > (landing_22_slope_target_proposed + slope_target_speed)) landing_22_slope_target = landing_22_slope_target - delta_slope_rate * delta_time;
                     landing_22_pitch_slope = landing_22_slope_target;
                     setprop("fdm/jsbsim/systems/autopilot/pitch-output-error-coefficient-gain",pitch_output_error_coefficient_gain);
                     setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle-deg",landing_22_slope_target);
@@ -1208,6 +1213,7 @@ var pilot_assistant = func {
             }
         } else if (pilot_ass_status_id == 3.0) {
             setprop("fdm/jsbsim/systems/autopilot/altitude-QFE-set-active-stop",1);
+            setprop("fdm/jsbsim/systems/autopilot/speed-brake-set-activate",1);
             if (getprop("fdm/jsbsim/systems/autopilot/speed-true-on-air") < 35.0) {
                 pilot_ass_status_id = 4;
                 landing_40_brake_stop = 0;
@@ -1282,6 +1288,7 @@ var pilot_assistant = func {
             }
         } else if (pilot_ass_status_id == 4.0) {
             setprop("fdm/jsbsim/systems/autopilot/altitude-QFE-set-active-stop",1);
+            setprop("fdm/jsbsim/systems/autopilot/speed-brake-set-activate",1);
             var rwy_coord_end_final = geo.Coord.new();
             rwy_coord_end_final.set_latlon(airport_select.runways[rwy_select].lat,airport_select.runways[rwy_select].lon,rwy_offset_v_ft * 3.28084);
             rwy_coord_end_final.apply_course_distance(airport_select.runways[rwy_select].heading,(runway_to_airplane_dist_nm_direct_nm * 1852.0 + airport_select.runways[rwy_select].length));
@@ -1561,11 +1568,12 @@ var pilot_assistant = func {
                         setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed",1);
                         setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed-fpm",100.0 * (speed_cas - 50.0) / 50.0);
                     } else {
+                        var weitght_norm = getprop("fdm/jsbsim/inertia/weight-lbs") / 10000.0;
                         factorGain = 1.5;
                         setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle",0);
                         setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle-deg",6.0);
                         setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed",1);
-                        setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed-fpm",3000.0);
+                        setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed-fpm",3500.0 * weitght_norm * weitght_norm);
                     };
                 }
             }

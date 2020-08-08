@@ -1130,11 +1130,35 @@
             <text>
                 <row>0</row>
                 <col>6</col>
-                <label>9999999</label>
+                <label>Opt v: </label>
+                <color>
+                    <red>0.8</red>
+                    <green>0.8</green>
+                    <blue>0.8</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>7</col>
+                <label>999999</label>
                 <halign>left</halign>
                 <live>true</live>
-                <format>[%3.1f]</format>
+                <format>%3.2f</format>
                 <property>fdm/jsbsim/systems/autopilot/speed-value-target-lag</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.0</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>8</col>
+                <label>99999999</label>
+                <halign>left</halign>
+                <live>true</live>
+                <format>[%2.1f %%]</format>
+                <property>fdm/jsbsim/systems/autopilot/speed-difference-percent</property>
                 <color>
                     <red>0.8</red>
                     <green>0.8</green>
@@ -1145,11 +1169,11 @@
                 <label>TAS</label>
                 <halign>right</halign>
                 <row>0</row>
-                <col>7</col>
+                <col>9</col>
             </text>
             <text>
                 <row>0</row>
-                <col>8</col>
+                <col>10</col>
                 <label>99999</label>
                 <halign>left</halign>
                 <live>true</live>
@@ -1165,11 +1189,11 @@
                 <label>CAS</label>
                 <halign>right</halign>
                 <row>0</row>
-                <col>9</col>
+                <col>11</col>
             </text>
             <text>
                 <row>0</row>
-                <col>10</col>
+                <col>12</col>
                 <label>99999</label>
                 <halign>left</halign>
                 <live>true</live>
@@ -1185,11 +1209,11 @@
                 <label>Mach</label>
                 <halign>right</halign>
                 <row>0</row>
-                <col>11</col>
+                <col>13</col>
             </text>
             <text>
                 <row>0</row>
-                <col>12</col>
+                <col>14</col>
                 <label>99999</label>
                 <halign>left</halign>
                 <live>true</live>
@@ -1205,11 +1229,11 @@
                 <label>On ground</label>
                 <halign>right</halign>
                 <row>0</row>
-                <col>13</col>
+                <col>15</col>
             </text>
             <text>
                 <row>0</row>
-                <col>14</col>
+                <col>16</col>
                 <label>99999999999</label>
                 <halign>left</halign>
                 <live>true</live>
@@ -1409,7 +1433,7 @@
                 </color>
             </text>
             <text>
-                <label>Time res. (s)</label>
+                <label>Time res. (m)</label>
                 <halign>left</halign>
                 <row>0</row>
                 <col>8</col>
@@ -1420,8 +1444,8 @@
                 <label>99999</label>
                 <halign>left</halign>
                 <live>true</live>
-                <format>%4.0f</format>
-                <property>fdm/jsbsim/systems/autopilot/fuel-time-residue-sec</property>
+                <format>%3.0f</format>
+                <property>fdm/jsbsim/systems/autopilot/fuel-time-residue-m</property>
                 <color>
                     <red>0.9</red>
                     <green>0.9</green>
@@ -1429,7 +1453,7 @@
                 </color>
             </text>
             <text>
-                <label>Distance res. (nm)</label>
+                <label>Distance exe. (nm)</label>
                 <halign>left</halign>
                 <row>0</row>
                 <col>10</col>
@@ -1437,6 +1461,26 @@
             <text>
                 <row>0</row>
                 <col>11</col>
+                <label>99999</label>
+                <halign>left</halign>
+                <live>true</live>
+                <format>%4.0f</format>
+                <property>fdm/jsbsim/systems/autopilot/distance-nm</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.0</blue>
+                </color>
+            </text>
+            <text>
+                <label>res. </label>
+                <halign>left</halign>
+                <row>0</row>
+                <col>12</col>
+            </text>
+            <text>
+                <row>0</row>
+                <col>13</col>
                 <label>99999</label>
                 <halign>left</halign>
                 <live>true</live>
@@ -1452,11 +1496,11 @@
                 <label>Lib/nm</label>
                 <halign>left</halign>
                 <row>0</row>
-                <col>12</col>
+                <col>14</col>
             </text>
             <text>
                 <row>0</row>
-                <col>13</col>
+                <col>15</col>
                 <label>99999</label>
                 <halign>left</halign>
                 <live>true</live>

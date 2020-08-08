@@ -2,18 +2,14 @@
     
     <path>Thrust_lever.ac</path>
     
-    <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
+    <animation>
+        <type>noshadow</type>
         <object-name>Screew cross top M2</object-name>
         <object-name>Screew cross top M2.001</object-name>
         <object-name>Screew cross top M2.002</object-name>
         <object-name>Screew top </object-name>
         <object-name>Screew top .001</object-name>
         <object-name>Screew_d</object-name>
-        <object-name>Thrust_lever_01</object-name>
-        <object-name>Thrust_lever_02</object-name>
-        <object-name>Thrust_lever_03</object-name>
-        <object-name>Thrust_lever_04</object-name>
         <object-name>push_01</object-name>
         <object-name>push_01a</object-name>
         <object-name>push_01b</object-name>
@@ -25,7 +21,14 @@
         <object-name>segnature_push_03a</object-name>
         <object-name>segnature_push_03b</object-name>
         <object-name>support_push_03</object-name>
-    </effect>
+        <!--
+        <object-name>Thrust_lever_01.001</object-name>
+        <object-name>Thrust_lever_01</object-name>
+        <object-name>Thrust_lever_02</object-name>
+        <object-name>Thrust_lever_03</object-name>
+        <object-name>Thrust_lever_04</object-name>
+        -->
+    </animation>
     
     <animation>
         <name>lever</name>

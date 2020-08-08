@@ -13,23 +13,19 @@ Original work Copyright (c) 2018 Adriano Bassignana (abassign)
         <z-m>0.0</z-m>
     </offsets>
     
-    <!--
-    <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
+    <animation>
+        <type>noshadow</type>
         <object-name>swich_support</object-name>
         <object-name>swich_01</object-name>
         <object-name>swich_02</object-name>
         <object-name>swich_03</object-name>
-    </effect>
-    -->
-    
-    <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
-        <object-name>swich_support</object-name>
-        <object-name>swich_01</object-name>
-        <object-name>swich_02</object-name>
-        <object-name>swich_03</object-name>
-    </effect>
+        <object-name>swich_04</object-name>
+        <object-name>sw_center</object-name>
+        <object-name>sw_north</object-name>
+        <object-name>sw_south</object-name>
+        <object-name>sw_est</object-name>
+        <object-name>sw_west</object-name>
+    </animation>
     
     <animation> 
         <type>material</type>

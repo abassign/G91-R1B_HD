@@ -129,6 +129,19 @@
         </specular>
     </animation>
     
+    <animation>
+        <type>noshadow</type>
+        <object-name>A_trasmission_command_Alet_sx.007</object-name>
+        <object-name>A_trasmission_command_Alet_sx.008</object-name>
+        <object-name>A_trasmission_command_Alet_sx.009</object-name>
+        <object-name>A_trasmission_command_Alet_sx.010</object-name>
+        <object-name>D_Plate_vertical_wing</object-name>
+        <object-name>D_bar_node2.000</object-name>
+        <object-name>D_bar_node2.001</object-name>
+        <object-name>D_bar_node3.001</object-name>
+        <object-name>D_timone_coda.003</object-name>
+    </animation>
+    
     <animation> 
         <type>material</type>
         <object-name>A_trasmission_command_Alet_sx.007</object-name>
@@ -201,6 +214,31 @@
             <green>1.0</green>
             <blue>1.0</blue>
         </specular>
+    </animation>
+    
+    <animation>
+        <type>noshadow</type>
+        <object-name>A__G91_fuselage_insideTUbe</object-name>
+        <object-name>A__G91_fuselage_coda.009</object-name>
+        <object-name>A__G91_fuselage_coda.010</object-name>
+        <object-name>A__G91_fuselage_coda.012</object-name>
+        <object-name>exit_smoke_001_tube</object-name>
+        <object-name>exit_smoke.003</object-name>
+        <object-name>exit_smoke.002</object-name>
+        <object-name>A__G91_fuselage_coda.003</object-name>
+        <object-name>A__G91_fuselage_coda.000</object-name>
+        <object-name>D_wing_longherone_dx.004</object-name>
+        <object-name>D_wing_longherone_sx.003</object-name>
+        <object-name>A__G91_fuselage_coda.004</object-name>
+        <object-name>A__G91_fuselage_coda.001</object-name>
+        <object-name>A__G91_fuselage_coda.008</object-name>
+        <object-name>D__longherone_timone_coda</object-name>
+        <object-name>A_glass_red_est_coda</object-name>
+        <object-name>A_glass_red_int_coda</object-name>
+        <object-name>A_glass_white_est_coda</object-name>
+        <object-name>A_glass_white_int_coda</object-name>
+        <object-name>Sphere.007</object-name>
+        <object-name>Sphere.006</object-name>
     </animation>
     
     <animation> 

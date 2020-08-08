@@ -145,9 +145,11 @@ var setCanvas = func() {
     # Fuselage A0
     ca.addPlacement({"node": "A__G91_fuselage_muso_1.001"});
     ca.addPlacement({"node": "A__G91_fuselage_muso_1.000"});
+    ca.addPlacement({"node": "A__G91_fuselage_muso_1.008"});
+    ca.addPlacement({"node": "A__G91_fuselage_muso_1.009"});
     ca.addPlacement({"node": "A_antenna_cover"});
+    ca.addPlacement({"node": "panR1b__G91_fuselage_muso_1.000"});
     ca.addPlacement({"node": "panR1b__G91_fuselage_muso_1.024"});
-    ca.addPlacement({"node": "A_antenna_cover"});
 
     # Fuselage B0
     ca.addPlacement({"node": "A__G91_fuselage_weapon_door_dx.003"});
@@ -289,9 +291,9 @@ var changeResolution = func() {
     else if (resolutionSet == 3) {
         resolution = 4096; }
     else {
-        print("set_livery.nas changeResolution resolutionSet error: ",resolutionSet);
-        resolutionSet = 0;
-        resolution = 0;
+        print("set_livery.nas changeResolution resolutionSet error but change in 1 (",resolutionSet,")");
+        resolutionSet = 1;
+        resolution = 1024;
         return;
     }
         
@@ -393,11 +395,13 @@ var getActiveData = func() {
     
     var idSelect = props.globals.getNode("sim/G91/liveries/active/ID",1).getValue();
     if (idSelect == nil) {
-        idSelect = 0;
+        print("set_livery.nas getActiveData error read idSelect, idSelect = 1 (",idSelect,")");
+        idSelect = 1;
     }
     resolutionSet = props.globals.getNode("sim/G91/liveries/active/setResolution",1).getValue();
     if (resolutionSet == nil) {
-        resolutionSet = 0;
+        print("set_livery.nas getActiveData error read resolutionSet, resolutionSet = 1 (",resolutionSet,")");
+        resolutionSet = 1;
     }
 
     if (resolutionSetPrec > 0 and resolutionSetPrec != resolutionSet) {

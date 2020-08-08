@@ -1,5 +1,5 @@
 <PropertyList>
-    
+
     <path>rocket_Jato_System.ac</path>
     
     <offsets>
@@ -7,6 +7,20 @@
         <y-m>0.0</y-m>
         <z-m>0.0</z-m>
     </offsets>
+    
+    <animation>
+        <type>noshadow</type>
+        <object-name>ganci_piastra_jato</object-name>
+        <object-name>staffa_jato_post.ant</object-name>
+        <object-name>staffa_jato_post.dx</object-name>
+        <object-name>staffa_jato_post.sx</object-name>
+        <object-name>piastra_jato01</object-name>
+        <object-name>piastra_jato02</object-name>
+        <object-name>rocket</object-name>
+        <object-name>rocket_02</object-name>
+        <object-name>rocket_03</object-name>
+        <object-name>rocket_03.001</object-name>
+    </animation>
     
     <animation>
         <type>select</type>
@@ -74,6 +88,7 @@
         <type>material</type>
         <object-name>rocket</object-name>
         <object-name>rocket_02</object-name>
+        <texture>AichiInteriorGreyGreen</texture>
         <diffuse>
             <red>0.53</red>
             <green>0.48</green>

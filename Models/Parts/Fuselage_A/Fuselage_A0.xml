@@ -138,13 +138,20 @@
         <inherits-from>Aircraft/G91-R1B_HD/Models/Liveries/liveries_001</inherits-from>
         <object-name>A__G91_fuselage_muso_1.000</object-name>
         <object-name>A__G91_fuselage_muso_1.001</object-name>
+        <object-name>A__G91_fuselage_muso_1.008</object-name>
+        <object-name>A__G91_fuselage_muso_1.009</object-name>
+        <object-name>panR1b__G91_fuselage_muso_1.000</object-name>
         <object-name>panR1b__G91_fuselage_muso_1.024</object-name>
+        <object-name>A_antenna_cover</object-name>
     </effect>
 
     <animation> 
         <type>material</type>
         <object-name>A__G91_fuselage_muso_1.000</object-name>
         <object-name>A__G91_fuselage_muso_1.001</object-name>
+        <object-name>A__G91_fuselage_muso_1.008</object-name>
+        <object-name>A__G91_fuselage_muso_1.009</object-name>
+        <object-name>panR1b__G91_fuselage_muso_1.000</object-name>
         <object-name>panR1b__G91_fuselage_muso_1.024</object-name>
         <object-name>A_antenna_cover</object-name>
         <diffuse>

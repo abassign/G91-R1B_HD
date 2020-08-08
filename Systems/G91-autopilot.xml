@@ -66,6 +66,7 @@ No Overshoot
     <property value="0.0">systems/autopilot/descent-ascent-phase</property>
     <property value="0.0">systems/autopilot/distance-fp</property>
     <property value="0.0">systems/autopilot/distance-nm</property>
+    <property value="0.0">systems/autopilot/distance-reset</property>
     <property value="0.0">systems/autopilot/turn-radius-nm</property>
     <property value="0.0">systems/autopilot/propulsion-specific-con</property>
     <!-- Altitude section -->
@@ -113,7 +114,7 @@ No Overshoot
     <property value="0.0">systems/autopilot/fuel-remain-lbs</property>
     <property value="0.0">systems/autopilot/fuel-remain-percent</property>
     <property value="0.0">systems/autopilot/fuel-time-residue-sec</property>
-    <property value="0.0">systems/autopilot/fuel-time-residue-h</property>
+    <property value="0.0">systems/autopilot/fuel-time-residue-m</property>
     <property value="0.0">systems/autopilot/fuel-nm-residue</property>
     <property value="0.0">systems/autopilot/fuel-lbs-formiles</property>
     <!-- Landing gear section -->
@@ -196,6 +197,7 @@ No Overshoot
     <property value="-0.1">systems/autopilot/pitch-alpha-output-error-coefficient</property>
     <!-- Roll section -->
     <property value="0.0">systems/autopilot/speed-difference</property>
+    <property value="0.0">systems/autopilot/speed-difference-percent</property>
     <property value="3.0">systems/autopilot/roll-pid-kp</property>
     <property value="0.5">systems/autopilot/roll-pid-ki</property>
     <property value="1.5">systems/autopilot/roll-pid-kd</property>
@@ -1919,9 +1921,27 @@ No Overshoot
     
     <channel name="distance calculator" execrate="8">
         
+        <fcs_function name="systems/autopilot/speed-XY-fps">
+            <function>
+                <sqrt>
+                    <sum>
+                        <pow>
+                            <p>velocities/v-north-fps</p>
+                            <v>2.0</v>
+                        </pow>
+                        <pow>
+                            <p>velocities/v-east-fps</p>
+                            <v>2.0</v>
+                        </pow>
+                    </sum>
+                </sqrt>
+            </function>
+        </fcs_function>
+        
         <integrator name="systems/autopilot/distance-fp">
-            <input>velocities/u-aero-fps</input>
+            <input>systems/autopilot/speed-XY-fps</input>
             <c1>1.0</c1>
+            <trigger>systems/autopilot/distance-reset</trigger>
         </integrator>
         
         <pure_gain name="systems/autopilot/distance-nm">
@@ -1935,7 +1955,7 @@ No Overshoot
                     <ge><abs><p>velocities/r-aero-rad_sec</p></abs><v>0.01</v></ge>
                     <product>
                         <quotient>
-                            <p>velocities/u-aero-fps</p>
+                            <p>systems/autopilot/speed-XY-fps</p>
                             <p>velocities/r-aero-rad_sec</p>
                         </quotient>
                         <v>0.000189394</v>
@@ -2022,6 +2042,11 @@ No Overshoot
                 </ifthen>
             </function>
         </fcs_function>
+        
+        <pure_gain name="systems/autopilot/fuel-time-residue-m">
+            <input>systems/autopilot/fuel-time-residue-sec</input>
+            <gain>0.01666666666</gain>
+        </pure_gain>
         
         <pure_gain name="systems/autopilot/fuel-nm-residue">
             <input>systems/autopilot/fuel-time-residue-sec</input>
@@ -2237,6 +2262,11 @@ No Overshoot
                 systems/autopilot/speed-value-target-lag GT 0.01
             </test>
         </switch>
+        
+        <pure_gain name="systems/autopilot/speed-difference-percent">
+            <input>systems/autopilot/speed-difference</input>
+            <gain>100.0</gain>
+        </pure_gain>
         
         <switch name="systems/autopilot/speed-reset-integrator">
             <default value="0"/>
@@ -2983,17 +3013,19 @@ No Overshoot
                     <ifthen>
                         <and>
                             <gt><p>systems/autopilot/altitude-hold-limitator-active</p><v>0.5</v></gt>
-                            <gt><p>systems/autopilot/altitude-hold-pid-gain</p><v>0.2</v></gt>
-                            <gt><p>systems/autopilot/speed-difference</p><v>0.01</v></gt>
+                            <gt><abs><p>systems/autopilot/altitude-hold-pid-gain</p></abs><v>0.1</v></gt>
+                            <gt><abs><p>systems/autopilot/speed-difference</p></abs><v>0.01</v></gt>
                         </and>
                         <table>
                             <independentVar lookup="row">systems/autopilot/speed-difference</independentVar>
                             <tableData>
-                               -1.0     1
+                               -1.0     0.1
+                               -0.2     0.5
+                               -0.1     0.8
                                 0       1
-                                0.1     0.9
-                                0.2     0.1
-                                1.0     0.1
+                                0.1     1.1
+                                0.2     1.3
+                                1.0     2.0
                             </tableData>
                         </table>
                         <v>1.0</v>
@@ -3006,7 +3038,7 @@ No Overshoot
                             10000  2500
                             20000  2000
                             30000  1200
-                            40000  1000
+                            40000   800
                         </tableData>
                     </table>
                 </product>

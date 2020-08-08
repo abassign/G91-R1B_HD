@@ -2,8 +2,9 @@
 
     <path>PTR175.ac</path>
     
-    <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
+     <animation>
+        <type>noshadow</type>
+        <object-name>box (Meshed)</object-name> 
         <object-name>vol_knob_base (Meshed)</object-name>
         <object-name>vol_knob_mirror (Meshed)</object-name>
         <object-name>chan selector B (Meshed)</object-name>
@@ -53,7 +54,8 @@
         <object-name>freq set 11000 point A</object-name>
         <object-name>freq set 00100 point A</object-name>
         <object-name>freq set 00011 point A</object-name>
-    </effect>
+        <object-name>Manual display window (Meshed)</object-name>
+    </animation>
     
     <effect>
         <inherits-from>Effects/model-transparent</inherits-from>
