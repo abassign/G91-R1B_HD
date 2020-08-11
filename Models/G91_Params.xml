@@ -14,6 +14,7 @@ G91_Params.xml
             <turbojet type="int">1</turbojet>
             <stores type="int">1</stores>
             <accessories type="int">1</accessories>
+            <isMultiPlayer type="int">0</isMultiPlayer>
         </active>
     </models>
 
@@ -26,7 +27,7 @@ G91_Params.xml
         -->
         
         <active>
-            <ID>5</ID>
+            <ID>1</ID>
             <setResolution>3</setResolution>
         </active>
 

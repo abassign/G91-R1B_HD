@@ -12,6 +12,79 @@
     </offsets>
 
     <animation>
+        <type>select</type>
+        <object-name>A__G91_fuselage_01up.000</object-name>
+        <object-name>A__G91_fuselage_weapon_01up.002</object-name>
+        <object-name>A__G91_fuselage_weapon_01up.003</object-name>
+        <object-name>browning.024</object-name>
+        <object-name>browning.025</object-name>
+        <object-name>browning.026</object-name>
+        <object-name>browning.027</object-name>
+        <object-name>browning.028</object-name>
+        <object-name>browning.029</object-name>
+        <object-name>browning.030</object-name>
+        <object-name>browning.031</object-name>
+        <object-name>browning.032</object-name>
+        <object-name>browning.033</object-name>
+        <object-name>browning.035</object-name>
+        <object-name>browning.034</object-name>
+        <object-name>browning.036</object-name>
+        <object-name>browning.037</object-name>
+        <object-name>browning.038</object-name>
+        <object-name>browning.039</object-name>
+        <object-name>browning.040</object-name>
+        <object-name>browning.041</object-name>
+        <object-name>browning.042</object-name>
+        <object-name>browning.043</object-name>
+        <object-name>browning.044</object-name>
+        <object-name>browning.045</object-name>
+        <object-name>browning.046</object-name>
+        <object-name>browning.047</object-name>
+        <object-name>closing_door_dx.001</object-name>
+        <object-name>closing_door_sx.001</object-name>
+        <object-name>door_structure_dx_01.001</object-name>
+        <object-name>door_structure_dx_02.001</object-name>
+        <object-name>door_structure_dx_03.001</object-name>
+        <object-name>door_structure_dx_04.001</object-name>
+        <object-name>door_structure_dx_05.001</object-name>
+        <object-name>door_structure_sx_01.001</object-name>
+        <object-name>door_structure_sx_02.001</object-name>
+        <object-name>door_structure_sx_03.001</object-name>
+        <object-name>door_structure_sx_014.001</object-name>
+        <object-name>door_structure_sx_05.001</object-name>
+        <object-name>munitions_box_dx_01.001</object-name>
+        <object-name>munitions_box_dx_02.001</object-name>
+        <object-name>munitions_box_sx_01.001</object-name>
+        <object-name>munitions_box_sx_02.001</object-name>
+        <object-name>weapon_structure_dx_00.001</object-name>
+        <object-name>weapon_structure_dx_01.001</object-name>
+        <object-name>weapon_structure_dx_02.001</object-name>
+        <object-name>weapon_structure_dx_03.001</object-name>
+        <object-name>weapon_structure_dx_04.001</object-name>
+        <object-name>weapon_structure_sx_00.001</object-name>
+        <object-name>weapon_structure_sx_01.001</object-name>
+        <object-name>weapon_structure_sx_02.001</object-name>
+        <object-name>weapon_structure_sx_03.001</object-name>
+        <object-name>weapon_structure_sx_04.001</object-name>
+        <object-name>weapons.005</object-name>
+        <object-name>weapons.006</object-name>
+        <object-name>weapons.007</object-name>
+        <object-name>weapons.008</object-name>
+        <object-name>weapons.009</object-name>
+        <object-name>A__G91_fuselage_weapon_door_dx.002</object-name>
+        <object-name>A__G91_fuselage_weapon_door_sx.002</object-name>
+        <object-name>A__G91_fuselage_weapon_door_dx.003</object-name>
+        <object-name>A__G91_fuselage_weapon_door_sx.003</object-name>
+        <object-name>A__G91_fuselage_int.weapon.door.008</object-name>
+        <condition>
+            <equals>
+                <property>sim/G91/liveries/active/version</property>
+                <value>2</value>
+            </equals>
+        </condition>
+    </animation>
+
+    <animation>
         <type>noshadow</type>
         <object-name>A__G91_fuselage_01up.000</object-name>
         <object-name>A__G91_fuselage_weapon_01up.002</object-name>

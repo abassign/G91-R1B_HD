@@ -19,8 +19,6 @@ setprop("sim/G91/liveries/active/ID","");
 
 var inExecution = 0;
 var isMultiPlayer = 0; # The value, is different to 0, set the reselution
-var target_module_id = nil;
-var target_module_id_associated = nil;
 
 var resolutionSet = 0;
 var resolutionSetPrec = -1;
@@ -50,179 +48,6 @@ var dirty_002 = "";
 var anti_reflective = "";
 
 
-var objectsNodes_ca = [
-    # Fuselage
-    "A__G91_fuselage_int.weapon.door.001",
-    "m00_door_01.1",
-    "m00_door_02",
-    "m00_door_dx01",
-    "m00_door_dx03",
-    "m00_door_sx01",
-    "m00_door_sx03",
-    "m00_platelight",
-    "m00_door_sx03.001",
-    "m00_door_dx03.001",
-    "F__door_02",
-    "F__door_03",
-    "F__door_02.001",
-    "F__door_03",
-    "F__door_03.002",
-    "F__door_em_canopy01",
-    "F__door_em_canopy01.002",
-    "F_door_em_canopyDX.000",
-    "F_door_em_canopyDX.001",
-    "F_door_em_canopyDX.002",
-    "F_door_em_canopyDX.004",
-    "F_door_em_canopyDX.004a",
-    "F_door_em_canopyDX.004a.001",
-    "F_door_em_canopyDX.005",
-    "F_door_em_canopySX.000",
-    "F_door_em_canopySX.001",
-    "F_door_em_canopySX.002",
-    "F_door_em_canopySX.004",
-    "F_door_em_canopySX.004a",
-    "F_door_em_canopySX.005",
-    "F_handle_armydoorDX",
-    "F_handle_armydoorSX",
-    "B00_sx_door_01.001",
-    "B00_dx_door_01.000",
-    "B00_Asse_dx_door_bis",
-    "B00_sx_door_bis.002",
-    "A__G91_fuselage_int.weapon.door.007",
-    "A__G91_fuselage_int.weapon.door.008",
-    "m00_door_01.2",
-    "m00_door_dx03.002",
-    "tank_cap1",
-    "tank_cap",
-    # tail
-    "A__G91_fuselage_coda.002",
-    "A__G91_fuselage_coda.005",
-    "A__G91_fuselage_coda.006",
-    "A__G91_door_sx_coda.000",
-    "A__G91_door_dx_coda.001",
-    "A__G91_fuselage_coda.007",
-    "A__G91_fuselage_coda.009",
-    "A__G91_fuselage_coda.010",
-    "exit_smoke_001_cover",
-    "exit_smoke_001",
-    "exit_smoke",
-    "fin_small.001",
-    "fin_small.002",
-    "fin_small.003",
-    "fin_small.004",
-    "fin_small.005",
-    "fin_small.006",
-    "fin_small.007",
-    "fin_small.008",
-    "fin_small.009",
-    "fin_small.010",
-    "D_timone_coda",
-    "D_timone_coda.001",
-    "D_timone_coda.002",
-    "D_timone_coda.003",
-    "D_aletta_correttrice",
-    "M_tail_component_01",
-    "vent_tail",
-    # Canopy
-    "A__G91_fuselage_canopy",
-    "F_canopY_ant",
-    "F_CANPOPY.005",
-    # Fuselage A0
-    "A__G91_fuselage_muso_1.001",
-    "A__G91_fuselage_muso_1.000",
-    "A__G91_fuselage_muso_1.008",
-    "A__G91_fuselage_muso_1.009",
-    "A_antenna_cover",
-    "panR1b__G91_fuselage_muso_1.000",
-    "panR1b__G91_fuselage_muso_1.024",
-    # Fuselage B0
-    "A__G91_fuselage_weapon_door_dx.003",
-    "A__G91_fuselage_weapon_door_sx.003",
-    "A__G91r3_fuselage_weapon_door_sx.",
-    "A__G91r3_fuselage_weapon_door_dx",
-
-    # Airbrake
-    "C00_dx_airbrake_door.002",
-    "C00_sx_airbrake_door.004",
-
-    # Landing gear frontal
-    "PlanLight.front.001",
-    "gear_door_sx.000",
-    "gear_door_dx.001"
-];
-
-var objectsNodes_cw = [
-    # Wing
-    "A_wing_dx.000",
-    "A_wing_sx.000",
-    "A_wing_dx.001",
-    "A_wing_sx.001",
-    "A_wing_dx.002",
-    "A_wing_sx.002",
-    "A_wing_dx.004",
-    "A_wing_sx.004",
-    "A_wing_dx.005",
-    "A_wing_sx.005",
-    "A_wing_dx.006",
-    "A00_wing_dx_part.001",
-    "A00_wing_dx_part.002",
-    "A00_wing_dx_part.003",
-    "A_flap_dx",
-    "A_flap_sx",
-    "A_alettone_sx.001",
-    "A_alettone_dx.002",
-    "A_alettone_sx",
-    "A_alettone_dx",
-    "A_wing_border_sx",
-    "A_wing_border_dx.001",
-    "A_door_wing_dx.001",
-    "A_door_wing_dx.004",
-    "A_door_wing_dx.005",
-    "A_door_wing_sx.000",
-    "A_door_wing_sx.002",
-    "A_door_wing_sx.003",
-    "B00_dx_door_02.002",
-    "B00_dx_door_02",
-    "A00_pitot_dx",
-    "A00_pitot_dx.001",
-    # Tail
-    "D_wing_sx_.001",
-    "D_wing_sx.000",
-    "D_wing_dx_.000",
-    "D_wing_dx.007",
-    "D_equilibratore_dx",
-    "D_equilibratore_sx.002",
-    # Hard points
-    "hp_dx_int_01_external",
-    "hp_dx_int_PAN_external",
-    "hp_sx_int_01_external",
-    "hp_sx_int_PAN_external",
-    # Stores
-    "tank_260lb_sub_01",
-    "tank_260lb_sup_01",
-    "tank_260lb_tail_01",
-    "PAN_tank_sx.004",
-    "PAN_tank_sx_003",
-    # Tank 900lb
-    "tank_cover_top",
-    "tank_cover_downa",
-    "orizontal-pin (Meshed)",
-    "vertical-pin-dx (Meshed)",
-    "vertical-pin-sx (Meshed)",
-    # Fuselage extra
-    "A__G91r3_fuselage_weapon.door"
-];
-
-var objectsNodes_ar = [
-    # Anti-reflective
-    "panR1b__G91_fuselage_muso_1.000",
-    "A__G91_fuselage_muso_1.008",
-    "A__G91_fuselage_muso_1.009",
-    "A__G91_fuselage_int.weapon.door.004",
-    "A__G91_fuselage_canopy.004"
-];
-
-
 var setCanvas = func() {
 
     if (canvasSetChanged == 0) {
@@ -230,59 +55,219 @@ var setCanvas = func() {
         return;
     }
 
-    if (target_module_id_associated == nil) {
-        
-        target_module_id_associated = target_module_id;
-        print("set_livery.nas setCanvas: ca_size = ",ca_size," cw_size = ",cw_size);
-        
-        ca = canvas.new({"name": "Fuselage",
-                    "size": [ca_size,ca_size],
-                    "view": [ca_size,ca_size],
-                    "mipmapping": 1});
-    
-        cw = canvas.new({"name": "Wing",
+    print("set_livery.nas setCanvas: ca_size = ",ca_size," cw_size = ",cw_size);
+
+    ca = canvas.new({"name": "Fuselage",
+                        "size": [ca_size,ca_size],
+                        "view": [ca_size,ca_size],
+                        "mipmapping": 1});
+
+    # Fuselage
+    ca.addPlacement({"node": "A__G91_fuselage_int.weapon.door.001"});
+    ca.addPlacement({"node": "m00_door_01.1"});
+    ca.addPlacement({"node": "m00_door_02"});
+    ca.addPlacement({"node": "m00_door_dx01"});
+    ca.addPlacement({"node": "m00_door_dx03"});
+    ca.addPlacement({"node": "m00_door_sx01"});
+    ca.addPlacement({"node": "m00_door_sx03"});
+    ca.addPlacement({"node": "m00_platelight"});
+    ca.addPlacement({"node": "m00_door_sx03.001"});
+    ca.addPlacement({"node": "m00_door_dx03.001"});
+    ca.addPlacement({"node": "F__door_02"});
+    ca.addPlacement({"node": "F__door_03"});
+    ca.addPlacement({"node": "F__door_02.001"});
+    ca.addPlacement({"node": "F__door_03"});
+    ca.addPlacement({"node": "F__door_03.002"});
+    ca.addPlacement({"node": "F__door_em_canopy01"});
+    ca.addPlacement({"node": "F__door_em_canopy01.002"});
+    ca.addPlacement({"node": "F_door_em_canopyDX.000"});
+    ca.addPlacement({"node": "F_door_em_canopyDX.001"});
+    ca.addPlacement({"node": "F_door_em_canopyDX.002"});
+    ca.addPlacement({"node": "F_door_em_canopyDX.004"});
+    ca.addPlacement({"node": "F_door_em_canopyDX.004a"});
+    ca.addPlacement({"node": "F_door_em_canopyDX.004a.001"});
+    ca.addPlacement({"node": "F_door_em_canopyDX.005"});
+    ca.addPlacement({"node": "F_door_em_canopySX.000"});
+    ca.addPlacement({"node": "F_door_em_canopySX.001"});
+    ca.addPlacement({"node": "F_door_em_canopySX.002"});
+    ca.addPlacement({"node": "F_door_em_canopySX.004"});
+    ca.addPlacement({"node": "F_door_em_canopySX.004a"});
+    ca.addPlacement({"node": "F_door_em_canopySX.005"});
+    ca.addPlacement({"node": "F_handle_armydoorDX"});
+    ca.addPlacement({"node": "F_handle_armydoorSX"});
+    ca.addPlacement({"node": "B00_sx_door_01.001"});
+    ca.addPlacement({"node": "B00_dx_door_01.000"});
+    ca.addPlacement({"node": "B00_Asse_dx_door_bis"});
+    ca.addPlacement({"node": "B00_sx_door_bis.002"});
+    ca.addPlacement({"node": "A__G91_fuselage_int.weapon.door.007"});
+    ca.addPlacement({"node": "A__G91_fuselage_int.weapon.door.008"});
+    ca.addPlacement({"node": "m00_door_01.2"});
+    ca.addPlacement({"node": "m00_door_dx03.002"});
+    ca.addPlacement({"node": "tank_cap1"});
+    ca.addPlacement({"node": "tank_cap"});
+
+    # Tail
+    ca.addPlacement({"node": "A__G91_fuselage_coda.002"});
+    ca.addPlacement({"node": "A__G91_fuselage_coda.005"});
+    ca.addPlacement({"node": "A__G91_fuselage_coda.006"});
+    ca.addPlacement({"node": "A__G91_door_sx_coda.000"});
+    ca.addPlacement({"node": "A__G91_door_dx_coda.001"});
+    ca.addPlacement({"node": "A__G91_fuselage_coda.007"});
+    ca.addPlacement({"node": "A__G91_fuselage_coda.009"});
+    ca.addPlacement({"node": "A__G91_fuselage_coda.010"});
+    ca.addPlacement({"node": "exit_smoke_001_cover"});
+    ca.addPlacement({"node": "exit_smoke_001"});
+    ca.addPlacement({"node": "exit_smoke"});
+    ca.addPlacement({"node": "fin_small.001"});
+    ca.addPlacement({"node": "fin_small.002"});
+    ca.addPlacement({"node": "fin_small.003"});
+    ca.addPlacement({"node": "fin_small.004"});
+    ca.addPlacement({"node": "fin_small.005"});
+    ca.addPlacement({"node": "fin_small.006"});
+    ca.addPlacement({"node": "fin_small.007"});
+    ca.addPlacement({"node": "fin_small.008"});
+    ca.addPlacement({"node": "fin_small.009"});
+    ca.addPlacement({"node": "fin_small.010"});
+    ca.addPlacement({"node": "D_timone_coda"});
+    ca.addPlacement({"node": "D_timone_coda.001"});
+    ca.addPlacement({"node": "D_timone_coda.002"});
+    ca.addPlacement({"node": "D_timone_coda.003"});
+    ca.addPlacement({"node": "D_aletta_correttrice"});
+    ca.addPlacement({"node": "M_tail_component_01"});
+    ca.addPlacement({"node": "vent_tail"});
+
+    # Canopy
+    ca.addPlacement({"node": "A__G91_fuselage_canopy"});
+    ca.addPlacement({"node": "F_canopY_ant"});
+    ca.addPlacement({"node": "F_CANPOPY.005"});
+
+    # Fuselage A0
+    ca.addPlacement({"node": "A__G91_fuselage_muso_1.001"});
+    ca.addPlacement({"node": "A__G91_fuselage_muso_1.000"});
+    ca.addPlacement({"node": "A__G91_fuselage_muso_1.008"});
+    ca.addPlacement({"node": "A__G91_fuselage_muso_1.009"});
+    ca.addPlacement({"node": "A_antenna_cover"});
+    ca.addPlacement({"node": "panR1b__G91_fuselage_muso_1.000"});
+    ca.addPlacement({"node": "panR1b__G91_fuselage_muso_1.024"});
+
+    # Fuselage B0
+    ca.addPlacement({"node": "A__G91_fuselage_weapon_door_dx.003"});
+    ca.addPlacement({"node": "A__G91_fuselage_weapon_door_sx.003"});
+    ca.addPlacement({"node": "A__G91r3_fuselage_weapon_door_sx."});
+    ca.addPlacement({"node": "A__G91r3_fuselage_weapon_door_dx"});
+
+    # Airbrake
+    ca.addPlacement({"node": "C00_dx_airbrake_door.002"});
+    ca.addPlacement({"node": "C00_sx_airbrake_door.004"});
+
+    # Landing gear frontal
+    ca.addPlacement({"node": "PlanLight.front.001"});
+    ca.addPlacement({"node": "gear_door_sx.000"});
+    ca.addPlacement({"node": "gear_door_dx.001"});
+
+    ca_root = ca.createGroup();
+
+    cw = canvas.new({"name": "Wing",
                         "size": [cw_size,cw_size],
                         "view": [cw_size,cw_size],
                         "mipmapping": 1});
-        
-        ar = canvas.new({"name": "Anti-reflective-area",
+
+    # Wing
+    var target_module_id = 0;
+    
+    cw.addPlacement({"node": "A_wing_dx.000"});
+    cw.addPlacement({"node": "A_wing_sx.000"});
+    cw.addPlacement({"node": "A_wing_dx.001"});
+    cw.addPlacement({"node": "A_wing_sx.001"});
+    cw.addPlacement({"node": "A_wing_dx.002"});
+    cw.addPlacement({"node": "A_wing_sx.002"});
+    cw.addPlacement({"node": "A_wing_dx.004"});
+    cw.addPlacement({"node": "A_wing_sx.004"});
+    cw.addPlacement({"node": "A_wing_dx.005"});
+    cw.addPlacement({"node": "A_wing_sx.005"});
+    cw.addPlacement({"node": "A_wing_dx.006"});
+    cw.addPlacement({"node": "A00_wing_dx_part.001"});
+    cw.addPlacement({"node": "A00_wing_dx_part.002"});
+    cw.addPlacement({"node": "A00_wing_dx_part.003"});
+    cw.addPlacement({"node": "A_flap_dx"});
+    cw.addPlacement({"node": "A_flap_sx"});
+    cw.addPlacement({"node": "A_alettone_sx.001"});
+    cw.addPlacement({"node": "A_alettone_dx.002"});
+    cw.addPlacement({"node": "A_alettone_sx"});
+    cw.addPlacement({"node": "A_alettone_dx"});
+    cw.addPlacement({"node": "A_wing_border_sx"});
+    cw.addPlacement({"node": "A_wing_border_dx.001"});
+    cw.addPlacement({"node": "A_door_wing_dx.001"});
+    cw.addPlacement({"node": "A_door_wing_dx.004"});
+    cw.addPlacement({"node": "A_door_wing_dx.005"});
+    cw.addPlacement({"node": "A_door_wing_sx.000"});
+    cw.addPlacement({"node": "A_door_wing_sx.002"});
+    cw.addPlacement({"node": "A_door_wing_sx.003"});
+    cw.addPlacement({"node": "B00_dx_door_02.002"});
+    cw.addPlacement({"node": "B00_dx_door_02"});
+    cw.addPlacement({"node": "A00_pitot_dx"});
+    cw.addPlacement({"node": "A00_pitot_dx.001"});
+
+    # Tail
+    
+    cw.addPlacement({"module-id": target_module_id, type: "scenery-object","node": "D_wing_sx_.001"});
+    cw.addPlacement({"module-id": target_module_id, type: "scenery-object","node": "D_wing_sx.000"});
+    cw.addPlacement({"module-id": target_module_id, type: "scenery-object","node": "D_wing_dx_.000"});
+    cw.addPlacement({"module-id": target_module_id, type: "scenery-object","node": "D_wing_dx.007"});
+    
+    # cw.addPlacement({"node": "D_wing_sx_.001"});
+    # cw.addPlacement({"node": "D_wing_sx.000"});
+    # cw.addPlacement({"node": "D_wing_dx_.000"});
+    # cw.addPlacement({"node": "D_wing_dx.007"});
+    cw.addPlacement({"node": "D_equilibratore_dx"});
+    cw.addPlacement({"node": "D_equilibratore_sx.002"});
+
+    # Hard points
+    cw.addPlacement({"node": "hp_dx_int_01_external"});
+    cw.addPlacement({"node": "hp_dx_int_PAN_external"});
+    cw.addPlacement({"node": "hp_sx_int_01_external"});
+    cw.addPlacement({"node": "hp_sx_int_PAN_external"});
+
+    # Stores
+    cw.addPlacement({"node": "tank_260lb_sub_01"});
+    cw.addPlacement({"node": "tank_260lb_sup_01"});
+    cw.addPlacement({"node": "tank_260lb_tail_01"});
+    cw.addPlacement({"node": "PAN_tank_sx.004"});
+    cw.addPlacement({"node": "PAN_tank_sx_003"});
+    # Tank 900lb
+    cw.addPlacement({"node": "tank_cover_top"});
+    cw.addPlacement({"node": "tank_cover_downa"});
+    cw.addPlacement({"node": "orizontal-pin (Meshed)"});
+    cw.addPlacement({"node": "vertical-pin-dx (Meshed)"});
+    cw.addPlacement({"node": "vertical-pin-sx (Meshed)"});
+
+    # Fuselage extra
+    cw.addPlacement({"node": "A__G91r3_fuselage_weapon.door"});
+
+    cw_root = cw.createGroup();
+
+    # Anti-reflective
+
+    ar = canvas.new({"name": "Anti-reflective-area",
                         "size": [128,128],
                         "view": [128,128],
                         "mipmapping": 1});
-        
-        if (target_module_id == nil) {
-            print("set_livery.nas setCanvas, single player");
-            foreach(var node; objectsNodes_ca) { ca.addPlacement({"node": node}) };
-            foreach(var node; objectsNodes_cw) { cw.addPlacement({"node": node}) };
-            foreach(var node; objectsNodes_cw) { ar.addPlacement({"node": node}) };
-        } else {
-            print("set_livery.nas setCanvas, multi player with module-id: ",target_module_id);
-            foreach(var node; objectsNodes_ca) { ca.addPlacement({"module-id": target_module_id, type: "scenery-object","node": node}) };
-            foreach(var node; objectsNodes_cw) { cw.addPlacement({"module-id": target_module_id, type: "scenery-object","node": node}) };
-            foreach(var node; objectsNodes_cw) { ar.addPlacement({"module-id": target_module_id, type: "scenery-object","node": node}) };
-        }
-        
-        ca_root = ca.createGroup();
-        cw_root = cw.createGroup();
-        ar_root = ar.createGroup();
-        
-    } else {
-        
-        if (target_module_id_associated == nil) {
-            print("set_livery.nas setCanvas, the canvas is not to module-id");
-        } else {
-            print("set_livery.nas setCanvas, the canvas is associated, module-id: ", target_module_id_associated);
-        }
-        
-    }
-    
+
+    ar.addPlacement({"node": "panR1b__G91_fuselage_muso_1.000"});
+    ar.addPlacement({"node": "A__G91_fuselage_muso_1.008"});
+    ar.addPlacement({"node": "A__G91_fuselage_muso_1.009"});
+    ar.addPlacement({"node": "A__G91_fuselage_int.weapon.door.004"});
+    ar.addPlacement({"node": "A__G91_fuselage_canopy.004"});
+
+    ar_root = ar.createGroup();
+
     canvasSetChanged = 0;
 
 };
 
 
 var setLivery = func() {
-    
+
     inExecution = 1;
 
     if (resolution == 0) {
@@ -370,7 +355,7 @@ var setLivery = func() {
 };
 
 
-var getActiveData = func(aModule_id) {
+var getActiveData = func() {
 
     var name_short = "";
     var name_long = "";
@@ -382,13 +367,6 @@ var getActiveData = func(aModule_id) {
     var dirty = 0;
     var normalmap_enabled = 0;
     var version = 0;
-    
-    if (aModule_id != nil) {
-        target_module_id = aModule_id;
-        print("set_livery.nas setLivery, load airplane as multiplayer mode, target_module_id: ",target_module_id);
-    } else {
-        print("set_livery.nas setLivery, load airplane single player mode");
-    }
 
     isMultiPlayer = getprop("sim/G91/liveries/active/isMultiPlayer");
     if (isMultiPlayer == nil) {
@@ -553,29 +531,18 @@ var getActiveData = func(aModule_id) {
 
     id_prec = idSelect;
 
-    setCanvas();
-    setLivery(target_module_id);
+    call(setCanvas,[]);
+    call(setLivery,[]);
 
 }
 
 
-setlistener("sim/G91/liveries/active/isMultiPlayer", func {
-
-    isMultiPlayer = getprop("sim/G91/liveries/active/isMultiPlayer");
-    if (isMultiPlayer == nil) isMultiPlayer = 0;
-    print("set_livery.nas setlistener isMultiPlayer: ",isMultiPlayer);
-
-}, 1, 1);
-
-
 setlistener("sim/G91/liveries/active/ID", func {
     var id = props.globals.getNode("sim/G91/liveries/active/ID",1).getValue();
-    print("set_livery.nas setlistener ID 1: ",isMultiPlayer);
     if (id != nil and id != 0 and id_prec != id and isMultiPlayer == 0) {
-        print("set_livery.nas setlistener ID 2: ",isMultiPlayer);
         if(inExecution == 0) {
             print("set_livery.nas setlistener ID: ",id," (idprec: ",id_prec,")");
-            getActiveData(nil);
+            call(getActiveData,[]);
         }
     }
 }, 1, 1);
@@ -586,7 +553,7 @@ setlistener("sim/G91/liveries/active/dirtySet", func {
     if(inExecution == 0 and isMultiPlayer == 0) {
         dirtySet = props.globals.getNode("sim/G91/liveries/active/dirtySet",1).getValue();
         print("set_livery.nas setlistener dirtySet: ",dirtySet);
-        setLivery(target_module_id);
+        call(setLivery,[]);
     }
 
 }, 1, 1);
@@ -597,7 +564,7 @@ setlistener("sim/G91/liveries/active/normalmap_enabled", func {
     if(inExecution == 0 and isMultiPlayer == 0) {
         normalMapEnable = props.globals.getNode("sim/G91/liveries/active/normalmap_enabled",1).getValue();
         print("set_livery.nas setlistener normalmap_enabled: ",normalMapEnable);
-        setLivery(target_module_id);
+        call(setLivery,[]);
     }
 
 }, 1, 1);

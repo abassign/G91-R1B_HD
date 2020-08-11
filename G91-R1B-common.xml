@@ -35,7 +35,7 @@
         </submodels>
         
         <multiplay>
-            <generic>                 
+            <generic>
                 <float n="0"  alias="/sim/model/door-positions/crew/position-norm"/>
                 <float n="1"  alias="/sim/model/door-positions/passenger/position-norm"/>
                 <float n="2"  alias="/position/gear-agl-m"> 0 </float>                      <!-- altitude for MP shadow -->
@@ -50,9 +50,8 @@
                 <float n="13" alias="/gear/gear[2]/rollspeed-ms"/>
                 <float n="14" alias="/controls/engines/engine[0]/throttle"/>
                 <!-- MP for models parts -->
-                <!--
-                <int n="0" alias="/sim/G91/models/active/cockpit"/>
-                -->
+                <int n="0" alias="/sim/G91/liveries/active/version"/>
+                <int n="1" alias="/sim/G91/liveries/active/PANR1"/>
             </generic>
         </multiplay>
         

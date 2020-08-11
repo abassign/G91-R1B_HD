@@ -12,6 +12,53 @@
     </offsets>
 
     <animation>
+        <type>select</type>
+        
+        <object-name>A__G91_fuselage_int.weapon.door.000</object-name>
+        <object-name>A__G91_fuselage_int.weapon.door.009</object-name>
+        <object-name>A__G91_fuselage_int.weapon.door.010</object-name>
+        <object-name>A__G91_fuselage_int.weapon.door.014</object-name>
+        <object-name>A__G91_fuselage_int.weapon.door.015</object-name>
+        <object-name>A_hibge_door_dx</object-name>
+        <object-name>A_hibge_door_sx</object-name>
+        <object-name>A_hinge_axe_dx</object-name>
+        <object-name>A_hinge_axe_sx</object-name>
+        <object-name>A_hinge_dx</object-name>
+        <object-name>A_hinge_sx</object-name>
+        <object-name>axe_cenriera</object-name>
+        <object-name>closing_door_sx.006</object-name>
+        <object-name>closing_door_sx.007</object-name>
+        <object-name>closing_door_sx.009</object-name>
+        <object-name>closing_door_sx.010</object-name>
+        <!-- refine -->
+        <object-name>weapons.004</object-name>
+        <object-name>weapons.010</object-name>
+        <!-- and to ridefine colors -->
+        <object-name>A__G91r3_fuselage_weapon_door_dx.001</object-name>
+        <object-name>A__G91r3_fuselage_weapon_door_sx..001</object-name>
+        <object-name>weapons.000</object-name>
+        <object-name>defa_supply</object-name>
+        <object-name>defa_exhaust_shells1</object-name>
+        <object-name>defa_support</object-name>
+        <object-name>defa_cannon30mm_tube</object-name>
+        <object-name>defa_body1</object-name>
+        <object-name>defa_cannon30mm</object-name>
+        <object-name>defa_exhaust_shells2</object-name>
+        <object-name>A__G91r3_fuselage_weapon_door_sx.</object-name>
+        <object-name>A__G91r3_fuselage_weapon_door_dx</object-name>
+        <object-name>A__G91r3_fuselage_weapon.door</object-name>
+        <object-name>TUBO</object-name>
+        <object-name>defa_body1</object-name>
+        <object-name>defa_body2</object-name>
+        <condition>
+            <equals>
+                <property>sim/G91/liveries/active/version</property>
+                <value>10</value>
+            </equals>
+        </condition>
+    </animation>
+    
+    <animation>
         <type>noshadow</type>
         <object-name>A__G91r3_fuselage_weapon_door_dx.001</object-name>
         <object-name>A__G91r3_fuselage_weapon_door_sx..001</object-name>
@@ -23,6 +70,24 @@
         <object-name>defa_body1</object-name>
         <object-name>defa_cannon30mm</object-name>
         <object-name>defa_exhaust_shells2</object-name>
+        <object-name>A__G91_fuselage_int.weapon.door.000</object-name>
+        <object-name>A__G91_fuselage_int.weapon.door.009</object-name>
+        <object-name>A__G91_fuselage_int.weapon.door.010</object-name>
+        <object-name>A__G91_fuselage_int.weapon.door.014</object-name>
+        <object-name>A__G91_fuselage_int.weapon.door.015</object-name>
+        <object-name>A_hibge_door_dx</object-name>
+        <object-name>A_hibge_door_sx</object-name>
+        <object-name>A_hinge_axe_dx</object-name>
+        <object-name>A_hinge_axe_sx</object-name>
+        <object-name>A_hinge_dx</object-name>
+        <object-name>A_hinge_sx</object-name>
+        <object-name>axe_cenriera</object-name>
+        <object-name>closing_door_sx.006</object-name>
+        <object-name>closing_door_sx.007</object-name>
+        <object-name>closing_door_sx.009</object-name>
+        <object-name>closing_door_sx.010</object-name>
+        <object-name>weapons.004</object-name>
+        <object-name>weapons.010</object-name>
     </animation>
 
     <effect>
@@ -35,7 +100,49 @@
         <inherits-from>Aircraft/G91-R1B_HD/Models/Liveries/liveries_002</inherits-from>
         <object-name>A__G91r3_fuselage_weapon.door</object-name>
     </effect>
-
+    
+    <animation> 
+        <type>material</type>
+        <object-name>weapons.004</object-name>
+        <diffuse>
+            <red>0.52</red>
+            <green>0.75</green>
+            <blue>0.51</blue>
+        </diffuse>
+        <ambient>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
+            <factor-prop>fdm/jsbsim/systems/guns/compartment/sw-open-door-pos-dx</factor-prop>
+        </ambient>
+        <specular>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </specular>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>weapons.010</object-name>
+        <diffuse>
+            <red>0.52</red>
+            <green>0.75</green>
+            <blue>0.51</blue>
+        </diffuse>
+        <ambient>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
+            <factor-prop>fdm/jsbsim/systems/guns/compartment/sw-open-door-pos-dx</factor-prop>
+        </ambient>
+        <specular>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </specular>
+    </animation>
+    
     <animation> 
         <type>material</type>
         <object-name>A__G91r3_fuselage_weapon_door_sx.</object-name>
