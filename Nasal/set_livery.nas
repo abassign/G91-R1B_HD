@@ -12,7 +12,7 @@ setprop("sim/G91/liveries/active/reflective",0.0);
 setprop("sim/G91/liveries/active/PANR1",0);
 setprop("sim/G91/liveries/active/diffuse",0.0);
 setprop("sim/G91/liveries/active/specular",0.0);
-setprop("sim/G91/liveries/active/dirty",0.0);
+setprop("sim/G91/liveries/active/dirty_set",0);
 setprop("sim/G91/liveries/active/normalmap_enabled",0);
 setprop("sim/G91/liveries/active/version",0);
 setprop("sim/G91/liveries/active/ID","");
@@ -28,6 +28,7 @@ var resolutionSetChanged = 0;
 var canvasSetChanged = -1;
 
 var id_prec = 0;
+var dirty_prec = -1;
 var resolution = 0;
 var ca_size = 0;
 var cw_size = 0;
@@ -40,8 +41,8 @@ var cw_root = nil;
 var anti_reflective_area = {};
 var ar_root = nil;
 
-var dirtySet = 0;
-var normalMapEnable = 0;
+var dirty_set = 0;
+var normalmap_enabled = 0;
 
 var livery_001 = "";
 var livery_002 = "";
@@ -307,7 +308,7 @@ var setLivery = func() {
         setprop("sim/G91/liveries/active/dirtyMsg","No dirty file");
         print("set_livery.nas setLivery, No dirty file (",dirty_001,")");
     } else {
-        if (dirtySet == 0) {
+        if (dirty_set == 0) {
             setprop("sim/G91/liveries/active/dirtyMsg","Dirty inactive");
             print("set_livery.nas setLivery, Dirty inactive");
         } else {
@@ -316,12 +317,12 @@ var setLivery = func() {
         }
     }
 
-    if (normalMapEnable == 0) {
+    if (normalmap_enabled == 0) {
         setprop("sim/G91/liveries/active/normalmap_enabled_Msg","No normal map");
-        print("set_livery.nas setLivery, normalMapEnable inactive");
+        print("set_livery.nas setLivery, normalmap_enabled inactive");
     } else {
         setprop("sim/G91/liveries/active/normalmap_enabled_Msg","Yes Normal map");
-        print("set_livery.nas setLivery, normalMapEnable active");
+        print("set_livery.nas setLivery, normalmap_enabled active");
     }
 
     if (ca_root != nil) {
@@ -333,7 +334,7 @@ var setLivery = func() {
                     .setFile(image)
                     .setSize(ca_size,ca_size);
                 if (image == dirty_001) {
-                    if (dirtySet == 1) {
+                    if (dirty_set == 1) {
                         print("set_livery.nas setLivery, dirty show: ",dirty_001);
                         layers_001[image].show();
                     } else {
@@ -354,7 +355,7 @@ var setLivery = func() {
                     .setFile(image)
                     .setSize(cw_size,cw_size);
                 if (image == dirty_002) {
-                    if (dirtySet == 1) {
+                    if (dirty_set == 1) {
                         print("set_livery.nas setLivery, dirty show: ",dirty_002);
                         layers_002[image].show();
                     } else {
@@ -391,8 +392,6 @@ var getActiveData = func() {
     var PANR1 = 0;
     var diffuse = 0.0;
     var specular = 0.0;
-    var dirty = 0;
-    var normalmap_enabled = 0;
     var version = 0;
 
     isMultiPlayer = getprop("sim/G91/liveries/active/isMultiPlayer");
@@ -491,7 +490,7 @@ var getActiveData = func() {
         PANR1 = liverys[id].getNode("PANR1").getValue();
         diffuse = liverys[id].getNode("diffuse").getValue();
         specular = liverys[id].getNode("specular").getValue();
-        dirty = liverys[id].getNode("dirty").getValue();
+        dirty_set = liverys[id].getNode("dirty_set").getValue();
         normalmap_enabled = liverys[id].getNode("normalmap_enabled").getValue();
         version = liverys[id].getNode("version").getValue();
 
@@ -504,40 +503,42 @@ var getActiveData = func() {
         isMultiPlayer_StartPhase = 1;
 
         # Read data from multiplayer
+        
+        print("set_livery.nas getActiveData in Multiplayer mode, cmdarg().getPath(): ",cmdarg().getPath());
 
-        idSelect = getprop("sim/G91/liveries/active/ID");
+        idSelect = getprop("/ai/models/multiplayer/sim/G91/liveries/active/ID");
         name_short = "Multiplayer";
         name_long = "Multiplayer";
-        livery_001 = getprop("sim/G91/liveries/active/livery_001");
-        livery_002 = getprop("sim/G91/liveries/active/livery_002");
-        dirty_001 = getprop("sim/G91/liveries/active/dirty_001");
-        dirty_002 = getprop("sim/G91/liveries/active/dirty_002");
-        anti_reflective = getprop("sim/G91/liveries/active/anti_reflective");
-        luminosity = getprop("sim/G91/liveries/active/luminosity");
-        reflective = getprop("sim/G91/liveries/active/reflective");
-        PANR1 = getprop("sim/G91/liveries/active/PANR1");
-        diffuse = getprop("sim/G91/liveries/active/diffuse");
-        specular = getprop("sim/G91/liveries/active/specular");
-        dirty = getprop("sim/G91/liveries/active/dirty");
-        normalmap_enabled = getprop("sim/G91/liveries/active/normalmap_enabled");
-        version = getprop("sim/G91/liveries/active/version");
+        livery_001 = getprop("/ai/models/multiplayer/sim/G91/liveries/active/livery_001");
+        livery_002 = getprop("/ai/models/multiplayer/sim/G91/liveries/active/livery_002");
+        dirty_001 = getprop("/ai/models/multiplayer/sim/G91/liveries/active/dirty_001");
+        dirty_002 = getprop("/ai/models/multiplayer/sim/G91/liveries/active/dirty_002");
+        anti_reflective = getprop("/ai/models/multiplayer/sim/G91/liveries/active/anti_reflective");
+        luminosity = getprop("/ai/models/multiplayer/sim/G91/liveries/active/luminosity");
+        reflective = getprop("/ai/models/multiplayer/sim/G91/liveries/active/reflective");
+        PANR1 = getprop("/ai/models/multiplayer/sim/G91/liveries/active/PANR1");
+        diffuse = getprop("/ai/models/multiplayer/sim/G91/liveries/active/diffuse");
+        specular = getprop("/ai/models/multiplayer/sim/G91/liveries/active/specular");
+        dirty_set = getprop("/ai/models/multiplayer/sim/G91/liveries/active/dirty_set");
+        normalmap_enabled = getprop("/ai/models/multiplayer/sim/G91/liveries/active/normalmap_enabled");
+        version = getprop("/ai/models/multiplayer/sim/G91/liveries/active/version");
         
-        idSelect = 1;
-        name_short = "PAN R1";
-        name_long = "PAN - National Aerobatic with Pinocchio nose (R1)";
-        livery_001 = "Aircraft/G91-R1B_HD/Models/Liveries/pan_1_001.png";
-        livery_002 = "Aircraft/G91-R1B_HD/Models/Liveries/pan_1_002.png";
-        dirty_001 = "Aircraft/G91-R1B_HD/Models/Liveries/dirty_01_4k.png";
-        dirty_002 = "Aircraft/G91-R1B_HD/Models/Liveries/dirty_02_4k.png";
-        anti_reflective = "Aircraft/G91-R1B_HD/Models/Liveries/G91_Dark_Grey_128.png";
-        luminosity = 0.01;
-        reflective = -0.33;
-        PANR1 = 1;
-        diffuse = 0.41;
-        specular = 0.07;
-        dirty = 0.0;
-        normalmap_enabled = 0;
-        version = 2;
+        #idSelect = 1;
+        #name_short = "PAN R1";
+        #name_long = "PAN - National Aerobatic with Pinocchio nose (R1)";
+        #livery_001 = "Aircraft/G91-R1B_HD/Models/Liveries/pan_1_001.png";
+        #livery_002 = "Aircraft/G91-R1B_HD/Models/Liveries/pan_1_002.png";
+        #dirty_001 = "Aircraft/G91-R1B_HD/Models/Liveries/dirty_01_4k.png";
+        #dirty_002 = "Aircraft/G91-R1B_HD/Models/Liveries/dirty_02_4k.png";
+        #anti_reflective = "Aircraft/G91-R1B_HD/Models/Liveries/G91_Dark_Grey_128.png";
+        #luminosity = 0.01;
+        #reflective = -0.33;
+        #PANR1 = 1;
+        #diffuse = 0.41;
+        #specular = 0.07;
+        #dirty_set = 0.0;
+        #normalmap_enabled = 0;
+        #version = 2;
 
     }
 
@@ -554,8 +555,8 @@ var getActiveData = func() {
     setprop("sim/G91/liveries/active/PANR1",PANR1);
     setprop("sim/G91/liveries/active/diffuse",diffuse);
     setprop("sim/G91/liveries/active/specular",specular);
-    setprop("sim/G91/liveries/active/dirty",dirty);
-    setprop("sim/G91/liveries/active/normalmap_enabled",normalMapEnable);
+    setprop("sim/G91/liveries/active/dirty_set",dirty_set);
+    setprop("sim/G91/liveries/active/normalmap_enabled",normalmap_enabled);
     setprop("sim/G91/liveries/active/version",version);
 
     print("set_livery.nas getActiveData setLivery  ID: ",idSelect);
@@ -570,11 +571,12 @@ var getActiveData = func() {
     print("set_livery.nas getActiveData setLivery  PANR1: ",PANR1);
     print("set_livery.nas getActiveData setLivery  diffuse: ",diffuse);
     print("set_livery.nas getActiveData setLivery  specular: ",specular);
-    print("set_livery.nas getActiveData setLivery  dirty: ",dirty);
+    print("set_livery.nas getActiveData setLivery  dirty_set: ",dirty_set);
     print("set_livery.nas getActiveData setLivery  normalmap_enabled: ",normalmap_enabled);
     print("set_livery.nas getActiveData setLivery  version: ",version);
 
     id_prec = idSelect;
+    dirty_prec = dirty_set;
 
     setCanvas();
     setLivery(target_module_id);
@@ -595,20 +597,18 @@ setlistener("sim/G91/liveries/active/ID", func {
     var id = props.globals.getNode("sim/G91/liveries/active/ID",1).getValue();
     print("set_livery.nas setlistener 1 ID: ",id," MP: ",isMultiPlayer);
     if (id != nil and id != 0 and id_prec != id and isMultiPlayer == 0) {
-        print("set_livery.nas setlistener 2 ID: ",id," MP: ",isMultiPlayer);
         if(inExecution == 0) {
-            print("set_livery.nas setlistener 3 ID: ",id," (idprec: ",id_prec,")");
             getActiveData();
         }
     }
 }, 1, 1);
 
 
-setlistener("sim/G91/liveries/active/dirtySet", func {
+setlistener("sim/G91/liveries/active/dirty_set", func {
 
-    if(inExecution == 0 and isMultiPlayer == 0) {
-        dirtySet = props.globals.getNode("sim/G91/liveries/active/dirtySet",1).getValue();
-        print("set_livery.nas setlistener dirtySet: ",dirtySet);
+    if (inExecution == 0) {
+        dirty_set = props.globals.getNode("sim/G91/liveries/active/dirty_set",1).getValue();
+        print("set_livery.nas setlistener dirty_set: ",dirty_set);
         setLivery(target_module_id);
     }
 
@@ -618,21 +618,25 @@ setlistener("sim/G91/liveries/active/dirtySet", func {
 setlistener("sim/G91/liveries/active/normalmap_enabled", func {
 
     if(inExecution == 0 and isMultiPlayer == 0) {
-        normalMapEnable = props.globals.getNode("sim/G91/liveries/active/normalmap_enabled",1).getValue();
-        print("set_livery.nas setlistener normalmap_enabled: ",normalMapEnable);
+        normalmap_enabled = props.globals.getNode("sim/G91/liveries/active/normalmap_enabled",1).getValue();
+        print("set_livery.nas setlistener normalmap_enabled: ",normalmap_enabled);
         setLivery(target_module_id);
     }
 
 }, 1, 1);
 
 
-var pilot_imp_timerLog = maketimer(1, func() {
+var livery_multiplayer = maketimer(1, func() {
     if (isMultiPlayer > 0) {
-        var id = getprop("sim/G91/liveries/active/ID");
+        var id = getprop("/ai/models/multiplayer/sim/G91/liveries/active/ID");
         print("set_livery.nas pilot_imp_timerLog id: ",id," idPrec: ",id_prec);
         if (id != id_prec) {
             getActiveData();
         }
+        dirty_set = getprop("/ai/models/multiplayer/sim/G91/liveries/active/dirty_set");
+        if (dirty_set != dirty_prec) {
+            setLivery();
+        }
     }
 });
-### pilot_imp_timerLog.start();
+livery_multiplayer.start();

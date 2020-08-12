@@ -54,6 +54,7 @@
                 <int n="1" alias="/sim/G91/liveries/active/version"/>
                 <int n="2" alias="/sim/G91/liveries/active/PANR1"/>
                 <int n="3" alias="/sim/G91/liveries/active/normalmap_enabled"/>
+                <int n="4" alias="/sim/G91/liveries/active/dirty_set"/>
                 <string n="0" alias="/sim/G91/liveries/active/livery_001"/>
                 <string n="1" alias="/sim/G91/liveries/active/livery_002"/>
                 <string n="2" alias="/sim/G91/liveries/active/dirty_001"/>
@@ -63,7 +64,6 @@
                 <float n="21" alias="/sim/G91/liveries/active/reflective"/>
                 <float n="22" alias="/sim/G91/liveries/active/diffuse"/>
                 <float n="23" alias="/sim/G91/liveries/active/specular"/>
-                <float n="24" alias="/sim/G91/liveries/active/dirty"/>
             </generic>
         </multiplay>
         
