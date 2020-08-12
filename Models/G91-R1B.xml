@@ -2,176 +2,101 @@
 
 <PropertyList>
     
-    <nasal>
-        <load><![CDATA[
-            if(! contains(globals, "m2000_mp"))
-            {
-                var import = func (file, module) {
-                    file = string.normpath(file);
-                    var local_file = globals.io.dirname(caller()[2]) ~ file;
-                    var path = (globals.io.stat(local_file) != nil) ? local_file : resolvepath(file);
-                    globals.io.load_nasal(path, module);
-                };
-                import("Aircraft/G91-R1B_HD/Nasal/set_livery.nas","set_livery");set_livery;
-            }
-        ]]></load>
-        <unload><![CDATA[
-
-        ]]></unload>
-    </nasal>
-
     <offsets>
         <x-m>0.0</x-m>
         <y-m>0.0</y-m>
         <z-m>-0.45</z-m>
         <pitch-deg>0.0</pitch-deg>
     </offsets>
-    
+
+    <nasal>
+        <load><![CDATA[
+            setprop("sim/G91/liveries/active/isMultiPlayer",1);
+            var aModuleId = _module_id;
+            setprop("sim/G91/liveries/active/target_module_id",aModuleId);
+            print("**** _module_id: ",aModuleId);
+            
+            var import = func (file, module) {
+                file = string.normpath(file);
+                var local_file = globals.io.dirname(caller()[2]) ~ file;
+                var path = (globals.io.stat(local_file) != nil) ? local_file : resolvepath(file);
+                print("Is multiplayer | path: ",path);
+                globals.io.load_nasal(path, module);
+            };
+            
+            import("Aircraft/G91-R1B_HD/Nasal/set_livery.nas","set_livery");
+            set_livery.set_MP_ModuleId(aModuleId);
+            set_livery;
+            
+            var rplayer = cmdarg();
+            rplayer.getNode("sim/G91/liveries/active/ID", 1).alias(rplayer.getNode("sim/multiplay/generic/int[0]"));
+            rplayer.getNode("sim/G91/liveries/active/version", 1).alias(rplayer.getNode("sim/multiplay/generic/int[1]"));
+            rplayer.getNode("sim/G91/liveries/active/PANR1", 1).alias(rplayer.getNode("sim/multiplay/generic/int[2]"));
+            rplayer.getNode("sim/G91/liveries/active/normalmap_enabled", 1).alias(rplayer.getNode("sim/multiplay/generic/int[3]"));
+            rplayer.getNode("sim/G91/liveries/active/livery_001", 1).alias(rplayer.getNode("sim/multiplay/generic/string[0]"));
+            rplayer.getNode("sim/G91/liveries/active/livery_002", 1).alias(rplayer.getNode("sim/multiplay/generic/string[1]"));
+            rplayer.getNode("sim/G91/liveries/active/dirty_001", 1).alias(rplayer.getNode("sim/multiplay/generic/string[2]"));
+            rplayer.getNode("sim/G91/liveries/active/dirty_002", 1).alias(rplayer.getNode("sim/multiplay/generic/string[3]"));
+            rplayer.getNode("sim/G91/liveries/active/anti_reflective", 1).alias(rplayer.getNode("sim/multiplay/generic/string[4]"));
+            rplayer.getNode("sim/G91/liveries/active/luminosity", 1).alias(rplayer.getNode("sim/multiplay/generic/float[20]"));
+            rplayer.getNode("sim/G91/liveries/active/reflective", 1).alias(rplayer.getNode("sim/multiplay/generic/float[21]"));
+            rplayer.getNode("sim/G91/liveries/active/diffuse", 1).alias(rplayer.getNode("sim/multiplay/generic/float[22]"));
+            rplayer.getNode("sim/G91/liveries/active/specular", 1).alias(rplayer.getNode("sim/multiplay/generic/float[23]"));
+            rplayer.getNode("sim/G91/liveries/active/dirty", 1).alias(rplayer.getNode("sim/multiplay/generic/float[24]"));
+            
+        ]]></load>
+        <unload><![CDATA[
+            var aModuleId = _module_id;
+            print("**** Unload aModuleId: ",aModuleId);
+        ]]></unload>
+    </nasal>
+
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Cockpit.xml</path>
-        <condition>
-            <equals>
-                <property>sim/G91/models/active/cockpit</property>
-                <value>1</value>
-            </equals>
-        </condition>
     </model>
 
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Canopy.xml</path>
-        <condition>
-            <equals>
-                <property>sim/G91/models/active/canopy</property>
-                <value>1</value>
-            </equals>
-        </condition>
-    </model>
-    
-    <model>
-        <path>Aircraft/G91-R1B_HD/Models/Parts/Wing/Wing.xml</path>
-        <condition>
-            <equals>
-                <property>sim/G91/models/active/fuselage</property>
-                <value>1</value>
-            </equals>
-        </condition>
-    </model>
-    
-    <model>
-        <path>Aircraft/G91-R1B_HD/Models/Parts/LandingGearFrontal/LandingGearFrontal.xml</path>
-        <condition>
-            <equals>
-                <property>sim/G91/models/active/fuselage</property>
-                <value>1</value>
-            </equals>
-        </condition>
     </model>
 
     <model>
-        <path>Aircraft/G91-R1B_HD/Models/Parts/Fuselage_A/Fuselage_A0.xml</path>
-        <condition>
-            <equals>
-                <property>sim/G91/models/active/fuselage</property>
-                <value>1</value>
-            </equals>
-        </condition>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Wing/Wing.xml</path>
     </model>
 
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Tail/Tail.xml</path>
-        <condition>
-            <equals>
-                <property>sim/G91/models/active/tail</property>
-                <value>1</value>
-            </equals>
-        </condition>
-    </model>
-
-    <model>
-        <path>Aircraft/G91-R1B_HD/Models/Parts/Fuselage_B/Fuselage_B1.xml</path>
-        <condition>
-            <and>
-                <equals>
-                    <property>sim/G91/liveries/active/version</property>
-                    <value>2</value>
-                </equals>
-                <equals>
-                    <property>sim/G91/models/active/fuselage</property>
-                    <value>1</value>
-                </equals>
-            </and>
-        </condition>
-    </model>
-    
-    <model>
-        <path>Aircraft/G91-R1B_HD/Models/Parts/Fuselage_B/Fuselage_B3.xml</path>
-        <condition>
-            <and>
-                <equals>
-                    <property>sim/G91/liveries/active/version</property>
-                    <value>10</value>
-                </equals>
-                <equals>
-                    <property>sim/G91/models/active/fuselage</property>
-                    <value>1</value>
-                </equals>
-            </and>
-        </condition>
     </model>
 
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/LandingGearFrontal/LandingGearFrontal.xml</path>
-        <condition>
-            <equals>
-                <property>sim/G91/models/active/fuselage</property>
-                <value>1</value>
-            </equals>
-        </condition>
+    </model>
+
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Fuselage_A/Fuselage_A0.xml</path>
+    </model>
+
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Fuselage_B/Fuselage_B1.xml</path>
+    </model>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Fuselage_B/Fuselage_B3.xml</path>
     </model>
 
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Airbrake/Airbrake.xml</path>
-        <condition>
-            <equals>
-                <property>sim/G91/models/active/fuselage</property>
-                <value>1</value>
-            </equals>
-        </condition>
     </model>
 
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Turbojet/OrpheusMK803.xml</path>
-        <offsets>
-            <x-m>0.8</x-m>
-            <y-m>0.30</y-m>
-            <z-m>-0.25</z-m>
-        </offsets>
-        <condition>
-            <equals>
-                <property>sim/G91/models/active/turbojet</property>
-                <value>1</value>
-            </equals>
-        </condition>
     </model>
 
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Stores/Stores.xml</path>
-        <condition>
-            <equals>
-                <property>sim/G91/models/active/stores</property>
-                <value>1</value>
-            </equals>
-        </condition>
     </model>
 
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Accessories/Accessories.xml</path>
-        <condition>
-            <equals>
-                <property>sim/G91/models/active/accessories</property>
-                <value>1</value>
-            </equals>
-        </condition>
     </model>
 
     <!-- Compositor canopy lights test -->
