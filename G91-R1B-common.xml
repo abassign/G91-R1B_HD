@@ -9,7 +9,6 @@
         </long-description>
         <author>Massimiliano Cuccarano rendering 3D, Adriano Bassignana FDM JSBSim and historical research, Joshua Davidson Flight Control System and JSBsim</author>
         <status>in_progress</status>
-        <aircraft-version>0.2</aircraft-version>
         <license>GPL 3+</license>
         <rating>
             <FDM type="int">3</FDM>
@@ -23,6 +22,12 @@
             <tag>single-engine</tag>
             <tag>turbine</tag>
         </tags>
+        
+        <aircraft-version>0.5</aircraft-version>
+        <!-- echo 'G91R1B-00.5' | md5sum = 'a2525c6b69ba6d4a4151e819084276a4' frist 6 char: a2525c -> to integer printf "%d" 0xa2525c -->
+        <aircraft-id-version>10637916</aircraft-id-version>
+        <!-- Parameter necessary to define the full configuration in Single player mode -->
+        <aircraft-is-singleplayer type="bool">true</aircraft-is-singleplayer>
         
         <sound>
             <audible>true</audible>

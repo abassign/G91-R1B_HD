@@ -13,6 +13,8 @@
         <load><![CDATA[
             
             setprop("sim/G91/liveries/active/isMultiPlayer",1);
+            setprop("sim/is_multiplayer",1);
+            
             var aModuleId = _module_id;
             setprop("sim/G91/liveries/active/target_module_id",aModuleId);
             print("**** _module_id: ",aModuleId);
@@ -51,9 +53,16 @@
             print("**** Unload aModuleId: ",aModuleId);
         ]]></unload>
     </nasal>
+    
+    <!--
+    
+    -->
 
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Cockpit.xml</path>
+        <condition>
+            <property>sim/aircraft-is-singleplayer</property>
+        </condition>
     </model>
 
     <model>
@@ -98,6 +107,9 @@
 
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Accessories/Accessories.xml</path>
+        <condition>
+            <property>sim/aircraft-is-singleplayer</property>
+        </condition>
     </model>
 
     <!-- Compositor canopy lights test -->
