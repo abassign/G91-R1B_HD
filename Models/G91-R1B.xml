@@ -20,7 +20,7 @@
             print("**** _module_id: ",aModuleId);
             
             var rplayer = cmdarg();
-            rplayer.getNode("sim/G91/liveries/active/ID", 1).alias(rplayer.getNode("sim/multiplay/generic/int[0]"));
+            rplayer.getNode("sim/G91/liveries/active/id", 1).alias(rplayer.getNode("sim/multiplay/generic/int[0]"));
             rplayer.getNode("sim/G91/liveries/active/version", 1).alias(rplayer.getNode("sim/multiplay/generic/int[1]"));
             rplayer.getNode("sim/G91/liveries/active/PANR1", 1).alias(rplayer.getNode("sim/multiplay/generic/int[2]"));
             rplayer.getNode("sim/G91/liveries/active/normalmap_enabled", 1).alias(rplayer.getNode("sim/multiplay/generic/int[3]"));
@@ -30,10 +30,8 @@
             rplayer.getNode("sim/G91/liveries/active/dirty_001", 1).alias(rplayer.getNode("sim/multiplay/generic/string[2]"));
             rplayer.getNode("sim/G91/liveries/active/dirty_002", 1).alias(rplayer.getNode("sim/multiplay/generic/string[3]"));
             rplayer.getNode("sim/G91/liveries/active/anti_reflective", 1).alias(rplayer.getNode("sim/multiplay/generic/string[4]"));
-            rplayer.getNode("sim/G91/liveries/active/luminosity", 1).alias(rplayer.getNode("sim/multiplay/generic/float[20]"));
-            rplayer.getNode("sim/G91/liveries/active/reflective", 1).alias(rplayer.getNode("sim/multiplay/generic/float[21]"));
-            rplayer.getNode("sim/G91/liveries/active/diffuse", 1).alias(rplayer.getNode("sim/multiplay/generic/float[22]"));
-            rplayer.getNode("sim/G91/liveries/active/specular", 1).alias(rplayer.getNode("sim/multiplay/generic/float[23]"));
+            rplayer.getNode("sim/G91/liveries/active/diffuse", 1).alias(rplayer.getNode("sim/multiplay/generic/float[20]"));
+            rplayer.getNode("sim/G91/liveries/active/specular", 1).alias(rplayer.getNode("sim/multiplay/generic/float[21]"));
             
             var import = func (file, module) {
                 file = string.normpath(file);

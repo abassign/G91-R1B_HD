@@ -50,7 +50,7 @@ http://wiki.flightgear.org/Howto:Adding_a_canvas_to_a_GUI_dialog
                 <binding>
                     <command>nasal</command>
                     <script>
-                        setprop("sim/G91/liveries/active/ID",1);
+                        setprop("sim/G91/liveries/active/id",1);
                     </script>
                 </binding>
             </button>
@@ -68,7 +68,7 @@ http://wiki.flightgear.org/Howto:Adding_a_canvas_to_a_GUI_dialog
                 <binding>
                     <command>nasal</command>
                     <script>
-                        setprop("sim/G91/liveries/active/ID",2);
+                        setprop("sim/G91/liveries/active/id",2);
                     </script>
                 </binding>
             </button>
@@ -86,7 +86,7 @@ http://wiki.flightgear.org/Howto:Adding_a_canvas_to_a_GUI_dialog
                 <binding>
                     <command>nasal</command>
                     <script>
-                        setprop("sim/G91/liveries/active/ID",3);
+                        setprop("sim/G91/liveries/active/id",3);
                     </script>
                 </binding>
             </button>
@@ -104,7 +104,7 @@ http://wiki.flightgear.org/Howto:Adding_a_canvas_to_a_GUI_dialog
                 <binding>
                     <command>nasal</command>
                     <script>
-                        setprop("sim/G91/liveries/active/ID",4);
+                        setprop("sim/G91/liveries/active/id",4);
                     </script>
                 </binding>
             </button>
@@ -122,7 +122,7 @@ http://wiki.flightgear.org/Howto:Adding_a_canvas_to_a_GUI_dialog
                 <binding>
                     <command>nasal</command>
                     <script>
-                        setprop("sim/G91/liveries/active/ID",5);
+                        setprop("sim/G91/liveries/active/id",5);
                     </script>
                 </binding>
             </button>
@@ -140,7 +140,7 @@ http://wiki.flightgear.org/Howto:Adding_a_canvas_to_a_GUI_dialog
                 <binding>
                     <command>nasal</command>
                     <script>
-                        setprop("sim/G91/liveries/active/ID",6);
+                        setprop("sim/G91/liveries/active/id",6);
                     </script>
                 </binding>
             </button>
@@ -158,7 +158,7 @@ http://wiki.flightgear.org/Howto:Adding_a_canvas_to_a_GUI_dialog
                 <binding>
                     <command>nasal</command>
                     <script>
-                        setprop("sim/G91/liveries/active/ID",7);
+                        setprop("sim/G91/liveries/active/id",7);
                     </script>
                 </binding>
             </button>
@@ -178,87 +178,14 @@ http://wiki.flightgear.org/Howto:Adding_a_canvas_to_a_GUI_dialog
         <layout>vbox</layout>
         <group>
             <layout>table</layout>
-            <!--
             <text>
                 <row>0</row>
-                <col>0</col>
-                <label>Set luminosity</label>
-                <halign>left</halign>
-            </text>
-            <slider>
-                <row>0</row>
-                <col>1</col>
-                <width>100</width>
-                <property>sim/G91/liveries/active/luminosity</property>
-                <min>-1</min>
-                <max>1</max>
-                <step>0.01</step>
-                <binding>
-                <command>property-assign</command>
-                    <property>sim/G91/liveries/active/pushed</property>
-                    <value>1</value>
-                </binding>
-                <binding>
-                    <command>dialog-apply</command>
-                </binding>
-            </slider>
-            <text>
-                <row>0</row>
-                <col>2</col>
-                <halign>left</halign>
-                <label>99999</label>
-                <live>true</live>
-                <format>%1.2f </format>
-                <color>
-                    <red>0.9</red>
-                    <green>0.9</green>
-                    <blue>0.9</blue>
-                </color>
-                <property>sim/G91/liveries/active/luminosity</property>
-            </text>
-            -->
-            <!--
-            <text>
-                <row>1</row>
-                <col>0</col>
-                <label>Set reflective</label>
-                <halign>left</halign>
-            </text>
-            <slider>
-                <row>1</row>
-                <col>1</col>
-                <width>100</width>
-                <property>sim/G91/liveries/active/reflective</property>
-                <min>-1</min>
-                <max>0</max>
-                <step>0.01</step>  
-                <binding>
-                    <command>dialog-apply</command>
-                </binding>
-            </slider>
-            <text>
-                <row>1</row>
-                <col>2</col>
-                <halign>left</halign>
-                <label>99999</label>
-                <live>true</live>
-                <format>%1.2f </format>
-                <color>
-                    <red>0.9</red>
-                    <green>0.9</green>
-                    <blue>0.9</blue>
-                </color>
-                <property>sim/G91/liveries/active/reflective</property>
-            </text>
-            -->
-            <text>
-                <row>2</row>
                 <col>0</col>
                 <label>Set diffuse</label>
                 <halign>left</halign>
             </text>
             <slider>
-                <row>2</row>
+                <row>0</row>
                 <col>1</col>
                 <width>100</width>
                 <property>sim/G91/liveries/active/diffuse</property>
@@ -270,7 +197,7 @@ http://wiki.flightgear.org/Howto:Adding_a_canvas_to_a_GUI_dialog
                 </binding>
             </slider>
             <text>
-                <row>2</row>
+                <row>0</row>
                 <col>2</col>
                 <halign>left</halign>
                 <label>99999</label>
@@ -285,13 +212,13 @@ http://wiki.flightgear.org/Howto:Adding_a_canvas_to_a_GUI_dialog
             </text>
             
             <text>
-                <row>3</row>
+                <row>1</row>
                 <col>0</col>
                 <label>Set specular</label>
                 <halign>left</halign>
             </text>
             <slider>
-                <row>3</row>
+                <row>1</row>
                 <col>1</col>
                 <width>100</width>
                 <property>sim/G91/liveries/active/specular</property>
@@ -303,7 +230,7 @@ http://wiki.flightgear.org/Howto:Adding_a_canvas_to_a_GUI_dialog
                 </binding>
             </slider>
             <text>
-                <row>3</row>
+                <row>1</row>
                 <col>2</col>
                 <halign>left</halign>
                 <label>99999</label>
@@ -316,15 +243,14 @@ http://wiki.flightgear.org/Howto:Adding_a_canvas_to_a_GUI_dialog
                 </color>
                 <property>sim/G91/liveries/active/specular</property>
             </text>
-            
             <text>
-                <row>4</row>
+                <row>2</row>
                 <col>0</col>
                 <label>Set dirty</label>
                 <halign>left</halign>
             </text>
             <button>
-                <row>4</row>
+                <row>2</row>
                 <col>1</col>
                 <legend>Dirty on/off</legend>
                 <binding>
@@ -336,7 +262,7 @@ http://wiki.flightgear.org/Howto:Adding_a_canvas_to_a_GUI_dialog
                 </binding>
             </button>
             <text>
-                <row>4</row>
+                <row>2</row>
                 <col>2</col>
                 <halign>left</halign>
                 <live>true</live>
@@ -347,15 +273,14 @@ http://wiki.flightgear.org/Howto:Adding_a_canvas_to_a_GUI_dialog
                 </color>
                 <property>sim/G91/liveries/active/dirtyMsg</property>
             </text>
-            
             <text>
-                <row>5</row>
+                <row>3</row>
                 <col>0</col>
                 <label>Set normal map</label>
                 <halign>left</halign>
             </text>
             <button>
-                <row>5</row>
+                <row>3</row>
                 <col>1</col>
                 <legend>Normal map</legend>
                 <binding>
@@ -367,7 +292,7 @@ http://wiki.flightgear.org/Howto:Adding_a_canvas_to_a_GUI_dialog
                 </binding>
             </button>
             <text>
-                <row>5</row>
+                <row>3</row>
                 <col>2</col>
                 <halign>left</halign>
                 <live>true</live>
@@ -388,60 +313,19 @@ http://wiki.flightgear.org/Howto:Adding_a_canvas_to_a_GUI_dialog
         <layout>vbox</layout>
         <group>
             <layout>table</layout>
-            
             <text>
                 <row>0</row>
                 <col>0</col>
-                <label>Set livery resolution</label>
+                <label>Livery current resolution</label>
                 <halign>left</halign>
             </text>
-            <button>
-                <row>0</row>
-                <col>1</col>
-                <legend>1024</legend>
-                <binding>
-                    <command>property-assign</command>
-                    <property>sim/G91/liveries/active/setResolution</property>
-                    <value>1</value>
-                </binding>
-                <binding>
-                    <command>dialog-apply</command>
-                </binding>
-            </button>
-            <button>
-                <row>0</row>
-                <col>2</col>
-                <legend>2048</legend>
-                <binding>
-                    <command>property-assign</command>
-                    <property>sim/G91/liveries/active/setResolution</property>
-                    <value>2</value>
-                </binding>
-                <binding>
-                    <command>dialog-apply</command>
-                </binding>
-            </button>
-            <button>
-                <row>0</row>
-                <col>3</col>
-                <legend>4096</legend>
-                <binding>
-                    <command>property-assign</command>
-                    <property>sim/G91/liveries/active/setResolution</property>
-                    <value>3</value>
-                </binding>
-                <binding>
-                    <command>dialog-apply</command>
-                </binding>
-            </button>
-
             <text>
                 <row>0</row>
-                <col>4</col>
+                <col>1</col>
                 <halign>center</halign>
                 <label>99999</label>
                 <live>true</live>
-                <format>%1.0f </format>
+                <format>%5.0d </format>
                 <color>
                     <red>0.8</red>
                     <green>0.0</green>
@@ -449,7 +333,55 @@ http://wiki.flightgear.org/Howto:Adding_a_canvas_to_a_GUI_dialog
                 </color>
                 <property>sim/G91/liveries/active/resolution</property>
             </text>
-            
+            <text>
+                <row>0</row>
+                <col>2</col>
+                <label>next session resolution</label>
+                <halign>left</halign>
+            </text>
+            <slider>
+                <row>0</row>
+                <col>3</col>
+                <width>100</width>
+                <property>sim/G91/liveries/active/next-resolution</property>
+                <min>1</min>
+                <max>4</max>
+                <step>1</step>  
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+                <binding>
+                    <command>nasal</command>
+                    <script>
+                        var resolutionSet = getprop("sim/G91/liveries/active/next-resolution");
+                        var resolution = 0;
+                        if (resolutionSet == 1) {
+                            resolution = 512;
+                        } else if (resolutionSet == 2) {
+                            resolution = 1024;
+                        } else if (resolutionSet == 3) {
+                            resolution = 2048;
+                        } else if (resolutionSet == 4) {
+                            resolution = 4096;
+                        }
+                        setprop("sim/G91/liveries/active/next-resolution-pixel",resolution);
+                    </script>
+                </binding>
+            </slider>
+            <text>
+                <row>0</row>
+                <col>4</col>
+                <halign>left</halign>
+                <label>99999</label>
+                <live>true</live>
+                <format>%5.0d </format>
+                <color>
+                    <red>0.8</red>
+                    <green>0.8</green>
+                    <blue>0.0</blue>
+                </color>
+                <property>sim/G91/liveries/active/next-resolution-pixel</property>
+            </text>
         </group>
     </group>
     

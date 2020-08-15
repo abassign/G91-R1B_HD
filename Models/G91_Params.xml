@@ -5,6 +5,10 @@ G91_Params.xml
 -->
 
 <PropertyList>
+    
+    <popup>
+        <welcome type="int">1</welcome>
+    </popup>
 
     <models>
         <active>
@@ -27,17 +31,16 @@ G91_Params.xml
         -->
         
         <active>
-            <ID>1</ID>
-            <setResolution>3</setResolution>
+            <id userarchive="y" type="int">1</id>
+            <next-resolution userarchive="y" type="int">2</next-resolution>
+            <next-resolution-pixel userarchive="y" type="int">2</next-resolution-pixel>
         </active>
 
         <livery n="1">
             <reloads type="float">0.0</reloads>
-            <ID type="int">1</ID>
+            <id type="int">1</id>
             <name_short type="string">PAN R1</name_short>
             <name_long type="string">PAN - National Aerobatic with Pinocchio nose (R1)</name_long>
-            <luminosity type="float">0.01</luminosity>
-            <reflective type="float">-0.33</reflective>
             <PANR1 type="float">1.0</PANR1>
             <diffuse type="float">0.69</diffuse>
             <specular type="float">0.20</specular>
@@ -53,11 +56,9 @@ G91_Params.xml
         
         <livery n="2">
             <reloads type="float">0.0</reloads>
-            <ID type="int">2</ID>
+            <id type="int">2</id>
             <name_short type="string">PAN R1B</name_short>
             <name_long type="string">PAN - National Aerobatic with recognition nose (R1B)</name_long>
-            <luminosity type="float">0.01</luminosity>
-            <reflective type="float">-0.33</reflective>
             <PANR1 type="float">0.0</PANR1>
             <diffuse type="float">0.69</diffuse>
             <specular type="float">0.20</specular>
@@ -72,12 +73,10 @@ G91_Params.xml
         </livery>
         
         <livery n="3">
-            <ID type="int">3</ID>
+            <id type="int">3</id>
             <reloads type="float">0.0</reloads>
             <name_short type="string">Mil ITA 3-37 R1B</name_short>
             <name_long type="string">Italian Air Force - 2nd flight flock n. 37 (R1B)</name_long>
-            <luminosity type="float">0.09</luminosity>
-            <reflective type="float">-1.0</reflective>
             <PANR1 type="float">0.0</PANR1>
             <diffuse type="float">0.83</diffuse>
             <specular type="float">0.08</specular>
@@ -92,12 +91,10 @@ G91_Params.xml
         </livery>
         
         <livery n="4">
-            <ID type="int">4</ID>
+            <id type="int">4</id>
             <reloads type="float">0.0</reloads>
             <name_short type="string">Silver R1</name_short>
             <name_long type="string">Silver version, used as a prototype Pinocchio nose (R1)</name_long>
-            <luminosity type="float">0.15</luminosity>
-            <reflective type="float">-0.60</reflective>
             <PANR1 type="float">1.0</PANR1>
             <diffuse type="float">0.60</diffuse>
             <specular type="float">0.48</specular>
@@ -112,12 +109,10 @@ G91_Params.xml
         </livery>
         
         <livery n="5">
-            <ID type="int">5</ID>
+            <id type="int">5</id>
             <reloads type="float">0.0</reloads>
             <name_short type="string">Silver R1B</name_short>
             <name_long type="string">Silver version R1B with recognition nose (R1B)</name_long>
-            <luminosity type="float">0.15</luminosity>
-            <reflective type="float">-0.60</reflective>
             <PANR1 type="float">0.0</PANR1>
             <diffuse type="float">0.60</diffuse>
             <specular type="float">0.48</specular>
@@ -132,12 +127,10 @@ G91_Params.xml
         </livery>
         
         <livery n="6">
-            <ID type="int">6</ID>
+            <id type="int">6</id>
             <reloads type="float">0.0</reloads>
             <name_short type="string">Portuguese R3 c/n 301</name_short>
             <name_long type="string">Portuguese Air Force G-91R/3 c/n 301 in the Portuguese Colonial War (R3)</name_long>
-            <luminosity type="float">0.0</luminosity>
-            <reflective type="float">-0.92</reflective>
             <PANR1 type="float">0.0</PANR1>
             <diffuse type="float">0.76</diffuse>
             <specular type="float">0.09</specular>
@@ -152,12 +145,10 @@ G91_Params.xml
         </livery>
         
         <livery n="7">
-            <ID type="int">7</ID>
+            <id type="int">7</id>
             <reloads type="float">0.0</reloads>
             <name_short type="string">Luftwaffe R3 c/n 535</name_short>
             <name_long type="string">Luftwaffe FUS G-91R/3 c/n 535 (R3)</name_long>
-            <luminosity type="float">0.04</luminosity>
-            <reflective type="float">-0.80</reflective>
             <PANR1 type="float">0.0</PANR1>
             <diffuse type="float">0.80</diffuse>
             <specular type="float">0.33</specular>

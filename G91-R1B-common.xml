@@ -34,6 +34,12 @@
             <path>Aircraft/G91-R1B_HD/Sounds/G91-sounds.xml</path>
         </sound>
         
+        <aircraft-data>
+            <path>sim/G91/liveries/active/id</path>
+            <path>sim/G91/liveries/active/next-resolution</path>
+            <path>sim/G91/liveries/active/next-resolution-pixel</path>
+        </aircraft-data>
+        
         <submodels>
             <serviceable type="bool">true</serviceable>
             <path>Aircraft/G91-R1B_HD/Models/Parts/Stores/Submodels.xml</path>
@@ -55,7 +61,7 @@
                 <float n="13" alias="/gear/gear[2]/rollspeed-ms"/>
                 <float n="14" alias="/controls/engines/engine[0]/throttle"/>
                 <!-- MP for models parts -->
-                <int n="0" alias="/sim/G91/liveries/active/ID"/>
+                <int n="0" alias="/sim/G91/liveries/active/id"/>
                 <int n="1" alias="/sim/G91/liveries/active/version"/>
                 <int n="2" alias="/sim/G91/liveries/active/PANR1"/>
                 <int n="3" alias="/sim/G91/liveries/active/normalmap_enabled"/>
@@ -65,10 +71,8 @@
                 <string n="2" alias="/sim/G91/liveries/active/dirty_001"/>
                 <string n="3" alias="/sim/G91/liveries/active/dirty_002"/>
                 <string n="4" alias="/sim/G91/liveries/active/anti_reflective"/>
-                <float n="20" alias="/sim/G91/liveries/active/luminosity"/>
-                <float n="21" alias="/sim/G91/liveries/active/reflective"/>
-                <float n="22" alias="/sim/G91/liveries/active/diffuse"/>
-                <float n="23" alias="/sim/G91/liveries/active/specular"/>
+                <float n="20" alias="/sim/G91/liveries/active/diffuse"/>
+                <float n="21" alias="/sim/G91/liveries/active/specular"/>
             </generic>
         </multiplay>
         
