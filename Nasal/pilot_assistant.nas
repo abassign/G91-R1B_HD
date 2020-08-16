@@ -1746,6 +1746,14 @@ var pilot_assistant = func {
         setprop("fdm/jsbsim/systems/autopilot/gui/take-off-status",take_off_status);
     }
     
+    if (pilot_ass_status_id >= 11.0 and pilot_ass_status_id < 12.0) {
+        #// Self-piloting by air interception
+        #// From https://forum.flightgear.org/viewtopic.php?f=71&t=23299&sid=81e474c9d78a5ed150627461cbf37d44&start=15
+        pilot_ass_status_id == 11 {
+            #// Select the target
+        }
+    }
+    
     if (pilot_ass_status_id == 0) {
         #// Stop the landing-departure phase
         pilot_ass_status_id = -1;
