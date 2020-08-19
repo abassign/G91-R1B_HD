@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+    
+    <path>wing-delcas.ac</path>
+    
+    <offsets>
+        <x-m>0.0</x-m>
+        <y-m>0.0</y-m>
+        <z-m>0.002</z-m>
+        <pitch-deg>0.0</pitch-deg>
+    </offsets>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>wing_sx.</object-name>
+        <object-name>wing_sx.1</object-name>
+        <object-name>wing_dx.</object-name>
+        <object-name>wing__dx.1</object-name>
+        <diffuse>
+            <red>0.8</red>
+            <green>0.2</green>
+            <blue>0.0</blue>
+        </diffuse>
+        <ambient>
+            <red>0.6</red>
+            <green>0.6</green>
+            <blue>0.6</blue>
+        </ambient>
+        <specular>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </specular>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>flag-red-fus (Meshed)</object-name>
+        <object-name>flag-red-wing-dx (Meshed)</object-name>
+        <diffuse>
+            <red>1.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </diffuse>
+        <ambient>
+            <red>0.8</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </ambient>
+        <specular>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </specular>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>flag-green-fus (Meshed)</object-name>
+        <object-name>flag-green-wing-dx (Meshed)</object-name>
+        <object-name>flag-green-wing-sx (Meshed)</object-name>
+        <diffuse>
+            <red>0.0</red>
+            <green>1.0</green>
+            <blue>0.0</blue>
+        </diffuse>
+        <ambient>
+            <red>0.0</red>
+            <green>0.8</green>
+            <blue>0.0</blue>
+        </ambient>
+        <specular>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </specular>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>flag-white-fus (Meshed)</object-name>
+        <object-name>flag-white-wing-dx (Meshed)</object-name>
+        <object-name>flag-white-wing-sx (Meshed)</object-name>
+        <diffuse>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+        </diffuse>
+        <ambient>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+        </ambient>
+        <specular>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </specular>
+    </animation>
+    
+    
+</PropertyList>

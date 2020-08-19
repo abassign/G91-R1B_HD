@@ -884,7 +884,7 @@ var pilot_assistant = func {
                     rwy_coord_end_final.apply_course_distance(airport_select.runways[rwy_select].heading,(runway_to_airplane_dist_nm * 1852.0 + rwy_coord_end_offset));
                     heading_correct = airplane.course_to(rwy_coord_end_final);
                 }
-                heading_correction_deg = airport_select.runways[rwy_select].heading - heading_correct;
+                heading_correction_deg = airport_select.runways[rwy_select].heading + heading_correct;
                 if (heading_correction_deg > 180) heading_correction_deg = heading_correction_deg - 360;
                 if (heading_correction_deg < -180) heading_correction_deg = heading_correction_deg + 360;
                 var heading_factor = 2.0;
@@ -1749,8 +1749,10 @@ var pilot_assistant = func {
     if (pilot_ass_status_id >= 11.0 and pilot_ass_status_id < 12.0) {
         #// Self-piloting by air interception
         #// From https://forum.flightgear.org/viewtopic.php?f=71&t=23299&sid=81e474c9d78a5ed150627461cbf37d44&start=15
-        pilot_ass_status_id == 11 {
+        if (pilot_ass_status_id == 11) {
             #// Select the target
+            setprop("fdm/jsbsim/systems/autopilot/gui/landig-sub-status-id",11);
+            setprop("fdm/jsbsim/systems/autopilot/gui/interception-control-active",1);
         }
     }
     
@@ -1901,6 +1903,16 @@ setlistener("fdm/jsbsim/systems/autopilot/gui/landing-scan-airport", func {
         setprop("fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct/rw_select",0);
     } else {
         setprop("fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct/rw_select",0);
+    }
+}, 1, 0);
+
+
+setlistener("fdm/jsbsim/systems/autopilot/gui/interception-control-active", func {
+    var interception_active = getprop("fdm/jsbsim/systems/autopilot/gui/interception-control-active");
+    if (interception_active == 1) {
+        pilot_ass_status_id = 11;
+    } else {
+        pilot_ass_status_id = 0;
     }
 }, 1, 0);
 

@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+    
+    <name>pilot-army</name>
+    <layout>vbox</layout>
+    <default-padding>8</default-padding>
+    <modal>false</modal>
+    <width>1024</width>
+    
+    <!-- title bar -->
+    <group>
+        <layout>hbox</layout>
+        <empty><stretch>true</stretch></empty>
+        <text>
+            <label>Pilot Army</label>
+        </text>
+        <empty><stretch>true</stretch></empty>
+        <button>
+            <legend/>
+            <key>Esc</key>
+            <pref-width>16</pref-width>
+            <pref-height>16</pref-height>
+            <border>2</border>
+            <binding>
+                <command>dialog-close</command>
+            </binding>
+        </button>
+    </group>
+    
+    <hrule/>
+    
+    <group>
+        <layout>hbox</layout>
+        
+        <hrule/>
+        
+        <group>
+            <layout>table</layout>
+            <button>
+                <row>0</row>
+                <col>0</col>
+                <pref-width>100</pref-width>
+                <legend>Interception</legend>
+                <live>true</live>
+                <binding>
+                    <command>property-toggle</command>
+                    <property>fdm/jsbsim/systems/autopilot/gui/interception-control-active</property>
+                </binding>
+                <binding>
+                    <command>property-assign</command>
+                    <property>fdm/jsbsim/systems/autopilot/gui/interception-control-mod</property>
+                    <value>1</value>
+                </binding>
+                <!--
+                <binding>
+                    <command>nasal</command>
+                    <script>
+                        <![CDATA[
+                            var targets_scan = {};
+                            a = "alpha";
+                            b = "beta";
+                            targets_scan[a] = [1,2];
+                            var c = targets_scan[a];
+                            debug.dump(targets_scan);
+                            debug.dump(c);
+                            foreach (var hash_key ; keys(targets_scan)) {
+                                data = targets_scan[hash_key];
+                                debug.dump(data);
+                            }
+                        ]]>
+                    </script>
+                </binding>
+                -->
+            </button>
+            <text>
+                <row>0</row>
+                <col>1</col>
+                <label>9999999999</label>
+                <halign>left</halign>
+                <live>true</live>
+                <property>fdm/jsbsim/systems/autopilot/gui/interception-control-msg</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.0</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>2</col>
+                <label>999</label>
+                <halign>left</halign>
+                <live>true</live>
+                <format>[% 1.0f] </format>
+                <property>fdm/jsbsim/systems/autopilot/gui/interception-control-active-level</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.0</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>3</col>
+                <label>Id</label>
+                <color>
+                    <red>0.8</red>
+                    <green>0.8</green>
+                    <blue>0.8</blue>
+                </color>
+            </text>
+            <input>
+                <row>0</row>
+                <col>4</col>
+                <pref-width>40</pref-width>
+                <property>fdm/jsbsim/systems/autopilot/gui/interception-id-select</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+                <binding>
+                    <command>property-assign</command>
+                    <property>fdm/jsbsim/systems/autopilot/gui/interception-id-mod</property>
+                    <value>1</value>
+                </binding>
+            </input>
+            <text>
+                <row>0</row>
+                <col>5</col>
+                <label>Callsign</label>
+                <color>
+                    <red>0.8</red>
+                    <green>0.8</green>
+                    <blue>0.8</blue>
+                </color>
+            </text>
+            <input>
+                <row>0</row>
+                <col>6</col>
+                <pref-width>100</pref-width>
+                <property>fdm/jsbsim/systems/autopilot/gui/interception-callsign-select</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+                <binding>
+                    <command>property-assign</command>
+                    <property>fdm/jsbsim/systems/autopilot/gui/interception-callsign-mod</property>
+                    <value>1</value>
+                </binding>
+            </input>
+            <text>
+                <row>0</row>
+                <col>7</col>
+                <label>Dist nm</label>
+                <color>
+                    <red>0.8</red>
+                    <green>0.8</green>
+                    <blue>0.8</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>8</col>
+                <label>99999</label>
+                <halign>left</halign>
+                <live>true</live>
+                <format>%3.1f</format>
+                <property>fdm/jsbsim/systems/autopilot/interception-target-dist-nm</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.0</blue>
+                </color>
+            </text>
+                <text>
+                <row>0</row>
+                <col>9</col>
+                <label>Target speed (mph)</label>
+                <color>
+                    <red>0.8</red>
+                    <green>0.8</green>
+                    <blue>0.8</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>10</col>
+                <label>99999</label>
+                <halign>left</halign>
+                <live>true</live>
+                <format>%3.1f</format>
+                <property>fdm/jsbsim/systems/autopilot/interception-target-speed-mph</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.0</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>11</col>
+                <label>99999</label>
+                <halign>left</halign>
+                <live>true</live>
+                <format>[% 3.1f] </format>
+                <property>fdm/jsbsim/systems/autopilot/interception-target-speed-dif-mph</property>
+                <color>
+                    <red>0.8</red>
+                    <green>0.8</green>
+                    <blue>0.8</blue>
+                </color>
+            </text>
+        </group>
+        
+        <hrule/>
+
+    </group>
+
+</PropertyList>

@@ -92,6 +92,16 @@
                         </binding>
                     </item>
                     <item>
+                        <label>Militar pilot assistant</label>
+                        <binding>
+                            <command>nasal</command>
+                            <script>
+                                test_dialog = gui.Dialog.new("sim/gui/dialogs/G91/Autopilot/dialog","Aircraft/G91-R1B_HD/Dialogs/G91-Militar-Pilot-Assistant.xml");
+                                test_dialog.open();
+                            </script>
+                        </binding>
+                    </item>
+                    <item>
                         <label>Configuration</label>
                         <binding>
                             <command>nasal</command>
@@ -235,6 +245,7 @@
             <!-- Autopilot -->
             <file>Aircraft/G91-R1B_HD/Nasal/pilot_assistant.nas</file>
             <file>Aircraft/G91-R1B_HD/Nasal/pilot_impact_control.nas</file>
+            <file>Aircraft/G91-R1B_HD/Nasal/pilot_intercept.nas</file>
         </general>
         
         <canvas_gauges>

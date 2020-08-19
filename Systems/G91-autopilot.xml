@@ -3006,6 +3006,22 @@ No Overshoot
                 </product>
             </function>
         </fcs_function>
+        
+        <fcs_function name="systems/autopilot/vertical-speed-optimize-by-altitude">
+            <function>
+                <table>
+                    <independentVar lookup="row">systems/autopilot/altitude-ft-lag</independentVar>
+                    <tableData>
+                        0	   3000
+                        5000   3000
+                        10000  2500
+                        20000  2000
+                        30000  1200
+                        40000   800
+                    </tableData>
+                </table>
+            </function>
+        </fcs_function>
 
         <fcs_function name="systems/autopilot/vertical-speed-best-by-altitude">
             <function>
@@ -3030,17 +3046,7 @@ No Overshoot
                         </table>
                         <v>1.0</v>
                     </ifthen>
-                    <table>
-                        <independentVar lookup="row">systems/autopilot/altitude-ft-lag</independentVar>
-                        <tableData>
-                            0	   3000
-                            5000   3000
-                            10000  2500
-                            20000  2000
-                            30000  1200
-                            40000   800
-                        </tableData>
-                    </table>
+                    <p>systems/autopilot/vertical-speed-optimize-by-altitude</p>
                 </product>
             </function>
         </fcs_function>

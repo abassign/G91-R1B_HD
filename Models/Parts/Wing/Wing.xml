@@ -207,7 +207,6 @@
         <object-name>A00_light_sphere_dx</object-name>
         <object-name>A00_wing_light.glass_dx</object-name>
     </animation>
-
     
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Liveries/liveries_001</inherits-from>
@@ -1983,5 +1982,20 @@
             <heading-deg>0.0</heading-deg>
         </offsets>
     </model>
-
+    
+    <!-- delcas Sperimental -->
+    <!--
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Wing/wing-delcas.xml</path>
+        <name>wing-delcas</name>
+        <offsets>
+            <x-m>0.0</x-m>
+            <y-m>0.0</y-m>
+            <z-m>0.0</z-m>
+            <pitch-deg>0.0</pitch-deg>
+            <roll-deg>0.0</roll-deg>
+            <heading-deg>0.0</heading-deg>
+        </offsets>
+    </model>
+    -->
 </PropertyList>
