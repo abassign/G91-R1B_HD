@@ -44,7 +44,7 @@ var airplane = nil;
 
 var min_target_dist = 0.1;
 var speed_mph_target = 0.0;
-var speed_mph_coefficient = 2.0;
+var speed_mph_coefficient = 4.0;
 var speed_mph = 0.0;
 
 
@@ -255,7 +255,6 @@ var interception_cnt = func() {
             setprop("fdm/jsbsim/systems/autopilot/gui/speed-set-mach",0.0);
             setprop("fdm/jsbsim/systems/autopilot/gui/speed-value",math.round(speed_cas_prec));
             setprop("fdm/jsbsim/systems/autopilot/gui/speed-set-best-by-altitude",speed_set_best_prec);
-            setprop("fdm/jsbsim/systems/autopilot/gui/interception-id-select",-1);
             setprop("fdm/jsbsim/systems/autopilot/gui/interception-control-active-level",active_level);
             setprop("fdm/jsbsim/systems/autopilot/gui/interception-control-active",0);
         }
