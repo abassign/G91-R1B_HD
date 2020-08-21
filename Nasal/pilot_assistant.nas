@@ -1912,7 +1912,7 @@ setlistener("fdm/jsbsim/systems/autopilot/gui/interception-control-active", func
     if (interception_active == 1) {
         pilot_ass_status_id = 11;
     } else {
-        pilot_ass_status_id = 0;
+        pilot_ass_status_id = -1;
     }
 }, 1, 0);
 
