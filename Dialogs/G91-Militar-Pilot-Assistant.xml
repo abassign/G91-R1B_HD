@@ -16,6 +16,59 @@
             <label>Militar Pilot Assistant</label>
         </text>
         <empty><stretch>true</stretch></empty>
+        <checkbox>
+            <property>fdm/jsbsim/systems/autopilot/gui/interception-ai-mp</property>
+            <live>true</live>
+            <label>Switch AI/MP</label>
+            <binding>
+                <command>dialog-apply</command>
+            </binding>
+            <binding>
+                <command>property-assign</command>
+                <property>fdm/jsbsim/systems/autopilot/gui/interception-ai-mp-mod</property>
+                <value>1</value>
+            </binding>
+        </checkbox>
+        <text>
+            <pref-width>200</pref-width>
+            <label>999999999999999</label>
+            <halign>left</halign>
+            <live>true</live>
+            <property>fdm/jsbsim/systems/autopilot/gui/interception-ai-mp-msg</property>
+            <color>
+                <red>0.9</red>
+                <green>0.9</green>
+                <blue>0.0</blue>
+            </color>
+        </text>
+        <text>
+            <label>Proxy speed coef.</label>
+        </text>
+        <slider>
+            <name>interception-speed-mph-coefficient</name>
+            <halign>center</halign>
+            <property>fdm/jsbsim/systems/autopilot/gui/interception-speed-mph-coefficient</property>
+            <min>2</min>
+            <max>16</max>
+            <step>1</step>
+            <live>true</live>
+            <binding>
+                <command>dialog-apply</command>
+            </binding>
+        </slider>
+        <text>
+            <label>99999</label>
+            <live>true</live>
+            <halign>right</halign>
+            <format>%2.1f</format>
+            <property>fdm/jsbsim/systems/autopilot/gui/interception-speed-mph-coefficient</property>
+            <color>
+                <red>0.9</red>
+                <green>0.9</green>
+                <blue>0.0</blue>
+            </color>
+        </text>
+        <empty><stretch>true</stretch></empty>
         <button>
             <legend/>
             <key>Esc</key>
@@ -50,6 +103,8 @@
                     <property>fdm/jsbsim/systems/autopilot/gui/interception-control-mod</property>
                     <value>1</value>
                 </binding>
+                
+                
                 <!--
                 <binding>
                     <command>nasal</command>

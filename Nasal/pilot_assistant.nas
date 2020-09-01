@@ -884,9 +884,8 @@ var pilot_assistant = func {
                     rwy_coord_end_final.apply_course_distance(airport_select.runways[rwy_select].heading,(runway_to_airplane_dist_nm * 1852.0 + rwy_coord_end_offset));
                     heading_correct = airplane.course_to(rwy_coord_end_final);
                 }
-                heading_correction_deg = airport_select.runways[rwy_select].heading + heading_correct;
-                if (heading_correction_deg > 180) heading_correction_deg = heading_correction_deg - 360;
-                if (heading_correction_deg < -180) heading_correction_deg = heading_correction_deg + 360;
+                var heading_runway = geo.normdeg180(airport_select.runways[rwy_select].heading);
+                heading_correction_deg = geo.normdeg180(heading_runway - heading_correct);
                 var heading_factor = 2.0;
                 if (math.abs(heading_correction_deg) < 10.0 and math.abs(heading_correction_deg) > 2.0) {
                     heading_factor = 2.0 + 4 * math.abs(heading_correction_deg);
@@ -896,9 +895,7 @@ var pilot_assistant = func {
                 var heading_correction_deg_mod = heading_correction_deg * heading_factor;
                 if (heading_correction_deg_mod > 40.0) heading_correction_deg_mod = 40;
                 if (heading_correction_deg_mod < -40.0) heading_correction_deg_mod = -40;
-                heading_correct = airport_select.runways[rwy_select].heading - heading_correction_deg_mod;
-                if (heading_correct > 180) heading_correct = heading_correct - 360;
-                if (heading_correct < -180) heading_correct = heading_correct + 360;
+                heading_correct = geo.normdeg180(heading_runway - heading_correction_deg_mod);
                 setprop("fdm/jsbsim/systems/autopilot/gui/airport_runway_airplane_heading_correct",heading_correct);
                 setprop("fdm/jsbsim/systems/autopilot/gui/true-heading-deg",heading_correct);
                 #// Slope target correction
@@ -1128,7 +1125,7 @@ var pilot_assistant = func {
                 if (testing_log_active >= 1 and timeStepSecond == 1) {
                     print(
                          sprintf("Landing %2.1f",pilot_ass_status_id)
-                        ,sprintf(".%1.1f",landing_22_subStatus)
+                        ,sprintf(".%1.0f",landing_22_subStatus)
                         ,sprintf(" Dist: %6.1f",runway_to_airplane_dist_nm_direct_nm)
                         ,sprintf(" %6.2f",runway_to_airplane_dist_nm)
                         ,sprintf(" Der: %2.3f",runway_to_airplane_dist_nm_der)
@@ -1154,8 +1151,8 @@ var pilot_assistant = func {
                         #,sprintf(" %2.3f",min_to_term)
                         ,sprintf(" Hd: %5.1f",heading_correct)
                         ,sprintf(" cr: %5.2f",heading_correction_deg)
-                        #,sprintf(" fct: %2.2f",heading_factor)
-                        #,sprintf(" dgm: %3.2f",heading_correction_deg_mod)
+                        ,sprintf(" fct: %2.1f",heading_factor)
+                        ,sprintf(" Hcdm: %3.2f",heading_correction_deg_mod)
                         #,sprintf(" Dis: %4.1f",distance_to_leave)
                         #,sprintf(" off: %1.2f",rwy_offset_h_nm)
                         #,sprintf(" | %3.1f",rwy_offset_v_ft)

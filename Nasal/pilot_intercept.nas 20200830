@@ -64,8 +64,6 @@ var min_target_dist = 0.1;
 var speed_mph_target = 0.0;
 var speed_mph = 0.0;
 
-var pi2 = math.pi * 0.5;
-
 
 var searchCmd = func() {
     #// The algoritm i described in this link:
@@ -247,49 +245,45 @@ var interception_cnt = func() {
                 setprop("fdm/jsbsim/systems/autopilot/gui/interception-control-active-level",1);
                 var in_range = radar.getNode("in-range").getValue();
                 var speed_mph_target = list[int_id_select].getNode("velocities").getNode("true-airspeed-kt").getValue();
+                var me_airplane_speed_mph = getprop("fdm/jsbsim/systems/autopilot/speed-true-on-air");
+                var speed_dif_mph_target = speed_mph_target - me_airplane_speed_mph;
+                var vertical_speed_best_by_altitude = getprop("fdm/jsbsim/systems/autopilot/vertical-speed-optimize-by-altitude");
+                var vertical_speed = getprop("fdm/jsbsim/systems/autopilot/v-up-fpm-lag");
+                var altitude_selected_ft_dif = getprop("fdm/jsbsim/systems/autopilot/altitude-selected-ft-dif");
+                var speed_min_by_alt = getprop("fdm/jsbsim/systems/autopilot/speed-best-by-altitude");
+                var ramp_max_by_alt_deg = math.atan((vertical_speed_best_by_altitude * 0.01136363333) / speed_min_by_alt) * R2D;
+                var speed_mph_coefficient = getprop("fdm/jsbsim/systems/autopilot/gui/interception-speed-mph-coefficient");
+                var altitude_offset = getprop("fdm/jsbsim/systems/autopilot/gui/interception-altitude-offset");
+                
                 if (in_range and speed_mph_target >= int_cnt_min_speed_mph and speed_mph_target <= int_cnt_max_speed_mph) {
-                    #// Is ok, is possible start the interception phase
-                    #// "airplane" is the pilot's aircraft
-                    var airplane_speed_mph = getprop("fdm/jsbsim/systems/autopilot/speed-true-on-air");
-                    var speed_dif_mph_target = speed_mph_target - airplane_speed_mph;
-                    var vertical_speed_best_by_altitude = getprop("fdm/jsbsim/systems/autopilot/vertical-speed-optimize-by-altitude");
-                    var speed_min_by_alt = getprop("fdm/jsbsim/systems/autopilot/speed-best-by-altitude");
-                    var ramp_max_by_alt_deg = math.atan((vertical_speed_best_by_altitude * 0.01136363333) / speed_min_by_alt) * R2D;
-                    var speed_mph_coefficient = getprop("fdm/jsbsim/systems/autopilot/gui/interception-speed-mph-coefficient");
-                    var altitude_offset = getprop("fdm/jsbsim/systems/autopilot/gui/interception-altitude-offset");
                     var distFromTarget = 0.0;
-                    var orientation = list[int_id_select].getNode("orientation");
-                    var target_true_heading_deg = orientation.getNode("true-heading-deg").getValue();
+                    var callsign = list[int_id_select].getNode("callsign").getValue();
                     var position = list[int_id_select].getNode("position");
+                    var orientation = list[int_id_select].getNode("orientation");
                     var target_h_ft =  position.getNode("altitude-ft").getValue();
-                    target_coord.set_latlon(position.getNode("latitude-deg").getValue(),position.getNode("longitude-deg").getValue(),target_h_ft * 0.3048);
-                    var airplane_course_to_target_deg = airplane.course_to(target_coord);
+                    var target_true_heading_deg = orientation.getNode("true-heading-deg").getValue();
+                    target_coord.set_latlon(position.getNode("latitude-deg").getValue(),position.getNode("longitude-deg").getValue());
+                    var course_to_deg_true = airplane.course_to(target_coord);
                     var target_dist_nm = math.abs(target_dist_adv(math.abs(airplane.direct_distance_to(target_coord) * 0.000621371),20));
                     var ramp_target_by_alt_deg = nil;
-                    var altitude_selected_ft_dif = getprop("fdm/jsbsim/systems/autopilot/altitude-selected-ft-dif");
                     if (target_dist_nm > 0.001) ramp_target_by_alt_deg = math.asin(altitude_selected_ft_dif / (target_dist_nm * 5280.0)) * R2D;
+                    var heading_factor = math.abs(math.atan(target_near_dist_nm)) / (math.pi / 2.0);
                     #// set speed and active_level
-                    #// level = 1 activate the search AI or MP aircraft
-                    #// level = 2 phase of approaching a point behind the target
-                    #// level = 3 target tracking phase
-                    #// level = 4 if the target is exceeded, a remittance phase is performed
                     if (target_near_dist_nm <= -9999.0) target_near_dist_nm = target_dist_nm;
-                    var heading_factor = math.abs(math.atan(target_near_dist_nm)) / pi2;
-                    #// Calculation of the ascent ramp
                     if (ramp_target_by_alt_deg != nil and ramp_max_by_alt_deg < (ramp_target_by_alt_deg * 1.1) and active_level >= 2) active_level = 2;
                     if (ramp_target_by_alt_deg != nil and target_dist_nm > 10.0 and active_level <= 2) {
-                        active_level = 2;
                         speed_mph = 520.0;
+                        active_level = 2;
                         distFromTarget = 8.0 + 2.0 * math.log10(target_near_dist_nm);
                         setprop("fdm/jsbsim/systems/autopilot/gui/true-heading-max-wing-slope-deg",40.0);
-                    } else if (math.abs(geo.normdeg180(airplane_course_to_target_deg)) < 90.0) {
+                    } else if (math.abs(geo.normdeg180(course_to_deg_true)) < 90.0) {
                         active_level = 3;
                         if (target_dist_nm < 5.0) {
                             if (ramp_target_by_alt_deg < ramp_max_by_alt_deg) {
                                 speed_mph = speed_mph_target + speed_mph_coefficient * target_dist_nm;
                                 speed_min_by_alt = speed_min_by_alt * 0.7 * (1 + (ramp_target_by_alt_deg / ramp_max_by_alt_deg));
                                 if (speed_mph < speed_min_by_alt) speed_mph = speed_min_by_alt;
-                                if (airplane_speed_mph > 1.1 * speed_mph) {
+                                if (me_airplane_speed_mph > 1.1 * speed_mph) {
                                     setprop("fdm/jsbsim/systems/autopilot/speed-brake-set-activate",1.0);
                                 }
                             } else {
@@ -309,7 +303,7 @@ var interception_cnt = func() {
                         distFromTarget = target_near_dist_nm - 5.0;
                         if (speed_mph < speed_min_by_alt) speed_mph = speed_min_by_alt;
                     }
-                    target_coord_mod = target_coord.apply_course_distance(target_true_heading_deg, distFromTarget * 1852.0);
+                    target_coord_mod = target_coord.apply_course_distance(target_true_heading_deg, -1.0 * distFromTarget * 1852.0);
                     target_near_dist_nm = target_near_dist_adv(airplane.distance_to(target_coord_mod) * 0.000621371,20);
                     var course_to_deg = airplane.course_to(target_coord_mod);
                     course_to_deg_avd = course_to_deg_adv(course_to_deg,20);
@@ -355,10 +349,11 @@ var interception_cnt = func() {
                         sprintf(" target dist: %3.1f",target_dist_nm),
                         sprintf(" near nm: %3.1f",target_near_dist_nm),
                         sprintf(" distFromTarget: %3.1f",distFromTarget),
-                        sprintf(" course to T: %3.1f",airplane_course_to_target_deg),
+                        sprintf(" course to T: %3.1f",course_to_deg_true),
                         sprintf(" heading fc: %2.1f",heading_factor),
                         sprintf(" dif deg: %3.1f",dif_course_deg),
                         sprintf(" VS by Alt: %4.0f",vertical_speed_best_by_altitude),
+                        sprintf(" VS: %4.0f",vertical_speed),
                         sprintf(" Speed: %3.1f",speed_mph),
                         sprintf(" dif: %3.1f",speed_dif_mph_target),
                         sprintf(" min: %3.1f",speed_min_by_alt),
