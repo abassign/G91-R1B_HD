@@ -18,8 +18,9 @@ var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/interception
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/interception-id-mod",0,"INT");
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/interception-callsign-select","","STRING");
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/interception-callsign-mod",0,"INT");
-var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/interception-speed-mph-coefficient",12.0,"DOUBLE");
-var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/interception-altitude-offset",500.0,"DOUBLE");
+var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/interception-speed-mph-coefficient",32.0,"DOUBLE");
+var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/interception-altitude-offset",200.0,"DOUBLE");
+var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/interception-target-min-dist",0.1,"DOUBLE");
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/interception-target-dist-nm",0,"DOUBLE");
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/interception-target-speed-mph",0,"DOUBLE");
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/interception-target-speed-dif-mph",0,"DOUBLE");
@@ -34,15 +35,13 @@ var timeStepDivisor = 1.0;
 var delta_time = 1.0;
 var timeStepSecond = 0;
 
-var target_dist_adv_vector = std.Vector.new([]);
-var target_dist_adv_acc = 0.0;
 var target_near_dist_nm = -9999.0;
 var target_near_dist_adv_vector = std.Vector.new([]);
 var target_near_dist_adv_acc = 0.0;
 var course_to_deg = 0.0;
 var course_to_deg_adv_vector = std.Vector.new([]);
 var course_to_deg_adv_acc = 0.0;
-var dif_course_deg = 0.0;
+var dif_course_deg = nil;
 
 var int_cnt_active = 0;
 var active_level = 0;
@@ -61,7 +60,7 @@ var target_coord_mod = geo.Coord.new();
 var airplane = nil;
 
 var min_target_dist = 0.1;
-var speed_mph_target = 0.0;
+var target_speed_mph = 0.0;
 var speed_mph = 0.0;
 
 var pi2 = math.pi * 0.5;
@@ -91,11 +90,9 @@ var searchCmd = func() {
         var nearest_id = -1;
         var nearest_nm = 999.0;
         
-        target_dist_adv_vector = std.Vector.new([]);
-        target_dist_adv_acc = 0.0;
         target_near_dist_adv_vector = std.Vector.new([]);
         target_near_dist_adv_acc = 0.0;
-        dif_course_deg = 0.0;
+        dif_course_deg = nil;
         target_near_dist_nm = -9999.0;
         if (type_ai_mp == 0) {
             print("----[ AI ",total," ]----");
@@ -131,10 +128,20 @@ var searchCmd = func() {
                     sprintf(" T dir deg: %3.1f",target_true_heading_deg),
                     sprintf(" C to deg: %3.1f",course_to_deg)
                 );
+                setprop("fdm/jsbsim/systems/autopilot/gui/interception-list/airplanes/value[" ~ i ~ "]",
+                        sprintf("[%3u]",i) ~ " " ~ 
+                        sprintf("%10s",callsign) ~ " " ~ 
+                        sprintf("Dist %3.1f",target_dist_nm) ~ " " ~
+                        sprintf("T h %5.0f",target_h_ft) ~ " " ~
+                        sprintf("T H %3.1f",target_true_heading_deg) ~ " " ~
+                        sprintf("To T %3.1f",course_to_deg)
+                       );
             }
         }
+        gui.dialog_update("militar-pilot-assistant");
     } else {
         int_id_select = -1;
+        gui.dialog_update("militar-pilot-assistant");
     }
 }
 
@@ -186,19 +193,6 @@ var getCallsign = func(anId) {
 }
 
 
-var target_dist_adv = func(distance, size) {
-    
-    var distance_dif = distance;
-    target_dist_adv_vector.insert(-1,distance);
-    while (target_dist_adv_vector.size() > size) {
-        distance_dif = distance_dif - target_dist_adv_vector.pop(0);
-    }
-    target_dist_adv_acc = target_dist_adv_acc + distance_dif;
-    return target_dist_adv_acc / target_dist_adv_vector.size();
-    
-}
-
-
 var target_near_dist_adv = func(distance, size) {
     
     var distance_dif = distance;
@@ -244,76 +238,90 @@ var interception_cnt = func() {
         if (list != nil) {
             var radar = list[int_id_select].getNode("radar");
             if (radar != nil) {
+                airplane = geo.aircraft_position();
                 setprop("fdm/jsbsim/systems/autopilot/gui/interception-control-active-level",1);
                 var in_range = radar.getNode("in-range").getValue();
-                var speed_mph_target = list[int_id_select].getNode("velocities").getNode("true-airspeed-kt").getValue();
-                if (in_range and speed_mph_target >= int_cnt_min_speed_mph and speed_mph_target <= int_cnt_max_speed_mph) {
+                var target_speed_mph = list[int_id_select].getNode("velocities").getNode("true-airspeed-kt").getValue();
+                var airplane_speed_mph = getprop("fdm/jsbsim/systems/autopilot/speed-true-on-air");
+                if (in_range and target_speed_mph >= int_cnt_min_speed_mph and target_speed_mph <= int_cnt_max_speed_mph and airplane_speed_mph > 0.1) {
                     #// Is ok, is possible start the interception phase
                     #// "airplane" is the pilot's aircraft
-                    var airplane_speed_mph = getprop("fdm/jsbsim/systems/autopilot/speed-true-on-air");
-                    var speed_dif_mph_target = speed_mph_target - airplane_speed_mph;
+                    var speed_dif_mph_target = target_speed_mph - airplane_speed_mph;
                     var vertical_speed_best_by_altitude = getprop("fdm/jsbsim/systems/autopilot/vertical-speed-optimize-by-altitude");
                     var speed_min_by_alt = getprop("fdm/jsbsim/systems/autopilot/speed-best-by-altitude");
                     var ramp_max_by_alt_deg = math.atan((vertical_speed_best_by_altitude * 0.01136363333) / speed_min_by_alt) * R2D;
                     var speed_mph_coefficient = getprop("fdm/jsbsim/systems/autopilot/gui/interception-speed-mph-coefficient");
                     var altitude_offset = getprop("fdm/jsbsim/systems/autopilot/gui/interception-altitude-offset");
+                    var target_dist_min = getprop("fdm/jsbsim/systems/autopilot/gui/interception-target-min-dist");
                     var distFromTarget = 0.0;
                     var orientation = list[int_id_select].getNode("orientation");
                     var target_true_heading_deg = orientation.getNode("true-heading-deg").getValue();
                     var position = list[int_id_select].getNode("position");
                     var target_h_ft =  position.getNode("altitude-ft").getValue();
                     target_coord.set_latlon(position.getNode("latitude-deg").getValue(),position.getNode("longitude-deg").getValue(),target_h_ft * 0.3048);
-                    var airplane_course_to_target_deg = airplane.course_to(target_coord);
-                    var target_dist_nm = math.abs(target_dist_adv(math.abs(airplane.direct_distance_to(target_coord) * 0.000621371),20));
-                    var ramp_target_by_alt_deg = nil;
+                    var target_dist_nm = airplane.distance_to(target_coord) * 0.000621371;
+                    if (target_dist_nm == nil or (target_dist_nm < 0.001 and target_dist_nm > -0.001)) target_dist_nm = 0.0;
+                    var airplane_course_to_target_deg = geo.normdeg180(airplane.course_to(target_coord));
+                    var target_course_to_future_nm = target_speed_mph * (target_dist_nm / airplane_speed_mph);
                     var altitude_selected_ft_dif = getprop("fdm/jsbsim/systems/autopilot/altitude-selected-ft-dif");
-                    if (target_dist_nm > 0.001) ramp_target_by_alt_deg = math.asin(altitude_selected_ft_dif / (target_dist_nm * 5280.0)) * R2D;
+                    var ramp_target_by_alt_deg = nil;
+                    if (target_dist_nm != 0.0) ramp_target_by_alt_deg = math.atan(altitude_selected_ft_dif / (target_dist_nm * 5280.0)) * R2D;
                     #// set speed and active_level
                     #// level = 1 activate the search AI or MP aircraft
                     #// level = 2 phase of approaching a point behind the target
                     #// level = 3 target tracking phase
                     #// level = 4 if the target is exceeded, a remittance phase is performed
                     if (target_near_dist_nm <= -9999.0) target_near_dist_nm = target_dist_nm;
-                    var heading_factor = math.abs(math.atan(target_near_dist_nm)) / pi2;
+                    var heading_factor = 0.2 + math.abs(math.atan(target_near_dist_nm)) / pi2;
                     #// Calculation of the ascent ramp
-                    if (ramp_target_by_alt_deg != nil and ramp_max_by_alt_deg < (ramp_target_by_alt_deg * 1.1) and active_level >= 2) active_level = 2;
-                    if (ramp_target_by_alt_deg != nil and target_dist_nm > 10.0 and active_level <= 2) {
-                        active_level = 2;
-                        speed_mph = 520.0;
-                        distFromTarget = 8.0 + 2.0 * math.log10(target_near_dist_nm);
-                        setprop("fdm/jsbsim/systems/autopilot/gui/true-heading-max-wing-slope-deg",40.0);
-                    } else if (math.abs(geo.normdeg180(airplane_course_to_target_deg)) < 90.0) {
-                        active_level = 3;
-                        if (target_dist_nm < 5.0) {
-                            if (ramp_target_by_alt_deg < ramp_max_by_alt_deg) {
-                                speed_mph = speed_mph_target + speed_mph_coefficient * target_dist_nm;
-                                speed_min_by_alt = speed_min_by_alt * 0.7 * (1 + (ramp_target_by_alt_deg / ramp_max_by_alt_deg));
-                                if (speed_mph < speed_min_by_alt) speed_mph = speed_min_by_alt;
-                                if (airplane_speed_mph > 1.1 * speed_mph) {
-                                    setprop("fdm/jsbsim/systems/autopilot/speed-brake-set-activate",1.0);
+                    if (ramp_target_by_alt_deg != nil and dif_course_deg != nil) {
+                        ## if (ramp_max_by_alt_deg < (ramp_target_by_alt_deg * 1.1) and active_level >= 2) active_level = 2;
+                        if (target_near_dist_nm > 5.0 and active_level <= 2) {
+                            active_level = 2;
+                            speed_mph = 520.0;
+                            distFromTarget = 8.0 + 2.0 * math.log10(target_near_dist_nm);
+                            setprop("fdm/jsbsim/systems/autopilot/gui/true-heading-max-wing-slope-deg",40.0);
+                        } else if (math.abs(dif_course_deg) < 90.0) {
+                            active_level = 3;
+                            if (target_dist_nm < 5.0) {
+                                setprop("fdm/jsbsim/systems/autopilot/gui/true-heading-max-wing-slope-deg",20.0);
+                                if (ramp_target_by_alt_deg < ramp_max_by_alt_deg) {
+                                    speed_mph = target_speed_mph + speed_mph_coefficient * (target_dist_nm - target_dist_min);
+                                    speed_min_by_alt = speed_min_by_alt * 0.7 * (1 + (ramp_target_by_alt_deg / ramp_max_by_alt_deg));
+                                    if (speed_mph < speed_min_by_alt) speed_mph = speed_min_by_alt;
+                                    if (airplane_speed_mph > 1.1 * speed_mph) {
+                                        setprop("fdm/jsbsim/systems/autopilot/speed-brake-set-activate",1.0);
+                                    }
+                                } else {
+                                    if (target_speed_mph < speed_min_by_alt) {
+                                        speed_mph = speed_min_by_alt;
+                                    } else {
+                                        speed_mph = target_speed_mph + speed_mph_coefficient * (target_dist_nm - target_dist_min);
+                                    }
                                 }
                             } else {
-                                if (speed_mph_target < speed_min_by_alt) {
-                                    speed_mph = speed_min_by_alt;
-                                } else {
-                                    speed_mph = speed_mph_target;
-                                }
+                                setprop("fdm/jsbsim/systems/autopilot/gui/true-heading-max-wing-slope-deg",40.0);
+                                speed_mph = 520.0;
                             }
+                            distFromTarget = target_near_dist_nm - 5.0;
                         } else {
-                            speed_mph = 520.0;
+                            active_level = 4;
+                            speed_mph = target_speed_mph - speed_mph_coefficient * 2.0 * target_dist_nm;
+                            distFromTarget = target_near_dist_nm - 5.0;
+                            if (speed_mph < speed_min_by_alt) {
+                                active_level = 2;
+                            }
                         }
-                        distFromTarget = target_near_dist_nm - 5.0;
-                    } else {
-                        active_level = 4;
-                        speed_mph = speed_mph_target - speed_mph_coefficient * 2.0 * target_dist_nm;
-                        distFromTarget = target_near_dist_nm - 5.0;
-                        if (speed_mph < speed_min_by_alt) speed_mph = speed_min_by_alt;
                     }
-                    target_coord_mod = target_coord.apply_course_distance(target_true_heading_deg, distFromTarget * 1852.0);
+                    if (active_level <= 2) {
+                        target_coord_mod = target_coord.apply_course_distance(target_true_heading_deg, (-distFromTarget + target_course_to_future_nm) * 1852.0);
+                    } else {
+                        target_coord_mod = target_coord.apply_course_distance(target_true_heading_deg, 0.0);
+                    }
                     target_near_dist_nm = target_near_dist_adv(airplane.distance_to(target_coord_mod) * 0.000621371,20);
                     var course_to_deg = airplane.course_to(target_coord_mod);
                     course_to_deg_avd = course_to_deg_adv(course_to_deg,20);
-                    dif_course_deg = geo.normdeg180(target_true_heading_deg - course_to_deg_avd);
+                    dif_course_deg = geo.normdeg180(target_true_heading_deg - airplane_course_to_target_deg);
 
                     if (active_level > 2) {
                         var max_wing_slope = 10.0 * (1 + math.ln(1.0 + math.abs(dif_course_deg)));
@@ -355,6 +363,7 @@ var interception_cnt = func() {
                         sprintf(" target dist: %3.1f",target_dist_nm),
                         sprintf(" near nm: %3.1f",target_near_dist_nm),
                         sprintf(" distFromTarget: %3.1f",distFromTarget),
+                        sprintf(" T coursem fut: %3.0f", target_course_to_future_nm),
                         sprintf(" course to T: %3.1f",airplane_course_to_target_deg),
                         sprintf(" heading fc: %2.1f",heading_factor),
                         sprintf(" dif deg: %3.1f",dif_course_deg),
@@ -374,7 +383,7 @@ var interception_cnt = func() {
                     setprop("fdm/jsbsim/systems/autopilot/gui/speed-value",speed_mph);
                     setprop("fdm/jsbsim/systems/autopilot/gui/interception-control-active-level",active_level);
                     setprop("fdm/jsbsim/systems/autopilot/interception-target-dist-nm",target_dist_nm);
-                    setprop("fdm/jsbsim/systems/autopilot/interception-target-speed-mph",speed_mph_target);
+                    setprop("fdm/jsbsim/systems/autopilot/interception-target-speed-mph",target_speed_mph);
                     setprop("fdm/jsbsim/systems/autopilot/interception-target-speed-dif-mph",speed_dif_mph_target);
                     setprop("fdm/jsbsim/systems/autopilot/interception-true-heading-deg",target_true_heading_deg);
                     
@@ -595,7 +604,7 @@ var pilot_imp_control = func() {
         setprop("fdm/jsbsim/systems/autopilot/gui/interception-reset",1);
     }
     
-    active_level = getprop("fdm/jsbsim/systems/autopilot/gui/interception-control-active-level");
+    ## active_level = getprop("fdm/jsbsim/systems/autopilot/gui/interception-control-active-level");
     if (active_level == 0 or active_level == 1) {
         timeStepDivisor = 1;
     } else {

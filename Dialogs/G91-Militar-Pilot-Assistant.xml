@@ -2,7 +2,7 @@
 
 <PropertyList>
     
-    <name>Militar-Pilot-Assistant</name>
+    <name>militar-pilot-assistant</name>
     <layout>vbox</layout>
     <default-padding>8</default-padding>
     <modal>false</modal>
@@ -49,7 +49,7 @@
             <halign>center</halign>
             <property>fdm/jsbsim/systems/autopilot/gui/interception-speed-mph-coefficient</property>
             <min>2</min>
-            <max>16</max>
+            <max>32</max>
             <step>1</step>
             <live>true</live>
             <binding>
@@ -85,9 +85,9 @@
     
     <group>
         <layout>hbox</layout>
-        
         <group>
             <layout>table</layout>
+            
             <button>
                 <row>0</row>
                 <col>0</col>
@@ -103,28 +103,6 @@
                     <property>fdm/jsbsim/systems/autopilot/gui/interception-control-mod</property>
                     <value>1</value>
                 </binding>
-                
-                
-                <!--
-                <binding>
-                    <command>nasal</command>
-                    <script>
-                        <![CDATA[
-                            var targets_scan = {};
-                            a = "alpha";
-                            b = "beta";
-                            targets_scan[a] = [1,2];
-                            var c = targets_scan[a];
-                            debug.dump(targets_scan);
-                            debug.dump(c);
-                            foreach (var hash_key ; keys(targets_scan)) {
-                                data = targets_scan[hash_key];
-                                debug.dump(data);
-                            }
-                        ]]>
-                    </script>
-                </binding>
-                -->
             </button>
             <text>
                 <row>0</row>
@@ -156,6 +134,42 @@
             <text>
                 <row>0</row>
                 <col>3</col>
+                <label>Direct id:</label>
+                <halign>left</halign>
+            </text>
+            <combo>
+                <row>0</row>
+                <col>4</col>
+                <pref-width>500</pref-width>
+                <halign>left</halign>
+                <name>airplane-selector</name>
+                <property>fdm/jsbsim/systems/autopilot/gui/interception-list/airplane</property>
+                <editable>false</editable>
+                <properties>fdm/jsbsim/systems/autopilot/gui/interception-list/airplanes</properties>
+                <binding>
+                    <command>dialog-apply</command>
+                    <object-name>airplane-selector</object-name>
+                </binding>
+                <binding>
+                    <command>nasal</command>
+                    <script>
+                        setprop("fdm/jsbsim/systems/autopilot/gui/interception-list/rw_select",1);
+                    </script>
+                </binding>
+            </combo>
+        </group>
+    </group>
+    
+    <hrule/>
+    
+    <group>
+        <layout>hbox</layout>
+        
+        <group>
+            <layout>table</layout>
+            <text>
+                <row>0</row>
+                <col>0</col>
                 <label>Id</label>
                 <color>
                     <red>0.8</red>
@@ -165,7 +179,7 @@
             </text>
             <input>
                 <row>0</row>
-                <col>4</col>
+                <col>1</col>
                 <pref-width>40</pref-width>
                 <property>fdm/jsbsim/systems/autopilot/gui/interception-id-select</property>
                 <live>true</live>
@@ -180,7 +194,7 @@
             </input>
             <text>
                 <row>0</row>
-                <col>5</col>
+                <col>2</col>
                 <label>Callsign</label>
                 <color>
                     <red>0.8</red>
@@ -190,8 +204,8 @@
             </text>
             <input>
                 <row>0</row>
-                <col>6</col>
-                <pref-width>100</pref-width>
+                <col>3</col>
+                <pref-width>130</pref-width>
                 <property>fdm/jsbsim/systems/autopilot/gui/interception-callsign-select</property>
                 <live>true</live>
                 <binding>
@@ -205,7 +219,7 @@
             </input>
             <text>
                 <row>0</row>
-                <col>7</col>
+                <col>4</col>
                 <label>Dist nm</label>
                 <color>
                     <red>0.8</red>
@@ -215,7 +229,7 @@
             </text>
             <text>
                 <row>0</row>
-                <col>8</col>
+                <col>5</col>
                 <label>99999</label>
                 <halign>left</halign>
                 <live>true</live>
@@ -229,7 +243,7 @@
             </text>
                 <text>
                 <row>0</row>
-                <col>9</col>
+                <col>6</col>
                 <label>Target speed (mph)</label>
                 <color>
                     <red>0.8</red>
@@ -239,7 +253,7 @@
             </text>
             <text>
                 <row>0</row>
-                <col>10</col>
+                <col>7</col>
                 <label>99999</label>
                 <halign>left</halign>
                 <live>true</live>
@@ -253,7 +267,7 @@
             </text>
             <text>
                 <row>0</row>
-                <col>11</col>
+                <col>8</col>
                 <label>99999</label>
                 <halign>left</halign>
                 <live>true</live>
@@ -267,8 +281,8 @@
             </text>
             <text>
                 <row>0</row>
-                <col>12</col>
-                <label>Target h (ft)</label>
+                <col>9</col>
+                <label>Target dh</label>
                 <color>
                     <red>0.8</red>
                     <green>0.8</green>
@@ -277,16 +291,40 @@
             </text>
             <text>
                 <row>0</row>
-                <col>13</col>
+                <col>10</col>
                 <label>99999</label>
                 <halign>left</halign>
                 <live>true</live>
                 <format>%5.0f</format>
                 <property>fdm/jsbsim/systems/autopilot/altitude-selected-ft-dif</property>
                 <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.0</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>11</col>
+                <label>h (ft)</label>
+                <color>
                     <red>0.8</red>
                     <green>0.8</green>
                     <blue>0.8</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>12</col>
+                <label>99999</label>
+                <halign>left</halign>
+                <live>true</live>
+                <format>%5.0f</format>
+                <property>fdm/jsbsim/systems/autopilot/gui/altitude-hold-ft</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.0</blue>
                 </color>
             </text>
         </group>
