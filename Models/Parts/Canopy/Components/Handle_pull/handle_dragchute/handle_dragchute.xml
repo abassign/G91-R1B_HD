@@ -10,6 +10,11 @@
         <z-m>0.0</z-m>
         <roll-deg>-20.0</roll-deg>
     </offsets>
+    
+    <effect>
+        <inherits-from>handle_dragchute</inherits-from>
+        <object-name>handle_cockpit03.001</object-name>
+    </effect>
 
     <animation>
         <type>noshadow</type>

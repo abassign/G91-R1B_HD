@@ -2,6 +2,7 @@
 <PropertyList>
     <name>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Components/Handle_pull/handle_dragchute/handle_dragchute</name>
     <inherits-from>Effects/model-combined-deferred</inherits-from>
+    
     <parameters>
         <normalmap-enabled type="int">1</normalmap-enabled>
         <normalmap-dds type="int">0</normalmap-dds>
@@ -13,6 +14,7 @@
             <internal-format>normalized</internal-format>
         </texture>   
     </parameters>
+    
     <generate>
         <tangent type="int">6</tangent>
         <binormal type="int">7</binormal>
