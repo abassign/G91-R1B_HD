@@ -575,6 +575,7 @@ var livery_multiplayer = maketimer(1, func() {
         num_players = getprop("ai/models/num-players");
         if (num_players != nil) {
             if (num_players > 0) {
+                setprop("sim/aircraft-is-singleplayer",0);
                 var insert_targets_module_id = 0;
                 if (target_module_id == -1) {
                     #// Is and update target_module_id
@@ -611,6 +612,8 @@ var livery_multiplayer = maketimer(1, func() {
                     targets_module_id[target_module_id]["normalmap-enabled"] = node.getNode("sim/G91/liveries/active/normalmap-enabled").getValue();
                     getActiveData(target_module_id);
                 }
+            } else {
+                setprop("sim/aircraft-is-singleplayer",1);
             }
         }
         setprop("sim/G91/liveries/active/set-target-module-id",-1);
@@ -622,6 +625,12 @@ var livery_multiplayer = maketimer(1, func() {
         delete(targets_path,del_target_module_id);
         print("set_livery.nas livery_multiplayer timer delete target_module_id: ",del_target_module_id," targets_module_id dim: ",size(targets_module_id));
         setprop("sim/G91/liveries/active/del-target-module-id",-1);
+        num_players = getprop("ai/models/num-players");
+        if (num_players > 0) {
+            setprop("sim/aircraft-is-singleplayer",0);
+        } else {
+            setprop("sim/aircraft-is-singleplayer",1);
+        }
     }
 });
 livery_multiplayer.start();

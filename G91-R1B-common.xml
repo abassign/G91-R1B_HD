@@ -27,9 +27,8 @@
         <!-- echo 'G91R1B-00.5' | md5sum = 'a2525c6b69ba6d4a4151e819084276a4' frist 6 char: a2525c -> to integer printf "%d" 0xa2525c -->
         <aircraft-id-version>10637916</aircraft-id-version>
         <!-- Parameter necessary to define the full configuration in Single player mode -->
-        <!--
+
         <aircraft-is-singleplayer type="bool">true</aircraft-is-singleplayer>
-        -->
         
         <sound>
             <audible>true</audible>
