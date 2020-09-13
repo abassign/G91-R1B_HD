@@ -255,7 +255,7 @@ http://wiki.flightgear.org/Howto:Adding_a_canvas_to_a_GUI_dialog
                 <legend>Dirty on/off</legend>
                 <binding>
                     <command>property-toggle</command>
-                    <property>sim/G91/liveries/active/dirty_set</property>
+                    <property>sim/G91/liveries/active/dirty-set</property>
                 </binding>
                 <binding>
                     <command>dialog-apply</command>
@@ -271,7 +271,7 @@ http://wiki.flightgear.org/Howto:Adding_a_canvas_to_a_GUI_dialog
                     <green>0.9</green>
                     <blue>0.9</blue>
                 </color>
-                <property>sim/G91/liveries/active/dirtyMsg</property>
+                <property>sim/G91/liveries/active/dirty-Msg</property>
             </text>
             <text>
                 <row>3</row>
@@ -285,7 +285,7 @@ http://wiki.flightgear.org/Howto:Adding_a_canvas_to_a_GUI_dialog
                 <legend>Normal map</legend>
                 <binding>
                     <command>property-toggle</command>
-                    <property>sim/G91/liveries/active/normalmap_enabled</property>
+                    <property>sim/G91/liveries/active/normalmap-enabled</property>
                 </binding>
                 <binding>
                     <command>dialog-apply</command>
@@ -301,7 +301,7 @@ http://wiki.flightgear.org/Howto:Adding_a_canvas_to_a_GUI_dialog
                     <green>0.9</green>
                     <blue>0.9</blue>
                 </color>
-                <property>sim/G91/liveries/active/normalmap_enabled_Msg</property>
+                <property>sim/G91/liveries/active/normalmap-enabled-Msg</property>
             </text>
             
         </group>
@@ -343,7 +343,7 @@ http://wiki.flightgear.org/Howto:Adding_a_canvas_to_a_GUI_dialog
                 <row>0</row>
                 <col>3</col>
                 <width>100</width>
-                <property>sim/G91/liveries/active/next-resolution</property>
+                <property>sim/G91/liveries/active/resolution-set</property>
                 <min>1</min>
                 <max>4</max>
                 <step>1</step>  
@@ -353,7 +353,7 @@ http://wiki.flightgear.org/Howto:Adding_a_canvas_to_a_GUI_dialog
                 <binding>
                     <command>nasal</command>
                     <script>
-                        var resolutionSet = getprop("sim/G91/liveries/active/next-resolution");
+                        var resolutionSet = getprop("sim/G91/liveries/active/resolution-set");
                         var resolution = 0;
                         if (resolutionSet == 1) {
                             resolution = 512;
@@ -364,7 +364,7 @@ http://wiki.flightgear.org/Howto:Adding_a_canvas_to_a_GUI_dialog
                         } else if (resolutionSet == 4) {
                             resolution = 4096;
                         }
-                        setprop("sim/G91/liveries/active/next-resolution-pixel",resolution);
+                        setprop("sim/G91/liveries/active/resolution-set-pixel",resolution);
                     </script>
                 </binding>
             </slider>
@@ -380,7 +380,7 @@ http://wiki.flightgear.org/Howto:Adding_a_canvas_to_a_GUI_dialog
                     <green>0.8</green>
                     <blue>0.0</blue>
                 </color>
-                <property>sim/G91/liveries/active/next-resolution-pixel</property>
+                <property>sim/G91/liveries/active/resolution-set-pixel</property>
             </text>
         </group>
     </group>

@@ -26,15 +26,19 @@ G91_Params.xml
     
     <liveries>
         
+        <active>
+            <id userarchive="y" type="int">1</id>
+            <resolution-set userarchive="y" type="int">2</resolution-set>
+            <resolution-set-pixel userarchive="y" type="int">1024</resolution-set-pixel>
+            <dirty-set userarchive="y" type="int">0</dirty-set>
+            <dirty-Msg userarchive="y" type="string">Dirty inactive</dirty-Msg>
+            <normalmap-enabled userarchive="y" type="int">0</normalmap-enabled>
+            <normalmap-enabled-Msg userarchive="y" type="string">No normal map</normalmap-enabled-Msg>
+        </active>
+        
         <!-- For correct identification ref:
             http://www.forgottenjets.warbirdsresourcegroup.org/G-91.html
         -->
-        
-        <active>
-            <id userarchive="y" type="int">1</id>
-            <next-resolution userarchive="y" type="int">2</next-resolution>
-            <next-resolution-pixel userarchive="y" type="int">2</next-resolution-pixel>
-        </active>
 
         <livery n="1">
             <reloads type="float">0.0</reloads>

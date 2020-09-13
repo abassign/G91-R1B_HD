@@ -12,14 +12,13 @@
     <nasal>
         <load><![CDATA[
             
-            setprop("sim/G91/liveries/active/isMultiPlayer",1);
-            setprop("sim/is_multiplayer",1);
-            
             var aModuleId = _module_id;
-            setprop("sim/G91/liveries/active/target_module_id",aModuleId);
-            print("**** _module_id: ",aModuleId);
+            setprop("sim/G91/liveries/active/set-target-module-id",aModuleId);
+            setprop("sim/G91/liveries/active/set-target-path",cmdarg().getPath());
+            print("***** G91-R1B in multiplayer the value sim/G91/liveries/active/target_module_id: ",aModuleId, " path: ",cmdarg().getPath());
             
             var rplayer = cmdarg();
+            print("***** cmdarg: ",cmdarg().getPath(), " has been changed to ", cmdarg().getValue());
             rplayer.getNode("sim/G91/liveries/active/id", 1).alias(rplayer.getNode("sim/multiplay/generic/int[0]"));
             rplayer.getNode("sim/G91/liveries/active/version", 1).alias(rplayer.getNode("sim/multiplay/generic/int[1]"));
             rplayer.getNode("sim/G91/liveries/active/PANR1", 1).alias(rplayer.getNode("sim/multiplay/generic/int[2]"));
@@ -41,14 +40,17 @@
                 globals.io.load_nasal(path, module);
             };
             
-            import("Aircraft/G91-R1B_HD/Nasal/set_livery.nas","set_livery");
-            set_livery.set_MP_ModuleId(aModuleId);
-            set_livery.getActiveData();
+            var set_livery_loaded = getprop("sim/G91/liveries/active/set-livery-loaded");
+            if (set_livery_loaded == nil or set_livery_loaded == 0) {
+                setprop("sim/G91/liveries/active/set-livery-loaded",1);
+                import("Aircraft/G91-R1B_HD/Nasal/set_livery.nas","set_livery");
+            }
             
         ]]></load>
         <unload><![CDATA[
             var aModuleId = _module_id;
-            print("**** Unload aModuleId: ",aModuleId);
+            setprop("sim/G91/liveries/active/del-target-module-id",aModuleId);
+            print("***** G91-R1B remove from multiplayer the value sim/G91/liveries/active/target_module_id: ",aModuleId);
         ]]></unload>
     </nasal>
     

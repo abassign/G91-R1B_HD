@@ -27,7 +27,9 @@
         <!-- echo 'G91R1B-00.5' | md5sum = 'a2525c6b69ba6d4a4151e819084276a4' frist 6 char: a2525c -> to integer printf "%d" 0xa2525c -->
         <aircraft-id-version>10637916</aircraft-id-version>
         <!-- Parameter necessary to define the full configuration in Single player mode -->
+        <!--
         <aircraft-is-singleplayer type="bool">true</aircraft-is-singleplayer>
+        -->
         
         <sound>
             <audible>true</audible>
@@ -36,8 +38,12 @@
         
         <aircraft-data>
             <path>sim/G91/liveries/active/id</path>
-            <path>sim/G91/liveries/active/next-resolution</path>
-            <path>sim/G91/liveries/active/next-resolution-pixel</path>
+            <path>sim/G91/liveries/active/resolution-set</path>
+            <path>sim/G91/liveries/active/resolution-set-pixel</path>
+            <path>sim/G91/liveries/active/normalmap-enabled</path>
+            <path>sim/G91/liveries/active/normalmap-enabled-Msg</path>
+            <path>sim/G91/liveries/active/dirty-set</path>
+            <path>sim/G91/liveries/active/dirty-Msg</path>
         </aircraft-data>
         
         <submodels>

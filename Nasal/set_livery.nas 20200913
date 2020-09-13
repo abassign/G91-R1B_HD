@@ -17,7 +17,7 @@ var inExecution = 0;
 var isMultiPlayer = 0;
 var isMultiPlayerPrec = -1;
 
-var num_players = 0;
+var multiplayerList = nil;
 var multiplayerListDim = 0;
 
 var target_module_id = nil;
@@ -572,43 +572,43 @@ setlistener("sim/G91/liveries/active/normalmap-enabled", func() {
 var livery_multiplayer = maketimer(1, func() {
     target_module_id = getprop("sim/G91/liveries/active/set-target-module-id");
     if ((target_module_id != nil and isint(target_module_id)) or (target_module_id != nil and target_module_id == -1)) {
-        num_players = getprop("ai/models/num-players");
-        if (num_players != nil) {
-            if (num_players > 0) {
+        var pathMultiplayer = nil;
+        multiplayerList = props.globals.getNode("/ai/models/").getChildren("multiplayer");
+        if (multiplayerList != nil) {
+            var multiplayerListDim = size(multiplayerList);
+            if (multiplayerListDim > 0) {
                 var insert_targets_module_id = 0;
                 if (target_module_id == -1) {
                     #// Is and update target_module_id
                     foreach(var tmId; keys(targets_module_id)) {
                         var id = targets_module_id[tmId]["id"];
-                        var node = props.globals.getNode(targets_path[tmId]);
-                        var idNew = node.getNode("sim/G91/liveries/active/id").getValue();
+                        var idNew = multiplayerList[tmId].getNode("sim/G91/liveries/active/id").getValue();
                         if (id != idNew) {
-                            print("set_livery.nas livery_multiplayer timer update id: ",idNew, " is different old id: ",id, " list dim: ",num_players);
+                            print("set_livery.nas livery_multiplayer timer update id: ",idNew, " is different old id: ",id, " list dim: ",multiplayerListDim);
                             target_module_id = tmId;
                             insert_targets_module_id = 1;
                         }    
                     }
                 } elsif (target_module_id >= 0) {
-                    targets_path[target_module_id] = getprop("sim/G91/liveries/active/set-target-path");
+                    pathMultiplayer = getprop("sim/G91/liveries/active/set-target-path");
                     insert_targets_module_id = 1;
-                    print("set_livery.nas livery_multiplayer timer insert new target_module_id: ",target_module_id, " list dim: ",num_players);
+                    print("set_livery.nas livery_multiplayer timer insert new target_module_id: ",target_module_id, " list dim: ",multiplayerListDim);
                 }
                 if (insert_targets_module_id == 1 and target_module_id >= 0) {
                     print("set_livery.nas livery_multiplayer timer insert data in targets_module_id with target_module_id: ",target_module_id);
-                    var node = props.globals.getNode(targets_path[target_module_id]);
                     targets_module_id[target_module_id] = {};
                     targets_module_id[target_module_id]["target_module_id"] = target_module_id;
-                    targets_module_id[target_module_id]["id"] = node.getNode("sim/G91/liveries/active/id").getValue();
-                    targets_module_id[target_module_id]["PANR1"] = node.getNode("sim/G91/liveries/active/PANR1").getValue();
-                    targets_module_id[target_module_id]["version"] = node.getNode("sim/G91/liveries/active/version").getValue();
-                    targets_module_id[target_module_id]["livery_001"] = node.getNode("sim/G91/liveries/active/livery_001").getValue();
-                    targets_module_id[target_module_id]["livery_002"] = node.getNode("sim/G91/liveries/active/livery_002").getValue();
-                    targets_module_id[target_module_id]["dirty_001"] = node.getNode("sim/G91/liveries/active/dirty_001").getValue();
-                    targets_module_id[target_module_id]["dirty_002"] = node.getNode("sim/G91/liveries/active/dirty_002").getValue();
-                    targets_module_id[target_module_id]["diffuse"] = node.getNode("sim/G91/liveries/active/diffuse").getValue();
-                    targets_module_id[target_module_id]["specular"] = node.getNode("sim/G91/liveries/active/specular").getValue();
-                    targets_module_id[target_module_id]["dirty_set"] = node.getNode("sim/G91/liveries/active/dirty_set").getValue();
-                    targets_module_id[target_module_id]["normalmap-enabled"] = node.getNode("sim/G91/liveries/active/normalmap-enabled").getValue();
+                    targets_module_id[target_module_id]["id"] = multiplayerList[target_module_id].getNode("sim/G91/liveries/active/id").getValue();
+                    targets_module_id[target_module_id]["PANR1"] = multiplayerList[target_module_id].getNode("sim/G91/liveries/active/PANR1").getValue();
+                    targets_module_id[target_module_id]["version"] = multiplayerList[target_module_id].getNode("sim/G91/liveries/active/version").getValue();
+                    targets_module_id[target_module_id]["livery_001"] = multiplayerList[target_module_id].getNode("sim/G91/liveries/active/livery_001").getValue();
+                    targets_module_id[target_module_id]["livery_002"] = multiplayerList[target_module_id].getNode("sim/G91/liveries/active/livery_002").getValue();
+                    targets_module_id[target_module_id]["dirty_001"] = multiplayerList[target_module_id].getNode("sim/G91/liveries/active/dirty_001").getValue();
+                    targets_module_id[target_module_id]["dirty_002"] = multiplayerList[target_module_id].getNode("sim/G91/liveries/active/dirty_002").getValue();
+                    targets_module_id[target_module_id]["diffuse"] = multiplayerList[target_module_id].getNode("sim/G91/liveries/active/diffuse").getValue();
+                    targets_module_id[target_module_id]["specular"] = multiplayerList[target_module_id].getNode("sim/G91/liveries/active/specular").getValue();
+                    targets_module_id[target_module_id]["dirty_set"] = multiplayerList[target_module_id].getNode("sim/G91/liveries/active/dirty_set").getValue();
+                    targets_module_id[target_module_id]["normalmap-enabled"] = multiplayerList[target_module_id].getNode("sim/G91/liveries/active/normalmap-enabled").getValue();
                     getActiveData(target_module_id);
                 }
             }
@@ -617,10 +617,12 @@ var livery_multiplayer = maketimer(1, func() {
     }
     var del_target_module_id = getprop("sim/G91/liveries/active/del-target-module-id");
     if (del_target_module_id != nil and isint(del_target_module_id) and del_target_module_id >= 0) {
-        target_module_id = nil;
-        delete(targets_module_id, del_target_module_id);
-        delete(targets_path,del_target_module_id);
-        print("set_livery.nas livery_multiplayer timer delete target_module_id: ",del_target_module_id," targets_module_id dim: ",size(targets_module_id));
+        var multiplayerListDim = size(multiplayerList);
+        if (multiplayerListDim > 0) {
+            target_module_id = nil;
+            delete(targets_module_id, del_target_module_id);
+            print("set_livery.nas livery_multiplayer timer delete target_module_id: ",del_target_module_id," targets_module_id dim: ",size(targets_module_id)," list dim: ",multiplayerListDim);
+        }
         setprop("sim/G91/liveries/active/del-target-module-id",-1);
     }
 });
