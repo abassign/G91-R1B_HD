@@ -60,9 +60,11 @@
 
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Cockpit.xml</path>
+        <!--
         <condition>
             <property>sim/aircraft-is-singleplayer</property>
         </condition>
+        -->
     </model>
 
     <model>
