@@ -1940,6 +1940,19 @@
         </offsets>
     </model>
     
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Wing/Components/Anticollision_light/under_anticollision_light.xml</path>
+        <name>under-anticollision-light</name>
+        <offsets>
+            <x-m>-0.28</x-m>
+            <y-m>0.0</y-m>
+            <z-m>-1.087</z-m>
+            <pitch-deg>-2.0</pitch-deg>
+            <roll-deg>0.0</roll-deg>
+            <heading-deg>0.0</heading-deg>
+        </offsets>
+    </model>
+    
     <!-- Gauges -->
     
     <model>

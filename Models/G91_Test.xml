@@ -12,7 +12,7 @@
     <nasal>
         <load><![CDATA[
             
-            var aModuleId = _module_id;
+            var aModuleId = 1 + _module_id;
             setprop("sim/G91/liveries/active/set-target-module-id",aModuleId);
             setprop("sim/G91/liveries/active/set-target-path",cmdarg().getPath());
             print("***** G91-R1B in multiplayer the value sim/G91/liveries/active/target_module_id: ",aModuleId, " path: ",cmdarg().getPath());
@@ -29,14 +29,17 @@
             rplayer.getNode("sim/G91/liveries/active/dirty_001", 1).alias(rplayer.getNode("sim/multiplay/generic/string[2]"));
             rplayer.getNode("sim/G91/liveries/active/dirty_002", 1).alias(rplayer.getNode("sim/multiplay/generic/string[3]"));
             rplayer.getNode("sim/G91/liveries/active/anti_reflective", 1).alias(rplayer.getNode("sim/multiplay/generic/string[4]"));
+            rplayer.getNode("sim/G91/liveries/active/number_file", 1).alias(rplayer.getNode("sim/multiplay/generic/string[5]"));
             rplayer.getNode("sim/G91/liveries/active/diffuse", 1).alias(rplayer.getNode("sim/multiplay/generic/float[20]"));
             rplayer.getNode("sim/G91/liveries/active/specular", 1).alias(rplayer.getNode("sim/multiplay/generic/float[21]"));
+            rplayer.getNode("sim/G91/liveries/active/number_x", 1).alias(rplayer.getNode("sim/multiplay/generic/float[22]"));
+            rplayer.getNode("sim/G91/liveries/active/number_y", 1).alias(rplayer.getNode("sim/multiplay/generic/float[23]"));
             
             var import = func (file, module) {
                 file = string.normpath(file);
                 var local_file = globals.io.dirname(caller()[2]) ~ file;
                 var path = (globals.io.stat(local_file) != nil) ? local_file : resolvepath(file);
-                print("Is multiplayer | path: ",path);
+                print("***** Is multiplayer | path: ",path);
                 globals.io.load_nasal(path, module);
             };
             
@@ -48,7 +51,7 @@
             
         ]]></load>
         <unload><![CDATA[
-            var aModuleId = _module_id;
+            var aModuleId = 1 + _module_id;
             setprop("sim/G91/liveries/active/del-target-module-id",aModuleId);
             print("***** G91-R1B remove from multiplayer the value sim/G91/liveries/active/target_module_id: ",aModuleId);
         ]]></unload>

@@ -5,6 +5,8 @@ var setLivery_InExecution = 0;
 var targets_module_id = {};
 var targets_path = {};
 
+var resolutionSet = -1;
+var resolutionSetPrec = -1;
 var resolutionSetChanged = 0;
 
 var id_prec = nil;
@@ -254,12 +256,14 @@ var get_resolution = func(aResolutionSet) {
 };
 
 
-var createCanvas = func(target_module_id) {
+var createCanvas = func(resolutionSet, target_module_id) {
     
     # see: http://wiki.flightgear.org/Howto:Creating_fullscreen_Canvas_applications
     # see: http://wiki.flightgear.org/Canvas_Nasal_API
     
-    var resolution = get_resolution(targets_module_id[target_module_id]["resolution_set"]);
+    if (resolutionSet == 0) return;
+    
+    var resolution = get_resolution(resolutionSet);
  
     print("set_livery.nas createCanvas: ca_size = ",resolution," cw_size = ",resolution, " module target_module_id: ",target_module_id);
     ### print(debug.dump(targets_module_id[target_module_id]["ca"]));
@@ -299,7 +303,7 @@ var createCanvas = func(target_module_id) {
 };
 
 
-var setLivery = func(target_module_id) {
+var setLivery = func(resolutionSet, target_module_id) {
     
     setLivery_InExecution = 1;
 
@@ -317,9 +321,13 @@ var setLivery = func(target_module_id) {
         }
     }
     
+    var resolution = 0;
     var id = 0;
-    var resolution = get_resolution(targets_module_id[target_module_id]["resolution_set"]);
     
+    if (resolutionSet > 0) {
+        resolution = get_resolution(resolutionSet);
+    }
+  
     if (targets_module_id[target_module_id]["ca_root"] != nil) {
         id = 0;
         var layers_001 = {};
@@ -328,7 +336,7 @@ var setLivery = func(target_module_id) {
             var insertLivery = 0;
             print("set_livery.nas setLivery ca_root image: ",image," (",size(image),") resolution: ",resolution," target_module_id: ",target_module_id);
             # Insert the layer
-            if (size(image) > 0) {
+            if (size(image) > 0 and resolutionSet > 0) {
                 if (id == 1 and !contains(layers_001, image)) insertLivery = 1;
                 if (id == 2 and dirty_set == 1 and !contains(layers_001, image)) insertLivery = 1;
                 if (insertLivery == 1) {
@@ -371,7 +379,7 @@ var setLivery = func(target_module_id) {
             var insertLivery = 0;
             print("set_livery.nas setLivery cw_root image: ",image," (",size(image),") resolution: ",resolution," target_module_id: ",target_module_id);
             # Insert the layer
-            if (size(image) > 0) {
+            if (size(image) > 0 and resolutionSet > 0) {
                 if (id == 1 and !contains(layers_002, image)) insertLivery = 1;
                 if (id == 2 and dirty_set == 1 and !contains(layers_002, image)) insertLivery = 1;
                 if (insertLivery == 1) {
@@ -402,19 +410,19 @@ var setLivery = func(target_module_id) {
 var getActiveData = func(target_module_id) {
     
     var idLivery = 0;
-    var resolutionSet = 2;
     
     if (target_module_id == 0) {
-        resolutionSet = getprop("sim/G91/liveries/active/resolution-set");
-        if (resolutionSet == nil) {
-            resolutionSet = 2;
-            setprop("sim/G91/liveries/active/resolution-set",2);
-        }
-        print("set_livery.nas getActiveData is single palyer mode id_MultiPlayer: ",target_module_id,"resolution-set: ",resolutionSet);
+        setprop("sim/G91/liveries/active/isMultiPlayer",0);
+        if (resolutionSet < 0) resolutionSet = getprop("sim/G91/liveries/active/resolution-set");
+        print("set_livery.nas getActiveData isMultiPlayer set to 0");
     } else {
         resolutionSet = 2;
-        print("set_livery.nas getActiveData is multiplayer mode id_MultiPlayer: ",target_module_id,"resolution-set: ",resolutionSet);
+        setprop("sim/G91/liveries/active/isMultiPlayer",1);
+        print("set_livery.nas getActiveData isMultiPlayer set to 1  id_MultiPlayer: ",target_module_id);
     }
+    
+    print("set_livery.nas getActiveData resolution id: ",resolutionSet);
+    setprop("sim/G91/liveries/active/setResolution",resolutionSet);
     
     if (target_module_id == 0) {
         
@@ -431,9 +439,24 @@ var getActiveData = func(target_module_id) {
             print("set_livery.nas getActiveData, idLivery: ",idLivery);
         }
         
-        if (idLivery == 0) {
+        resolutionSet = getprop("sim/G91/liveries/active/setResolution");
+        if (resolutionSet == nil) {
+            print("set_livery.nas getActiveData, error read resolutionSet");
+            resolutionSet = 0;
+        }
+        
+        if (resolutionSetPrec > 0 and resolutionSetPrec != resolutionSet) {
+            print("set_livery.nas getActiveData, resolutionSet: change resolution is only for one time");
+            resolutionSet = resolutionSetPrec;
+            setprop("sim/G91/liveries/active/setResolution",resolutionSet);
+            return;
+        }
+        
+        if (idLivery == 0 or resolutionSet == 0) {
             print("set_livery.nas getActiveData, error file liveries/active not found");
             return;
+        } else {
+            print("set_livery.nas getActiveData, set resolution: ", resolutionSet);
         }
         
         var liveries = props.globals.getNode("sim/G91/liveries").getChildren("livery");
@@ -476,7 +499,6 @@ var getActiveData = func(target_module_id) {
         targets_module_id[target_module_id]["number-file"] = liveries[id].getNode("number_file").getValue();
         targets_module_id[target_module_id]["number-x"] = liveries[id].getNode("number_x").getValue();
         targets_module_id[target_module_id]["number-y"] = liveries[id].getNode("number_y").getValue();
-        targets_module_id[target_module_id]["resolution_set"] = resolutionSet;
         
         setprop("sim/G91/liveries/active/id",idLivery);
         setprop("sim/G91/liveries/active/version",liveries[id].getNode("version").getValue());
@@ -503,7 +525,6 @@ var getActiveData = func(target_module_id) {
         
         if (size(targets_module_id) > 0) {
             idLivery = targets_module_id[target_module_id]["idLivery"];
-            targets_module_id[target_module_id]["resolution_set"] = resolutionSet;
         }
 
     }
@@ -522,14 +543,14 @@ var getActiveData = func(target_module_id) {
     print("set_livery.nas getActiveData setLivery  specular: ",targets_module_id[target_module_id]["specular"]);
     print("set_livery.nas getActiveData setLivery  dirty_set: ",targets_module_id[target_module_id]["dirty_set"]);
     print("set_livery.nas getActiveData setLivery  normalmap_enabled: ",targets_module_id[target_module_id]["normalmap_enabled"]);
+    print("set_livery.nas getActiveData setLivery  resolutionSet: ",resolutionSet);
     print("set_livery.nas getActiveData setLivery  target_module_id: ",target_module_id);
-    print("set_livery.nas getActiveData setLivery  resolutionSet: ",targets_module_id[target_module_id]["resolution_set"]);
     
     resolutionSetPrec = resolutionSet;
     id_prec = idLivery;
     
-    createCanvas(target_module_id);
-    setLivery(target_module_id);
+    createCanvas(resolutionSet, target_module_id);
+    setLivery(resolutionSet, target_module_id);
     
 };
 

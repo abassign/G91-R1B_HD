@@ -32,8 +32,11 @@ G91_Params.xml
             <resolution-set-pixel userarchive="y" type="int">1024</resolution-set-pixel>
             <dirty-set userarchive="y" type="int">0</dirty-set>
             <dirty-Msg userarchive="y" type="string">Dirty inactive</dirty-Msg>
-            <normalmap-enabled userarchive="y" type="int">0</normalmap-enabled>
-            <normalmap-enabled-Msg userarchive="y" type="string">No normal map</normalmap-enabled-Msg>
+            <normalmap_enabled userarchive="y" type="int">0</normalmap_enabled>
+            <normalmap_enabled_Msg userarchive="y" type="string">No normal map</normalmap_enabled_Msg>
+            <number_x type="float">0.5</number_x>
+            <number_y type="float">0.5</number_y>
+            <number_file type="string">Aircraft/G91-R1B_HD/Models/Liveries/symbols/symbol_test01.png</number_file>
         </active>
         
         <!-- For correct identification ref:
@@ -56,6 +59,9 @@ G91_Params.xml
             <anti_reflective type="string">Aircraft/G91-R1B_HD/Models/Liveries/G91_Dark_Grey_128.png</anti_reflective>
             <normalmap_enabled>0</normalmap_enabled>
             <version>2</version>
+            <number_x type="float">0.5</number_x>
+            <number_y type="float">0.5</number_y>
+            <number_file type="string">Aircraft/G91-R1B_HD/Models/Liveries/symbols/symbol_test01.png</number_file>
         </livery>
         
         <livery n="2">
@@ -74,6 +80,9 @@ G91_Params.xml
             <anti_reflective type="string">Aircraft/G91-R1B_HD/Models/Liveries/G91_Dark_Grey_128.png</anti_reflective>
             <normalmap_enabled>0</normalmap_enabled>
             <version>2</version>
+            <number_x type="float">0.0</number_x>
+            <number_y type="float">0.0</number_y>
+            <number_file type="string"></number_file>
         </livery>
         
         <livery n="3">
@@ -92,6 +101,9 @@ G91_Params.xml
             <anti_reflective type="string">Aircraft/G91-R1B_HD/Models/Liveries/G91_Dark_Grey_128.png</anti_reflective>
             <normalmap_enabled>0</normalmap_enabled>
             <version>2</version>
+            <number_x type="float">0.0</number_x>
+            <number_y type="float">0.0</number_y>
+            <number_file type="string"></number_file>
         </livery>
         
         <livery n="4">
@@ -110,6 +122,9 @@ G91_Params.xml
             <anti_reflective type="string">Aircraft/G91-R1B_HD/Models/Liveries/G91_Dark_Grey_128.png</anti_reflective>
             <normalmap_enabled>0</normalmap_enabled>
             <version>2</version>
+            <number_x type="float">0.0</number_x>
+            <number_y type="float">0.0</number_y>
+            <number_file type="string"></number_file>
         </livery>
         
         <livery n="5">
@@ -128,6 +143,9 @@ G91_Params.xml
             <anti_reflective type="string">Aircraft/G91-R1B_HD/Models/Liveries/G91_Dark_Grey_128.png</anti_reflective>
             <normalmap_enabled>0</normalmap_enabled>
             <version>2</version>
+            <number_x type="float">0.0</number_x>
+            <number_y type="float">0.0</number_y>
+            <number_file type="string"></number_file>
         </livery>
         
         <livery n="6">
@@ -146,6 +164,9 @@ G91_Params.xml
             <anti_reflective type="string">Aircraft/G91-R1B_HD/Models/Liveries/G91_Dark_Grey_128.png</anti_reflective>
             <normalmap_enabled>0</normalmap_enabled>
             <version>10</version>
+            <number_x type="float">0.0</number_x>
+            <number_y type="float">0.0</number_y>
+            <number_file type="string"></number_file>
         </livery>
         
         <livery n="7">
@@ -164,6 +185,9 @@ G91_Params.xml
             <anti_reflective type="string">Aircraft/G91-R1B_HD/Models/Liveries/G91_Dark_Grey_128.png</anti_reflective>
             <normalmap_enabled>0</normalmap_enabled>
             <version>10</version>
+            <number_x type="float">0.0</number_x>
+            <number_y type="float">0.0</number_y>
+            <number_file type="string"></number_file>
         </livery>
         
     </liveries>

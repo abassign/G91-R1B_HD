@@ -76,8 +76,11 @@
                 <string n="2" alias="/sim/G91/liveries/active/dirty_001"/>
                 <string n="3" alias="/sim/G91/liveries/active/dirty_002"/>
                 <string n="4" alias="/sim/G91/liveries/active/anti_reflective"/>
+                <string n="5" alias="/sim/G91/liveries/active/number_file"/>
                 <float n="20" alias="/sim/G91/liveries/active/diffuse"/>
                 <float n="21" alias="/sim/G91/liveries/active/specular"/>
+                <float n="22" alias="/sim/G91/liveries/active/number_x"/>
+                <float n="23" alias="/sim/G91/liveries/active/number_y"/>
             </generic>
         </multiplay>
         

@@ -4,7 +4,7 @@
     <name>Aircraft/G91-R1B_HD/Models/Liveries/nm_001</name>
     <inherits-from>Effects/model-combined-deferred</inherits-from>
     <parameters>
-        <normalmap-enabled type="int"><use>sim/G91/liveries/active/normalmap-enabled</use></normalmap-enabled>
+        <normalmap-enabled type="int"><use>sim/G91/liveries/active/normalmap_enabled</use></normalmap-enabled>
         <normalmap-dds type="int">1</normalmap-dds>
         <texture n="2">
             <image>Aircraft/G91-R1B_HD/Models/Liveries/dds/nm_001_4k.dds</image>

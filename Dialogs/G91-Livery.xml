@@ -285,7 +285,7 @@ http://wiki.flightgear.org/Howto:Adding_a_canvas_to_a_GUI_dialog
                 <legend>Normal map</legend>
                 <binding>
                     <command>property-toggle</command>
-                    <property>sim/G91/liveries/active/normalmap-enabled</property>
+                    <property>sim/G91/liveries/active/normalmap_enabled</property>
                 </binding>
                 <binding>
                     <command>dialog-apply</command>
@@ -301,7 +301,7 @@ http://wiki.flightgear.org/Howto:Adding_a_canvas_to_a_GUI_dialog
                     <green>0.9</green>
                     <blue>0.9</blue>
                 </color>
-                <property>sim/G91/liveries/active/normalmap-enabled-Msg</property>
+                <property>sim/G91/liveries/active/normalmap_enabled_Msg</property>
             </text>
             
         </group>
@@ -382,6 +382,89 @@ http://wiki.flightgear.org/Howto:Adding_a_canvas_to_a_GUI_dialog
                 </color>
                 <property>sim/G91/liveries/active/resolution-set-pixel</property>
             </text>
+        </group>
+    </group>
+    
+    <hrule/>
+    
+    <group>
+        <layout>vbox</layout>
+        <group>
+            <layout>table</layout>
+    
+            <text>
+                <row>0</row>
+                <col>0</col>
+                <halign>left</halign>
+                <label>Test xy logo X:</label>
+                <color>
+                    <red>0.8</red>
+                    <green>0.8</green>
+                    <blue>0.8</blue>
+                </color>
+            </text>
+            <slider>
+                <row>0</row>
+                <col>1</col>
+                <name>sim_G91_Test_V0_10B</name>
+                <property>sim/G91/liveries/active/number/x</property>
+                <min>0.0</min>
+                <max>1.0</max>
+                <step>0.001</step>  
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </slider>
+            <text>
+                <row>0</row>
+                <col>2</col>
+                <label>99999</label>
+                <live>true</live>
+                <format>%1.3f</format>
+                <property>sim/G91/liveries/active/number/x</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.0</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>3</col>
+                <halign>left</halign>
+                <label>Y:</label>
+                <color>
+                    <red>0.8</red>
+                    <green>0.8</green>
+                    <blue>0.8</blue>
+                </color>
+            </text>
+            <slider>
+                <row>0</row>
+                <col>4</col>
+                <name>sim_G91_Test_V0_10B</name>
+                <property>sim/G91/liveries/active/number/y</property>
+                <min>0.0</min>
+                <max>1.0</max>
+                <step>0.001</step>  
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </slider>
+            <text>
+                <row>0</row>
+                <col>5</col>
+                <label>99999</label>
+                <live>true</live>
+                <format>%1.3f</format>
+                <property>sim/G91/liveries/active/number/y</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.0</blue>
+                </color>
+            </text>
+            
         </group>
     </group>
     
