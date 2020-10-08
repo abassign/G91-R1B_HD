@@ -29,17 +29,20 @@
             rplayer.getNode("sim/G91/liveries/active/dirty_001", 1).alias(rplayer.getNode("sim/multiplay/generic/string[2]"));
             rplayer.getNode("sim/G91/liveries/active/dirty_002", 1).alias(rplayer.getNode("sim/multiplay/generic/string[3]"));
             rplayer.getNode("sim/G91/liveries/active/anti_reflective", 1).alias(rplayer.getNode("sim/multiplay/generic/string[4]"));
-            rplayer.getNode("sim/G91/liveries/active/number_file", 1).alias(rplayer.getNode("sim/multiplay/generic/string[5]"));
+            rplayer.getNode("sim/G91/liveries/active/symbols_path", 1).alias(rplayer.getNode("sim/multiplay/generic/string[5]"));
+            rplayer.getNode("sim/G91/liveries/active/symbol_01", 1).alias(rplayer.getNode("sim/multiplay/generic/string[6]"));
+            rplayer.getNode("sim/G91/liveries/active/symbol_02", 1).alias(rplayer.getNode("sim/multiplay/generic/string[7]"));
+            rplayer.getNode("sim/G91/liveries/active/symbol_03", 1).alias(rplayer.getNode("sim/multiplay/generic/string[8]"));
+            rplayer.getNode("sim/G91/liveries/active/symbol_04", 1).alias(rplayer.getNode("sim/multiplay/generic/string[9]"));
+            rplayer.getNode("sim/G91/liveries/active/symbol_05", 1).alias(rplayer.getNode("sim/multiplay/generic/string[10]"));
             rplayer.getNode("sim/G91/liveries/active/diffuse", 1).alias(rplayer.getNode("sim/multiplay/generic/float[20]"));
             rplayer.getNode("sim/G91/liveries/active/specular", 1).alias(rplayer.getNode("sim/multiplay/generic/float[21]"));
-            rplayer.getNode("sim/G91/liveries/active/number_x", 1).alias(rplayer.getNode("sim/multiplay/generic/float[22]"));
-            rplayer.getNode("sim/G91/liveries/active/number_y", 1).alias(rplayer.getNode("sim/multiplay/generic/float[23]"));
             
             var import = func (file, module) {
                 file = string.normpath(file);
                 var local_file = globals.io.dirname(caller()[2]) ~ file;
                 var path = (globals.io.stat(local_file) != nil) ? local_file : resolvepath(file);
-                print("Is multiplayer | path: ",path);
+                print("***** Is multiplayer | path: ",path);
                 globals.io.load_nasal(path, module);
             };
             

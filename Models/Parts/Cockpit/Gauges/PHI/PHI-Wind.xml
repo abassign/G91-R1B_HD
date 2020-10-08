@@ -131,7 +131,7 @@
             <red-prop>sim/G91/re_emit/gauge_red_emer_lamp_3200_console_red_50</red-prop>
             <green-prop>sim/G91/re_emit/gauge_red_emer_lamp_3200_console_green_50</green-prop>
             <blue-prop>sim/G91/re_emit/gauge_red_emer_lamp_3200_console_blue_50</blue-prop>
-            <factor>0.9</factor>
+            <factor>1.1</factor>
         </emission>
     </animation>
     
@@ -255,7 +255,7 @@
         <object-name>lamp_glass (Meshed)</object-name>
         <transparency>
             <alpha>1.0</alpha>
-            <factor-prop>/fdm/jsbsim/systems/gauges/PHI/doppler/advise-light-transparent</factor-prop>
+            <factor-prop>/fdm/jsbsim/systems/gauges/PHI/wind/advise-light-transparent</factor-prop>
         </transparency>
         <diffuse>
             <red>0.5</red>
@@ -302,7 +302,7 @@
             <red>0.7</red>
             <green>0.35</green>
             <blue>0.0</blue>
-            <factor-prop>/fdm/jsbsim/systems/gauges/PHI/doppler/advise-light-on</factor-prop>
+            <factor-prop>/fdm/jsbsim/systems/gauges/PHI/wind/advise-light-on</factor-prop>
         </emission>
     </animation>
 
@@ -326,7 +326,7 @@
             <red>0.8</red>
             <green>0.5</green>
             <blue>1.0</blue>
-            <factor-prop>/fdm/jsbsim/systems/gauges/PHI/doppler/advise-light-on</factor-prop>
+            <factor-prop>/fdm/jsbsim/systems/gauges/PHI/wind/advise-light-on</factor-prop>
         </emission>
     </animation>
     

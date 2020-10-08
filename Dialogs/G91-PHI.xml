@@ -35,6 +35,127 @@
         <layout>vbox</layout>
         <group>
             <layout>table</layout>
+            <checkbox>
+                <row>0</row>
+                <col>0</col>
+                <halign>left</halign>
+                <label>PHI heading</label>
+                <property>fdm/jsbsim/systems/autopilot/gui/phi-heading</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+                <binding>
+                    <command>nasal</command>
+                    <script>
+                        setprop("fdm/jsbsim/systems/autopilot/gui/true-heading",0.0);
+                        setprop("fdm/jsbsim/systems/autopilot/gui/wing-leveler",0.0);
+                    </script>
+                </binding>
+            </checkbox>
+            <text>
+                <row>0</row>
+                <col>1</col>
+                <label>Distance (nm)</label>
+                <halign>left</halign>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.9</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>2</col>
+                <label>9999</label>
+                <live>true</live>
+                <format>%3.0f</format>
+                <property>fdm/jsbsim/systems/gauges/PHI/mil-sum-display</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.0</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>3</col>
+                <label>on</label>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.9</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>4</col>
+                <label>9999</label>
+                <live>true</live>
+                <format>%3.0f</format>
+                <property>fdm/jsbsim/systems/gauges/PHI/program/route-select-dist</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.0</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>5</col>
+                <label>dist display</label>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.9</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>6</col>
+                <label>9999</label>
+                <live>true</live>
+                <format>%3.0f</format>
+                <property>fdm/jsbsim/systems/gauges/PHI/indicator/mil-digit</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.0</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>7</col>
+                <label>Heading (deg)</label>
+                <halign>left</halign>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.9</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>8</col>
+                <label>9999999</label>
+                <live>true</live>
+                <format>%3.0f (deg)</format>
+                <property>fdm/jsbsim/systems/autopilot/phi-heading-deg</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.0</blue>
+                </color>
+            </text>
+        </group>
+    </group>
+    
+    <hrule/>
+    
+    <group>
+        <layout>vbox</layout>
+        <group>
+            <layout>table</layout>
             <text>
                 <row>0</row>
                 <col>0</col>
@@ -65,17 +186,9 @@
                     <command>dialog-apply</command>
                 </binding>
                 <binding>
-                    <command>nasal</command>
-                    <script>
-                        if (getprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-loop") == 1) {
-                            if (getprop("/autopilot/route-manager/active") == 1) {
-                                setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-loop",0);
-                            }
-                            setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-manual",0);
-                            setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-circuit-left",0);
-                            setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-circuit-right",0);
-                        }
-                    </script>
+                    <command>property-assign</command>
+                    <property>fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-loop-mod</property>
+                    <value>1</value>
                 </binding>
             </radio>
             <radio>
@@ -89,17 +202,9 @@
                     <command>dialog-apply</command>
                 </binding>
                 <binding>
-                    <command>nasal</command>
-                    <script>
-                        if (getprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-circuit-left") == 1) {
-                            if (getprop("/autopilot/route-manager/active") == 1) {
-                                setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-circuit-left",0);
-                            }
-                            setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-manual",0);
-                            setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-loop",0);
-                            setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-circuit-right",0);
-                        }
-                    </script>
+                    <command>property-assign</command>
+                    <property>fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-circuit-left-mod</property>
+                    <value>1</value>
                 </binding>
             </radio>
             <radio>
@@ -113,17 +218,9 @@
                     <command>dialog-apply</command>
                 </binding>
                 <binding>
-                    <command>nasal</command>
-                    <script>
-                        if (getprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-circuit-right") == 1) {
-                            if (getprop("/autopilot/route-manager/active") == 1) {
-                                setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-circuit-right",0);
-                            }
-                            setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-manual",0);
-                            setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-loop",0);
-                            setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-circuit-left",0);
-                        }
-                    </script>
+                    <command>property-assign</command>
+                    <property>fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-circuit-right-mod</property>
+                    <value>1</value>
                 </binding>
             </radio>
             <radio>
@@ -137,17 +234,9 @@
                     <command>dialog-apply</command>
                 </binding>
                 <binding>
-                    <command>nasal</command>
-                    <script>
-                        if (getprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-manual") == 1) {
-                            if (getprop("/autopilot/route-manager/active") == 1) {
-                                setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-manual",0);
-                            }
-                            setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-loop",0);
-                            setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-circuit-left",0);
-                            setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-circuit-right",0);
-                        }
-                    </script>
+                    <command>property-assign</command>
+                    <property>fdm/jsbsim/systems/gauges/PHI/programmer/route-manual-mod</property>
+                    <value>1</value>
                 </binding>
             </radio>
         </group>
@@ -159,6 +248,25 @@
         <layout>vbox</layout>
         <group>
             <layout>table</layout>
+            <button>
+                <row>0</row>
+                <col>0</col>
+                <legend>Auto push</legend>
+                <binding>
+                    <command>property-toggle</command>
+                    <property>fdm/jsbsim/systems/gauges/PHI/program/route-manager/autopush-active</property>
+                </binding>
+            </button>
+            <checkbox>
+                <row>1</row>
+                <col>0</col>
+                <halign>center</halign>
+                <property>fdm/jsbsim/systems/gauges/PHI/program/route-manager/autopush-active</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </checkbox>
             <text>
                 <row>2</row>
                 <col>0</col>
@@ -192,8 +300,17 @@
                     <blue>0.9</blue>
                 </color>
             </text>
-            <checkbox>
+            <button>
                 <row>0</row>
+                <col>1</col>
+                <legend>Route 1</legend>
+                <binding>
+                    <command>property-toggle</command>
+                    <property>fdm/jsbsim/systems/gauges/PHI/program/route[1]/push-togle</property>
+                </binding>
+            </button>
+            <checkbox>
+                <row>1</row>
                 <col>1</col>
                 <halign>center</halign>
                 <property>fdm/jsbsim/systems/gauges/PHI/program/route[1]/isPush</property>
@@ -202,15 +319,6 @@
                     <command>dialog-apply</command>
                 </binding>
             </checkbox>
-            <button>
-                <row>1</row>
-                <col>1</col>
-                <legend>Route 1</legend>
-                <binding>
-                    <command>property-toggle</command>
-                    <property>fdm/jsbsim/systems/gauges/PHI/program/route[1]/push-togle</property>
-                </binding>
-            </button>
             <input>
                 <row>3</row>
                 <col>1</col>
@@ -270,8 +378,17 @@
                     </script>
                 </binding>
             </input>
-            <checkbox>
+            <button>
                 <row>0</row>
+                <col>2</col>
+                <legend>Route 2</legend>
+                <binding>
+                    <command>property-toggle</command>
+                    <property>fdm/jsbsim/systems/gauges/PHI/program/route[2]/push-togle</property>
+                </binding>
+            </button>
+            <checkbox>
+                <row>1</row>
                 <col>2</col>
                 <halign>center</halign>
                 <property>fdm/jsbsim/systems/gauges/PHI/program/route[2]/isPush</property>
@@ -280,15 +397,6 @@
                     <command>dialog-apply</command>
                 </binding>
             </checkbox>
-            <button>
-                <row>1</row>
-                <col>2</col>
-                <legend>Route 2</legend>
-                <binding>
-                    <command>property-toggle</command>
-                    <property>fdm/jsbsim/systems/gauges/PHI/program/route[2]/push-togle</property>
-                </binding>
-            </button>
             <input>
                 <row>3</row>
                 <col>2</col>
@@ -346,8 +454,17 @@
                     </script>
                 </binding>
             </input>
-            <checkbox>
+            <button>
                 <row>0</row>
+                <col>3</col>
+                <legend>Route 3</legend>
+                <binding>
+                    <command>property-toggle</command>
+                    <property>fdm/jsbsim/systems/gauges/PHI/program/route[3]/push-togle</property>
+                </binding>
+            </button>
+            <checkbox>
+                <row>1</row>
                 <col>3</col>
                 <halign>center</halign>
                 <property>fdm/jsbsim/systems/gauges/PHI/program/route[3]/isPush</property>
@@ -356,15 +473,6 @@
                     <command>dialog-apply</command>
                 </binding>
             </checkbox>
-            <button>
-                <row>1</row>
-                <col>3</col>
-                <legend>Route 3</legend>
-                <binding>
-                    <command>property-toggle</command>
-                    <property>fdm/jsbsim/systems/gauges/PHI/program/route[3]/push-togle</property>
-                </binding>
-            </button>
             <input>
                 <row>3</row>
                 <col>3</col>
@@ -420,8 +528,17 @@
                     </script>
                 </binding>
             </input>
-            <checkbox>
+            <button>
                 <row>0</row>
+                <col>4</col>
+                <legend>Route 4</legend>
+                <binding>
+                    <command>property-toggle</command>
+                    <property>fdm/jsbsim/systems/gauges/PHI/program/route[4]/push-togle</property>
+                </binding>
+            </button>
+            <checkbox>
+                <row>1</row>
                 <col>4</col>
                 <halign>center</halign>
                 <property>fdm/jsbsim/systems/gauges/PHI/program/route[4]/isPush</property>
@@ -430,15 +547,6 @@
                     <command>dialog-apply</command>
                 </binding>
             </checkbox>
-            <button>
-                <row>1</row>
-                <col>4</col>
-                <legend>Route 4</legend>
-                <binding>
-                    <command>property-toggle</command>
-                    <property>fdm/jsbsim/systems/gauges/PHI/program/route[4]/push-togle</property>
-                </binding>
-            </button>
             <input>
                 <row>3</row>
                 <col>4</col>
@@ -492,8 +600,17 @@
                     </script>
                 </binding>
             </input>
-            <checkbox>
+            <button>
                 <row>0</row>
+                <col>5</col>
+                <legend>Route 5</legend>
+                <binding>
+                    <command>property-toggle</command>
+                    <property>fdm/jsbsim/systems/gauges/PHI/program/route[5]/push-togle</property>
+                </binding>
+            </button>
+            <checkbox>
+                <row>1</row>
                 <col>5</col>
                 <halign>center</halign>
                 <property>fdm/jsbsim/systems/gauges/PHI/program/route[5]/isPush</property>
@@ -502,15 +619,6 @@
                     <command>dialog-apply</command>
                 </binding>
             </checkbox>
-            <button>
-                <row>1</row>
-                <col>5</col>
-                <legend>Route 5</legend>
-                <binding>
-                    <command>property-toggle</command>
-                    <property>fdm/jsbsim/systems/gauges/PHI/program/route[5]/push-togle</property>
-                </binding>
-            </button>
             <input>
                 <row>3</row>
                 <col>5</col>
@@ -571,18 +679,17 @@
                     <blue>0.0</blue>
                 </color>
             </text>
-            <text>
-                <row>1</row>
+            <button>
+                <row>0</row>
                 <col>6</col>
-                <live>true</live>
-                <text>         </text>
-                <halign>center</halign>
-                <color>
-                    <red>0.8</red>
-                    <green>0.8</green>
-                    <blue>0.0</blue>
-                </color>
-            </text>
+                <legend>Reset</legend>
+                <binding>
+                    <command>nasal</command>
+                    <script>
+                        setprop("fdm/jsbsim/systems/gauges/PHI/program/reset",1.0);
+                    </script>
+                </binding>
+            </button>
             <text>
                 <row>2</row>
                 <col>6</col>

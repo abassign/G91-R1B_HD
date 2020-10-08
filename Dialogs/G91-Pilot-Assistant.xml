@@ -102,7 +102,7 @@
                             </script>
                         </binding>
                     </radio>
-                    <radio>
+                    <checkbox>
                         <row>2</row>
                         <col>0</col>
                         <halign>left</halign>
@@ -119,13 +119,26 @@
                                 setprop("fdm/jsbsim/systems/autopilot/gui/wing-leveler",0.0);
                             </script>
                         </binding>
-                    </radio>
+                    </checkbox>
                     <text>
                         <row>2</row>
                         <col>1</col>
+                        <label>9999999</label>
+                        <live>true</live>
+                        <format>%3.0f (nm)</format>
+                        <property>fdm/jsbsim/systems/gauges/PHI/mil-sum-display</property>
+                        <color>
+                            <red>0.9</red>
+                            <green>0.9</green>
+                            <blue>0.0</blue>
+                        </color>
+                    </text>
+                    <text>
+                        <row>2</row>
+                        <col>2</col>
                         <label>99999999999</label>
                         <live>true</live>
-                        <format>%3.2f (deg)</format>
+                        <format>%3.0f (deg)</format>
                         <property>fdm/jsbsim/systems/autopilot/phi-heading-deg</property>
                         <color>
                             <red>0.9</red>

@@ -328,14 +328,14 @@
         <type>material</type>
         <object-name>sphere_B (Meshed)</object-name>
         <diffuse>
-            <red>0.28</red>
-            <green>0.28</green>
-            <blue>0.28</blue>
+            <red>0.10</red>
+            <green>0.10</green>
+            <blue>0.10</blue>
         </diffuse>
         <ambient>
-            <red>0.1</red>
-            <green>0.1</green>
-            <blue>0.1</blue>
+            <red>0.05</red>
+            <green>0.05</green>
+            <blue>0.05</blue>
         </ambient>
         <emission>
             <red>0.01</red>

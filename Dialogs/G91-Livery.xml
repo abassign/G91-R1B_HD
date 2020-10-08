@@ -10,7 +10,7 @@ http://wiki.flightgear.org/Howto:Adding_a_canvas_to_a_GUI_dialog
     <layout>vbox</layout>
     <default-padding>7</default-padding>
     <modal>false</modal>
-    <width>500</width>
+    <width>600</width>
     
     <!-- title bar -->
     
@@ -96,11 +96,29 @@ http://wiki.flightgear.org/Howto:Adding_a_canvas_to_a_GUI_dialog
                 <label>Italian Air Force - 2nd flight flock n. 37 (R1B)</label>
                 <halign>left</halign>
             </text>
-
+            
             <button>
                 <row>3</row>
                 <col>0</col>
                 <legend>04</legend>
+                <binding>
+                    <command>nasal</command>
+                    <script>
+                        setprop("sim/G91/liveries/active/id",8);
+                    </script>
+                </binding>
+            </button>
+            <text>
+                <row>3</row>
+                <col>1</col>
+                <label>Italian Air Force - 2nd flight flock - 200000 h</label>
+                <halign>left</halign>
+            </text>
+
+            <button>
+                <row>4</row>
+                <col>0</col>
+                <legend>05</legend>
                 <binding>
                     <command>nasal</command>
                     <script>
@@ -109,27 +127,9 @@ http://wiki.flightgear.org/Howto:Adding_a_canvas_to_a_GUI_dialog
                 </binding>
             </button>
             <text>
-                <row>3</row>
+                <row>4</row>
                 <col>1</col>
                 <label>Silver version, used as a prototype Pinocchio nose (R1)</label>
-                <halign>left</halign>
-            </text>
-            
-            <button>
-                <row>4</row>
-                <col>0</col>
-                <legend>05</legend>
-                <binding>
-                    <command>nasal</command>
-                    <script>
-                        setprop("sim/G91/liveries/active/id",5);
-                    </script>
-                </binding>
-            </button>
-            <text>
-                <row>4</row>
-                <col>1</col>
-                <label>Silver version R1B recognition nose (R1B)</label>
                 <halign>left</halign>
             </text>
             
@@ -140,14 +140,14 @@ http://wiki.flightgear.org/Howto:Adding_a_canvas_to_a_GUI_dialog
                 <binding>
                     <command>nasal</command>
                     <script>
-                        setprop("sim/G91/liveries/active/id",6);
+                        setprop("sim/G91/liveries/active/id",5);
                     </script>
                 </binding>
             </button>
             <text>
                 <row>5</row>
                 <col>1</col>
-                <label>Portuguese R3 c/n 301 (R3)</label>
+                <label>Silver version R1B recognition nose (R1B)</label>
                 <halign>left</halign>
             </text>
             
@@ -158,12 +158,30 @@ http://wiki.flightgear.org/Howto:Adding_a_canvas_to_a_GUI_dialog
                 <binding>
                     <command>nasal</command>
                     <script>
-                        setprop("sim/G91/liveries/active/id",7);
+                        setprop("sim/G91/liveries/active/id",6);
                     </script>
                 </binding>
             </button>
             <text>
                 <row>6</row>
+                <col>1</col>
+                <label>Portuguese R3 c/n 301 (R3)</label>
+                <halign>left</halign>
+            </text>
+            
+            <button>
+                <row>7</row>
+                <col>0</col>
+                <legend>08</legend>
+                <binding>
+                    <command>nasal</command>
+                    <script>
+                        setprop("sim/G91/liveries/active/id",7);
+                    </script>
+                </binding>
+            </button>
+            <text>
+                <row>7</row>
                 <col>1</col>
                 <label>Luftwaffe c/n 535 (R3)</label>
                 <halign>left</halign>
@@ -301,7 +319,7 @@ http://wiki.flightgear.org/Howto:Adding_a_canvas_to_a_GUI_dialog
                     <green>0.9</green>
                     <blue>0.9</blue>
                 </color>
-                <property>sim/G91/liveries/active/normalmap_enabled_Msg</property>
+                <property>sim/G91/liveries/active/normalmap_enabled-Msg</property>
             </text>
             
         </group>
@@ -384,9 +402,9 @@ http://wiki.flightgear.org/Howto:Adding_a_canvas_to_a_GUI_dialog
             </text>
         </group>
     </group>
-    
+
     <hrule/>
-    
+    <!--
     <group>
         <layout>vbox</layout>
         <group>
@@ -396,7 +414,49 @@ http://wiki.flightgear.org/Howto:Adding_a_canvas_to_a_GUI_dialog
                 <row>0</row>
                 <col>0</col>
                 <halign>left</halign>
-                <label>Test xy logo X:</label>
+                <label>Logo Id:</label>
+                <color>
+                    <red>0.8</red>
+                    <green>0.8</green>
+                    <blue>0.8</blue>
+                </color>
+            </text>
+            <input>
+                <row>0</row>
+                <col>1</col>
+                <property>sim/G91/liveries/active/symbol_id</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+                <binding>
+                    <command>property-assign</command>
+                    <property>sim/G91/liveries/active/symbol_id_mod</property>
+                    <value>1</value>
+                </binding>
+            </input>
+            <text>
+                <row>0</row>
+                <col>2</col>
+                <halign>left</halign>
+                <label>Layer:</label>
+                <color>
+                    <red>0.8</red>
+                    <green>0.8</green>
+                    <blue>0.8</blue>
+                </color>
+            </text>
+            <input>
+                <row>0</row>
+                <col>3</col>
+                <property>sim/G91/liveries/active/symbol_layer</property>
+                <live>false</live>
+            </input>
+            <text>
+                <row>1</row>
+                <col>0</col>
+                <halign>left</halign>
+                <label>Logo Sx xy X:</label>
                 <color>
                     <red>0.8</red>
                     <green>0.8</green>
@@ -404,24 +464,29 @@ http://wiki.flightgear.org/Howto:Adding_a_canvas_to_a_GUI_dialog
                 </color>
             </text>
             <slider>
-                <row>0</row>
+                <row>1</row>
                 <col>1</col>
-                <name>sim_G91_Test_V0_10B</name>
-                <property>sim/G91/liveries/active/number/x</property>
+                <name>X</name>
+                <property>sim/G91/liveries/active/symbol_x_sx</property>
                 <min>0.0</min>
                 <max>1.0</max>
-                <step>0.001</step>  
+                <step>0.001</step>
                 <binding>
                     <command>dialog-apply</command>
                 </binding>
+                <binding>
+                    <command>property-assign</command>
+                    <property>sim/G91/liveries/active/symbol_input_set_mod</property>
+                    <value>1</value>
+                </binding>
             </slider>
             <text>
-                <row>0</row>
+                <row>1</row>
                 <col>2</col>
                 <label>99999</label>
                 <live>true</live>
                 <format>%1.3f</format>
-                <property>sim/G91/liveries/active/number/x</property>
+                <property>sim/G91/liveries/active/symbol_x_sx</property>
                 <color>
                     <red>0.9</red>
                     <green>0.9</green>
@@ -429,7 +494,7 @@ http://wiki.flightgear.org/Howto:Adding_a_canvas_to_a_GUI_dialog
                 </color>
             </text>
             <text>
-                <row>0</row>
+                <row>1</row>
                 <col>3</col>
                 <halign>left</halign>
                 <label>Y:</label>
@@ -440,24 +505,185 @@ http://wiki.flightgear.org/Howto:Adding_a_canvas_to_a_GUI_dialog
                 </color>
             </text>
             <slider>
-                <row>0</row>
+                <row>1</row>
                 <col>4</col>
-                <name>sim_G91_Test_V0_10B</name>
-                <property>sim/G91/liveries/active/number/y</property>
+                <name>Y</name>
+                <property>sim/G91/liveries/active/symbol_y_sx</property>
                 <min>0.0</min>
                 <max>1.0</max>
                 <step>0.001</step>  
                 <binding>
                     <command>dialog-apply</command>
                 </binding>
+                <binding>
+                    <command>property-assign</command>
+                    <property>sim/G91/liveries/active/symbol_input_set_mod</property>
+                    <value>1</value>
+                </binding>
             </slider>
             <text>
-                <row>0</row>
+                <row>1</row>
                 <col>5</col>
                 <label>99999</label>
                 <live>true</live>
                 <format>%1.3f</format>
-                <property>sim/G91/liveries/active/number/y</property>
+                <property>sim/G91/liveries/active/symbol_y_sx</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.0</blue>
+                </color>
+            </text>
+            <radio>
+                <row>1</row>
+                <col>6</col>
+                <halign>fill</halign>
+                <label>Mirror</label>
+                <property>sim/G91/liveries/active/symbol_mirror_sx</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+                <binding>
+                    <command>property-assign</command>
+                    <property>sim/G91/liveries/active/symbol_input_set_mod</property>
+                    <value>1</value>
+                </binding>
+            </radio>
+            
+            <text>
+                <row>2</row>
+                <col>0</col>
+                <halign>left</halign>
+                <label>Logo Dx xy X:</label>
+                <color>
+                    <red>0.8</red>
+                    <green>0.8</green>
+                    <blue>0.8</blue>
+                </color>
+            </text>
+            <slider>
+                <row>2</row>
+                <col>1</col>
+                <name>X</name>
+                <property>sim/G91/liveries/active/symbol_x_dx</property>
+                <min>0.0</min>
+                <max>1.0</max>
+                <step>0.001</step>  
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+                <binding>
+                    <command>property-assign</command>
+                    <property>sim/G91/liveries/active/symbol_input_set_mod</property>
+                    <value>1</value>
+                </binding>
+            </slider>
+            <text>
+                <row>2</row>
+                <col>2</col>
+                <label>99999</label>
+                <live>true</live>
+                <format>%1.3f</format>
+                <property>sim/G91/liveries/active/symbol_x_dx</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.0</blue>
+                </color>
+            </text>
+            <text>
+                <row>2</row>
+                <col>3</col>
+                <halign>left</halign>
+                <label>Y:</label>
+                <color>
+                    <red>0.8</red>
+                    <green>0.8</green>
+                    <blue>0.8</blue>
+                </color>
+            </text>
+            <slider>
+                <row>2</row>
+                <col>4</col>
+                <name>Y</name>
+                <property>sim/G91/liveries/active/symbol_y_dx</property>
+                <min>0.0</min>
+                <max>1.0</max>
+                <step>0.001</step>  
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+                <binding>
+                    <command>property-assign</command>
+                    <property>sim/G91/liveries/active/symbol_input_set_mod</property>
+                    <value>1</value>
+                </binding>
+            </slider>
+            <text>
+                <row>2</row>
+                <col>5</col>
+                <label>99999</label>
+                <live>true</live>
+                <format>%1.3f</format>
+                <property>sim/G91/liveries/active/symbol_y_dx</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.0</blue>
+                </color>
+            </text>
+            <radio>
+                <row>2</row>
+                <col>6</col>
+                <halign>fill</halign>
+                <label>Mirror</label>
+                <property>sim/G91/liveries/active/symbol_mirror_dx</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+                <binding>
+                    <command>property-assign</command>
+                    <property>sim/G91/liveries/active/symbol_input_set_mod</property>
+                    <value>1</value>
+                </binding>
+            </radio>
+            <text>
+                <row>3</row>
+                <col>0</col>
+                <halign>left</halign>
+                <label>Scale:</label>
+                <color>
+                    <red>0.8</red>
+                    <green>0.8</green>
+                    <blue>0.8</blue>
+                </color>
+            </text>
+            <slider>
+                <row>3</row>
+                <col>1</col>
+                <name>Scale</name>
+                <property>sim/G91/liveries/active/symbol_scale</property>
+                <min>0.1</min>
+                <max>2.0</max>
+                <step>0.001</step>  
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+                <binding>
+                    <command>property-assign</command>
+                    <property>sim/G91/liveries/active/symbol_input_set_mod</property>
+                    <value>1</value>
+                </binding>
+            </slider>
+            <text>
+                <row>3</row>
+                <col>2</col>
+                <label>99999</label>
+                <live>true</live>
+                <format>%1.3f</format>
+                <property>sim/G91/liveries/active/symbol_scale</property>
                 <color>
                     <red>0.9</red>
                     <green>0.9</green>
@@ -467,6 +693,6 @@ http://wiki.flightgear.org/Howto:Adding_a_canvas_to_a_GUI_dialog
             
         </group>
     </group>
-    
+    -->
 </PropertyList>
 

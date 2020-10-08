@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PropertyList>
+  <name>ALS</name>
+
+  <buffer>
+    <name>color</name>
+    <type>2d</type>
+    <width>screen</width>
+    <height>screen</height>
+    <format>rgba8</format>
+  </buffer>
+  <buffer>
+    <name>depth</name>
+    <type>2d</type>
+    <width>screen</width>
+    <height>screen</height>
+    <format>depth32f</format>
+  </buffer>
+  <buffer>
+    <name>sun-shadowmap-atlas</name>
+    <type>2d</type>
+    <width><property>/sim/rendering/als/shadows/sun-atlas-size</property></width>
+    <height><property>/sim/rendering/als/shadows/sun-atlas-size</property></height>
+    <format>depth32f</format>
+    <wrap-s>clamp-to-border</wrap-s>
+    <wrap-t>clamp-to-border</wrap-t>
+    <wrap-r>clamp-to-border</wrap-r>
+    <min-filter>linear</min-filter>
+    <mag-filter>linear</mag-filter>
+    <border-color type="vec4d">1.0 1.0 1.0 1.0</border-color>
+    <shadow-comparison>true</shadow-comparison>
+  </buffer>
+
+
+  <!-- Shadow mapping pre-passes -->
+  <pass include="ALS/csm.xml">
+    <name>csm0</name>
+    <near-m>0.1</near-m>
+    <far-m>3.0</far-m>
+    <viewport>
+      <x>0.0</x>
+      <y>0.0</y>
+      <width>0.5</width>
+      <height>0.5</height>
+    </viewport>
+  </pass>
+  <pass include="ALS/csm.xml">
+    <name>csm1</name>
+    <near-m>3.0</near-m>
+    <far-m>50.0</far-m>
+    <viewport>
+      <x>0.5</x>
+      <y>0.0</y>
+      <width>0.5</width>
+      <height>0.5</height>
+    </viewport>
+  </pass>
+  <pass include="ALS/csm.xml">
+    <name>csm2</name>
+    <near-m>50.0</near-m>
+    <far-m>150.0</far-m>
+    <viewport>
+      <x>0.0</x>
+      <y>0.5</y>
+      <width>0.5</width>
+      <height>0.5</height>
+    </viewport>
+  </pass>
+  <pass include="ALS/csm.xml">
+    <name>csm3</name>
+    <near-m>150.0</near-m>
+    <far-m>1500.0</far-m>
+    <viewport>
+      <x>0.5</x>
+      <y>0.5</y>
+      <width>0.5</width>
+      <height>0.5</height>
+    </viewport>
+  </pass>
+
+  <pass>
+    <name>forward</name>
+    <type>scene</type>
+    <effect-scheme>als-lighting</effect-scheme>
+<!--
+    <clustered-shading>
+      <tile-size>128</tile-size>
+      <num-threads>1</num-threads>
+      <depth-slices>1</depth-slices>
+    </clustered-shading>
+-->
+    
+    <clustered-shading>
+      <tile-size>64</tile-size>
+      <num-threads>16</num-threads>
+      <depth-slices>16</depth-slices>
+    </clustered-shading>
+    
+    <use-shadow-pass>csm0</use-shadow-pass>
+    <use-shadow-pass>csm1</use-shadow-pass>
+    <use-shadow-pass>csm2</use-shadow-pass>
+    <use-shadow-pass>csm3</use-shadow-pass>
+
+    <binding>
+      <buffer>sun-shadowmap-atlas</buffer>
+      <unit>10</unit>
+    </binding>
+
+    <attachment>
+      <buffer>color</buffer>
+      <component>color0</component>
+      <multisample-samples>4</multisample-samples>
+      <multisample-color-samples>4</multisample-color-samples>
+    </attachment>
+	<attachment>
+      <buffer>depth</buffer>
+      <component>depth</component>
+      <multisample-samples>4</multisample-samples>
+      <multisample-color-samples>4</multisample-color-samples>
+    </attachment>
+  </pass>
+
+  <pass>
+    <name>display</name>
+    <type>quad</type>
+    <binding>
+      <buffer>color</buffer>
+      <unit>0</unit>
+    </binding>
+  </pass>
+</PropertyList>

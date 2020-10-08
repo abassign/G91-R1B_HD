@@ -1,5 +1,20 @@
 # From: http://wiki.flightgear.org/Howto:Dynamic_Liveries_via_Canvas
 
+var prop = props.globals.initNode("sim/G91/liveries/active/symbol_id", 1, "INT");
+var prop = props.globals.initNode("sim/G91/liveries/active/symbol_id_mod", 0, "INT");
+var prop = props.globals.initNode("sim/G91/liveries/active/symbol_scale", 0.0, "DOUBLE");
+var prop = props.globals.initNode("sim/G91/liveries/active/symbol_x_dx", 0.0, "DOUBLE");
+var prop = props.globals.initNode("sim/G91/liveries/active/symbol_y_dx", 0.0, "DOUBLE");
+var prop = props.globals.initNode("sim/G91/liveries/active/symbol_mirror_dx", 0, "INT");
+var prop = props.globals.initNode("sim/G91/liveries/active/symbol_x_sx", 0.0, "DOUBLE");
+var prop = props.globals.initNode("sim/G91/liveries/active/symbol_y_sx", 0.0, "DOUBLE");
+var prop = props.globals.initNode("sim/G91/liveries/active/symbol_mirror_sx", 0, "INT");
+var prop = props.globals.initNode("sim/G91/liveries/active/symbol_scale", 0.0, "DOUBLE");
+var prop = props.globals.initNode("sim/G91/liveries/active/symbol_rotation", 0.0, "DOUBLE");
+var prop = props.globals.initNode("sim/G91/liveries/active/symbol_layer", 1, "INT");
+var prop = props.globals.initNode("sim/G91/liveries/active/symbol_input_set", "", "STRING");
+var prop = props.globals.initNode("sim/G91/liveries/active/symbol_input_set_mod", 0, "INT");
+
 var setLivery_InExecution = 0;
 
 var targets_module_id = {};
@@ -8,62 +23,221 @@ var targets_path = {};
 var resolutionSetChanged = 0;
 
 var id_prec = nil;
+var printLog = nil;
 
 setprop("sim/G91/liveries/active/set-livery-loaded",1);
 print("set_livery.nas is loaded");
 
 
-var liverySymbolClass = {
-    calss_name: "liverySymbolClass",
+var LiverySymbolDataClass = {
+    class_name: "LiverySymbolDataClass",
+    
     new: func() {
         var obj = {
-            file: nil,
+            record: nil,
             canvas: nil,
-            x: 0.0,
-            y: 0.0,
-            dx: 0,
-            dy: 0,
-            isShow: 0,
+            s_symbol_id: nil,
+            type: 0,
+            x_dx: 0.0,
+            y_dx: 0.0,
+            mirror_dx: 0,
+            s_symbol_id_dx: nil,
+            x_sx: 0.0,
+            y_sx: 0.0,
+            mirror_sx: 0,
+            s_symbol_id_sx: nil,
+            scale: 0.0,
+            file: nil,
+            rotation: 0.0,
+            reduction: 16.0,
+            layer: nil,
+            isShow: 1,
+            targetModule: nil,
+            resolution: 0,
         };
-        return {parents: [liverySymbolClass]};
+        return {parents: [LiverySymbolDataClass]};
     },
-    init: func(aCanvas,aX,aY,aFile) {
-        print("set_livery.nas  liverySymbolClass aX: ",aX," aY: ",aY," aFile: ",aFile);
-        me.set_canvasGroup(aCanvas);
-        me.set_file(aFile);
-        me.set_pos(aX,aY);
-        print("set_livery.nas  liverySymbolClass istanziate");
+    
+    init: func(s_symbol_id, aRecord) {
+        me.s_symbol_id = s_symbol_id;
+        me.s_symbol_id_dx = s_symbol_id ~ "_dx";
+        me.s_symbol_id_sx = s_symbol_id ~ "_sx";
+        me.record = string.trim(aRecord);
+        var r = string.scanf(aRecord,"%f|%f,%f,%f|%f,%f,%f|%f,%f,%f|%f|%s", var result = []);
+        ### print("***** 01 record: ", aRecord," dim: ",size(result)," : ",debug.dump(result));
+        if (size(result) >= 9) {
+            var i = 0;
+            foreach(var value; result) {
+                if (i == 0) me.type = value;
+                if (i == 1) me.x_dx = value;
+                if (i == 2) me.y_dx = value;
+                if (i == 3) me.mirror_dx = value;
+                if (i == 4) me.x_sx = value;
+                if (i == 5) me.y_sx = value;
+                if (i == 6) me.mirror_sx = value;
+                if (i == 7) me.scale = value;
+                if (i == 8) me.rotation = value;
+                if (i == 9) me.reduction = value;
+                if (i == 10) me.layer = value;
+                if (i == 11) me.file = value;
+                i += 1;
+            };
+            if (me.mirror_dx > 0) {
+                me.mirror_dx = -1;
+            } else {
+                me.mirror_dx = 1;
+            }
+            if (me.mirror_sx > 0) {
+                me.mirror_sx = -1;
+            } else {
+                me.mirror_sx = 1;
+            }
+            print("set_livery.nas LiverySymbolDataClass s_symbol_id: ",me.s_symbol_id," "
+                ,sprintf("%1.0f",me.type)
+                ,sprintf("|%1.3f",me.x_dx)
+                ,sprintf(" %1.3f",me.y_dx)
+                ,sprintf(" %1.3f",me.mirror_dx)
+                ,sprintf("|%1.3f",me.x_sx)
+                ,sprintf(" %1.3f",me.y_sx)
+                ,sprintf(" %1.3f",me.mirror_sx)
+                ,sprintf("|%1.3f",me.scale)
+                ,sprintf(" %1.3f",me.rotation)
+                ,sprintf(" %2.0f",me.reduction)
+                ,sprintf("|%1.0f",me.layer)
+                ,sprintf("|%s",me.file));
+        } else {
+            print("set_livery.nas LiverySymbolDataClass Error in the data id: ",me.s_symbol_id," with record: ",me.record);
+            me.record = nil;
+        };
+        return;
     },
+};
+
+
+var LiverySymbolClass = {
+    class_name: "LiverySymbolClass",
+    
+    new: func(aPath) {
+        var obj = {
+            path: nil,
+            data: nil,
+        };
+        me.path = aPath;
+        me.data = {};
+        return {parents: [LiverySymbolClass]};
+    },
+    
+    add: func(s_symbol_id, aRecord) {
+        if (aRecord != nil and (size(string.trim(aRecord)) > 0)) {
+            me.data[s_symbol_id] = LiverySymbolDataClass.new();
+            me.data[s_symbol_id].init(s_symbol_id, aRecord);
+        }
+    },
+    
     set_canvasGroup: func(aCanvas) {
         me.canvas = aCanvas;
         return;
     },
-    set_file: func(aFileSymbol) {
-        me.file = aFileSymbol;
+    
+    set_values: func(s_symbol_id,x_dx,y_dx,mirror_dx,x_sx,y_sx,mirror_sx,scale,rotation,layer) {
+        if (x_dx > 0.01) me.data[s_symbol_id].x_dx = x_dx;
+        if (y_dx > 0.01) me.data[s_symbol_id].y_dx = y_dx;
+        me.data[s_symbol_id].mirror_dx = mirror_dx;
+        if (x_sx > 0.01) me.data[s_symbol_id].x_sx = x_sx;
+        if (y_sx > 0.01) me.data[s_symbol_id].y_sx = y_sx;
+        me.data[s_symbol_id].mirror_sx = mirror_sx;
+        if (scale >= 0.01) me.data[s_symbol_id].scale = scale;
+        if (me.data[s_symbol_id].targetModule != nil) {
+            me.set_targetModule(s_symbol_id);
+        }
+        me.layer = layer;
         return;
     },
-    set_pos: func(aX,aY) {
-        me.x = aX;
-        me.y = aY;
-        me.set_pos_in_container();
-        print("set_livery symbolClass for file: ",me.file," X: ",me.x," Y: ",me.y);
+    
+    input_set_values: func() {
+        var symbol_id = getprop("sim/G91/liveries/active/symbol_id");
+        var s_symbol_id = "symbol_" ~ sprintf("%02d",symbol_id + 1);
+        var x_dx = getprop("sim/G91/liveries/active/symbol_x_dx");
+        var y_dx = getprop("sim/G91/liveries/active/symbol_y_dx");
+        var mirror_dx = getprop("sim/G91/liveries/active/symbol_mirror_dx");
+        var x_sx = getprop("sim/G91/liveries/active/symbol_x_sx");
+        var y_sx = getprop("sim/G91/liveries/active/symbol_y_sx");
+        var mirror_sx = getprop("sim/G91/liveries/active/symbol_mirror_sx");
+        var scale = getprop("sim/G91/liveries/active/symbol_scale");
+        var rotation = getprop("sim/G91/liveries/active/symbol_rotation");
+        var layer = getprop("sim/G91/liveries/active/symbol_layer");
+        me.set_values(s_symbol_id,x_dx,y_dx,mirror_dx,x_sx,y_sx,mirror_sx,scale,rotation,layer);
         return;
     },
-    set_pos_in_container: func() {
-        print(debug.dump(me.canvas.get("size")));
-        var size = me.canvas.get("size");
-        print("***** size: ",size);
-        print("***** me.x: ",me.x);
-        me.dx = size * me.x;
-        me.dy = size * me.y;
+    
+    input_set_symbol_id: func() {
+        var symbol_id = getprop("sim/G91/liveries/active/symbol_id");
+        var s_symbol_id = "symbol_" ~ sprintf("%02d",symbol_id + 1);
+        foreach(var s_symbol_id_data; keys(me.data)) {
+            if (s_symbol_id == s_symbol_id_data) {
+                setprop("sim/G91/liveries/active/symbol_x_dx",me.data[s_symbol_id].x_dx);
+                setprop("sim/G91/liveries/active/symbol_y_dx",me.data[s_symbol_id].x_dx);
+                setprop("sim/G91/liveries/active/symbol_mirror_dx",me.data[s_symbol_id].mirror_dx);
+                setprop("sim/G91/liveries/active/symbol_x_sx",me.data[s_symbol_id].x_sx);
+                setprop("sim/G91/liveries/active/symbol_y_sx",me.data[s_symbol_id].x_sx);
+                setprop("sim/G91/liveries/active/symbol_mirror_sx",me.data[s_symbol_id].mirror_sx);
+                setprop("sim/G91/liveries/active/symbol_scale",me.data[s_symbol_id].scale);
+                setprop("sim/G91/liveries/active/symbol_rotation",me.data[s_symbol_id].rotation);
+                setprop("sim/G91/liveries/active/symbol_layer",me.data[s_symbol_id].layer);
+                me.set_values(s_symbol_id,x_dx,y_dx,mirror_dx,x_sx,y_sx,mirror_sx,scale,rotation);
+                return;
+            }
+        }
         return;
     },
-    set_show: func(aShow) {
-        me.isShow = aShow;
+    
+    set_targetModule: func(s_symbol_id) {
+        var data = me.data[s_symbol_id];
+        var resolution = me.data[s_symbol_id].resolution;
+        if (data.record != nil) {
+            if (data.type == 1) {
+                data.targetModule[data.s_symbol_id_dx]
+                    .setTranslation(data.x_dx * resolution,data.y_dx * resolution)
+                    .setScale(data.mirror_dx * 1.2 * data.scale,data.scale);
+                data.targetModule[data.s_symbol_id_sx]
+                    .setTranslation(data.x_sx * resolution,data.y_sx * resolution)
+                    .setScale(data.mirror_sx * 1.2 * data.scale,data.scale);
+            }
+        }
+    },
+    
+    new_targetModule: func(aLayer,aTargetModule,resolution,aRoot) {
+        foreach(var s_symbol_id; keys(me.data)) {
+            var data = me.data[s_symbol_id];
+            if (data.record != nil) {
+                if (data.layer == aLayer) {
+                    data.targetModule = aTargetModule;
+                    data.resolution = resolution;
+                    var fileWithPath = me.path ~ "/" ~ data.file;
+                    print("set_livery.nas LiverySymbolClass new_targetModule s_symbol_id: ",s_symbol_id," fileWithPath: ",fileWithPath, "resolution: ",resolution," scale: ",data.scale);
+                    if (data.type == 1) {
+                        data.targetModule[data.s_symbol_id_dx] = aRoot.createChild("image")
+                            .setFile(fileWithPath)
+                            .setTranslation(data.x_dx * resolution,data.y_dx * resolution)
+                            .setScale(data.mirror_dx * 1.2 * data.scale,data.scale)
+                            .setSize(resolution / data.reduction,resolution / data.reduction);
+                        data.targetModule[data.s_symbol_id_sx] = aRoot.createChild("image")
+                            .setFile(fileWithPath)
+                            .setTranslation(data.x_sx * resolution,data.y_sx * resolution)
+                            .setScale(data.mirror_sx * 1.2 * data.scale,data.scale)
+                            .setSize(resolution / data.reduction,resolution / data.reduction);
+                    }
+                }
+            }
+        }
+        return;
+    },
+    
+    show: func(s_symbol_id) {
+        return;
     },
 };
 
-var liverySymbols = {};
 
 var objectsNodes_ca = [
 # Fuselage
@@ -254,6 +428,20 @@ var get_resolution = func(aResolutionSet) {
 };
 
 
+var setNumberPosition = func(target_module_id, scale, x, y) {
+    
+    var resolution = get_resolution(targets_module_id[target_module_id]["resolution_set"]);
+    if (x == nil) x = 0.0;
+    if (y == nil) y = 0.0;
+    if (scale == nil or scale < 0.1) scale = 0.1;
+    print("***** setNumberPosition target_module_id: ",target_module_id," x: ",x," y: ",y," resolution: ",resolution);
+    targets_module_id[target_module_id]["layers_001"]["number"]
+        .setTranslation(x * resolution,y * resolution)
+        .setScale(1.2 * scale,scale);
+    
+}
+
+
 var createCanvas = func(target_module_id) {
     
     # see: http://wiki.flightgear.org/Howto:Creating_fullscreen_Canvas_applications
@@ -262,10 +450,6 @@ var createCanvas = func(target_module_id) {
     var resolution = get_resolution(targets_module_id[target_module_id]["resolution_set"]);
  
     print("set_livery.nas createCanvas: ca_size = ",resolution," cw_size = ",resolution, " module target_module_id: ",target_module_id);
-    ### print(debug.dump(targets_module_id[target_module_id]["ca"]));
-    
-    ### if (targets_module_id[target_module_id]["ca"] != nil) targets_module_id[target_module_id]["ca"].del();;
-    ### if (targets_module_id[target_module_id]["cw"] != nil) targets_module_id[target_module_id]["cw"].del();
     
     if (targets_module_id[target_module_id]["ca"] == nil) {
         targets_module_id[target_module_id]["ca"] = canvas.new({"name": "Fuselage",
@@ -308,98 +492,88 @@ var setLivery = func(target_module_id) {
     var dirty_001 = targets_module_id[target_module_id]["dirty_001"];
     var dirty_002 = targets_module_id[target_module_id]["dirty_002"];
     var dirty_set = targets_module_id[target_module_id]["dirty_set"];
-    
-    if (size(dirty_001) == 0 or size(dirty_002) == 0) {
-        setprop("sim/G91/liveries/active/dirtyMsg","No dirty file");
-        if (dirty_set == 1) {
-            setprop("sim/G91/liveries/active/dirty-set",0);
-            dirty_set = 0;
-        }
-    }
-    
-    var id = 0;
     var resolution = get_resolution(targets_module_id[target_module_id]["resolution_set"]);
     
     if (targets_module_id[target_module_id]["ca_root"] != nil) {
-        id = 0;
-        var layers_001 = {};
+        var id = 0;
+        targets_module_id[target_module_id]["layers_001"] = {};
         foreach(var image; [livery_001, dirty_001]) {
             id += 1;
             var insertLivery = 0;
             print("set_livery.nas setLivery ca_root image: ",image," (",size(image),") resolution: ",resolution," target_module_id: ",target_module_id);
             # Insert the layer
             if (size(image) > 0) {
-                if (id == 1 and !contains(layers_001, image)) insertLivery = 1;
-                if (id == 2 and dirty_set == 1 and !contains(layers_001, image)) insertLivery = 1;
+                if (id == 1 and contains(targets_module_id[target_module_id]["layers_001"], image) == 0) insertLivery = 1;
+                if (id == 2 and dirty_set == 1 and contains(targets_module_id[target_module_id]["layers_001"], image) == 0) insertLivery = 1;
                 if (insertLivery == 1) {
-                    layers_001[image] = targets_module_id[target_module_id]["ca_root"].createChild("image")
+                    targets_module_id[target_module_id]["layers_001"][image] = targets_module_id[target_module_id]["ca_root"].createChild("image")
                         .setFile(image)
                         .setSize(resolution,resolution);
-                    print("set_livery.nas setLivery ca_root inserted target_module_id: ",target_module_id, " image: ",image);
+                    print("set_livery.nas setLivery ca_root inserted target_module_id: ",target_module_id, " image: ",image," id = ",id);
                 } else {
-                    print("set_livery.nas setLivery ca_root not inserted target_module_id: ",target_module_id, " image: ",image);
+                    print("set_livery.nas setLivery ca_root not inserted target_module_id: ",target_module_id, " image: ",image," id = ",id);
                 }
-                if (id == 2 and contains(layers_001, image)) {
+                if (id == 2 and contains(targets_module_id[target_module_id]["layers_001"], image)) {
                     if (dirty_set == 1) {
                         print("set_livery.nas dirty show: ",dirty_001);
-                        layers_001[image].show();
+                        targets_module_id[target_module_id]["layers_001"][image].show();
                     } else {
                         print("set_livery.nas dirty hide: ",dirty_001);
-                        layers_001[image].hide();
+                        targets_module_id[target_module_id]["layers_001"][image].hide();
                     }
                 }
             }
+            
         }
-        #debug.backtrace();
-        var xSymbol = 0.0;
-        var ySymbol = 0.0;
-        var fileSymbol = "";
-        xSymbol = targets_module_id[target_module_id]["number-x"];
-        ySymbol = targets_module_id[target_module_id]["number-y"];
-        fileSymbol = targets_module_id[target_module_id]["number-file"];
-        #liverySymbols[target_module_id] = liverySymbolClass.new();
-        #liverySymbols[target_module_id].init(targets_module_id[target_module_id]["ca"],xSymbol,ySymbol,fileSymbol);
-        #print("***** ",liverySymbols[target_module_id].x," ",liverySymbols[target_module_id].file);
-        ### print(debug.dump(liverySymbols));
+        
+        if (targets_module_id[target_module_id]["lsc"] != nil) {
+            ### print("***** 10: ",debug.dump(targets_module_id[target_module_id]["lsc"]));
+            targets_module_id[target_module_id]["lsc"].new_targetModule(1,targets_module_id[target_module_id]["layers_001"],resolution,targets_module_id[target_module_id]["ca_root"]);
+        };
+
     }
     
     if (targets_module_id[target_module_id]["cw_root"] != nil) {
-        id = 0;
-        var layers_002 = {};
+        var id = 0;
+        targets_module_id[target_module_id]["layers_002"] = {};
         foreach(var image; [livery_002, dirty_002]) {
             id += 1;
             var insertLivery = 0;
             print("set_livery.nas setLivery cw_root image: ",image," (",size(image),") resolution: ",resolution," target_module_id: ",target_module_id);
             # Insert the layer
             if (size(image) > 0) {
-                if (id == 1 and !contains(layers_002, image)) insertLivery = 1;
-                if (id == 2 and dirty_set == 1 and !contains(layers_002, image)) insertLivery = 1;
+                if (id == 1 and contains(targets_module_id[target_module_id]["layers_002"], image) == 0) insertLivery = 1;
+                if (id == 2 and dirty_set == 1 and contains(targets_module_id[target_module_id]["layers_002"], image) == 0) insertLivery = 1;
                 if (insertLivery == 1) {
-                    layers_002[image] = targets_module_id[target_module_id]["cw_root"].createChild("image")
+                    targets_module_id[target_module_id]["layers_002"][image] = targets_module_id[target_module_id]["cw_root"].createChild("image")
                         .setFile(image)
                         .setSize(resolution,resolution);
-                    print("set_livery.nas setLivery cw_root inserted target_module_id: ",target_module_id, " image: ",image);
+                    print("set_livery.nas setLivery cw_root inserted target_module_id: ",target_module_id, " image: ",image," id = ",id);
                 } else {
-                    print("set_livery.nas setLivery cw_root not inserted target_module_id: ",target_module_id, " image: ",image);
+                    print("set_livery.nas setLivery cw_root not inserted target_module_id: ",target_module_id, " image: ",image," id = ",id);
                 }
-                if (id == 2 and contains(layers_002, image)) {
+                if (id == 2 and contains(targets_module_id[target_module_id]["layers_002"], image)) {
                     if (dirty_set == 1) {
                         print("set_livery.nas dirty show: ",dirty_002);
-                        layers_002[image].show();
+                        targets_module_id[target_module_id]["layers_002"][image].show();
                     } else {
                         print("set_livery.nas dirty hide: ",dirty_002);
-                        layers_002[image].hide();
+                        targets_module_id[target_module_id]["layers_002"][image].hide();
                     }
                 }
             }
         }
+        if (targets_module_id[target_module_id]["lsc"] != nil) {
+            ### print("***** 10: ",debug.dump(targets_module_id[target_module_id]["lsc"]));
+            targets_module_id[target_module_id]["lsc"].new_targetModule(2,targets_module_id[target_module_id]["layers_002"],resolution,targets_module_id[target_module_id]["cw_root"]);
+        };
     }
     
     setLivery_InExecution = 0;
 };
 
 
-var getActiveData = func(target_module_id) {
+var getActiveData = func(target_module_id, dirty_set) {
     
     var idLivery = 0;
     var resolutionSet = 2;
@@ -459,6 +633,10 @@ var getActiveData = func(target_module_id) {
             print("set_livery.nas getActiveData, create an empy targets_module_id[target_module_id], with target_module_id: ",target_module_id);
         }
         
+        if (dirty_set != nil) {
+            liveries[id].getNode("dirty_set").setIntValue(dirty_set);
+        }
+        
         targets_module_id[target_module_id]["target_module_id"] = target_module_id;
         targets_module_id[target_module_id]["idLivery"] = idLivery;
         targets_module_id[target_module_id]["PANR1"] = liveries[id].getNode("PANR1").getValue();
@@ -473,10 +651,15 @@ var getActiveData = func(target_module_id) {
         targets_module_id[target_module_id]["specular"] = liveries[id].getNode("specular").getValue();
         targets_module_id[target_module_id]["dirty_set"] = liveries[id].getNode("dirty_set").getValue();
         targets_module_id[target_module_id]["normalmap_enabled"] = liveries[id].getNode("normalmap_enabled").getValue();
-        targets_module_id[target_module_id]["number-file"] = liveries[id].getNode("number_file").getValue();
-        targets_module_id[target_module_id]["number-x"] = liveries[id].getNode("number_x").getValue();
-        targets_module_id[target_module_id]["number-y"] = liveries[id].getNode("number_y").getValue();
+        targets_module_id[target_module_id]["symbols_path"] = liveries[id].getNode("symbols_path").getValue();
+        targets_module_id[target_module_id]["symbol_01"] = liveries[id].getNode("symbol_01").getValue();
+        targets_module_id[target_module_id]["symbol_02"] = liveries[id].getNode("symbol_02").getValue();
+        targets_module_id[target_module_id]["symbol_03"] = liveries[id].getNode("symbol_03").getValue();
+        targets_module_id[target_module_id]["symbol_04"] = liveries[id].getNode("symbol_04").getValue();
+        targets_module_id[target_module_id]["symbol_05"] = liveries[id].getNode("symbol_05").getValue();
         targets_module_id[target_module_id]["resolution_set"] = resolutionSet;
+
+        #// Set the active livery section
         
         setprop("sim/G91/liveries/active/id",idLivery);
         setprop("sim/G91/liveries/active/version",liveries[id].getNode("version").getValue());
@@ -491,9 +674,41 @@ var getActiveData = func(target_module_id) {
         setprop("sim/G91/liveries/active/specular",liveries[id].getNode("specular").getValue());
         setprop("sim/G91/liveries/active/dirty_set",liveries[id].getNode("dirty_set").getValue());
         setprop("sim/G91/liveries/active/normalmap_enabled",liveries[id].getNode("normalmap_enabled").getValue());
-        setprop("sim/G91/liveries/active/number_file",targets_module_id[target_module_id]["number-file"]);
-        setprop("sim/G91/liveries/active/number_x",targets_module_id[target_module_id]["number-x"]);
-        setprop("sim/G91/liveries/active/number_y",targets_module_id[target_module_id]["number-y"]);
+        setprop("sim/G91/liveries/active/symbols_path",liveries[id].getNode("symbols_path").getValue());
+        setprop("sim/G91/liveries/active/symbol_01",liveries[id].getNode("symbol_01").getValue());
+        setprop("sim/G91/liveries/active/symbol_02",liveries[id].getNode("symbol_02").getValue());
+        setprop("sim/G91/liveries/active/symbol_03",liveries[id].getNode("symbol_03").getValue());
+        setprop("sim/G91/liveries/active/symbol_04",liveries[id].getNode("symbol_04").getValue());
+        setprop("sim/G91/liveries/active/symbol_05",liveries[id].getNode("symbol_05").getValue());
+        
+        #// Symbol section
+        
+        var symbol_path_node = liveries[id].getNode("symbols_path");
+        var symbol_id = 0;
+        if (symbol_path_node != nil) {
+            var symbol_path = symbol_path_node.getValue();
+            var search = 1;
+            targets_module_id[target_module_id]["lsc"] = LiverySymbolClass.new(symbol_path);
+            # there is a list of symbols, the list is explored
+            while (search == 1) {
+                var s_symbol_id = "symbol_" ~ sprintf("%02d",symbol_id + 1);
+                print("set_livery.nas getActiveData s_symbol_id: ",s_symbol_id);
+                var s = liveries[id].getNode(s_symbol_id);
+                if (s != nil) {
+                    targets_module_id[target_module_id]["lsc"].add(s_symbol_id,s.getValue());
+                    print("set_livery.nas getActiveData get symbols, id: ",symbol_id," record: ",targets_module_id[target_module_id]["lsc"]);
+                    setprop("sim/G91/liveries/active/" ~ s_symbol_id,s.getValue());
+                    symbol_id += 1;
+                } else {
+                    print("set_livery.nas getActiveData get symbols, last id: ",s_symbol_id);
+                    search = 0;
+                }
+            }
+            targets_module_id[target_module_id]["symbols_path"] = symbol_path;
+        } else {
+            targets_module_id[target_module_id]["symbols_path"] = nil;
+        }
+        targets_module_id[target_module_id]["symbols_size"] = symbol_id - 1;
         
     } else {
         
@@ -543,7 +758,7 @@ setlistener("sim/G91/liveries/active/id", func() {
     } elsif (id_prec != nil and id_prec != id) {
         if(setLivery_InExecution == 0) {
             print("set_livery.nas setlistener ID: ",id," is singleplayer mode");
-            getActiveData(0);
+            getActiveData(0, nil);
         } else {
             print("set_livery.nas setlistener ID: ",id," is singleplayer mode but stopped because setLivery_InExecution = 1");
         }
@@ -558,13 +773,11 @@ setlistener("sim/G91/liveries/active/dirty-set", func() {
         if (dirty_set == 0) {
             setprop("sim/G91/liveries/active/dirty-set","0");
             setprop("sim/G91/liveries/active/dirty-Msg","Dirty inactive");
-            print("set_livery.nas setLivery, Dirty inactive");
         } else {
             setprop("sim/G91/liveries/active/dirty-set","1");
             setprop("sim/G91/liveries/active/dirty-Msg","Dirty active");
-            print("set_livery.nas setLivery, Dirty active");
         }
-        getActiveData(0);
+        getActiveData(0, dirty_set);
     }
 }, 1, 1);
 
@@ -584,6 +797,22 @@ setlistener("sim/G91/liveries/active/normalmap_enabled", func() {
 }, 1, 1);
 
 
+setlistener("sim/G91/liveries/active/symbol_input_set_mod", func() {
+    if (getprop("sim/G91/liveries/active/symbol_input_set_mod") > 0) {
+        setprop("sim/G91/liveries/active/symbol_input_set_mod",0);
+        targets_module_id[0]["lsc"].input_set_values();
+    }
+}, 1, 1);
+
+
+setlistener("sim/G91/liveries/active/symbol_id_mod", func() {
+    if (getprop("sim/G91/liveries/active/symbol_id_mod") > 0) {
+        setprop("sim/G91/liveries/active/symbol_id_mod",0);
+        targets_module_id[0]["lsc"].input_set_symbol_id();
+    }
+}, 1, 1);
+
+
 var livery_multiplayer = maketimer(1, func() {
     target_module_id = getprop("sim/G91/liveries/active/set-target-module-id");
     if ((target_module_id != nil and isint(target_module_id)) or (target_module_id != nil and target_module_id == -1)) {
@@ -598,14 +827,6 @@ var livery_multiplayer = maketimer(1, func() {
                         if (tmId > 0) {
                             var idLivery = targets_module_id[tmId]["idLivery"];
                             var node = props.globals.getNode(targets_path[tmId]);
-                            
-                            #print("****** id: ",idLivery," tmId: ",tmId," targets_module_id: ",target_module_id);
-                            #print(debug.dump(targets_path));
-                            #print(debug.dump(targets_module_id));
-                            #print("****** node ******");
-                            #print(debug.dump(node));
-                            #print("****** ---- ******");
-                            
                             var idNew = node.getNode("sim/G91/liveries/active/id").getValue();
                             if (idLivery != idNew) {
                                 print("set_livery.nas livery_multiplayer timer update id: ",idNew, " is different old id: ",idLivery, " list dim: ",num_players);
@@ -640,10 +861,13 @@ var livery_multiplayer = maketimer(1, func() {
                     targets_module_id[target_module_id]["specular"] = node.getNode("sim/G91/liveries/active/specular").getValue();
                     targets_module_id[target_module_id]["dirty_set"] = node.getNode("sim/G91/liveries/active/dirty_set").getValue();
                     targets_module_id[target_module_id]["normalmap_enabled"] = node.getNode("sim/G91/liveries/active/normalmap_enabled").getValue();
-                    targets_module_id[target_module_id]["number-file"] = node.getNode("sim/G91/liveries/active/number_file").getValue();
-                    targets_module_id[target_module_id]["number-x"] = node.getNode("sim/G91/liveries/active/number_x").getValue();
-                    targets_module_id[target_module_id]["number-y"] = node.getNode("sim/G91/liveries/active/number_y").getValue();
-                    getActiveData(target_module_id);
+                    targets_module_id[target_module_id]["symbols_path"] = node.getNode("sim/G91/liveries/active/symbols_path").getValue();
+                    targets_module_id[target_module_id]["symbol_01"] = node.getNode("sim/G91/liveries/active/symbol_01").getValue();
+                    targets_module_id[target_module_id]["symbol_02"] = node.getNode("sim/G91/liveries/active/symbol_02").getValue();
+                    targets_module_id[target_module_id]["symbol_03"] = node.getNode("sim/G91/liveries/active/symbol_03").getValue();
+                    targets_module_id[target_module_id]["symbol_04"] = node.getNode("sim/G91/liveries/active/symbol_04").getValue();
+                    targets_module_id[target_module_id]["symbol_05"] = node.getNode("sim/G91/liveries/active/symbol_05").getValue();
+                    getActiveData(target_module_id, nil);
                 }
             } else {
                 setprop("sim/aircraft-is-singleplayer",1);

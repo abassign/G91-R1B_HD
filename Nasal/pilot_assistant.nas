@@ -195,7 +195,13 @@ var pilot_assistant = func {
             if (airport_system_selector > 0) {
                 airport_system_selector_id = getprop("sim/gui/dialogs/airports/selected-airport/id");
                 if (airport_system_selector_id != nil) {
+                    var runway_id = getprop("sim/gui/dialogs/airports/selected-airport/rwy");
                     setprop("fdm/jsbsim/systems/autopilot/gui/airport_select_name_direct",airport_system_selector_id);
+                    if (runway_id != nil and size(runway_id > 0)) {
+                        setprop("fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct/rws",runway_id);
+                    } else {
+                        setprop("fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct/rws","");
+                    };
                     airport_select_id_direct = airportinfo(airport_system_selector_id);
                 }
                 setprop("fdm/jsbsim/systems/autopilot/gui/airport_system_selector",0);
