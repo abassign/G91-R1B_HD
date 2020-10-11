@@ -48,8 +48,10 @@
                 <binding>
                     <command>nasal</command>
                     <script>
-                        setprop("fdm/jsbsim/systems/autopilot/gui/true-heading",0.0);
-                        setprop("fdm/jsbsim/systems/autopilot/gui/wing-leveler",0.0);
+                        if (getprop("fdm/jsbsim/systems/autopilot/gui/phi-heading") >= 1.0) {
+                            setprop("fdm/jsbsim/systems/autopilot/gui/true-heading",0.0);
+                            setprop("fdm/jsbsim/systems/autopilot/gui/wing-leveler",0.0);
+                        }
                     </script>
                 </binding>
             </checkbox>
@@ -103,7 +105,7 @@
             <text>
                 <row>0</row>
                 <col>5</col>
-                <label>dist display</label>
+                <label>display</label>
                 <color>
                     <red>0.9</red>
                     <green>0.9</green>
@@ -126,8 +128,7 @@
             <text>
                 <row>0</row>
                 <col>7</col>
-                <label>Heading (deg)</label>
-                <halign>left</halign>
+                <label>Versus:</label>
                 <color>
                     <red>0.9</red>
                     <green>0.9</green>
@@ -137,6 +138,30 @@
             <text>
                 <row>0</row>
                 <col>8</col>
+                <pref-width>30</pref-width>
+                <property>fdm/jsbsim/systems/gauges/PHI/program/route-from-text</property>
+                <live>true</live>
+                <halign>right</halign>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.0</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>9</col>
+                <label>Dif to H (deg)</label>
+                <halign>left</halign>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.9</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>10</col>
                 <label>9999999</label>
                 <live>true</live>
                 <format>%3.0f (deg)</format>
@@ -686,7 +711,7 @@
                 <binding>
                     <command>nasal</command>
                     <script>
-                        setprop("fdm/jsbsim/systems/gauges/PHI/program/reset",1.0);
+                        setprop("fdm/jsbsim/systems/gauges/PHI/program/reset",2.0);
                     </script>
                 </binding>
             </button>
@@ -962,54 +987,75 @@
                     <blue>1</blue>
                 </color>
             </text>
-            <combo>
+            <slider>
                 <row>0</row>
                 <col>1</col>
-                <property>fdm/jsbsim/systems/gauges/PHI/doppler/switch-turn-text</property>
-                <value>OFF</value>
-                <value>Rec only</value>
-                <value>ON</value>
-                <value>Test</value>
+                <width>100</width>
+                <property>fdm/jsbsim/systems/gauges/PHI/doppler/switch-turn</property>
+                <min>0</min>
+                <max>3</max>
+                <step>1</step>  
+                <live>true</live>
                 <binding>
                     <command>dialog-apply</command>
                 </binding>
-                <binding>
-                    <command>nasal</command>
-                    <script>
-                        <![CDATA[
-                            var tag = getprop("fdm/jsbsim/systems/gauges/PHI/doppler/switch-turn-text");
-                            if (tag == "OFF") {
-                                setprop("fdm/jsbsim/systems/gauges/PHI/doppler/switch-turn",0);
-                            } elsif (tag == "Rec only") {
-                                setprop("fdm/jsbsim/systems/gauges/PHI/doppler/switch-turn",1);
-                            } elsif (tag == "ON") {
-                                setprop("fdm/jsbsim/systems/gauges/PHI/doppler/switch-turn",2);
-                            } else {
-                                setprop("fdm/jsbsim/systems/gauges/PHI/doppler/switch-turn",3);
-                            }
-                        ]]>
-                    </script>
-                </binding>
-            </combo>
+            </slider>
+            <text>
+                <row>0</row>
+                <col>2</col>
+                <pref-width>50</pref-width>
+                <property>fdm/jsbsim/systems/gauges/PHI/doppler/switch-turn-text</property>
+                <live>true</live>
+                <halign>center</halign>
+                <color>
+                    <red>0.9</red>
+                    <green>0.3</green>
+                    <blue>0.3</blue>
+                </color>
+            </text>
             <radio>
                 <row>0</row>
                 <col>3</col>
                 <halign>left</halign>
-                <label>Sea/Land</label>
+                <label>Sea/Land is:</label>
                 <property>fdm/jsbsim/systems/gauges/PHI/doppler/switch-terrain-sea</property>
                 <live>true</live>
                 <binding>
                     <command>dialog-apply</command>
                 </binding>
             </radio>
-            <radio>
+            <text>
+                <row>0</row>
+                <col>4</col>
+                <pref-width>20</pref-width>
+                <property>fdm/jsbsim/systems/gauges/PHI/doppler/switch-terrain-sea-description</property>
+                <live>true</live>
+                <halign>left</halign>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0</blue>
+                </color>
+            </text>
+            <text>
                 <row>0</row>
                 <col>5</col>
-                <halign>left</halign>
-                <label>Allarm</label>
-                <property>fdm/jsbsim/systems/gauges/PHI/doppler/allarm</property>
+                <pref-width>50</pref-width>
+                <property>fdm/jsbsim/systems/gauges/PHI/doppler/allarm-description</property>
                 <live>true</live>
-            </radio>
+                <halign>right</halign>
+                <color>
+                    <red>0.9</red>
+                    <green>0.3</green>
+                    <blue>0.3</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>6</col>
+                <pref-width>50</pref-width>
+                <label> </label>
+            </text>
         </group>
     </group>
     

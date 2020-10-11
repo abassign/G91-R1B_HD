@@ -10,16 +10,19 @@ var isRouteActivate = 0;
 var isRouteActivated = 0;
 var set_activate_new_route = 0;
 
-var prop = props.globals.initNode("fdm/jsbsim/systems/gauges/PHI/programmer/route-manual", "0", "INT");
-var prop = props.globals.initNode("fdm/jsbsim/systems/gauges/PHI/programmer/route-manual-mod", "0", "INT");
+var prop = props.globals.initNode("fdm/jsbsim/systems/gauges/PHI/programmer/route-manual", "1", "INT");
+var prop = props.globals.initNode("fdm/jsbsim/systems/gauges/PHI/programmer/route-manual-mod", "1", "INT");
 var prop = props.globals.initNode("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-loop", "0", "INT");
 var prop = props.globals.initNode("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-loop-mod", "0", "INT");
 var prop = props.globals.initNode("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-circuit-left", "0", "INT");
 var prop = props.globals.initNode("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-circuit-left-mod", "0", "INT");
 var prop = props.globals.initNode("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-circuit-right", "0", "INT");
 var prop = props.globals.initNode("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-circuit-right-mod", "0", "INT");
-var prop = props.globals.initNode("fdm/jsbsim/systems/gauges/PHI/programmer/declination-automatic", "1", "INT");
+var prop = props.globals.initNode("fdm/jsbsim/systems/gauges/PHI/programmer/declination-automatic", "0", "INT");
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/phi-heading-to-activate", "0", "INT");
+var prop = props.globals.initNode("fdm/jsbsim/systems/gauges/PHI/doppler/switch-terrain-sea-description","","STRING");
+var prop = props.globals.initNode("fdm/jsbsim/systems/gauges/PHI/doppler/allarm-description","","STRING");
+var prop = props.globals.initNode("fdm/jsbsim/systems/gauges/PHI/program/route-from-text","","STRING");
 
 
 var phi_get_route_data = func() {
@@ -51,14 +54,23 @@ var phi_get_route_data = func() {
 
 var activate_new_route = func() {
     if (set_activate_new_route >= 1) {
-        delta_time = 0.5;
+        delta_time = 0.3;
         if (getprop("fdm/jsbsim/systems/gauges/PHI/program/reset") == 0) {
             setprop("fdm/jsbsim/systems/autopilot/gui/true-heading-max-wing-slope-deg",40.0);
             setprop("fdm/jsbsim/systems/gauges/PHI/wind/automatic-wind-sw",1);
-            setprop("fdm/jsbsim/systems/gauges/PHI/program/route-manager/autopush-active",1);
             if (set_activate_new_route < 10) {
                 setprop("fdm/jsbsim/systems/gauges/PHI/indicator/switch-turn",1);
                 setprop("fdm/jsbsim/systems/autopilot/gui/phi-heading-to-activate",1);
+                setprop("fdm/jsbsim/systems/gauges/PHI/program/route-manager/autopush-active",1);
+                setprop("fdm/jsbsim/systems/gauges/PHI/doppler/switch-turn",2);
+                setprop("fdm/jsbsim/systems/gauges/PHI/doppler/switch-terrain-sea",1);
+                setprop("fdm/jsbsim/systems/gauges/PHI/programmer/declination-automatic",1);
+                setprop("fdm/jsbsim/systems/gauges/PHI/wind/automatic-wind-sw",1);
+            } else {
+                setprop("fdm/jsbsim/systems/gauges/PHI/doppler/switch-turn",1);
+                setprop("fdm/jsbsim/systems/gauges/PHI/doppler/switch-terrain-sea",1);
+                setprop("fdm/jsbsim/systems/gauges/PHI/programmer/declination-automatic",0);
+                setprop("fdm/jsbsim/systems/gauges/PHI/wind/automatic-wind-sw",0);
             }
         }
         if (set_activate_new_route == 2) {
@@ -66,6 +78,7 @@ var activate_new_route = func() {
                 setprop("fdm/jsbsim/systems/autopilot/gui/landing-activate",1);
             }
         }
+
         set_activate_new_route = 0;
     } else {
         delta_time = delta_time_standard;
@@ -77,11 +90,13 @@ setlistener("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-loop-mod",
     var route_automatic_loop = getprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-loop");
     if (getprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-loop-mod") == 1
         and getprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-loop") == 1) {
+        
         setprop("/autopilot/route-manager/active",0);
         setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-circuit-left",0);
         setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-circuit-right",0);
         setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-manual",0);
         setprop("fdm/jsbsim/systems/gauges/PHI/program/reset",1);
+        setprop("fdm/jsbsim/systems/gauges/PHI/indicator/digit-inc-stop",1);
         var heading_true_deg = math.round(getprop("fdm/jsbsim/systems/autopilot/heading-true-deg"));
         var altitudeHold = math.round(getprop("fdm/jsbsim/systems/autopilot/gui/altitude-hold-ft"));
         if (altitudeHold <= 0.0) altitudeHold = 15000.0;
@@ -119,11 +134,13 @@ setlistener("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-loop-mod",
 setlistener("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-circuit-left-mod", func {
     if (getprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-circuit-left-mod") == 1
         and getprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-circuit-left") == 1) {
+        
         setprop("/autopilot/route-manager/active",0);
         setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-loop",0);
         setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-circuit-right",0);
         setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-manual",0);
         setprop("fdm/jsbsim/systems/gauges/PHI/program/reset",1);
+        setprop("fdm/jsbsim/systems/gauges/PHI/indicator/digit-inc-stop",1);
         var heading_true_deg = math.round(getprop("fdm/jsbsim/systems/autopilot/heading-true-deg"));
         var altitudeHold = math.round(getprop("fdm/jsbsim/systems/autopilot/gui/altitude-hold-ft"));
         if (altitudeHold <= 0.0) altitudeHold = 15000.0;
@@ -162,11 +179,13 @@ setlistener("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-circuit-le
 setlistener("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-circuit-right-mod", func {
     if (getprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-circuit-right-mod") == 1 
         and getprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-circuit-right") == 1) {
+        
         setprop("/autopilot/route-manager/active",0);
         setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-loop",0);
         setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-circuit-left",0);
         setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-manual",0);
         setprop("fdm/jsbsim/systems/gauges/PHI/program/reset",1);
+        setprop("fdm/jsbsim/systems/gauges/PHI/indicator/digit-inc-stop",1);
         var heading_true_deg = math.round(getprop("fdm/jsbsim/systems/autopilot/heading-true-deg"));
         var altitudeHold = math.round(getprop("fdm/jsbsim/systems/autopilot/gui/altitude-hold-ft"));
         if (altitudeHold <= 0.0) altitudeHold = 15000.0;
@@ -204,6 +223,7 @@ setlistener("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-circuit-ri
 
 setlistener("/autopilot/route-manager/active", func {
     if (getprop("/autopilot/route-manager/active") == 1) {
+        
         setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-loop",0);
         setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-circuit-left",0);
         setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-circuit-right",0);
@@ -220,6 +240,7 @@ setlistener("/autopilot/route-manager/active", func {
             setprop("fdm/jsbsim/systems/autopilot/gui/speed-set-mach",0);
             setprop("fdm/jsbsim/systems/autopilot/gui/speed-value",speed_cas);
         }
+        setprop("fdm/jsbsim/systems/gauges/PHI/indicator/digit-inc-stop",1);
         for (var i=1; i <= 5; i = i + 1) {
             if (i < routeNum) {
                 setprop("/fdm/jsbsim/systems/gauges/PHI/program/route[" ~ i ~ "]/dist",math.round(getprop("/autopilot/route-manager/route/wp[" ~ i ~ "]/leg-distance-nm")));
@@ -233,12 +254,8 @@ setlistener("/autopilot/route-manager/active", func {
         }
         var airport_id = getprop("/autopilot/route-manager/destination/airport");
         if (airport_id != nil and size(airport_id) > 0) {
-            setprop("fdm/jsbsim/systems/autopilot/gui/airport_select_name_direct",airport_id);
-            setprop("fdm/jsbsim/systems/autopilot/gui/airport_system_selector",0);
-            setprop("fdm/jsbsim/systems/autopilot/gui/landing-scan-airport",0);
-            if (getprop("fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct/status") == 0) {
-                setprop("fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct/status",1);
-            }
+            setprop("sim/gui/dialogs/airports/selected-airport/id",airport_id);
+            setprop("fdm/jsbsim/systems/autopilot/gui/airport_system_selector",1);
             setprop("fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct/rw",getprop("/autopilot/route-manager/destination/runway"));
             setprop("fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct/rw_select",1);
             set_activate_new_route = 2;
@@ -247,24 +264,27 @@ setlistener("/autopilot/route-manager/active", func {
         }
     } else {
         setprop("fdm/jsbsim/systems/autopilot/gui/true-heading-max-wing-slope-deg",30.0);
-        setprop("fdm/jsbsim/systems/gauges/PHI/program/reset",1);
-        setprop("fdm/jsbsim/systems/autopilot/gui/phi-heading",0);
-        setprop("fdm/jsbsim/systems/autopilot/gui/true-heading",1.0);
-        setprop("fdm/jsbsim/systems/autopilot/gui/wing-leveler",1.0);
+        setprop("fdm/jsbsim/systems/gauges/PHI/program/reset",2);
     }
 }, 1, 0);
 
 
 setlistener("fdm/jsbsim/systems/gauges/PHI/programmer/route-manual-mod", func {
-    if (getprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-manual-mod") == 1 
-        and getprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-manual") == 1) { 
+    if (getprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-manual-mod") >= 1.0
+        and getprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-manual") == 1.0) { 
+        
+        if (getprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-manual-mod") < 2.0) {
+            setprop("fdm/jsbsim/systems/gauges/PHI/program/reset",1);
+        }
         setprop("/autopilot/route-manager/active",0);
         setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-loop",0);
         setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-circuit-left",0);
         setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-circuit-right",0);
         setprop("fdm/jsbsim/systems/gauges/PHI/program/route-manager/autopush-active",0);
-        setprop("fdm/jsbsim/systems/gauges/PHI/program/reset",1);
         var altitudeHold = math.round(getprop("fdm/jsbsim/systems/autopilot/gui/altitude-hold-ft"));
+        setprop("fdm/jsbsim/systems/gauges/PHI/indicator/dist-set",0.0);
+        setprop("fdm/jsbsim/systems/gauges/PHI/indicator/brg-imposed",0.0);
+        setprop("fdm/jsbsim/systems/gauges/PHI/indicator/digit-inc-stop",1);
         setprop("fdm/jsbsim/systems/gauges/PHI/program/route[1]/dist",0.0);
         setprop("fdm/jsbsim/systems/gauges/PHI/program/route[1]/phi",0.0);
         setprop("fdm/jsbsim/systems/gauges/PHI/program/route[1]/altitude-hold-ft",altitudeHold);
@@ -289,6 +309,79 @@ setlistener("fdm/jsbsim/systems/gauges/PHI/programmer/route-manual-mod", func {
     }
     setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-manual-mod",0);
 }, 1, 0);
+
+
+setlistener("fdm/jsbsim/systems/gauges/PHI/program/reset-after", func {
+        
+    if (getprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-manual") == 0.0 and
+        getprop("fdm/jsbsim/systems/gauges/PHI/program/reset-after") == 1.0) {
+        
+        print("***** Reset stp 1: ",getprop("fdm/jsbsim/systems/gauges/PHI/program/reset")," after: ",getprop("fdm/jsbsim/systems/gauges/PHI/program/reset-after")," type: ",getprop("fdm/jsbsim/systems/gauges/PHI/program/reset-type"));
+        if (getprop("fdm/jsbsim/systems/gauges/PHI/program/reset-type") >= 2.0) {
+            print("***** Reset stp 2: ",2);
+            setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-manual",1.0);
+            setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-manual-mod",2.0);
+        } else {
+            setprop("fdm/jsbsim/systems/gauges/PHI/program/route-manager/autopush-active",1.0);
+            setprop("fdm/jsbsim/systems/autopilot/gui/phi-heading",1.0);
+        }
+        setprop("fdm/jsbsim/systems/autopilot/gui/true-heading",0.0);
+        setprop("fdm/jsbsim/systems/autopilot/gui/wing-leveler",0.0);
+    }
+
+}, 1, 0);
+
+
+setlistener("fdm/jsbsim/systems/gauges/PHI/doppler/switch-terrain-sea", func {
+        
+    if (getprop("fdm/jsbsim/systems/gauges/PHI/doppler/switch-terrain-sea") == 1.0) {
+        setprop("fdm/jsbsim/systems/gauges/PHI/doppler/switch-terrain-sea-description","Land");
+    } else {
+        setprop("fdm/jsbsim/systems/gauges/PHI/doppler/switch-terrain-sea-description","Sea");
+    }
+
+}, 1, 0);
+
+
+setlistener("fdm/jsbsim/systems/gauges/PHI/doppler/allarm", func {
+        
+    if (getprop("fdm/jsbsim/systems/gauges/PHI/doppler/allarm") == 1.0) {
+        setprop("fdm/jsbsim/systems/gauges/PHI/doppler/allarm-description","Doppler allarm");
+    } else {
+        setprop("fdm/jsbsim/systems/gauges/PHI/doppler/allarm-description","");
+    }
+
+}, 1, 0);
+
+
+setlistener("fdm/jsbsim/systems/gauges/PHI/doppler/switch-turn", func {
+        
+    var tag = getprop("fdm/jsbsim/systems/gauges/PHI/doppler/switch-turn");
+    if (tag == 0) {
+        setprop("fdm/jsbsim/systems/gauges/PHI/doppler/switch-turn-text","OFF");
+    } elsif (tag == 1) {
+        setprop("fdm/jsbsim/systems/gauges/PHI/doppler/switch-turn-text","Rec only");
+    } elsif (tag == 2) {
+        setprop("fdm/jsbsim/systems/gauges/PHI/doppler/switch-turn-text","ON");
+    } else {
+        setprop("fdm/jsbsim/systems/gauges/PHI/doppler/switch-turn-text","Test");
+    }
+
+}, 1, 0);
+
+
+setlistener("fdm/jsbsim/systems/gauges/PHI/program/route-from", func {
+        
+    var tag = getprop("fdm/jsbsim/systems/gauges/PHI/program/route-from");
+    if (tag == 0) {
+        setprop("fdm/jsbsim/systems/gauges/PHI/program/route-from-text","To");
+    } elsif (tag == 1) {
+        setprop("fdm/jsbsim/systems/gauges/PHI/program/route-from-text","From");
+    }
+
+}, 1, 0);
+
+
 
 
 var phi_get_route_data_control = func() {

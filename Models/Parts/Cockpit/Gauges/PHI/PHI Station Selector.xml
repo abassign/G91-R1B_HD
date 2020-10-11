@@ -705,8 +705,9 @@
         <action>
             <button>0</button>
             <binding>
-                <command>property-toggle</command>
-                <property>fdm/jsbsim/systems/gauges/PHI/program/take-control-togle</property>
+                <command>property-assign</command>
+                <property>fdm/jsbsim/systems/gauges/PHI/program/reset</property>
+                <value>2</value>
             </binding>
         </action>
     </animation>
@@ -714,7 +715,7 @@
     <animation>
         <type>translate</type>
         <object-name>push take control (Meshed)</object-name>
-        <property>fdm/jsbsim/systems/gauges/PHI/program/take-control-pos-lag</property>
+        <property>fdm/jsbsim/systems/gauges/PHI/program/reset-pos-lag</property>
         <factor>-0.012</factor>
         <offset-m>0.0</offset-m>
         <axis>

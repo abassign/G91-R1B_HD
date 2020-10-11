@@ -36,15 +36,19 @@
     <property value="0.0">systems/gauges/PHI/indicator/switch-turned</property>
     <property value="0.0">systems/gauges/PHI/indicator/switch</property>
     <property value="0.0">systems/gauges/PHI/indicator/brg</property>
+    <property value="0.0">systems/gauges/PHI/indicator/brg-lag</property>
+    <property value="0.0">systems/gauges/PHI/indicator/brg-lag-difference</property>
     <property value="0.0">systems/gauges/PHI/indicator/brg-correct</property>
     <property value="0.0">systems/gauges/PHI/indicator/brg-imposed</property>
     <property value="0.0">systems/gauges/PHI/indicator/is-hold</property>
     <property value="0.0">systems/gauges/PHI/indicator/var-deg</property>
+    <property value="0.0">systems/gauges/PHI/indicator/dist</property>
     <property value="0.0">systems/gauges/PHI/indicator/dist-set</property>
     <property value="0.0">systems/gauges/PHI/indicator/dist-set-lag</property>
     <property value="0.0">systems/gauges/PHI/indicator/is-hold-on</property>
     <property value="0.0">systems/gauges/PHI/indicator/phi-set-lag</property>
     <property value="0.0">systems/gauges/PHI/indicator/mil-direction</property>
+    <property value="1.0">systems/gauges/PHI/indicator/digit-inc-stop</property>
     
     <property value="0.0">systems/gauges/PHI/wind/wd</property>
     <property value="0.0">systems/gauges/PHI/wind/ws</property>
@@ -105,16 +109,17 @@
     <property value="0.0">systems/gauges/PHI/program/route-manager/autopush-prepare-active</property>
     <property value="0.0">systems/gauges/PHI/program/route-manager/autopush-active</property>
     <property value="0.0">systems/gauges/PHI/program/route-manager/autopush-next</property>
+    <property value="0.0">systems/gauges/PHI/program/route-manager/autopush-next-wa</property>
     <property value="0.0">systems/gauges/PHI/program/route-manager/autopush-last</property>
     <property value="0.0">systems/gauges/PHI/program/reset</property>
+    <property value="0.0">systems/gauges/PHI/program/reset-pos-lag</property>
     <property value="0.0">systems/gauges/PHI/program/reset-after</property>
+    <property value="0.0">systems/gauges/PHI/program/reset-type</property>
     <property value="0.0">systems/gauges/PHI/program/status</property>
     <property value="0.0">systems/gauges/PHI/program/route-modify</property>
-    <property value="0.0">systems/gauges/PHI/program/take-control-togle</property>
-    <property value="0.0">systems/gauges/PHI/program/take-control-on</property>
-    <property value="0.0">systems/gauges/PHI/program/take-control-pos-lag</property>
     
     <property value="0.0">systems/gauges/PHI/operative</property>
+    <property value="0.0">systems/gauges/PHI/operative-wa</property>
     
     <property value="0.0">systems/gauges/PHI/angle-zero</property>
     
@@ -147,6 +152,11 @@
                 systems/gauges/PHI/operative-heating GT 0.9
             </test>
         </switch>
+        
+        <washout_filter name="systems/gauges/PHI/operative-wa">
+            <input>systems/gauges/PHI/operative</input>
+            <c1>0.5</c1>
+        </washout_filter>
         
     </channel>
     
@@ -514,20 +524,43 @@
             </function>
         </fcs_function>
         
-        <pid name="systems/gauges/PHI/indicator/digit-inc">
+        <lag_filter name="systems/gauges/PHI/indicator/digit-inc-stop-lag">
+            <input>systems/gauges/PHI/indicator/digit-inc-stop</input>
+            <c1>0.3</c1>
+        </lag_filter>
+        
+        <switch name="systems/gauges/PHI/indicator/digit-inc-stop">
+            <default value="systems/gauges/PHI/indicator/digit-inc-stop"/>
+            <test logic="AND" value="0.0">
+                systems/gauges/PHI/indicator/digit-inc-stop-lag GT 0.9
+            </test>
+        </switch> 
+        
+        <washout_filter name="systems/gauges/PHI/indicator/digit-inc">
             <input>systems/gauges/PHI/indicator/mil-direction</input>
-            <kp>0.0</kp>
-            <ki>0.0</ki>
-            <kd>1.0</kd>
-        </pid>
+            <c1>1.0</c1>
+        </washout_filter>
         
         <switch name="systems/gauges/PHI/program/route-from">
             <default value="systems/gauges/PHI/program/route-from"/>
             <test logic="AND" value="0.0">
-                systems/gauges/PHI/indicator/digit-inc LE 0.0
+                systems/gauges/PHI/indicator/digit-inc-stop-lag LT 0.1
+                systems/gauges/PHI/operative-wa GT 0.1
+            </test>
+            <test logic="AND" value="0.0">
+                systems/gauges/PHI/indicator/digit-inc-stop-lag LT 0.1
+                systems/gauges/PHI/operative == 0.0
+            </test>
+            <test logic="OR" value="0.0">
+                systems/gauges/PHI/indicator/digit-inc-stop-lag GE 0.1
+                systems/gauges/PHI/indicator/digit-inc LE -0.01
+                systems/gauges/PHI/program/route-is-pusching == 1.0
+                systems/gauges/PHI/program/route-manager/autopush-next-wa LE -0.002
+                systems/gauges/PHI/program/route-manager/autopush-next-wa GE 0.002
             </test>
             <test logic="AND" value="1.0">
-                systems/gauges/PHI/indicator/digit-inc GT 0.0
+                systems/gauges/PHI/indicator/digit-inc-stop-lag LT 0.1
+                systems/gauges/PHI/indicator/digit-inc GT 0.01
             </test>
         </switch>
         
@@ -927,10 +960,17 @@
             </test>
         </switch>
         
+        <switch name="systems/gauges/PHI/indicator/digit-inc-stop">
+            <default value="systems/gauges/PHI/indicator/digit-inc-stop"/>
+            <test logic="OR" value = "1">
+                systems/gauges/PHI/indicator/dist-set-lag-on == 1.0
+            </test>
+        </switch>
+        
         <switch name="systems/gauges/PHI/program/route[1]/dist">
             <default value="systems/gauges/PHI/program/route[1]/dist"/>
             <test logic="AND" value = "systems/gauges/PHI/indicator/dist-set">
-                systems/gauges/PHI/indicator/dist-set-lag-on EQ 1
+                systems/gauges/PHI/indicator/dist-set-lag-on == 1.0
             </test>
         </switch>
         
@@ -1002,7 +1042,7 @@
             </test>
             <test logic="OR" value = "0">
                 systems/gauges/PHI/program/route-is-pusching == 1
-                systems/gauges/PHI/program/reset == 1
+                systems/gauges/PHI/program/reset-after GE 1
             </test>
         </switch>
         
@@ -1050,7 +1090,7 @@
             </test>
             <test logic="OR" value = "0">
                 systems/gauges/PHI/program/route-is-pusching == 1
-                systems/gauges/PHI/program/reset == 1
+                systems/gauges/PHI/program/reset-after GE 1
             </test>
         </switch>
         
@@ -1098,7 +1138,7 @@
             </test>
             <test logic="OR" value = "0">
                 systems/gauges/PHI/program/route-is-pusching == 1
-                systems/gauges/PHI/program/reset == 1
+                systems/gauges/PHI/program/reset-after GE 1
             </test>
         </switch>
         
@@ -1146,7 +1186,7 @@
             </test>
             <test logic="OR" value = "0">
                 systems/gauges/PHI/program/route-is-pusching == 1
-                systems/gauges/PHI/program/reset == 1
+                systems/gauges/PHI/program/reset-after GE 1
             </test>
         </switch>
         
@@ -1194,7 +1234,7 @@
             </test>
             <test logic="OR" value = "0">
                 systems/gauges/PHI/program/route-is-pusching == 1
-                systems/gauges/PHI/program/reset == 1
+                systems/gauges/PHI/program/reset-after GE 1
             </test>
         </switch>
         
@@ -1274,6 +1314,54 @@
     <!-- Push selector -->
     
     <channel name="systems gauges PHI select next route" execrate="32">
+        
+        <washout_filter name="systems/gauges/PHI/program/reset-wa">
+            <input>systems/gauges/PHI/program/reset</input>
+            <c1>1.0</c1>
+        </washout_filter>
+        
+        <switch name="systems/gauges/PHI/program/reset-type">
+            <default value="systems/gauges/PHI/program/reset-type"/>
+            <test logic="AND" value="systems/gauges/PHI/program/reset">
+                systems/gauges/PHI/program/reset-type == 0.0
+                systems/gauges/PHI/program/reset GE 1.0
+            </test>
+            <test logic="AND" value="0.0">
+                systems/gauges/PHI/program/reset-type GE 1.0
+                systems/gauges/PHI/program/reset == 0.0
+                systems/gauges/PHI/program/reset-after == 0.0
+            </test>
+        </switch>
+        
+        <switch name="systems/gauges/PHI/program/reset-wa-positive">
+            <default value="0.0"/>
+            <test logic="AND" value="1.0">
+                systems/gauges/PHI/program/reset-wa GE 0.05
+            </test>
+        </switch>
+        
+        <lag_filter name="systems/gauges/PHI/program/reset-pos-lag">
+            <input>systems/gauges/PHI/program/reset-wa-positive</input>
+            <c1>4</c1>
+        </lag_filter>
+        
+        <switch name="systems/gauges/PHI/program/reset">
+            <default value="systems/gauges/PHI/program/reset"/>
+            <test logic="AND" value="0.0">
+                systems/gauges/PHI/program/reset-pos-lag LT 0.5
+            </test>
+        </switch>
+        
+        <switch name="systems/gauges/PHI/program/reset-after">
+            <default value="systems/gauges/PHI/program/reset-after"/>
+            <test logic="AND" value="0.0">
+                systems/gauges/PHI/program/reset-wa-positive LT 0.05
+            </test>
+            <test logic="AND" value="1.0">
+                systems/gauges/PHI/program/reset == 0.0
+                systems/gauges/PHI/program/reset-wa-positive GE 0.05
+            </test>
+        </switch>
         
         <switch name="systems/gauges/PHI/program/route-select-route-id">
             <default value="0"/>
@@ -1491,60 +1579,23 @@
             </test>
         </switch>
         
+        <washout_filter name="systems/gauges/PHI/program/route-manager/autopush-next-wa">
+            <input>systems/gauges/PHI/program/route-manager/autopush-next</input>
+            <c1>1.0</c1>
+        </washout_filter>
+        
         <switch name="systems/gauges/PHI/program/route-manager/autopush-active">
             <default value="systems/gauges/PHI/program/route-manager/autopush-active"/>
             <test logic="AND" value="0.0">
                 systems/gauges/PHI/program/route-manager/autopush-active == 1
                 systems/gauges/PHI/program/route-manager/autopush-next == -2.0
             </test>
-        </switch>
-        
-        <washout_filter name="systems/gauges/PHI/program/reset-wa">
-            <input>systems/gauges/PHI/program/reset</input>
-            <c1>1.0</c1>
-        </washout_filter>
-        
-        <switch name="systems/gauges/PHI/program/reset">
-            <default value="systems/gauges/PHI/program/reset"/>
             <test logic="AND" value="0.0">
+                systems/gauges/PHI/program/route-manager/autopush-active == 1
                 systems/gauges/PHI/program/reset GE 1.0
-                systems/gauges/PHI/program/reset-wa LT 0.5
+                systems/gauges/PHI/program/reset-after == 0.0
             </test>
         </switch>
-        
-        <switch name="systems/gauges/PHI/program/reset-after">
-            <default value="0.0"/>
-            <test logic="AND" value="0.0">
-                systems/gauges/PHI/program/reset GE 1.0
-            </test>
-            <test logic="AND" value="1.0">
-                systems/gauges/PHI/program/reset == 0.0
-                systems/gauges/PHI/program/reset-wa GT 0.05
-            </test>
-        </switch>
-        
-        <!--
-        
-        <switch name="systems/gauges/PHI/program/route-manager/autopush-next">
-            <default value="systems/gauges/PHI/program/route-manager/autopush-next"/>
-            <test logic="AND" value="0.0">
-                systems/gauges/PHI/program/route-manager/autopush-active == 0
-                systems/gauges/PHI/program/route-manager/autopush-next == -2.0
-            </test>
-        </switch>
-
-        <switch name="systems/gauges/PHI/program/status">
-            <default value="systems/gauges/PHI/program/status"/>
-            <test logic="AND" value="-1.0">
-                systems/gauges/PHI/program/route-manager/autopush-active == 0
-            </test>
-            <test logic="AND" value="systems/gauges/PHI/program/route-manager/autopush-next">
-                systems/gauges/PHI/program/status NE systems/gauges/PHI/program/route-manager/autopush-next
-                systems/gauges/PHI/program/route-manager/autopush-next GT 0.0
-            </test>
-        </switch>
-        
-        -->
         
     </channel> 
     
@@ -1615,7 +1666,18 @@
                             <p>systems/gauges/PHI/program/route[5]/phi</p>
                         </switch>
                     </difference>
-                    <v>0.0</v>
+                    <ifthen>
+                        <and>
+                            <gt><p>systems/gauges/PHI/operative</p><v>0.0</v></gt>
+                            <gt><p>systems/gauges/PHI/indicator/is-phi-on</p><v>0.0</v></gt>
+                            <eq><p>systems/gauges/PHI/program/route-pushed</p><v>0.0</v></eq>
+                        </and>
+                        <difference>
+                            <p>systems/gauges/PHI/attitude/gyrocompass-magnetic-deg-var-linear</p>
+                            <p>systems/gauges/PHI/program/route[1]/phi</p>
+                        </difference>
+                        <v>0.0</v>
+                    </ifthen>
                 </ifthen>
             </function>
         </fcs_function>
@@ -1660,15 +1722,32 @@
             </function>
         </fcs_function>
         
-        <angle name="systems/gauges/PHI/indicator/brg-correct-angle" unit="DEG">
-            <source_angle unit="DEG">systems/gauges/PHI/angle-zero</source_angle>
-            <target_angle unit="DEG">systems/gauges/PHI/indicator/brg-correct</target_angle>
+        <!--
+            Tthis code resolve the arrow rotation direction problem that is not resolve by actuator
+        -->
+        <angle name="systems/gauges/PHI/indicator/brg-lag-difference" unit="DEG">
+            <source_angle unit="DEG">systems/gauges/PHI/indicator/brg-correct</source_angle>
+            <target_angle unit="DEG">systems/gauges/PHI/indicator/brg-lag</target_angle>
         </angle>
         
-        <actuator name="systems/gauges/PHI/indicator/brg-lag">
-            <input>systems/gauges/PHI/indicator/brg-correct-angle</input>
-            <rate_limit> 100.0 </rate_limit>
-        </actuator>
+        <scheduled_gain name="systems/gauges/PHI/indicator/brg-lag-factor">
+            <input>systems/gauges/PHI/operative</input>
+            <table>
+                <independentVar>systems/gauges/PHI/indicator/brg-lag-difference</independentVar>
+                <tableData>
+                    -5.0    100.0
+                    -0.5      0.0
+                     0.5      0.0
+                     5.0   -100.0
+                </tableData>
+            </table>
+            <gain>1.0</gain>
+        </scheduled_gain>
+
+        <integrator name="systems/gauges/PHI/indicator/brg-lag">
+            <input>systems/gauges/PHI/indicator/brg-lag-factor</input>
+            <c1>1.0</c1>
+        </integrator>
 
     </channel>
     
@@ -1692,7 +1771,7 @@
                         <p>systems/gauges/PHI/program/route[4]/dist</p>
                         <p>systems/gauges/PHI/program/route[5]/dist</p>
                     </switch>
-                    <v>0.0</v>
+                    <p>systems/gauges/PHI/indicator/dist</p>
                 </ifthen>
             </function>
         </fcs_function>
@@ -1782,51 +1861,6 @@
             <input>-/orientation/heading-magnetic-deg</input>
             <input>systems/gauges/PHI/attitude/heading-true-deg</input>
         </summer>
-        
-    </channel>
-    
-    
-    <channel name="systems gauges PHI take control" execrate="16">
-        
-        <washout_filter name="systems/gauges/PHI/program/take-control-wa">
-            <input>systems/gauges/PHI/program/take-control-togle</input>
-            <c1>4.0</c1>
-        </washout_filter>
-        
-        <switch name="systems/gauges/PHI/program/take-control-wa-norm">
-            <default value="0.0"/>
-            <test logic="OR" value="1">
-                systems/gauges/PHI/program/take-control-wa GT 0.1
-                systems/gauges/PHI/program/take-control-wa LT -0.1
-            </test>
-        </switch>
-        
-        <switch name="systems/gauges/PHI/program/take-control-on-start">
-            <default value="systems/gauges/PHI/program/take-control-on-start"/>
-            <test logic="AND" value = "1">
-                systems/gauges/PHI/program/take-control-wa-norm == 1
-                systems/gauges/PHI/program/take-control-pos-lag LT 0.01
-            </test>
-            <test logic="AND" value = "0">
-                systems/gauges/PHI/program/take-control-wa-norm == 1
-                systems/gauges/PHI/program/take-control-pos-lag GT 0.3
-            </test>
-        </switch>
-        
-        <lag_filter name="systems/gauges/PHI/program/take-control-pos-lag">
-            <input>systems/gauges/PHI/program/take-control-on-start</input>
-            <c1>4</c1>
-        </lag_filter>
-        
-        <switch name="systems/gauges/PHI/program/take-control-on">
-            <default value="0.0"/>
-            <test logic="AND" value="0">
-                systems/gauges/PHI/program/take-control-pos-lag LE 0.05
-            </test>
-            <test logic="AND" value="1">
-                systems/gauges/PHI/program/take-control-pos-lag GT 0.05
-            </test>
-        </switch>
         
     </channel>
     

@@ -30,7 +30,7 @@ PHI is managed by four devices:
 
 [[File:fgfs-20201004140501A1-indicator.jpg|left|600px|]]
 
-This gauge is quite complex and allows you to control various functions of the PHI. <BR> At the top left there is the knob for activating the device, as in reality only three positions are active in the G91:
+This gauge is quite complex and allows you to control various functions of the PHI.<BR> At the top left there is the knob for activating the device, as in reality only three positions are active in the G91:
 * HOLD: Turns off / on the display device, but not the integration system which is controlled by another panel.
 * PHI: Activates the PHI mode, in this mode the thicker arrow (the one in the photo is at 66 °) indicates the direction, compared to magnetic north (that of the compass), which the plane will have to follow to reach the point established.
 * PS: Gyro compass heading mode. This compass is much more accurate and stable than the magnetic compass of the airplane.
