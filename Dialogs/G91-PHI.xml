@@ -192,17 +192,86 @@
                     <blue>1</blue>
                 </color>
             </text>
-            <radio>
+            <text>
                 <row>0</row>
                 <col>1</col>
+                <label>Long section</label>
                 <halign>left</halign>
-                <label>From route management</label>
-                <property>/autopilot/route-manager/active</property>
-                <live>true</live>
-            </radio>
-            <radio>
+                <color>
+                    <red>1</red>
+                    <green>1</green>
+                    <blue>1</blue>
+                </color>
+            </text>
+            <text>
                 <row>0</row>
                 <col>2</col>
+                <label>nm</label>
+                <halign>left</halign>
+                <color>
+                    <red>1</red>
+                    <green>1</green>
+                    <blue>1</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>3</col>
+                <label>Short section</label>
+                <halign>left</halign>
+                <color>
+                    <red>1</red>
+                    <green>1</green>
+                    <blue>1</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>4</col>
+                <label>nm</label>
+                <halign>left</halign>
+                <color>
+                    <red>1</red>
+                    <green>1</green>
+                    <blue>1</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>5</col>
+                <label>Ver.</label>
+                <halign>left</halign>
+                <color>
+                    <red>1</red>
+                    <green>1</green>
+                    <blue>1</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>6</col>
+                <label>L/R</label>
+                <halign>left</halign>
+                <color>
+                    <red>1</red>
+                    <green>1</green>
+                    <blue>1</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>7</col>
+                <label>To repeat</label>
+                <halign>left</halign>
+                <color>
+                    <red>1</red>
+                    <green>1</green>
+                    <blue>1</blue>
+                </color>
+            </text>
+            <radio>
+                <row>1</row>
+                <col>0</col>
                 <halign>left</halign>
                 <label>Loop</label>
                 <property>fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-loop</property>
@@ -216,41 +285,112 @@
                     <value>1</value>
                 </binding>
             </radio>
-            <radio>
-                <row>0</row>
+            <slider>
+                <row>1</row>
+                <col>1</col>
+                <width>100</width>
+                <property>fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-loop-long-section-slider</property>
+                <min>5</min>
+                <max>100</max>
+                <step>5</step>  
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+                <binding>
+                    <command>property-assign</command>
+                    <property>fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-loop-mod</property>
+                    <value>2</value>
+                </binding>
+            </slider>
+            <input>
+                <row>1</row>
+                <col>2</col>
+                <pref-width>50</pref-width>
+                <property>fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-loop-long-section</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+                <binding>
+                    <command>property-assign</command>
+                    <property>fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-loop-mod</property>
+                    <value>3</value>
+                </binding>
+            </input>
+            <slider>
+                <row>1</row>
                 <col>3</col>
-                <halign>left</halign>
-                <label>Circuit left</label>
-                <property>fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-circuit-left</property>
+                <width>100</width>
+                <property>fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-loop-short-section-slider</property>
+                <min>5</min>
+                <max>100</max>
+                <step>5</step>  
                 <live>true</live>
                 <binding>
                     <command>dialog-apply</command>
                 </binding>
                 <binding>
                     <command>property-assign</command>
-                    <property>fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-circuit-left-mod</property>
-                    <value>1</value>
+                    <property>fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-loop-mod</property>
+                    <value>4</value>
                 </binding>
-            </radio>
-            <radio>
-                <row>0</row>
+            </slider>
+            <input>
+                <row>1</row>
                 <col>4</col>
-                <halign>left</halign>
-                <label>Circuit right</label>
-                <property>fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-circuit-right</property>
+                <pref-width>50</pref-width>
+                <property>fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-loop-short-section</property>
                 <live>true</live>
                 <binding>
                     <command>dialog-apply</command>
                 </binding>
                 <binding>
                     <command>property-assign</command>
-                    <property>fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-circuit-right-mod</property>
-                    <value>1</value>
+                    <property>fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-loop-mod</property>
+                    <value>5</value>
                 </binding>
-            </radio>
-            <radio>
-                <row>0</row>
+            </input>
+            <checkbox>
+                <row>1</row>
                 <col>5</col>
+                <halign>center</halign>
+                <property>fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-loop-versus</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+                <binding>
+                    <command>property-assign</command>
+                    <property>fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-loop-mod</property>
+                    <value>6</value>
+                </binding>
+            </checkbox>
+            <text>
+                <row>1</row>
+                <col>6</col>
+                <property>fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-loop-versus-description</property>
+                <halign>left</halign>
+                <live>true</live>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0</blue>
+                </color>
+            </text>
+            <checkbox>
+                <row>1</row>
+                <col>7</col>
+                <halign>center</halign>
+                <property>fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-loop-repeat</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </checkbox>
+            <radio>
+                <row>2</row>
+                <col>0</col>
                 <halign>left</halign>
                 <label>Manual</label>
                 <property>fdm/jsbsim/systems/gauges/PHI/programmer/route-manual</property>
@@ -263,6 +403,24 @@
                     <property>fdm/jsbsim/systems/gauges/PHI/programmer/route-manual-mod</property>
                     <value>1</value>
                 </binding>
+            </radio>
+            <checkbox>
+                <row>2</row>
+                <col>7</col>
+                <halign>center</halign>
+                <property>fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-manual-repeat</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </checkbox>
+            <radio>
+                <row>3</row>
+                <col>0</col>
+                <halign>left</halign>
+                <label>Route management</label>
+                <property>/autopilot/route-manager/active</property>
+                <live>true</live>
             </radio>
         </group>
     </group>
@@ -798,9 +956,7 @@
                 <binding>
                     <command>nasal</command>
                     <script>
-                        <![CDATA[
-                            setprop("fdm/jsbsim/systems/gauges/PHI/programmer/declination-automatic",0);
-                        ]]>
+                        setprop("fdm/jsbsim/systems/gauges/PHI/programmer/declination-automatic",0);
                     </script>
                 </binding>
             </input>

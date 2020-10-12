@@ -111,6 +111,7 @@
     <property value="0.0">systems/gauges/PHI/program/route-manager/autopush-next</property>
     <property value="0.0">systems/gauges/PHI/program/route-manager/autopush-next-wa</property>
     <property value="0.0">systems/gauges/PHI/program/route-manager/autopush-last</property>
+    <property value="0.0">systems/gauges/PHI/program/route-manager/autopush-finished</property>
     <property value="0.0">systems/gauges/PHI/program/reset</property>
     <property value="0.0">systems/gauges/PHI/program/reset-pos-lag</property>
     <property value="0.0">systems/gauges/PHI/program/reset-after</property>
@@ -414,6 +415,7 @@
             <test logic="AND" value="systems/gauges/PHI/speed-doppler-mil-sensor">
                 systems/gauges/PHI/doppler/is-operative == 1
                 systems/gauges/PHI/doppler/allarm == 0
+                systems/gauges/PHI/doppler/switch == 2
             </test>
         </switch>
         
@@ -541,6 +543,14 @@
             <c1>1.0</c1>
         </washout_filter>
         
+        <!--
+        The systems/gauges/PHI/program/route-from is quite complex functionn because, 
+        for the correct determination of the state mark-point overcoming, it is necessary to calculate
+        the derivative of the distance between the aircraft and the mark-point.
+        Unfortunately there are several cases in which this simple rule does not work
+        and therefore they must all be evaluated.
+        -->
+        
         <switch name="systems/gauges/PHI/program/route-from">
             <default value="systems/gauges/PHI/program/route-from"/>
             <test logic="AND" value="0.0">
@@ -555,8 +565,8 @@
                 systems/gauges/PHI/indicator/digit-inc-stop-lag GE 0.1
                 systems/gauges/PHI/indicator/digit-inc LE -0.01
                 systems/gauges/PHI/program/route-is-pusching == 1.0
-                systems/gauges/PHI/program/route-manager/autopush-next-wa LE -0.002
-                systems/gauges/PHI/program/route-manager/autopush-next-wa GE 0.002
+                systems/gauges/PHI/program/route-manager/autopush-next-wa LE -0.001
+                systems/gauges/PHI/program/route-manager/autopush-next-wa GE 0.001
             </test>
             <test logic="AND" value="1.0">
                 systems/gauges/PHI/indicator/digit-inc-stop-lag LT 0.1
@@ -1324,7 +1334,7 @@
             <default value="systems/gauges/PHI/program/reset-type"/>
             <test logic="AND" value="systems/gauges/PHI/program/reset">
                 systems/gauges/PHI/program/reset-type == 0.0
-                systems/gauges/PHI/program/reset GE 1.0
+                systems/gauges/PHI/program/reset-wa GE 0.5
             </test>
             <test logic="AND" value="0.0">
                 systems/gauges/PHI/program/reset-type GE 1.0
@@ -1333,33 +1343,21 @@
             </test>
         </switch>
         
-        <switch name="systems/gauges/PHI/program/reset-wa-positive">
-            <default value="0.0"/>
-            <test logic="AND" value="1.0">
-                systems/gauges/PHI/program/reset-wa GE 0.05
-            </test>
-        </switch>
-        
-        <lag_filter name="systems/gauges/PHI/program/reset-pos-lag">
-            <input>systems/gauges/PHI/program/reset-wa-positive</input>
-            <c1>4</c1>
-        </lag_filter>
-        
         <switch name="systems/gauges/PHI/program/reset">
             <default value="systems/gauges/PHI/program/reset"/>
             <test logic="AND" value="0.0">
-                systems/gauges/PHI/program/reset-pos-lag LT 0.5
+                systems/gauges/PHI/program/reset-wa LT 0.5
             </test>
         </switch>
         
         <switch name="systems/gauges/PHI/program/reset-after">
             <default value="systems/gauges/PHI/program/reset-after"/>
             <test logic="AND" value="0.0">
-                systems/gauges/PHI/program/reset-wa-positive LT 0.05
+                systems/gauges/PHI/program/reset-wa LT 0.05
             </test>
             <test logic="AND" value="1.0">
                 systems/gauges/PHI/program/reset == 0.0
-                systems/gauges/PHI/program/reset-wa-positive GE 0.05
+                systems/gauges/PHI/program/reset-wa GE 0.05
             </test>
         </switch>
         
@@ -1594,6 +1592,33 @@
                 systems/gauges/PHI/program/route-manager/autopush-active == 1
                 systems/gauges/PHI/program/reset GE 1.0
                 systems/gauges/PHI/program/reset-after == 0.0
+            </test>
+        </switch>
+        
+        <switch name="systems/gauges/PHI/program/route-manager/autopush-end">
+            <default value="systems/gauges/PHI/program/route-manager/autopush-end"/>
+            <test logic="AND" value="1.0">
+                systems/gauges/PHI/program/route-manager/autopush-active == 0.0
+                systems/gauges/PHI/program/route-manager/autopush-next == -2.0
+            </test>
+            <test logic="AND" value="0.0">
+                systems/gauges/PHI/program/route-manager/autopush-active GT 0.0
+            </test>
+        </switch>
+        
+        <washout_filter name="systems/gauges/PHI/program/route-manager/autopush-end-wa">
+            <input>systems/gauges/PHI/program/route-manager/autopush-end</input>
+            <c1>0.1</c1>
+        </washout_filter>
+        
+        <switch name="systems/gauges/PHI/program/route-manager/autopush-finished">
+            <default value="systems/gauges/PHI/program/route-manager/autopush-finished"/>
+            <test logic="OR" value="0.0">
+                systems/gauges/PHI/program/route-manager/autopush-active GT 0.0
+                systems/gauges/PHI/program/route-manager/autopush-end-wa LE 0.1
+            </test>
+            <test logic="AND" value="1.0">
+                systems/gauges/PHI/program/route-manager/autopush-end-wa GT 0.1
             </test>
         </switch>
         
