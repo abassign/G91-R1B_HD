@@ -12,6 +12,11 @@ var set_activate_new_route = 0;
 var heading_true_deg = 0.0;
 var isRepeat = 0;
 
+var convergency_initialized = 0;
+var convergency_route_geo = {};
+var convergency_frist = 0;
+var convergency_last = 0;
+
 var prop = props.globals.initNode("fdm/jsbsim/systems/gauges/PHI/programmer/route-manual", "1", "INT");
 var prop = props.globals.initNode("fdm/jsbsim/systems/gauges/PHI/programmer/route-manual-mod", "1", "INT");
 var prop = props.globals.initNode("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-loop", "0", "INT");
@@ -30,6 +35,51 @@ var prop = props.globals.initNode("fdm/jsbsim/systems/gauges/PHI/programmer/rout
 var prop = props.globals.initNode("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-loop-versus-description","Left","STRING");
 var prop = props.globals.initNode("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-loop-repeat","0","INT");
 var prop = props.globals.initNode("fdm/jsbsim/systems/gauges/PHI/indicator/switch-description","Hold","STRING");
+var prop = props.globals.initNode("fdm/jsbsim/systems/gauges/PHI/convergency/lat-mid-deg-mod","-1","INT");
+var prop = props.globals.initNode("fdm/jsbsim/systems/gauges/PHI/convergency/status","-10","INT");
+var prop = props.globals.initNode("fdm/jsbsim/systems/gauges/PHI/convergency/airport-start","0","INT");
+var prop = props.globals.initNode("fdm/jsbsim/systems/gauges/PHI/convergency/route-1","0","INT");
+var prop = props.globals.initNode("fdm/jsbsim/systems/gauges/PHI/convergency/route-2","0","INT");
+var prop = props.globals.initNode("fdm/jsbsim/systems/gauges/PHI/convergency/route-3","0","INT");
+var prop = props.globals.initNode("fdm/jsbsim/systems/gauges/PHI/convergency/route-4","0","INT");
+var prop = props.globals.initNode("fdm/jsbsim/systems/gauges/PHI/convergency/route-5","0","INT");
+
+
+var set_phi_program_lat_lon = func() {
+    
+    var route_manager_active = getprop("/autopilot/route-manager/active");
+    if (route_manager_active == 1) {
+        var num_routes = getprop("autopilot/route-manager/route/num");
+        var departure = getprop("autopilot/route-manager/route/wp[0]/departure");
+        var start_id = 1;
+        if (departure == nil) start_id = 0;
+        for (var i = 1; i <= 5; i = i + 1) {
+            if (i < num_routes) {
+                convergency_route_geo[i] = geo.Coord.new().set_latlon(getprop("autopilot/route-manager/route/wp[" ~ (i - start_id) ~ "]/latitude-deg"), 
+                                                                      getprop("autopilot/route-manager/route/wp[" ~ (i - start_id) ~ "]/longitude-deg"));
+            } else {
+                convergency_route_geo[i] = nil;
+            }
+        };
+    } else {
+        for (var i = 1; i <= 5; i = i + 1) {
+            if (getprop("fdm/jsbsim/systems/gauges/PHI/program/route[" ~ i ~ "]/dist") > 0.0) {
+                convergency_route_geo[i] = convergency_route_geo[0].apply_course_distance(getprop("fdm/jsbsim/systems/gauges/PHI/program/route[" ~ i ~ "]/phi"),getprop("fdm/jsbsim/systems/gauges/PHI/program/route[" ~ i ~ "]/dist") * 1609.34);
+            } else {
+                convergency_route_geo[i] = nil;
+            }
+        }
+    }
+    for (var i = 1; i <= 5; i = i + 1) {
+        if (convergency_route_geo[i] != nil) {
+            setprop("/fdm/jsbsim/systems/gauges/PHI/program/route[" ~ i ~ "]/lat",convergency_route_geo[i].lat());
+            setprop("/fdm/jsbsim/systems/gauges/PHI/program/route[" ~ i ~ "]/lon",convergency_route_geo[i].lon());
+        } else {
+            setprop("/fdm/jsbsim/systems/gauges/PHI/program/route[" ~ i ~ "]/lat",0.0);
+            setprop("/fdm/jsbsim/systems/gauges/PHI/program/route[" ~ i ~ "]/lon",0.0);
+        }
+    }
+}
 
 
 var phi_get_route_data = func() {
@@ -111,6 +161,123 @@ var repeat_route = func() {
 };
 
 
+var convergency_set = func() {
+    #// For the G91 the convergence is set on the ground by adjusting a special multiturn potentiometer inserted in the PHI junction box
+    #// located behind the camera compartment.
+    #// This means that the PHI adjustment technician must evaluate the correct latitude value that
+    #// best approximates the convergence in the established range.
+    #// Therefore, if there is no particular information, the convergence is adjusted to the latitude of the departure airport.
+    #// status = -10 is reset function
+    #// status = 0..5 if set convergency test points
+    #// status = 9 Route manager mode set
+    #// status = 10 Periodic recalc the convergency
+    #// status = 20 manual convergency
+    
+    var route_manager_active = getprop("/autopilot/route-manager/active");
+    var status = getprop("fdm/jsbsim/systems/gauges/PHI/convergency/status");
+    
+    if (status == -10 or convergency_initialized == 0) {
+        #// convergency reset for initial phase o change the route program
+        if (route_manager_active == 0) {
+            setprop("fdm/jsbsim/systems/gauges/PHI/convergency/airport-start",1);
+        } else {
+            setprop("fdm/jsbsim/systems/gauges/PHI/convergency/airport-start",0);
+        }
+        setprop("fdm/jsbsim/systems/gauges/PHI/convergency/route-1",0);
+        setprop("fdm/jsbsim/systems/gauges/PHI/convergency/route-2",0);
+        setprop("fdm/jsbsim/systems/gauges/PHI/convergency/route-3",0);
+        setprop("fdm/jsbsim/systems/gauges/PHI/convergency/route-4",0);
+        setprop("fdm/jsbsim/systems/gauges/PHI/convergency/route-5",0);
+        setprop("fdm/jsbsim/systems/gauges/PHI/convergency/status",0);
+        convergency_route_geo[0] = geo.aircraft_position();
+        set_phi_program_lat_lon();
+        convergency_frist = 0;
+        convergency_last = 0;
+        convergency_initialized = 1;
+    }
+    
+    if (status >= 0) {
+        if (status < 9) {
+            convergency_frist = 5;
+            if (route_manager_active == 1) {
+                var num_routes = getprop("autopilot/route-manager/route/num");
+                var departure = getprop("autopilot/route-manager/route/wp[0]/departure");
+                if (departure != nil) print("***** IS Departure airport") else print("***** NOT Departure airport");
+            }
+            if (getprop("fdm/jsbsim/systems/gauges/PHI/convergency/route-1") == 1 and convergency_frist > 1) convergency_frist = 1;
+            if (getprop("fdm/jsbsim/systems/gauges/PHI/convergency/route-2") == 1 and convergency_frist > 2) convergency_frist = 2;
+            if (getprop("fdm/jsbsim/systems/gauges/PHI/convergency/route-3") == 1 and convergency_frist > 3) convergency_frist = 3;
+            if (getprop("fdm/jsbsim/systems/gauges/PHI/convergency/route-4") == 1 and convergency_frist > 4) convergency_frist = 4;
+            if (getprop("fdm/jsbsim/systems/gauges/PHI/convergency/route-5") == 1 and convergency_frist > 5) convergency_frist = 5;
+            convergency_last = 0;
+            if (route_manager_active == 1) convergency_last = 1;
+            if (getprop("fdm/jsbsim/systems/gauges/PHI/convergency/route-5") == 1 and convergency_last < 5) convergency_last = 5;
+            if (getprop("fdm/jsbsim/systems/gauges/PHI/convergency/route-4") == 1 and convergency_last < 4) convergency_last = 4;
+            if (getprop("fdm/jsbsim/systems/gauges/PHI/convergency/route-3") == 1 and convergency_last < 3) convergency_last = 3;
+            if (getprop("fdm/jsbsim/systems/gauges/PHI/convergency/route-2") == 1 and convergency_last < 2) convergency_last = 2;
+            if (getprop("fdm/jsbsim/systems/gauges/PHI/convergency/route-1") == 1 and convergency_last < 1) convergency_last = 1;
+            if (convergency_frist != 0 and convergency_last != 0) setprop("fdm/jsbsim/systems/gauges/PHI/convergency/airport-start",0);
+            if (convergency_frist != 1 and convergency_last != 1) setprop("fdm/jsbsim/systems/gauges/PHI/convergency/route-1",0);
+            if (convergency_frist != 2 and convergency_last != 2) setprop("fdm/jsbsim/systems/gauges/PHI/convergency/route-2",0);
+            if (convergency_frist != 3 and convergency_last != 3) setprop("fdm/jsbsim/systems/gauges/PHI/convergency/route-3",0);
+            if (convergency_frist != 4 and convergency_last != 4) setprop("fdm/jsbsim/systems/gauges/PHI/convergency/route-4",0);
+            if (convergency_frist != 5 and convergency_last != 5) setprop("fdm/jsbsim/systems/gauges/PHI/convergency/route-5",0);
+            
+            if (convergency_frist > convergency_last) {
+                setprop("fdm/jsbsim/systems/gauges/PHI/convergency/airport-start",1);
+                convergency_frist = 0;
+                convergency_last = 0;
+            };
+        } elsif (status == 9) {
+            #// Route manager mode def auto check route
+            var coord = geo.Coord.new().set_latlon(0, 0);
+            convergency_frist = 1;
+            var max_dist = 0.0;
+            for (var i = 2; i <= 5; i = i + 1) {
+                var distance = coord.apply_course_distance(getprop("fdm/jsbsim/systems/gauges/PHI/program/route[" ~ i ~ "]/phi"),getprop("fdm/jsbsim/systems/gauges/PHI/program/route[" ~ i ~ "]/dist") * 1609.34).distance_to(geo.Coord.new().set_latlon(0, 0));
+                if (distance > max_dist) {
+                    max_dist = distance;
+                    convergency_last = i;
+                }
+            };
+            setprop("fdm/jsbsim/systems/gauges/PHI/convergency/airport-start",0);
+            for (var i = 1; i <= 5; i = i + 1) {
+                if (i == convergency_frist or i == convergency_last) {
+                    setprop("fdm/jsbsim/systems/gauges/PHI/convergency/route-" ~ i,1);
+                } else {
+                    setprop("fdm/jsbsim/systems/gauges/PHI/convergency/route-" ~ i,0);
+                }
+            };
+        }
+        
+        if (status <= 10) {
+            var lat_mid_deg = 0.0;
+            
+            set_phi_program_lat_lon();
+
+            print("***** convergency_frist: ",convergency_frist," convergency_last: ",convergency_last);
+            lat_mid_deg += (convergency_route_geo[convergency_frist].lat() + convergency_route_geo[convergency_last].lat()) / 2.0;
+            print("***** lat_mid_deg: ",sprintf("%2.1f",lat_mid_deg)," convergency_frist: ",convergency_frist," convergency_last: ",convergency_last);
+            
+            setprop("fdm/jsbsim/systems/gauges/PHI/convergency/lat-mid-deg",sprintf("%2.1f",lat_mid_deg));
+            
+            if (status != 10) setprop("fdm/jsbsim/systems/gauges/PHI/convergency/status",-1);
+        } else {
+            #// The convergence in manualy inserted mode
+            if (status == 20) {
+                setprop("fdm/jsbsim/systems/gauges/PHI/convergency/airport-start",0);
+                setprop("fdm/jsbsim/systems/gauges/PHI/convergency/route-1",0);
+                setprop("fdm/jsbsim/systems/gauges/PHI/convergency/route-2",0);
+                setprop("fdm/jsbsim/systems/gauges/PHI/convergency/route-3",0);
+                setprop("fdm/jsbsim/systems/gauges/PHI/convergency/route-4",0);
+                setprop("fdm/jsbsim/systems/gauges/PHI/convergency/route-5",0);
+                setprop("fdm/jsbsim/systems/gauges/PHI/convergency/status",-1);
+            }
+        }
+    }
+}
+
+
 setlistener("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-loop-mod", func {
     var mod = getprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-loop-mod");
     if (mod == 2) {
@@ -186,6 +353,8 @@ setlistener("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-loop-mod",
         setprop("fdm/jsbsim/systems/gauges/PHI/program/route-altitude-hold-ft",altitudeHold);
         #// Activate the new route
         set_activate_new_route = 1;
+        setprop("fdm/jsbsim/systems/gauges/PHI/convergency/status",-10);
+        setprop("fdm/jsbsim/systems/gauges/PHI/convergency/status",9);
     } else if (mod <= 0) {
         setprop("fdm/jsbsim/systems/autopilot/gui/true-heading-max-wing-slope-deg",30.0);
         setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-loop",0);
@@ -234,6 +403,8 @@ setlistener("/autopilot/route-manager/active", func {
         } else {
             set_activate_new_route = 1;
         }
+        setprop("fdm/jsbsim/systems/gauges/PHI/convergency/status",-10);
+        setprop("fdm/jsbsim/systems/gauges/PHI/convergency/status",9);
     } else {
         setprop("fdm/jsbsim/systems/autopilot/gui/true-heading-max-wing-slope-deg",30.0);
         setprop("fdm/jsbsim/systems/gauges/PHI/program/reset",2);
@@ -272,6 +443,8 @@ setlistener("fdm/jsbsim/systems/gauges/PHI/programmer/route-manual-mod", func {
         setprop("fdm/jsbsim/systems/gauges/PHI/program/route[5]/altitude-hold-ft",altitudeHold);
         setprop("fdm/jsbsim/systems/autopilot/gui/true-heading-max-wing-slope-deg",40.0);
         #// Disactivate the route, from now is manual
+        setprop("fdm/jsbsim/systems/gauges/PHI/convergency/status",-10);
+        setprop("fdm/jsbsim/systems/gauges/PHI/convergency/status",0);
         set_activate_new_route = 10;
     } else {
         setprop("fdm/jsbsim/systems/autopilot/gui/true-heading-max-wing-slope-deg",30.0);
@@ -298,6 +471,7 @@ setlistener("fdm/jsbsim/systems/gauges/PHI/program/reset-after", func {
         }
         setprop("fdm/jsbsim/systems/autopilot/gui/true-heading",0.0);
         setprop("fdm/jsbsim/systems/autopilot/gui/wing-leveler",0.0);
+        setprop("fdm/jsbsim/systems/gauges/PHI/convergency/status",-10);
     }
 
 }, 1, 0);
@@ -382,10 +556,68 @@ setlistener("fdm/jsbsim/systems/autopilot/gui/phi-heading", func {
 }, 1, 0);
 
 
+setlistener("fdm/jsbsim/systems/gauges/PHI/convergency/lat-mid-deg-mod", func {
+    
+    var tag = getprop("fdm/jsbsim/systems/gauges/PHI/convergency/lat-mid-deg-mod");
+    if (tag == 0) {
+        if (getprop("fdm/jsbsim/systems/gauges/PHI/convergency/airport-start") == 1) {
+            #// Airport start for convergency set
+            #// It is always present by definition as it is necessary for the calculation
+            #// of the latitudes on the points of the route
+        }
+        setprop("fdm/jsbsim/systems/gauges/PHI/convergency/status",0);
+    } elsif (tag == 1) {
+        if (getprop("fdm/jsbsim/systems/gauges/PHI/convergency/route-1") == 1) {
+            #// Route 1 for convergency calc
+            if (getprop("fdm/jsbsim/systems/gauges/PHI/program/route[1]/dist") == 0.0)
+                setprop("fdm/jsbsim/systems/gauges/PHI/convergency/route-1",0);
+        }
+        setprop("fdm/jsbsim/systems/gauges/PHI/convergency/status",1) 
+    } elsif (tag == 2) {
+        #// Route 2 for convergency calc
+        if (getprop("fdm/jsbsim/systems/gauges/PHI/convergency/route-2") == 1) {
+            #// Route 2 for convergency calc
+            if (getprop("fdm/jsbsim/systems/gauges/PHI/program/route[2]/dist") == 0.0)
+                setprop("fdm/jsbsim/systems/gauges/PHI/convergency/route-2",0);
+        }
+        setprop("fdm/jsbsim/systems/gauges/PHI/convergency/status",2) 
+    } elsif (tag == 3) {
+        #// Route 3 for convergency calc
+        if (getprop("fdm/jsbsim/systems/gauges/PHI/convergency/route-3") == 1) {
+            #// Route 3 for convergency calc
+            if (getprop("fdm/jsbsim/systems/gauges/PHI/program/route[3]/dist") == 0.0)
+                setprop("fdm/jsbsim/systems/gauges/PHI/convergency/route-3",0);
+        }
+        setprop("fdm/jsbsim/systems/gauges/PHI/convergency/status",3) 
+    } elsif (tag == 4) {
+        #// Route 4 for convergency calc
+        if (getprop("fdm/jsbsim/systems/gauges/PHI/convergency/route-4") == 1) {
+            #// Route 4 for convergency calc
+            if (getprop("fdm/jsbsim/systems/gauges/PHI/program/route[4]/dist") == 0.0)
+                setprop("fdm/jsbsim/systems/gauges/PHI/convergency/route-4",0);
+        }
+        setprop("fdm/jsbsim/systems/gauges/PHI/convergency/status",4) 
+    } elsif (tag == 5) {
+        #// Route 5 for convergency calc
+        if (getprop("fdm/jsbsim/systems/gauges/PHI/convergency/route-5") == 1) {
+            #// Route 5 for convergency calc
+            if (getprop("fdm/jsbsim/systems/gauges/PHI/program/route[5]/dist") == 0.0)
+                setprop("fdm/jsbsim/systems/gauges/PHI/convergency/route-5",0);
+        }
+        setprop("fdm/jsbsim/systems/gauges/PHI/convergency/status",5) 
+    } elsif (tag == 20) {
+        #// Manual convergency, activate the convergency
+        setprop("fdm/jsbsim/systems/gauges/PHI/convergency/status",20);
+    }
+    setprop("fdm/jsbsim/systems/gauges/PHI/convergency/lat-mid-deg-mod",-1);
+}, 1, 0);
+
+
 var phi_get_route_data_control = func() {
     phi_get_route_data();
     activate_new_route();
     repeat_route();
+    convergency_set();
     phi_get_route_data_controlTimer.restart(delta_time);
 }
 

@@ -146,6 +146,7 @@ No Overshoot
     <!-- PHI Heading section -->
     <property value="0.0">systems/autopilot/phi-heading-active</property>
     <property value="0.0">systems/autopilot/phi-heading-deg</property>
+    <property value="0.0">systems/autopilot/phi-heading-deg-180</property>
     <property value="0.0">systems/autopilot/phi-heading-rad</property>
     <property value="0.0">systems/autopilot/phi-rad-limited</property>
     <property value="0.0">systems/autopilot/phi-heading-suspended</property>
@@ -911,6 +912,19 @@ No Overshoot
                         </ifthen>
                     </ifthen>
                     <p>systems/gauges/PHI/indicator/brg-correct</p>
+                </ifthen>
+            </function>
+        </fcs_function>
+        
+        <fcs_function name="systems/autopilot/phi-heading-deg-180">
+            <function>
+                <ifthen>
+                    <gt><p>systems/autopilot/phi-heading-deg</p><v>180.0</v></gt>
+                    <difference>
+                        <v>360.0</v>
+                        <p>systems/autopilot/phi-heading-deg</p>
+                    </difference>
+                    <p>systems/autopilot/phi-heading-deg</p>
                 </ifthen>
             </function>
         </fcs_function>

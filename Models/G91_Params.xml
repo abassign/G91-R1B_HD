@@ -230,6 +230,29 @@ G91_Params.xml
             <symbol_05 type="string"></symbol_05>
         </livery>
         
+        <livery n="9">
+            <id type="int">9</id>
+            <reloads type="float">0.0</reloads>
+            <name_short type="string">Portuguese R3 esq 301 jaguares</name_short>
+            <name_long type="string">Portuguese Air Force G-91R/3 Esquadra 301 - Jaguares 1971</name_long>
+            <PANR1 type="float">0.0</PANR1>
+            <diffuse type="float">0.76</diffuse>
+            <specular type="float">0.09</specular>
+            <dirty_set type="int">0</dirty_set>
+            <livery_001 type="string">Aircraft/G91-R1B_HD/Models/Liveries/R3/poto_eq_301_jaguares_1971_01.png</livery_001>
+            <livery_002 type="string">Aircraft/G91-R1B_HD/Models/Liveries/R3/poto_eq_301_jaguares_1971_02.png</livery_002>
+            <dirty_001 type="string">Aircraft/G91-R1B_HD/Models/Liveries/dirty_01_4k.png</dirty_001>
+            <dirty_002 type="string">Aircraft/G91-R1B_HD/Models/Liveries/dirty_02_4k.png</dirty_002>
+            <normalmap_enabled>0</normalmap_enabled>
+            <version>10</version>
+            <symbols_path type="string"></symbols_path>
+            <symbol_01 type="string"></symbol_01>
+            <symbol_02 type="string"></symbol_02>
+            <symbol_03 type="string"></symbol_03>
+            <symbol_04 type="string"></symbol_04>
+            <symbol_05 type="string"></symbol_05>
+        </livery>
+        
     </liveries>
     
     <internal>

@@ -2054,14 +2054,9 @@
                     <command>dialog-apply</command>
                 </binding>
                 <binding>
-                    <command>nasal</command>
-                    <script>
-                        setprop("fdm/jsbsim/systems/autopilot/gui/airport_system_selector",0);
-                        setprop("fdm/jsbsim/systems/autopilot/gui/landing-scan-airport",0);
-                        if (getprop("fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct/status") == 0) {
-                            setprop("fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct/status",1);
-                        }
-                    </script>
+                    <command>property-assign</command>
+                    <property>fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct/status</property>
+                    <value>1</value>
                 </binding>
             </input>
             <text>

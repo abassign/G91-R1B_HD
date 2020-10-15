@@ -64,7 +64,8 @@
     <property value="80.0">systems/gauges/PHI/dir-div-1AW</property>
     <property value="10.0">systems/gauges/PHI/dir-div-2AW</property>
     <property value="0.0">systems/gauges/PHI/distance-reset</property>
-    <property value="45.0">systems/gauges/PHI/latitude</property>
+    <property value="0.0">systems/gauges/PHI/convergency/lat-mid-deg</property>
+    <property value="0.0">systems/gauges/PHI/convergency/conversion-angle</property>
     
     <property value="0.0">systems/gauges/PHI/program/route-from</property>
     <property value="1.0">systems/gauges/PHI/program/route-is-pusching</property>
@@ -76,30 +77,46 @@
     <property value="0.0">systems/gauges/PHI/program/route[1]/push-pos</property>
     <property value="0.0">systems/gauges/PHI/program/route[1]/push-togle</property>
     <property value="0.0">systems/gauges/PHI/program/route[1]/isPush</property>
+    <property value="0.0">systems/gauges/PHI/program/route[1]/lat</property>
+    <property value="0.0">systems/gauges/PHI/program/route[1]/lon</property>
+    <property value="0.0">systems/gauges/PHI/program/route[1]/conversion-angle</property>
     <property value="0.0">systems/gauges/PHI/program/route[2]/dist</property>
     <property value="0.0">systems/gauges/PHI/program/route[2]/phi</property>
     <property value="0.0">systems/gauges/PHI/program/route[2]/altitude-hold-ft</property>
     <property value="0.0">systems/gauges/PHI/program/route[2]/push-pos</property>
     <property value="0.0">systems/gauges/PHI/program/route[2]/push-togle</property>
     <property value="0.0">systems/gauges/PHI/program/route[2]/isPush</property>
+    <property value="0.0">systems/gauges/PHI/program/route[2]/isPush</property>
+    <property value="0.0">systems/gauges/PHI/program/route[2]/lat</property>
+    <property value="0.0">systems/gauges/PHI/program/route[2]/lon</property>
+    <property value="0.0">systems/gauges/PHI/program/route[2]/conversion-angle</property>
     <property value="0.0">systems/gauges/PHI/program/route[3]/dist</property>
     <property value="0.0">systems/gauges/PHI/program/route[3]/phi</property>
     <property value="0.0">systems/gauges/PHI/program/route[3]/altitude-hold-ft</property>
     <property value="0.0">systems/gauges/PHI/program/route[3]/push-pos</property>
     <property value="0.0">systems/gauges/PHI/program/route[3]/push-togle</property>
     <property value="0.0">systems/gauges/PHI/program/route[3]/isPush</property>
+    <property value="0.0">systems/gauges/PHI/program/route[3]/lat</property>
+    <property value="0.0">systems/gauges/PHI/program/route[3]/lon</property>
+    <property value="0.0">systems/gauges/PHI/program/route[3]/conversion-angle</property>
     <property value="0.0">systems/gauges/PHI/program/route[4]/dist</property>
     <property value="0.0">systems/gauges/PHI/program/route[4]/phi</property>
     <property value="0.0">systems/gauges/PHI/program/route[4]/altitude-hold-ft</property>
     <property value="0.0">systems/gauges/PHI/program/route[4]/push-pos</property>
     <property value="0.0">systems/gauges/PHI/program/route[4]/push-togle</property>
     <property value="0.0">systems/gauges/PHI/program/route[4]/isPush</property>
+    <property value="0.0">systems/gauges/PHI/program/route[4]/lat</property>
+    <property value="0.0">systems/gauges/PHI/program/route[4]/lon</property>
+    <property value="0.0">systems/gauges/PHI/program/route[4]/conversion-angle</property>
     <property value="0.0">systems/gauges/PHI/program/route[5]/dist</property>
     <property value="0.0">systems/gauges/PHI/program/route[5]/phi</property>
     <property value="0.0">systems/gauges/PHI/program/route[5]/altitude-hold-ft</property>
     <property value="0.0">systems/gauges/PHI/program/route[5]/push-pos</property>
     <property value="0.0">systems/gauges/PHI/program/route[5]/push-togle</property>
     <property value="0.0">systems/gauges/PHI/program/route[5]/isPush</property>
+    <property value="0.0">systems/gauges/PHI/program/route[5]/lat</property>
+    <property value="0.0">systems/gauges/PHI/program/route[5]/lon</property>
+    <property value="0.0">systems/gauges/PHI/program/route[5]/conversion-angle</property>
     <property value="0.0">systems/gauges/PHI/program/route-phi</property>
     <property value="0.0">systems/gauges/PHI/program/route-altitude-hold-ft</property>
     <property value="0.0">systems/gauges/PHI/program/light-intensity-by-bus2-tension-on-caddy</property>
@@ -419,6 +436,46 @@
             </test>
         </switch>
         
+        <fcs_function name="systems/gauges/PHI/speed-mil-sensor-EW">
+            <function>
+                <product>
+                    <p>systems/gauges/PHI/speed-mil-sensor</p>
+                    <v>-1.0</v>
+                    <sin>
+                        <toradians>
+                            <p>systems/gauges/PHI/attitude/gyrocompass-magnetic-deg-var-linear</p>
+                        </toradians>
+                    </sin>
+                </product>
+            </function>
+        </fcs_function>
+        
+        <integrator name="systems/gauges/PHI/mil-sum-EW">
+            <input>systems/gauges/PHI/speed-mil-sensor-EW</input>
+            <c1 type="ab2">1.0</c1>
+            <trigger>systems/gauges/PHI/distance-reset</trigger>
+        </integrator>
+        
+        <fcs_function name="systems/gauges/PHI/speed-mil-sensor-NS">
+            <function>
+                <product>
+                    <p>systems/gauges/PHI/speed-mil-sensor</p>
+                    <v>-1.0</v>
+                    <cos>
+                        <toradians>
+                            <p>systems/gauges/PHI/attitude/gyrocompass-magnetic-deg-var-linear</p>
+                        </toradians>
+                    </cos>
+                </product>
+            </function>
+        </fcs_function>
+        
+        <integrator name="systems/gauges/PHI/mil-sum-NS">
+            <input>systems/gauges/PHI/speed-mil-sensor-NS</input>
+            <c1 type="ab2">1.0</c1>
+            <trigger>systems/gauges/PHI/distance-reset</trigger>
+        </integrator>
+        
         <integrator name="systems/gauges/PHI/mil-sum">
             <input>systems/gauges/PHI/speed-mil-sensor</input>
             <c1 type="ab2">1.0</c1>
@@ -459,7 +516,26 @@
         
     </channel>
     
+    <!--
+    <channel name="systems gauges PHI calculate conversion angle"  execrate="64">
+        
+        systems/gauges/PHI/program/route-from == 0
+        
+        systems/gauges/PHI/program/route-select-route-id
+        
+        systems/gauges/PHI/program/route-select-dist
+        
+        systems/gauges/PHI/mil-sum
+        
+        <integrator name="systems/gauges/PHI/mil-sum">
+            <input>systems/gauges/PHI/speed-mil-sensor</input>
+            <c1 type="ab2">1.0</c1>
+            <trigger>systems/gauges/PHI/distance-reset</trigger>
+        </integrator>
+        
+    </channel>
     
+    -->
     <channel name="systems gauges PHI indicator digit"  execrate="4">
         
         <switch name="systems/gauges/PHI/distance-reset">
@@ -560,6 +636,11 @@
             <test logic="AND" value="0.0">
                 systems/gauges/PHI/indicator/digit-inc-stop-lag LT 0.1
                 systems/gauges/PHI/operative == 0.0
+            </test>
+            <test logic="AND" value="0.0">
+                context/gears/on-ground GE 1.0
+                systems/autopilot/speed-true-on-air LT 50.0
+                systems/gauges/PHI/operative-wa GT 0.1
             </test>
             <test logic="OR" value="0.0">
                 systems/gauges/PHI/indicator/digit-inc-stop-lag GE 0.1

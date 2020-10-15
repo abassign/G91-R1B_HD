@@ -165,12 +165,30 @@ http://wiki.flightgear.org/Howto:Adding_a_canvas_to_a_GUI_dialog
             <text>
                 <row>6</row>
                 <col>1</col>
-                <label>Portuguese R3 c/n 301 (R3)</label>
+                <label>Portuguese R3 esq 301 (R3)</label>
                 <halign>left</halign>
             </text>
             
             <button>
                 <row>7</row>
+                <col>0</col>
+                <legend>07</legend>
+                <binding>
+                    <command>nasal</command>
+                    <script>
+                        setprop("sim/G91/liveries/active/id",9);
+                    </script>
+                </binding>
+            </button>
+            <text>
+                <row>7</row>
+                <col>1</col>
+                <label>Portuguese R3 esq 301 jaguares</label>
+                <halign>left</halign>
+            </text>
+            
+            <button>
+                <row>8</row>
                 <col>0</col>
                 <legend>08</legend>
                 <binding>
@@ -181,7 +199,7 @@ http://wiki.flightgear.org/Howto:Adding_a_canvas_to_a_GUI_dialog
                 </binding>
             </button>
             <text>
-                <row>7</row>
+                <row>8</row>
                 <col>1</col>
                 <label>Luftwaffe c/n 535 (R3)</label>
                 <halign>left</halign>
