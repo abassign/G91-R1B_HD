@@ -786,6 +786,7 @@
             <test logic="OR" value="1">
                 systems/fuel/external-tank-active-conf-system == 1
                 systems/fuel/external-tank-active-conf-system == -1
+                systems/fuel/external-tank-acrobatic == 1
             </test>
         </switch>
         
@@ -860,42 +861,6 @@
             <test logic="AND" value="0">
                 systems/fuel/external-tank-active-conf == 1
                 /consumables/fuel/tank[3]/selected == 0
-            </test>
-        </switch>
-        
-        <switch name="systems/stations/stationSxInternal/typeHardpoint">
-            <default value="systems/stations/stationSxInternal/typeHardpoint"/>
-            <test logic="AND" value="1">
-                systems/fuel/external-tank-active-conf == 1
-                <test logic="OR">
-                    systems/store/stations/sx/internal/type == 10
-                    systems/store/stations/sx/internal/type == 12
-                </test>
-            </test>
-            <test logic="AND" value="2">
-                systems/fuel/external-tank-active-conf == 1
-                systems/store/stations/sx/internal/type == 11
-            </test>
-            <test logic="AND" value="0">
-                systems/fuel/external-tank-active-conf == 1
-            </test>
-        </switch>
-        
-        <switch name="systems/stations/stationSxInternal/typeHook">
-            <default value="systems/stations/stationSxInternal/typeHook"/>
-            <test logic="AND" value="1">
-                systems/fuel/external-tank-active-conf == 1
-                <test logic="OR">
-                    systems/store/stations/sx/internal/type == 10
-                    systems/store/stations/sx/internal/type == 12
-                </test>
-            </test>
-            <test logic="AND" value="2">
-                systems/fuel/external-tank-active-conf == 1
-                systems/store/stations/sx/internal/type == 11
-            </test>
-            <test logic="AND" value="0">
-                systems/fuel/external-tank-active-conf == 1
             </test>
         </switch>
         
@@ -993,42 +958,6 @@
             <test logic="AND" value="0">
                 systems/fuel/external-tank-active-conf == 1
                 /consumables/fuel/tank[4]/selected == 0
-            </test>
-        </switch>
-
-        <switch name="systems/stations/stationDxInternal/typeHardpoint">
-            <default value="systems/stations/stationDxInternal/typeHardpoint"/>
-            <test logic="AND" value="1">
-                systems/fuel/external-tank-active-conf == 1
-                <test logic="OR">
-                    systems/store/stations/dx/internal/type == 10
-                    systems/store/stations/dx/internal/type == 12
-                </test>
-            </test>
-            <test logic="AND" value="2">
-                systems/fuel/external-tank-active-conf == 1
-                systems/store/stations/dx/internal/type == 11
-            </test>
-            <test logic="AND" value="0">
-                systems/fuel/external-tank-active-conf == 1
-            </test>
-        </switch>
-        
-        <switch name="systems/stations/stationDxInternal/typeHook">
-            <default value="systems/stations/stationDxInternal/typeHook"/>
-            <test logic="AND" value="1">
-                systems/fuel/external-tank-active-conf == 1
-                <test logic="OR">
-                    systems/store/stations/dx/internal/type == 10
-                    systems/store/stations/dx/internal/type == 12
-                </test>
-            </test>
-            <test logic="AND" value="2">
-                systems/fuel/external-tank-active-conf == 1
-                systems/store/stations/dx/internal/type == 11
-            </test>
-            <test logic="AND" value="0">
-                systems/fuel/external-tank-active-conf == 1
             </test>
         </switch>
         
@@ -1206,14 +1135,14 @@
                 systems/fuel/external-tank-set-active == 1
             </test>
         </switch>
-        
+
         <switch name="systems/fuel/external-tank-acrobatic">
             <default value="systems/fuel/external-tank-acrobatic"/>
             <test logic="AND" value="0">
                 systems/fuel/external-tank-acrobatic == 1
             </test>
         </switch>
-        
+
         <switch name="systems/fuel/external-tank-active-conf">
             <default value="systems/fuel/external-tank-active-conf"/>
             <test logic="AND" value="0">

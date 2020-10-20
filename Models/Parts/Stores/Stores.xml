@@ -8,7 +8,7 @@
         <z-m>0.0</z-m>
         <pitch-deg>0.0</pitch-deg>
     </offsets>
-
+    
     <!-- Tanks -->
     
     <model>
@@ -67,6 +67,70 @@
             <equals>
                 <property>fdm/jsbsim/systems/store/stations/sx/internal/type</property>
                 <value>12</value>
+            </equals>
+        </condition>
+    </model>
+    
+    <!-- Bombs Mk81 -->
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Stores/Bombs/Mk81-250lb_ext_dx.xml</path>
+        <condition>
+            <equals>
+                <property>fdm/jsbsim/systems/store/stations/dx/external/type</property>
+                <value>20</value>
+            </equals>
+        </condition>
+    </model>
+
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Stores/Bombs/Mk81-250lb_int_dx.xml</path>
+        <condition>
+            <equals>
+                <property>fdm/jsbsim/systems/store/stations/dx/internal/type</property>
+                <value>20</value>
+            </equals>
+        </condition>
+    </model>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Stores/Bombs/Mk81-250lb_int_sx.xml</path>
+        <condition>
+            <equals>
+                <property>fdm/jsbsim/systems/store/stations/sx/internal/type</property>
+                <value>20</value>
+            </equals>
+        </condition>
+    </model>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Stores/Bombs/Mk81-250lb_ext_sx.xml</path>
+        <condition>
+            <equals>
+                <property>fdm/jsbsim/systems/store/stations/sx/external/type</property>
+                <value>20</value>
+            </equals>
+        </condition>
+    </model>
+    
+    <!-- Bombs Mk82 -->
+
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Stores/Bombs/Mk82-500lb_int_dx.xml</path>
+        <condition>
+            <equals>
+                <property>fdm/jsbsim/systems/store/stations/dx/internal/type</property>
+                <value>21</value>
+            </equals>
+        </condition>
+    </model>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Stores/Bombs/Mk82-500lb_int_sx.xml</path>
+        <condition>
+            <equals>
+                <property>fdm/jsbsim/systems/store/stations/sx/internal/type</property>
+                <value>21</value>
             </equals>
         </condition>
     </model>

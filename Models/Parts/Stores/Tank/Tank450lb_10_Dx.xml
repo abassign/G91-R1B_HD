@@ -6,10 +6,10 @@
     <nopreview/>
 
     <offsets>
-        <x-m>-1.78</x-m>
+        <x-m>-1.76</x-m>
         <y-m>2.025</y-m>
-        <z-m>-0.449</z-m>
-        <pitch-offset>-2.5</pitch-offset>
+        <z-m>-0.470</z-m>
+        <pitch-deg>-0.5</pitch-deg>
     </offsets>
     
     <animation>
@@ -65,20 +65,5 @@
             <blue>0.4</blue>
         </ambient>
     </animation>
-    
-    <!--
-    <animation>
-        <type>select</type>
-        <nopreview/>
-        <object-name>PAN_tank_sx.004</object-name>
-        <object-name>PAN_tank_sx_003</object-name>
-        <condition> 
-            <equals>
-                <property>/fdm/jsbsim/systems/stations/stationDxInternal/TypeLoad</property>
-                <value>10</value>
-            </equals>
-        </condition>
-    </animation>
-    -->
 
 </PropertyList>

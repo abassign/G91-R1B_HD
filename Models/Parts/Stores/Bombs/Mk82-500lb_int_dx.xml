@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+    
+    <offsets>
+        <x-m>1.90</x-m>
+        <y-m>2.025</y-m>
+        <z-m>-0.400</z-m>
+        <pitch-deg>-0.5</pitch-deg>
+    </offsets>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Stores/Bombs/Mk82-500lb.xml</path>
+    </model>
+
+</PropertyList>

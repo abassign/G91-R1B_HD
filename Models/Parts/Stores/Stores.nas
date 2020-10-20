@@ -1,20 +1,20 @@
-var prop = props.globals.initNode("sim/G91/stores/sw-emergency-release", 0, "DOUBLE");
-var prop = props.globals.initNode("sim/G91/stores/handleRequestToDrop", 0, "DOUBLE");
+var prop = props.globals.initNode("sim/G91/stores/sw-emergency-release", 0, "INT");
+var prop = props.globals.initNode("sim/G91/stores/handleRequestToDrop", 0, "INT");
 var prop = props.globals.initNode("sim/G91/handle/handleRequestToDropPosition", 0, "DOUBLE");
-var prop = props.globals.initNode("sim/G91/stores/startStoreView", -1, "DOUBLE");
+var prop = props.globals.initNode("sim/G91/stores/startStoreView", -1, "INT");
 var prop = props.globals.initNode("sim/G91/stores/lastStoreBalObj", "", "STRING");
 var prop = props.globals.initNode("sim/G91/stores/lastStoreBalObjDataPath", "", "STRING");
 
 # Drop trigger for store in the station
-var prop = props.globals.initNode("sim/G91/stores/stationSxInternalDropFromStation", 0, "DOUBLE");
-var prop = props.globals.initNode("sim/G91/stores/stationSxExternalDropFromStation", 0, "DOUBLE");
-var prop = props.globals.initNode("sim/G91/stores/stationDxInternalDropFromStation", 0, "DOUBLE");
-var prop = props.globals.initNode("sim/G91/stores/stationDxExternalDropFromStation", 0, "DOUBLE");
+var prop = props.globals.initNode("sim/G91/stores/stationSxInternalDropFromStation", 0, "INT");
+var prop = props.globals.initNode("sim/G91/stores/stationSxExternalDropFromStation", 0, "INT");
+var prop = props.globals.initNode("sim/G91/stores/stationDxInternalDropFromStation", 0, "INT");
+var prop = props.globals.initNode("sim/G91/stores/stationDxExternalDropFromStation", 0, "INT");
 
-var prop = props.globals.initNode("sim/G91/stores/stationSxInternalDropped", 0, "DOUBLE");
-var prop = props.globals.initNode("sim/G91/stores/stationSxExternalDropped", 0, "DOUBLE");
-var prop = props.globals.initNode("sim/G91/stores/stationDxInternalDropped", 0, "DOUBLE");
-var prop = props.globals.initNode("sim/G91/stores/stationDxExternalDropped", 0, "DOUBLE");
+var prop = props.globals.initNode("sim/G91/stores/stationSxInternalDropped", 0, "INT");
+var prop = props.globals.initNode("sim/G91/stores/stationSxExternalDropped", 0, "INT");
+var prop = props.globals.initNode("sim/G91/stores/stationDxInternalDropped", 0, "INT");
+var prop = props.globals.initNode("sim/G91/stores/stationDxExternalDropped", 0, "INT");
 
 # Weight for fuel thank (lbs)
 var prop = props.globals.initNode("sim/G91/stores/stationSxExternalContent/level-lbs", 0, "DOUBLE");
@@ -36,13 +36,13 @@ var prop = props.globals.initNode("sim/G91/stores/stationDxExternalContent/level
 # 20 - Single MK82
 # ----------
 
-var prop = props.globals.initNode("sim/G91/stores/handleRequestToLoadStation", 0, "DOUBLE");
-var prop = props.globals.initNode("sim/G91/stores/handleRequestToLoadType", 0, "DOUBLE");
+var prop = props.globals.initNode("sim/G91/stores/handleRequestToLoadStation", 0, "INT");
+var prop = props.globals.initNode("sim/G91/stores/handleRequestToLoadType", 0, "INT");
 
-var prop = props.globals.initNode("sim/G91/stores/stationSxExternalTypeLoad", 0, "DOUBLE");
-var prop = props.globals.initNode("sim/G91/stores/stationSxInternalTypeLoad", 0, "DOUBLE");
-var prop = props.globals.initNode("sim/G91/stores/stationDxInternalTypeLoad", 0, "DOUBLE");
-var prop = props.globals.initNode("sim/G91/stores/stationDxExternalTypeLoad", 0, "DOUBLE");
+var prop = props.globals.initNode("sim/G91/stores/stationSxExternalTypeLoad", 0, "INT");
+var prop = props.globals.initNode("sim/G91/stores/stationSxInternalTypeLoad", 0, "INT");
+var prop = props.globals.initNode("sim/G91/stores/stationDxInternalTypeLoad", 0, "INT");
+var prop = props.globals.initNode("sim/G91/stores/stationDxExternalTypeLoad", 0, "INT");
 
 # Generic listener for load/unload all type stations and load
 

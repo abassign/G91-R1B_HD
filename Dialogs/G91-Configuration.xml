@@ -601,4 +601,109 @@
     
     <hrule/>
     
+    <group>
+        <layout>vbox</layout>
+        <group>
+            <layout>table</layout>
+            <text>
+                <label>Bomb</label>
+                <pref-width>100</pref-width>
+                <halign>left</halign>
+                <row>0</row>
+                <col>0</col>
+                <color>
+                    <red>0.0</red>
+                    <green>1.0</green>
+                    <blue>1.0</blue>
+                </color>
+            </text>
+            <button>
+                <row>0</row>
+                <col>1</col>
+                <legend>MK-81 (250 lb)</legend>
+                <pref-width>100</pref-width>
+                <live>true</live>
+                <binding>
+                    <command>nasal</command>
+                    <script>
+                        setprop("fdm/jsbsim/systems/stations/stationSxExternal/armyType",1);
+                        setprop("fdm/jsbsim/systems/stations/stationSxExternal/armyType-mod",1);
+                    </script>
+                </binding>
+            </button>
+            <button>
+                <row>0</row>
+                <col>2</col>
+                <legend>MK-82 (500 lb)</legend>
+                <pref-width>100</pref-width>
+                <live>true</live>
+                <binding>
+                    <command>nasal</command>
+                    <script>
+                        setprop("fdm/jsbsim/systems/stations/stationSxInternal/armyType",2);
+                        setprop("fdm/jsbsim/systems/stations/stationSxInternal/armyType-mod",1);
+                    </script>
+                </binding>
+            </button>
+            <button>
+                <row>0</row>
+                <col>3</col>
+                <legend>MK-82 (500 lb)</legend>
+                <pref-width>100</pref-width>
+                <live>true</live>
+                <binding>
+                    <command>nasal</command>
+                    <script>
+                        setprop("fdm/jsbsim/systems/stations/stationDxInternal/armyType",2);
+                        setprop("fdm/jsbsim/systems/stations/stationDxInternal/armyType-mod",1);
+                    </script>
+                </binding>
+            </button>
+            <button>
+                <row>0</row>
+                <col>4</col>
+                <legend>MK-81 (250 lb)</legend>
+                <pref-width>100</pref-width>
+                <live>true</live>
+                <binding>
+                    <command>nasal</command>
+                    <script>
+                        setprop("fdm/jsbsim/systems/stations/stationDxExternal/armyType",1);
+                        setprop("fdm/jsbsim/systems/stations/stationDxExternal/armyType-mod",1);
+                    </script>
+                </binding>
+            </button>
+            <button>
+                <row>1</row>
+                <col>2</col>
+                <legend>MK-81 (250 lb)</legend>
+                <pref-width>100</pref-width>
+                <live>true</live>
+                <binding>
+                    <command>nasal</command>
+                    <script>
+                        setprop("fdm/jsbsim/systems/stations/stationSxInternal/armyType",1);
+                        setprop("fdm/jsbsim/systems/stations/stationSxInternal/armyType-mod",1);
+                    </script>
+                </binding>
+            </button>
+            <button>
+                <row>1</row>
+                <col>3</col>
+                <legend>MK-81 (250 lb)</legend>
+                <pref-width>100</pref-width>
+                <live>true</live>
+                <binding>
+                    <command>nasal</command>
+                    <script>
+                        setprop("fdm/jsbsim/systems/stations/stationDxInternal/armyType",1);
+                        setprop("fdm/jsbsim/systems/stations/stationDxInternal/armyType-mod",1);
+                    </script>
+                </binding>
+            </button>
+        </group>
+    </group>
+            
+    <hrule/>
+    
 </PropertyList> 

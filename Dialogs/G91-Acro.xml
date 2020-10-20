@@ -56,11 +56,6 @@
                     <command>property-toggle</command>
                     <property>fdm/jsbsim/systems/fuel/external-tank-acrobatic</property>
                 </binding>
-                <binding>
-                    <command>property-assign</command>
-                    <property>fdm/jsbsim/systems/fuel/external-tank-active-conf</property>
-                    <value>1</value>
-                </binding>
             </button>
         </group>
     </group>

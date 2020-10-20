@@ -1,0 +1,162 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+        
+    <path>Mk81-01.ac</path>
+    <nopreview/>
+    
+    <animation>
+        <type>noshadow</type>
+        <object-name>description (Meshed)</object-name>
+        <object-name>hooks (Meshed)</object-name>
+        <object-name>screews (Meshed)</object-name>
+    </animation>
+
+    <animation> 
+        <type>material</type>
+        <object-name>body-1 (Meshed)</object-name>
+        <object-name>body-2 (Meshed)</object-name>
+        <object-name>body-3 (Meshed)</object-name>
+        <object-name>body-tail (Meshed)</object-name>
+        <object-name>fin (Meshed)</object-name>
+        <diffuse>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.0</blue>
+        </diffuse>
+        <ambient>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.0</blue>
+        </ambient>
+        <specular>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </specular>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>description (Meshed)</object-name>
+        <object-name>body-top (Meshed)</object-name>
+        <diffuse>
+            <red>0.5</red>
+            <green>0.3</green>
+            <blue>0.0</blue>
+        </diffuse>
+        <ambient>
+            <red>0.9</red>
+            <green>0.6</green>
+            <blue>0.0</blue>
+        </ambient>
+        <specular>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </specular>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>body-3-black (Meshed)</object-name>
+        <diffuse>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </diffuse>
+        <ambient>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </ambient>
+        <specular>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </specular>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>fuze (Meshed)</object-name>
+        <diffuse>
+            <red>0.5</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </diffuse>
+        <ambient>
+            <red>0.6</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </ambient>
+        <specular>
+            <red>0.2</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </specular>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>fuze-1 (Meshed)</object-name>
+        <diffuse>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.3</blue>
+        </diffuse>
+        <ambient>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.3</blue>
+        </ambient>
+        <specular>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
+        </specular>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>fuze-2 (Meshed)</object-name>
+        <object-name>fuze-3 (Meshed)</object-name>
+        <diffuse>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </diffuse>
+        <ambient>
+            <red>0.6</red>
+            <green>0.6</green>
+            <blue>0.6</blue>
+        </ambient>
+        <specular>
+            <red>0.6</red>
+            <green>0.6</green>
+            <blue>0.6</blue>
+        </specular>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>hooks (Meshed)</object-name>
+        <object-name>screews (Meshed)</object-name>
+        <diffuse>
+            <red>0.7</red>
+            <green>0.7</green>
+            <blue>0.7</blue>
+        </diffuse>
+        <ambient>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
+        </ambient>
+        <specular>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.3</blue>
+        </specular>
+    </animation>
+
+</PropertyList>

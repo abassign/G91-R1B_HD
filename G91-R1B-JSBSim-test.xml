@@ -75,6 +75,8 @@
     <system file="G91-guns"/>
     <system file="G91-store"/>
     <system file="G91-stations"/>
+    <system file="G91-stations-hardpoint-hook"/>
+    <system file="G91-army"/>
     <system file="PHI"/>
     
     <!-- apparatus -->
