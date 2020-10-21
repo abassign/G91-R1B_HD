@@ -295,7 +295,32 @@
     <!-- Key mappings -->
     <input>
         <keyboard>
-            
+            <key n="101">
+                <name>e</name>
+                <desc>Gun Trigger</desc> 
+                <binding>
+                    <command>property-assign</command>
+                    <property>ai/submodels/trigger</property>
+                    <value>true</value>
+                </binding>
+                <binding>
+                    <command>property-assign</command>
+                    <property>controls/armament/trigger</property>
+                    <value>true</value>
+                </binding>
+                <mod-up>
+                    <binding>
+                        <command>property-assign</command>
+                        <property>ai/submodels/trigger</property>
+                        <value>false</value>
+                    </binding>
+                    <binding>
+                        <command>property-assign</command>
+                        <property>controls/armament/trigger</property>
+                        <value>false</value>
+                    </binding> 
+                </mod-up>
+            </key>
             <key n="67">
                 <name>C</name>
                 <desc>Toggle Canopy</desc>

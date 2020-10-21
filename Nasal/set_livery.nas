@@ -388,8 +388,10 @@ var objectsNodes_cw = [
 # Hard points
 "hp_dx_int_01_external",
 "hp_dx_int_PAN_external",
+"hp_dx_int_01_internal",
 "hp_sx_int_01_external",
 "hp_sx_int_PAN_external",
+"hp_sx_int_01_internal",
 # Stores
 "tank_260lb_sub_01",
 "tank_260lb_sup_01",

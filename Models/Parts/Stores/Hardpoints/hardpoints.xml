@@ -3,33 +3,25 @@
 <PropertyList>
     
     <path>hardpoints.ac</path>
-    
-    <!--
-    <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
-        <object-name>hp_dx_int_01_internal</object-name>
-        <object-name>hp_sx_int_01_internal</object-name>
-        <object-name>hp_dx_int_PAN_separator</object-name>
-        <object-name>hp_dx_int_PAN_bottom</object-name>
-        <object-name>hp_sx_int_PAN_separator</object-name>
-        <object-name>hp_sx_int_PAN_bottom</object-name>
-    </effect>
-    -->
 
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Liveries/liveries_002</inherits-from>
-        <object-name>hp_dx_int_01_external</object-name>
-        <object-name>hp_sx_int_01_external</object-name>
+        <object-name>hp_sx_int_01_internal</object-name>
+        <object-name>hp_dx_int_01_internal</object-name>
         <object-name>hp_dx_int_PAN_external</object-name>
         <object-name>hp_sx_int_PAN_external</object-name>
+        <object-name>hp_sx_int_01_external</object-name>
+        <object-name>hp_dx_int_01_external</object-name>
     </effect>
 
     <animation> 
         <type>material</type>
-        <object-name>hp_dx_int_01_external</object-name>
-        <object-name>hp_sx_int_01_external</object-name>
+        <object-name>hp_sx_int_01_internal</object-name>
+        <object-name>hp_dx_int_01_internal</object-name>
         <object-name>hp_dx_int_PAN_external</object-name>
         <object-name>hp_sx_int_PAN_external</object-name>
+        <object-name>hp_sx_int_01_external</object-name>
+        <object-name>hp_dx_int_01_external</object-name>
         <diffuse>
             <red>1.0</red>
             <green>1.0</green>
@@ -51,8 +43,10 @@
     
     <animation>
         <type>select</type>
-        <object-name>hp_dx_int_01_external</object-name>
+        <object-name>hp_sx_int_01_internal</object-name>
         <object-name>hp_dx_int_01_internal</object-name>
+        <object-name>hp_sx_int_01_external</object-name>
+        <object-name>hp_dx_int_01_external</object-name>
         <condition>
             <equals>
                 <property>/fdm/jsbsim/systems/stations/stationDxInternal/typeHardpoint</property>
@@ -70,18 +64,6 @@
             <equals>
                 <property>/fdm/jsbsim/systems/stations/stationDxInternal/typeHardpoint</property>
                 <value>2</value>
-            </equals>
-        </condition>
-    </animation>
-    
-    <animation>
-        <type>select</type>
-        <object-name>hp_sx_int_01_external</object-name>
-        <object-name>hp_sx_int_01_internal</object-name>
-        <condition>
-            <equals>
-                <property>/fdm/jsbsim/systems/stations/stationSxInternal/typeHardpoint</property>
-                <value>1</value>
             </equals>
         </condition>
     </animation>

@@ -18,13 +18,43 @@
     </submodel>
     -->
     
+    <!-- Cannon -->
+    
+    <submodel>
+        <offsets>
+            <x-m>-2.95</x-m>
+            <y-m>-0.52</y-m>
+            <z-m>-0.71</z-m> <!-- -0.44 -->
+        </offsets>
+        <yaw-offset>0</yaw-offset>
+        <pitch-offset>0</pitch-offset>
+        <name>canonSxDown</name>
+        <model>Aircraft/G91-R1B_HD/Models/Parts/Stores/Cannon/bullet-12-7-01.xml</model>
+        <trigger>ai/submodels/trigger</trigger>
+        <repeat>true</repeat>
+        <count>50000</count>
+        <delay>0.1</delay>
+        <speed>2300.0</speed>
+        <slaved>false</slaved>
+        <wind>false</wind>
+        <aero-stabilised>true</aero-stabilised>
+        <collision>true</collision>
+        <eda>0.001</eda>
+        <cd>0.03</cd>
+        <weight>0.3</weight>
+        <buoyancy>0</buoyancy>
+        <life>15</life>
+        <impact>true</impact>
+        <impact-reports>ai/models/model-impact</impact-reports>
+        <external-force>true</external-force>
+    </submodel>
+    
     <!-- Fuel 450 lb Tanks -->
     <submodel>
         <offsets>
             <x-m>-1.78</x-m>
             <y-m>-2.025</y-m>
             <z-m>-0.449</z-m>
-            <pitch-offset>-2.5</pitch-offset>
         </offsets>
         <name>stationSxInternal_Tank260lit</name>
         <model>Aircraft/G91-R1B_HD/Models/Parts/Stores/Tank/Tank450lb_10_Sx_sub.xml</model>
@@ -53,7 +83,6 @@
             <x-m>-1.78</x-m>
             <y-m>2.025</y-m>
             <z-m>-0.449</z-m>
-            <pitch-offset>-2.5</pitch-offset>
         </offsets>
         <name>stationDxInternal_Tank260lit</name>
         <model>Aircraft/G91-R1B_HD/Models/Parts/Stores/Tank/Tank450lb_10_Dx_sub.xml</model>
@@ -84,7 +113,6 @@
             <x-m>1.60</x-m>
             <y-m>-2.025</y-m>
             <z-m>-0.520</z-m>
-            <pitch-offset>0.0</pitch-offset>
         </offsets>
         <name>stationSxInternal_Tank900lb</name>
         <model>Aircraft/G91-R1B_HD/Models/Parts/Stores/Tank/Tank900lb_12_Sx_sub.xml</model>
@@ -113,7 +141,6 @@
             <x-m>1.60</x-m>
             <y-m>-2.025</y-m>
             <z-m>-0.520</z-m>
-            <pitch-offset>0.0</pitch-offset>
         </offsets>
         <name>stationDxInternal_Tank900lb</name>
         <model>Aircraft/G91-R1B_HD/Models/Parts/Stores/Tank/Tank900lb_12_Dx_sub.xml</model>
