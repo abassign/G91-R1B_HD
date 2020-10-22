@@ -7,7 +7,7 @@
         <condition>
             <equals>
                 <property>fdm/jsbsim/systems/stations/stationSxExternal/typeHook</property>
-                <value>100</value>
+                <value>1</value>
             </equals>
         </condition>
     </model>
@@ -57,7 +57,7 @@
         <condition>
             <equals>
                 <property>fdm/jsbsim/systems/stations/stationDxExternal/typeHook</property>
-                <value>100</value>
+                <value>1</value>
             </equals>
         </condition>
     </model>

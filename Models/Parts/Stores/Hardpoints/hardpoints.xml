@@ -44,12 +44,42 @@
     <animation>
         <type>select</type>
         <object-name>hp_sx_int_01_internal</object-name>
+        <condition>
+            <equals>
+                <property>/fdm/jsbsim/systems/stations/stationSxInternal/typeHardpoint</property>
+                <value>1</value>
+            </equals>
+        </condition>
+    </animation>
+    
+    <animation>
+        <type>select</type>>
         <object-name>hp_dx_int_01_internal</object-name>
-        <object-name>hp_sx_int_01_external</object-name>
-        <object-name>hp_dx_int_01_external</object-name>
         <condition>
             <equals>
                 <property>/fdm/jsbsim/systems/stations/stationDxInternal/typeHardpoint</property>
+                <value>1</value>
+            </equals>
+        </condition>
+    </animation>
+    
+    <animation>
+        <type>select</type>
+        <object-name>hp_sx_int_01_external</object-name>
+        <condition>
+            <equals>
+                <property>/fdm/jsbsim/systems/stations/stationSxExternal/typeHardpoint</property>
+                <value>1</value>
+            </equals>
+        </condition>
+    </animation>
+    
+    <animation>
+        <type>select</type>
+        <object-name>hp_dx_int_01_external</object-name>
+        <condition>
+            <equals>
+                <property>/fdm/jsbsim/systems/stations/stationDxExternal/typeHardpoint</property>
                 <value>1</value>
             </equals>
         </condition>
