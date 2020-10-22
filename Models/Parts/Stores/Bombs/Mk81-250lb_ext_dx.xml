@@ -2,6 +2,9 @@
 
 <PropertyList>
 
+    <path>Mk81-01.ac</path>
+    <nopreview/>
+    
     <offsets>
         <x-m>2.415</x-m>
         <y-m>2.840</y-m>
@@ -9,8 +12,306 @@
         <pitch-deg>-0.5</pitch-deg>
     </offsets>
     
-    <model>
-        <path>Aircraft/G91-R1B_HD/Models/Parts/Stores/Bombs/Mk81-250lb.xml</path>
-    </model>
+    <animation>
+        <type>noshadow</type>
+        <object-name>description (Meshed)</object-name>
+        <object-name>hooks (Meshed)</object-name>
+        <object-name>screews (Meshed)</object-name>
+        <object-name>fuse-screews (Meshed)</object-name>
+        <object-name>air-brake-hinge (Meshed)</object-name>
+        <object-name>air-brake-pins (Meshed)</object-name>
+        <object-name>air-brake-support (Meshed)</object-name>
+    </animation>
+    
+    <animation>
+        <type>select</type>
+        <object-name>fuze (Meshed)</object-name>
+        <object-name>fuze-1 (Meshed)</object-name>
+        <object-name>fuze-2 (Meshed)</object-name>
+        <object-name>fuze-3 (Meshed)</object-name>
+        <condition>
+            <equals>
+                <property>fdm/jsbsim/systems/stations/stationDxExternal/armyTypeFuse</property>
+                <value>0</value>
+            </equals>
+        </condition>
+    </animation>
+    
+    <animation>
+        <type>select</type>
+        <object-name>fuze-typeB (Meshed)</object-name>
+        <object-name>fuze-1-typeB (Meshed)</object-name>
+        <object-name>fuze-2-typeB (Meshed)</object-name>
+        <object-name>fuze-3-typeB (Meshed)</object-name>
+        <object-name>fuze-4-typeB (Meshed)</object-name>
+        <condition>
+            <equals>
+                <property>fdm/jsbsim/systems/stations/stationDxExternal/armyTypeFuse</property>
+                <value>1</value>
+            </equals>
+        </condition>
+    </animation>
+    
+    <animation>
+        <type>select</type>
+        <object-name>air-brake-hinge (Meshed)</object-name>
+        <object-name>air-brake-pins (Meshed)</object-name>
+        <object-name>air-brake-support (Meshed)</object-name>
+        <object-name>air-brake-surfice-1 (Meshed)</object-name>
+        <object-name>air-brake-surfice-2 (Meshed)</object-name>
+        <object-name>air-brake-surfice-3 (Meshed)</object-name>
+        <object-name>air-brake-surfice-4 (Meshed)</object-name>
+        <condition>
+            <equals>
+                <property>fdm/jsbsim/systems/stations/stationDxExternal/armyTypeSpecial</property>
+                <value>1</value>
+            </equals>
+        </condition>
+    </animation>
+    
+    <animation>
+        <type>select</type>
+        <object-name>body-tail (Meshed)</object-name>
+        <condition>
+            <equals>
+                <property>fdm/jsbsim/systems/stations/stationDxExternal/armyTypeSpecial</property>
+                <value>0</value>
+            </equals>
+        </condition>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>air-brake-surfice-1 (Meshed)</object-name>
+        <object-name>air-brake-surfice-2 (Meshed)</object-name>
+        <object-name>air-brake-surfice-3 (Meshed)</object-name>
+        <object-name>air-brake-surfice-4 (Meshed)</object-name>
+        <diffuse>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.0</blue>
+        </diffuse>
+        <ambient>
+            <red>0.4</red>
+            <green>0.4</green>
+            <blue>0.0</blue>
+        </ambient>
+        <specular>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </specular>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>air-brake-pins (Meshed)</object-name>
+        <diffuse>
+            <red>0.4</red>
+            <green>0.4</green>
+            <blue>0.0</blue>
+        </diffuse>
+        <ambient>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.0</blue>
+        </ambient>
+        <specular>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </specular>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>air-brake-support (Meshed)</object-name>
+        <diffuse>
+            <red>0.7</red>
+            <green>0.7</green>
+            <blue>0.7</blue>
+        </diffuse>
+        <ambient>
+            <red>0.4</red>
+            <green>0.4</green>
+            <blue>0.4</blue>
+        </ambient>
+        <specular>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </specular>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>air-brake-hinge (Meshed)</object-name>
+        <diffuse>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </diffuse>
+        <ambient>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
+        </ambient>
+        <specular>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </specular>
+    </animation>
+
+    <animation> 
+        <type>material</type>
+        <object-name>body-1 (Meshed)</object-name>
+        <object-name>body-2 (Meshed)</object-name>
+        <object-name>body-3 (Meshed)</object-name>
+        <object-name>body-tail (Meshed)</object-name>
+        <object-name>fin (Meshed)</object-name>
+        <diffuse>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.0</blue>
+        </diffuse>
+        <ambient>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.0</blue>
+        </ambient>
+        <specular>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </specular>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>description (Meshed)</object-name>
+        <object-name>body-top (Meshed)</object-name>
+        <diffuse>
+            <red>0.5</red>
+            <green>0.3</green>
+            <blue>0.0</blue>
+        </diffuse>
+        <ambient>
+            <red>0.9</red>
+            <green>0.6</green>
+            <blue>0.0</blue>
+        </ambient>
+        <specular>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </specular>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>body-3-black (Meshed)</object-name>
+        <diffuse>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </diffuse>
+        <ambient>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </ambient>
+        <specular>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </specular>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>fuze (Meshed)</object-name>
+        <object-name>fuze-typeB (Meshed)</object-name>
+        <diffuse>
+            <red>0.5</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </diffuse>
+        <ambient>
+            <red>0.6</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </ambient>
+        <specular>
+            <red>0.2</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </specular>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>fuze-1 (Meshed)</object-name>
+        <object-name>fuze-1-typeB (Meshed)</object-name>
+        <diffuse>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.3</blue>
+        </diffuse>
+        <ambient>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.3</blue>
+        </ambient>
+        <specular>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
+        </specular>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>fuze-2 (Meshed)</object-name>
+        <object-name>fuze-2-typeB (Meshed)</object-name>
+        <object-name>fuze-3 (Meshed)</object-name>
+        <object-name>fuze-3-typeB (Meshed)</object-name>
+        <object-name>fuze-4-typeB (Meshed)</object-name>
+        <diffuse>
+            <red>0.6</red>
+            <green>0.6</green>
+            <blue>0.6</blue>
+        </diffuse>
+        <ambient>
+            <red>0.6</red>
+            <green>0.6</green>
+            <blue>0.6</blue>
+        </ambient>
+        <specular>
+            <red>0.6</red>
+            <green>0.6</green>
+            <blue>0.6</blue>
+        </specular>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>fuse-screews (Meshed)</object-name>
+        <diffuse>
+            <red>0.7</red>
+            <green>0.7</green>
+            <blue>0.7</blue>
+        </diffuse>
+        <ambient>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
+        </ambient>
+        <specular>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.3</blue>
+        </specular>
+    </animation>
 
 </PropertyList>

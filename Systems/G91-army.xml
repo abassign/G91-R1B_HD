@@ -5,7 +5,15 @@
     <!--
     Bomb type:
     20 - Mk81 (250 lb) - armyType = 1
+        armyTypeFuse = 0 - Fuze type A
+        armyTypeFuse = 1 - Fuze type B
+        armyTypeSpecial = 0 - Normal tail
+        armyTypeSpecial = 1 - Air brake tail
     21 - Mk82 (500 lb) - armyType = 2
+        armyTypeFuse = 0 - Fuze type A
+        armyTypeFuse = 1 - Fuze type B
+        armyTypeSpecial = 0 - Normal tail
+        armyTypeSpecial = 1 - Air brake tail
     -->
 
     <property value="0">systems/stations/stationSxExternal/armyType-mod</property>
@@ -14,9 +22,17 @@
     <property value="0">systems/stations/stationDxExternal/armyType-mod</property>
     
     <property value="0">systems/stations/stationSxExternal/armyType</property>
+    <property value="0">systems/stations/stationSxExternal/armyTypeFuse</property>
+    <property value="0">systems/stations/stationSxExternal/armyTypeSpecial</property>
     <property value="0">systems/stations/stationSxInternal/armyType</property>
+    <property value="0">systems/stations/stationSxInternal/armyTypeFuse</property>
+    <property value="0">systems/stations/stationSxInternal/armyTypeSpecial</property>
     <property value="0">systems/stations/stationDxInternal/armyType</property>
+    <property value="0">systems/stations/stationDxInternal/armyTypeFuse</property>
+    <property value="0">systems/stations/stationDxInternal/armyTypeSpecial</property>
     <property value="0">systems/stations/stationDxExternal/armyType</property>
+    <property value="0">systems/stations/stationDxExternal/armyTypeFuse</property>
+    <property value="0">systems/stations/stationDxExternal/armyTypeSpecial</property>
 
     
     <channel name="external tanks" execrate="16">
@@ -77,12 +93,24 @@
             </test>
         </switch>
         
-        <switch name="systems/stations/stationSxExternal/Cd">
-            <default value="systems/stations/stationSxExternal/Cd"/>
+        <switch name="systems/stations/stationSxExternal/Cd-base">
+            <default value="systems/stations/stationSxExternal/Cd-base"/>
             <test logic="AND" value="0.1">
                 systems/stations/stationSxExternal/armyType == 1
             </test>
         </switch>
+        
+        <switch name = "systems/stations/stationSxExternal/Cd-fuse-factor">
+            <default value="1"/>
+            <test logic="AND" value="1.5">
+                systems/stations/stationSxExternal/armyTypeFuse == 1
+            </test>
+        </switch>
+        
+        <pure_gain name="systems/stations/stationSxExternal/Cd">
+            <input>systems/stations/stationSxExternal/Cd-base</input>
+            <gain>systems/stations/stationSxExternal/Cd-fuse-factor</gain>
+        </pure_gain>
         
         <!-- set the armament Sx Internal -->
         
@@ -116,8 +144,8 @@
             </test>
         </switch>
         
-        <switch name = "systems/stations/stationSxInternal/Cd">
-            <default value="systems/stations/stationSxInternal/Cd"/>
+        <switch name = "systems/stations/stationSxInternal/Cd-base">
+            <default value="systems/stations/stationSxInternal/Cd-base"/>
             <test logic="AND" value="0.1">
                 systems/stations/stationSxInternal/armyType == 1
             </test>
@@ -125,6 +153,18 @@
                 systems/stations/stationSxInternal/armyType == 2
             </test>
         </switch>
+        
+        <switch name = "systems/stations/stationSxInternal/Cd-fuse-factor">
+            <default value="1"/>
+            <test logic="AND" value="1.5">
+                systems/stations/stationSxExternal/armyTypeFuse == 1
+            </test>
+        </switch>
+        
+        <pure_gain name="systems/stations/stationSxInternal/Cd">
+            <input>systems/stations/stationSxInternal/Cd-base</input>
+            <gain>systems/stations/stationSxInternal/Cd-fuse-factor</gain>
+        </pure_gain>
         
         <!-- set the armament Dx Internal -->
         
@@ -158,15 +198,27 @@
             </test>
         </switch>
         
-        <switch name = "systems/stations/stationDxInternal/Cd">
-            <default value="systems/stations/stationDxInternal/Cd"/>
+        <switch name = "systems/stations/stationDxInternal/Cd-base">
+            <default value="systems/stations/stationDxInternal/Cd-base"/>
             <test logic="AND" value="0.1">
-                systems/stations/stationSxInternal/armyType == 1
+                systems/stations/stationDxInternal/armyType == 1
             </test>
             <test logic="AND" value="0.15">
-                systems/stations/stationSxInternal/armyType == 2
+                systems/stations/stationDxInternal/armyType == 2
             </test>
         </switch>
+        
+        <switch name = "systems/stations/stationDxInternal/Cd-fuse-factor">
+            <default value="1"/>
+            <test logic="AND" value="1.5">
+                systems/stations/stationDxInternal/armyTypeFuse == 1
+            </test>
+        </switch>
+        
+        <pure_gain name="systems/stations/stationDxInternal/Cd">
+            <input>systems/stations/stationDxInternal/Cd-base</input>
+            <gain>systems/stations/stationDxInternal/Cd-fuse-factor</gain>
+        </pure_gain>
         
         <!-- set the armament Dx External -->
         
@@ -192,12 +244,24 @@
             </test>
         </switch>
         
-        <switch name="systems/stations/stationDxExternal/Cd">
-            <default value="systems/stations/stationDxExternal/Cd"/>
+        <switch name="systems/stations/stationDxExternal/Cd-base">
+            <default value="systems/stations/stationDxExternal/Cd-base"/>
             <test logic="AND" value="0.1">
                 systems/stations/stationSxExternal/armyType == 1
             </test>
         </switch>
+        
+        <switch name = "systems/stations/stationDxExternal/Cd-fuse-factor">
+            <default value="1"/>
+            <test logic="AND" value="1.5">
+                systems/stations/stationDxExternal/armyTypeFuse == 1
+            </test>
+        </switch>
+        
+        <pure_gain name="systems/stations/stationDxExternal/Cd">
+            <input>systems/stations/stationDxExternal/Cd-base</input>
+            <gain>systems/stations/stationDxExternal/Cd-fuse-factor</gain>
+        </pure_gain>
         
         <!-- Remove the triggers -mod -->
         

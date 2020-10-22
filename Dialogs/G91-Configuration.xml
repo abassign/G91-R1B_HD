@@ -631,9 +631,31 @@
                     </script>
                 </binding>
             </button>
-            <button>
+            <radio>
                 <row>0</row>
                 <col>2</col>
+                <label>LF</label>
+                <pref-width>30</pref-width>
+                <property>fdm/jsbsim/systems/stations/stationSxExternal/armyTypeFuse</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </radio>
+            <radio>
+                <row>0</row>
+                <col>3</col>
+                <label>BR</label>
+                <pref-width>30</pref-width>
+                <property>fdm/jsbsim/systems/stations/stationSxExternal/armyTypeSpecial</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </radio>
+            <button>
+                <row>0</row>
+                <col>4</col>
                 <legend>MK-82 (500 lb)</legend>
                 <pref-width>100</pref-width>
                 <live>true</live>
@@ -645,9 +667,31 @@
                     </script>
                 </binding>
             </button>
+            <radio>
+                <row>0</row>
+                <col>5</col>
+                <label>LF</label>
+                <pref-width>30</pref-width>
+                <property>fdm/jsbsim/systems/stations/stationSxInternal/armyTypeFuse</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </radio>
+            <radio>
+                <row>0</row>
+                <col>6</col>
+                <label>BR</label>
+                <pref-width>30</pref-width>
+                <property>fdm/jsbsim/systems/stations/stationSxInternal/armyTypeSpecial</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </radio>
             <button>
                 <row>0</row>
-                <col>3</col>
+                <col>7</col>
                 <legend>MK-82 (500 lb)</legend>
                 <pref-width>100</pref-width>
                 <live>true</live>
@@ -659,9 +703,31 @@
                     </script>
                 </binding>
             </button>
+            <radio>
+                <row>0</row>
+                <col>8</col>
+                <label>LF</label>
+                <pref-width>30</pref-width>
+                <property>fdm/jsbsim/systems/stations/stationDxInternal/armyTypeFuse</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </radio>
+            <radio>
+                <row>0</row>
+                <col>9</col>
+                <label>BR</label>
+                <pref-width>30</pref-width>
+                <property>fdm/jsbsim/systems/stations/stationDxInternal/armyTypeSpecial</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </radio>
             <button>
                 <row>0</row>
-                <col>4</col>
+                <col>10</col>
                 <legend>MK-81 (250 lb)</legend>
                 <pref-width>100</pref-width>
                 <live>true</live>
@@ -673,9 +739,31 @@
                     </script>
                 </binding>
             </button>
+            <radio>
+                <row>0</row>
+                <col>11</col>
+                <label>LF</label>
+                <pref-width>30</pref-width>
+                <property>fdm/jsbsim/systems/stations/stationDxExternal/armyTypeFuse</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </radio>
+            <radio>
+                <row>0</row>
+                <col>12</col>
+                <label>BR</label>
+                <pref-width>30</pref-width>
+                <property>fdm/jsbsim/systems/stations/stationDxExternal/armyTypeSpecial</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </radio>
             <button>
                 <row>1</row>
-                <col>2</col>
+                <col>4</col>
                 <legend>MK-81 (250 lb)</legend>
                 <pref-width>100</pref-width>
                 <live>true</live>
@@ -689,7 +777,7 @@
             </button>
             <button>
                 <row>1</row>
-                <col>3</col>
+                <col>7</col>
                 <legend>MK-81 (250 lb)</legend>
                 <pref-width>100</pref-width>
                 <live>true</live>

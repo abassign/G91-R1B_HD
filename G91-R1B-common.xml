@@ -36,6 +36,7 @@
         </sound>
         
         <aircraft-data>
+            <path>sim/G91/pilot-assistant/operative-at-start</path>
             <path>sim/G91/liveries/active/id</path>
             <path>sim/G91/liveries/active/resolution-set</path>
             <path>sim/G91/liveries/active/resolution-set-pixel</path>
