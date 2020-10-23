@@ -516,7 +516,7 @@ setlistener("fdm/jsbsim/systems/autopilot/gui/landig-sub-status-id", func {
         setprop("fdm/jsbsim/systems/autopilot/gui/interception-callsign-select","");
     }
     
-}, 1, 1);
+}, 0, 1);
 
 
 setlistener("fdm/jsbsim/systems/autopilot/gui/interception-control-active-level", func {
@@ -593,7 +593,7 @@ setlistener("fdm/jsbsim/systems/autopilot/gui/interception-control-active-level"
         setprop("fdm/jsbsim/systems/autopilot/gui/interception-control-msg","Return to target");
     }
     
-}, 1, 1);
+}, 0, 1);
 
 
 setlistener("fdm/jsbsim/systems/autopilot/gui/interception-control-mod", func {
@@ -615,7 +615,7 @@ setlistener("fdm/jsbsim/systems/autopilot/gui/interception-control-mod", func {
         setprop("fdm/jsbsim/systems/autopilot/gui/interception-control-mod",0);
     }
 
-}, 1, 1);
+}, 0, 1);
 
 
 setlistener("fdm/jsbsim/systems/autopilot/gui/interception-id-mod", func {
@@ -640,7 +640,7 @@ setlistener("fdm/jsbsim/systems/autopilot/gui/interception-id-mod", func {
     }
     setprop("fdm/jsbsim/systems/autopilot/gui/interception-id-mod",0);
     
-}, 1, 1);
+}, 0, 1);
 
 
 setlistener("fdm/jsbsim/systems/autopilot/gui/interception-ai-mp-mod", func {
@@ -659,7 +659,7 @@ setlistener("fdm/jsbsim/systems/autopilot/gui/interception-ai-mp-mod", func {
         setprop("fdm/jsbsim/systems/autopilot/gui/interception-ai-mp-mod",0);
     }
     
-}, 1, 1);
+}, 0, 1);
 
 
 setlistener("fdm/jsbsim/systems/autopilot/gui/interception-callsign-mod", func {
@@ -684,7 +684,7 @@ setlistener("fdm/jsbsim/systems/autopilot/gui/interception-callsign-mod", func {
     }
     setprop("fdm/jsbsim/systems/autopilot/gui/interception-callsign-mod",0);
     
-}, 1, 1);
+}, 0, 1);
 
 
 setlistener("fdm/jsbsim/systems/autopilot/gui/interception-distance", func {
@@ -692,7 +692,7 @@ setlistener("fdm/jsbsim/systems/autopilot/gui/interception-distance", func {
     int_dist_max = getprop("fdm/jsbsim/systems/autopilot/gui/interception-distance");
     setprop("/instrumentation/radar/range",int_dist_max);
 
-}, 1, 1);
+}, 0, 1);
 
 
 setlistener("fdm/jsbsim/systems/autopilot/gui/interception-list/rw_select", func {
@@ -700,7 +700,7 @@ setlistener("fdm/jsbsim/systems/autopilot/gui/interception-list/rw_select", func
     operateOn_Targets_Scan(3);
     setprop("fdm/jsbsim/systems/autopilot/gui/interception-list/rw_select",0);
 
-}, 1, 1);
+}, 0, 1);
 
 
 var pilot_imp_control = func() {

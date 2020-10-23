@@ -758,14 +758,14 @@ No Overshoot
                 systems/gauges/PHI/program/reset GE 1.0
             </test>
         </switch>
-        
+
         <switch name="systems/autopilot/gui/true-heading-deg">
             <default value="systems/autopilot/gui/true-heading-deg"/>
             <test logic="AND" value="systems/autopilot/heading-true-deg">
                 systems/gauges/PHI/program/reset GE 1.0
             </test>
         </switch>
-        
+
         <switch name="systems/autopilot/gui/true-heading">
             <default value="systems/autopilot/gui/true-heading"/>
             <test logic="AND" value="1.0">

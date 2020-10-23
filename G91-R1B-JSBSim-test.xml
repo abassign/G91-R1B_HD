@@ -77,7 +77,6 @@
     <system file="G91-stations"/>
     <system file="G91-stations-hardpoint-hook"/>
     <system file="G91-army"/>
-    <system file="PHI"/>
     
     <!-- apparatus -->
     <system file="radio-PTR175"/>
@@ -85,6 +84,7 @@
     <system file="TACAN-ARN-21"/>
     <system file="compass-flux-gate"/>
     <system file="ATC-transponder"/>
+    <system file="PHI"/>
     
     <metrics file="Systems/G91-metrics"/>
     <mass_balance file="Systems/G91-mass-balance"/>

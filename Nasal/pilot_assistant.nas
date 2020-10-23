@@ -7,6 +7,9 @@ var delta_time = 1.0;
 var speed_up = 1;
 var timeStepSecond = 0;
 
+var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/engage-pilot-assistant",0,"INT");
+var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/engage-pilot-assistant-value",0,"INT");
+var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/engage-pilot-assistant-msg","not operative","STRING");
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/airport_system_selector",0,"INT");
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/airport_select_name", "", "STRING");
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/airport_select_id", "", "STRING");
@@ -116,6 +119,7 @@ var runway_to_airplane_dist_nm = 0.0;
 var runway_to_airplane_dist_nm_der = 0.0;
 var runway_to_airplane_dist_nm_prec = 0.0;
 var dist_to_reduce_h = 0.0;
+var gear_unit_contact = 0;
 var landing_20_dist_to_reduce_h = 0;
 var landing_20_dist_to_reduce_v = 0;
 var landing_20_app_v = 250.0;
@@ -157,6 +161,36 @@ var defaultViewInTheEvent = nil;
 
 var testing_log_active = 0;
 var testing_level = 0;
+
+
+var pilot_assistant_check_is_active = func() {
+    var pilot_assistant_autostart = getprop("sim/G91/pilot-assistant/autostart");
+    if (pilot_assistant_autostart >= 1) {
+        #// Method to verify that the heading data is present in JSBSim.
+        #// Remember that JSBSim starts with Nasal and not all of its parameters are active.
+        #// It is advisable to start the procedure only after JSBSim has started or if, with an airplane in flight, a parameter becomes different from zero.
+        if (getprop("fdm/jsbsim/systems/autopilot/heading-true-deg") == 0.0 and gear_unit_contact == 0) {
+            print("Pilot_assistant.nas pilot_assistant_check_is_active: JSBSim is not finsh to start");
+        } else {
+            if (pilot_assistant_autostart == 1) {
+                setprop("fdm/jsbsim/systems/autopilot/gui/engage-pilot-assistant",1);
+                setprop("sim/G91/pilot-assistant/autostart",0);
+            } else {
+                setprop("sim/G91/pilot-assistant/autostart",pilot_assistant_autostart - 1);
+            }
+        }
+    } else {
+        var value = getprop("fdm/jsbsim/systems/autopilot/gui/heading-control") + getprop("fdm/jsbsim/systems/autopilot/gui/altitude-active") + getprop("fdm/jsbsim/systems/autopilot/gui/speed-control");
+        setprop("fdm/jsbsim/systems/autopilot/gui/engage-pilot-assistant-value",value);
+        if (value == 3) {
+            setprop("fdm/jsbsim/systems/autopilot/gui/engage-pilot-assistant-msg","is full active");
+        } elsif (value > 0) {
+            setprop("fdm/jsbsim/systems/autopilot/gui/engage-pilot-assistant-msg","is partialy active");
+        } else {
+            setprop("fdm/jsbsim/systems/autopilot/gui/engage-pilot-assistant-msg","idle");
+        }
+    }
+}
 
 
 var geodetic_airplane_distance_nm = func(lat_B,lon_B) {
@@ -245,9 +279,10 @@ var pilot_assistant = func() {
     var speed_cas = getprop("fdm/jsbsim/systems/autopilot/speed-cas-on-air");
     airplane = geo.aircraft_position();
     
+    gear_unit_contact = getprop("fdm/jsbsim/context/gears/on-ground");
+    
     var rwy_offset_h_nm = getprop("fdm/jsbsim/systems/autopilot/gui/landing-rwy-h-offset-nm");
     var rwy_offset_v_ft = getprop("fdm/jsbsim/systems/autopilot/gui/landing-rwy-v-offset-ft");
-    var gear_unit_contact = getprop("fdm/jsbsim/context/gears/on-ground");
     var speed_true_nmh = getprop("fdm/jsbsim/systems/autopilot/speed-true-on-air");
     var speed_true_fps = speed_true_nmh / 3600.0 * 5280.0;
     if (pilot_ass_status_id == 1) {
@@ -1905,7 +1940,7 @@ setlistener("fdm/jsbsim/systems/autopilot/gui/landing-activate", func {
     setprop("fdm/jsbsim/systems/autopilot/gui/landing-activate",0);
     setprop("fdm/jsbsim/systems/autopilot/gui/landing-activate-status",landing_activate_status);
     print("### B1 vertical-speed: ", getprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed"));
-}, 1, 0);
+}, 0, 1);
 
 
 setlistener("fdm/jsbsim/systems/autopilot/gui/take-off-activate", func {
@@ -1919,7 +1954,7 @@ setlistener("fdm/jsbsim/systems/autopilot/gui/take-off-activate", func {
         landing_activate_status = 0;
     }
     setprop("fdm/jsbsim/systems/autopilot/gui/take-off-activate",0);
-}, 1, 0);
+}, 0, 1);
 
 
 setlistener("fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct/status", func {
@@ -1955,7 +1990,7 @@ setlistener("fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct/status", 
         }
     }
     setprop("fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct/status",0);
-}, 1, 0);   
+}, 0, 1);   
 
 
 setlistener("fdm/jsbsim/systems/autopilot/gui/landing-holding-point-dist-nm", func {
@@ -1967,7 +2002,7 @@ setlistener("fdm/jsbsim/systems/autopilot/gui/landing-holding-point-dist-nm", fu
         setprop("fdm/jsbsim/systems/autopilot/gui/landing-holding-point-h-ft",elev);
     }
     setprop("fdm/jsbsim/systems/autopilot/gui/landing-holding-point-slope",4.0);
-}, 1, 0);
+}, 0, 1);
     
 
 setlistener("fdm/jsbsim/systems/autopilot/gui/landing-holding-point-h-ft", func {
@@ -1979,7 +2014,7 @@ setlistener("fdm/jsbsim/systems/autopilot/gui/landing-holding-point-h-ft", func 
         setprop("fdm/jsbsim/systems/autopilot/gui/landing-holding-point-dist-nm",dist);
     }
     setprop("fdm/jsbsim/systems/autopilot/gui/landing-holding-point-slope",4.0);
-}, 1, 0);
+}, 0, 1);
 
 
 setlistener("fdm/jsbsim/systems/autopilot/gui/landing-scan-airport", func {
@@ -1990,7 +2025,7 @@ setlistener("fdm/jsbsim/systems/autopilot/gui/landing-scan-airport", func {
     } else {
         setprop("fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct/rw_select",0);
     }
-}, 1, 0);
+}, 0, 1);
 
 
 setlistener("fdm/jsbsim/systems/autopilot/gui/interception-control-active", func {
@@ -2000,7 +2035,67 @@ setlistener("fdm/jsbsim/systems/autopilot/gui/interception-control-active", func
     } else {
         pilot_ass_status_id = -1;
     }
-}, 1, 0);
+}, 0, 1);
+
+
+setlistener("fdm/jsbsim/systems/autopilot/gui/engage-pilot-assistant", func {
+    var epa = getprop("fdm/jsbsim/systems/autopilot/gui/engage-pilot-assistant");
+    if (epa == 1) {
+        if (getprop("fdm/jsbsim/systems/autopilot/gui/engage-pilot-assistant-value") == 0.0) { 
+            print("Pilot_assistant status: operative");
+            setprop("fdm/jsbsim/systems/autopilot/gui/true-heading-deg",math.round(getprop("fdm/jsbsim/systems/autopilot/heading-true-deg")));
+            setprop("fdm/jsbsim/systems/autopilot/gui/heading-control",1.0);
+            setprop("fdm/jsbsim/systems/autopilot/gui/rudder-auto-coordination",1.0);
+            setprop("fdm/jsbsim/systems/autopilot/gui/true-heading",1.0);
+            setprop("fdm/jsbsim/systems/autopilot/gui/wing-leveler",0.0);
+            setprop("fdm/jsbsim/systems/autopilot/gui/phi-heading",0.0);
+            setprop("fdm/jsbsim/systems/autopilot/gui/altitude-active",1.0);
+            setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed",1.0);
+            setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed-fpm",2500.0);
+            setprop("fdm/jsbsim/systems/autopilot/gui/altitude-hold",1.0);
+            setprop("fdm/jsbsim/systems/autopilot/gui/impact-control-active",1.0);
+            if (gear_unit_contact == 0) {
+                setprop("fdm/jsbsim/systems/starter/gui/autostart-activate",1);
+                var speed_cas = getprop("fdm/jsbsim/systems/autopilot/speed-cas-on-air");
+                if (speed_cas != nil and getprop("fdm/jsbsim/systems/autopilot/gui/impact-control-active") > 0) {
+                    setprop("fdm/jsbsim/systems/autopilot/gui/speed-control",1.0);
+                    if (getprop("fdm/jsbsim/systems/autopilot/gui/speed-set-cas") == 1) {
+                        if (getprop("fdm/jsbsim/systems/autopilot/gui/speed-value") < 250) {
+                            setprop("fdm/jsbsim/systems/autopilot/gui/speed-value",250);
+                        }
+                    } else if (getprop("fdm/jsbsim/systems/autopilot/gui/speed-set-mach") == 1) {
+                        if (getprop("fdm/jsbsim/systems/autopilot/gui/speed-value") < 0.4) {
+                            setprop("fdm/jsbsim/systems/autopilot/gui/speed-value",0.4);
+                        }
+                    } else if (getprop("fdm/jsbsim/systems/autopilot/gui/speed-set-mph") == 1) {
+                        setprop("fdm/jsbsim/systems/autopilot/gui/speed-set-cas",1);
+                        setprop("fdm/jsbsim/systems/autopilot/gui/speed-set-mach",0);
+                        setprop("fdm/jsbsim/systems/autopilot/gui/speed-set-mph",0);
+                        if (speed_cas < 250.0) {
+                            setprop("fdm/jsbsim/systems/autopilot/gui/speed-value",250);
+                        } else {
+                            setprop("fdm/jsbsim/systems/autopilot/gui/speed-value",math.round(speed_cas));
+                        }
+                    }
+                }
+            }
+            pilot_ass_status_id = -1;
+        }
+    } else {
+        print("Pilot_assistant status: not operative");
+        setprop("fdm/jsbsim/systems/autopilot/gui/heading-control",0.0);
+        setprop("fdm/jsbsim/systems/autopilot/gui/true-heading",0.0);
+        setprop("fdm/jsbsim/systems/autopilot/gui/phi-heading",0.0);
+        setprop("fdm/jsbsim/systems/autopilot/gui/wing-leveler",0.0);
+        setprop("fdm/jsbsim/systems/autopilot/gui/phi-heading",0.0);
+        setprop("fdm/jsbsim/systems/autopilot/gui/rudder-auto-coordination",0.0);
+        setprop("fdm/jsbsim/systems/autopilot/gui/altitude-active",0.0);
+        setprop("fdm/jsbsim/systems/autopilot/gui/impact-control-active",0.0);
+        setprop("fdm/jsbsim/systems/autopilot/gui/speed-control",0.0);
+        setprop("fdm/jsbsim/systems/autopilot/gui/speed-set-cas",1.0);
+        pilot_ass_status_id = -1;
+    }
+}, 0, 1);
 
 
 var pilot_assistant_control = func() {
@@ -2019,6 +2114,7 @@ var pilot_assistant_control = func() {
     pilot_assistantTimer.restart(timeStep / timeStepDivisor);
 
     pilot_assistant();
+    pilot_assistant_check_is_active();
     
     if (timeStepSecond == 1) timeStepSecond = 0;
 

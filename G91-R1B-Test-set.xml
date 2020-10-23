@@ -41,6 +41,9 @@
                     <als type="int">1</als>
                 </effects>
             </models>
+            <pilot-assistant>
+                <autostart type="int">5</autostart>
+            </pilot-assistant>
         </G91>
         
     </sim>

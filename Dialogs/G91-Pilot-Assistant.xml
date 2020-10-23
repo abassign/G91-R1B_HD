@@ -2,7 +2,7 @@
 
 <PropertyList>
     
-    <name>pilot-assistant</name>
+    <name>pilot-assistant menu</name>
     <layout>vbox</layout>
     <default-padding>8</default-padding>
     <modal>false</modal>
@@ -13,7 +13,33 @@
         <layout>hbox</layout>
         <empty><stretch>true</stretch></empty>
         <text>
-            <label>Pilot assistant</label>
+            <pref-width>300</pref-width>
+            <label> </label>
+        </text>
+        <text>
+            <pref-width>200</pref-width>
+            <label>Pilot assistant menu</label>
+        </text>
+        <empty><stretch>true</stretch></empty>
+        <button>
+            <pref-width>150</pref-width>
+            <legend>Set active/idle</legend>
+            <halign>fill</halign>
+            <live>true</live>
+            <binding>
+                <command>property-toggle</command>
+                <property>fdm/jsbsim/systems/autopilot/gui/engage-pilot-assistant</property>
+            </binding>
+        </button>
+        <text>
+            <live>true</live>
+            <halign>left</halign>
+            <property>fdm/jsbsim/systems/autopilot/gui/engage-pilot-assistant-msg</property>
+            <color>
+                <red>0.9</red>
+                <green>0.9</green>
+                <blue>0.0</blue>
+            </color>
         </text>
         <empty><stretch>true</stretch></empty>
         <button>

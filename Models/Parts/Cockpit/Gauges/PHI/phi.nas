@@ -469,7 +469,7 @@ setlistener("fdm/jsbsim/systems/gauges/PHI/program/reset-after", func {
             setprop("fdm/jsbsim/systems/autopilot/gui/phi-heading",1.0);
             setprop("fdm/jsbsim/systems/gauges/PHI/indicator/switch-turn",1);
         }
-        setprop("fdm/jsbsim/systems/autopilot/gui/true-heading",0.0);
+        ### setprop("fdm/jsbsim/systems/autopilot/gui/true-heading",0.0);
         setprop("fdm/jsbsim/systems/autopilot/gui/wing-leveler",0.0);
         setprop("fdm/jsbsim/systems/gauges/PHI/convergency/status",-10);
     }
