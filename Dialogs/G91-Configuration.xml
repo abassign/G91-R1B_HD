@@ -789,6 +789,66 @@
                     </script>
                 </binding>
             </button>
+            <button>
+                <row>2</row>
+                <col>0</col>
+                <legend>Salvo</legend>
+                <pref-width>100</pref-width>
+                <live>true</live>
+                <binding>
+                    <command>property-assign</command>
+                    <property>fdm/jsbsim/systems/store/stations/salvo</property>
+                    <value>1</value>
+                </binding>
+            </button>
+            <button>
+                <row>2</row>
+                <col>1</col>
+                <legend>Drop</legend>
+                <pref-width>100</pref-width>
+                <live>true</live>
+                <binding>
+                    <command>property-assign</command>
+                    <property>fdm/jsbsim/systems/store/stations/sx/external/drop</property>
+                    <value>1</value>
+                </binding>
+            </button>
+            <button>
+                <row>2</row>
+                <col>4</col>
+                <legend>Drop</legend>
+                <pref-width>100</pref-width>
+                <live>true</live>
+                <binding>
+                    <command>property-assign</command>
+                    <property>fdm/jsbsim/systems/store/stations/sx/internal/drop</property>
+                    <value>1</value>
+                </binding>
+            </button>
+            <button>
+                <row>2</row>
+                <col>7</col>
+                <legend>Drop</legend>
+                <pref-width>100</pref-width>
+                <live>true</live>
+                <binding>
+                    <command>property-assign</command>
+                    <property>fdm/jsbsim/systems/store/stations/dx/internal/drop</property>
+                    <value>1</value>
+                </binding>
+            </button>
+            <button>
+                <row>2</row>
+                <col>10</col>
+                <legend>Drop</legend>
+                <pref-width>100</pref-width>
+                <live>true</live>
+                <binding>
+                    <command>property-assign</command>
+                    <property>fdm/jsbsim/systems/store/stations/dx/external/drop</property>
+                    <value>1</value>
+                </binding>
+            </button>
         </group>
     </group>
             

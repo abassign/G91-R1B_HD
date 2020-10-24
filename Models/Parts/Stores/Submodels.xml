@@ -139,7 +139,7 @@
     <submodel>
         <offsets>
             <x-m>1.60</x-m>
-            <y-m>-2.025</y-m>
+            <y-m>2.025</y-m>
             <z-m>-0.520</z-m>
         </offsets>
         <name>stationDxInternal_Tank900lb</name>
@@ -192,5 +192,64 @@
         <impact-reports>ai/models/model-impact</impact-reports>
         <external-force>true</external-force>
     </submodel>
+    
+    <!-- bombs -->
+    
+    <!-- MK82 -->
+<!--
+    <submodel>
+        <offsets>
+            <x-m>0.0</x-m>
+            <y-m>0.0</y-m>
+            <z-m>0.0</z-m>
+        </offsets>
+        <name>stationSxInternal_MK82</name>
+        <model>Aircraft/G91-R1B_HD/Models/Parts/Stores/Bombs/Mk82-500lb_int_sx.xml</model>
+        <trigger>fdm/jsbsim/systems/store/stations/sx/internal/drop-trigger</trigger>
+        <repeat>false</repeat>
+        <count>1</count>
+        <delay>0.1</delay>
+        <speed>0</speed>
+        <slaved>false</slaved>
+        <wind>false</wind>
+        <aero-stabilised>true</aero-stabilised>
+        <collision>true</collision>
+        <eda>1.35</eda>
+        <cd>0.2</cd>
+        <weight>250</weight>
+        <buoyancy>0</buoyancy>
+        <life>60</life>
+        <impact>true</impact>
+        <impact-reports>ai/models/model-impact</impact-reports>
+        <external-force>true</external-force>
+    </submodel>
 
+    <submodel>
+        <offsets>
+            <x-m>0.0</x-m>
+            <y-m>0.0</y-m>
+            <z-m>0.0</z-m>
+        </offsets>
+        <name>stationDxInternal_MK82</name>
+        <model>Aircraft/G91-R1B_HD/Models/Parts/Stores/Bombs/Mk82-500lb_int_dx.xml</model>
+        <trigger>fdm/jsbsim/systems/store/stations/dx/internal/drop-trigger</trigger>
+        <repeat>true</repeat>
+        <count>1</count>
+        <delay>0.1</delay>
+        <speed>0</speed>
+        <slaved>false</slaved>
+        <wind>false</wind>
+        <aero-stabilised>true</aero-stabilised>
+        <collision>true</collision>
+        <eda>1.35</eda>
+        <cd>0.2</cd>
+        <weight>150</weight>
+        <contents>250</contents>
+        <buoyancy>0</buoyancy>
+        <life>60</life>
+        <impact>true</impact>
+        <impact-reports>ai/models/model-impact</impact-reports>
+        <external-force>true</external-force>
+    </submodel>
+    -->
 </PropertyList> 

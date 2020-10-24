@@ -871,6 +871,16 @@
         <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/MK6/MK6.xml</path>
     </model>
     
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Pilot/pilot.xml</path>
+        <condition>
+            <equals>
+                <property>sim/current-view/internal</property>
+                <value>false</value>
+            </equals>
+        </condition>
+    </model>
+    
     <!-- Film Counter Box -->
     
     <model>
