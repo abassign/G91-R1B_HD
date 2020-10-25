@@ -11,41 +11,6 @@
         <pitch-deg>0.0</pitch-deg>
     </offsets>
     
-    <!--
-    <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading_canopy</inherits-from>
-        <object-name>F_test_abitacolo1</object-name>
-        <object-name>F.CANPOPY.telaio2</object-name>
-        <object-name>F_Segg_support.</object-name>
-    </effect>
-
-    <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
-        <object-name>Plane.014</object-name>
-        <object-name>F_panel_structure02</object-name>
-        <object-name>F_structure_panel_cockpit.000</object-name>
-        <object-name>F_structure_panel_cockpit.001</object-name>
-        <object-name>F_structure_panel_cockpit.002</object-name>
-        <object-name>F_structure_panel_cockpit.003</object-name>
-        <object-name>F_Cover_panel_cockpit</object-name>
-        <object-name>F_dadi</object-name>
-        <object-name>F_dadi.001</object-name>
-        <object-name>F_dadi.002</object-name>
-        <object-name>F_dadi.003</object-name>
-        <object-name>F_dadi.005</object-name>
-        <object-name>F_dadi.006</object-name>
-        <object-name>F_dadi.007</object-name>
-        <object-name>F_dadi.008</object-name>
-        <object-name>F_canopY_ant.004</object-name>
-        <object-name>F_canopY_ant.005</object-name>
-        <object-name>F_defrosters.005</object-name>
-        <object-name>F_canopY_ant.006</object-name>
-        <object-name>Handle_up</object-name>
-        <object-name>F_Segg_support.</object-name>
-        <object-name>A__G91_fuselage_canopy.001</object-name>
-    </effect>
-    -->
-    
     <animation>
         <type>noshadow</type>
         <object-name>anticollision cave (Meshed)</object-name>
@@ -253,11 +218,11 @@
         <type>material</type> 
         <object-name>F_canopy_ant_blind</object-name>
         <transparency>
-            <alpha>0.2</alpha>
+            <alpha>0.3</alpha>
         </transparency>
         <diffuse>
             <red>0.4</red>
-            <green>0.4</green>
+            <green>0.6</green>
             <blue>0.0</blue>
         </diffuse>
         <ambient>

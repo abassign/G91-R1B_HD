@@ -257,6 +257,8 @@
             <file>Aircraft/G91-R1B_HD/Nasal/pilot_assistant.nas</file>
             <file>Aircraft/G91-R1B_HD/Nasal/pilot_impact_control.nas</file>
             <file>Aircraft/G91-R1B_HD/Nasal/pilot_intercept.nas</file>
+            <!-- Stores -->
+            <file>Aircraft/G91-R1B_HD/Nasal/store.nas</file>
         </general>
         
         <canvas_gauges>

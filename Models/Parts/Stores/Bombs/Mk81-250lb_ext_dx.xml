@@ -4,20 +4,27 @@
 
     <path>Mk81-01.ac</path>
     <nopreview/>
-    
+
     <offsets>
         <x-m>2.415</x-m>
         <y-m>2.840</y-m>
-        <z-m>-0.31</z-m>
+        <z-m>-0.31</z-m>>
         <pitch-deg>-0.5</pitch-deg>
     </offsets>
+
+    <!--
+    <position>
+        <longitude-deg-prop>fdm/jsbsim/systems/store/stations/dx/external/lon</longitude-deg-prop>
+        <latitude-deg-prop>fdm/jsbsim/systems/store/stations/dx/external/lat</latitude-deg-prop>
+        <elevation-ft-prop>fdm/jsbsim/systems/store/stations/dx/external/elevation-ft</elevation-ft-prop>
+    </position>
+    -->
     
     <animation>
         <type>noshadow</type>
         <object-name>description (Meshed)</object-name>
         <object-name>hooks (Meshed)</object-name>
         <object-name>screews (Meshed)</object-name>
-        <object-name>fuse-screews (Meshed)</object-name>
         <object-name>air-brake-hinge (Meshed)</object-name>
         <object-name>air-brake-pins (Meshed)</object-name>
         <object-name>air-brake-support (Meshed)</object-name>
@@ -291,26 +298,6 @@
             <red>0.6</red>
             <green>0.6</green>
             <blue>0.6</blue>
-        </specular>
-    </animation>
-    
-    <animation> 
-        <type>material</type>
-        <object-name>fuse-screews (Meshed)</object-name>
-        <diffuse>
-            <red>0.7</red>
-            <green>0.7</green>
-            <blue>0.7</blue>
-        </diffuse>
-        <ambient>
-            <red>0.5</red>
-            <green>0.5</green>
-            <blue>0.5</blue>
-        </ambient>
-        <specular>
-            <red>0.3</red>
-            <green>0.3</green>
-            <blue>0.3</blue>
         </specular>
     </animation>
 

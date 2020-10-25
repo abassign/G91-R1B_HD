@@ -72,7 +72,7 @@
     </model>
     
     <!-- Bombs Mk81 -->
-    
+
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Stores/Bombs/Mk81-250lb_ext_dx.xml</path>
         <condition>
@@ -81,6 +81,11 @@
                 <value>20</value>
             </equals>
         </condition>
+        <!--
+        <longitude-deg-prop>fdm/jsbsim/systems/store/stations/dx/external/lon</longitude-deg-prop>
+        <latitude-deg-prop>fdm/jsbsim/systems/store/stations/dx/external/lat</latitude-deg-prop>
+        <elevation-ft-prop>fdm/jsbsim/systems/store/stations/dx/external/elevation-ft</elevation-ft-prop>
+        -->
     </model>
 
     <model>

@@ -53,6 +53,7 @@
                 setprop("sim/G91/liveries/active/set-livery-loaded",1);
                 import("Aircraft/G91-R1B_HD/Nasal/set_livery.nas","set_livery");
             }
+            import("Aircraft/G91-R1B_HD/Nasal/store.nas");
             
         ]]></load>
         <unload><![CDATA[
