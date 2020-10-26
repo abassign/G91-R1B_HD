@@ -4,8 +4,9 @@
     
     <path>PHI Station Selector.ac</path>
     
-    <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
+    <animation>
+        <type>noshadow</type>
+        <object-name>PHI_wind_advise_light_on</object-name>
         <object-name>box_cover_inf (Meshed)</object-name>
         <object-name>top (Meshed)</object-name>
         <object-name>screews_m5 (Meshed)</object-name>
@@ -28,7 +29,7 @@
         <object-name>selector_num_5 (Meshed)</object-name>
         <object-name>lamp_ring (Meshed)</object-name>
         <object-name>caddy_body (Meshed)</object-name>
-    </effect>
+    </animation>
 
     <effect>
         <inherits-from>Effects/model-transparent</inherits-from>
@@ -44,11 +45,6 @@
         <inherits-from>Effects/reflect</inherits-from>
         <object-name>selector_1_light (Meshed)</object-name>
     </effect>
-    
-    <animation>
-        <type>noshadow</type>
-        <object-name>PHI_wind_advise_light_on</object-name>
-    </animation>
 
     <animation> 
         <type>material</type>

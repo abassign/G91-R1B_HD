@@ -4,12 +4,13 @@
     
     <path>breaker_panel.ac</path>
     
-    <effect>
+    <animation>
+        <type>noshadow</type>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
         <object-name>base back (Meshed)</object-name>
         <object-name>base top (Meshed)</object-name>
         <object-name>screews (Meshed)</object-name>
-    </effect>
+    </animation>
     
     <animation> 
         <type>material</type>

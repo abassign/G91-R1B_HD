@@ -9,9 +9,8 @@
         <z-m>0.0</z-m>
     </offsets>
     
-    <!--
-    <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
+    <animation>
+        <type>noshadow</type>
         <object-name>switch_cone (Meshed)</object-name>
         <object-name>switch_pin (Meshed)</object-name>
         <object-name>switch_ring (Meshed)</object-name>
@@ -19,19 +18,7 @@
         <object-name>lock_bottom (Meshed)</object-name>
         <object-name>lock_axis (Meshed)</object-name>
         <object-name>lock_top (Meshed)</object-name>
-    </effect>
-    -->
-    
-    <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading</inherits-from>
-        <object-name>switch_cone (Meshed)</object-name>
-        <object-name>switch_pin (Meshed)</object-name>
-        <object-name>switch_ring (Meshed)</object-name>
-        <object-name>switch_base (Meshed)</object-name>
-        <object-name>lock_bottom (Meshed)</object-name>
-        <object-name>lock_axis (Meshed)</object-name>
-        <object-name>lock_top (Meshed)</object-name>
-    </effect>
+    </animation>
     
     <effect>
         <inherits-from>Effects/model-transparent</inherits-from>

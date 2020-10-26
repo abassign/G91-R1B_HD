@@ -74,16 +74,6 @@
         <object-name>F_CANPOPY_guarn.2.001</object-name>
     </animation>
     
-    <!-- Chrome Effects on materials -->
-    <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Interior_Shading/Interior_Shading_canopy</inherits-from>
-        <object-name>F_CANPOPY</object-name>
-        <object-name>F_CANPOPY.001</object-name>
-        <object-name>F_CANPOPY.002</object-name>
-        <object-name>F_CANPOPY.003</object-name>
-        <object-name>F_CANPOPY.004</object-name>
-    </effect>
-    
     <animation> 
         <type>material</type> 
         <object-name>F_glass_est_tettuccio</object-name>
