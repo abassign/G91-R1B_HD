@@ -177,84 +177,82 @@
                     <blue>0.9</blue>
                 </color>
             </text>
+        </group>
+    </group>
+        
+    <hrule/>
+    
+    <group>
+        <text>
+            <label>Colours configuration</label>
+        </text>
+        <layout>vbox</layout>
+        <group>
+            <layout>table</layout>
+        </group>
+    </group>
+        
+    <hrule/>
+        
+    <group>
+        <layout>vbox</layout>
+        <group>
+            <layout>table</layout>
+            <text>
+                <label>Red</label>
+                <halign>right</halign>
+                <row>0</row>
+                <col>0</col>
+            </text>
+            <checkbox>
+                <row>0</row>
+                <col>1</col>
+                <halign>fill</halign>
+                <property>sim/G91/smoke/acrobatic/red</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </checkbox>
+            
+            <text>
+                <label>Green</label>
+                <halign>right</halign>
+                <row>0</row>
+                <col>2</col>
+            </text>
+            <checkbox>
+                <row>0</row>
+                <col>3</col>
+                <halign>fill</halign>
+                <property>sim/G91/smoke/acrobatic/green</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </checkbox>
+            
+            <text>
+                <label>Blue</label>
+                <halign>right</halign>
+                <row>0</row>
+                <col>4</col>
+            </text>
+            <checkbox>
+                <row>0</row>
+                <col>5</col>
+                <halign>fill</halign>
+                <property>sim/G91/smoke/acrobatic/blue</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </checkbox>
             
         </group>
+    </group>
         
-        <hrule/>
-        
-        <group>
-            <text>
-                <label>Colours configuration</label>
-            </text>
-            <layout>vbox</layout>
-            <group>
-                <layout>table</layout>
-                
-            </group>
-        </group>
-        
-        <hrule/>
-        
-        <group>
-            <layout>vbox</layout>
-            <group>
-                <layout>table</layout>
-                
-                <text>
-                    <label>Red</label>
-                    <halign>right</halign>
-                    <row>0</row>
-                    <col>0</col>
-                </text>
-                <checkbox>
-                    <row>0</row>
-                    <col>1</col>
-                    <halign>fill</halign>
-                    <property>sim/G91/smoke/acrobatic/red</property>
-                    <live>true</live>
-                    <binding>
-                        <command>dialog-apply</command>
-                    </binding>
-                </checkbox>
-                
-                <text>
-                    <label>Green</label>
-                    <halign>right</halign>
-                    <row>0</row>
-                    <col>2</col>
-                </text>
-                <checkbox>
-                    <row>0</row>
-                    <col>3</col>
-                    <halign>fill</halign>
-                    <property>sim/G91/smoke/acrobatic/green</property>
-                    <live>true</live>
-                    <binding>
-                        <command>dialog-apply</command>
-                    </binding>
-                </checkbox>
-                
-                <text>
-                    <label>Blue</label>
-                    <halign>right</halign>
-                    <row>0</row>
-                    <col>4</col>
-                </text>
-                <checkbox>
-                    <row>0</row>
-                    <col>5</col>
-                    <halign>fill</halign>
-                    <property>sim/G91/smoke/acrobatic/blue</property>
-                    <live>true</live>
-                    <binding>
-                        <command>dialog-apply</command>
-                    </binding>
-                </checkbox>
-                
-            </group>
-        </group>
-        
-    </PropertyList>
+</PropertyList>
     
     
     

@@ -28,7 +28,7 @@
         <object-name>sw_south</object-name>
         <object-name>sw_est</object-name>
         <object-name>sw_west</object-name>
-    </effect>
+    </animation>
     
     <animation> 
         <type>material</type>

@@ -16,71 +16,114 @@ var submodel = nil;
 
 
 var StoreModelDataClass = {
-    class_name: "StoreModelClass",
+    class_name: "StoreModelDataClass",
     
     new: func() {
         var obj = {
-            latitude_deg: 0.0,
-            longitude_deg: 0.0,
-            elevation_ft: 0.0,
-            heading_deg: 0.0,
-            pitch_deg: 0.0,
-            roll_deg: 0.0,
+            callsign: nil,
+            aiid: nil,
+            latitude_deg: nil,
+            longitude_deg: nil,
+            altitude_ft: nil,
+            heading_deg: nil,
+            pitch_deg: nil,
+            roll_deg: nil,
+            true_airspeed_kt: nil,
+            vertical_speed_fps: nil,
             idNode: -1,
-            airplanePosition: nil;
+            airplanePosition: nil,
+            model: nil,
+            modelPath: nil,
+            ai: nil,
         };
-        return {parents: [StoreModelClass]};
+        return {parents: [StoreModelDataClass]};
     },
     
-    init: func(idNode) {
-        me.idNode = idNode;
+    init: func(callsign,aiid,modelPath) {
+        var n = props.globals.getNode("models", 1);
+        #// Append aa empty model
+        for (var i = 0; 1; i += 1) 
+            if (n.getChild("model", i, 0) == nil) {
+                #// m.model contiene un modello vuoto
+                me.callsign = callsign;
+                me.aiid = aiid;
+                me.model = n.getChild("model", i, 1);
+                me.idNode = i;
+                me.modelPath = modelPath;
+                me.model.getNode("path",1).setValue(modelPath);
+                print("store.nas StoreModelDataClass,init create empty model idModel: ",me.idNode," dump: ",debug.dump(me.model));
+                break;
+            };
+        #// Ai part to defined
+        var n = props.globals.getNode("ai/models", 1);
+        for (var i = 0; 1; i += 1) {
+            var cn = n.getChild("submodel", i, 0);
+            if (cn == nil)
+                break;
+            if (cn.getNode("id") == nil or cn.getNode("id").getValue() == nil)
+                break;
+        }
+        me.ai = n.getChild("submodel", i, 1);
+        me.ai.getNode("id", 1).setIntValue(me.aiid);
+        me.ai.getNode("callsign", 1).setValue(me.callsign ~ "");
+        me.ai.getNode("submodel", 1).setBoolValue(1);
+        me.ai.getNode("valid", 1).setBoolValue(1);
+        me.latitude_deg = me.ai.getNode("position/latitude-deg", 1);
+        me.longitude_deg = me.ai.getNode("position/longitude-deg", 1);
+        me.altitude_ft = me.ai.getNode("position/altitude-ft", 1);
+        me.heading_deg = me.ai.getNode("orientation/true-heading-deg", 1);
+        me.pitch_deg = me.ai.getNode("orientation/pitch-deg", 1);
+        me.roll_deg = me.ai.getNode("orientation/roll-deg", 1);
+        me.true_airspeed_kt = me.ai.getNode("velocities/true-airspeed-kt", 1);
+        me.vertical_speed_fps = me.ai.getNode("velocities/vertical-speed-fps", 1);
+        
+        me.model.getNode("latitude-deg-prop", 1).setValue(me.latitude_deg.getPath());
+        me.model.getNode("longitude-deg-prop", 1).setValue(me.longitude_deg.getPath());
+        me.model.getNode("elevation-ft-prop", 1).setValue(me.altitude_ft.getPath());
+        me.model.getNode("heading-deg-prop", 1).setValue(me.heading_deg.getPath());
+        me.model.getNode("pitch-deg-prop", 1).setValue(me.pitch_deg.getPath());
+        me.model.getNode("roll-deg-prop", 1).setValue(me.roll_deg.getPath());
+        me.model.getNode("load", 1).remove();
     },
     
-    setPosition: func(latitude_deg,longitude_deg,elevation_ft,heading_deg,pitch_deg,roll_deg) {
-        me.latitude_deg = latitude_deg;
-        me.longitude_deg = longitude_deg;
-        me.elevation_ft = elevation_ft;
-        me.heading_deg = heading_deg;
-        me.pitch_deg = pitch_deg;
-        me.roll_deg = roll_deg;
+    setModelPosition: func(latitude_deg,longitude_deg,altitude_ft,heading_deg,pitch_deg,roll_deg,true_airspeed_kt = 0.0,vertical_speed_fps = 0.0) {
+        # print("*****: ",latitude_deg," ",longitude_deg," ",altitude_ft," ",heading_deg," ",pitch_deg," ",roll_deg);
+        print(debug.dump(me));
+        me.latitude_deg.setDoubleValue(latitude_deg);
+        me.longitude_deg.setDoubleValue(longitude_deg);
+        me.altitude_ft.setDoubleValue(altitude_ft);
+        me.heading_deg.setDoubleValue(heading_deg);
+        me.pitch_deg.setDoubleValue(pitch_deg);
+        me.roll_deg.setDoubleValue(roll_deg);
+        me.true_airspeed_kt.setDoubleValue(me.ktas);
+        me.vertical_speed_fps.setDoubleValue(0);
     },
     
     setToAirplanePosition: func() {
         me.airplanePosition = geo.aircraft_position();
-        me.setPosition(me.airplane.lat(),me.airplane.lon(),me.airplane.alt() * M2F,
-            getNode("orientation/heading-deg"),
-            getNode("orientation/pitch-deg"),
-            getNode("orientation/roll-deg")
+        me.setModelPosition(me.airplanePosition.lat(),me.airplanePosition.lon(),me.airplanePosition.alt() * M2FT,
+            getprop("orientation/heading-deg"),
+            getprop("orientation/pitch-deg"),
+            getprop("orientation/roll-deg"),
         );
     },
 };
 
 
 var store = func() {
-    
-    var airplane = geo.aircraft_position();
+            
     if (timeStepSecond == 1 and isModelCreate == 0) {
         if (getprop("fdm/jsbsim/systems/store/stations/dx/external/type") == 20) {
             var path = "Aircraft/G91-R1B_HD/Models/Parts/Stores/Bombs/Mk81-250lb_ext_dx.xml";
-            geo.put_model(path, airplane.lat(), airplane.lon(), airplane.alt() + 3.0);
             isModelCreate = 1;
-            var list = props.globals.getNode("/models").getChildren("model");
-            var total = size(list);
-            print("store activate: total = ",total);
-            for(var i = 0; i < total; i += 1) {
-                var path_found = list[i].getNode("path").getValue();
-                if (path_found == path) {
-                    print("store activate: path_found = ",path_found);
-                    submodel = StoreModelDataClass.new().init(i).setToAirplanePosition();
-                }
-            }
+            submodel = StoreModelDataClass.new();
+            submodel.init("abassign-Mk81-250lb_ext_dx",1,path);
+            submodel.setToAirplanePosition();
+            print("***** submodel: ",debug.dump(submodel));
         }
     }
     if (isModelCreate == 1) {
-        setprop("fdm/jsbsim/systems/store/stations/dx/external/lat",airplane.lat());
-        setprop("fdm/jsbsim/systems/store/stations/dx/external/lon",airplane.lon());
-        setprop("fdm/jsbsim/systems/store/stations/dx/external/elevation-ft",airplane.alt() * M2F + 10.0);
-        # setprop("fdm/jsbsim/systems/store/stations/dx/external/heading-deg",airplane.);
+        submodel.setToAirplanePosition();
     }
     
 }
@@ -90,7 +133,7 @@ var store_control = func() {
     
     pilot_assistantTimer.restart(timeStep / timeStepDivisor);
 
-    store();
+    ## store();
     
     if (timeStepSecond == 1) timeStepSecond = 0;
 
