@@ -253,13 +253,19 @@
             <file>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/TACAN_arn_21/tacan_arn_21.nas</file>
             <file>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Gauges/SFOM_83A/SFOM_83A_01.nas</file>
             <file>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/PHI/phi.nas</file>
-            <!-- Autopilot -->
-            <file>Aircraft/G91-R1B_HD/Nasal/pilot_assistant.nas</file>
-            <file>Aircraft/G91-R1B_HD/Nasal/pilot_impact_control.nas</file>
-            <file>Aircraft/G91-R1B_HD/Nasal/pilot_intercept.nas</file>
             <!-- Stores -->
             <file>Aircraft/G91-R1B_HD/Nasal/store.nas</file>
         </general>
+        
+        <autopilot>
+            <!-- Autopilot -->
+            <file>Aircraft/G91-R1B_HD/Nasal/autopilot/autopilot_module.nas</file>
+            <!--
+            <file>Aircraft/G91-R1B_HD/Nasal/pilot_assistant.nas</file>
+            -->
+            <file>Aircraft/G91-R1B_HD/Nasal/autopilot/pilot_impact_control.nas</file>
+            <file>Aircraft/G91-R1B_HD/Nasal/autopilot/pilot_intercept.nas</file>
+        </autopilot>
         
         <canvas_gauges>
              <file>Aircraft/G91-R1B_HD/Nasal/set_livery.nas</file>

@@ -116,6 +116,20 @@ var setIntensty_calc_lag = func(aIntensity_calc,intensity_calc_lag_incr,intensit
 }
 
 
+var main = func() {
+    
+    print("pilot_impact_control.nas load module");
+    
+}
+
+
+var unload = func() {
+    
+    print("pilot_impact_control.nas unload module");
+
+}
+
+
 var analyze_imp_time = func() {
     
     testing_log_active = getprop("sim/G91/testing/log");

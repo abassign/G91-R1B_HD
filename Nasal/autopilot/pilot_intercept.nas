@@ -50,7 +50,7 @@ var int_callsign_select = "";
 var targets_scan = {};
 var targets_scan_sorter = {};
 
-var int_cnt_min_speed_mph = 150.0;
+var int_cnt_min_speed_mph = 130.0;
 var int_cnt_max_speed_mph = 450.0;
 var int_cnt_max_h_ft = 40000.0;
 
@@ -68,6 +68,20 @@ var speed_max_mph = 0.0;
 var pi2 = math.pi * 0.5;
 
 
+var main = func() {
+    
+    print("pilot_intercept.nas load module");
+    
+}
+
+
+var unload = func() {
+    
+    print("pilot_intercept.nas unload module");
+
+}
+
+
 var operateOn_Targets_Scan = func(aFunction) {
     if (aFunction == 0) {
         #// Clear
@@ -78,6 +92,8 @@ var operateOn_Targets_Scan = func(aFunction) {
         }
         targets_scan = {};
         targets_scan_sorter = {};
+        setprop("fdm/jsbsim/systems/autopilot/gui/interception-callsign-select","");
+        setprop("fdm/jsbsim/systems/autopilot/gui/interception-callsign-mod",1);
     } elsif (aFunction == 1) {
         #// Sort funtion
         var j = size(targets_scan_sorter) - 1;
@@ -152,7 +168,7 @@ var searchCmd = func() {
         }
     }
     setprop("fdm/jsbsim/systems/autopilot/interception-target-total-found",total);
-    if (total > 0) {
+    if (total > 0 and getprop("fdm/jsbsim/systems/autopilot/gui/interception-list/rw_select") == 0) {
         var nearest_id = -1;
         var nearest_nm = 999.0;
         operateOn_Targets_Scan(0);
@@ -258,6 +274,20 @@ var getCallsign = func(anId) {
     
 }
 
+var getCallsignDescription = func(anId) {
+    
+    if (size(targets_scan) > 0) {
+        foreach (var hash_key; keys(targets_scan)) {
+            data = targets_scan[hash_key];
+            if (data[0] == anId) {
+                return data[2];
+            }
+        }
+    }
+    return "";
+    
+}
+
 
 var target_near_dist_adv = func(distance, size) {
     
@@ -321,11 +351,11 @@ var interception_cnt = func() {
                     var altitude_offset = getprop("fdm/jsbsim/systems/autopilot/gui/interception-altitude-offset");
                     var target_dist_min = getprop("fdm/jsbsim/systems/autopilot/gui/interception-target-min-dist");
                     var distFromTarget = 0.0;
-                    var orientation = list[int_id_select].getNode("orientation");
-                    var target_true_heading_deg = orientation.getNode("true-heading-deg").getValue();
-                    var position = list[int_id_select].getNode("position");
-                    var target_h_ft =  position.getNode("altitude-ft").getValue();
-                    target_coord.set_latlon(position.getNode("latitude-deg").getValue(),position.getNode("longitude-deg").getValue(),target_h_ft * 0.3048);
+                    var target_orientation = list[int_id_select].getNode("orientation");
+                    var target_true_heading_deg = target_orientation.getNode("true-heading-deg").getValue();
+                    var target_position = list[int_id_select].getNode("position");
+                    var target_h_ft =  target_position.getNode("altitude-ft").getValue();
+                    target_coord.set_latlon(target_position.getNode("latitude-deg").getValue(),target_position.getNode("longitude-deg").getValue(),target_h_ft * 0.3048);
                     var target_dist_nm = airplane.distance_to(target_coord) * 0.000621371;
                     if (target_dist_nm == nil or (target_dist_nm < 0.001 and target_dist_nm > -0.001)) target_dist_nm = 0.0;
                     var airplane_course_to_target_deg = geo.normdeg180(airplane.course_to(target_coord));
@@ -359,11 +389,8 @@ var interception_cnt = func() {
                                 setprop("fdm/jsbsim/systems/autopilot/gui/true-heading-max-wing-slope-deg",20.0);
                                 if (ramp_target_by_alt_deg < ramp_max_by_alt_deg) {
                                     speed_mph = target_speed_mph + speed_mph_coefficient * (target_dist_nm - target_dist_min);
-                                    
                                     if (speed_mph < speed_min_by_alt) speed_mph = speed_min_by_alt;
-                                    if (airplane_speed_mph > 1.1 * speed_mph) {
-                                        setprop("fdm/jsbsim/systems/autopilot/speed-brake-set-activate",1.0);
-                                    }
+                                    if (airplane_speed_mph > 1.1 * speed_mph) setprop("fdm/jsbsim/systems/autopilot/speed-brake-set-activate",1.0);
                                 } else {
                                     speed_mph = target_speed_mph + speed_mph_coefficient * (target_dist_nm - target_dist_min);
                                     if (target_speed_mph < speed_min_by_alt) speed_mph = speed_min_by_alt;
@@ -391,7 +418,7 @@ var interception_cnt = func() {
                     }
                     if (active_level <= 2) {
                         var distance = (-distFromTarget + target_course_to_future_nm) * 1852.0;
-                        if (distance > (-2.0 * 1852.0)) distance = 5.0 * 1852.0;
+                        ## if (distance > (-2.0 * 1852.0)) distance = 5.0 * 1852.0;
                         target_coord_mod = target_coord.apply_course_distance(target_true_heading_deg, distance);
                     } else {
                         target_coord_mod = target_coord.apply_course_distance(target_true_heading_deg, 5.0 + 1852);
@@ -402,7 +429,8 @@ var interception_cnt = func() {
                     target_near_dist_nm = target_near_dist_adv(airplane.distance_to(target_coord_mod) * 0.000621371,20);
                     var course_to_deg = airplane.course_to(target_coord_mod);
                     course_to_deg_avd = course_to_deg_adv(course_to_deg,20);
-                    dif_course_deg = geo.normdeg180(target_true_heading_deg - airplane_course_to_target_deg);
+                    dif_course_deg = geo.normdeg(target_true_heading_deg - airplane_course_to_target_deg);
+                    if (dif_course_deg > 180.0) dif_course_deg = dif_course_deg - 360.0;
 
                     if (active_level > 2) {
                         var max_wing_slope = 10.0 * (1 + math.ln(1.0 + math.abs(dif_course_deg)));
@@ -442,7 +470,7 @@ var interception_cnt = func() {
                     print(
                         sprintf("*** level: %1.0f",active_level),
                         sprintf(" target dist: %3.1f",target_dist_nm),
-                        sprintf(" near nm: %3.1f",target_near_dist_nm),
+                        sprintf(" mod near nm: %3.1f",target_near_dist_nm),
                         sprintf(" distFromTarget: %3.1f",distFromTarget),
                         sprintf(" T coursem fut: %3.0f", target_course_to_future_nm),
                         sprintf(" course to T: %3.1f",airplane_course_to_target_deg),
@@ -502,7 +530,7 @@ setlistener("fdm/jsbsim/systems/autopilot/gui/landig-sub-status-id", func {
         setprop("fdm/jsbsim/systems/autopilot/gui/interception-callsign-select","");
     }
     
-}, 1, 1);
+}, 0, 1);
 
 
 setlistener("fdm/jsbsim/systems/autopilot/gui/interception-control-active-level", func {
@@ -579,15 +607,15 @@ setlistener("fdm/jsbsim/systems/autopilot/gui/interception-control-active-level"
         setprop("fdm/jsbsim/systems/autopilot/gui/interception-control-msg","Return to target");
     }
     
-}, 1, 1);
+}, 0, 1);
 
 
 setlistener("fdm/jsbsim/systems/autopilot/gui/interception-control-mod", func {
 
     var int_cnt_mod = getprop("fdm/jsbsim/systems/autopilot/gui/interception-control-mod");
     active_level = getprop("fdm/jsbsim/systems/autopilot/gui/interception-control-active-level");
-    if (int_cnt_mod == 1) {
-        if (active_level == 0) {
+    if (int_cnt_mod >= 1) {
+        if (active_level == 0 or (active_level >= 1 and int_cnt_mod == 2)) {
             var landig_sub_status_id = getprop("fdm/jsbsim/systems/autopilot/gui/landig-sub-status-id");
             if (landig_sub_status_id == 0 or (landig_sub_status_id >= 11.0 and landig_sub_status_id < 12.0)) {
                 setprop("fdm/jsbsim/systems/autopilot/gui/interception-control-active-level",1);
@@ -601,7 +629,7 @@ setlistener("fdm/jsbsim/systems/autopilot/gui/interception-control-mod", func {
         setprop("fdm/jsbsim/systems/autopilot/gui/interception-control-mod",0);
     }
 
-}, 1, 1);
+}, 0, 1);
 
 
 setlistener("fdm/jsbsim/systems/autopilot/gui/interception-id-mod", func {
@@ -626,47 +654,51 @@ setlistener("fdm/jsbsim/systems/autopilot/gui/interception-id-mod", func {
     }
     setprop("fdm/jsbsim/systems/autopilot/gui/interception-id-mod",0);
     
-}, 1, 1);
+}, 0, 1);
 
 
-setlistener("fdm/jsbsim/systems/autopilot/gui/interception-ai-mp", func {
+setlistener("fdm/jsbsim/systems/autopilot/gui/interception-ai-mp-mod", func {
     
     var ai_mp_mod = getprop("fdm/jsbsim/systems/autopilot/gui/interception-ai-mp-mod");
-    type_ai_mp = getprop("fdm/jsbsim/systems/autopilot/gui/interception-ai-mp");
-    if (type_ai_mp == 1) {
-        type_ai_mp_msg = "select type multiplayer airplane";
-        setprop("fdm/jsbsim/systems/autopilot/gui/interception-ai-mp-msg",type_ai_mp_msg);
-    } else {
-        type_ai_mp_msg = "select type AI airplane";
-        setprop("fdm/jsbsim/systems/autopilot/gui/interception-ai-mp-msg",type_ai_mp_msg);
+    if (ai_mp_mod == 1) {
+        type_ai_mp = getprop("fdm/jsbsim/systems/autopilot/gui/interception-ai-mp");
+        if (type_ai_mp == 1) {
+            type_ai_mp_msg = "select type multiplayer airplane";
+            setprop("fdm/jsbsim/systems/autopilot/gui/interception-ai-mp-msg",type_ai_mp_msg);
+        } else {
+            type_ai_mp_msg = "select type AI airplane";
+            setprop("fdm/jsbsim/systems/autopilot/gui/interception-ai-mp-msg",type_ai_mp_msg);
+        }
+        setprop("fdm/jsbsim/systems/autopilot/gui/interception-control-mod",2);
+        setprop("fdm/jsbsim/systems/autopilot/gui/interception-ai-mp-mod",0);
     }
-    operateOn_Targets_Scan(0);
-    setprop("fdm/jsbsim/systems/autopilot/gui/interception-ai-mp-mod",0);
     
-}, 1, 1);
+}, 0, 1);
 
 
 setlistener("fdm/jsbsim/systems/autopilot/gui/interception-callsign-mod", func {
     
     var callsign_mod = getprop("fdm/jsbsim/systems/autopilot/gui/interception-callsign-mod");
-    if (int_cnt_active == 1 and callsign_mod == 1) {
+    active_level = getprop("fdm/jsbsim/systems/autopilot/gui/interception-control-active-level");
+    if (active_level >= 1 and callsign_mod == 1) {
         var callsign_to_test = getprop("fdm/jsbsim/systems/autopilot/gui/interception-callsign-select");
         var id = isCallsign(callsign_to_test);
         if (id != nil) {
             int_id_select = id;
             int_callsign_select = getCallsign(id);
             setprop("fdm/jsbsim/systems/autopilot/gui/interception-callsign-select",int_callsign_select);
+            setprop("fdm/jsbsim/systems/autopilot/gui/interception-list/airplane",getCallsignDescription(id));
         } else {
             int_id_select = -1;
             int_callsign_select = "";
             setprop("fdm/jsbsim/systems/autopilot/gui/interception-callsign-select","");
+            setprop("fdm/jsbsim/systems/autopilot/gui/interception-list/airplane","");
         }
-        
         setprop("fdm/jsbsim/systems/autopilot/gui/interception-id-select",int_id_select);
     }
     setprop("fdm/jsbsim/systems/autopilot/gui/interception-callsign-mod",0);
     
-}, 1, 1);
+}, 0, 1);
 
 
 setlistener("fdm/jsbsim/systems/autopilot/gui/interception-distance", func {
@@ -674,15 +706,15 @@ setlistener("fdm/jsbsim/systems/autopilot/gui/interception-distance", func {
     int_dist_max = getprop("fdm/jsbsim/systems/autopilot/gui/interception-distance");
     setprop("/instrumentation/radar/range",int_dist_max);
 
-}, 1, 1);
+}, 0, 1);
 
 
 setlistener("fdm/jsbsim/systems/autopilot/gui/interception-list/rw_select", func {
 
-    setprop("fdm/jsbsim/systems/autopilot/gui/interception-list/rw_select",0);
     operateOn_Targets_Scan(3);
+    setprop("fdm/jsbsim/systems/autopilot/gui/interception-list/rw_select",0);
 
-}, 1, 1);
+}, 0, 1);
 
 
 var pilot_imp_control = func() {

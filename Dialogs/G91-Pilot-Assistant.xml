@@ -30,6 +30,11 @@
                 <command>property-toggle</command>
                 <property>fdm/jsbsim/systems/autopilot/gui/engage-pilot-assistant</property>
             </binding>
+            <binding>
+                <command>property-assign</command>
+                <property>sim/G91/nasal/modules/autopilot-active-mod</property>
+                <value>1</value>
+            </binding>
         </button>
         <text>
             <live>true</live>
@@ -2034,6 +2039,7 @@
                     </script>
                 </binding>
             </button>
+            <!--
             <button>
                 <row>0</row>
                 <col>1</col>
@@ -2057,6 +2063,7 @@
                     </script>
                 </binding>
             </button>
+            -->
             <!--
             <input>
                 <row>0</row>
@@ -2072,8 +2079,8 @@
             -->
             <input>
                 <row>0</row>
-                <col>2</col>
-                <pref-width>55</pref-width>
+                <col>1</col>
+                <pref-width>100</pref-width>
                 <property>fdm/jsbsim/systems/autopilot/gui/airport_select_name_direct</property>
                 <live>true</live>
                 <binding>
@@ -2085,10 +2092,40 @@
                     <value>1</value>
                 </binding>
             </input>
+            <combo>
+                <row>0</row>
+                <col>2</col>
+                <pref-width>200</pref-width>
+                <halign>left</halign>
+                <name>airport-selector</name>
+                <property>fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct/airport_id_name_select</property>
+                <editable>false</editable>
+                <properties>fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct/airport_id_names</properties>
+                <binding>
+                    <command>dialog-apply</command>
+                    <object-name>airport-selector</object-name>
+                </binding>
+            </combo>
             <text>
                 <row>0</row>
                 <col>3</col>
-                <label>999999999999999999999999999</label>
+                <label>Dist</label>
+                <halign>left</halign>
+            </text>
+            <input>
+                <row>0</row>
+                <col>4</col>
+                <pref-width>40</pref-width>
+                <property>fdm/jsbsim/systems/autopilot/gui/landing-rwy-search-distance-max</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </input>
+            <text>
+                <row>0</row>
+                <col>5</col>
+                <label>99999</label>
                 <halign>left</halign>
                 <live>true</live>
                 <property>fdm/jsbsim/systems/autopilot/gui/airport_select_name_direct_extended</property>
@@ -2100,13 +2137,13 @@
             </text>
             <text>
                 <row>0</row>
-                <col>4</col>
+                <col>6</col>
                 <label> | </label>
                 <halign>left</halign>
             </text>
             <radio>
                 <row>0</row>
-                <col>5</col>
+                <col>7</col>
                 <label>Nearest RW</label>
                 <property>fdm/jsbsim/systems/autopilot/gui/airport_nearest_runway</property>
                 <live>true</live>
@@ -2116,7 +2153,7 @@
             </radio>
             <radio>
                 <row>0</row>
-                <col>6</col>
+                <col>8</col>
                 <label>Short prof</label>
                 <property>fdm/jsbsim/systems/autopilot/gui/landing-short-profile</property>
                 <live>true</live>
@@ -2126,7 +2163,7 @@
             </radio>
             <radio>
                 <row>0</row>
-                <col>7</col>
+                <col>9</col>
                 <label>Scan</label>
                 <property>fdm/jsbsim/systems/autopilot/gui/landing-scan-airport</property>
                 <live>true</live>
@@ -2136,13 +2173,13 @@
             </radio>
             <text>
                 <row>0</row>
-                <col>8</col>
+                <col>10</col>
                 <label>Direct id:</label>
                 <halign>left</halign>
             </text>
             <combo>
                 <row>0</row>
-                <col>9</col>
+                <col>11</col>
                 <pref-width>130</pref-width>
                 <halign>left</halign>
                 <name>rw-selector</name>

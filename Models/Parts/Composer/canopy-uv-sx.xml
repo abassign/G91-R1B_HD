@@ -15,9 +15,9 @@
             <z>0.0</z>
         </direction>
         <ambient>
-            <r>0.00</r>
-            <g>0.00</g>
-            <b>0.00</b>
+            <r>0.0</r>
+            <g>0.0</g>
+            <b>0.0</b>
             <a>1</a>
         </ambient>
         <diffuse>
@@ -27,9 +27,9 @@
             <a>1</a>
         </diffuse>
         <specular>
-            <r>0.000</r>
-            <g>0.000</g>
-            <b>0.000</b>
+            <r>0.0</r>
+            <g>0.0</g>
+            <b>0.0</b>
             <a>1</a>
         </specular>
         <attenuation>
@@ -39,6 +39,6 @@
         </attenuation>
         <spot-exponent>5</spot-exponent>
         <spot-cutoff>50</spot-cutoff>
-        <range-m>5</range-m>
+        <range-m>2</range-m>
     </light>
 </PropertyList>
