@@ -2032,7 +2032,7 @@
                 </binding>
                 <binding>
                     <command>property-assign</command>
-                    <property>fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct/status</property>
+                    <property>fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct_status</property>
                     <value>1</value>
                 </binding>
             </input>
@@ -2053,7 +2053,7 @@
                 </binding>
                 <binding>
                     <command>property-assign</command>
-                    <property>fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct/status</property>
+                    <property>fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct_status</property>
                     <value>1</value>
                 </binding>
             </input>
