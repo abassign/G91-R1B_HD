@@ -322,6 +322,13 @@ G91_Params.xml
         </SFOM_83A>
     </parts>
     
+    <configuration>
+        <gauges>
+            <tacan-active type="int">0</tacan-active>
+            <nav-active type="int">1</nav-active>
+        </gauges>
+    </configuration>
+    
 </PropertyList>
 
 

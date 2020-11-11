@@ -250,7 +250,7 @@
             <file>Aircraft/G91-R1B_HD/Nasal/Gauges/accelerometer.nas</file>
             <file>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Components/Gear_lever/gear_lever.nas</file>
             <file>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/J8/J8.nas</file>
-            <file>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/TACAN_arn_21/tacan_arn_21.nas</file>
+            <file>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/TACAN_NAV_arn_21/tacan_nav_arn_21.nas</file>
             <file>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Gauges/SFOM_83A/SFOM_83A_01.nas</file>
             <file>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/PHI/phi.nas</file>
             <!-- Stores -->

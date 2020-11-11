@@ -14,7 +14,7 @@
         <switch name="systems/gauges/compass-flux-gate/operative-start-stop">
             <default value="0"/>
             <test logic="AND" value="1">
-                systems/electric/bus[1]/TACAN/fuse == 1
+                systems/electric/bus[1]/NAV/fuse == 1
                 systems/electric/bus[1]/V GE 24.0
                 systems/electric/inv-primary/V GE 100.0
             </test>

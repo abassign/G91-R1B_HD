@@ -529,7 +529,7 @@
         <type>translate</type>
         <object-name>off A (Meshed)</object-name>
         <object-name>off B (Meshed)</object-name>
-        <property>fdm/jsbsim/systems/gauges/radio/TACAN-ARN-21/in-range-lag</property>
+        <property>fdm/jsbsim/systems/gauges/radio/TACAN-NAV-ARN-21/in-range-lag</property>
         <factor>0.012</factor>
         <offset-m>0.0</offset-m>
         <axis>
@@ -544,9 +544,9 @@
         <object-name>arrow 2 A (Meshed)</object-name>
         <object-name>arrow 2 B (Meshed)</object-name>
         <object-name>arrow 2 box (Meshed)</object-name>
-        <property>fdm/jsbsim/systems/gauges/radio/TACAN-ARN-21/indicated-heading-deg</property>
+        <property>fdm/jsbsim/systems/gauges/radio/Collins-331-C4/indicated-heading-deg</property>
         <factor>1.0</factor>
-        <offset-deg>180.0</offset-deg>
+        <offset-deg>0.0</offset-deg>
         <center>
             <x-m>0.005</x-m>
             <y-m>0.0</y-m>
@@ -564,7 +564,7 @@
         <object-name>arrow 1 A (Meshed)</object-name>
         <object-name>arrow 1 B (Meshed)</object-name>
         <object-name>arrow 1 box (Meshed)</object-name>
-        <property>fdm/jsbsim/systems/gauges/radio/TACAN-ARN-21/indicated-bearing-deg</property>
+        <property>fdm/jsbsim/systems/gauges/radio/Collins-331-C4/indicated-bearing-deg</property>
         <factor>1.0</factor>
         <offset-deg>0.0</offset-deg>
         <center>
@@ -601,7 +601,7 @@
         <type>rotate</type>
         <object-name>nm -0 A (Meshed)</object-name>
         <object-name>nm -0 B (Meshed)</object-name>
-        <property>fdm/jsbsim/systems/gauges/radio/TACAN-ARN-21/distance-0</property>
+        <property>fdm/jsbsim/systems/gauges/radio/Collins-331-C4/distance-0</property>
         <factor>3.6</factor>
         <offset-deg>0.0</offset-deg>
         <center>
@@ -620,7 +620,7 @@
         <type>rotate</type>
         <object-name>nm 0-0 A (Meshed)</object-name>
         <object-name>nm 0-0 B (Meshed)</object-name>
-        <property>fdm/jsbsim/systems/gauges/radio/TACAN-ARN-21/distance-0-0</property>
+        <property>fdm/jsbsim/systems/gauges/radio/Collins-331-C4/distance-0-0</property>
         <factor>36</factor>
         <offset-deg>0.0</offset-deg>
         <center>
@@ -639,7 +639,7 @@
         <type>rotate</type>
         <object-name>nm 00-0 A (Meshed)</object-name>
         <object-name>nm 00-0 B (Meshed)</object-name>
-        <property>fdm/jsbsim/systems/gauges/radio/TACAN-ARN-21/distance-00-0</property>
+        <property>fdm/jsbsim/systems/gauges/radio/Collins-331-C4/distance-00-0</property>
         <factor>36</factor>
         <offset-deg>0.0</offset-deg>
         <center>
@@ -658,16 +658,16 @@
         <type>rotate</type>
         <object-name>nm 000-0 A (Meshed)</object-name>
         <object-name>nm 000-0 B (Meshed)</object-name>
-        <property>fdm/jsbsim/systems/gauges/radio/TACAN-ARN-21/distance-000-0</property>
+        <property>fdm/jsbsim/systems/gauges/radio/Collins-331-C4/distance-000-0</property>
         <factor>36</factor>
         <offset-deg>0.0</offset-deg>
         <center>
             <x-m>0.005</x-m>
-            <y-m>0.019</y-m>
+            <y-m>-0.019</y-m>
             <z-m>0.012</z-m>
         </center>
         <axis>
-            <x>-1</x>
+            <x>1</x>
             <y>0</y>
             <z>0</z>
         </axis>

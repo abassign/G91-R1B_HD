@@ -1,0 +1,530 @@
+<?xml version="1.0"?>
+
+<system name="TACAN ARN 21">
+    
+    <property value="0.0">systems/gauges/radio/TACAN-NAV-ARN-21/TACAN-Active</property>
+    <property value="0.0">systems/gauges/radio/TACAN-NAV-ARN-21/NAV-Active</property>
+    
+    <!-- TACAN section -->
+    
+    <property value="1.0">systems/gauges/radio/TACAN-ARN-21/isNot-TACAN-Active</property>
+    <property value="0.0">systems/gauges/radio/TACAN-ARN-21/operative-start-stop</property>
+    <property value="0.0">systems/gauges/radio/TACAN-ARN-21/switch-turn</property>
+    <property value="1.0">systems/gauges/radio/TACAN-ARN-21/sw-off</property>
+    <property value="0.0">systems/gauges/radio/TACAN-ARN-21/sw-rec</property>
+    <property value="0.0">systems/gauges/radio/TACAN-ARN-21/sw-TR</property>
+    <property value="0.0">systems/gauges/radio/TACAN-ARN-21/sw-AA</property>
+    <property value="0.0">systems/gauges/radio/TACAN-ARN-21/vol-set</property>
+    <property value="0.0">systems/gauges/radio/TACAN-ARN-21/volume</property>
+    <property value="0.0">systems/gauges/radio/TACAN-ARN-21/selector-lever</property>
+    <property value="0.0">systems/gauges/radio/TACAN-ARN-21/freq-chan-manual</property>
+    <property value="1.0">systems/gauges/radio/TACAN-ARN-21/freq-chan</property>
+    <property value="0.0">systems/gauges/radio/TACAN-ARN-21/freq-dec</property>
+    <property value="0.0">systems/gauges/radio/TACAN-ARN-21/freq-unit</property>
+    <property value="0.0">systems/gauges/radio/TACAN-ARN-21/operative-heating</property>
+    <property value="0.0">systems/gauges/radio/TACAN-ARN-21/isServiceable</property>
+    <property value="0.0">systems/gauges/radio/TACAN-ARN-21/isServiceable-lag</property>
+    <property value="0.0">systems/gauges/radio/TACAN-ARN-21/selected-channel-Y</property>
+    <property value="0.0">systems/gauges/radio/TACAN-ARN-21/selected-channel-x</property>
+    <property value="0.0">systems/gauges/radio/TACAN-ARN-21/bearing</property>
+    
+    <!-- NAV section -->
+    
+    <property value="0.0">systems/gauges/radio/NAV-ARN-21/switch-turn</property>
+    <property value="0.0">systems/gauges/radio/NAV-ARN-21/operative-start-stop</property>
+    <property value="0.0">systems/gauges/radio/NAV-ARN-21/operative-heating</property>
+    <property value="0.0">systems/gauges/radio/NAV-ARN-21/sw-off</property>
+    <property value="0.0">systems/gauges/radio/NAV-ARN-21/sw-rec</property>
+    <property value="0.0">systems/gauges/radio/NAV-ARN-21/sw-TR</property>
+    <property value="0.0">systems/gauges/radio/NAV-ARN-21/isServiceable</property>
+    <property value="0.0">systems/gauges/radio/NAV-ARN-21/in-range-lag</property>
+    <property value="0.0">systems/gauges/radio/NAV-ARN-21/nav-distance-nm</property>
+    <property value="0.0">systems/gauges/radio/NAV-ARN-21/isNot-NAV-Active</property>
+    <property value="0.0">systems/gauges/radio/NAV-ARN-21/chan-Hi</property>
+    <property value="0.0">systems/gauges/radio/NAV-ARN-21/chan-Lo</property>
+    <property value="0.0">systems/gauges/radio/NAV-ARN-21/freq-unit</property>
+    <property value="0.0">systems/gauges/radio/NAV-ARN-21/freq-dec</property>
+    <property value="0.0">systems/gauges/radio/NAV-ARN-21/freq-chan</property>
+    
+    <!-- Collins 331 C4 Gauge -->
+    
+    <property value="0.0">systems/gauges/radio/Collins-331-C4/indicated-bearing-deg</property>
+    <property value="0.0">systems/gauges/radio/Collins-331-C4/indicated-heading-deg</property>
+    <property value="0.0">systems/gauges/radio/TACAN-NAV-ARN-21/distance-nm</property>
+    <property value="0.0">systems/gauges/radio/Collins-331-C4/distance-000-0</property>
+    <property value="0.0">systems/gauges/radio/Collins-331-C4/distance-00-0</property>
+    <property value="0.0">systems/gauges/radio/Collins-331-C4/distance-0-0</property>
+    <property value="0.0">systems/gauges/radio/Collins-331-C4/distance-0</property>
+    
+    
+    <channel name="systems gauges radio TACAN-ARN-21 electric" execrate="32">
+        
+        <switch name="systems/gauges/radio/TACAN-ARN-21/operative-start-stop">
+            <default value="0"/>
+            <test logic="AND" value="1">
+                systems/electric/bus[1]/NAV/fuse == 1
+                systems/electric/bus[1]/V GE 24.0
+                systems/electric/inv-primary/V GE 100.0
+                systems/gauges/radio/TACAN-ARN-21/sw-off == 1
+            </test>
+        </switch>
+        
+        <switch name="systems/electric/bus[1]/TACAN/I">
+            <default value="0.0"/>
+            <test logic="AND" value="11.0">
+                systems/gauges/radio/TACAN-ARN-21/operative-start-stop == 1
+            </test>
+        </switch>
+        
+        <!-- This delay is the time for starting the electronics -->
+        <lag_filter name="systems/gauges/radio/TACAN-ARN-21/operative-heating">
+            <input>systems/gauges/radio/TACAN-ARN-21/operative-start-stop</input>
+            <c1>0.1</c1>
+        </lag_filter>
+        
+        <switch name="systems/gauges/radio/TACAN-ARN-21/operative">
+            <default value="0.0"/>
+            <test logic="AND" value="1.0">
+                systems/gauges/radio/TACAN-ARN-21/operative-heating GT 0.9
+            </test>
+        </switch>
+        
+        <scheduled_gain name="systems/gauges/radio/TACAN-ARN-21/volume">
+            <input>systems/gauges/radio/TACAN-ARN-21/vol-set</input>
+            <table>
+                <independentVar>systems/gauges/radio/TACAN-ARN-21/operative-heating</independentVar>
+                <tableData>
+                    0.0     0.0
+                    0.5     0.0
+                    0.6     0.1
+                    1.0     1.0
+                </tableData>
+            </table>
+            <gain>1.0</gain>
+        </scheduled_gain>
+        
+    </channel>
+    
+    
+    <channel name="systems gauges radio NAV-ARN-21 electric" execrate="32">
+        
+        <switch name="systems/gauges/radio/NAV-ARN-21/operative-start-stop">
+            <default value="0"/>
+            <test logic="AND" value="1">
+                systems/electric/bus[1]/NAV/fuse == 1
+                systems/electric/bus[1]/V GE 24.0
+                systems/electric/inv-primary/V GE 100.0
+                systems/gauges/radio/NAV-ARN-21/sw-off == 1
+            </test>
+        </switch>
+        
+        <switch name="systems/electric/bus[1]/NAV/I">
+            <default value="0.0"/>
+            <test logic="AND" value="11.0">
+                systems/gauges/radio/NAV-ARN-21/operative-start-stop == 1
+            </test>
+        </switch>
+        
+        <!-- This delay is the time for starting the electronics -->
+        <lag_filter name="systems/gauges/radio/NAV-ARN-21/operative-heating">
+            <input>systems/gauges/radio/NAV-ARN-21/operative-start-stop</input>
+            <c1>0.15</c1>
+        </lag_filter>
+        
+        <switch name="systems/gauges/radio/NAV-ARN-21/operative">
+            <default value="0.0"/>
+            <test logic="AND" value="1.0">
+                systems/gauges/radio/NAV-ARN-21/operative-heating GT 0.9
+            </test>
+        </switch>
+        
+        <scheduled_gain name="systems/gauges/radio/NAV-ARN-21/volume">
+            <input>systems/gauges/radio/NAV-ARN-21/vol-set</input>
+            <table>
+                <independentVar>systems/gauges/radio/NAV-ARN-21/operative-heating</independentVar>
+                <tableData>
+                    0.0     0.0
+                    0.5     0.0
+                    0.6     0.1
+                    1.0     1.0
+                </tableData>
+            </table>
+            <gain>1.0</gain>
+        </scheduled_gain>
+        
+    </channel>
+    
+    
+    <channel name="systems gauges radio TACAN-ARN-21 switch" execrate="4">
+        
+        <switch name="systems/gauges/radio/TACAN-ARN-21/sw-off">
+            <default value="1.0"/>
+            <test logic="AND" value="0.0">
+                systems/gauges/radio/TACAN-ARN-21/switch-turn == 0
+            </test>
+        </switch>
+        
+        <switch name="systems/gauges/radio/TACAN-ARN-21/sw-rec">
+            <default value="1.0"/>
+            <test logic="AND" value="0.0">
+                systems/gauges/radio/TACAN-ARN-21/switch-turn == 1
+            </test>
+        </switch>
+        
+        <switch name="systems/gauges/radio/TACAN-ARN-21/sw-TR">
+            <default value="0.0"/>
+            <test logic="AND" value="1.0">
+                systems/gauges/radio/TACAN-ARN-21/switch-turn == 2
+            </test>
+        </switch>
+        
+        <switch name="systems/gauges/radio/TACAN-ARN-21/sw-AA">
+            <default value="0.0"/>
+            <test logic="AND" value="1.0">
+                systems/gauges/radio/TACAN-ARN-21/switch-turn == 3
+            </test>
+        </switch>
+        
+        <switch name="systems/gauges/radio/TACAN-ARN-21/selected-channel-Y">
+            <default value="0"/>
+            <test logic="AND" value="1">
+                systems/gauges/radio/TACAN-ARN-21/sw-AA == 1
+            </test>
+        </switch>
+        
+        <switch name="systems/gauges/radio/TACAN-ARN-21/selected-channel-X">
+            <default value="0"/>
+            <test logic="AND" value="1">
+                systems/gauges/radio/TACAN-ARN-21/sw-TR == 1
+            </test>
+        </switch>
+        
+        <switch name="systems/gauges/radio/TACAN-ARN-21/isServiceable">
+            <default value="0"/>
+            <test logic="AND" value="1">
+                <test logic="AND">
+                    systems/gauges/radio/TACAN-ARN-21/operative == 1
+                </test>
+                <test logic="OR">
+                    systems/gauges/radio/TACAN-ARN-21/sw-AA == 1
+                    systems/gauges/radio/TACAN-ARN-21/sw-TR == 1
+                </test>
+            </test>
+        </switch>
+        
+        <lag_filter name="systems/gauges/radio/TACAN-ARN-21/in-range-lag">
+            <input>/instrumentation/tacan/in-range</input>
+            <c1>3.0</c1>
+        </lag_filter>
+        
+        <switch name="systems/gauges/radio/TACAN-ARN-21/isNot-TACAN-Active">
+            <default value="1"/>
+            <test logic="AND" value="0">
+                systems/gauges/radio/TACAN-ARN-21/isServiceable == 1
+            </test>
+        </switch>
+        
+        <fcs_function name="systems/gauges/radio/TACAN-ARN-21/freq-unit">
+            <function>
+                <mod>
+                    <p>systems/gauges/radio/TACAN-ARN-21/selector-lever</p>
+                    <v>10.0</v>
+                </mod>
+            </function>
+        </fcs_function>
+        
+        <fcs_function name="systems/gauges/radio/TACAN-ARN-21/freq-dec">
+            <function>
+                <integer>
+                    <quotient>
+                        <p>systems/gauges/radio/TACAN-ARN-21/selector-lever</p>
+                        <v>10.0</v>
+                    </quotient>
+                </integer>
+            </function>
+        </fcs_function>
+        
+        <fcs_function name="systems/gauges/radio/TACAN-ARN-21/freq-chan">
+            <function>
+                <sum>
+                    <p>systems/gauges/radio/TACAN-ARN-21/freq-unit</p>
+                    <product>
+                        <p>systems/gauges/radio/TACAN-ARN-21/freq-dec</p>
+                        <v>10.0</v>
+                    </product>
+                </sum>
+            </function>
+        </fcs_function>
+        
+    </channel>
+    
+    
+    <channel name="systems gauges radio NAV-ARN-21 switch" execrate="4">
+        
+        <switch name="systems/gauges/radio/NAV-ARN-21/sw-off">
+            <default value="1.0"/>
+            <test logic="AND" value="0.0">
+                systems/gauges/radio/NAV-ARN-21/switch-turn == 0
+            </test>
+        </switch>
+        
+        <switch name="systems/gauges/radio/NAV-ARN-21/sw-rec">
+            <default value="1.0"/>
+            <test logic="AND" value="0.0">
+                systems/gauges/radio/NAV-ARN-21/switch-turn == 1
+            </test>
+        </switch>
+        
+        <switch name="systems/gauges/radio/NAV-ARN-21/sw-TR">
+            <default value="0.0"/>
+            <test logic="AND" value="1.0">
+                systems/gauges/radio/NAV-ARN-21/switch-turn == 2
+            </test>
+        </switch>
+        
+        <switch name="systems/gauges/radio/NAV-ARN-21/isServiceable">
+            <default value="0"/>
+            <test logic="AND" value="1">
+                systems/gauges/radio/NAV-ARN-21/operative == 1
+                systems/gauges/radio/NAV-ARN-21/sw-TR == 1
+            </test>
+        </switch>
+        
+        <lag_filter name="systems/gauges/radio/NAV-ARN-21/nav-tx-signal-quality-lag">
+            <input>/instrumentation/nav/signal-quality-norm</input>
+            <c1>0.5</c1>
+        </lag_filter>
+        
+        <switch name="systems/gauges/radio/NAV-ARN-21/nav-tx-is-ok">
+            <default value="0"/>
+            <test logic="AND" value="1">
+                /instrumentation/nav/serviceable GT 0.0
+                /instrumentation/nav/operable GT 0.0
+                systems/gauges/radio/NAV-ARN-21/nav-tx-signal-quality-lag GT 0.18
+            </test>
+        </switch>
+        
+        <lag_filter name="systems/gauges/radio/NAV-ARN-21/in-range-lag">
+            <input>systems/gauges/radio/NAV-ARN-21/nav-tx-is-ok</input>
+            <c1>3.0</c1>
+        </lag_filter>
+        
+        <switch name="systems/gauges/radio/NAV-ARN-21/isNot-NAV-Active">
+            <default value="1"/>
+            <test logic="AND" value="0">
+                systems/gauges/radio/NAV-ARN-21/isServiceable == 1
+            </test>
+        </switch>
+        
+        <pure_gain name="systems/gauges/radio/NAV-ARN-21/nav-distance-nm">
+            <input>/instrumentation/nav/nav-distance</input>
+            <gain>0.000539957</gain>
+        </pure_gain>
+        
+        <fcs_function name="systems/gauges/radio/NAV-ARN-21/freq-unit">
+            <function>
+                <mod>
+                    <p>systems/gauges/radio/NAV-ARN-21/chan-Lo</p>
+                    <v>10.0</v>
+                </mod>
+            </function>
+        </fcs_function>
+        
+        <fcs_function name="systems/gauges/radio/NAV-ARN-21/freq-dec">
+            <function>
+                <integer>
+                    <quotient>
+                        <p>systems/gauges/radio/NAV-ARN-21/chan-Hi</p>
+                        <v>10.0</v>
+                    </quotient>
+                </integer>
+            </function>
+        </fcs_function>
+        
+        <fcs_function name="systems/gauges/radio/NAV-ARN-21/freq-chan">
+            <function>
+                <sum>
+                    <p>systems/gauges/radio/NAV-ARN-21/chan-Lo</p>
+                    <product>
+                        <p>systems/gauges/radio/NAV-ARN-21/chan-Hi</p>
+                        <v>10.0</v>
+                    </product>
+                </sum>
+            </function>
+        </fcs_function>
+        
+    </channel>
+    
+    
+    <channel name="systems gauges radio TACAN-NAV-ARN-21 common information" execrate="8">
+        
+        <switch name="systems/gauges/radio/TACAN-NAV-ARN-21/isNot-Active">
+            <default value="0"/>
+            <test logic="AND" value="systems/gauges/radio/TACAN-ARN-21/isNot-TACAN-Active">
+                systems/gauges/radio/TACAN-NAV-ARN-21/TACAN-Active GT 0.0
+            </test>
+            <test logic="AND" value="systems/gauges/radio/NAV-ARN-21/isNot-NAV-Active">
+                systems/gauges/radio/TACAN-NAV-ARN-21/NAV-Active GT 0.0
+            </test>
+        </switch>
+        
+        <switch name="systems/gauges/radio/TACAN-NAV-ARN-21/in-range-lag">
+            <default value="0"/>
+            <test logic="AND" value="systems/gauges/radio/TACAN-ARN-21/in-range-lag">
+                systems/gauges/radio/TACAN-NAV-ARN-21/TACAN-Active GT 0.0
+            </test>
+            <test logic="AND" value="systems/gauges/radio/NAV-ARN-21/in-range-lag">
+                systems/gauges/radio/TACAN-NAV-ARN-21/NAV-Active GT 0.0
+            </test>
+        </switch>
+        
+        <switch name="systems/gauges/radio/TACAN-NAV-ARN-21/indicated-bearing-true-deg">
+            <default value="0"/>
+            <test logic="AND" value="/instrumentation/tacan/indicated-bearing-true-deg">
+                systems/gauges/radio/TACAN-NAV-ARN-21/TACAN-Active GT 0.0
+            </test>
+            <test logic="AND" value="/instrumentation/nav/radials/reciprocal-radial-deg">
+                systems/gauges/radio/TACAN-NAV-ARN-21/NAV-Active GT 0.0
+            </test>
+        </switch>
+        
+        <switch name="systems/gauges/radio/TACAN-NAV-ARN-21/distance-nm">
+            <default value="0"/>
+            <test logic="AND" value="/instrumentation/tacan/indicated-distance-nm">
+                systems/gauges/radio/TACAN-NAV-ARN-21/TACAN-Active GT 0.0
+            </test>
+            <test logic="AND" value="systems/gauges/radio/NAV-ARN-21/nav-distance-nm">
+                systems/gauges/radio/TACAN-NAV-ARN-21/NAV-Active GT 0.0
+            </test>
+        </switch>
+        
+    </channel>
+    
+    
+    <channel name="systems gauges radio TACAN-ARN-21 bearing-heading" execrate="8">
+        
+        <linear_actuator name="systems/gauges/radio/Collins-331-C4/indicated-bearing-deg-la">
+            <input>systems/gauges/radio/ADF-Marconi-8283/indicated-bearing-deg</input>
+            <module>360</module>
+            <reset>systems/gauges/radio/TACAN-NAV-ARN-21/isNot-Active</reset>
+        </linear_actuator>
+        
+        <actuator name="systems/gauges/radio/Collins-331-C4/indicated-bearing-deg">
+            <input>systems/gauges/radio/Collins-331-C4/indicated-bearing-deg-la</input>
+            <lag>1.0</lag>
+            <rate_limit> 90.0 </rate_limit>
+            <deadband_width> 0.5 </deadband_width>
+            <hysteresis_width> 0.5 </hysteresis_width>
+        </actuator>
+        
+        <fcs_function name="systems/gauges/radio/Collins-331-C4/indicated-heading-deg-calc">
+            <function>
+                <sum>
+                    <p>systems/gauges/radio/TACAN-NAV-ARN-21/indicated-bearing-true-deg</p>
+                    <p>systems/gauges/compass-flux-gate/indicated-bearing-deg</p>
+                </sum>
+            </function>
+        </fcs_function>
+        
+        <linear_actuator name="systems/gauges/radio/Collins-331-C4/indicated-heading-deg-la">
+            <input>systems/gauges/radio/Collins-331-C4/indicated-heading-deg-calc</input>
+            <module>360</module>
+            <reset>systems/gauges/radio/TACAN-NAV-ARN-21/isNot-Active</reset>
+        </linear_actuator>
+        
+        <actuator name="systems/gauges/radio/Collins-331-C4/indicated-heading-deg">
+            <input>systems/gauges/radio/Collins-331-C4/indicated-heading-deg-la</input>
+            <lag>1.0</lag>
+            <rate_limit> 90.0 </rate_limit>
+            <deadband_width> 0.5 </deadband_width>
+            <hysteresis_width> 0.5 </hysteresis_width>
+        </actuator>
+        
+    </channel>
+    
+    
+    <channel name="systems gauges radio Collins 331 C4 Gauge and distance" execrate="8">
+        
+        <fcs_function name="systems/gauges/radio/Collins-331-C4/distance-0-calc">
+            <function>
+                <integer>
+                    <product>
+                        <difference>
+                            <p>systems/gauges/radio/TACAN-NAV-ARN-21/distance-nm</p>
+                            <integer>
+                                <p>systems/gauges/radio/TACAN-NAV-ARN-21/distance-nm</p>
+                            </integer>
+                        </difference>
+                        <v>100.0</v>
+                    </product>
+                </integer>
+            </function>
+        </fcs_function>
+        
+        <linear_actuator name="systems/gauges/radio/Collins-331-C4/distance-0">
+            <input>systems/gauges/radio/Collins-331-C4/distance-0-calc</input>
+            <lag>4.0</lag>
+            <module>100</module>
+        </linear_actuator>
+        
+        <fcs_function name="systems/gauges/radio/Collins-331-C4/distance-0-0-calc">
+            <function>
+                <integer>
+                    <mod>
+                        <p>systems/gauges/radio/TACAN-NAV-ARN-21/distance-nm</p>
+                        <v>10.0</v>
+                    </mod>
+                </integer>
+            </function>
+        </fcs_function>
+        
+        <linear_actuator name="systems/gauges/radio/Collins-331-C4/distance-0-0">
+            <input>systems/gauges/radio/Collins-331-C4/distance-0-0-calc</input>
+            <lag>4.0</lag>
+            <module>10</module>
+        </linear_actuator>
+        
+        <fcs_function name="systems/gauges/radio/Collins-331-C4/distance-00-0-calc">
+            <function>
+                <integer>
+                    <mod>
+                        <quotient>
+                            <p>systems/gauges/radio/TACAN-NAV-ARN-21/distance-nm</p>
+                            <v>10.0</v>
+                        </quotient>
+                        <v>10.0</v>
+                    </mod>
+                </integer>
+            </function>
+        </fcs_function>
+        
+        <linear_actuator name="systems/gauges/radio/Collins-331-C4/distance-00-0">
+            <input>systems/gauges/radio/Collins-331-C4/distance-00-0-calc</input>
+            <lag>4.0</lag>
+            <module>10</module>
+        </linear_actuator>
+        
+        <fcs_function name="systems/gauges/radio/Collins-331-C4/distance-000-0-calc">
+            <function>
+                <integer>
+                    <mod>
+                        <quotient>
+                            <p>systems/gauges/radio/TACAN-NAV-ARN-21/distance-nm</p>
+                            <v>100.0</v>
+                        </quotient>
+                        <v>10.0</v>
+                    </mod>
+                </integer>
+            </function>
+        </fcs_function>
+        
+        <linear_actuator name="systems/gauges/radio/Collins-331-C4/distance-000-0">
+            <input>systems/gauges/radio/Collins-331-C4/distance-000-0-calc</input>
+            <lag>4.0</lag>
+            <module>10</module>
+        </linear_actuator>
+        
+    </channel>
+    
+    
+</system>

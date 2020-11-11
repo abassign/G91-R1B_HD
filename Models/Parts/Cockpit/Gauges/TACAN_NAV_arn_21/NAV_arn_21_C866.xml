@@ -1,0 +1,547 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+
+    <path>NAV_arn_21_C866.ac</path>
+    
+    <animation>
+        <type>noshadow</type>
+        <object-name>cover (Meshed)</object-name>
+        <object-name>frontal screew ring (Meshed)</object-name>
+        <object-name>frontal support back (Meshed)</object-name>
+        <object-name>frontal support A (Meshed)</object-name>
+        <object-name>frontal support B (Meshed)</object-name>
+        <object-name>frontal support C (Meshed)</object-name>
+        <object-name>switch base (Meshed)</object-name>
+        <object-name>lamp cover 1 (Meshed)</object-name>
+        <object-name>lamp cover 2 (Meshed)</object-name>
+        <object-name>frontal screew (Meshed)</object-name>
+        <object-name>screews (Meshed)</object-name>
+        <object-name>volume A (Meshed)</object-name>
+        <object-name>volume B (Meshed)</object-name>
+        <object-name>switch-10 A (Meshed)</object-name>
+        <object-name>switch-13 A (Meshed)</object-name>
+        <object-name>switch_2_cone (Meshed)</object-name>
+        <object-name>switch_2_level (Meshed)</object-name>
+        <object-name>switch_2_ring (Meshed)</object-name>
+        <object-name>switch_2_up (Meshed)</object-name>
+        <object-name>switch_2_center (Meshed)</object-name>
+        <object-name>switch_2_dow (Meshed)</object-name>
+    </animation>
+    
+    <effect>
+        <inherits-from>Effects/model-transparent</inherits-from>
+        <object-name>switch_2_up (Meshed)</object-name>
+        <object-name>switch_2_center (Meshed)</object-name>
+        <object-name>switch_2_dow (Meshed)</object-name>
+    </effect>
+    
+    <effect>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_chrome</inherits-from>
+        <object-name>switch_2_level (Meshed)</object-name>
+        <object-name>switch_2_ring (Meshed)</object-name>
+    </effect>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>switch_2_up (Meshed)</object-name>
+        <object-name>switch_2_center (Meshed)</object-name>
+        <object-name>switch_2_dow (Meshed)</object-name>
+        <transparency>
+            <alpha>0.0</alpha>
+        </transparency>
+    </animation>
+
+    <animation> 
+        <type>material</type>
+        <object-name>cover (Meshed)</object-name>
+        <diffuse>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.1</blue>
+        </diffuse>
+        <ambient>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.1</blue>
+        </ambient>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>frontal support A (Meshed)</object-name>
+        <diffuse>
+            <red>0.28</red>
+            <green>0.28</green>
+            <blue>0.28</blue>
+        </diffuse>
+        <diffuse>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
+        </diffuse>
+        <ambient>
+            <red>1.0</red>
+            <green>0.9</green>
+            <blue>0.6</blue>
+        </ambient>
+        <emission>
+            <red-prop>sim/G91/re_emit/gauge_red_emer_lamp_3200_console_red_20</red-prop>
+            <green-prop>sim/G91/re_emit/gauge_red_emer_lamp_3200_console_green_10</green-prop>
+            <blue-prop>sim/G91/re_emit/gauge_red_emer_lamp_3200_console_blue_10</blue-prop>
+            <factor>0.7</factor>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>switch-10 A (Meshed)</object-name>
+        <object-name>switch-13 A (Meshed)</object-name>
+        <diffuse>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
+        </diffuse>
+        <ambient>
+            <red>1.0</red>
+            <green>0.9</green>
+            <blue>0.6</blue>
+        </ambient>
+        <emission>
+            <red-prop>sim/G91/re_emit/gauge_red_emer_lamp_3200_console_red_20</red-prop>
+            <green-prop>sim/G91/re_emit/gauge_red_emer_lamp_3200_console_green_10</green-prop>
+            <blue-prop>sim/G91/re_emit/gauge_red_emer_lamp_3200_console_blue_10</blue-prop>
+            <factor>1.2</factor>
+        </emission>
+    </animation>
+
+    <animation> 
+        <type>material</type>
+        <object-name>frontal support B (Meshed)</object-name>
+        <object-name>switch base (Meshed)</object-name>
+        <diffuse>
+            <red>0.15</red>
+            <green>0.15</green>
+            <blue>0.15</blue>
+        </diffuse>
+        <ambient>
+            <red>0.15</red>
+            <green>0.15</green>
+            <blue>0.15</blue>
+        </ambient>
+        <specular>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.3</blue>
+        </specular>
+        <emission>
+            <red>0.06</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>frontal support C (Meshed)</object-name>
+        <diffuse>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
+        </diffuse>
+        <ambient>
+            <red>0.20</red>
+            <green>0.20</green>
+            <blue>0.20</blue>
+        </ambient>
+        <specular>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.3</blue>
+        </specular>
+        <emission>
+            <red>0.07</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>screews (Meshed)</object-name>
+        <diffuse>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.3</blue>
+        </diffuse>
+        <ambient>
+            <red>0.30</red>
+            <green>0.30</green>
+            <blue>0.30</blue>
+        </ambient>
+        <specular>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.3</blue>
+        </specular>
+        <emission>
+            <red>0.075</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+
+    <animation> 
+        <type>material</type>
+        <object-name>selector 13 (Meshed)</object-name>
+        <object-name>selector 10 (Meshed)</object-name>
+        <object-name>volume B (Meshed)</object-name>
+        <diffuse>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.3</blue>
+        </diffuse>
+        <ambient>
+            <red>0.25</red>
+            <green>0.25</green>
+            <blue>0.25</blue>
+        </ambient>
+        <specular>
+            <red>0.6</red>
+            <green>0.6</green>
+            <blue>0.6</blue>
+        </specular>
+        <emission>
+            <red>0.08</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+
+    <animation> 
+        <type>material</type>
+        <object-name>lamp cover 1 (Meshed)</object-name>
+        <object-name>lamp cover 2 (Meshed)</object-name>
+        <object-name>frontal support back (Meshed)</object-name>
+        <diffuse>
+            <red>0.28</red>
+            <green>0.28</green>
+            <blue>0.28</blue>
+        </diffuse>
+        <ambient>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
+        </ambient>
+        <specular>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </specular>
+        <emission>
+            <red>0.06</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>frontal screew (Meshed)</object-name>
+        <diffuse>
+            <red>0.28</red>
+            <green>0.28</green>
+            <blue>0.28</blue>
+        </diffuse>
+        <ambient>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
+        </ambient>
+        <specular>
+            <red>0.9</red>
+            <green>0.9</green>
+            <blue>0.9</blue>
+        </specular>
+        <emission>
+            <red>0.09</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+
+    <animation> 
+        <type>material</type>
+        <object-name>volume A (Meshed)</object-name>
+        <diffuse>
+            <red>0.7</red>
+            <green>0.6</green>
+            <blue>0.4</blue>
+        </diffuse>
+        <ambient>
+            <red>0.7</red>
+            <green>0.6</green>
+            <blue>0.4</blue>
+        </ambient>
+        <emission>
+            <red-prop>sim/G91/re_emit/gauge_red_type_b_phosphorescent_light</red-prop>
+            <green-prop>sim/G91/re_emit/gauge_phosphorescent_light_type_b</green-prop>
+            <blue>0.0</blue>
+            <factor>0.05</factor>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>switch_2_level (Meshed)</object-name>
+        <diffuse>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </diffuse>
+        <ambient>
+            <red>0.9</red>
+            <green>0.9</green>
+            <blue>0.9</blue>
+        </ambient>
+        <specular>
+            <red>0.9</red>
+            <green>0.9</green>
+            <blue>0.9</blue>
+        </specular>
+        <emission>
+            <red>0.09</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>switch_2_ring (Meshed)</object-name>
+        <object-name>frontal screew ring (Meshed)</object-name>
+        <diffuse>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
+        </diffuse>
+        <ambient>
+            <red>0.6</red>
+            <green>0.6</green>
+            <blue>0.6</blue>
+        </ambient>
+        <specular>
+            <red>0.9</red>
+            <green>0.9</green>
+            <blue>0.9</blue>
+        </specular>
+        <emission>
+            <red>0.08</red>
+            <green>0.01</green>
+            <blue>0.01</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>switch_2_cone (Meshed)</object-name>
+        <diffuse>
+            <red>0.4</red>
+            <green>0.4</green>
+            <blue>0.4</blue>
+        </diffuse>
+        <ambient>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.3</blue>
+        </ambient>
+        <specular>
+            <red>0.6</red>
+            <green>0.6</green>
+            <blue>0.6</blue>
+        </specular>
+        <emission>
+            <red>0.04</red>
+            <green>0.01</green>
+            <blue>0.01</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <!-- Control -->
+
+    <animation>
+        <type>knob</type>
+        <object-name>volume B (Meshed)</object-name>
+        <action>
+            <button>0</button>
+            <binding>
+                <command>property-adjust</command>
+                <property>fdm/jsbsim/systems/gauges/radio/NAV-ARN-21/vol-set</property>
+                <factor>0.1</factor>
+                <min>0</min>
+                <max>1</max>                
+                <wrap>false</wrap>
+            </binding>
+        </action>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>volume B (Meshed)</object-name>
+        <object-name>volume A (Meshed)</object-name>
+        <property>fdm/jsbsim/systems/gauges/radio/NAV-ARN-21/vol-set</property>
+        <factor>270</factor>
+        <offset-deg>-135</offset-deg>
+        <center>
+            <x-m>0.005</x-m>
+            <y-m>0.048</y-m>
+            <z-m>-0.008</z-m>
+        </center>
+        <axis>
+            <x>-1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
+    
+    <animation>
+        <type>knob</type>
+        <object-name>selector 13 (Meshed)</object-name>
+        <action>
+            <button>0</button>
+            <binding>
+                <command>property-adjust</command>
+                <property>fdm/jsbsim/systems/gauges/radio/NAV-ARN-21/chan-Hi</property>
+                <factor>0.1</factor>
+                <min>0</min>
+                <max>13</max>                
+                <wrap>true</wrap>
+            </binding>
+        </action>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>selector 13 (Meshed)</object-name>
+        <object-name>switch-13 A (Meshed)</object-name>
+        <property>fdm/jsbsim/systems/gauges/radio/NAV-ARN-21/chan-Hi</property>
+        <factor>27.692307</factor>
+        <center>
+            <x-m>0.000</x-m>
+            <y-m>-0.016</y-m>
+            <z-m>0.003</z-m>
+        </center>
+        <axis>
+            <x>-1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
+    
+    <animation>
+        <type>knob</type>
+        <object-name>selector 10 (Meshed)</object-name>
+        <action>
+            <button>0</button>
+            <binding>
+                <command>property-adjust</command>
+                <property>fdm/jsbsim/systems/gauges/radio/NAV-ARN-21/chan-Lo</property>
+                <factor>0.1</factor>
+                <min>0</min>
+                <max>10</max>                
+                <wrap>true</wrap>
+            </binding>
+        </action>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>selector 10 (Meshed)</object-name>
+        <object-name>switch-10 A (Meshed)</object-name>
+        <property>fdm/jsbsim/systems/gauges/radio/NAV-ARN-21/chan-Lo</property>
+        <factor>36.0</factor>
+        <center>
+            <x-m>0.000</x-m>
+            <y-m>0.016</y-m>
+            <z-m>0.003</z-m>
+        </center>
+        <axis>
+            <x>-1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
+    
+    <animation>
+        <type>pick</type>
+        <object-name>switch_2_up (Meshed)</object-name>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <interval-sec>0.2</interval-sec>
+            <binding>
+                <command>property-assign</command>
+                <property>fdm/jsbsim/systems/gauges/radio/NAV-ARN-21/switch-turn</property>
+                <value>2</value>
+            </binding>
+        </action>
+    </animation>
+
+    <animation>
+        <type>pick</type>
+        <object-name>switch_2_center (Meshed)</object-name>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <interval-sec>0.2</interval-sec>
+            <binding>
+                <command>property-assign</command>
+                <property>fdm/jsbsim/systems/gauges/radio/NAV-ARN-21/switch-turn</property>
+                <value>1</value>
+            </binding>
+        </action>
+    </animation>
+    
+    <animation>
+        <type>pick</type>
+        <object-name>switch_2_dow (Meshed)</object-name>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <interval-sec>0.2</interval-sec>
+            <binding>
+                <command>property-assign</command>
+                <property>fdm/jsbsim/systems/gauges/radio/NAV-ARN-21/switch-turn</property>
+                <value>0</value>
+            </binding>
+        </action>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>switch_2_level (Meshed)</object-name>
+        <property>fdm/jsbsim/systems/gauges/radio/NAV-ARN-21/switch-turn</property>
+        <factor>12</factor>
+        <offset>-12</offset>
+        <center>
+            <x-m>0.001</x-m>
+            <y-m>-0.051</y-m>
+            <z-m>-0.007</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>-1</y>
+            <z>0</z>
+        </axis>
+    </animation>
+    
+</PropertyList>

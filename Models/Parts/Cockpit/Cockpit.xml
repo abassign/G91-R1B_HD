@@ -773,23 +773,99 @@
     </model>
     
     <model>
-        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/TACAN_arn_21/Collins_331_C4.xml</path>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/TACAN_NAV_arn_21/Collins_331_C4.xml</path>
         <offsets>
             <x-m>-0.003</x-m>
             <y-m>0.0</y-m>
             <z-m>-0.0475</z-m>
             <pitch-deg>0.0</pitch-deg>
         </offsets>
+        <condition>
+            <equals>
+                <property>sim/G91/configuration/gauges/frontal-central-01-active</property>
+                <value>0</value>
+            </equals>
+        </condition>
     </model>
     
     <model>
-        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/TACAN_arn_21/Collins_C_866_XN10.xml</path>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/TACAN_NAV_arn_21/Frontal-146-DCU.xml</path>
+        <offsets>
+            <x-m>-0.003</x-m>
+            <y-m>0.0</y-m>
+            <z-m>-0.0475</z-m>
+            <pitch-deg>0.0</pitch-deg>
+        </offsets>
+        <condition>
+            <equals>
+                <property>sim/G91/configuration/gauges/frontal-central-01-active</property>
+                <value>1</value>
+            </equals>
+        </condition>
+    </model>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/TACAN_NAV_arn_21/NAV_arn_21_C866.xml</path>
         <offsets>
             <x-m>0.006</x-m>
             <y-m>0.0</y-m>
             <z-m>-0.130</z-m>
             <pitch-deg>0.0</pitch-deg>
         </offsets>
+        <condition>
+            <equals>
+                <property>sim/G91/configuration/gauges/nav-active</property>
+                <value>1</value>
+            </equals>
+        </condition>
+    </model>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/TACAN_NAV_arn_21/Collins_C_866_XN10.xml</path>
+        <offsets>
+            <x-m>0.006</x-m>
+            <y-m>0.0</y-m>
+            <z-m>-0.130</z-m>
+            <pitch-deg>0.0</pitch-deg>
+        </offsets>
+        <condition>
+            <equals>
+                <property>sim/G91/configuration/gauges/tacan-active</property>
+                <value>1</value>
+            </equals>
+        </condition>
+    </model>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/TACAN_NAV_arn_21/Frontal-146-DCU.xml</path>
+        <offsets>
+            <x-m>-0.003</x-m>
+            <y-m>0.0</y-m>
+            <z-m>-0.1425</z-m>
+            <pitch-deg>0.0</pitch-deg>
+        </offsets>
+        <condition>
+            <equals>
+                <property>sim/G91/configuration/gauges/frontal-central-01-active</property>
+                <value>1</value>
+            </equals>
+        </condition>
+    </model>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/TACAN_NAV_arn_21/Frontal-146.xml</path>
+        <offsets>
+            <x-m>-0.003</x-m>
+            <y-m>0.0</y-m>
+            <z-m>-0.2285</z-m>
+            <pitch-deg>0.0</pitch-deg>
+        </offsets>
+        <condition>
+            <equals>
+                <property>sim/G91/configuration/gauges/frontal-central-01-active</property>
+                <value>1</value>
+            </equals>
+        </condition>
     </model>
     
     <model>
@@ -800,6 +876,12 @@
             <z-m>-0.2185</z-m>
             <pitch-deg>0.0</pitch-deg>
         </offsets>
+        <condition>
+            <equals>
+                <property>sim/G91/configuration/gauges/frontal-central-01-active</property>
+                <value>0</value>
+            </equals>
+        </condition>
     </model>
 
     <model>

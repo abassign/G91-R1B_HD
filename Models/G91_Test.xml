@@ -63,7 +63,6 @@
         ]]></unload>
     </nasal>
 
-
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Cockpit.xml</path>
     </model>
@@ -103,7 +102,8 @@
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Stores/Stores.xml</path>
     </model>
-
+-->
+<!--
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Turbojet/OrpheusMK803.xml</path>
     </model>
@@ -114,7 +114,7 @@
             <property>sim/aircraft-is-singleplayer</property>
         </condition>
     </model>
-    -->
+-->
     <!-- Compositor canopy lights test -->
 
     <model>
