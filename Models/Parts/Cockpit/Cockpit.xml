@@ -550,6 +550,28 @@
             <z-m>0.151</z-m>
             <pitch-deg>0.0</pitch-deg>
         </offsets>
+        <condition>
+            <equals>
+                <property>sim/G91/configuration/gauges/nav-active</property>
+                <value>0</value>
+            </equals>
+        </condition>
+    </model>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/TACAN_NAV_arn_21/ID-249-ARN.xml</path>
+        <offsets>
+            <x-m>0.0125</x-m>
+            <y-m>-0.189</y-m>
+            <z-m>0.146</z-m>
+            <pitch-deg>0.0</pitch-deg>
+        </offsets>
+        <condition>
+            <equals>
+                <property>sim/G91/configuration/gauges/nav-active</property>
+                <value>1</value>
+            </equals>
+        </condition>
     </model>
 
     <model>
@@ -781,13 +803,35 @@
             <pitch-deg>0.0</pitch-deg>
         </offsets>
         <condition>
+            <or>
+                <equals>
+                    <property>sim/G91/configuration/gauges/tacan-active</property>
+                    <value>1</value>
+                </equals>
+                <equals>
+                    <property>sim/G91/configuration/gauges/nav-active</property>
+                    <value>1</value>
+                </equals>
+            </or>
+        </condition>
+    </model>
+    <!--
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/TACAN_NAV_arn_21/ID-249-ARN.xml</path>
+        <offsets>
+            <x-m>-0.003</x-m>
+            <y-m>0.0</y-m>
+            <z-m>-0.0475</z-m>
+            <pitch-deg>0.0</pitch-deg>
+        </offsets>
+        <condition>
             <equals>
-                <property>sim/G91/configuration/gauges/frontal-central-01-active</property>
-                <value>0</value>
+                <property>sim/G91/configuration/gauges/nav-active</property>
+                <value>1</value>
             </equals>
         </condition>
     </model>
-    
+    -->
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/TACAN_NAV_arn_21/Frontal-146-DCU.xml</path>
         <offsets>

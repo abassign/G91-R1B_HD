@@ -4,6 +4,7 @@
     
     <property value="0.0">systems/gauges/radio/TACAN-NAV-ARN-21/TACAN-Active</property>
     <property value="0.0">systems/gauges/radio/TACAN-NAV-ARN-21/NAV-Active</property>
+    <property value="0.0">systems/gauges/radio/TACAN-NAV-ARN-21/distance-nm</property>
     
     <!-- TACAN section -->
     
@@ -50,11 +51,39 @@
     
     <property value="0.0">systems/gauges/radio/Collins-331-C4/indicated-bearing-deg</property>
     <property value="0.0">systems/gauges/radio/Collins-331-C4/indicated-heading-deg</property>
-    <property value="0.0">systems/gauges/radio/TACAN-NAV-ARN-21/distance-nm</property>
     <property value="0.0">systems/gauges/radio/Collins-331-C4/distance-000-0</property>
     <property value="0.0">systems/gauges/radio/Collins-331-C4/distance-00-0</property>
     <property value="0.0">systems/gauges/radio/Collins-331-C4/distance-0-0</property>
     <property value="0.0">systems/gauges/radio/Collins-331-C4/distance-0</property>
+    
+    <!-- ID-249-ARN VOR ILS Gauge -->
+    
+    <property value="1.0">systems/gauges/radio/ID-249-ARN/operative</property>
+    <property value="0.0">systems/gauges/radio/ID-249-ARN/in-range</property>
+    <property value="0.0">systems/gauges/radio/ID-249-ARN/course-deg-turn-knob</property>
+    <property value="0.0">systems/gauges/radio/ID-249-ARN/course-deg-reset</property>
+    <property value="0.0">systems/gauges/radio/ID-249-ARN/course-deg-turn</property>
+    <property value="0.0">systems/gauges/radio/ID-249-ARN/course-deg-turn-module</property>
+    <property value="0.0">systems/gauges/radio/ID-249-ARN/course-deg-set</property>
+    <property value="0.0">systems/gauges/radio/ID-249-ARN/course-deg-value</property>
+    <property value="0.0">systems/gauges/radio/ID-249-ARN/course-deg-turn-rotate</property>
+    <property value="0.0">systems/gauges/radio/ID-249-ARN/course-deg-turn-001AW</property>
+    <property value="0.0">systems/gauges/radio/ID-249-ARN/course-deg-turn-010AW</property>
+    <property value="0.0">systems/gauges/radio/ID-249-ARN/course-deg-turn-100AW</property>
+    <property value="0.0">systems/gauges/radio/ID-249-ARN/vor-loc-deg</property>
+    <property value="0.0">systems/gauges/radio/ID-249-ARN/flag-vor-loc</property>
+    <property value="0.0">systems/gauges/radio/ID-249-ARN/flag-vor-loc-lag</property>
+    <property value="0.0">systems/gauges/radio/ID-249-ARN/glide-slope-deg</property>
+    <property value="0.0">systems/gauges/radio/ID-249-ARN/flag-glide-slope</property>
+    <property value="0.0">systems/gauges/radio/ID-249-ARN/flag-glide-slope-lag</property>
+    <property value="0.0">systems/gauges/radio/ID-249-ARN/rif-vert-vor-loc</property>
+    <property value="0.0">systems/gauges/radio/ID-249-ARN/rif-vert-vor-loc-lag</property>
+    <property value="0.0">systems/gauges/radio/ID-249-ARN/rif-oriz-glide-slope</property>
+    <property value="0.0">systems/gauges/radio/ID-249-ARN/rif-oriz-glide-slope-lag</property>
+    <property value="0.0">systems/gauges/radio/ID-249-ARN/arrow-deg</property>
+    <property value="0.0">systems/gauges/radio/ID-249-ARN/off-to-from</property>
+    <property value="0.0">systems/gauges/radio/ID-249-ARN/flag-to-lag</property>
+    <property value="0.0">systems/gauges/radio/ID-249-ARN/flag-from-lag</property>
     
     
     <channel name="systems gauges radio TACAN-ARN-21 electric" execrate="32">
@@ -442,6 +471,7 @@
         
     </channel>
     
+    <!-- Collins 331 C4 Gauge -->
     
     <channel name="systems gauges radio Collins 331 C4 Gauge and distance" execrate="8">
         
@@ -523,6 +553,350 @@
             <lag>4.0</lag>
             <module>10</module>
         </linear_actuator>
+        
+    </channel>
+    
+    <!-- ID-249-ARN VOR ILS Gauge this gauge work only with NAV apparatus-->
+    
+    <channel name="systems gauges radio ID-249-ARN Gauge digit" execrate="4">
+        
+        <washout_filter name="systems/gauges/radio/ID-249-ARN/selected-deg-wa">
+            <input>/instrumentation/nav/radials/selected-deg</input>
+            <c1>6.0</c1>
+        </washout_filter>
+        
+        <switch name="systems/gauges/radio/ID-249-ARN/course-deg-turn">
+            <default value="systems/gauges/radio/ID-249-ARN/course-deg-turn"/>
+            <test logic="OR" value="/instrumentation/nav/radials/selected-deg">
+                systems/gauges/radio/ID-249-ARN/selected-deg-wa GT 0.1
+                systems/gauges/radio/ID-249-ARN/selected-deg-wa LT -0.1
+            </test>
+        </switch>
+        
+        <washout_filter name="systems/gauges/radio/ID-249-ARN/course-deg-turn-knob-wa">
+            <input>systems/gauges/radio/ID-249-ARN/course-deg-turn-knob</input>
+            <c1>6.0</c1>
+        </washout_filter>
+        
+        <fcs_function name="systems/gauges/radio/ID-249-ARN/course-deg-turn">
+            <function>
+                <sum>
+                    <p>systems/gauges/radio/ID-249-ARN/course-deg-turn</p>
+                    <integer>
+                        <product>
+                            <p>systems/gauges/radio/ID-249-ARN/course-deg-turn-knob-wa</p>
+                            <abs>
+                                <p>systems/gauges/radio/ID-249-ARN/course-deg-turn-knob-wa</p>
+                            </abs>
+                            <v>0.5</v>
+                        </product>
+                    </integer>
+                </sum>
+            </function>
+        </fcs_function>
+        
+        <fcs_function name="systems/gauges/radio/ID-249-ARN/course-deg-turn-module">
+            <function>
+                <ifthen>
+                    <ge>
+                        <mod>
+                            <p>systems/gauges/radio/ID-249-ARN/course-deg-turn</p>
+                            <v>360</v>
+                        </mod>
+                        <v>0.0</v>
+                    </ge>
+                    <mod>
+                        <p>systems/gauges/radio/ID-249-ARN/course-deg-turn</p>
+                        <v>360</v>
+                    </mod>
+                    <sum>
+                        <mod>
+                            <p>systems/gauges/radio/ID-249-ARN/course-deg-turn</p>
+                            <v>360</v>
+                        </mod>
+                        <v>360</v>
+                    </sum>
+                </ifthen>
+            </function>
+        </fcs_function>
+        
+        <fcs_function>
+            <function>
+                <integer>
+                    <quotient>
+                        <p>systems/gauges/radio/ID-249-ARN/course-deg-turn-module</p>
+                        <v>100</v>
+                    </quotient>
+                </integer>
+            </function>
+            <output>systems/gauges/radio/ID-249-ARN/digit1A</output>
+        </fcs_function>
+        
+        <fcs_function>
+            <function>
+                <integer>
+                    <quotient>
+                        <difference>
+                            <p>systems/gauges/radio/ID-249-ARN/course-deg-turn-module</p>
+                            <product>
+                                <p>systems/gauges/radio/ID-249-ARN/digit1A</p>
+                                <v>100</v>
+                            </product>
+                        </difference>
+                        <v>10</v>
+                    </quotient>
+                </integer>
+            </function>
+            <output>systems/gauges/radio/ID-249-ARN/digit2A</output>
+        </fcs_function>
+        
+        <fcs_function>
+            <function>
+                <integer>
+                    <difference>
+                        <p>systems/gauges/radio/ID-249-ARN/course-deg-turn-module</p>
+                        <sum>
+                            <product>
+                                <p>systems/gauges/radio/ID-249-ARN/digit1A</p>
+                                <v>100</v>
+                            </product>
+                            <product>
+                                <p>systems/gauges/radio/ID-249-ARN/digit2A</p>
+                                <v>10</v>
+                            </product>
+                        </sum>
+                    </difference>
+                </integer>
+            </function>
+            <output>systems/gauges/radio/ID-249-ARN/digit3A</output>
+        </fcs_function>
+        
+        <linear_actuator name="systems/gauges/radio/ID-249-ARN/course-deg-turn-100AW">
+            <input>systems/gauges/radio/ID-249-ARN/digit1A</input>
+            <module>3</module>
+            <lag>8.0</lag>
+            <gain>1.0</gain>
+            <versus>0</versus>
+        </linear_actuator>
+        
+        <linear_actuator name="systems/gauges/radio/ID-249-ARN/course-deg-turn-010AW">
+            <input>systems/gauges/radio/ID-249-ARN/digit2A</input>
+            <module>10</module>
+            <lag>8.0</lag>
+            <gain>1.0</gain>
+            <versus>0</versus>
+        </linear_actuator>
+        
+        <linear_actuator name="systems/gauges/radio/ID-249-ARN/course-deg-turn-001AW">
+            <input>systems/gauges/radio/ID-249-ARN/digit3A</input>
+            <module>10</module>
+            <lag>8.0</lag>
+            <gain>1.0</gain>
+            <versus>0</versus>
+        </linear_actuator>
+        
+        <fcs_function name="systems/gauges/radio/ID-249-ARN/course-deg-set">
+            <function>
+                <sum>
+                    <product>
+                        <p>systems/gauges/radio/ID-249-ARN/digit1A</p>
+                        <v>100</v>
+                    </product>
+                    <product>
+                        <p>systems/gauges/radio/ID-249-ARN/digit2A</p>
+                        <v>10.0</v>
+                    </product>
+                    <p>systems/gauges/radio/ID-249-ARN/digit3A</p>
+                </sum>
+            </function>
+        </fcs_function>
+
+    </channel>
+    
+    
+    <channel name="systems gauges radio ID-249-ARN Gauge" execrate="8">
+        
+        <switch>
+            <default value="/instrumentation/nav/radials/selected-deg"/>
+            <test logic="AND" value="systems/gauges/radio/ID-249-ARN/course-deg-set">
+                /sim/G91/configuration/gauges/nav-active == 1
+                <test logic="OR">
+                    systems/gauges/radio/ID-249-ARN/course-deg-turn-knob-wa GT 0.1
+                    systems/gauges/radio/ID-249-ARN/course-deg-turn-knob-wa LT -0.1
+                </test>
+            </test>
+            <output>/instrumentation/nav/radials/selected-deg</output>
+        </switch>
+        
+        <switch name="systems/gauges/radio/ID-249-ARN/operative">
+            <default value="0"/>
+            <test logic="AND" value="1.0">
+                systems/gauges/radio/NAV-ARN-21/operative GT 0.1
+                systems/gauges/radio/NAV-ARN-21/sw-TR GE 1
+            </test>
+        </switch>
+        
+        <switch name="systems/gauges/radio/ID-249-ARN/in-range">
+            <default value="0"/>
+            <test logic="AND" value="1.0">
+                systems/gauges/radio/NAV-ARN-21/in-range-lag GT 0.15
+            </test>
+        </switch>
+        
+        <switch name="systems/gauges/radio/ID-249-ARN/flag-vor-loc">
+            <default value="0.0"/>
+            <test logic="AND" value="1.0">
+                /instrumentation/nav/serviceable GT 0.0
+                systems/gauges/radio/ID-249-ARN/in-range == 1.0
+                systems/gauges/radio/ID-249-ARN/operative == 1.0
+            </test>
+        </switch>
+        
+        <lag_filter name="systems/gauges/radio/ID-249-ARN/flag-vor-loc-lag">
+            <input>systems/gauges/radio/ID-249-ARN/flag-vor-loc</input>
+            <c1>2.0</c1>
+        </lag_filter>
+        
+        <switch name="systems/gauges/radio/ID-249-ARN/flag-glide-slope">
+            <default value="0.0"/>
+            <test logic="AND" value="1.0">
+                /instrumentation/nav/serviceable GT 0.0
+                /instrumentation/nav/nav-loc GT 0.0
+                /instrumentation/nav/gs-in-range GT 0.0
+                systems/gauges/radio/ID-249-ARN/in-range == 1.0
+                systems/gauges/radio/ID-249-ARN/operative == 1.0
+            </test>
+        </switch>
+        
+        <lag_filter name="systems/gauges/radio/ID-249-ARN/flag-glide-slope-lag">
+            <input>systems/gauges/radio/ID-249-ARN/flag-glide-slope</input>
+            <c1>2.0</c1>
+        </lag_filter>
+        
+        <switch name="systems/gauges/radio/ID-249-ARN/glide-slope-deg">
+            <default value="0.0"/>
+            <test logic="AND" value="/instrumentation/nav/gs-needle-deflection-deg">
+                systems/gauges/radio/ID-249-ARN/flag-glide-slope-lag GT 0.5
+            </test>
+        </switch>
+        
+        <switch name="systems/gauges/radio/ID-249-ARN/reciprocal-radial-deg">
+            <default value="0.0"/>
+            <test logic="AND" value="/instrumentation/nav/radials/reciprocal-radial-deg">
+                systems/gauges/radio/ID-249-ARN/flag-vor-loc GT 0.0
+            </test>
+        </switch>
+        
+        <switch name="systems/gauges/radio/ID-249-ARN/gyrocompass-magnetic-deg-var">
+            <default value="0.0"/>
+            <test logic="AND" value="systems/gauges/PHI/attitude/gyrocompass-magnetic-deg-var">
+                systems/gauges/radio/ID-249-ARN/operative == 1.0
+            </test>
+        </switch>
+        
+        <summer name="systems/gauges/radio/ID-249-ARN/arrow-deg">
+            <input>systems/gauges/radio/ID-249-ARN/reciprocal-radial-deg</input>
+            <input>-systems/gauges/radio/ID-249-ARN/gyrocompass-magnetic-deg-var</input>
+        </summer>
+        
+        <summer name="systems/gauges/radio/ID-249-ARN/rif-vert-vor-loc">
+            <input>-systems/gauges/radio/ID-249-ARN/course-deg-set</input>
+            <input>systems/gauges/radio/ID-249-ARN/reciprocal-radial-deg</input>
+        </summer>
+    
+        <fcs_function name="systems/gauges/radio/ID-249-ARN/rif-vert-vor-loc-180">
+            <function>
+                <ifthen>
+                    <gt><p>systems/gauges/radio/ID-249-ARN/rif-vert-vor-loc</p><v>180.0</v></gt>
+                    <sum><p>systems/gauges/radio/ID-249-ARN/rif-vert-vor-loc</p><v>-360.0</v></sum>
+                    <ifthen>
+                        <lt><p>systems/gauges/radio/ID-249-ARN/rif-vert-vor-loc</p><v>-180.0</v></lt>
+                        <sum><p>systems/gauges/radio/ID-249-ARN/rif-vert-vor-loc</p><v>360.0</v></sum>
+                        <p>systems/gauges/radio/ID-249-ARN/rif-vert-vor-loc</p>
+                    </ifthen>
+                </ifthen>
+            </function>
+        </fcs_function>
+        
+        <summer name="systems/gauges/radio/ID-249-ARN/course-gyrocompass">
+            <input>systems/gauges/radio/ID-249-ARN/course-deg-set</input>
+            <input>-systems/gauges/radio/ID-249-ARN/gyrocompass-magnetic-deg-var</input>
+        </summer>
+        
+        <fcs_function name="systems/gauges/radio/ID-249-ARN/course-gyrocompass-180">
+            <function>
+                <ifthen>
+                    <gt><p>systems/gauges/radio/ID-249-ARN/course-gyrocompass</p><v>180.0</v></gt>
+                    <sum><p>systems/gauges/radio/ID-249-ARN/course-gyrocompass</p><v>-360.0</v></sum>
+                    <ifthen>
+                        <lt><p>systems/gauges/radio/ID-249-ARN/course-gyrocompass</p><v>-180.0</v></lt>
+                        <sum><p>systems/gauges/radio/ID-249-ARN/course-gyrocompass</p><v>360.0</v></sum>
+                        <p>systems/gauges/radio/ID-249-ARN/course-gyrocompass</p>
+                    </ifthen>
+                </ifthen>
+            </function>
+        </fcs_function>
+        
+        <switch name="systems/gauges/radio/ID-249-ARN/off-to-from">
+            <default value="1.0"/>
+            <test logic="AND" value="0.0">
+                systems/gauges/radio/ID-249-ARN/flag-vor-loc == 0.0
+            </test>
+            <test logic="OR" value="2.0">
+                systems/gauges/radio/ID-249-ARN/course-gyrocompass-180 GT 90.0
+                systems/gauges/radio/ID-249-ARN/course-gyrocompass-180 LT -90.0
+            </test>
+        </switch>
+        
+        <fcs_function name="systems/gauges/radio/ID-249-ARN/rif-vert-vor-loc-90">
+            <function>
+                <ifthen>
+                    <eq><p>systems/gauges/radio/ID-249-ARN/off-to-from</p><v>2.0</v></eq>
+                    <ifthen>
+                        <ge><p>systems/gauges/radio/ID-249-ARN/rif-vert-vor-loc-180</p><v>0.0</v></ge>
+                        <sum><p>systems/gauges/radio/ID-249-ARN/rif-vert-vor-loc-180</p><v>-180.0</v></sum>
+                        <sum><p>systems/gauges/radio/ID-249-ARN/rif-vert-vor-loc-180</p><v>180.0</v></sum>
+                    </ifthen>
+                    <product>
+                        <p>systems/gauges/radio/ID-249-ARN/rif-vert-vor-loc-180</p>
+                        <p>systems/gauges/radio/ID-249-ARN/off-to-from</p>
+                    </product>
+                </ifthen>
+            </function>
+            <clipto>
+                <min>-40.0</min>
+                <max>40.0</max>
+            </clipto>
+        </fcs_function>
+        
+        <lag_filter name="systems/gauges/radio/ID-249-ARN/rif-vert-vor-loc-lag">
+            <input>systems/gauges/radio/ID-249-ARN/rif-vert-vor-loc-90</input>
+            <c1>2.0</c1>
+        </lag_filter>
+        
+        <switch name="systems/gauges/radio/ID-249-ARN/flag-to">
+            <default value="0.0"/>
+            <test logic="AND" value="1.0">
+                systems/gauges/radio/ID-249-ARN/off-to-from == 1.0
+            </test>
+        </switch>
+        
+        <lag_filter name="systems/gauges/radio/ID-249-ARN/flag-to-lag">
+            <input>systems/gauges/radio/ID-249-ARN/flag-to</input>
+            <c1>2.0</c1>
+        </lag_filter>
+        
+        <switch name="systems/gauges/radio/ID-249-ARN/flag-from">
+            <default value="0.0"/>
+            <test logic="AND" value="1.0">
+                systems/gauges/radio/ID-249-ARN/off-to-from == 2.0
+            </test>
+        </switch>
+        
+        <lag_filter name="systems/gauges/radio/ID-249-ARN/flag-from-lag">
+            <input>systems/gauges/radio/ID-249-ARN/flag-from</input>
+            <c1>2.0</c1>
+        </lag_filter>
         
     </channel>
     
