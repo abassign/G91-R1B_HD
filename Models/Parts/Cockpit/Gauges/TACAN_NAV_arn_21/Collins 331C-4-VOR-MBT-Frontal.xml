@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+
+    <path>Collins 331C-4-VOR-MBT-Frontal.ac</path>
+    
+    <animation>
+        <type>noshadow</type>
+        <object-name>frontal support (Meshed)</object-name>
+        <object-name>frontal support back (Meshed)</object-name>
+        <object-name>frontal screew (Meshed)</object-name>
+        <object-name>frontal screew ring (Meshed)</object-name>  
+        <!-- MBT section -->
+        <object-name>body (Meshed)</object-name>
+        <object-name>front A (Meshed)</object-name>
+        <object-name>frontal black (Meshed)</object-name>
+        <object-name>support lights (Meshed)</object-name>
+    </animation>
+    
+    <!-- Frontal section -->
+    
+    <animation> 
+        <type>material</type>
+        <object-name>frontal support (Meshed)</object-name>
+        <diffuse>
+            <red>0.28</red>
+            <green>0.28</green>
+            <blue>0.28</blue>
+        </diffuse>
+        <ambient>
+            <red>0.15</red>
+            <green>0.15</green>
+            <blue>0.15</blue>
+        </ambient>
+        <specular>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.3</blue>
+        </specular>
+        <emission>
+            <red>0.06</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>frontal support back (Meshed)</object-name>
+        <diffuse>
+            <red>0.15</red>
+            <green>0.15</green>
+            <blue>0.15</blue>
+        </diffuse>
+        <ambient>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </ambient>
+        <specular>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </specular>
+        <emission>
+            <red>0.06</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>frontal screew (Meshed)</object-name>
+        <diffuse>
+            <red>0.28</red>
+            <green>0.28</green>
+            <blue>0.28</blue>
+        </diffuse>
+        <ambient>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
+        </ambient>
+        <specular>
+            <red>0.9</red>
+            <green>0.9</green>
+            <blue>0.9</blue>
+        </specular>
+        <emission>
+            <red>0.09</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>frontal screew ring (Meshed)</object-name>
+        <diffuse>
+            <red>0.28</red>
+            <green>0.28</green>
+            <blue>0.28</blue>
+        </diffuse>
+        <ambient>
+            <red>0.4</red>
+            <green>0.4</green>
+            <blue>0.4</blue>
+        </ambient>
+        <specular>
+            <red>0.9</red>
+            <green>0.9</green>
+            <blue>0.9</blue>
+        </specular>
+        <emission>
+            <red>0.08</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <!-- MBT section -->
+    <animation> 
+        <type>material</type>
+        <object-name>body (Meshed)</object-name>
+        <diffuse>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.3</blue>
+        </diffuse>
+        <ambient>
+            <red>0.15</red>
+            <green>0.15</green>
+            <blue>0.15</blue>
+        </ambient>
+        <emission>
+            <red>0.04</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>frontal black (Meshed)</object-name>
+        <object-name>support lights (Meshed)</object-name>
+        <diffuse>
+            <red>0.20</red>
+            <green>0.20</green>
+            <blue>0.20</blue>
+        </diffuse>
+        <ambient>
+            <red>0.20</red>
+            <green>0.20</green>
+            <blue>0.20</blue>
+        </ambient>
+        <specular>
+            <red>0.9</red>
+            <green>0.9</green>
+            <blue>0.9</blue>
+        </specular>
+        <emission>
+            <red>0.02</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>front A (Meshed)</object-name>
+        <diffuse>
+            <red>0.5</red>
+            <green>0.4</green>
+            <blue>0.1</blue>
+        </diffuse>
+        <ambient>
+            <red>0.9</red>
+            <green>0.8</green>
+            <blue>0.5</blue>
+        </ambient>
+        <emission>
+            <red-prop>sim/G91/re_emit/gauge_red_type_c_phosphorescent_light</red-prop>
+            <green-prop>sim/G91/re_emit/gauge_phosphorescent_light_type_c</green-prop>
+            <blue>0.0</blue>
+            <factor>0.08</factor>
+        </emission>
+    </animation>
+    
+    <model>
+        <path>lg_MBT_white.xml</path>
+        <offsets>
+            <x-m>0.041</x-m>
+            <y-m>0.040</y-m>
+            <z-m>0.025</z-m>
+            <pitch-deg>0.0</pitch-deg>
+        </offsets>
+    </model>
+    
+    <model>
+        <path>lg_MBT_amber.xml</path>
+        <offsets>
+            <x-m>0.041</x-m>
+            <y-m>0.040</y-m>
+            <z-m>0.000</z-m>
+            <pitch-deg>0.0</pitch-deg>
+        </offsets>
+    </model>
+    
+    <model>
+        <path>lg_MBT_blue.xml</path>
+        <offsets>
+            <x-m>0.041</x-m>
+            <y-m>0.040</y-m>
+            <z-m>-0.025</z-m>
+            <pitch-deg>0.0</pitch-deg>
+        </offsets>
+    </model>
+
+</PropertyList>

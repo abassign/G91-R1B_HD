@@ -673,7 +673,6 @@
                 <command>dialog-apply</command>
             </binding>
         </slider>
-        
     </group>
     
     <hrule/>
@@ -768,4 +767,90 @@
         </group>
     </group>
     
+    <hrule/>
+    
+    <group>
+        <layout>hbox</layout>
+        <group>
+            <layout>table</layout>
+            <slider>
+                <row>0</row>
+                <col>0</col>
+                <pref-width>200</pref-width>
+                <name>pos X axis</name>
+                <property>sim/G91/set_position/x_translate</property>
+                <min>-0.5</min>
+                <max>0.5</max>
+                <step>0.01</step>  
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </slider>
+            <slider>
+                <row>0</row>
+                <col>2</col>
+                <pref-width>200</pref-width>
+                <name>pos Y axis</name>
+                <property>sim/G91/set_position/y_translate</property>
+                <min>-0.5</min>
+                <max>0.5</max>
+                <step>0.01</step>  
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </slider>
+            <slider>
+                <row>0</row>
+                <col>4</col>
+                <pref-width>200</pref-width>
+                <name>pos Z axis</name>
+                <property>sim/G91/set_position/z_translate</property>
+                <min>-0.5</min>
+                <max>0.5</max>
+                <step>0.01</step>  
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </slider>
+            <slider>
+                <row>1</row>
+                <col>0</col>
+                <pref-width>200</pref-width>
+                <name>pos X axis</name>
+                <property>sim/G91/set_position/x_axis</property>
+                <min>-90</min>
+                <max>90</max>
+                <step>0.1</step>  
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </slider>
+            <slider>
+                <row>1</row>
+                <col>2</col>
+                <pref-width>200</pref-width>
+                <name>pos Y axis</name>
+                <property>sim/G91/set_position/y_axis</property>
+                <min>-90</min>
+                <max>90</max>
+                <step>0.1</step>  
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </slider>
+            <slider>
+                <row>1</row>
+                <col>4</col>
+                <pref-width>200</pref-width>
+                <name>pos Z axis</name>
+                <property>sim/G91/set_position/z_axis</property>
+                <min>-90</min>
+                <max>90</max>
+                <step>0.1</step>  
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </slider>
+        </group>
+    </group>
 </PropertyList>

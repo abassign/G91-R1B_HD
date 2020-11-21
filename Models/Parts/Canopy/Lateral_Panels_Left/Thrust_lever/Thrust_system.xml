@@ -227,9 +227,9 @@
             <alpha>0.5</alpha>
         </transparency>
         <ambient>
-            <red>0.5</red>
-            <green>0.5</green>
-            <blue>0.5</blue>
+            <red>0.3</red>
+            <green>0.28</green>
+            <blue>0.15</blue>
         </ambient>
         <specular>
             <red>0.98</red>
@@ -238,7 +238,7 @@
         </specular>
         <emission>
             <red>0.07</red>
-            <green>0.0</green>
+            <green>0.02</green>
             <blue>0.0</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>

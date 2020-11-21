@@ -4,6 +4,7 @@
     
     <property value="0.0">systems/gauges/radio/TACAN-NAV-ARN-21/TACAN-Active</property>
     <property value="0.0">systems/gauges/radio/TACAN-NAV-ARN-21/NAV-Active</property>
+    <property value="0.0">systems/gauges/radio/TACAN-NAV-ARN-21/MBT-Active</property>
     <property value="0.0">systems/gauges/radio/TACAN-NAV-ARN-21/distance-nm</property>
     
     <!-- TACAN section -->
@@ -46,9 +47,11 @@
     <property value="0.0">systems/gauges/radio/NAV-ARN-21/freq-unit</property>
     <property value="0.0">systems/gauges/radio/NAV-ARN-21/freq-dec</property>
     <property value="0.0">systems/gauges/radio/NAV-ARN-21/freq-chan</property>
+    <property value="0.0">systems/gauges/radio/NAV-ARN-21/vol-set</property>
     
     <!-- Collins 331 C4 Gauge -->
     
+    <property value="0.0">systems/gauges/radio/Collins-331-C4/operative</property>
     <property value="0.0">systems/gauges/radio/Collins-331-C4/indicated-bearing-deg</property>
     <property value="0.0">systems/gauges/radio/Collins-331-C4/indicated-heading-deg</property>
     <property value="0.0">systems/gauges/radio/Collins-331-C4/distance-000-0</property>
@@ -84,6 +87,17 @@
     <property value="0.0">systems/gauges/radio/ID-249-ARN/off-to-from</property>
     <property value="0.0">systems/gauges/radio/ID-249-ARN/flag-to-lag</property>
     <property value="0.0">systems/gauges/radio/ID-249-ARN/flag-from-lag</property>
+    
+    <!-- Marker Beacon -->
+    
+    <property value="0.0">systems/gauges/radio/MBT/operative</property>
+    <property value="0.0">systems/gauges/radio/MBT/audio-active</property>
+    <property value="0.0">systems/gauges/radio/MBT/outer</property>
+    <property value="0.0">systems/gauges/radio/MBT/outer-transparent</property>
+    <property value="0.0">systems/gauges/radio/MBT/middle</property>
+    <property value="0.0">systems/gauges/radio/MBT/middle-transparent</property>
+    <property value="0.0">systems/gauges/radio/MBT/inner</property>
+    <property value="0.0">systems/gauges/radio/MBT/inner-transparent</property>
     
     
     <channel name="systems gauges radio TACAN-ARN-21 electric" execrate="32">
@@ -387,6 +401,19 @@
     
     <channel name="systems gauges radio TACAN-NAV-ARN-21 common information" execrate="8">
         
+        <switch name="systems/gauges/radio/Collins-331-C4/operative">
+            <default value="0"/>
+            <test logic="AND" value="1">
+                systems/gauges/radio/TACAN-NAV-ARN-21/TACAN-Active GT 0.0
+                systems/gauges/radio/TACAN-ARN-21/in-range-lag GT 0.0
+                systems/gauges/radio/TACAN-ARN-21/isServiceable GT 0.0
+            </test>
+            <test logic="AND" value="1">
+                systems/gauges/radio/TACAN-NAV-ARN-21/NAV-Active GT 0.0
+                systems/gauges/radio/ID-249-ARN/flag-vor-loc GT 0.0
+            </test>
+        </switch>
+        
         <switch name="systems/gauges/radio/TACAN-NAV-ARN-21/isNot-Active">
             <default value="0"/>
             <test logic="AND" value="systems/gauges/radio/TACAN-ARN-21/isNot-TACAN-Active">
@@ -398,7 +425,10 @@
         </switch>
         
         <switch name="systems/gauges/radio/TACAN-NAV-ARN-21/in-range-lag">
-            <default value="0"/>
+            <default value="systems/gauges/radio/TACAN-NAV-ARN-21/in-range-lag"/>
+            <test logic="AND" value="0.0">
+                systems/gauges/radio/Collins-331-C4/operative == 0.0
+            </test>
             <test logic="AND" value="systems/gauges/radio/TACAN-ARN-21/in-range-lag">
                 systems/gauges/radio/TACAN-NAV-ARN-21/TACAN-Active GT 0.0
             </test>
@@ -408,22 +438,26 @@
         </switch>
         
         <switch name="systems/gauges/radio/TACAN-NAV-ARN-21/indicated-bearing-true-deg">
-            <default value="0"/>
+            <default value="systems/gauges/radio/TACAN-NAV-ARN-21/indicated-bearing-true-deg"/>
             <test logic="AND" value="/instrumentation/tacan/indicated-bearing-true-deg">
                 systems/gauges/radio/TACAN-NAV-ARN-21/TACAN-Active GT 0.0
+                systems/gauges/radio/Collins-331-C4/operative GT 0.0
             </test>
             <test logic="AND" value="/instrumentation/nav/radials/reciprocal-radial-deg">
                 systems/gauges/radio/TACAN-NAV-ARN-21/NAV-Active GT 0.0
+                systems/gauges/radio/Collins-331-C4/operative GT 0.0
             </test>
         </switch>
         
         <switch name="systems/gauges/radio/TACAN-NAV-ARN-21/distance-nm">
-            <default value="0"/>
+            <default value="systems/gauges/radio/TACAN-NAV-ARN-21/distance-nm"/>
             <test logic="AND" value="/instrumentation/tacan/indicated-distance-nm">
                 systems/gauges/radio/TACAN-NAV-ARN-21/TACAN-Active GT 0.0
+                systems/gauges/radio/Collins-331-C4/operative GT 0.0
             </test>
             <test logic="AND" value="systems/gauges/radio/NAV-ARN-21/nav-distance-nm">
                 systems/gauges/radio/TACAN-NAV-ARN-21/NAV-Active GT 0.0
+                systems/gauges/radio/Collins-331-C4/operative GT 0.0
             </test>
         </switch>
         
@@ -794,48 +828,15 @@
             </test>
         </switch>
         
-        <summer name="systems/gauges/radio/ID-249-ARN/arrow-deg">
-            <input>systems/gauges/radio/ID-249-ARN/reciprocal-radial-deg</input>
-            <input>-systems/gauges/radio/ID-249-ARN/gyrocompass-magnetic-deg-var</input>
-        </summer>
+        <angle name="systems/gauges/radio/ID-249-ARN/arrow-deg" unit="DEG">
+            <source_angle unit="DEG">systems/gauges/radio/ID-249-ARN/gyrocompass-magnetic-deg-var</source_angle>
+            <target_angle unit="DEG">systems/gauges/radio/ID-249-ARN/reciprocal-radial-deg</target_angle>
+        </angle>
         
-        <summer name="systems/gauges/radio/ID-249-ARN/rif-vert-vor-loc">
-            <input>-systems/gauges/radio/ID-249-ARN/course-deg-set</input>
-            <input>systems/gauges/radio/ID-249-ARN/reciprocal-radial-deg</input>
-        </summer>
-    
-        <fcs_function name="systems/gauges/radio/ID-249-ARN/rif-vert-vor-loc-180">
-            <function>
-                <ifthen>
-                    <gt><p>systems/gauges/radio/ID-249-ARN/rif-vert-vor-loc</p><v>180.0</v></gt>
-                    <sum><p>systems/gauges/radio/ID-249-ARN/rif-vert-vor-loc</p><v>-360.0</v></sum>
-                    <ifthen>
-                        <lt><p>systems/gauges/radio/ID-249-ARN/rif-vert-vor-loc</p><v>-180.0</v></lt>
-                        <sum><p>systems/gauges/radio/ID-249-ARN/rif-vert-vor-loc</p><v>360.0</v></sum>
-                        <p>systems/gauges/radio/ID-249-ARN/rif-vert-vor-loc</p>
-                    </ifthen>
-                </ifthen>
-            </function>
-        </fcs_function>
-        
-        <summer name="systems/gauges/radio/ID-249-ARN/course-gyrocompass">
-            <input>systems/gauges/radio/ID-249-ARN/course-deg-set</input>
-            <input>-systems/gauges/radio/ID-249-ARN/gyrocompass-magnetic-deg-var</input>
-        </summer>
-        
-        <fcs_function name="systems/gauges/radio/ID-249-ARN/course-gyrocompass-180">
-            <function>
-                <ifthen>
-                    <gt><p>systems/gauges/radio/ID-249-ARN/course-gyrocompass</p><v>180.0</v></gt>
-                    <sum><p>systems/gauges/radio/ID-249-ARN/course-gyrocompass</p><v>-360.0</v></sum>
-                    <ifthen>
-                        <lt><p>systems/gauges/radio/ID-249-ARN/course-gyrocompass</p><v>-180.0</v></lt>
-                        <sum><p>systems/gauges/radio/ID-249-ARN/course-gyrocompass</p><v>360.0</v></sum>
-                        <p>systems/gauges/radio/ID-249-ARN/course-gyrocompass</p>
-                    </ifthen>
-                </ifthen>
-            </function>
-        </fcs_function>
+        <angle name="systems/gauges/radio/ID-249-ARN/rif-vert-vor-loc" unit="DEG">
+            <source_angle unit="DEG">systems/gauges/radio/ID-249-ARN/course-deg-set</source_angle>
+            <target_angle unit="DEG">systems/gauges/radio/ID-249-ARN/reciprocal-radial-deg</target_angle>
+        </angle>
         
         <switch name="systems/gauges/radio/ID-249-ARN/off-to-from">
             <default value="1.0"/>
@@ -843,35 +844,35 @@
                 systems/gauges/radio/ID-249-ARN/flag-vor-loc == 0.0
             </test>
             <test logic="OR" value="2.0">
-                systems/gauges/radio/ID-249-ARN/course-gyrocompass-180 GT 90.0
-                systems/gauges/radio/ID-249-ARN/course-gyrocompass-180 LT -90.0
+                systems/gauges/radio/ID-249-ARN/arrow-deg GT 90.0
+                systems/gauges/radio/ID-249-ARN/arrow-deg LT -90.0
             </test>
         </switch>
         
-        <fcs_function name="systems/gauges/radio/ID-249-ARN/rif-vert-vor-loc-90">
+        <fcs_function name="systems/gauges/radio/ID-249-ARN/rif-vert-vor-loc-norm">
             <function>
                 <ifthen>
                     <eq><p>systems/gauges/radio/ID-249-ARN/off-to-from</p><v>2.0</v></eq>
-                    <ifthen>
-                        <ge><p>systems/gauges/radio/ID-249-ARN/rif-vert-vor-loc-180</p><v>0.0</v></ge>
-                        <sum><p>systems/gauges/radio/ID-249-ARN/rif-vert-vor-loc-180</p><v>-180.0</v></sum>
-                        <sum><p>systems/gauges/radio/ID-249-ARN/rif-vert-vor-loc-180</p><v>180.0</v></sum>
-                    </ifthen>
                     <product>
-                        <p>systems/gauges/radio/ID-249-ARN/rif-vert-vor-loc-180</p>
-                        <p>systems/gauges/radio/ID-249-ARN/off-to-from</p>
+                        <ifthen>
+                            <gt><p>systems/gauges/radio/ID-249-ARN/rif-vert-vor-loc</p><v>90.0</v></gt>
+                            <sum><p>systems/gauges/radio/ID-249-ARN/rif-vert-vor-loc</p><v>-180.0</v></sum>
+                            <sum><p>systems/gauges/radio/ID-249-ARN/rif-vert-vor-loc</p><v>180.0</v></sum>
+                        </ifthen>
+                        <v>-1.0</v>
                     </product>
+                    <p>systems/gauges/radio/ID-249-ARN/rif-vert-vor-loc</p>
                 </ifthen>
             </function>
+        </fcs_function>
+        
+        <lag_filter name="systems/gauges/radio/ID-249-ARN/rif-vert-vor-loc-lag">
+            <input>systems/gauges/radio/ID-249-ARN/rif-vert-vor-loc-norm</input>
+            <c1>2.0</c1>
             <clipto>
                 <min>-40.0</min>
                 <max>40.0</max>
             </clipto>
-        </fcs_function>
-        
-        <lag_filter name="systems/gauges/radio/ID-249-ARN/rif-vert-vor-loc-lag">
-            <input>systems/gauges/radio/ID-249-ARN/rif-vert-vor-loc-90</input>
-            <c1>2.0</c1>
         </lag_filter>
         
         <switch name="systems/gauges/radio/ID-249-ARN/flag-to">
@@ -897,6 +898,83 @@
             <input>systems/gauges/radio/ID-249-ARN/flag-from</input>
             <c1>2.0</c1>
         </lag_filter>
+        
+    </channel>
+    
+    
+    <channel name="marker beacon" execrate="8">
+    <!--
+    <factor-prop>/instrumentation/marker-beacon/outer
+        middle
+        inner
+        volume -> 0 if off<channel name="systems gauges radio ID-249-ARN Gauge" execrate="8">
+        </factor-prop>
+    -->
+        <switch name="systems/gauges/radio/MBT/operative-start-stop">
+            <default value="0"/>
+            <test logic="AND" value="1">
+                systems/electric/bus[1]/NAV/fuse == 1
+                systems/electric/bus[1]/V GE 24.0
+                systems/gauges/radio/TACAN-NAV-ARN-21/NAV-Active GT 0.0
+            </test>
+        </switch>
+        
+        <switch>
+            <default value="/instrumentation/marker-beacon/volume"/>
+            <test logic="AND" value="0.30">
+                systems/gauges/radio/MBT/operative-start-stop == 1.0
+                systems/gauges/radio/TACAN-NAV-ARN-21/NAV-Active GT 0.0
+            </test>
+            <output>/instrumentation/marker-beacon/volume</output>
+        </switch>
+        
+        <switch name="systems/gauges/radio/MBT/outer">
+            <default value="0"/>
+            <test logic="AND" value="systems/warning-lights/light-intensity-by-battery-tension">
+                systems/gauges/radio/MBT/operative-start-stop == 1.0
+                /instrumentation/marker-beacon/outer GT 0.5
+            </test>
+        </switch>
+        
+        <switch name="systems/gauges/radio/MBT/outer-transparent">
+            <default value="0.85"/>
+            <test logic="AND" value="systems/warning-lights/transparent-by-battery-tension">
+                systems/gauges/radio/MBT/operative-start-stop == 1.0
+                /instrumentation/marker-beacon/outer GT 0.5
+            </test>
+        </switch>
+        
+        <switch name="systems/gauges/radio/MBT/middle">
+            <default value="0"/>
+            <test logic="AND" value="systems/warning-lights/light-intensity-by-battery-tension">
+                systems/gauges/radio/MBT/operative-start-stop == 1.0
+                /instrumentation/marker-beacon/middle GT 0.5
+            </test>
+        </switch>
+        
+        <switch name="systems/gauges/radio/MBT/middle-transparent">
+            <default value="0.85"/>
+            <test logic="AND" value="systems/warning-lights/transparent-by-battery-tension">
+                systems/gauges/radio/MBT/operative-start-stop == 1.0
+                /instrumentation/marker-beacon/middle GT 0.5
+            </test>
+        </switch>
+        
+        <switch name="systems/gauges/radio/MBT/inner">
+            <default value="0"/>
+            <test logic="AND" value="systems/warning-lights/light-intensity-by-battery-tension">
+                systems/gauges/radio/MBT/operative-start-stop == 1.0
+                /instrumentation/marker-beacon/inner GT 0.5
+            </test>
+        </switch>
+        
+        <switch name="systems/gauges/radio/MBT/inner-transparent">
+            <default value="0.85"/>
+            <test logic="AND" value="systems/warning-lights/transparent-by-battery-tension">
+                systems/gauges/radio/MBT/operative-start-stop == 1.0
+                /instrumentation/marker-beacon/inner GT 0.5
+            </test>
+        </switch>
         
     </channel>
     

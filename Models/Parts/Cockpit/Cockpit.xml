@@ -803,21 +803,27 @@
             <pitch-deg>0.0</pitch-deg>
         </offsets>
         <condition>
-            <or>
+            <and>
+                <or>
+                    <equals>
+                        <property>sim/G91/configuration/gauges/tacan-active</property>
+                        <value>1</value>
+                    </equals>
+                    <equals>
+                        <property>sim/G91/configuration/gauges/nav-active</property>
+                        <value>1</value>
+                    </equals>
+                </or>
                 <equals>
-                    <property>sim/G91/configuration/gauges/tacan-active</property>
-                    <value>1</value>
+                    <property>sim/G91/configuration/gauges/MBT-active</property>
+                    <value>0</value>
                 </equals>
-                <equals>
-                    <property>sim/G91/configuration/gauges/nav-active</property>
-                    <value>1</value>
-                </equals>
-            </or>
+            </and>
         </condition>
     </model>
-    <!--
+    
     <model>
-        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/TACAN_NAV_arn_21/ID-249-ARN.xml</path>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/TACAN_NAV_arn_21/Collins 331C-4-TACAN-Frontal.xml</path>
         <offsets>
             <x-m>-0.003</x-m>
             <y-m>0.0</y-m>
@@ -825,13 +831,81 @@
             <pitch-deg>0.0</pitch-deg>
         </offsets>
         <condition>
-            <equals>
-                <property>sim/G91/configuration/gauges/nav-active</property>
-                <value>1</value>
-            </equals>
+            <and>
+                <or>
+                    <equals>
+                        <property>sim/G91/configuration/gauges/tacan-active</property>
+                        <value>1</value>
+                    </equals>
+                    <equals>
+                        <property>sim/G91/configuration/gauges/nav-active</property>
+                        <value>1</value>
+                    </equals>
+                </or>
+                <equals>
+                    <property>sim/G91/configuration/gauges/MBT-active</property>
+                    <value>0</value>
+                </equals>
+            </and>
         </condition>
     </model>
-    -->
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/TACAN_NAV_arn_21/Collins_331_C4.xml</path>
+        <offsets>
+            <x-m>-0.003</x-m>
+            <y-m>-0.018</y-m>
+            <z-m>-0.0475</z-m>
+            <pitch-deg>0.0</pitch-deg>
+        </offsets>
+        <condition>
+            <and>
+                <or>
+                    <equals>
+                        <property>sim/G91/configuration/gauges/tacan-active</property>
+                        <value>1</value>
+                    </equals>
+                    <equals>
+                        <property>sim/G91/configuration/gauges/nav-active</property>
+                        <value>1</value>
+                    </equals>
+                </or>
+                <equals>
+                    <property>sim/G91/configuration/gauges/MBT-active</property>
+                    <value>1</value>
+                </equals>
+            </and>
+        </condition>
+    </model>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/TACAN_NAV_arn_21/Collins 331C-4-VOR-MBT-Frontal.xml</path>
+        <offsets>
+            <x-m>-0.003</x-m>
+            <y-m>-0.000</y-m>
+            <z-m>-0.0475</z-m>
+            <pitch-deg>0.0</pitch-deg>
+        </offsets>
+        <condition>
+            <and>
+                <or>
+                    <equals>
+                        <property>sim/G91/configuration/gauges/tacan-active</property>
+                        <value>1</value>
+                    </equals>
+                    <equals>
+                        <property>sim/G91/configuration/gauges/nav-active</property>
+                        <value>1</value>
+                    </equals>
+                </or>
+                <equals>
+                    <property>sim/G91/configuration/gauges/MBT-active</property>
+                    <value>1</value>
+                </equals>
+            </and>
+        </condition>
+    </model>
+
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/TACAN_NAV_arn_21/Frontal-146-DCU.xml</path>
         <offsets>

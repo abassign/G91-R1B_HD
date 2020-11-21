@@ -533,14 +533,14 @@
         <object-name>sphere B (Meshed)</object-name>
         <object-name>axis black (Meshed)</object-name>
         <diffuse>
-            <red>0.10</red>
-            <green>0.10</green>
-            <blue>0.10</blue>
+            <red>0.05</red>
+            <green>0.05</green>
+            <blue>0.05</blue>
         </diffuse>
         <ambient>
-            <red>0.10</red>
-            <green>0.10</green>
-            <blue>0.15</blue>
+            <red>0.05</red>
+            <green>0.05</green>
+            <blue>0.07</blue>
         </ambient>
         <emission>
             <red>0.02</red>
