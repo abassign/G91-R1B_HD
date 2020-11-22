@@ -29,16 +29,51 @@
         <object-name>selector_num_5 (Meshed)</object-name>
         <object-name>lamp_ring (Meshed)</object-name>
         <object-name>caddy_body (Meshed)</object-name>
+        <object-name>selector_1_light_lamp (Meshed)</object-name>
+        <object-name>selector_1_light_lamp_hot (Meshed)</object-name>
+        <object-name>selector_1_light_mirror_int (Meshed)</object-name>
+        <object-name>selector_1_light_mirror_ext (Meshed)</object-name>
+        <object-name>selector_1_light_mirror_border (Meshed)</object-name>
+        <object-name>selector_2_light_lamp (Meshed)</object-name>
+        <object-name>selector_2_light_lamp_hot (Meshed)</object-name>
+        <object-name>selector_2_light_mirror_int (Meshed)</object-name>
+        <object-name>selector_2_light_mirror_ext (Meshed)</object-name>
+        <object-name>selector_2_light_mirror_border (Meshed)</object-name>
+        <object-name>selector_3_light_lamp (Meshed)</object-name>
+        <object-name>selector_3_light_lamp_hot (Meshed)</object-name>
+        <object-name>selector_3_light_mirror_int (Meshed)</object-name>
+        <object-name>selector_3_light_mirror_ext (Meshed)</object-name>
+        <object-name>selector_3_light_mirror_border (Meshed)</object-name>
+        <object-name>selector_4_light_lamp (Meshed)</object-name>
+        <object-name>selector_4_light_lamp_hot (Meshed)</object-name>
+        <object-name>selector_4_light_mirror_int (Meshed)</object-name>
+        <object-name>selector_4_light_mirror_ext (Meshed)</object-name>
+        <object-name>selector_4_light_mirror_border (Meshed)</object-name>
+        <object-name>selector_5_light_lamp (Meshed)</object-name>
+        <object-name>selector_5_light_lamp_hot (Meshed)</object-name>
+        <object-name>selector_5_light_mirror_int (Meshed)</object-name>
+        <object-name>selector_5_light_mirror_ext (Meshed)</object-name>
+        <object-name>selector_5_light_mirror_border (Meshed)</object-name>
     </animation>
 
     <effect>
-        <inherits-from>Effects/model-transparent</inherits-from>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/exterior/exterior-glass</inherits-from>
         <object-name>selector_1_light_window (Meshed)</object-name>
         <object-name>selector_2_light_window (Meshed)</object-name>
         <object-name>selector_3_light_window (Meshed)</object-name>
         <object-name>selector_4_light_window (Meshed)</object-name>
         <object-name>selector_5_light_window (Meshed)</object-name>
         <object-name>lamp_glass (Meshed)</object-name>
+        <object-name>selector_1_light_lamp (Meshed)</object-name>
+        <object-name>selector_1_light_lamp_hot (Meshed)</object-name>
+        <object-name>selector_2_light_lamp (Meshed)</object-name>
+        <object-name>selector_2_light_lamp_hot (Meshed)</object-name>
+        <object-name>selector_3_light_lamp (Meshed)</object-name>
+        <object-name>selector_4_light_lamp_hot (Meshed)</object-name>
+        <object-name>selector_4_light_lamp (Meshed)</object-name>
+        <object-name>selector_4_light_lamp_hot (Meshed)</object-name>
+        <object-name>selector_5_light_lamp (Meshed)</object-name>
+        <object-name>selector_5_light_lamp_hot (Meshed)</object-name>
     </effect>
 
     <effect>
@@ -49,7 +84,11 @@
     <animation> 
         <type>material</type>
         <object-name>box (Meshed)</object-name> 
-        <texture>Pictures/G91-Yello01.png</texture>
+        <diffuse>
+            <red>0.67</red>
+            <green>0.67</green>
+            <blue>0.67</blue>
+        </diffuse>
         <ambient>
             <red>0.6</red>
             <green>0.6</green>
@@ -60,25 +99,49 @@
     <animation> 
         <type>material</type>
         <object-name>caddy_body (Meshed)</object-name>
-        <texture>Pictures/G91-Al-dark.png</texture>
+        <diffuse>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </diffuse>
         <ambient>
-            <red>0.6</red>
-            <green>0.6</green>
-            <blue>0.6</blue>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
         </ambient>
+        <specular>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
+        </specular>
+        <emission>
+            <red>0.12</red>
+            <green>0.0</green>
+            <blue>0.01</blue>
+            <factor-prop>sim/G91/re_emit/light_red_console</factor-prop>
+        </emission>
     </animation>
     
     <animation> 
         <type>material</type>
-        <texture>Pictures/G91-Al-Light.png</texture>
         <object-name>screews_m5 (Meshed)</object-name>
+        <diffuse>
+            <red>0.23</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
+        </diffuse>
         <ambient>
-            <red>0.3</red>
+            <red>0.35</red>
             <green>0.3</green>
             <blue>0.3</blue>
         </ambient>
+        <specular>
+            <red>0.9</red>
+            <green>0.9</green>
+            <blue>0.9</blue>
+        </specular>
         <emission>
-            <red>0.3</red>
+            <red>0.18</red>
             <green>0.0</green>
             <blue>0.0</blue>
             <factor-prop>sim/G91/re_emit/light_red_console</factor-prop>
@@ -135,16 +198,25 @@
     
     <animation> 
         <type>material</type>
-        <texture>Pictures/G91-Al-dark.png</texture>
         <object-name>screews_m4 (Meshed)</object-name>
         <object-name>caddy_screews (Meshed)</object-name>
+        <diffuse>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.3</blue>
+        </diffuse>
         <ambient>
-            <red>0.7</red>
-            <green>0.7</green>
-            <blue>0.7</blue>
-        </ambient>
-        <emission>
             <red>0.4</red>
+            <green>0.4</green>
+            <blue>0.4</blue>
+        </ambient>
+        <specular>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </specular>
+        <emission>
+            <red>0.15</red>
             <green>0.0</green>
             <blue>0.0</blue>
             <factor-prop>sim/G91/re_emit/light_red_console</factor-prop>
@@ -153,147 +225,395 @@
     
     <animation> 
         <type>material</type>
-        <texture>Pictures/G91-Black.png</texture>
         <object-name>push release (Meshed)</object-name>
         <object-name>selector_1 (Meshed)</object-name>
         <object-name>selector_2 (Meshed)</object-name>
         <object-name>selector_3 (Meshed)</object-name>
         <object-name>selector_4 (Meshed)</object-name>
         <object-name>selector_5 (Meshed)</object-name>
+        <diffuse>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </diffuse>
         <ambient>
-            <red>0.6</red>
-            <green>0.6</green>
-            <blue>0.6</blue>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
         </ambient>
-        <emission>
-            <red>0.35</red>
-            <green>0.0</green>
-            <blue>0.0</blue>
-            <factor-prop>sim/G91/re_emit/light_red_console</factor-prop>
-        </emission>
         <specular>
             <red>1.0</red>
             <green>1.0</green>
             <blue>1.0</blue>
         </specular>
+        <emission>
+            <red>0.1</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/light_red_console</factor-prop>
+        </emission>
     </animation>
     
     <animation> 
         <type>material</type>
-        <texture>Pictures/G91-Ivory.png</texture>
         <object-name>push take control (Meshed)</object-name>
+        <diffuse>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>0.89</blue>
+        </diffuse>
         <ambient>
-            <red>0.6</red>
-            <green>0.6</green>
-            <blue>0.6</blue>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
         </ambient>
+        <specular>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.4</blue>
+        </specular>
+        <emission>
+            <red>0.15</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/light_red_console</factor-prop>
+        </emission>
+    </animation>
+
+    <!-- Lights on caddy -->
+    
+    <animation> 
+        <type>material</type>
+        <object-name>selector_1_light_window (Meshed)</object-name>
+        <transparency>
+            <alpha>1.5</alpha>
+            <factor-prop>/fdm/jsbsim/systems/gauges/PHI/program/route[1]/push-light-on-transparent</factor-prop>
+        </transparency>
+        <diffuse>
+            <red>0.8</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </diffuse>
+        <ambient>
+            <red>0.15</red>
+            <green>0.05</green>
+            <blue>0.05</blue>
+        </ambient>
+        <specular>
+            <red>1.0</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
+        </specular>
         <emission>
             <red>0.2</red>
             <green>0.0</green>
             <blue>0.0</blue>
             <factor-prop>sim/G91/re_emit/light_red_console</factor-prop>
         </emission>
-        <specular>
-            <red>1.0</red>
-            <green>1.0</green>
-            <blue>1.0</blue>
-        </specular>
     </animation>
-    
+
     <animation> 
         <type>material</type>
-        <object-name>selector_1_light_window (Meshed)</object-name>
-        <transparency>
-            <alpha>0.5</alpha>
-            <factor-prop>/fdm/jsbsim/systems/gauges/PHI/program/route[1]/push-light-on-transparent</factor-prop>
-        </transparency>
+        <object-name>selector_1_light_mirror_border (Meshed)</object-name>
+        <diffuse>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </diffuse>
         <ambient>
             <red>0.1</red>
             <green>0.1</green>
             <blue>0.1</blue>
         </ambient>
         <emission>
-            <red>0.3</red>
-            <green>0.1</green>
-            <blue>0.0</blue>
-            <factor-prop>/fdm/jsbsim/systems/gauges/PHI/program/light_red_console-on-caddy</factor-prop>
-        </emission>
-    </animation>
-    
-    <animation> 
-        <type>material</type>
-        <texture>Pictures/G91-White-00.png</texture>
-        <object-name>selector_1_light (Meshed)</object-name>
-        <object-name>selector_1_light_bottom (Meshed)</object-name>
-        <emission>
-            <red>1.0</red>
-            <green>0.3</green>
+            <red>0.7</red>
+            <green>0.12</green>
             <blue>0.0</blue>
             <factor-prop>/fdm/jsbsim/systems/gauges/PHI/program/route[1]/push-light-on</factor-prop>
         </emission>
     </animation>
-
+    
     <animation> 
         <type>material</type>
-        <texture>Pictures/G91-White-00.png</texture>
-        <object-name>selector_2_light (Meshed)</object-name>
-        <object-name>selector_2_light_bottom (Meshed)</object-name>
-        <emission>
-            <red>1.0</red>
-            <green>0.3</green>
-            <blue>0.0</blue>
-            <factor-prop>/fdm/jsbsim/systems/gauges/PHI/program/route[2]/push-light-on</factor-prop>
-        </emission>
-    </animation>
-
-    <animation> 
-        <type>material</type>
-        <object-name>selector_2_light_window (Meshed)</object-name>
-        <transparency>
-            <alpha>0.5</alpha>
-            <factor-prop>/fdm/jsbsim/systems/gauges/PHI/program/route[2]/push-light-on-transparent</factor-prop>
-        </transparency>
+        <object-name>selector_1_light_mirror_ext (Meshed)</object-name>
+        <diffuse>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </diffuse>
         <ambient>
             <red>0.1</red>
             <green>0.1</green>
             <blue>0.1</blue>
         </ambient>
         <emission>
-            <red>0.3</red>
-            <green>0.1</green>
+            <red>0.8</red>
+            <green>0.12</green>
             <blue>0.0</blue>
-            <factor-prop>/fdm/jsbsim/systems/gauges/PHI/program/light_red_console-on-caddy</factor-prop>
+            <factor-prop>/fdm/jsbsim/systems/gauges/PHI/program/route[1]/push-light-on</factor-prop>
         </emission>
     </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>selector_1_light_mirror_int (Meshed)</object-name>
+        <diffuse>
+            <red>0.5</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </diffuse>
+        <ambient>
+            <red>0.3</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </ambient>
+        <emission>
+            <red>1.0</red>
+            <green>0.15</green>
+            <blue>0.0</blue>
+            <factor-prop>/fdm/jsbsim/systems/gauges/PHI/program/route[1]/push-light-on</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>selector_1_light_lamp (Meshed)</object-name>
+        <transparency>
+            <alpha>0.4</alpha>
+        </transparency>
+        <diffuse>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </diffuse>
+        <ambient>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </ambient>
+        <emission>
+            <red>1.5</red>
+            <green>0.0</green>
+            <blue>0.1</blue>
+            <factor-prop>/fdm/jsbsim/systems/gauges/PHI/program/route[1]/push-light-on</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>selector_1_light_lamp_hot (Meshed)</object-name>
+        <transparency>
+            <alpha>0.4</alpha>
+        </transparency>
+        <diffuse>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </diffuse>
+        <ambient>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </ambient>
+        <emission>
+            <red>1.5</red>
+            <green>1.5</green>
+            <blue>3.0</blue>
+            <factor-prop>/fdm/jsbsim/systems/gauges/PHI/program/route[1]/push-light-on</factor-prop>
+        </emission>
+    </animation>
+    
+    <!-- switch 2 -->
+    
+    <animation> 
+        <type>material</type>
+        <object-name>selector_2_light_window (Meshed)</object-name>
+        <transparency>
+            <alpha>1.5</alpha>
+            <factor-prop>/fdm/jsbsim/systems/gauges/PHI/program/route[2]/push-light-on-transparent</factor-prop>
+        </transparency>
+        <diffuse>
+            <red>0.8</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </diffuse>
+        <ambient>
+            <red>0.15</red>
+            <green>0.05</green>
+            <blue>0.05</blue>
+        </ambient>
+        <specular>
+            <red>1.0</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
+        </specular>
+        <emission>
+            <red>0.2</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/light_red_console</factor-prop>
+        </emission>
+    </animation>
+
+    <animation> 
+        <type>material</type>
+        <object-name>selector_2_light_mirror_border (Meshed)</object-name>
+        <diffuse>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </diffuse>
+        <ambient>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </ambient>
+        <emission>
+            <red>0.7</red>
+            <green>0.12</green>
+            <blue>0.0</blue>
+            <factor-prop>/fdm/jsbsim/systems/gauges/PHI/program/route[2]/push-light-on</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>selector_2_light_mirror_ext (Meshed)</object-name>
+        <diffuse>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </diffuse>
+        <ambient>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </ambient>
+        <emission>
+            <red>0.8</red>
+            <green>0.12</green>
+            <blue>0.0</blue>
+            <factor-prop>/fdm/jsbsim/systems/gauges/PHI/program/route[2]/push-light-on</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>selector_2_light_mirror_int (Meshed)</object-name>
+        <diffuse>
+            <red>0.5</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </diffuse>
+        <ambient>
+            <red>0.3</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </ambient>
+        <emission>
+            <red>1.0</red>
+            <green>0.15</green>
+            <blue>0.0</blue>
+            <factor-prop>/fdm/jsbsim/systems/gauges/PHI/program/route[2]/push-light-on</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>selector_2_light_lamp (Meshed)</object-name>
+        <transparency>
+            <alpha>0.4</alpha>
+        </transparency>
+        <diffuse>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </diffuse>
+        <ambient>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </ambient>
+        <emission>
+            <red>1.5</red>
+            <green>0.0</green>
+            <blue>0.1</blue>
+            <factor-prop>/fdm/jsbsim/systems/gauges/PHI/program/route[2]/push-light-on</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>selector_2_light_lamp_hot (Meshed)</object-name>
+        <transparency>
+            <alpha>0.4</alpha>
+        </transparency>
+        <diffuse>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </diffuse>
+        <ambient>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </ambient>
+        <emission>
+            <red>1.5</red>
+            <green>1.5</green>
+            <blue>3.0</blue>
+            <factor-prop>/fdm/jsbsim/systems/gauges/PHI/program/route[2]/push-light-on</factor-prop>
+        </emission>
+    </animation>
+    
+    <!-- Switch 3 -->
     
     <animation> 
         <type>material</type>
         <object-name>selector_3_light_window (Meshed)</object-name>
         <transparency>
-            <alpha>0.5</alpha>
+            <alpha>1.5</alpha>
             <factor-prop>/fdm/jsbsim/systems/gauges/PHI/program/route[3]/push-light-on-transparent</factor-prop>
         </transparency>
+        <diffuse>
+            <red>0.8</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </diffuse>
+        <ambient>
+            <red>0.15</red>
+            <green>0.05</green>
+            <blue>0.05</blue>
+        </ambient>
+        <specular>
+            <red>1.0</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
+        </specular>
+        <emission>
+            <red>0.2</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/light_red_console</factor-prop>
+        </emission>
+    </animation>
+
+    <animation> 
+        <type>material</type>
+        <object-name>selector_3_light_mirror_border (Meshed)</object-name>
+        <diffuse>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </diffuse>
         <ambient>
             <red>0.1</red>
             <green>0.1</green>
             <blue>0.1</blue>
         </ambient>
         <emission>
-            <red>0.3</red>
-            <green>0.1</green>
-            <blue>0.0</blue>
-            <factor-prop>/fdm/jsbsim/systems/gauges/PHI/program/light_red_console-on-caddy</factor-prop>
-        </emission>
-    </animation>
-
-    <animation> 
-        <type>material</type>
-        <texture>Pictures/G91-White-00.png</texture>
-        <object-name>selector_3_light (Meshed)</object-name>
-        <object-name>selector_3_light_bottom (Meshed)</object-name>
-        <emission>
-            <red>1.0</red>
-            <green>0.3</green>
+            <red>0.7</red>
+            <green>0.12</green>
             <blue>0.0</blue>
             <factor-prop>/fdm/jsbsim/systems/gauges/PHI/program/route[3]/push-light-on</factor-prop>
         </emission>
@@ -301,32 +621,142 @@
     
     <animation> 
         <type>material</type>
-        <object-name>selector_4_light_window (Meshed)</object-name>
-        <transparency>
-            <alpha>0.5</alpha>
-            <factor-prop>/fdm/jsbsim/systems/gauges/PHI/program/route[4]/push-light-on-transparent</factor-prop>
-        </transparency>
+        <object-name>selector_3_light_mirror_ext (Meshed)</object-name>
+        <diffuse>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </diffuse>
         <ambient>
             <red>0.1</red>
             <green>0.1</green>
             <blue>0.1</blue>
         </ambient>
         <emission>
+            <red>0.8</red>
+            <green>0.12</green>
+            <blue>0.0</blue>
+            <factor-prop>/fdm/jsbsim/systems/gauges/PHI/program/route[3]/push-light-on</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>selector_3_light_mirror_int (Meshed)</object-name>
+        <diffuse>
+            <red>0.5</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </diffuse>
+        <ambient>
             <red>0.3</red>
             <green>0.1</green>
+            <blue>0.1</blue>
+        </ambient>
+        <emission>
+            <red>1.0</red>
+            <green>0.15</green>
             <blue>0.0</blue>
-            <factor-prop>/fdm/jsbsim/systems/gauges/PHI/program/light_red_console-on-caddy</factor-prop>
+            <factor-prop>/fdm/jsbsim/systems/gauges/PHI/program/route[3]/push-light-on</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>selector_3_light_lamp (Meshed)</object-name>
+        <transparency>
+            <alpha>0.4</alpha>
+        </transparency>
+        <diffuse>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </diffuse>
+        <ambient>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </ambient>
+        <emission>
+            <red>1.5</red>
+            <green>0.0</green>
+            <blue>0.1</blue>
+            <factor-prop>/fdm/jsbsim/systems/gauges/PHI/program/route[3]/push-light-on</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>selector_3_light_lamp_hot (Meshed)</object-name>
+        <transparency>
+            <alpha>0.4</alpha>
+        </transparency>
+        <diffuse>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </diffuse>
+        <ambient>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </ambient>
+        <emission>
+            <red>1.5</red>
+            <green>1.5</green>
+            <blue>3.0</blue>
+            <factor-prop>/fdm/jsbsim/systems/gauges/PHI/program/route[3]/push-light-on</factor-prop>
+        </emission>
+    </animation>
+    
+    <!-- Switch 4 -->
+    
+    <animation> 
+        <type>material</type>
+        <object-name>selector_4_light_window (Meshed)</object-name>
+        <transparency>
+            <alpha>1.5</alpha>
+            <factor-prop>/fdm/jsbsim/systems/gauges/PHI/program/route[4]/push-light-on-transparent</factor-prop>
+        </transparency>
+        <diffuse>
+            <red>0.8</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </diffuse>
+        <ambient>
+            <red>0.15</red>
+            <green>0.05</green>
+            <blue>0.05</blue>
+        </ambient>
+        <specular>
+            <red>1.0</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
+        </specular>
+        <emission>
+            <red>0.2</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/light_red_console</factor-prop>
         </emission>
     </animation>
 
     <animation> 
         <type>material</type>
-        <texture>Pictures/G91-White-00.png</texture>
-        <object-name>selector_4_light (Meshed)</object-name>
-        <object-name>selector_4_light_bottom (Meshed)</object-name>
+        <object-name>selector_4_light_mirror_border (Meshed)</object-name>
+        <diffuse>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </diffuse>
+        <ambient>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </ambient>
         <emission>
-            <red>1.0</red>
-            <green>0.3</green>
+            <red>0.7</red>
+            <green>0.12</green>
             <blue>0.0</blue>
             <factor-prop>/fdm/jsbsim/systems/gauges/PHI/program/route[4]/push-light-on</factor-prop>
         </emission>
@@ -334,36 +764,238 @@
     
     <animation> 
         <type>material</type>
-        <object-name>selector_5_light_window (Meshed)</object-name>
-        <transparency>
-            <alpha>0.5</alpha>
-            <factor-prop>/fdm/jsbsim/systems/gauges/PHI/program/route[5]/push-light-on-transparent</factor-prop>
-        </transparency>
+        <object-name>selector_4_light_mirror_ext (Meshed)</object-name>
+        <diffuse>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </diffuse>
         <ambient>
             <red>0.1</red>
             <green>0.1</green>
             <blue>0.1</blue>
         </ambient>
         <emission>
+            <red>0.8</red>
+            <green>0.12</green>
+            <blue>0.0</blue>
+            <factor-prop>/fdm/jsbsim/systems/gauges/PHI/program/route[4]/push-light-on</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>selector_4_light_mirror_int (Meshed)</object-name>
+        <diffuse>
+            <red>0.5</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </diffuse>
+        <ambient>
             <red>0.3</red>
             <green>0.1</green>
+            <blue>0.1</blue>
+        </ambient>
+        <emission>
+            <red>1.0</red>
+            <green>0.15</green>
             <blue>0.0</blue>
-            <factor-prop>/fdm/jsbsim/systems/gauges/PHI/program/light_red_console-on-caddy</factor-prop>
+            <factor-prop>/fdm/jsbsim/systems/gauges/PHI/program/route[4]/push-light-on</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>selector_4_light_lamp (Meshed)</object-name>
+        <transparency>
+            <alpha>0.4</alpha>
+        </transparency>
+        <diffuse>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </diffuse>
+        <ambient>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </ambient>
+        <emission>
+            <red>1.5</red>
+            <green>0.0</green>
+            <blue>0.1</blue>
+            <factor-prop>/fdm/jsbsim/systems/gauges/PHI/program/route[4]/push-light-on</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>selector_4_light_lamp_hot (Meshed)</object-name>
+        <transparency>
+            <alpha>0.4</alpha>
+        </transparency>
+        <diffuse>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </diffuse>
+        <ambient>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </ambient>
+        <emission>
+            <red>1.5</red>
+            <green>1.5</green>
+            <blue>3.0</blue>
+            <factor-prop>/fdm/jsbsim/systems/gauges/PHI/program/route[4]/push-light-on</factor-prop>
+        </emission>
+    </animation>
+    
+    <!-- Switch 5 -->
+    
+    <animation> 
+        <type>material</type>
+        <object-name>selector_5_light_window (Meshed)</object-name>
+        <transparency>
+            <alpha>1.5</alpha>
+            <factor-prop>/fdm/jsbsim/systems/gauges/PHI/program/route[5]/push-light-on-transparent</factor-prop>
+        </transparency>
+        <diffuse>
+            <red>0.8</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </diffuse>
+        <ambient>
+            <red>0.15</red>
+            <green>0.05</green>
+            <blue>0.05</blue>
+        </ambient>
+        <specular>
+            <red>1.0</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
+        </specular>
+        <emission>
+            <red>0.2</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/light_red_console</factor-prop>
         </emission>
     </animation>
 
     <animation> 
         <type>material</type>
-        <texture>Pictures/G91-White-00.png</texture>
-        <object-name>selector_5_light (Meshed)</object-name>
-        <object-name>selector_5_light_bottom (Meshed)</object-name>
+        <object-name>selector_5_light_mirror_border (Meshed)</object-name>
+        <diffuse>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </diffuse>
+        <ambient>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </ambient>
         <emission>
-            <red>1.0</red>
-            <green>0.3</green>
+            <red>0.7</red>
+            <green>0.12</green>
             <blue>0.0</blue>
             <factor-prop>/fdm/jsbsim/systems/gauges/PHI/program/route[5]/push-light-on</factor-prop>
         </emission>
     </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>selector_5_light_mirror_ext (Meshed)</object-name>
+        <diffuse>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </diffuse>
+        <ambient>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </ambient>
+        <emission>
+            <red>0.8</red>
+            <green>0.12</green>
+            <blue>0.0</blue>
+            <factor-prop>/fdm/jsbsim/systems/gauges/PHI/program/route[5]/push-light-on</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>selector_5_light_mirror_int (Meshed)</object-name>
+        <diffuse>
+            <red>0.5</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </diffuse>
+        <ambient>
+            <red>0.3</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </ambient>
+        <emission>
+            <red>1.0</red>
+            <green>0.15</green>
+            <blue>0.0</blue>
+            <factor-prop>/fdm/jsbsim/systems/gauges/PHI/program/route[5]/push-light-on</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>selector_5_light_lamp (Meshed)</object-name>
+        <transparency>
+            <alpha>0.4</alpha>
+        </transparency>
+        <diffuse>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </diffuse>
+        <ambient>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </ambient>
+        <emission>
+            <red>1.5</red>
+            <green>0.0</green>
+            <blue>0.1</blue>
+            <factor-prop>/fdm/jsbsim/systems/gauges/PHI/program/route[5]/push-light-on</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>selector_5_light_lamp_hot (Meshed)</object-name>
+        <transparency>
+            <alpha>0.4</alpha>
+        </transparency>
+        <diffuse>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </diffuse>
+        <ambient>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </ambient>
+        <emission>
+            <red>1.5</red>
+            <green>1.5</green>
+            <blue>3.0</blue>
+            <factor-prop>/fdm/jsbsim/systems/gauges/PHI/program/route[5]/push-light-on</factor-prop>
+        </emission>
+    </animation>
+    
+    <!-- term lights on caddy -->
     
     <animation> 
         <type>material</type>
@@ -762,24 +1394,49 @@
         <object-name>selector_5 (Meshed)</object-name>
         <object-name>selector_num_5 (Meshed)</object-name>
         <object-name>caddy_labels (Meshed)</object-name>
-        <object-name>selector_1_light (Meshed)</object-name>
-        <object-name>selector_1_light_bottom (Meshed)</object-name>
-        <object-name>selector_2_light (Meshed)</object-name>
-        <object-name>selector_2_light_bottom (Meshed)</object-name>
-        <object-name>selector_3_light (Meshed)</object-name>
-        <object-name>selector_3_light_bottom (Meshed)</object-name>
-        <object-name>selector_4_light (Meshed)</object-name>
-        <object-name>selector_4_light_bottom (Meshed)</object-name>
-        <object-name>selector_5_light (Meshed)</object-name>
-        <object-name>selector_5_light_bottom (Meshed)</object-name>
-        <property>fdm/jsbsim/systems/gauges/PHI/program/release-togle-pos-lag</property>
+        <object-name>selector_1_light_lamp (Meshed)</object-name>
+        <object-name>selector_1_light_lamp_hot (Meshed)</object-name>
+        <object-name>selector_1_light_mirror_int (Meshed)</object-name>
+        <object-name>selector_1_light_mirror_ext (Meshed)</object-name>
+        <object-name>selector_1_light_mirror_border (Meshed)</object-name>
+        <object-name>selector_2_light_lamp (Meshed)</object-name>
+        <object-name>selector_2_light_lamp_hot (Meshed)</object-name>
+        <object-name>selector_2_light_mirror_int (Meshed)</object-name>
+        <object-name>selector_2_light_mirror_ext (Meshed)</object-name>
+        <object-name>selector_2_light_mirror_border (Meshed)</object-name>
+        <object-name>selector_3_light_lamp (Meshed)</object-name>
+        <object-name>selector_3_light_lamp_hot (Meshed)</object-name>
+        <object-name>selector_3_light_mirror_int (Meshed)</object-name>
+        <object-name>selector_3_light_mirror_ext (Meshed)</object-name>
+        <object-name>selector_3_light_mirror_border (Meshed)</object-name>
+        <object-name>selector_4_light_lamp (Meshed)</object-name>
+        <object-name>selector_4_light_lamp_hot (Meshed)</object-name>
+        <object-name>selector_4_light_mirror_int (Meshed)</object-name>
+        <object-name>selector_4_light_mirror_ext (Meshed)</object-name>
+        <object-name>selector_4_light_mirror_border (Meshed)</object-name>
+        <object-name>selector_5_light_lamp (Meshed)</object-name>
+        <object-name>selector_5_light_lamp_hot (Meshed)</object-name>
+        <object-name>selector_5_light_mirror_int (Meshed)</object-name>
+        <object-name>selector_5_light_mirror_ext (Meshed)</object-name>
+        <object-name>selector_5_light_mirror_border (Meshed)</object-name>
         <object-name>selector_1_light_window (Meshed)</object-name>
         <object-name>selector_2_light_window (Meshed)</object-name>
         <object-name>selector_3_light_window (Meshed)</object-name>
         <object-name>selector_4_light_window (Meshed)</object-name>
         <object-name>selector_5_light_window (Meshed)</object-name>
+        <object-name>selector_1_light_lamp (Meshed)</object-name>
+        <object-name>selector_1_light_lamp_hot (Meshed)</object-name>
+        <object-name>selector_2_light_lamp (Meshed)</object-name>
+        <object-name>selector_2_light_lamp_hot (Meshed)</object-name>
+        <object-name>selector_3_light_lamp (Meshed)</object-name>
+        <object-name>selector_4_light_lamp_hot (Meshed)</object-name>
+        <object-name>selector_4_light_lamp (Meshed)</object-name>
+        <object-name>selector_4_light_lamp_hot (Meshed)</object-name>
+        <object-name>selector_5_light_lamp (Meshed)</object-name>
+        <object-name>selector_5_light_lamp_hot (Meshed)</object-name>
+        <property>fdm/jsbsim/systems/gauges/PHI/program/release-togle-pos-lag</property>
         <factor>0.050</factor>
-        <offset-m>0.0</offset-m>
+        <offset-m>0.003</offset-m>
         <axis>
             <x>0</x>
             <y>0</y>

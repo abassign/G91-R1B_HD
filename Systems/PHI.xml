@@ -1160,6 +1160,7 @@
             <default value="0.5"/>
             <test logic="AND" value = "systems/gauges/PHI/program/transparent-by-bus2-tension-on-caddy">
                 systems/gauges/PHI/program/route-pushed == 1
+                systems/gauges/PHI/program/release-on == 0
             </test>
         </switch>
         
@@ -1208,6 +1209,7 @@
             <default value="0.5"/>
             <test logic="AND" value = "systems/gauges/PHI/program/transparent-by-bus2-tension-on-caddy">
                 systems/gauges/PHI/program/route-pushed == 2
+                systems/gauges/PHI/program/release-on == 0
             </test>
         </switch>
         
@@ -1256,6 +1258,7 @@
             <default value="0.5"/>
             <test logic="AND" value = "systems/gauges/PHI/program/transparent-by-bus2-tension-on-caddy">
                 systems/gauges/PHI/program/route-pushed == 3
+                systems/gauges/PHI/program/release-on == 0
             </test>
         </switch>
         
@@ -1304,6 +1307,7 @@
             <default value="0.5"/>
             <test logic="AND" value = "systems/gauges/PHI/program/transparent-by-bus2-tension-on-caddy">
                 systems/gauges/PHI/program/route-pushed == 4
+                systems/gauges/PHI/program/release-on == 0
             </test>
         </switch>
         
@@ -1352,6 +1356,7 @@
             <default value="0.5"/>
             <test logic="AND" value = "systems/gauges/PHI/program/transparent-by-bus2-tension-on-caddy">
                 systems/gauges/PHI/program/route-pushed == 5
+                systems/gauges/PHI/program/release-on == 0
             </test>
         </switch>
 
@@ -2037,13 +2042,6 @@
         <switch name="systems/gauges/PHI/program/transparent-by-bus2-tension-on-caddy">
             <default value="0.0"/>
             <test logic="AND" value = "systems/warning-lights/transparent-by-bus2-tension">
-                systems/gauges/PHI/program/release-on == 0
-            </test>
-        </switch>
-        
-        <switch name="systems/gauges/PHI/program/light_red_console-on-caddy">
-            <default value="0.0"/>
-            <test logic="AND" value = "/sim/G91/re_emit/light_red_console">
                 systems/gauges/PHI/program/release-on == 0
             </test>
         </switch>

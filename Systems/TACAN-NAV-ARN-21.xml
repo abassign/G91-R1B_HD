@@ -434,6 +434,7 @@
             </test>
             <test logic="AND" value="systems/gauges/radio/NAV-ARN-21/in-range-lag">
                 systems/gauges/radio/TACAN-NAV-ARN-21/NAV-Active GT 0.0
+                /instrumentation/nav/dme-in-range GT 0.0
             </test>
         </switch>
         
@@ -458,6 +459,7 @@
             <test logic="AND" value="systems/gauges/radio/NAV-ARN-21/nav-distance-nm">
                 systems/gauges/radio/TACAN-NAV-ARN-21/NAV-Active GT 0.0
                 systems/gauges/radio/Collins-331-C4/operative GT 0.0
+                /instrumentation/nav/dme-in-range GT 0.0
             </test>
         </switch>
         
