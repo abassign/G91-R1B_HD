@@ -8,10 +8,6 @@
         <type>noshadow</type>
         <object-name>PANEL</object-name>
         <object-name>Cylinder.002</object-name>
-        <object-name>F_Segg_support.</object-name>
-        <object-name>Plane.004</object-name>
-        <object-name>Plane.012</object-name>
-        <object-name>Plane.014</object-name>
         <object-name>Plane.016</object-name>
         <object-name>Plane.017</object-name>
         <object-name>Plane.020</object-name>
@@ -19,7 +15,6 @@
         <object-name>Plane.026</object-name>
         <object-name>Plane.010</object-name>
         <object-name>Plane.003</object-name>
-        <object-name>Plane.015</object-name>
         <object-name>Plane.015</object-name>
     </animation>
     
@@ -27,39 +22,92 @@
         <type>material</type> 
         <object-name>Cylinder.002</object-name>
         <object-name>F_Segg_support.</object-name>
-        <object-name>Plane.004</object-name>
-        <object-name>Plane.012</object-name>
-        <object-name>Plane.014</object-name>
         <object-name>Plane.016</object-name>
         <object-name>Plane.017</object-name>
         <object-name>Plane.020</object-name>
         <object-name>Plane.021</object-name>
         <object-name>Plane.026</object-name>
         <diffuse>
-            <red>0.6</red>
-            <green>0.6</green>
-            <blue>0.6</blue>
-        </diffuse>
-        <ambient>
-            <red>0.6</red>
-            <green>0.6</green>
-            <blue>0.6</blue>
-        </ambient>
-    </animation>
-    
-    <animation> 
-        <type>material</type> 
-        <object-name>PANEL</object-name>
-        <diffuse>
-            <red>0.3</red>
-            <green>0.3</green>
-            <blue>0.35</blue>
+            <red>0.61</red>
+            <green>0.65</green>
+            <blue>0.67</blue>
         </diffuse>
         <ambient>
             <red>0.3</red>
             <green>0.3</green>
             <blue>0.3</blue>
         </ambient>
+        <specular>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </specular>
+    </animation>
+    
+    <animation> 
+        <type>material</type> 
+        <object-name>Plane.004</object-name>
+        <diffuse>
+            <red>0.61</red>
+            <green>0.65</green>
+            <blue>0.67</blue>
+        </diffuse>
+        <ambient>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </ambient>
+        <specular>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </specular>
+    </animation>
+    
+    <animation> 
+        <type>material</type> 
+        <object-name>Plane.014</object-name>
+        <diffuse>
+            <red>0.61</red>
+            <green>0.65</green>
+            <blue>0.67</blue>
+        </diffuse>
+        <ambient>
+            <red>0.25</red>
+            <green>0.25</green>
+            <blue>0.25</blue>
+        </ambient>
+        <specular>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </specular>
+    </animation>
+    
+    <animation> 
+        <type>material</type> 
+        <object-name>PANEL</object-name>
+        <diffuse>
+            <red>0.61</red>
+            <green>0.65</green>
+            <blue>0.67</blue>
+        </diffuse>
+        <ambient>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.3</blue>
+        </ambient>
+        <specular>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.3</blue>
+        </specular>
+        <emission>
+            <red>0.06</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/light_red_console</factor-prop>
+        </emission>
     </animation>
     
     <animation> 
@@ -67,14 +115,14 @@
         <object-name>Plane.010</object-name>
         <object-name>Plane.003</object-name>
         <diffuse>
-            <red>0.4</red>
-            <green>0.4</green>
-            <blue>0.45</blue>
+            <red>0.61</red>
+            <green>0.65</green>
+            <blue>0.67</blue>
         </diffuse>
         <ambient>
-            <red>0.5</red>
-            <green>0.5</green>
-            <blue>0.5</blue>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
         </ambient>
     </animation>
     
@@ -82,15 +130,26 @@
         <type>material</type> 
         <object-name>Plane.015</object-name>
         <diffuse>
+            <red>0.61</red>
+            <green>0.65</green>
+            <blue>0.67</blue>
+        </diffuse>
+        <ambient>
+            <red>0.25</red>
+            <green>0.25</green>
+            <blue>0.25</blue>
+        </ambient>
+        <specular>
             <red>0.3</red>
             <green>0.3</green>
             <blue>0.3</blue>
-        </diffuse>
-        <ambient>
-            <red>0.4</red>
-            <green>0.4</green>
-            <blue>0.4</blue>
-        </ambient>
+        </specular>
+        <emission>
+            <red>0.03</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/light_red_console</factor-prop>
+        </emission>
     </animation>
     
     <animation> 

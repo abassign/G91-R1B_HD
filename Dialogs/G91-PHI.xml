@@ -35,29 +35,31 @@
         <layout>vbox</layout>
         <group>
             <layout>table</layout>
-            <checkbox>
+            <button>
                 <row>0</row>
                 <col>0</col>
-                <halign>left</halign>
-                <label>PHI heading</label>
-                <property>fdm/jsbsim/systems/autopilot/gui/phi-heading</property>
-                <live>true</live>
+                <legend>Set PHI</legend>
                 <binding>
-                    <command>dialog-apply</command>
+                    <command>property-assign</command>
+                    <property>fdm/jsbsim/systems/autopilot/gui/phi-heading-button-on-off</property>
+                    <value>1</value>
                 </binding>
-                <binding>
-                    <command>nasal</command>
-                    <script>
-                        if (getprop("fdm/jsbsim/systems/autopilot/gui/phi-heading") >= 1.0) {
-                            setprop("fdm/jsbsim/systems/autopilot/gui/true-heading",0.0);
-                            setprop("fdm/jsbsim/systems/autopilot/gui/wing-leveler",0.0);
-                        }
-                    </script>
-                </binding>
-            </checkbox>
+            </button>
             <text>
                 <row>0</row>
                 <col>1</col>
+                <label>9999999</label>
+                <live>true</live>
+                <property>fdm/jsbsim/systems/gauges/PHI/indicator/switch-description</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.0</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>2</col>
                 <label>Distance (nm)</label>
                 <halign>left</halign>
                 <color>
@@ -68,7 +70,7 @@
             </text>
             <text>
                 <row>0</row>
-                <col>2</col>
+                <col>3</col>
                 <label>9999</label>
                 <live>true</live>
                 <format>%3.0f</format>
@@ -81,7 +83,7 @@
             </text>
             <text>
                 <row>0</row>
-                <col>3</col>
+                <col>4</col>
                 <label>on</label>
                 <color>
                     <red>0.9</red>
@@ -91,7 +93,7 @@
             </text>
             <text>
                 <row>0</row>
-                <col>4</col>
+                <col>5</col>
                 <label>9999</label>
                 <live>true</live>
                 <format>%3.0f</format>
@@ -104,7 +106,7 @@
             </text>
             <text>
                 <row>0</row>
-                <col>5</col>
+                <col>6</col>
                 <label>display</label>
                 <color>
                     <red>0.9</red>
@@ -114,7 +116,7 @@
             </text>
             <text>
                 <row>0</row>
-                <col>6</col>
+                <col>7</col>
                 <label>9999</label>
                 <live>true</live>
                 <format>%3.0f</format>
@@ -127,7 +129,7 @@
             </text>
             <text>
                 <row>0</row>
-                <col>7</col>
+                <col>8</col>
                 <label>Versus:</label>
                 <color>
                     <red>0.9</red>
@@ -137,7 +139,7 @@
             </text>
             <text>
                 <row>0</row>
-                <col>8</col>
+                <col>9</col>
                 <pref-width>30</pref-width>
                 <property>fdm/jsbsim/systems/gauges/PHI/program/route-from-text</property>
                 <live>true</live>
@@ -150,7 +152,7 @@
             </text>
             <text>
                 <row>0</row>
-                <col>9</col>
+                <col>10</col>
                 <label>Dif to H (deg)</label>
                 <halign>left</halign>
                 <color>
@@ -161,7 +163,7 @@
             </text>
             <text>
                 <row>0</row>
-                <col>10</col>
+                <col>11</col>
                 <label>9999999</label>
                 <live>true</live>
                 <format>%3.1f</format>
@@ -1395,6 +1397,38 @@
                 <pref-width>50</pref-width>
                 <label> </label>
             </text>
+        </group>
+    </group>
+    
+    <hrule/>
+    
+    <group>
+        <layout>vbox</layout>
+        <group>
+            <layout>table</layout>
+            <button>
+                <row>0</row>
+                <col>0</col>
+                <legend>Find VOR/NDB/TACAN</legend>
+                <binding>
+                    <command>nasal</command>
+                    <script>
+                        <![CDATA[
+                            var idNav = "ORI";
+                            var navaid = findNavaidsByID(idNav);
+                            navaid = navaid[0];
+                            print("ID: ", navaid.id); # prints info about 'MXW' (a VOR station)
+                            print("Name: ", navaid.name);
+                            print("Latitude: ", navaid.lat);
+                            print("Longitude: ", navaid.lon);
+                            print("Elevation (AMSL): ", navaid.elevation, " m");
+                            print("Type: ", navaid.type);
+                            print("Frequency: ", sprintf("%.3f", navaid.frequency / 1000), " Mhz");
+                            print("Range: ", navaid.range_nm, " nm");
+                        ]]>
+                    </script>
+                </binding>
+            </button>
         </group>
     </group>
     

@@ -31,6 +31,7 @@
     <property value="0.0">systems/gauges/PHI/program/release-togle</property>
     
     <property value="0.0">systems/gauges/PHI/indicator/is-phi-on</property>
+    <property value="0.0">systems/gauges/PHI/indicator/switch-turn-command</property>
     <property value="0.0">systems/gauges/PHI/indicator/switch-turn</property>
     <property value="0.0">systems/gauges/PHI/indicator/switch-up</property>
     <property value="0.0">systems/gauges/PHI/indicator/switch-turned</property>
@@ -140,6 +141,10 @@
     <property value="0.0">systems/gauges/PHI/operative-wa</property>
     
     <property value="0.0">systems/gauges/PHI/angle-zero</property>
+    
+    <property value="0.0">systems/autopilot/gui/phi-heading</property>
+    <property value="0.0">systems/autopilot/gui/phi-heading-button-on-off</property>
+    
     
     <channel name="systems gauges PHI electric" execrate="32">
         
@@ -1902,6 +1907,15 @@
             <test logic="AND" value="0">
                 systems/gauges/PHI/indicator/switch-turn-wa GT -0.1
                 systems/gauges/PHI/indicator/switch-turn-wa LT 0.1
+            </test>
+        </switch>
+        
+        <switch name="systems/gauges/PHI/indicator/switch-turn-command">
+            <default value="systems/gauges/PHI/indicator/switch-turn-command"/>
+            <test logic="AND" value="0">
+                systems/gauges/PHI/indicator/switch-turn-command == 1
+                systems/gauges/PHI/indicator/switch-turn-wa GT -0.03
+                systems/gauges/PHI/indicator/switch-turn-wa LT 0.03
             </test>
         </switch>
         

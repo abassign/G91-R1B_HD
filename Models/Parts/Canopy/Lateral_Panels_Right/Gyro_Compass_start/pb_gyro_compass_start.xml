@@ -3,7 +3,7 @@
 <PropertyList>
     
     <model>
-        <path>Aircraft/G91-R1B_HD/Models/Parts/Common/push_button_1in_01_black_model.xml</path>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Common/push_button_1in_01_black_model_compass_fast_slave.xml</path>
     </model>
     
     <animation>

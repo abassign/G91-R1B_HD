@@ -106,6 +106,8 @@ var defaultViewInTheEvent = nil;
 var testing_log_active = 0;
 var testing_level = 0;
 
+var phi_is_witch_turn_1 = 0;
+
 
 var main = func() {
     print("pilot_assistant.nas load module");
@@ -1851,6 +1853,12 @@ var pilot_assistant = func() {
         var departure_msg = "";
         setprop("fdm/jsbsim/systems/autopilot/altitude-QFE-set-active-stop",1);
         
+        #// No PHI control
+        if (getprop("fdm/jsbsim/systems/gauges/PHI/indicator/switch-turn") == 1) {
+            setprop("fdm/jsbsim/systems/gauges/PHI/indicator/switch-turn",2);
+            phi_is_witch_turn_1 = 1;
+        }
+        
         #// Normal departure procedure
         if (pilot_ass_status_id == 10.0) {
             var apt_coord = geo.Coord.new();
@@ -2171,6 +2179,12 @@ var pilot_assistant = func() {
                 setprop("fdm/jsbsim/systems/autopilot/gui/impact-control-active",1.0);
                 setprop("fdm/jsbsim/systems/autopilot/gui/speed-automatic-gear",0.0);
                 setprop("fdm/jsbsim/systems/autopilot/speed-best-by-altitude-set",1.0);
+                
+                #// PHI section control
+                if (phi_is_witch_turn_1 == 1) {
+                    setprop("fdm/jsbsim/systems/gauges/PHI/indicator/switch-turn",1);
+                    phi_is_witch_turn_1 = 0;
+                }
             }
         }
         #
