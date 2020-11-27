@@ -136,6 +136,7 @@
                     <button>
                         <row>2</row>
                         <col>0</col>
+                        <halign>left</halign>
                         <legend>Set PHI</legend>
                         <binding>
                             <command>property-assign</command>
@@ -145,7 +146,8 @@
                     </button>
                     <text>
                         <row>2</row>
-                        <col>1</col>
+                        <col>0</col>
+                        <halign>right</halign>
                         <label>9999999</label>
                         <live>true</live>
                         <property>fdm/jsbsim/systems/gauges/PHI/indicator/switch-description</property>
@@ -157,8 +159,9 @@
                     </text>
                     <text>
                         <row>2</row>
-                        <col>2</col>
-                        <label>999999999</label>
+                        <col>1</col>
+                        <halign>left</halign>
+                        <label>99999999</label>
                         <live>true</live>
                         <format>%3.0f (nm)</format>
                         <property>fdm/jsbsim/systems/gauges/PHI/mil-sum-display</property>
@@ -170,7 +173,8 @@
                     </text>
                     <text>
                         <row>2</row>
-                        <col>3</col>
+                        <col>2</col>
+                        <halign>left</halign>
                         <label>999999999</label>
                         <live>true</live>
                         <format>%3.0f (deg)</format>
@@ -183,7 +187,8 @@
                     </text>
                     <checkbox>
                         <row>2</row>
-                        <col>4</col>
+                        <col>3</col>
+                        <halign>left</halign>
                         <property>fdm/jsbsim/systems/gauges/PHI/program/route[1]/isPush</property>
                         <live>true</live>
                         <binding>
@@ -192,7 +197,8 @@
                     </checkbox>
                     <checkbox>
                         <row>2</row>
-                        <col>5</col>
+                        <col>4</col>
+                        <halign>left</halign>
                         <property>fdm/jsbsim/systems/gauges/PHI/program/route[2]/isPush</property>
                         <live>true</live>
                         <binding>
@@ -201,7 +207,8 @@
                     </checkbox>
                     <checkbox>
                         <row>2</row>
-                        <col>6</col>
+                        <col>5</col>
+                        <halign>left</halign>
                         <property>fdm/jsbsim/systems/gauges/PHI/program/route[3]/isPush</property>
                         <live>true</live>
                         <binding>
@@ -210,7 +217,8 @@
                     </checkbox>
                     <checkbox>
                         <row>2</row>
-                        <col>7</col>
+                        <col>6</col>
+                        <halign>left</halign>
                         <property>fdm/jsbsim/systems/gauges/PHI/program/route[4]/isPush</property>
                         <live>true</live>
                         <binding>
@@ -219,7 +227,8 @@
                     </checkbox>
                     <checkbox>
                         <row>2</row>
-                        <col>8</col>
+                        <col>7</col>
+                        <halign>left</halign>
                         <property>fdm/jsbsim/systems/gauges/PHI/program/route[5]/isPush</property>
                         <live>true</live>
                         <binding>
@@ -435,7 +444,8 @@
                     <checkbox>
                         <row>0</row>
                         <col>0</col>
-                        <label>Pitch/Altitude Ctrl</label>
+                        <halign>left</halign>
+                        <label>Pitch/Altitude</label>
                         <pref-width>120</pref-width>
                         <property>fdm/jsbsim/systems/autopilot/gui/altitude-active</property>
                         <live>true</live>
@@ -446,7 +456,7 @@
                     <text>
                         <row>0</row>
                         <col>1</col>
-                        <pref-width>70</pref-width>
+                        <label>99999999999</label>
                         <halign>left</halign>
                         <live>true</live>
                         <format>%3.1f (elev)</format>
@@ -460,7 +470,6 @@
                     <text>
                         <row>0</row>
                         <col>2</col>
-                        <pref-width>70</pref-width>
                         <halign>left</halign>
                         <live>true</live>
                         <property>fdm/jsbsim/systems/autopilot/gui/impact-control-geo-is-nil</property>
@@ -473,8 +482,8 @@
                     <radio>
                         <row>1</row>
                         <col>0</col>
+                        <halign>left</halign>
                         <label>Impact ctrl</label>
-                        <pref-width>120</pref-width>
                         <property>fdm/jsbsim/systems/autopilot/gui/impact-control-active</property>
                         <live>true</live>
                         <binding>
@@ -511,8 +520,9 @@
                     <slider>
                         <row>1</row>
                         <col>1</col>
+                        <halign>left</halign>
                         <name>impact_control_ramp_deg</name>
-                        <pref-width>80</pref-width>
+                        <pref-width>90</pref-width>
                         <property>fdm/jsbsim/systems/autopilot/gui/impact-medium-time</property>
                         <min>10.0</min>
                         <max>60.0</max>
@@ -525,7 +535,8 @@
                     <text>
                         <row>1</row>
                         <col>2</col>
-                        <pref-width>50</pref-width>
+                        <halign>left</halign>
+                        <label>999999999999999</label>
                         <live>true</live>
                         <format>%1.1f (Advanced)</format>
                         <property>fdm/jsbsim/systems/autopilot/gui/impact-medium-time</property>
@@ -538,12 +549,13 @@
                     <slider>
                         <row>1</row>
                         <col>3</col>
+                        <halign>left</halign>
                         <name>impact_control_ramp_deg</name>
-                        <pref-width>80</pref-width>
+                        <pref-width>90</pref-width>
                         <property>fdm/jsbsim/systems/autopilot/gui/altitude-QFE-impact-ft</property>
                         <min>200.0</min>
                         <max>1000.0</max>
-                        <step>10</step>
+                        <step>50</step>
                         <live>true</live>
                         <binding>
                             <command>dialog-apply</command>
@@ -561,7 +573,8 @@
                     <text>
                         <row>1</row>
                         <col>4</col>
-                        <pref-width>50</pref-width>
+                        <halign>left</halign>
+                        <label>99999999999</label>
                         <live>true</live>
                         <format>%5.0f (QFE)</format>
                         <property>fdm/jsbsim/systems/autopilot/gui/altitude-QFE-impact-ft</property>

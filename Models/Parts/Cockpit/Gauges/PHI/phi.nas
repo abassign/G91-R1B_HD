@@ -88,11 +88,11 @@ var phi_get_route_data = func() {
     
     #// PHI phi_indicator_switch_turned status
     
-    if (getprop("fdm/jsbsim/systems/gauges/PHI/program/route-manager/autopush-finished") == 1) {
-        print("***** autopush-finished == 1 : ",getprop("fdm/jsbsim/systems/gauges/PHI/indicator/switch-turned"));
+    if (getprop("fdm/jsbsim/systems/gauges/PHI/program/route-manager/autopush-end") == 1) {
         #// Set PS mode when finish the cycle
-        if (getprop("fdm/jsbsim/systems/gauges/PHI/indicator/switch-turned") == 1) {
-            setprop("fdm/jsbsim/systems/gauges/PHI/indicator/switch-turned",2)
+        if (getprop("fdm/jsbsim/systems/gauges/PHI/indicator/switch-turn") == 1) {
+            setprop("fdm/jsbsim/systems/gauges/PHI/program/reset",2.0);
+            ### setprop("fdm/jsbsim/systems/gauges/PHI/indicator/switch-turn",2)
         }
     }
     phi_indicator_switch_turned = getprop("fdm/jsbsim/systems/gauges/PHI/indicator/switch-turned");
@@ -358,7 +358,8 @@ setlistener("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-loop-mod",
         setprop("fdm/jsbsim/systems/gauges/PHI/program/reset",1);
         setprop("fdm/jsbsim/systems/gauges/PHI/indicator/digit-inc-stop",1);
         var altitudeHold = math.round(getprop("fdm/jsbsim/systems/autopilot/gui/altitude-hold-ft"));
-        if (altitudeHold <= 0.0) altitudeHold = 15000.0;
+        var altitude_actual = math.round(getprop("fdm/jsbsim/systems/autopilot/h-sl-ft-lag"));
+        if (altitudeHold <= (altitude_actual + 6000.0)) altitudeHold = altitude_actual + 6000.0;
         setprop("fdm/jsbsim/systems/gauges/PHI/program/route[1]/altitude-hold-ft",altitudeHold);
         setprop("fdm/jsbsim/systems/gauges/PHI/program/route[2]/altitude-hold-ft",altitudeHold);
         setprop("fdm/jsbsim/systems/gauges/PHI/program/route[3]/altitude-hold-ft",altitudeHold);
@@ -479,13 +480,19 @@ setlistener("fdm/jsbsim/systems/gauges/PHI/program/reset-after", func {
             setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-manual",1.0);
             setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-manual-mod",2.0);
             setprop("fdm/jsbsim/systems/gauges/PHI/indicator/switch-turn",2);
+            setprop("fdm/jsbsim/systems/autopilot/gui/true-heading",1.0);
+            setprop("fdm/jsbsim/systems/autopilot/gui/heading-control",1.0);
+            setprop("fdm/jsbsim/systems/autopilot/gui/altitude-hold-ft",math.round(getprop("fdm/jsbsim/systems/autopilot/h-sl-ft-lag")));
+            setprop("fdm/jsbsim/systems/autopilot/gui/altitude-hold",1.0);
+            setprop("fdm/jsbsim/systems/autopilot/gui/wing-leveler",0.0);
+            setprop("fdm/jsbsim/systems/gauges/PHI/convergency/status",-10);
         } else {
             setprop("fdm/jsbsim/systems/gauges/PHI/program/route-manager/autopush-active",1.0);
             setprop("fdm/jsbsim/systems/gauges/PHI/indicator/switch-turn",1);
+            setprop("fdm/jsbsim/systems/autopilot/gui/true-heading",0.0);
+            setprop("fdm/jsbsim/systems/autopilot/gui/wing-leveler",0.0);
+            setprop("fdm/jsbsim/systems/gauges/PHI/convergency/status",-10);
         }
-        setprop("fdm/jsbsim/systems/autopilot/gui/true-heading",0.0);
-        setprop("fdm/jsbsim/systems/autopilot/gui/wing-leveler",0.0);
-        setprop("fdm/jsbsim/systems/gauges/PHI/convergency/status",-10);
     }
 
 }, 1, 0);
@@ -563,6 +570,12 @@ setlistener("fdm/jsbsim/systems/autopilot/gui/phi-heading-button-on-off", func {
             setprop("fdm/jsbsim/systems/gauges/PHI/indicator/switch-turn",1);
         } else {
             setprop("fdm/jsbsim/systems/gauges/PHI/indicator/switch-turn",2);
+            setprop("fdm/jsbsim/systems/autopilot/gui/true-heading",1.0);
+            setprop("fdm/jsbsim/systems/autopilot/gui/heading-control",1.0);
+            setprop("fdm/jsbsim/systems/autopilot/gui/altitude-hold-ft",math.round(getprop("fdm/jsbsim/systems/autopilot/h-sl-ft-lag")));
+            setprop("fdm/jsbsim/systems/autopilot/gui/altitude-hold",1.0);
+            setprop("fdm/jsbsim/systems/autopilot/gui/wing-leveler",0.0);
+            setprop("fdm/jsbsim/systems/gauges/PHI/convergency/status",-10);
         };
         setprop("fdm/jsbsim/systems/autopilot/gui/phi-heading-button-on-off",0);
     }

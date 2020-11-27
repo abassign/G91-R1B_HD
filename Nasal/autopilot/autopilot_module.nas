@@ -90,45 +90,71 @@ var module_pilot_assistant = modules.Module.new("pilot_assistant");
 #// Load correlate modules
 var module_pilot_impact_control = modules.Module.new("pilot_impact_control");
 var module_pilot_intercept = modules.Module.new("pilot_intercept");
+#// Load ausiliary nmodules
+var module_pilot_radio_assistant = modules.Module.new("pilot_radio_assistant");
 
 
 setlistener("sim/G91/nasal/modules/autopilot-active-mod", func {
+    
+    if (getprop("sim/G91/nasal/modules/autopilot-active") == 0 and
+        getprop("sim/G91/nasal/modules/autopilot-active-mod") == 1) {
+        setprop("sim/G91/nasal/modules/autopilot-active-mod",2);
+    }
 
     if ((getprop("sim/G91/nasal/modules/autopilot-active-mod") == 1 or
         getprop("sim/G91/nasal/modules/autopilot-active-mod") == 2) and
         getprop("sim/G91/nasal/modules/autopilot-active") == 0) {
         
         #// 0=(mostly) silent; 1=print setlistener and maketimer calls to console; 2=print also each listener hit, be very careful with this! 
-        module_pilot_assistant.setDebug(1);
+        module_pilot_assistant.setDebug(0);
         module_pilot_assistant.setFilePath(getprop("/sim/aircraft-dir")~"/Nasal/autopilot");
         module_pilot_assistant.setMainFile("pilot_assistant.nas");
         module_pilot_assistant.load();
+        print("autopilot_module.nas load module [pilot_assistant.nas]");
         
         module_pilot_impact_control.setDebug(0);
         module_pilot_impact_control.setFilePath(getprop("/sim/aircraft-dir")~"/Nasal/autopilot");
         module_pilot_impact_control.setMainFile("pilot_impact_control.nas");
         module_pilot_impact_control.load();
+        print("autopilot_module.nas load module [pilot_impact_control.nas]");
         
         module_pilot_intercept.setDebug(0);
         module_pilot_intercept.setFilePath(getprop("/sim/aircraft-dir")~"/Nasal/autopilot");
         module_pilot_intercept.setMainFile("pilot_intercept.nas");
         module_pilot_intercept.load();
+        print("autopilot_module.nas load module [pilot_intercept.nas]");
+        
+        module_pilot_radio_assistant.setDebug(1);
+        module_pilot_radio_assistant.setFilePath(getprop("/sim/aircraft-dir")~"/Nasal/autopilot");
+        module_pilot_radio_assistant.setMainFile("pilot_radio_assistant.nas");
+        module_pilot_radio_assistant.load();
+        print("autopilot_module.nas load module [pilot_radio_assistant.nas]");
         
         setprop("sim/G91/nasal/modules/autopilot-active",1);
         
     } elsif (getprop("sim/G91/nasal/modules/autopilot-active-mod") == 2 and 
         getprop("sim/G91/nasal/modules/autopilot-active") == 1) {
         
+        module_pilot_radio_assistant.reload();
+        print("autopilot_module.nas reload module [pilot_radio_assistant.nas]");
         module_pilot_intercept.reload();
+        print("autopilot_module.nas reload module [pilot_intercept.nas]");
         module_pilot_impact_control.reload();
+        print("autopilot_module.nas reload module [pilot_impact_control.nas]");
         module_pilot_assistant.reload();
+        print("autopilot_module.nas reload module [pilot_assistant.nas]");
         
     } elsif (getprop("sim/G91/nasal/modules/autopilot-active-mod") == 9 and
         getprop("sim/G91/nasal/modules/autopilot-active") == 1) {
         
+        module_pilot_radio_assistant.unload();
+        print("autopilot_module.nas unload module [pilot_radio_assistant.nas]");
         module_pilot_intercept.unload();
+        print("autopilot_module.nas unload module [pilot_intercept.nas]");
         module_pilot_impact_control.unload();
+        print("autopilot_module.nas unload module [pilot_impact_control.nas]");
         module_pilot_assistant.unload();
+        print("autopilot_module.nas unload module [pilot_assistant.nas]");
         
         setprop("sim/G91/nasal/modules/autopilot-active",0);
         

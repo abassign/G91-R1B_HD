@@ -1409,26 +1409,25 @@
             <button>
                 <row>0</row>
                 <col>0</col>
-                <legend>Find VOR/NDB/TACAN</legend>
+                <legend>Automatic find VOR/NDB/TACAN</legend>
                 <binding>
-                    <command>nasal</command>
-                    <script>
-                        <![CDATA[
-                            var idNav = "ORI";
-                            var navaid = findNavaidsByID(idNav);
-                            navaid = navaid[0];
-                            print("ID: ", navaid.id); # prints info about 'MXW' (a VOR station)
-                            print("Name: ", navaid.name);
-                            print("Latitude: ", navaid.lat);
-                            print("Longitude: ", navaid.lon);
-                            print("Elevation (AMSL): ", navaid.elevation, " m");
-                            print("Type: ", navaid.type);
-                            print("Frequency: ", sprintf("%.3f", navaid.frequency / 1000), " Mhz");
-                            print("Range: ", navaid.range_nm, " nm");
-                        ]]>
-                    </script>
+                    <command>property-assign</command>
+                    <property>fdm/jsbsim/systems/autopilot/pilot-radio-assistant/mode-trigger</property>
+                    <value>1</value>
                 </binding>
             </button>
+            <text>
+                <row>0</row>
+                <col>1</col>
+                <property>fdm/jsbsim/systems/autopilot/pilot-radio-assistant/mode-description</property>
+                <live>true</live>
+                <halign>left</halign>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.0</blue>
+                </color>
+            </text>
         </group>
     </group>
     

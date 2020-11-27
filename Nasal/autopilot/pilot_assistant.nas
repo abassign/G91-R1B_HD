@@ -619,8 +619,6 @@ var AirportsDataClass = {
                     num_rwy = 0;
                 };
                 me.rwy_list_sort_select = num_rwy;
-                ### print("***** scan_value : ",scan_value," num_rwy: ",num_rwy," me.rwy_list_sort_select: ",me.rwy_list_sort_select, " num_max_rwy: ",num_max_rwy);
-                ### print("***** : ",debug.dump(rwys.headingSort));
                 s = rwys.rwys_list_id[rwys.headingSort[num_rwy][1]].runway_description();
                 me.rwy_list_select = rwys.headingSort[num_rwy][1];
             } else {
