@@ -19,7 +19,7 @@ var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/pilot-radio-assi
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/find-ndb-str","  NDB","STRING");
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/select-ndb-description","","STRING");
 
-var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/search-max-dist",200.0,"DOUBLE");
+var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/search-max-dist",100.0,"DOUBLE");
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/search-max-bearing",30.0,"DOUBLE");
 
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/radials-selected-correct-deg",0,"DOUBLE");
@@ -354,13 +354,9 @@ var RadiosDisplayClass = {
             aRoot: nil,
             myHBox: nil,
             keypad: nil,
+            isWindowCreate: 0,
         };
-        #// create a new window, using the dialog decoration (i.e. titlebar)
-        me.window = canvas.Window.new([750,250],"dialog").set("title","Select radio assistence");
-        #// adding a canvas to the new window and setting up background colors/transparency
-        me.myCanvas = me.window.createCanvas().setColorBackground(1,1,1,0.8);
-        #// creating the top-level/root group which will contain all other elements/group
-        me.aRoot = me.myCanvas.createGroup();
+        me.isWindowCreate = 0;
         return {parents: [RadiosDisplayClass]};
     },
     
@@ -373,6 +369,16 @@ var RadiosDisplayClass = {
     },
     
     show: func(radios, airplane) {
+        if (me.isWindowCreate == 0) {
+            #// create a new window, using the dialog decoration (i.e. titlebar)
+            me.window = canvas.Window.new([750,250],"dialog").set("title","Select radio assistence");
+            #// adding a canvas to the new window and setting up background colors/transparency
+            me.myCanvas = me.window.createCanvas().setColorBackground(1,1,1,0.8);
+            #// creating the top-level/root group which will contain all other elements/group
+            me.aRoot = me.myCanvas.createGroup();
+            me.isWindowCreate = 1;
+        };
+        
         #// See: http://wiki.flightgear.org/Howto:Creating_a_Canvas_GUI_dialog_file
         #// create a new layout for the keypad:
         me.myHBox = canvas.HBoxLayout.new();
