@@ -1409,7 +1409,7 @@
             <button>
                 <row>0</row>
                 <col>0</col>
-                <legend>Automatic find VOR/NDB/TACAN</legend>
+                <legend>Automatic find VOR-NDB-TACAN</legend>
                 <binding>
                     <command>property-assign</command>
                     <property>fdm/jsbsim/systems/autopilot/pilot-radio-assistant/mode-trigger</property>
@@ -1419,8 +1419,89 @@
             <text>
                 <row>0</row>
                 <col>1</col>
+                <label>MMMMMMMM</label>
                 <property>fdm/jsbsim/systems/autopilot/pilot-radio-assistant/mode-description</property>
                 <live>true</live>
+                <halign>left</halign>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.0</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>2</col>
+                <label>MMMM</label>
+                <halign>left</halign>
+                <live>true</live>
+                <property>fdm/jsbsim/systems/autopilot/pilot-radio-assistant/find-vor-str</property>
+                <halign>left</halign>
+                <color>
+                    <red>1</red>
+                    <green>1</green>
+                    <blue>1</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>3</col>
+                <label>99999999</label>
+                <live>true</live>
+                <format>%3.3f</format>
+                <property>/instrumentation/nav/frequencies/selected-mhz</property>
+                <halign>left</halign>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.0</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>4</col>
+                <label>Radial</label>
+                <halign>left</halign>
+                <color>
+                    <red>1</red>
+                    <green>1</green>
+                    <blue>1</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>5</col>
+                <label>99999</label>
+                <live>true</live>
+                <format>%3.0f</format>
+                <property>/instrumentation/nav/radials/selected-deg</property>
+                <halign>left</halign>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.0</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>6</col>
+                <label>MMMM</label>
+                <live>true</live>
+                <property>fdm/jsbsim/systems/autopilot/pilot-radio-assistant/find-ndb-str</property>
+                <halign>left</halign>
+                <color>
+                    <red>1</red>
+                    <green>1</green>
+                    <blue>1</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>7</col>
+                <label>999</label>
+                <live>true</live>
+                <format>%3.0f</format>
+                <property>/instrumentation/adf/frequencies/selected-khz</property>
                 <halign>left</halign>
                 <color>
                     <red>0.9</red>

@@ -9,6 +9,13 @@ G91_Params.xml
     <popup>
         <welcome type="int">1</welcome>
     </popup>
+    
+    <nasal>
+        <modules>
+            <set-active-autopilot type="int">0</set-active-autopilot>
+            <set-active-radio type="int">1</set-active-radio>
+        </modules>
+    </nasal>
 
     <models>
         <active>

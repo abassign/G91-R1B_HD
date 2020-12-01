@@ -422,6 +422,10 @@ var AirportsDataClass = {
             rwy_list_select: -1,
             scan_radar_airport: 0,
         };
+        
+        me.num_airports_max = 100;
+        me.scan_radar_airport = 0;
+        
         return {parents: [AirportsDataClass]};
     },
     
@@ -430,14 +434,16 @@ var AirportsDataClass = {
         var distanceSort = {};
         me.num_airports_max = 100;
         me.scan_radar_airport = 0;
+        me.distance_max = getprop("fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct_max_distance");
         var num_airport = 0;
         if (airport_name != nil) {
-            airport_name = string.uc(airport_name);
+            airport_name = string.trim(string.uc(airport_name));
             if (size(airport_name) >= 2 and size(airport_name) <= 4) {
                 var near_airports = findAirportsByICAO(airport_name);
                 foreach(var airport; near_airports) {
                     airports[airport.id] = airport;
                     num_airport += 1;
+                    print("***** AirportsDataClass.init airport_name : ",airport_name," id: ",airport.id);
                 }
             }
             if (num_airport == 0) {
@@ -447,7 +453,7 @@ var AirportsDataClass = {
                 } else {
                     me.distance_max = getprop("fdm/jsbsim/systems/autopilot/gui/landing-rwy-search-distance-max");
                 };
-                #// print("***** : ",airport_name," ",size(airport_name)," Scan: ",me.scan_radar_airport," distance max: ",me.distance_max);
+                #// print("***** AirportsDataClass.init : ",airport_name," ",size(airport_name)," Scan: ",me.scan_radar_airport," distance max: ",me.distance_max);
                 var airplane = geo.aircraft_position();
                 var airportsToSearch = nil;
                 airportsToSearch = findAirportsWithinRange(airplane, me.distance_max);
@@ -457,7 +463,7 @@ var AirportsDataClass = {
                             num_airport += 1;
                             airports[airport.id] = airport;
                             distanceSort[num_airport -1] = [0.0,0.0];
-                            print("pilot_assistan.nas AirportsDataClass.init airport: ",airport.id," ",airport.name," ");
+                            #// print("pilot_assistan.nas AirportsDataClass.init airport: ",airport.id," ",airport.name," ");
                         }
                         #// Verify is necessary to stop for airports number exceded
                         if (num_airport >= me.num_airports_max) break;
@@ -474,6 +480,7 @@ var AirportsDataClass = {
             me.num_airports += 1;
             me.airports[airport.id] = AirportDataClass.new();
             me.airports[airport.id].init(airport);
+            #// print("***** AirportsDataClass.init me.airports id : ",airport.id," me.airports[airport.id]: ",me.airports[airport.id].name);
             if (me.num_airports >= me.num_airports_max) break;
         };
         me.select_nearest = 0;
@@ -500,17 +507,36 @@ var AirportsDataClass = {
             var isNearestMaxDistance = getprop("fdm/jsbsim/systems/autopilot/gui/landing-rwy-search-distance-max");
             foreach(var key_airport; keys(me.airports)) {
                 var airport = me.airports[key_airport];
-                #// print("***** airport_radar_active: ",airport_radar_active," ",me.scan_radar_airport," heading_true_deg: ",heading_true_deg," : ",airport.selectorByHeading(0.0));
-                if (me.scan_radar_airport > 0.0) {
-                    airport.selectorByHeading(0.0);
+                #// print("***** airport_radar_active: ",airport_radar_active," | ",me.scan_radar_airport," | heading_true_deg: ",heading_true_deg," : ",airport.selectorByHeading(0.0));
+                if (me.scan_radar_airport > 0) {
+                    if (me.scan_radar_airport > 0) {
+                        airport.selectorByHeading(0.0);
+                    } else {
+                        airport.select_by_heading = 1;
+                    };
+                    if (airport.select_by_heading > 0) {
+                        var distance = airport.distance();
+                        if (airport_nearest_active == 0 or (airport_nearest_active == 1 and distance <= isNearestMaxDistance)) {
+                            me.airports_list_id[me.num_select_airports] = airport.id;
+                            me.airports_list_select_by_heading[me.num_select_airports] = 1;
+                            me.airports_list_distance[me.num_select_airports] = distance;
+                            me.distanceSort[me.num_select_airports] = [distance,airport.id];
+                            if (me.num_select_airports == 0) {
+                                #// in pool position the frist airport scanned
+                                setprop("fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct/airport_select",me.airports[airport.id].airport_id_name());
+                                me.airports_list_select = 0;
+                            };
+                            me.num_select_airports += 1;
+                            #// print("****** ",key_airport," ",me.num_select_airports," ",me.airports[airport.id].airport_id_name()," Distance: ",distance," of: ",isNearestMaxDistance);
+                            if (me.num_select_airports >= me.num_airports_max) break;
+                        };
+                    };
                 } else {
-                    airport.select_by_heading = 1;
-                };
-                if (airport.select_by_heading > 0) {
                     var distance = airport.distance();
-                    if (airport_nearest_active == 0 or (airport_nearest_active == 1 and distance <= isNearestMaxDistance)) {
+                    #// print("***** airport_id_names key_airport : ",key_airport," distance: ",distance," max: ",me.distance_max);
+                    if (distance <= me.distance_max) {
                         me.airports_list_id[me.num_select_airports] = airport.id;
-                        me.airports_list_select_by_heading[me.num_select_airports] = me.scan_radar_airport;
+                        me.airports_list_select_by_heading[me.num_select_airports] = 1;
                         me.airports_list_distance[me.num_select_airports] = distance;
                         me.distanceSort[me.num_select_airports] = [distance,airport.id];
                         if (me.num_select_airports == 0) {
@@ -689,6 +715,7 @@ var airport_rwy_finder = func(airport_name) {
     var rwy = nil;
     airport_select_id_direct = nil;
     airports_selector.init(airport_name);
+    #// print("***** Pilot_assistant.nas airport_rwy_finder airport_name : ",airport_name," num airport: ",airports_selector.num_airports);
     if (airports_selector.num_airports > 0) {
         airports_selector.airport_id_names();
         airports_selector.seq_select_rwy(0);
@@ -742,7 +769,7 @@ var pilot_assistant = func() {
         
         if (airport_select != nil and rwy_select != nil) {
             
-            # print("***** airport_select.id: ",airport_select.id," rwy_select.id: ",rwy_select);
+            #// print("***** airport_select.id: ",airport_select.id," rwy_select.id: ",rwy_select);
             
             isAirport_and_rw_selected = 1;
             var landing_rwy_h_offset_nm = - 0.1;

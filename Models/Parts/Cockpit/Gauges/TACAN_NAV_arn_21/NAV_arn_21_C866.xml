@@ -421,7 +421,7 @@
             <binding>
                 <command>property-adjust</command>
                 <property>fdm/jsbsim/systems/gauges/radio/NAV-ARN-21/chan-Hi</property>
-                <factor>0.1</factor>
+                <factor>1</factor>
                 <min>0</min>
                 <max>13</max>                
                 <wrap>true</wrap>
@@ -433,7 +433,7 @@
         <type>rotate</type>
         <object-name>selector 13 (Meshed)</object-name>
         <object-name>switch-13 A (Meshed)</object-name>
-        <property>fdm/jsbsim/systems/gauges/radio/NAV-ARN-21/chan-Hi</property>
+        <property>fdm/jsbsim/systems/gauges/radio/NAV-ARN-21/chan-Hi-pos</property>
         <factor>27.692307</factor>
         <center>
             <x-m>0.000</x-m>
@@ -441,7 +441,7 @@
             <z-m>0.003</z-m>
         </center>
         <axis>
-            <x>-1</x>
+            <x>1</x>
             <y>0</y>
             <z>0</z>
         </axis>
@@ -455,7 +455,7 @@
             <binding>
                 <command>property-adjust</command>
                 <property>fdm/jsbsim/systems/gauges/radio/NAV-ARN-21/chan-Lo</property>
-                <factor>0.1</factor>
+                <factor>1</factor>
                 <min>0</min>
                 <max>10</max>                
                 <wrap>true</wrap>
@@ -467,7 +467,7 @@
         <type>rotate</type>
         <object-name>selector 10 (Meshed)</object-name>
         <object-name>switch-10 A (Meshed)</object-name>
-        <property>fdm/jsbsim/systems/gauges/radio/NAV-ARN-21/chan-Lo</property>
+        <property>fdm/jsbsim/systems/gauges/radio/NAV-ARN-21/chan-Lo-pos</property>
         <factor>36.0</factor>
         <center>
             <x-m>0.000</x-m>
@@ -475,7 +475,7 @@
             <z-m>0.003</z-m>
         </center>
         <axis>
-            <x>-1</x>
+            <x>1</x>
             <y>0</y>
             <z>0</z>
         </axis>
@@ -529,7 +529,7 @@
     <animation>
         <type>rotate</type>
         <object-name>switch_2_level (Meshed)</object-name>
-        <property>fdm/jsbsim/systems/gauges/radio/NAV-ARN-21/switch-turn</property>
+        <property>fdm/jsbsim/systems/gauges/radio/NAV-ARN-21/switch-turn-pos</property>
         <factor>12</factor>
         <offset>-12</offset>
         <center>

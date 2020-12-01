@@ -32,7 +32,11 @@
     
     <!-- NAV section -->
     
+    <property value="0.0">systems/gauges/radio/NAV-ARN-21/set-on-off</property>
+    <property value="0.0">systems/gauges/radio/NAV-ARN-21/freq-imposed</property>
+    <property value="0.0">systems/gauges/radio/NAV-ARN-21/freq-imposed-new-event</property>
     <property value="0.0">systems/gauges/radio/NAV-ARN-21/switch-turn</property>
+    <property value="0.0">systems/gauges/radio/NAV-ARN-21/switch-turn-pos</property>
     <property value="0.0">systems/gauges/radio/NAV-ARN-21/operative-start-stop</property>
     <property value="0.0">systems/gauges/radio/NAV-ARN-21/operative-heating</property>
     <property value="0.0">systems/gauges/radio/NAV-ARN-21/sw-off</property>
@@ -43,7 +47,9 @@
     <property value="0.0">systems/gauges/radio/NAV-ARN-21/nav-distance-nm</property>
     <property value="0.0">systems/gauges/radio/NAV-ARN-21/isNot-NAV-Active</property>
     <property value="0.0">systems/gauges/radio/NAV-ARN-21/chan-Hi</property>
+    <property value="0.0">systems/gauges/radio/NAV-ARN-21/chan-Hi-pos</property>
     <property value="0.0">systems/gauges/radio/NAV-ARN-21/chan-Lo</property>
+    <property value="0.0">systems/gauges/radio/NAV-ARN-21/chan-Lo-pos</property>
     <property value="0.0">systems/gauges/radio/NAV-ARN-21/freq-unit</property>
     <property value="0.0">systems/gauges/radio/NAV-ARN-21/freq-dec</property>
     <property value="0.0">systems/gauges/radio/NAV-ARN-21/freq-chan</property>
@@ -302,26 +308,78 @@
     </channel>
     
     
+    <channel name="systems gauges radio NAV-ARN-21 set frequencies" execrate="4">
+        
+        <washout_filter name="systems/gauges/radio/NAV-ARN-21/freq-imposed-new-event">
+            <input>/instrumentation/nav/frequencies/selected-mhz</input>
+            <c1>1.0</c1>
+        </washout_filter>
+        
+    </channel>
+    
+    
+    <channel name="systems gauges radio NAV-ARN-21 switch autostart" execrate="32">
+        
+        <switch name="systems/gauges/radio/NAV-ARN-21/set-on-off">
+            <default value="systems/gauges/radio/NAV-ARN-21/set-on-off"/>
+            <test logic="AND" value="2.0">
+                systems/electric/bus[1]/NAV/fuse == 1
+                systems/electric/bus[1]/V GE 24.0
+                systems/electric/inv-primary/V GE 100.0
+                <test logic="OR">
+                    systems/gauges/radio/NAV-ARN-21/freq-imposed-new-event GE 0.8
+                    systems/gauges/radio/NAV-ARN-21/freq-imposed-new-event LE -0.8
+                </test>
+            </test>
+            <test logic="AND" value="0.0">
+                systems/gauges/radio/NAV-ARN-21/freq-imposed-new-event LT 0.8
+                systems/gauges/radio/NAV-ARN-21/freq-imposed-new-event GT 0.1
+            </test>
+            <test logic="AND" value="0.0">
+                systems/gauges/radio/NAV-ARN-21/freq-imposed-new-event GT -0.8
+                systems/gauges/radio/NAV-ARN-21/freq-imposed-new-event LT -0.1
+            </test>
+        </switch>
+        
+        <switch name="systems/gauges/radio/NAV-ARN-21/switch-turn">
+            <default value="systems/gauges/radio/NAV-ARN-21/switch-turn"/>
+            <test logic="AND" value="0.0">
+                systems/gauges/radio/NAV-ARN-21/set-on-off == 1
+            </test>
+            <test logic="AND" value="2.0">
+                systems/gauges/radio/NAV-ARN-21/set-on-off == 2
+            </test>
+        </switch>
+        
+    </channel>
+    
+    
     <channel name="systems gauges radio NAV-ARN-21 switch" execrate="4">
+        
+        <lag_filter name="systems/gauges/radio/NAV-ARN-21/switch-turn-pos">
+            <input>systems/gauges/radio/NAV-ARN-21/switch-turn</input>
+            <c1>8.0</c1>
+        </lag_filter>
         
         <switch name="systems/gauges/radio/NAV-ARN-21/sw-off">
             <default value="1.0"/>
             <test logic="AND" value="0.0">
-                systems/gauges/radio/NAV-ARN-21/switch-turn == 0
+                systems/gauges/radio/NAV-ARN-21/switch-turn-pos LT 0.1
             </test>
         </switch>
         
         <switch name="systems/gauges/radio/NAV-ARN-21/sw-rec">
             <default value="1.0"/>
             <test logic="AND" value="0.0">
-                systems/gauges/radio/NAV-ARN-21/switch-turn == 1
+                systems/gauges/radio/NAV-ARN-21/switch-turn-pos GT 0.9
+                systems/gauges/radio/NAV-ARN-21/switch-turn-pos LT 1.1
             </test>
         </switch>
         
         <switch name="systems/gauges/radio/NAV-ARN-21/sw-TR">
             <default value="0.0"/>
             <test logic="AND" value="1.0">
-                systems/gauges/radio/NAV-ARN-21/switch-turn == 2
+                systems/gauges/radio/NAV-ARN-21/switch-turn-pos GT 1.9
             </test>
         </switch>
         
@@ -363,6 +421,22 @@
             <input>/instrumentation/nav/nav-distance</input>
             <gain>0.000539957</gain>
         </pure_gain>
+        
+        <linear_actuator name="systems/gauges/radio/NAV-ARN-21/chan-Lo-pos">
+            <input>systems/gauges/radio/NAV-ARN-21/chan-Lo</input>
+            <module>10</module>
+            <lag>8.0</lag>
+            <gain>1.0</gain>
+            <versus>0</versus>
+        </linear_actuator>
+        
+        <linear_actuator name="systems/gauges/radio/NAV-ARN-21/chan-Hi-pos">
+            <input>systems/gauges/radio/NAV-ARN-21/chan-Hi</input>
+            <module>13</module>
+            <lag>8.0</lag>
+            <gain>1.0</gain>
+            <versus>0</versus>
+        </linear_actuator>
         
         <fcs_function name="systems/gauges/radio/NAV-ARN-21/freq-unit">
             <function>

@@ -3,17 +3,6 @@
 # 2019-10-25 Adriano Bassignana
 # GPL 2.0+
 
-var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/impact-control-active", 0, "INT");
-var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/impact-control-freeze", 1, "INT");
-var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/impact-min-z-ft-mod", 200.0, "DOUBLE");
-var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/impact-medium-time", 15.0, "DOUBLE");
-var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/pilot-impact-control-t0", 0.0, "DOUBLE");
-var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/pilot-impact-control-t1", 0.0, "DOUBLE");
-var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/pilot-impact-control-t2", 0.0, "DOUBLE");
-var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/pilot-impact-control-t3", 0.0, "DOUBLE");
-var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/pilot-impact-control-t4", 0.0, "DOUBLE");
-var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/altitude-QFE-set-active-text", 0.0, "STRING");
-
 var timeStep = 1.0;
 var timeStepDivisor = 1.0;
 var delta_time = 1.0;

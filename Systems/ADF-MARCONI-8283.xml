@@ -17,7 +17,7 @@
     <property value="2.0">systems/gauges/radio/ADF-Marconi-8283/freq-band-set</property>
     <property value="0.0">systems/gauges/radio/ADF-Marconi-8283/freq-band-pos</property>
     <property value="0.0">systems/gauges/radio/ADF-Marconi-8283/freq-band-id</property>
-    <property value="0.5">systems/gauges/radio/ADF-Marconi-8283/gain-set</property>
+    <property value="0.9">systems/gauges/radio/ADF-Marconi-8283/gain-set</property>
     <property value="0.0">systems/gauges/radio/ADF-Marconi-8283/sw-on-togle</property>
     <property value="0.0">systems/gauges/radio/ADF-Marconi-8283/sw-on-pos</property>
     <property value="0.0">systems/gauges/radio/ADF-Marconi-8283/sw-cw-togle</property>
@@ -35,6 +35,7 @@
     <property value="0.0">systems/gauges/radio/ADF-Marconi-8283/vol-set</property>
     <property value="0.0">systems/gauges/radio/ADF-Marconi-8283/tune-arrow-pos</property>
     <property value="0.0">systems/gauges/radio/ADF-Marconi-8283/tune-intensity</property>
+    <property value="0.0">systems/gauges/radio/ADF-Marconi-8283/set-on-off</property>
     
     <channel name="systems gauges radio ADF Marconi 8283 electric" execrate="32">
         
@@ -375,6 +376,71 @@
             <input>systems/gauges/radio/ADF-Marconi-8283/freq-set-pos-wash-clip</input>
             <c1>1.0</c1>
         </integrator>
+        
+    </channel>
+    
+    
+    <channel name="systems gauges radio ADF Marconi 8283 autostart" execrate="32">
+        
+        <switch name="systems/gauges/radio/ADF-Marconi-8283/set-on-off">
+            <default value="systems/gauges/radio/ADF-Marconi-8283/set-on-off"/>
+            <test logic="AND" value="2.0">
+                systems/electric/bus[1]/UHF-radio/fuse == 1
+                systems/electric/bus[1]/V GE 24.0
+                <test logic="OR">
+                    systems/gauges/radio/ADF-Marconi-8283/freq-imposed-new-event GE 0.8
+                    systems/gauges/radio/ADF-Marconi-8283/freq-imposed-new-event LE -0.8
+                </test>
+            </test>
+            <test logic="AND" value="0.0">
+                systems/gauges/radio/ADF-Marconi-8283/freq-imposed-new-event LT 0.8
+                systems/gauges/radio/ADF-Marconi-8283/freq-imposed-new-event GT 0.1
+            </test>
+            <test logic="AND" value="0.0">
+                systems/gauges/radio/ADF-Marconi-8283/freq-imposed-new-event GT -0.8
+                systems/gauges/radio/ADF-Marconi-8283/freq-imposed-new-event LT -0.1
+            </test>
+        </switch>
+        
+        <switch name="systems/gauges/radio/ADF-Marconi-8283/sw-on-togle">
+            <default value="systems/gauges/radio/ADF-Marconi-8283/sw-on-togle"/>
+            <test logic="AND" value="0.0">
+                systems/gauges/radio/ADF-Marconi-8283/set-on-off == 1
+            </test>
+            <test logic="AND" value="1.0">
+                systems/gauges/radio/ADF-Marconi-8283/set-on-off == 2
+            </test>
+        </switch>
+        
+        <switch name="systems/gauges/radio/ADF-Marconi-8283/sw-on-togle">
+            <default value="systems/gauges/radio/ADF-Marconi-8283/sw-on-togle"/>
+            <test logic="AND" value="0.0">
+                systems/gauges/radio/ADF-Marconi-8283/set-on-off == 1
+            </test>
+            <test logic="AND" value="1.0">
+                systems/gauges/radio/ADF-Marconi-8283/set-on-off == 2
+            </test>
+        </switch>
+        
+        <switch name="systems/gauges/radio/ADF-Marconi-8283/sw-cw-togle">
+            <default value="systems/gauges/radio/ADF-Marconi-8283/sw-cw-togle"/>
+            <test logic="AND" value="0.0">
+                systems/gauges/radio/ADF-Marconi-8283/set-on-off == 1
+            </test>
+            <test logic="AND" value="1.0">
+                systems/gauges/radio/ADF-Marconi-8283/set-on-off == 2
+            </test>
+        </switch>
+        
+        <switch name="systems/gauges/radio/ADF-Marconi-8283/sw-ADF-togle">
+            <default value="systems/gauges/radio/ADF-Marconi-8283/sw-ADF-togle"/>
+            <test logic="AND" value="0.0">
+                systems/gauges/radio/ADF-Marconi-8283/set-on-off == 1
+            </test>
+            <test logic="AND" value="1.0">
+                systems/gauges/radio/ADF-Marconi-8283/set-on-off == 2
+            </test>
+        </switch>
         
     </channel>
     

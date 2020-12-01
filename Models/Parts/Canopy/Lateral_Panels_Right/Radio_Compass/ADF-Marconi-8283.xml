@@ -1203,7 +1203,7 @@
         <type>translate</type>
         <object-name>switch dim push top (Meshed)</object-name>
         <property>/fdm/jsbsim/systems/gauges/radio/ADF-Marconi-8283/sw-dim-pos</property>
-        <factor>-0.01</factor>
+        <factor>-0.005</factor>
         <center>
             <x-m>0.077</x-m><y-m>-0.106</y-m><z-m>0.0</z-m>
         </center>

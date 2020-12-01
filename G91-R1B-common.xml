@@ -89,7 +89,7 @@
         
         <menubar>
             <default>
-                <menu n="12">
+                <menu n="13">
                     <label>Fiat G91</label>
                     <enabled type="bool">true</enabled>
                     <item>
@@ -143,6 +143,36 @@
                         </binding>
                     </item>
                     <item>
+                        <label>Radio near selector</label>
+                        <binding>
+                            <command>nasal</command>
+                            <script>
+                                test_dialog = gui.Dialog.new("sim/gui/dialogs/G91/Radio/dialog","Aircraft/G91-R1B_HD/Dialogs/G91-Radio-Near-Selector.xml");
+                                test_dialog.open();
+                            </script>
+                        </binding>
+                    </item>
+                    <item>
+                        <label>PHI - route system</label>
+                        <binding>
+                            <command>nasal</command>
+                            <script>
+                                test_dialog = gui.Dialog.new("sim/gui/dialogs/G91/PHI/dialog","Aircraft/G91-R1B_HD/Dialogs/G91-PHI.xml");
+                                test_dialog.open();
+                            </script>
+                        </binding>
+                    </item>
+                    <item>
+                        <label>Livery</label>
+                        <binding>
+                            <command>nasal</command>
+                            <script>
+                                test_dialog = gui.Dialog.new("sim/gui/dialogs/G91/Livery/dialog","Aircraft/G91-R1B_HD/Dialogs/G91-Livery.xml");
+                                test_dialog.open();
+                            </script>
+                        </binding>
+                    </item>
+                    <item>
                         <label>JATO System</label>
                         <binding>
                             <command>nasal</command>
@@ -168,26 +198,6 @@
                             <command>nasal</command>
                             <script>
                                 test_dialog = gui.Dialog.new("sim/gui/dialogs/G91/Acro/dialog","Aircraft/G91-R1B_HD/Dialogs/G91-Effects.xml");
-                                test_dialog.open();
-                            </script>
-                        </binding>
-                    </item>
-                    <item>
-                        <label>PHI - route system</label>
-                        <binding>
-                            <command>nasal</command>
-                            <script>
-                                test_dialog = gui.Dialog.new("sim/gui/dialogs/G91/PHI/dialog","Aircraft/G91-R1B_HD/Dialogs/G91-PHI.xml");
-                                test_dialog.open();
-                            </script>
-                        </binding>
-                    </item>
-                    <item>
-                        <label>Livery</label>
-                        <binding>
-                            <command>nasal</command>
-                            <script>
-                                test_dialog = gui.Dialog.new("sim/gui/dialogs/G91/Livery/dialog","Aircraft/G91-R1B_HD/Dialogs/G91-Livery.xml");
                                 test_dialog.open();
                             </script>
                         </binding>
@@ -255,17 +265,9 @@
             <file>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/PHI/phi.nas</file>
             <!-- Stores -->
             <file>Aircraft/G91-R1B_HD/Nasal/store.nas</file>
+            <!-- Load modules -->
+            <file>Aircraft/G91-R1B_HD/Nasal/load_modules.nas</file>
         </general>
-        
-        <autopilot>
-            <!-- Autopilot -->
-            <file>Aircraft/G91-R1B_HD/Nasal/autopilot/autopilot_module.nas</file>
-            <!--
-            <file>Aircraft/G91-R1B_HD/Nasal/pilot_assistant.nas</file>
-            -->
-            <file>Aircraft/G91-R1B_HD/Nasal/autopilot/pilot_impact_control.nas</file>
-            <file>Aircraft/G91-R1B_HD/Nasal/autopilot/pilot_intercept.nas</file>
-        </autopilot>
         
         <canvas_gauges>
              <file>Aircraft/G91-R1B_HD/Nasal/set_livery.nas</file>

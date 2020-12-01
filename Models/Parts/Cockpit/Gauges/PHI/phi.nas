@@ -92,7 +92,6 @@ var phi_get_route_data = func() {
         #// Set PS mode when finish the cycle
         if (getprop("fdm/jsbsim/systems/gauges/PHI/indicator/switch-turn") == 1) {
             setprop("fdm/jsbsim/systems/gauges/PHI/program/reset",2.0);
-            ### setprop("fdm/jsbsim/systems/gauges/PHI/indicator/switch-turn",2)
         }
     }
     phi_indicator_switch_turned = getprop("fdm/jsbsim/systems/gauges/PHI/indicator/switch-turned");
@@ -420,6 +419,8 @@ setlistener("/autopilot/route-manager/active", func {
         }
         setprop("fdm/jsbsim/systems/gauges/PHI/convergency/status",-10);
         setprop("fdm/jsbsim/systems/gauges/PHI/convergency/status",9);
+        #// Start the PHI system
+        setprop("fdm/jsbsim/systems/gauges/PHI/indicator/switch-turn",1);
     } else {
         setprop("fdm/jsbsim/systems/autopilot/gui/true-heading-max-wing-slope-deg",30.0);
         setprop("fdm/jsbsim/systems/gauges/PHI/program/reset",2);
@@ -474,9 +475,9 @@ setlistener("fdm/jsbsim/systems/gauges/PHI/program/reset-after", func {
     if (getprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-manual") == 0.0 and
         getprop("fdm/jsbsim/systems/gauges/PHI/program/reset-after") == 1.0) {
         
-        print("***** Reset stp 1: ",getprop("fdm/jsbsim/systems/gauges/PHI/program/reset")," after: ",getprop("fdm/jsbsim/systems/gauges/PHI/program/reset-after")," type: ",getprop("fdm/jsbsim/systems/gauges/PHI/program/reset-type"));
+        print("***** Reset reset-after 1: ",getprop("fdm/jsbsim/systems/gauges/PHI/program/reset")," after: ",getprop("fdm/jsbsim/systems/gauges/PHI/program/reset-after")," type: ",getprop("fdm/jsbsim/systems/gauges/PHI/program/reset-type"));
         if (getprop("fdm/jsbsim/systems/gauges/PHI/program/reset-type") >= 2.0) {
-            print("***** Reset stp 2: ",2);
+            print("***** Reset reset-after 2: ",getprop("fdm/jsbsim/systems/gauges/PHI/program/reset-type"));
             setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-manual",1.0);
             setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-manual-mod",2.0);
             setprop("fdm/jsbsim/systems/gauges/PHI/indicator/switch-turn",2);
@@ -487,11 +488,17 @@ setlistener("fdm/jsbsim/systems/gauges/PHI/program/reset-after", func {
             setprop("fdm/jsbsim/systems/autopilot/gui/wing-leveler",0.0);
             setprop("fdm/jsbsim/systems/gauges/PHI/convergency/status",-10);
         } else {
+            print("***** Reset reset-after 2: ",getprop("fdm/jsbsim/systems/gauges/PHI/program/reset-type"));
             setprop("fdm/jsbsim/systems/gauges/PHI/program/route-manager/autopush-active",1.0);
             setprop("fdm/jsbsim/systems/gauges/PHI/indicator/switch-turn",1);
             setprop("fdm/jsbsim/systems/autopilot/gui/true-heading",0.0);
             setprop("fdm/jsbsim/systems/autopilot/gui/wing-leveler",0.0);
             setprop("fdm/jsbsim/systems/gauges/PHI/convergency/status",-10);
+        }
+        
+        #// remove the automatic pilot-radio-assistant system
+        if (getprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/mode") == 1) {
+            setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/mode",2);
         }
     }
 
@@ -529,7 +536,6 @@ setlistener("fdm/jsbsim/systems/gauges/PHI/doppler/switch-turn", func {
         setprop("fdm/jsbsim/systems/gauges/PHI/doppler/switch-turn-text","Rec only");
     } elsif (tag == 2) {
         setprop("fdm/jsbsim/systems/gauges/PHI/doppler/switch-turn-text","ON");
-        
     } else {
         setprop("fdm/jsbsim/systems/gauges/PHI/doppler/switch-turn-text","Test");
     }
@@ -565,23 +571,32 @@ setlistener("fdm/jsbsim/systems/gauges/PHI/indicator/switch-turned", func {
 
 setlistener("fdm/jsbsim/systems/autopilot/gui/phi-heading-button-on-off", func {
 
-    if (getprop("fdm/jsbsim/systems/autopilot/gui/phi-heading-button-on-off") == 1) {
+    var phi_heading_button_on_off = getprop("fdm/jsbsim/systems/autopilot/gui/phi-heading-button-on-off");
+    if (phi_heading_button_on_off >= 1) {
         if (phi_indicator_switch_turned == 0 or phi_indicator_switch_turned == 2) {
             setprop("fdm/jsbsim/systems/gauges/PHI/indicator/switch-turn",1);
         } else {
             setprop("fdm/jsbsim/systems/gauges/PHI/indicator/switch-turn",2);
-            setprop("fdm/jsbsim/systems/autopilot/gui/true-heading",1.0);
-            setprop("fdm/jsbsim/systems/autopilot/gui/heading-control",1.0);
-            setprop("fdm/jsbsim/systems/autopilot/gui/altitude-hold-ft",math.round(getprop("fdm/jsbsim/systems/autopilot/h-sl-ft-lag")));
-            setprop("fdm/jsbsim/systems/autopilot/gui/altitude-hold",1.0);
-            setprop("fdm/jsbsim/systems/autopilot/gui/wing-leveler",0.0);
-            setprop("fdm/jsbsim/systems/gauges/PHI/convergency/status",-10);
         };
         setprop("fdm/jsbsim/systems/autopilot/gui/phi-heading-button-on-off",0);
     }
     
 }, 1, 0);
 
+
+setlistener("fdm/jsbsim/systems/gauges/PHI/indicator/switch-turn", func {
+    
+    if (getprop("fdm/jsbsim/systems/gauges/PHI/indicator/switch-turn") == 2) {
+        #// Remove the PHI automatic control with PS mode
+        setprop("fdm/jsbsim/systems/autopilot/gui/true-heading",1.0);
+        setprop("fdm/jsbsim/systems/autopilot/gui/heading-control",1.0);
+        setprop("fdm/jsbsim/systems/autopilot/gui/altitude-hold-ft",math.round(getprop("fdm/jsbsim/systems/autopilot/h-sl-ft-lag")));
+        setprop("fdm/jsbsim/systems/autopilot/gui/altitude-hold",1.0);
+        setprop("fdm/jsbsim/systems/autopilot/gui/wing-leveler",0.0);
+        setprop("fdm/jsbsim/systems/gauges/PHI/convergency/status",-10);
+    };
+    
+}, 1, 0);
 
 setlistener("fdm/jsbsim/systems/gauges/PHI/convergency/lat-mid-deg-mod", func {
     
