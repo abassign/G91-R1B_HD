@@ -23,6 +23,7 @@ No Overshoot
     <property value="0.0">systems/autopilot/gui/heading-control</property>
     <property value="0.0">systems/autopilot/gui/wing-leveler</property>
     <property value="0.0">systems/autopilot/gui/true-heading</property>
+    <property value="0.0">systems/autopilot/gui/true-heading-radial</property>
     <property value="0.0">systems/autopilot/gui/true-heading-deg</property>
     <property value="0.0">systems/autopilot/gui/phi-heading</property>
     
@@ -252,6 +253,10 @@ No Overshoot
     <property value="80.0">systems/autopilot/steer-brake-min-speed</property>
 
     <property value="0.0">systems/autopilot/angle-zero</property>
+    
+    <!-- Pilot radio assistant -->
+    <property value="0.0">systems/autopilot/pilot-radio-assistant/radials-selected-correct-deg</property>
+    <property value="0.0">systems/autopilot/pilot-radio-assistant/radials-selected-correct-deg-mod</property>
     
     
     <channel name="Autopilot GUI Interface" execrate="32">
@@ -881,6 +886,38 @@ No Overshoot
     
     
     <channel name="Heading control">
+        
+        <!-- Radio assistant sextion -->
+        
+        <washout_filter name="systems/autopilot/pilot-radio-assistant/radials-selected-correct-deg-wa">
+            <input>systems/autopilot/pilot-radio-assistant/radials-selected-correct-deg</input>
+            <c1>1.0</c1>
+        </washout_filter>
+        
+        <switch name="systems/autopilot/pilot-radio-assistant/radials-selected-correct-deg-mod">
+            <default value="0"/>
+            <test logic="OR" value="1">
+                systems/autopilot/pilot-radio-assistant/radials-selected-correct-deg-wa GE 1.0
+                systems/autopilot/pilot-radio-assistant/radials-selected-correct-deg-wa LE -1.0
+            </test>
+            <!-- <output>systems/autopilot/pilot-radio-assistant/radials-selected-correct-deg-mod</output> -->
+        </switch>
+        
+        <lag_filter name="systems/autopilot/pilot-radio-assistant/radials-selected-correct-deg-lag">
+            <input>systems/autopilot/pilot-radio-assistant/radials-selected-correct-deg</input>
+            <c1>0.5</c1>
+        </lag_filter>
+        
+        <switch name="systems/autopilot/gui/true-heading-deg">
+            <default value="systems/autopilot/gui/true-heading-deg"/>
+            <test logic="AND" value="systems/autopilot/pilot-radio-assistant/radials-selected-correct-deg-lag">
+                systems/autopilot/gui/true-heading-radial GE 0.5
+                systems/autopilot/gui/heading-control GE 0.5
+                systems/autopilot/pilot-radio-assistant/radials-selected-correct-deg-mod == 0
+            </test>
+        </switch>
+        
+        <!-- Standard section -->
         
         <pure_gain name="systems/autopilot/true-heading-rad">
             <input>systems/autopilot/gui/true-heading-deg</input>

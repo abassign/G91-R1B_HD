@@ -9,6 +9,7 @@
 
 #// Loading pilot_assistant parameters
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/engage-pilot-assistant",0,"INT");
+var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/engage-pilot-assistant-trigger",0,"INT");
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/engage-pilot-assistant-value",0,"INT");
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/engage-pilot-assistant-msg","not operative","STRING");
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/airport_select_name", "", "STRING");
@@ -18,6 +19,7 @@ var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/airport_land
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/airport_radar",0,"INT");
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/airport_select_name_direct","","STRING");
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/airport_select_name_direct_old","","STRING");
+var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/pilot-ass-status-id", 0.0, "DOUBLE");
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct_status",0,"INT");
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct/airport_select","","STRING");
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct/airport_select_num",0,"INT");
@@ -62,6 +64,7 @@ var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/take-off-to-
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/take-off-cruise-speed", 350.0, "DOUBLE");
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/take-off-cruise-speed-active", 0.0, "DOUBLE");
 var prop = props.globals.initNode("fdm/jsbsim/systems/dragchute/active-view", 0, "DOUBLE");
+var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/true-heading-radial-str","", "STRING");
 
 #// Loading impact-control parameters
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/impact-control-active", 0, "INT");
@@ -117,13 +120,15 @@ var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/landing22-pid-d"
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/landing22-landing-slope", 0.0, "DOUBLE");
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/landing21-holding_point-dist", 0.0, "DOUBLE");
 
+
+#// The load module modules activation properties
 var prop = props.globals.initNode("sim/G91/nasal/modules/active-autopilot",0,"INT");
 var prop = props.globals.initNode("sim/G91/nasal/modules/active-radio",0,"INT");
 
 #// The load module params
+var prop = props.globals.initNode("sim/G91/nasal/modules/delta-time",1,"INT");
 
-var delta_time_standard = 1;
-var delta_time = delta_time_standard;
+var delta_time = 1;
 
 var set_active_autopilot = 0;
 var set_active_radio = 0;
@@ -189,6 +194,7 @@ var load_modules = func() {
             module_pilot_assistant.reload();
             print("load_modules.nas reload module [pilot_assistant.nas]");
         };
+        setprop("fdm/jsbsim/systems/autopilot/gui/engage-pilot-assistant-trigger",2);
         setprop("sim/G91/nasal/modules/set-active-autopilot",0);
     };
     
@@ -213,6 +219,7 @@ var load_modules = func() {
 
 var load_modules_control = func() {
     
+    delta_time = getprop("sim/G91/nasal/modules/delta-time");
     set_active_autopilot = getprop("sim/G91/nasal/modules/set-active-autopilot");
     set_active_radio = getprop("sim/G91/nasal/modules/set-active-radio");
 

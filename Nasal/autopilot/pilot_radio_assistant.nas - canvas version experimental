@@ -22,18 +22,11 @@ var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/pilot-radio-assi
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/search-max-dist",100.0,"DOUBLE");
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/search-max-bearing",30.0,"DOUBLE");
 
-var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/automatic-to-radial-active",0,"INT");
-var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/automatic-to-radial-active-description","No link active","STRING");
-var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/automatic-to-radial-trigger",0,"INT");
-var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/automatic-to-radial-by-vor",1,"INT");
-var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/automatic-to-radial-by-vor-to-from",1,"INT");
-var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/automatic-to-radial-by-ndb",0,"INT");
-var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/automatic-to-radial-by-ndb-to-from",0,"INT");
+var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/radials-selected-correct-deg",0,"DOUBLE");
 
 
 var delta_time_standard = 3;
 var delta_time = delta_time_standard;
-var delta_time_delay = 0;
 
 var mode = 0;
 var airplane = nil;
@@ -42,12 +35,6 @@ var radioDisplay = nil;
 
 var testing_log_active = 0;
 var landing_activate_status = 0;
-
-var to_radial_vor_old_dist = nil;
-var to_radial_vor_to_from_ctrl = 0;
-var to_radial_ndb_old_dist = nil;
-var to_radial_ndb_to_from_ctrl = 0;
-var radials_selected_correct_deg_mod = 0;
 
 
 var quickSortValueId = func(list, beg, end) {
@@ -103,6 +90,7 @@ var RadioDataClass = {
             value: nil,
             value_previusOutput: 0.0,
             value_previusInput: 0.0,
+            select: 0,
         };
         me.value = 0.0;
         me.value_previusOutput = 0.0;
@@ -150,7 +138,7 @@ var RadioDataClass = {
         me.type = aType;
     },
     
-    sintonize: func(radial, airplane) {
+    sintonize: func(radial = nil) {
         if (me.type != nil) {
             if (me.type == "NDB") {
                 setprop("/instrumentation/adf/frequencies/selected-khz",me.frequency);
@@ -204,15 +192,11 @@ var RadiosDataClass = {
             lastFindNavHeading: 0.0,
             lastFindNavBearingMax: 0.0,
             lastFindNavDeltaTime: 0.0,
-            manual_select_vor_id: nil,
-            manual_select_ndb_id: nil,
         };
         me.radios_set = {};
         me.num_radios = 0;
         me.select_vor_id = nil;
-        me.manual_select_vor_id = nil;
         me.select_ndb_id = nil;
-        me.manual_select_ndb_id = nil;
         me.lastFindNavPosition = nil;
         me.lastFindNavDistanceNm = 0.0;
         me.lastFindNavDistanceMax = 0.0;
@@ -244,13 +228,13 @@ var RadiosDataClass = {
             me.lastFindNavDistanceMax = distance_max;
             me.lastFindNavBearingMax = bearing_max;
             me.lastFindNavActive = 1;
-            #// print("pilot_radio_assistant checkNavVsRange - lastFindNavActive: ",me.lastFindNavActive);
+            print("pilot_radio_assistant checkNavVsRange - lastFindNavActive: ",me.lastFindNavActive);
         } else {
             if (math.abs(getprop("/orientation/heading-deg") - me.lastFindNavHeading) > 5.0 or me.lastFindNavBearingMax != bearing_max) {
                 me.lastFindNavHeading = getprop("/orientation/heading-deg");
                 me.lastFindNavBearingMax = bearing_max;
                 me.lastFindNavActive = 2;
-                #// print("pilot_radio_assistant checkNavVsRange - lastFindNavActive: ",me.lastFindNavActive);
+                print("pilot_radio_assistant checkNavVsRange - lastFindNavActive: ",me.lastFindNavActive);
             };
         };
         if (me.lastFindNavActive > 0) {
@@ -315,7 +299,7 @@ var RadiosDataClass = {
         };
     },
     
-    search_id: func(search_id) {
+    search_id: func(search_id, type) {
         for (var i = 0; i < me.num_radios; i += 1) {
             #// Normalize search id values
             var radio = me.radios_set[me.distanceSort[i][1]];
@@ -328,11 +312,11 @@ var RadiosDataClass = {
             };
             #// Search id in the radios
             if (search_id_str == radio_id_str) {
-                #print("pilot_radio_assistant search_id ",search_id_str," i: ",i," type: ",radio.type," vs ",type);
-                #if (radio.type == type) {
-                    #print("pilot_radio_assistant search_id set freq: ",radio.frequency);
+                print("pilot_radio_assistant search_id ",search_id_str," i: ",i," type: ",radio.type," vs ",type);
+                if (radio.type == type) {
+                    print("pilot_radio_assistant search_id set freq: ",radio.frequency);
                     return radio;
-                #};
+                };
             };
         };
         return nil;
@@ -363,127 +347,6 @@ var RadiosDataClass = {
         return nil;
     },
     
-    search_manual_select: func() {
-        me.manual_select_vor_id = nil;
-        me.manual_select_ndb_id = nil;
-        for (var i = 0; i < 8; i += 1) {
-            var isSelect = me.listNode.getValue("row[" ~ i ~ "]/select");
-            if (isSelect == 1) {
-                var idSelect = me.listNode.getValue("row[" ~ i ~ "]/id");
-                var type = me.listNode.getValue("row[" ~ i ~ "]/type");
-                if ((type == "VOR" or type == "ILS") and idSelect != me.select_vor_id) {
-                    me.manual_select_vor_id = idSelect;
-                    me.select_vor_id = nil;
-                } elsif ((type == "NDB") and idSelect != me.select_ndb_id) {
-                    me.manual_select_ndb_id = idSelect;
-                    me.select_ndb_id = nil;
-                };
-            };
-        };
-    },
-    
-    display: func(airplane) {
-        me.search_manual_select();
-        var row = -1;
-        me.listNode.setValue("num-radios",me.num_radios);
-        for (var i = (me.num_radios - 1); (i >= 0 and row < 8); i -= 1) {
-            row += 1;
-            var radio = me.radios_set[me.valueSort[i][1]];
-            var isSelect = 0;
-            var manual_selected_sign = "  ";
-            if (me.select_vor_id != nil and radio.id == me.select_vor_id) isSelect = 1;
-            if (me.manual_select_vor_id != nil and radio.id == me.manual_select_vor_id) {
-                isSelect = 1;
-                manual_selected_sign = "* ";
-            };
-            if (me.select_ndb_id != nil and radio.id == me.select_ndb_id) isSelect = 1;
-            if (me.manual_select_ndb_id != nil and radio.id == me.manual_select_ndb_id) {
-                isSelect = 1;
-                manual_selected_sign = "* ";
-            };
-            me.listNode.setValue("row[" ~ row ~ "]/select",isSelect);
-            me.listNode.setValue("row[" ~ row ~ "]/id",radio.id);
-            me.listNode.setValue("row[" ~ row ~ "]/type",radio.type);
-            me.listNode.setValue("row[" ~ row ~ "]/name",manual_selected_sign ~ radio.name);
-            me.listNode.setValue("row[" ~ row ~ "]/distance",radio.distance_nm(airplane));
-            me.listNode.setValue("row[" ~ row ~ "]/bearing",radio.bearing(airplane));
-            me.listNode.setValue("row[" ~ row ~ "]/difference",radio.difference_deg);
-            me.listNode.setValue("row[" ~ row ~ "]/range",radio.range_nm);
-            me.listNode.setValue("row[" ~ row ~ "]/frequency",radio.frequency);
-        };
-        if (row < 7) {
-            for (var i = row + 1; i < 8; i += 1) {
-                me.listNode.setValue("row[" ~ i ~ "]/select",0);
-                me.listNode.setValue("row[" ~ i ~ "]/id","");
-                me.listNode.setValue("row[" ~ i ~ "]/type","");
-                me.listNode.setValue("row[" ~ i ~ "]/name","");
-                me.listNode.setValue("row[" ~ i ~ "]/distance",0.0);
-                me.listNode.setValue("row[" ~ i ~ "]/bearing",0.0);
-                me.listNode.setValue("row[" ~ i ~ "]/difference",0.0);
-                me.listNode.setValue("row[" ~ i ~ "]/range",0.0);
-                me.listNode.setValue("row[" ~ i ~ "]/frequency",0.0);
-            };
-        };
-    },
-    
-    
-    vor_radio_selected: func() {
-        var vor_radio = nil;
-        if (me.manual_select_vor_id != nil) {
-            vor_radio = me.search_id(me.manual_select_vor_id);
-        } elsif (me.select_vor_id != nil) {
-            vor_radio = me.search_id(me.select_vor_id);
-        };
-        return vor_radio;
-    },
-    
-    
-    ndb_radio_selected: func() {
-        var ndb_radio = nil;
-        if (me.manual_select_ndb_id != nil) {
-            ndb_radio = me.search_id(me.manual_select_ndb_id);
-        } elsif (me.select_ndb_id != nil) {
-            ndb_radio = me.search_id(me.select_ndb_id);
-        };
-        return ndb_radio;
-    },
-    
-    
-    sintonize: func(airplane, mode) {
-        var vor_radio = me.vor_radio_selected();
-        var ndb_radio = me.ndb_radio_selected();
-        if (vor_radio != nil) {
-            if (vor_radio.type == "ILS") {
-                vor_radio.sintonize(getprop("fdm/jsbsim/systems/autopilot/gui/airport_runway_airplane_heading_correct"),airplane);
-                setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/find-vor",2);
-                setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/find-vor-str","* ILS (" ~ vor_radio.id ~ ")");
-            } else {
-                if (mode == 3) {
-                    vor_radio.sintonize(getprop("fdm/jsbsim/systems/autopilot/gui/airport_runway_airplane_heading_correct"),airplane);
-                } else {
-                    if (mode == 1) {
-                        vor_radio.sintonize(vor_radio.bearing(airplane),airplane);
-                    } else {
-                        vor_radio.sintonize(nil,airplane);
-                    }
-                };
-                setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/find-vor",1);
-                setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/find-vor-str","* VOR (" ~ vor_radio.id ~ ")");
-            };
-        } else {
-            setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/find-vor",0);
-            setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/find-vor-str","  VOR");
-        };
-        if (ndb_radio != nil) {
-            ndb_radio.sintonize(nil,airplane);
-            setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/find-ndb",1);
-            setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/find-ndb-str","* ADF (" ~ ndb_radio.id ~ ")");
-        } else {
-            setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/find-ndb",0);
-            setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/find-ndb-str","  ADF");
-        };
-    },
-    
     print_debug: func(airplane) {
         if (testing_log_active >= 2) {
             print("----- Find ",me.num_radios," navaids bearing +/- ",me.bearing_max,sprintf(" deg within range from: %.0f",me.radios_set[me.distanceSort[0][1]].distance_nm(airplane)),sprintf(" to: %.0f nm",me.radios_set[me.distanceSort[me.num_radios - 1][1]].distance_nm(airplane)));
@@ -497,6 +360,177 @@ var RadiosDataClass = {
 };
 
 
+var RadiosDisplayClass = {
+    class_name: "RadiosDisplayClass",
+    
+    new: func() {
+        var obj = {
+            window: nil,
+            myCanvas: nil,
+            aRoot: nil,
+            myVBox: nil,
+            keypad: nil,
+            configuration: nil,
+            isWindowCreate: 0,
+            refresh_1: 0,
+            refresh_2: 0,
+        };
+        me.aRoot = nil;
+        me.isWindowCreate = 0;
+        me.refresh_1 = 0;
+        me.refresh_2 = 0;
+        
+        return {parents: [RadiosDisplayClass]};
+    },
+    
+    createButton: func(aRoot, label, clickAction, width) {
+        var button = canvas.gui.widgets.Button.new(aRoot, canvas.style, {} )
+        .setFixedSize(width, 25)
+        .setText(label);
+        button.listen("clicked",clickAction);
+        return button;
+    },
+    
+    createHeaderText: func(aRoot, label, width) {
+        var button = canvas.gui.widgets.Button.new(aRoot, canvas.style, {} )
+        .setFixedSize(width, 25)
+        .setText(label);
+        return button;
+    },
+    
+    show_select: func(action) {
+        print("***** action: ",action);
+        if (action == "AutomaticFound") {
+            me.refresh = 1;
+            setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/mode-trigger",2);
+        };
+    },
+    
+    show: func(radios, airplane) {
+        #// http://wiki.flightgear.org/Howto:Creating_a_Canvas_GUI_Widget
+        #// http://wiki.flightgear.org/Canvas_draw_library
+        #// http://wiki.flightgear.org/Howto:Using_raster_images_and_nested_canvases
+        #// http://wiki.flightgear.org/Howto:Reset/re-init_Troubleshooting
+        
+        if (radios.lastFindNavActive > 0 or me.refresh_1 > 0 or me.refresh_2 > 0) {
+            
+            if (radios.lastFindNavActive == 1) me.refresh_2 = 1;
+            
+            if (me.isWindowCreate == 0) {
+                #// create a new window, using the dialog decoration (i.e. titlebar)
+                me.window = canvas.Window.new([750,300],"dialog").set("title","Select radio assistence");
+                me.window.owner = me;
+                print("pilot_radio_assistant RadiosDisplayClass - open");
+                #// adding a canvas to the new window and setting up background colors/transparency
+                me.myCanvas = me.window.createCanvas().setColorBackground(1,1,1,0.8);
+                #// creating the top-level/root group which will contain all other elements/group
+                # me.aRoot = me.myCanvas.createGroup();
+                me.isWindowCreate = 1;
+                #// https://forum.flightgear.org/viewtopic.php?f=71&t=31250
+                me.window.del = func {
+                    #// In a anonymous func defined internal to me.window the riferiment is internal the owner transport the information "me"
+                    me.owner.isWindowCreate = 0;
+                    print("pilot_radio_assistant RadiosDisplayClass - close ",me.owner.isWindowCreate);
+                    call(canvas.Window.del, [], me);
+                }
+            };
+            
+            var yStart = 52; var yStep = 30;
+            
+            if (me.refresh_2 == 1) {
+                #// Clear the precedent select rettangle configuration
+                for (var row = 0; (row < 7 and me.aRoot != nil); row += 1) {
+                    canvas.draw.rectangle(me.aRoot,746,26,2,yStart + yStep * (row + 1)).setColor([0.5,0.5,0.5,1]);
+                };
+            };
+            
+            
+            
+            if (me.refresh_2 == 1) {
+                me.aRoot = me.myCanvas.createGroup();
+                #// See: http://wiki.flightgear.org/Howto:Creating_a_Canvas_GUI_dialog_file
+                #// create a new layout for the keypad:
+                me.myVBox = canvas.VBoxLayout.new();
+                #// assign the layout to the Canvas, is nested canvas
+                me.myCanvas.setLayout(me.myVBox);
+                me.keypad = canvas.HBoxLayout.new();
+                me.configuration = canvas.HBoxLayout.new();
+                me.myVBox.addItem(me.configuration);
+                me.myVBox.addItem(me.keypad);
+
+                var hboxTop = canvas.VBoxLayout.new();
+                me.configuration.addItem(hboxTop);
+                var automaticFound = me.createButton(aRoot:me.aRoot, label:"Automatic find VOR-NDB-ILS", clickAction:func{me.show_select("AutomaticFound")},width:200);
+                hboxTop.addItem(automaticFound);
+                
+               ## var scroll = canvas.gui.widgets.ScrollArea.new(me.aRoot, canvas.style, {size: [10, 5]}).move(20, 100);
+               ## hboxTop.addItem(scroll);
+
+                #// For a pictures ad right
+                #// this could also be another Canvas: 
+                #// http://wiki.flightgear.org/Howto:Using_raster_images_and_nested_canvases#Example:_Loading_a_Canvas_dynamically
+                #// var mfd = canvas.gui.widgets.Label.new(aRoot, canvas.style, {} ).setImage("Textures/Splash1.png");
+                #// myHBox.addItem(mfd);
+                
+                var widthCol = [60,50,350,60,50,60,80];
+                var widthColDesc = ["Id","Type","Description","Dist. nm","Range","Bearing","Frequency"];
+                for(var col = 0; col < 7; col += 1) {
+                    #// set up a new vertical box
+                    var vbox = canvas.VBoxLayout.new();
+                    #// add it to the top-level hbox
+                    me.keypad.addItem(vbox);
+                    var idSelect = nil;
+                    #// Insert the colums data
+                    for (var row = 0; row < 7; row += 1) {
+                        (func() {
+                            var vbox = vbox;
+                            if (row == 0) {
+                                var headerText = me.createHeaderText(aRoot:me.aRoot, label:widthColDesc[col],width:widthCol[col]);
+                                vbox.addItem(headerText);
+                            };
+                            var btn = "";
+                            var action = "";
+                            if (row < radios.num_radios) {
+                                var rowOrd = radios.num_radios - row - 1;
+                                var radio = radios.radios_set[radios.valueSort[rowOrd][1]];
+                                var action = radios.valueSort[rowOrd][1];
+                                if (col == 0) btn = radio.id;
+                                if (col == 1) btn = radio.type;
+                                if (col == 2) btn = radio.name;
+                                if (col == 3) btn = sprintf("%3.1f",radio.bearing(airplane));
+                                if (col == 4) btn = sprintf("%3.0f",radio.distance_nm(airplane));
+                                if (col == 5) btn = sprintf("%3.0f",radio.range_nm);
+                                if (col == 6) btn = sprintf("%3.3f",radio.frequency);
+                                if (col == 6) {
+                                    #// Set selector rectangle
+                                    if (radios.select_vor_id != nil and radio.id == radios.select_vor_id) {
+                                        #//print("***** row: ",row," radios.select_vor_id: ",radios.select_vor_id," radio.id: ",radio.id);
+                                        canvas.draw.rectangle(me.aRoot,746,26,2,yStart + yStep * (row + 1)).setColor([0,0,1,1]);
+                                        me.refresh = 2;
+                                    } else if (radios.select_ndb_id != nil and radio.id == radios.select_ndb_id) {
+                                        #//print("***** row: ",row," radios.select_ndb_id: ",radios.select_vor_id," radio.id: ",radio.id);
+                                        canvas.draw.rectangle(me.aRoot,746,26,2,yStart + yStep * (row + 1)).setColor([1,0,0,1]);
+                                        me.refresh = 2;
+                                    };
+                                };
+                            }
+                            var button = me.createButton(aRoot:me.aRoot, label:btn, clickAction:func{me.show_select(action)},width:widthCol[col]);
+                            #// add the button to the vbox
+                            vbox.addItem(button);
+                        })(); #// invoke anonymous function (closure)
+                    };
+                };
+            };
+            
+            radios.lastFindNavActive = 0;
+            me.refresh_1 = 0;
+            me.refresh_2 = 0;
+            
+        };
+    },
+};
+
+
 var radio_assistant = func() {
     
     search_max_dist = getprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/search-max-dist");
@@ -504,6 +538,7 @@ var radio_assistant = func() {
     
     if (radios == nil) {
         radios = RadiosDataClass.new();
+        radioDisplay = RadiosDisplayClass.new();
     };
     
     #// Test for mode == 3 or Landing phase for search ILS
@@ -530,9 +565,7 @@ var radio_assistant = func() {
     if (mode == 0) {
         #// pilot_radio_assistant not operative
         setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/find-vor",0);
-        setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/find-vor-str","  VOR");
         setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/find-ndb",0);
-        setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/find-vor-str","  ADF");
     } elsif (mode == 1) {
         #// pilot_radio_assistant linked to route manager
         var search_max_dist = 200.0;
@@ -544,19 +577,23 @@ var radio_assistant = func() {
         if (startPosition >= 0) {
             var radio = radios.match_id_route("VOR",startPosition);
             if (radio != nil) {
+                radio.sintonize(nil,airplane);
                 radios.select_vor_id = radio.id;
+                setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/find-vor",1);
             } else {
                 radios.select_vor_id = nil;
+                setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/find-vor",0);
             };
             radio = radios.match_id_route("NDB",startPosition);
             if (radio != nil) {
+                radio.sintonize(nil,airplane);
                 radios.select_ndb_id = radio.id;
+                setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/find-ndb",1);
             } else {
                 radios.select_ndb_id = nil;
+                setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/find-ndb",0);
             };
         };
-        radios.display(airplane);
-        radios.sintonize(airplane,mode);
     } elsif (mode == 2) {
         #// pilot_radio_assistant search the nearest ad convenient VOR/ILS or NDB
         airplane = geo.aircraft_position();
@@ -564,107 +601,58 @@ var radio_assistant = func() {
         radios.print_debug(airplane);
         var radio = radios.match_type("VOR");
         if (radio != nil) {
+            radio.sintonize(nil,airplane);
             radios.select_vor_id = radio.id;
+            setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/find-vor",1);
         } else {
             radios.select_vor_id = nil;
+            setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/find-vor",0);
         };
         radio = radios.match_type("NDB");
         if (radio != nil) {
+            radio.sintonize(nil,airplane);
             radios.select_ndb_id = radio.id;
+            setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/find-ndb",1);
         } else {
             radios.select_ndb_id = nil;
+            setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/find-ndb",0);
         };
-        radios.display(airplane);
-        radios.sintonize(airplane,mode);
     } elsif (mode == 3) {
         #// pilot_radio_assistant search the landing phase VOR/ILS or NDB
         airplane = geo.aircraft_position();
-        var search_max_dist = 30.0;
-        radios.set_step(airplane,search_max_dist,search_max_bearing / 2.0,delta_time,mode);
+        var search_max_dist = 20.0;
+        radios.set_step(airplane,search_max_dist,search_max_bearing / 2.0,delta_time);
         radios.print_debug(airplane);
         var radio = radios.match_type("ILS");
         if (radio != nil) {
+            radio.sintonize(getprop("fdm/jsbsim/systems/autopilot/gui/airport_runway_airplane_heading_correct"),airplane);
+            setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/find-vor",2);
             radios.select_vor_id = radio.id;
         } else {
-            radios.set_step(airplane,search_max_dist,search_max_bearing / 2.0,delta_time,mode);
+            navs = findNavaidsWithinRange(airplane, 50.0);
+            radios.set_step(airplane,navs,search_max_dist,search_max_bearing,delta_time);
             radio = radios.match_type("VOR");
             if (radio != nil) {
+                radio.sintonize(getprop("fdm/jsbsim/systems/autopilot/gui/airport_runway_airplane_heading_correct"),airplane);
+                setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/find-vor",1);
                 radios.select_vor_id = radio.id;
             } else {
                 radios.select_vor_id = nil;
             };
         };
+        if (radio == nil) {
+            setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/find-vor",0);
+        };
         radio = radios.match_type("NDB");
         if (radio != nil) {
-            radios.select_ndb_id = radio.id;
+            radio.sintonize(nil,airplane);
+            setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/find-ndb",1);
         } else {
-            radios.select_ndb_id = nil;
+            setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/find-ndb",0);
         };
-        radios.display(airplane);
-        radios.sintonize(airplane,mode);
     };
     
-    if (getprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/automatic-to-radial-active") == 1 and radios != nil) {
-        if (getprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/automatic-to-radial-by-vor") == 1) {
-            var vor_radio = radios.vor_radio_selected();
-            if (vor_radio != nil) {
-                var distance = vor_radio.distance_nm(airplane);
-                if (to_radial_vor_old_dist != nil) {
-                    var status_to_from = 0;
-                    var versus = to_radial_vor_old_dist - distance;
-                    if (radials_selected_correct_deg_mod == 1 and distance > 2.0) to_radial_vor_to_from_ctrl = 1;
-                    if ((versus > 0.0 and distance > 1.0) or (to_radial_vor_to_from_ctrl == 1 and distance > 1.0)) {
-                        setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/automatic-to-radial-by-vor-to-from",1);
-                        status_to_from = 1;
-                    } elsif (versus < 0.0 and distance > 1.0 and to_radial_vor_to_from_ctrl == 0) {
-                        setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/automatic-to-radial-by-vor-to-from",-1);
-                        status_to_from = -1;
-                    } else {
-                        setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/automatic-to-radial-by-vor-to-from",0);
-                        to_radial_vor_to_from_ctrl = 0;
-                    };
-                    if (status_to_from == 1) {
-                        setprop("/instrumentation/nav/radials/selected-deg",vor_radio.bearing(airplane))
-                    } elsif (status_to_from == -1) {
-                        var b = 180.0 + vor_radio.bearing(airplane);
-                        if (b > 360) b = b - 360;
-                        setprop("/instrumentation/nav/radials/selected-deg",b);
-                    };
-                    ##//print("***** correct_deg_mod: ",radials_selected_correct_deg_mod," from_ctrl: ",to_radial_vor_to_from_ctrl," status_to_from: ",status_to_from," distance: ",distance);
-                };
-                to_radial_vor_old_dist = distance;
-            };
-        } else {
-            var ndb_radio = radios.ndb_radio_selected();
-            if (ndb_radio != nil) {
-                var distance = ndb_radio.distance_nm(airplane);
-                if (to_radial_ndb_old_dist != nil) {
-                    var status_to_from = 0;
-                    var versus = to_radial_ndb_old_dist - distance;
-                    if (radials_selected_correct_deg_mod == 1 and distance > 2.0) to_radial_ndb_to_from_ctrl = 1;
-                    if ((versus > 0.0 and distance > 1.0) or (to_radial_ndb_to_from_ctrl == 1 and distance > 1.0)) {
-                        setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/automatic-to-radial-by-ndb-to-from",1);
-                        status_to_from = 1;
-                    } elsif (versus < 0.0 and distance > 1.0 and to_radial_ndb_to_from_ctrl == 0) {
-                        setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/automatic-to-radial-by-ndb-to-from",-1);
-                        status_to_from = -1;
-                    } else {
-                        setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/automatic-to-radial-by-ndb-to-from",0);
-                        to_radial_ndb_to_from_ctrl = 0;
-                    };
-                    if (status_to_from == 1) {
-                        setprop("/instrumentation/nav/radials/selected-deg",ndb_radio.bearing(airplane))
-                    } elsif (status_to_from == -1) {
-                        var b = 180.0 + ndb_radio.bearing(airplane);
-                        if (b > 360) b = b - 360;
-                        setprop("/instrumentation/nav/radials/selected-deg",b);
-                    };
-                    #//print("***** correct_deg_mod: ",radials_selected_correct_deg_mod," from_ctrl: ",to_radial_ndb_to_from_ctrl," status_to_from: ",status_to_from," distance: ",distance);
-                };
-                to_radial_ndb_old_dist = distance;
-            };
-        };
-    };
+    radioDisplay.show(radios, airplane);
     
     var radial_selected_deg = getprop("/instrumentation/nav/radials/selected-deg");
     if (radial_selected_deg < 0.0) {
@@ -711,73 +699,53 @@ setlistener("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/mode", func {
     } elsif (mode == 1) {
         delta_time = delta_time_standard;
         setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/mode-description","Active PHI");
-        setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/automatic-to-radial-active-trigger",9);
     } elsif (mode == 2) {
         delta_time = delta_time_standard * 1.5;
         setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/mode-description","Active search");
     } elsif (mode == 3) {
         delta_time = delta_time_standard;
         setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/mode-description","Landing search");
-        setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/automatic-to-radial-active-trigger",9);
     };
     
 }, 0, 1);
 
 
-setlistener("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/automatic-to-radial-active-trigger", func {
+setlistener("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/find-vor", func {
     
-    if (getprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/automatic-to-radial-active-trigger") == 9) {
-        setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/automatic-to-radial-active",0);
-        setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/automatic-to-radial-active-description","No link active");
-    } else {
-        if (getprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/automatic-to-radial-active") == 0) {
-            setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/automatic-to-radial-active",1);
-            setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/automatic-to-radial-active-description","Link is active");
+    if (getprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/find-vor") >= 1) {
+        if (getprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/find-vor") == 2) {
+            setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/find-vor-str","* ILS");
         } else {
-            setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/automatic-to-radial-active",0);
-            setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/automatic-to-radial-active-description","No link active");
+            setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/find-vor-str","* VOR");
         };
+    } else {
+        setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/find-vor-str","  VOR");
     };
-    setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/automatic-to-radial-active-trigger",0);
     
 }, 0, 1);
 
 
-setlistener("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/automatic-to-radial-trigger", func {
+setlistener("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/find-ndb", func {
     
-    if (getprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/automatic-to-radial-by-vor") == 1) {
-        setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/automatic-to-radial-by-vor",0);
-        setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/automatic-to-radial-by-ndb",1);
+    if (getprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/find-ndb") == 1) {
+        setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/find-ndb-str","* NDB");
     } else {
-        setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/automatic-to-radial-by-vor",1);
-        setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/automatic-to-radial-by-ndb",0);
+        setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/find-ndb-str","  NDB");
     };
-    setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/automatic-to-radial-trigger",0);
     
 }, 0, 1);
 
 
 var radio_assistant_control = func() {
     
-    delta_time_delay -= 1;
+    testing_log_active = getprop("sim/G91/testing/log");
+    if (testing_log_active == nil) testing_log_active = 0;
     
-    var mod = getprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/radials-selected-correct-deg-mod");
-    if (mod > 0) radials_selected_correct_deg_mod = 1;
-    
-    if (delta_time_delay <= 0) {
-        testing_log_active = getprop("sim/G91/testing/log");
-        if (testing_log_active == nil) testing_log_active = 0;
-        if (radials_selected_correct_deg_mod > 0) print("***** radials_selected_correct_deg_mod: ",radials_selected_correct_deg_mod);
-        
-        radio_assistant();
-        
-        delta_time_delay = delta_time;
-        radials_selected_correct_deg_mod = 0;
-    };
-    radio_assistant_controlTimer.restart(1);
+    radio_assistant();
+    radio_assistant_controlTimer.restart(delta_time);
 }
 
 
-var radio_assistant_controlTimer = maketimer(1, radio_assistant_control);
+var radio_assistant_controlTimer = maketimer(delta_time, radio_assistant_control);
 radio_assistant_controlTimer.singleShot = 1;
 radio_assistant_controlTimer.start();

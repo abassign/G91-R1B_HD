@@ -27,13 +27,15 @@
             <halign>fill</halign>
             <live>true</live>
             <binding>
-                <command>property-toggle</command>
-                <property>fdm/jsbsim/systems/autopilot/gui/engage-pilot-assistant</property>
-            </binding>
-            <binding>
-                <command>property-assign</command>
-                <property>sim/G91/nasal/modules/set-active-autopilot</property>
-                <value>1</value>
+                <command>nasal</command>
+                <script>
+                    if (getprop("fdm/jsbsim/systems/autopilot/gui/engage-pilot-assistant-trigger") == 0) {
+                        setprop("fdm/jsbsim/systems/autopilot/gui/engage-pilot-assistant-trigger",1);
+                    };
+                    if (getprop("sim/G91/nasal/modules/active-autopilot") == 0) {
+                        setprop("sim/G91/nasal/modules/set-active-autopilot",1);
+                    };
+                </script>
             </binding>
         </button>
         <text>
@@ -338,10 +340,28 @@
                     <binding>
                         <command>dialog-apply</command>
                     </binding>
+                    <binding>
+                        <command>property-assign</command>
+                        <property>fdm/jsbsim/systems/autopilot/gui/true-heading-radial</property>
+                        <value>0.0</value>
+                    </binding>
                 </input>
                 <text>
                     <row>2</row>
                     <col>2</col>
+                    <label>MMMMMMMM</label>
+                    <live>true</live>
+                    <halign>center</halign>
+                    <property>fdm/jsbsim/systems/autopilot/gui/true-heading-radial-str</property>
+                    <color>
+                        <red>0.9</red>
+                        <green>0.4</green>
+                        <blue>0.0</blue>
+                    </color>
+                </text>
+                <text>
+                    <row>2</row>
+                    <col>3</col>
                     <label>999999999999</label>
                     <live>true</live>
                     <halign>right</halign>
@@ -375,6 +395,7 @@
                                 setprop("fdm/jsbsim/systems/autopilot/gui/true-heading-deg",true_heading_deg);
                             }
                             setprop("fdm/jsbsim/systems/autopilot/gui/true-heading",1.0);
+                            setprop("fdm/jsbsim/systems/autopilot/gui/true-heading-radial",0.0);
                             setprop("fdm/jsbsim/systems/autopilot/gui/heading-control",1.0);
                             setprop("fdm/jsbsim/systems/autopilot/gui/wing-leveler",0.0);
                             setprop("fdm/jsbsim/systems/autopilot/gui/phi-heading",0.0);
@@ -385,7 +406,7 @@
                 <button>
                     <row>4</row>
                     <col>1</col>
-                    <legend>Set actual heading</legend>
+                    <legend>Actual</legend>
                     <halign>fill</halign>
                     <live>true</live>
                     <binding>
@@ -393,6 +414,7 @@
                         <script>
                             setprop("fdm/jsbsim/systems/autopilot/gui/true-heading-deg",math.round(getprop("fdm/jsbsim/systems/autopilot/heading-true-deg")));
                             setprop("fdm/jsbsim/systems/autopilot/gui/true-heading",1.0);
+                            setprop("fdm/jsbsim/systems/autopilot/gui/true-heading-radial",0.0);
                             setprop("fdm/jsbsim/systems/autopilot/gui/heading-control",1.0);
                             setprop("fdm/jsbsim/systems/autopilot/gui/wing-leveler",0.0);
                             setprop("fdm/jsbsim/systems/autopilot/gui/phi-heading",0.0);
@@ -403,6 +425,33 @@
                 <button>
                     <row>4</row>
                     <col>2</col>
+                    <legend>Radial</legend>
+                    <halign>fill</halign>
+                    <live>true</live>
+                    <binding>
+                        <command>nasal</command>
+                        <script><![CDATA[
+                            if (getprop("fdm/jsbsim/systems/autopilot/gui/pilot-ass-status-id") <= 2.0) {
+                                setprop("fdm/jsbsim/systems/autopilot/gui/true-heading-deg",math.round(getprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/radials-selected-correct-deg")));
+                                setprop("fdm/jsbsim/systems/autopilot/gui/true-heading",1.0);
+                                if (getprop("fdm/jsbsim/systems/autopilot/gui/true-heading-radial") > 0.5) {
+                                    setprop("fdm/jsbsim/systems/autopilot/gui/true-heading-radial",0.0);
+                                } else {
+                                    setprop("fdm/jsbsim/systems/autopilot/gui/true-heading-radial",1.0);
+                                }
+                                setprop("fdm/jsbsim/systems/autopilot/gui/heading-control",1.0);
+                                setprop("fdm/jsbsim/systems/autopilot/gui/wing-leveler",0.0);
+                                setprop("fdm/jsbsim/systems/autopilot/gui/phi-heading",0.0);
+                                setprop("fdm/jsbsim/systems/autopilot/gui/rudder-auto-coordination",1.0);
+                            } else {
+                                setprop("fdm/jsbsim/systems/autopilot/gui/true-heading-radial",0.0);
+                            };
+                        ]]></script>
+                    </binding>
+                </button>
+                <button>
+                    <row>4</row>
+                    <col>3</col>
                     <legend>Right + 5 (deg)</legend>
                     <halign>fill</halign>
                     <live>true</live>
@@ -422,6 +471,7 @@
                                 setprop("fdm/jsbsim/systems/autopilot/gui/true-heading-deg",true_heading_deg);
                             }
                             setprop("fdm/jsbsim/systems/autopilot/gui/true-heading",1.0);
+                            setprop("fdm/jsbsim/systems/autopilot/gui/true-heading-radial",0.0);
                             setprop("fdm/jsbsim/systems/autopilot/gui/heading-control",1.0);
                             setprop("fdm/jsbsim/systems/autopilot/gui/wing-leveler",0.0);
                             setprop("fdm/jsbsim/systems/autopilot/gui/phi-heading",0.0);
@@ -1585,18 +1635,9 @@
                 <halign>fill</halign>
                 <live>true</live>
                 <binding>
-                    <command>nasal</command>
-                    <script>
-                        if (getprop("/sim/presets/onground")) {
-                            if (getprop("fdm/jsbsim/systems/autopilot/gui/take-off-activate") == 1) {
-                                setprop("fdm/jsbsim/systems/autopilot/gui/take-off-activate",0);
-                            } else {
-                                setprop("fdm/jsbsim/systems/autopilot/gui/take-off-activate",1);
-                            }
-                        } else {
-                            setprop("fdm/jsbsim/systems/autopilot/gui/take-off-activate",0);
-                        }
-                    </script>
+                    <command>property-assign</command>
+                    <property>fdm/jsbsim/systems/autopilot/gui/take-off-activate</property>
+                    <value>1</value>
                 </binding>
             </button>
             <!--
