@@ -162,6 +162,8 @@ var RadioDataClass = {
                 setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/select-vor-description",me.description(airplane));
                 if (radial != nil) me.radial = radial;
                 if (me.radial != nil) setprop("/instrumentation/nav/radials/selected-deg",me.radial);
+                #// For VOR station is similar, but is necessary insert the freq in another place
+                setprop("/instrumentation/tacan/frequencies/selected-mhz",me.frequency);
             };
         };
     },
@@ -485,7 +487,7 @@ var RadiosDataClass = {
     },
     
     print_debug: func(airplane) {
-        if (testing_log_active >= 2) {
+        if (testing_log_active >= 0) {
             print("----- Find ",me.num_radios," navaids bearing +/- ",me.bearing_max,sprintf(" deg within range from: %.0f",me.radios_set[me.distanceSort[0][1]].distance_nm(airplane)),sprintf(" to: %.0f nm",me.radios_set[me.distanceSort[me.num_radios - 1][1]].distance_nm(airplane)));
             for (var i = (me.num_radios - 1); i >= 0; i -= 1) {
                 var radio = me.radios_set[me.valueSort[i][1]];
@@ -630,7 +632,7 @@ var radio_assistant = func() {
                         if (b > 360) b = b - 360;
                         setprop("/instrumentation/nav/radials/selected-deg",b);
                     };
-                    ##//print("***** correct_deg_mod: ",radials_selected_correct_deg_mod," from_ctrl: ",to_radial_vor_to_from_ctrl," status_to_from: ",status_to_from," distance: ",distance);
+                    #//print("***** correct_deg_mod: ",radials_selected_correct_deg_mod," from_ctrl: ",to_radial_vor_to_from_ctrl," status_to_from: ",status_to_from," distance: ",distance);
                 };
                 to_radial_vor_old_dist = distance;
             };

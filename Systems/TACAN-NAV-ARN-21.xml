@@ -17,7 +17,7 @@
     <property value="0.0">systems/gauges/radio/TACAN-ARN-21/sw-TR</property>
     <property value="0.0">systems/gauges/radio/TACAN-ARN-21/sw-AA</property>
     <property value="0.0">systems/gauges/radio/TACAN-ARN-21/vol-set</property>
-    <property value="0.0">systems/gauges/radio/TACAN-ARN-21/volume</property>
+    <property value="0.6">systems/gauges/radio/TACAN-ARN-21/volume</property>
     <property value="0.0">systems/gauges/radio/TACAN-ARN-21/selector-lever</property>
     <property value="0.0">systems/gauges/radio/TACAN-ARN-21/freq-chan-manual</property>
     <property value="1.0">systems/gauges/radio/TACAN-ARN-21/freq-chan</property>
