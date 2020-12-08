@@ -35,6 +35,7 @@
     <property value="0.0">systems/gauges/radio/NAV-ARN-21/set-on-off</property>
     <property value="0.0">systems/gauges/radio/NAV-ARN-21/freq-imposed</property>
     <property value="0.0">systems/gauges/radio/NAV-ARN-21/freq-imposed-new-event</property>
+    <property value="0.0">systems/gauges/radio/NAV-ARN-21/switch-turn-on-event</property>
     <property value="0.0">systems/gauges/radio/NAV-ARN-21/switch-turn</property>
     <property value="0.0">systems/gauges/radio/NAV-ARN-21/switch-turn-pos</property>
     <property value="0.0">systems/gauges/radio/NAV-ARN-21/operative-start-stop</property>
@@ -54,7 +55,7 @@
     <property value="0.0">systems/gauges/radio/NAV-ARN-21/freq-dec</property>
     <property value="0.0">systems/gauges/radio/NAV-ARN-21/freq-chan</property>
     <property value="0.0">systems/gauges/radio/NAV-ARN-21/freq-mhz</property>
-    <property value="0.0">systems/gauges/radio/NAV-ARN-21/vol-set</property>
+    <property value="0.7">systems/gauges/radio/NAV-ARN-21/vol-set</property>
     
     <!-- Collins 331 C4 Gauge -->
     
@@ -351,6 +352,7 @@
                 systems/gauges/radio/NAV-ARN-21/freq-imposed-new-event-khz GE 0.5
                 systems/gauges/radio/NAV-ARN-21/freq-imposed-new-event-mhz LE -0.5
                 systems/gauges/radio/NAV-ARN-21/freq-imposed-new-event-khz LE -0.5
+                systems/gauges/radio/NAV-ARN-21/switch-turn-on-event GT 0.5
             </test>
         </switch>
         
@@ -383,6 +385,21 @@
             </test>
             <test logic="AND" value="2.0">
                 systems/gauges/radio/NAV-ARN-21/set-on-off == 2
+            </test>
+        </switch>
+        
+        <washout_filter name="systems/gauges/radio/NAV-ARN-21/switch-turn-wa">
+            <input>systems/gauges/radio/NAV-ARN-21/switch-turn</input>
+            <c1>1.0</c1>
+        </washout_filter>
+        
+        <switch name="systems/gauges/radio/NAV-ARN-21/switch-turn-on-event">
+            <default value="0"/>
+            <test logic="AND" value="1.0">
+                systems/gauges/radio/NAV-ARN-21/switch-turn-wa GT 0.2
+            </test>
+            <test logic="AND" value="-1.0">
+                systems/gauges/radio/NAV-ARN-21/switch-turn-wa GT 0.2
             </test>
         </switch>
         
@@ -574,6 +591,7 @@
             <default value="/instrumentation/nav/frequencies/selected-mhz"/>
             <test logic="AND" value="systems/gauges/radio/NAV-ARN-21/freq-mhz">
                 systems/gauges/radio/NAV-ARN-21/freq-imposed-new-event == 0
+                systems/gauges/radio/NAV-ARN-21/set-on-off == 2
             </test>
             <output>/instrumentation/nav/frequencies/selected-mhz</output>
         </switch>
