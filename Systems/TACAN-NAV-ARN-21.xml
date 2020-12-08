@@ -53,6 +53,7 @@
     <property value="0.0">systems/gauges/radio/NAV-ARN-21/freq-unit</property>
     <property value="0.0">systems/gauges/radio/NAV-ARN-21/freq-dec</property>
     <property value="0.0">systems/gauges/radio/NAV-ARN-21/freq-chan</property>
+    <property value="0.0">systems/gauges/radio/NAV-ARN-21/freq-mhz</property>
     <property value="0.0">systems/gauges/radio/NAV-ARN-21/vol-set</property>
     
     <!-- Collins 331 C4 Gauge -->
@@ -310,10 +311,55 @@
     
     <channel name="systems gauges radio NAV-ARN-21 set frequencies" execrate="4">
         
-        <washout_filter name="systems/gauges/radio/NAV-ARN-21/freq-imposed-new-event">
-            <input>/instrumentation/nav/frequencies/selected-mhz</input>
+        <fcs_function name="systems/gauges/radio/NAV-ARN-21/freq-imposed-mhz">
+            <function>
+                <integer><p>/instrumentation/nav/frequencies/selected-mhz</p></integer>
+            </function>
+        </fcs_function>
+        
+        <fcs_function name="systems/gauges/radio/NAV-ARN-21/freq-imposed-khz">
+            <function>
+                <integer>
+                    <sum>
+                        <product>
+                            <difference>
+                                <p>/instrumentation/nav/frequencies/selected-mhz</p>
+                                <integer><p>/instrumentation/nav/frequencies/selected-mhz</p></integer>
+                            </difference>
+                            <v>10.0</v>
+                        </product>
+                        <v>0.5</v>
+                    </sum>
+                </integer>
+            </function>
+        </fcs_function>
+        
+        <washout_filter name="systems/gauges/radio/NAV-ARN-21/freq-imposed-new-event-mhz">
+            <input>systems/gauges/radio/NAV-ARN-21/freq-imposed-mhz</input>
             <c1>1.0</c1>
         </washout_filter>
+        
+        <washout_filter name="systems/gauges/radio/NAV-ARN-21/freq-imposed-new-event-khz">
+            <input>systems/gauges/radio/NAV-ARN-21/freq-imposed-khz</input>
+            <c1>1.0</c1>
+        </washout_filter>
+        
+        <switch name="systems/gauges/radio/NAV-ARN-21/freq-imposed-new-event">
+            <default value="0.0"/>
+            <test logic="OR" value="1.0">
+                systems/gauges/radio/NAV-ARN-21/freq-imposed-new-event-mhz GE 0.5
+                systems/gauges/radio/NAV-ARN-21/freq-imposed-new-event-khz GE 0.5
+                systems/gauges/radio/NAV-ARN-21/freq-imposed-new-event-mhz LE -0.5
+                systems/gauges/radio/NAV-ARN-21/freq-imposed-new-event-khz LE -0.5
+            </test>
+        </switch>
+        
+        <switch name="systems/gauges/radio/NAV-ARN-21/freq-imposed">
+            <default value="systems/gauges/radio/NAV-ARN-21/freq-imposed"/>
+            <test logic="AND" value="/instrumentation/nav/frequencies/selected-mhz">
+                systems/gauges/radio/NAV-ARN-21/freq-imposed-new-event == 1.0
+            </test>
+        </switch>
         
     </channel>
     
@@ -323,21 +369,10 @@
         <switch name="systems/gauges/radio/NAV-ARN-21/set-on-off">
             <default value="systems/gauges/radio/NAV-ARN-21/set-on-off"/>
             <test logic="AND" value="2.0">
-                systems/electric/bus[1]/NAV/fuse == 1
+                systems/electric/bus[1]/NAV/fuse == 1.0
                 systems/electric/bus[1]/V GE 24.0
                 systems/electric/inv-primary/V GE 100.0
-                <test logic="OR">
-                    systems/gauges/radio/NAV-ARN-21/freq-imposed-new-event GE 0.8
-                    systems/gauges/radio/NAV-ARN-21/freq-imposed-new-event LE -0.8
-                </test>
-            </test>
-            <test logic="AND" value="0.0">
-                systems/gauges/radio/NAV-ARN-21/freq-imposed-new-event LT 0.8
-                systems/gauges/radio/NAV-ARN-21/freq-imposed-new-event GT 0.1
-            </test>
-            <test logic="AND" value="0.0">
-                systems/gauges/radio/NAV-ARN-21/freq-imposed-new-event GT -0.8
-                systems/gauges/radio/NAV-ARN-21/freq-imposed-new-event LT -0.1
+                systems/gauges/radio/NAV-ARN-21/freq-imposed-new-event == 1.0
             </test>
         </switch>
         
@@ -422,6 +457,64 @@
             <gain>0.000539957</gain>
         </pure_gain>
         
+        <!-- Sintony section -->
+        
+        <fcs_function name="systems/gauges/radio/NAV-ARN-21/freq-chan-from-mhz">
+            <function>
+                <integer>
+                    <sum>
+                        <ifthen>
+                            <and>
+                                <ge><p>systems/gauges/radio/NAV-ARN-21/freq-imposed</p><v>108.0</v></ge>
+                                <le><p>systems/gauges/radio/NAV-ARN-21/freq-imposed</p><v>112.2</v></le>
+                            </and>
+                            <product><sum><p>systems/gauges/radio/NAV-ARN-21/freq-imposed</p><v>-106.3</v></sum><v>10.0</v></product>
+                            <ifthen>
+                                <and>
+                                    <ge><p>systems/gauges/radio/NAV-ARN-21/freq-imposed</p><v>112.3</v></ge>
+                                    <le><p>systems/gauges/radio/NAV-ARN-21/freq-imposed</p><v>117.9</v></le>
+                                </and>
+                                <product><sum><p>systems/gauges/radio/NAV-ARN-21/freq-imposed</p><v>-105.3</v></sum><v>10.0</v></product>
+                                <p>systems/gauges/radio/NAV-ARN-21/freq-chan-from-mhz</p>
+                            </ifthen>
+                        </ifthen>
+                        <v>0.5</v>
+                    </sum>
+                </integer>
+            </function>
+        </fcs_function>
+        
+        <fcs_function name="systems/gauges/radio/NAV-ARN-21/chan-Hi">
+            <function>
+                <ifthen>
+                    <eq><p>systems/gauges/radio/NAV-ARN-21/freq-imposed-new-event</p><v>1.0</v></eq>
+                    <integer>
+                        <product>
+                            <p>systems/gauges/radio/NAV-ARN-21/freq-chan-from-mhz</p>
+                            <v>0.1</v>
+                        </product>
+                    </integer>
+                    <p>systems/gauges/radio/NAV-ARN-21/chan-Hi</p>
+                </ifthen>
+            </function>
+        </fcs_function>
+        
+        <fcs_function name="systems/gauges/radio/NAV-ARN-21/chan-Lo">
+            <function>
+                <ifthen>
+                    <eq><p>systems/gauges/radio/NAV-ARN-21/freq-imposed-new-event</p><v>1.0</v></eq>
+                    <difference>
+                        <p>systems/gauges/radio/NAV-ARN-21/freq-chan-from-mhz</p>
+                        <product>
+                            <p>systems/gauges/radio/NAV-ARN-21/chan-Hi</p>
+                            <v>10.0</v>
+                        </product>
+                    </difference>
+                    <p>systems/gauges/radio/NAV-ARN-21/chan-Lo</p>
+                </ifthen>
+            </function>
+        </fcs_function>
+        
         <linear_actuator name="systems/gauges/radio/NAV-ARN-21/chan-Lo-pos">
             <input>systems/gauges/radio/NAV-ARN-21/chan-Lo</input>
             <module>10</module>
@@ -438,26 +531,6 @@
             <versus>0</versus>
         </linear_actuator>
         
-        <fcs_function name="systems/gauges/radio/NAV-ARN-21/freq-unit">
-            <function>
-                <mod>
-                    <p>systems/gauges/radio/NAV-ARN-21/chan-Lo</p>
-                    <v>10.0</v>
-                </mod>
-            </function>
-        </fcs_function>
-        
-        <fcs_function name="systems/gauges/radio/NAV-ARN-21/freq-dec">
-            <function>
-                <integer>
-                    <quotient>
-                        <p>systems/gauges/radio/NAV-ARN-21/chan-Hi</p>
-                        <v>10.0</v>
-                    </quotient>
-                </integer>
-            </function>
-        </fcs_function>
-        
         <fcs_function name="systems/gauges/radio/NAV-ARN-21/freq-chan">
             <function>
                 <sum>
@@ -469,6 +542,41 @@
                 </sum>
             </function>
         </fcs_function>
+        
+        <fcs_function name="systems/gauges/radio/NAV-ARN-21/freq-mhz">
+            <function>
+                <ifthen>
+                    <ge><p>systems/gauges/radio/NAV-ARN-21/freq-chan</p><v>17.0</v></ge>
+                    <ifthen>
+                        <le><p>systems/gauges/radio/NAV-ARN-21/freq-chan</p><v>59.0</v></le>
+                        <sum>
+                            <quotient><p>systems/gauges/radio/NAV-ARN-21/freq-chan</p><v>10.0</v></quotient>
+                            <v>106.3</v>
+                        </sum>
+                        <ifthen>
+                            <and>
+                                <ge><p>systems/gauges/radio/NAV-ARN-21/freq-chan</p><v>70.0</v></ge>
+                                <le><p>systems/gauges/radio/NAV-ARN-21/freq-chan</p><v>126.0</v></le>
+                            </and>
+                            <sum>
+                                <quotient><p>systems/gauges/radio/NAV-ARN-21/freq-chan</p><v>10.0</v></quotient>
+                                <v>105.3</v>
+                            </sum>
+                            <p>systems/gauges/radio/NAV-ARN-21/freq-mhz</p>
+                        </ifthen>
+                    </ifthen>
+                    <p>systems/gauges/radio/NAV-ARN-21/freq-mhz</p>
+                </ifthen>
+            </function>
+        </fcs_function>
+        
+        <switch>
+            <default value="/instrumentation/nav/frequencies/selected-mhz"/>
+            <test logic="AND" value="systems/gauges/radio/NAV-ARN-21/freq-mhz">
+                systems/gauges/radio/NAV-ARN-21/freq-imposed-new-event == 0
+            </test>
+            <output>/instrumentation/nav/frequencies/selected-mhz</output>
+        </switch>
         
     </channel>
     
