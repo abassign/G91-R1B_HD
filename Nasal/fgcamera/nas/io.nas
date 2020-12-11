@@ -17,6 +17,7 @@ var load_cameras = func {
 		setF = 1;
 	}
 
+	print("fgcamera : io.nas path: ",path);
 	props.copy(io.read_properties(path ~ "/" ~ file), cameraN);
 
 	var vec = cameraN.getChildren("camera");
