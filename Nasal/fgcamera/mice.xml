@@ -1,0 +1,413 @@
+<?xml version="1.0"?>
+<!--
+Mouse binding definitions.
+
+This is a independent configuration file: it is not part of the main
+FlightGear property tree.
+
+Currently, Glut supports only one mouse, but the configuration format
+is designed to support additional mice in the future if possible.  The
+current mode for each mouse is held in the
+/devices/status/mice/mouse[n]/mode property.
+-->
+
+<PropertyList>
+
+	<mouse n="0">
+		<mode-count type="int">4</mode-count>
+		<mode archive="y" type="int">0</mode>
+
+		<mode n="0">
+			<cursor>inherit</cursor>
+			<constrained type="bool">false</constrained>
+			<pass-through type="bool">true</pass-through>
+
+			<button n="0">
+				<binding>
+					<condition>
+						<property>/sim/menubar/autovisibility/enabled</property>
+					</condition>
+					<command>property-assign</command>
+					<property>/sim/menubar/visibility</property>
+					<value type="bool">false</value>
+				</binding>
+			</button>
+
+			<button n="2">
+				<binding>
+					<condition>
+						<or>
+							<not>
+								<property>/sim/fgcamera/fgcamera-enabled</property>
+							</not>
+							<and>
+								<not>
+									<property>/sim/fgcamera/mouse/spring-loaded</property>
+								</not>
+								<property>/sim/fgcamera/fgcamera-enabled</property>
+							</and>
+						</or>
+					</condition>
+					<command>cycle-mouse-mode</command>
+					<reason>right-click</reason>
+				</binding>
+			</button>
+		</mode>
+
+		<mode n="1">
+			<cursor>crosshair</cursor>
+			<constrained type="bool">true</constrained>
+			<pass-through type="bool">false</pass-through>
+
+			<button n="2">
+				<binding>
+					<condition>
+						<or>
+							<not>
+								<property>/sim/fgcamera/fgcamera-enabled</property>
+							</not>
+							<and>
+								<not>
+									<property>/sim/fgcamera/mouse/spring-loaded</property>
+								</not>
+								<property>/sim/fgcamera/fgcamera-enabled</property>
+							</and>
+						</or>
+					</condition>
+					<command>cycle-mouse-mode</command>
+					<reason>right-click</reason>
+				</binding>
+			</button>
+
+	<!-- extra buttons control elevator trim -->
+	<!-- these are often assigned to mouse-wheel motion in Linux -->
+			<button n="3">
+				<binding>
+				<command>property-adjust</command>
+				<property>/controls/flight/elevator-trim</property>
+				<step type="double">0.01</step>
+				</binding>
+			</button>
+
+			<button n="4">
+				<binding>
+				<command>property-adjust</command>
+				<property>/controls/flight/elevator-trim</property>
+				<step type="double">-0.01</step>
+				</binding>
+			</button>
+
+			<!-- Mouse left/right motion. -->
+			<x-axis>
+
+				<!-- No buttons pressed: control ailerons -->
+				<binding>
+					<condition>
+						<not>
+							<property>/devices/status/mice/mouse[0]/button[0]</property>
+						</not>
+						<not>
+							<property>/devices/status/mice/mouse[0]/button[1]</property>
+						</not>
+					</condition>
+					<command>property-adjust</command>
+					<property>/controls/flight/aileron</property>
+					<factor type="double">1.0</factor>
+					<min type="double">-1.0</min>
+					<max type="double">1.0</max>
+					<wrap type="bool">false</wrap>
+				</binding>
+
+				<!-- Left button pressed: control rudder -->
+				<binding>
+					<condition>
+						<property>/devices/status/mice/mouse[0]/button[0]</property>
+						<not>
+							<property>/devices/status/mice/mouse[0]/button[1]</property>
+						</not>
+					</condition>
+					<command>property-adjust</command>
+					<property>/controls/flight/rudder</property>
+					<factor type="double">1.0</factor>
+					<min type="double">-1.0</min>
+					<max type="double">1.0</max>
+					<wrap type="bool">false</wrap>
+				</binding>
+			</x-axis>
+
+			<!-- Mouse up/down motion -->
+			<y-axis>
+
+				<!-- No buttons pressed: control elevator -->
+				<binding>
+					<condition>
+						<not>
+							<property>/devices/status/mice/mouse[0]/button[0]</property>
+						</not>
+						<not>
+							<property>/devices/status/mice/mouse[0]/button[1]</property>
+						</not>
+					</condition>
+					<command>property-adjust</command>
+					<property>/controls/flight/elevator</property>
+					<factor type="double">-1.0</factor>
+					<min type="double">-1.0</min>
+					<max type="double">1.0</max>
+					<wrap type="bool">false</wrap>
+				</binding>
+
+				<!-- Middle button pressed: control throttle -->
+				<binding>
+					<command>nasal</command>
+					<script>controls.throttleMouse()</script>
+				</binding>
+			</y-axis>
+		</mode>
+
+	<!-- Mode 2: view mode -->
+		<mode n="2">
+			<cursor>left-right</cursor>
+			<constrained type="bool">true</constrained>
+			<pass-through type="bool">false</pass-through>
+
+			<!-- left button centres view direction; middle + left also resets view point -->
+			<button n="0">
+				<binding>
+					<condition>
+						<property>/sim/fgcamera/fgcamera-enabled</property>
+					</condition>
+					<command>fgcamera-reset-view</command>
+				</binding>
+				<binding>
+					<condition>
+						<not>
+							<property>/sim/fgcamera/fgcamera-enabled</property>
+						</not>
+					</condition>
+					<command>nasal</command>
+					<script>
+						view.resetViewDir();
+						view.resetFOV();
+					</script>
+				</binding>
+				<binding>
+					<condition>
+						<property>/devices/status/mice/mouse[0]/button[1]</property>
+					</condition>
+					<command>nasal</command>
+					<script>
+						view.resetViewPos();
+					</script>
+				</binding>
+			</button>
+
+			<!-- right button switches modes -->
+			<button n="2">
+				<binding>
+					<condition>
+						<or>
+							<not>
+								<property>/sim/fgcamera/fgcamera-enabled</property>
+							</not>
+							<and>
+								<not>
+									<property>/sim/fgcamera/mouse/spring-loaded</property>
+								</not>
+								<property>/sim/fgcamera/fgcamera-enabled</property>
+							</and>
+						</or>
+					</condition>
+					<command>cycle-mouse-mode</command>
+					<reason>right-click</reason>
+				</binding>
+			</button>
+ 
+			<!-- extra buttons control FoV -->
+			<!-- these are often assigned to mouse-wheel motion in Linux -->
+			<button n="3">
+				<binding>
+					<command>nasal</command>
+					<script>view.decrease()</script>
+				</binding>
+			</button>
+
+			<button n="4">
+				<binding>
+					<command>nasal</command>
+					<script>view.increase()</script>
+				</binding>
+			</button>
+
+			<!-- Mouse left/right motion -->
+			<x-axis>
+
+				<!-- No buttons pressed: rotate the view left or right -->
+				<binding>
+					<condition>
+						<property>/sim/fgcamera/fgcamera-enabled</property>
+					</condition>
+					<command>property-adjust</command>
+					<property>/sim/fgcamera/mouse/heading-offset</property>
+					<factor>100.0</factor>
+				</binding>
+				<binding>
+					<condition>
+						<not>
+							<property>/sim/fgcamera/fgcamera-enabled</property>
+						</not>
+						<not>
+							<property>/devices/status/mice/mouse[0]/button[0]</property>
+						</not>
+						<not>
+							<property>/devices/status/mice/mouse[0]/button[1]</property>
+						</not>
+					</condition>
+					<command>property-adjust</command>
+					<property>/sim/current-view/heading-offset-deg</property>
+					<factor type="double">-360</factor>
+					<min type="double">0</min>
+					<max type="double">360</max>
+					<wrap type="bool">true</wrap>
+				</binding>
+
+				<!-- Middle button pressed: move the view position left or right -->
+				<binding>
+					<condition>
+						<not>
+							<property>/devices/status/mice/mouse[0]/button[0]</property>
+						</not>
+						<property>/devices/status/mice/mouse[0]/button[1]</property>
+					</condition>
+					<command>property-adjust</command>
+					<property>/sim/current-view/x-offset-m</property>
+					<factor type="double">1</factor>
+					<wrap type="bool">false</wrap>
+				</binding>
+			</x-axis>
+
+			<!-- Mouse up/down motion -->
+			<y-axis>
+
+				<!-- No buttons pressed: tilt the view up and down -->
+				<binding>
+					<condition>
+						<property>/sim/fgcamera/fgcamera-enabled</property>
+					</condition>
+					<command>property-adjust</command>
+					<property>/sim/fgcamera/mouse/pitch-offset</property>
+					<factor>100.0</factor>
+				</binding>
+				<binding>
+					<condition>
+						<not>
+							<property>/sim/fgcamera/fgcamera-enabled</property>
+						</not>
+						<not>
+							<property>/devices/status/mice/mouse[0]/button[0]</property>
+						</not>
+						<not>
+							<property>/devices/status/mice/mouse[0]/button[1]</property>
+						</not>
+					</condition>
+					<command>property-adjust</command>
+					<property>/sim/current-view/pitch-offset-deg</property>
+					<factor type="double">-180</factor>
+					<min type="double">-90</min>
+					<max type="double">90</max>
+					<wrap type="bool">false</wrap>
+				</binding>
+
+				<!-- Middle button pressed move the view up and down -->
+				<binding>
+					<condition>
+						<not>
+							<property>/devices/status/mice/mouse[0]/button[0]</property>
+						</not>
+						<property>/devices/status/mice/mouse[0]/button[1]</property>
+					</condition>
+					<command>property-adjust</command>
+					<property>/sim/current-view/y-offset-m</property>
+					<factor type="double">-1</factor>
+					<wrap type="bool">false</wrap>
+				</binding>
+			</y-axis>
+
+			<!-- Middle button and Ctrl pressed: move the view forward and backward -->
+			<y-axis-ctrl>
+				<binding>
+					<condition>
+						<not>
+							<property>/devices/status/mice/mouse[0]/button[0]</property>
+						</not>
+						<property>/devices/status/mice/mouse[0]/button[1]</property>
+					</condition>
+					<command>property-adjust</command>
+					<property>/sim/current-view/z-offset-m</property>
+					<factor type="double">1</factor>
+					<wrap type="bool">false</wrap>
+				</binding>
+			</y-axis-ctrl>
+		</mode>
+
+		<!-- Mode 3: spring-loaded-view mode -->
+		<mode n="3">
+			<cursor>left-right</cursor>
+			<constrained type="bool">true</constrained>
+			<pass-through type="bool">false</pass-through>
+
+			<!-- Mouse left/right motion -->
+			<x-axis>
+				<!-- rotate the view left or right -->
+				<binding>
+					<condition>
+						<property>/sim/fgcamera/fgcamera-enabled</property>
+					</condition>
+					<command>property-adjust</command>
+					<property>/sim/fgcamera/mouse/heading-offset</property>
+					<factor>100.0</factor>
+				</binding>
+				<binding>
+					<condition>
+						<not>
+							<property>/sim/fgcamera/fgcamera-enabled</property>
+						</not>
+					</condition>
+					<command>property-adjust</command>
+					<property>/sim/current-view/heading-offset-deg</property>
+					<factor type="double">-360</factor>
+					<min type="double">0</min>
+					<max type="double">360</max>
+					<wrap type="bool">true</wrap>
+				</binding>
+			</x-axis>
+
+			<!-- Mouse up/down motion -->
+			<y-axis>
+
+				<!-- tilt the view up and down -->
+				<binding>
+					<condition>
+						<property>/sim/fgcamera/fgcamera-enabled</property>
+					</condition>
+					<command>property-adjust</command>
+					<property>/sim/fgcamera/mouse/pitch-offset</property>
+					<factor>100.0</factor>
+				</binding>
+				<binding>
+					<condition>
+						<not>
+							<property>/sim/fgcamera/fgcamera-enabled</property>
+						</not>
+					</condition>
+					<command>property-adjust</command>
+					<property>/sim/current-view/pitch-offset-deg</property>
+					<factor type="double">-180</factor>
+					<min type="double">-90</min>
+					<max type="double">90</max>
+					<wrap type="bool">false</wrap>
+				</binding>
+			</y-axis>
+		</mode>
+	</mouse> <!-- of mouse 0 -->
+</PropertyList>
+

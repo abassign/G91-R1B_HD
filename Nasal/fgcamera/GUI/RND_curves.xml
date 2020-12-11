@@ -1,0 +1,277 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+	<name>RND-curves</name>
+	<layout>vbox</layout>
+	<x>20</x>
+	<y>-50</y>
+
+	<nasal>
+		<open><![CDATA[
+			var self = cmdarg();
+			var listeners = [];
+
+			var max_velocity = 700;                   # kt
+			var max_level    = 1.5;
+			var h_res        = 10 / 100;              # kt/pixel
+			var v_res        = 1.5 / 250;
+			var h_grid       = 10;                    # kt
+			var v_grid       = 0.5;
+			var h_spacing    = h_grid / h_res;        # pixel
+			var v_spacing    = v_grid / v_res;        # pixel
+			var graph_width  = max_velocity / h_res;
+			var graph_height = max_level / v_res;
+			var markers      = [];
+
+			#==================================================
+			#
+			#==================================================
+			var marker = {
+				new: func (x, y, w, i, chart, curve, data_x, data_y) {
+					var m = { parents : [ marker ] };
+
+					m._x = x;
+					m._y = y;
+					m._id = i;
+					m.data_x = data_x;
+					m.data_y = data_y;
+					m._curve = curve;
+
+					m.marker = chart.createChild("group");
+
+					m.marker.createChild("path", "marker" ~ i)
+						.moveTo(-w/2, -w/2 * 0)
+						.arcSmallCWTo(w/2, w/2, 0, w/2, 0)
+						.arcSmallCWTo(w/2, w/2, 0, -w/2, 0)
+#						.lineTo(w/2, -w/2)
+#						.lineTo(w/2, w/2)
+#						.lineTo(-w/2, w/2)
+						.close()
+						.setColor(0,0.8,0)
+						.setColorFill(0.25,0.24,0.22)
+						.setStrokeLineWidth(2)
+						.addEventListener( "drag", func(e) m._move(e) );
+
+						m.marker.setTranslation(x, y);
+						m._update_curve();
+
+					return m;
+				},
+			#--------------------------------------------------
+				_move: func (e) {
+					var x = me._x + e.deltaX;
+					var y = me._y + e.deltaY;
+
+					if ( x < 0 ) x = 0;
+					if ( x > graph_width ) x = graph_width;
+					if ( me._id == 0) x = 0;
+
+					if ( y > graph_height ) y = graph_height;
+					if ( y < 0 ) y = 0;
+
+					me.marker.setTranslation(me._x = x, me._y = y);
+					me._update_curve();
+
+					setData(me.data_x, me._id, x * h_res);
+					setData(me.data_y, me._id, (graph_height - y) * v_res);
+				},
+			#--------------------------------------------------
+				_update_curve: func {
+					var x = 2 * me._id;
+					var y = x + 1;
+
+					me._curve.setDouble("coord[" ~ x ~ "]", me._x);
+					me._curve.setDouble("coord[" ~ y ~ "]", me._y);
+				},
+
+				getTranslation: func return me.marker.getTranslation(),
+
+				setTranslation: func (x, y) {
+					me.marker.setTranslation(me._x = x, me._y = y);
+					me._update_curve();
+				},
+			};
+
+			var Chart = {
+				new: func (h) {
+					var m = { parents : [ Chart ] };
+
+					m._chart   = h.chart;
+					m._markers = [];
+					m._curve = m._chart.createChild("path", "curve")
+						.moveTo(0,0)
+						.setColor(1,0,0)
+						.setStrokeLineWidth(3);
+
+					for (var i = 1; i <= 9; i += 1) m._curve.lineTo(0,0);
+
+					m._draw_grid();
+
+					for (var i = 0; i <= 9; i += 1) {
+						var x = getData(h.x, i) / h_res;
+						var y = ( max_level - getData(h.y, i) ) / v_res;
+
+						append( m._markers, marker.new(x, y, 10, i, m._chart, m._curve, h.x, h.y) );
+					}
+
+					m.reset();
+
+					return m;
+				},
+
+				reset: func me._chart.setTranslation(30, -30),
+
+				update: func (h) {
+					for (var i = 0; i <= 9; i += 1) {
+						var x = getData(h.x, i) / h_res;
+						var y = ( max_level - getData(h.y, i) ) / v_res;
+						me._markers[i].setTranslation(x, y);
+					}
+				},
+
+				_draw_grid: func {
+					var _text = func (x, y, txt) {
+						me._chart.createChild("text")
+							.setText(txt)
+							.setTranslation(x, y)
+							.setAlignment("center-center")
+							.setFontSize(15)
+							.setFont("LiberationFonts/LiberationSans-Regular.ttf")
+							.setColor(1,1,1);
+					}
+
+					var grid = me._chart.createChild("path", "grid").setColor(1,1,1).setStrokeDashArray([2,4]);
+
+					for (var i = 0; i <= graph_width; i += h_spacing) {
+						grid.moveTo(i, 0).lineTo(i, graph_height);
+						_text(i, graph_height + 15, i * h_res);
+					}
+
+					for (var i = 0; i <= graph_height; i += v_spacing) {
+						grid.moveTo(0, i).lineTo(graph_width, i);
+						_text(-15, graph_height - i, i * v_res);
+					}
+
+					grid.addEventListener("drag", func (e) {
+							var t = me._chart.getTranslation();
+							t[0] += e.deltaX;
+							t[1] += e.deltaY;
+							me._chart.setTranslation(t[0], t[1]);
+						} );
+				},
+
+			};
+
+			var getMode = func {
+				var GUI_edit = fgcamera.RND_handler.GUI_edit;
+				var GUI_mode = fgcamera.RND_handler.GUI_mode;
+
+				if ( GUI_edit ) var mode = GUI_mode;
+				else var mode = fgcamera.RND_handler._mode;
+			}
+
+			var getData = func (key, i) fgcamera.rnd[ getMode() ].curves[key][i];
+
+			var setData = func (key, i, d) fgcamera.rnd[ getMode() ].curves[key][i] = d;
+
+		]]></open>
+
+		<close><![CDATA[
+			#TestMap.del();
+			foreach (var l; listeners)
+				removelistener(l);
+			setsize(listeners, 0);
+		]]></close>
+	</nasal>
+
+<!-- Title -->
+	<group>
+		<layout>hbox</layout>
+
+		<empty><stretch>1</stretch></empty>
+
+		<button>
+			<legend> </legend>
+			<key>Esc</key>
+			<pref-width>16</pref-width>
+			<pref-height>16</pref-height>
+			<binding>
+				<command>dialog-show</command>
+				<dialog-name>RND-mixer</dialog-name>
+			</binding>
+			<binding>
+				<command>dialog-close</command>
+				<dialog-name>RND-curves</dialog-name>
+			</binding>
+		</button>
+	</group>
+
+	<hrule/>
+
+
+	<group>
+		<layout>hbox</layout>
+
+		<text>
+			<label>Level</label>
+		</text>
+
+		<group>
+			<layout>vbox</layout>
+			<canvas>
+				<name>level-curve</name>
+				<valign>fill</valign>
+				<halign>fill</halign>
+				<!-- stretch>true</stretch -->
+				<pref-width>600</pref-width>
+				<pref-height>250</pref-height>
+				<nasal>
+					<load> <![CDATA[
+						var myCanvas1 = canvas.get( cmdarg() );
+						myCanvas1.setColorBackground(0,0,0.3,1); # transparent
+
+						var myChart1 = Chart.new( { x: "v1", y: "level", chart: myCanvas1.createGroup() } );
+						append(listeners, setlistener( "/sim/fgcamera/current-camera/RND-updated", func { myChart1.update( { x: "v1", y: "level"} ) } ) );
+
+					]]> </load>
+				</nasal>
+			</canvas>
+		</group>
+	</group>
+
+	<text>
+		<label>Velocity, knots</label>
+	</text>
+
+	<hrule/>
+
+	<group>
+		<layout>hbox</layout>
+		<text>
+			<label>Filter</label>
+		</text>
+		<group>
+			<layout>vbox</layout>
+			<canvas>
+				<name>filter-curve</name>
+				<valign>fill</valign>
+				<halign>fill</halign>
+				<pref-width>600</pref-width>
+				<pref-height>250</pref-height>
+				<nasal>
+					<load> <![CDATA[
+						var myCanvas2 = canvas.get( cmdarg() );
+						myCanvas2.setColorBackground(0, 0, 0.3, 1);
+
+						var myChart2 = Chart.new( { x: "v2", y: "filter", chart: myCanvas2.createGroup() } );
+						append(listeners, setlistener( "/sim/fgcamera/current-camera/RND-updated", func { myChart2.update( { x: "v2", y: "filter"} ) } ) );
+					]]> </load>
+				</nasal>
+			</canvas>
+		</group>
+	</group>
+	<text>
+		<label>Velocity, knots</label>
+	</text>
+
+</PropertyList>

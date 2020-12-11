@@ -933,4 +933,37 @@
             
     <hrule/>
     
+    <group>
+        <layout>vbox</layout>
+        <group>
+            <layout>table</layout>
+            <text>
+                <label>FG Camera (Exp)</label>
+                <pref-width>100</pref-width>
+                <halign>left</halign>
+                <row>0</row>
+                <col>0</col>
+                <color>
+                    <red>0.0</red>
+                    <green>1.0</green>
+                    <blue>1.0</blue>
+                </color>
+            </text>
+            <button>
+                <row>0</row>
+                <col>1</col>
+                <pref-width>90</pref-width>
+                <legend>Active FGCamera</legend>
+                <halign>fill</halign>
+                <live>true</live>
+                <binding>
+                    <command>nasal</command>
+                    <script>
+                        setprop("/sim/fgcamera/load-modules",1);
+                    </script>
+                </binding>
+            </button>
+        </group>
+    </group>
+    
 </PropertyList> 

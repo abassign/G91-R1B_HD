@@ -4,6 +4,11 @@
 
     <path>procedural_light.ac</path>
     <nopreview/>
+    
+    <animation>
+        <type>noshadow</type>
+        <object-name>procedural_light</object-name>
+    </animation>
 
     <effect>
         <inherits-from>procedural_light_cockpit_advise_white</inherits-from>

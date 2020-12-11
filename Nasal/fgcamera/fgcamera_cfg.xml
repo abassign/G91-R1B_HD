@@ -1,0 +1,449 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+	<input>
+		<keyboard>
+			<!-- key n="101">
+				<name>e</name>
+				<desc>throttle up</desc>
+				<repeatable>1</repeatable>
+				<binding>
+					<command>nasal</command>
+					<script>controls.incThrottle(0.01, 1.0)</script>
+				</binding>
+			</key>
+
+			<key n="100">
+				<name>d</name>
+				<desc>throttle down</desc>
+				<repeatable>1</repeatable>
+				<binding>
+					<command>nasal</command>
+					<script>controls.incThrottle(-0.01, -1.0)</script>
+				</binding>
+			</key>
+
+			<key n="115">
+				<name>s</name>
+				<desc>rudder left</desc>
+				<repeatable>1</repeatable>
+				<binding>
+					<command>property-adjust</command>
+					<property>/controls/flight/rudder</property>
+					<step type="double">-0.05</step>
+				</binding>
+			</key>
+
+			<key n="119">
+				<name>w</name>
+				<desc>rudder left - slow</desc>
+				<repeatable>1</repeatable>
+				<binding>
+					<command>property-adjust</command>
+					<property>/controls/flight/rudder</property>
+					<step type="double">-0.01</step>
+				</binding>
+			</key>
+
+			<key n="102">
+				<name>f</name>
+				<desc>rudder right</desc>
+				<repeatable>1</repeatable>
+				<binding>
+					<command>property-adjust</command>
+					<property>/controls/flight/rudder</property>
+					<step type="double">0.05</step>
+				</binding>
+			</key>
+
+			<key n="114">
+				<name>r</name>
+				<desc>rudder right - slow</desc>
+				<repeatable>1</repeatable>
+				<binding>
+					<command>property-adjust</command>
+					<property>/controls/flight/rudder</property>
+					<step type="double">0.01</step>
+				</binding>
+			</key -->
+
+			<key n="32">
+				<name>Space</name>
+				<desc>toggle mouse mode</desc>
+				<repeatable>0</repeatable>
+				<binding>
+					<command>nasal</command>
+					<script>fgcamera.toggleYoke()</script>
+				</binding>
+			</key>
+
+			<key n="360">
+				<mod-shift>
+					<!-- name> PageUp </name>
+					<desc>Camera Up</desc -->
+					<binding>
+						<command>fgcamera-adjust</command>
+						<velocity>1</velocity>
+						<dof>y</dof>
+					</binding>
+					<mod-up>
+						<binding>
+							<command>fgcamera-adjust</command>
+							<velocity>0</velocity>
+							<dof>y</dof>
+						</binding>
+					</mod-up>
+				</mod-shift>
+			</key>
+
+			<key n="361">
+				<mod-shift>
+					<!--name> PageDown </name>
+					<desc>Camera Down</desc-->
+					<binding>
+						<command>fgcamera-adjust</command>
+						<velocity>-1</velocity>
+						<dof>y</dof>
+					</binding>
+					<mod-up>
+						<binding>
+							<command>fgcamera-adjust</command>
+							<velocity>0</velocity>
+							<dof>y</dof>
+						</binding>
+					</mod-up>
+				</mod-shift>
+			</key>
+
+			<key n="48">
+				<name> 0 </name>
+				<repeatable type="bool">false</repeatable>
+				<desc>Preset view 0</desc>
+				<binding>
+					<command>fgcamera-select</command>
+					<camera-id>0</camera-id>
+					<camera-type>aircraft</camera-type>
+				</binding>
+			</key>
+
+			<key n="49">
+				<name> 1 </name>
+				<repeatable type="bool">false</repeatable>
+				<desc>Preset view 1</desc>
+				<binding>
+					<command>fgcamera-select</command>
+					<camera-id>1</camera-id>
+					<camera-type>aircraft</camera-type>
+				</binding>
+			</key>
+			<key n="50">
+				<name> 2 </name>
+				<desc>Preset view 2</desc>
+				<binding>
+					<command>fgcamera-select</command>
+					<camera-id>2</camera-id>
+					<camera-type>aircraft</camera-type>
+				</binding>
+			</key>
+
+			<key n="51">
+				<name> 3 </name>
+				<desc>Preset view 3</desc>
+				<binding>
+					<command>fgcamera-select</command>
+					<camera-id>3</camera-id>
+					<camera-type>aircraft</camera-type>
+				</binding>
+			</key>
+
+			<key n="52">
+				<name> 4 </name>
+				<repeatable>0</repeatable>
+				<desc>Preset view 4</desc>
+				<binding>
+					<command>fgcamera-select</command>
+					<camera-id>4</camera-id>
+					<camera-type>aircraft</camera-type>
+				</binding>
+			</key>
+
+			<key n="53">
+				<name> 5 </name>
+				<desc>Preset view 5</desc>
+				<binding>
+					<command>fgcamera-select</command>
+					<camera-id>5</camera-id>
+					<camera-type>aircraft</camera-type>
+				</binding>
+			</key>
+
+			<key n="54">
+				<name> 6 </name>
+				<desc>Preset view 6</desc>
+				<binding>
+					<command>fgcamera-select</command>
+					<camera-id>6</camera-id>
+					<camera-type>aircraft</camera-type>
+				</binding>
+			</key>
+
+			<key n="55">
+				<name> 7 </name>
+				<desc>Preset view 7</desc>
+				<binding>
+					<command>fgcamera-select</command>
+					<camera-id>7</camera-id>
+					<camera-type>aircraft</camera-type>
+				</binding>
+			</key>
+
+			<key n="56">
+				<name> 8 </name>
+				<desc>Preset view 8</desc>
+				<binding>
+					<command>fgcamera-select</command>
+					<camera-id>8</camera-id>
+					<camera-type>aircraft</camera-type>
+				</binding>
+			</key>
+
+			<key n="57">
+				<name> 9 </name>
+				<desc>Preset view 9</desc>
+				<binding>
+					<command>fgcamera-select</command>
+					<camera-id>9</camera-id>
+					<camera-type>aircraft</camera-type>
+				</binding>
+			</key>
+
+			<key n="357">
+				<name> Up </name>
+				<desc>Camera forward</desc>
+				<binding>
+					<command>fgcamera-adjust</command>
+					<velocity>-1</velocity>
+					<dof>z</dof>
+				</binding>
+				<mod-up>
+					<binding>
+						<command>fgcamera-adjust</command>
+						<velocity>0</velocity>
+						<dof>z</dof>
+					</binding>
+				</mod-up>
+			</key>
+
+			<key n="359">
+				<name> Down </name>
+				<desc>camera back</desc>
+				<binding>
+					<command>fgcamera-adjust</command>
+					<velocity>1</velocity>
+					<dof>z</dof>
+				</binding>
+				<mod-up>
+					<binding>
+						<command>fgcamera-adjust</command>
+						<velocity>0</velocity>
+						<dof>z</dof>
+					</binding>
+				</mod-up>
+			</key>
+
+			<key n="356">
+				<name> Left </name>
+				<desc>Camera left</desc>
+				<binding>
+					<command>fgcamera-adjust</command>
+					<velocity>-1</velocity>
+					<dof>x</dof>
+				</binding>
+				<mod-up>
+					<binding>
+						<command>fgcamera-adjust</command>
+						<velocity>0</velocity>
+						<dof>x</dof>
+					</binding>
+				</mod-up>
+			</key>
+
+			<key n="358">
+				<name> Right </name>
+				<desc>Camera right</desc>
+				<binding>
+					<command>fgcamera-adjust</command>
+					<velocity>1</velocity>
+					<dof>x</dof>
+				</binding>
+				<mod-up>
+					<binding>
+						<command>fgcamera-adjust</command>
+						<velocity>0</velocity>
+						<dof>x</dof>
+					</binding>
+				</mod-up>
+			</key>
+		</keyboard>
+	</input>
+
+	<sim>
+		<fgcamera>
+			<enable type="bool">true</enable>
+			<mouse>
+				<spring-loaded type="bool" userarchive="y">true</spring-loaded>
+			</mouse>
+		</fgcamera>
+
+		<panel>
+			<path>Nasal/fgcamera/Panels/generic-vfr-panel.xml</path>
+			<visibility archive="y">false</visibility>
+			<hide-nonzero-heading-offset type="bool">false</hide-nonzero-heading-offset>
+			<hide-nonzero-view type="bool">false</hide-nonzero-view>
+		</panel>
+
+		<!--rotorgear
+			max-power-engine="557"
+			max-power-rotor-brake="100"
+			rotorgear-friction="2.6"
+			engine-prop-factor="0.015"
+			engine-accel-limit="100"
+			yasimdragfactor="19"
+			yasimliftfactor="18"/-->
+
+		<!-- systems>
+			<property-rule n="100">
+				<path>/Aircraft/ec135/filtrai/filtras1.xml</path>
+			</property-rule>
+		</systems -->
+
+		<view n="120">
+			<name>FGCamera1</name>
+			<enabled type="bool" userarchive="y">false</enabled>
+			<type>lookfrom</type>
+			<internal type="bool">true</internal>
+			<config>
+				<from-model type="bool">true</from-model>
+				<from-model-idx type="int">0</from-model-idx>
+				<ground-level-nearplane-m type="double">0.5f</ground-level-nearplane-m>
+				<default-field-of-view-deg type="double">55.0</default-field-of-view-deg>
+				<default-pitch-deg type="double">0</default-pitch-deg>
+				<default-heading-deg type="double">0</default-heading-deg>
+				<front-direction-deg type="double">0</front-direction-deg>
+				<front-left-direction-deg type="double">45</front-left-direction-deg>
+				<left-direction-deg type="double">90</left-direction-deg>
+				<back-left-direction-deg type="double">135</back-left-direction-deg>
+				<back-direction-deg type="double">180</back-direction-deg>
+				<back-right-direction-deg type="double">225</back-right-direction-deg>
+				<right-direction-deg type="double">270</right-direction-deg>
+				<front-right-direction-deg type="double">315</front-right-direction-deg>
+				<dynamic-view type="bool">true</dynamic-view>
+
+				<x-offset-m archive="y">0</x-offset-m>
+				<y-offset-m archive="y">-0.15</y-offset-m>
+				<z-offset-m archive="y">0.6</z-offset-m>
+				<pitch-offset-deg>-8</pitch-offset-deg>
+			</config>
+		</view>
+
+		<view n="121">
+			<name>FGCamera2</name>
+			<enabled type="bool" userarchive="y">false</enabled>
+			<type>lookat</type>
+			<config>
+				<from-model type="bool">false</from-model>
+				<from-model-idx type="int">0</from-model-idx>
+				<eye-lat-deg-path>/position/latitude-deg</eye-lat-deg-path>
+				<eye-lon-deg-path>/position/longitude-deg</eye-lon-deg-path>
+				<eye-alt-ft-path>/position/altitude-ft</eye-alt-ft-path>
+				<eye-heading-deg-path>/orientation/heading-deg</eye-heading-deg-path>
+
+				<at-model type="bool">true</at-model>
+				<at-model-idx type="int">0</at-model-idx>
+				<at-model-heading-damping type="double">0.0</at-model-heading-damping>
+				<target-z-offset-m type="double">0</target-z-offset-m>
+
+				<ground-level-nearplane-m type="double">0.5f</ground-level-nearplane-m>
+				<default-field-of-view-deg type="double">55.0</default-field-of-view-deg>
+
+				<x-offset-m type="double">0</x-offset-m>
+				<y-offset-m type="double">0</y-offset-m>
+				<z-offset-m alias="/sim/chase-distance-m"/>
+			</config>
+		</view>
+
+		<view n="122">
+			<name>FGCamera3</name>
+			<enabled type="bool" userarchive="y">false</enabled>
+			<type>lookfrom</type>
+			<config>
+				<from-model type="bool">true</from-model>
+				<from-model-idx type="int">0</from-model-idx>
+				<!-- eye-lat-deg-path>/position/latitude-deg</eye-lat-deg-path>
+				<eye-lon-deg-path>/position/longitude-deg</eye-lon-deg-path>
+				<eye-alt-ft-path>/position/altitude-ft</eye-alt-ft-path>
+				<eye-heading-deg-path>/orientation/heading-deg</eye-heading-deg-path -->
+
+				<at-model type="bool">true</at-model>
+				<at-model-idx type="int">0</at-model-idx>
+				<at-model-heading-damping type="double">0.0</at-model-heading-damping>
+				<target-z-offset-m type="double">0</target-z-offset-m>
+
+				<ground-level-nearplane-m type="double">0.5f</ground-level-nearplane-m>
+				<default-field-of-view-deg type="double">55.0</default-field-of-view-deg>
+
+				<x-offset-m type="double">0</x-offset-m>
+				<y-offset-m type="double">0</y-offset-m>
+				<z-offset-m alias="/sim/chase-distance-m"/>
+			</config>
+		</view>
+
+		<view n="123">
+			<name>FGCamera4</name>
+			<enabled type="bool" userarchive="y">false</enabled>
+			<type>lookat</type>
+			<config>
+				<eye-lat-deg-path>/sim/tower/latitude-deg</eye-lat-deg-path>
+				<eye-lon-deg-path>/sim/tower/longitude-deg</eye-lon-deg-path>
+				<eye-alt-ft-path>/sim/tower/altitude-ft</eye-alt-ft-path>
+				<eye-roll-deg-path>/sim/tower/roll-deg</eye-roll-deg-path>
+				<eye-pitch-deg-path>/sim/tower/pitch-deg</eye-pitch-deg-path>
+				<eye-heading-deg-path>/sim/tower/heading-deg</eye-heading-deg-path>
+
+				<at-model type="bool">true</at-model>
+				<at-model-idx type="int">0</at-model-idx>
+
+				<ground-level-nearplane-m type="double">10.0f</ground-level-nearplane-m>
+				<default-field-of-view-deg type="double">55.0</default-field-of-view-deg>
+
+				<x-offset-m type="double">0</x-offset-m>
+				<y-offset-m type="double">0</y-offset-m>
+				<z-offset-m type="double">0</z-offset-m>
+			</config>
+		</view>
+
+		<view n="124">
+			<name>FGCamera5</name>
+			<enabled type="bool" userarchive="y">false</enabled>
+			<type>lookfrom</type>
+			<config>
+				<eye-lat-deg-path>/sim/fgcamera/tower/latitude-deg</eye-lat-deg-path>
+				<eye-lon-deg-path>/sim/fgcamera/tower/longitude-deg</eye-lon-deg-path>
+				<eye-alt-ft-path>/sim/fgcamera/tower/altitude-ft</eye-alt-ft-path>
+				<eye-roll-deg-path>/sim/fgcamera/tower/roll-deg</eye-roll-deg-path>
+				<eye-pitch-deg-path>/sim/fgcamera/tower/pitch-deg</eye-pitch-deg-path>
+				<eye-heading-deg-path>/sim/fgcamera/tower/heading-deg</eye-heading-deg-path>
+
+				<at-model type="bool">true</at-model>
+				<at-model-idx type="int">0</at-model-idx>
+
+				<ground-level-nearplane-m type="double">10.0f</ground-level-nearplane-m>
+				<default-field-of-view-deg type="double">55.0</default-field-of-view-deg>
+
+				<x-offset-m type="double">0</x-offset-m>
+				<y-offset-m type="double">0</y-offset-m>
+				<z-offset-m type="double">0</z-offset-m>
+			</config>
+		</view>
+	</sim>
+</PropertyList>

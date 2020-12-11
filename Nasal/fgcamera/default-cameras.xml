@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+	<version>v1.2</version>
+
+	<camera>
+		<name>default</name>
+		<type>FGCamera1</type>
+		<category>0</category>
+		<popupTip>1</popupTip>
+		<panel-show>0</panel-show>
+		<dialog-show>0</dialog-show>
+		<dialog-name></dialog-name>
+		<head-tracker>0</head-tracker>
+		<enable-RND>1</enable-RND>
+		<enable-DHM>1</enable-DHM>
+		<fov>65</fov>
+
+		<offsets>0</offsets>
+		<offsets>0</offsets>
+		<offsets>0</offsets>
+		<offsets>0</offsets>
+		<offsets>0</offsets>
+		<offsets>0</offsets>
+
+		<adjustment>
+			<v>0.1</v>
+			<v>30.0</v>
+			<filter>0.2</filter>
+		</adjustment>
+
+		<mouse_look>
+			<sensitivity>2.0</sensitivity>
+			<filter>0.1</filter>
+		</mouse_look>
+
+		<movement>
+			<time>1.0</time>
+		</movement>
+
+		<tower>
+			<latitude-deg>0</latitude-deg>
+			<longitude-deg>0</longitude-deg>
+			<altitude-ft>0</altitude-ft>
+			<heading-deg>0</heading-deg>
+			<pitch-deg>0</pitch-deg>
+			<roll-deg>0</roll-deg>
+		</tower>
+
+		<RND>
+			<GEN>
+				<sine>0</sine> <!-- enabled -->
+				<sine>0</sine> <!-- frequency -->
+				<sine>0</sine> <!-- level -->
+
+				<resonance>0</resonance> <!-- enabled -->
+				<resonance>0</resonance> <!-- frequency -->
+				<resonance>0</resonance> <!-- intensity -->
+				<resonance>0.1</resonance> <!-- attack -->
+				<resonance>0.1</resonance> <!-- release -->
+				<resonance>0</resonance> <!-- level -->
+
+				<noise>0</noise> <!-- enabled -->
+				<noise>0</noise> <!-- frequency -->
+				<noise>0</noise> <!-- level -->
+
+				<LFO1>0</LFO1> <!-- enabled -->
+				<LFO1>0</LFO1> <!-- intensity -->
+				<LFO1>0</LFO1> <!-- filter -->
+				<LFO1>0</LFO1> <!-- level -->
+
+				<LFO2>0</LFO2> <!-- enabled -->
+				<LFO2>0</LFO2> <!-- intensity -->
+				<LFO2>0</LFO2> <!-- filter -->
+				<LFO2>0</LFO2> <!-- level -->
+			</GEN>
+
+			<GEN n="1">
+				<sine>0</sine> <!-- enabled -->
+				<sine>0</sine> <!-- frequency -->
+				<sine>0</sine> <!-- level -->
+
+				<resonance>0</resonance> <!-- enabled -->
+				<resonance>0</resonance> <!-- frequency -->
+				<resonance>0</resonance> <!-- intensity -->
+				<resonance>0.1</resonance> <!-- attack -->
+				<resonance>0.1</resonance> <!-- release -->
+				<resonance>0</resonance> <!-- level -->
+
+				<noise>0</noise> <!-- enabled -->
+				<noise>0</noise> <!-- frequency -->
+				<noise>0</noise> <!-- level -->
+
+				<LFO1>0</LFO1> <!-- enabled -->
+				<LFO1>0</LFO1> <!-- intensity -->
+				<LFO1>0</LFO1> <!-- filter -->
+				<LFO1>0</LFO1> <!-- level -->
+
+				<LFO2>0</LFO2> <!-- enabled -->
+				<LFO2>0</LFO2> <!-- intensity -->
+				<LFO2>0</LFO2> <!-- filter -->
+				<LFO2>0</LFO2> <!-- level -->
+			</GEN>
+
+			<GEN n="2">
+				<sine>0</sine> <!-- enabled -->
+				<sine>0</sine> <!-- frequency -->
+				<sine>0</sine> <!-- level -->
+
+				<resonance>0</resonance> <!-- enabled -->
+				<resonance>0</resonance> <!-- frequency -->
+				<resonance>0</resonance> <!-- intensity -->
+				<resonance>0.1</resonance> <!-- attack -->
+				<resonance>0.1</resonance> <!-- release -->
+				<resonance>0</resonance> <!-- level -->
+
+				<noise>0</noise> <!-- enabled -->
+				<noise>0</noise> <!-- frequency -->
+				<noise>0</noise> <!-- level -->
+
+				<LFO1>0</LFO1> <!-- enabled -->
+				<LFO1>0</LFO1> <!-- intensity -->
+				<LFO1>0</LFO1> <!-- filter -->
+				<LFO1>0</LFO1> <!-- level -->
+
+				<LFO2>0</LFO2> <!-- enabled -->
+				<LFO2>0</LFO2> <!-- intensity -->
+				<LFO2>0</LFO2> <!-- filter -->
+				<LFO2>0</LFO2> <!-- level -->
+			</GEN>
+
+			<mixer>
+				<x>0</x>
+				<x>0</x>
+				<x>0</x>
+				<x>0</x>
+
+				<y>0</y>
+				<y>0</y>
+				<y>0</y>
+				<y>0</y>
+
+				<z>0</z>
+				<z>0</z>
+				<z>0</z>
+				<z>0</z>
+
+				<h>0</h>
+				<h>0</h>
+				<h>0</h>
+				<h>0</h>
+
+				<p>0</p>
+				<p>0</p>
+				<p>0</p>
+				<p>0</p>
+
+				<r>0</r>
+				<r>0</r>
+				<r>0</r>
+				<r>0</r>
+
+				<s>1</s>
+			</mixer>
+
+			<curves>
+				<v1>0</v1>
+				<v1>10</v1>
+				<v1>20</v1>
+				<v1>30</v1>
+				<v1>40</v1>
+				<v1>50</v1>
+				<v1>60</v1>
+				<v1>70</v1>
+				<v1>80</v1>
+				<v1>90</v1>
+
+				<level>0</level>
+				<level>0</level>
+				<level>0</level>
+				<level>0</level>
+				<level>0</level>
+				<level>0</level>
+				<level>0</level>
+				<level>0</level>
+				<level>0</level>
+				<level>0</level>
+
+				<v2>0</v2>
+				<v2>10</v2>
+				<v2>20</v2>
+				<v2>30</v2>
+				<v2>40</v2>
+				<v2>50</v2>
+				<v2>60</v2>
+				<v2>70</v2>
+				<v2>80</v2>
+				<v2>90</v2>
+
+				<filter>0</filter>
+				<filter>0</filter>
+				<filter>0</filter>
+				<filter>0</filter>
+				<filter>0</filter>
+				<filter>0</filter>
+				<filter>0</filter>
+				<filter>0</filter>
+				<filter>0</filter>
+				<filter>0</filter>
+			</curves>
+		</RND>
+
+		<RND n="1">
+			<GEN>
+				<sine>0</sine> <!-- enabled -->
+				<sine>0</sine> <!-- frequency -->
+				<sine>0</sine> <!-- level -->
+
+				<resonance>0</resonance> <!-- enabled -->
+				<resonance>0</resonance> <!-- frequency -->
+				<resonance>0</resonance> <!-- intensity -->
+				<resonance>0.1</resonance> <!-- attack -->
+				<resonance>0.1</resonance> <!-- release -->
+				<resonance>0</resonance> <!-- level -->
+
+				<noise>0</noise> <!-- enabled -->
+				<noise>0</noise> <!-- frequency -->
+				<noise>0</noise> <!-- level -->
+
+				<LFO1>0</LFO1> <!-- enabled -->
+				<LFO1>0</LFO1> <!-- intensity -->
+				<LFO1>0</LFO1> <!-- filter -->
+				<LFO1>0</LFO1> <!-- level -->
+
+				<LFO2>0</LFO2> <!-- enabled -->
+				<LFO2>0</LFO2> <!-- intensity -->
+				<LFO2>0</LFO2> <!-- filter -->
+				<LFO2>0</LFO2> <!-- level -->
+			</GEN>
+
+			<GEN n="1">
+				<sine>0</sine> <!-- enabled -->
+				<sine>0</sine> <!-- frequency -->
+				<sine>0</sine> <!-- level -->
+
+				<resonance>0</resonance> <!-- enabled -->
+				<resonance>0</resonance> <!-- frequency -->
+				<resonance>0</resonance> <!-- intensity -->
+				<resonance>0.1</resonance> <!-- attack -->
+				<resonance>0.1</resonance> <!-- release -->
+				<resonance>0</resonance> <!-- level -->
+
+				<noise>0</noise> <!-- enabled -->
+				<noise>0</noise> <!-- frequency -->
+				<noise>0</noise> <!-- level -->
+
+				<LFO1>0</LFO1> <!-- enabled -->
+				<LFO1>0</LFO1> <!-- intensity -->
+				<LFO1>0</LFO1> <!-- filter -->
+				<LFO1>0</LFO1> <!-- level -->
+
+				<LFO2>0</LFO2> <!-- enabled -->
+				<LFO2>0</LFO2> <!-- intensity -->
+				<LFO2>0</LFO2> <!-- filter -->
+				<LFO2>0</LFO2> <!-- level -->
+			</GEN>
+
+			<GEN n="2">
+				<sine>0</sine> <!-- enabled -->
+				<sine>0</sine> <!-- frequency -->
+				<sine>0</sine> <!-- level -->
+
+				<resonance>0</resonance> <!-- enabled -->
+				<resonance>0</resonance> <!-- frequency -->
+				<resonance>0</resonance> <!-- intensity -->
+				<resonance>0.1</resonance> <!-- attack -->
+				<resonance>0.1</resonance> <!-- release -->
+				<resonance>0</resonance> <!-- level -->
+
+				<noise>0</noise> <!-- enabled -->
+				<noise>0</noise> <!-- frequency -->
+				<noise>0</noise> <!-- level -->
+
+				<LFO1>0</LFO1> <!-- enabled -->
+				<LFO1>0</LFO1> <!-- intensity -->
+				<LFO1>0</LFO1> <!-- filter -->
+				<LFO1>0</LFO1> <!-- level -->
+
+				<LFO2>0</LFO2> <!-- enabled -->
+				<LFO2>0</LFO2> <!-- intensity -->
+				<LFO2>0</LFO2> <!-- filter -->
+				<LFO2>0</LFO2> <!-- level -->
+			</GEN>
+
+			<mixer>
+				<x>0</x>
+				<x>0</x>
+				<x>0</x>
+				<x>0</x>
+
+				<y>0</y>
+				<y>0</y>
+				<y>0</y>
+				<y>0</y>
+
+				<z>0</z>
+				<z>0</z>
+				<z>0</z>
+				<z>0</z>
+
+				<h>0</h>
+				<h>0</h>
+				<h>0</h>
+				<h>0</h>
+
+				<p>0</p>
+				<p>0</p>
+				<p>0</p>
+				<p>0</p>
+
+				<r>0</r>
+				<r>0</r>
+				<r>0</r>
+				<r>0</r>
+
+				<s>1</s>
+			</mixer>
+
+			<curves>
+				<v1>0</v1>
+				<v1>10</v1>
+				<v1>20</v1>
+				<v1>30</v1>
+				<v1>40</v1>
+				<v1>50</v1>
+				<v1>60</v1>
+				<v1>70</v1>
+				<v1>80</v1>
+				<v1>90</v1>
+
+				<level>0</level>
+				<level>0</level>
+				<level>0</level>
+				<level>0</level>
+				<level>0</level>
+				<level>0</level>
+				<level>0</level>
+				<level>0</level>
+				<level>0</level>
+				<level>0</level>
+
+				<v2>0</v2>
+				<v2>10</v2>
+				<v2>20</v2>
+				<v2>30</v2>
+				<v2>40</v2>
+				<v2>50</v2>
+				<v2>60</v2>
+				<v2>70</v2>
+				<v2>80</v2>
+				<v2>90</v2>
+
+				<filter>0</filter>
+				<filter>0</filter>
+				<filter>0</filter>
+				<filter>0</filter>
+				<filter>0</filter>
+				<filter>0</filter>
+				<filter>0</filter>
+				<filter>0</filter>
+				<filter>0</filter>
+				<filter>0</filter>
+			</curves>
+		</RND>
+	</camera>
+
+</PropertyList>

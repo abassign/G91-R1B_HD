@@ -1,0 +1,1065 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+	<name>RND-mixer</name>
+	<layout>vbox</layout>
+	<!--width>650</width-->
+	<x>20</x>
+	<y>-50</y>
+
+<!-- Title -->
+	<group>
+		<layout>hbox</layout>
+
+		<empty>
+			<stretch>true</stretch>
+		</empty>
+
+		<button>
+			<legend> </legend>
+			<pref-width>16</pref-width>
+			<pref-height>16</pref-height>
+			<binding>
+				<command>dialog-show</command>
+				<dialog-name>current-camera-settings</dialog-name>
+			</binding>
+			<binding>
+				<command>dialog-close</command>
+				<dialog-name>RND-mixer</dialog-name>
+			</binding>
+		</button>
+	</group>
+
+	<hrule/>
+
+	<group>
+		<layout>hbox</layout>
+
+		<button>
+			<legend>Generator 1...</legend>
+			<pref-width>140</pref-width>
+			<pref-height>30</pref-height>
+			<binding>
+				<command>property-assign</command>
+				<property>/sim/fgcamera/dialogs/RND/generator/current-generator</property>
+				<value>0</value>
+			</binding>
+			<binding>
+				<command>dialog-show</command>
+				<dialog-name>RND-generator</dialog-name>
+			</binding>
+			<binding>
+				<command>dialog-close</command>
+				<dialog-name>RND-mixer</dialog-name>
+			</binding>
+		</button>
+
+		<button>
+			<legend>Generator 2...</legend>
+			<pref-width>140</pref-width>
+			<pref-height>30</pref-height>
+			<binding>
+				<command>property-assign</command>
+				<property>/sim/fgcamera/dialogs/RND/generator/current-generator</property>
+				<value>1</value>
+			</binding>
+			<binding>
+				<command>dialog-show</command>
+				<dialog-name>RND-generator</dialog-name>
+			</binding>
+			<binding>
+				<command>dialog-close</command>
+				<dialog-name>RND-mixer</dialog-name>
+			</binding>
+		</button>
+
+		<button>
+			<legend>Generator 3...</legend>
+			<pref-width>140</pref-width>
+			<pref-height>30</pref-height>
+			<binding>
+				<command>property-assign</command>
+				<property>/sim/fgcamera/dialogs/RND/generator/current-generator</property>
+				<value>2</value>
+			</binding>
+			<binding>
+				<command>dialog-show</command>
+				<dialog-name>RND-generator</dialog-name>
+			</binding>
+			<binding>
+				<command>dialog-close</command>
+				<dialog-name>RND-mixer</dialog-name>
+			</binding>
+		</button>
+
+		<empty>
+			<stretch>true</stretch>
+		</empty>
+
+		<text>
+			<label>Edit</label>
+		</text>
+
+		<checkbox>
+			<width>15</width>
+			<height>15</height>
+			<property>/sim/fgcamera/dialogs/RND/edit-mode</property>
+			<binding>
+				<command>dialog-apply</command>
+			</binding>
+			<binding>
+				<command>nasal</command>
+				<script>toggle_edit()</script>
+			</binding>
+		</checkbox>
+
+		<button>
+			<legend>Ground</legend>
+			<pref-width>80</pref-width>
+			<pref-height>30</pref-height>
+			<enable>
+				<property>/sim/fgcamera/dialogs/RND/edit-mode</property>
+				<property>/sim/fgcamera/dialogs/RND/profile</property>
+			</enable>
+			<binding>
+				<command>nasal</command>
+				<script>fgcamera.RND_handler.GUI_mode = 0; update()</script>
+			</binding>
+			<binding>
+				<command>property-assign</command>
+				<property>/sim/fgcamera/dialogs/RND/profile</property>
+				<value>0</value>
+			</binding>
+		</button>
+
+		<button>
+			<legend>Air</legend>
+			<pref-width>50</pref-width>
+			<pref-height>30</pref-height>
+			<enable>
+				<property>/sim/fgcamera/dialogs/RND/edit-mode</property>
+				<not>
+					<property>/sim/fgcamera/dialogs/RND/profile</property>
+				</not>
+			</enable>
+			<binding>
+				<command>nasal</command>
+				<script>fgcamera.RND_handler.GUI_mode = 1; update()</script>
+			</binding>
+			<binding>
+				<command>property-assign</command>
+				<property>/sim/fgcamera/dialogs/RND/profile</property>
+				<value>1</value>
+			</binding>
+		</button>
+	</group>
+
+	<hrule/>
+
+	<group>
+		<layout>hbox</layout>
+
+<!-- 1st column -->
+		<group>
+			<layout>vbox</layout>
+
+<!-- 1st column, 1st row -->
+			<group>
+				<layout>hbox</layout>
+				<text>
+					<label>GEN 1</label>
+				</text>
+
+				<text>
+					<label>GEN 2</label>
+				</text>
+
+				<text>
+					<label>GEN 3</label>
+				</text>
+			</group>
+
+			<group>
+				<layout>hbox</layout>
+				<dial>
+					<width>20</width>
+					<wrap>0</wrap>
+					<property>/sim/fgcamera/dialogs/RND/mixer/x/GEN1</property>
+					<min>0</min>
+					<max>1</max>
+					<binding>
+						<command>dialog-apply</command>
+					</binding>
+					<binding>
+						<command>nasal</command>
+						<script>set_data("x", 0)</script>
+					</binding>
+				</dial>
+
+				<dial>
+					<width>20</width>
+					<wrap>0</wrap>
+					<property>/sim/fgcamera/dialogs/RND/mixer/x/GEN2</property>
+					<min>0</min>
+					<max>1</max>
+					<binding>
+						<command>dialog-apply</command>
+					</binding>
+					<binding>
+						<command>nasal</command>
+						<script>set_data("x", 1)</script>
+					</binding>
+				</dial>
+
+				<dial>
+					<width>20</width>
+					<wrap>0</wrap>
+					<property>/sim/fgcamera/dialogs/RND/mixer/x/GEN3</property>
+					<min>0</min>
+					<max>1</max>
+					<binding>
+						<command>dialog-apply</command>
+					</binding>
+					<binding>
+						<command>nasal</command>
+						<script>set_data("x", 2)</script>
+					</binding>
+				</dial>
+			</group>
+
+			<group>
+				<layout>hbox</layout>
+				<text>
+					<pref-width>50</pref-width>
+					<label>-1.00</label>
+					<format>%-0.2f</format>
+					<live>true</live>
+					<property>/sim/fgcamera/dialogs/RND/mixer/x/GEN1</property>
+				</text>
+
+				<text>
+					<pref-width>50</pref-width>
+					<label>-1.00</label>
+					<format>%-0.2f</format>
+					<live>true</live>
+					<property>/sim/fgcamera/dialogs/RND/mixer/x/GEN2</property>
+				</text>
+
+				<text>
+					<pref-width>50</pref-width>
+					<label>-1.00</label>
+					<format>%-0.2f</format>
+					<live>true</live>
+					<property>/sim/fgcamera/dialogs/RND/mixer/x/GEN3</property>
+				</text>
+			</group>
+
+			<group>
+				<layout>hbox</layout>
+
+				<text>
+					<pref-width>50</pref-width>
+					<label>X axis</label>
+				</text>
+
+				<dial>
+					<width>20</width>
+					<wrap>0</wrap>
+					<property>/sim/fgcamera/dialogs/RND/mixer/x/level</property>
+					<min>-1</min>
+					<max>1</max>
+					<binding>
+						<command>dialog-apply</command>
+					</binding>
+					<binding>
+						<command>nasal</command>
+						<script>set_data("x", 3)</script>
+					</binding>
+				</dial>
+
+				<text>
+					<pref-width>50</pref-width>
+					<label>-1.00</label>
+					<format>%-0.2f</format>
+					<live>true</live>
+					<property>/sim/fgcamera/dialogs/RND/mixer/x/level</property>
+				</text>
+			</group>
+
+			<hrule/>
+
+<!-- 1st column, 2nd row -->
+			<group>
+				<layout>hbox</layout>
+
+				<text>
+					<pref-width>50</pref-width>
+					<label>Pitch</label>
+				</text>
+
+				<dial>
+					<width>20</width>
+					<wrap>0</wrap>
+					<property>/sim/fgcamera/dialogs/RND/mixer/p/level</property>
+					<min>-1</min>
+					<max>1</max>
+					<binding>
+						<command>dialog-apply</command>
+					</binding>
+					<binding>
+						<command>nasal</command>
+						<script>set_data("p", 3, 10)</script>
+					</binding>
+				</dial>
+
+				<text>
+					<pref-width>50</pref-width>
+					<label>-1.00</label>
+					<format>%-0.2f</format>
+					<live>true</live>
+					<property>/sim/fgcamera/dialogs/RND/mixer/p/level</property>
+				</text>
+			</group>
+
+			<group>
+				<layout>hbox</layout>
+
+				<text>
+					<pref-width>50</pref-width>
+					<label>-1.00</label>
+					<format>%-0.2f</format>
+					<live>true</live>
+					<property>/sim/fgcamera/dialogs/RND/mixer/p/GEN1</property>
+				</text>
+
+				<text>
+					<pref-width>50</pref-width>
+					<label>-1.00</label>
+					<format>%-0.2f</format>
+					<live>true</live>
+					<property>/sim/fgcamera/dialogs/RND/mixer/p/GEN2</property>
+				</text>
+
+				<text>
+					<pref-width>50</pref-width>
+					<label>-1.00</label>
+					<format>%-0.2f</format>
+					<live>true</live>
+					<property>/sim/fgcamera/dialogs/RND/mixer/p/GEN3</property>
+				</text>
+			</group>
+
+			<group>
+				<layout>hbox</layout>
+
+				<dial>
+					<width>20</width>
+					<wrap>0</wrap>
+					<property>/sim/fgcamera/dialogs/RND/mixer/p/GEN1</property>
+					<binding>
+						<command>dialog-apply</command>
+					</binding>
+					<binding>
+						<command>nasal</command>
+						<script>set_data("p", 0, 10)</script>
+					</binding>
+				</dial>
+
+				<dial>
+					<width>20</width>
+					<wrap>0</wrap>
+					<property>/sim/fgcamera/dialogs/RND/mixer/p/GEN2</property>
+					<binding>
+						<command>dialog-apply</command>
+					</binding>
+					<binding>
+						<command>nasal</command>
+						<script>set_data("p", 1, 10)</script>
+					</binding>
+				</dial>
+
+				<dial>
+					<width>20</width>
+					<wrap>0</wrap>
+					<property>/sim/fgcamera/dialogs/RND/mixer/p/GEN3</property>
+					<binding>
+						<command>dialog-apply</command>
+					</binding>
+					<binding>
+						<command>nasal</command>
+						<script>set_data("p", 2, 10)</script>
+					</binding>
+				</dial>
+			</group>
+
+			<group>
+				<layout>hbox</layout>
+
+				<text>
+					<label>GEN 1</label>
+				</text>
+
+				<text>
+					<label>GEN 2</label>
+				</text>
+
+				<text>
+					<label>GEN 3</label>
+				</text>
+			</group>
+		</group>
+
+		<vrule/>
+
+<!-- 2nd column -->
+		<group>
+			<layout>vbox</layout>
+
+<!-- 2nd column, 1st row -->
+			<group>
+				<layout>hbox</layout>
+				<text>
+					<label>GEN 1</label>
+				</text>
+
+				<text>
+					<label>GEN 2</label>
+				</text>
+
+				<text>
+					<label>GEN 3</label>
+				</text>
+			</group>
+
+			<group>
+				<layout>hbox</layout>
+				<dial>
+					<width>20</width>
+					<wrap>0</wrap>
+					<property>/sim/fgcamera/dialogs/RND/mixer/y/GEN1</property>
+					<binding>
+						<command>dialog-apply</command>
+					</binding>
+					<binding>
+						<command>nasal</command>
+						<script>set_data("y", 0)</script>
+					</binding>
+				</dial>
+
+				<dial>
+					<width>20</width>
+					<wrap>0</wrap>
+					<property>/sim/fgcamera/dialogs/RND/mixer/y/GEN2</property>
+					<binding>
+						<command>dialog-apply</command>
+					</binding>
+					<binding>
+						<command>nasal</command>
+						<script>set_data("y", 1)</script>
+					</binding>
+				</dial>
+
+				<dial>
+					<width>20</width>
+					<wrap>0</wrap>
+					<property>/sim/fgcamera/dialogs/RND/mixer/y/GEN3</property>
+					<binding>
+						<command>dialog-apply</command>
+					</binding>
+					<binding>
+						<command>nasal</command>
+						<script>set_data("y", 2)</script>
+					</binding>
+				</dial>
+			</group>
+
+			<group>
+				<layout>hbox</layout>
+				<text>
+					<pref-width>50</pref-width>
+					<label>-1.00</label>
+					<format>%-0.2f</format>
+					<live>true</live>
+					<property>/sim/fgcamera/dialogs/RND/mixer/y/GEN1</property>
+				</text>
+
+				<text>
+					<pref-width>50</pref-width>
+					<label>-1.00</label>
+					<format>%-0.2f</format>
+					<live>true</live>
+					<property>/sim/fgcamera/dialogs/RND/mixer/y/GEN2</property>
+				</text>
+
+				<text>
+					<pref-width>50</pref-width>
+					<label>-1.00</label>
+					<format>%-0.2f</format>
+					<live>true</live>
+					<property>/sim/fgcamera/dialogs/RND/mixer/y/GEN3</property>
+				</text>
+			</group>
+
+			<group>
+				<layout>hbox</layout>
+
+				<text>
+					<pref-width>50</pref-width>
+					<label>Y axis</label>
+				</text>
+
+				<dial>
+					<width>20</width>
+					<wrap>0</wrap>
+					<min>-1</min>
+					<property>/sim/fgcamera/dialogs/RND/mixer/y/level</property>
+					<binding>
+						<command>dialog-apply</command>
+					</binding>
+					<binding>
+						<command>nasal</command>
+						<script>set_data("y", 3)</script>
+					</binding>
+				</dial>
+
+				<text>
+					<pref-width>50</pref-width>
+					<label>-1.00</label>
+					<format>%-0.2f</format>
+					<live>true</live>
+					<property>/sim/fgcamera/dialogs/RND/mixer/y/level</property>
+				</text>
+			</group>
+
+			<hrule/>
+
+<!-- 2nd column, 2nd row -->
+			<group>
+				<layout>hbox</layout>
+
+				<text>
+					<pref-width>50</pref-width>
+					<label>Heading</label>
+				</text>
+
+				<dial>
+					<width>20</width>
+					<wrap>0</wrap>
+					<min>-1</min>
+					<property>/sim/fgcamera/dialogs/RND/mixer/h/level</property>
+					<binding>
+						<command>dialog-apply</command>
+					</binding>
+					<binding>
+						<command>nasal</command>
+						<script>set_data("h", 3, 10)</script>
+					</binding>
+				</dial>
+
+				<text>
+					<pref-width>50</pref-width>
+					<label>-1.00</label>
+					<format>%-0.2f</format>
+					<live>true</live>
+					<property>/sim/fgcamera/dialogs/RND/mixer/h/level</property>
+				</text>
+			</group>
+
+			<group>
+				<layout>hbox</layout>
+				<text>
+					<pref-width>50</pref-width>
+					<label>1.00</label>
+					<format>%0.2f</format>
+					<live>true</live>
+					<property>/sim/fgcamera/dialogs/RND/mixer/h/GEN1</property>
+				</text>
+
+				<text>
+					<pref-width>50</pref-width>
+					<label>1.00</label>
+					<format>%0.2f</format>
+					<live>true</live>
+					<property>/sim/fgcamera/dialogs/RND/mixer/h/GEN2</property>
+				</text>
+
+				<text>
+					<pref-width>50</pref-width>
+					<label>1.00</label>
+					<format>%0.2f</format>
+					<live>true</live>
+					<property>/sim/fgcamera/dialogs/RND/mixer/h/GEN3</property>
+				</text>
+			</group>
+
+			<group>
+				<layout>hbox</layout>
+
+				<dial>
+					<width>20</width>
+					<wrap>0</wrap>
+					<property>/sim/fgcamera/dialogs/RND/mixer/h/GEN1</property>
+					<binding>
+						<command>dialog-apply</command>
+					</binding>
+					<binding>
+						<command>nasal</command>
+						<script>set_data("h", 0, 10)</script>
+					</binding>
+				</dial>
+
+				<dial>
+					<width>20</width>
+					<wrap>0</wrap>
+					<property>/sim/fgcamera/dialogs/RND/mixer/h/GEN2</property>
+					<binding>
+						<command>dialog-apply</command>
+					</binding>
+					<binding>
+						<command>nasal</command>
+						<script>set_data("h", 1, 10)</script>
+					</binding>
+				</dial>
+
+				<dial>
+					<width>20</width>
+					<wrap>0</wrap>
+					<property>/sim/fgcamera/dialogs/RND/mixer/h/GEN3</property>
+					<binding>
+						<command>dialog-apply</command>
+					</binding>
+					<binding>
+						<command>nasal</command>
+						<script>set_data("h", 2, 10)</script>
+					</binding>
+				</dial>
+			</group>
+			<group>
+				<layout>hbox</layout>
+				<text>
+					<label>GEN 1</label>
+				</text>
+
+				<text>
+					<label>GEN 2</label>
+				</text>
+
+				<text>
+					<label>GEN 3</label>
+				</text>
+			</group>
+		</group>
+		<vrule/>
+
+<!-- 3rd column -->
+		<group>
+			<layout>vbox</layout>
+
+<!-- 3rd column, 1st row -->
+			<group>
+				<layout>hbox</layout>
+				<text>
+					<label>GEN 1</label>
+				</text>
+
+				<text>
+					<label>GEN 2</label>
+				</text>
+
+				<text>
+					<label>GEN 3</label>
+				</text>
+			</group>
+
+			<group>
+				<layout>hbox</layout>
+
+				<dial>
+					<width>20</width>
+					<wrap>0</wrap>
+					<property>/sim/fgcamera/dialogs/RND/mixer/z/GEN1</property>
+					<binding>
+						<command>dialog-apply</command>
+					</binding>
+					<binding>
+						<command>nasal</command>
+						<script>set_data("z", 0)</script>
+					</binding>
+				</dial>
+
+				<dial>
+					<width>20</width>
+					<wrap>0</wrap>
+					<property>/sim/fgcamera/dialogs/RND/mixer/z/GEN2</property>
+					<binding>
+						<command>dialog-apply</command>
+					</binding>
+					<binding>
+						<command>nasal</command>
+						<script>set_data("z", 1)</script>
+					</binding>
+				</dial>
+
+				<dial>
+					<width>20</width>
+					<wrap>0</wrap>
+					<property>/sim/fgcamera/dialogs/RND/mixer/z/GEN3</property>
+					<binding>
+						<command>dialog-apply</command>
+					</binding>
+					<binding>
+						<command>nasal</command>
+						<script>set_data("z", 2)</script>
+					</binding>
+				</dial>
+			</group>
+
+			<group>
+				<layout>hbox</layout>
+
+				<text>
+					<pref-width>50</pref-width>
+					<label>1.00</label>
+					<format>%0.2f</format>
+					<live>true</live>
+					<property>/sim/fgcamera/dialogs/RND/mixer/z/GEN1</property>
+				</text>
+
+				<text>
+					<pref-width>50</pref-width>
+					<label>1.00</label>
+					<format>%0.2f</format>
+					<live>true</live>
+					<property>/sim/fgcamera/dialogs/RND/mixer/z/GEN2</property>
+				</text>
+
+				<text>
+					<pref-width>50</pref-width>
+					<label>1.00</label>
+					<format>%0.2f</format>
+					<live>true</live>
+					<property>/sim/fgcamera/dialogs/RND/mixer/z/GEN3</property>
+				</text>
+			</group>
+
+			<group>
+				<layout>hbox</layout>
+
+				<text>
+					<pref-width>50</pref-width>
+					<label>Z axis</label>
+				</text>
+
+				<dial>
+					<width>20</width>
+					<wrap>0</wrap>
+					<min>-1</min>
+					<property>/sim/fgcamera/dialogs/RND/mixer/z/level</property>
+					<binding>
+						<command>dialog-apply</command>
+					</binding>
+					<binding>
+						<command>nasal</command>
+						<script>set_data("z", 3)</script>
+					</binding>
+				</dial>
+
+				<text>
+					<pref-width>50</pref-width>
+					<label>-1.00</label>
+					<format>%-0.2f</format>
+					<live>true</live>
+					<property>/sim/fgcamera/dialogs/RND/mixer/z/level</property>
+				</text>
+			</group>
+
+			<hrule/>
+
+<!-- 3rd column, 2nd row -->
+			<group>
+				<layout>hbox</layout>
+
+				<text>
+					<pref-width>50</pref-width>
+					<label>Roll</label>
+				</text>
+
+				<dial>
+					<width>20</width>
+					<wrap>0</wrap>
+					<min>-1</min>
+					<property>/sim/fgcamera/dialogs/RND/mixer/r/level</property>
+					<binding>
+						<command>dialog-apply</command>
+					</binding>
+					<binding>
+						<command>nasal</command>
+						<script>set_data("r", 3, 10)</script>
+					</binding>
+				</dial>
+
+				<text>
+					<pref-width>50</pref-width>
+					<label>-1.00</label>
+					<format>%-0.2f</format>
+					<live>true</live>
+					<property>/sim/fgcamera/dialogs/RND/mixer/r/level</property>
+				</text>
+			</group>
+
+			<group>
+				<layout>hbox</layout>
+
+				<text>
+					<pref-width>50</pref-width>
+					<label>1.00</label>
+					<format>%0.2f</format>
+					<live>true</live>
+					<property>/sim/fgcamera/dialogs/RND/mixer/r/GEN1</property>
+				</text>
+
+				<text>
+					<pref-width>50</pref-width>
+					<label>1.00</label>
+					<format>%0.2f</format>
+					<live>true</live>
+					<property>/sim/fgcamera/dialogs/RND/mixer/r/GEN2</property>
+				</text>
+
+				<text>
+					<pref-width>50</pref-width>
+					<label>1.00</label>
+					<format>%0.2f</format>
+					<live>true</live>
+					<property>/sim/fgcamera/dialogs/RND/mixer/r/GEN3</property>
+				</text>
+			</group>
+
+			<group>
+				<layout>hbox</layout>
+
+				<dial>
+					<width>20</width>
+					<wrap>0</wrap>
+					<property>/sim/fgcamera/dialogs/RND/mixer/r/GEN1</property>
+					<binding>
+						<command>dialog-apply</command>
+					</binding>
+					<binding>
+						<command>nasal</command>
+						<script>set_data("r", 0, 10)</script>
+					</binding>
+				</dial>
+
+				<dial>
+					<width>20</width>
+					<wrap>0</wrap>
+					<property>/sim/fgcamera/dialogs/RND/mixer/r/GEN2</property>
+					<binding>
+						<command>dialog-apply</command>
+					</binding>
+					<binding>
+						<command>nasal</command>
+						<script>set_data("r", 1, 10)</script>
+					</binding>
+				</dial>
+
+				<dial>
+					<width>20</width>
+					<wrap>0</wrap>
+					<property>/sim/fgcamera/dialogs/RND/mixer/r/GEN3</property>
+					<binding>
+						<command>dialog-apply</command>
+					</binding>
+					<binding>
+						<command>nasal</command>
+						<script>set_data("r", 2, 10)</script>
+					</binding>
+				</dial>
+			</group>
+			<group>
+				<layout>hbox</layout>
+				<text>
+					<label>GEN 1</label>
+				</text>
+
+				<text>
+					<label>GEN 2</label>
+				</text>
+
+				<text>
+					<label>GEN 3</label>
+				</text>
+			</group>
+		</group>
+		<vrule/>
+		<group>
+			<layout>vbox</layout>
+				<empty> <stretch>1</stretch> </empty>
+
+				<text>
+					<label>OUTPUT</label>
+				</text>
+
+				<dial>
+					<width>20</width>
+					<wrap>0</wrap>
+					<property>/sim/fgcamera/dialogs/RND/mixer/s</property>
+					<min>0</min>
+					<max>1</max>
+					<binding>
+						<command>dialog-apply</command>
+					</binding>
+					<binding>
+						<command>nasal</command>
+						<script>set_scale()</script>
+					</binding>
+				</dial>
+
+				<text>
+					<pref-width>50</pref-width>
+					<label>-1.00</label>
+					<format>%-0.2f</format>
+					<live>true</live>
+					<property>/sim/fgcamera/dialogs/RND/mixer/s</property>
+				</text>
+
+				<button>
+					<legend>Curves...</legend>
+					<pref-width>90</pref-width>
+					<pref-height>30</pref-height>
+					<binding>
+						<command>dialog-show</command>
+						<dialog-name>RND-curves</dialog-name>
+					</binding>
+					<binding>
+						<command>dialog-close</command>
+						<dialog-name>RND-mixer</dialog-name>
+					</binding>
+				</button>
+
+			<empty> <stretch>1</stretch> </empty>
+
+			</group>
+	</group>
+
+	<hrule/>
+
+	<group>
+	<layout>hbox</layout>
+		<text>
+			<label>Current effect:</label>
+		</text>
+
+		<button>
+			<legend>Copy</legend>
+			<pref-width>110</pref-width>
+			<pref-height>30</pref-height>
+			<binding>
+				<command>nasal</command>
+				<script>copy_effect()</script>
+			</binding>
+		</button>
+
+		<button>
+			<legend>Paste</legend>
+			<pref-width>110</pref-width>
+			<pref-height>30</pref-height>
+			<enable>
+				<not><property>sim/fgcamera/dialogs/RND/mixer/clipboard-empty</property></not>
+			</enable>
+			<binding>
+				<command>nasal</command>
+				<script>paste_effect()</script>
+			</binding>
+		</button>
+
+		<button>
+			<legend>Import...</legend>
+			<pref-width>110</pref-width>
+			<pref-height>30</pref-height>
+			<binding>
+				<command>dialog-show</command>
+				<dialog-name>RND-import</dialog-name>
+			</binding>
+		</button>
+
+		<button>
+			<legend>Export</legend>
+			<pref-width>110</pref-width>
+			<pref-height>30</pref-height>
+			<enable>
+				<property></property>
+			</enable>
+			<!--binding>
+				<command>nasal</command>
+				<script>copy_effect()</script>
+			</binding-->
+		</button>
+	</group>
+
+	<nasal>
+		<open> <![CDATA[
+			var path  = "/sim/fgcamera/dialogs/RND/mixer/";
+			var list1 = ["/GEN1", "/GEN2", "/GEN3", "/level"];
+			var list2 = ["x", "y", "z", "h", "p", "r"];
+			var mode  = nil;
+			var listener1 = setlistener( "/sim/fgcamera/current-camera/RND-updated", func {update()} );
+
+			var update = func {
+				mode  = get_mode();
+
+				foreach (var dof; list2) {
+					var i = 0;
+					foreach (var g; list1) {
+						setprop ( path ~ dof ~ g, fgcamera.rnd[mode].mixer[dof][i] );
+						i += 1;
+					}
+				}
+
+				setprop("/sim/fgcamera/dialogs/RND/mixer/s", fgcamera.rnd[mode].mixer.s);
+
+				fgcommand( "dialog-update", props.Node.new( {"dialog-name" : "RND-mixer"} ) );
+			}
+
+			var get_mode = func  {
+				var GUI_edit = fgcamera.RND_handler.GUI_edit;
+				var GUI_mode = fgcamera.RND_handler.GUI_mode;
+
+				if ( GUI_edit ) GUI_mode;
+				else fgcamera.RND_handler._mode;
+			}
+
+			var toggle_edit = func fgcamera.RND_handler.GUI_edit = getprop("/sim/fgcamera/dialogs/RND/edit-mode");
+
+			var set_scale = func fgcamera.rnd[mode].mixer.s = getprop("/sim/fgcamera/dialogs/RND/mixer/s");
+
+			var set_data = func (key, i, scale = 1) fgcamera.rnd[mode].mixer[key][i] = getprop ( path ~ key ~ list1[i] );
+
+
+			fgcamera.rnd_effectN = props.Node.new();
+			setprop(path ~ "clipboard-empty", 1);
+
+			var copy_effect = func {
+				fgcamera.rnd_effectN.removeAllChildren();
+				fgcamera.rnd_effectN.setValues(fgcamera.rnd[mode]);
+				setprop(path ~ "clipboard-empty", 0);
+			}
+
+			var paste_effect = func {
+				fgcamera.rnd[mode] = fgcamera.rnd_effectN.getValues();
+				fgcamera.update_rnd_data();
+				fgcamera.RND_handler._set_generators();
+				update();
+			}
+
+
+
+
+			update();
+		]]> </open>
+		<close>
+			removelistener(listener1);
+		</close>
+	</nasal>
+</PropertyList>

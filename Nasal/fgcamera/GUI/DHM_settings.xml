@@ -1,0 +1,555 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+	<name>DHM-settings</name>
+	<layout>vbox</layout>
+	<width>430</width>
+	<x>20</x>
+	<y>-50</y>
+	<group>
+		<layout>hbox</layout>
+
+		<button>
+			<legend> </legend>
+			<pref-width>16</pref-width>
+			<pref-height>16</pref-height>
+			<binding>
+				<command>dialog-close</command>
+			</binding>
+		</button>
+
+		<empty><stretch>1</stretch></empty>
+
+		<text>
+			<label>Dynamic Head Movement</label>
+		</text>
+
+		<empty><stretch>1</stretch></empty>
+
+		<button>
+			<legend> </legend>
+			<key>Esc</key>
+			<pref-width>16</pref-width>
+			<pref-height>16</pref-height>
+			<binding>
+				<command>dialog-close</command>
+			</binding>
+		</button>
+
+	</group>
+
+	<hrule/>
+
+	<group>
+		<layout>hbox</layout>
+		<text>
+			<label>Head mass</label>
+		</text>
+		<empty><stretch>1</stretch></empty>
+		<slider>
+			<pref-width>200</pref-width>
+			<property>/sim/fgcamera/dialogs/DHM-settings/head-mass</property>
+			<fraction>0.3</fraction>
+			<step>1</step>
+			<min>0</min>
+			<max>30</max>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<binding>
+					<command>dialog-update</command>
+				</binding>
+		</slider>
+		<text>
+			<label>999.9</label> <!-- placeholder for width -->
+			<property>/sim/fgcamera/dialogs/DHM-settings/head-mass</property>
+		</text>
+	</group>
+
+	<group>
+		<layout>hbox</layout>
+		<text>
+			<label>G-load release</label>
+		</text>
+		<empty><stretch>1</stretch></empty>
+		<slider>
+			<pref-width>200</pref-width>
+			<property>/sim/fgcamera/dialogs/DHM-settings/g-load-release</property>
+			<fraction>0.3</fraction>
+			<step>0.01</step>
+			<min>0</min>
+			<max>0.3</max>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<binding>
+					<command>dialog-update</command>
+				</binding>
+				<binding>
+					<command>nasal</command>
+					<script>set_filter()</script>
+				</binding>
+		</slider>
+		<text>
+			<label>999.9</label> <!-- placeholder for width -->
+			<property>/sim/fgcamera/dialogs/DHM-settings/g-load-release</property>
+		</text>
+	</group>
+
+	<group>
+		<layout>hbox</layout>
+		<hrule><stretch>true</stretch></hrule>
+		<text>
+			<label>X axis</label>
+		</text>
+		<hrule><stretch>true</stretch></hrule>
+	</group>
+
+	<group>
+		<layout>hbox</layout>
+		<text>
+			<label>Constant G-load</label>
+		</text>
+		<empty><stretch>1</stretch></empty>
+		<slider>
+			<x>10</x>
+			<y>50</y>
+			<pref-width>200</pref-width>
+			<property>/sim/fgcamera/dialogs/DHM-settings/x-axis/constant-g</property>
+			<min>0</min>
+			<max>2</max>
+			<fraction>0.1</fraction>
+			<step>0.01</step>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<binding>
+					<command>dialog-update</command>
+				</binding>
+		</slider>
+		<text>
+			<label>999.9</label> <!-- placeholder for width -->
+			<property>/sim/fgcamera/dialogs/DHM-settings/x-axis/constant-g</property>
+		</text>
+	</group>
+
+	<group>
+		<layout>hbox</layout>
+		<text>
+			<label>Impulse G-load</label>
+		</text>
+		<empty><stretch>1</stretch></empty>
+		<slider>
+			<pref-width>200</pref-width>
+			<property>/sim/fgcamera/dialogs/DHM-settings/x-axis/impulse-g</property>
+			<fraction>0.1</fraction>
+			<step>0.01</step>
+			<min>0</min>
+			<max>2</max>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<binding>
+					<command>dialog-update</command>
+				</binding>
+		</slider>
+		<text>
+			<label>999.9</label> <!-- placeholder for width -->
+			<property>/sim/fgcamera/dialogs/DHM-settings/x-axis/impulse-g</property>
+		</text>
+	</group>
+
+	<group>
+		<layout>hbox</layout>
+		<text>
+			<label>Head bank</label>
+		</text>
+		<empty><stretch>1</stretch></empty>
+		<slider>
+			<pref-width>200</pref-width>
+			<property>/sim/fgcamera/dialogs/DHM-settings/x-axis/head-bank</property>
+			<min>0</min>
+			<max>300</max>
+			<fraction>0.1</fraction>
+			<step>1</step>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<binding>
+					<command>dialog-update</command>
+				</binding>
+		</slider>
+		<text>
+			<label>999.9</label> <!-- placeholder for width -->
+			<property>/sim/fgcamera/dialogs/DHM-settings/x-axis/head-bank</property>
+		</text>
+	</group>
+
+	<group>
+		<layout>hbox</layout>
+		<text>
+			<label>Damping</label>
+		</text>
+		<empty><stretch>1</stretch></empty>
+		<slider>
+			<x>10</x>
+			<y>50</y>
+			<pref-width>200</pref-width>
+			<property>/sim/fgcamera/dialogs/DHM-settings/x-axis/damping</property>
+			<fraction>0.1</fraction>
+			<step>1</step>
+			<min>0</min>
+			<max>80</max>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<binding>
+					<command>dialog-update</command>
+				</binding>
+		</slider>
+		<text>
+			<label>999.9</label> <!-- placeholder for width -->
+			<property>/sim/fgcamera/dialogs/DHM-settings/x-axis/damping</property>
+		</text>
+	</group>
+
+	<group>
+		<layout>hbox</layout>
+		<text>
+			<label>Movement limit</label>
+		</text>
+		<empty><stretch>1</stretch></empty>
+		<slider>
+			<x>10</x>
+			<y>50</y>
+			<pref-width>200</pref-width>
+			<property>/sim/fgcamera/dialogs/DHM-settings/x-axis/movement-limit</property>
+			<min>0</min>
+			<max>0.15</max>
+			<fraction>0.1</fraction>
+			<step>0.001</step>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<binding>
+					<command>dialog-update</command>
+				</binding>
+		</slider>
+		<text>
+			<label>999.9</label> <!-- placeholder for width -->
+			<format>%-0.3f</format>
+			<property>/sim/fgcamera/dialogs/DHM-settings/x-axis/movement-limit</property>
+		</text>
+	</group>
+
+	<group>
+		<layout>hbox</layout>
+		<hrule><stretch>true</stretch></hrule>
+		<text>
+			<label>Y axis</label>
+		</text>
+		<hrule><stretch>true</stretch></hrule>
+	</group>
+
+	<group>
+		<layout>hbox</layout>
+		<text>
+			<label>Constant G-load</label>
+		</text>
+		<empty><stretch>1</stretch></empty>
+		<slider>
+			<x>10</x>
+			<y>50</y>
+			<pref-width>200</pref-width>
+			<property>/sim/fgcamera/dialogs/DHM-settings/y-axis/constant-g</property>
+			<min>0</min>
+			<max>2</max>
+			<fraction>0.1</fraction>
+			<step>0.01</step>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<binding>
+					<command>dialog-update</command>
+				</binding>
+		</slider>
+		<text>
+			<label>999.9</label> <!-- placeholder for width -->
+			<property>/sim/fgcamera/dialogs/DHM-settings/y-axis/constant-g</property>
+		</text>
+	</group>
+
+	<group>
+		<layout>hbox</layout>
+		<text>
+			<label>Impulse G-load</label>
+		</text>
+		<empty><stretch>1</stretch></empty>
+		<slider>
+			<x>10</x>
+			<y>50</y>
+			<pref-width>200</pref-width>
+			<property>/sim/fgcamera/dialogs/DHM-settings/y-axis/impulse-g</property>
+			<fraction>0.1</fraction>
+			<step>0.01</step>
+			<min>0</min>
+			<max>2</max>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<binding>
+					<command>dialog-update</command>
+				</binding>
+		</slider>
+		<text>
+			<label>999.9</label> <!-- placeholder for width -->
+			<property>/sim/fgcamera/dialogs/DHM-settings/y-axis/impulse-g</property>
+		</text>
+	</group>
+
+	<group>
+		<layout>hbox</layout>
+		<text>
+			<label>Head pitch</label>
+		</text>
+		<empty><stretch>1</stretch></empty>
+		<slider>
+			<x>10</x>
+			<y>50</y>
+			<pref-width>200</pref-width>
+			<property>/sim/fgcamera/dialogs/DHM-settings/y-axis/head-pitch</property>
+			<min>0</min>
+			<max>300</max>
+			<fraction>0.1</fraction>
+			<step>1</step>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<binding>
+					<command>dialog-update</command>
+				</binding>
+		</slider>
+		<text>
+			<label>999.9</label> <!-- placeholder for width -->
+			<property>/sim/fgcamera/dialogs/DHM-settings/y-axis/head-pitch</property>
+		</text>
+	</group>
+
+	<group>
+		<layout>hbox</layout>
+		<text>
+			<label>Damping</label>
+		</text>
+		<empty><stretch>1</stretch></empty>
+		<slider>
+			<x>10</x>
+			<y>50</y>
+			<pref-width>200</pref-width>
+			<property>/sim/fgcamera/dialogs/DHM-settings/y-axis/damping</property>
+			<fraction>0.1</fraction>
+			<step>1</step>
+			<min>0</min>
+			<max>80</max>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<binding>
+					<command>dialog-update</command>
+				</binding>
+		</slider>
+		<text>
+			<label>999.9</label> <!-- placeholder for width -->
+			<property>/sim/fgcamera/dialogs/DHM-settings/y-axis/damping</property>
+		</text>
+	</group>
+
+	<group>
+		<layout>hbox</layout>
+		<text>
+			<label>Movement limit</label>
+		</text>
+		<empty><stretch>1</stretch></empty>
+		<slider>
+			<x>10</x>
+			<y>50</y>
+			<pref-width>200</pref-width>
+			<property>/sim/fgcamera/dialogs/DHM-settings/y-axis/movement-limit</property>
+			<min>0</min>
+			<max>0.15</max>
+			<fraction>0.1</fraction>
+			<step>0.001</step>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<binding>
+					<command>dialog-update</command>
+				</binding>
+		</slider>
+		<text>
+			<label>999.9</label> <!-- placeholder for width -->
+			<format>%-0.3f</format>
+			<property>/sim/fgcamera/dialogs/DHM-settings/y-axis/movement-limit</property>
+		</text>
+	</group>
+
+	<group>
+		<layout>hbox</layout>
+		<hrule><stretch>true</stretch></hrule>
+		<text>
+			<label>Z axis</label>
+		</text>
+		<hrule><stretch>true</stretch></hrule>
+	</group>
+
+	<group>
+		<layout>hbox</layout>
+		<text>
+			<label>Constant G-load</label>
+		</text>
+		<empty><stretch>1</stretch></empty>
+		<slider>
+			<x>10</x>
+			<y>50</y>
+			<pref-width>200</pref-width>
+			<property>/sim/fgcamera/dialogs/DHM-settings/z-axis/constant-g</property>
+			<min>0</min>
+			<max>2</max>
+			<fraction>0.1</fraction>
+			<step>0.01</step>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<binding>
+					<command>dialog-update</command>
+				</binding>
+		</slider>
+		<text>
+			<label>999.9</label> <!-- placeholder for width -->
+			<property>/sim/fgcamera/dialogs/DHM-settings/z-axis/constant-g</property>
+		</text>
+	</group>
+
+	<group>
+		<layout>hbox</layout>
+		<text>
+			<label>Impulse G-load</label>
+		</text>
+		<empty><stretch>1</stretch></empty>
+		<slider>
+			<x>10</x>
+			<y>50</y>
+			<pref-width>200</pref-width>
+			<property>/sim/fgcamera/dialogs/DHM-settings/z-axis/impulse-g</property>
+			<fraction>0.1</fraction>
+			<step>0.01</step>
+			<min>0</min>
+			<max>2</max>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<binding>
+					<command>dialog-update</command>
+				</binding>
+		</slider>
+		<text>
+			<label>999.9</label> <!-- placeholder for width -->
+			<property>/sim/fgcamera/dialogs/DHM-settings/z-axis/impulse-g</property>
+		</text>
+	</group>
+
+	<group>
+		<layout>hbox</layout>
+		<text>
+			<label>Damping</label>
+		</text>
+		<empty><stretch>1</stretch></empty>
+		<slider>
+			<x>10</x>
+			<y>50</y>
+			<pref-width>200</pref-width>
+			<property>/sim/fgcamera/dialogs/DHM-settings/z-axis/damping</property>
+			<fraction>0.1</fraction>
+			<step>1</step>
+			<min>0</min>
+			<max>80</max>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<binding>
+					<command>dialog-update</command>
+				</binding>
+		</slider>
+		<text>
+			<label>999.9</label> <!-- placeholder for width -->
+			<property>/sim/fgcamera/dialogs/DHM-settings/z-axis/damping</property>
+		</text>
+	</group>
+
+	<group>
+		<layout>hbox</layout>
+		<text>
+			<label>Movement limit</label>
+		</text>
+		<empty><stretch>1</stretch></empty>
+		<slider>
+			<x>10</x>
+			<y>50</y>
+			<pref-width>200</pref-width>
+			<property>/sim/fgcamera/dialogs/DHM-settings/z-axis/movement-limit</property>
+			<min>0</min>
+			<max>0.15</max>
+			<fraction>0.1</fraction>
+			<step>0.001</step>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<binding>
+					<command>dialog-update</command>
+				</binding>
+		</slider>
+		<text>
+			<label>999.9</label> <!-- placeholder for width -->
+			<format>%-0.3f</format>
+			<property>/sim/fgcamera/dialogs/DHM-settings/z-axis/movement-limit</property>
+		</text>
+	</group>
+
+	<hrule/>
+
+	<group>
+		<layout>hbox</layout>
+		<empty><stretch>1</stretch></empty>
+		<button>
+			<legend>Back</legend>
+			<pref-width>90</pref-width>
+			<pref-height>30</pref-height>
+			<binding>
+				<command>dialog-show</command>
+				<dialog-name>current-camera-settings</dialog-name>
+			</binding>
+			<binding>
+				<command>dialog-close</command>
+				<dialog-name>DHM-settings</dialog-name>
+			</binding>
+		</button>
+
+		<button>
+			<legend>Close</legend>
+			<pref-width>90</pref-width>
+			<pref-height>30</pref-height>
+			<binding>
+				<command>dialog-close</command>
+			</binding>
+		</button>
+		<empty><stretch>1</stretch></empty>
+	</group>
+
+	<nasal>
+		<open> <![CDATA[
+			var set_filter = func {
+				var a = getprop("/sim/fgcamera/dialogs/DHM-settings/g-load-release");
+				gui.popupTip(fgcamera.hp_coeff = a, 0.5);
+			}
+		]]> </open>
+	</nasal>
+</PropertyList>

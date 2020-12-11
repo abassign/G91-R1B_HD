@@ -802,9 +802,11 @@
             <y-m>0.087</y-m>
             <z-m>0.242</z-m>
         </offsets>
+        <!--
         <condition>
             <property>sim/aircraft-is-singleplayer</property>
         </condition>
+        -->
     </model>
     
     <model>
@@ -867,9 +869,11 @@
             <roll-deg>-25</roll-deg>
             <heading-deg>-8</heading-deg>
         </offsets>
+        <!--
         <condition>
             <property>sim/aircraft-is-singleplayer</property>
         </condition>
+        -->
     </model>
 
     <!-- Canopy lever -->
@@ -884,9 +888,11 @@
             <heading-deg>-4.0</heading-deg>
             <roll-deg>0.0</roll-deg>
         </offsets>
+        <!--
         <condition>
             <property>sim/aircraft-is-singleplayer</property>
         </condition>
+        -->
     </model>
     
     <!-- Panels -->
@@ -901,9 +907,11 @@
             <pitch-deg>9.60</pitch-deg>
             <heading-deg>6</heading-deg>
         </offsets>
+        <!--
         <condition>
             <property>sim/aircraft-is-singleplayer</property>
         </condition>
+        -->
     </model>
     
     <model>
@@ -916,9 +924,11 @@
             <pitch-deg>8.50</pitch-deg>
             <heading-deg>-7</heading-deg>
         </offsets>
+        <!--
         <condition>
             <property>sim/aircraft-is-singleplayer</property>
         </condition>
+        -->
     </model>
     
     <!-- Cloche -->

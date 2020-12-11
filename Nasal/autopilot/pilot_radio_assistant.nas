@@ -487,7 +487,7 @@ var RadiosDataClass = {
     },
     
     print_debug: func(airplane) {
-        if (testing_log_active >= 0) {
+        if (testing_log_active >= 2) {
             print("----- Find ",me.num_radios," navaids bearing +/- ",me.bearing_max,sprintf(" deg within range from: %.0f",me.radios_set[me.distanceSort[0][1]].distance_nm(airplane)),sprintf(" to: %.0f nm",me.radios_set[me.distanceSort[me.num_radios - 1][1]].distance_nm(airplane)));
             for (var i = (me.num_radios - 1); i >= 0; i -= 1) {
                 var radio = me.radios_set[me.valueSort[i][1]];

@@ -1,0 +1,602 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+	<name>current-camera-settings</name>
+	<layout>vbox</layout>
+	<!--width>350</width-->
+	<x>20</x>
+	<y>-50</y>
+
+	<group>
+		<layout>hbox</layout>
+
+		<empty><stretch>1</stretch></empty>
+
+		<text>
+			<label>Current camera settings</label>
+		</text>
+
+		<empty><stretch>1</stretch></empty>
+
+		<button>
+			<legend> </legend>
+			<key>Esc</key>
+			<pref-width>16</pref-width>
+			<pref-height>16</pref-height>
+			<binding>
+				<command>dialog-close</command>
+			</binding>
+		</button>
+
+	</group>
+
+	<hrule/>
+
+	<checkbox>
+		<name>popup-tip</name>
+		<halign>left</halign>
+		<width>12</width>
+		<height>12</height>
+		<property>/sim/fgcamera/dialogs/camera-settings/popup-tip</property>
+		<label>Show popupTip</label>
+		<binding>
+			<command>dialog-apply</command>
+			<object-name>popup-tip</object-name>
+		</binding>
+		<binding>
+			<command>nasal</command>
+			<script>toggle_popupTip()</script>
+		</binding>
+	</checkbox>
+
+	<checkbox>
+		<name>show-panel</name>
+		<halign>left</halign>
+		<width>12</width>
+		<height>12</height>
+		<property>/sim/fgcamera/dialogs/camera-settings/show-panel</property>
+		<label>Show 2d panel</label>
+		<binding>
+			<command>dialog-apply</command>
+			<object-name>show-panel</object-name>
+		</binding>
+		<binding>
+			<command>nasal</command>
+			<script>toggle_panel()</script>
+		</binding>
+	</checkbox>
+
+<group>
+	<layout>hbox</layout>
+	<checkbox>
+		<name>show-dialog</name>
+		<halign>left</halign>
+		<width>12</width>
+		<height>12</height>
+		<property>/sim/fgcamera/dialogs/camera-settings/show-dialog</property>
+		<label>Show dialog:</label>
+		<binding>
+			<command>dialog-apply</command>
+			<object-name>show-dialog</object-name>
+		</binding>
+		<binding>
+			<command>nasal</command>
+			<script>toggle_dialog()</script>
+		</binding>
+	</checkbox>
+
+	<input>
+		<name>dialog-name</name>
+		<halign>right</halign>
+		<pref-width>200</pref-width>
+		<height>25</height>
+		<property>/sim/fgcamera/dialogs/camera-settings/dialog-name</property>
+		<binding>
+			<command>dialog-apply</command>
+			<object-name>dialog-name</object-name>
+		</binding>
+		<binding>
+			<command>nasal</command>
+			<script>dialog_name()</script>
+		</binding>
+	</input>
+</group>
+
+	<hrule/>
+
+	<input>
+		<name>field-of-view</name>
+		<halign>left</halign>
+		<pref-width>100</pref-width>
+		<height>25</height>
+		<property>/sim/fgcamera/dialogs/camera-settings/field-of-view</property>
+		<label>FOV</label>
+		<binding>
+			<command>dialog-apply</command>
+			<object-name>field-of-view</object-name>
+		</binding>
+		<binding>
+			<command>nasal</command>
+			<script>apply_fov()</script>
+		</binding>
+	</input>
+
+	<group>
+		<layout>hbox</layout>
+		<text>
+			<label>View movement</label>
+		</text>
+		<hrule><stretch>true</stretch></hrule>
+	</group>
+
+	<input>
+		<name>movement-transition-time</name>
+		<halign>left</halign>
+		<pref-width>100</pref-width>
+		<height>25</height>
+		<property>/sim/fgcamera/dialogs/camera-settings/movement-transition-time</property>
+		<label>Transition time, s</label>
+		<binding>
+			<command>dialog-apply</command>
+			<object-name>movement-transition-time</object-name>
+		</binding>
+		<binding>
+			<command>nasal</command>
+			<script>apply_movement_time()</script>
+		</binding>
+	</input>
+
+	<group>
+		<layout>hbox</layout>
+		<text>
+			<label>View adjustment</label>
+		</text>
+		<hrule><stretch>true</stretch></hrule>
+	</group>
+
+	<input>
+		<name>adjustment-linear-velocity</name>
+		<halign>left</halign>
+		<pref-width>100</pref-width>
+		<height>25</height>
+		<property>/sim/fgcamera/dialogs/camera-settings/adjustment-linear-velocity</property>
+		<label>Linear velocity, m/s</label>
+		<binding>
+			<command>dialog-apply</command>
+			<object-name>adjustment-linear-velocity</object-name>
+		</binding>
+		<binding>
+			<command>nasal</command>
+			<script>apply_adjustment_linear_velocity()</script>
+		</binding>
+	</input>
+	<input>
+		<name>adjustment-angular-velocity</name>
+		<halign>left</halign>
+		<pref-width>100</pref-width>
+		<height>25</height>
+		<property>/sim/fgcamera/dialogs/camera-settings/adjustment-angular-velocity</property>
+		<label>Angular velocity, deg/s</label>
+		<binding>
+			<command>dialog-apply</command>
+			<object-name>adjustment-angular-velocity</object-name>
+		</binding>
+		<binding>
+			<command>nasal</command>
+			<script>apply_adjustment_angular_velocity()</script>
+		</binding>
+	</input>
+	<input>
+		<name>adjustment-filter</name>
+		<halign>left</halign>
+		<pref-width>100</pref-width>
+		<height>25</height>
+		<property>/sim/fgcamera/dialogs/camera-settings/adjustment-filter</property>
+		<label>Lowpass filter</label>
+		<binding>
+			<command>dialog-apply</command>
+			<object-name>adjustment-filter</object-name>
+		</binding>
+		<binding>
+			<command>nasal</command>
+			<script>apply_adjustment_filter()</script>
+		</binding>
+	</input>
+
+	<group>
+		<layout>hbox</layout>
+		<text>
+			<label>Mouse look</label>
+		</text>
+		<hrule><stretch>true</stretch></hrule>
+	</group>
+
+	<input>
+		<name>mlook-sensitivity</name>
+		<halign>left</halign>
+		<pref-width>100</pref-width>
+		<height>25</height>
+		<property>/sim/fgcamera/dialogs/camera-settings/mlook-sensitivity</property>
+		<label>Mouse sensitivity</label>
+		<binding>
+			<command>dialog-apply</command>
+			<object-name>mlook-sensitivity</object-name>
+		</binding>
+		<binding>
+			<command>nasal</command>
+			<script>apply_mlook_sensitivity()</script>
+		</binding>
+	</input>
+	<input>
+		<name>mlook-filter</name>
+		<halign>left</halign>
+		<pref-width>100</pref-width>
+		<height>25</height>
+		<property>/sim/fgcamera/dialogs/camera-settings/mlook-filter</property>
+		<label>Lowpass filter</label>
+		<binding>
+			<command>dialog-apply</command>
+			<object-name>mlook-filter</object-name>
+		</binding>
+		<binding>
+			<command>nasal</command>
+			<script>apply_mlook_filter()</script>
+		</binding>
+	</input>
+
+	<hrule/>
+
+	<group>
+		<layout>hbox</layout>
+		<empty><stretch>1</stretch></empty>
+		<checkbox>
+			<name>enable-DHM</name>
+			<halign>left</halign>
+			<width>12</width>
+			<height>12</height>
+			<property>/sim/fgcamera/dialogs/camera-settings/enable-DHM</property>
+			<binding>
+				<command>dialog-apply</command>
+			</binding>
+			<binding>
+				<command>nasal</command>
+				<script>toggle_DHM()</script>
+			</binding>
+		</checkbox>
+
+		<button>
+			<legend>DHM...</legend>
+			<pref-width>70</pref-width>
+			<pref-height>30</pref-height>
+			<enable>
+				<property></property>
+			</enable>
+			<binding>
+				<command>dialog-show</command>
+				<dialog-name>DHM-settings</dialog-name>
+			</binding>
+			<binding>
+				<command>dialog-close</command>
+				<dialog-name>current-camera-settings</dialog-name>
+			</binding>
+		</button>
+
+		<empty><stretch>1</stretch></empty>
+
+		<checkbox>
+			<name>enable-RND</name>
+			<halign>left</halign>
+			<width>12</width>
+			<height>12</height>
+			<property>/sim/fgcamera/dialogs/camera-settings/enable-RND</property>
+			<binding>
+				<command>dialog-apply</command>
+				<object-name>enable-RND</object-name>
+			</binding>
+			<binding>
+				<command>nasal</command>
+				<script>toggle_RND()</script>
+			</binding>
+		</checkbox>
+
+		<button>
+			<legend>RND...</legend>
+			<pref-width>70</pref-width>
+			<pref-height>30</pref-height>
+			<enable>
+				<property>/sim/fgcamera/dialogs/camera-settings/enable-RND</property>
+			</enable>
+			<binding>
+				<command>dialog-show</command>
+				<dialog-name>RND-mixer</dialog-name>
+			</binding>
+			<binding>
+				<command>dialog-close</command>
+				<dialog-name>current-camera-settings</dialog-name>
+			</binding>
+		</button>
+
+		<empty><stretch>1</stretch></empty>
+
+	</group>
+
+	<hrule/>
+
+	<group>
+		<layout>hbox</layout>
+
+		<empty><stretch>1</stretch></empty>
+
+		<button>
+			<legend>Store position</legend>
+			<pref-width>130</pref-width>
+			<pref-height>30</pref-height>
+			<binding>
+				<command>nasal</command>
+				<script>fgcamera.manager._save_offsets()</script>
+			</binding>
+		</button>
+
+		<button>
+			<legend>Close</legend>
+			<pref-width>90</pref-width>
+			<pref-height>30</pref-height>
+			<binding>
+				<command>dialog-close</command>
+			</binding>
+		</button>
+
+		<empty><stretch>1</stretch></empty>
+	</group>
+
+	<nasal>
+		<open> <![CDATA[
+			var listener = setlistener(fgcamera.my_node_path ~ "/current-camera/camera-id", func{update_values()});
+			#==================================================
+			#	Functions
+			#==================================================
+			var calc_data = func {
+				var id = fgcamera.current[1];
+				var c  = fgcamera.cameras[id];
+				return [
+					[ "popup-tip"                   , c.popupTip               ],
+					[ "show-panel"                  , c["panel-show"]          ],
+					[ "show-dialog"                 , c["dialog-show"]         ],
+					[ "dialog-name"                 , c["dialog-name"]         ],
+					[ "enable-RND"                  , c["enable-RND"]          ],
+					[ "enable-DHM"                  , c["enable-DHM"]          ],
+					[ "field-of-view"               , c.fov                    ],
+					[ "movement-transition-time"    , c.movement.time          ],
+					[ "adjustment-linear-velocity"  , c.adjustment.v[0]        ],
+					[ "adjustment-angular-velocity" , c.adjustment.v[1]        ],
+					[ "adjustment-filter"           , c.adjustment.filter      ],
+					[ "mlook-sensitivity"           , c.mouse_look.sensitivity ],
+					[ "mlook-filter"                , c.mouse_look.filter      ],
+				];
+			}
+			#--------------------------------------------------
+			var update_values = func {
+				foreach (var a; var data = calc_data()) { #?
+					setprop("/sim/fgcamera/dialogs/camera-settings/" ~ a[0], a[1]);
+					dialog_update(a[0]);
+				}
+			}
+			#--------------------------------------------------
+			var dialog_update = func (dlg_obj = nil) {
+				var hash = {
+					"object-name" : dlg_obj,
+					"dialog-name" : "current-camera-settings"
+				};
+				fgcommand( "dialog-update", props.Node.new(hash) );
+			}
+			#--------------------------------------------------
+			var validate_value = func(value, min, max) {
+				var v = num(value);
+				if (v != nil) {
+					if ( (v < min) or (v > max) )
+						return nil;
+				}
+				return v;
+			}
+			#==================================================
+			#	Toggle popupTip
+			#==================================================
+			var toggle_popupTip = func {
+				var id    = fgcamera.current[1];
+				var path  = "/sim/fgcamera/dialogs/camera-settings/popup-tip";
+				var value = getprop(path);
+
+				fgcamera.cameras[id].popupTip = value;
+			}
+			#==================================================
+			#	Toggle 2d panel
+			#==================================================
+			var toggle_panel = func {
+				var id    = fgcamera.current[1];
+				var path  = "/sim/fgcamera/dialogs/camera-settings/show-panel";
+				var value = getprop(path);
+
+				fgcamera.cameras[id]["panel-show"] = value;
+				if (value)
+					fgcamera.show_panel("Nasal/fgcamera/Panels/generic-vfr-panel.xml");
+				else fgcamera.hide_panel();
+			}
+			#==================================================
+			#	Toggle dialog
+			#==================================================
+			var toggle_dialog = func {
+				var id    = fgcamera.current[1];
+				var path  = "/sim/fgcamera/dialogs/camera-settings/show-dialog";
+				var value = getprop(path);
+
+				fgcamera.cameras[id]["dialog-show"] = value;
+				if (value)
+					fgcamera.show_dialog(1);
+				else fgcamera.close_dialog(1);
+			}
+			#==================================================
+			#	Dialog name
+			#==================================================
+			var dialog_name = func {
+				var id    = fgcamera.current[1];
+				var path  = "/sim/fgcamera/dialogs/camera-settings/dialog-name";
+				var path2 = "/sim/fgcamera/dialogs/camera-settings/show-dialog";
+				var value = getprop(path);
+
+				if ( getprop(path2) ) {
+					fgcamera.close_dialog(1);
+					fgcamera.cameras[id]["dialog-show"] = 0;
+				}
+
+				fgcamera.cameras[id]["dialog-name"] = value;
+				#fgcamera.show_dialog();
+				update_values();
+			}
+			#==================================================
+			#	Apply FOV
+			#==================================================
+			var apply_fov = func () {
+				var id    = fgcamera.current[1];
+				var path  = "/sim/fgcamera/dialogs/camera-settings/field-of-view";
+				var value = getprop(path);
+				var min   = 10;
+				var max   = 120;
+				if (validate_value(value, min, max) == nil) {
+					value = fgcamera.cameras[id].fov;
+					setprop(path, value);
+					update_values();
+				} else {
+					fgcamera.cameras[id].fov = value;
+					setprop("/sim/current-view/field-of-view", value);
+				}
+			}
+			#==================================================
+			#	Apply transition time
+			#==================================================
+			var apply_movement_time = func () {
+				var id    = fgcamera.current[1];
+				var path  = "/sim/fgcamera/dialogs/camera-settings/movement-transition-time";
+				var value = getprop(path);
+				var min   = 0;
+				var max   = 10;
+				if (validate_value(value, min, max) == nil) {
+					value = fgcamera.cameras[id].movement.time;
+					setprop(path, value);
+					update_values();
+				} else {
+					fgcamera.cameras[id].movement.time = value;
+				}
+			}
+			#==================================================
+			#	Apply linear_velocity
+			#==================================================
+			var apply_adjustment_linear_velocity = func () {
+				var id    = fgcamera.current[1];
+				var path  = "/sim/fgcamera/dialogs/camera-settings/adjustment-linear-velocity";
+				var value = getprop(path);
+				var min   = 0.001;
+				var max   = 1000;
+				if (validate_value(value, min, max) == nil) {
+					value = fgcamera.cameras[id].adjustment.v[0];
+					setprop(path, value);
+					update_values();
+				} else {
+					fgcamera.cameras[id].adjustment.v[0] = value;
+				}
+			}
+			#==================================================
+			#	Apply angular_velocity
+			#==================================================
+			var apply_adjustment_angular_velocity = func () {
+				var id    = fgcamera.current[1];
+				var path  = "/sim/fgcamera/dialogs/camera-settings/adjustment-angular-velocity";
+				var value = getprop(path);
+				var min   = 0.01;
+				var max   = 360;
+				if (validate_value(value, min, max) == nil) {
+					value = fgcamera.cameras[id].adjustment.v[1];
+					setprop(path, value);
+					update_values();
+				} else {
+					fgcamera.cameras[id].adjustment.v[1] = value;
+				}
+			}
+			#==================================================
+			#	Apply adjustment_filter
+			#==================================================
+			var apply_adjustment_filter = func () {
+				var id    = fgcamera.current[1];
+				var path  = "/sim/fgcamera/dialogs/camera-settings/adjustment-filter";
+				var value = getprop(path);
+				var min   = 0;
+				var max   = 10;
+				if (validate_value(value, min, max) == nil) {
+					value = fgcamera.cameras[id].adjustment.filter;
+					setprop(path, value);
+					update_values();
+				} else {
+					fgcamera.cameras[id].adjustment.filter = value;
+				}
+			}
+			#==================================================
+			#	Apply mouse_look_sensitivity
+			#==================================================
+			var apply_mlook_sensitivity = func () {
+				var id    = fgcamera.current[1];
+				var path  = "/sim/fgcamera/dialogs/camera-settings/mlook-sensitivity";
+				var value = getprop(path);
+				var min   = 0;
+				var max   = 10;
+				if (validate_value(value, min, max) == nil) {
+					value = fgcamera.cameras[id].mouse_look.sensitivity;
+					setprop(path, value);
+					update_values();
+				} else {
+					fgcamera.cameras[id].mouse_look.sensitivity = value;
+				}
+			}
+			#==================================================
+			#	Apply mouse_look_filter
+			#==================================================
+			var apply_mlook_filter = func () {
+				var id    = fgcamera.current[1];
+				var path  = "/sim/fgcamera/dialogs/camera-settings/mlook-filter";
+				var value = getprop(path);
+				var min   = 0;
+				var max   = 10;
+				if (validate_value(value, min, max) == nil) {
+					value = fgcamera.cameras[id].mouse_look.filter;
+					setprop(path, value);
+					update_values();
+				} else {
+					fgcamera.cameras[id].mouse_look.filter = value;
+				}
+			}
+			#==================================================
+			#	Toggle DHM
+			#==================================================
+			var toggle_DHM = func {
+				var id    = fgcamera.current[1];
+				var path  = "/sim/fgcamera/dialogs/camera-settings/enable-DHM";
+				var value = getprop(path);
+
+				fgcamera.cameras[id]["enable-DHM"] = value;
+			}
+			#==================================================
+			#	Toggle RND
+			#==================================================
+			var toggle_RND = func {
+				var id    = fgcamera.current[1];
+				var path  = "/sim/fgcamera/dialogs/camera-settings/enable-RND";
+				var value = getprop(path);
+
+				fgcamera.cameras[id]["enable-RND"] = value;
+			}
+			#==================================================
+			update_values();
+		]]> </open>
+		<close>
+			removelistener(listener);
+		</close>
+	</nasal>
+</PropertyList>
