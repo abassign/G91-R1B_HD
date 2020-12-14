@@ -1,0 +1,129 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+	<name>RND-import</name>
+	<layout>vbox</layout>
+	<group>
+		<layout>hbox</layout>
+
+		<empty><stretch>1</stretch></empty>
+
+		<text>
+			<label>Import effect</label>
+		</text>
+
+		<empty><stretch>1</stretch></empty>
+
+		<button>
+			<legend> </legend>
+			<key>Esc</key>
+			<pref-width>16</pref-width>
+			<pref-height>16</pref-height>
+			<binding>
+				<command>dialog-close</command>
+			</binding>
+		</button>
+
+	</group>
+
+	<hrule/>
+
+	<group>
+		<layout>vbox</layout>
+		<list>
+			<name>file-list</name>
+			<pref-height>250</pref-height>
+			<pref-width>300</pref-width>
+			<halign>fill</halign>
+			<valign>fill</valign>
+			<stretch>true</stretch>
+			<padding>6</padding>
+			<property>/sim/fgcamera/dialogs/RND/mixer/import/selected-effect</property>
+			<binding>
+				<command>dialog-apply</command>
+			</binding>
+			<binding>
+				<command>nasal</command>
+				<script>import_effect()</script>
+			</binding>
+			<value>...</value>
+		</list>
+	</group>
+
+	<hrule/>
+
+	<group>
+		<layout>hbox</layout>
+		<empty><stretch>1</stretch></empty>
+		<button>
+			<legend>Close</legend>
+			<pref-width>90</pref-width>
+			<pref-height>30</pref-height>
+			<binding>
+				<command>dialog-close</command>
+			</binding>
+		</button>
+		<empty><stretch>1</stretch></empty>
+	</group>
+
+	<nasal>
+		<open> <![CDATA[
+			var listN    = cmdarg().getNode("group[1]/list");
+			var path     = getprop("/sim/fg-root") ~ "/Nasal/fgcamera/Effects/RND";
+			var dir      = directory(path);
+			var list     = [];
+			var mode     = nil;
+			var listener = setlistener( "/sim/fgcamera/current-camera/RND-updated", func {update_mode()} );
+
+			var dialog_update = func () {
+				forindex (var i; arg) {
+					var hash = {
+						"object-name" : arg[i],
+						"dialog-name" : "RND-import"
+					};
+					fgcommand( "dialog-update", props.Node.new(hash) );
+				}
+			}
+
+			var import_effect = func {
+				var node      = props.Node.new();
+				var selection = getprop("/sim/fgcamera/dialogs/RND/mixer/import/selected-effect");
+
+				props.copy(io.read_properties(path ~ "/" ~ selection ~ ".xml"), node);
+
+				fgcamera.rnd[mode] = node.getValues();
+				fgcamera.update_rnd_data();
+				fgcamera.RND_handler._set_generators();
+
+				node.remove();
+			}
+
+			foreach(var file; sort(dir, cmp))
+				if(size(file) > 4 and substr(file, -4) == ".xml")
+					append(list, split(".", file)[0]);
+
+			listN.removeChildren("value");
+
+			forindex (var i; list)
+				listN.addChild("value").setValue(list[i]);
+
+			dialog_update("file-list");
+
+			var update_mode = func mode = get_mode();
+
+			var get_mode = func {
+				var GUI_edit = fgcamera.RND_handler.GUI_edit;
+				var GUI_mode = fgcamera.RND_handler.GUI_mode;
+
+				if ( GUI_edit ) GUI_mode;
+				else fgcamera.RND_handler._mode;
+			}
+
+			update_mode();
+		]]> </open>
+
+		<close> <![CDATA[
+			removelistener(listener);
+		]]> </close>
+	</nasal>
+</PropertyList>

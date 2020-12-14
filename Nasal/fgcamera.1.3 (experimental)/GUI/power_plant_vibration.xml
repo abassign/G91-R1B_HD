@@ -1,0 +1,669 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+	<name>power-plant-vibration</name>
+	<layout>vbox</layout>
+	<!--width>650</width-->
+	<x>-20</x>
+	<y>-50</y>
+	<color>
+		<alpha>0.5</alpha>
+	</color>
+
+	<group>
+		<layout>hbox</layout>
+		<empty>
+			<stretch>1</stretch>
+		</empty>
+		<text>
+			<label>Power-plant vibration</label>
+		</text>
+		<empty>
+			<stretch>1</stretch>
+		</empty>
+		<button>
+			<legend> </legend>
+			<key>Esc</key>
+			<pref-width>16</pref-width>
+			<pref-height>16</pref-height>
+			<binding>
+				<command>dialog-close</command>
+			</binding>
+		</button>
+	</group>
+
+	<hrule/>
+
+	<group>
+		<layout>hbox</layout>
+		<default-padding>10</default-padding>
+		<radio>
+			<live>1</live>
+			<label>Engine 0</label>
+			<property>/sim/fgcamera/dialogs/power-plant-vibration/engine</property>
+			<binding>
+				<command>nasal</command>
+				<script>select("engine", 0)</script>
+			</binding>
+		</radio>
+		<radio>
+			<live>1</live>
+			<label>Engine 1</label>
+			<property>/sim/fgcamera/dialogs/power-plant-vibration/engine[1]</property>
+			<binding>
+				<command>nasal</command>
+				<script>select("engine", 1)</script>
+			</binding>
+		</radio>
+		<radio>
+			<live>1</live>
+			<label>Engine 2</label>
+			<property>/sim/fgcamera/dialogs/power-plant-vibration/engine[2]</property>
+			<binding>
+				<command>nasal</command>
+				<script>select("engine", 2)</script>
+			</binding>
+		</radio>
+		<radio>
+			<live>1</live>
+			<label>Engine 3</label>
+			<property>/sim/fgcamera/dialogs/power-plant-vibration/engine[3]</property>
+			<binding>
+				<command>nasal</command>
+				<script>select("engine", 3)</script>
+			</binding>
+		</radio>
+	</group>
+
+	<group>
+		<layout>hbox</layout>
+		<group>
+			<layout>table</layout>
+			<text>
+				<row>0</row>
+				<col>0</col>
+				<enable>
+					<property>/sim/fgcamera/dialogs/power-plant-vibration/engine-enabled</property>
+				</enable>
+				<halign>left</halign>
+				<label>Gain</label>
+			</text>
+			<slider>
+				<row>0</row>
+				<col>1</col>
+				<live>1</live>
+				<enable>
+					<property>/sim/fgcamera/dialogs/power-plant-vibration/engine-enabled</property>
+				</enable>
+				<pref-width>200</pref-width>
+				<property>/sim/fgcamera/dialogs/power-plant-vibration/engine-global-scale</property>
+				<fraction>0.2</fraction>
+				<step>0.1</step>
+				<min>-10</min>
+				<max>10</max>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<binding>
+					<command>nasal</command>
+					<script>
+						L.CurrentCamera().effect("Power-plant vibration").engine(selected_engine)
+							.scale( ,getprop("/sim/fgcamera/dialogs/power-plant-vibration/engine-global-scale"));
+					</script>
+				</binding>
+			</slider>
+			<text>
+				<row>0</row>
+				<col>2</col>
+				<live>1</live>
+				<enable>
+					<property>/sim/fgcamera/dialogs/power-plant-vibration/engine-enabled</property>
+				</enable>
+				<label>999.9</label> <!-- placeholder for width -->
+				<property>/sim/fgcamera/dialogs/power-plant-vibration/engine-global-scale</property>
+			</text>
+			<text>
+				<row>1</row>
+				<col>0</col>
+				<enable>
+					<property>/sim/fgcamera/dialogs/power-plant-vibration/engine-enabled</property>
+				</enable>
+				<halign>left</halign>
+				<label>X scale</label>
+			</text>
+			<slider>
+				<row>1</row>
+				<col>1</col>
+				<live>1</live>
+				<enable>
+					<property>/sim/fgcamera/dialogs/power-plant-vibration/engine-enabled</property>
+				</enable>
+				<pref-width>200</pref-width>
+				<property>/sim/fgcamera/dialogs/power-plant-vibration/engine-x-scale</property>
+				<fraction>0.3</fraction>
+				<step>0.1</step>
+				<min>0</min>
+				<max>1</max>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<binding>
+					<command>nasal</command>
+					<script>
+						L.CurrentCamera().effect("Power-plant vibration").engine(selected_engine)
+							.scale("x" ,getprop("/sim/fgcamera/dialogs/power-plant-vibration/engine-x-scale"));
+					</script>
+				</binding>
+			</slider>
+			<text>
+				<row>1</row>
+				<col>2</col>
+				<live>1</live>
+				<enable>
+					<property>/sim/fgcamera/dialogs/power-plant-vibration/engine-enabled</property>
+				</enable>
+				<label>999.9</label> <!-- placeholder for width -->
+				<property>/sim/fgcamera/dialogs/power-plant-vibration/engine-x-scale</property>
+			</text>
+			<text>
+				<row>2</row>
+				<col>0</col>
+				<enable>
+					<property>/sim/fgcamera/dialogs/power-plant-vibration/engine-enabled</property>
+				</enable>
+				<halign>left</halign>
+				<label>Y scale</label>
+			</text>
+			<slider>
+				<row>2</row>
+				<col>1</col>
+				<live>1</live>
+				<enable>
+					<property>/sim/fgcamera/dialogs/power-plant-vibration/engine-enabled</property>
+				</enable>
+				<pref-width>200</pref-width>
+				<property>/sim/fgcamera/dialogs/power-plant-vibration/engine-y-scale</property>
+				<fraction>0.3</fraction>
+				<step>0.1</step>
+				<min>0</min>
+				<max>1</max>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<binding>
+					<command>nasal</command>
+					<script>
+						L.CurrentCamera().effect("Power-plant vibration").engine(selected_engine)
+							.scale("y" ,getprop("/sim/fgcamera/dialogs/power-plant-vibration/engine-y-scale"));
+					</script>
+				</binding>
+			</slider>
+
+			<text>
+				<row>2</row>
+				<col>2</col>
+				<live>1</live>
+				<enable>
+					<property>/sim/fgcamera/dialogs/power-plant-vibration/engine-enabled</property>
+				</enable>
+				<label>999.9</label> <!-- placeholder for width -->
+				<property>/sim/fgcamera/dialogs/power-plant-vibration/engine-y-scale</property>
+			</text>
+			<text>
+				<row>3</row>
+				<col>0</col>
+				<enable>
+					<property>/sim/fgcamera/dialogs/power-plant-vibration/engine-enabled</property>
+				</enable>
+				<halign>left</halign>
+				<label>Z scale</label>
+			</text>
+			<slider>
+				<row>3</row>
+				<col>1</col>
+				<live>1</live>
+				<enable>
+					<property>/sim/fgcamera/dialogs/power-plant-vibration/engine-enabled</property>
+				</enable>
+				<pref-width>200</pref-width>
+				<property>/sim/fgcamera/dialogs/power-plant-vibration/engine-z-scale</property>
+				<fraction>0.3</fraction>
+				<step>0.1</step>
+				<min>0</min>
+				<max>1</max>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<binding>
+					<command>nasal</command>
+					<script>
+						L.CurrentCamera().effect("Power-plant vibration").engine(selected_engine)
+							.scale("z", getprop("/sim/fgcamera/dialogs/power-plant-vibration/engine-z-scale"));
+					</script>
+				</binding>
+			</slider>
+			<text>
+				<row>3</row>
+				<col>2</col>
+				<live>1</live>
+				<enable>
+					<property>/sim/fgcamera/dialogs/power-plant-vibration/engine-enabled</property>
+				</enable>
+				<label>999.9</label> <!-- placeholder for width -->
+				<property>/sim/fgcamera/dialogs/power-plant-vibration/engine-z-scale</property>
+			</text>
+		</group>
+
+		<vrule/>
+
+		<group>
+			<layout>vbox</layout>
+			<checkbox>
+				<row>0</row>
+				<col>4</col>
+				<live>1</live>
+				<width>12</width>
+				<height>12</height>
+				<halign>left</halign>
+				<!--valign>top</valign-->
+				<label>Enable</label>
+				<property>/sim/fgcamera/dialogs/power-plant-vibration/engine-enabled</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<binding>
+					<command>nasal</command>
+					<script>
+						L.CurrentCamera().effect("Power-plant vibration").engine(selected_engine)
+							.enable(getprop("/sim/fgcamera/dialogs/power-plant-vibration/engine-enabled"));
+					</script>
+				</binding>
+			</checkbox>
+			<button>
+				<row>3</row>
+				<col>4</col>
+				<legend>Edit curves...</legend>
+				<height>30</height>
+				<enable>
+					<property>/sim/fgcamera/dialogs/power-plant-vibration/engine-enabled</property>
+				</enable>
+				<binding>
+					<command>property-assign</command>
+					<property>/sim/fgcamera/dialogs/power-plant-vibration/curve-type</property>
+					<value>engine</value>
+				</binding>
+				<binding>
+					<command>dialog-show</command>
+					<dialog-name>vibration-curves</dialog-name>
+				</binding>
+				<binding>
+					<command>dialog-close</command>
+					<dialog-name>power-plant-vibration</dialog-name>
+				</binding>
+			</button>
+		</group>
+	</group>
+
+	<hrule/>
+
+	<group>
+		<layout>hbox</layout>
+		<default-padding>10</default-padding>
+		<radio>
+			<live>1</live>
+			<label>Rotor 0</label>
+			<property>/sim/fgcamera/dialogs/power-plant-vibration/rotor</property>
+			<binding>
+				<command>nasal</command>
+				<script>select("rotor", 0)</script>
+			</binding>
+		</radio>
+		<radio>
+			<live>1</live>
+			<label>Rotor 1</label>
+			<property>/sim/fgcamera/dialogs/power-plant-vibration/rotor[1]</property>
+			<binding>
+				<command>nasal</command>
+				<script>select("rotor", 1)</script>
+			</binding>
+		</radio>
+		<radio>
+			<live>1</live>
+			<label>Rotor 2</label>
+			<property>/sim/fgcamera/dialogs/power-plant-vibration/rotor[2]</property>
+			<binding>
+				<command>nasal</command>
+				<script>select("rotor", 2)</script>
+			</binding>
+		</radio>
+		<radio>
+			<live>1</live>
+			<label>Rotor 3</label>
+			<property>/sim/fgcamera/dialogs/power-plant-vibration/rotor[3]</property>
+			<binding>
+				<command>nasal</command>
+				<script>select("rotor", 3)</script>
+			</binding>
+		</radio>
+	</group>
+
+	<group>
+		<layout>hbox</layout>
+		<group>
+			<layout>table</layout>
+			<text>
+				<row>0</row>
+				<col>0</col>
+				<enable>
+					<property>/sim/fgcamera/dialogs/power-plant-vibration/rotor-enabled</property>
+				</enable>
+				<label>Gain</label>
+			</text>
+			<slider>
+				<row>0</row>
+				<col>1</col>
+				<live>1</live>
+				<pref-width>200</pref-width>
+				<property>/sim/fgcamera/dialogs/power-plant-vibration/rotor-global-scale</property>
+				<fraction>0.2</fraction>
+				<step>0.1</step>
+				<min>-10</min>
+				<max>10</max>
+				<enable>
+					<property>/sim/fgcamera/dialogs/power-plant-vibration/rotor-enabled</property>
+				</enable>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<binding>
+					<command>dialog-update</command>
+				</binding>
+				<binding>
+					<command>nasal</command>
+					<script>
+						L.CurrentCamera().effect("Power-plant vibration").rotor(selected_rotor)
+							.scale( ,getprop("/sim/fgcamera/dialogs/power-plant-vibration/rotor-global-scale"));
+					</script>
+				</binding>
+			</slider>
+			<text>
+				<row>0</row>
+				<col>2</col>
+				<live>1</live>
+				<enable>
+					<property>/sim/fgcamera/dialogs/power-plant-vibration/rotor-enabled</property>
+				</enable>
+				<label>999.9</label> <!-- placeholder for width -->
+				<property>/sim/fgcamera/dialogs/power-plant-vibration/rotor-global-scale</property>
+			</text>
+			<text>
+				<row>1</row>
+				<col>0</col>
+				<enable>
+					<property>/sim/fgcamera/dialogs/power-plant-vibration/rotor-enabled</property>
+				</enable>
+				<label>X scale</label>
+			</text>
+			<slider>
+				<row>1</row>
+				<col>1</col>
+				<live>1</live>
+				<pref-width>200</pref-width>
+				<property>/sim/fgcamera/dialogs/power-plant-vibration/rotor-x-scale</property>
+				<fraction>0.3</fraction>
+				<step>0.1</step>
+				<min>0</min>
+				<max>2</max>
+				<enable>
+					<property>/sim/fgcamera/dialogs/power-plant-vibration/rotor-enabled</property>
+				</enable>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<!--binding>
+					<command>dialog-update</command>
+				</binding-->
+				<binding>
+					<command>nasal</command>
+					<script>
+						L.CurrentCamera().effect("Power-plant vibration").rotor(selected_rotor)
+							.scale("x" ,getprop("/sim/fgcamera/dialogs/power-plant-vibration/rotor-x-scale"));
+					</script>
+				</binding>
+			</slider>
+			<text>
+				<row>1</row>
+				<col>2</col>
+				<live>1</live>
+				<enable>
+					<property>/sim/fgcamera/dialogs/power-plant-vibration/rotor-enabled</property>
+				</enable>
+				<label>999.9</label> <!-- placeholder for width -->
+				<property>/sim/fgcamera/dialogs/power-plant-vibration/rotor-x-scale</property>
+			</text>
+			<text>
+				<row>2</row>
+				<col>0</col>
+				<enable>
+					<property>/sim/fgcamera/dialogs/power-plant-vibration/rotor-enabled</property>
+				</enable>
+				<label>Y scale</label>
+			</text>
+			<slider>
+				<row>2</row>
+				<col>1</col>
+				<live>1</live>
+				<pref-width>200</pref-width>
+				<property>/sim/fgcamera/dialogs/power-plant-vibration/rotor-y-scale</property>
+				<fraction>0.3</fraction>
+				<step>0.1</step>
+				<min>0</min>
+				<max>2</max>
+				<enable>
+					<property>/sim/fgcamera/dialogs/power-plant-vibration/rotor-enabled</property>
+				</enable>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<binding>
+					<command>nasal</command>
+					<script>
+						L.CurrentCamera().effect("Power-plant vibration").rotor(selected_rotor)
+							.scale("y" ,getprop("/sim/fgcamera/dialogs/power-plant-vibration/rotor-y-scale"));
+					</script>
+				</binding>
+			</slider>
+			<text>
+				<row>2</row>
+				<col>2</col>
+				<live>1</live>
+				<enable>
+					<property>/sim/fgcamera/dialogs/power-plant-vibration/rotor-enabled</property>
+				</enable>
+				<label>999.9</label> <!-- placeholder for width -->
+				<property>/sim/fgcamera/dialogs/power-plant-vibration/rotor-y-scale</property>
+			</text>
+			<text>
+				<row>3</row>
+				<col>0</col>
+				<label>Z scale</label>
+				<enable>
+					<property>/sim/fgcamera/dialogs/power-plant-vibration/rotor-enabled</property>
+				</enable>
+			</text>
+			<slider>
+				<row>3</row>
+				<col>1</col>
+				<live>1</live>
+				<pref-width>200</pref-width>
+				<property>/sim/fgcamera/dialogs/power-plant-vibration/rotor-z-scale</property>
+				<fraction>0.3</fraction>
+				<step>0.1</step>
+				<min>0</min>
+				<max>2</max>
+				<enable>
+					<property>/sim/fgcamera/dialogs/power-plant-vibration/rotor-enabled</property>
+				</enable>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<binding>
+					<command>nasal</command>
+					<script>
+						L.CurrentCamera().effect("Power-plant vibration").rotor(selected_rotor)
+							.scale("z", getprop("/sim/fgcamera/dialogs/power-plant-vibration/rotor-z-scale"));
+					</script>
+				</binding>
+			</slider>
+			<text>
+				<row>3</row>
+				<col>2</col>
+				<live>1</live>
+				<enable>
+					<property>/sim/fgcamera/dialogs/power-plant-vibration/rotor-enabled</property>
+				</enable>
+				<label>999.9</label> <!-- placeholder for width -->
+				<property>/sim/fgcamera/dialogs/power-plant-vibration/rotor-z-scale</property>
+			</text>
+		</group>
+
+		<vrule/>
+
+		<group>
+			<layout>vbox</layout>
+			<checkbox>
+				<row>0</row>
+				<col>4</col>
+				<live>1</live>
+				<width>12</width>
+				<height>12</height>
+				<halign>left</halign>
+				<!--valign>top</valign-->
+				<label>Enable</label>
+				<property>/sim/fgcamera/dialogs/power-plant-vibration/rotor-enabled</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<binding>
+					<command>nasal</command>
+					<script>
+						L.CurrentCamera().effect("Power-plant vibration").rotor(selected_rotor)
+							.enable(getprop("/sim/fgcamera/dialogs/power-plant-vibration/rotor-enabled"));
+					</script>
+				</binding>
+			</checkbox>
+			<button>
+				<row>3</row>
+				<col>4</col>
+				<legend>Edit curves...</legend>
+				<height>30</height>
+				<enable>
+					<property>/sim/fgcamera/dialogs/power-plant-vibration/rotor-enabled</property>
+				</enable>
+				<binding>
+					<command>property-assign</command>
+					<property>/sim/fgcamera/dialogs/power-plant-vibration/curve-type</property>
+					<value>rotor</value>
+				</binding>
+				<binding>
+					<command>dialog-show</command>
+					<dialog-name>vibration-curves</dialog-name>
+				</binding>
+				<binding>
+					<command>dialog-close</command>
+					<dialog-name>power-plant-vibration</dialog-name>
+				</binding>
+			</button>
+		</group>
+	</group>
+
+	<hrule/>
+
+	<group>
+		<layout>hbox</layout>
+		<empty>
+			<stretch>1</stretch>
+		</empty>
+		<button>
+			<legend>Back...</legend>
+			<pref-width>90</pref-width>
+			<pref-height>30</pref-height>
+			<binding>
+				<command>dialog-show</command>
+				<dialog-name>fgcamera-main</dialog-name>
+			</binding>
+			<binding>
+				<command>dialog-close</command>
+				<dialog-name>power-plant-vibration</dialog-name>
+			</binding>
+		</button>
+		<button>
+			<legend>Close</legend>
+			<pref-width>90</pref-width>
+			<pref-height>30</pref-height>
+			<binding>
+				<command>dialog-close</command>
+			</binding>
+		</button>
+		<empty>
+			<stretch>1</stretch>
+		</empty>
+	</group>
+
+	<nasal>
+		<open> <![CDATA[
+			var L = fgcamera.API().CameraList();
+			var selected_rotor  = 0;
+			var selected_engine = 0;
+			var path = "/sim/fgcamera/dialogs/power-plant-vibration/";
+
+
+			foreach ( var m; ["engine", "rotor"] )
+				for (var i = 0; i <= 3; i += 1)
+					props.globals.initNode(path ~ m ~ "["  ~ i ~ "]", 0, "BOOL", 1);
+
+			props.globals.initNode(path ~ "engine-number",       0, "INT",    1);
+			props.globals.initNode(path ~ "rotor-number",        0, "INT",    1);
+			props.globals.initNode(path ~ "rotor-global-scale",  0, "DOUBLE", 1);
+			props.globals.initNode(path ~ "engine-global-scale", 0, "DOUBLE", 1);
+
+
+			var update_values = func {
+				var engine = L.CurrentCamera().effect("Power-plant vibration").engine(selected_engine);
+				var rotor = L.CurrentCamera().effect("Power-plant vibration").rotor(selected_rotor);
+
+				setprop( path ~ "engine-enabled"      , engine.enable()   );
+				setprop( path ~ "engine-global-scale" , engine.scale()    );
+				setprop( path ~ "engine-x-scale"      , engine.scale("x") );
+				setprop( path ~ "engine-y-scale"      , engine.scale("y") );
+				setprop( path ~ "engine-z-scale"      , engine.scale("z") );
+
+				setprop( path ~ "rotor-enabled"       , rotor.enable()    );
+				setprop( path ~ "rotor-global-scale"  , rotor.scale()     );
+				setprop( path ~ "rotor-x-scale"       , rotor.scale("x")  );
+				setprop( path ~ "rotor-y-scale"       , rotor.scale("y")  );
+				setprop( path ~ "rotor-z-scale"       , rotor.scale("z")  );
+			}
+
+
+			var select = func(mode, n) {
+				var node = props.getNode("/sim/fgcamera/dialogs/power-plant-vibration");
+
+				for (var i = 0; i <= 3; i += 1) {
+					var c = node.getChild(mode, i);
+					if ( i == n )
+						c.setBoolValue(1);
+					else c.setBoolValue(0);
+				}
+
+				node.getNode(mode ~ "-number").setIntValue( mode == "rotor" ? (selected_rotor = n) : (selected_engine = n) );
+				update_values();
+			}
+
+
+			select("engine", 0);
+			select("rotor", 0);
+		]]> </open>
+	</nasal>
+
+</PropertyList>

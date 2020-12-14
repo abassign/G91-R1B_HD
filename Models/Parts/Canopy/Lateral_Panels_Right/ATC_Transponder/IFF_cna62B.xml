@@ -394,7 +394,7 @@
             <button>0</button>
             <binding>
                 <command>property-adjust</command>
-                <property>fdm/jsbsim/systems/gauges/radio/IFF-transponder/chan-0090</property>
+                <property>fdm/jsbsim/systems/gauges/radio/IFF/chan-0090</property>
                 <factor>1</factor>
                 <min>0</min>
                 <max>10</max>                
@@ -406,7 +406,7 @@
     <animation>
         <type>rotate</type>
         <object-name>selector sx 09 (Meshed)</object-name>
-        <property>fdm/jsbsim/systems/gauges/radio/IFF-transponder/chan-0090</property>
+        <property>fdm/jsbsim/systems/gauges/radio/IFF/chan-0090</property>
         <factor>36</factor>
         <offset-deg>0.0</offset-deg>
         <center>
@@ -428,7 +428,7 @@
             <button>0</button>
             <binding>
                 <command>property-adjust</command>
-                <property>fdm/jsbsim/systems/gauges/radio/IFF-transponder/chan-0009</property>
+                <property>fdm/jsbsim/systems/gauges/radio/IFF/chan-0009</property>
                 <factor>1</factor>
                 <min>0</min>
                 <max>10</max>                
@@ -440,7 +440,7 @@
     <animation>
         <type>rotate</type>
         <object-name>selector dx 09 (Meshed)</object-name>
-        <property>fdm/jsbsim/systems/gauges/radio/IFF-transponder/chan-0009</property>
+        <property>fdm/jsbsim/systems/gauges/radio/IFF/chan-0009</property>
         <factor>36</factor>
         <offset-deg>0.0</offset-deg>
         <center>
@@ -458,7 +458,7 @@
     <animation>
         <type>rotate</type>
         <object-name>number disk white 0090 (Meshed)</object-name>
-        <property>fdm/jsbsim/systems/gauges/radio/IFF-transponder/chan-0090-pos</property>
+        <property>fdm/jsbsim/systems/gauges/radio/IFF/chan-0090-pos</property>
         <factor>36</factor>
         <offset-deg>0.0</offset-deg>
         <center>
@@ -476,7 +476,7 @@
     <animation>
         <type>rotate</type>
         <object-name>number disk white 0009 (Meshed)</object-name>
-        <property>fdm/jsbsim/systems/gauges/radio/IFF-transponder/chan-0009-pos</property>
+        <property>fdm/jsbsim/systems/gauges/radio/IFF/chan-0009-pos</property>
         <factor>36</factor>
         <offset-deg>0.0</offset-deg>
         <center>
@@ -500,7 +500,7 @@
             <interval-sec>0.5</interval-sec>
             <binding>
                 <command>property-toggle</command>
-                <property>fdm/jsbsim/systems/gauges/radio/IFF-transponder/sw-ar</property>
+                <property>fdm/jsbsim/systems/gauges/radio/IFF/sw-ar</property>
             </binding>
         </action>
     </animation>
@@ -508,7 +508,7 @@
     <animation>
         <type>rotate</type>
         <object-name>sw mode1 pin (Meshed)</object-name>
-        <property>fdm/jsbsim/systems/gauges/radio/IFF-transponder/sw-ar-pos</property>
+        <property>fdm/jsbsim/systems/gauges/radio/IFF/sw-ar-pos</property>
         <factor>30</factor>
         <offset-deg>-15.0</offset-deg>
         <center>
@@ -532,7 +532,7 @@
             <interval-sec>0.5</interval-sec>
             <binding>
                 <command>property-toggle</command>
-                <property>fdm/jsbsim/systems/gauges/radio/IFF-transponder/sw-ar</property>
+                <property>fdm/jsbsim/systems/gauges/radio/IFF/sw-ar</property>
             </binding>
         </action>
     </animation>
@@ -540,7 +540,7 @@
     <animation>
         <type>rotate</type>
         <object-name>sw mode2 pin (Meshed)</object-name>
-        <property>fdm/jsbsim/systems/gauges/radio/IFF-transponder/sw-ar-pos</property>
+        <property>fdm/jsbsim/systems/gauges/radio/IFF/sw-ar-pos</property>
         <factor>30</factor>
         <offset-deg>-15.0</offset-deg>
         <center>

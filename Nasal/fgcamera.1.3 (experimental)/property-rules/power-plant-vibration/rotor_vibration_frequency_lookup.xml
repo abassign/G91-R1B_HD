@@ -1,0 +1,307 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+	<type>gain</type>
+
+	<enable>
+		<condition>
+			<property alias="/params/rotor/enabled"/>
+			<property>/sim/fgcamera/current-camera/effects/power-plant-vibration/enabled</property>
+		</condition>
+	</enable>
+
+	<input>
+		<condition>
+			<less-than-equals>
+				<property>/rotors/main/rpm</property>
+				<property alias="/params/rotor/rpm[0]"/>
+			</less-than-equals>
+		</condition>
+		<property alias="/params/rotor/f0"/>
+	</input>
+
+	<input>
+		<condition>
+			<less-than-equals>
+				<property>/rotors/main/rpm</property>
+				<property alias="/params/rotor/rpm[1]"/>
+			</less-than-equals>
+		</condition>
+		<expression>
+			<sum>
+				<property alias="/params/rotor/f0"/>
+				<product>
+					<difference>
+						<property alias="/params/rotor/f1"/>
+						<property alias="/params/rotor/f0"/>
+					</difference>
+					<difference>
+						<property>/rotors/main/rpm</property>
+						<property alias="/params/rotor/rpm[0]"/>
+					</difference>
+					<pow>
+						<difference>
+							<property alias="/params/rotor/rpm[1]"/>
+							<property alias="/params/rotor/rpm[0]"/>
+						</difference>
+						<value>-1</value>
+					</pow>
+				</product>
+			</sum>
+		</expression>
+	</input>
+
+	<input>
+		<condition>
+			<less-than-equals>
+				<property>/rotors/main/rpm</property>
+				<property alias="/params/rotor/rpm[2]"/>
+			</less-than-equals>
+		</condition>
+		<expression>
+			<sum>
+				<property alias="/params/rotor/f1"/>
+				<product>
+					<difference>
+						<property alias="/params/rotor/f2"/>
+						<property alias="/params/rotor/f1"/>
+					</difference>
+					<difference>
+						<property>/rotors/main/rpm</property>
+						<property alias="/params/rotor/rpm[1]"/>
+					</difference>
+					<pow>
+						<difference>
+							<property alias="/params/rotor/rpm[2]"/>
+							<property alias="/params/rotor/rpm[1]"/>
+						</difference>
+						<value>-1</value>
+					</pow>
+				</product>
+			</sum>
+		</expression>
+	</input>
+
+	<input>
+		<condition>
+			<less-than-equals>
+				<property>/rotors/main/rpm</property>
+				<property alias="/params/rotor/rpm[3]"/>
+			</less-than-equals>
+		</condition>
+		<expression>
+			<sum>
+				<property alias="/params/rotor/f2"/>
+				<product>
+					<difference>
+						<property alias="/params/rotor/f3"/>
+						<property alias="/params/rotor/f2"/>
+					</difference>
+					<difference>
+						<property>/rotors/main/rpm</property>
+						<property alias="/params/rotor/rpm[2]"/>
+					</difference>
+					<pow>
+						<difference>
+							<property alias="/params/rotor/rpm[3]"/>
+							<property alias="/params/rotor/rpm[2]"/>
+						</difference>
+						<value>-1</value>
+					</pow>
+				</product>
+			</sum>
+		</expression>
+	</input>
+
+	<input>
+		<condition>
+			<less-than-equals>
+				<property>/rotors/main/rpm</property>
+				<property alias="/params/rotor/rpm[4]"/>
+			</less-than-equals>
+		</condition>
+		<expression>
+			<sum>
+				<property alias="/params/rotor/f3"/>
+				<product>
+					<difference>
+						<property alias="/params/rotor/f4"/>
+						<property alias="/params/rotor/f3"/>
+					</difference>
+					<difference>
+						<property>/rotors/main/rpm</property>
+						<property alias="/params/rotor/rpm[3]"/>
+					</difference>
+					<pow>
+						<difference>
+							<property alias="/params/rotor/rpm[4]"/>
+							<property alias="/params/rotor/rpm[3]"/>
+						</difference>
+						<value>-1</value>
+					</pow>
+				</product>
+			</sum>
+		</expression>
+	</input>
+
+	<input>
+		<condition>
+			<less-than-equals>
+				<property>/rotors/main/rpm</property>
+				<property alias="/params/rotor/rpm[5]"/>
+			</less-than-equals>
+		</condition>
+		<expression>
+			<sum>
+				<property alias="/params/rotor/f4"/>
+				<product>
+					<difference>
+						<property alias="/params/rotor/f5"/>
+						<property alias="/params/rotor/f4"/>
+					</difference>
+					<difference>
+						<property>/rotors/main/rpm</property>
+						<property alias="/params/rotor/rpm[4]"/>
+					</difference>
+					<pow>
+						<difference>
+							<property alias="/params/rotor/rpm[5]"/>
+							<property alias="/params/rotor/rpm[4]"/>
+						</difference>
+						<value>-1</value>
+					</pow>
+				</product>
+			</sum>
+		</expression>
+	</input>
+
+	<input>
+		<condition>
+			<less-than-equals>
+				<property>/rotors/main/rpm</property>
+				<property alias="/params/rotor/rpm[6]"/>
+			</less-than-equals>
+		</condition>
+		<expression>
+			<sum>
+				<property alias="/params/rotor/f5"/>
+				<product>
+					<difference>
+						<property alias="/params/rotor/f6"/>
+						<property alias="/params/rotor/f5"/>
+					</difference>
+					<difference>
+						<property>/rotors/main/rpm</property>
+						<property alias="/params/rotor/rpm[5]"/>
+					</difference>
+					<pow>
+						<difference>
+							<property alias="/params/rotor/rpm[6]"/>
+							<property alias="/params/rotor/rpm[5]"/>
+						</difference>
+						<value>-1</value>
+					</pow>
+				</product>
+			</sum>
+		</expression>
+	</input>
+
+	<input>
+		<condition>
+			<less-than-equals>
+				<property>/rotors/main/rpm</property>
+				<property alias="/params/rotor/rpm[7]"/>
+			</less-than-equals>
+		</condition>
+		<expression>
+			<sum>
+				<property alias="/params/rotor/f6"/>
+				<product>
+					<difference>
+						<property alias="/params/rotor/f7"/>
+						<property alias="/params/rotor/f6"/>
+					</difference>
+					<difference>
+						<property>/rotors/main/rpm</property>
+						<property alias="/params/rotor/rpm[6]"/>
+					</difference>
+					<pow>
+						<difference>
+							<property alias="/params/rotor/rpm[7]"/>
+							<property alias="/params/rotor/rpm[6]"/>
+						</difference>
+						<value>-1</value>
+					</pow>
+				</product>
+			</sum>
+		</expression>
+	</input>
+
+	<input>
+		<condition>
+			<less-than-equals>
+				<property>/rotors/main/rpm</property>
+				<property alias="/params/rotor/rpm[8]"/>
+			</less-than-equals>
+		</condition>
+		<expression>
+			<sum>
+				<property alias="/params/rotor/f7"/>
+				<product>
+					<difference>
+						<property alias="/params/rotor/f8"/>
+						<property alias="/params/rotor/f7"/>
+					</difference>
+					<difference>
+						<property>/rotors/main/rpm</property>
+						<property alias="/params/rotor/rpm[7]"/>
+					</difference>
+					<pow>
+						<difference>
+							<property alias="/params/rotor/rpm[8]"/>
+							<property alias="/params/rotor/rpm[7]"/>
+						</difference>
+						<value>-1</value>
+					</pow>
+				</product>
+			</sum>
+		</expression>
+	</input>
+
+	<input>
+		<condition>
+			<less-than-equals>
+				<property>/rotors/main/rpm</property>
+				<property alias="/params/rotor/rpm[9]"/>
+			</less-than-equals>
+		</condition>
+		<expression>
+			<sum>
+				<property alias="/params/rotor/f8"/>
+				<product>
+					<difference>
+						<property alias="/params/rotor/f9"/>
+						<property alias="/params/rotor/f8"/>
+					</difference>
+					<difference>
+						<property>/rotors/main/rpm</property>
+						<property alias="/params/rotor/rpm[8]"/>
+					</difference>
+					<pow>
+						<difference>
+							<property alias="/params/rotor/rpm[9]"/>
+							<property alias="/params/rotor/rpm[8]"/>
+						</difference>
+						<value>-1</value>
+					</pow>
+				</product>
+			</sum>
+		</expression>
+	</input>
+
+	<input alias="/params/rotor/f9"/>
+
+	<output alias="/params/rotor/_frequency"/>
+
+</PropertyList>

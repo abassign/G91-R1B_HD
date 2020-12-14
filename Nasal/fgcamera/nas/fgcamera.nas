@@ -16,11 +16,6 @@ var helicopterF  = nil;
 
 var mouse_enabled = 0;
 
-#// Load modules
-
-var modules_loaded = 0;
-var modules_obj = {};
-var modules_list = ["version","gui","commands","io","view_movement","DHM","RND_","headtracker","offsets_manager"];
 
 #==================================================
 #	"Shortcuts"
@@ -123,6 +118,7 @@ var Bezier2 = func (p1, x) {
 
 	return y;
 }
+
 var Bezier3 = {
 	_x  : zeros(31),
 	_y  : zeros(31),

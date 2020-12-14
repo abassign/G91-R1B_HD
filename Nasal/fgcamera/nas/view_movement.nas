@@ -2,7 +2,7 @@
 #	View movement (interpolation) handler
 #==================================================
 movement_handler = {
-	parents : [ t_handler.new() ],
+	parents : [ fgcamera.t_handler.new() ],
 
 	free    : 1,
 

@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<PropertyList>
+
+	<mixer n="0">
+		<x-output>/sim/fgcamera/effects/RND[0]/mixer/x-output</x-output>
+		<y-output>/sim/fgcamera/effects/RND[0]/mixer/y-output</y-output>
+		<z-output>/sim/fgcamera/effects/RND[0]/mixer/z-output</z-output>
+		<h-output>/sim/fgcamera/effects/RND[0]/mixer/h-output</h-output>
+		<p-output>/sim/fgcamera/effects/RND[0]/mixer/p-output</p-output>
+		<r-output>/sim/fgcamera/effects/RND[0]/mixer/r-output</r-output>
+	</mixer>
+
+	<mixer n="1">
+		<x-output>/sim/fgcamera/effects/RND[1]/mixer/x-output</x-output>
+		<y-output>/sim/fgcamera/effects/RND[1]/mixer/y-output</y-output>
+		<z-output>/sim/fgcamera/effects/RND[1]/mixer/z-output</z-output>
+		<h-output>/sim/fgcamera/effects/RND[1]/mixer/h-output</h-output>
+		<p-output>/sim/fgcamera/effects/RND[1]/mixer/p-output</p-output>
+		<r-output>/sim/fgcamera/effects/RND[1]/mixer/r-output</r-output>
+	</mixer>
+
+</PropertyList>

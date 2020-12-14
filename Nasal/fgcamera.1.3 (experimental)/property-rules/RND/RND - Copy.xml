@@ -1,0 +1,1169 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+	<params include="params.xml"/>
+
+<!--
+===================================================================================================
+	Sine generators
+		
+===================================================================================================
+-->
+
+<!-- Generator[0] -->
+	<filter>
+		<type>gain</type>
+		<gain>
+			<condition>
+				<property>DHM/air</property>
+			</condition>
+			<property alias="/params/gen[0]/sine/air/level"/>
+		</gain>
+		<gain>
+			<property alias="/params/gen[0]/sine/gnd/level"/>
+		</gain>
+		<input>
+			<condition>
+				<not>
+					<property>/DHM/air</property>
+				</not>
+				<property alias="/params/gen[0]/sine/gnd/enable"/>
+			</condition>
+			<expression>
+				<sin>
+					<product>
+						<value>2</value>
+						<value>3.1415926</value>
+						<property alias="/params/gen[0]/sine/gnd/f"/>
+						<property>/sim/time/elapsed-sec</property>
+					</product>
+				</sin>
+			</expression>
+		</input>
+		<input>
+			<condition>
+				<property>/DHM/air</property>
+				<property alias="/params/gen[0]/sine/air/enable"/>
+			</condition>
+			<expression>
+				<sin>
+					<product>
+						<value>2</value>
+						<value>3.1415926</value>
+						<property alias="/params/gen[0]/sine/air/f"/>
+						<property>/sim/time/elapsed-sec</property>
+					</product>
+				</sin>
+			</expression>
+		</input>
+		<input>0</input>
+		<output alias="/params/gen[0]/sine/output"/>
+	</filter>
+
+<!-- Generator[1] -->
+	<filter>
+		<type>gain</type>
+		<gain>
+			<condition>
+				<property>DHM/air</property>
+			</condition>
+			<property alias="/params/gen[1]/sine/air/level"/>
+		</gain>
+		<gain>
+			<property alias="/params/gen[1]/sine/gnd/level"/>
+		</gain>
+		<input>
+			<condition>
+				<not>
+					<property>/DHM/air</property>
+				</not>
+				<property alias="/params/gen[1]/sine/gnd/enable"/>
+			</condition>
+			<expression>
+				<sin>
+					<product>
+						<value>2</value>
+						<value>3.1415926</value>
+						<property alias="/params/gen[1]/sine/gnd/f"/>
+						<property>/sim/time/elapsed-sec</property>
+					</product>
+				</sin>
+			</expression>
+		</input>
+		<input>
+			<condition>
+				<property>/DHM/air</property>
+				<property alias="/params/gen[1]/sine/air/enable"/>
+			</condition>
+			<expression>
+				<sin>
+					<product>
+						<value>2</value>
+						<value>3.1415926</value>
+						<property alias="/params/gen[1]/sine/air/f"/>
+						<property>/sim/time/elapsed-sec</property>
+					</product>
+				</sin>
+			</expression>
+		</input>
+		<input>0</input>
+		<output alias="/params/gen[1]/sine/output"/>
+	</filter>
+
+<!-- Generator[2] -->
+	<filter>
+		<type>gain</type>
+		<gain>
+			<condition>
+				<property>DHM/air</property>
+			</condition>
+			<property alias="/params/gen[2]/sine/air/level"/>
+		</gain>
+		<gain>
+			<property alias="/params/gen[2]/sine/gnd/level"/>
+		</gain>
+		<input>
+			<condition>
+				<not>
+					<property>/DHM/air</property>
+				</not>
+				<property alias="/params/gen[2]/sine/gnd/enable"/>
+			</condition>
+			<expression>
+				<sin>
+					<product>
+						<value>2</value>
+						<value>3.1415926</value>
+						<property alias="/params/gen[2]/sine/gnd/f"/>
+						<property>/sim/time/elapsed-sec</property>
+					</product>
+				</sin>
+			</expression>
+		</input>
+		<input>
+			<condition>
+				<property>/DHM/air</property>
+				<property alias="/params/gen[2]/sine/air/enable"/>
+			</condition>
+			<expression>
+				<sin>
+					<product>
+						<value>2</value>
+						<value>3.1415926</value>
+						<property alias="/params/gen[2]/sine/air/f"/>
+						<property>/sim/time/elapsed-sec</property>
+					</product>
+				</sin>
+			</expression>
+		</input>
+		<input>0</input>
+		<output alias="/params/gen[2]/sine/output"/>
+	</filter>
+
+<!--
+===================================================================================================
+	Resonance generators
+		
+===================================================================================================
+-->
+	<filter>
+		<type>gain</type>
+		<enable>
+			<condition>
+				<or>
+					<and>
+						<property alias="/params/gen[0]/resonance/gnd/enable"/>
+						<not>
+							<property>/DHM/air</property>
+						</not>
+					</and>
+					<and>
+						<property alias="/params/gen[0]/resonance/air/enable"/>
+						<property>/DHM/air</property>
+					</and>
+				</or>
+			</condition>
+		</enable>
+		<input>
+			<condition>
+				<less-than-equals>
+					<property alias="/params/gen[0]/resonance/_t"/>
+					<property alias="/params/gen[0]/resonance/_T"/>
+				</less-than-equals>
+			</condition>
+			<expression>
+				<sum>
+					<property alias="/params/state/delta-t"/>
+					<property alias="/params/gen[0]/resonance/_t"/>
+				</sum>
+			</expression>
+		</input>
+		<input>0</input>
+		<output alias="/params/gen[0]/resonance/_t"/>
+	</filter>
+
+	<filter>
+		<type>gain</type>
+		<gain>
+			<property alias="/params/gen[0]/resonance/gnd/intensity"/>
+		</gain>
+		<enable>
+			<condition>
+				<or>
+					<and>
+						<property alias="/params/gen[0]/resonance/gnd/enable"/>
+						<not>
+							<property>/DHM/air</property>
+						</not>
+					</and>
+					<and>
+						<property alias="/params/gen[0]/resonance/air/enable"/>
+						<property>/DHM/air</property>
+					</and>
+				</or>
+				<not>
+					<property alias="/params/gen[0]/resonance/_t"/>
+				</not>
+			</condition>
+		</enable>
+		<input>
+			<property alias="/params/rand"/>
+		</input>
+		<output alias="/params/gen[0]/resonance/_T"/>
+	</filter>
+
+	<filter>
+		<type>gain</type>
+		<enable>
+			<condition>
+				<property alias="/params/gen[0]/resonance/gnd/enable"/>
+				<not>
+					<property alias="/params/gen[0]/resonance/_t"/>
+				</not>
+			</condition>
+		</enable>
+		<input>
+			<property alias="/params/rand"/> <!-- revise: same random value as _T -->
+		</input>
+		<output alias="/params/gen[0]/resonance/_A"/>
+	</filter>
+
+	<filter>
+		<type>exponential</type>
+		<filter-time>
+			<property alias="/params/gen[0]/resonance/gnd/attack"/>
+		</filter-time>
+		<input alias="/params/gen[0]/resonance/_A"/>
+		<output alias="/params/gen[0]/resonance/_attack"/>
+	</filter>
+
+	<filter>
+		<type>exponential</type>
+		<filter-time>
+			<property alias="/params/gen[0]/resonance/gnd/release"/>
+		</filter-time>
+		<input alias="/params/gen[0]/resonance/_A"/>
+		<output alias="/params/gen[0]/resonance/_release"/>
+	</filter>
+
+	<filter>
+		<type>gain</type>
+		<gain>
+			<property alias="/params/gen[0]/resonance/gnd/level"/>
+		</gain>
+		<input>
+		<expression>
+			<product>
+				<difference>
+					<property alias="/params/gen[0]/resonance/_attack"/>
+					<property alias="/params/gen[0]/resonance/_release"/>
+				</difference>
+				<sin>
+					<product>
+						<value>2</value>
+						<value>3.1415926</value>
+						<property alias="/params/gen[0]/resonance/gnd/f"/>
+						<property>/sim/time/elapsed-sec</property>
+					</product>
+				</sin>
+			</product>
+		</expression>
+		</input>
+		<output alias="/params/gen[0]/resonance/output"/>
+	</filter>
+
+
+
+
+
+
+
+<!--
+===================================================================================================
+	Noise generators
+		
+===================================================================================================
+-->
+
+<!--
+	if (t <= 1/f) t += dt;
+	else t = 0;
+-->
+	<filter>
+		<type>gain</type>
+		<enable>
+			<condition>
+				<or>
+					<and>
+						<property alias="/params/gen[0]/noise/gnd/enable"/>
+						<not>
+							<property>/DHM/air</property>
+						</not>
+					</and>
+					<and>
+						<property alias="/params/gen[0]/noise/air/enable"/>
+						<property>/DHM/air</property>
+					</and>
+				</or>
+			</condition>
+		</enable>
+		<input>
+			<condition>
+				<or>
+					<and>
+						<not>
+							<property>/DHM/air</property>
+						</not>
+						<less-than-equals>
+							<property alias="/params/gen[0]/noise/_t"/>
+							<expression>
+								<pow>
+									<property alias="/params/gen[0]/noise/gnd/f"/>
+									<value>-1</value>
+								</pow>
+							</expression>
+						</less-than-equals>
+					</and>
+					<and>
+						<property>/DHM/air</property>
+						<less-than-equals>
+							<property alias="/params/gen[0]/noise/_t"/>
+							<expression>
+								<pow>
+									<property alias="/params/gen[0]/noise/air/f"/>
+									<value>-1</value>
+								</pow>
+							</expression>
+						</less-than-equals>
+					</and>
+				</or>
+			</condition>
+			<expression>
+				<sum>
+					<property alias="/params/state/delta-t"/>
+					<property alias="/params/gen[0]/noise/_t"/>
+				</sum>
+			</expression>
+		</input>
+		<input>0</input>
+		<output alias="/params/gen[0]/noise/_t"/>
+	</filter>
+
+<!--
+	if (t == 0) raw_output = rand();
+-->
+	<filter>
+		<type>gain</type>
+		<enable>
+			<condition>
+				<or>
+					<and>
+						<not>
+							<property>/DHM/air</property>
+						</not>
+						<property alias="/params/gen[0]/noise/gnd/enable"/>
+					</and>
+					<and>
+						<property>/DHM/air</property>
+						<property alias="/params/gen[0]/noise/air/enable"/>
+					</and>
+				</or>
+				<not>
+					<property alias="/params/gen[0]/noise/_t"/>
+				</not>
+			</condition>
+		</enable>
+		<input>
+			<property alias="/params/rand"/>
+		</input>
+		<output alias="/params/gen[0]/noise/_raw-amplitude"/>
+	</filter>
+
+<!--
+	output = raw_output_lowpass.filter(0.2);
+-->
+	<filter>
+		<enable>
+			<condition>
+				<or>
+					<and>
+						<not>
+							<property>/DHM/air</property>
+						</not>
+						<property alias="/params/gen[0]/noise/gnd/enable"/>
+					</and>
+					<and>
+						<property>/DHM/air</property>
+						<property alias="/params/gen[0]/noise/air/enable"/>
+					</and>
+				</or>
+			</condition>
+		</enable>
+		<type>exponential</type>
+		<filter-time>0.2</filter-time>
+		<input alias="/params/gen[0]/noise/_raw-amplitude"/>
+		<output alias="/params/gen[0]/noise/_amplitude"/>
+	</filter>
+
+	<filter>
+		<type>gain</type>
+		<gain>
+			<condition>
+				<property>DHM/air</property>
+			</condition>
+			<property alias="/params/gen[0]/noise/air/level"/>
+		</gain>
+		<gain>
+			<property alias="/params/gen[0]/noise/gnd/level"/>
+		</gain>
+		<input>
+			<condition>
+				<not>
+					<property>/DHM/air</property>
+				</not>
+				<property alias="/params/gen[0]/noise/gnd/enable"/>
+			</condition>
+			<expression>
+				<product>
+					<property alias="/params/gen[0]/noise/_amplitude"/>
+					<sin>
+						<product>
+							<value>2</value>
+							<value>3.1415926</value>
+							<property alias="/params/gen[0]/noise/gnd/f"/>
+							<!--property alias="/params/gen[0]/noise/_t"/-->
+							<property>/sim/time/elapsed-sec</property>
+						</product>
+					</sin>
+				</product>
+			</expression>
+		</input>
+		<input>
+			<condition>
+				<property>/DHM/air</property>
+				<property alias="/params/gen[0]/noise/air/enable"/>
+			</condition>
+			<expression>
+				<product>
+					<property alias="/params/gen[0]/noise/_amplitude"/>
+					<sin>
+						<product>
+							<value>2</value>
+							<value>3.1415926</value>
+							<property alias="/params/gen[0]/noise/air/f"/>
+							<!--property alias="/params/gen[0]/noise/_t"/-->
+							<property>/sim/time/elapsed-sec</property>
+						</product>
+					</sin>
+				</product>
+			</expression>
+		</input>
+		<input>0</input>
+		<output alias="/params/gen[0]/noise/output"/>
+	</filter>
+
+
+
+<!-- Noise generator1 -->
+
+<!--
+	if (t <= 1/f) t += dt;
+	else t = 0;
+-->
+	<filter>
+		<type>gain</type>
+		<enable>
+			<property alias="/params/gen[1]/noise/enable"/>
+		</enable>
+		<input>
+			<condition>
+				<less-than-equals>
+					<property alias="/params/gen[1]/noise/_t"/>
+					<expression>
+						<pow>
+							<property alias="/params/gen[1]/noise/f"/>
+							<value>-1</value>
+						</pow>
+					</expression>
+				</less-than-equals>
+			</condition>
+			<expression>
+				<sum>
+					<property alias="/params/state/delta-t"/>
+					<property alias="/params/gen[1]/noise/_t"/>
+				</sum>
+			</expression>
+		</input>
+		<input>0</input>
+		<output alias="/params/gen[1]/noise/_t"/>
+	</filter>
+
+<!--
+	if (t == 0) raw_output = rand();
+-->
+	<filter>
+		<type>gain</type>
+		<enable>
+			<condition>
+				<property alias="/params/gen[1]/noise/enable"/>
+				<not>
+					<property alias="/params/gen[1]/noise/_t"/>
+				</not>
+			</condition>
+		</enable>
+		<input>
+			<property alias="/params/rand"/>
+		</input>
+		<output alias="/params/gen[1]/noise/_raw-amplitude"/>
+	</filter>
+
+<!--
+	output = raw_output_lowpass.filter(0.5);
+-->
+	<filter>
+		<enable>
+			<property alias="/params/gen[1]/noise/enable"/>
+		</enable>
+		<type>exponential</type>
+		<filter-time>0.5</filter-time>
+		<input alias="/params/gen[1]/noise/_raw-amplitude"/>
+		<output alias="/params/gen[1]/noise/_amplitude"/>
+	</filter>
+
+	<filter>
+		<type>gain</type>
+		<gain>
+			<property alias="/params/gen[1]/noise/level"/>
+		</gain>
+		<input>
+			<condition>
+				<property alias="/params/gen[1]/noise/enable"/>
+			</condition>
+			<expression>
+				<product>
+					<property alias="/params/gen[1]/noise/_amplitude"/>
+					<sin>
+						<product>
+							<value>2</value>
+							<value>3.1415926</value>
+							<property alias="/params/gen[1]/noise/f"/>
+							<property alias="/params/gen[1]/noise/_t"/>
+						</product>
+					</sin>
+				</product>
+			</expression>
+		</input>
+		<input>0</input>
+		<output alias="/params/gen[1]/noise/output"/>
+	</filter>
+
+
+
+
+
+
+<!--
+	LFO2 Generator0
+-->
+	<filter>
+		<type>gain</type>
+		<enable>
+			<property alias="/params/gen[0]/lfo2/enable"/>
+		</enable>
+		<input>
+			<condition>
+				<less-than-equals>
+					<property alias="/params/gen[0]/lfo2/_t"/>
+					<property alias="/params/gen[0]/lfo2/_T"/>
+				</less-than-equals>
+			</condition>
+			<expression>
+				<sum>
+					<property alias="/params/state/delta-t"/>
+					<property alias="/params/gen[0]/lfo2/_t"/>
+				</sum>
+			</expression>
+		</input>
+		<input>0</input>
+		<output alias="/params/gen[0]/lfo2/_t"/>
+	</filter>
+	<filter>
+		<type>gain</type>
+		<gain>
+			<property alias="/params/gen[0]/lfo2/intensity"/>
+		</gain>
+		<enable>
+			<condition>
+				<property alias="/params/gen[0]/lfo2/enable"/>
+				<not>
+					<property alias="/params/gen[0]/lfo2/_t"/>
+				</not>
+			</condition>
+		</enable>
+		<input>
+			<property alias="/params/rand"/>
+		</input>
+		<output alias="/params/gen[0]/lfo2/_T"/>
+	</filter>
+	<filter>
+		<type>gain</type>
+		<enable>
+			<condition>
+				<property alias="/params/gen[0]/lfo2/enable"/>
+				<equals>
+					<property alias="/params/gen[0]/lfo2/_t"/>
+					<value>0</value>
+				</equals>
+			</condition>
+		</enable>
+		<input>
+			<property alias="/params/rand"/>
+			<offset>-0.5</offset>
+		</input>
+		<output alias="/params/gen[0]/lfo2/raw-output"/>
+	</filter>
+	<filter>
+		<type>exponential</type>
+		<gain>
+			<property alias="/params/gen[0]/lfo2/level"/>
+		</gain>
+		<filter-time>
+			<property alias="/params/gen[0]/lfo2/filter"/>
+		</filter-time>
+		<input>
+			<condition>
+				<property alias="/params/gen[0]/lfo2/enable"/>
+			</condition>
+			<property alias="/params/gen[0]/lfo2/raw-output"/>
+		</input>
+		<input>0</input>
+		<output alias="/params/gen[0]/lfo2/output"/>
+	</filter>
+
+<!--
+	LFO2 Generator1
+-->
+	<filter>
+		<type>gain</type>
+		<enable>
+			<property alias="/params/gen[1]/lfo2/enable"/>
+		</enable>
+		<input>
+			<condition>
+				<less-than-equals>
+					<property alias="/params/gen[1]/lfo2/_t"/>
+					<property alias="/params/gen[1]/lfo2/_T"/>
+				</less-than-equals>
+			</condition>
+			<expression>
+				<sum>
+					<property alias="/params/state/delta-t"/>
+					<property alias="/params/gen[1]/lfo2/_t"/>
+				</sum>
+			</expression>
+		</input>
+		<input>0</input>
+		<output alias="/params/gen[1]/lfo2/_t"/>
+	</filter>
+	<filter>
+		<type>gain</type>
+		<gain>
+			<property alias="/params/gen[1]/lfo2/intensity"/>
+		</gain>
+		<enable>
+			<condition>
+				<property alias="/params/gen[1]/lfo2/enable"/>
+				<not>
+					<property alias="/params/gen[1]/lfo2/_t"/>
+				</not>
+			</condition>
+		</enable>
+		<input>
+			<property alias="/params/rand"/>
+		</input>
+		<output alias="/params/gen[1]/lfo2/_T"/>
+	</filter>
+	<filter>
+		<type>gain</type>
+		<enable>
+			<condition>
+				<property alias="/params/gen[1]/lfo2/enable"/>
+				<equals>
+					<property alias="/params/gen[1]/lfo2/_t"/>
+					<value>0</value>
+				</equals>
+			</condition>
+		</enable>
+		<input>
+			<property alias="/params/rand"/>
+			<offset>-0.5</offset>
+		</input>
+		<output alias="/params/gen[1]/lfo2/raw-output"/>
+	</filter>
+	<filter>
+		<type>exponential</type>
+		<gain>
+			<property alias="/params/gen[1]/lfo2/level"/>
+		</gain>
+		<filter-time>
+			<property alias="/params/gen[1]/lfo2/filter"/>
+		</filter-time>
+		<input>
+			<condition>
+				<property alias="/params/gen[1]/lfo2/enable"/>
+			</condition>
+			<property alias="/params/gen[1]/lfo2/raw-output"/>
+		</input>
+		<input>0</input>
+		<output alias="/params/gen[1]/lfo2/output"/>
+	</filter>
+
+
+
+
+
+<!--
+	LFO1 Generator0
+-->
+	<filter>
+		<type>gain</type>
+		<enable>
+			<property alias="/params/gen[0]/lfo1/enable"/>
+		</enable>
+		<input>
+			<condition>
+				<less-than-equals>
+					<property alias="/params/gen[0]/lfo1/_t"/>
+					<property alias="/params/gen[0]/lfo1/_T"/>
+				</less-than-equals>
+			</condition>
+			<expression>
+				<sum>
+					<property alias="/params/state/delta-t"/>
+					<property alias="/params/gen[0]/lfo1/_t"/>
+				</sum>
+			</expression>
+		</input>
+		<input>0</input>
+		<output alias="/params/gen[0]/lfo1/_t"/>
+	</filter>
+	<filter>
+		<type>gain</type>
+		<gain>
+			<property alias="/params/gen[0]/lfo1/intensity"/>
+		</gain>
+		<enable>
+			<condition>
+				<property alias="/params/gen[0]/lfo1/enable"/>
+				<equals>
+					<property alias="/params/gen[0]/lfo1/_t"/>
+					<value>0</value>
+				</equals>
+			</condition>
+		</enable>
+		<input>
+			<property alias="/params/rand"/>
+		</input>
+		<output alias="/params/gen[0]/lfo1/_T"/>
+		<min>0.2</min>
+		<max>30</max>
+	</filter>
+	<filter>
+		<type>gain</type>
+		<enable>
+			<condition>
+				<property alias="/params/gen[0]/lfo1/enable"/>
+				<equals>
+					<property alias="/params/gen[0]/lfo1/_t"/>
+					<value>0</value>
+				</equals>
+			</condition>
+		</enable>
+		<input>
+			<property alias="/params/rand"/>
+			<offset>-10</offset>
+			<scale>20</scale>
+		</input>
+		<output alias="/params/gen[0]/lfo1/_raw-dist"/>
+	</filter>
+	<filter>
+		<type>reciprocal</type>
+		<enable>
+			<condition>
+				<property alias="/params/gen[0]/lfo1/enable"/>
+			</condition>
+		</enable>
+		<gain>
+			<expression>
+				<difference>
+					<property alias="/params/gen[0]/lfo1/_dist"/>
+					<property alias="/params/gen[0]/lfo1/_raw-dist"/>
+				</difference>
+			</expression>
+		</gain>
+		<input>
+			<property alias="/params/gen[0]/lfo1/_T"/>
+		</input>
+		<output alias="/params/gen[0]/lfo1/_rate"/>
+	</filter>
+	<filter>
+		<type>noise-spike</type>
+		<enable>
+			<property alias="/params/gen[0]/lfo1/enable"/>
+		</enable>
+		<max-rate-of-change>
+			<property alias="/params/gen[0]/lfo1/_rate"/>
+		</max-rate-of-change>
+		<input alias="/params/gen[0]/lfo1/_raw-dist"/>
+		<output alias="/params/gen[0]/lfo1/_dist"/>
+	</filter>
+	<filter>
+		<type>exponential</type>
+		<gain>
+			<property alias="/params/gen[0]/lfo1/level"/>
+		</gain>
+		<filter-time>
+			<property alias="/params/gen[0]/lfo1/filter"/>
+		</filter-time>
+		<enable>
+			<condition>
+				<not-equals>
+					<property alias="/params/gen[0]/lfo1/_dist"/>
+					<value>0</value>
+				</not-equals>
+			</condition>
+		</enable>
+		<input>
+			<condition>
+				<property alias="/params/gen[0]/lfo1/enable"/>
+			</condition>
+			<expression>
+				<product>
+					<sin>
+						<property alias="/params/gen[0]/lfo1/_dist"/>
+					</sin>
+					<pow>
+						<property alias="/params/gen[0]/lfo1/_dist"/>
+						<value>-1</value>
+					</pow>
+				</product>
+			</expression>
+		</input>
+		<input>0</input>
+		<output alias="/params/gen[0]/lfo1/output"/>
+	</filter>
+
+<!--
+	LFO1 Generator1
+-->
+	<filter>
+		<type>gain</type>
+		<enable>
+			<property alias="/params/gen[1]/lfo1/enable"/>
+		</enable>
+		<input>
+			<condition>
+				<less-than-equals>
+					<property alias="/params/gen[1]/lfo1/_t"/>
+					<property alias="/params/gen[1]/lfo1/_T"/>
+				</less-than-equals>
+			</condition>
+			<expression>
+				<sum>
+					<property alias="/params/state/delta-t"/>
+					<property alias="/params/gen[1]/lfo1/_t"/>
+				</sum>
+			</expression>
+		</input>
+		<input>0</input>
+		<output alias="/params/gen[1]/lfo1/_t"/>
+	</filter>
+	<filter>
+		<type>gain</type>
+		<gain>
+			<property alias="/params/gen[1]/lfo1/intensity"/>
+		</gain>
+		<enable>
+			<condition>
+				<property alias="/params/gen[1]/lfo1/enable"/>
+				<equals>
+					<property alias="/params/gen[1]/lfo1/_t"/>
+					<value>0</value>
+				</equals>
+			</condition>
+		</enable>
+		<input>
+			<property alias="/params/rand"/>
+		</input>
+		<output alias="/params/gen[1]/lfo1/_T"/>
+		<min>0.2</min>
+		<max>30</max>
+	</filter>
+	<filter>
+		<type>gain</type>
+		<enable>
+			<condition>
+				<property alias="/params/gen[1]/lfo1/enable"/>
+				<equals>
+					<property alias="/params/gen[1]/lfo1/_t"/>
+					<value>0</value>
+				</equals>
+			</condition>
+		</enable>
+		<input>
+			<property alias="/params/rand"/>
+			<offset>-10</offset>
+			<scale>20</scale>
+		</input>
+		<output alias="/params/gen[1]/lfo1/_raw-dist"/>
+	</filter>
+	<filter>
+		<type>reciprocal</type>
+		<enable>
+			<condition>
+				<property alias="/params/gen[1]/lfo1/enable"/>
+			</condition>
+		</enable>
+		<gain>
+			<expression>
+				<difference>
+					<property alias="/params/gen[1]/lfo1/_dist"/>
+					<property alias="/params/gen[1]/lfo1/_raw-dist"/>
+				</difference>
+			</expression>
+		</gain>
+		<input>
+			<property alias="/params/gen[1]/lfo1/_T"/>
+		</input>
+		<output alias="/params/gen[1]/lfo1/_rate"/>
+	</filter>
+	<filter>
+		<type>noise-spike</type>
+		<enable>
+			<property alias="/params/gen[1]/lfo1/enable"/>
+		</enable>
+		<max-rate-of-change>
+			<property alias="/params/gen[1]/lfo1/_rate"/>
+		</max-rate-of-change>
+		<input alias="/params/gen[1]/lfo1/_raw-dist"/>
+		<output alias="/params/gen[1]/lfo1/_dist"/>
+	</filter>
+	<filter>
+		<type>exponential</type>
+		<gain>
+			<property alias="/params/gen[1]/lfo1/level"/>
+		</gain>
+		<filter-time>
+			<property alias="/params/gen[1]/lfo1/filter"/>
+		</filter-time>
+		<enable>
+			<condition>
+				<not-equals>
+					<property alias="/params/gen[1]/lfo1/_dist"/>
+					<value>0</value>
+				</not-equals>
+			</condition>
+		</enable>
+		<input>
+			<condition>
+				<property alias="/params/gen[1]/lfo1/enable"/>
+			</condition>
+			<expression>
+				<product>
+					<sin>
+						<property alias="/params/gen[1]/lfo1/_dist"/>
+					</sin>
+					<pow>
+						<property alias="/params/gen[1]/lfo1/_dist"/>
+						<value>-1</value>
+					</pow>
+				</product>
+			</expression>
+		</input>
+		<input>0</input>
+		<output alias="/params/gen[1]/lfo1/output"/>
+	</filter>
+
+
+
+
+
+
+
+
+	<filter>
+		<type>gain</type>
+		<input>
+			<expression>
+				<sum>
+					<property alias="/params/gen[0]/sine/output"/>
+					<property alias="/params/gen[0]/resonance/output"/>
+					<property alias="/params/gen[0]/noise/output"/>
+					<property alias="/params/gen[0]/lfo1/output"/>
+					<property alias="/params/gen[0]/lfo2/output"/>
+				</sum>
+			</expression>
+		</input>
+		<output alias="/params/gen[0]/output"/>
+	</filter>
+
+	<filter>
+		<type>gain</type>
+		<input>
+			<expression>
+				<sum>
+					<property alias="/params/gen[1]/sine/output"/>
+					<property alias="/params/gen[1]/noise/output"/>
+					<property alias="/params/gen[1]/lfo1/output"/>
+					<property alias="/params/gen[1]/lfo2/output"/>
+				</sum>
+			</expression>
+		</input>
+		<output alias="/params/gen[1]/output"/>
+	</filter>
+
+	<filter>
+		<type>gain</type>
+		<input>
+			<expression>
+				<sum>
+					<property alias="/params/gen[2]/sine/output"/>
+				</sum>
+			</expression>
+		</input>
+		<output alias="/params/gen[2]/output"/>
+	</filter>
+
+
+
+	<filter>
+		<type>gain</type>
+		<gain>
+			<property alias="/params/mixer/x[3]"/>
+		</gain>
+		<input>
+			<expression>
+				<sum>
+					<product>
+						<property alias="/params/gen[0]/output"/>
+						<property alias="/params/mixer/x[0]"/>
+					</product>
+					<product>
+						<property alias="/params/gen[1]/output"/>
+						<property alias="/params/mixer/x[1]"/>
+					</product>
+					<product>
+						<property alias="/params/gen[2]/output"/>
+						<property alias="/params/mixer/x[2]"/>
+					</product>
+				</sum>
+			</expression>
+		</input>
+		<output alias="/params/mixer/x-output-raw"/>
+	</filter>
+
+	<filter>
+		<type>gain</type>
+		<gain>
+			<property alias="/params/mixer/y[3]"/>
+		</gain>
+		<input>
+			<expression>
+				<sum>
+					<product>
+						<property alias="/params/gen[0]/output"/>
+						<property alias="/params/mixer/y[0]"/>
+					</product>
+					<product>
+						<property alias="/params/gen[1]/output"/>
+						<property alias="/params/mixer/y[1]"/>
+					</product>
+					<product>
+						<property alias="/params/gen[2]/output"/>
+						<property alias="/params/mixer/y[2]"/>
+					</product>
+				</sum>
+			</expression>
+		</input>
+		<output alias="/params/mixer/y-output-raw"/>
+	</filter>
+
+
+
+	<filter>
+		<type>exponential</type>
+		<filter-time>0</filter-time>
+		<gain>1.0</gain>
+		<input alias="/params/mixer/x-output-raw"/>
+		<output>
+			<property>/sim/fgcamera/RND/mixer/x-output</property>
+		</output>
+	</filter>
+	<filter>
+		<type>exponential</type>
+		<filter-time>0</filter-time>
+		<gain>1.0</gain>
+		<input alias="/params/mixer/y-output-raw"/>
+		<output>
+			<property>/sim/fgcamera/RND/mixer/y-output</property>
+		</output>
+	</filter>
+	<filter>
+		<type>exponential</type>
+		<filter-time>0</filter-time>
+		<gain>1.0</gain>
+		<input alias="/params/mixer/z-output-raw"/>
+		<output>
+			<property>/sim/fgcamera/RND/mixer/z-output</property>
+		</output>
+	</filter>
+	<filter>
+		<type>exponential</type>
+		<filter-time>0</filter-time>
+		<gain>1.0</gain>
+		<input alias="/params/mixer/h-output-raw"/>
+		<output>
+			<property>/sim/fgcamera/RND/mixer/h-output</property>
+		</output>
+	</filter>
+	<filter>
+		<type>exponential</type>
+		<filter-time>0</filter-time>
+		<gain>1.0</gain>
+		<input alias="/params/mixer/p-output-raw"/>
+		<output>
+			<property>/sim/fgcamera/RND/mixer/p-output</property>
+		</output>
+	</filter>
+	<filter>
+		<type>exponential</type>
+		<filter-time>0</filter-time>
+		<gain>1.0</gain>
+		<input alias="/params/mixer/r-output-raw"/>
+		<output>
+			<property>/sim/fgcamera/RND/mixer/r-output</property>
+		</output>
+	</filter>
+
+</PropertyList>

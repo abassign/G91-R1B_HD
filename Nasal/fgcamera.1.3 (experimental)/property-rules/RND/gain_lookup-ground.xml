@@ -1,0 +1,305 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+	<type>gain</type>
+
+	<!--enable>
+		<condition>
+			<property alias="/params/rotor/enabled"/>
+			<property>/sim/fgcamera/current-camera/effects/power-plant-vibration/enabled</property>
+		</condition>
+	</enable-->
+
+	<input>
+		<condition>
+			<property>/sim/fgcamera/dialogs/RND/edit-mode</property>
+		</condition>
+		<value>1</value>
+	</input>
+
+	<input>
+		<condition>
+			<less-than-equals>
+				<property alias="/params/speed"/>
+				<property alias="/params/v1[0]"/>
+			</less-than-equals>
+		</condition>
+		<property alias="/params/gain[0]"/>
+	</input>
+	<input>
+		<condition>
+			<less-than-equals>
+				<property alias="/params/speed"/>
+				<property alias="/params/v1[1]"/>
+			</less-than-equals>
+		</condition>
+		<expression>
+			<sum>
+				<property alias="/params/gain[0]"/>
+				<product>
+					<difference>
+						<property alias="/params/gain[1]"/>
+						<property alias="/params/gain[0]"/>
+					</difference>
+					<difference>
+						<property alias="/params/speed"/>
+						<property alias="/params/v1[0]"/>
+					</difference>
+					<pow>
+						<difference>
+							<property alias="/params/v1[1]"/>
+							<property alias="/params/v1[0]"/>
+						</difference>
+						<value>-1</value>
+					</pow>
+				</product>
+			</sum>
+		</expression>
+	</input>
+	<input>
+		<condition>
+			<less-than-equals>
+				<property alias="/params/speed"/>
+				<property alias="/params/v1[2]"/>
+			</less-than-equals>
+		</condition>
+		<expression>
+			<sum>
+				<property alias="/params/gain[1]"/>
+				<product>
+					<difference>
+						<property alias="/params/gain[2]"/>
+						<property alias="/params/gain[1]"/>
+					</difference>
+					<difference>
+						<property alias="/params/speed"/>
+						<property alias="/params/v1[1]"/>
+					</difference>
+					<pow>
+						<difference>
+							<property alias="/params/v1[2]"/>
+							<property alias="/params/v1[1]"/>
+						</difference>
+						<value>-1</value>
+					</pow>
+				</product>
+			</sum>
+		</expression>
+	</input>
+	<input>
+		<condition>
+			<less-than-equals>
+				<property alias="/params/speed"/>
+				<property alias="/params/v1[3]"/>
+			</less-than-equals>
+		</condition>
+		<expression>
+			<sum>
+				<property alias="/params/gain[2]"/>
+				<product>
+					<difference>
+						<property alias="/params/gain[3]"/>
+						<property alias="/params/gain[2]"/>
+					</difference>
+					<difference>
+						<property alias="/params/speed"/>
+						<property alias="/params/v1[2]"/>
+					</difference>
+					<pow>
+						<difference>
+							<property alias="/params/v1[3]"/>
+							<property alias="/params/v1[2]"/>
+						</difference>
+						<value>-1</value>
+					</pow>
+				</product>
+			</sum>
+		</expression>
+	</input>
+	<input>
+		<condition>
+			<less-than-equals>
+				<property alias="/params/speed"/>
+				<property alias="/params/v1[4]"/>
+			</less-than-equals>
+		</condition>
+		<expression>
+			<sum>
+				<property alias="/params/gain[3]"/>
+				<product>
+					<difference>
+						<property alias="/params/gain[4]"/>
+						<property alias="/params/gain[3]"/>
+					</difference>
+					<difference>
+						<property alias="/params/speed"/>
+						<property alias="/params/v1[3]"/>
+					</difference>
+					<pow>
+						<difference>
+							<property alias="/params/v1[4]"/>
+							<property alias="/params/v1[3]"/>
+						</difference>
+						<value>-1</value>
+					</pow>
+				</product>
+			</sum>
+		</expression>
+	</input>
+	<input>
+		<condition>
+			<less-than-equals>
+				<property alias="/params/speed"/>
+				<property alias="/params/v1[5]"/>
+			</less-than-equals>
+		</condition>
+		<expression>
+			<sum>
+				<property alias="/params/gain[4]"/>
+				<product>
+					<difference>
+						<property alias="/params/gain[5]"/>
+						<property alias="/params/gain[4]"/>
+					</difference>
+					<difference>
+						<property alias="/params/speed"/>
+						<property alias="/params/v1[4]"/>
+					</difference>
+					<pow>
+						<difference>
+							<property alias="/params/v1[5]"/>
+							<property alias="/params/v1[4]"/>
+						</difference>
+						<value>-1</value>
+					</pow>
+				</product>
+			</sum>
+		</expression>
+	</input>
+	<input>
+		<condition>
+			<less-than-equals>
+				<property alias="/params/speed"/>
+				<property alias="/params/v1[6]"/>
+			</less-than-equals>
+		</condition>
+		<expression>
+			<sum>
+				<property alias="/params/gain[5]"/>
+				<product>
+					<difference>
+						<property alias="/params/gain[6]"/>
+						<property alias="/params/gain[5]"/>
+					</difference>
+					<difference>
+						<property alias="/params/speed"/>
+						<property alias="/params/v1[5]"/>
+					</difference>
+					<pow>
+						<difference>
+							<property alias="/params/v1[6]"/>
+							<property alias="/params/v1[5]"/>
+						</difference>
+						<value>-1</value>
+					</pow>
+				</product>
+			</sum>
+		</expression>
+	</input>
+	<input>
+		<condition>
+			<less-than-equals>
+				<property alias="/params/speed"/>
+				<property alias="/params/v1[7]"/>
+			</less-than-equals>
+		</condition>
+		<expression>
+			<sum>
+				<property alias="/params/gain[6]"/>
+				<product>
+					<difference>
+						<property alias="/params/gain[7]"/>
+						<property alias="/params/gain[6]"/>
+					</difference>
+					<difference>
+						<property alias="/params/speed"/>
+						<property alias="/params/v1[6]"/>
+					</difference>
+					<pow>
+						<difference>
+							<property alias="/params/v1[7]"/>
+							<property alias="/params/v1[6]"/>
+						</difference>
+						<value>-1</value>
+					</pow>
+				</product>
+			</sum>
+		</expression>
+	</input>
+	<input>
+		<condition>
+			<less-than-equals>
+				<property alias="/params/speed"/>
+				<property alias="/params/v1[8]"/>
+			</less-than-equals>
+		</condition>
+		<expression>
+			<sum>
+				<property alias="/params/gain[7]"/>
+				<product>
+					<difference>
+						<property alias="/params/gain[8]"/>
+						<property alias="/params/gain[7]"/>
+					</difference>
+					<difference>
+						<property alias="/params/speed"/>
+						<property alias="/params/v1[7]"/>
+					</difference>
+					<pow>
+						<difference>
+							<property alias="/params/v1[8]"/>
+							<property alias="/params/v1[7]"/>
+						</difference>
+						<value>-1</value>
+					</pow>
+				</product>
+			</sum>
+		</expression>
+	</input>
+	<input>
+		<condition>
+			<less-than-equals>
+				<property alias="/params/speed"/>
+				<property alias="/params/v1[9]"/>
+			</less-than-equals>
+		</condition>
+		<expression>
+			<sum>
+				<property alias="/params/gain[8]"/>
+				<product>
+					<difference>
+						<property alias="/params/gain[9]"/>
+						<property alias="/params/gain[8]"/>
+					</difference>
+					<difference>
+						<property alias="/params/speed"/>
+						<property alias="/params/v1[8]"/>
+					</difference>
+					<pow>
+						<difference>
+							<property alias="/params/v1[9]"/>
+							<property alias="/params/v1[8]"/>
+						</difference>
+						<value>-1</value>
+					</pow>
+				</product>
+			</sum>
+		</expression>
+	</input>
+
+	<input alias="/params/gain[9]"/>
+
+	<output alias="/params/_gain"/>
+
+</PropertyList>

@@ -1,0 +1,140 @@
+<?xml version="1.0"?>
+
+
+<PropertyList>
+      <mixer>
+        <z type="string">0</z>
+        <z n="1" type="string">0</z>
+        <z n="2" type="string">0.850705</z>
+        <z n="3" type="string">0.647583</z>
+        <y type="string">0</y>
+        <y n="1" type="string">0.6207</y>
+        <y n="2" type="string">0</y>
+        <y n="3" type="string">0.361017</y>
+        <h type="string">0.0896546</h>
+        <h n="1" type="string">0</h>
+        <h n="2" type="string">0</h>
+        <h n="3" type="string">0.45141</h>
+        <p type="string">0</p>
+        <p n="1" type="string">0.237781</p>
+        <p n="2" type="string">0.120454</p>
+        <p n="3" type="string">0.190483</p>
+        <x type="string">0.721375</x>
+        <x n="1" type="string">0</x>
+        <x n="2" type="string">0</x>
+        <x n="3" type="string">0.44519</x>
+        <s type="string">0.456549</s>
+        <r type="string">0.434726</r>
+        <r n="1" type="string">0</r>
+        <r n="2" type="string">0</r>
+        <r n="3" type="string">0.515902</r>
+      </mixer>
+      <GEN>
+        <sine type="string">0</sine>
+        <sine n="1" type="string">0</sine>
+        <sine n="2" type="string">0</sine>
+        <LFO2 type="string">1</LFO2>
+        <LFO2 n="1" type="string">5</LFO2>
+        <LFO2 n="2" type="string">1.93186</LFO2>
+        <LFO2 n="3" type="string">0.0896546</LFO2>
+        <resonance type="string">0</resonance>
+        <resonance n="1" type="string">0.806891</resonance>
+        <resonance n="2" type="string">4.58688</resonance>
+        <resonance n="3" type="string">1.0149</resonance>
+        <resonance n="4" type="string">1.04072</resonance>
+        <resonance n="5" type="string">0.0463868</resonance>
+        <LFO1 type="string">1</LFO1>
+        <LFO1 n="1" type="string">4.23913</LFO1>
+        <LFO1 n="2" type="string">1.78958</LFO1>
+        <LFO1 n="3" type="string">0.0579291</LFO1>
+        <noise type="string">1</noise>
+        <noise n="1" type="string">1.125</noise>
+        <noise n="2" type="string">0.200709</noise>
+      </GEN>
+      <GEN n="1">
+        <sine type="string">0</sine>
+        <sine n="1" type="string">0</sine>
+        <sine n="2" type="string">0</sine>
+        <LFO2 type="string">1</LFO2>
+        <LFO2 n="1" type="string">4.59225</LFO2>
+        <LFO2 n="2" type="string">1.6368</LFO2>
+        <LFO2 n="3" type="string">0.0593628</LFO2>
+        <resonance type="string">1</resonance>
+        <resonance n="1" type="string">2.08545</resonance>
+        <resonance n="2" type="string">4.75486</resonance>
+        <resonance n="3" type="string">0.441104</resonance>
+        <resonance n="4" type="string">0.225836</resonance>
+        <resonance n="5" type="string">0.0849423</resonance>
+        <LFO1 type="string">1</LFO1>
+        <LFO1 n="1" type="string">4.76807</LFO1>
+        <LFO1 n="2" type="string">1.87639</LFO1>
+        <LFO1 n="3" type="string">0.0512082</LFO1>
+        <noise type="string">1</noise>
+        <noise n="1" type="string">1.25486</noise>
+        <noise n="2" type="string">0.105208</noise>
+      </GEN>
+      <GEN n="2">
+        <sine type="string">0</sine>
+        <sine n="1" type="string">0</sine>
+        <sine n="2" type="string">0</sine>
+        <LFO2 type="string">0</LFO2>
+        <LFO2 n="1" type="string">0</LFO2>
+        <LFO2 n="2" type="string">0</LFO2>
+        <LFO2 n="3" type="string">0</LFO2>
+        <resonance type="string">1</resonance>
+        <resonance n="1" type="string">1.7361</resonance>
+        <resonance n="2" type="string">4.93384</resonance>
+        <resonance n="3" type="string">0.505338</resonance>
+        <resonance n="4" type="string">0.718192</resonance>
+        <resonance n="5" type="string">0.0206428</resonance>
+        <LFO1 type="string">1</LFO1>
+        <LFO1 n="1" type="string">4.77854</LFO1>
+        <LFO1 n="2" type="string">1.93395</LFO1>
+        <LFO1 n="3" type="string">0.0389896</LFO1>
+        <noise type="string">1</noise>
+        <noise n="1" type="string">1.24748</noise>
+        <noise n="2" type="string">0.0849423</noise>
+      </GEN>
+      <curves>
+        <filter type="double">0.108</filter>
+        <filter n="1" type="double">0.054</filter>
+        <filter n="2" type="double">0.06</filter>
+        <filter n="3" type="double">0.054</filter>
+        <filter n="4" type="double">0.048</filter>
+        <filter n="5" type="double">0.048</filter>
+        <filter n="6" type="double">0.048</filter>
+        <filter n="7" type="double">0.06</filter>
+        <filter n="8" type="double">0.048</filter>
+        <filter n="9" type="double">0.042</filter>
+        <level type="double">0.996</level>
+        <level n="1" type="double">1.002</level>
+        <level n="2" type="double">0.996</level>
+        <level n="3" type="double">0.99</level>
+        <level n="4" type="double">1.002</level>
+        <level n="5" type="double">0.984</level>
+        <level n="6" type="double">0.99</level>
+        <level n="7" type="double">0.996</level>
+        <level n="8" type="double">0.99</level>
+        <level n="9" type="double">0.99</level>
+        <v1 type="double">0</v1>
+        <v1 n="1" type="double">10.1</v1>
+        <v1 n="2" type="double">21.7</v1>
+        <v1 n="3" type="double">32.3</v1>
+        <v1 n="4" type="double">40.5</v1>
+        <v1 n="5" type="double">49.8</v1>
+        <v1 n="6" type="double">60.4</v1>
+        <v1 n="7" type="double">70.7</v1>
+        <v1 n="8" type="double">87.8</v1>
+        <v1 n="9" type="double">120</v1>
+        <v2 type="double">0</v2>
+        <v2 n="1" type="double">10</v2>
+        <v2 n="2" type="double">20</v2>
+        <v2 n="3" type="double">30.1</v2>
+        <v2 n="4" type="double">40.1</v2>
+        <v2 n="5" type="double">50</v2>
+        <v2 n="6" type="double">60.2</v2>
+        <v2 n="7" type="double">70</v2>
+        <v2 n="8" type="double">80.1</v2>
+        <v2 n="9" type="double">90.2</v2>
+      </curves>
+</PropertyList>

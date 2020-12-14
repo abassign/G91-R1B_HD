@@ -1,0 +1,1041 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+	<name>DHM-settings</name>
+	<layout>vbox</layout>
+	<!--width>430</width-->
+	<!--x>-20</x>
+	<y>-50</y-->
+	<color>
+		<alpha>0.5</alpha>
+	</color>
+	<group>
+		<layout>hbox</layout>
+
+		<empty><stretch>1</stretch></empty>
+
+		<text>
+			<label>Dynamic Head Movement</label>
+		</text>
+
+		<empty><stretch>1</stretch></empty>
+
+		<button>
+			<legend> </legend>
+			<key>Esc</key>
+			<pref-width>16</pref-width>
+			<pref-height>16</pref-height>
+			<binding>
+				<command>dialog-close</command>
+			</binding>
+		</button>
+
+	</group>
+
+	<hrule/>
+
+<group>
+	<layout>hbox</layout>
+
+<group>
+	<layout>table</layout>
+
+	<group>
+		<col>0</col>
+		<row>0</row>
+		<layout>table</layout>
+		<text>
+			<col>0</col>
+			<row>0</row>
+			<halign>left</halign>
+			<label>Head mass</label>
+		</text>
+		<slider>
+			<col>1</col>
+			<row>0</row>
+			<live>1</live>
+			<pref-width>200</pref-width>
+			<property>/sim/fgcamera/effects/DHM/head-mass-kg</property>
+			<fraction>0.3</fraction>
+			<step>1</step>
+			<min>4</min>
+			<max>10</max>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<binding>
+					<command>nasal</command>
+					<script>
+						L.CurrentCamera().effect("DHM")
+							.HeadMass(getprop("/sim/fgcamera/effects/DHM/head-mass-kg"));
+					</script>
+				</binding>
+				<binding>
+					<command>dialog-update</command>
+				</binding>
+		</slider>
+		<text>
+			<col>2</col>
+			<row>0</row>
+			<live>1</live>
+			<label>999.9</label> <!-- placeholder for width -->
+			<property>/sim/fgcamera/effects/DHM/head-mass-kg</property>
+		</text>
+
+		<text>
+			<col>0</col>
+			<row>1</row>
+			<halign>left</halign>
+			<label>G-load release</label>
+		</text>
+		<slider>
+			<col>1</col>
+			<row>1</row>
+			<live>1</live>
+			<pref-width>200</pref-width>
+			<property>/sim/fgcamera/effects/DHM/load-release-filter</property>
+			<fraction>0.3</fraction>
+			<step>0.01</step>
+			<min>0.0</min>
+			<max>1.0</max>
+			<binding>
+				<command>dialog-apply</command>
+			</binding>
+			<binding>
+				<command>nasal</command>
+				<script>
+					L.CurrentCamera().effect("DHM")
+						.LoadRelease(getprop("/sim/fgcamera/effects/DHM/load-release-filter"));
+				</script>
+			</binding>
+			<binding>
+				<command>dialog-update</command>
+			</binding>
+		</slider>
+		<text>
+			<col>2</col>
+			<row>1</row>
+			<live>1</live>
+			<label>999.9</label> <!-- placeholder for width -->
+			<property>/sim/fgcamera/effects/DHM/load-release-filter</property>
+		</text>
+
+		<text>
+			<col>0</col>
+			<row>2</row>
+			<halign>left</halign>
+			<label>Scale</label>
+		</text>
+		<slider>
+			<col>1</col>
+			<row>2</row>
+			<live>1</live>
+			<x>10</x>
+			<y>50</y>
+			<pref-width>200</pref-width>
+			<property>/sim/fgcamera/current-camera/effects/DHM/global-scale</property>
+			<min>0</min>
+			<max>2</max>
+			<fraction>0.1</fraction>
+			<step>0.01</step>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<binding>
+					<command>nasal</command>
+					<script>
+						L.CurrentCamera().effect("DHM")
+							.scale(getprop("/sim/fgcamera/current-camera/effects/DHM/global-scale"));
+					</script>
+				</binding>
+				<binding>
+					<command>dialog-update</command>
+				</binding>
+		</slider>
+		<text>
+			<col>2</col>
+			<row>2</row>
+			<live>1</live>
+			<label>999.9</label> <!-- placeholder for width -->
+			<format>%-0.3f</format>
+			<property>/sim/fgcamera/current-camera/effects/DHM/global-scale</property>
+		</text>
+	</group>
+
+
+
+
+
+	<group>
+		<col>0</col>
+		<row>1</row>
+		<layout>hbox</layout>
+		<hrule><stretch>true</stretch></hrule>
+		<text>
+			<label>X axis</label>
+		</text>
+		<hrule><stretch>true</stretch></hrule>
+	</group>
+
+	<group>
+		<col>0</col>
+		<row>2</row>
+		<layout>table</layout>
+		<text>
+			<col>0</col>
+			<row>0</row>
+			<halign>left</halign>
+			<label>Constant G-load</label>
+		</text>
+		<slider>
+			<col>1</col>
+			<row>0</row>
+			<live>1</live>
+			<x>10</x>
+			<y>50</y>
+			<pref-width>200</pref-width>
+			<property>/sim/fgcamera/effects/DHM/x-constant-g-scale</property>
+			<min>0</min>
+			<max>2</max>
+			<fraction>0.1</fraction>
+			<step>0.01</step>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<binding>
+					<command>nasal</command>
+					<script>
+						L.CurrentCamera().effect("DHM")
+							.ConstantG("x", getprop("/sim/fgcamera/effects/DHM/x-constant-g-scale"));
+					</script>
+				</binding>
+				<binding>
+					<command>dialog-update</command>
+				</binding>
+		</slider>
+		<text>
+			<col>2</col>
+			<row>0</row>
+			<live>1</live>
+			<label>999.9</label> <!-- placeholder for width -->
+			<property>/sim/fgcamera/effects/DHM/x-constant-g-scale</property>
+		</text>
+
+		<text>
+			<col>0</col>
+			<row>1</row>
+			<halign>left</halign>
+			<label>Impulse G-load</label>
+		</text>
+		<slider>
+			<col>1</col>
+			<row>1</row>
+			<live>1</live>
+			<pref-width>200</pref-width>
+			<property>/sim/fgcamera/effects/DHM/x-impulse-g-scale</property>
+			<fraction>0.1</fraction>
+			<step>0.01</step>
+			<min>0</min>
+			<max>2</max>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<binding>
+					<command>nasal</command>
+					<script>
+						L.CurrentCamera().effect("DHM")
+							.ImpulseG("x", getprop("/sim/fgcamera/effects/DHM/x-impulse-g-scale"));
+					</script>
+				</binding>
+				<binding>
+					<command>dialog-update</command>
+				</binding>
+		</slider>
+		<text>
+			<col>2</col>
+			<row>1</row>
+			<live>1</live>
+			<label>999.9</label> <!-- placeholder for width -->
+			<property>/sim/fgcamera/effects/DHM/x-impulse-g-scale</property>
+		</text>
+
+		<text>
+			<col>0</col>
+			<row>2</row>
+			<halign>left</halign>
+			<label>Head bank</label>
+		</text>
+		<slider>
+			<col>1</col>
+			<row>2</row>
+			<live>1</live>
+			<pref-width>200</pref-width>
+			<property>/sim/fgcamera/effects/DHM/x-roll-factor</property>
+			<min>0</min>
+			<max>300</max>
+			<fraction>0.1</fraction>
+			<step>1</step>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<binding>
+					<command>nasal</command>
+					<script>
+						L.CurrentCamera().effect("DHM")
+							.HeadBank(getprop("/sim/fgcamera/effects/DHM/x-roll-factor"));
+					</script>
+				</binding>
+				<binding>
+					<command>dialog-update</command>
+				</binding>
+		</slider>
+		<text>
+			<col>2</col>
+			<row>2</row>
+			<live>1</live>
+			<label>999.9</label> <!-- placeholder for width -->
+			<property>/sim/fgcamera/effects/DHM/x-roll-factor</property>
+		</text>
+
+		<text>
+			<col>0</col>
+			<row>3</row>
+			<halign>left</halign>
+			<label>Damping</label>
+		</text>
+		<slider>
+			<col>1</col>
+			<row>3</row>
+			<live>1</live>
+			<x>10</x>
+			<y>50</y>
+			<pref-width>200</pref-width>
+			<property>/sim/fgcamera/effects/DHM/x-damping</property>
+			<fraction>0.1</fraction>
+			<step>1</step>
+			<min>0</min>
+			<max>80</max>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<binding>
+					<command>nasal</command>
+					<script>
+						L.CurrentCamera().effect("DHM")
+							.damping("x", getprop("/sim/fgcamera/effects/DHM/x-damping"));
+					</script>
+				</binding>
+				<binding>
+					<command>dialog-update</command>
+				</binding>
+		</slider>
+		<text>
+			<col>2</col>
+			<row>3</row>
+			<live>1</live>
+			<label>999.9</label> <!-- placeholder for width -->
+			<property>/sim/fgcamera/effects/DHM/x-damping</property>
+		</text>
+
+		<text>
+			<col>0</col>
+			<row>4</row>
+			<halign>left</halign>
+			<label>Movement limit</label>
+		</text>
+		<slider>
+			<col>1</col>
+			<row>4</row>
+			<live>1</live>
+			<x>10</x>
+			<y>50</y>
+			<pref-width>200</pref-width>
+			<property>/sim/fgcamera/effects/DHM/x-limit</property>
+			<min>0</min>
+			<max>0.2</max>
+			<fraction>0.1</fraction>
+			<step>0.001</step>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<binding>
+					<command>nasal</command>
+					<script>
+						L.CurrentCamera().effect("DHM")
+							.limit("x", getprop("/sim/fgcamera/effects/DHM/x-limit"));
+					</script>
+				</binding>
+				<binding>
+					<command>dialog-update</command>
+				</binding>
+		</slider>
+		<text>
+			<col>2</col>
+			<row>4</row>
+			<live>1</live>
+			<label>999.9</label> <!-- placeholder for width -->
+			<format>%-0.3f</format>
+			<property>/sim/fgcamera/effects/DHM/x-limit</property>
+		</text>
+	</group>
+
+	<group>
+		<col>1</col>
+		<row>1</row>
+		<layout>hbox</layout>
+		<hrule><stretch>true</stretch></hrule>
+		<text>
+			<label>Y axis</label>
+		</text>
+		<hrule><stretch>true</stretch></hrule>
+	</group>
+
+	<group>
+		<col>1</col>
+		<row>2</row>
+		<layout>table</layout>
+		<text>
+			<col>0</col>
+			<row>0</row>
+			<halign>left</halign>
+			<label>Constant G-load</label>
+		</text>
+		<slider>
+			<col>1</col>
+			<row>0</row>
+			<x>10</x>
+			<y>50</y>
+			<pref-width>200</pref-width>
+			<live>1</live>
+			<property>/sim/fgcamera/effects/DHM/y-constant-g-scale</property>
+			<min>0</min>
+			<max>2</max>
+			<fraction>0.1</fraction>
+			<step>0.01</step>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<binding>
+					<command>nasal</command>
+					<script>
+						L.CurrentCamera().effect("DHM")
+							.ConstantG("y", getprop("/sim/fgcamera/effects/DHM/y-constant-g-scale"));
+					</script>
+				</binding>
+				<binding>
+					<command>dialog-update</command>
+				</binding>
+		</slider>
+		<text>
+			<col>2</col>
+			<row>0</row>
+			<live>1</live>
+			<label>999.9</label> <!-- placeholder for width -->
+			<property>/sim/fgcamera/effects/DHM/y-constant-g-scale</property>
+		</text>
+
+		<text>
+			<col>0</col>
+			<row>1</row>
+			<halign>left</halign>
+			<label>Impulse G-load</label>
+		</text>
+		<slider>
+			<col>1</col>
+			<row>1</row>
+			<x>10</x>
+			<y>50</y>
+			<pref-width>200</pref-width>
+			<property>/sim/fgcamera/effects/DHM/y-impulse-g-scale</property>
+			<fraction>0.1</fraction>
+			<step>0.01</step>
+			<live>1</live>
+			<min>0</min>
+			<max>2</max>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<binding>
+					<command>nasal</command>
+					<script>
+						L.CurrentCamera().effect("DHM")
+							.ImpulseG("y", getprop("/sim/fgcamera/effects/DHM/y-impulse-g-scale"));
+					</script>
+				</binding>
+				<binding>
+					<command>dialog-update</command>
+				</binding>
+		</slider>
+		<text>
+			<col>2</col>
+			<row>1</row>
+			<live>1</live>
+			<label>999.9</label> <!-- placeholder for width -->
+			<property>/sim/fgcamera/effects/DHM/y-impulse-g-scale</property>
+		</text>
+
+		<text>
+			<col>0</col>
+			<row>2</row>
+			<halign>left</halign>
+			<label>Head pitch</label>
+		</text>
+		<slider>
+			<col>1</col>
+			<row>2</row>
+			<x>10</x>
+			<y>50</y>
+			<pref-width>200</pref-width>
+			<property>/sim/fgcamera/effects/DHM/y-pitch-factor</property>
+			<live>1</live>
+			<min>0</min>
+			<max>300</max>
+			<fraction>0.1</fraction>
+			<step>1</step>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<binding>
+					<command>nasal</command>
+					<script>
+						L.CurrentCamera().effect("DHM")
+							.HeadPitch(getprop("/sim/fgcamera/effects/DHM/y-pitch-factor"));
+					</script>
+				</binding>
+				<binding>
+					<command>dialog-update</command>
+				</binding>
+		</slider>
+		<text>
+			<col>2</col>
+			<row>2</row>
+			<live>1</live>
+			<label>999.9</label> <!-- placeholder for width -->
+			<property>/sim/fgcamera/effects/DHM/y-pitch-factor</property>
+		</text>
+
+		<text>
+			<col>0</col>
+			<row>3</row>
+			<halign>left</halign>
+			<label>Damping</label>
+		</text>
+		<slider>
+			<col>1</col>
+			<row>3</row>
+			<live>1</live>
+			<x>10</x>
+			<y>50</y>
+			<pref-width>200</pref-width>
+			<property>/sim/fgcamera/effects/DHM/y-damping</property>
+			<fraction>0.1</fraction>
+			<step>1</step>
+			<min>0</min>
+			<max>80</max>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<binding>
+					<command>nasal</command>
+					<script>
+						L.CurrentCamera().effect("DHM")
+							.damping("y", getprop("/sim/fgcamera/effects/DHM/y-damping"));
+					</script>
+				</binding>
+				<binding>
+					<command>dialog-update</command>
+				</binding>
+		</slider>
+		<text>
+			<col>2</col>
+			<row>3</row>
+			<live>1</live>
+			<label>999.9</label> <!-- placeholder for width -->
+			<property>/sim/fgcamera/effects/DHM/y-damping</property>
+		</text>
+
+		<text>
+			<col>0</col>
+			<row>4</row>
+			<halign>left</halign>
+			<label>Movement limit</label>
+		</text>
+		<slider>
+			<col>1</col>
+			<row>4</row>
+			<live>1</live>
+			<x>10</x>
+			<y>50</y>
+			<pref-width>200</pref-width>
+			<property>/sim/fgcamera/effects/DHM/y-limit</property>
+			<min>0</min>
+			<max>0.1</max>
+			<fraction>0.1</fraction>
+			<step>0.01</step>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<binding>
+					<command>nasal</command>
+					<script>
+						L.CurrentCamera().effect("DHM")
+							.limit("y", getprop("/sim/fgcamera/effects/DHM/y-limit"));
+					</script>
+				</binding>
+				<binding>
+					<command>dialog-update</command>
+				</binding>
+		</slider>
+		<text>
+			<col>2</col>
+			<row>4</row>
+			<live>1</live>
+			<label>999.9</label> <!-- placeholder for width -->
+			<format>%-0.3f</format>
+			<property>/sim/fgcamera/effects/DHM/y-limit</property>
+		</text>
+	</group>
+
+	<group>
+		<col>0</col>
+		<row>3</row>
+		<layout>hbox</layout>
+		<hrule><stretch>true</stretch></hrule>
+		<text>
+			<label>Z axis</label>
+		</text>
+		<hrule><stretch>true</stretch></hrule>
+	</group>
+
+	<group>
+		<col>0</col>
+		<row>4</row>
+		<layout>table</layout>
+		<text>
+			<col>0</col>
+			<row>0</row>
+			<halign>left</halign>
+			<label>Constant G-load</label>
+		</text>
+		<slider>
+			<col>1</col>
+			<row>0</row>
+			<live>1</live>
+			<x>10</x>
+			<y>50</y>
+			<pref-width>200</pref-width>
+			<property>/sim/fgcamera/effects/DHM/z-constant-g-scale</property>
+			<min>0</min>
+			<max>2</max>
+			<fraction>0.1</fraction>
+			<step>0.01</step>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<binding>
+					<command>nasal</command>
+					<script>
+						L.CurrentCamera().effect("DHM")
+							.ConstantG("z", getprop("/sim/fgcamera/effects/DHM/z-constant-g-scale"));
+					</script>
+				</binding>
+				<binding>
+					<command>dialog-update</command>
+				</binding>
+		</slider>
+		<text>
+			<col>2</col>
+			<row>0</row>
+			<live>1</live>
+			<label>999.9</label> <!-- placeholder for width -->
+			<property>/sim/fgcamera/effects/DHM/z-constant-g-scale</property>
+		</text>
+
+		<text>
+			<col>0</col>
+			<row>1</row>
+			<halign>left</halign>
+			<label>Impulse G-load</label>
+		</text>
+		<slider>
+			<col>1</col>
+			<row>1</row>
+			<live>1</live>
+			<x>10</x>
+			<y>50</y>
+			<pref-width>200</pref-width>
+			<property>/sim/fgcamera/effects/DHM/z-impulse-g-scale</property>
+			<fraction>0.1</fraction>
+			<step>0.01</step>
+			<min>0</min>
+			<max>2</max>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<binding>
+					<command>nasal</command>
+					<script>
+						L.CurrentCamera().effect("DHM")
+							.ImpulseG("z", getprop("/sim/fgcamera/effects/DHM/z-impulse-g-scale"));
+					</script>
+				</binding>
+				<binding>
+					<command>dialog-update</command>
+				</binding>
+		</slider>
+		<text>
+			<col>2</col>
+			<row>1</row>
+			<live>1</live>
+			<label>999.9</label> <!-- placeholder for width -->
+			<property>/sim/fgcamera/effects/DHM/z-impulse-g-scale</property>
+		</text>
+
+		<text>
+			<col>0</col>
+			<row>2</row>
+			<halign>left</halign>
+			<label>Damping</label>
+		</text>
+		<slider>
+			<col>1</col>
+			<row>2</row>
+			<live>1</live>
+			<x>10</x>
+			<y>50</y>
+			<pref-width>200</pref-width>
+			<property>/sim/fgcamera/effects/DHM/z-damping</property>
+			<fraction>0.1</fraction>
+			<step>1</step>
+			<min>0</min>
+			<max>80</max>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<binding>
+					<command>nasal</command>
+					<script>
+						L.CurrentCamera().effect("DHM")
+							.damping("z", getprop("/sim/fgcamera/effects/DHM/z-damping"));
+					</script>
+				</binding>
+				<binding>
+					<command>dialog-update</command>
+				</binding>
+		</slider>
+		<text>
+			<col>2</col>
+			<row>2</row>
+			<live>1</live>
+			<label>999.9</label> <!-- placeholder for width -->
+			<property>/sim/fgcamera/effects/DHM/z-damping</property>
+		</text>
+
+		<text>
+			<col>0</col>
+			<row>3</row>
+			<halign>left</halign>
+			<label>Movement limit</label>
+		</text>
+		<slider>
+			<col>1</col>
+			<row>3</row>
+			<live>1</live>
+			<x>10</x>
+			<y>50</y>
+			<pref-width>200</pref-width>
+			<property>/sim/fgcamera/effects/DHM/z-limit</property>
+			<min>0</min>
+			<max>0.15</max>
+			<fraction>0.1</fraction>
+			<step>0.001</step>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<binding>
+					<command>nasal</command>
+					<script>
+						L.CurrentCamera().effect("DHM")
+							.limit("z", getprop("/sim/fgcamera/effects/DHM/z-limit"));
+					</script>
+				</binding>
+				<binding>
+					<command>dialog-update</command>
+				</binding>
+		</slider>
+		<text>
+			<col>2</col>
+			<row>3</row>
+			<label>999.9</label> <!-- placeholder for width -->
+			<format>%-0.3f</format>
+			<live>1</live>
+			<property>/sim/fgcamera/effects/DHM/z-limit</property>
+		</text>
+	</group>
+
+
+
+
+	<group>
+		<col>1</col>
+		<row>3</row>
+		<layout>hbox</layout>
+		<hrule><stretch>true</stretch></hrule>
+		<text>
+			<label>Roll</label>
+		</text>
+		<hrule><stretch>true</stretch></hrule>
+	</group>
+
+	<group>
+		<col>1</col>
+		<row>4</row>
+		<layout>table</layout>
+		<text>
+			<col>0</col>
+			<row>0</row>
+			<halign>left</halign>
+			<label>Constant G-load</label>
+		</text>
+		<slider>
+			<col>1</col>
+			<row>0</row>
+			<live>1</live>
+			<x>10</x>
+			<y>50</y>
+			<pref-width>200</pref-width>
+			<property>/sim/fgcamera/effects/DHM/r-constant-g-scale</property>
+			<min>0</min>
+			<max>2</max>
+			<fraction>0.1</fraction>
+			<step>0.01</step>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<binding>
+					<command>nasal</command>
+					<script>
+						L.CurrentCamera().effect("DHM")
+							.ConstantG("r", getprop("/sim/fgcamera/effects/DHM/r-constant-g-scale"));
+					</script>
+				</binding>
+				<binding>
+					<command>dialog-update</command>
+				</binding>
+		</slider>
+		<text>
+			<col>2</col>
+			<row>0</row>
+			<live>1</live>
+			<label>999.9</label> <!-- placeholder for width -->
+			<property>/sim/fgcamera/effects/DHM/r-constant-g-scale</property>
+		</text>
+
+		<text>
+			<col>0</col>
+			<row>1</row>
+			<halign>left</halign>
+			<label>Impulse G-load</label>
+		</text>
+		<slider>
+			<col>1</col>
+			<row>1</row>
+			<live>1</live>
+			<x>10</x>
+			<y>50</y>
+			<pref-width>200</pref-width>
+			<property>/sim/fgcamera/effects/DHM/r-impulse-g-scale</property>
+			<fraction>0.1</fraction>
+			<step>0.01</step>
+			<min>0</min>
+			<max>2</max>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<binding>
+					<command>nasal</command>
+					<script>
+						L.CurrentCamera().effect("DHM")
+							.ImpulseG("r", getprop("/sim/fgcamera/effects/DHM/r-impulse-g-scale"));
+					</script>
+				</binding>
+				<binding>
+					<command>dialog-update</command>
+				</binding>
+		</slider>
+		<text>
+			<col>2</col>
+			<row>1</row>
+			<live>1</live>
+			<label>999.9</label> <!-- placeholder for width -->
+			<property>/sim/fgcamera/effects/DHM/r-impulse-g-scale</property>
+		</text>
+
+		<text>
+			<col>0</col>
+			<row>2</row>
+			<halign>left</halign>
+			<label>Head X</label>
+		</text>
+		<slider>
+			<col>1</col>
+			<row>2</row>
+			<live>1</live>
+			<x>10</x>
+			<y>50</y>
+			<pref-width>200</pref-width>
+			<property>/sim/fgcamera/effects/DHM/r-x-factor</property>
+			<fraction>0.1</fraction>
+			<step>0.001</step>
+			<min>0</min>
+			<max>0.05</max>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<binding>
+					<command>nasal</command>
+					<script>
+						L.CurrentCamera().effect("DHM")
+							.HeadX(getprop("/sim/fgcamera/effects/DHM/r-x-factor"));
+					</script>
+				</binding>
+				<binding>
+					<command>dialog-update</command>
+				</binding>
+		</slider>
+		<text>
+			<col>2</col>
+			<row>2</row>
+			<live>1</live>
+			<label>999.9</label> <!-- placeholder for width -->
+			<property>/sim/fgcamera/effects/DHM/r-x-factor</property>
+		</text>
+
+
+		<text>
+			<col>0</col>
+			<row>3</row>
+			<halign>left</halign>
+			<label>Damping</label>
+		</text>
+		<slider>
+			<col>1</col>
+			<row>3</row>
+			<live>1</live>
+			<x>10</x>
+			<y>50</y>
+			<pref-width>200</pref-width>
+			<property>/sim/fgcamera/effects/DHM/r-damping</property>
+			<fraction>0.1</fraction>
+			<step>1</step>
+			<min>0</min>
+			<max>150</max>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<binding>
+					<command>nasal</command>
+					<script>
+						L.CurrentCamera().effect("DHM")
+							.damping("r", getprop("/sim/fgcamera/effects/DHM/r-damping"));
+					</script>
+				</binding>
+				<binding>
+					<command>dialog-update</command>
+				</binding>
+		</slider>
+		<text>
+			<col>2</col>
+			<row>3</row>
+			<live>1</live>
+			<label>999.9</label> <!-- placeholder for width -->
+			<property>/sim/fgcamera/effects/DHM/r-damping</property>
+		</text>
+
+		<text>
+			<col>0</col>
+			<row>4</row>
+			<halign>left</halign>
+			<label>Movement limit</label>
+		</text>
+		<slider>
+			<col>1</col>
+			<row>4</row>
+			<live>1</live>
+			<x>10</x>
+			<y>50</y>
+			<pref-width>200</pref-width>
+			<property>/sim/fgcamera/effects/DHM/r-limit</property>
+			<min>0</min>
+			<max>30</max>
+			<fraction>0.1</fraction>
+			<step>0.5</step>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<binding>
+					<command>nasal</command>
+					<script>
+						L.CurrentCamera().effect("DHM")
+							.limit("r", getprop("/sim/fgcamera/effects/DHM/r-limit"));
+					</script>
+				</binding>
+				<binding>
+					<command>dialog-update</command>
+				</binding>
+		</slider>
+		<text>
+			<col>2</col>
+			<row>4</row>
+			<label>999.9</label> <!-- placeholder for width -->
+			<format>%-0.3f</format>
+			<live>1</live>
+			<property>/sim/fgcamera/effects/DHM/r-limit</property>
+		</text>
+	</group>
+
+
+
+</group>
+
+<vrule/>
+
+
+</group>
+
+	<hrule/>
+
+	<group>
+		<layout>hbox</layout>
+		<empty><stretch>1</stretch></empty>
+		<button>
+			<legend>Back</legend>
+			<pref-width>90</pref-width>
+			<pref-height>30</pref-height>
+			<binding>
+				<command>dialog-show</command>
+				<dialog-name>fgcamera-main</dialog-name>
+			</binding>
+			<binding>
+				<command>dialog-close</command>
+				<dialog-name>DHM-settings</dialog-name>
+			</binding>
+		</button>
+
+		<button>
+			<legend>Close</legend>
+			<pref-width>90</pref-width>
+			<pref-height>30</pref-height>
+			<binding>
+				<command>dialog-close</command>
+			</binding>
+		</button>
+		<empty><stretch>1</stretch></empty>
+	</group>
+
+	<nasal>
+		<open> <![CDATA[
+			var L = fgcamera.API().CameraList();
+		]]> </open>
+	</nasal>
+</PropertyList>

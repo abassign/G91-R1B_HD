@@ -1,0 +1,307 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+	<type>gain</type>
+
+	<enable>
+		<condition>
+			<property alias="/params/eng[1]/enabled"/>
+			<property>/sim/fgcamera/current-camera/effects/power-plant-vibration/enabled</property>
+		</condition>
+	</enable>
+
+	<input>
+		<condition>
+			<less-than-equals>
+				<property>/engines/engine[1]/rpm</property>
+				<property alias="/params/eng[1]/rpm[0]"/>
+			</less-than-equals>
+		</condition>
+		<property alias="/params/eng[1]/f0"/>
+	</input>
+
+	<input>
+		<condition>
+			<less-than-equals>
+				<property>/engines/engine[1]/rpm</property>
+				<property alias="/params/eng[1]/rpm[1]"/>
+			</less-than-equals>
+		</condition>
+		<expression>
+			<sum>
+				<property alias="/params/eng[1]/f0"/>
+				<product>
+					<difference>
+						<property alias="/params/eng[1]/f1"/>
+						<property alias="/params/eng[1]/f0"/>
+					</difference>
+					<difference>
+						<property>/engines/engine[1]/rpm</property>
+						<property alias="/params/eng[1]/rpm[0]"/>
+					</difference>
+					<pow>
+						<difference>
+							<property alias="/params/eng[1]/rpm[1]"/>
+							<property alias="/params/eng[1]/rpm[0]"/>
+						</difference>
+						<value>-1</value>
+					</pow>
+				</product>
+			</sum>
+		</expression>
+	</input>
+
+	<input>
+		<condition>
+			<less-than-equals>
+				<property>/engines/engine[1]/rpm</property>
+				<property alias="/params/eng[1]/rpm[2]"/>
+			</less-than-equals>
+		</condition>
+		<expression>
+			<sum>
+				<property alias="/params/eng[1]/f1"/>
+				<product>
+					<difference>
+						<property alias="/params/eng[1]/f2"/>
+						<property alias="/params/eng[1]/f1"/>
+					</difference>
+					<difference>
+						<property>/engines/engine[1]/rpm</property>
+						<property alias="/params/eng[1]/rpm[1]"/>
+					</difference>
+					<pow>
+						<difference>
+							<property alias="/params/eng[1]/rpm[2]"/>
+							<property alias="/params/eng[1]/rpm[1]"/>
+						</difference>
+						<value>-1</value>
+					</pow>
+				</product>
+			</sum>
+		</expression>
+	</input>
+
+	<input>
+		<condition>
+			<less-than-equals>
+				<property>/engines/engine[1]/rpm</property>
+				<property alias="/params/eng[1]/rpm[3]"/>
+			</less-than-equals>
+		</condition>
+		<expression>
+			<sum>
+				<property alias="/params/eng[1]/f2"/>
+				<product>
+					<difference>
+						<property alias="/params/eng[1]/f3"/>
+						<property alias="/params/eng[1]/f2"/>
+					</difference>
+					<difference>
+						<property>/engines/engine[1]/rpm</property>
+						<property alias="/params/eng[1]/rpm[2]"/>
+					</difference>
+					<pow>
+						<difference>
+							<property alias="/params/eng[1]/rpm[3]"/>
+							<property alias="/params/eng[1]/rpm[2]"/>
+						</difference>
+						<value>-1</value>
+					</pow>
+				</product>
+			</sum>
+		</expression>
+	</input>
+
+	<input>
+		<condition>
+			<less-than-equals>
+				<property>/engines/engine[1]/rpm</property>
+				<property alias="/params/eng[1]/rpm[4]"/>
+			</less-than-equals>
+		</condition>
+		<expression>
+			<sum>
+				<property alias="/params/eng[1]/f3"/>
+				<product>
+					<difference>
+						<property alias="/params/eng[1]/f4"/>
+						<property alias="/params/eng[1]/f3"/>
+					</difference>
+					<difference>
+						<property>/engines/engine[1]/rpm</property>
+						<property alias="/params/eng[1]/rpm[3]"/>
+					</difference>
+					<pow>
+						<difference>
+							<property alias="/params/eng[1]/rpm[4]"/>
+							<property alias="/params/eng[1]/rpm[3]"/>
+						</difference>
+						<value>-1</value>
+					</pow>
+				</product>
+			</sum>
+		</expression>
+	</input>
+
+	<input>
+		<condition>
+			<less-than-equals>
+				<property>/engines/engine[1]/rpm</property>
+				<property alias="/params/eng[1]/rpm[5]"/>
+			</less-than-equals>
+		</condition>
+		<expression>
+			<sum>
+				<property alias="/params/eng[1]/f4"/>
+				<product>
+					<difference>
+						<property alias="/params/eng[1]/f5"/>
+						<property alias="/params/eng[1]/f4"/>
+					</difference>
+					<difference>
+						<property>/engines/engine[1]/rpm</property>
+						<property alias="/params/eng[1]/rpm[4]"/>
+					</difference>
+					<pow>
+						<difference>
+							<property alias="/params/eng[1]/rpm[5]"/>
+							<property alias="/params/eng[1]/rpm[4]"/>
+						</difference>
+						<value>-1</value>
+					</pow>
+				</product>
+			</sum>
+		</expression>
+	</input>
+
+	<input>
+		<condition>
+			<less-than-equals>
+				<property>/engines/engine[1]/rpm</property>
+				<property alias="/params/eng[1]/rpm6"/>
+			</less-than-equals>
+		</condition>
+		<expression>
+			<sum>
+				<property alias="/params/eng[1]/f5"/>
+				<product>
+					<difference>
+						<property alias="/params/eng[1]/f6"/>
+						<property alias="/params/eng[1]/f5"/>
+					</difference>
+					<difference>
+						<property>/engines/engine[1]/rpm</property>
+						<property alias="/params/eng[1]/rpm[5]"/>
+					</difference>
+					<pow>
+						<difference>
+							<property alias="/params/eng[1]/rpm[6]"/>
+							<property alias="/params/eng[1]/rpm[5]"/>
+						</difference>
+						<value>-1</value>
+					</pow>
+				</product>
+			</sum>
+		</expression>
+	</input>
+
+	<input>
+		<condition>
+			<less-than-equals>
+				<property>/engines/engine[1]/rpm</property>
+				<property alias="/params/eng[1]/rpm[7]"/>
+			</less-than-equals>
+		</condition>
+		<expression>
+			<sum>
+				<property alias="/params/eng[1]/f6"/>
+				<product>
+					<difference>
+						<property alias="/params/eng[1]/f7"/>
+						<property alias="/params/eng[1]/f6"/>
+					</difference>
+					<difference>
+						<property>/engines/engine[1]/rpm</property>
+						<property alias="/params/eng[1]/rpm[6]"/>
+					</difference>
+					<pow>
+						<difference>
+							<property alias="/params/eng[1]/rpm[7]"/>
+							<property alias="/params/eng[1]/rpm[6]"/>
+						</difference>
+						<value>-1</value>
+					</pow>
+				</product>
+			</sum>
+		</expression>
+	</input>
+
+	<input>
+		<condition>
+			<less-than-equals>
+				<property>/engines/engine[1]/rpm</property>
+				<property alias="/params/eng[1]/rpm[8]"/>
+			</less-than-equals>
+		</condition>
+		<expression>
+			<sum>
+				<property alias="/params/eng[1]/f7"/>
+				<product>
+					<difference>
+						<property alias="/params/eng[1]/f8"/>
+						<property alias="/params/eng[1]/f7"/>
+					</difference>
+					<difference>
+						<property>/engines/engine[1]/rpm</property>
+						<property alias="/params/eng[1]/rpm[7]"/>
+					</difference>
+					<pow>
+						<difference>
+							<property alias="/params/eng[1]/rpm[8]"/>
+							<property alias="/params/eng[1]/rpm[7]"/>
+						</difference>
+						<value>-1</value>
+					</pow>
+				</product>
+			</sum>
+		</expression>
+	</input>
+
+	<input>
+		<condition>
+			<less-than-equals>
+				<property>/engines/engine[1]/rpm</property>
+				<property alias="/params/eng[1]/rpm[9]"/>
+			</less-than-equals>
+		</condition>
+		<expression>
+			<sum>
+				<property alias="/params/eng[1]/f8"/>
+				<product>
+					<difference>
+						<property alias="/params/eng[1]/f9"/>
+						<property alias="/params/eng[1]/f8"/>
+					</difference>
+					<difference>
+						<property>/engines/engine[1]/rpm</property>
+						<property alias="/params/eng[1]/rpm[8]"/>
+					</difference>
+					<pow>
+						<difference>
+							<property alias="/params/eng[1]/rpm[9]"/>
+							<property alias="/params/eng[1]/rpm[8]"/>
+						</difference>
+						<value>-1</value>
+					</pow>
+				</product>
+			</sum>
+		</expression>
+	</input>
+
+	<input alias="/params/eng[1]/f9"/>
+
+	<output alias="/params/eng[1]/_frequency"/>
+
+</PropertyList>

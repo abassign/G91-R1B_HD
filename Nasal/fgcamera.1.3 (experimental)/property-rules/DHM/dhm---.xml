@@ -1,0 +1,598 @@
+<PropertyList>
+
+	<params include="params.xml"/>
+
+	<filter>
+		<type>exponential</type>
+		<filter-time>0.1</filter-time>
+		<gain>
+			<expression>
+				<table>
+					<property>/orientation/pitch-deg</property>
+					<entry> <ind>-90</ind> <dep>0.0</dep> </entry>
+					<entry> <ind>-70</ind> <dep>0.0</dep> </entry>
+					<entry> <ind>-65</ind> <dep>-1.0</dep> </entry>
+					<entry> <ind>65</ind> <dep>-1.0</dep> </entry>
+					<entry> <ind>70</ind> <dep>0.0</dep> </entry>
+					<entry> <ind>90</ind> <dep>0.0</dep> </entry>
+				</table>
+			</expression>
+		</gain>
+		<input>/orientation/roll-rate-degps</input>
+		<output>/orientation/roll-rate-degps-damped</output>
+	</filter>
+	<filter>
+		<type>derivative</type>
+		<filter-time>1.0</filter-time>
+		<input>/orientation/roll-rate-degps-damped</input>
+		<output>/DHM/r-accel_degps_sec</output>
+	</filter>
+
+	<filter>
+		<type>gain</type>
+		<input>
+			<condition>
+				<greater-than>
+					<property alias="/params/state/delta-t"/>
+					<value>0.05</value>
+				</greater-than>
+			</condition>
+			<value>0.03</value>
+		</input>
+		<input alias="/params/state/delta-t"/>
+		<output>/sim/fgcamera/DHM/delta-t</output>
+	</filter>
+
+	<filter>
+		<type>exponential</type>
+		<filter-time>0.1</filter-time>
+		<input>
+			<expression>
+				<product>
+					<property>/accelerations/pilot/y-accel-fps_sec</property>
+					<value>-0.3048</value>
+				</product>
+			</expression>
+		</input>
+		<output alias="/params/dhm/a1-x"/>
+	</filter>
+	<filter>
+		<type>exponential</type>
+		<filter-time>0.1</filter-time>
+		<input>
+			<expression>
+				<sum>
+					<product>
+						<property>/accelerations/pilot/z-accel-fps_sec</property>
+						<value>0.3048</value>
+					</product>
+					<value>9.81</value>
+				</sum>
+			</expression>
+		</input>
+		<output alias="/params/dhm/a1-y"/>
+	</filter>
+	<filter>
+		<type>exponential</type>
+		<filter-time>0.1</filter-time>
+		<input>
+			<expression>
+				<product>
+					<property>/accelerations/pilot/x-accel-fps_sec</property>
+					<value>0.3048</value>
+				</product>
+			</expression>
+		</input>
+		<output alias="/params/dhm/a1-z"/>
+	</filter>
+	<filter>
+		<type>exponential</type>
+		<filter-time>0.01</filter-time>
+		<gain>1.0</gain>
+		<input>/DHM/r-accel_degps_sec</input>
+		<output alias="/params/dhm/a1-r"/>
+	</filter>
+
+
+	<filter>
+		<type>gain</type>
+		<input>
+			<expression>
+				<product>
+					<property alias="/params/dhm/m"/>
+					<sum>
+						<product>
+							<property alias="/params/dhm/a1-x"/>
+							<property alias="/params/dhm/const-x"/>
+						</product>
+						<product>
+							<difference>
+								<property alias="/params/dhm/a1-x"/>
+								<property alias="/params/dhm/a0-x"/>
+							</difference>
+							<property alias="/params/dhm/imp-x"/>
+						</product>
+					</sum>
+				</product>
+			</expression>
+		</input>
+		<output alias="/params/dhm/Fi-x"/>
+	</filter>
+	<filter>
+		<type>gain</type>
+		<input>
+			<expression>
+				<product>
+					<property alias="/params/dhm/m"/> <!-- Head mass -->
+					<sum>
+						<product>
+							<property alias="/params/dhm/a1-y"/>
+							<property alias="/params/dhm/const-y"/>
+						</product>
+						<product>
+							<difference>
+								<property alias="/params/dhm/a1-y"/>
+								<property alias="/params/dhm/a0-y"/>
+							</difference>
+							<property alias="/params/dhm/imp-y"/>
+						</product>
+					</sum>
+				</product>
+			</expression>
+		</input>
+		<output alias="/params/dhm/Fi-y"/>
+	</filter>
+	<filter>
+		<type>gain</type>
+		<input>
+			<expression>
+				<product>
+					<property alias="/params/dhm/m"/>
+					<sum>
+						<product>
+							<property alias="/params/dhm/a1-z"/>
+							<property alias="/params/dhm/const-z"/>
+						</product>
+						<product>
+							<difference>
+								<property alias="/params/dhm/a1-z"/>
+								<property alias="/params/dhm/a0-z"/>
+							</difference>
+							<property alias="/params/dhm/imp-z"/>
+						</product>
+					</sum>
+				</product>
+			</expression>
+		</input>
+		<output alias="/params/dhm/Fi-z"/>
+	</filter>
+	<filter>
+		<type>gain</type>
+		<input>
+			<expression>
+				<product>
+					<property alias="/params/dhm/m"/>
+					<sum>
+						<product>
+							<property alias="/params/dhm/a1-r"/>
+							<property alias="/params/dhm/const-r"/>
+						</product>
+						<product>
+							<difference>
+								<property alias="/params/dhm/a1-r"/>
+								<property alias="/params/dhm/a0-r"/>
+							</difference>
+							<property alias="/params/dhm/imp-r"/>
+						</product>
+					</sum>
+				</product>
+			</expression>
+		</input>
+		<output alias="/params/dhm/Fi-r"/>
+	</filter>
+
+	<filter>
+		<type>exponential</type>
+		<gain>1</gain>
+		<filter-time>
+			<property alias="/params/dhm/release"/>
+		</filter-time>
+		<input alias="/params/dhm/Fi-x"/>
+		<output alias="/params/dhm/Fr-x"/>
+	</filter>
+	<filter>
+		<type>exponential</type>
+		<gain>1</gain>
+		<filter-time>
+			<property alias="/params/dhm/release"/>
+		</filter-time>
+		<input alias="/params/dhm/Fi-y"/>
+		<output alias="/params/dhm/Fr-y"/>
+	</filter>
+	<filter>
+		<type>exponential</type>
+		<gain>1</gain>
+		<filter-time>
+			<property alias="/params/dhm/release"/>
+		</filter-time>
+		<input alias="/params/dhm/Fi-z"/>
+		<output alias="/params/dhm/Fr-z"/>
+	</filter>
+	<filter>
+		<type>exponential</type>
+		<gain>1</gain>
+		<filter-time>
+			<property alias="/params/dhm/release"/>
+		</filter-time>
+		<input alias="/params/dhm/Fi-r"/>
+		<output alias="/params/dhm/Fr-r"/>
+	</filter>
+
+	<filter>
+		<type>exponential</type>
+		<filter-time>0.5</filter-time>
+		<gain>0.01</gain>
+		<input alias="/params/dhm/Fi-x"/>
+		<reference alias="/params/dhm/Fr-x"/>
+		<output alias="/params/dhm/u1-x"/>
+	</filter>
+	<filter>
+		<type>exponential</type>
+		<filter-time>0.5</filter-time>
+		<gain>0.01</gain>
+		<input alias="/params/dhm/Fi-y"/>
+		<reference alias="/params/dhm/Fr-y"/>
+		<output alias="/params/dhm/u1-y"/>
+	</filter>
+	<filter>
+		<type>exponential</type>
+		<filter-time>0.5</filter-time>
+		<gain>0.01</gain>
+		<input alias="/params/dhm/Fi-z"/>
+		<reference alias="/params/dhm/Fr-z"/>
+		<output alias="/params/dhm/u1-z"/>
+	</filter>
+
+
+	<!--filter>
+		<type>gain</type>
+		<gain>0.001</gain>
+		<input>
+			<expression>
+				<table>
+					<property>/orientation/pitch-deg</property>
+					<entry> <ind>-90</ind> <dep>0.0</dep> </entry>
+					<entry> <ind>-70</ind> <dep>0.0</dep> </entry>
+					<entry> <ind>-65</ind> <dep>1.0</dep> </entry>
+					<entry> <ind>65</ind> <dep>1.0</dep> </entry>
+					<entry> <ind>70</ind> <dep>0.0</dep> </entry>
+					<entry> <ind>90</ind> <dep>0.0</dep> </entry>
+				</table>
+			</expression>
+		</input>
+		<output>/fgcam/dhm-r-scale</output>
+	</filter-->
+	<filter>
+		<type>exponential</type>
+		<filter-time>0.5</filter-time>
+		<gain>0.001</gain>
+		<input alias="/params/dhm/Fi-r"/>
+		<reference alias="/params/dhm/Fr-r"/>
+		<output alias="/params/dhm/u1-r"/>
+	</filter>
+
+
+	<filter>
+		<type>gain</type>
+		<gain>
+			<condition>
+				<less-than>
+					<property alias="/params/dhm/u1-y"/>
+					<value>0</value>
+				</less-than>
+			</condition>
+			<value>-1</value>
+		</gain>
+		<gain>1.0</gain>
+		<input>
+			<expression>
+				<product>
+					<property alias="/params/dhm/scale"/>
+					<difference>
+						<property alias="/params/dhm/lim-y"/>
+						<product>
+							<property alias="/params/dhm/lim-y"/>
+							<pow>
+								<value>0.5</value>
+								<abs>
+									<property alias="/params/dhm/u1-y"/>
+								</abs>
+							</pow>
+						</product>
+					</difference>
+				</product>
+			</expression>
+		</input>
+		<output alias="/params/dhm/y"/>
+	</filter>
+
+	<filter>
+		<type>gain</type>
+		<gain>
+			<condition>
+				<less-than>
+					<property alias="/params/dhm/u1-z"/>
+					<value>0</value>
+				</less-than>
+			</condition>
+			<value>-1</value>
+		</gain>
+		<gain>1.0</gain>
+		<input>
+			<expression>
+				<product>
+					<property alias="/params/dhm/scale"/>
+					<difference>
+						<property alias="/params/dhm/lim-z"/>
+						<product>
+							<property alias="/params/dhm/lim-z"/>
+							<pow>
+								<value>0.5</value>
+								<abs>
+									<property alias="/params/dhm/u1-z"/>
+								</abs>
+							</pow>
+						</product>
+					</difference>
+				</product>
+			</expression>
+		</input>
+		<output alias="/params/dhm/z"/>
+	</filter>
+
+	<filter>
+		<type>gain</type>
+		<gain>
+			<condition>
+				<less-than>
+					<property alias="/params/dhm/u1-x"/>
+					<value>0</value>
+				</less-than>
+			</condition>
+			<value>-1</value>
+		</gain>
+		<gain>1.0</gain>
+		<input>
+			<expression>
+				<product>
+					<property alias="/params/dhm/scale"/>
+					<difference>
+						<property alias="/params/dhm/lim-x"/>
+						<product>
+							<property alias="/params/dhm/lim-x"/>
+							<pow>
+								<value>0.5</value>
+								<abs>
+									<property alias="/params/dhm/u1-x"/>
+								</abs>
+							</pow>
+						</product>
+					</difference>
+				</product>
+			</expression>
+		</input>
+		<output alias="/params/dhm/x"/>
+	</filter>
+	<filter>
+		<type>gain</type>
+		<gain>
+			<condition>
+				<less-than>
+					<property alias="/params/dhm/u1-r"/>
+					<value>0</value>
+				</less-than>
+			</condition>
+			<value>-1</value>
+		</gain>
+		<gain>1.0</gain>
+		<input>
+			<expression>
+				<product>
+					<property alias="/params/dhm/scale"/>
+					<difference>
+						<property alias="/params/dhm/lim-r"/>
+						<product>
+							<property alias="/params/dhm/lim-r"/>
+							<pow>
+								<value>0.5</value>
+								<abs>
+									<property alias="/params/dhm/u1-r"/>
+								</abs>
+							</pow>
+						</product>
+					</difference>
+				</product>
+			</expression>
+		</input>
+		<output>/DHM/roll-output</output>
+	</filter>
+
+
+	<filter>
+		<type>gain</type>
+		<gain>
+			<property alias="/params/dhm/pitch-factor"/>
+		</gain>
+		<input alias="/params/dhm/y"/>
+		<output alias="/params/dhm/p"/>
+	</filter>
+
+	<filter>
+		<type>gain</type>
+		<gain>
+			<property alias="/params/dhm/roll-factor"/>
+		</gain>
+		<input alias="/params/dhm/x"/>
+		<output alias="/params/dhm/r"/>
+	</filter>
+	<filter> <!-- tmp -->
+		<type>gain</type>
+		<input>
+			<expression>
+				<sum>
+					<property alias="/params/dhm/r"/>
+					<property>/DHM/roll-output</property>
+				</sum>
+			</expression>
+		</input>
+		<output alias="/params/dhm/r"/>
+	</filter>
+	<filter> <!-- tmp -->
+		<type>gain</type>
+		<gain>1</gain>
+		<input>
+			<expression>
+				<sum>
+					<product>
+						<property alias="/params/dhm/x-factor"/>
+						<property alias="/params/dhm/r"/>
+					</product>
+					<property alias="/params/dhm/x"/>
+				</sum>
+			</expression>
+		</input>
+		<output alias="/params/dhm/x"/>
+	</filter>
+
+
+<!--
+	Buffeting
+-->
+
+<!--
+===================================================================================================
+	Noise generators
+		
+===================================================================================================
+-->
+
+<!--
+	if (t <= 1/f) t += dt;
+	else t = 0;
+-->
+	<filter>
+		<type>gain</type>
+		<enable>
+			<condition>
+				<property alias="/params/buffeting/enable"/>
+			</condition>
+		</enable>
+		<input>
+			<condition>
+				<less-than-equals>
+					<property alias="/params/buffeting/_t"/>
+					<expression>
+						<pow>
+							<property alias="/params/buffeting/f"/>
+							<value>-1</value>
+						</pow>
+					</expression>
+				</less-than-equals>
+			</condition>
+			<expression>
+				<sum>
+					<property alias="/params/state/delta-t"/>
+					<property alias="/params/buffeting/_t"/>
+				</sum>
+			</expression>
+		</input>
+		<input>0</input>
+		<output alias="/params/buffeting/_t"/>
+	</filter>
+
+<!--
+	if (t == 0) raw_output = rand();
+-->
+	<filter>
+		<type>gain</type>
+		<enable>
+			<condition>
+				<property alias="/params/buffeting/enable"/>
+				<not>
+					<property alias="/params/buffeting/_t"/>
+				</not>
+			</condition>
+		</enable>
+		<input>
+			<property alias="/params/rand"/>
+		</input>
+		<output alias="/params/buffeting/_raw-amplitude"/>
+	</filter>
+
+<!--
+	output = raw_output_lowpass.filter(0.2);
+-->
+	<filter>
+		<enable>
+			<condition>
+				<property alias="/params/buffeting/enable"/>
+			</condition>
+		</enable>
+		<type>exponential</type>
+		<filter-time>0.5</filter-time>
+		<input alias="/params/buffeting/_raw-amplitude"/>
+		<output alias="/params/buffeting/_amplitude"/>
+	</filter>
+
+	<filter>
+		<type>gain</type>
+		<gain>
+			<property alias="/params/buffeting/level"/>
+		</gain>
+		<input>
+			<condition>
+				<property alias="/params/buffeting/enable"/>
+                <!--greater-than>
+                    <property>orientation/alpha-deg</property>
+                    <value>12</value>
+                </greater-than-->
+                <greater-than>
+                    <property>accelerations/pilot-gdamped</property>
+                    <value>2.2</value>
+                    <!-- this is the airflow over the front so not going to be much if we're just dropping -->
+                </greater-than>
+                <greater-than>
+                    <property>instrumentation/airspeed-indicator/indicated-speed-kt</property>
+                    <value>100</value>
+                </greater-than>
+			</condition>
+			<expression>
+				<product>
+					<property alias="/params/buffeting/_amplitude"/>
+					<table>
+						<property>orientation/alpha-deg</property>
+						<entry> <ind>9</ind> <dep>0</dep> </entry>
+						<entry> <ind>11</ind> <dep>0.6</dep> </entry>
+						<entry> <ind>13</ind> <dep>0.8</dep> </entry>
+						<entry> <ind>16</ind> <dep>1.0</dep> </entry>
+					</table>
+					<sin>
+						<product>
+							<value>2</value>
+							<value>3.1415926</value>
+							<property alias="/params/buffeting/f"/>
+							<property>/sim/time/elapsed-sec</property>
+						</product>
+					</sin>
+				</product>
+			</expression>
+		</input>
+		<input>0</input>
+		<output alias="/params/buffeting/output"/>
+	</filter>
+<!-- Noise generator1 -->
+
+
+
+
+</PropertyList>

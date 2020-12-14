@@ -938,7 +938,7 @@
         <group>
             <layout>table</layout>
             <text>
-                <label>FG Camera (Exp)</label>
+                <label>FG Camera (Experimental)</label>
                 <pref-width>100</pref-width>
                 <halign>left</halign>
                 <row>0</row>
@@ -954,7 +954,7 @@
                 <col>1</col>
                 <pref-width>90</pref-width>
                 <legend>Active FGCamera</legend>
-                <halign>fill</halign>
+                <halign>center</halign>
                 <live>true</live>
                 <binding>
                     <command>nasal</command>
@@ -963,6 +963,17 @@
                     </script>
                 </binding>
             </button>
+            <text>
+                <label>Version 1.2</label>
+                <halign>center</halign>
+                <row>0</row>
+                <col>2</col>
+                <color>
+                    <red>0.0</red>
+                    <green>1.0</green>
+                    <blue>1.0</blue>
+                </color>
+            </text>
         </group>
     </group>
     

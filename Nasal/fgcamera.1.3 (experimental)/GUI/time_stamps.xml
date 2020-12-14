@@ -1,0 +1,127 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+	<name>time-stamps</name>
+	<layout>vbox</layout>
+	<modal>false</modal>
+	<x>-10</x>
+	<y>10</y>
+	<default-padding>1</default-padding>
+
+	<group>
+		<layout>hbox</layout>
+
+		<empty><stretch>1</stretch></empty>
+
+		<text>
+			<label>Timestamp table</label>
+		</text>
+
+		<empty><stretch>1</stretch></empty>
+
+		<button>
+			<legend> </legend>
+			<key>Esc</key>
+			<pref-width>16</pref-width>
+			<pref-height>16</pref-height>
+			<binding>
+				<command>dialog-close</command>
+			</binding>
+		</button>
+	</group>
+
+	<hrule/>
+
+	<group>
+		<layout>hbox</layout>
+		<list>
+			<name>timestamp-list</name>
+			<pref-height>150</pref-height>
+			<pref-width>120</pref-width>
+			<halign>left</halign>
+			<valign>fill</valign>
+			<stretch>true</stretch>
+			<padding>6</padding>
+			<property>/sim/fgcamera/dialogs/replay/selected-timestamp</property>
+			<binding>
+				<command>dialog-apply</command>
+			</binding>
+			<binding>
+				<command>nasal</command>
+				<script>jump_to()</script>
+			</binding>
+			<value>...</value>
+		</list>
+
+		<group>
+			<layout>vbox</layout>
+
+			<empty><stretch>1</stretch></empty>
+
+			<button>
+				<legend>Load...</legend>
+				<pref-width>80</pref-width>
+				<binding>
+					<command>dialog-show</command>
+					<dialog-name>timestamps-import</dialog-name>
+				</binding>
+				<binding>
+					<command>dialog-close</command>
+					<dialog-name>time-stamps</dialog-name>
+				</binding>
+			</button>
+
+			<button>
+				<legend>Reload</legend>
+				<pref-width>80</pref-width>
+				<binding>
+					<command>nasal</command>
+					<script>fgcamera.replay.load_timestamps(); update_list()</script>
+				</binding>
+			</button>
+
+			<empty><stretch>1</stretch></empty>
+		</group>
+	</group>
+	<nasal>
+		<open><![CDATA[
+			var listN    = cmdarg().getNode("group[1]/list");
+			var list     = [];
+
+			var dialog_update = func () {
+				forindex (var i; arg) {
+					var hash = {
+						"object-name" : arg[i],
+						"dialog-name" : "time-stamps"
+					};
+					fgcommand( "dialog-update", props.Node.new(hash) );
+				}
+			}
+
+
+			var jump_to = func {
+				var time = getprop("/sim/fgcamera/dialogs/replay/selected-timestamp");
+
+				var v = split(":", time);
+					setprop("/sim/replay/time", v[0] * 60 + v[1]);
+
+				#fgcamera.replay.activate_timestamp(time);
+			}
+
+			var update_list = func {
+				listN.removeChildren("value");
+
+				forindex (var i; fgcamera.ts)
+					listN.addChild("value").setValue( fgcamera.ts[i].getTime() );
+
+				dialog_update("timestamp-list");
+			}
+
+			update_list();
+		]]></open>
+
+		<close><![CDATA[
+
+		]]></close>
+	</nasal>
+</PropertyList>

@@ -1,0 +1,237 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+	<params include="params-main.xml"/>
+
+
+	<filter>
+		<type>exponential</type>
+		<filter-time>0.5</filter-time>
+		<input>/sim/fgcamera/state/wow</input>
+		<output>/sim/fgcamera/state/gnd-scale</output>
+	</filter>
+
+	<filter>
+		<type>gain</type>
+		<reference>/sim/fgcamera/state/gnd-scale</reference>
+		<input>1</input>
+		<output>/sim/fgcamera/state/air-scale</output>
+	</filter>
+
+	<filter>
+		<type>gain</type>
+		<input>
+			<condition>
+				<greater-than>
+					<property>/sim/fgcamera/state/gnd-scale</property>
+					<value>0.01</value>
+				</greater-than>
+			</condition>
+			<value>1</value>
+		</input>
+		<input>0</input>
+		<output>/sim/fgcamera/state/on-ground</output>
+	</filter>
+
+	<filter>
+		<type>gain</type>
+		<input>
+			<condition>
+				<greater-than>
+					<property>/sim/fgcamera/state/air-scale</property>
+					<value>0.01</value>
+				</greater-than>
+			</condition>
+			<value>1</value>
+		</input>
+		<input>0</input>
+		<output>/sim/fgcamera/state/in-air</output>
+	</filter>
+
+
+	<filter>
+		<type>gain</type>
+		<enable>
+			<condition>
+				<property>/sim/fgcamera/state/on-ground</property>
+				<not>
+					<property>/sim/systems/property-rule[141]/serviceable</property>
+				</not>
+			</condition>
+		</enable>
+		<input>1</input>
+		<output>/sim/systems/property-rule[141]/serviceable</output>
+	</filter>
+
+	<filter>
+		<type>gain</type>
+		<enable>
+			<condition>
+				<not>
+					<property>/sim/fgcamera/state/on-ground</property>
+				</not>
+				<property>/sim/systems/property-rule[141]/serviceable</property>
+			</condition>
+		</enable>
+		<input>0</input>
+		<output>/sim/systems/property-rule[141]/serviceable</output>
+	</filter>
+
+	<filter>
+		<type>gain</type>
+		<enable>
+			<condition>
+				<property>/sim/fgcamera/state/in-air</property>
+				<not>
+					<property>/sim/systems/property-rule[142]/serviceable</property>
+				</not>
+			</condition>
+		</enable>
+		<input>1</input>
+		<output>/sim/systems/property-rule[142]/serviceable</output>
+	</filter>
+
+	<filter>
+		<type>gain</type>
+		<enable>
+			<condition>
+				<not>
+					<property>/sim/fgcamera/state/in-air</property>
+				</not>
+				<property>/sim/systems/property-rule[142]/serviceable</property>
+			</condition>
+		</enable>
+		<input>0</input>
+		<output>/sim/systems/property-rule[142]/serviceable</output>
+	</filter>
+
+
+
+	<filter>
+		<type>gain</type>
+		<input>
+			<expression>
+				<sum>
+					<product>
+						<property>/sim/fgcamera/state/gnd-scale</property>
+						<property alias="/params/mixer[0]/x-output"/>
+					</product>
+					<product>
+						<property>/sim/fgcamera/state/air-scale</property>
+						<property alias="/params/mixer[1]/x-output"/>
+					</product>
+				</sum>
+			</expression>
+		</input>
+		<output>
+			<property>/sim/fgcamera/effects/RND-main/mixer/x-output</property>
+		</output>
+	</filter>
+
+	<filter>
+		<type>gain</type>
+		<input>
+			<expression>
+				<sum>
+					<product>
+						<property>/sim/fgcamera/state/gnd-scale</property>
+						<property alias="/params/mixer[0]/y-output"/>
+					</product>
+					<product>
+						<property>/sim/fgcamera/state/air-scale</property>
+						<property alias="/params/mixer[1]/y-output"/>
+					</product>
+				</sum>
+			</expression>
+		</input>
+		<output>
+			<property>/sim/fgcamera/effects/RND-main/mixer/y-output</property>
+		</output>
+	</filter>
+
+	<filter>
+		<type>gain</type>
+		<input>
+			<expression>
+				<sum>
+					<product>
+						<property>/sim/fgcamera/state/gnd-scale</property>
+						<property alias="/params/mixer[0]/z-output"/>
+					</product>
+					<product>
+						<property>/sim/fgcamera/state/air-scale</property>
+						<property alias="/params/mixer[1]/z-output"/>
+					</product>
+				</sum>
+			</expression>
+		</input>
+		<output>
+			<property>/sim/fgcamera/effects/RND-main/mixer/z-output</property>
+		</output>
+	</filter>
+
+	<filter>
+		<type>gain</type>
+		<input>
+			<expression>
+				<sum>
+					<product>
+						<property>/sim/fgcamera/state/gnd-scale</property>
+						<property alias="/params/mixer[0]/h-output"/>
+					</product>
+					<product>
+						<property>/sim/fgcamera/state/air-scale</property>
+						<property alias="/params/mixer[1]/h-output"/>
+					</product>
+				</sum>
+			</expression>
+		</input>
+		<output>
+			<property>/sim/fgcamera/effects/RND-main/mixer/h-output</property>
+		</output>
+	</filter>
+
+	<filter>
+		<type>gain</type>
+		<input>
+			<expression>
+				<sum>
+					<product>
+						<property>/sim/fgcamera/state/gnd-scale</property>
+						<property alias="/params/mixer[0]/p-output"/>
+					</product>
+					<product>
+						<property>/sim/fgcamera/state/air-scale</property>
+						<property alias="/params/mixer[1]/p-output"/>
+					</product>
+				</sum>
+			</expression>
+		</input>
+		<output>
+			<property>/sim/fgcamera/effects/RND-main/mixer/p-output</property>
+		</output>
+	</filter>
+
+	<filter>
+		<type>gain</type>
+		<input>
+			<expression>
+				<sum>
+					<product>
+						<property>/sim/fgcamera/state/gnd-scale</property>
+						<property alias="/params/mixer[0]/r-output"/>
+					</product>
+					<product>
+						<property>/sim/fgcamera/state/air-scale</property>
+						<property alias="/params/mixer[1]/r-output"/>
+					</product>
+				</sum>
+			</expression>
+		</input>
+		<output>
+			<property>/sim/fgcamera/effects/RND-main/mixer/r-output</property>
+		</output>
+	</filter>
+
+</PropertyList>

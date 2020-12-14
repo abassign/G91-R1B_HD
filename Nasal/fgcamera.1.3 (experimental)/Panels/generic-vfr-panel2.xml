@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE PropertyList SYSTEM "panel.dtd">
+
+<PropertyList>
+
+	<name>Generic VFR Panel2</name>
+	<background>Aircraft/Generic/Panels/Textures/transparent-bg.rgb</background>
+	<w>1024</w>
+	<h>150</h>
+	<y-offset>0</y-offset>
+	<view-height>150</view-height>
+
+	<instruments>
+ 
+  <!--instrument include="Aircraft/Instruments/asi-160-knot.xml">
+   <name>Airspeed Indicator</name>
+   <x>302</x>
+   <y>60</y>
+   <w>100</w>
+   <h>100</h>
+  </instrument>
+
+  <instrument include="Aircraft/Instruments/attitude-indicator.xml">
+   <name>Attitude Gyro</name>
+   <x>412</x>
+   <y>60</y>
+   <w>100</w>
+   <h>100</h>
+  </instrument-->
+
+  <instrument include="Aircraft/Instruments/vertical.xml">
+   <name>Vertical Velocity Indicator</name>
+   <x>522</x>
+   <y>60</y>
+   <w>100</w>
+   <h>100</h>
+  </instrument>
+
+  <instrument include="Aircraft/Instruments/altimeter.xml">
+   <name>Altimeter</name>
+   <x>632</x>
+   <y>60</y>
+   <w>100</w>
+   <h>100</h>
+  </instrument>
+  
+ </instruments>
+
+
+</PropertyList>
+

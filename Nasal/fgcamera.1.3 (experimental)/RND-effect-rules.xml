@@ -1,0 +1,446 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+	<params include="params.xml"/>
+
+	<filter>
+		<type>gain</type>
+		<enable>
+			<condition>
+				<greater-than-equals>
+					<property alias="/params/rnd/gen1/lfo2/elapsed-time"/>
+					<property alias="/params/rnd/gen1/lfo2/time"/>
+				</greater-than-equals>
+			</condition>
+		</enable>
+		<input>1</input>
+		<output alias="/params/rnd/gen1/lfo2/bump"/>
+	</filter>
+	<filter>
+		<type>gain</type>
+		<enable>
+			<condition>
+				<equals>
+					<property alias="/params/rnd/gen1/lfo2/bump"/>
+					<value>1</value>
+				</equals>
+			</condition>
+		</enable>
+		<input>
+			<property alias="/params/rand"/>
+		</input>
+		<output alias="/params/rnd/gen1/lfo2/output"/>
+	</filter>
+	<filter>
+		<type>gain</type>
+		<enable>
+			<condition>
+				<equals>
+					<property alias="/params/rnd/gen1/lfo2/bump"/>
+					<value>1</value>
+				</equals>
+			</condition>
+		</enable>
+		<input>
+			<expression>
+				<product>
+					<property alias="/params/rnd/gen1/lfo2/intensity"/>
+					<property alias="/params/rand"/>
+				</product>
+			</expression>
+		</input>
+		<output alias="/params/rnd/gen1/lfo2/time"/>
+	</filter>
+	<filter>
+		<type>gain</type>
+		<enable>
+			<condition>
+				<equals>
+					<property alias="/params/rnd/gen1/lfo2/bump"/>
+					<value>1</value>
+				</equals>
+			</condition>
+		</enable>
+		<input>0</input>
+		<output alias="/params/rnd/gen1/lfo2/elapsed-time"/>
+		<output alias="/params/rnd/gen1/lfo2/bump"/>
+	</filter>
+
+	<filter>
+		<type>gain</type>
+		<input>
+			<expression>
+				<sum>
+					<property alias="/params/rnd/gen1/lfo2/elapsed-time"/>
+					<property alias="/params/state/delta-t"/>
+				</sum>
+			</expression>
+		</input>
+		<output alias="/params/rnd/gen1/lfo2/elapsed-time"/>
+	</filter>
+
+	<filter>
+		<type>double-exponential</type>
+		<filter-time>
+			<property alias="/params/rnd/gen1/lfo2/filter"/>
+		</filter-time>
+		<input>
+			<expression>
+				<difference>
+					<product>
+						<property alias="/params/rnd/gen1/lfo2/output"/>
+						<value>2</value>
+					</product>
+					<value>1</value>
+				</difference>
+			</expression>
+		</input>
+		<output alias="/params/rnd/gen1/lfo2/offset"/>
+	</filter>
+
+
+
+	<flipflop>
+		<type>monostable</type>
+		<S>
+			<property>/fgcam/flipflop-set</property>
+		</S>
+		<time>
+			<property>/fgcam/time</property>
+		</time>
+		<output>/fgcam/flipflop-output</output>
+	</flipflop>
+
+
+<!-- Resonance generator -->
+	<filter>
+		<type>gain</type>
+		<enable>
+			<condition>
+				<greater-than-equals>
+					<property alias="/params/rnd/gen1/resonance/elapsed-time"/>
+					<property alias="/params/rnd/gen1/resonance/time"/>
+				</greater-than-equals>
+			</condition>
+		</enable>
+		<input>1</input>
+		<output alias="/params/rnd/gen1/resonance/bump"/>
+	</filter>
+
+	<filter>
+		<type>gain</type>
+		<enable>
+			<property alias="/params/rnd/gen1/resonance/bump"/>
+		</enable>
+		<input>
+			<property alias="/params/rand"/>
+		</input>
+		<output alias="/params/rnd/gen1/resonance/output"/>
+	</filter>
+
+	<filter>
+		<type>gain</type>
+		<enable>
+			<condition>
+				<equals>
+					<property alias="/params/rnd/gen1/resonance/bump"/>
+					<value>1</value>
+				</equals>
+			</condition>
+		</enable>
+		<input>
+			<expression>
+				<product>
+					<property alias="/params/rnd/gen1/resonance/intensity"/>
+					<property alias="/params/rand"/>
+				</product>
+			</expression>
+		</input>
+		<output alias="/params/rnd/gen1/resonance/time"/>
+	</filter>
+
+	<filter>
+		<type>exponential</type>
+		<filter-time>
+			<condition>
+				<property alias="/params/rnd/gen1/resonance/bump"/>
+			</condition>
+			<value>0</value>
+		</filter-time>
+		<filter-time>
+			<property alias="/params/rnd/gen1/resonance/attack"/>
+		</filter-time>
+		<input>
+			<condition>
+				<property alias="/params/rnd/gen1/resonance/bump"/>
+			</condition>
+			<property alias="/params/rnd/gen1/resonance/offset"/>
+		</input>
+		<input>
+			<value>1</value>
+		</input>
+		<output alias="/params/rnd/gen1/resonance/offset1"/>
+	</filter>
+	<filter>
+		<type>exponential</type>
+		<filter-time>
+			<condition>
+				<property alias="/params/rnd/gen1/resonance/bump"/>
+			</condition>
+			<value>0</value>
+		</filter-time>
+		<filter-time>
+			<property alias="/params/rnd/gen1/resonance/release"/>
+		</filter-time>
+		<input>
+			<condition>
+				<property alias="/params/rnd/gen1/resonance/bump"/>
+			</condition>
+			<value>0</value>
+		</input>
+		<input>
+			<property alias="/params/rnd/gen1/resonance/offset1"/>
+		</input>
+		<output alias="/params/rnd/gen1/resonance/offset2"/>
+	</filter>
+
+
+	<filter>
+		<type>gain</type>
+		<enable>
+			<condition>
+				<equals>
+					<property alias="/params/rnd/gen1/resonance/bump"/>
+					<value>1</value>
+				</equals>
+			</condition>
+		</enable>
+		<input>0</input>
+		<output alias="/params/rnd/gen1/resonance/elapsed-time"/>
+		<output alias="/params/rnd/gen1/resonance/bump"/>
+	</filter>
+
+	<filter>
+		<type>gain</type>
+		<input>
+			<expression>
+				<sum>
+					<property alias="/params/rnd/gen1/resonance/elapsed-time"/>
+					<property alias="/params/state/delta-t"/>
+				</sum>
+			</expression>
+		</input>
+		<output alias="/params/rnd/gen1/resonance/elapsed-time"/>
+	</filter>
+
+
+	<filter>
+		<type>gain</type>
+		<input>
+			<expression>
+				<difference>
+					<property alias="/params/rnd/gen1/resonance/offset1"/>
+					<property alias="/params/rnd/gen1/resonance/offset2"/>
+				</difference>
+			</expression>
+		</input>
+		<output alias="/params/rnd/gen1/resonance/offset"/>
+	</filter>
+
+
+
+
+<!-- Noise generator -->
+	<filter>
+		<type>gain</type>
+		<enable>
+			<condition>
+				<greater-than-equals>
+					<property alias="/params/rnd/gen1/noise/prev-offset"/>
+					<value>0</value>
+				</greater-than-equals>
+				<less-than>
+					<property alias="/params/rnd/gen1/noise/offset"/>
+					<value>0</value>
+				</less-than>
+			</condition>
+		</enable>
+		<input>1</input>
+		<output alias="/params/rnd/gen1/noise/bump"/>
+	</filter>
+
+	<filter>
+		<type>gain</type>
+		<enable>
+			<property alias="/params/rnd/gen1/noise/bump"/>
+		</enable>
+		<input>
+			<property alias="/params/rand"/>
+		</input>
+		<output alias="/params/rnd/gen1/noise/raw-output"/>
+	</filter>
+
+	<filter>
+		<type>exponential</type>
+		<filter-time>0.1</filter-time>
+		<input alias="/params/rnd/gen1/noise/raw-output"/>
+		<output alias="/params/rnd/gen1/noise/output"/>
+		<min>0</min>
+		<max>1</max>
+	</filter>
+
+	<filter>
+		<type>gain</type>
+		<enable>
+			<property alias="/params/rnd/gen1/noise/bump"/>
+		</enable>
+		<input>0</input>
+		<output alias="/params/rnd/gen1/noise/bump"/>
+	</filter>
+
+	<filter>
+		<type>gain</type>
+		<input alias="/params/rnd/gen1/noise/offset"/>
+		<output alias="/params/rnd/gen1/noise/prev-offset"/>
+	</filter>
+
+	<filter>
+		<type>gain</type>
+		<gain>
+			<property alias="/params/rnd/gen1/noise/level"/>
+		</gain>
+		<input>
+			<expression>
+				<product>
+					<property alias="/params/rnd/gen1/noise/output"/>
+					<sin>
+						<product>
+							<value>2</value>
+							<value>3.1415926</value>
+							<property alias="/params/rnd/gen1/noise/f"/>
+							<property>/sim/time/elapsed-sec</property>
+						</product>
+					</sin>
+				</product>
+			</expression>
+		</input>
+		<output alias="/params/rnd/gen1/noise/offset"/>
+	</filter>
+
+
+<!-- LFO1 generator -->
+
+	<filter>
+		<type>gain</type>
+		<enable>
+			<condition>
+				<or>
+					<greater-than-equals>
+						<property alias="/params/rnd/gen1/lfo1/elapsed-time"/>
+						<property alias="/params/rnd/gen1/lfo1/time"/>
+					</greater-than-equals>
+					<equals>
+						<property alias="/params/rnd/gen1/lfo1/output"/>
+						<property alias="/params/rnd/gen1/lfo1/raw-output"/>
+					</equals>
+				</or>
+			</condition>
+		</enable>
+		<input>1</input>
+		<output alias="/params/rnd/gen1/lfo1/bump"/>
+	</filter>
+	<filter>
+		<type>gain</type>
+		<enable>
+			<property alias="/params/rnd/gen1/lfo1/bump"/>
+		</enable>
+		<input>
+			<expression>
+				<product>
+					<sum>
+						<product>
+							<property alias="/params/rand"/>
+							<value>20</value>
+						</product>
+						<value>-10</value>
+					</sum>
+					<property alias="/params/rnd/gen1/lfo1/intensity"/>
+				</product>
+			</expression>
+		</input>
+		<output alias="/params/rnd/gen1/lfo1/raw-output"/>
+	</filter>
+
+	<filter>
+		<type>noise-spike</type>
+		<max-rate-of-change>6</max-rate-of-change>
+		<input alias="/params/rnd/gen1/lfo1/raw-output"/>
+		<output alias="/params/rnd/gen1/lfo1/output"/>
+	</filter>
+
+
+	<filter>
+		<type>gain</type>
+		<enable>
+			<property alias="/params/rnd/gen1/lfo1/bump"/>
+		</enable>
+		<input>
+			<expression>
+				<product>
+					<property alias="/params/rnd/gen1/lfo1/intensity"/>
+					<property alias="/params/rand"/>
+				</product>
+			</expression>
+		</input>
+		<output alias="/params/rnd/gen1/lfo1/time"/>
+	</filter>
+	<filter>
+		<type>gain</type>
+		<enable>
+			<property alias="/params/rnd/gen1/lfo1/bump"/>
+		</enable>
+		<input>0</input>
+		<output alias="/params/rnd/gen1/lfo1/elapsed-time"/>
+		<output alias="/params/rnd/gen1/lfo1/bump"/>
+	</filter>
+	<filter>
+		<type>gain</type>
+		<input>
+			<expression>
+				<sum>
+					<property alias="/params/rnd/gen1/lfo1/elapsed-time"/>
+					<property alias="/params/state/delta-t"/>
+				</sum>
+			</expression>
+		</input>
+		<output alias="/params/rnd/gen1/lfo1/elapsed-time"/>
+	</filter>
+
+	<filter>
+		<type>exponential</type>
+		<filter-time>
+			<property alias="/params/rnd/gen1/lfo1/filter"/>
+		</filter-time>
+		<gain>
+			<property alias="/params/rnd/gen1/lfo1/level"/>
+		</gain>
+		<input>
+			<expression>
+				<product>
+					<sin>
+						<property alias="/params/rnd/gen1/lfo1/output"/>
+					</sin>
+					<pow>
+						<product>
+							<property alias="/params/rnd/gen1/lfo1/output"/>
+							<value>0.2</value>
+						</product>
+						<value>-1</value>
+					</pow>
+				</product>
+			</expression>
+		</input>
+		<output alias="/params/rnd/gen1/lfo1/offset"/>
+	</filter>
+
+</PropertyList>

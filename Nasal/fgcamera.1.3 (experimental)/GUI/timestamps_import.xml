@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+	<name>timestamps-import</name>
+	<layout>vbox</layout>
+	<x>-10</x>
+	<y>10</y>
+	<group>
+		<layout>hbox</layout>
+
+		<empty><stretch>1</stretch></empty>
+
+		<text>
+			<label>Load timestamp table</label>
+		</text>
+
+		<empty><stretch>1</stretch></empty>
+
+		<button>
+			<legend> </legend>
+			<key>Esc</key>
+			<pref-width>16</pref-width>
+			<pref-height>16</pref-height>
+				<binding>
+					<command>dialog-show</command>
+					<dialog-name>time-stamps</dialog-name>
+				</binding>
+				<binding>
+					<command>dialog-close</command>
+					<dialog-name>timestamps-import</dialog-name>
+				</binding>
+		</button>
+
+	</group>
+
+	<hrule/>
+
+	<group>
+		<layout>vbox</layout>
+		<list>
+			<name>file-list</name>
+			<pref-height>150</pref-height>
+			<pref-width>100</pref-width>
+			<halign>fill</halign>
+			<valign>fill</valign>
+			<stretch>true</stretch>
+			<padding>6</padding>
+			<property>/sim/fgcamera/dialogs/replay/import/selected-list</property>
+			<binding>
+				<command>dialog-apply</command>
+			</binding>
+			<binding>
+				<command>nasal</command>
+				<script>import_timestamps()</script>
+			</binding>
+			<value>...</value>
+		</list>
+	</group>
+
+	<nasal>
+		<open> <![CDATA[
+			var listN    = cmdarg().getNode("group[1]/list");
+			var path     = getprop("/sim/fg-root") ~ "/Nasal/fgcamera/replay";
+			var dir      = directory(path);
+			var list     = [];
+
+			var dialog_update = func () {
+				forindex (var i; arg) {
+					var hash = {
+						"object-name" : arg[i],
+						"dialog-name" : "timestamps-import"
+					};
+					fgcommand( "dialog-update", props.Node.new(hash) );
+				}
+			}
+
+			var import_timestamps = func {
+				var node      = props.Node.new();
+				var selection = getprop("/sim/fgcamera/dialogs/replay/import/selected-list");
+
+				#props.copy(io.read_properties(path ~ "/" ~ selection ~ ".xml"), node);
+				fgcamera.replay._file = selection ~ ".xml";
+				fgcamera.replay.load_timestamps();
+				node.remove();
+			}
+
+			foreach(var file; sort(dir, cmp))
+				if(size(file) > 4 and substr(file, -4) == ".xml")
+					append(list, split(".", file)[0]);
+
+			listN.removeChildren("value");
+
+			forindex (var i; list)
+				listN.addChild("value").setValue(list[i]);
+
+			dialog_update("file-list");
+		]]> </open>
+
+		<close> <![CDATA[
+
+		]]> </close>
+	</nasal>
+</PropertyList>

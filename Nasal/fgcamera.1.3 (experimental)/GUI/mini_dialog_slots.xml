@@ -1,0 +1,188 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+	<name>fgcamera-mini-dialog-slots</name>
+	<layout>vbox</layout>
+	<!--width>650</width-->
+	<color>
+		<alpha>0</alpha>
+	</color>
+	<x>5</x>
+	<y>5</y>
+	<draggable>false</draggable>
+	<resizable>false</resizable>
+
+
+	<group>
+		<layout>hbox</layout>
+		<default-padding>3</default-padding>
+		<button>
+			<legend>1</legend>
+			<pref-width>30</pref-width>
+			<pref-height>30</pref-height>
+			<binding>
+				<command>nasal</command>
+				<script>slot(1)</script>
+			</binding>
+		</button>
+
+		<button>
+			<legend>2</legend>
+			<pref-width>30</pref-width>
+			<pref-height>30</pref-height>
+			<binding>
+				<command>nasal</command>
+				<script>slot(2)</script>
+			</binding>
+		</button>
+
+		<button>
+			<legend>3</legend>
+			<pref-width>30</pref-width>
+			<pref-height>30</pref-height>
+			<binding>
+				<command>nasal</command>
+				<script>slot(3)</script>
+			</binding>
+		</button>
+
+		<button>
+			<legend>4</legend>
+			<pref-width>30</pref-width>
+			<pref-height>30</pref-height>
+			<binding>
+				<command>nasal</command>
+				<script>slot(4)</script>
+			</binding>
+		</button>
+
+		<button>
+			<legend>5</legend>
+			<pref-width>30</pref-width>
+			<pref-height>30</pref-height>
+			<binding>
+				<command>nasal</command>
+				<script>slot(5)</script>
+			</binding>
+		</button>
+	</group>
+
+	<group>
+		<layout>hbox</layout>
+		<default-padding>3</default-padding>
+		<button>
+			<legend>6</legend>
+			<pref-width>30</pref-width>
+			<pref-height>30</pref-height>
+			<binding>
+				<command>nasal</command>
+				<script>slot(6)</script>
+			</binding>
+		</button>
+
+		<button>
+			<legend>7</legend>
+			<pref-width>30</pref-width>
+			<pref-height>30</pref-height>
+			<binding>
+				<command>nasal</command>
+				<script>slot(7)</script>
+			</binding>
+		</button>
+
+		<button>
+			<legend>8</legend>
+			<pref-width>30</pref-width>
+			<pref-height>30</pref-height>
+			<binding>
+				<command>nasal</command>
+				<script>slot(8)</script>
+			</binding>
+		</button>
+
+		<button>
+			<legend>9</legend>
+			<pref-width>30</pref-width>
+			<pref-height>30</pref-height>
+			<binding>
+				<command>nasal</command>
+				<script>slot(9)</script>
+			</binding>
+		</button>
+
+		<button>
+			<legend>0</legend>
+			<pref-width>30</pref-width>
+			<pref-height>30</pref-height>
+			<binding>
+				<command>nasal</command>
+				<script>slot(0)</script>
+			</binding>
+		</button>
+	</group>
+
+	<group>
+		<layout>hbox</layout>
+		<default-padding>3</default-padding>
+		<button>
+			<legend><![CDATA[<<]]></legend>
+			<pref-width>30</pref-width>
+			<pref-height>30</pref-height>
+			<binding>
+				<command>fgcamera-prev-category</command>
+			</binding>
+		</button>
+
+		<button>
+			<legend><![CDATA[<]]></legend>
+			<pref-width>30</pref-width>
+			<pref-height>30</pref-height>
+			<binding>
+				<command>fgcamera-prev-in-category</command>
+			</binding>
+		</button>
+
+		<button>
+			<legend>R</legend>
+			<pref-width>30</pref-width>
+			<pref-height>30</pref-height>
+			<binding>
+				<command>nasal</command>
+				<script>L.CurrentCamera().select()</script>
+			</binding>
+		</button>
+
+		<button>
+			<legend><![CDATA[>]]></legend>
+			<pref-width>30</pref-width>
+			<pref-height>30</pref-height>
+			<binding>
+				<command>fgcamera-next-in-category</command>
+			</binding>
+		</button>
+
+		<button>
+			<legend><![CDATA[>>]]></legend>
+			<pref-width>30</pref-width>
+			<pref-height>30</pref-height>
+			<binding>
+				<command>fgcamera-next-category</command>
+			</binding>
+		</button>
+	</group>
+
+	<nasal>
+		<open><![CDATA[
+			var L = fgcamera.API().CameraList();
+
+			var slot = func (s) {
+				if ( getprop("/devices/status/keyboard/shift") )
+					L.CurrentCamera().slot(s);
+				elsif ( getprop("/devices/status/keyboard/ctrl") )
+					L.CameraBySlot(s).slot("");
+				elsif ( (var c = L.CameraBySlot(s)) != nil)
+					c.select();
+			}
+		]]></open>
+	</nasal>
+</PropertyList>

@@ -1,0 +1,812 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+	<name>RND-generator</name>
+	<layout>vbox</layout>
+	<width>700</width>
+	<x>20</x>
+	<y>-50</y>
+
+<!-- Title -->
+	<group>
+		<layout>hbox</layout>
+
+		<empty><stretch>1</stretch></empty>
+
+		<button>
+			<legend> </legend>
+			<key>Esc</key>
+			<pref-width>16</pref-width>
+			<pref-height>16</pref-height>
+			<binding>
+				<command>dialog-show</command>
+				<dialog-name>RND-mixer</dialog-name>
+			</binding>
+			<binding>
+				<command>dialog-close</command>
+				<dialog-name>RND-generator</dialog-name>
+			</binding>
+		</button>
+	</group>
+
+	<hrule/>
+
+	<group>
+		<layout>vbox</layout>
+
+		<group> <!-- top row -->
+			<layout>hbox</layout>
+
+			<group> <!-- sine generator -->
+				<layout>vbox</layout>
+
+				<group>
+					<layout>hbox</layout>
+
+					<text><label>sine generator</label></text>
+					<empty> <stretch>true</stretch> </empty>
+
+					<checkbox>
+						<width>15</width>
+						<height>15</height>
+						<property>/sim/fgcamera/dialogs/RND/generator/sine[0]</property>
+						<binding>
+							<command>dialog-apply</command>
+						</binding>
+						<binding>
+							<command>nasal</command>
+							<script>L.CurrentCamera().effect("RND").generator(0, 0)
+								.sine("enable", getprop("/sim/fgcamera/dialogs/RND/generator/sine[0]"))</script>
+						</binding>
+					</checkbox>
+				</group>
+
+				<empty> <pref-height>6</pref-height> </empty>
+
+				<group>
+					<layout>hbox</layout>
+
+					<group>
+						<layout>vbox</layout>
+						<default-padding>0</default-padding>
+
+						<text>
+							<label>frequency</label>
+						</text>
+
+						<dial>
+							<max>9.0</max>
+							<property>/sim/fgcamera/dialogs/RND/generator/sine[1]</property>
+							<binding>
+								<command>dialog-apply</command>
+							</binding>
+							<binding>
+								<command>nasal</command>
+								<script>L.CurrentCamera().effect("RND").generator(0, 0)
+									.sine("frequency", getprop("/sim/fgcamera/dialogs/RND/generator/sine[1]"))</script>
+							</binding>
+						</dial>
+
+						<text>
+							<label>0.00</label>
+							<format>%0.2f</format>
+							<live>true</live>
+							<property>/sim/fgcamera/dialogs/RND/generator/sine[1]</property>
+						</text>
+
+						<empty>
+							<pref-height>6</pref-height>
+						</empty>
+
+						<text>
+							<label>level</label>
+						</text>
+
+						<dial>
+							<width>20</width>
+							<property>/sim/fgcamera/dialogs/RND/generator/sine[2]</property>
+							<binding>
+								<command>dialog-apply</command>
+							</binding>
+							<binding>
+								<command>nasal</command>
+								<script>L.CurrentCamera().effect("RND").generator(0, 0)
+									.sine("level", getprop("/sim/fgcamera/dialogs/RND/generator/sine[2]"))</script>
+							</binding>
+						</dial>
+
+						<text>
+							<label>0.00</label>
+							<format>%0.2f</format>
+							<live>true</live>
+							<property>/sim/fgcamera/dialogs/RND/generator/sine[2]</property>
+						</text>
+					</group>
+
+					<slider>
+						<name>sine</name>
+						<vertical>true</vertical>
+						<pref-height>150</pref-height>
+						<live>true</live>
+						<property>/sim/fgcamera/dialogs/RND/generator/output[0]</property>
+						<min>-1</min>
+						<max>1</max>
+					</slider>
+				</group>
+			</group> <!-- /sine generator-->
+
+			<vrule/>
+
+			<group> <!-- resonance generator -->
+				<layout>vbox</layout>
+
+				<group>
+					<layout>hbox</layout>
+
+					<text>
+						<label>resonance generator</label>
+					</text>
+
+					<empty>
+						<stretch>true</stretch>
+					</empty>
+
+					<checkbox>
+						<width>15</width>
+						<height>15</height>
+						<property>/sim/fgcamera/dialogs/RND/generator/resonance/enable</property>
+						<binding>
+							<command>dialog-apply</command>
+						</binding>
+						<binding>
+							<command>nasal</command>
+							<script>set_data("resonance", "enable")</script>
+						</binding>
+					</checkbox>
+				</group>
+
+				<empty>
+					<pref-height>6</pref-height>
+				</empty>
+
+				<group>
+					<layout>hbox</layout>
+
+					<group>
+						<layout>vbox</layout>
+						<default-padding>0</default-padding>
+
+						<text>
+							<label>frequency</label>
+						</text>
+
+						<dial>
+							<max>9</max>
+							<property>/sim/fgcamera/dialogs/RND/generator/resonance/frequency</property>
+							<binding>
+								<command>dialog-apply</command>
+							</binding>
+							<binding>
+								<command>nasal</command>
+								<script>set_data("resonance", "frequency")</script>
+							</binding>
+						</dial>
+
+						<text>
+							<label>0.0</label>
+							<format>%0.1f</format>
+							<live>true</live>
+							<property>/sim/fgcamera/dialogs/RND/generator/resonance/frequency</property>
+						</text>
+
+						<empty>
+							<pref-height>6</pref-height>
+						</empty>
+
+						<text>
+							<label>attack</label>
+						</text>
+
+						<dial>
+							<max>5</max>
+							<property>/sim/fgcamera/dialogs/RND/generator/resonance/attack</property>
+							<binding>
+								<command>dialog-apply</command>
+							</binding>
+							<binding>
+								<command>nasal</command>
+								<script>set_data("resonance", "attack")</script>
+							</binding>
+						</dial>
+
+						<text>
+							<label>0.0</label>
+							<format>%0.1f</format>
+							<live>true</live>
+							<property>/sim/fgcamera/dialogs/RND/generator/resonance/attack</property>
+						</text>
+					</group>
+
+					<group>
+						<layout>vbox</layout>
+						<default-padding>0</default-padding>
+						<text><label>intensity</label></text>
+
+						<dial>
+							<max>5</max>
+							<property>/sim/fgcamera/dialogs/RND/generator/resonance/intensity</property>
+							<binding>
+								<command>dialog-apply</command>
+							</binding>
+							<binding>
+								<command>nasal</command>
+								<script>set_data("resonance", "intensity")</script>
+							</binding>
+						</dial>
+
+						<text>
+							<label>0.0</label>
+							<format>%0.1f</format>
+							<live>true</live>
+							<property>/sim/fgcamera/dialogs/RND/generator/resonance/intensity</property>
+						</text>
+
+						<empty>
+							<pref-height>6</pref-height>
+						</empty>
+
+						<text>
+							<label>release</label>
+						</text>
+
+						<dial>
+							<max>5</max>
+							<property>/sim/fgcamera/dialogs/RND/generator/resonance/release</property>
+							<binding>
+								<command>dialog-apply</command>
+							</binding>
+							<binding>
+								<command>nasal</command>
+								<script>set_data("resonance", "release")</script>
+							</binding>
+						</dial>
+
+						<text>
+							<label>0.0</label>
+							<format>%0.1f</format>
+							<live>true</live>
+							<property>/sim/fgcamera/dialogs/RND/generator/resonance/release</property>
+						</text>
+					</group>
+
+					<group>
+						<layout>vbox</layout>
+						<default-padding>0</default-padding>
+
+						<empty>
+							<stretch>true</stretch>
+						</empty>
+
+						<text>
+							<label>level</label>
+						</text>
+
+						<dial>
+							<property>/sim/fgcamera/dialogs/RND/generator/resonance/level</property>
+							<binding>
+								<command>dialog-apply</command>
+							</binding>
+							<binding>
+								<command>nasal</command>
+								<script>set_data("resonance", "level")</script>
+							</binding>
+						</dial>
+
+						<text>
+							<label>0.00</label>
+							<format>%0.2f</format>
+							<live>true</live>
+							<property>/sim/fgcamera/dialogs/RND/generator/resonance/level</property>
+						</text>
+					</group>
+
+					<slider>
+						<vertical>true</vertical>
+						<pref-height>150</pref-height>
+						<live>true</live>
+						<property>/sim/fgcamera/dialogs/RND/generator/output[1]</property>
+						<min>-1</min>
+						<max>1</max>
+					</slider>
+				</group>
+			</group> <!-- /resonance generator-->
+
+			<vrule/>
+
+			<group> <!-- noise generator -->
+				<layout>vbox</layout>
+
+				<group>
+					<layout>hbox</layout>
+
+					<text>
+						<label>noise generator</label>
+					</text>
+
+					<empty>
+						<stretch>true</stretch>
+					</empty>
+
+					<checkbox>
+						<width>15</width>
+						<height>15</height>
+						<property>/sim/fgcamera/dialogs/RND/generator/noise/enable</property>
+						<binding>
+							<command>dialog-apply</command>
+						</binding>
+							<binding>
+								<command>nasal</command>
+								<script>set_data("noise", "enable")</script>
+							</binding>
+					</checkbox>
+				</group>
+
+				<empty>
+					<pref-height>6</pref-height>
+				</empty>
+
+				<group>
+					<layout>hbox</layout>
+
+					<group>
+						<layout>vbox</layout>
+						<default-padding>0</default-padding>
+						<text><label>frequency</label></text>
+
+						<dial>
+							<max>10.0</max>
+							<property>/sim/fgcamera/dialogs/RND/generator/noise/frequency</property>
+							<binding>
+								<command>dialog-apply</command>
+							</binding>
+							<binding>
+								<command>nasal</command>
+								<script>set_data("noise", "frequency")</script>
+							</binding>
+						</dial>
+
+						<text>
+							<label>0.00</label>
+							<format>%0.2f</format>
+							<live>true</live>
+							<property>/sim/fgcamera/dialogs/RND/generator/noise/frequency</property>
+						</text>
+						<empty> <pref-height>6</pref-height> </empty>
+						<text><label>level</label></text>
+
+						<dial>
+							<width>20</width>
+							<property>/sim/fgcamera/dialogs/RND/generator/noise/level</property>
+							<binding>
+								<command>dialog-apply</command>
+							</binding>
+							<binding>
+								<command>nasal</command>
+								<script>set_data("noise", "level")</script>
+							</binding>
+						</dial>
+
+						<text>
+							<label>0.00</label>
+							<format>%0.2f</format>
+							<live>true</live>
+							<property>/sim/fgcamera/dialogs/RND/generator/noise/level</property>
+						</text>
+					</group>
+
+					<slider>
+						<vertical>true</vertical>
+						<pref-height>150</pref-height>
+						<live>true</live>
+						<property>/sim/fgcamera/dialogs/RND/generator/output[2]</property>
+						<min>-1</min>
+						<max>1</max>
+					</slider>
+				</group>
+			</group> <!-- /noise generator-->
+
+		</group> <!-- /top row -->
+
+		<hrule/>
+
+		<group> <!-- bottom row -->
+			<layout>hbox</layout>
+
+			<group> <!-- LFO1 generator -->
+				<layout>vbox</layout>
+
+				<group>
+					<layout>hbox</layout>
+
+					<text><label>LFO1 generator</label></text>
+					<empty> <stretch>true</stretch> </empty>
+					<checkbox>
+						<width>15</width>
+						<height>15</height>
+						<property>/sim/fgcamera/dialogs/RND/generator/LFO1/enable</property>
+						<binding>
+							<command>dialog-apply</command>
+						</binding>
+						<binding>
+							<command>nasal</command>
+							<script>set_data("LFO1", "enable")</script>
+						</binding>
+					</checkbox>
+				</group>
+
+				<empty> <pref-height>6</pref-height> </empty>
+
+				<group>
+					<layout>hbox</layout>
+
+					<empty> <pref-width>6</pref-width> </empty>
+					<group>
+						<layout>vbox</layout>
+						<default-padding>0</default-padding>
+
+						<text>
+							<label>LP filter</label>
+						</text>
+
+						<dial>
+							<max>6</max>
+							<property>/sim/fgcamera/dialogs/RND/generator/LFO1/filter</property>
+							<binding>
+								<command>dialog-apply</command>
+							</binding>
+							<binding>
+								<command>nasal</command>
+								<script>set_data("LFO1", "filter")</script>
+							</binding>
+						</dial>
+
+						<text>
+							<label>0.00</label>
+							<format>%0.2f</format>
+							<live>true</live>
+							<property>/sim/fgcamera/dialogs/RND/generator/LFO1/filter</property>
+						</text>
+
+						<empty>
+							<pref-height>6</pref-height>
+						</empty>
+
+						<text>
+							<label>level</label>
+						</text>
+
+						<dial>
+							<width>20</width>
+							<property>/sim/fgcamera/dialogs/RND/generator/LFO1/level</property>
+							<binding>
+								<command>dialog-apply</command>
+							</binding>
+							<binding>
+								<command>nasal</command>
+								<script>set_data("LFO1", "level")</script>
+							</binding>
+						</dial>
+
+						<text>
+							<label>0.00</label>
+							<format>%0.2f</format>
+							<live>true</live>
+							<property>/sim/fgcamera/dialogs/RND/generator/LFO1/level</property>
+						</text>
+					</group>
+
+					<group>
+						<layout>vbox</layout>
+						<default-padding>0</default-padding>
+
+						<text><label>intensity</label></text>
+
+						<dial>
+							<max>10</max>
+							<property>/sim/fgcamera/dialogs/RND/generator/LFO1/intensity</property>
+							<binding>
+								<command>dialog-apply</command>
+							</binding>
+							<binding>
+								<command>nasal</command>
+								<script>set_data("LFO1", "intensity")</script>
+							</binding>
+						</dial>
+
+						<text>
+							<label>0.0</label>
+							<format>%0.1f</format>
+							<live>true</live>
+							<property>/sim/fgcamera/dialogs/RND/generator/LFO1/intensity</property>
+						</text>
+
+						<empty>
+							<stretch>true</stretch>
+						</empty>
+					</group>
+
+					<slider>
+						<name>sine</name>
+						<vertical>true</vertical>
+						<pref-height>150</pref-height>
+						<live>true</live>
+						<property>/sim/fgcamera/dialogs/RND/generator/output[3]</property>
+						<min>-1</min>
+						<max>1</max>
+					</slider>
+				</group>
+			</group> <!-- /LFO1 generator-->
+
+			<vrule/>
+
+			<group> <!-- LFO2 generator -->
+				<layout>vbox</layout>
+
+				<group>
+					<layout>hbox</layout>
+
+					<text>
+						<label>LFO2 generator</label>
+					</text>
+
+					<empty>
+						<stretch>true</stretch>
+					</empty>
+
+					<checkbox>
+						<width>15</width>
+						<height>15</height>
+						<property>/sim/fgcamera/dialogs/RND/generator/LFO2/enable</property>
+						<binding>
+							<command>dialog-apply</command>
+						</binding>
+						<binding>
+							<command>nasal</command>
+							<script>set_data("LFO2", "enable")</script>
+						</binding>
+					</checkbox>
+				</group>
+
+				<empty>
+					<pref-height>6</pref-height>
+				</empty>
+
+				<group>
+					<layout>hbox</layout>
+
+					<empty>
+						<pref-width>6</pref-width>
+					</empty>
+
+					<group>
+						<layout>vbox</layout>
+						<default-padding>0</default-padding>
+
+						<text>
+							<label>LP filter</label>
+						</text>
+
+						<dial>
+							<max>6.0</max>
+							<property>/sim/fgcamera/dialogs/RND/generator/LFO2/filter</property>
+							<binding>
+								<command>dialog-apply</command>
+							</binding>
+							<binding>
+								<command>nasal</command>
+								<script>set_data("LFO2", "filter")</script>
+							</binding>
+						</dial>
+
+						<text>
+							<label>0.00</label>
+							<format>%0.2f</format>
+							<live>true</live>
+							<property>/sim/fgcamera/dialogs/RND/generator/LFO2/filter</property>
+						</text>
+
+						<empty>
+							<pref-height>6</pref-height>
+						</empty>
+
+						<text>
+							<label>level</label>
+						</text>
+
+						<dial>
+							<width>20</width>
+							<property>/sim/fgcamera/dialogs/RND/generator/LFO2/level</property>
+							<binding>
+								<command>dialog-apply</command>
+							</binding>
+							<binding>
+								<command>nasal</command>
+								<script>set_data("LFO2", "level")</script>
+							</binding>
+						</dial>
+
+						<text>
+							<label>0.00</label>
+							<format>%0.2f</format>
+							<live>true</live>
+							<property>/sim/fgcamera/dialogs/RND/generator/LFO2/level</property>
+						</text>
+					</group>
+
+					<empty>
+						<pref-width>6</pref-width>
+					</empty>
+
+					<group>
+						<layout>vbox</layout>
+						<default-padding>0</default-padding>
+
+						<text>
+							<label>intensity</label>
+						</text>
+
+						<dial>
+							<max>10</max>
+							<property>/sim/fgcamera/dialogs/RND/generator/LFO2/intensity</property>
+							<binding>
+								<command>dialog-apply</command>
+							</binding>
+							<binding>
+								<command>nasal</command>
+								<script>set_data("LFO2", "intensity")</script>
+							</binding>
+						</dial>
+
+						<text>
+							<label>0.0</label>
+							<format>%0.1f</format>
+							<live>true</live>
+							<property>/sim/fgcamera/dialogs/RND/generator/LFO2/intensity</property>
+						</text>
+
+						<empty>
+							<stretch>true</stretch>
+						</empty>
+					</group>
+
+					<empty>
+						<pref-width>6</pref-width>
+					</empty>
+
+					<slider>
+						<vertical>true</vertical>
+						<pref-height>150</pref-height>
+						<live>true</live>
+						<property>/sim/fgcamera/dialogs/RND/generator/output[4]</property>
+						<min>-1</min>
+						<max>1</max>
+					</slider>
+				</group>
+			</group> <!-- /LFO2 generator-->
+
+			<vrule/>
+
+			<group> <!-- OUTPUT -->
+				<layout>vbox</layout>
+
+				<text>
+					<label>OUTPUT</label>
+				</text>
+
+				<slider>
+					<vertical>true</vertical>
+					<pref-height>150</pref-height>
+					<live>true</live>
+					<property>/sim/fgcamera/dialogs/RND/generator/main-output</property>
+					<min>-1</min>
+					<max>1</max>
+				</slider>
+			</group> <!-- /OUTPUT -->
+
+			<!-- empty> <stretch>true</stretch> </empty -->
+		</group> <!-- /bottom row -->
+	</group>
+
+	<nasal>
+		<open> <![CDATA[
+			var L = fgcamera.API().CameraList();
+			var path = "/sim/fgcamera/dialogs/RND/generator/";
+			var g_id = getprop(path ~ "current-generator") or 0;
+			var listeners = [
+			#	setlistener( fgcamera.my_node_path ~ "/current-camera/RND-updated", func update() ),
+				setlistener("/sim/fgcamera/current-camera/camera-index", func update() ),
+			];
+			#var mode = nil;
+
+			var sliders = [,,,,,];
+			forindex (var i; sliders)
+				sliders[i] = props.getNode(path ~ "output[" ~ i ~ "]", 1);
+
+			var generators = {
+				sine: ["enable", "frequency", "level"],
+				resonance: ["enable", "frequency", "intensity", "attack", "release", "level"],
+				noise: ["enable", "frequency", "level"],
+				LFO1: ["enable", "intensity", "filter", "level"],
+				LFO2: ["enable", "intensity", "filter", "level"],
+			};
+
+			var update = func {
+				var mode = get_mode();
+				var i = 0;
+				foreach(var g; ["sine", "resonance", "noise", "LFO1", "LFO2"]) {
+					sliders[i].unalias();
+					sliders[i].alias("/sim/fgcamera/effects/RND[" ~ mode ~ "]/GEN[" ~ g_id ~ "]/" ~ g ~ "/output");
+					i += 1;
+				}
+
+				foreach(var gen; keys(generators))
+					foreach(var param; generators[gen])
+						setprop (path ~ gen ~ "/" ~ param, _data(gen, param));
+
+				#foreach (var g; ["sine", "resonance", "noise", "LFO1", "LFO2"])
+				#	forindex (var j; fgcamera.rnd[mode].GEN[g_id][g])
+				#		setprop(path ~ g ~ "[" ~ j ~ "]", fgcamera.rnd[mode].GEN[g_id][g][j]);
+
+				fgcommand( "dialog-update", props.Node.new( {"dialog-name" : "RND-generator"} ) );
+			}
+
+
+
+#			var loopid = 0;
+
+#			var loop = func (id) {
+#				id == loopid or return;
+
+#				var dt = getprop("/sim/time/delta-sec");
+
+#				for (var i = 0; i <= 4; i += 1)
+#					setprop(path ~ "output[" ~ i ~ "]", fgcamera.RND_handler._GEN[g_id]._gen[i].output);
+
+#				setprop(path ~ "main-output", fgcamera.RND_handler.G_output[g_id]);
+
+#				settimer (func { loop(id) }, 0);
+#			}
+
+			#var set_data = func (key, i) {
+			#	fgcamera.rnd[mode].GEN[g_id][key][i] = getprop (path ~ key ~ "[" ~ i ~ "]");
+			#	fgcamera.RND_handler._GEN[g_id].set(fgcamera.rnd[mode].GEN[g_id]);
+			#}
+			var set_data = func (gen, param) _data(gen, param, getprop (path ~ gen ~ "/" ~ param));
+
+			var _data = func (gen, param, value = nil) {
+				var a = L.CurrentCamera().effect("RND").generator(g_id, get_mode());
+				if (gen == "sine")
+					return a.sine(param, value);
+				elsif (gen == "resonance")
+					return a.resonance(param, value);
+				elsif (gen == "noise")
+					return a.noise(param, value);
+				elsif (gen == "LFO1")
+					return a.LFO1(param, value);
+				elsif (gen == "LFO2")
+					return a.LFO2(param, value);
+			}
+
+			var get_mode = func !getprop("/sim/fgcamera/state/wow");
+
+			#loop(loopid);
+			update();
+		]]> </open>
+
+		<close> <![CDATA[
+			#loopid += 1;
+
+			foreach (var l; listeners) removelistener(l);
+		]]> </close>
+	</nasal>
+</PropertyList>

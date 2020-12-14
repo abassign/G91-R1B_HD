@@ -8,15 +8,15 @@ var load_nasal = func (debugLevel) {
     var path = getprop("/sim/fg-aircraft") ~ "/G91-R1B_HD";
     ## print(debug.dump(modules_obj));
 	foreach (var script; modules_list) {
-        modules_obj[script] = modules.Module.new(script);
-        modules_obj[script].setNamespace("fgcamera");
-        modules_obj[script].setDebug(debugLevel - 1);
-        modules_obj[script].setFilePath(getprop("/sim/aircraft-dir")~"/Nasal/fgcamera/nas");
-        modules_obj[script].setMainFile(script ~ ".nas");
         if (modules_loaded == 0) {
+            modules_obj[script] = modules.Module.new(script);
+            modules_obj[script].setNamespace("fgcamera");
+            modules_obj[script].setDebug(debugLevel - 1);
+            modules_obj[script].setFilePath(getprop("/sim/aircraft-dir")~"/Nasal/fgcamera/nas");
+            modules_obj[script].setMainFile(script ~ ".nas");
             modules_obj[script].load();
         } else {
-            modules_obj[script].reload();
+            ## modules_obj[script].reload();
         };
         ## print("fgcamera.nas load_nasal script: ",getprop("/sim/aircraft-dir")~"/Nasal/fgcamera/nas/" ~ script ~ ".nas");
 		

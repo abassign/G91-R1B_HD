@@ -23,7 +23,7 @@ Description: G91R2 Canopy automation
             <input>systems/canopy/position</input>
             <gain>45.0</gain>
         </pure_gain>
-        
+
         <switch name="systems/canopy/position-go">
             <default value="0"/>
             <test logic="AND" value="1">

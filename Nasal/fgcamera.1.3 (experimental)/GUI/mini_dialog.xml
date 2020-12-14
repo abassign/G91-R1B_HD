@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+	<name>fgcamera-mini-dialog</name>
+	<layout>hbox</layout>
+	<!--width>650</width-->
+	<color>
+		<alpha>0.0</alpha>
+	</color>
+	<!--x>20</x-->
+	<y>10</y>
+	<draggable>false</draggable>
+	<resizable>false</resizable>
+
+		<button>
+			<legend><![CDATA[<<]]></legend>
+			<pref-width>30</pref-width>
+			<pref-height>30</pref-height>
+			<binding>
+				<condition>
+					<not>
+						<property>/devices/status/keyboard/shift</property>
+					</not>
+				</condition>
+				<command>fgcamera-prev-category</command>
+			</binding>
+			<binding>
+				<condition>
+					<property>/devices/status/keyboard/shift</property>
+				</condition>
+				<command>nasal</command>
+				<script>print("shift")</script>
+			</binding>
+		</button>
+
+		<button>
+			<legend><![CDATA[<]]></legend>
+			<pref-width>30</pref-width>
+			<pref-height>30</pref-height>
+			<binding>
+				<command>fgcamera-prev-in-category</command>
+			</binding>
+		</button>
+
+		<button>
+			<legend><![CDATA[>]]></legend>
+			<pref-width>30</pref-width>
+			<pref-height>30</pref-height>
+			<binding>
+				<command>fgcamera-next-in-category</command>
+			</binding>
+		</button>
+
+		<button>
+			<legend><![CDATA[>>]]></legend>
+			<pref-width>30</pref-width>
+			<pref-height>30</pref-height>
+			<binding>
+				<command>fgcamera-next-category</command>
+			</binding>
+		</button>
+
+</PropertyList>
