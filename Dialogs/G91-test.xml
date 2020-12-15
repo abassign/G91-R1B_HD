@@ -768,7 +768,8 @@
     </group>
     
     <hrule/>
-    
+    <!-- Pos the objects -->
+    <!--
     <group>
         <layout>hbox</layout>
         <group>
@@ -853,4 +854,110 @@
             </slider>
         </group>
     </group>
+    -->
+    <!--
+    <group>
+        <layout>hbox</layout>
+        <group>
+            <layout>table</layout>
+            <text>
+                <label>Aerodinamc coefficients</label>
+                <halign>right</halign>
+                <row>0</row>
+                <col>0</col>
+            </text>
+            <text>
+                <label>CLB</label>
+                <halign>right</halign>
+                <row>1</row>
+                <col>0</col>
+            </text>
+            <slider>
+                <row>1</row>
+                <col>1</col>
+                <pref-width>100</pref-width>
+                <name>pos X axis</name>
+                <property>fdm/jsbsim/aero/clb-gain</property>
+                <min>-1.0</min>
+                <max>1.0</max>
+                <step>0.1</step>  
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </slider>
+            <text>
+                <row>1</row>
+                <col>2</col>
+                <label>999999</label>
+                <live>true</live>
+                <format>%3.3f </format>
+                <property>fdm/jsbsim/aero/clb-gain</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.0</blue>
+                </color>
+            </text>
+            <text>
+                <row>1</row>
+                <col>3</col>
+                <label>999999999</label>
+                <live>true</live>
+                <format>| %3.3f </format>
+                <property>fdm/jsbsim/aero/coefficient/Clb</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.9</blue>
+                </color>
+            </text>
+            <text>
+                <label>Pitch gain</label>
+                <halign>right</halign>
+                <row>1</row>
+                <col>4</col>
+            </text>
+            <slider>
+                <row>1</row>
+                <col>5</col>
+                <pref-width>100</pref-width>
+                <name>pos X axis</name>
+                <property>fdm/jsbsim/aero/pitch-gain</property>
+                <min>0.1</min>
+                <max>2.0</max>
+                <step>0.1</step>  
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </slider>
+            <text>
+                <row>1</row>
+                <col>6</col>
+                <label>999999</label>
+                <live>true</live>
+                <format>%3.3f </format>
+                <property>fdm/jsbsim/aero/pitch-gain</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.0</blue>
+                </color>
+            </text>
+            <text>
+                <row>1</row>
+                <col>7</col>
+                <label>999999999999999999</label>
+                <live>true</live>
+                <format>| cm_basic %3.3f </format>
+                <property>fdm/jsbsim/aero/coefficient/Cm_basic</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.9</blue>
+                </color>
+            </text>
+        </group>
+    </group>
+    -->
+    
 </PropertyList>

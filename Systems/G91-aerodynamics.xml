@@ -7,6 +7,9 @@ Changes by Joshua Davidson (it0uchpods) for stability, and fix some reversed sig
 
 <aerodynamics> 
     
+    <property value="0.5812">aero/clb-gain</property>
+    <property value="1.3">aero/pitch-gain</property>
+    
     <function name="aero/function/ground-effect-factor-lift">
         <description>Change in lift due to ground effect factor</description>
         <product>
@@ -324,7 +327,12 @@ Changes by Joshua Davidson (it0uchpods) for stability, and fix some reversed sig
                 <property>metrics/Sw-sqft</property>
                 <property>metrics/bw-ft</property>
                 <property>aero/beta-deg</property>
-                <value>0.5812</value> <!-- Tuning factor -->
+                <!-- old value -->
+                <value>0.5812</value>
+                <!-- Tuning factor -->
+                <!--
+                <property>aero/clb-gain</property>
+                -->
                 <table>
                     <independentVar lookup="row">aero/alpha-deg</independentVar>
                     <tableData>
@@ -414,7 +422,11 @@ Changes by Joshua Davidson (it0uchpods) for stability, and fix some reversed sig
                 <property>aero/qbar-psf</property>
                 <property>metrics/Sw-sqft</property>
                 <property>metrics/cbarw-ft</property>
-                <value>1.3</value> <!-- Tuning factor abassign 20190806 -->
+                <!-- Tuning factor abassign 20190806 -->
+                <value>1.3</value>
+                <!--
+                <property>aero/pitch-gain</property>
+                -->
                 <table>
                     <independentVar lookup="row">aero/alpha-deg</independentVar>
                     <tableData>

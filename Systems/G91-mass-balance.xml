@@ -17,19 +17,26 @@
     Test parameters 2019-10-25 Adriano Bassignana
     Similar to MB339 Tensor
     -->
-    
+    <!--
     <ixx unit="SLUG*FT2">10000</ixx>
     <iyy unit="SLUG*FT2">20200</iyy>
     <izz unit="SLUG*FT2">23500</izz>
     <ixy unit="SLUG*FT2">0.0</ixy>
     <ixz unit="SLUG*FT2">594.9233</ixz>
     <iyz unit="SLUG*FT2">0.0</iyz>
+    -->
+    <ixx unit="SLUG*FT2">15000</ixx>
+    <iyy unit="SLUG*FT2">20200</iyy>
+    <izz unit="SLUG*FT2">23500</izz>
+    <ixy unit="SLUG*FT2">0.0</ixy>
+    <ixz unit="SLUG*FT2">0.0</ixz>
+    <iyz unit="SLUG*FT2">0.0</iyz>
     <!--  -->
     <emptywt unit="LBS" >6834.0</emptywt>
     <location name="CG" unit="IN">
         <x> 212.00 </x>
         <y>   0.00 </y>
-        <z>   -0.10 </z>
+        <z>  -0.10 </z>
     </location>
     
     <pointmass name="hardPointDxExternal">
