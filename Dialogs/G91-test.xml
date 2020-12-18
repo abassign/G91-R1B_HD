@@ -964,9 +964,36 @@
         <layout>hbox</layout>
         <group>
             <layout>table</layout>
-            <slider>
+            <radio>
                 <row>0</row>
                 <col>0</col>
+                <halign>fill</halign>
+                <label>CG Ctrl Active</label>
+                <property>sim/G91/CG/pointMassExtraLibActive</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+                <binding>
+                    <command>nasal</command>
+                    <script><![CDATA[
+                        if (getprop("sim/G91/CG/pointMassExtraLibActive") == 0) {
+                            setprop("fdm/jsbsim/inertia/pointmass-weight-lbs[8]",0.0);
+                            setprop("fdm/jsbsim/inertia/pointmass-weight-lbs[9]",0.0);
+                        } else {
+                            var pmx_neg = getprop("sim/G91/CG/pointMassExtra-pmx_neg");
+                            if (pmx_neg == nil) pmx_neg = 0.0;
+                            var pmx_pos = getprop("sim/G91/CG/pointMassExtra-pmx_pos");
+                            if (pmx_pos == nil) pmx_pos = 0.0;
+                            setprop("fdm/jsbsim/inertia/pointmass-weight-lbs[8]",pmx_neg);
+                            setprop("fdm/jsbsim/inertia/pointmass-weight-lbs[9]",pmx_pos);
+                        };
+                    ]]></script>
+                </binding>
+            </radio>
+            <slider>
+                <row>0</row>
+                <col>1</col>
                 <pref-width>100</pref-width>
                 <name>Variation CG - Massa lib.</name>
                 <property>sim/G91/CG/pointMassExtraLib</property>
@@ -979,7 +1006,7 @@
             </slider>
             <text>
                 <row>0</row>
-                <col>1</col>
+                <col>2</col>
                 <label>999999</label>
                 <live>true</live>
                 <format>%3.0f</format>
@@ -992,7 +1019,7 @@
             </text>
             <slider>
                 <row>0</row>
-                <col>2</col>
+                <col>3</col>
                 <pref-width>100</pref-width>
                 <name>Point mass position X m</name>
                 <property>sim/G91/CG/pointMassExtraX</property>
@@ -1006,7 +1033,7 @@
                     <command>nasal</command>
                     <script><![CDATA[
                         var pmw = getprop("sim/G91/CG/pointMassExtraLib");
-                        var pmx = getprop("sim/G91/CG/pointMassExtraX");
+                        var pmx = -1.0 * getprop("sim/G91/CG/pointMassExtraX");
                         var pmx_neg = 0.0;
                         var pmx_pos = 0.0;
                         if (pmx < 0.0) {
@@ -1017,6 +1044,9 @@
                             pmx_neg = pmw / 2.0;
                             pmx_pos = pmw / 2.0;
                         };
+                        setprop("sim/G91/CG/pointMassExtraLibActive",1);
+                        setprop("sim/G91/CG/pointMassExtra-pmx_neg",pmx_neg);
+                        setprop("sim/G91/CG/pointMassExtra-pmx_pos",pmx_pos);
                         setprop("fdm/jsbsim/inertia/pointmass-weight-lbs[8]",pmx_neg);
                         setprop("fdm/jsbsim/inertia/pointmass-weight-lbs[9]",pmx_pos);
                     ]]></script>
@@ -1024,7 +1054,7 @@
             </slider>
             <text>
                 <row>0</row>
-                <col>3</col>
+                <col>4</col>
                 <label>999999999999</label>
                 <live>true</live>
                 <format>Pmax neg: %3.0f</format>
@@ -1037,7 +1067,7 @@
             </text>
             <text>
                 <row>0</row>
-                <col>4</col>
+                <col>5</col>
                 <label>999999999999</label>
                 <live>true</live>
                 <format>Pmax neg: %3.0f</format>
@@ -1050,7 +1080,7 @@
             </text>
             <text>
                 <row>0</row>
-                <col>5</col>
+                <col>6</col>
                 <label>999999999999</label>
                 <live>true</live>
                 <format>CG X in: %3.1f</format>
@@ -1063,7 +1093,7 @@
             </text>
             <text>
                 <row>0</row>
-                <col>6</col>
+                <col>7</col>
                 <label>999999999999</label>
                 <live>true</live>
                 <format>CG Y in: %3.1f</format>
@@ -1076,7 +1106,7 @@
             </text>
             <text>
                 <row>0</row>
-                <col>7</col>
+                <col>8</col>
                 <label>999999999999</label>
                 <live>true</live>
                 <format>CG Z in: %3.1f</format>
