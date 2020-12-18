@@ -140,8 +140,8 @@
     <!-- fdm/jsbsim/inertia/pointmass-weight-lbs[8] -->
     <pointmass name="CGX10Z00">
         <weight unit="LBS"> 0 </weight>
-        <location name="POINTMASS" unit="M">
-            <x>10</x>
+        <location name="POINTMASS" unit="IN">
+            <x>636</x>
             <y>0</y>
             <z>0</z>
         </location>
@@ -150,8 +150,8 @@
     <!-- fdm/jsbsim/inertia/pointmass-weight-lbs[9] -->
     <pointmass name="CGX-10Z00">
         <weight unit="LBS"> 0 </weight>
-        <location name="POINTMASS" unit="M">
-            <x>10</x>
+        <location name="POINTMASS" unit="IN">
+            <x>-424</x>
             <y>0</y>
             <z>0</z>
         </location>
