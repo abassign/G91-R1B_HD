@@ -686,7 +686,7 @@
             <function>
                 <sum>
                     <p>systems/gauges/radio/TACAN-NAV-ARN-21/indicated-bearing-true-deg</p>
-                    <p>systems/gauges/compass-flux-gate/indicated-bearing-deg</p>
+                    <p>systems/gauges/gyrocompass/magnetic-deg-var-linear</p>
                 </sum>
             </function>
         </fcs_function>
@@ -1024,9 +1024,14 @@
         </switch>
         
         <switch name="systems/gauges/radio/ID-249-ARN/gyrocompass-magnetic-deg-var">
-            <default value="0.0"/>
-            <test logic="AND" value="systems/gauges/PHI/attitude/gyrocompass-magnetic-deg-var">
+            <default value="0.0"/>   
+            <test logic="AND" value="systems/gauges/gyrocompass/magnetic-deg-var-linear">
                 systems/gauges/radio/ID-249-ARN/operative == 1.0
+                systems/gauges/gyrocompass/status-error == 0.0
+            </test>
+            <test logic="OR" value="systems/gauges/radio/ID-249-ARN/gyrocompass-magnetic-deg-var">
+                systems/gauges/radio/ID-249-ARN/operative == 0.0
+                systems/gauges/gyrocompass/status-error == 0.0
             </test>
         </switch>
         

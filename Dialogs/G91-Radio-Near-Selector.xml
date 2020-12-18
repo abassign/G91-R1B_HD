@@ -147,7 +147,7 @@
             <button>
                 <row>0</row>
                 <col>0</col>
-                <legend>      Automatic heading link to radial     </legend>
+                <legend>     Set the radial in the VOR course     </legend>
                 <halign>left</halign>
                 <binding>
                     <command>property-assign</command>
@@ -1467,6 +1467,112 @@
                     <red>0.9</red>
                     <green>0.9</green>
                     <blue>0.0</blue>
+                </color>
+            </text>
+        </group>
+    </group>
+    
+    <hrule/>
+    
+    <group>
+        <layout>hbox</layout>
+        <group>
+            <layout>table</layout>
+            <text>
+                <row>0</row>
+                <col>0</col>
+                <label>Pilot assistant heading status:</label>
+                <live>true</live>
+                <halign>left</halign>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.9</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>1</col>
+                <label>MMMMMMMM</label>
+                <live>true</live>
+                <halign>center</halign>
+                <property>fdm/jsbsim/systems/autopilot/gui/true-heading-radial-str</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.4</green>
+                    <blue>0.0</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>2</col>
+                <label> </label>
+                <live>true</live>
+                <halign>left</halign>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.9</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>3</col>
+                <label> </label>
+                <live>true</live>
+                <halign>left</halign>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.9</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>4</col>
+                <label> </label>
+                <live>true</live>
+                <halign>left</halign>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.9</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>5</col>
+                <label> </label>
+                <live>true</live>
+                <halign>left</halign>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.9</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>6</col>
+                <label> </label>
+                <live>true</live>
+                <halign>left</halign>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.9</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>7</col>
+                <label> </label>
+                <live>true</live>
+                <halign>left</halign>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.9</blue>
                 </color>
             </text>
         </group>

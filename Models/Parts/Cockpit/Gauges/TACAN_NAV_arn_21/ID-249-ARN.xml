@@ -718,7 +718,7 @@
             <red>2.0</red>
             <green>0.0</green>
             <blue>0.0</blue>
-            <factor-prop>fdm/jsbsim/systems/warning-lights/cockpit/wl-bus0-bus1-battery-out</factor-prop>
+            <factor-prop>fdm/jsbsim/systems/gauges/gyrocompass/light-error</factor-prop>
         </emission>
     </animation>
     
@@ -727,7 +727,7 @@
         <object-name>transparent_button (Meshed)</object-name>
         <transparency>
             <alpha>1.5</alpha>
-            <factor-prop>fdm/jsbsim/systems/warning-lights/cockpit/wl-bus0-bus1-battery-out-transparent</factor-prop>
+            <factor-prop>fdm/jsbsim/systems/gauges/gyrocompass/light-error-transparent</factor-prop>
         </transparency>
         <diffuse>
             <red>0.3</red>
@@ -748,7 +748,7 @@
             <red>1.5</red>
             <green>0.0</green>
             <blue>0.0</blue>
-            <factor-prop>fdm/jsbsim/systems/warning-lights/cockpit/wl-bus0-bus1-battery-out</factor-prop>
+            <factor-prop>fdm/jsbsim/systems/gauges/gyrocompass/light-error</factor-prop>
         </emission>
     </animation>
     
@@ -772,14 +772,14 @@
             <red>1.5</red>
             <green>1.5</green>
             <blue>0.3</blue>
-            <factor-prop>fdm/jsbsim/systems/warning-lights/cockpit/wl-bus0-bus1-battery-out</factor-prop>
+            <factor-prop>fdm/jsbsim/systems/gauges/gyrocompass/light-error</factor-prop>
         </emission>
     </animation>
     
     <model>
         <condition>
             <greater-than-equals>
-                <property>fdm/jsbsim/systems/warning-lights/cockpit/wl-bus0-bus1-battery-out</property>
+                <property>fdm/jsbsim/systems/gauges/gyrocompass/light-error</property>
                 <value>0.1</value>
             </greater-than-equals>
         </condition>
@@ -812,7 +812,7 @@
             <red>2.0</red>
             <green>3.5</green>
             <blue>1.5</blue>
-            <factor-prop>fdm/jsbsim/systems/warning-lights/cockpit/wl-bus0-bus1-battery-out</factor-prop>
+            <factor-prop>fdm/jsbsim/systems/gauges/gyrocompass/light-error</factor-prop>
         </emission>
     </animation>
     

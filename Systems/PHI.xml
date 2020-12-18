@@ -183,81 +183,6 @@
         
     </channel>
     
-    <!-- Gyrocompass -->
-    
-    <channel name="systems gauges PHI attitude gyrocompass operative" execrate="4">
-        
-        <!-- NOTE: is necessary to do big daly and oscillation for true heading approssimation -->
-        
-        <switch name="systems/gauges/PHI/attitude/gyrocompass-on">
-            <default value="0"/>
-            <test logic="AND" value="1">
-                systems/electric/bus[1]/gyrocompass/fuse == 1
-                systems/electric/bus[1]/gyrocompass/sw == 1
-                systems/electric/bus[1]/V GE 18.0
-                systems/electric/inv-primary/V GT 110.0
-                systems/gauges/PHI/operative == 1
-            </test>
-        </switch>
-        
-        <switch name="systems/gauges/PHI/attitude/gyrocompass-magnetic-deg">
-            <default value="0"/>
-            <test logic="AND" value="/orientation/heading-magnetic-deg">
-                systems/gauges/PHI/attitude/gyrocompass-on == 1
-            </test>
-        </switch>
-        
-        <summer name="systems/gauges/PHI/attitude/gyrocompass-magnetic-deg-var">
-            <input>-systems/gauges/PHI/indicator/var-deg</input>
-            <input>systems/gauges/PHI/attitude/gyrocompass-magnetic-deg</input>
-        </summer>
-        
-        <switch name="systems/electric/bus[1]/gyrocompass/I">
-            <default value="0.0"/>
-            <test logic="AND" value="0.7">
-                systems/gauges/PHI/attitude/gyrocompass-on == 1
-            </test>
-        </switch>
-        
-        <switch name="systems/gauges/PHI/attitude/gyrocompass-magnetic-deg-on">
-            <default value="0.0"/>
-            <test logic="AND" value="1.0">
-                <test logic="AND">
-                    systems/gauges/PHI/attitude/gyrocompass-on == 1
-                </test>
-                <test logic="OR">
-                    systems/gauges/PHI/indicator/is-phi-on == 1
-                    systems/gauges/PHI/indicator/is-ps-on == 1
-                </test>
-            </test>
-        </switch>
-        
-        <linear_actuator name="systems/gauges/PHI/attitude/gyrocompass-magnetic-deg-var-linear-360">
-            <input>systems/gauges/PHI/attitude/gyrocompass-magnetic-deg-var</input>
-            <module>360</module>
-            <lag>2.0</lag>
-            <set>systems/gauges/PHI/attitude/gyrocompass-magnetic-deg-on</set>
-        </linear_actuator>
-        
-        <fcs_function name="systems/gauges/PHI/attitude/gyrocompass-magnetic-deg-var-linear">
-            <function>
-                <difference>
-                    <p>systems/gauges/PHI/attitude/gyrocompass-magnetic-deg-var-linear-360</p>
-                    <product>
-                        <integer>
-                            <quotient>
-                                <p>systems/gauges/PHI/attitude/gyrocompass-magnetic-deg-var-linear</p>
-                                <v>360.0</v>
-                            </quotient>
-                        </integer>
-                        <v>360.0</v>
-                    </product>
-                </difference>
-            </function>
-        </fcs_function>
-        
-    </channel>
-    
     <!-- TAS calculator -->
     
     <channel name="systems gauges PHI calculate TAS" execrate="16">
@@ -430,6 +355,24 @@
     </channel>
     
     
+    <channel name="systems gauges PHI calculate the gyrocompass magnetic flux gate" execrate="8">
+    
+        <switch name="systems/gauges/PHI/gyrocompass/magnetic-deg-on">
+            <default value="0.0"/>
+            <test logic="OR" value="1.0">
+                systems/gauges/PHI/indicator/is-phi-on == 1
+                systems/gauges/PHI/indicator/is-ps-on == 1
+            </test>
+        </switch>
+        
+        <lag_filter name="systems/gauges/PHI/gyrocompass/magnetic-deg-var-linear">
+            <input>systems/gauges/gyrocompass/magnetic-deg-var</input>
+            <c1>4.0</c1>
+        </lag_filter>
+        
+    </channel>
+    
+    
     <channel name="systems gauges PHI calculate speed and space" execrate="4">
         
         <switch name="systems/gauges/PHI/speed-mil-sensor">
@@ -448,7 +391,7 @@
                     <v>-1.0</v>
                     <sin>
                         <toradians>
-                            <p>systems/gauges/PHI/attitude/gyrocompass-magnetic-deg-var-linear</p>
+                            <p>systems/gauges/PHI/gyrocompass/magnetic-deg-var-linear</p>
                         </toradians>
                     </sin>
                 </product>
@@ -468,7 +411,7 @@
                     <v>-1.0</v>
                     <cos>
                         <toradians>
-                            <p>systems/gauges/PHI/attitude/gyrocompass-magnetic-deg-var-linear</p>
+                            <p>systems/gauges/PHI/gyrocompass/magnetic-deg-var-linear</p>
                         </toradians>
                     </cos>
                 </product>
@@ -1735,7 +1678,7 @@
                         <p>systems/gauges/PHI/program/route[4]/phi</p>
                         <p>systems/gauges/PHI/program/route[5]/phi</p>
                     </switch>
-                    <v>0.0</v>
+                    <p>systems/gauges/PHI/program/route-phi</p>
                 </ifthen>
             </function>
         </fcs_function>
@@ -1762,7 +1705,12 @@
             </function>
         </fcs_function>
         
-        <fcs_function name="systems/gauges/PHI/indicator/brg-360">
+        <!--
+        The differential angle that allows reaching the target is defined.
+        This particular differential method was designed to avoid interfering with the heading system used in Pilot Assistance.
+        -->
+        
+        <fcs_function name="systems/gauges/PHI/indicator/differential">
             <function>
                 <ifthen>
                     <and>
@@ -1771,7 +1719,7 @@
                         <gt><p>systems/gauges/PHI/program/route-pushed</p><v>0.0</v></gt>
                     </and>
                     <difference>
-                        <p>systems/gauges/PHI/attitude/gyrocompass-magnetic-deg-var-linear</p>
+                        <p>systems/gauges/PHI/gyrocompass/magnetic-deg-var-linear</p>
                         <switch>
                             <p>systems/gauges/PHI/program/route-pushed</p>
                             <p>systems/gauges/PHI/program/route[1]/phi</p>
@@ -1781,6 +1729,7 @@
                             <p>systems/gauges/PHI/program/route[4]/phi</p>
                             <p>systems/gauges/PHI/program/route[5]/phi</p>
                         </switch>
+                        <v>0.0</v>
                     </difference>
                     <ifthen>
                         <and>
@@ -1789,8 +1738,9 @@
                             <eq><p>systems/gauges/PHI/program/route-pushed</p><v>0.0</v></eq>
                         </and>
                         <difference>
-                            <p>systems/gauges/PHI/attitude/gyrocompass-magnetic-deg-var-linear</p>
+                            <p>systems/gauges/PHI/gyrocompass/magnetic-deg-var-linear</p>
                             <p>systems/gauges/PHI/program/route[1]/phi</p>
+                            <v>0.0</v>
                         </difference>
                         <v>0.0</v>
                     </ifthen>
@@ -1798,14 +1748,20 @@
             </function>
         </fcs_function>
         
+        <!--
+        "indicator / brg" defines the offset value that you will need to have to get the actual direction.
+        Therefore it is a purely differential value that will be used by the actuator to steer the aircraft.
+        For this the value will become null once the right direction is reached.
+        -->
+        
         <fcs_function name="systems/gauges/PHI/indicator/brg">
             <function>
                 <difference>
-                    <p>systems/gauges/PHI/indicator/brg-360</p>
+                    <p>systems/gauges/PHI/indicator/differential</p>
                     <product>
                         <integer>
                             <quotient>
-                                <p>systems/gauges/PHI/indicator/brg-360</p>
+                                <p>systems/gauges/PHI/indicator/differential</p>
                                 <v>360.0</v>
                             </quotient>
                         </integer>
@@ -1814,6 +1770,10 @@
                 </difference>
             </function>
         </fcs_function>
+
+        <!--
+        The systems/gauges/PHI/indicator/brg-lag is the correct direction arrow
+        -->
         
         <fcs_function name="systems/gauges/PHI/indicator/brg-correct">
             <function>
@@ -1837,15 +1797,42 @@
                 </ifthen>
             </function>
         </fcs_function>
-        
+
         <!--
-            Tthis code resolve the arrow rotation direction problem that is not resolve by actuator
+            This code resolve the arrow rotation direction problem that is not resolve by actuator
+            The systems/gauges/PHI/indicator/brg-lag is the direction arrow with smooting moviment
         -->
+        
+        <!-- PROBLEMA DEL TO-FROM che si stacca -->
+        
+        <fcs_function name="systems/gauges/PHI/indicator/brg-correct-mod">
+            <function>
+                <ifthen>
+                    <and>
+                        <p>systems/gauges/PHI/operative</p>
+                        <p>systems/gauges/PHI/indicator/is-phi-on</p>
+                    </and>
+                    <difference>
+                        <ifthen>
+                            <p>systems/gauges/PHI/program/route-from</p>
+                            <sum>
+                                <p>systems/gauges/PHI/program/route-phi</p>
+                                <v>180</v>
+                            </sum>
+                            <p>systems/gauges/PHI/program/route-phi</p>
+                        </ifthen>
+                        <p>systems/gauges/PHI/wind/correction-WCA</p>
+                    </difference>
+                    <v>0.0</v>
+                </ifthen>
+            </function>
+        </fcs_function>
+
         <angle name="systems/gauges/PHI/indicator/brg-lag-difference" unit="DEG">
-            <source_angle unit="DEG">systems/gauges/PHI/indicator/brg-correct</source_angle>
+            <source_angle unit="DEG">systems/gauges/PHI/indicator/brg-correct-mod</source_angle>
             <target_angle unit="DEG">systems/gauges/PHI/indicator/brg-lag</target_angle>
         </angle>
-        
+
         <scheduled_gain name="systems/gauges/PHI/indicator/brg-lag-factor">
             <input>systems/gauges/PHI/operative</input>
             <table>
@@ -1971,21 +1958,6 @@
                 systems/gauges/PHI/indicator/switch == 2
             </test>
         </switch>
-        
-    </channel>
-    
-    
-    <channel name="systems gauges PHI attitude" execrate="8">
-        
-        <pure_gain name="systems/gauges/PHI/attitude/heading-true-deg">
-            <input>attitude/heading-true-rad</input>
-            <gain>57.2958</gain>
-        </pure_gain>
-        
-        <summer name="systems/gauges/PHI/attitude/magnetic-declination-true-deg">
-            <input>-/orientation/heading-magnetic-deg</input>
-            <input>systems/gauges/PHI/attitude/heading-true-deg</input>
-        </summer>
         
     </channel>
     

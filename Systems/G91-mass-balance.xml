@@ -34,11 +34,12 @@
     <!--  -->
     <emptywt unit="LBS" >6834.0</emptywt>
     <location name="CG" unit="IN">
-        <x> 212.00 </x>
+        <x> 213.00 </x>
         <y>   0.00 </y>
         <z>  -0.10 </z>
     </location>
     
+    <!-- fdm/jsbsim/inertia/pointmass-weight-lbs[0] -->
     <pointmass name="hardPointDxExternal">
         <weight unit="LBS"> 0 </weight>
         <form shape="cylinder">
@@ -52,6 +53,7 @@
         </location>
     </pointmass>
     
+    <!-- fdm/jsbsim/inertia/pointmass-weight-lbs[1] -->
     <pointmass name="hardPointDxInternal">
         <weight unit="LBS"> 0 </weight>
         <form shape="cylinder">
@@ -65,6 +67,7 @@
         </location>
     </pointmass>
     
+    <!-- fdm/jsbsim/inertia/pointmass-weight-lbs[2] -->
     <pointmass name="hardPointSxInternal">
         <weight unit="LBS"> 0 </weight>
         <form shape="cylinder">
@@ -78,6 +81,7 @@
         </location>
     </pointmass>
     
+    <!-- fdm/jsbsim/inertia/pointmass-weight-lbs[3] -->
     <pointmass name="hardPointSxExternal">
         <weight unit="LBS"> 0 </weight>
         <form shape="cylinder">
@@ -93,6 +97,7 @@
     
     <!-- JATO M8 1-2-3-4 -->
     
+    <!-- fdm/jsbsim/inertia/pointmass-weight-lbs[4] -->
     <pointmass name="JATO M8 1 DRY">
         <weight unit="LBS"> 0 </weight>
         <location name="POINTMASS" unit="M">
@@ -102,6 +107,7 @@
         </location>
     </pointmass>
     
+    <!-- fdm/jsbsim/inertia/pointmass-weight-lbs[5] -->
     <pointmass name="JATO M8 2 DRY">
         <weight unit="LBS"> 0 </weight>
         <location name="POINTMASS" unit="M">
@@ -111,6 +117,7 @@
         </location>
     </pointmass>
     
+    <!-- fdm/jsbsim/inertia/pointmass-weight-lbs[6] -->
     <pointmass name="JATO M8 3 DRY">
         <weight unit="LBS"> 0 </weight>
         <location name="POINTMASS" unit="M">
@@ -120,6 +127,7 @@
         </location>
     </pointmass>
     
+    <!-- fdm/jsbsim/inertia/pointmass-weight-lbs[7] -->
     <pointmass name="JATO M8 4 DRY">
         <weight unit="LBS"> 0 </weight>
         <location name="POINTMASS" unit="M">
@@ -128,4 +136,25 @@
             <z> -0.83 </z>
         </location>
     </pointmass>
+    
+    <!-- fdm/jsbsim/inertia/pointmass-weight-lbs[8] -->
+    <pointmass name="CGX10Z00">
+        <weight unit="LBS"> 0 </weight>
+        <location name="POINTMASS" unit="M">
+            <x>10</x>
+            <y>0</y>
+            <z>0</z>
+        </location>
+    </pointmass>
+    
+    <!-- fdm/jsbsim/inertia/pointmass-weight-lbs[9] -->
+    <pointmass name="CGX-10Z00">
+        <weight unit="LBS"> 0 </weight>
+        <location name="POINTMASS" unit="M">
+            <x>10</x>
+            <y>0</y>
+            <z>0</z>
+        </location>
+    </pointmass>
+    
 </mass_balance>

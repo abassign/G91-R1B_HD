@@ -2,6 +2,7 @@
 
 <system name="compass flux gate">
     
+    
     <property value="0.0">systems/gauges/compass-flux-gate/indicated-bearing-deg</property>
     <property value="0.0">systems/gauges/compass-flux-gate/operative-start-stop</property>
     <property value="0.0">systems/gauges/compass-flux-gate/operative-heating</property>

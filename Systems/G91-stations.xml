@@ -73,7 +73,7 @@ Description: G91R2 Canopy automation
             <test logic="AND" value="systems/stations/stationSxExternal/sumWeight">
                 systems/stations/hardPointSxExternal/Count GT 0
             </test>
-            <output>inertia/pointmass-weight-lbs[0]</output>
+            <output>fdm/jsbsim/inertia/pointmass-weight-lbs[0]</output>
         </switch>
         
         <switch name="stationSxInternal-weight">
@@ -81,7 +81,7 @@ Description: G91R2 Canopy automation
             <test logic="AND" value="systems/stations/stationSxInternal/sumWeight">
                 systems/stations/hardPointSxInternal/Count GT 0
             </test>
-            <output>inertia/pointmass-weight-lbs[1]</output>
+            <output>fdm/jsbsim/inertia/pointmass-weight-lbs[1]</output>
         </switch>
         
         <switch name="stationDxInternal-weight">
@@ -89,7 +89,7 @@ Description: G91R2 Canopy automation
             <test logic="AND" value="systems/stations/stationDxInternal/sumWeight">
                 systems/stations/hardPointDxInternal/Count GT 0
             </test>
-            <output>inertia/pointmass-weight-lbs[2]</output>
+            <output>fdm/jsbsim/inertia/pointmass-weight-lbs[2]</output>
         </switch>
         
         <switch name="stationDxExternal-weight">
@@ -97,7 +97,7 @@ Description: G91R2 Canopy automation
             <test logic="AND" value="systems/stations/stationDxExternal/sumWeight">
                 systems/stations/hardPointDxExternal/Count GT 0
             </test>
-            <output>inertia/pointmass-weight-lbs[3]</output>
+            <output>fdm/jsbsim/inertia/pointmass-weight-lbs[3]</output>
         </switch>
         
     </channel>

@@ -960,4 +960,134 @@
     </group>
     -->
     
+     <group>
+        <layout>hbox</layout>
+        <group>
+            <layout>table</layout>
+            <slider>
+                <row>0</row>
+                <col>0</col>
+                <pref-width>100</pref-width>
+                <name>Variation CG - Massa lib.</name>
+                <property>sim/G91/CG/pointMassExtraLib</property>
+                <min>0</min>
+                <max>100</max>
+                <step>10</step>  
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </slider>
+            <text>
+                <row>0</row>
+                <col>1</col>
+                <label>999999</label>
+                <live>true</live>
+                <format>%3.0f</format>
+                <property>sim/G91/CG/pointMassExtraLib</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.0</blue>
+                </color>
+            </text>
+            <slider>
+                <row>0</row>
+                <col>2</col>
+                <pref-width>100</pref-width>
+                <name>Point mass position X m</name>
+                <property>sim/G91/CG/pointMassExtraX</property>
+                <min>-1</min>
+                <max>1</max>
+                <step>0.1</step>  
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+                <binding>
+                    <command>nasal</command>
+                    <script><![CDATA[
+                        var pmw = getprop("sim/G91/CG/pointMassExtraLib");
+                        var pmx = getprop("sim/G91/CG/pointMassExtraX");
+                        var pmx_neg = 0.0;
+                        var pmx_pos = 0.0;
+                        if (pmx < 0.0) {
+                            pmx_neg = -pmw * pmx;
+                        } else if (pmx > 0.0) {
+                            pmx_pos = pmw * pmx;
+                        } else {
+                            pmx_neg = pmw / 2.0;
+                            pmx_pos = pmw / 2.0;
+                        };
+                        setprop("fdm/jsbsim/inertia/pointmass-weight-lbs[8]",pmx_neg);
+                        setprop("fdm/jsbsim/inertia/pointmass-weight-lbs[9]",pmx_pos);
+                    ]]></script>
+                </binding>
+            </slider>
+            <text>
+                <row>0</row>
+                <col>3</col>
+                <label>999999999999</label>
+                <live>true</live>
+                <format>Pmax neg: %3.0f</format>
+                <property>fdm/jsbsim/inertia/pointmass-weight-lbs[8]</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.0</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>4</col>
+                <label>999999999999</label>
+                <live>true</live>
+                <format>Pmax neg: %3.0f</format>
+                <property>fdm/jsbsim/inertia/pointmass-weight-lbs[9]</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.0</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>5</col>
+                <label>999999999999</label>
+                <live>true</live>
+                <format>CG X in: %3.1f</format>
+                <property>fdm/jsbsim/inertia/cg-x-in</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.0</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>6</col>
+                <label>999999999999</label>
+                <live>true</live>
+                <format>CG Y in: %3.1f</format>
+                <property>fdm/jsbsim/inertia/cg-y-in</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.0</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>7</col>
+                <label>999999999999</label>
+                <live>true</live>
+                <format>CG Z in: %3.1f</format>
+                <property>fdm/jsbsim/inertia/cg-z-in</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.0</blue>
+                </color>
+            </text>
+        </group>
+    </group>
+    
 </PropertyList>

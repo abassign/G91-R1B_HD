@@ -328,7 +328,7 @@
             <test logic = "AND" value = "systems/jato/dry-weight">
                 systems/jato/rocket_number_1 == 1
             </test>
-            <output>inertia/pointmass-weight-lbs[2]</output>
+            <output>fdm/jsbsim/inertia/pointmass-weight-lbs[4]</output>
         </switch>
         
         <switch>
@@ -336,7 +336,7 @@
             <test logic = "AND" value = "systems/jato/dry-weight">
                 systems/jato/rocket_number_2 == 1
             </test>
-            <output>inertia/pointmass-weight-lbs[3]</output>
+            <output>fdm/jsbsim/inertia/pointmass-weight-lbs[5]</output>
         </switch>
         
         <switch>
@@ -344,7 +344,7 @@
             <test logic = "AND" value = "systems/jato/dry-weight">
                 systems/jato/rocket_number_3 == 1
             </test>
-            <output>inertia/pointmass-weight-lbs[4]</output>
+            <output>fdm/jsbsim/inertia/pointmass-weight-lbs[6]</output>
         </switch>
         
         <switch>
@@ -352,7 +352,7 @@
             <test logic = "AND" value = "systems/jato/dry-weight">
                 systems/jato/rocket_number_4 == 1
             </test>
-            <output>inertia/pointmass-weight-lbs[5]</output>
+            <output>fdm/jsbsim/inertia/pointmass-weight-lbs[7]</output>
         </switch>
         
     </channel>

@@ -82,6 +82,7 @@
     <system file="radio-PTR175"/>
     <system file="ADF-MARCONI-8283"/>
     <system file="TACAN-NAV-ARN-21"/>
+    <system file="gyrocompass"/>
     <system file="compass-flux-gate"/>
     <system file="ATC-transponder"/>
     <system file="PHI"/>
