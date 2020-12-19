@@ -34,7 +34,7 @@
     <!--  -->
     <emptywt unit="LBS" >6834.0</emptywt>
     <location name="CG" unit="IN">
-        <x> 213.00 </x>
+        <x> 209.00 </x>
         <y>   0.00 </y>
         <z>  -0.10 </z>
     </location>
@@ -141,7 +141,7 @@
     <pointmass name="CGX10Z00">
         <weight unit="LBS"> 0 </weight>
         <location name="POINTMASS" unit="IN">
-            <x>848</x>
+            <x>836</x>
             <y>0</y>
             <z>0</z>
         </location>
@@ -151,7 +151,7 @@
     <pointmass name="CGX-10Z00">
         <weight unit="LBS"> 0 </weight>
         <location name="POINTMASS" unit="IN">
-            <x>-636</x>
+            <x>-627</x>
             <y>0</y>
             <z>0</z>
         </location>

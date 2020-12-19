@@ -245,7 +245,7 @@
                 </menu>
             </default>
         </menubar>
-        
+
         <G91 include="Models/G91_Params.xml"/>
         
     </sim>
@@ -279,7 +279,9 @@
             <!-- Load modules -->
             <file>Aircraft/G91-R1B_HD/Nasal/load_modules.nas</file>
             <!-- FGCamera section -->
+            <!--
             <file>Aircraft/G91-R1B_HD/Nasal/fgcamera/loader.nas</file>
+            -->
         </general>
         
         <canvas_gauges>

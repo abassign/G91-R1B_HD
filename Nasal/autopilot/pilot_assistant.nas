@@ -1484,6 +1484,12 @@ var pilot_assistant = func() {
                     setprop("fdm/jsbsim/systems/autopilot/landing-slope-error",landing_22_subStatus_error_lag);
                     setprop("fdm/jsbsim/systems/autopilot/landing-slope-target",landing_22_slope_target);
                     setprop("fdm/jsbsim/systems/autopilot/gui/speed-value",landing_22_set_cas_lag);
+                    
+                    #// Emergency open dragchute
+                    if (runway_end_to_airplane_dist < 3200.0 and delta_h_ft < 15.0) {
+                        landing_22_set_cas = 50;
+                        if (getprop("fdm/jsbsim/systems/dragchute/status") == 0.0) setprop("fdm/jsbsim/systems/dragchute/activate",1);
+                    };
                 }
                 
                 #// Slope ADV for input filter to PID
@@ -1648,18 +1654,19 @@ var pilot_assistant = func() {
                 setprop("fdm/jsbsim/systems/autopilot/landing-slope-target",-9.0);
                 setprop("fdm/jsbsim/systems/autopilot/gui/speed-value",30.0);
                 setprop("fdm/jsbsim/systems/autopilot/steer-brake-active",2);
-                setprop("fdm/jsbsim/systems/dragchute/activate",1.0);
                 setprop("fdm/jsbsim/systems/autopilot/phase-landing",2.0);
                 setprop("fdm/jsbsim/systems/autopilot/gui/speed-automatic-flap",1.0);
                 setprop("fdm/jsbsim/systems/autopilot/speed-brake-set-activate",1.0);
                 setprop("fdm/jsbsim/systems/autopilot/gui/true-heading-radial",0.0);
+                
                 if (getprop("fdm/jsbsim/systems/autopilot/gui/landing-short-profile") > 0.0) {
                     setprop("fdm/jsbsim/systems/dragchute/activate",1.0);
-                }
+                };
+                
                 rwy_coord_end_offset = airport_select.runways[rwy_select].length;
                 if (rwy_coord_end_offset > 1000.0) rwy_coord_end_offset = 1000.0;
                 rwy_coord_end.apply_course_distance(airport_select.runways[rwy_select].heading,rwy_coord_end_offset);
-            }
+            };
         } else if (pilot_ass_status_id == 3.0) {
             setprop("fdm/jsbsim/systems/autopilot/altitude-QFE-set-active-stop",1);
             setprop("fdm/jsbsim/systems/autopilot/speed-brake-set-activate",1);
@@ -1705,17 +1712,12 @@ var pilot_assistant = func() {
                     if (runway_end_to_airplane_dist < 0.3 and getprop("fdm/jsbsim/velocities/vtrue-kts") > 10 and getprop("fdm/jsbsim/systems/autopilot/gui/landing-short-profile") > 0.0) {
                         setprop("/controls/gear/brake-parking",1);
                         landing_30_brake_stop = 1;
-                    }
-                }
+                    };
+                };
                 #// Dragchute activate
-                if (gear_unit_contact >= 2 and getprop("fdm/jsbsim/systems/dragchute/status") == 0.0) {
+                if (gear_unit_contact >= 2 and runway_end_to_airplane_dist < 2500.0) {
                     setprop("fdm/jsbsim/systems/handle-switches/sw-handle-brake-activate",1);
-                }
-                #// Dragchute camera view
-                if (getprop("fdm/jsbsim/systems/dragchute/active-view") > 0.01 and defaultViewInTheEvent == nil) {
-                    defaultViewInTheEvent = view.index;
-                    view.setView(view.indexof("Dragchute view"));
-                }
+                };
                 if (testing_log_active >= 1 and timeStepSecond == 1) {
                     print("Landing 3.0 >"
                     ,sprintf(" Dist (nm): %6.1f",runway_to_airplane_dist_nm)
@@ -1734,8 +1736,8 @@ var pilot_assistant = func() {
                     ,sprintf(" Dragchute: %0f",getprop("fdm/jsbsim/systems/dragchute/magnitude"))
                     ,sprintf(" | BS: %1.0f",getprop("/controls/gear/brake-parking"))
                     );
-                }
-            }
+                };
+            };
         } else if (pilot_ass_status_id == 4.0) {
             setprop("fdm/jsbsim/systems/autopilot/altitude-QFE-set-active-stop",1);
             setprop("fdm/jsbsim/systems/autopilot/speed-brake-set-activate",1);
@@ -1754,15 +1756,15 @@ var pilot_assistant = func() {
                 if (runway_end_to_airplane_dist < 0.3 and getprop("fdm/jsbsim/velocities/vtrue-kts") > 10 and getprop("fdm/jsbsim/systems/autopilot/gui/landing-short-profile") > 0.0) {
                     setprop("/controls/gear/brake-parking",1);
                     landing_40_brake_stop = 1;
-                }
-            }
+                };
+            };
             delayCycleGeneral = delayCycleGeneral - 1;
             if (delayCycleGeneral <= 0) {
                 pilot_ass_status_id = 0;
                 setprop("fdm/jsbsim/systems/autopilot/gui/heading-control",0);
                 setprop("fdm/jsbsim/systems/autopilot/gui/altitude-active",0);
                 setprop("fdm/jsbsim/systems/autopilot/gui/speed-control",0);
-            }
+            };
             if (testing_log_active >= 1 and timeStepSecond == 1) {
                 print("Landing 4.0 >"
                 ,sprintf(" Dist (nm): %6.1f",runway_to_airplane_dist_nm)
@@ -1779,8 +1781,13 @@ var pilot_assistant = func() {
                 ,sprintf(" (%6.2f)",getprop("fdm/jsbsim/systems/autopilot/right-steer-brake"))
                 ,sprintf(" | BS: %1.0f",getprop("/controls/gear/brake-parking"))
                 );
-            }
-        }
+            };
+        };    
+        #// Dragchute camera view
+        if (getprop("fdm/jsbsim/systems/dragchute/active-view") > 0.01 and defaultViewInTheEvent == nil) {
+            defaultViewInTheEvent = view.index;
+            view.setView(view.indexof("Dragchute view"));
+        };
         #
         #// Output
         #
@@ -1801,7 +1808,7 @@ var pilot_assistant = func() {
             landing_status = "Stopping " ~ landing_status;
         } else {
             landing_status = "Stopped " ~ landing_status;
-        }
+        };
         setprop("fdm/jsbsim/systems/autopilot/gui/airport_landing_status",landing_status);
     } else {
         #// No landing
