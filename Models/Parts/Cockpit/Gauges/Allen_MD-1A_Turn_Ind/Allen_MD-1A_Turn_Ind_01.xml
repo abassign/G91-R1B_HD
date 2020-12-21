@@ -144,14 +144,14 @@
         <type>material</type>
         <object-name>Support (Meshed)</object-name>
         <diffuse>
-            <red>0.40</red>
-            <green>0.45</green>
-            <blue>0.38</blue>
+            <red>0.33</red>
+            <green>0.50</green>
+            <blue>0.50</blue>
         </diffuse>
         <ambient>
-            <red>0.1</red>
-            <green>0.1</green>
-            <blue>0.1</blue>
+            <red>0.08</red>
+            <green>0.12</green>
+            <blue>0.12</blue>
         </ambient>
         <emission>
             <red>0.035</red>

@@ -254,14 +254,14 @@
         <type>material</type>
         <object-name>central (Meshed)</object-name>
         <diffuse>
-            <red>0.66</red>
-            <green>0.99</green>
-            <blue>0.99</blue>
+            <red>0.44</red>
+            <green>0.66</green>
+            <blue>0.66</blue>
         </diffuse>
         <ambient>
-            <red>0.16</red>
-            <green>0.25</green>
-            <blue>0.25</blue>
+            <red>0.32</red>
+            <green>0.50</green>
+            <blue>0.50</blue>
         </ambient>
         <specular>
             <red>0.1</red>
