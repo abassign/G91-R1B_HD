@@ -254,14 +254,14 @@
         <type>material</type>
         <object-name>central (Meshed)</object-name>
         <diffuse>
-            <red>0.61</red>
-            <green>0.65</green>
-            <blue>0.67</blue>
+            <red>0.66</red>
+            <green>0.99</green>
+            <blue>0.99</blue>
         </diffuse>
         <ambient>
-            <red>0.3</red>
-            <green>0.3</green>
-            <blue>0.3</blue>
+            <red>0.16</red>
+            <green>0.25</green>
+            <blue>0.25</blue>
         </ambient>
         <specular>
             <red>0.1</red>
@@ -561,7 +561,7 @@
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/TACAN_NAV_arn_21/ID-249-ARN.xml</path>
         <offsets>
-            <x-m>0.0125</x-m>
+            <x-m>0.016</x-m>
             <y-m>-0.189</y-m>
             <z-m>0.146</z-m>
             <pitch-deg>0.0</pitch-deg>
@@ -577,7 +577,7 @@
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/Kollsman_ME4/Kollsman_ME4.xml</path>
         <offsets>
-            <x-m>0.016</x-m>
+            <x-m>0.019</x-m>
             <y-m>-0.101</y-m>
             <z-m>0.148</z-m>
             <pitch-deg>0.0</pitch-deg>
