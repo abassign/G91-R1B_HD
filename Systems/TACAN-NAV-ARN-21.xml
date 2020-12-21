@@ -682,14 +682,10 @@
             <hysteresis_width> 0.5 </hysteresis_width>
         </actuator>
         
-        <fcs_function name="systems/gauges/radio/Collins-331-C4/indicated-heading-deg-calc">
-            <function>
-                <sum>
-                    <p>systems/gauges/radio/TACAN-NAV-ARN-21/indicated-bearing-true-deg</p>
-                    <p>systems/gauges/gyrocompass/magnetic-deg-var-linear</p>
-                </sum>
-            </function>
-        </fcs_function>
+        <summer name="systems/gauges/radio/Collins-331-C4/indicated-heading-deg-calc">
+            <input>systems/gauges/radio/TACAN-NAV-ARN-21/indicated-bearing-true-deg</input>
+            <input>-systems/gauges/gyrocompass/magnetic-deg-var-linear</input>
+        </summer>
         
         <linear_actuator name="systems/gauges/radio/Collins-331-C4/indicated-heading-deg-la">
             <input>systems/gauges/radio/Collins-331-C4/indicated-heading-deg-calc</input>

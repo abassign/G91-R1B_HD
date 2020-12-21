@@ -620,9 +620,9 @@
             <button>
                 <row>0</row>
                 <col>1</col>
-                <pref-width>100</pref-width>
                 <halign>left</halign>
-                <legend>TACAN / vor</legend>
+                <pref-width>100</pref-width>
+                <legend>VOR / TACAN</legend>
                 <halign>fill</halign>
                 <live>true</live>
                 <binding>
@@ -635,6 +635,7 @@
                 <row>0</row>
                 <col>2</col>
                 <halign>left</halign>
+                <label>MMMMMMMMMMMMMMMMMMMMMMMMMMMMMM</label>
                 <live>true</live>
                 <property>sim/G91/configuration/gauges/tacan-nav-active-desc</property>
                 <color>
@@ -655,6 +656,7 @@
                 <row>0</row>
                 <col>4</col>
                 <halign>left</halign>
+                <label>MMMMMMMMMM</label>
                 <live>true</live>
                 <format>Bearing %3.0f deg</format>
                 <property>fdm/jsbsim/systems/gauges/radio/TACAN-NAV-ARN-21/indicated-bearing-true-deg</property>
@@ -668,6 +670,7 @@
                 <row>0</row>
                 <col>5</col>
                 <halign>left</halign>
+                <label>MMMMMMMMMM</label>
                 <live>true</live>
                 <format>Distance %3.0f nm</format>
                 <property>fdm/jsbsim/systems/gauges/radio/TACAN-NAV-ARN-21/distance-nm</property>
@@ -930,7 +933,7 @@
             </button>
         </group>
     </group>
-            
+    <!--
     <hrule/>
     
     <group>
@@ -976,5 +979,5 @@
             </text>
         </group>
     </group>
-    
+    -->
 </PropertyList> 

@@ -43,7 +43,7 @@ var timer_tacan_arn_21 = maketimer(0.5, func() {
             setprop("fdm/jsbsim/systems/gauges/radio/TACAN-NAV-ARN-21/NAV-Active",1);
             setprop("fdm/jsbsim/systems/gauges/radio/TACAN-NAV-ARN-21/MBT-Active",1);
             setprop("sim/G91/configuration/gauges/tacan-nav-active-state",1);
-            setprop("sim/G91/configuration/gauges/tacan-nav-active-desc","VOR activate");
+            setprop("sim/G91/configuration/gauges/tacan-nav-active-desc","VOR configuration activate");
             setprop("sim/G91/configuration/gauges/frontal-central-01-active",0);
         } elsif (getprop("sim/G91/configuration/gauges/tacan-active") == 1) {
             setprop("sim/G91/configuration/gauges/nav-active",0);
@@ -52,7 +52,7 @@ var timer_tacan_arn_21 = maketimer(0.5, func() {
             setprop("fdm/jsbsim/systems/gauges/radio/TACAN-NAV-ARN-21/NAV-Active",0);
             setprop("fdm/jsbsim/systems/gauges/radio/TACAN-NAV-ARN-21/MBT-Active",0);
             setprop("sim/G91/configuration/gauges/tacan-nav-active-state",2);
-            setprop("sim/G91/configuration/gauges/tacan-nav-active-desc","TACAN activate");
+            setprop("sim/G91/configuration/gauges/tacan-nav-active-desc","TACAN configuration activate");
             setprop("sim/G91/configuration/gauges/frontal-central-01-active",0);
         } else {
             setprop("sim/G91/configuration/gauges/MBT-active",0);
@@ -60,7 +60,7 @@ var timer_tacan_arn_21 = maketimer(0.5, func() {
             setprop("fdm/jsbsim/systems/gauges/radio/TACAN-NAV-ARN-21/NAV-Active",0);
             setprop("fdm/jsbsim/systems/gauges/radio/TACAN-NAV-ARN-21/MBT-Active",0);
             setprop("sim/G91/configuration/gauges/tacan-nav-active-state",0);
-            setprop("sim/G91/configuration/gauges/tacan-nav-active-desc","VOR or TACAN inactive");
+            setprop("sim/G91/configuration/gauges/tacan-nav-active-desc","VOR or TACAN configuration inactive");
             setprop("sim/G91/configuration/gauges/frontal-central-01-active",1);
         };
     };
@@ -73,7 +73,7 @@ var timer_tacan_arn_21 = maketimer(0.5, func() {
             setprop("fdm/jsbsim/systems/gauges/radio/TACAN-NAV-ARN-21/NAV-Active",1);
             setprop("fdm/jsbsim/systems/gauges/radio/TACAN-NAV-ARN-21/MBT-Active",1);
             setprop("sim/G91/configuration/gauges/tacan-nav-active-state",1);
-            setprop("sim/G91/configuration/gauges/tacan-nav-active-desc","VOR activate");
+            setprop("sim/G91/configuration/gauges/tacan-nav-active-desc","VOR configuration activate");
             setprop("sim/G91/configuration/gauges/frontal-central-01-active",0);
         } elsif(s == 1) {
             setprop("sim/G91/configuration/gauges/nav-active",0);
@@ -83,7 +83,7 @@ var timer_tacan_arn_21 = maketimer(0.5, func() {
             setprop("fdm/jsbsim/systems/gauges/radio/TACAN-NAV-ARN-21/NAV-Active",0);
             setprop("fdm/jsbsim/systems/gauges/radio/TACAN-NAV-ARN-21/MBT-Active",0);
             setprop("sim/G91/configuration/gauges/tacan-nav-active-state",2);
-            setprop("sim/G91/configuration/gauges/tacan-nav-active-desc","TACAN activate");
+            setprop("sim/G91/configuration/gauges/tacan-nav-active-desc","TACAN configuration activate");
             setprop("sim/G91/configuration/gauges/frontal-central-01-active",0);
         } else {
             setprop("sim/G91/configuration/gauges/MBT-active",0);
@@ -93,7 +93,7 @@ var timer_tacan_arn_21 = maketimer(0.5, func() {
             setprop("fdm/jsbsim/systems/gauges/radio/TACAN-NAV-ARN-21/MBT-Active",0);
             setprop("sim/G91/configuration/gauges/tacan-active",0);
             setprop("sim/G91/configuration/gauges/tacan-nav-active-state",0);
-            setprop("sim/G91/configuration/gauges/tacan-nav-active-desc","VOR or TACAN inactive");
+            setprop("sim/G91/configuration/gauges/tacan-nav-active-desc","VOR or TACAN configuration inactive");
             setprop("sim/G91/configuration/gauges/frontal-central-01-active",1);
         };
         setprop("sim/G91/configuration/gauges/tacan-nav-active-trigger",0);

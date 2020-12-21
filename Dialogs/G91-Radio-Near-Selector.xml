@@ -38,7 +38,8 @@
             <button>
                 <row>0</row>
                 <col>0</col>
-                <legend>Automatic find VOR-NDB-TACAN-ILS</legend>
+                <legend>  Automatic find VOR-ILS-NDB  </legend>
+                <halign>left</halign>
                 <binding>
                     <command>property-assign</command>
                     <property>fdm/jsbsim/systems/autopilot/pilot-radio-assistant/mode-trigger</property>
@@ -147,7 +148,7 @@
             <button>
                 <row>0</row>
                 <col>0</col>
-                <legend>     Set the radial in the VOR course     </legend>
+                <legend> Set the radial in the VOR course</legend>
                 <halign>left</halign>
                 <binding>
                     <command>property-assign</command>
@@ -196,7 +197,7 @@
             <text>
                 <row>0</row>
                 <col>4</col>
-                <label>link to VOR</label>
+                <label>link to VOR/TAC</label>
                 <live>true</live>
                 <halign>left</halign>
                 <color>
