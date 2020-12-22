@@ -108,12 +108,12 @@
         <type>material</type>
         <object-name>glass (Meshed)</object-name>
         <transparency>
-            <alpha>0.15</alpha>
+            <alpha>0.10</alpha>
         </transparency>
         <diffuse>
-            <red>0.8</red>
-            <green>0.8</green>
-            <blue>0.8</blue>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
         </diffuse>
         <ambient>
             <red>0.0</red>

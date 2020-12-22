@@ -149,9 +149,9 @@
             <blue>0.50</blue>
         </diffuse>
         <ambient>
-            <red>0.08</red>
-            <green>0.12</green>
-            <blue>0.12</blue>
+            <red>0.16</red>
+            <green>0.25</green>
+            <blue>0.25</blue>
         </ambient>
         <emission>
             <red>0.040</red>
@@ -976,7 +976,7 @@
         <type>rotate</type>
         <object-name>rif vert A (Meshed)</object-name>
         <property>/fdm/jsbsim/systems/gauges/radio/ID-249-ARN/rif-vert-vor-loc-lag</property>
-        <factor>0.37</factor>
+        <factor>-0.37</factor>
         <offset-deg>0.0</offset-deg>
         <center>
             <x-m>-0.056</x-m>
@@ -1013,7 +1013,7 @@
         <type>rotate</type>
         <object-name>rif oriz A (Meshed)</object-name>
         <property>fdm/jsbsim/systems/gauges/radio/ID-249-ARN/glide-slope-deg</property>
-        <factor>4.3</factor>
+        <factor>-4.3</factor>
         <center>
             <x-m>-0.056</x-m>
             <y-m>0.0</y-m>

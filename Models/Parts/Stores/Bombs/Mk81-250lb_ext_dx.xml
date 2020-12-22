@@ -102,7 +102,6 @@
             <red>0.4</red>
             <green>0.4</green>
             <blue>0.0</blue>
-            <factor-prop>/rendering/scene/ambient/red</factor-prop>
         </ambient>
         <specular>
             <red>0.0</red>
@@ -123,7 +122,6 @@
             <red>0.5</red>
             <green>0.5</green>
             <blue>0.0</blue>
-            <factor-prop>/rendering/scene/ambient/red</factor-prop>
         </ambient>
         <specular>
             <red>0.0</red>
@@ -144,7 +142,6 @@
             <red>0.4</red>
             <green>0.4</green>
             <blue>0.4</blue>
-            <factor-prop>/rendering/scene/ambient/red</factor-prop>
         </ambient>
         <specular>
             <red>0.0</red>
@@ -165,7 +162,6 @@
             <red>0.5</red>
             <green>0.5</green>
             <blue>0.5</blue>
-            <factor-prop>/rendering/scene/ambient/red</factor-prop>
         </ambient>
         <specular>
             <red>0.0</red>
@@ -190,7 +186,6 @@
             <red>0.3</red>
             <green>0.3</green>
             <blue>0.0</blue>
-            <factor-prop>/rendering/scene/ambient/red</factor-prop>
         </ambient>
         <specular>
             <red>0.0</red>
@@ -212,7 +207,6 @@
             <red>0.9</red>
             <green>0.6</green>
             <blue>0.0</blue>
-            <factor-prop>/rendering/scene/ambient/red</factor-prop>
         </ambient>
         <specular>
             <red>0.0</red>
@@ -254,7 +248,6 @@
             <red>0.6</red>
             <green>0.0</green>
             <blue>0.0</blue>
-            <factor-prop>/rendering/scene/ambient/red</factor-prop>
         </ambient>
         <specular>
             <red>0.2</red>
@@ -276,7 +269,6 @@
             <red>0.3</red>
             <green>0.3</green>
             <blue>0.3</blue>
-            <factor-prop>/rendering/scene/ambient/red</factor-prop>
         </ambient>
         <specular>
             <red>0.2</red>
@@ -301,7 +293,6 @@
             <red>0.6</red>
             <green>0.6</green>
             <blue>0.6</blue>
-            <factor-prop>/rendering/scene/ambient/red</factor-prop>
         </ambient>
         <specular>
             <red>0.6</red>

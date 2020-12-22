@@ -1486,7 +1486,7 @@ var pilot_assistant = func() {
                     setprop("fdm/jsbsim/systems/autopilot/gui/speed-value",landing_22_set_cas_lag);
                     
                     #// Emergency open dragchute
-                    if (runway_end_to_airplane_dist < 3200.0 and delta_h_ft < 15.0) {
+                    if (runway_end_to_airplane_dist < 3200.0 and delta_h_ft < 10.0) {
                         landing_22_set_cas = 50;
                         if (getprop("fdm/jsbsim/systems/dragchute/status") == 0.0) setprop("fdm/jsbsim/systems/dragchute/activate",1);
                     };

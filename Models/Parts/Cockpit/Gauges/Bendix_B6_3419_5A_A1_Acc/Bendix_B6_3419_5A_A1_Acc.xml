@@ -59,9 +59,9 @@
             <blue>0.50</blue>
         </diffuse>
         <ambient>
-            <red>0.08</red>
-            <green>0.12</green>
-            <blue>0.12</blue>
+            <red>0.16</red>
+            <green>0.25</green>
+            <blue>0.25</blue>
         </ambient>
         <emission>
             <red>0.045</red>

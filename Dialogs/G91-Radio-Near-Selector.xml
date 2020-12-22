@@ -1555,7 +1555,7 @@
             <text>
                 <row>0</row>
                 <col>6</col>
-                <label> </label>
+                <label>Caution:</label>
                 <live>true</live>
                 <halign>left</halign>
                 <color>
@@ -1567,13 +1567,14 @@
             <text>
                 <row>0</row>
                 <col>7</col>
-                <label> </label>
+                <label>MMMMMMMMMMMMMM</label>
                 <live>true</live>
                 <halign>left</halign>
+                <property>fdm/jsbsim/systems/autopilot/pilot-radio-assistant/error_msg</property>
                 <color>
-                    <red>0.9</red>
-                    <green>0.9</green>
-                    <blue>0.9</blue>
+                    <red>0.6</red>
+                    <green>0.0</green>
+                    <blue>0.0</blue>
                 </color>
             </text>
         </group>
