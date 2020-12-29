@@ -2,17 +2,17 @@
 
 <PropertyList>
     <light>
-        <name>canopy-uv-sx</name>
+        <name>canopy-red-dx-01</name>
         <type>spot</type>
         <position>
-            <x-m>-2.8</x-m>
-            <y-m>0.25</y-m>
+            <x-m>-2.9</x-m>
+            <y-m>0.30</y-m>
             <z-m>0.9</z-m>
         </position>
         <direction>
-            <lookat-x-m>-3.2</lookat-x-m>
-            <lookat-y-m>-0.20</lookat-y-m>
-            <lookat-z-m>0.85</lookat-z-m>
+            <lookat-x-m>-2.9</lookat-x-m>
+            <lookat-y-m>0.35</lookat-y-m>
+            <lookat-z-m>0.7</lookat-z-m>
         </direction>
         <ambient>
             <r>0.0</r>
@@ -21,9 +21,9 @@
             <a>1</a>
         </ambient>
         <diffuse>
-            <r>0.05</r>
-            <g>0.0</g>
-            <b>0.3</b>
+            <r>0.5</r>
+            <g>0.1</g>
+            <b>0.0</b>
             <a>1</a>
         </diffuse>
         <specular>
@@ -37,8 +37,8 @@
             <l>0.19</l>
             <q>0.032</q>
         </attenuation>
-        <spot-exponent>35</spot-exponent>
-        <spot-cutoff>60</spot-cutoff>
-        <range-m>2</range-m>
+        <spot-exponent>25</spot-exponent>
+        <spot-cutoff>70</spot-cutoff>
+        <range-m>0.05</range-m>
     </light>
 </PropertyList>

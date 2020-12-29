@@ -6,7 +6,6 @@
 
     <effect>
         <inherits-from>Effects/model-transparent</inherits-from>
-        <object-name>lamp_glass (Meshed)</object-name>
         <object-name>switch_2_decrease (Meshed)</object-name>   
         <object-name>switch_2_increase (Meshed)</object-name>   
         <object-name>switch_2_left (Meshed)</object-name>  

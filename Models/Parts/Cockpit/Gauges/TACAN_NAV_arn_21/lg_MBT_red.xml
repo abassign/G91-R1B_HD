@@ -3,14 +3,14 @@
 <PropertyList>
     
     <path>lg_model_02.ac</path>
-
+    <!--
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/exterior/exterior-glass</inherits-from>
         <object-name>transparent_button (Meshed)</object-name>
         <object-name>light_Sphere (Meshed)</object-name>
         <object-name>light_Sphere_hot (Meshed)</object-name>
     </effect>
-
+    -->
     <animation>
         <type>noshadow</type>
         <object-name>light_Sphere (Meshed)</object-name>

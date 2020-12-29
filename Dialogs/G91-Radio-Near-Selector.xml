@@ -148,7 +148,7 @@
             <button>
                 <row>0</row>
                 <col>0</col>
-                <legend> Set the radial in the VOR course</legend>
+                <legend>  Link radial in the VOR course   </legend>
                 <halign>left</halign>
                 <binding>
                     <command>property-assign</command>
@@ -159,7 +159,7 @@
             <text>
                 <row>0</row>
                 <col>1</col>
-                <label>MMMMMMMMMM</label>
+                <label>MMMMMMMMMMMM</label>
                 <property>fdm/jsbsim/systems/autopilot/pilot-radio-assistant/automatic-to-radial-active-description</property>
                 <live>true</live>
                 <halign>left</halign>
@@ -1482,7 +1482,7 @@
             <text>
                 <row>0</row>
                 <col>0</col>
-                <label>Pilot assistant heading status:</label>
+                <label>Operational mode:</label>
                 <live>true</live>
                 <halign>left</halign>
                 <color>
@@ -1494,26 +1494,28 @@
             <text>
                 <row>0</row>
                 <col>1</col>
-                <label>MMMMMMMM</label>
+                <label>MMM</label>
+                <format>(%1.0f)</format>
                 <live>true</live>
                 <halign>center</halign>
-                <property>fdm/jsbsim/systems/autopilot/gui/true-heading-radial-str</property>
+                <property>fdm/jsbsim/systems/autopilot/pilot-radio-assistant/mode</property>
                 <color>
                     <red>0.9</red>
-                    <green>0.4</green>
+                    <green>0.9</green>
                     <blue>0.0</blue>
                 </color>
             </text>
             <text>
                 <row>0</row>
                 <col>2</col>
-                <label> </label>
+                <label>MMMMMMMMMMMMMMMMMM</label>
                 <live>true</live>
-                <halign>left</halign>
+                <halign>center</halign>
+                <property>fdm/jsbsim/systems/autopilot/pilot-radio-assistant/mode-description</property>
                 <color>
                     <red>0.9</red>
                     <green>0.9</green>
-                    <blue>0.9</blue>
+                    <blue>0.0</blue>
                 </color>
             </text>
             <text>
@@ -1531,9 +1533,11 @@
             <text>
                 <row>0</row>
                 <col>4</col>
-                <label> </label>
+                <label>MMMM</label>
                 <live>true</live>
                 <halign>left</halign>
+                <format>%3.2f</format>
+                <property>fdm/jsbsim/systems/gauges/radio/ID-249-ARN/arrow-deg-norm</property>
                 <color>
                     <red>0.9</red>
                     <green>0.9</green>
@@ -1543,18 +1547,34 @@
             <text>
                 <row>0</row>
                 <col>5</col>
-                <label> </label>
+                <label>MMM</label>
                 <live>true</live>
                 <halign>left</halign>
+                <format>%3.1f</format>
+                <property>fdm/jsbsim/systems/gauges/radio/ID-249-ARN/rif-vert-vor-loc</property>
                 <color>
                     <red>0.9</red>
                     <green>0.9</green>
-                    <blue>0.9</blue>
+                    <blue>0.0</blue>
                 </color>
             </text>
             <text>
                 <row>0</row>
                 <col>6</col>
+                <label>MMM</label>
+                <live>true</live>
+                <halign>left</halign>
+                <format>%3.1f</format>
+                <property>fdm/jsbsim/systems/gauges/radio/ID-249-ARN/rif-vert-vor-loc-norm</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.0</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>7</col>
                 <label>Caution:</label>
                 <live>true</live>
                 <halign>left</halign>
@@ -1566,15 +1586,15 @@
             </text>
             <text>
                 <row>0</row>
-                <col>7</col>
-                <label>MMMMMMMMMMMMMM</label>
+                <col>8</col>
+                <label>MMMMMMMMMMMMMMMMMMMMMMMMM</label>
                 <live>true</live>
                 <halign>left</halign>
                 <property>fdm/jsbsim/systems/autopilot/pilot-radio-assistant/error_msg</property>
                 <color>
-                    <red>0.6</red>
-                    <green>0.0</green>
-                    <blue>0.0</blue>
+                    <red>0.9</red>
+                    <green>0.5</green>
+                    <blue>0.5</blue>
                 </color>
             </text>
         </group>

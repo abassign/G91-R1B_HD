@@ -120,27 +120,57 @@
         </condition>
     </model>
 
-    <!-- Compositor canopy lights test -->
-
+    <!-- Compositor lights test -->
+    
     <model>
-        <path>Aircraft/G91-R1B_HD/Models/Parts/Composer/canopy-uv-dx.xml</path>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Composer/external-taxing-light-dx.xml</path>
         <condition>
-            <equals>
-                <property>sim/G91/lights/Compositor/canopy-uv-dx-sw</property>
-                <value>1</value>
-            </equals>
+            <or>
+                <equals>
+                    <property>sim/G91/lights/Compositor/external-taxing-light-dx-sw</property>
+                    <value>1</value>
+                </equals>
+                <greater-than>
+                    <property>sim/G91/lightning/taxiing-light/intensity_effect</property>
+                    <value>0.1</value>
+                </greater-than>
+            </or>
         </condition>
     </model>
     
     <model>
-        <path>Aircraft/G91-R1B_HD/Models/Parts/Composer/canopy-uv-sx.xml</path>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Composer/external-landig-light-sx.xml</path>
         <condition>
-            <equals>
-                <property>sim/G91/lights/Compositor/canopy-uv-sx-sw</property>
-                <value>1</value>
-            </equals>
+            <or>
+                <equals>
+                    <property>sim/G91/lights/Compositor/external-landig-light-sx-sw</property>
+                    <value>1</value>
+                </equals>
+                <greater-than>
+                    <property>sim/G91/lightning/landing-light/intensity_effect</property>
+                    <value>0.1</value>
+                </greater-than>
+            </or>
         </condition>
     </model>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Composer/external-wheels-light.xml</path>
+        <condition>
+            <or>
+                <equals>
+                    <property>sim/G91/lights/Compositor/external-taxing-light-dx-sw</property>
+                    <value>1</value>
+                </equals>
+                <greater-than>
+                    <property>sim/G91/lightning/taxiing-light/intensity_effect</property>
+                    <value>0.1</value>
+                </greater-than>
+            </or>
+        </condition>
+    </model>
+    
+    <!-- Canopy internal lights -->
     
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Composer/canopy-ambient-red.xml</path>
@@ -151,7 +181,153 @@
             </equals>
         </condition>
     </model>
+
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Composer/canopy-uv-dx.xml</path>
+        <condition>
+            <greater-than>
+                <property>fdm/jsbsim/systems/lightning/light-uv-instrument</property>
+                <value>0.1</value>
+            </greater-than>
+        </condition>
+    </model>
     
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Composer/canopy-uv-sx.xml</path>
+        <condition>
+            <greater-than>
+                <property>fdm/jsbsim/systems/lightning/light-uv-instrument</property>
+                <value>0.1</value>
+            </greater-than>
+        </condition>
+    </model>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Composer/canopy-red-dx-00.xml</path>
+        <condition>
+            <greater-than>
+                <property>fdm/jsbsim/systems/lightning/light-red-emer-instrument</property>
+                <value>0.1</value>
+            </greater-than>
+        </condition>
+    </model>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Composer/canopy-red-sx-00.xml</path>
+        <condition>
+            <greater-than>
+                <property>fdm/jsbsim/systems/lightning/light-red-emer-instrument</property>
+                <value>0.1</value>
+            </greater-than>
+        </condition>
+    </model>
+
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Composer/canopy-ambient-red.xml</path>
+        <condition>
+            <equals>
+                <property>sim/G91/lights/Compositor/canopy-ambient-red-sw</property>
+                <value>1</value>
+            </equals>
+        </condition>
+    </model>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Composer/canopy-red-dx-01.xml</path>
+        <condition>
+            <and>
+                <equals>
+                    <property>sim/G91/lights/Compositor/canopy-ambient-red-sw</property>
+                    <value>1</value>
+                </equals>
+                <equals>
+                    <property>sim/current-view/internal</property>
+                    <value>true</value>
+                </equals>
+            </and>
+        </condition>
+    </model>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Composer/canopy-red-dx-02.xml</path>
+        <condition>
+            <and>
+                <equals>
+                    <property>sim/G91/lights/Compositor/canopy-ambient-red-sw</property>
+                    <value>1</value>
+                </equals>
+                <equals>
+                    <property>sim/current-view/internal</property>
+                    <value>true</value>
+                </equals>
+            </and>
+        </condition>
+    </model>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Composer/canopy-red-dx-03.xml</path>
+        <condition>
+            <and>
+                <equals>
+                    <property>sim/G91/lights/Compositor/canopy-ambient-red-sw</property>
+                    <value>1</value>
+                </equals>
+                <equals>
+                    <property>sim/current-view/internal</property>
+                    <value>true</value>
+                </equals>
+            </and>
+        </condition>
+    </model>
+
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Composer/canopy-red-sx-01.xml</path>
+        <condition>
+            <and>
+                <equals>
+                    <property>sim/G91/lights/Compositor/canopy-ambient-red-sw</property>
+                    <value>1</value>
+                </equals>
+                <equals>
+                    <property>sim/current-view/internal</property>
+                    <value>true</value>
+                </equals>
+            </and>
+        </condition>
+    </model>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Composer/canopy-red-sx-02.xml</path>
+        <condition>
+            <and>
+                <equals>
+                    <property>sim/G91/lights/Compositor/canopy-ambient-red-sw</property>
+                    <value>1</value>
+                </equals>
+                <equals>
+                    <property>sim/current-view/internal</property>
+                    <value>true</value>
+                </equals>
+            </and>
+        </condition>
+    </model>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Composer/canopy-red-sx-03.xml</path>
+        <condition>
+            <and>
+                <equals>
+                    <property>sim/G91/lights/Compositor/canopy-ambient-red-sw</property>
+                    <value>1</value>
+                </equals>
+                <equals>
+                    <property>sim/current-view/internal</property>
+                    <value>true</value>
+                </equals>
+            </and>
+        </condition>
+    </model>
+
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Composer/canopy-ambient-gray.xml</path>
         <condition>

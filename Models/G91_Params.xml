@@ -331,8 +331,10 @@ G91_Params.xml
     
     <configuration>
         <gauges>
-            <tacan-active type="int">0</tacan-active>
-            <nav-active type="int">1</nav-active>
+            <tacan-active type="float">0.0</tacan-active>
+            <nav-active type="float">1.0</nav-active>
+            <nav-active-NAV_arn_21_C866 type="float">0.0</nav-active-NAV_arn_21_C866>
+            <nav-active-AN_ARN-82 type="float">1.0</nav-active-AN_ARN-82>
         </gauges>
     </configuration>
     

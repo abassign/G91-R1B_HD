@@ -2,10 +2,18 @@
 
 <system name="TACAN ARN 21">
     
+    <!-- pilot-radio-assistant section -->
+    
+    <property value="0.0">systems/gauges/radio/TACAN-NAV-ARN-21/pilot-radio-assistant/set-mode</property>
+    
+    <!-- TACAN NAV section -->
+    
     <property value="0.0">systems/gauges/radio/TACAN-NAV-ARN-21/TACAN-Active</property>
     <property value="0.0">systems/gauges/radio/TACAN-NAV-ARN-21/NAV-Active</property>
     <property value="0.0">systems/gauges/radio/TACAN-NAV-ARN-21/MBT-Active</property>
     <property value="0.0">systems/gauges/radio/TACAN-NAV-ARN-21/distance-nm</property>
+    <property value="0.0">systems/gauges/radio/TACAN-NAV-ARN-21/NAV-Active-NAV_arn_21_C866</property>
+    <property value="0.0">systems/gauges/radio/TACAN-NAV-ARN-21/NAV-Active-AN_ARN-82</property>
     
     <!-- TACAN section -->
     
@@ -57,6 +65,18 @@
     <property value="0.0">systems/gauges/radio/NAV-ARN-21/freq-mhz</property>
     <property value="0.7">systems/gauges/radio/NAV-ARN-21/vol-set</property>
     
+    <!-- Collins AN_ARN-82 NAV section -->
+    
+    <property value="0.0">systems/gauges/radio/AN_ARN-82/switch-turn</property>
+    <property value="0.0">systems/gauges/radio/AN_ARN-82/switch-turn-pos</property>
+    <property value="0.0">systems/gauges/radio/AN_ARN-82/switch-mhz-set</property>
+    <property value="0.0">systems/gauges/radio/AN_ARN-82/switch-mhz-pos</property>
+    <property value="0.0">systems/gauges/radio/AN_ARN-82/switch-khz-set</property>
+    <property value="0.0">systems/gauges/radio/AN_ARN-82/switch-khz-pos</property>
+    <property value="0.0">systems/gauges/radio/AN_ARN-82/freq-chan-from-mhz-la</property>
+    <property value="0.0">systems/gauges/radio/AN_ARN-82/freq-chan-from-0.1-mhz-la</property>
+    <property value="0.0">systems/gauges/radio/AN_ARN-82/freq-chan-from-0.01-mhz-la</property>
+    
     <!-- Collins 331 C4 Gauge -->
     
     <property value="0.0">systems/gauges/radio/Collins-331-C4/operative</property>
@@ -89,9 +109,11 @@
     <property value="0.0">systems/gauges/radio/ID-249-ARN/flag-glide-slope-lag</property>
     <property value="0.0">systems/gauges/radio/ID-249-ARN/rif-vert-vor-loc</property>
     <property value="0.0">systems/gauges/radio/ID-249-ARN/rif-vert-vor-loc-lag</property>
+    <property value="0.0">systems/gauges/radio/ID-249-ARN/rif-vert-vor-loc-norm</property>
     <property value="0.0">systems/gauges/radio/ID-249-ARN/rif-oriz-glide-slope</property>
     <property value="0.0">systems/gauges/radio/ID-249-ARN/rif-oriz-glide-slope-lag</property>
     <property value="0.0">systems/gauges/radio/ID-249-ARN/arrow-deg</property>
+    <property value="0.0">systems/gauges/radio/ID-249-ARN/arrow-deg-lag</property>
     <property value="0.0">systems/gauges/radio/ID-249-ARN/off-to-from</property>
     <property value="0.0">systems/gauges/radio/ID-249-ARN/flag-to-lag</property>
     <property value="0.0">systems/gauges/radio/ID-249-ARN/flag-from-lag</property>
@@ -309,6 +331,7 @@
         
     </channel>
     
+    <!-- The NAV-ARN-21 -->
     
     <channel name="systems gauges radio NAV-ARN-21 set frequencies" execrate="4">
         
@@ -321,16 +344,13 @@
         <fcs_function name="systems/gauges/radio/NAV-ARN-21/freq-imposed-khz">
             <function>
                 <integer>
-                    <sum>
-                        <product>
-                            <difference>
-                                <p>/instrumentation/nav/frequencies/selected-mhz</p>
-                                <integer><p>/instrumentation/nav/frequencies/selected-mhz</p></integer>
-                            </difference>
-                            <v>10.0</v>
-                        </product>
-                        <v>0.5</v>
-                    </sum>
+                    <product>
+                        <difference>
+                            <p>/instrumentation/nav/frequencies/selected-mhz</p>
+                            <p>systems/gauges/radio/NAV-ARN-21/freq-imposed-mhz</p>
+                        </difference>
+                        <v>100.0</v>
+                    </product>
                 </integer>
             </function>
         </fcs_function>
@@ -348,23 +368,40 @@
         <switch name="systems/gauges/radio/NAV-ARN-21/freq-imposed-new-event">
             <default value="0.0"/>
             <test logic="OR" value="1.0">
-                systems/gauges/radio/NAV-ARN-21/freq-imposed-new-event-mhz GE 0.5
-                systems/gauges/radio/NAV-ARN-21/freq-imposed-new-event-khz GE 0.5
-                systems/gauges/radio/NAV-ARN-21/freq-imposed-new-event-mhz LE -0.5
-                systems/gauges/radio/NAV-ARN-21/freq-imposed-new-event-khz LE -0.5
+                systems/gauges/radio/NAV-ARN-21/freq-imposed-new-event-mhz GE 0.8
+                systems/gauges/radio/NAV-ARN-21/freq-imposed-new-event-khz GE 0.8
+                systems/gauges/radio/NAV-ARN-21/freq-imposed-new-event-mhz LE -0.8
+                systems/gauges/radio/NAV-ARN-21/freq-imposed-new-event-khz LE -0.8
                 systems/gauges/radio/NAV-ARN-21/switch-turn-on-event GT 0.5
             </test>
         </switch>
         
         <switch name="systems/gauges/radio/NAV-ARN-21/freq-imposed">
             <default value="systems/gauges/radio/NAV-ARN-21/freq-imposed"/>
+            <test logic="AND" value="108.0">
+                /instrumentation/nav/frequencies/selected-mhz LT 108.0
+                systems/gauges/radio/NAV-ARN-21/freq-imposed-new-event == 1.0
+            </test>
+            <test logic="AND" value="117.95">
+                /instrumentation/nav/frequencies/selected-mhz GE 118.0
+                systems/gauges/radio/NAV-ARN-21/freq-imposed-new-event == 1.0
+            </test>
             <test logic="AND" value="/instrumentation/nav/frequencies/selected-mhz">
                 systems/gauges/radio/NAV-ARN-21/freq-imposed-new-event == 1.0
             </test>
         </switch>
         
+        <switch name="systems/gauges/radio/TACAN-NAV-ARN-21/pilot-radio-assistant/set-mode">
+            <default value="systems/gauges/radio/TACAN-NAV-ARN-21/pilot-radio-assistant/set-mode"/>
+            <test logic="AND" value="1.0">
+                systems/gauges/radio/NAV-ARN-21/freq-imposed-new-event == 1.0
+                systems/gauges/radio/TACAN-NAV-ARN-21/NAV-Active-NAV_arn_21_C866 == 1
+            </test>
+        </switch>
+        
     </channel>
     
+    <!-- The autostart is activate by the system freq. change --> 
     
     <channel name="systems gauges radio NAV-ARN-21 switch autostart" execrate="32">
         
@@ -393,13 +430,44 @@
             <c1>1.0</c1>
         </washout_filter>
         
+        <washout_filter name="systems/gauges/radio/AN_ARN-82/switch-turn-wa">
+            <input>systems/gauges/radio/AN_ARN-82/switch-turn</input>
+            <c1>1.0</c1>
+        </washout_filter>
+        
         <switch name="systems/gauges/radio/NAV-ARN-21/switch-turn-on-event">
             <default value="0"/>
-            <test logic="AND" value="1.0">
+            <test logic="OR" value="1.0">
                 systems/gauges/radio/NAV-ARN-21/switch-turn-wa GT 0.2
+                systems/gauges/radio/AN_ARN-82/switch-turn-wa GT 0.2
             </test>
-            <test logic="AND" value="-1.0">
-                systems/gauges/radio/NAV-ARN-21/switch-turn-wa GT 0.2
+            <test logic="OR" value="-1.0">
+                systems/gauges/radio/NAV-ARN-21/switch-turn-wa LT -0.2
+                systems/gauges/radio/AN_ARN-82/switch-turn-wa LT -0.2
+            </test>
+        </switch>
+        
+    </channel>
+    
+    
+    <channel name="systems gauges radio AN_ARN-82 switch connector" execrate="4">
+        
+        <lag_filter name="systems/gauges/radio/AN_ARN-82/switch-turn-pos">
+            <input>systems/gauges/radio/AN_ARN-82/switch-turn</input>
+            <c1>4.0</c1>
+        </lag_filter>
+        
+        <switch name="systems/gauges/radio/NAV-ARN-21/switch-turn">
+            <default value="systems/gauges/radio/NAV-ARN-21/switch-turn"/>
+            <test logic="AND" value="3.0">
+                systems/gauges/radio/AN_ARN-82/switch-turn-pos GE 1.9
+            </test>
+            <test logic="AND" value="2.0">
+                systems/gauges/radio/AN_ARN-82/switch-turn-pos GT 0.9
+                systems/gauges/radio/AN_ARN-82/switch-turn-pos LT 1.1
+            </test>
+            <test logic="AND" value="0.0">
+                systems/gauges/radio/AN_ARN-82/switch-turn-pos LE 0.9
             </test>
         </switch>
         
@@ -432,6 +500,13 @@
             <default value="0.0"/>
             <test logic="AND" value="1.0">
                 systems/gauges/radio/NAV-ARN-21/switch-turn-pos GT 1.9
+            </test>
+        </switch>
+        
+        <switch name="systems/gauges/radio/NAV-ARN-21/sw-Test">
+            <default value="0.0"/>
+            <test logic="AND" value="1.0">
+                systems/gauges/radio/NAV-ARN-21/switch-turn-pos GT 2.9
             </test>
         </switch>
         
@@ -474,7 +549,7 @@
             <gain>0.000539957</gain>
         </pure_gain>
         
-        <!-- Sintony section -->
+        <!-- Sintony section for NAV-ARN-21 -->
         
         <fcs_function name="systems/gauges/radio/NAV-ARN-21/freq-chan-from-mhz">
             <function>
@@ -513,6 +588,16 @@
                     </integer>
                     <p>systems/gauges/radio/NAV-ARN-21/chan-Hi</p>
                 </ifthen>
+            </function>
+        </fcs_function>
+        
+        <fcs_function name="systems/gauges/radio/AN_ARN-82/freq-chan-from-mhz">
+            <function>
+                <integer>
+                    <sum>
+                        <p>systems/gauges/radio/NAV-ARN-21/freq-imposed</p><v>-108.0</v>
+                    </sum>
+                </integer>
             </function>
         </fcs_function>
         
@@ -563,7 +648,10 @@
         <fcs_function name="systems/gauges/radio/NAV-ARN-21/freq-mhz">
             <function>
                 <ifthen>
-                    <ge><p>systems/gauges/radio/NAV-ARN-21/freq-chan</p><v>17.0</v></ge>
+                    <and>
+                        <ge><p>systems/gauges/radio/NAV-ARN-21/freq-chan</p><v>17.0</v></ge>
+                        <ge><p>systems/gauges/radio/TACAN-NAV-ARN-21/NAV-Active-NAV_arn_21_C866</p><v>1.0</v></ge>
+                    </and>
                     <ifthen>
                         <le><p>systems/gauges/radio/NAV-ARN-21/freq-chan</p><v>59.0</v></le>
                         <sum>
@@ -582,7 +670,7 @@
                             <p>systems/gauges/radio/NAV-ARN-21/freq-mhz</p>
                         </ifthen>
                     </ifthen>
-                    <p>systems/gauges/radio/NAV-ARN-21/freq-mhz</p>
+                    <p>/instrumentation/nav/frequencies/selected-mhz</p>
                 </ifthen>
             </function>
         </fcs_function>
@@ -591,11 +679,150 @@
             <default value="/instrumentation/nav/frequencies/selected-mhz"/>
             <test logic="AND" value="systems/gauges/radio/NAV-ARN-21/freq-mhz">
                 systems/gauges/radio/NAV-ARN-21/freq-imposed-new-event == 0
-                systems/gauges/radio/NAV-ARN-21/set-on-off == 2
+                systems/gauges/radio/TACAN-NAV-ARN-21/NAV-Active-NAV_arn_21_C866 == 1
             </test>
             <output>/instrumentation/nav/frequencies/selected-mhz</output>
         </switch>
         
+        <!-- Sintony section for AN_ARN-82 -->
+        
+        <washout_filter name="systems/gauges/radio/AN_ARN-82/switch-mhz-set-trigger">
+            <input>systems/gauges/radio/AN_ARN-82/switch-mhz-set</input>
+            <c1>1.0</c1>
+        </washout_filter>
+        
+        <washout_filter name="systems/gauges/radio/AN_ARN-82/switch-khz-set-trigger">
+            <input>systems/gauges/radio/AN_ARN-82/switch-khz-set</input>
+            <c1>1.0</c1>
+        </washout_filter>
+        
+        <switch name="systems/gauges/radio/AN_ARN-82/freq-imposed-new-event">
+            <default value="0.0"/>
+            <test logic="OR" value="1.0">
+                systems/gauges/radio/AN_ARN-82/switch-mhz-set-trigger GE 0.8
+                systems/gauges/radio/AN_ARN-82/switch-khz-set-trigger GE 0.8
+                systems/gauges/radio/AN_ARN-82/switch-mhz-set-trigger LE -0.8
+                systems/gauges/radio/AN_ARN-82/switch-khz-set-trigger LE -0.8
+                systems/gauges/radio/NAV-ARN-21/switch-turn-on-event GT 0.5 <!-- ? -->
+            </test>
+        </switch>
+        
+        <switch name="systems/gauges/radio/TACAN-NAV-ARN-21/pilot-radio-assistant/set-mode">
+            <default value="systems/gauges/radio/TACAN-NAV-ARN-21/pilot-radio-assistant/set-mode"/>
+            <test logic="AND" value="1.0">
+                systems/gauges/radio/AN_ARN-82/freq-imposed-new-event == 1.0
+                systems/gauges/radio/TACAN-NAV-ARN-21/NAV-Active-AN_ARN-82 == 1
+            </test>
+        </switch>
+        
+        <fcs_function name="systems/gauges/radio/AN_ARN-82/freq-mhz">
+            <function>
+                <ifthen>
+                    <and>
+                        <ge><p>systems/gauges/radio/AN_ARN-82/freq-imposed-new-event</p><v>1.0</v></ge>
+                        <ge><p>systems/gauges/radio/TACAN-NAV-ARN-21/NAV-Active-AN_ARN-82</p><v>1.0</v></ge>
+                    </and>
+                    <sum>
+                        <v>108.0</v><p>systems/gauges/radio/AN_ARN-82/switch-mhz-set</p>
+                        <quotient>
+                            <p>systems/gauges/radio/AN_ARN-82/switch-khz-set</p><v>20.0</v>
+                        </quotient>
+                    </sum>
+                    <p>/instrumentation/nav/frequencies/selected-mhz</p>
+                </ifthen>
+            </function>
+        </fcs_function>
+        
+        <switch>
+            <default value="/instrumentation/nav/frequencies/selected-mhz"/>
+            <test logic="AND" value="systems/gauges/radio/AN_ARN-82/freq-mhz">
+                systems/gauges/radio/AN_ARN-82/freq-imposed-new-event == 1
+                systems/gauges/radio/TACAN-NAV-ARN-21/NAV-Active-AN_ARN-82 == 1
+            </test>
+            <output>/instrumentation/nav/frequencies/selected-mhz</output>
+        </switch>
+        
+        <fcs_function name="systems/gauges/radio/AN_ARN-82/freq-chan-from-mhz">
+            <function>
+                <integer>
+                    <sum>
+                        <p>systems/gauges/radio/AN_ARN-82/freq-mhz</p><v>-108.0</v>
+                    </sum>
+                </integer>
+            </function>
+            <output>systems/gauges/radio/AN_ARN-82/switch-mhz-pos</output>
+        </fcs_function>
+        
+        <linear_actuator name="systems/gauges/radio/AN_ARN-82/freq-chan-from-mhz-la">
+            <input>systems/gauges/radio/AN_ARN-82/freq-chan-from-mhz</input>
+            <module>10</module>
+            <lag>8.0</lag>
+            <gain>1.0</gain>
+            <versus>0</versus>
+        </linear_actuator>
+
+        <fcs_function name="systems/gauges/radio/AN_ARN-82/freq-chan-from-0.1-mhz">
+            <function>
+                <integer>
+                    <product>
+                        <difference>
+                            <p>systems/gauges/radio/AN_ARN-82/freq-mhz</p>
+                            <p>systems/gauges/radio/AN_ARN-82/freq-chan-from-mhz</p>
+                        </difference>
+                        <v>10.0</v>
+                    </product>
+                </integer>
+            </function>
+        </fcs_function>
+        
+        <linear_actuator name="systems/gauges/radio/AN_ARN-82/freq-chan-from-0.1-mhz-la">
+            <input>systems/gauges/radio/AN_ARN-82/freq-chan-from-0.1-mhz</input>
+            <module>10</module>
+            <lag>8.0</lag>
+            <gain>1.0</gain>
+            <versus>0</versus>
+        </linear_actuator>
+        
+        <fcs_function>
+            <function>
+                <integer>
+                    <product>
+                        <difference>
+                            <p>systems/gauges/radio/AN_ARN-82/freq-mhz</p>
+                            <p>systems/gauges/radio/AN_ARN-82/freq-chan-from-mhz</p>
+                        </difference>
+                        <v>20.0</v>
+                    </product>
+                </integer>
+            </function>
+            <output>systems/gauges/radio/AN_ARN-82/switch-mhz-pos</output>
+        </fcs_function>
+        
+        <fcs_function name="systems/gauges/radio/AN_ARN-82/freq-chan-from-0.01-mhz">
+            <function>
+                <integer>
+                    <product>
+                        <difference>
+                            <p>systems/gauges/radio/AN_ARN-82/freq-mhz</p>
+                            <sum>
+                                <p>systems/gauges/radio/AN_ARN-82/freq-chan-from-mhz</p>
+                                <p>systems/gauges/radio/AN_ARN-82/freq-chan-from-0.1-mhz</p>
+                            </sum>
+                        </difference>
+                        <v>100.0</v>
+                    </product>
+                </integer>
+            </function>
+        </fcs_function>
+        
+        <linear_actuator name="systems/gauges/radio/AN_ARN-82/freq-chan-from-0.01-mhz-la">
+            <input>systems/gauges/radio/AN_ARN-82/freq-chan-from-0.01-mhz</input>
+            <module>10</module>
+            <lag>8.0</lag>
+            <gain>1.0</gain>
+            <versus>0</versus>
+        </linear_actuator>
+
     </channel>
     
     
@@ -661,6 +888,58 @@
                 systems/gauges/radio/Collins-331-C4/operative GT 0.0
                 /instrumentation/nav/dme-in-range GT 0.0
             </test>
+        </switch>
+        
+        <!-- View or Hide AN_ARN-82 - NAV_arn_21_C866 -->
+        
+        <washout_filter name="systems/gauges/radio/TACAN-NAV-ARN-21/NAV-Active-AN_ARN-82-wa">
+            <input>/sim/G91/configuration/gauges/nav-active-AN_ARN-82</input>
+            <c1>1.0</c1>
+        </washout_filter>
+        
+        <washout_filter name="systems/gauges/radio/TACAN-NAV-ARN-21/NAV-Active-NAV_arn_21_C866-wa">
+            <input>/sim/G91/configuration/gauges/nav-active-NAV_arn_21_C866</input>
+            <c1>1.0</c1>
+        </washout_filter>
+        
+        <switch name="systems/gauges/radio/TACAN-NAV-ARN-21/NAV-Active-NAV_arn_21_C866">
+            <default value="/sim/G91/configuration/gauges/nav-active-NAV_arn_21_C866"/>
+            <test logic="AND" value="0">
+                systems/gauges/radio/TACAN-NAV-ARN-21/NAV-Active == 0.0
+            </test>
+            <test logic="AND" value="0">
+                systems/gauges/radio/TACAN-NAV-ARN-21/NAV-Active-AN_ARN-82-wa GT 0.1
+                systems/gauges/radio/TACAN-NAV-ARN-21/NAV-Active GT 0.0
+                systems/gauges/radio/TACAN-NAV-ARN-21/NAV-Active-NAV_arn_21_C866-wa LE 0.05
+                systems/gauges/radio/TACAN-NAV-ARN-21/NAV-Active-NAV_arn_21_C866-wa GE -0.05
+            </test>
+            <test logic="AND" value="1">
+                systems/gauges/radio/TACAN-NAV-ARN-21/NAV-Active-AN_ARN-82-wa LT -0.1
+                systems/gauges/radio/TACAN-NAV-ARN-21/NAV-Active GT 0.0
+                systems/gauges/radio/TACAN-NAV-ARN-21/NAV-Active-NAV_arn_21_C866-wa LE 0.05
+                systems/gauges/radio/TACAN-NAV-ARN-21/NAV-Active-NAV_arn_21_C866-wa GE -0.05
+            </test>
+            <output>/sim/G91/configuration/gauges/nav-active-NAV_arn_21_C866</output>
+        </switch>
+        
+        <switch name="systems/gauges/radio/TACAN-NAV-ARN-21/NAV-Active-AN_ARN-82">
+            <default value="/sim/G91/configuration/gauges/nav-active-AN_ARN-82"/>
+            <test logic="AND" value="0">
+                systems/gauges/radio/TACAN-NAV-ARN-21/NAV-Active == 0.0
+            </test>
+            <test logic="AND" value="0">
+                systems/gauges/radio/TACAN-NAV-ARN-21/NAV-Active-NAV_arn_21_C866-wa GT 0.1
+                systems/gauges/radio/TACAN-NAV-ARN-21/NAV-Active GT 0.0
+                systems/gauges/radio/TACAN-NAV-ARN-21/NAV-Active-AN_ARN-82-wa LE 0.05
+                systems/gauges/radio/TACAN-NAV-ARN-21/NAV-Active-AN_ARN-82-wa GE -0.05
+            </test>
+            <test logic="AND" value="1">
+                systems/gauges/radio/TACAN-NAV-ARN-21/NAV-Active-NAV_arn_21_C866-wa LT -0.1
+                systems/gauges/radio/TACAN-NAV-ARN-21/NAV-Active GT 0.0
+                systems/gauges/radio/TACAN-NAV-ARN-21/NAV-Active-AN_ARN-82-wa LE 0.05
+                systems/gauges/radio/TACAN-NAV-ARN-21/NAV-Active-AN_ARN-82-wa GE -0.05
+            </test>
+            <output>/sim/G91/configuration/gauges/nav-active-AN_ARN-82</output>
         </switch>
         
     </channel>
@@ -975,6 +1254,13 @@
             </test>
         </switch>
         
+        <switch name="systems/gauges/radio/ID-249-ARN/gyrocompass-in-error">
+            <default value="1"/>
+            <test logic="AND" value="0.0">
+                systems/gauges/gyrocompass/status-error LT 0.5
+            </test>
+        </switch>
+
         <switch name="systems/gauges/radio/ID-249-ARN/flag-vor-loc">
             <default value="0.0"/>
             <test logic="AND" value="1.0">
@@ -1019,6 +1305,13 @@
             </test>
         </switch>
         
+        <switch name="systems/gauges/radio/ID-249-ARN/nav-actual-deg">
+            <default value="0.0"/>
+            <test logic="AND" value="/instrumentation/nav/radials/actual-deg">
+                systems/gauges/radio/ID-249-ARN/flag-vor-loc GT 0.0
+            </test>
+        </switch>
+
         <switch name="systems/gauges/radio/ID-249-ARN/gyrocompass-magnetic-deg-var">
             <default value="0.0"/>   
             <test logic="AND" value="systems/gauges/gyrocompass/magnetic-deg-var-linear">
@@ -1036,38 +1329,69 @@
             <target_angle unit="DEG">systems/gauges/radio/ID-249-ARN/reciprocal-radial-deg</target_angle>
         </angle>
         
+        <linear_actuator name="systems/gauges/radio/ID-249-ARN/arrow-deg-la">
+            <input>systems/gauges/radio/ID-249-ARN/arrow-deg</input>
+            <module>360</module>
+            <lag>1.0</lag>
+            <reset>systems/gauges/radio/ID-249-ARN/gyrocompass-in-error</reset>
+        </linear_actuator>
+        
+        <!--
+        <fcs_function name="systems/gauges/radio/ID-249-ARN/arrow-deg-norm">
+            <function>
+                <ifthen>
+                    <ge><p>systems/gauges/radio/ID-249-ARN/arrow-deg-la</p><v>0.0</v></ge>
+                    <p>systems/gauges/radio/ID-249-ARN/arrow-deg-la</p>
+                    <difference><v>360.0</v><p>systems/gauges/radio/ID-249-ARN/arrow-deg-la</p></difference>
+                </ifthen>
+            </function>
+        </fcs_function>
+        -->
         <angle name="systems/gauges/radio/ID-249-ARN/rif-vert-vor-loc" unit="DEG">
             <source_angle unit="DEG">systems/gauges/radio/ID-249-ARN/course-deg-set</source_angle>
             <target_angle unit="DEG">systems/gauges/radio/ID-249-ARN/reciprocal-radial-deg</target_angle>
         </angle>
         
+        <washout_filter name="systems/gauges/radio/ID-249-ARN/nav-distance-wa">
+            <input>/instrumentation/nav/nav-distance</input>
+            <c1>0.5</c1>
+        </washout_filter>
+        
         <switch name="systems/gauges/radio/ID-249-ARN/off-to-from">
-            <default value="1.0"/>
-            <test logic="AND" value="0.0">
-                systems/gauges/radio/ID-249-ARN/flag-vor-loc == 0.0
+            <default value="0.0"/>
+            <test logic="AND" value="1.0">
+                systems/gauges/radio/ID-249-ARN/nav-distance-wa LT -20.0
+                systems/gauges/radio/ID-249-ARN/flag-vor-loc-lag GT 0.5
             </test>
-            <test logic="OR" value="2.0">
-                systems/gauges/radio/ID-249-ARN/arrow-deg GT 90.0
-                systems/gauges/radio/ID-249-ARN/arrow-deg LT -90.0
+            <test logic="AND" value="2.0">
+                systems/gauges/radio/ID-249-ARN/nav-distance-wa GT 20.0
+                systems/gauges/radio/ID-249-ARN/flag-vor-loc-lag GT 0.5
             </test>
         </switch>
         
+        <!--
         <fcs_function name="systems/gauges/radio/ID-249-ARN/rif-vert-vor-loc-norm">
             <function>
                 <ifthen>
-                    <eq><p>systems/gauges/radio/ID-249-ARN/off-to-from</p><v>2.0</v></eq>
-                    <product>
+                    <eq><p>systems/gauges/radio/ID-249-ARN/off-to-from</p><v>0.0</v></eq>
+                    <p>systems/gauges/radio/ID-249-ARN/rif-vert-vor-loc-norm</p>
+                    <ifthen>
+                        <eq><p>systems/gauges/radio/ID-249-ARN/off-to-from</p><v>1.0</v></eq>
+                        <p>systems/gauges/radio/ID-249-ARN/rif-vert-vor-loc</p>
                         <ifthen>
-                            <gt><p>systems/gauges/radio/ID-249-ARN/rif-vert-vor-loc</p><v>90.0</v></gt>
-                            <sum><p>systems/gauges/radio/ID-249-ARN/rif-vert-vor-loc</p><v>-180.0</v></sum>
-                            <sum><p>systems/gauges/radio/ID-249-ARN/rif-vert-vor-loc</p><v>180.0</v></sum>
+                            <ge><p>systems/gauges/radio/ID-249-ARN/rif-vert-vor-loc</p><v>90.0</v></ge>
+                            <product><sum><p>systems/gauges/radio/ID-249-ARN/rif-vert-vor-loc</p><v>-180</v></sum><v>1.0</v></product>
+                            <ifthen>
+                                <le><p>systems/gauges/radio/ID-249-ARN/rif-vert-vor-loc</p><v>-90.0</v></le>
+                                <product><sum><p>systems/gauges/radio/ID-249-ARN/rif-vert-vor-loc</p><v>180</v></sum><v>1.0</v></product>
+                                <p>systems/gauges/radio/ID-249-ARN/rif-vert-vor-loc</p>
+                            </ifthen>
                         </ifthen>
-                        <v>-1.0</v>
-                    </product>
-                    <p>systems/gauges/radio/ID-249-ARN/rif-vert-vor-loc</p>
+                    </ifthen>
                 </ifthen>
             </function>
         </fcs_function>
+        -->
         
         <lag_filter name="systems/gauges/radio/ID-249-ARN/rif-vert-vor-loc-lag">
             <input>systems/gauges/radio/ID-249-ARN/rif-vert-vor-loc-norm</input>

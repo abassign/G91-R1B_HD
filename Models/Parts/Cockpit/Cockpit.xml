@@ -280,19 +280,19 @@
         <type>material</type>
         <object-name>screews (Meshed)</object-name>
         <diffuse>
-            <red>0.7</red>
-            <green>0.7</green>
-            <blue>0.7</blue>
+            <red>0.6</red>
+            <green>0.6</green>
+            <blue>0.6</blue>
         </diffuse>
         <ambient>
-            <red>0.4</red>
-            <green>0.4</green>
-            <blue>0.4</blue>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
         </ambient>
         <specular>
-            <red>0.0</red>
-            <green>0.0</green>
-            <blue>0.0</blue>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
         </specular>
         <emission>
             <red-prop>sim/G91/re_emit/gauge_red_light</red-prop>
@@ -935,6 +935,32 @@
                 <property>sim/G91/configuration/gauges/nav-active</property>
                 <value>1</value>
             </equals>
+            <equals>
+                <property>sim/G91/configuration/gauges/nav-active-NAV_arn_21_C866</property>
+                <value>1</value>
+            </equals>
+        </condition>
+    </model>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/TACAN_NAV_arn_21/AN_ARN-82.xml</path>
+        <offsets>
+            <x-m>0.006</x-m>
+            <y-m>0.0</y-m>
+            <z-m>-0.130</z-m>
+            <pitch-deg>0.0</pitch-deg>
+        </offsets>
+        <condition>
+            <and>
+                <equals>
+                    <property>sim/G91/configuration/gauges/nav-active</property>
+                    <value>1</value>
+                </equals>
+                <equals>
+                    <property>sim/G91/configuration/gauges/nav-active-AN_ARN-82</property>
+                    <value>1</value>
+                </equals>
+            </and>
         </condition>
     </model>
     

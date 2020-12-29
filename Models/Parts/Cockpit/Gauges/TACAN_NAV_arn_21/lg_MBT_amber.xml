@@ -3,14 +3,14 @@
 <PropertyList>
     
     <path>lg_model_02.ac</path>
-
+    <!--
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/exterior/exterior-glass</inherits-from>
         <object-name>transparent_button (Meshed)</object-name>
         <object-name>light_Sphere (Meshed)</object-name>
         <object-name>light_Sphere_hot (Meshed)</object-name>
     </effect>
-
+    -->
     <animation>
         <type>noshadow</type>
         <object-name>light_Sphere (Meshed)</object-name>
@@ -182,7 +182,7 @@
         <type>material</type>
         <object-name>transparent_button (Meshed)</object-name>
         <transparency>
-            <alpha>1.5</alpha>
+            <alpha>1.8</alpha>
             <factor-prop>fdm/jsbsim/systems/gauges/radio/MBT/middle-transparent</factor-prop>
         </transparency>
         <diffuse>

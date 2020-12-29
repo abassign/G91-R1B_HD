@@ -27,13 +27,7 @@
         <object-name>frontal_plateB_back (Meshed)</object-name>
         -->
     </animation>
-    
-    <effect>
-        <inherits-from>Effects/model-transparent</inherits-from>
-        <object-name>lamp_glass (Meshed)</object-name>
-        <object-name>lamp_light (Meshed)</object-name>
-    </effect>
-    
+
     <animation> 
         <type>material</type>
         <object-name>cover (Meshed)</object-name>

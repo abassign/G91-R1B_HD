@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+    
+    <light>
+        <name>external-wheels-light-dx</name>
+        <type>spot</type>
+        <position>
+            <x-m>0.75</x-m>
+            <y-m>0.0</y-m>
+            <z-m>0.4</z-m>
+        </position>
+        <direction>
+            <pitch-deg>20</pitch-deg>
+            <roll-deg>40</roll-deg>
+            <heading-deg>0</heading-deg>
+        </direction>
+        <ambient>
+            <r>0.0</r>
+            <g>0.0</g>
+            <b>0.0</b>
+            <a>1</a>
+        </ambient>
+        <diffuse>
+            <r>1.5</r>
+            <g>1.5</g>
+            <b>1.2</b>
+            <a>1</a>
+        </diffuse>
+        <specular>
+            <r>0.0</r>
+            <g>0.0</g>
+            <b>0.0</b>
+            <a>1</a>
+        </specular>
+        <attenuation>
+            <c>1.0</c>
+            <l>0.7</l>
+            <q>0.18</q>
+        </attenuation>
+        <spot-exponent>10</spot-exponent>
+        <spot-cutoff>80</spot-cutoff>
+        <range-m>0.3</range-m>
+    </light>
+
+    <light>
+        <name>external-wheels-light-sx</name>
+        <type>spot</type>
+        <position>
+            <x-m>0.75</x-m>
+            <y-m>0.0</y-m>
+            <z-m>0.4</z-m>
+        </position>
+        <direction>
+            <pitch-deg>20</pitch-deg>
+            <roll-deg>-40</roll-deg>
+            <heading-deg>0</heading-deg>
+        </direction>
+        <ambient>
+            <r>0.0</r>
+            <g>0.0</g>
+            <b>0.0</b>
+            <a>1</a>
+        </ambient>
+        <diffuse>
+            <r>1.5</r>
+            <g>1.5</g>
+            <b>1.2</b>
+            <a>1</a>
+        </diffuse>
+        <specular>
+            <r>0.0</r>
+            <g>0.0</g>
+            <b>0.0</b>
+            <a>1</a>
+        </specular>
+        <attenuation>
+            <c>1.0</c>
+            <l>0.7</l>
+            <q>0.18</q>
+        </attenuation>
+        <spot-exponent>10</spot-exponent>
+        <spot-cutoff>80</spot-cutoff>
+        <range-m>0.3</range-m>
+    </light>
+
+</PropertyList>

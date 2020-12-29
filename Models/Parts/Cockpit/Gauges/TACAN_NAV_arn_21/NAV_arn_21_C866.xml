@@ -30,13 +30,6 @@
     </animation>
     
     <effect>
-        <inherits-from>Effects/model-transparent</inherits-from>
-        <object-name>switch_2_up (Meshed)</object-name>
-        <object-name>switch_2_center (Meshed)</object-name>
-        <object-name>switch_2_dow (Meshed)</object-name>
-    </effect>
-    
-    <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_chrome</inherits-from>
         <object-name>switch_2_level (Meshed)</object-name>
         <object-name>switch_2_ring (Meshed)</object-name>

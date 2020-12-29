@@ -635,7 +635,7 @@
                 <row>0</row>
                 <col>2</col>
                 <halign>left</halign>
-                <label>MMMMMMMMMMMMMMMMMMMMMMMMMMMMMM</label>
+                <label>MMMMMMMMMMMMMMMM</label>
                 <live>true</live>
                 <property>sim/G91/configuration/gauges/tacan-nav-active-desc</property>
                 <color>
@@ -656,9 +656,20 @@
                 <row>0</row>
                 <col>4</col>
                 <halign>left</halign>
-                <label>MMMMMMMMMM</label>
+                <label>Bearing</label>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.9</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>5</col>
+                <halign>left</halign>
+                <label>MMM</label>
                 <live>true</live>
-                <format>Bearing %3.0f deg</format>
+                <format>%3.0f deg</format>
                 <property>fdm/jsbsim/systems/gauges/radio/TACAN-NAV-ARN-21/indicated-bearing-true-deg</property>
                 <color>
                     <red>0.9</red>
@@ -668,11 +679,22 @@
             </text>
             <text>
                 <row>0</row>
-                <col>5</col>
+                <col>6</col>
                 <halign>left</halign>
-                <label>MMMMMMMMMM</label>
+                <label>Distance</label>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.9</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>7</col>
+                <halign>left</halign>
+                <label>MMM</label>
                 <live>true</live>
-                <format>Distance %3.0f nm</format>
+                <format>%3.0f nm</format>
                 <property>fdm/jsbsim/systems/gauges/radio/TACAN-NAV-ARN-21/distance-nm</property>
                 <color>
                     <red>0.9</red>
@@ -680,6 +702,28 @@
                     <blue>0.0</blue>
                 </color>
             </text>
+            <radio>
+                <row>0</row>
+                <col>8</col>
+                <halign>left</halign>
+                <label>ARN 82</label>
+                <property>sim/G91/configuration/gauges/nav-active-AN_ARN-82</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </radio>
+            <radio>
+                <row>0</row>
+                <col>9</col>
+                <halign>left</halign>
+                <label>ARN 21</label>
+                <property>sim/G91/configuration/gauges/nav-active-NAV_arn_21_C866</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </radio>
         </group>
     <hrule/>
     

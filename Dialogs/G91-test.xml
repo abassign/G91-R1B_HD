@@ -691,8 +691,8 @@
                 <row>0</row>
                 <col>1</col>
                 <halign>fill</halign>
-                <label>uv-dx-sw</label>
-                <property>sim/G91/lights/Compositor/canopy-uv-dx-sw</property>
+                <label>Landing light sx</label>
+                <property>sim/G91/lights/Compositor/external-landig-light-sx-sw</property>
                 <live>true</live>
                 <binding>
                     <command>dialog-apply</command>
@@ -702,8 +702,8 @@
                 <row>0</row>
                 <col>2</col>
                 <halign>fill</halign>
-                <label>uv-sx-sw</label>
-                <property>sim/G91/lights/Compositor/canopy-uv-sx-sw</property>
+                <label>Taxing light dx</label>
+                <property>sim/G91/lights/Compositor/external-taxing-light-dx-sw</property>
                 <live>true</live>
                 <binding>
                     <command>dialog-apply</command>
