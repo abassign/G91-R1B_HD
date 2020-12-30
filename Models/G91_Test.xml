@@ -62,11 +62,11 @@
             print("***** G91-R1B remove from multiplayer the value sim/G91/liveries/active/target_module_id: ",aModuleId);
         ]]></unload>
     </nasal>
-
+<!--
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Cockpit.xml</path>
     </model>
-<!--
+
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Canopy.xml</path>
     </model>
@@ -120,15 +120,33 @@
         <path>Aircraft/G91-R1B_HD/Models/Parts/Composer/external-taxing-light-dx.xml</path>
         <condition>
             <or>
-                <equals>
-                    <property>sim/G91/lights/Compositor/external-taxing-light-dx-sw</property>
-                    <value>1</value>
-                </equals>
                 <greater-than>
                     <property>sim/G91/lightning/taxiing-light/intensity_effect</property>
-                    <value>0.1</value>
+                    <value>0.01</value>
                 </greater-than>
             </or>
+        </condition>
+    </model>
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Composer/external-taxing-light-diffuse-dx.xml</path>
+        <condition>
+            <and>
+                <or>
+                    <greater-than>
+                        <property>sim/G91/lightning/taxiing-light/intensity_effect</property>
+                        <value>0.01</value>
+                    </greater-than>
+                    <equals>
+                        <property>sim/G91/lights/Compositor/external-taxing-light-dx-sw</property>
+                        <value>1</value>
+                    </equals>
+                </or>
+                <equals>
+                    <property>sim/current-view/internal</property>
+                    <value>false</value>
+                </equals>
+            </and>
         </condition>
     </model>
     
@@ -136,13 +154,9 @@
         <path>Aircraft/G91-R1B_HD/Models/Parts/Composer/external-landig-light-sx.xml</path>
         <condition>
             <or>
-                <equals>
-                    <property>sim/G91/lights/Compositor/external-landig-light-sx-sw</property>
-                    <value>1</value>
-                </equals>
                 <greater-than>
                     <property>sim/G91/lightning/landing-light/intensity_effect</property>
-                    <value>0.1</value>
+                    <value>0.01</value>
                 </greater-than>
             </or>
         </condition>
@@ -152,26 +166,26 @@
         <path>Aircraft/G91-R1B_HD/Models/Parts/Composer/external-wheels-light.xml</path>
         <condition>
             <or>
-                <equals>
-                    <property>sim/G91/lights/Compositor/external-taxing-light-dx-sw</property>
-                    <value>1</value>
-                </equals>
+                <greater-than>
+                    <property>gear/gear/position-norm</property>
+                    <value>0.05</value>
+                </greater-than>
                 <greater-than>
                     <property>sim/G91/lightning/taxiing-light/intensity_effect</property>
-                    <value>0.1</value>
+                    <value>0.01</value>
                 </greater-than>
             </or>
         </condition>
     </model>
     
     <!-- Canopy internal lights -->
-
+<!--
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Composer/canopy-uv-dx.xml</path>
         <condition>
             <greater-than>
                 <property>fdm/jsbsim/systems/lightning/light-uv-instrument</property>
-                <value>0.1</value>
+                <value>0.01</value>
             </greater-than>
         </condition>
     </model>
@@ -181,17 +195,17 @@
         <condition>
             <greater-than>
                 <property>fdm/jsbsim/systems/lightning/light-uv-instrument</property>
-                <value>0.1</value>
+                <value>0.01</value>
             </greater-than>
         </condition>
     </model>
-    
+    -->
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Composer/canopy-red-dx-00.xml</path>
         <condition>
             <greater-than>
                 <property>fdm/jsbsim/systems/lightning/light-red-emer-instrument</property>
-                <value>0.1</value>
+                <value>0.01</value>
             </greater-than>
         </condition>
     </model>
@@ -201,7 +215,7 @@
         <condition>
             <greater-than>
                 <property>fdm/jsbsim/systems/lightning/light-red-emer-instrument</property>
-                <value>0.1</value>
+                <value>0.01</value>
             </greater-than>
         </condition>
     </model>

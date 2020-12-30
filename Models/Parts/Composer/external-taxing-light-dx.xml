@@ -6,9 +6,9 @@
         <name>external-taxing-light-dx</name>
         <type>spot</type>
         <position>
-            <x-m>-3.2</x-m>
+            <x-m>-3.3</x-m>
             <y-m>0.25</y-m>
-            <z-m>-0.5</z-m>
+            <z-m>-0.44</z-m>
         </position>
         <direction>
             <pitch-deg>90</pitch-deg>
@@ -40,19 +40,22 @@
         </attenuation>
         <spot-exponent>50</spot-exponent>
         <spot-cutoff>30</spot-cutoff>
-        <range-m>100</range-m>
+        <range-m>200</range-m>
+        <dim-factor>
+            <property>fdm/jsbsim/systems/lightning/taxiing-light/intensity-norm</property>
+        </dim-factor>
     </light>
-
+    <!--
     <light>
-        <name>external-taxing-light-dx</name>
-        <type>spot</type>
+        <name>external-landig-light-diffuse-sx</name>
+        <type>point</type>
         <position>
-            <x-m>-8.2</x-m>
-            <y-m>0.25</y-m>
-            <z-m>-0.5</z-m>
+            <x-m>-3.8</x-m>
+            <y-m>-0.25</y-m>
+            <z-m>-0.2</z-m>
         </position>
         <direction>
-            <pitch-deg>-90</pitch-deg>
+            <pitch-deg>60</pitch-deg>
             <roll-deg>0</roll-deg>
             <heading-deg>0</heading-deg>
         </direction>
@@ -63,25 +66,28 @@
             <a>1</a>
         </ambient>
         <diffuse>
-            <r>3.0</r>
-            <g>3.0</g>
-            <b>2.5</b>
-            <a>1</a>
-        </diffuse>
-        <specular>
             <r>0.0</r>
             <g>0.0</g>
             <b>0.0</b>
             <a>1</a>
+        </diffuse>
+        <specular>
+            <r>0.2</r>
+            <g>0.2</g>
+            <b>0.2</b>
+            <a>1</a>
         </specular>
         <attenuation>
             <c>1.0</c>
-            <l>0.4</l>
-            <q>0.01</q>
+            <l>0.22</l>
+            <q>0.19</q>
         </attenuation>
-        <spot-exponent>20</spot-exponent>
-        <spot-cutoff>85</spot-cutoff>
-        <range-m>10</range-m>
+        <spot-exponent>50</spot-exponent>
+        <spot-cutoff>80</spot-cutoff>
+        <range-m>3</range-m>
+        <dim-factor>
+            <property>fdm/jsbsim/systems/lightning/taxiing-light/intensity-norm</property>
+        </dim-factor>
     </light>
-    
+    -->
 </PropertyList>

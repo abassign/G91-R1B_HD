@@ -40,5 +40,8 @@
         <spot-exponent>25</spot-exponent>
         <spot-cutoff>70</spot-cutoff>
         <range-m>0.05</range-m>
+        <dim-factor>
+            <property>fdm/jsbsim/systems/lightning/light-red-console</property>
+        </dim-factor>
     </light>
 </PropertyList>

@@ -18,8 +18,11 @@
     <property value="0">systems/lightning/ambient-light-emission-display-correction</property>
     <property value="0">systems/lightning/landing-light/intensity-norm</property>
     <property value="0">systems/lightning/landing-light/on</property>
+    <property value="0">systems/lightning/landing-light-set-on</property>
     <property value="0">systems/lightning/taxiing-light/intensity-norm</property>
     <property value="0">systems/lightning/taxiing-light/on</property>
+    <property value="0">systems/lightning/main-gear-light/on</property>
+    <property value="1.5">systems/lightning/main-gear-light/I</property>
     <property value="0">systems/lightning/beacon/on</property>
     <property value="0">systems/lightning/beacon/motor</property>
     <property value="0">systems/lightning/anticollision/on</property>
@@ -160,12 +163,17 @@
         
         <lag_filter name="systems/lightning/landing-light/intensity-norm">
             <input>systems/lightning/landing-light/on</input>
-            <c1>16.0</c1>
+            <c1>8.0</c1>
         </lag_filter>
         
         <lag_filter name="systems/lightning/taxiing-light/intensity-norm">
             <input>systems/lightning/taxiing-light/on</input>
             <c1>16.0</c1>
+        </lag_filter>
+        
+        <lag_filter name="systems/lightning/main-gear-light/intensity-norm">
+            <input>systems/lightning/main-gear-light/on</input>
+            <c1>32.0</c1>
         </lag_filter>
     
         <switch name="systems/lightning/landing-light/on">
@@ -181,6 +189,9 @@
                     systems/manual-switches/cockpit/sw-landing-light-test == 1
                     systems/electric/bus[1]/landing-light/fuse == 1
                 </test>
+                <test logic="AND">
+                    systems/lightning/landing-light-set-on GT 0.5
+                </test>
             </test>
         </switch>
         
@@ -194,9 +205,19 @@
             </test>
         </switch>
         
+        <switch name="systems/lightning/main-gear-light/on">
+            <default value="0"/>
+            <test logic="AND" value="systems/lightning/intensity-bus1-norm">
+                systems/manual-switches/cockpit/sw-landing-light GT 0.95
+                systems/electric/bus[1]/landing-light/fuse == 1
+                gear/gear-pos-norm GT 0.05
+            </test>
+        </switch>
+        
         <summer name="systems/electric/bus[1]/landing-light/I">
             <input>systems/lightning/landing-light/I</input>
             <input>systems/lightning/taxiing-light/I</input>
+            <input>systems/lightning/main-gear-light/I</input>
         </summer>
 
         <pure_gain name="systems/lightning/landing-light/I">
@@ -207,6 +228,11 @@
         <pure_gain name="systems/lightning/taxiing-light/I">
             <input>systems/lightning/taxiing-light/on</input>
             <gain>2.15</gain>
+        </pure_gain>
+        
+        <pure_gain name="systems/lightning/main-gear-light/I">
+            <input>systems/lightning/main-gear-light/on</input>
+            <gain>1.5</gain>
         </pure_gain>
         
     </channel>

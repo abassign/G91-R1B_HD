@@ -16,15 +16,15 @@
             <heading-deg>0</heading-deg>
         </direction>
         <ambient>
-            <r>0.0</r>
-            <g>0.0</g>
-            <b>0.0</b>
+            <r>0.1</r>
+            <g>0.1</g>
+            <b>0.07</b>
             <a>1</a>
         </ambient>
         <diffuse>
-            <r>1.5</r>
-            <g>1.5</g>
-            <b>1.2</b>
+            <r>1.0</r>
+            <g>1.0</g>
+            <b>0.7</b>
             <a>1</a>
         </diffuse>
         <specular>
@@ -41,6 +41,9 @@
         <spot-exponent>10</spot-exponent>
         <spot-cutoff>80</spot-cutoff>
         <range-m>0.3</range-m>
+        <dim-factor>
+            <property>fdm/jsbsim/systems/lightning/main-gear-light/intensity-norm</property>
+        </dim-factor>
     </light>
 
     <light>
@@ -57,15 +60,15 @@
             <heading-deg>0</heading-deg>
         </direction>
         <ambient>
-            <r>0.0</r>
-            <g>0.0</g>
-            <b>0.0</b>
+            <r>0.1</r>
+            <g>0.1</g>
+            <b>0.07</b>
             <a>1</a>
         </ambient>
         <diffuse>
-            <r>1.5</r>
-            <g>1.5</g>
-            <b>1.2</b>
+            <r>1.0</r>
+            <g>1.0</g>
+            <b>0.7</b>
             <a>1</a>
         </diffuse>
         <specular>
@@ -82,6 +85,9 @@
         <spot-exponent>10</spot-exponent>
         <spot-cutoff>80</spot-cutoff>
         <range-m>0.3</range-m>
+        <dim-factor>
+            <property>fdm/jsbsim/systems/lightning/main-gear-light/intensity-norm</property>
+        </dim-factor>
     </light>
 
 </PropertyList>

@@ -9,5 +9,46 @@
         <inherits-from>beacon-01</inherits-from>
         <object-name>procedural_light</object-name>
     </effect>
-
+    <!--
+    <light>
+        <name>baecon-red-light-01</name>
+        <type>spot</type>
+        <position>
+            <x-m>-0.1</x-m>
+            <y-m>0.0</y-m>
+            <z-m>0.05</z-m>
+        </position>
+        <direction>
+            <pitch-deg>45</pitch-deg>
+            <roll-deg>0</roll-deg>
+            <heading-deg>0</heading-deg>
+        </direction>
+        <ambient>
+            <r>1.0</r>
+            <g>0.0</g>
+            <b>0.0</b>
+            <a>1</a>
+        </ambient>
+        <diffuse>
+            <r>0.0</r>
+            <g>0.0</g>
+            <b>0.0</b>
+            <a>1</a>
+        </diffuse>
+        <specular>
+            <r>10.2</r>
+            <g>0.2</g>
+            <b>0.2</b>
+            <a>1</a>
+        </specular>
+        <attenuation>
+            <c>1.0</c>
+            <l>0.019</l>
+            <q>0.0032</q>
+        </attenuation>
+        <spot-exponent>25</spot-exponent>
+        <spot-cutoff>20</spot-cutoff>
+        <range-m>10.0</range-m>
+    </light>
+    -->
 </PropertyList>

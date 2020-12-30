@@ -682,7 +682,7 @@
         <group>
             <layout>table</layout>
             <text>
-                <label>Compositor lights</label>
+                <label>Compositor:</label>
                 <halign>right</halign>
                 <row>0</row>
                 <col>0</col>
@@ -691,8 +691,8 @@
                 <row>0</row>
                 <col>1</col>
                 <halign>fill</halign>
-                <label>Landing light sx</label>
-                <property>sim/G91/lights/Compositor/external-landig-light-sx-sw</property>
+                <label>Landing light switch</label>
+                <property>fdm/jsbsim/systems/manual-switches/cockpit/sw-landing-light</property>
                 <live>true</live>
                 <binding>
                     <command>dialog-apply</command>
@@ -702,8 +702,8 @@
                 <row>0</row>
                 <col>2</col>
                 <halign>fill</halign>
-                <label>Taxing light dx</label>
-                <property>sim/G91/lights/Compositor/external-taxing-light-dx-sw</property>
+                <label>Landing light sx</label>
+                <property>fdm/jsbsim/systems/lightning/landing-light-set-on</property>
                 <live>true</live>
                 <binding>
                     <command>dialog-apply</command>
@@ -711,7 +711,7 @@
             </radio>
             <radio>
                 <row>0</row>
-                <col>3</col>
+                <col>4</col>
                 <halign>fill</halign>
                 <label>gray</label>
                 <property>sim/G91/lights/Compositor/canopy-ambient-gray-sw</property>
@@ -722,7 +722,7 @@
             </radio>
             <radio>
                 <row>0</row>
-                <col>4</col>
+                <col>5</col>
                 <halign>fill</halign>
                 <label>gray specular</label>
                 <property>sim/G91/lights/Compositor/canopy-ambient-gray-specular-sw</property>
@@ -737,6 +737,17 @@
                 <halign>fill</halign>
                 <label>red</label>
                 <property>sim/G91/lights/Compositor/canopy-ambient-red-sw</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </radio>
+            <radio>
+                <row>0</row>
+                <col>7</col>
+                <halign>fill</halign>
+                <label>Debug</label>
+                <property>sim/debug/show-light-volumes</property>
                 <live>true</live>
                 <binding>
                     <command>dialog-apply</command>

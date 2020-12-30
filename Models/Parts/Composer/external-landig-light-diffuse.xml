@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+
+    <light>
+        <name>external-landig-light-diffuse </name>
+        <type>spot</type>
+        <position>
+            <x-m>-8.2</x-m>
+            <y-m>0.25</y-m>
+            <z-m>-0.5</z-m>
+        </position>
+        <direction>
+            <pitch-deg>-100</pitch-deg>
+            <roll-deg>0</roll-deg>
+            <heading-deg>0</heading-deg>
+        </direction>
+        <ambient>
+            <r>0.5</r>
+            <g>0.5</g>
+            <b>0.4</b>
+            <a>1</a>
+        </ambient>
+        <diffuse>
+            <r>3.0</r>
+            <g>3.0</g>
+            <b>2.5</b>
+            <a>1</a>
+        </diffuse>
+        <specular>
+            <r>0.0</r>
+            <g>0.0</g>
+            <b>0.0</b>
+            <a>1</a>
+        </specular>
+        <attenuation>
+            <c>1.0</c>
+            <l>0.4</l>
+            <q>0.05</q>
+        </attenuation>
+        <spot-exponent>20</spot-exponent>
+        <spot-cutoff>40</spot-cutoff>
+        <range-m>10</range-m>
+    </light>
+    
+</PropertyList>

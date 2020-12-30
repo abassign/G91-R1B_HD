@@ -39,6 +39,9 @@
         </attenuation>
         <spot-exponent>25</spot-exponent>
         <spot-cutoff>70</spot-cutoff>
-        <range-m>0.3</range-m>
+        <range-m>0.25</range-m>
+        <dim-factor>
+            <property>fdm/jsbsim/systems/lightning/light-red-emer-instrument</property>
+        </dim-factor>
     </light>
 </PropertyList>

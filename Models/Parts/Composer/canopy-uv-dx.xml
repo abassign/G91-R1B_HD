@@ -40,5 +40,8 @@
         <spot-exponent>35</spot-exponent>
         <spot-cutoff>60</spot-cutoff>
         <range-m>2</range-m>
+        <dim-factor>
+            <property>fdm/jsbsim/systems/lightning/light-uv-instrument</property>
+        </dim-factor>
     </light>
 </PropertyList>
