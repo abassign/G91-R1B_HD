@@ -252,20 +252,21 @@
         </specular>
     </animation>
     
-    <animation>
+    <!-- Compositor UV lights -->
+    
+    <light>
         <object-name>canopy-uv-sx-obj</object-name>
-        <type>light</type>
         <name>canopy-uv-sx</name>
         <type>spot</type>
         <position>
             <x-m>-2.8</x-m>
             <y-m>0.25</y-m>
-            <z-m>0.9</z-m>
+            <z-m>0.30</z-m>
         </position>
         <direction>
-            <lookat-x-m>-3.2</lookat-x-m>
-            <lookat-y-m>0.20</lookat-y-m>
-            <lookat-z-m>0.85</lookat-z-m>
+            <pitch-deg>65</pitch-deg>
+            <roll-deg>0</roll-deg>
+            <heading-deg>5</heading-deg>
         </direction>
         <ambient>
             <r>0.0</r>
@@ -274,44 +275,43 @@
             <a>1</a>
         </ambient>
         <diffuse>
-            <r>0.05</r>
+            <r>0.06</r>
             <g>0.0</g>
-            <b>0.3</b>
+            <b>0.4</b>
             <a>1</a>
         </diffuse>
         <specular>
-            <r>0.2</r>
-            <g>0.2</g>
-            <b>0.5</b>
+            <r>0.3</r>
+            <g>0.3</g>
+            <b>0.8</b>
             <a>1</a>
         </specular>
         <attenuation>
             <c>1.0</c>
-            <l>0.19</l>
-            <q>0.032</q>
+            <l>0.3</l>
+            <q>2.0</q>
         </attenuation>
-        <spot-exponent>35</spot-exponent>
-        <spot-cutoff>60</spot-cutoff>
+        <spot-exponent>25</spot-exponent>
+        <spot-cutoff>70</spot-cutoff>
         <range-m>2</range-m>
         <dim-factor>
             <property>fdm/jsbsim/systems/lightning/light-uv-instrument</property>
         </dim-factor>
-    </animation>
+    </light>
     
-    <animation>
+    <light>
         <object-name>canopy-uv-dx-obj</object-name>
-        <type>light</type>
         <name>canopy-uv-dx</name>
         <type>spot</type>
         <position>
             <x-m>-2.8</x-m>
             <y-m>-0.25</y-m>
-            <z-m>0.9</z-m>
+            <z-m>0.30</z-m>
         </position>
         <direction>
-            <lookat-x-m>-3.2</lookat-x-m>
-            <lookat-y-m>-0.20</lookat-y-m>
-            <lookat-z-m>0.85</lookat-z-m>
+            <pitch-deg>65</pitch-deg>
+            <roll-deg>0</roll-deg>
+            <heading-deg>-5</heading-deg>
         </direction>
         <ambient>
             <r>0.0</r>
@@ -320,29 +320,29 @@
             <a>1</a>
         </ambient>
         <diffuse>
-            <r>0.05</r>
+            <r>0.06</r>
             <g>0.0</g>
-            <b>0.3</b>
+            <b>0.4</b>
             <a>1</a>
         </diffuse>
         <specular>
-            <r>0.2</r>
-            <g>0.2</g>
-            <b>0.5</b>
+            <r>0.3</r>
+            <g>0.3</g>
+            <b>0.8</b>
             <a>1</a>
         </specular>
         <attenuation>
             <c>1.0</c>
-            <l>0.19</l>
-            <q>0.032</q>
+            <l>0.3</l>
+            <q>2.0</q>
         </attenuation>
-        <spot-exponent>35</spot-exponent>
-        <spot-cutoff>60</spot-cutoff>
+        <spot-exponent>25</spot-exponent>
+        <spot-cutoff>70</spot-cutoff>
         <range-m>2</range-m>
         <dim-factor>
             <property>fdm/jsbsim/systems/lightning/light-uv-instrument</property>
         </dim-factor>
-    </animation>
+    </light>
     
     <!-- animation -->
 

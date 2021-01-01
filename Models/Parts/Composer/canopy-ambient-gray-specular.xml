@@ -5,7 +5,7 @@
         <name>canopy-uv-sx</name>
         <type>point</type>
         <position>
-            <x-m>-2.7</x-m>
+            <x-m>-2.0</x-m>
             <y-m>0.0</y-m>
             <z-m>0.9</z-m>
         </position>
@@ -27,9 +27,9 @@
             <a>1</a>
         </diffuse>
         <specular>
-            <r>0.4</r>
-            <g>0.4</g>
-            <b>0.4</b>
+            <r>1.0</r>
+            <g>1.0</g>
+            <b>1.0</b>
             <a>1</a>
         </specular>
         <attenuation>
@@ -39,6 +39,9 @@
         </attenuation>
         <spot-exponent>5</spot-exponent>
         <spot-cutoff>50</spot-cutoff>
-        <range-m>5</range-m>
+        <range-m>1.5</range-m>
+        <dim-factor>
+            <property>sim/G91/configuration/Compositor/canopy-ambient-gray-specular-dimmer</property>
+        </dim-factor>
     </light>
 </PropertyList>

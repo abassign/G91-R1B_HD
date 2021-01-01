@@ -75,7 +75,7 @@ var timer_re_emit_green_red_gauges = maketimer(0.5, func() {
     # Use for controlled light for example cabin advisor lights
     setprop("sim/G91/light/lg_base",correction_ambient * 0.15);
     
-    var red_emer_instrument = correction_ambient * (getprop("/fdm/jsbsim/systems/lightning/light-red-emer-instrument")) * 1.2;
+    var red_emer_instrument = 0.5 * correction_ambient * (getprop("/fdm/jsbsim/systems/lightning/light-red-emer-instrument")) * 1.2;
     if (red_emer_instrument <= 0.01) {
         red_emer_instrument = 0.01;
     } else if (red_emer_instrument > 1.0) {
@@ -85,7 +85,7 @@ var timer_re_emit_green_red_gauges = maketimer(0.5, func() {
     setprop("sim/G91/re_emit/gauge_red_light",red_emer_instrument);
     setprop("sim/G91/re_emit/gauge_spot_internal_red_light",red_emer_instrument * 0.05);
     
-    var light_red_console = correction_ambient * (getprop("/fdm/jsbsim/systems/lightning/light-red-console")) * 1.2;
+    var light_red_console = 0.3 * correction_ambient * (getprop("/fdm/jsbsim/systems/lightning/light-red-console")) * 1.2;
     if (light_red_console <= 0.01) {
         light_red_console = 0.01;
     } else if (light_red_console > 1.0) {
