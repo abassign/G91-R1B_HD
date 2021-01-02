@@ -26,7 +26,6 @@
         <object-name>light_support03.001_Cube.001</object-name>
         <object-name>light_support03_Cube</object-name>
         <object-name>plate_txt_reflect.001_CUF_CANPOPY.003</object-name>
-        <object-name>plate_txt_reflect_CUF_CANPOPY.009</object-name>
         <object-name>screew_group01.001_Plane.002</object-name>
         <object-name>screew_group01.002_Plane.004</object-name>
         <object-name>screew_group01.003_Sphere</object-name>
@@ -34,6 +33,8 @@
         <object-name>screew_group01_Plane.042</object-name>
         <object-name>support_wood.001_Plane.001</object-name>
         <object-name>support_wood_Plane</object-name>
+        <object-name>light_support03_Cube</object-name>
+        <object-name>light_support03.001_Cube.001</object-name>
     </animation>
     
     <animation>
@@ -43,7 +44,6 @@
         <object-name>Circle.002_Circle.004</object-name>
         <object-name>Circle.003_Circle.006</object-name>
         <object-name>F_CANPOPY.009_CUF_CANPOPY.002</object-name>
-        <object-name>F_CANPOPY.011_CUF_CANPOPY.008</object-name>
         <object-name>F_dadi_canopy_ant.000_Circle.008</object-name>
         <object-name>F_dadi_canopy_ant.001_Circle.009</object-name>
         <object-name>light.002_Circle.010</object-name>
@@ -57,7 +57,6 @@
         <object-name>light_support03.001_Cube.001</object-name>
         <object-name>light_support03_Cube</object-name>
         <object-name>plate_txt_reflect.001_CUF_CANPOPY.003</object-name>
-        <object-name>plate_txt_reflect_CUF_CANPOPY.009</object-name>
         <object-name>screew_group01.001_Plane.002</object-name>
         <object-name>screew_group01.002_Plane.004</object-name>
         <object-name>screew_group01.003_Sphere</object-name>
@@ -67,7 +66,8 @@
         <object-name>support_wood_Plane</object-name>
         <!--
         <object-name>light.001_Circle.007</object-name>
-        <object-name>light_Circle</object-name>
+        <object-name>light_Circle</object-name>ù
+        <object-name>F_CANPOPY.011_CUF_CANPOPY.008</object-name>
         -->
     </animation>
 
@@ -92,16 +92,20 @@
         <type>material</type>
         <object-name>light.001_Circle.007</object-name>
         <object-name>light_Circle</object-name>
-        <texture>Pictures/G91-Black.png</texture>
+        <diffuse>
+            <red>0.05</red>
+            <green>0.05</green>
+            <blue>0.05</blue>
+        </diffuse>
         <ambient>
+            <red>0.05</red>
+            <green>0.05</green>
+            <blue>0.05</blue>
+        </ambient>
+        <specular>
             <red>0.5</red>
             <green>0.5</green>
             <blue>0.5</blue>
-        </ambient>
-        <specular>
-            <red>1.0</red>
-            <green>1.0</green>
-            <blue>1.0</blue>
         </specular>
     </animation>
     
@@ -109,16 +113,20 @@
         <type>material</type>
         <object-name>Circle.002_Circle.004</object-name>
         <object-name>Circle.003_Circle.006</object-name>
-        <texture>Pictures/G91-Black.png</texture>
+        <diffuse>
+            <red>0.05</red>
+            <green>0.05</green>
+            <blue>0.05</blue>
+        </diffuse>
         <ambient>
-            <red>0.8</red>
-            <green>0.8</green>
-            <blue>0.8</blue>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
         </ambient>
         <specular>
-            <red>1.0</red>
-            <green>1.0</green>
-            <blue>1.0</blue>
+            <red>1</red>
+            <green>1</green>
+            <blue>1</blue>
         </specular>
     </animation>
     
@@ -126,23 +134,21 @@
         <type>material</type>
         <object-name>F_CANPOPY.009_CUF_CANPOPY.002</object-name>
         <object-name>F_CANPOPY.011_CUF_CANPOPY.008</object-name>
-        <texture>Pictures/G91-Black.png</texture>
+        <diffuse>
+            <red>0.05</red>
+            <green>0.05</green>
+            <blue>0.05</blue>
+        </diffuse>
         <ambient>
-            <red>1.0</red>
-            <green>1.0</green>
-            <blue>1.0</blue>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
         </ambient>
         <specular>
-            <red>0.3</red>
-            <green>0.3</green>
-            <blue>0.3</blue>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
         </specular>
-        <emission>
-            <red>0.01</red>
-            <green>0.0</green>
-            <blue>0.0</blue>
-            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
-        </emission>
     </animation>
 
     <animation> 
@@ -154,11 +160,15 @@
         <object-name>screew_group01.003_Sphere</object-name>
         <object-name>screew_group01.004_Sphere.001</object-name>
         <object-name>screew_group01_Plane.042</object-name>
-        <texture>Pictures/G91-Dark-Grey.png</texture>
+        <diffuse>
+            <red>0.05</red>
+            <green>0.05</green>
+            <blue>0.05</blue>
+        </diffuse>
         <ambient>
-            <red>0.3</red>
-            <green>0.3</green>
-            <blue>0.3</blue>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
         </ambient>
         <specular>
             <red>0.8</red>
@@ -171,62 +181,15 @@
         <type>material</type>
         <object-name>light_support03.001_Cube.001</object-name>
         <object-name>light_support03_Cube</object-name>
-        <texture>Pictures/G91-Black.png</texture>
+        <diffuse>
+            <red>0.15</red>
+            <green>0.15</green>
+            <blue>0.15</blue>
+        </diffuse>
         <ambient>
-            <red>0.5</red>
-            <green>0.5</green>
-            <blue>0.5</blue>
-        </ambient>
-        <specular>
-            <red>0.8</red>
-            <green>0.8</green>
-            <blue>0.8</blue>
-        </specular>
-    </animation>
-    
-    <animation> 
-        <type>material</type>
-        <object-name>light_support01.001_Circle.003</object-name>
-        <object-name>light_support01_Circle.001</object-name>
-        <texture>Pictures/G91-DarkBrown02.png</texture>
-        <ambient>
-            <red>0.5</red>
-            <green>0.5</green>
-            <blue>0.5</blue>
-        </ambient>
-        <specular>
-            <red>0.8</red>
-            <green>0.8</green>
-            <blue>0.8</blue>
-        </specular>
-    </animation>
-    
-    <animation> 
-        <type>material</type>
-        <object-name>light_support02.001_Circle.002</object-name>
-        <object-name>light_support02_Circle.005</object-name>
-        <texture>Pictures/G91-Black.png</texture>
-        <ambient>
-            <red>1.0</red>
-            <green>1.0</green>
-            <blue>1.0</blue>
-        </ambient>
-        <specular>
-            <red>1.0</red>
-            <green>1.0</green>
-            <blue>1.0</blue>
-        </specular>
-    </animation>
-    
-    <animation> 
-        <type>material</type>
-        <object-name>support_wood.001_Plane.001</object-name>
-        <object-name>support_wood_Plane</object-name>
-        <texture>Pictures/G91-Al-Light.png</texture>
-        <ambient>
-            <red>0.1</red>
-            <green>0.1</green>
-            <blue>0.1</blue>
+            <red>0.15</red>
+            <green>0.15</green>
+            <blue>0.15</blue>
         </ambient>
         <specular>
             <red>0.3</red>
@@ -237,13 +200,100 @@
     
     <animation> 
         <type>material</type>
-        <object-name>light_cable</object-name>
-        <object-name>light_cable.001</object-name>
-        <texture>Pictures/G91-DarkBrown01.png</texture>
+        <object-name>light_support01.001_Circle.003</object-name>
+        <object-name>light_support01_Circle.001</object-name>
+        <diffuse>
+            <red>0.1</red>
+            <green>0.08</green>
+            <blue>0.08</blue>
+        </diffuse>
         <ambient>
             <red>0.1</red>
             <green>0.1</green>
             <blue>0.1</blue>
+        </ambient>
+        <specular>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
+        </specular>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>light_support02.001_Circle.002</object-name>
+        <object-name>light_support02_Circle.005</object-name>
+        <diffuse>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
+        </diffuse>
+        <ambient>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
+        </ambient>
+        <specular>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.3</blue>
+        </specular>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>support_wood.001_Plane.001</object-name>
+        <object-name>support_wood_Plane</object-name>
+        <diffuse>
+            <red>0.05</red>
+            <green>0.05</green>
+            <blue>0.05</blue>
+        </diffuse>
+        <ambient>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
+        </ambient>
+        <specular>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
+        </specular>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>light_cable</object-name>
+        <object-name>light_cable.001</object-name>
+        <diffuse>
+            <red>0.52</red>
+            <green>0.45</green>
+            <blue>0.25</blue>
+        </diffuse>
+        <ambient>
+            <red>0.52</red>
+            <green>0.45</green>
+            <blue>0.25</blue>
+        </ambient>
+        <specular>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </specular>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>plate_txt_reflect.001_CUF_CANPOPY.003</object-name>
+        <diffuse>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </diffuse>
+        <ambient>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
         </ambient>
         <specular>
             <red>0.3</red>

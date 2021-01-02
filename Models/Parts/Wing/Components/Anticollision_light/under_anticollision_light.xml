@@ -130,4 +130,50 @@
         </offsets>
     </model>
     
+    <!-- Compositor light -->  
+    
+    <light>
+        <name>anticollision-under-spot</name>
+        <type>spot</type>
+        <position>
+            <x-m>0.0</x-m>
+            <y-m>0.0</y-m>
+            <z-m>-0.05</z-m>
+        </position>
+        <direction>
+            <pitch-deg>0.0</pitch-deg>
+            <roll-deg>0.0</roll-deg>
+            <heading-deg>0.0</heading-deg>
+        </direction>
+        <ambient>
+            <r>0.2</r>
+            <g>0.2</g>
+            <b>0.2</b>
+            <a>1</a>
+        </ambient>
+        <diffuse>
+            <r>2.0</r>
+            <g>2.0</g>
+            <b>1.6</b>
+            <a>1</a>
+        </diffuse>
+        <specular>
+            <r>0.3</r>
+            <g>0.3</g>
+            <b>0.3</b>
+            <a>1</a>
+        </specular>
+        <attenuation>
+            <c>1.0</c>
+            <l>0.01</l>
+            <q>0.0019</q>
+        </attenuation>
+        <spot-exponent>1</spot-exponent>
+        <spot-cutoff>89</spot-cutoff>
+        <range-m>30.0</range-m>
+        <dim-factor>
+            <property>fdm/jsbsim/systems/lightning/ambient-light-anticollision-intensity</property>
+        </dim-factor>
+    </light>
+    
 </PropertyList>

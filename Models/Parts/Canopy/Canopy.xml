@@ -1398,6 +1398,53 @@
         </dim-factor>
     </light>
     
+        
+    <!-- Compositor anticollision light -->  
+    
+    <light>
+        <name>anticollision-top-spot</name>
+        <type>spot</type>
+        <position>
+            <x-m>-0.55</x-m>
+            <y-m>0.0</y-m>
+            <z-m>0.45</z-m>
+        </position>
+        <direction>
+            <pitch-deg>195.0</pitch-deg>
+            <roll-deg>0.0</roll-deg>
+            <heading-deg>0.0</heading-deg>
+        </direction>
+        <ambient>
+            <r>0.3</r>
+            <g>0.3</g>
+            <b>0.3</b>
+            <a>1</a>
+        </ambient>
+        <diffuse>
+            <r>3.0</r>
+            <g>3.0</g>
+            <b>2.0</b>
+            <a>1</a>
+        </diffuse>
+        <specular>
+            <r>0.3</r>
+            <g>0.3</g>
+            <b>0.3</b>
+            <a>1</a>
+        </specular>
+        <attenuation>
+            <c>1.0</c>
+            <l>0.01</l>
+            <q>0.005</q>
+        </attenuation>
+        <spot-exponent>2</spot-exponent>
+        <spot-cutoff>80</spot-cutoff>
+        <range-m>50.0</range-m>
+        <dim-factor>
+            <property>fdm/jsbsim/systems/lightning/ambient-light-anticollision-intensity</property>
+        </dim-factor>
+    </light>
+    
     <!-- Ambient day gray light correction -->
     
     <light>
