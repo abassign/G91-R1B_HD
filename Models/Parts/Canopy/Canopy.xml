@@ -1043,6 +1043,63 @@
         </dim-factor>
     </light>
     
+    <light>
+        <name>canopy-ambient-emer-red</name>
+        <type>point</type>
+        <position>
+            <x-m>-3.2</x-m>
+            <y-m>0.0</y-m>
+            <z-m>0.3</z-m>
+        </position>
+        <direction>
+            <x>-1.0</x>
+            <y>-0.3</y>
+            <z>0.1</z>
+        </direction>
+        <ambient>
+            <r>0.00</r>
+            <g>0.00</g>
+            <b>0.00</b>
+            <a>1</a>
+        </ambient>
+        <diffuse>
+            <r>0.05</r>
+            <g>0.01</g>
+            <b>0.0</b>
+            <a>1</a>
+        </diffuse>
+        <specular>
+            <r>0.05</r>
+            <g>0.0</g>
+            <b>0.0</b>
+            <a>1</a>
+        </specular>
+        <attenuation>
+            <c>1.0</c>
+            <l>0.09</l>
+            <q>0.022</q>
+        </attenuation>
+        <spot-exponent>5</spot-exponent>
+        <spot-cutoff>50</spot-cutoff>
+        <range-m>2</range-m>
+        <dim-factor>
+            <property>fdm/jsbsim/systems/lightning/light-red-emer-instrument</property>
+        </dim-factor>
+    </light>
+    
+    <animation>
+        <type>select</type>
+        <object-name>canopy-emergency-sx-00</object-name>
+        <object-name>canopy-emergency-dx-00</object-name>
+        <object-name>canopy-ambient-emer-red</object-name>
+        <condition>
+            <greater-than>
+                <property>fdm/jsbsim/systems/lightning/light-red-emer-instrument</property>
+                <value type="double">0.01</value>
+            </greater-than>
+        </condition>
+    </animation>
+    
     <!-- Consolle lights -->
     
     <light>
@@ -1313,50 +1370,6 @@
         <name>canopy-ambient-red</name>
         <type>point</type>
         <position>
-            <x-m>-3.2</x-m>
-            <y-m>0.0</y-m>
-            <z-m>0.3</z-m>
-        </position>
-        <direction>
-            <x>-1.0</x>
-            <y>-0.3</y>
-            <z>0.1</z>
-        </direction>
-        <ambient>
-            <r>0.00</r>
-            <g>0.00</g>
-            <b>0.00</b>
-            <a>1</a>
-        </ambient>
-        <diffuse>
-            <r>0.05</r>
-            <g>0.01</g>
-            <b>0.0</b>
-            <a>1</a>
-        </diffuse>
-        <specular>
-            <r>0.05</r>
-            <g>0.0</g>
-            <b>0.0</b>
-            <a>1</a>
-        </specular>
-        <attenuation>
-            <c>1.0</c>
-            <l>0.09</l>
-            <q>0.022</q>
-        </attenuation>
-        <spot-exponent>5</spot-exponent>
-        <spot-cutoff>50</spot-cutoff>
-        <range-m>2</range-m>
-        <dim-factor>
-            <property>fdm/jsbsim/systems/lightning/light-red-emer-instrument</property>
-        </dim-factor>
-    </light>
-    
-    <light>
-        <name>canopy-ambient-red</name>
-        <type>point</type>
-        <position>
             <x-m>-2.7</x-m>
             <y-m>0.0</y-m>
             <z-m>0.4</z-m>
@@ -1392,13 +1405,28 @@
         <spot-exponent>5</spot-exponent>
         <spot-cutoff>50</spot-cutoff>
         <range-m>2</range-m>
-        <property>fdm/jsbsim/systems/lightning/light-red-console</property>
         <dim-factor>
             <property>fdm/jsbsim/systems/lightning/light-red-console</property>
         </dim-factor>
     </light>
     
-        
+    <animation>
+        <type>select</type>
+        <object-name>canopy-Consolle-red-sx-01</object-name>
+        <object-name>canopy-Consolle-red-sx-02</object-name>
+        <object-name>canopy-Consolle-red-sx-03</object-name>
+        <object-name>canopy-Consolle-red-dx-01</object-name>
+        <object-name>canopy-Consolle-red-dx-02</object-name>
+        <object-name>canopy-Consolle-red-dx-03</object-name>
+        <object-name>canopy-ambient-red</object-name>
+        <condition>
+            <greater-than>
+                <property>fdm/jsbsim/systems/lightning/light-red-console</property>
+                <value type="double">0.01</value>
+            </greater-than>
+        </condition>
+    </animation>
+    
     <!-- Compositor anticollision light -->  
     
     <light>
@@ -1444,6 +1472,18 @@
             <property>fdm/jsbsim/systems/lightning/ambient-light-anticollision-intensity</property>
         </dim-factor>
     </light>
+    
+    <animation>
+        <type>select</type>
+        <object-name>anticollision-top-spot</object-name>
+        <object-name>canopy-ambient-red</object-name>
+        <condition>
+            <greater-than>
+                <property>fdm/jsbsim/systems/lightning/ambient-light-anticollision-intensity</property>
+                <value type="double">0.01</value>
+            </greater-than>
+        </condition>
+    </animation>
     
     <!-- Ambient day gray light correction -->
     
@@ -1495,5 +1535,27 @@
             </expression>
         </dim-factor>
     </light>
+    
+    <animation>
+        <type>select</type>
+        <object-name>canopy-ambient-gray</object-name>
+        <condition>
+            <and>
+                <greater-than>
+                    <expression>
+                        <product>
+                            <property>sim/G91/ambient-data/irradiance_light_green</property>
+                            <property>sim/G91/configuration/compositor/canopy-ambient-light-dimmer</property>
+                        </product>
+                    </expression>
+                    <value type="double">0.01</value>
+                </greater-than>
+                <equals>
+                    <property>sim/current-view/internal</property>
+                    <value>true</value>
+                </equals>
+            </and>
+        </condition>
+    </animation>
     
 </PropertyList>

@@ -66,15 +66,15 @@
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Cockpit.xml</path>
     </model>
-
+    -->
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Canopy.xml</path>
     </model>
-    -->
+
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Wing/Wing.xml</path>
     </model>
-
+<!--
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Tail/Tail.xml</path>
     </model>
@@ -98,7 +98,7 @@
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Airbrake/Airbrake.xml</path>
     </model>
-    <!--
+
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Stores/Stores.xml</path>
     </model>
@@ -114,6 +114,7 @@
         </condition>
     </model>
 -->
+
     <!-- Compositor lights test -->
     
     <model>
@@ -179,81 +180,15 @@
     </model>
     
     <!-- Canopy internal lights -->
-<!--
-    <model>
-        <path>Aircraft/G91-R1B_HD/Models/Parts/Composer/canopy-uv-dx.xml</path>
-        <condition>
-            <greater-than>
-                <property>fdm/jsbsim/systems/lightning/light-uv-instrument</property>
-                <value>0.01</value>
-            </greater-than>
-        </condition>
-    </model>
-    
-    <model>
-        <path>Aircraft/G91-R1B_HD/Models/Parts/Composer/canopy-uv-sx.xml</path>
-        <condition>
-            <greater-than>
-                <property>fdm/jsbsim/systems/lightning/light-uv-instrument</property>
-                <value>0.01</value>
-            </greater-than>
-        </condition>
-    </model>
-    -->
-    <model>
-        <path>Aircraft/G91-R1B_HD/Models/Parts/Composer/canopy-red-dx-00.xml</path>
-        <condition>
-            <greater-than>
-                <property>fdm/jsbsim/systems/lightning/light-red-emer-instrument</property>
-                <value>0.01</value>
-            </greater-than>
-        </condition>
-    </model>
-    
-    <model>
-        <path>Aircraft/G91-R1B_HD/Models/Parts/Composer/canopy-red-sx-00.xml</path>
-        <condition>
-            <greater-than>
-                <property>fdm/jsbsim/systems/lightning/light-red-emer-instrument</property>
-                <value>0.01</value>
-            </greater-than>
-        </condition>
-    </model>
-    
-    <model>
-        <path>Aircraft/G91-R1B_HD/Models/Parts/Composer/canopy-ambient-red.xml</path>
-        <condition>
-            <equals>
-                <property>sim/G91/lights/Compositor/canopy-ambient-red-sw</property>
-                <value>1</value>
-            </equals>
-        </condition>
-    </model>
-    
-    <model>
-        <path>Aircraft/G91-R1B_HD/Models/Parts/Composer/canopy-ambient-gray.xml</path>
-        <condition>
-            <and>
-                <equals>
-                    <property>sim/G91/lights/Compositor/canopy-ambient-gray-sw</property>
-                    <value>1</value>
-                </equals>
-                <equals>
-                    <property>sim/current-view/internal</property>
-                    <value>true</value>
-                </equals>
-            </and>
-        </condition>
-    </model>
     
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Composer/canopy-ambient-gray-specular.xml</path>
         <condition>
             <and>
-                <equals>
-                    <property>sim/G91/lights/Compositor/canopy-ambient-gray-specular-sw</property>
-                    <value>1</value>
-                </equals>
+                <greater-than>
+                    <property>sim/G91/configuration/Compositor/canopy-ambient-gray-specular-dimmer</property>
+                    <value>0.01</value>
+                </greater-than>
                 <equals>
                     <property>sim/current-view/internal</property>
                     <value>true</value>

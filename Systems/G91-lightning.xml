@@ -25,6 +25,8 @@
     <property value="1.5">systems/lightning/main-gear-light/I</property>
     <property value="0">systems/lightning/beacon/on</property>
     <property value="0">systems/lightning/beacon/motor</property>
+    <property value="0">systems/lightning/beacon/deg</property>
+    <property value="0">systems/lightning/beacon/deg-trigger</property>
     <property value="0">systems/lightning/anticollision/on</property>
     <property value="0">systems/lightning/ambient-light-anticollision-procedural</property>
     <property value="0">systems/lightning/ambient-light-anticollision-intensity</property>
@@ -100,7 +102,6 @@
         </pure_gain>
         
     </channel>
-
     
     
     <channel name="light red console and panel" execrate="32">
@@ -237,7 +238,7 @@
         
     </channel>
 
-    <channel name="beacon light" execrate="32">
+    <channel name="beacon light" execrate="4">
 
         <switch name="systems/lightning/beacon/on">
             <default value="0"/>
@@ -251,6 +252,23 @@
             <input>systems/lightning/beacon/on</input>
             <c1>2.0</c1>
         </lag_filter>
+        
+        <integrator name="systems/lightning/beacon/deg-int">
+            <input>systems/lightning/beacon/motor</input>
+            <c1>270.0</c1>
+            <trigger>systems/lightning/beacon/deg-trigger</trigger>
+        </integrator>
+
+        <summer name="systems/lightning/beacon/deg">
+            <input>systems/lightning/beacon/deg-int</input>
+        </summer>
+
+        <switch name="systems/lightning/beacon/deg-trigger">
+            <default value="0.0"/>
+            <test logic="AND" value="-1.0">
+                systems/lightning/beacon/deg GE 360.0
+            </test>
+        </switch>
         
         <pure_gain name="systems/electric/bus[1]/beacon/I">
             <input>systems/lightning/beacon/on</input>

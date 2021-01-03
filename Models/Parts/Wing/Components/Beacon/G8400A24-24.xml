@@ -214,9 +214,9 @@
             <blue>0.0</blue>
         </ambient>
         <emission>	
-            <red>1.0</red>	
-            <green>0.0</green>	
-            <blue>0.0</blue>
+            <red>3.0</red>	
+            <green>1.0</green>	
+            <blue>0.5</blue>
             <factor-prop>sim/G91/lightning/beacon-light/intensity_mirror</factor-prop>
         </emission>
     </animation>
@@ -241,7 +241,7 @@
         <emission>	
             <red>1.0</red>	
             <green>0.5</green>	
-            <blue>1.0</blue>
+            <blue>3.0</blue>
             <factor-prop>sim/G91/lightning/beacon-light/intensity_bulb</factor-prop>
         </emission>
     </animation>
@@ -323,8 +323,310 @@
             <blue>0.8</blue>
         </diffuse>
     </animation>
-
+    
+    <!-- Compositor beacon -->
+    <!--
+    <light>
+        <name>beacon-spot-00</name>
+        <type>point</type>
+        <position>
+            <x-m>0.0</x-m>
+            <y-m>0.0</y-m>
+            <z-m>0.3</z-m>
+        </position>
+        <direction>
+            <x-m>1.0</x-m>
+            <y-m>1.0</y-m>
+            <z-m>1.0</z-m>
+        </direction>
+        <ambient>
+            <r>0.05</r>
+            <g>0.05</g>
+            <b>0.05</b>
+            <a>1</a>
+        </ambient>
+        <diffuse>
+            <r>0.05</r>
+            <g>0.01</g>
+            <b>0.0</b>
+            <a>1</a>
+        </diffuse>
+        <specular>
+            <r>0.05</r>
+            <g>0.0</g>
+            <b>0.0</b>
+            <a>1</a>
+        </specular>
+        <attenuation>
+            <c>1.0</c>
+            <l>0.09</l>
+            <q>0.032</q>
+        </attenuation>
+        <spot-exponent>5</spot-exponent>
+        <spot-cutoff>50</spot-cutoff>
+        <range-m>0.5</range-m>
+        <dim-factor>
+            <property>sim/G91/lightning/beacon-light/emission_cover</property>
+        </dim-factor>
+    </light>
+    -->
+    
+    <light>
+        <name>beacon-spot-00</name>
+        <type>spot</type>
+        <position>
+            <x-m>0.0</x-m>
+            <y-m>0.0</y-m>
+            <z-m>0.3</z-m>
+        </position>
+        <direction>
+            <pitch-deg>0.0</pitch-deg>
+            <roll-deg>0.0</roll-deg>
+            <heading-deg>0.0</heading-deg>
+        </direction>
+        <ambient>
+            <r>0.4</r>
+            <g>0.1</g>
+            <b>0.0</b>
+            <a>1</a>
+        </ambient>
+        <diffuse>
+            <r>1.2</r>
+            <g>0.05</g>
+            <b>0.0</b>
+            <a>1</a>
+        </diffuse>
+        <specular>
+            <r>3.8</r>
+            <g>0.5</g>
+            <b>0.0</b>
+            <a>1</a>
+        </specular>
+        <attenuation>
+            <c>1.0</c>
+            <l>4.0</l>
+            <q>0.5</q>
+        </attenuation>
+        <spot-exponent>1</spot-exponent>
+        <spot-cutoff>50</spot-cutoff>
+        <range-m>0.3</range-m>
+        <dim-factor>
+            <property>sim/G91/lightning/beacon-light/emission_cover</property>
+        </dim-factor>
+    </light>
+    
+    
+    <light>
+        <name>beacon-spot-01</name>
+        <type>spot</type>
+        <position>
+            <x-m>0.0</x-m>
+            <y-m>0.0</y-m>
+            <z-m>-0.02</z-m>
+        </position>
+        <direction>
+            <pitch-deg>105.0</pitch-deg>
+            <roll-deg>0.0</roll-deg>
+            <heading-deg>90.0</heading-deg>
+        </direction>
+        <ambient>
+            <r>0.4</r>
+            <g>0.1</g>
+            <b>0.0</b>
+            <a>1</a>
+        </ambient>
+        <diffuse>
+            <r>4.0</r>
+            <g>1.0</g>
+            <b>0.0</b>
+            <a>1</a>
+        </diffuse>
+        <specular>
+            <r>0.4</r>
+            <g>0.1</g>
+            <b>0.0</b>
+            <a>1</a>
+        </specular>
+        <attenuation>
+            <c>1.0</c>
+            <l>0.01</l>
+            <q>0.005</q>
+        </attenuation>
+        <spot-exponent>40</spot-exponent>
+        <spot-cutoff>15</spot-cutoff>
+        <range-m>50.0</range-m>
+        <dim-factor>
+            <property>sim/G91/lightning/beacon-light/emission_cover</property>
+        </dim-factor>
+    </light>
+    
+    <light>
+        <name>beacon-spot-01A</name>
+        <type>spot</type>
+        <position>
+            <x-m>0.0</x-m>
+            <y-m>0.10</y-m>
+            <z-m>0.03</z-m>
+        </position>
+        <direction>
+            <pitch-deg>95.0</pitch-deg>
+            <roll-deg>0.0</roll-deg>
+            <heading-deg>90.0</heading-deg>
+        </direction>
+        <ambient>
+            <r>0.0</r>
+            <g>0.0</g>
+            <b>0.0</b>
+            <a>1</a>
+        </ambient>
+        <diffuse>
+            <r>20.0</r>
+            <g>8.0</g>
+            <b>5.0</b>
+            <a>1</a>
+        </diffuse>
+        <specular>
+            <r>0.4</r>
+            <g>0.1</g>
+            <b>0.0</b>
+            <a>1</a>
+        </specular>
+        <attenuation>
+            <c>1.0</c>
+            <l>4.0</l>
+            <q>40.0</q>
+        </attenuation>
+        <spot-exponent>10</spot-exponent>
+        <spot-cutoff>15</spot-cutoff>
+        <range-m>8.0</range-m>
+        <dim-factor>
+            <property>sim/G91/lightning/beacon-light/emission_cover</property>
+        </dim-factor>
+    </light>
+    
+    <light>
+        <name>beacon-spot-02</name>
+        <type>spot</type>
+        <position>
+            <x-m>0.0</x-m>
+            <y-m>-0.25</y-m>
+            <z-m>-0.02</z-m>
+        </position>
+        <direction>
+            <pitch-deg>105.0</pitch-deg>
+            <roll-deg>0.0</roll-deg>
+            <heading-deg>270.0</heading-deg>
+        </direction>
+        <ambient>
+            <r>0.0</r>
+            <g>0.0</g>
+            <b>0.0</b>
+            <a>1</a>
+        </ambient>
+        <diffuse>
+            <r>4.0</r>
+            <g>1.0</g>
+            <b>0.0</b>
+            <a>1</a>
+        </diffuse>
+        <specular>
+            <r>0.4</r>
+            <g>0.1</g>
+            <b>0.0</b>
+            <a>1</a>
+        </specular>
+        <attenuation>
+            <c>1.0</c>
+            <l>0.01</l>
+            <q>0.005</q>
+        </attenuation>
+        <spot-exponent>40</spot-exponent>
+        <spot-cutoff>15</spot-cutoff>
+        <range-m>50.0</range-m>
+        <dim-factor>
+            <property>sim/G91/lightning/beacon-light/emission_cover</property>
+        </dim-factor>
+    </light>
+    
+    <light>
+        <name>beacon-spot-02A</name>
+        <type>spot</type>
+        <position>
+            <x-m>0.0</x-m>
+            <y-m>-0.10</y-m>
+            <z-m>0.03</z-m>
+        </position>
+        <direction>
+            <pitch-deg>95.0</pitch-deg>
+            <roll-deg>0.0</roll-deg>
+            <heading-deg>270.0</heading-deg>
+        </direction>
+        <ambient>
+            <r>0.4</r>
+            <g>0.1</g>
+            <b>0.4</b>
+            <a>1</a>
+        </ambient>
+        <diffuse>
+            <r>20.0</r>
+            <g>8.0</g>
+            <b>5.0</b>
+            <a>1</a>
+        </diffuse>
+        <specular>
+            <r>0.4</r>
+            <g>0.1</g>
+            <b>0.0</b>
+            <a>1</a>
+        </specular>
+        <attenuation>
+            <c>1.0</c>
+            <l>4.0</l>
+            <q>40.0</q>
+        </attenuation>
+        <spot-exponent>10</spot-exponent>
+        <spot-cutoff>15</spot-cutoff>
+        <range-m>8.0</range-m>
+        <dim-factor>
+            <property>sim/G91/lightning/beacon-light/emission_cover</property>
+        </dim-factor>
+    </light>
+    
     <animation>
+        <type>select</type>
+        <object-name>beacon-spot-00</object-name>
+        <object-name>beacon-spot-01</object-name>
+        <object-name>beacon-spot-02</object-name>
+        <condition>
+            <greater-than>
+                <property>sim/G91/lightning/beacon-light/emission_cover</property>
+                <value type="double">0.01</value>
+            </greater-than>
+        </condition>
+    </animation>
+    
+    <animation>
+        <type>select</type>
+        <object-name>beacon-spot-01A</object-name>
+        <object-name>beacon-spot-02A</object-name>
+        <condition>
+            <and>
+                <greater-than>
+                    <property>sim/G91/lightning/beacon-light/emission_cover</property>
+                    <value type="double">0.01</value>
+                </greater-than>
+                <equals>
+                    <property>sim/current-view/internal</property>
+                    <value>false</value>
+                </equals>
+            </and>
+        </condition>
+    </animation>
+    
+    <!-- Beacon animation -->
+    
+    <animation> 
+        <type>rotate</type>
         <object-name>lamp-glasses (Meshed)</object-name>
         <object-name>glass-support (Meshed)</object-name>
         <object-name>lamp-mirrors (Meshed)</object-name>
@@ -335,7 +637,52 @@
         <object-name>support (Meshed)</object-name>
         <object-name>beacon-01 (Meshed)</object-name>
         <object-name>beacon-02 (Meshed)</object-name>
+        <object-name>beacon-spot-01A</object-name>
+        <object-name>beacon-spot-02A</object-name>
+        <property>fdm/jsbsim/systems/lightning/beacon/deg</property>
+        <factor>1.0</factor>
+        <center>
+            <x-m>0.0</x-m>
+            <y-m>0.0</y-m>
+            <z-m>0.0</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>0</y>
+            <z>1</z>
+        </axis>
+    </animation>
+    
+    <animation> 
+        <type>rotate</type>
+        <object-name>beacon-spot-01</object-name>
+        <object-name>beacon-spot-02</object-name>
+        <property>fdm/jsbsim/systems/lightning/beacon/deg</property>
+        <factor>1.0</factor>
+        <center>
+            <x-m>0.0</x-m>
+            <y-m>0.0</y-m>
+            <z-m>0.0</z-m>
+        </center>
+        <axis>
+            <x>0.07</x>
+            <y>0</y>
+            <z>1</z>
+        </axis>
+    </animation>
+<!--
+    <animation>
         <type>spin</type>
+        <object-name>lamp-glasses (Meshed)</object-name>
+        <object-name>glass-support (Meshed)</object-name>
+        <object-name>lamp-mirrors (Meshed)</object-name>
+        <object-name>lamp-filament (Meshed)</object-name>
+        <object-name>lamp-support (Meshed)</object-name>
+        <object-name>base-rotante (Meshed)</object-name>
+        <object-name>contact (Meshed)</object-name>
+        <object-name>support (Meshed)</object-name>
+        <object-name>beacon-01 (Meshed)</object-name>
+        <object-name>beacon-02 (Meshed)</object-name>
         <property>fdm/jsbsim/systems/lightning/beacon/motor</property>
         <factor>45</factor>
         <center>
@@ -349,14 +696,17 @@
             <z>1</z>
         </axis>
     </animation>
+    -->
     
+    <!-- Beacon effects -->
+    <!--
     <model>
         <name>beacon-01 (Meshed)</name>
         <path>Effects/lights/beacon-01.xml</path>
         <offsets>
             <x-m> 0.0 </x-m>
             <y-m> -0.07 </y-m>
-            <z-m> 0.05 </z-m>
+            <z-m> 0.02 </z-m>
             <heading-deg>90</heading-deg>
             <pitch-deg>45</pitch-deg>
         </offsets>
@@ -368,12 +718,12 @@
         <offsets>
             <x-m> 0.0 </x-m>
             <y-m> 0.07 </y-m>
-            <z-m> 0.05 </z-m>
+            <z-m> 0.02 </z-m>
             <heading-deg>-90</heading-deg>
             <pitch-deg>45</pitch-deg>
         </offsets>
     </model>
-    
+
     <model>
         <name>cover (Meshed)</name>
         <path>Effects/lights/beacon-00.xml</path>
@@ -385,5 +735,5 @@
             <pitch-deg>0</pitch-deg>
         </offsets>
     </model>
-    
+    -->
 </PropertyList>

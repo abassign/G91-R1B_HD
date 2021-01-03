@@ -176,4 +176,15 @@
         </dim-factor>
     </light>
     
+    <animation>
+        <type>select</type>
+        <object-name>anticollision-under-spot</object-name>
+        <condition>
+            <greater-than>
+                <property>fdm/jsbsim/systems/lightning/ambient-light-anticollision-intensity</property>
+                <value type="double">0.01</value>
+            </greater-than>
+        </condition>
+    </animation>
+    
 </PropertyList>

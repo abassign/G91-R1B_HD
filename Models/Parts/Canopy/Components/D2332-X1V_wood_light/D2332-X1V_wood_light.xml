@@ -305,7 +305,6 @@
     <!-- Compositor UV lights -->
     
     <light>
-        <object-name>canopy-uv-sx-obj</object-name>
         <name>canopy-uv-sx</name>
         <type>spot</type>
         <position>
@@ -350,7 +349,6 @@
     </light>
     
     <light>
-        <object-name>canopy-uv-dx-obj</object-name>
         <name>canopy-uv-dx</name>
         <type>spot</type>
         <position>
@@ -394,13 +392,31 @@
         </dim-factor>
     </light>
     
+    <animation>
+        <type>select</type>
+        <object-name>canopy-uv-dx</object-name>
+        <object-name>canopy-uv-sx</object-name>
+        <condition>
+            <and>
+                <greater-than>
+                    <property>fdm/jsbsim/systems/lightning/light-uv-instrument</property>
+                    <value type="double">0.01</value>
+                </greater-than>
+                <equals>
+                    <property>sim/current-view/internal</property>
+                    <value>true</value>
+                </equals>
+            </and>
+        </condition>
+    </animation>
+    
     <!-- animation -->
 
     <animation> 
         <type>rotate</type>
         <object-name>CanopyGroup</object-name>
-        <object-name>canopy-uv-sx-obj</object-name>
-        <object-name>canopy-uv-dx-obj</object-name>
+        <object-name>canopy-uv-dx</object-name>
+        <object-name>canopy-uv-sx</object-name>
         <property>fdm/jsbsim/systems/canopy/position</property>
         <factor>45</factor>
         <center>
