@@ -4,7 +4,51 @@
 
     <path>procedural_light.ac</path>
     <nopreview/>
-
+    
+    <light>
+        <name>position-lights-tail-yellow-01</name>
+        <type>spot</type>
+        <position>
+            <x-m>-0.2</x-m>
+            <y-m>0.0</y-m>
+            <z-m>0.0</z-m>
+        </position>
+        <direction>
+            <pitch-deg>90.0</pitch-deg>
+            <roll-deg>0.0</roll-deg>
+            <heading-deg>180.0</heading-deg>
+        </direction>
+        <ambient>
+            <r>0.2</r>
+            <g>0.15</g>
+            <b>0.1</b>
+            <a>0</a>
+        </ambient>
+        <diffuse>
+            <r>0.0</r>
+            <g>0.0</g>
+            <b>0.0</b>
+            <a>1</a>
+        </diffuse>
+        <specular>
+            <r>2.0</r>
+            <g>1.5</g>
+            <b>1.0</b>
+            <a>1</a>
+        </specular>
+        <attenuation>
+            <c>1.0</c>
+            <l>2.5</l>
+            <q>1.5</q>
+        </attenuation>
+        <spot-exponent>1</spot-exponent>
+        <spot-cutoff>80</spot-cutoff>
+        <range-m>1.0</range-m>
+        <dim-factor>
+            <property>fdm/jsbsim/systems/lightning/ambient-position-lights-procedural</property>
+        </dim-factor>
+    </light>
+    
     <effect>
         <inherits-from>procedural-light-nav-tail-yellow</inherits-from>
         <object-name>procedural_light</object-name>

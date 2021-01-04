@@ -325,55 +325,10 @@
     </animation>
     
     <!-- Compositor beacon -->
-    <!--
+
     <light>
         <name>beacon-spot-00</name>
         <type>point</type>
-        <position>
-            <x-m>0.0</x-m>
-            <y-m>0.0</y-m>
-            <z-m>0.3</z-m>
-        </position>
-        <direction>
-            <x-m>1.0</x-m>
-            <y-m>1.0</y-m>
-            <z-m>1.0</z-m>
-        </direction>
-        <ambient>
-            <r>0.05</r>
-            <g>0.05</g>
-            <b>0.05</b>
-            <a>1</a>
-        </ambient>
-        <diffuse>
-            <r>0.05</r>
-            <g>0.01</g>
-            <b>0.0</b>
-            <a>1</a>
-        </diffuse>
-        <specular>
-            <r>0.05</r>
-            <g>0.0</g>
-            <b>0.0</b>
-            <a>1</a>
-        </specular>
-        <attenuation>
-            <c>1.0</c>
-            <l>0.09</l>
-            <q>0.032</q>
-        </attenuation>
-        <spot-exponent>5</spot-exponent>
-        <spot-cutoff>50</spot-cutoff>
-        <range-m>0.5</range-m>
-        <dim-factor>
-            <property>sim/G91/lightning/beacon-light/emission_cover</property>
-        </dim-factor>
-    </light>
-    -->
-    
-    <light>
-        <name>beacon-spot-00</name>
-        <type>spot</type>
         <position>
             <x-m>0.0</x-m>
             <y-m>0.0</y-m>
@@ -385,31 +340,31 @@
             <heading-deg>0.0</heading-deg>
         </direction>
         <ambient>
-            <r>0.4</r>
-            <g>0.1</g>
+            <r>0.0</r>
+            <g>0.0</g>
             <b>0.0</b>
             <a>1</a>
         </ambient>
         <diffuse>
-            <r>1.2</r>
-            <g>0.05</g>
+            <r>4.2</r>
+            <g>0.4</g>
             <b>0.0</b>
             <a>1</a>
         </diffuse>
         <specular>
-            <r>3.8</r>
-            <g>0.5</g>
+            <r>0.0</r>
+            <g>0.0</g>
             <b>0.0</b>
             <a>1</a>
         </specular>
         <attenuation>
             <c>1.0</c>
-            <l>4.0</l>
-            <q>0.5</q>
+            <l>12.0</l>
+            <q>16.0</q>
         </attenuation>
         <spot-exponent>1</spot-exponent>
         <spot-cutoff>50</spot-cutoff>
-        <range-m>0.3</range-m>
+        <range-m>0.8</range-m>
         <dim-factor>
             <property>sim/G91/lightning/beacon-light/emission_cover</property>
         </dim-factor>
@@ -480,7 +435,7 @@
             <a>1</a>
         </ambient>
         <diffuse>
-            <r>20.0</r>
+            <r>40.0</r>
             <g>8.0</g>
             <b>5.0</b>
             <a>1</a>
@@ -518,8 +473,8 @@
             <heading-deg>270.0</heading-deg>
         </direction>
         <ambient>
-            <r>0.0</r>
-            <g>0.0</g>
+            <r>0.4</r>
+            <g>0.1</g>
             <b>0.0</b>
             <a>1</a>
         </ambient>
@@ -568,7 +523,7 @@
             <a>1</a>
         </ambient>
         <diffuse>
-            <r>20.0</r>
+            <r>40.0</r>
             <g>8.0</g>
             <b>5.0</b>
             <a>1</a>
@@ -665,7 +620,7 @@
             <z-m>0.0</z-m>
         </center>
         <axis>
-            <x>0.07</x>
+            <x>0.075</x>
             <y>0</y>
             <z>1</z>
         </axis>

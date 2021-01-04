@@ -5,12 +5,12 @@
     <inherits-from>Effects/procedural-light</inherits-from>
 
     <parameters>
-        <light_color_base_r type="float">0.441</light_color_base_r>
-        <light_color_base_g type="float">1.000</light_color_base_g>
-        <light_color_base_b type="float">0.477</light_color_base_b>
-        <light_color_center_r type="float">0.5</light_color_center_r>
-        <light_color_center_g type="float">1.0</light_color_center_g>
-        <light_color_center_b type="float">0.5</light_color_center_b>
+        <light_color_base_r type="float">0.22</light_color_base_r>
+        <light_color_base_g type="float">0.500</light_color_base_g>
+        <light_color_base_b type="float">0.22</light_color_base_b>
+        <light_color_center_r type="float">0.25</light_color_center_r>
+        <light_color_center_g type="float">0.5</light_color_center_g>
+        <light_color_center_b type="float">0.25</light_color_center_b>
         <intensity_scale>
             <use>fdm/jsbsim/systems/lightning/ambient-position-lights-procedural</use>
         </intensity_scale>

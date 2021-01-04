@@ -76,8 +76,6 @@
         <object-name>A00_Guide001_sx_flap.001</object-name>
         <object-name>A00_Guide002_Dx_flap.</object-name>
         <object-name>A00_Guide002_sx_flap.001</object-name>
-        <object-name>A00_wing_light.support_dx</object-name>
-        <object-name>A00_wing_light.support_sx</object-name>
         <object-name>A__G91_fuselage_int</object-name>
         <object-name>A__G91_fuselage_int.weapon.door.002</object-name>
         <object-name>A_flap_dx.006</object-name>
@@ -206,6 +204,10 @@
         <object-name>A00_light_sphere_sx</object-name>
         <object-name>A00_light_sphere_dx</object-name>
         <object-name>A00_wing_light.glass_dx</object-name>
+        <!--
+        <object-name>A00_wing_light.support_dx</object-name>
+        <object-name>A00_wing_light.support_sx</object-name>
+        -->
     </animation>
     
     <effect>
@@ -487,8 +489,6 @@
         <object-name>A00_Guide001_sx_flap.001</object-name>
         <object-name>A00_Guide002_Dx_flap.</object-name>
         <object-name>A00_Guide002_sx_flap.001</object-name>
-        <object-name>A00_wing_light.support_dx</object-name>
-        <object-name>A00_wing_light.support_sx</object-name>
         <object-name>A_flap_dx.006</object-name>
         <object-name>A_flap_sx.005</object-name>
         <object-name>B00_beam_gear_dx.002</object-name>
@@ -543,6 +543,24 @@
             <blue>0.5</blue>
         </ambient>	
     </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>A00_wing_light.support_dx</object-name>
+        <object-name>A00_wing_light.support_sx</object-name>
+        <texture>poto_02.png</texture>
+        <diffuse>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </diffuse>
+        <ambient>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </ambient>	
+    </animation>
+    
     
     <animation> 
         <type>material</type>
