@@ -385,14 +385,14 @@
             <heading-deg>90.0</heading-deg>
         </direction>
         <ambient>
-            <r>0.4</r>
-            <g>0.1</g>
+            <r>0.0</r>
+            <g>0.0</g>
             <b>0.0</b>
             <a>1</a>
         </ambient>
         <diffuse>
-            <r>4.0</r>
-            <g>1.0</g>
+            <r>8.0</r>
+            <g>2.0</g>
             <b>0.0</b>
             <a>1</a>
         </diffuse>
@@ -405,9 +405,9 @@
         <attenuation>
             <c>1.0</c>
             <l>0.01</l>
-            <q>0.005</q>
+            <q>0.01</q>
         </attenuation>
-        <spot-exponent>40</spot-exponent>
+        <spot-exponent>100</spot-exponent>
         <spot-cutoff>15</spot-cutoff>
         <range-m>50.0</range-m>
         <dim-factor>
@@ -473,14 +473,14 @@
             <heading-deg>270.0</heading-deg>
         </direction>
         <ambient>
-            <r>0.4</r>
-            <g>0.1</g>
+            <r>0.0</r>
+            <g>0.0</g>
             <b>0.0</b>
             <a>1</a>
         </ambient>
         <diffuse>
-            <r>4.0</r>
-            <g>1.0</g>
+            <r>8.0</r>
+            <g>2.0</g>
             <b>0.0</b>
             <a>1</a>
         </diffuse>
@@ -493,9 +493,9 @@
         <attenuation>
             <c>1.0</c>
             <l>0.01</l>
-            <q>0.005</q>
+            <q>0.01</q>
         </attenuation>
-        <spot-exponent>40</spot-exponent>
+        <spot-exponent>100</spot-exponent>
         <spot-cutoff>15</spot-cutoff>
         <range-m>50.0</range-m>
         <dim-factor>
