@@ -61,7 +61,7 @@
             <length unit="M">2.0</length>
         </form> 
         <location name="POINTMASS" unit="IN">
-            <x> 212.50 </x>
+            <x> 209.00 </x>
             <y> 79.92 </y>
             <z> -36.61 </z>
         </location>
@@ -75,7 +75,7 @@
             <length unit="M">2.0</length>
         </form> 
         <location name="POINTMASS" unit="IN">
-            <x> 212.50 </x>
+            <x> 209.00 </x>
             <y> -79.92 </y>
             <z> -36.61 </z>
         </location>

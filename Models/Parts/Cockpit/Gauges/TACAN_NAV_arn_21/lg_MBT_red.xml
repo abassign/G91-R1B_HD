@@ -182,7 +182,7 @@
         <type>material</type>
         <object-name>transparent_button (Meshed)</object-name>
         <transparency>
-            <alpha>1.5</alpha>
+            <alpha>2.5</alpha>
             <factor-prop>fdm/jsbsim/systems/warning-lights/cockpit/wl-bus0-bus1-battery-out-transparent</factor-prop>
         </transparency>
         <diffuse>

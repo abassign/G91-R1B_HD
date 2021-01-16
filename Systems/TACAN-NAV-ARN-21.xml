@@ -1292,7 +1292,7 @@
         </lag_filter>
         
         <switch name="systems/gauges/radio/ID-249-ARN/glide-slope-deg">
-            <default value="0.0"/>
+            <default value="0.2"/>
             <test logic="AND" value="/instrumentation/nav/gs-needle-deflection-deg">
                 systems/gauges/radio/ID-249-ARN/flag-glide-slope-lag GT 0.5
             </test>
@@ -1325,8 +1325,12 @@
         </switch>
         
         <angle name="systems/gauges/radio/ID-249-ARN/arrow-deg" unit="DEG">
+            <!--
             <source_angle unit="DEG">systems/gauges/radio/ID-249-ARN/gyrocompass-magnetic-deg-var</source_angle>
             <target_angle unit="DEG">systems/gauges/radio/ID-249-ARN/reciprocal-radial-deg</target_angle>
+            -->
+            <source_angle unit="DEG">systems/gauges/radio/ID-249-ARN/course-deg-set</source_angle>
+            <target_angle unit="DEG">systems/gauges/radio/ID-249-ARN/gyrocompass-magnetic-deg-var</target_angle>
         </angle>
         
         <linear_actuator name="systems/gauges/radio/ID-249-ARN/arrow-deg-la">
@@ -1336,17 +1340,6 @@
             <reset>systems/gauges/radio/ID-249-ARN/gyrocompass-in-error</reset>
         </linear_actuator>
         
-        <!--
-        <fcs_function name="systems/gauges/radio/ID-249-ARN/arrow-deg-norm">
-            <function>
-                <ifthen>
-                    <ge><p>systems/gauges/radio/ID-249-ARN/arrow-deg-la</p><v>0.0</v></ge>
-                    <p>systems/gauges/radio/ID-249-ARN/arrow-deg-la</p>
-                    <difference><v>360.0</v><p>systems/gauges/radio/ID-249-ARN/arrow-deg-la</p></difference>
-                </ifthen>
-            </function>
-        </fcs_function>
-        -->
         <angle name="systems/gauges/radio/ID-249-ARN/rif-vert-vor-loc" unit="DEG">
             <source_angle unit="DEG">systems/gauges/radio/ID-249-ARN/course-deg-set</source_angle>
             <target_angle unit="DEG">systems/gauges/radio/ID-249-ARN/reciprocal-radial-deg</target_angle>
@@ -1360,47 +1353,16 @@
         <switch name="systems/gauges/radio/ID-249-ARN/off-to-from">
             <default value="0.0"/>
             <test logic="AND" value="1.0">
+                /instrumentation/nav/nav-distance > 1.0
                 systems/gauges/radio/ID-249-ARN/nav-distance-wa LT -20.0
                 systems/gauges/radio/ID-249-ARN/flag-vor-loc-lag GT 0.5
             </test>
             <test logic="AND" value="2.0">
+                /instrumentation/nav/nav-distance > 1.0
                 systems/gauges/radio/ID-249-ARN/nav-distance-wa GT 20.0
                 systems/gauges/radio/ID-249-ARN/flag-vor-loc-lag GT 0.5
             </test>
         </switch>
-        
-        <!--
-        <fcs_function name="systems/gauges/radio/ID-249-ARN/rif-vert-vor-loc-norm">
-            <function>
-                <ifthen>
-                    <eq><p>systems/gauges/radio/ID-249-ARN/off-to-from</p><v>0.0</v></eq>
-                    <p>systems/gauges/radio/ID-249-ARN/rif-vert-vor-loc-norm</p>
-                    <ifthen>
-                        <eq><p>systems/gauges/radio/ID-249-ARN/off-to-from</p><v>1.0</v></eq>
-                        <p>systems/gauges/radio/ID-249-ARN/rif-vert-vor-loc</p>
-                        <ifthen>
-                            <ge><p>systems/gauges/radio/ID-249-ARN/rif-vert-vor-loc</p><v>90.0</v></ge>
-                            <product><sum><p>systems/gauges/radio/ID-249-ARN/rif-vert-vor-loc</p><v>-180</v></sum><v>1.0</v></product>
-                            <ifthen>
-                                <le><p>systems/gauges/radio/ID-249-ARN/rif-vert-vor-loc</p><v>-90.0</v></le>
-                                <product><sum><p>systems/gauges/radio/ID-249-ARN/rif-vert-vor-loc</p><v>180</v></sum><v>1.0</v></product>
-                                <p>systems/gauges/radio/ID-249-ARN/rif-vert-vor-loc</p>
-                            </ifthen>
-                        </ifthen>
-                    </ifthen>
-                </ifthen>
-            </function>
-        </fcs_function>
-        -->
-        
-        <lag_filter name="systems/gauges/radio/ID-249-ARN/rif-vert-vor-loc-lag">
-            <input>systems/gauges/radio/ID-249-ARN/rif-vert-vor-loc-norm</input>
-            <c1>2.0</c1>
-            <clipto>
-                <min>-40.0</min>
-                <max>40.0</max>
-            </clipto>
-        </lag_filter>
         
         <switch name="systems/gauges/radio/ID-249-ARN/flag-to">
             <default value="0.0"/>
@@ -1423,6 +1385,38 @@
         
         <lag_filter name="systems/gauges/radio/ID-249-ARN/flag-from-lag">
             <input>systems/gauges/radio/ID-249-ARN/flag-from</input>
+            <c1>2.0</c1>
+        </lag_filter>
+        
+        <fcs_function name="systems/gauges/radio/ID-249-ARN/rif-vert-vor-loc-norm">
+            <function>
+                <ifthen>
+                    <ge><p>systems/gauges/radio/ID-249-ARN/flag-to</p><v>0.0</v></ge>
+                    <p>systems/gauges/radio/ID-249-ARN/rif-vert-vor-loc</p>
+                    <product>
+                        <ifthen>
+                            <ge><p>systems/gauges/radio/ID-249-ARN/rif-vert-vor-loc</p><v>0.0</v></ge>
+                            <sum>
+                                <p>systems/gauges/radio/ID-249-ARN/rif-vert-vor-loc</p>
+                                <v>-180.0</v>
+                            </sum>
+                            <sum>
+                                <p>systems/gauges/radio/ID-249-ARN/rif-vert-vor-loc</p>
+                                <v>180.0</v>
+                            </sum>
+                        </ifthen>
+                        <v>-1.0</v>
+                    </product>
+                </ifthen>
+            </function>
+            <clipto>
+                <min>-40.0</min>
+                <max>40.0</max>
+            </clipto>
+        </fcs_function>
+        
+        <lag_filter name="systems/gauges/radio/ID-249-ARN/rif-vert-vor-loc-lag">
+            <input>systems/gauges/radio/ID-249-ARN/rif-vert-vor-loc-norm</input>
             <c1>2.0</c1>
         </lag_filter>
         

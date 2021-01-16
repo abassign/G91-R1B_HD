@@ -50,11 +50,11 @@ var testing_log_active = 0;
 var landing_activate_status = 0;
 
 var to_radial_vor_old_dist = nil;
-var to_radial_vor_to_from_ctrl = 0;
 var to_radial_ndb_old_dist = nil;
 var to_radial_ndb_to_from_ctrl = 0;
 var radials_selected_correct_deg_mod = 0;
 var radials_selected_automatic_deg_mod = 0;
+var nav_radials_selected_deg_old = nil;
 
 var configuration_gauges_nav_active = 0;
 var configuration_gauges_tacan_active = 0;
@@ -260,11 +260,14 @@ var RadioDataClass = {
                     radial = 0.0;
                     setprop("/instrumentation/tacan/frequencies/selected-mhz",me.frequency);
                 } else {
-                    if (radial != nil) me.radial = radial;
+print("***** sintonize: ",radial," me.bearing: ",me.bearing(airplane));
+                    if (radial != nil) {
+                        me.radial = radial;
+                    };
                     setprop("/instrumentation/nav/frequencies/selected-mhz",me.frequency);
                 };
                 if (getprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/automatic-to-radial-active") == 1) {
-                    if (me.radial != nil) nav_radials_selected_deg(me.radial);
+                    if (me.radial != nil) nav_radials_selected_deg(me.radial,10);
                 };
             };
         };
@@ -628,12 +631,15 @@ var RadiosDataClass = {
                     vor_radio.sintonize(getprop("fdm/jsbsim/systems/autopilot/gui/airport_runway_airplane_heading_correct"),airplane);
                 } else {
                     if (mode == 1) {
+#// Da revisionare, deve dare la rotta del pilota automatico/PHI ! Verifca
                         vor_radio.sintonize(vor_radio.bearing(airplane),airplane);
                     } else {
-                        vor_radio.sintonize(nil,airplane);
+                        vor_radio.sintonize(vor_radio.bearing(airplane),airplane);
                     }
                 };
-                vor_radio.sintonize(getprop("fdm/jsbsim/systems/autopilot/gui/airport_runway_airplane_heading_correct"),airplane);
+                
+                #vor_radio.sintonize(getprop("fdm/jsbsim/systems/autopilot/gui/airport_runway_airplane_heading_correct"),airplane);
+                
                 setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/find-vor",1);
                 if (vor_radio.type == "LOC") {      
                     setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/find-vor-str","LOC (" ~ vor_radio.id ~ ")");
@@ -670,10 +676,10 @@ var RadiosDataClass = {
 };
 
 
-var nav_radials_selected_deg = func(radial) {
+var nav_radials_selected_deg = func(radial,id) {
     
     setprop("/instrumentation/nav/radials/selected-deg",radial);
-    radials_selected_automatic_deg_mod = 2;
+    print("nav_radials_selected_deg: ",radial," id: ",id);
     
 };
 
@@ -688,6 +694,14 @@ var radio_assistant = func() {
     
     if (radios == nil) {
         radios = RadiosDataClass.new();
+    };
+    
+    if (radials_selected_automatic_deg_mod <= 0 and (nav_radials_selected_deg_old == nil or nav_radials_selected_deg_old != getprop("/instrumentation/nav/radials/selected-deg"))) {
+        nav_radials_selected_deg_old = getprop("/instrumentation/nav/radials/selected-deg");
+        if (getprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/automatic-to-radial-active") == 1) {
+            setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/automatic-to-radial-active-trigger",9);
+            #//print("***** /instrumentation/nav/radials/selected-deg * : ",getprop("/instrumentation/nav/radials/selected-deg"));
+        };
     };
     
     #// Test for mode == 3 or Landing phase for search ILS
@@ -804,37 +818,32 @@ var radio_assistant = func() {
                 var distance = vor_radio.distance_nm(airplane);
                 if (to_radial_vor_old_dist != nil) {
                     var status_to_from = 0;
-                    var versus = to_radial_vor_old_dist - distance;
-                    if (radials_selected_correct_deg_mod == 1 and distance > 2.0) to_radial_vor_to_from_ctrl = 1;
-                    if ((versus > 0.0 and distance > 1.0) or (to_radial_vor_to_from_ctrl == 1 and distance > 1.0)) {
-                        setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/automatic-to-radial-by-vor-to-from",1);
+                    #// To-From calculate by TACAN-NAV-ARN-21
+                    if (getprop("systems/gauges/radio/ID-249-ARN/flag-to") == 1) {
                         status_to_from = 1;
-                    } elsif (versus < 0.0 and distance > 1.0 and to_radial_vor_to_from_ctrl == 0) {
-                        setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/automatic-to-radial-by-vor-to-from",-1);
+                    } elsif (getprop("systems/gauges/radio/ID-249-ARN/flag-from") == 1) {
                         status_to_from = -1;
-                    } else {
-                        setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/automatic-to-radial-by-vor-to-from",0);
-                        to_radial_vor_to_from_ctrl = 0;
                     };
+                    setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/automatic-to-radial-by-vor-to-from",status_to_from);
                     if (status_to_from == 1) {
                         if (vor_radio.type == "ILS") {
                             # If is ILS, the radial is the run-way radial
                             var v = vor_radio.bearing(airplane);
                             var t = getprop("/instrumentation/nav[0]/radials/target-radial-deg");
                             if (mat.abs(v - t) <= ils_bearing_max) {
-                                nav_radials_selected_deg(t);
+                                nav_radials_selected_deg(t,1);
                             } else {
-                                nav_radials_selected_deg(vor_radio.bearing(airplane));
+                                nav_radials_selected_deg(vor_radio.bearing(airplane),2);
                             };
                         } else {
-                            nav_radials_selected_deg(vor_radio.bearing(airplane));
+                            nav_radials_selected_deg(vor_radio.bearing(airplane),3);
                         };
                     } elsif (status_to_from == -1) {
                         var b = 180.0 + vor_radio.bearing(airplane);
                         if (b > 360) b = b - 360;
-                        nav_radials_selected_deg(b);
+                        nav_radials_selected_deg(b,4);
                     };
-                    #//print("***** correct_deg_mod: ",radials_selected_correct_deg_mod," from_ctrl: ",to_radial_vor_to_from_ctrl," status_to_from: ",status_to_from," distance: ",distance);
+                    #//print("***** correct_deg_mod: ",radials_selected_correct_deg_mod," status_to_from: ",status_to_from," distance: ",distance);
                 };
                 to_radial_vor_old_dist = distance;
             };
@@ -857,11 +866,11 @@ var radio_assistant = func() {
                         to_radial_ndb_to_from_ctrl = 0;
                     };
                     if (status_to_from == 1) {
-                        nav_radials_selected_deg(ndb_radio.bearing(airplane));
+                        nav_radials_selected_deg(ndb_radio.bearing(airplane),5);
                     } elsif (status_to_from == -1) {
                         var b = 180.0 + ndb_radio.bearing(airplane);
                         if (b > 360) b = b - 360;
-                        nav_radials_selected_deg(b);
+                        nav_radials_selected_deg(b,6);
                     };
                     #//print("***** correct_deg_mod: ",radials_selected_correct_deg_mod," from_ctrl: ",to_radial_ndb_to_from_ctrl," status_to_from: ",status_to_from," distance: ",distance);
                 };
@@ -947,12 +956,15 @@ setlistener("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/mode", func {
 setlistener("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/automatic-to-radial-active-trigger", func {
     
     if (getprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/automatic-to-radial-active-trigger") == 9) {
+        print("***** automatic-to-radial-active-trigger == 9");
         setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/automatic-to-radial-active",0);
         setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/automatic-to-radial-active-description","No link to course");
     } else {
+        print("***** automatic-to-radial-active-trigger : ",getprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/automatic-to-radial-active-trigger")," automatic-to-radial-active : ",getprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/automatic-to-radial-active"));
         if (getprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/automatic-to-radial-active") == 0) {
             setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/automatic-to-radial-active",1);
             setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/automatic-to-radial-active-description","Link to course active");
+            radials_selected_automatic_deg_mod = 2;
         } else {
             setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/automatic-to-radial-active",0);
             setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/automatic-to-radial-active-description","No link to course");
@@ -973,17 +985,6 @@ setlistener("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/automatic-to-rad
         setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/automatic-to-radial-by-ndb",0);
     };
     setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/automatic-to-radial-trigger",0);
-    
-}, 0, 1);
-
-
-setlistener("/instrumentation/nav/radials/selected-deg", func {
-    
-    if (radials_selected_automatic_deg_mod > 0) {
-        if (getprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/automatic-to-radial-active") == 1) {
-            setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/automatic-to-radial-active-trigger",1);
-        };
-    };
     
 }, 0, 1);
 
@@ -1042,7 +1043,7 @@ var radio_assistant_control = func() {
         
         delta_time_delay = delta_time;
         radials_selected_correct_deg_mod = 0;
-        if (radials_selected_automatic_deg_mod > 0) radials_selected_automatic_deg_mod -= 1;
+        if (radials_selected_automatic_deg_mod > 0) radials_selected_automatic_deg_mod = radials_selected_automatic_deg_mod - 1;
     };
     radio_assistant_controlTimer.restart(1);
 }

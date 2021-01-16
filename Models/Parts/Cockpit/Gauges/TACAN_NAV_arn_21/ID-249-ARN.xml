@@ -3,19 +3,7 @@
 <PropertyList>
 
     <path>ID-249-ARN.ac</path>
-    <!--
-    <effect>
-        <inherits-from>Effects/model-transparent</inherits-from>
-        <object-name>glass (Meshed)</object-name>
-    </effect>
-    
-    <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/exterior/exterior-glass</inherits-from>
-        <object-name>transparent_button (Meshed)</object-name>
-        <object-name>light_Sphere (Meshed)</object-name>
-        <object-name>light_Sphere_hot (Meshed)</object-name>
-    </effect>
-    -->
+
     <animation>
         <type>noshadow</type>
         <object-name>procedural_light_cockpit_gauge_spot_red</object-name>
@@ -738,7 +726,7 @@
         <emission>
             <red>0.0</red>
             <green>0.0</green>
-            <blue>3.0</blue>
+            <blue>3.5</blue>
             <factor-prop>fdm/jsbsim/systems/gauges/gyrocompass/light-error</factor-prop>
         </emission>
     </animation>
@@ -747,7 +735,7 @@
         <type>material</type>
         <object-name>transparent_button (Meshed)</object-name>
         <transparency>
-            <alpha>2.0</alpha>
+            <alpha>2.50</alpha>
             <factor-prop>fdm/jsbsim/systems/gauges/gyrocompass/light-error-transparent</factor-prop>
         </transparency>
         <diffuse>
@@ -1035,6 +1023,7 @@
         <object-name>rif oriz A (Meshed)</object-name>
         <property>fdm/jsbsim/systems/gauges/radio/ID-249-ARN/glide-slope-deg</property>
         <factor>-4.3</factor>
+        <offset-deg>0.0</offset-deg>
         <center>
             <x-m>-0.056</x-m>
             <y-m>0.0</y-m>

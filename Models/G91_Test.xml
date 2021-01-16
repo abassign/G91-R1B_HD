@@ -62,19 +62,25 @@
             print("***** G91-R1B remove from multiplayer the value sim/G91/liveries/active/target_module_id: ",aModuleId);
         ]]></unload>
     </nasal>
-<!--
+    
+    
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Cockpit.xml</path>
+        <!--
+        <condition>
+            <property>sim/aircraft-is-singleplayer</property>
+        </condition>
+        -->
     </model>
-
+<!--
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Canopy.xml</path>
     </model>
-    -->
+
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Wing/Wing.xml</path>
     </model>
-
+    
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Tail/Tail.xml</path>
     </model>
@@ -98,13 +104,13 @@
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Airbrake/Airbrake.xml</path>
     </model>
-<!--
-    <model>
-        <path>Aircraft/G91-R1B_HD/Models/Parts/Stores/Stores.xml</path>
-    </model>
 
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Turbojet/OrpheusMK803.xml</path>
+    </model>
+
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Stores/Stores.xml</path>
     </model>
 
     <model>
@@ -113,8 +119,7 @@
             <property>sim/aircraft-is-singleplayer</property>
         </condition>
     </model>
--->
-
+    -->
     <!-- Compositor lights test -->
     
     <model>

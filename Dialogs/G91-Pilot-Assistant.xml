@@ -34,6 +34,8 @@
                     };
                     if (getprop("sim/G91/nasal/modules/active-autopilot") == 0) {
                         setprop("sim/G91/nasal/modules/set-active-autopilot",1);
+                        #// FgCamera set the mouse spring-loaded
+                        setprop("/sim/fgcamera/mouse/spring-loaded",1);
                     };
                 </script>
             </binding>

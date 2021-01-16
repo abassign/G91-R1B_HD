@@ -13,7 +13,6 @@ var prop = props.globals.initNode("sim/G91/ambient-data/irradiance_map_strength"
 
 var timer_ambient_light = maketimer(0.5, func() {
 
-
     var V0_1A = props.globals.getNode("sim/G91/Test/V0_1A",1).getValue();
     var V0_1B = props.globals.getNode("sim/G91/Test/V0_1B",1).getValue();
     var V0_1C = props.globals.getNode("sim/G91/Test/V0_1C",1).getValue();

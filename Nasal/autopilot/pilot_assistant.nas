@@ -1832,13 +1832,16 @@ var pilot_assistant = func() {
         if (getprop("fdm/jsbsim/systems/jato/combustion-off") == 1) {
             take_off_jato_active = 5;
         }
-    } else if (take_off_jato_active >= 5 and take_off_jato_active < 6) {
+    } else if (take_off_jato_active >= 5) {
         take_off_jato_active = take_off_jato_active + (timeStep / 3);
-    } else if (take_off_jato_active > 6) {
-        setprop("fdm/jsbsim/systems/manual-switches/jato/sw-jettinson-togle",1);
-        setprop("fdm/jsbsim/systems/jato/reset",1);
-        take_off_jato_active = 0;
-        setprop("fdm/jsbsim/systems/autopilot/gui/take-off-jato-active",0);
+        if (take_off_jato_active > 6) {
+            setprop("fdm/jsbsim/systems/manual-switches/jato/sw-jettinson-togle",1);
+        } elsif (take_off_jato_active > 8) {
+            setprop("fdm/jsbsim/systems/manual-switches/jato/sw-ready-togle",0);
+            setprop("fdm/jsbsim/systems/jato/reset",1);
+            take_off_jato_active = 0;
+            setprop("fdm/jsbsim/systems/autopilot/gui/take-off-jato-active",0);
+        }
     }
     
     if (pilot_ass_status_id >= 10.0 and pilot_ass_status_id < 11.0) {
@@ -1897,10 +1900,8 @@ var pilot_assistant = func() {
                 } else {
                     pilot_ass_status_id = 10.1;
                 }
-                if (airport_select.runways[rwy_select].length < 1500.0) {
+                if (airport_select.runways[rwy_select].length < 1500.0 and getprop("fdm/jsbsim/systems/autopilot/gui/take-off-jato-active") == 0) {
                     setprop("fdm/jsbsim/systems/autopilot/gui/take-off-jato-active",1);
-                } else {
-                    setprop("fdm/jsbsim/systems/autopilot/gui/take-off-jato-active",0);
                 }
             }
 
@@ -2002,21 +2003,21 @@ var pilot_assistant = func() {
             }
 
             if (pilot_ass_status_id == 10.33) {
-                if (speed_cas >= 130.0 or runway_to_airplane_dist_nm < 0.2) {
+                if (speed_cas >= 150.0 or runway_to_airplane_dist_nm < 0.2) {
                     pilot_ass_status_id = 10.34;
                 } else {
                     if (isJatoActive == 1) {
                         factorGain = 10.0;
-                        setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle",0);
-                        setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle-deg",10.0);
-                        setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed",1);
-                        setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed-fpm",-2000.0);
+                        setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle",1);
+                        setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle-deg",-1.0);
+                        setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed",0);
+                        setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed-fpm",500.0);
                     } else {
                         factorGain = 10.0;
-                        setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle",0);
-                        setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle-deg",6.0);
-                        setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed",1);
-                        setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed-fpm",-1000.0);
+                        setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle",1);
+                        setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle-deg",0.0);
+                        setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed",0);
+                        setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed-fpm",500.0);
                     }
                 }
             }
@@ -2027,9 +2028,9 @@ var pilot_assistant = func() {
                 } else {
                     if (isJatoActive == 1) {
                         factorGain = 1.0 + 2.0 * getprop("fdm/jsbsim/systems/jato/thrust-lbs-total") / 4000.0;
-                        setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle",0);
-                        setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle-deg",10.0);
-                        setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed",1);
+                        setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle",1);
+                        setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle-deg",3.0);
+                        setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed",0);
                         setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed-fpm",100.0 * (speed_cas - 50.0) / 50.0);
                     } else {
                         var weitght_norm = getprop("fdm/jsbsim/inertia/weight-lbs") / 10000.0;
@@ -2050,9 +2051,9 @@ var pilot_assistant = func() {
                     if (isJatoActive == 1) {
                         factorGain = 0.0;
                         setprop("fdm/jsbsim/systems/autopilot/landing-gear-set-close",1.0);
-                        setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle",0);
-                        setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle-deg",10.0);
-                        setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed",1);
+                        setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle",1);
+                        setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle-deg",3.0);
+                        setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed",0);
                         setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed-fpm",150.0 * (speed_cas - 50.0) / 50.0);
                     } else {
                         factorGain = 0.0;
@@ -2078,7 +2079,7 @@ var pilot_assistant = func() {
                     setprop("fdm/jsbsim/systems/autopilot/gui/true-heading-radial",0.0);
                 } else {
                     factorGain = 0.0;
-                    if (altitude_agl_ft > 500.0) {
+                    if (altitude_agl_ft > 200.0) {
                         setprop("fdm/jsbsim/systems/autopilot/landing-gear-set-close",1.0);
                     }
                     setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle",0);

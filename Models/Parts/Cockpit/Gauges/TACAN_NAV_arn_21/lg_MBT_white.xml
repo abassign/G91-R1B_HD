@@ -156,7 +156,7 @@
         <type>material</type>
         <object-name>transparent_button (Meshed)</object-name>
         <transparency>
-            <alpha>0.5</alpha>
+            <alpha>0.7</alpha>
             <factor-prop>fdm/jsbsim/systems/gauges/radio/MBT/inner-transparent</factor-prop>
         </transparency>
         <diffuse>
@@ -165,9 +165,9 @@
             <blue>0.8</blue>
         </diffuse>
         <ambient>
-            <red>0.1</red>
-            <green>0.1</green>
-            <blue>0.1</blue>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
         </ambient>
         <specular>
             <red>0.5</red>
