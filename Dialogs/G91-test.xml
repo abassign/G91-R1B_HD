@@ -774,7 +774,7 @@
                 <live>true</live>
                 <binding>
                     <command>property-assign</command>
-                    <property>sim/G91/nasal/modules/autopilot-active-mod</property>
+                    <property>sim/G91/nasal/modules/set-active-autopilot</property>
                     <value>2</value>
                 </binding>
             </button>

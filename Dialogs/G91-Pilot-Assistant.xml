@@ -2260,7 +2260,7 @@
                 <binding>
                     <command>nasal</command>
                     <script>
-                        setprop("fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct/rwy_select_mod",-1);
+                        setprop("fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct/rw_select_mod",-1);
                     </script>
                 </binding>
             </button>
@@ -2273,7 +2273,7 @@
                 <binding>
                     <command>nasal</command>
                     <script>
-                        setprop("fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct/rwy_select_mod",1);
+                        setprop("fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct/rw_select_mod",1);
                     </script>
                 </binding>
             </button>

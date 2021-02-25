@@ -24,18 +24,6 @@
         <object-name>switch_2_base (Meshed)</object-name>
     </animation>
     
-    <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
-        <object-name>box (Meshed)</object-name>
-        <object-name>test_circuit (Meshed)</object-name>
-        <object-name>lg_red_cover (Meshed)</object-name>
-        <object-name>lg_fire (Meshed)</object-name>
-        <object-name>switch_2_level (Meshed)</object-name>
-        <object-name>switch_2_cone (Meshed)</object-name>
-        <object-name>switch_2_ring (Meshed)</object-name>
-        <object-name>switch_2_base (Meshed)</object-name>
-    </effect>
-    
     <animation> 
         <type>material</type>
         <object-name>box (Meshed)</object-name>

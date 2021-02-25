@@ -27,6 +27,7 @@ var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/airport_sele
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct/airport_select_mod",0,"INT");
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct/rws","", "STRING");
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct/rw_select",0,"INT");
+var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct/rw_id_select",0,"INT");
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct/rw_select_description","","STRING");
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct/rw_select_mod",0,"INT");
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/gui/airport_select_id_direct/rw_airport_select","", "STRING");

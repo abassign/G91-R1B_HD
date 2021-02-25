@@ -147,14 +147,14 @@
         </direction>
         <ambient>
             <r>0.2</r>
-            <g>0.2</g>
-            <b>0.2</b>
+            <g>0.18</g>
+            <b>0.15</b>
             <a>1</a>
         </ambient>
         <diffuse>
-            <r>2.0</r>
-            <g>2.0</g>
-            <b>1.6</b>
+            <r>1.0</r>
+            <g>0.9</g>
+            <b>0.7</b>
             <a>1</a>
         </diffuse>
         <specular>
