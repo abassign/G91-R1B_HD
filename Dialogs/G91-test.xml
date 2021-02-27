@@ -778,6 +778,19 @@
                     <value>2</value>
                 </binding>
             </button>
+            <button>
+                <row>0</row>
+                <col>1</col>
+                <pref-width>200</pref-width>
+                <legend>Reload Radio Assistant</legend>
+                <halign>fill</halign>
+                <live>true</live>
+                <binding>
+                    <command>property-assign</command>
+                    <property>sim/G91/nasal/modules/set-active-radio</property>
+                    <value>2</value>
+                </binding>
+            </button>
         </group>
     </group>
     
