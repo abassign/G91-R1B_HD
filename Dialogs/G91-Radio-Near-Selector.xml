@@ -302,8 +302,8 @@
                 <name>Maximum search bearing</name>
                 <property>fdm/jsbsim/systems/autopilot/pilot-radio-assistant/search-max-bearing</property>
                 <min>10</min>
-                <max>180</max>
-                <step>10</step>  
+                <max>360</max>
+                <step>20</step>  
                 <binding>
                     <command>dialog-apply</command>
                 </binding>

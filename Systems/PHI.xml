@@ -1384,6 +1384,11 @@
             </test>
         </switch>
         
+        <lag_filter name="systems/gauges/PHI/program/reset-pos-lag">
+            <input>systems/gauges/PHI/program/reset</input>
+            <c1>2</c1>
+        </lag_filter>
+        
         <switch name="systems/gauges/PHI/program/reset-after">
             <default value="systems/gauges/PHI/program/reset-after"/>
             <test logic="AND" value="0.0">

@@ -353,6 +353,7 @@ setlistener("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-loop-mod",
     };
     if (mod == 1 and getprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-automatic-loop") == 1) {
         setprop("/autopilot/route-manager/active",0);
+print("phi.nas 1 - /autopilot/route-manager/active = 0");
         setprop("fdm/jsbsim/systems/gauges/PHI/programmer/route-manual",0);
         setprop("fdm/jsbsim/systems/gauges/PHI/program/reset",1);
         setprop("fdm/jsbsim/systems/gauges/PHI/indicator/digit-inc-stop",1);
@@ -655,7 +656,23 @@ setlistener("fdm/jsbsim/systems/gauges/PHI/convergency/lat-mid-deg-mod", func {
 }, 1, 0);
 
 
+
+var phi_reset_for_autopilot_end = func() {
+    if (getprop("autopilot/route-manager/active") > 0) {
+        var num = getprop("autopilot/route-manager/route/num");
+        if (num > 0) {
+            var current_wp = getprop("autopilot/route-manager/current-wp");
+            if (current_wp >= num) {
+                print("phi.nas setlistener - phi_reset_for_autopilot_end: PHI reset!");
+                setprop("fdm/jsbsim/systems/gauges/PHI/program/reset",2);
+            };
+        };
+    };
+};
+
+
 var phi_get_route_data_control = func() {
+    phi_reset_for_autopilot_end();
     phi_get_route_data();
     activate_new_route();
     repeat_route();

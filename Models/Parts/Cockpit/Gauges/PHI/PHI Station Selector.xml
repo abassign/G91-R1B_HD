@@ -1414,7 +1414,7 @@
         <type>translate</type>
         <object-name>push take control (Meshed)</object-name>
         <property>fdm/jsbsim/systems/gauges/PHI/program/reset-pos-lag</property>
-        <factor>-0.030</factor>
+        <factor>-0.006</factor>
         <offset-m>0.0</offset-m>
         <axis>
             <x>0</x>

@@ -887,6 +887,7 @@ var pilot_assistant = func() {
         } else {
             isAirport_and_rw_selected = 0;
             landing_activate_status = 0;
+            setprop("fdm/jsbsim/systems/autopilot/gui/landing-activate-status",landing_activate_status);
         }
     }
     if (pilot_ass_status_id == 1 and pilot_ass_status_id < 10 and airport_select == nil) {
@@ -2215,6 +2216,7 @@ var pilot_assistant = func() {
                     speed_select = getprop("fdm/jsbsim/systems/autopilot/gui/take-off-cruise-speed");
                     pilot_ass_status_id = 1.0;
                     landing_activate_status = 1;
+                    setprop("fdm/jsbsim/systems/autopilot/gui/landing-activate-status",landing_activate_status);
                     airport_radar_active = 0;
                 } else {
                     pilot_ass_status_id = -1.0;
