@@ -486,7 +486,6 @@ var RadiosDataClass = {
         };
     },
     
-#// Problema dei tipi per i nomi coincidenti, bisogna usare id esteso, va riscritta parte della procedura altrimenti salta i VOR e NDB
     search_id: func(search_id, type = nil) {
         for (var i = 0; i < me.num_radios; i += 1) {
             #// Normalize search id values
@@ -507,7 +506,7 @@ var RadiosDataClass = {
                 };
             } else {
                 if (search_id_str == radio_id_str) {
-                    ##// print("pilot_radio_assistant - search_id ",search_id_str," i: ",i," type: ",radio.type);
+                    #// print("pilot_radio_assistant - search_id ",search_id_str," i: ",i," type: ",radio.type);
                     return radio;
                 };
             };
@@ -526,9 +525,7 @@ var RadiosDataClass = {
     },
     
     match_id_route: func(type, startPosition) {
-##print("++++ match_id_route - startPosition: ",startPosition," type: ",type);
         type = norm_type(type);
-        if (type == "LOC") type = "VOR";
         var total = 0;
         var list = props.globals.getNode("/autopilot/route-manager/route").getChildren("wp");
         var total = getprop("/autopilot/route-manager/route/num");
@@ -536,7 +533,7 @@ var RadiosDataClass = {
             var radio = me.search_id(list[i].getNode("id").getValue(), type);
             if (radio != nil and radio.is_type(type)) {
                 radio.radial = list[i].getNode("leg-bearing-true-deg").getValue();
-##print("match_id_route type: ",type," Total: ",total," Radio.id: ",radio.id," Type: ",radio.type, " Radial: ",radio.radial);
+                #// print("match_id_route type: ",type," Total: ",total," Radio.id: ",radio.id," Type: ",radio.type, " Radial: ",radio.radial);
                 return radio;
             };
         };
@@ -585,11 +582,12 @@ var RadiosDataClass = {
         for (var i = 0; i < 8; i += 1) {
             var isSelect = me.listNode.getValue("row[" ~ i ~ "]/select");
             if (isSelect == 1) {
-                var idSelect = me.listNode.getValue("row[" ~ i ~ "]/id");
                 var type = norm_type(me.listNode.getValue("row[" ~ i ~ "]/type"));
+                var idSelect = me.listNode.getValue("row[" ~ i ~ "]/id");
+                #// print("*1* search_manual_select - idSelect: ",idSelect," type: ",type," me.select_vor_id: ",me.select_vor_id," me.manual_select_vor_id: ",me.manual_select_vor_id);
                 if ((type == "VOR" or type == "ILS" or type == "LOC" or type == "TAC") and idSelect != me.select_vor_id) {
                     me.manual_select_vor_id = idSelect;
-                    ##//print("***** search_manual_select idSelect : ",idSelect," type: ",type," me.select_vor_id: ",me.select_vor_id);
+                    #// print("*2* search_manual_select me.manual_select_vor_id: ",me.manual_select_vor_id," type: ",type," me.select_vor_id: ",me.select_vor_id);
                     me.select_vor_id = nil;
                 } elsif ((type == "NDB") and idSelect != me.select_ndb_id) {
                     me.manual_select_ndb_id = idSelect;
@@ -597,7 +595,6 @@ var RadiosDataClass = {
                 };
             };
         };
-        #// print("**** manual_select_vor_id VOR: ",me.manual_select_vor_id," NDB: ",me.manual_select_ndb_id);
     },
     
     manual_select_remove: func(type, airplane) {
@@ -606,18 +603,17 @@ var RadiosDataClass = {
             if (isSelect == 1) {
                 var idSelect = me.listNode.getValue("row[" ~ i ~ "]/id");
                 var type = norm_type(me.listNode.getValue("row[" ~ i ~ "]/type"));
-                if (norm_type(type) == "VOR") {
+                if (type == "VOR" or type == "ILS" or type == "LOC" or type == "TAC") {
                     if (me.manual_select_vor_id != nil) {
                         me.manual_select_vor_id = nil;
-                        me.select_vor_id = nil;
+                        #me.select_vor_id = nil;
                         me.listNode.setValue("row[" ~ i ~ "]/select",0);
                         print("manual_select_remove VOR idSelect: ",idSelect," type: ",type);
                     };
                 } elsif (norm_type(type) == "NDB") {
-print("++++ me.manual_select_ndb_id: ",me.manual_select_ndb_id," me.select_ndb_id: ",me.select_ndb_id);
                     if (me.manual_select_ndb_id != nil) {
                         me.manual_select_ndb_id = nil;
-                        me.select_ndb_id = nil;
+                        #me.select_ndb_id = nil;
                         me.listNode.setValue("row[" ~ i ~ "]/select",0);
                         print("manual_select_remove NDB idSelect: ",idSelect," type: ",type);
                     };
@@ -642,16 +638,20 @@ print("++++ me.manual_select_ndb_id: ",me.manual_select_ndb_id," me.select_ndb_i
         for (var i = (me.num_radios - 1); (i >= 0 and row < 8); i -= 1) {
             row += 1;
             var radio = me.radios_set[me.valueSort[i][1]];
+            #// print("+1+ me.select_vor_id: ",me.select_vor_id," me.manual_select_vor_id: ",me.manual_select_vor_id," radio.id: ",radio.id," radio.type: ",radio.type);
             var isSelect = 0;
             var manual_selected_sign = " ";
-            if (me.select_vor_id != nil and radio.id == me.select_vor_id) isSelect = 1;
-            if (me.manual_select_vor_id != nil and radio.id == me.manual_select_vor_id) {
+            var type = norm_type(radio.type);
+            if (me.select_vor_id != nil and radio.id == me.select_vor_id and (type == "VOR" or type == "ILS" or type == "LOC" or type == "TAC")) 
+                isSelect = 1;
+            elsif (me.manual_select_vor_id != nil and radio.id == me.manual_select_vor_id) {
                 isSelect = 1;
                 manual_selected_sign = "*";
                 error_msg = 1;
             };
-            if (me.select_ndb_id != nil and radio.id == me.select_ndb_id) isSelect = 1;
-            if (me.manual_select_ndb_id != nil and radio.id == me.manual_select_ndb_id) {
+            if (me.select_ndb_id != nil and radio.id == me.select_ndb_id and norm_type(radio.type) == "NDB")
+                isSelect = 1;
+            elsif (me.manual_select_ndb_id != nil and radio.id == me.manual_select_ndb_id) {
                 isSelect = 1;
                 manual_selected_sign = "*";
                 error_msg = 1;
@@ -663,6 +663,7 @@ print("++++ me.manual_select_ndb_id: ",me.manual_select_ndb_id," me.select_ndb_i
                 manual_selected_sign = manual_selected_sign ~ "   ";
             };
             radio.active = isSelect;
+            #// print("+2+ i: ",i," id: ",me.valueSort[i][1]," isSelect: ",isSelect," status: ",manual_selected_sign);
             me.listNode.setValue("row[" ~ row ~ "]/select",isSelect);
             me.listNode.setValue("row[" ~ row ~ "]/id",radio.id);
             me.listNode.setValue("row[" ~ row ~ "]/type",radio.type);
@@ -697,11 +698,10 @@ print("++++ me.manual_select_ndb_id: ",me.manual_select_ndb_id," me.select_ndb_i
     
     vor_radio_selected: func() {
         var vor_radio = nil;
-##print("++++ A me.manual_select_vor_id: ",me.manual_select_vor_id," me.select_vor_id: ",me.select_vor_id);
         if (me.manual_select_vor_id != nil) {
-            vor_radio = me.search_id(me.manual_select_vor_id);
+            vor_radio = me.search_id(me.manual_select_vor_id,"VOR");
             if (vor_radio == nil and me.select_vor_id != nil) {
-                vor_radio = me.search_id(me.select_vor_id);
+                vor_radio = me.search_id(me.select_vor_id,"VOR");
             };
             if (vor_radio != nil) {
                 #// print("**** 3: ",vor_radio.id);
@@ -709,7 +709,7 @@ print("++++ me.manual_select_ndb_id: ",me.manual_select_ndb_id," me.select_ndb_i
                 #// print("**** 3: nil value");
             };
         } elsif (me.select_vor_id != nil) {
-            vor_radio = me.search_id(me.select_vor_id);
+            vor_radio = me.search_id(me.select_vor_id,"VOR");
             #// print("**** 4: ",vor_radio.id);
         };
         return vor_radio;
@@ -717,11 +717,10 @@ print("++++ me.manual_select_ndb_id: ",me.manual_select_ndb_id," me.select_ndb_i
     
     ndb_radio_selected: func() {
         var ndb_radio = nil;
-##print("++++ B me.manual_select_vor_id: ",me.manual_select_vor_id," me.select_vor_id: ",me.select_vor_id);
         if (me.manual_select_ndb_id != nil) {
-            ndb_radio = me.search_id(me.manual_select_ndb_id);
+            ndb_radio = me.search_id(me.manual_select_ndb_id,"NDB");
         } elsif (me.select_ndb_id != nil) {
-            ndb_radio = me.search_id(me.select_ndb_id);
+            ndb_radio = me.search_id(me.select_ndb_id,"NDB");
         };
         return ndb_radio;
     },
@@ -746,9 +745,6 @@ print("++++ me.manual_select_ndb_id: ",me.manual_select_ndb_id," me.select_ndb_i
                         #// print("**** 2: ",vor_radio.id);
                     }
                 };
-                
-#// vor_radio.sintonize(getprop("fdm/jsbsim/systems/autopilot/gui/airport_runway_airplane_heading_correct"),airplane);
-                
                 setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/find-vor",1);
                 if (vor_radio.type == "LOC") {      
                     setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/find-vor-str","LOC (" ~ vor_radio.id ~ ")");
@@ -851,6 +847,8 @@ var radio_assistant = func() {
         #// pilot_radio_assistant linked to route manager
         var search_max_dist = 200.0;
         var search_max_bearing = 0.0;
+        var found_vor = 0;
+        var found_ndb = 0;
         airplane = geo.aircraft_position();
         radios.search_radios(airplane,search_max_dist,search_max_bearing,delta_time,0.01);
         radios.print_debug(airplane);
@@ -858,10 +856,12 @@ var radio_assistant = func() {
         if (startPosition >= 0) {
             var radio = radios.match_id_route("VOR",startPosition);
             if (radio != nil) {
-                #// print("**** radio: ",radio.id);
                 if (radio != nil) {
+                    #// print("**** mode 1A - radio: ",radio.id);
                     radios.manual_select_remove("VOR",airplane);
                     radios.select_vor_id = radio.id;
+                    radios.manual_select_vor_id = nil;
+                    found_vor = 1;
                 } else {
                     radios.select_vor_id = nil;
                 };
@@ -871,7 +871,33 @@ var radio_assistant = func() {
                 if (radio != nil) {
                     radios.manual_select_remove("NDB",airplane);
                     radios.select_ndb_id = radio.id;
-print("++++ radios.select_ndb_id: ",radios.select_ndb_id);
+                    radios.manual_select_ndb_id = nil;
+                    found_ndb = 1;
+                } else {
+                    radios.select_ndb_id = nil;
+                };
+            };
+            radio = nil;
+            if (found_vor == 0) {
+                if (configuration_gauges_nav_active == 1) {
+                    radio = radios.match_type("VOR");
+                } elsif (configuration_gauges_tacan_active == 1) {
+                    radio = radios.match_type("TAC");
+                };
+                if (radio != nil) {
+                    #// print("**** mode 1B - radio: ",radio.id);
+                    radios.select_vor_id = radio.id;
+                    radios.manual_select_vor_id = nil;
+                } else {
+                    radios.select_vor_id = nil;
+                };
+            };
+            radio = nil;
+            if (found_ndb == 0) {
+                radio = radios.match_type("NDB");
+                if (radio != nil) {
+                    radios.select_ndb_id = radio.id;
+                    radios.manual_select_ndb_id = nil;
                 } else {
                     radios.select_ndb_id = nil;
                 };
@@ -893,6 +919,7 @@ print("++++ radios.select_ndb_id: ",radios.select_ndb_id);
             radio = radios.match_type("TAC");
         };
         if (radio != nil) {
+            #// print("**** mode 2 - radio: ",radio.id);
             radios.select_vor_id = radio.id;
         } else {
             radios.select_vor_id = nil;
@@ -915,11 +942,13 @@ print("++++ radios.select_ndb_id: ",radios.select_ndb_id);
         var radio = radios.match_type("ILS");
         if (radio != nil) {
             radios.manual_select_remove("VOR",airplane);
+            #// print("**** mode 3A - radio: ",radio.id);
             radios.select_vor_id = radio.id;
         } else {
             radios.search_radios(airplane,search_max_dist,search_max_bearing / 2.0,delta_time,mode);
             radio = radios.match_type("VOR");
             if (radio != nil) {
+                #// print("**** mode 3B - radio: ",radio.id);
                 radios.select_vor_id = radio.id;
             } else {
                 radios.select_vor_id = nil;

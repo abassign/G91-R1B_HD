@@ -133,7 +133,7 @@ var timerEngine_starter = func() {
         }
         setprop("fdm/jsbsim/systems/starter/gui/autostart-clock-time",guiAutostartClockTime);
         setprop("fdm/jsbsim/systems/starter/gui/autostart-message",msgOutputStstus);
-        print(msgOutput," clk: ",guiAutostartClockTime," is Active: ",guiAutostartIsActive," N1: ",engineN1," N2: ",engineN2," Bus0 V: ",bus0V," Bus1 V: ",bus1V," Bus2 V: ",bus2V," inv 1 V: ",inverterPrimaryV," inv 2 V: ",inverterSecondaryV);
+        #// print(msgOutput," clk: ",guiAutostartClockTime," is Active: ",guiAutostartIsActive," N1: ",engineN1," N2: ",engineN2," Bus0 V: ",bus0V," Bus1 V: ",bus1V," Bus2 V: ",bus2V," inv 1 V: ",inverterPrimaryV," inv 2 V: ",inverterSecondaryV);
     }
 
 };
