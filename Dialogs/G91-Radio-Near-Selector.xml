@@ -38,7 +38,7 @@
             <button>
                 <row>0</row>
                 <col>0</col>
-                <legend>  Automatic find VOR-ILS-NDB  </legend>
+                <legend>Automatic find VOR-NDB</legend>
                 <halign>left</halign>
                 <binding>
                     <command>property-assign</command>
@@ -46,9 +46,25 @@
                     <value>2</value>
                 </binding>
             </button>
-            <text>
+            <button>
                 <row>0</row>
                 <col>1</col>
+                <legend>  ILS  </legend>
+                <halign>left</halign>
+                <binding>
+                    <command>property-assign</command>
+                    <property>fdm/jsbsim/systems/autopilot/pilot-radio-assistant/mode-trigger</property>
+                    <value>3</value>
+                </binding>
+                <binding>
+                    <command>property-assign</command>
+                    <property>fdm/jsbsim/systems/autopilot/pilot-radio-assistant/automatic-to-radial-active-trigger</property>
+                    <value>2</value>
+                </binding>
+            </button>
+            <text>
+                <row>0</row>
+                <col>2</col>
                 <label>MMMMMMMMMM</label>
                 <property>fdm/jsbsim/systems/autopilot/pilot-radio-assistant/mode-description</property>
                 <live>true</live>
@@ -61,7 +77,7 @@
             </text>
             <text>
                 <row>0</row>
-                <col>2</col>
+                <col>3</col>
                 <label>MMMMMMM</label>
                 <halign>left</halign>
                 <live>true</live>
@@ -75,7 +91,7 @@
             </text>
             <text>
                 <row>0</row>
-                <col>3</col>
+                <col>4</col>
                 <label>99999999</label>
                 <live>true</live>
                 <format>%3.3f</format>
@@ -89,7 +105,7 @@
             </text>
             <text>
                 <row>0</row>
-                <col>4</col>
+                <col>5</col>
                 <label>Mhz  </label>
                 <halign>left</halign>
                 <color>
@@ -100,7 +116,7 @@
             </text>
             <text>
                 <row>0</row>
-                <col>5</col>
+                <col>6</col>
                 <label>MMMMMM</label>
                 <live>true</live>
                 <property>fdm/jsbsim/systems/autopilot/pilot-radio-assistant/find-ndb-str</property>
@@ -113,7 +129,7 @@
             </text>
             <text>
                 <row>0</row>
-                <col>6</col>
+                <col>7</col>
                 <label>999</label>
                 <live>true</live>
                 <format>%3.0f</format>
@@ -127,7 +143,7 @@
             </text>
             <text>
                 <row>0</row>
-                <col>7</col>
+                <col>8</col>
                 <label>Khz</label>
                 <halign>left</halign>
                 <color>

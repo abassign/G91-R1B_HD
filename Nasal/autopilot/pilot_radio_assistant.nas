@@ -16,6 +16,7 @@
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/mode",0,"INT");
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/mode-description","Inactive","STRING");
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/mode-trigger",0,"INT");
+var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/mode-landing",0,"INT");
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/find-vor",0,"INT");
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/find-vor-str","  VOR","STRING");
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/select-vor-description","","STRING");
@@ -663,7 +664,7 @@ var RadiosDataClass = {
                 manual_selected_sign = manual_selected_sign ~ "   ";
             };
             radio.active = isSelect;
-            #// print("+2+ i: ",i," id: ",me.valueSort[i][1]," isSelect: ",isSelect," status: ",manual_selected_sign);
+            #// print("+2+ i: ",i," row: ",row," id: ",me.valueSort[i][1]," isSelect: ",isSelect," status: ",manual_selected_sign," radio.name: ",radio.name);
             me.listNode.setValue("row[" ~ row ~ "]/select",isSelect);
             me.listNode.setValue("row[" ~ row ~ "]/id",radio.id);
             me.listNode.setValue("row[" ~ row ~ "]/type",radio.type);
@@ -807,7 +808,7 @@ var radio_assistant = func() {
     landing_activate_status = getprop("fdm/jsbsim/systems/autopilot/gui/landing-activate-status");
     if (landing_activate_status > 0) {
         if (getprop("fdm/jsbsim/systems/autopilot/gui/airport_runway_distance") < 20.0 
-            and getprop("fdm/jsbsim/systems/autopilot/speed-cas-on-air-lag") < 200.0) {
+            and getprop("fdm/jsbsim/systems/autopilot/speed-cas-on-air-lag") < 220.0) {
             if (mode == 1 or mode == 2) {
                 mode = 3;
                 setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/mode",3);
@@ -819,9 +820,14 @@ var radio_assistant = func() {
             };
         };
     } else {
-        if (mode == 3) {
-            mode = 2;
-            setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/mode",2);
+        if (getprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/mode-landing") == 1) {
+            mode = 3;
+            setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/mode",3);
+        } else {
+            if (mode == 3) {
+                mode = 2;
+                setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/mode",2);
+            };
         };
     };
     
@@ -1063,6 +1069,7 @@ setlistener("autopilot/route-manager/wp[1]/id", func {
 setlistener("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/mode-trigger", func {
     
     var mode_trigger = getprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/mode-trigger");
+    setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/mode-landing",0);
     if (mode_trigger == 1) {
         var mode_get = getprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/mode");
         if (mode_get == 0) {
@@ -1076,6 +1083,16 @@ setlistener("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/mode-trigger", f
         var mode_get = getprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/mode");
         if (mode_get == 0) {
             mode_get = 2;
+        } else {
+            mode_get = 0;
+        };
+        mode = mode_get;
+        setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/mode",mode_get);
+    } elsif (mode_trigger == 3) {
+        var mode_get = getprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/mode");
+        if (mode_get == 0) {
+            mode_get = 3;
+            setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/mode-landing",1);
         } else {
             mode_get = 0;
         };

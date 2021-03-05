@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+  <version type="int">2</version>
+  <flight-rules type="string">V</flight-rules>
+  <flight-type type="string">X</flight-type>
+  <estimated-duration-minutes type="int">0</estimated-duration-minutes>
+  <departure>
+    <airport type="string">LOWI</airport>
+    <runway type="string">08</runway>
+  </departure>
+  <destination>
+    <airport type="string">LIME</airport>
+  </destination>
+  <cruise>
+    <altitude-ft type="int">20000</altitude-ft>
+  </cruise>
+  <route>
+    <wp>
+      <type type="string">runway</type>
+      <departure type="bool">true</departure>
+      <ident type="string">08</ident>
+      <icao type="string">LOWI</icao>
+    </wp>
+    <wp n="1">
+      <type type="string">navaid</type>
+      <ident type="string">Absam</ident>
+      <lon type="double">11.5051409</lon>
+      <lat type="double">47.2965003</lat>
+    </wp>
+    <wp n="2">
+      <type type="string">navaid</type>
+      <ident type="string">OZE</ident>
+      <lon type="double">11.292288</lon>
+      <lat type="double">46.40516</lat>
+    </wp>
+    <wp n="3">
+      <type type="string">navaid</type>
+      <ident type="string">VIL</ident>
+      <lon type="double">10.906222</lon>
+      <lat type="double">45.407917</lat>
+    </wp>
+    <wp n="4">
+      <type type="string">navaid</type>
+      <ident type="string">GAZ</ident>
+      <lon type="double">10.604139</lon>
+      <lat type="double">45.201694</lat>
+    </wp>
+    <wp n="5">
+      <type type="string">navaid</type>
+      <ident type="string">BSA</ident>
+      <lon type="double">10.315997</lon>
+      <lat type="double">45.438021</lat>
+    </wp>
+    <wp n="6">
+      <type type="string">navaid</type>
+      <approach type="bool">true</approach>
+      <ident type="string">LIME</ident>
+      <lon type="double">9.703925827</lon>
+      <lat type="double">45.67341229</lat>
+    </wp>
+  </route>
+</PropertyList>
