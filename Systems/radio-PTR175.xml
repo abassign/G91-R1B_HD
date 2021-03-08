@@ -26,6 +26,7 @@
     <property value="0.0">systems/gauges/radio/ptr175/freq-from-comm-mod-wa-mod-lag</property>
     <property value="0.0">systems/gauges/radio/ptr175/freq-set-wa-mod-lag</property>
     
+    
     <channel name="systems gauges radio electric" execrate="32">
         
         <switch name="systems/gauges/radio/ptr175/operative-start-stop">
@@ -47,7 +48,7 @@
         <!-- This delay is the time for starting the electronics -->
         <lag_filter name="systems/gauges/radio/ptr175/operative-heating">
             <input>systems/gauges/radio/ptr175/operative-start-stop</input>
-            <c1>0.2</c1>
+            <c1>0.1</c1>
         </lag_filter>
         
         <switch name="systems/gauges/radio/ptr175/operative">
@@ -88,6 +89,7 @@
         </switch>
         
     </channel>
+    
     
     <channel name="systems gauges radio set frequence" execrate="4">
         
@@ -342,5 +344,6 @@
         </switch>
         
     </channel>
+    
     
 </system>

@@ -153,7 +153,7 @@
                         </binding>
                     </item>
                     <item>
-                        <label>Radio near selector</label>
+                        <label>Radio VOR/NDB/ILS/TACAN near sel.</label>
                         <binding>
                             <command>nasal</command>
                             <script>
@@ -168,6 +168,16 @@
                             <command>nasal</command>
                             <script>
                                 test_dialog = gui.Dialog.new("sim/gui/dialogs/G91/PHI/dialog","Aircraft/G91-R1B_HD/Dialogs/G91-PHI.xml");
+                                test_dialog.open();
+                            </script>
+                        </binding>
+                    </item>
+                    <item>
+                        <label>Radio COM1 mod. PTR 175</label>
+                        <binding>
+                            <command>nasal</command>
+                            <script>
+                                test_dialog = gui.Dialog.new("sim/gui/dialogs/G91/ptr175/dialog","Aircraft/G91-R1B_HD/Dialogs/G91-radio_ptr175.xml");
                                 test_dialog.open();
                             </script>
                         </binding>

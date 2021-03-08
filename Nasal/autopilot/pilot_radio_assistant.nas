@@ -41,6 +41,7 @@ var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/pilot-radio-assi
 var delta_time_standard = 3;
 var delta_time = delta_time_standard;
 var delta_time_delay = 0;
+var testing_log_active = 0;
 
 var mode = 0;
 var airplane = nil;
@@ -49,7 +50,6 @@ var radioDisplay = nil;
 
 var activate_new_scan = 0;
 
-var testing_log_active = 0;
 var landing_activate_status = 0;
 
 var to_radial_ndb_old_dist = nil;

@@ -121,10 +121,10 @@ var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/landing22-pid-d"
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/landing22-landing-slope", 0.0, "DOUBLE");
 var prop = props.globals.initNode("fdm/jsbsim/systems/autopilot/landing21-holding_point-dist", 0.0, "DOUBLE");
 
-
 #// The load module modules activation properties
 var prop = props.globals.initNode("sim/G91/nasal/modules/active-autopilot",0,"INT");
 var prop = props.globals.initNode("sim/G91/nasal/modules/active-radio",0,"INT");
+var prop = props.globals.initNode("sim/G91/nasal/modules/active-radio-ptr175",0,"INT");
 
 #// The load module params
 var prop = props.globals.initNode("sim/G91/nasal/modules/delta-time",1,"INT");
@@ -133,14 +133,16 @@ var delta_time = 1;
 
 var set_active_autopilot = 0;
 var set_active_radio = 0;
+var set_active_radio_ptr175 = 0;
 
 #// Load autopilot module
 var module_pilot_assistant = modules.Module.new("pilot_assistant");
 #// Load autopilot correlate modules
 var module_pilot_impact_control = modules.Module.new("pilot_impact_control");
 var module_pilot_intercept = modules.Module.new("pilot_intercept");
-#// Load ausiliary nmodules
+#// Load ausiliary modules
 var module_pilot_radio_assistant = modules.Module.new("pilot_radio_assistant");
+var module_radio_ptr175 = modules.Module.new("radio_ptr175");
 
 
 var main = func() {
@@ -162,6 +164,7 @@ var load_modules = func() {
     
     var active_autopilot = getprop("sim/G91/nasal/modules/active-autopilot");
     var active_radio = getprop("sim/G91/nasal/modules/active-radio");
+    var active_radio_ptr175 = getprop("sim/G91/nasal/modules/active-radio-ptr175");
 
     #// set_active_... define the debug level 1 -> 0 etc ... 
     #// 0=(mostly) silent; 1=print setlistener and maketimer calls to console; 2=print also each listener hit, be very careful with this! 
@@ -214,6 +217,22 @@ var load_modules = func() {
         };
         setprop("sim/G91/nasal/modules/set-active-radio",0);
     };
+    
+    if (set_active_radio_ptr175 >= 1) {
+        if (active_radio_ptr175 == 0) {
+            module_radio_ptr175.setDebug(set_active_radio_ptr175 - 1);
+            module_radio_ptr175.setFilePath(getprop("/sim/aircraft-dir")~"/Nasal/Gauges");
+            module_radio_ptr175.setMainFile("radio_ptr175.nas");
+            module_radio_ptr175.load();
+            setprop("sim/G91/nasal/modules/active-radio-ptr175",1);
+            print("load_modules.nas load module [radio-ptr175.nas]");
+        } else {
+            module_radio_ptr175.setDebug(set_active_radio_ptr175 - 1);
+            module_radio_ptr175.reload();
+            print("load_modules.nas reload module [radio-ptr175.nas]");
+        };
+        setprop("sim/G91/nasal/modules/set-active-radio-ptr175",0);
+    };
         
 };
 
@@ -223,12 +242,13 @@ var load_modules_control = func() {
     delta_time = getprop("sim/G91/nasal/modules/delta-time");
     set_active_autopilot = getprop("sim/G91/nasal/modules/set-active-autopilot");
     set_active_radio = getprop("sim/G91/nasal/modules/set-active-radio");
+    set_active_radio_ptr175 = getprop("sim/G91/nasal/modules/set-active-radio-ptr175");
 
-    if (set_active_autopilot != nil and set_active_radio != nil) {
+    if (set_active_autopilot != nil and set_active_radio != nil and set_active_radio_ptr175 != nil) {
         set_active_autopilot = set_active_autopilot + 0;
         set_active_radio = set_active_radio + 0;
-        if (set_active_autopilot > 0 or
-            set_active_radio > 0) load_modules();
+        set_active_radio_ptr175 = set_active_radio_ptr175 + 0;
+        if (set_active_autopilot > 0 or set_active_radio > 0 or set_active_radio_ptr175 > 0) load_modules();
     };
     
     load_modules_timer.restart(delta_time);
