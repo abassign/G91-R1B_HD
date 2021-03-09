@@ -22,10 +22,11 @@ Flaps 38°
     
     <property value="0.0">fcs/pitch-deg</property>
     <property value="0.0">fcs/pitch-rad</property>
+
     <property value="0.0">fcs/pitch-trim-deg</property>
     <property value="0.0">fcs/pitch-alpha-trim-deg</property>
     <property value="0.0">fcs/pitch-alpha-sum-deg</property>
-    
+
     <property value="0.0">fcs/left-steer-brake</property>
     <property value="0.0">fcs/right-steer-brake</property>
     
@@ -45,7 +46,7 @@ Flaps 38°
     
     
     <channel name="Elevators">
-        
+
         <fcs_function name="fcs/pitch-alpha-trim-deg">
             <function>
                 <ifthen>
@@ -98,7 +99,7 @@ Flaps 38°
                 <max>0.3054326</max> 
             </clipto>
         </fcs_function>
-        
+
         <lag_filter name="fcs/pitch-autopilot-rapid-rad-lag">
             <input>fcs/pitch-autopilot-rapid-rad</input>
             <c1>1.0</c1>

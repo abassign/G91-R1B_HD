@@ -272,7 +272,7 @@
     <animation>
         <type>rotate</type>
         <object-name>cloche_all</object-name>
-        <property>/fdm/jsbsim/fcs/left-aileron-pos-deg</property>
+        <property>/fdm/jsbsim/fcs/roll-deg-cmd</property>
         <offset-deg>0</offset-deg>
         <factor>-0.5</factor>
         <axis>
@@ -290,7 +290,7 @@
     <animation>
         <type>rotate</type>
         <object-name>cloche_all</object-name>
-        <property>fdm/jsbsim/fcs/pitch-alpha-sum-deg</property>
+        <property>fdm/jsbsim/fcs/pitch-deg</property>
         <offset-deg>0</offset-deg>
         <factor>-0.5</factor>
         <axis>
@@ -308,7 +308,7 @@
     <animation>
         <type>rotate</type>
         <object-name>a00_tubolar_basecover</object-name>
-        <property>/fdm/jsbsim/fcs/left-aileron-pos-deg</property>
+        <property>/fdm/jsbsim/fcs/roll-deg-cmd</property>
         <offset-deg>0</offset-deg>
         <factor>-0.3</factor>
         <axis>
@@ -326,7 +326,7 @@
     <animation>
         <type>rotate</type>
         <object-name>a00_tubolar_basecover</object-name>
-        <property>fdm/jsbsim/fcs/pitch-alpha-sum-deg</property>
+        <property>fdm/jsbsim/fcs/pitch-deg</property>
         <offset-deg>0</offset-deg>
         <factor>-0.3</factor>
         <axis>
