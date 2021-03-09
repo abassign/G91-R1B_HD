@@ -21,6 +21,30 @@
     
     <channel name="Airbrake control" execrate="8">
         
+        <!-- Spoiler mode action on - off -->
+        <washout_filter name="fcs/spoiler-cmd-norm-wa">
+            <input>fcs/spoiler-cmd-norm</input>
+            <c1>1.0</c1>
+        </washout_filter>
+        
+        <switch name="fcs/spoiler-cmd-norm-action">
+            <default value="fcs/spoiler-cmd-norm-action"/>
+            <test logic="OR" value="0">
+                fcs/speedbrake-cmd-norm-sw GT 0.1
+                systems/airbrake/automatic-cmd GT 0.1
+                systems/airbrake/manual-cmd GT 0.1
+            </test>
+            <test logic="AND" value="1">
+                fcs/spoiler-cmd-norm-wa GT 0.01
+                systems/airbrake/speedbrake-pos-norm LE 0.1
+            </test>
+            <test logic="AND" value="0">
+                fcs/spoiler-cmd-norm-wa LT -0.01
+                systems/airbrake/speedbrake-pos-norm GT 0.1
+            </test>
+        </switch>
+        
+        <!-- Speed brake mode action -->
         <switch name="fcs/speedbrake-cmd-norm-sw">
             <default value="0"/>
             <test logic="AND" value="1">
@@ -28,10 +52,12 @@
             </test>
         </switch>
         
+        <!-- Mixer -->
         <summer name="systems/airbrake/command">
             <input>fcs/speedbrake-cmd-norm-sw</input>
             <input>systems/airbrake/automatic-cmd</input>
             <input>systems/airbrake/manual-cmd</input>
+            <input>fcs/spoiler-cmd-norm-action</input>
             <clipto>
                 <min>0.0</min>
                 <max>1.0</max>

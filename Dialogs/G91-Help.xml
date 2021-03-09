@@ -33,7 +33,7 @@
     <group>
         <layout>hbox</layout>
         <group>
-            <layout>hbox</layout>
+            <layout>table</layout>
             <halign>left</halign>
             <text>
                 <label>C (upercase)</label>
@@ -70,6 +70,41 @@
                 <halign>left</halign>
                 <row>1</row>
                 <col>2</col>
+            </text>
+            <text>
+                <label>CTRL B</label>
+                <halign>left</halign>
+                <row>2</row>
+                <col>0</col>
+            </text>
+            <text>
+                <label> - </label>
+                <halign>left</halign>
+                <row>2</row>
+                <col>1</col>
+            </text>
+            <text>
+                <label>Airbrake togle</label>
+                <halign>left</halign>
+                <row>2</row>
+                <col>2</col>
+            </text>
+            <text>
+                <label> - </label>
+                <halign>left</halign>
+                <row>2</row>
+                <col>3</col>
+            </text>
+            <text>
+                <label>with Joystick is activate by spoiler</label>
+                <halign>left</halign>
+                <row>2</row>
+                <col>4</col>
+                <color>
+                    <red>0.8</red>
+                    <green>0.8</green>
+                    <blue>0.2</blue>
+                </color>
             </text>
         </group>
     </group> 
