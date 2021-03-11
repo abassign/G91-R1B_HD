@@ -74,7 +74,7 @@ Description: G91R2 Canopy automation
         
         <lag_filter name="systems/starter/ignition-on-throttle-pos">
             <input>systems/starter/ignition-on-throttle-norm</input>
-            <c1>4.0</c1>
+            <c1>1.0</c1>
         </lag_filter>
         
         <pure_gain name="systems/starter/ignition-set-throttle-pos">

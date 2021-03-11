@@ -77,6 +77,7 @@
     <system file="G91-stations"/>
     <system file="G91-stations-hardpoint-hook"/>
     <system file="G91-army"/>
+    <system file="G91-mass-balance-modifier"/>
     
     <!-- apparatus -->
     <system file="radio-PTR175"/>

@@ -1,6 +1,7 @@
 <!-- G91 JSBsim -->
 
 <mass_balance>
+    
     <description>
         CG Empty (39%) : 17.71 ft (5.40 m) or 212" - 211"
         CG Full load (20%) : 15.16 ft (4.62 m) or 181"
@@ -138,20 +139,20 @@
     </pointmass>
     
     <!-- fdm/jsbsim/inertia/pointmass-weight-lbs[8] -->
-    <pointmass name="CGX10Z00">
-        <weight unit="LBS"> 60.0 </weight>
+    <pointmass name="pm-cg-x-weight-pos-position">
+        <weight unit="LBS"> 0.0 </weight>
         <location name="POINTMASS" unit="IN">
-            <x>836</x>
+            <x>1000</x>
             <y>0</y>
             <z>0</z>
         </location>
     </pointmass>
     
     <!-- fdm/jsbsim/inertia/pointmass-weight-lbs[9] -->
-    <pointmass name="CGX-10Z00">
-        <weight unit="LBS"> 60.0 </weight>
+    <pointmass name="pm-cg-x-weight-neg-position">
+        <weight unit="LBS"> 0.0 </weight>
         <location name="POINTMASS" unit="IN">
-            <x>-627</x>
+            <x>-1000</x>
             <y>0</y>
             <z>0</z>
         </location>

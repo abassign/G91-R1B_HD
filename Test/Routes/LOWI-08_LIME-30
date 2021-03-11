@@ -21,6 +21,11 @@
       <departure type="bool">true</departure>
       <ident type="string">08</ident>
       <icao type="string">LOWI</icao>
+      <comm>
+          <atis  type="double">120.1</atis>
+          <tower type="double">120.1</tower>
+          <approach type="double">120.1</approach>
+      </comm>
     </wp>
     <wp n="1">
       <type type="string">navaid</type>

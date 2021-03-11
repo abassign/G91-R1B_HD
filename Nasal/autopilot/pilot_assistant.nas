@@ -2055,9 +2055,11 @@ var pilot_assistant = func() {
                         setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed",0);
                         setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed-fpm",500.0);
                     } else {
-                        factorGain = 10.0;
+                        #var weitght_norm = getprop("fdm/jsbsim/inertia/weight-lbs") / 10000.0;
+                        #factorGain = 2.0 + 3.0 * weitght_norm * weitght_norm; #1.5
+                        factorGain = 0.0;
                         setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle",1);
-                        setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle-deg",0.0);
+                        setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle-deg",1.5);
                         setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed",0);
                         setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed-fpm",500.0);
                     }
@@ -2065,22 +2067,23 @@ var pilot_assistant = func() {
             }
 
             if (pilot_ass_status_id == 10.34) {
-                if (altitude_agl_ft > 10.0) {
+                if (altitude_agl_ft > 20.0) { # 10
                     pilot_ass_status_id = 10.35;
                 } else {
                     if (isJatoActive == 1) {
-                        factorGain = 1.0 + 2.0 * getprop("fdm/jsbsim/systems/jato/thrust-lbs-total") / 4000.0;
+                        factorGain = 1.0 + 1.0 * getprop("fdm/jsbsim/systems/jato/thrust-lbs-total") / 4000.0;
                         setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle",1);
                         setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle-deg",3.0);
                         setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed",0);
                         setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed-fpm",100.0 * (speed_cas - 50.0) / 50.0);
                     } else {
                         var weitght_norm = getprop("fdm/jsbsim/inertia/weight-lbs") / 10000.0;
-                        factorGain = 1.5;
+                        factorGain = 0.5 + 5.0 * weitght_norm * weitght_norm; #1.5
                         setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle",0);
                         setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle-deg",6.0);
                         setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed",1);
-                        setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed-fpm",3500.0 * weitght_norm * weitght_norm);
+                        setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed-fpm",4000.0);
+                        #// print("+++1 : [ ",weitght_norm," ] [ ",factorGain," ]");
                     };
                 }
             }
@@ -2098,11 +2101,13 @@ var pilot_assistant = func() {
                         setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed",0);
                         setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed-fpm",150.0 * (speed_cas - 50.0) / 50.0);
                     } else {
-                        factorGain = 0.0;
+                        var weitght_norm = getprop("fdm/jsbsim/inertia/weight-lbs") / 10000.0;
+                        factorGain = 0.0 + 1.0 * weitght_norm * weitght_norm;
                         setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle",0);
                         setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle-deg",6.0);
                         setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed",1);
-                        setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed-fpm",2500.0);
+                        setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed-fpm",4000.0);
+                        #// print("+++2 : [ ",weitght_norm," ] [ ",factorGain," ]");
                     }
                 }
             }
@@ -2120,7 +2125,8 @@ var pilot_assistant = func() {
                     setprop("fdm/jsbsim/systems/autopilot/phi-heading-suspended",0.0);
                     setprop("fdm/jsbsim/systems/autopilot/gui/true-heading-radial",0.0);
                 } else {
-                    factorGain = 0.0;
+                    var weitght_norm = getprop("fdm/jsbsim/inertia/weight-lbs") / 10000.0;
+                    factorGain = 1.0 + 1.0 * weitght_norm * weitght_norm;
                     if (altitude_agl_ft > 200.0) {
                         setprop("fdm/jsbsim/systems/autopilot/landing-gear-set-close",1.0);
                     }
