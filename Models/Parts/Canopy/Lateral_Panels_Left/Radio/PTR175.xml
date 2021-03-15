@@ -1,10 +1,10 @@
 <PropertyList>
 
     <path>PTR175.ac</path>
-    
+
      <animation>
         <type>noshadow</type>
-        <object-name>box (Meshed)</object-name> 
+        <object-name>box (Meshed)</object-name>
         <object-name>vol_knob_base (Meshed)</object-name>
         <object-name>vol_knob_mirror (Meshed)</object-name>
         <object-name>chan selector B (Meshed)</object-name>
@@ -56,18 +56,18 @@
         <object-name>freq set 00011 point A</object-name>
         <object-name>Manual display window (Meshed)</object-name>
     </animation>
-    
+
     <effect>
         <inherits-from>Effects/model-transparent</inherits-from>
         <object-name>Manual display window (Meshed)</object-name>
     </effect>
-    
+
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_silver_D2_1</inherits-from>
         <object-name>Manual display window (Meshed)</object-name>
     </effect>
-    
-    <animation> 
+
+    <animation>
         <type>material</type>
         <object-name>Manual display window (Meshed)</object-name>
         <transparency>
@@ -91,10 +91,10 @@
             <factor>2.8</factor>
         </emission>
     </animation>
-    
-    <animation> 
+
+    <animation>
         <type>material</type>
-        <object-name>box (Meshed)</object-name> 
+        <object-name>box (Meshed)</object-name>
         <texture>Pictures/G91-Yello01.png</texture>
         <ambient>
             <red>0.6</red>
@@ -102,8 +102,8 @@
             <blue>0.6</blue>
         </ambient>
     </animation>
-    
-    <animation> 
+
+    <animation>
         <type>material</type>
         <object-name>knob_function_arrow (Meshed)</object-name>
         <object-name>vol_knob_mirror (Meshed)</object-name>
@@ -124,8 +124,8 @@
             <factor-prop>sim/G91/re_emit/light_red_console</factor-prop>
         </emission>
     </animation>
-    
-    <animation> 
+
+    <animation>
         <type>material</type>
         <object-name>box_cover_inf (Meshed)</object-name>
         <object-name>box_cover_sup (Meshed)</object-name>
@@ -148,8 +148,8 @@
             <factor-prop>sim/G91/re_emit/light_red_console</factor-prop>
         </emission>
     </animation>
-    
-    <animation> 
+
+    <animation>
         <type>material</type>
         <object-name>vol_knob_base (Meshed)</object-name>
         <object-name>chan selector B (Meshed)</object-name>
@@ -188,8 +188,8 @@
             <factor-prop>sim/G91/re_emit/light_red_console</factor-prop>
         </emission>
     </animation>
-    
-    <animation> 
+
+    <animation>
         <type>material</type>
         <object-name>freq_preselect_screew (Meshed)</object-name>
         <object-name>screews (Meshed)</object-name>
@@ -216,8 +216,8 @@
             <factor-prop>sim/G91/re_emit/light_red_console</factor-prop>
         </emission>
     </animation>
-    
-    <animation> 
+
+    <animation>
         <type>material</type>
         <object-name>digit A 10000 (Meshed)</object-name>
         <object-name>digit A 01000 (Meshed)</object-name>
@@ -242,8 +242,8 @@
             <factor-prop>sim/G91/re_emit/light_red_console</factor-prop>
         </emission>
     </animation>
-    
-    <animation> 
+
+    <animation>
         <type>material</type>
         <object-name>digit S 10000 (Meshed)</object-name>
         <object-name>digit S 01000 (Meshed)</object-name>
@@ -267,8 +267,8 @@
             <factor>0.1</factor>
         </emission>
     </animation>
-    
-    <animation> 
+
+    <animation>
         <type>material</type>
         <object-name>digit B 10000 (Meshed)</object-name>
         <object-name>digit B 01000 (Meshed)</object-name>
@@ -293,8 +293,8 @@
             <factor>1.2</factor>
         </emission>
     </animation>
-    
-    <animation> 
+
+    <animation>
         <type>material</type>
         <object-name>freq set 11000 point A (Meshed)</object-name>
         <object-name>freq set 00100 point A (Meshed)</object-name>
@@ -317,7 +317,7 @@
         </emission>
     </animation>
 
-    <animation> 
+    <animation>
         <type>material</type>
         <object-name>freq set A (Meshed)</object-name>
         <diffuse>
@@ -337,8 +337,8 @@
             <factor>0.4</factor>
         </emission>
     </animation>
-    
-    <animation> 
+
+    <animation>
         <type>material</type>
         <object-name>UHF A (Meshed)</object-name>
         <object-name>MANUAL A (Meshed)</object-name>
@@ -363,8 +363,8 @@
             <factor>1.2</factor>
         </emission>
     </animation>
-    
-    <animation> 
+
+    <animation>
         <type>material</type>
         <object-name>chan selector A (Meshed)</object-name>
         <object-name>VOL A (Meshed)</object-name>
@@ -387,8 +387,9 @@
             <factor>0.8</factor>
         </emission>
     </animation>
-    
-    
+
+    <!-- Animation section -->
+
     <animation>
         <type>knob</type>
         <object-name>chan selector B (Meshed)</object-name>
@@ -399,19 +400,18 @@
         <axis>
             <x>0</x><y>0</y><z>1</z>
         </axis>
-        
         <action>
             <binding>
                 <command>property-adjust</command>
                 <property>/fdm/jsbsim/systems/gauges/radio/ptr175/chan-selector</property>
                 <factor>1</factor>
                 <min>1</min>
-                <max>21</max>                
+                <max>21</max>
                 <wrap>true</wrap>
             </binding>
         </action>
     </animation>
-    
+
     <animation>
         <type>rotate</type>
         <object-name>chan selector B (Meshed)</object-name>
@@ -425,7 +425,7 @@
             <x>0</x><y>0</y><z>-1</z>
         </axis>
     </animation>
-    
+
     <animation>
         <type>knob</type>
         <object-name>vol_knob_base (Meshed)</object-name>
@@ -436,19 +436,19 @@
         <axis>
             <x>0</x><y>0</y><z>1</z>
         </axis>
-        
+
         <action>
             <binding>
                 <command>property-adjust</command>
                 <property>/fdm/jsbsim/systems/gauges/radio/ptr175/vol-set</property>
                 <factor>0.05</factor>
                 <min>0</min>
-                <max>1</max>                
+                <max>1</max>
                 <wrap>false</wrap>
             </binding>
         </action>
     </animation>
-    
+
     <animation>
         <type>rotate</type>
         <object-name>vol_knob_base (Meshed)</object-name>
@@ -463,7 +463,7 @@
             <x>0</x><y>0</y><z>-1</z>
         </axis>
     </animation>
-    
+
     <animation>
         <type>knob</type>
         <object-name>knob_function (Meshed)</object-name>
@@ -474,19 +474,18 @@
         <axis>
             <x>0</x><y>0</y><z>1</z>
         </axis>
-        
         <action>
             <binding>
                 <command>property-adjust</command>
                 <property>/fdm/jsbsim/systems/gauges/radio/ptr175/knob-function-set</property>
                 <factor>1</factor>
                 <min>0</min>
-                <max>6</max>                
+                <max>6</max>
                 <wrap>false</wrap>
             </binding>
         </action>
     </animation>
-    
+
     <animation>
         <type>rotate</type>
         <object-name>knob_function (Meshed)</object-name>
@@ -501,7 +500,7 @@
             <x>0</x><y>0</y><z>-1</z>
         </axis>
     </animation>
-    
+
     <animation>
         <type>knob</type>
         <object-name>freq set 11000 (Meshed)</object-name>
@@ -518,12 +517,12 @@
                 <property>/fdm/jsbsim/systems/gauges/radio/ptr175/freq-11000-set</property>
                 <factor>1.0</factor>
                 <min>10</min>
-                <max>39</max>                
+                <max>39</max>
                 <wrap>false</wrap>
             </binding>
         </action>
     </animation>
-    
+
     <animation>
         <type>rotate</type>
         <object-name>freq set 11000 (Meshed)</object-name>
@@ -538,7 +537,7 @@
             <x>0</x><y>0</y><z>-1</z>
         </axis>
     </animation>
-    
+
     <animation>
         <type>knob</type>
         <object-name>freq set 00100 (Meshed)</object-name>
@@ -553,14 +552,14 @@
             <binding>
                 <command>property-adjust</command>
                 <property>/fdm/jsbsim/systems/gauges/radio/ptr175/freq-00100-set</property>
-                <factor>0.5</factor>
+                <factor>1.0</factor>
                 <min>0</min>
-                <max>10</max>              
+                <max>10</max>
                 <wrap>true</wrap>
             </binding>
         </action>
     </animation>
-    
+
     <animation>
         <type>rotate</type>
         <object-name>freq set 00100 (Meshed)</object-name>
@@ -590,9 +589,9 @@
             <binding>
                 <command>property-adjust</command>
                 <property>/fdm/jsbsim/systems/gauges/radio/ptr175/freq-00011-set</property>
-                <factor>0.5</factor>
+                <factor>1.0</factor>
                 <min>0</min>
-                <max>100</max>                
+                <max>100</max>
                 <wrap>true</wrap>
             </binding>
         </action>
@@ -612,7 +611,7 @@
             <x>0</x><y>0</y><z>-1</z>
         </axis>
     </animation>
-    
+
     <animation>
         <type>rotate</type>
         <object-name>digit A 10000 (Meshed)</object-name>
@@ -628,7 +627,7 @@
             <x>0</x><y>-1</y><z>0</z>
         </axis>
     </animation>
-    
+
     <animation>
         <type>rotate</type>
         <object-name>digit A 01000 (Meshed)</object-name>
@@ -644,7 +643,7 @@
             <x>0</x><y>-1</y><z>0</z>
         </axis>
     </animation>
-    
+
     <animation>
         <type>rotate</type>
         <object-name>digit A 00100 (Meshed)</object-name>
@@ -660,7 +659,7 @@
             <x>0</x><y>-1</y><z>0</z>
         </axis>
     </animation>
-    
+
     <animation>
         <type>rotate</type>
         <object-name>digit A 00010 (Meshed)</object-name>
@@ -676,7 +675,7 @@
             <x>0</x><y>-1</y><z>0</z>
         </axis>
     </animation>
-    
+
     <animation>
         <type>rotate</type>
         <object-name>digit A 00001 (Meshed)</object-name>
@@ -692,5 +691,5 @@
             <x>0</x><y>-1</y><z>0</z>
         </axis>
     </animation>
-    
+
 </PropertyList>

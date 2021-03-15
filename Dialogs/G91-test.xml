@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 
 <PropertyList>
-    
+
     <name>G91_test_dialog</name>
     <layout>vbox</layout>
     <default-padding>7</default-padding>
     <modal>false</modal>
     <width>1000</width>
-    
+
     <!-- title bar -->
     <group>
         <layout>hbox</layout>
@@ -27,9 +27,9 @@
             </binding>
         </button>
     </group>
-    
+
     <hrule/>
-    
+
     <group>
         <layout>hbox</layout>
         <group>
@@ -47,7 +47,7 @@
                 <property>sim/G91/testing/log</property>
                 <min>0</min>
                 <max>2</max>
-                <step>1</step>  
+                <step>1</step>
                 <binding>
                     <command>dialog-apply</command>
                 </binding>
@@ -67,11 +67,11 @@
             </text>
         </group>
     </group>
-    
+
     <hrule/>
-    
+
     <!-- Cockpit Lamps -->
-    
+
     <group>
         <layout>hbox</layout>
         <text>
@@ -97,7 +97,7 @@
             <property>/fdm/jsbsim/systems/lightning/light-uv-instrument-bright</property>
             <min>0.0</min>
             <max>1.0</max>
-            <step>0.01</step>  
+            <step>0.01</step>
             <binding>
                 <command>dialog-apply</command>
             </binding>
@@ -130,7 +130,7 @@
             </color>
         </text>
     </group>
-    
+
     <group>
         <layout>hbox</layout>
         <text>
@@ -156,7 +156,7 @@
             <property>/fdm/jsbsim/systems/lightning/light-red-emer-instrument-bright</property>
             <min>0.0</min>
             <max>1.0</max>
-            <step>0.01</step>  
+            <step>0.01</step>
             <binding>
                 <command>dialog-apply</command>
             </binding>
@@ -189,7 +189,7 @@
             </color>
         </text>
     </group>
-    
+
     <group>
         <layout>hbox</layout>
         <text>
@@ -215,7 +215,7 @@
             <property>/fdm/jsbsim/systems/lightning/light-red-console-bright</property>
             <min>0.0</min>
             <max>1.0</max>
-            <step>0.01</step>  
+            <step>0.01</step>
             <binding>
                 <command>dialog-apply</command>
             </binding>
@@ -248,7 +248,7 @@
             </color>
         </text>
     </group>
-    
+
     <group>
         <layout>hbox</layout>
         <text>
@@ -297,10 +297,10 @@
             </color>
         </text>
     </group>
-    
+
     <!-- Altitude - Speed - Mach -->
     <hrule/>
-    
+
     <group>
         <layout>hbox</layout>
         <text>
@@ -357,7 +357,7 @@
         </group>
     </group>
     <hrule/>
-    
+
     <!-- Test values -->
     <group>
         <layout>hbox</layout>
@@ -384,14 +384,14 @@
             <property>sim/G91/Test/V0_1A</property>
             <min>-1.0</min>
             <max>1.0</max>
-            <step>0.1</step> 
+            <step>0.1</step>
             <binding>
                 <command>dialog-apply</command>
             </binding>
         </slider>
-        
+
         <vrule/>
-        
+
         <text>
             <halign>left</halign>
             <label>sim_G91_Test_V0_1B = </label>
@@ -415,7 +415,7 @@
             <property>sim/G91/Test/V0_1B</property>
             <min>0</min>
             <max>1.0</max>
-            <step>0.01</step> 
+            <step>0.01</step>
             <binding>
                 <command>dialog-apply</command>
             </binding>
@@ -447,14 +447,14 @@
             <property>sim/G91/Test/V0_1C</property>
             <min>-1.0</min>
             <max>1.0</max>
-            <step>0.001</step>  
+            <step>0.001</step>
             <binding>
                 <command>dialog-apply</command>
             </binding>
         </slider>
-        
+
         <vrule/>
-        
+
         <text>
             <halign>left</halign>
             <label>sim_G91_Test_V0_1D = </label>
@@ -478,13 +478,13 @@
             <property>sim/G91/Test/V0_1D</property>
             <min>-1.0</min>
             <max>1.0</max>
-            <step>0.01</step>  
+            <step>0.01</step>
             <binding>
                 <command>dialog-apply</command>
             </binding>
         </slider>
     </group>
-    
+
     <group>
 
         <layout>hbox</layout>
@@ -511,14 +511,14 @@
             <property>sim/G91/Test/V0_10A</property>
             <min>-10.0</min>
             <max>10.0</max>
-            <step>0.1</step>  
+            <step>0.1</step>
             <binding>
                 <command>dialog-apply</command>
             </binding>
         </slider>
-        
+
         <vrule/>
-        
+
         <text>
             <halign>left</halign>
             <label>sim_G91_Test_V0_10B = </label>
@@ -542,12 +542,12 @@
             <property>sim/G91/Test/V0_10B</property>
             <min>-10.0</min>
             <max>10.0</max>
-            <step>0.1</step>  
+            <step>0.1</step>
             <binding>
                 <command>dialog-apply</command>
             </binding>
         </slider>
-        
+
     </group>
     <group>
         <layout>hbox</layout>
@@ -574,14 +574,14 @@
             <property>sim/G91/Test/V0_100A</property>
             <min>-100.0</min>
             <max>100.0</max>
-            <step>1.0</step>  
+            <step>1.0</step>
             <binding>
                 <command>dialog-apply</command>
             </binding>
         </slider>
-        
+
         <vrule/>
-        
+
         <text>
             <halign>left</halign>
             <label>sim_G91_Test_V0_100B = </label>
@@ -605,13 +605,13 @@
             <property>sim/G91/Test/V0_100B</property>
             <min>0.0</min>
             <max>100.0</max>
-            <step>0.1</step>  
+            <step>0.1</step>
             <binding>
                 <command>dialog-apply</command>
             </binding>
         </slider>
     </group>
-    
+
     <group>
         <layout>hbox</layout>
         <text>
@@ -637,14 +637,14 @@
             <property>sim/G91/Test/V0_1000A</property>
             <min>-1000.0</min>
             <max>1000.0</max>
-            <step>1.0</step>  
+            <step>1.0</step>
             <binding>
                 <command>dialog-apply</command>
             </binding>
         </slider>
-        
+
         <vrule/>
-        
+
         <text>
             <halign>left</halign>
             <label>sim_G91_Test_V0_1000B = </label>
@@ -668,15 +668,15 @@
             <property>sim/G91/Test/V0_1000B</property>
             <min>-1000.0</min>
             <max>1000.0</max>
-            <step>0.1</step>  
+            <step>0.1</step>
             <binding>
                 <command>dialog-apply</command>
             </binding>
         </slider>
     </group>
-    
+
     <hrule/>
-    
+
     <group>
         <layout>hbox</layout>
         <group>
@@ -722,7 +722,7 @@
                 <property>sim/G91/configuration/compositor/canopy-ambient-light-dimmer</property>
                 <min>0.0</min>
                 <max>1.0</max>
-                <step>0.01</step>  
+                <step>0.01</step>
                 <binding>
                     <command>dialog-apply</command>
                 </binding>
@@ -740,7 +740,7 @@
                 <property>sim/G91/configuration/compositor/canopy-ambient-gray-specular-dimmer</property>
                 <min>0.0</min>
                 <max>1.0</max>
-                <step>0.01</step>  
+                <step>0.01</step>
                 <binding>
                     <command>dialog-apply</command>
                 </binding>
@@ -758,9 +758,9 @@
             </radio>
         </group>
     </group>
-    
+
     <hrule/>
-    
+
     <group>
         <layout>hbox</layout>
         <group>
@@ -791,9 +791,22 @@
                     <value>2</value>
                 </binding>
             </button>
+            <button>
+                <row>0</row>
+                <col>2</col>
+                <pref-width>200</pref-width>
+                <legend>Reload Radio PTR175</legend>
+                <halign>fill</halign>
+                <live>true</live>
+                <binding>
+                    <command>property-assign</command>
+                    <property>sim/G91/nasal/modules/set-active-radio-ptr175</property>
+                    <value>2</value>
+                </binding>
+            </button>
         </group>
     </group>
-    
+
     <hrule/>
     <!-- Pos the objects -->
     <!--
@@ -809,7 +822,7 @@
                 <property>sim/G91/set_position/x_translate</property>
                 <min>-0.5</min>
                 <max>0.5</max>
-                <step>0.01</step>  
+                <step>0.01</step>
                 <binding>
                     <command>dialog-apply</command>
                 </binding>
@@ -822,7 +835,7 @@
                 <property>sim/G91/set_position/y_translate</property>
                 <min>-0.5</min>
                 <max>0.5</max>
-                <step>0.01</step>  
+                <step>0.01</step>
                 <binding>
                     <command>dialog-apply</command>
                 </binding>
@@ -835,7 +848,7 @@
                 <property>sim/G91/set_position/z_translate</property>
                 <min>-0.5</min>
                 <max>0.5</max>
-                <step>0.01</step>  
+                <step>0.01</step>
                 <binding>
                     <command>dialog-apply</command>
                 </binding>
@@ -848,7 +861,7 @@
                 <property>sim/G91/set_position/x_axis</property>
                 <min>-90</min>
                 <max>90</max>
-                <step>0.1</step>  
+                <step>0.1</step>
                 <binding>
                     <command>dialog-apply</command>
                 </binding>
@@ -861,7 +874,7 @@
                 <property>sim/G91/set_position/y_axis</property>
                 <min>-90</min>
                 <max>90</max>
-                <step>0.1</step>  
+                <step>0.1</step>
                 <binding>
                     <command>dialog-apply</command>
                 </binding>
@@ -874,7 +887,7 @@
                 <property>sim/G91/set_position/z_axis</property>
                 <min>-90</min>
                 <max>90</max>
-                <step>0.1</step>  
+                <step>0.1</step>
                 <binding>
                     <command>dialog-apply</command>
                 </binding>
@@ -907,7 +920,7 @@
                 <property>fdm/jsbsim/aero/clb-gain</property>
                 <min>-1.0</min>
                 <max>1.0</max>
-                <step>0.1</step>  
+                <step>0.1</step>
                 <binding>
                     <command>dialog-apply</command>
                 </binding>
@@ -952,7 +965,7 @@
                 <property>fdm/jsbsim/aero/pitch-gain</property>
                 <min>0.1</min>
                 <max>2.0</max>
-                <step>0.1</step>  
+                <step>0.1</step>
                 <binding>
                     <command>dialog-apply</command>
                 </binding>
@@ -986,7 +999,7 @@
         </group>
     </group>
     -->
-    
+
      <group>
         <layout>hbox</layout>
         <group>
@@ -1010,7 +1023,7 @@
                 <property>fdm/jsbsim/inertia/modifier/cg-x-weight-value-lib</property>
                 <min>0</min>
                 <max>50</max>
-                <step>5</step>  
+                <step>5</step>
                 <binding>
                     <command>dialog-apply</command>
                 </binding>
@@ -1041,7 +1054,7 @@
                 <property>fdm/jsbsim/inertia/modifier/cg-x-shift-percent</property>
                 <min>-100</min>
                 <max>100</max>
-                <step>5</step>  
+                <step>5</step>
                 <binding>
                     <command>dialog-apply</command>
                 </binding>
@@ -1131,5 +1144,5 @@
             </text>
         </group>
     </group>
-    
+
 </PropertyList>
