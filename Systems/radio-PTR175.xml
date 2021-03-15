@@ -1,7 +1,15 @@
 <?xml version="1.0"?>
 
 <system name="radio-PTR175">
-    
+
+    <!-- Comunication properties -->
+    <property value="19.0">systems/gauges/radio/ptr175/chan-selector</property>
+    <!-- Receives the frequency from an external program -->
+    <property value="0.0">systems/gauges/radio/ptr175/input-freq-mhz</property>
+    <!-- Send a frequency out, when the frequency is manually selected -->
+    <property value="0.0">systems/gauges/radio/ptr175/output-freq-mhz</property>
+
+    <property value="19.0">systems/gauges/radio/ptr175/chan-selector-gui</property>
     <property value="10.0">systems/gauges/radio/ptr175/freq-11000-set</property>
     <property value="0.0">systems/gauges/radio/ptr175/freq-00100-set</property>
     <property value="0.0">systems/gauges/radio/ptr175/freq-00011-set</property>
@@ -10,25 +18,23 @@
     <property value="0.0">systems/gauges/radio/ptr175/freq-01000-digit</property>
     <property value="0.0">systems/gauges/radio/ptr175/freq-00100-digit</property>
     <property value="0.0">systems/gauges/radio/ptr175/freq-00001-digit</property>
-    <property value="0.0">systems/gauges/radio/ptr175/freq-channel</property>
-    <property value="0.0">systems/gauges/radio/ptr175/freq-G-value</property>
-    <property value="0.0">systems/gauges/radio/ptr175/freq-M-active</property>
     <property value="0.5">systems/gauges/radio/ptr175/vol-set</property>
     <property value="0.5">systems/gauges/radio/ptr175/volume</property>
     <property value="0.0">systems/gauges/radio/ptr175/volume-selected</property>
-    <property value="19.0">systems/gauges/radio/ptr175/chan-selector</property>
     <property value="0.0">systems/gauges/radio/ptr175/knob-function-set</property>
     <property value="0.0">systems/gauges/radio/ptr175/operative-start-stop</property>
     <property value="0.0">systems/gauges/radio/ptr175/operative</property>
     <property value="0.0">systems/gauges/radio/ptr175/operative-heating</property>
-    <property value="0.0">systems/gauges/radio/ptr175/freq-from-comm-mod-wa-mod</property>
+    <property value="0.0">systems/gauges/radio/ptr175/input-freq-mhz-wa-mod</property>
     <property value="0.0">systems/gauges/radio/ptr175/freq-set-wa-mod</property>
-    <property value="0.0">systems/gauges/radio/ptr175/freq-from-comm-mod-wa-mod-lag</property>
+    <property value="0.0">systems/gauges/radio/ptr175/input-freq-mhz-wa-mod-lag</property>
     <property value="0.0">systems/gauges/radio/ptr175/freq-set-wa-mod-lag</property>
-    
-    
+    <property value="243.0">systems/gauges/radio/ptr175/freq-guard</property>
+    <property value="0.0">systems/gauges/radio/ptr175/input-freq-mhz</property>
+
+
     <channel name="systems gauges radio electric" execrate="32">
-        
+
         <switch name="systems/gauges/radio/ptr175/operative-start-stop">
             <default value="0"/>
             <test logic="AND" value="1">
@@ -37,20 +43,20 @@
                 systems/gauges/radio/ptr175/knob-function-set GE 0.5
             </test>
         </switch>
-        
+
         <switch name="systems/electric/bus[1]/UHF-radio/I">
             <default value="0.0"/>
             <test logic="AND" value="18">
                 systems/gauges/radio/ptr175/operative-start-stop == 1
             </test>
         </switch>
-        
+
         <!-- This delay is the time for starting the electronics -->
         <lag_filter name="systems/gauges/radio/ptr175/operative-heating">
             <input>systems/gauges/radio/ptr175/operative-start-stop</input>
             <c1>0.1</c1>
         </lag_filter>
-        
+
         <switch name="systems/gauges/radio/ptr175/operative">
             <default value="0.0"/>
             <test logic="AND" value="1.0">
@@ -58,7 +64,7 @@
             </test>
             <output>/instrumentation/comm/serviceable</output>
         </switch>
-        
+
         <scheduled_gain name="systems/gauges/radio/ptr175/volume">
             <input>systems/gauges/radio/ptr175/vol-set</input>
             <table>
@@ -73,26 +79,26 @@
             <gain>1.0</gain>
             <output>/instrumentation/comm/volume</output>
         </scheduled_gain>
-        
+
         <switch name="/sim/sound/atc/enabled">
             <default value="0.0"/>
             <test logic="AND" value="1.0">
                 systems/gauges/radio/ptr175/operative-start-stop GE 0.5
             </test>
         </switch>
-        
+
         <switch name="/sim/sound/atc/volume">
             <default value="0.0"/>
             <test logic="AND" value="systems/gauges/radio/ptr175/volume">
                 systems/gauges/radio/ptr175/operative-start-stop GE 0.5
             </test>
         </switch>
-        
+
     </channel>
-    
-    
+
+
     <channel name="systems gauges radio set frequence" execrate="4">
-        
+
         <fcs_function>
             <function>
                 <integer>
@@ -104,7 +110,7 @@
             </function>
             <output>systems/gauges/radio/ptr175/freq-10000-digit-A</output>
         </fcs_function>
-        
+
         <linear_actuator name="systems/gauges/radio/ptr175/freq-10000-digit">
             <input>systems/gauges/radio/ptr175/freq-10000-digit-A</input>
             <module>10</module>
@@ -112,7 +118,7 @@
             <lag>8.0</lag>
             <gain>1.0</gain>
         </linear_actuator>
-        
+
         <fcs_function>
             <function>
                 <integer>
@@ -132,7 +138,7 @@
             </function>
             <output>systems/gauges/radio/ptr175/freq-01000-digit-A</output>
         </fcs_function>
-        
+
         <linear_actuator name="systems/gauges/radio/ptr175/freq-01000-digit">
             <input>systems/gauges/radio/ptr175/freq-01000-digit-A</input>
             <module>10</module>
@@ -140,7 +146,7 @@
             <lag>8.0</lag>
             <gain>1.0</gain>
         </linear_actuator>
-        
+
         <fcs_function>
             <function>
                 <integer>
@@ -149,7 +155,7 @@
             </function>
             <output>systems/gauges/radio/ptr175/freq-00100-digit-A</output>
         </fcs_function>
-        
+
         <linear_actuator name="systems/gauges/radio/ptr175/freq-00100-digit">
             <input>systems/gauges/radio/ptr175/freq-00100-digit-A</input>
             <module>10</module>
@@ -205,7 +211,7 @@
             <lag>8.0</lag>
             <gain>1.0</gain>
         </linear_actuator>
-        
+
         <fcs_function name="systems/gauges/radio/ptr175/freq-set">
             <function>
                 <sum>
@@ -226,27 +232,43 @@
             </function>
         </fcs_function>
 
-        <washout_filter name="systems/gauges/radio/ptr175/freq-from-comm-mod-wa">
-            <input>/instrumentation/comm/frequencies/selected-mhz</input>
+        <switch name="systems/gauges/radio/ptr175/freq-set-check">
+            <default value="0.0"/>
+            <test logic="OR" value="1.0">
+                <test logic="AND">
+                    systems/gauges/radio/ptr175/freq-set GE 117.5
+                    systems/gauges/radio/ptr175/freq-set LE 135.95
+                </test>
+                <test logic="AND">
+                    systems/gauges/radio/ptr175/freq-set GE 225.0
+                    systems/gauges/radio/ptr175/freq-set LE 399.9
+                </test>
+            </test>
+        </switch>
+
+        <!-- External set frequency -->
+        <washout_filter name="systems/gauges/radio/ptr175/input-freq-mhz-wa">
+            <input>systems/gauges/radio/ptr175/input-freq-mhz</input>
             <c1>10.0</c1>
         </washout_filter>
 
-        <switch name="systems/gauges/radio/ptr175/freq-from-comm-mod-wa-mod">
+        <switch name="systems/gauges/radio/ptr175/input-freq-mhz-wa-mod">
             <default value="0.0"/>
             <test logic="AND" value="1.0">
                 <test logic="OR">
-                    systems/gauges/radio/ptr175/freq-from-comm-mod-wa GT 0.001
-                    systems/gauges/radio/ptr175/freq-from-comm-mod-wa LT -0.001
+                    systems/gauges/radio/ptr175/input-freq-mhz-wa GT 0.001
+                    systems/gauges/radio/ptr175/input-freq-mhz-wa LT -0.001
                 </test>
                 systems/gauges/radio/ptr175/freq-set-wa-mod-lag LT 0.1
             </test>
         </switch>
 
-        <lag_filter name="systems/gauges/radio/ptr175/freq-from-comm-mod-wa-mod-lag">
-            <input>systems/gauges/radio/ptr175/freq-from-comm-mod-wa-mod</input>
+        <lag_filter name="systems/gauges/radio/ptr175/input-freq-mhz-wa-mod-lag">
+            <input>systems/gauges/radio/ptr175/input-freq-mhz-wa-mod</input>
             <c1>1.0</c1>
         </lag_filter>
-        
+
+        <!-- Frequency panel modification section -->
         <washout_filter name="systems/gauges/radio/ptr175/freq-set-wa">
             <input>systems/gauges/radio/ptr175/freq-set</input>
             <c1>10.0</c1>
@@ -259,31 +281,34 @@
                     systems/gauges/radio/ptr175/freq-set-wa GT 0.001
                     systems/gauges/radio/ptr175/freq-set-wa LT -0.001
                 </test>
-                systems/gauges/radio/ptr175/freq-from-comm-mod-wa-mod-lag LT 0.1
+                <test logic="OR">
+                    systems/gauges/radio/ptr175/input-freq-mhz-wa-mod-lag LT 0.1
+                    systems/gauges/radio/ptr175/chan-selector == 19.0
+                </test>
             </test>
         </switch>
 
         <lag_filter name="systems/gauges/radio/ptr175/freq-set-wa-mod-lag">
             <input>systems/gauges/radio/ptr175/freq-set-wa-mod</input>
-            <c1>1.0</c1>
+            <c1>0.5</c1>
         </lag_filter>
 
         <fcs_function name="systems/gauges/radio/ptr175/freq-11000-to-set">
             <function>
                 <integer>
                     <product>
-                        <p>/instrumentation/comm/frequencies/selected-mhz</p>
+                        <p>systems/gauges/radio/ptr175/input-freq-mhz</p>
                         <v>0.1</v>
                     </product>
                 </integer>
             </function>
         </fcs_function>
-        
+
         <fcs_function name="systems/gauges/radio/ptr175/freq-00100-to-set">
             <function>
                 <difference>
                     <integer>
-                        <p>/instrumentation/comm/frequencies/selected-mhz</p>
+                        <p>systems/gauges/radio/ptr175/input-freq-mhz</p>
                     </integer>
                     <product>
                         <p>systems/gauges/radio/ptr175/freq-11000-to-set</p>
@@ -292,13 +317,13 @@
                 </difference>
             </function>
         </fcs_function>
-        
+
         <fcs_function name="systems/gauges/radio/ptr175/freq-00011-to-set">
             <function>
                 <integer>
                     <product>
                         <difference>
-                            <p>/instrumentation/comm/frequencies/selected-mhz</p>
+                            <p>systems/gauges/radio/ptr175/input-freq-mhz</p>
                             <sum>
                                 <product>
                                     <p>systems/gauges/radio/ptr175/freq-11000-to-set</p>
@@ -314,36 +339,60 @@
             </function>
         </fcs_function>
 
-        <switch>
-            <default value="/instrumentation/comm/frequencies/selected-mhz"/>
+        <switch name="systems/gauges/radio/ptr175/input-freq-mhz">
+            <default value="systems/gauges/radio/ptr175/input-freq-mhz"/>
             <test logic="AND" value="systems/gauges/radio/ptr175/freq-set">
                 systems/gauges/radio/ptr175/freq-set-wa-mod-lag GT 0.1
             </test>
-            <output>/instrumentation/comm/frequencies/selected-mhz</output>
         </switch>
-        
+
         <switch name="systems/gauges/radio/ptr175/freq-11000-set">
             <default value="systems/gauges/radio/ptr175/freq-11000-set"/>
             <test logic="AND" value="systems/gauges/radio/ptr175/freq-11000-to-set">
-                systems/gauges/radio/ptr175/freq-from-comm-mod-wa-mod-lag GT 0.1
+                systems/gauges/radio/ptr175/input-freq-mhz-wa-mod-lag GT 0.1
             </test>
         </switch>
-        
+
         <switch name="systems/gauges/radio/ptr175/freq-00100-set">
             <default value="systems/gauges/radio/ptr175/freq-00100-set"/>
             <test logic="AND" value="systems/gauges/radio/ptr175/freq-00100-to-set">
-                systems/gauges/radio/ptr175/freq-from-comm-mod-wa-mod-lag GT 0.1
+                systems/gauges/radio/ptr175/input-freq-mhz-wa-mod-lag GT 0.1
             </test>
         </switch>
-        
+
         <switch name="systems/gauges/radio/ptr175/freq-00011-set">
             <default value="systems/gauges/radio/ptr175/freq-00011-set"/>
             <test logic="AND" value="systems/gauges/radio/ptr175/freq-00011-to-set">
-                systems/gauges/radio/ptr175/freq-from-comm-mod-wa-mod-lag GT 0.1
+                systems/gauges/radio/ptr175/input-freq-mhz-wa-mod-lag GT 0.1
             </test>
         </switch>
-        
+
     </channel>
-    
-    
+
+
+    <channel name="low refresh rate area" execrate="32">
+
+        <!-- Send the frequency selected manually -->
+        <switch name="systems/gauges/radio/ptr175/output-freq-mhz">
+            <default value="systems/gauges/radio/ptr175/output-freq-mhz"/>
+            <test logic="AND" value="systems/gauges/radio/ptr175/freq-set">
+                systems/gauges/radio/ptr175/freq-set-wa-mod-lag GT 0.05
+                systems/gauges/radio/ptr175/freq-set-wa-mod-lag LT 0.3
+                systems/gauges/radio/ptr175/freq-set-check GT 0.5
+            </test>
+        </switch>
+
+        <!-- Send The frequency selected manually set 19 chan (M) -->
+        <switch name="systems/gauges/radio/ptr175/chan-selector">
+            <default value="systems/gauges/radio/ptr175/chan-selector"/>
+            <test logic="AND" value="19">
+                systems/gauges/radio/ptr175/freq-set-wa-mod-lag GT 0.05
+                systems/gauges/radio/ptr175/freq-set-wa-mod-lag LT 0.3
+                systems/gauges/radio/ptr175/freq-set-check GT 0.5
+            </test>
+        </switch>
+
+    </channel>
+
+
 </system>

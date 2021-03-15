@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 
 <PropertyList>
-    
+
     <name>radio_prt175_dialog</name>
     <layout>vbox</layout>
     <default-padding>7</default-padding>
     <modal>false</modal>
     <width>350</width>
-    
+
     <!-- title bar -->
     <group>
         <layout>hbox</layout>
@@ -28,9 +28,9 @@
             </binding>
         </button>
     </group>
-    
+
     <hrule/>
-    
+
     <group>
         <layout>hbox</layout>
         <group>
@@ -44,11 +44,12 @@
                 <row>0</row>
                 <col>1</col>
                 <pref-width>50</pref-width>
+                <live>true</live>
                 <name>Funcion selector</name>
                 <property>fdm/jsbsim/systems/gauges/radio/ptr175/knob-function-set</property>
                 <min>0</min>
                 <max>6</max>
-                <step>1</step>  
+                <step>1</step>
                 <binding>
                     <command>dialog-apply</command>
                 </binding>
@@ -67,9 +68,9 @@
             </text>
         </group>
     </group>
-    
+
     <hrule/>
-    
+
     <group>
         <layout>hbox</layout>
         <group>
@@ -91,6 +92,11 @@
                 <binding>
                     <command>property-assign</command>
                     <property>fdm/jsbsim/systems/gauges/radio/ptr175/chan-selector-gui</property>
+                    <value>19</value>
+                </binding>
+                <binding>
+                    <command>property-assign</command>
+                    <property>fdm/jsbsim/systems/gauges/radio/ptr175/chan-freq-gui</property>
                     <value>19</value>
                 </binding>
             </checkbox>
@@ -129,13 +135,18 @@
                     <property>fdm/jsbsim/systems/gauges/radio/ptr175/chan-selector-gui</property>
                     <value>20</value>
                 </binding>
+                <binding>
+                    <command>property-assign</command>
+                    <property>fdm/jsbsim/systems/gauges/radio/ptr175/chan-freq-gui</property>
+                    <value>20</value>
+                </binding>
             </checkbox>
             <input>
                 <row>0</row>
                 <col>5</col>
                 <pref-width>60</pref-width>
                 <format>%5.2f</format>
-                <property>fdm/jsbsim/systems/gauges/radio/com1/chann/data[20]/freq</property>
+                <property>fdm/jsbsim/systems/gauges/radio/ptr175/freq-guard</property>
                 <live>true</live>
                 <binding>
                     <command>dialog-apply</command>
@@ -148,9 +159,9 @@
             </input>
         </group>
     </group>
-    
+
     <hrule/>
-    
+
     <group>
         <layout>hbox</layout>
         <group>
@@ -172,6 +183,11 @@
                 <binding>
                     <command>property-assign</command>
                     <property>fdm/jsbsim/systems/gauges/radio/ptr175/chan-selector-gui</property>
+                    <value>1</value>
+                </binding>
+                <binding>
+                    <command>property-assign</command>
+                    <property>fdm/jsbsim/systems/gauges/radio/ptr175/chan-freq-gui</property>
                     <value>1</value>
                 </binding>
             </checkbox>
@@ -205,6 +221,11 @@
                     <property>fdm/jsbsim/systems/gauges/radio/ptr175/chan-selector-gui</property>
                     <value>2</value>
                 </binding>
+                <binding>
+                    <command>property-assign</command>
+                    <property>fdm/jsbsim/systems/gauges/radio/ptr175/chan-freq-gui</property>
+                    <value>2</value>
+                </binding>
             </checkbox>
             <input>
                 <row>0</row>
@@ -234,6 +255,11 @@
                 <binding>
                     <command>property-assign</command>
                     <property>fdm/jsbsim/systems/gauges/radio/ptr175/chan-selector-gui</property>
+                    <value>3</value>
+                </binding>
+                <binding>
+                    <command>property-assign</command>
+                    <property>fdm/jsbsim/systems/gauges/radio/ptr175/chan-freq-gui</property>
                     <value>3</value>
                 </binding>
             </checkbox>
@@ -278,6 +304,11 @@
                     <property>fdm/jsbsim/systems/gauges/radio/ptr175/chan-selector-gui</property>
                     <value>4</value>
                 </binding>
+                <binding>
+                    <command>property-assign</command>
+                    <property>fdm/jsbsim/systems/gauges/radio/ptr175/chan-freq-gui</property>
+                    <value>4</value>
+                </binding>
             </checkbox>
             <input>
                 <row>0</row>
@@ -307,6 +338,11 @@
                 <binding>
                     <command>property-assign</command>
                     <property>fdm/jsbsim/systems/gauges/radio/ptr175/chan-selector-gui</property>
+                    <value>5</value>
+                </binding>
+                <binding>
+                    <command>property-assign</command>
+                    <property>fdm/jsbsim/systems/gauges/radio/ptr175/chan-freq-gui</property>
                     <value>5</value>
                 </binding>
             </checkbox>
@@ -340,6 +376,11 @@
                     <property>fdm/jsbsim/systems/gauges/radio/ptr175/chan-selector-gui</property>
                     <value>6</value>
                 </binding>
+                <binding>
+                    <command>property-assign</command>
+                    <property>fdm/jsbsim/systems/gauges/radio/ptr175/chan-freq-gui</property>
+                    <value>6</value>
+                </binding>
             </checkbox>
             <input>
                 <row>0</row>
@@ -359,7 +400,7 @@
             </input>
         </group>
     </group>
-    
+
     <group>
         <layout>hbox</layout>
         <group>
@@ -381,6 +422,11 @@
                 <binding>
                     <command>property-assign</command>
                     <property>fdm/jsbsim/systems/gauges/radio/ptr175/chan-selector-gui</property>
+                    <value>7</value>
+                </binding>
+                <binding>
+                    <command>property-assign</command>
+                    <property>fdm/jsbsim/systems/gauges/radio/ptr175/chan-freq-gui</property>
                     <value>7</value>
                 </binding>
             </checkbox>
@@ -414,6 +460,11 @@
                     <property>fdm/jsbsim/systems/gauges/radio/ptr175/chan-selector-gui</property>
                     <value>8</value>
                 </binding>
+                <binding>
+                    <command>property-assign</command>
+                    <property>fdm/jsbsim/systems/gauges/radio/ptr175/chan-freq-gui</property>
+                    <value>8</value>
+                </binding>
             </checkbox>
             <input>
                 <row>0</row>
@@ -445,6 +496,11 @@
                     <property>fdm/jsbsim/systems/gauges/radio/ptr175/chan-selector-gui</property>
                     <value>9</value>
                 </binding>
+                <binding>
+                    <command>property-assign</command>
+                    <property>fdm/jsbsim/systems/gauges/radio/ptr175/chan-freq-gui</property>
+                    <value>9</value>
+                </binding>
             </checkbox>
             <input>
                 <row>0</row>
@@ -464,7 +520,7 @@
             </input>
         </group>
     </group>
-    
+
     <group>
         <layout>hbox</layout>
         <group>
@@ -486,6 +542,11 @@
                 <binding>
                     <command>property-assign</command>
                     <property>fdm/jsbsim/systems/gauges/radio/ptr175/chan-selector-gui</property>
+                    <value>10</value>
+                </binding>
+                <binding>
+                    <command>property-assign</command>
+                    <property>fdm/jsbsim/systems/gauges/radio/ptr175/chan-freq-gui</property>
                     <value>10</value>
                 </binding>
             </checkbox>
@@ -550,6 +611,11 @@
                     <property>fdm/jsbsim/systems/gauges/radio/ptr175/chan-selector-gui</property>
                     <value>12</value>
                 </binding>
+                <binding>
+                    <command>property-assign</command>
+                    <property>fdm/jsbsim/systems/gauges/radio/ptr175/chan-freq-gui</property>
+                    <value>12</value>
+                </binding>
             </checkbox>
             <input>
                 <row>0</row>
@@ -569,7 +635,7 @@
             </input>
         </group>
     </group>
-    
+
     <group>
         <layout>hbox</layout>
         <group>
@@ -591,6 +657,11 @@
                 <binding>
                     <command>property-assign</command>
                     <property>fdm/jsbsim/systems/gauges/radio/ptr175/chan-selector-gui</property>
+                    <value>13</value>
+                </binding>
+                <binding>
+                    <command>property-assign</command>
+                    <property>fdm/jsbsim/systems/gauges/radio/ptr175/chan-freq-gui</property>
                     <value>13</value>
                 </binding>
             </checkbox>
@@ -624,6 +695,11 @@
                     <property>fdm/jsbsim/systems/gauges/radio/ptr175/chan-selector-gui</property>
                     <value>14</value>
                 </binding>
+                <binding>
+                    <command>property-assign</command>
+                    <property>fdm/jsbsim/systems/gauges/radio/ptr175/chan-freq-gui</property>
+                    <value>14</value>
+                </binding>
             </checkbox>
             <input>
                 <row>0</row>
@@ -655,6 +731,11 @@
                     <property>fdm/jsbsim/systems/gauges/radio/ptr175/chan-selector-gui</property>
                     <value>15</value>
                 </binding>
+                <binding>
+                    <command>property-assign</command>
+                    <property>fdm/jsbsim/systems/gauges/radio/ptr175/chan-freq-gui</property>
+                    <value>15</value>
+                </binding>
             </checkbox>
             <input>
                 <row>0</row>
@@ -674,7 +755,7 @@
             </input>
         </group>
     </group>
-    
+
     <group>
         <layout>hbox</layout>
         <group>
@@ -696,6 +777,11 @@
                 <binding>
                     <command>property-assign</command>
                     <property>fdm/jsbsim/systems/gauges/radio/ptr175/chan-selector-gui</property>
+                    <value>16</value>
+                </binding>
+                <binding>
+                    <command>property-assign</command>
+                    <property>fdm/jsbsim/systems/gauges/radio/ptr175/chan-freq-gui</property>
                     <value>16</value>
                 </binding>
             </checkbox>
@@ -729,6 +815,11 @@
                     <property>fdm/jsbsim/systems/gauges/radio/ptr175/chan-selector-gui</property>
                     <value>17</value>
                 </binding>
+                <binding>
+                    <command>property-assign</command>
+                    <property>fdm/jsbsim/systems/gauges/radio/ptr175/chan-freq-gui</property>
+                    <value>17</value>
+                </binding>
             </checkbox>
             <input>
                 <row>0</row>
@@ -760,6 +851,11 @@
                     <property>fdm/jsbsim/systems/gauges/radio/ptr175/chan-selector-gui</property>
                     <value>18</value>
                 </binding>
+                <binding>
+                    <command>property-assign</command>
+                    <property>fdm/jsbsim/systems/gauges/radio/ptr175/chan-freq-gui</property>
+                    <value>18</value>
+                </binding>
             </checkbox>
             <input>
                 <row>0</row>
@@ -779,7 +875,26 @@
             </input>
         </group>
     </group>
-    
+
     <hrule/>
-    
+
+    <group>
+        <layout>hbox</layout>
+        <group>
+            <layout>table</layout>
+            <text>
+                <row>0</row>
+                <col>0</col>
+                <label>MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM</label>
+                <live>true</live>
+                <property>fdm/jsbsim/systems/gauges/radio/ptr175/chan-freq-gui-desc</property>
+                <color>
+                    <red>1.0</red>
+                    <green>0.4</green>
+                    <blue>0.4</blue>
+                </color>
+            </text>
+        </group>
+    </group>
+
 </PropertyList>
