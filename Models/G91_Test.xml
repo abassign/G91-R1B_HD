@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 
 <PropertyList>
-    
+
     <offsets>
         <x-m>0.0</x-m>
         <y-m>0.0</y-m>
         <z-m>-0.45</z-m>
         <pitch-deg>0.0</pitch-deg>
     </offsets>
-    
+
     <TACAN-channel-ID>030Y</TACAN-channel-ID>
 
     <nasal>
         <load><![CDATA[
-            
+
             var aModuleId = 1 + _module_id;
             setprop("sim/G91/liveries/active/set-target-module-id",aModuleId);
             setprop("sim/G91/liveries/active/set-target-path",cmdarg().getPath());
             print("***** G91-R1B in multiplayer the value sim/G91/liveries/active/target_module_id: ",aModuleId, " path: ",cmdarg().getPath());
-            
+
             var rplayer = cmdarg();
             print("***** cmdarg: ",cmdarg().getPath(), " has been changed to ", cmdarg().getValue());
             rplayer.getNode("sim/G91/liveries/active/id", 1).alias(rplayer.getNode("sim/multiplay/generic/int[0]"));
@@ -39,7 +39,7 @@
             rplayer.getNode("sim/G91/liveries/active/symbol_05", 1).alias(rplayer.getNode("sim/multiplay/generic/string[10]"));
             rplayer.getNode("sim/G91/liveries/active/diffuse", 1).alias(rplayer.getNode("sim/multiplay/generic/float[20]"));
             rplayer.getNode("sim/G91/liveries/active/specular", 1).alias(rplayer.getNode("sim/multiplay/generic/float[21]"));
-            
+
             var import = func (file, module) {
                 file = string.normpath(file);
                 var local_file = globals.io.dirname(caller()[2]) ~ file;
@@ -47,14 +47,14 @@
                 print("***** Is multiplayer | path: ",path);
                 globals.io.load_nasal(path, module);
             };
-            
+
             var set_livery_loaded = getprop("sim/G91/liveries/active/set-livery-loaded");
             if (set_livery_loaded == nil or set_livery_loaded == 0) {
                 setprop("sim/G91/liveries/active/set-livery-loaded",1);
                 import("Aircraft/G91-R1B_HD/Nasal/set_livery.nas","set_livery");
             }
             import("Aircraft/G91-R1B_HD/Nasal/store.nas");
-            
+
         ]]></load>
         <unload><![CDATA[
             var aModuleId = 1 + _module_id;
@@ -62,7 +62,8 @@
             print("***** G91-R1B remove from multiplayer the value sim/G91/liveries/active/target_module_id: ",aModuleId);
         ]]></unload>
     </nasal>
-    
+
+<!--
 
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Cockpit.xml</path>
@@ -70,15 +71,15 @@
             <property>sim/aircraft-is-singleplayer</property>
         </condition>
     </model>
-<!--
+-->
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Canopy.xml</path>
     </model>
-
+<!--
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Wing/Wing.xml</path>
     </model>
-    
+
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Tail/Tail.xml</path>
     </model>
@@ -94,7 +95,7 @@
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Fuselage_B/Fuselage_B1.xml</path>
     </model>
-    
+
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Fuselage_B/Fuselage_B3.xml</path>
     </model>
@@ -119,7 +120,7 @@
     </model>
     -->
     <!-- Compositor lights test -->
-    
+
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Composer/external-taxing-light-dx.xml</path>
         <condition>
@@ -131,7 +132,7 @@
             </or>
         </condition>
     </model>
-    
+
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Composer/external-taxing-light-diffuse-dx.xml</path>
         <condition>
@@ -153,7 +154,7 @@
             </and>
         </condition>
     </model>
-    
+
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Composer/external-landig-light-sx.xml</path>
         <condition>
@@ -165,7 +166,7 @@
             </or>
         </condition>
     </model>
-    
+
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Composer/external-wheels-light.xml</path>
         <condition>
@@ -181,9 +182,9 @@
             </or>
         </condition>
     </model>
-    
+
     <!-- Canopy internal lights -->
-    
+
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Composer/canopy-ambient-gray-specular.xml</path>
         <condition>
@@ -201,6 +202,3 @@
     </model>
 
 </PropertyList>
-    
-
-

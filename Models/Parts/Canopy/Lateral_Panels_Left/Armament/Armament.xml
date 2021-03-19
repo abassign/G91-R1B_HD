@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+
+    <path>armament.ac</path>
+
+    <animation>
+        <type>noshadow</type>
+        <object-name>support (Meshed)</object-name>
+        <object-name>support A (Meshed)</object-name>
+        <object-name>screews (Meshed)</object-name>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>support (Meshed)</object-name>
+        <diffuse>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </diffuse>
+        <ambient>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </ambient>
+        <emission>
+            <red>0.14</red>
+            <green>0.0</green>
+            <blue>0.02</blue>
+            <factor-prop>sim/G91/re_emit/light_red_console</factor-prop>
+        </emission>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>screews (Meshed)</object-name>
+        <diffuse>
+            <red>0.35</red>
+            <green>0.35</green>
+            <blue>0.35</blue>
+        </diffuse>
+        <ambient>
+            <red>0.35</red>
+            <green>0.35</green>
+            <blue>0.35</blue>
+        </ambient>
+        <specular>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+        </specular>
+        <emission>
+            <red>0.1</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/light_red_console</factor-prop>
+        </emission>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>support A (Meshed)</object-name>
+        <diffuse>
+            <red>0.20</red>
+            <green>0.20</green>
+            <blue>0.20</blue>
+        </diffuse>
+        <ambient>
+            <red>1.0</red>
+            <green>0.9</green>
+            <blue>0.6</blue>
+        </ambient>
+        <emission>
+            <red>0.2</red>
+            <green>0.0</green>
+            <blue>0.02</blue>
+            <factor-prop>sim/G91/re_emit/light_red_console</factor-prop>
+        </emission>
+    </animation>
+
+    <model>
+        <path>sw_rokets.xml</path>
+        <offsets>
+            <x-m>0.139</x-m>
+            <y-m>-0.080</y-m>
+            <z-m>0.004</z-m>
+            <roll-deg>180.0</roll-deg>
+            <pitch-deg>90.0</pitch-deg>
+            <heading-deg>180.0</heading-deg>
+        </offsets>
+    </model>
+
+    <model>
+        <path>sw_bombs_all_single.xml</path>
+        <offsets>
+            <x-m>0.139</x-m>
+            <y-m>-0.162</y-m>
+            <z-m>0.005</z-m>
+            <roll-deg>180.0</roll-deg>
+            <pitch-deg>180.0</pitch-deg>
+            <heading-deg>0.0</heading-deg>
+        </offsets>
+    </model>
+
+    <model>
+        <path>sw_bombs_arm_safe.xml</path>
+        <offsets>
+            <x-m>0.139</x-m>
+            <y-m>-0.198</y-m>
+            <z-m>0.004</z-m>
+            <roll-deg>180.0</roll-deg>
+            <pitch-deg>90.0</pitch-deg>
+            <heading-deg>180.0</heading-deg>
+        </offsets>
+    </model>
+
+</PropertyList>

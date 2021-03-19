@@ -1,7 +1,7 @@
 <PropertyList>
-    
+
     <path>digit3.ac</path>
-    
+
     <!--
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
@@ -11,8 +11,8 @@
         <object-name>prism_3</object-name>
     </effect>
     -->
-    
-    <animation> 
+
+    <animation>
         <type>material</type>
         <object-name>box</object-name>
         <object-name>prism_1</object-name>
@@ -35,8 +35,8 @@
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
-    
-    <animation> 
+
+    <animation>
         <type>material</type>
         <object-name>digit_1B</object-name>
         <object-name>digit_2B</object-name>
@@ -63,8 +63,8 @@
             <factor>0.1</factor>
         </emission>
     </animation>
-    
-    <animation> 
+
+    <animation>
         <type>material</type>
         <object-name>digit_1A</object-name>
         <object-name>digit_2A</object-name>
@@ -83,10 +83,10 @@
             <red-prop>sim/G91/re_emit/gauge_red_emer_lamp_3200_console_red_50</red-prop>
             <green-prop>sim/G91/re_emit/gauge_red_emer_lamp_3200_console_green_50</green-prop>
             <blue-prop>sim/G91/re_emit/gauge_red_emer_lamp_3200_console_blue_50</blue-prop>
-            <factor>0.7</factor>
+            <factor>1.2</factor>
         </emission>
     </animation>
-    
+
     <animation>
         <type>rotate</type>
         <object-name>digit_1A</object-name>
@@ -105,7 +105,7 @@
             <z-m> -0.01963 </z-m>
         </center>
     </animation>
-    
+
     <animation>
         <type>rotate</type>
         <object-name>digit_2A</object-name>
@@ -143,5 +143,5 @@
             <z-m> -0.01963 </z-m>
         </center>
     </animation>
-    
-</PropertyList> 
+
+</PropertyList>
