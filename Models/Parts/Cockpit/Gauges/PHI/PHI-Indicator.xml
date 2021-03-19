@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 
 <PropertyList>
-    
+
     <path>PHI-Indicator.ac</path>
-    
+
     <effect>
         <inherits-from>Effects/model-transparent</inherits-from>
         <object-name>glass (Meshed)</object-name>
     </effect>
-    
+
      <animation>
         <type>noshadow</type>
         <object-name>cover (Meshed)</object-name>
@@ -42,8 +42,8 @@
         <object-name>arrow_4 (Meshed)</object-name>
         <object-name>frontal_labels (Meshed)</object-name>
     </animation>
-    
-    <animation> 
+
+    <animation>
         <type>material</type>
         <object-name>cover (Meshed)</object-name>
         <diffuse>
@@ -57,8 +57,8 @@
             <blue>0.6</blue>
         </ambient>
     </animation>
-    
-    <animation> 
+
+    <animation>
         <type>material</type>
         <object-name>back_support (Meshed)</object-name>
         <diffuse>
@@ -72,10 +72,10 @@
             <blue>0.0</blue>
         </ambient>
     </animation>
-    
-    
-    
-    <animation> 
+
+
+
+    <animation>
         <type>material</type>
         <object-name>screews_01 (Meshed)</object-name>
         <object-name>screews_02 (Meshed)</object-name>
@@ -99,8 +99,8 @@
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
-    
-    <animation> 
+
+    <animation>
         <type>material</type>
         <object-name>frontal (Meshed)</object-name>
         <object-name>back_frontal (Meshed)</object-name>
@@ -121,8 +121,8 @@
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
-    
-    <animation> 
+
+    <animation>
         <type>material</type>
         <object-name>knob_001 (Meshed)</object-name>
         <object-name>knob_002 (Meshed)</object-name>
@@ -146,8 +146,8 @@
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
-    
-    <animation> 
+
+    <animation>
         <type>material</type>
         <object-name>knob_001_A (Meshed)</object-name>
         <diffuse>
@@ -167,8 +167,8 @@
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
-    
-    <animation> 
+
+    <animation>
         <type>material</type>
         <object-name>glass (Meshed)</object-name>
         <transparency>
@@ -199,8 +199,8 @@
             <factor>0.10</factor>
         </emission>
     </animation>
-    
-    <animation> 
+
+    <animation>
         <type>material</type>
         <object-name>knob_001_color (Meshed)</object-name>
         <object-name>knob_002_color (Meshed)</object-name>
@@ -226,8 +226,8 @@
             <factor>0.08</factor>
         </emission>
     </animation>
-    
-    <animation> 
+
+    <animation>
         <type>material</type>
         <object-name>NWE_ref (Meshed)</object-name>
         <object-name>knob_var (Meshed)</object-name>
@@ -248,8 +248,8 @@
             <factor>0.08</factor>
         </emission>
     </animation>
-    
-    <animation> 
+
+    <animation>
         <type>material</type>
         <object-name>back_plate_B (Meshed)</object-name>
         <diffuse>
@@ -269,8 +269,8 @@
             <factor>0.1</factor>
         </emission>
     </animation>
-    
-    <animation> 
+
+    <animation>
         <type>material</type>
         <object-name>frontal_plate_A</object-name>
         <diffuse>
@@ -287,11 +287,11 @@
             <red-prop>sim/G91/re_emit/gauge_red_emer_lamp_3200_console_red_20</red-prop>
             <green-prop>sim/G91/re_emit/gauge_red_emer_lamp_3200_console_green_50</green-prop>
             <blue-prop>sim/G91/re_emit/gauge_red_emer_lamp_3200_console_blue_50</blue-prop>
-            <factor>1.1</factor>
+            <factor>2.0</factor>
         </emission>
     </animation>
-    
-    <animation> 
+
+    <animation>
         <type>material</type>
         <object-name>back_plate_A</object-name>
         <diffuse>
@@ -311,8 +311,8 @@
             <factor>0.7</factor>
         </emission>
     </animation>
-    
-    <animation> 
+
+    <animation>
         <type>material</type>
         <object-name>frontal_plate_B (Meshed)</object-name>
         <object-name>axis (Meshed)</object-name>
@@ -333,7 +333,7 @@
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
-    
+
     <animation>
         <type>material</type>
         <object-name>arrow_0</object-name>
@@ -351,10 +351,10 @@
             <red-prop>sim/G91/re_emit/gauge_red_emer_lamp_3200_console_red_50</red-prop>
             <green-prop>sim/G91/re_emit/gauge_red_emer_lamp_3200_console_green_50</green-prop>
             <blue-prop>sim/G91/re_emit/gauge_red_emer_lamp_3200_console_blue_50</blue-prop>
-            <factor>0.6</factor>
+            <factor>1.0</factor>
         </emission>
     </animation>
-    
+
     <animation>
         <type>material</type>
         <object-name>arrow_1 (Meshed)</object-name>
@@ -372,10 +372,10 @@
             <red-prop>sim/G91/re_emit/gauge_red_emer_lamp_3200_console_red_50</red-prop>
             <green-prop>sim/G91/re_emit/gauge_red_emer_lamp_3200_console_green_50</green-prop>
             <blue-prop>sim/G91/re_emit/gauge_red_emer_lamp_3200_console_blue_50</blue-prop>
-            <factor>0.5</factor>
+            <factor>0.8</factor>
         </emission>
     </animation>
-    
+
     <animation>
         <type>material</type>
         <object-name>airplane_support (Meshed)</object-name>
@@ -398,7 +398,7 @@
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
-    
+
     <animation>
         <type>material</type>
         <object-name>arrow_3 (Meshed)</object-name>
@@ -420,7 +420,7 @@
             <factor>0.6</factor>
         </emission>
     </animation>
-    
+
     <animation>
         <type>rotate</type>
         <object-name>frontal_plate_A</object-name>
@@ -431,7 +431,7 @@
             <z> 0 </z>
         </axis>
     </animation>
-    
+
     <model>
         <path>digit3_Indicator.xml</path>
         <offsets>
@@ -441,9 +441,9 @@
             <pitch-deg>0</pitch-deg>
         </offsets>
     </model>
-    
+
     <!-- VAR -->
-    
+
     <animation>
         <type>knob</type>
         <object-name>knob_002 (Meshed)</object-name>
@@ -458,7 +458,7 @@
             </binding>
         </action>
     </animation>
-    
+
     <animation>
         <type>rotate</type>
         <object-name>knob_002 (Meshed)</object-name>
@@ -476,7 +476,7 @@
             <z>0</z>
         </axis>
     </animation>
-    
+
     <animation>
         <type>rotate</type>
         <object-name>knob_var (Meshed)</object-name>
@@ -493,9 +493,9 @@
             <z>0</z>
         </axis>
     </animation>
-    
+
     <!-- DIST -->
-    
+
     <animation>
         <type>knob</type>
         <object-name>knob_004 (Meshed)</object-name>
@@ -510,7 +510,7 @@
             </binding>
         </action>
     </animation>
-    
+
     <animation>
         <type>rotate</type>
         <object-name>knob_004 (Meshed)</object-name>
@@ -528,9 +528,9 @@
             <z>0</z>
         </axis>
     </animation>
-    
+
     <!-- BRG -->
-    
+
     <animation>
         <type>knob</type>
         <object-name>knob_003 (Meshed)</object-name>
@@ -545,7 +545,7 @@
             </binding>
         </action>
     </animation>
-    
+
     <animation>
         <type>rotate</type>
         <object-name>knob_003 (Meshed)</object-name>
@@ -563,7 +563,7 @@
             <z>0</z>
         </axis>
     </animation>
-    
+
     <animation>
         <type>rotate</type>
         <object-name>arrow_2 (Meshed)</object-name>
@@ -576,7 +576,7 @@
             <z>0</z>
         </axis>
     </animation>
-    
+
     <animation>
         <type>rotate</type>
         <object-name>arrow_1 (Meshed)</object-name>
@@ -587,9 +587,9 @@
             <z>0</z>
         </axis>
     </animation>
-    
+
     <!-- Gyromagnetic nord indicator -->
-    
+
     <animation>
         <type>rotate</type>
         <object-name>arrow_0</object-name>
@@ -600,9 +600,9 @@
             <z>0</z>
         </axis>
     </animation>
-    
+
     <!-- SWITCH -->
-    
+
     <animation>
         <type>knob</type>
         <object-name>knob_001 (Meshed)</object-name>
@@ -618,12 +618,12 @@
                 <property>/fdm/jsbsim/systems/gauges/PHI/indicator/switch-turn</property>
                 <factor>0.25</factor>
                 <min>0</min>
-                <max>2</max>  
+                <max>2</max>
                 <wrap>false</wrap>
             </binding>
         </action>
     </animation>
-    
+
     <animation>
         <type>rotate</type>
         <object-name>knob_001 (Meshed)</object-name>
@@ -644,7 +644,7 @@
             <z>0</z>
         </axis>
     </animation>
-    
+
     <animation>
         <type>translate</type>
         <object-name>knob_001 (Meshed)</object-name>
@@ -659,6 +659,6 @@
             <z>0</z>
         </axis>
     </animation>
-    
-    
+
+
 </PropertyList>

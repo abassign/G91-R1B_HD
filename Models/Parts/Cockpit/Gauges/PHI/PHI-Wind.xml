@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 
 <PropertyList>
-    
+
     <path>PHI-Wind 02.ac</path>
-    
+
     <animation>
         <type>noshadow</type>
         <object-name>lamp_glass (Meshed)</object-name>
@@ -28,7 +28,7 @@
         -->
     </animation>
 
-    <animation> 
+    <animation>
         <type>material</type>
         <object-name>cover (Meshed)</object-name>
         <diffuse>
@@ -42,8 +42,8 @@
             <blue>0.6</blue>
         </ambient>
     </animation>
-    
-    <animation> 
+
+    <animation>
         <type>material</type>
         <object-name>frontal_plateB_back (Meshed)</object-name>
         <diffuse>
@@ -63,8 +63,8 @@
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
-    
-    <animation> 
+
+    <animation>
         <type>material</type>
         <object-name>screews_01 (Meshed)</object-name>
         <object-name>screews_02 (Meshed)</object-name>
@@ -86,8 +86,8 @@
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
-    
-    <animation> 
+
+    <animation>
         <type>material</type>
         <object-name>frontal (Meshed)</object-name>
         <diffuse>
@@ -107,8 +107,8 @@
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
-    
-    <animation> 
+
+    <animation>
         <type>material</type>
         <object-name>Curve</object-name>
         <diffuse>
@@ -125,10 +125,10 @@
             <red-prop>sim/G91/re_emit/gauge_red_emer_lamp_3200_console_red_50</red-prop>
             <green-prop>sim/G91/re_emit/gauge_red_emer_lamp_3200_console_green_50</green-prop>
             <blue-prop>sim/G91/re_emit/gauge_red_emer_lamp_3200_console_blue_50</blue-prop>
-            <factor>1.1</factor>
+            <factor>1.5</factor>
         </emission>
     </animation>
-    
+
     <animation>
         <type>material</type>
         <object-name>frontal_plate_B (Meshed)</object-name>
@@ -151,8 +151,8 @@
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
-    
-    <animation> 
+
+    <animation>
         <type>material</type>
         <object-name>knob_001 (Meshed)</object-name>
         <object-name>knob_002 (Meshed)</object-name>
@@ -174,8 +174,8 @@
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
-    
-    <animation> 
+
+    <animation>
         <type>material</type>
         <object-name>Curve.001</object-name>
         <object-name>Curve.002</object-name>
@@ -196,8 +196,8 @@
             <factor>0.08</factor>
         </emission>
     </animation>
-    
-    <animation> 
+
+    <animation>
         <type>material</type>
         <object-name>arrow (Meshed)</object-name>
         <diffuse>
@@ -214,11 +214,11 @@
             <red-prop>sim/G91/re_emit/gauge_red_emer_lamp_3200_console_red_50</red-prop>
             <green-prop>sim/G91/re_emit/gauge_red_emer_lamp_3200_console_green_50</green-prop>
             <blue-prop>sim/G91/re_emit/gauge_red_emer_lamp_3200_console_blue_50</blue-prop>
-            <factor>0.8</factor>
+            <factor>1.2</factor>
         </emission>
     </animation>
-    
-    <animation> 
+
+    <animation>
         <type>material</type>
         <object-name>arrow_mirror (Meshed)</object-name>
         <diffuse>
@@ -243,8 +243,8 @@
             <blue>0.9</blue>
         </specular>
     </animation>
-    
-    <animation> 
+
+    <animation>
         <type>material</type>
         <object-name>lamp_glass (Meshed)</object-name>
         <transparency>
@@ -274,7 +274,7 @@
         </emission>
     </animation>
 
-    <animation> 
+    <animation>
         <type>material</type>
         <object-name>lamp_mirror (Meshed)</object-name>
         <diffuse>
@@ -300,7 +300,7 @@
         </emission>
     </animation>
 
-    <animation> 
+    <animation>
         <type>material</type>
         <object-name>lamp_light (Meshed)</object-name>
         <transparency>
@@ -323,7 +323,7 @@
             <factor-prop>/fdm/jsbsim/systems/gauges/PHI/wind/advise-light-on</factor-prop>
         </emission>
     </animation>
-    
+
     <model>
         <condition>
             <greater-than-equals>
@@ -350,7 +350,7 @@
             <z-m> 0.0 </z-m>
         </offsets>
     </model>
-    
+
     <model>
         <path>digit3_Wind.xml</path>
         <offsets>
@@ -360,7 +360,7 @@
             <pitch-deg>0</pitch-deg>
         </offsets>
     </model>
-    
+
     <!-- Animations -->
 
     <animation>
@@ -377,7 +377,7 @@
             </binding>
         </action>
     </animation>
-    
+
     <animation>
         <type>rotate</type>
         <object-name>knob_002 (Meshed)</object-name>
@@ -395,7 +395,7 @@
             <z>0</z>
         </axis>
     </animation>
-    
+
     <animation>
         <type>translate</type>
         <object-name>knob_002 (Meshed)</object-name>
@@ -409,7 +409,7 @@
             <z>0</z>
         </axis>
     </animation>
-    
+
     <animation>
         <type>rotate</type>
         <object-name>arrow (Meshed)</object-name>
@@ -427,7 +427,7 @@
             <z>0</z>
         </axis>
     </animation>
-    
+
     <animation>
         <type>knob</type>
         <object-name>knob_001 (Meshed)</object-name>
@@ -442,7 +442,7 @@
             </binding>
         </action>
     </animation>
-    
+
     <animation>
         <type>rotate</type>
         <object-name>knob_001 (Meshed)</object-name>
@@ -460,7 +460,7 @@
             <z>0</z>
         </axis>
     </animation>
-    
+
     <animation>
         <type>translate</type>
         <object-name>knob_001 (Meshed)</object-name>

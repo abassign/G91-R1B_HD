@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 
 <PropertyList>
-    
+
     <path>canopy.ac</path>
-    
+
     <offsets>
         <x-m>0.0</x-m>
         <y-m>0.0</y-m>
         <z-m>0.78</z-m>
         <pitch-deg>0.0</pitch-deg>
     </offsets>
-    
+
     <animation>
         <type>noshadow</type>
         <object-name>anticollision cave (Meshed)</object-name>
@@ -35,7 +35,7 @@
         <object-name>F_dadi canopy_ant</object-name>
         <object-name>F_Segg_support.</object-name>
     </animation>
-    
+
     <!-- Chrome Effects on materials -->
 
     <effect>
@@ -45,9 +45,9 @@
         <object-name>A__G91_fuselage_int.weapon.door.004</object-name>
         <object-name>A__G91_fuselage_canopy.004</object-name>
     </effect>
-    
-    
-    <animation> 
+
+
+    <animation>
         <type>material</type>
         <object-name>anticollision mirror (Meshed)</object-name>
         <diffuse>
@@ -68,7 +68,7 @@
         </emission>
     </animation>
 
-    <animation> 
+    <animation>
         <type>material</type>
         <object-name>anticollision glass (Meshed)</object-name>
         <transparency>
@@ -86,16 +86,16 @@
             <green>0.8</green>
             <blue>0.8</blue>
         </ambient>
-        <emission>	
-            <red>0.5</red>	
-            <green>0.5</green>	
+        <emission>
+            <red>0.5</red>
+            <green>0.5</green>
             <blue>0.5</blue>
             <factor-prop>fdm/jsbsim/systems/lightning/ambient-light-anticollision-intensity</factor-prop>
         </emission>
     </animation>
 
-    <animation> 
-        <type>material</type> 
+    <animation>
+        <type>material</type>
         <object-name>anticollision lamp (Meshed)</object-name>
         <transparency>
             <alpha-prop>fdm/jsbsim/systems/lightning/ambient-light-anticollision-glass-lamp</alpha-prop>
@@ -112,16 +112,16 @@
             <green>0.3</green>
             <blue>0.3</blue>
         </ambient>
-        <emission>	
-            <red>1.2</red>	
-            <green>1.2</green>	
+        <emission>
+            <red>1.2</red>
+            <green>1.2</green>
             <blue>1.2</blue>
             <factor-prop>fdm/jsbsim/systems/lightning/ambient-light-anticollision-intensity</factor-prop>
         </emission>
     </animation>
 
-    <animation> 
-        <type>material</type> 
+    <animation>
+        <type>material</type>
         <object-name>anticollision cave (Meshed)</object-name>
         <diffuse>
             <red>1.0</red>
@@ -133,15 +133,15 @@
             <green>0.5</green>
             <blue>0.5</blue>
         </ambient>
-        <emission>	
-            <red>0.7</red>	
-            <green>0.7</green>	
+        <emission>
+            <red>0.7</red>
+            <green>0.7</green>
             <blue>0.7</blue>
             <factor-prop>fdm/jsbsim/systems/lightning/ambient-light-anticollision-intensity</factor-prop>
         </emission>
     </animation>
-    
-    <animation> 
+
+    <animation>
         <type>material</type>
         <object-name>anticollision screws (Meshed)</object-name>
         <diffuse>
@@ -154,14 +154,14 @@
             <green>0.5</green>
             <blue>0.5</blue>
         </ambient>
-        <emission>	
-            <red>0.3</red>	
-            <green>0.3</green>	
+        <emission>
+            <red>0.3</red>
+            <green>0.3</green>
             <blue>0.3</blue>
             <factor-prop>fdm/jsbsim/systems/lightning/ambient-light-anticollision-intensity</factor-prop>
         </emission>
     </animation>
-    
+
     <model>
         <name>anticollision glass (Meshed)</name>
         <path>Effects/lights/anticollision-00.xml</path>
@@ -174,7 +174,7 @@
         </offsets>
     </model>
 
-    <animation> 
+    <animation>
         <type>material</type>
         <object-name>F_canopY_ant</object-name>
         <object-name>A__G91_fuselage_canopy</object-name>
@@ -193,29 +193,29 @@
             <factor-prop>sim/G91/liveries/active/specular</factor-prop>
         </specular>
     </animation>
-    
+
     <effect>
         <inherits-from>Effects/model-transparent</inherits-from>
         <object-name>F_canopy_ant_blind</object-name>
         <object-name>F_canopY_ant.001</object-name>
         <object-name>swich_light_gun.001</object-name>
     </effect>
-    
+
     <effect>
         <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_silver_D5_0</inherits-from>
         <object-name>F_canopy_ant_blind</object-name>
         <object-name>F_canopY_ant.001</object-name>
     </effect>
-    
+
     <animation>
         <type>noshadow</type>
         <object-name>F_canopy_ant_blind</object-name>
         <object-name>F_canopY_ant.001</object-name>
         <object-name>swich_light_gun.001</object-name>
     </animation>
-    
-    <animation> 
-        <type>material</type> 
+
+    <animation>
+        <type>material</type>
         <object-name>F_canopy_ant_blind</object-name>
         <transparency>
             <alpha>0.3</alpha>
@@ -231,8 +231,8 @@
             <blue>0.8</blue>
         </ambient>
     </animation>
-    
-    <animation> 
+
+    <animation>
         <type>material</type>
         <object-name>F_canopY_ant.001</object-name>
         <transparency>
@@ -249,8 +249,8 @@
             <blue>0.9</blue>
         </ambient>
     </animation>
-    
-    <animation> 
+
+    <animation>
         <type>material</type>
         <object-name>F_test abitacolo1</object-name>
         <object-name>F_canopy_ant_blind</object-name>
@@ -266,8 +266,8 @@
             <blue>0.8</blue>
         </ambient>
     </animation>
-    
-    <animation> 
+
+    <animation>
         <type>material</type>
         <object-name>F_Segg_support.</object-name>
         <diffuse>
@@ -282,7 +282,7 @@
         </ambient>
     </animation>
 
-    <animation> 
+    <animation>
         <type>material</type>
         <object-name>F_canopY_ant.003</object-name>
         <object-name>F_canopY_guarnz.ant.002</object-name>
@@ -297,9 +297,9 @@
             <blue>0.5</blue>
         </ambient>
     </animation>
-    
+
     <!-- Internal cover front area -->
-    <animation> 
+    <animation>
         <type>material</type>
         <object-name>F_panel_structure02</object-name>
         <object-name>F_structure_panel_cockpit.000</object-name>
@@ -325,8 +325,8 @@
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
-    
-    <animation> 
+
+    <animation>
         <type>material</type>
         <object-name>F_canopY_ant.004</object-name>
         <diffuse>
@@ -346,8 +346,8 @@
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
-    
-    <animation> 
+
+    <animation>
         <type>material</type>
         <object-name>A_curva</object-name>
         <diffuse>
@@ -367,8 +367,8 @@
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
-    
-    <animation> 
+
+    <animation>
         <type>material</type>
         <object-name>F_dadi canopy_ant.001</object-name>
         <object-name>F_dadi canopy_ant.002</object-name>
@@ -394,8 +394,8 @@
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
-    
-    <animation> 
+
+    <animation>
         <type>material</type>
         <object-name>F_livetto.026</object-name>
         <diffuse>
@@ -420,8 +420,8 @@
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
-    
-    <animation> 
+
+    <animation>
         <type>material</type>
         <object-name>Plane.001</object-name>
         <object-name>F_air_tube01.003</object-name>
@@ -444,8 +444,8 @@
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
-        
-    <animation> 
+
+    <animation>
         <type>material</type>
         <object-name>F_air_tube01</object-name>
         <object-name>Circle</object-name>
@@ -467,7 +467,7 @@
         </emission>
     </animation>
 
-    <animation> 
+    <animation>
         <type>material</type>
         <object-name>F_air_tube01.001</object-name>
         <object-name>F_air_tube01.002</object-name>
@@ -488,8 +488,8 @@
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
-    
-    <animation> 
+
+    <animation>
         <type>material</type>
         <object-name>F_defrosters.005</object-name>
         <object-name>A__G91_fuselage_int.weapon.door.005</object-name>
@@ -510,8 +510,8 @@
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
-    
-    <animation> 
+
+    <animation>
         <type>material</type>
         <object-name>F_canopY_ant.006</object-name>
         <object-name>Tunnel_cable</object-name>
@@ -532,8 +532,8 @@
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
-    
-    <animation> 
+
+    <animation>
         <type>material</type>
         <object-name>Handle_up</object-name>
         <object-name>seztion_cable_compass</object-name>
@@ -554,8 +554,8 @@
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
-    
-    <animation> 
+
+    <animation>
         <type>material</type>
         <object-name>swich_light_gun.001</object-name>
         <diffuse>
@@ -575,8 +575,8 @@
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
-    
-    <animation> 
+
+    <animation>
         <type>material</type>
         <object-name>F_Cover_panel_cockpit</object-name>
         <diffuse>
@@ -596,8 +596,8 @@
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
-    
-    <animation> 
+
+    <animation>
         <type>material</type>
         <object-name>fuselage_int.weapon.door.002</object-name>
         <diffuse>
@@ -617,8 +617,8 @@
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
-    
-    <animation> 
+
+    <animation>
         <type>material</type>
         <object-name>F_box_canopy_open01</object-name>
         <diffuse>
@@ -638,8 +638,8 @@
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
-    
-    <animation> 
+
+    <animation>
         <type>material</type>
         <object-name>F_box_canopy_open02</object-name>
         <diffuse>
@@ -659,8 +659,8 @@
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
-    
-    <animation> 
+
+    <animation>
         <type>material</type>
         <object-name>A__G91_fuselage_int.weapon.door.006</object-name>
         <diffuse>
@@ -680,8 +680,8 @@
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
-    
-    <animation> 
+
+    <animation>
         <type>material</type>
         <object-name>F_canopY_ant.002</object-name>
         <diffuse>
@@ -701,8 +701,8 @@
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
-    
-    <animation> 
+
+    <animation>
         <type>material</type>
         <object-name>F_canopY_ant.007</object-name>
         <diffuse>
@@ -722,8 +722,8 @@
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
-    
-    <animation> 
+
+    <animation>
         <type>material</type>
         <object-name>F_dadi</object-name>
         <object-name>F_dadi.001</object-name>
@@ -748,10 +748,10 @@
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
-        
+
     <!-- Bath area -->
-    
-    <animation> 
+
+    <animation>
         <type>material</type>
         <object-name>Plane.014</object-name>
         <texture>Pictures/G91-Al-Light.png</texture>
@@ -761,7 +761,7 @@
             <blue>0.9</blue>
         </ambient>
     </animation>
-    
+
     <!-- Animations -->
 
     <animation>
@@ -777,9 +777,9 @@
             </binding>
         </action>
     </animation>
-    
+
     <!-- Gauges -->
-    
+
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Gauges/SFOM_83A/SFOM_83A.xml</path>
         <offsets>
@@ -794,7 +794,7 @@
             </equals>
         </condition>
     </model>
-    
+
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Components/Gun_Sight_Light/Gun_Sight_Light.xml</path>
         <offsets>
@@ -808,7 +808,7 @@
         </condition>
         -->
     </model>
-    
+
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Gauges/Compass_Kollsman_1979U4/Compass_Kollsman_1979U4.xml</path>
         <offsets>
@@ -817,27 +817,27 @@
             <z-m>0.4492</z-m>
         </offsets>
     </model>
-    
+
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Components/Handle_pull/Handle_pull.xml</path>
     </model>
-    
+
     <model>
         <path>Canopy_Glass.xml</path>
     </model>
-    
+
     <!-- Bath -->
-        
+
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/bath.xml</path>
     </model>
-    
+
     <!-- MK6 -->
-    
+
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/MK6/MK6.xml</path>
     </model>
-    
+
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Pilot/pilot.xml</path>
         <condition>
@@ -847,19 +847,19 @@
             </equals>
         </condition>
     </model>
-    
+
     <!-- Film Counter Box -->
-    
+
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Components/Film_Counter_Box/Film_Counter_Box.xml</path>
     </model>
-    
+
     <!-- Jato System -->
 
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Components/JATO_System/JATO_System.xml</path>
     </model>
-    
+
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Components/JATO_System/JATO_Ready_Switch.xml</path>
         <offsets>
@@ -877,7 +877,7 @@
     </model>
 
     <!-- Canopy lever -->
-    
+
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Components/Canopy_lever/Canopy_lever.xml</path>
         <offsets>
@@ -894,18 +894,19 @@
         </condition>
         -->
     </model>
-    
+
     <!-- Panels -->
-    
+
     <model>
+
         <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Lateral_Panels_Left/Lateral_Panels_Left.xml</path>
         <offsets>
-            <x-m>-3.0</x-m>
-            <y-m>-0.225</y-m>
-            <z-m>-0.205</z-m>
-            <roll-deg>-30.5</roll-deg>
-            <pitch-deg>9.60</pitch-deg>
-            <heading-deg>6</heading-deg>
+            <x-m>-3.00</x-m>
+            <y-m>-0.48</y-m>
+            <z-m>-0.215</z-m>
+            <roll-deg>0.0</roll-deg>
+            <pitch-deg>5.5</pitch-deg>
+            <heading-deg>0.0</heading-deg>
         </offsets>
         <!--
         <condition>
@@ -913,7 +914,7 @@
         </condition>
         -->
     </model>
-    
+
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Lateral_Panels_Right/Lateral_Panels_Right.xml</path>
         <offsets>
@@ -930,9 +931,9 @@
         </condition>
         -->
     </model>
-    
+
     <!-- Cloche -->
-    
+
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Components/Cloche/cloche.xml</path>
         <offsets>
@@ -950,11 +951,11 @@
             </equals>
         </condition>
     </model>
-    
+
     <!-- Compositor lights -->
-    
+
     <!-- Emergency lights -->
-    
+
     <light>
         <name>canopy-emergency-sx-00</name>
         <type>spot</type>
@@ -998,7 +999,7 @@
             <property>fdm/jsbsim/systems/lightning/light-red-emer-instrument</property>
         </dim-factor>
     </light>
-    
+
     <light>
         <name>canopy-emergency-sx-00</name>
         <type>spot</type>
@@ -1042,7 +1043,7 @@
             <property>fdm/jsbsim/systems/lightning/light-red-emer-instrument</property>
         </dim-factor>
     </light>
-    
+
     <light>
         <name>canopy-ambient-emer-red</name>
         <type>point</type>
@@ -1086,7 +1087,7 @@
             <property>fdm/jsbsim/systems/lightning/light-red-emer-instrument</property>
         </dim-factor>
     </light>
-    
+
     <animation>
         <type>select</type>
         <object-name>canopy-emergency-sx-00</object-name>
@@ -1099,9 +1100,9 @@
             </greater-than>
         </condition>
     </animation>
-    
+
     <!-- Consolle lights -->
-    
+
     <light>
         <name>canopy-Consolle-red-dx-01</name>
         <type>spot</type>
@@ -1145,7 +1146,7 @@
             <property>fdm/jsbsim/systems/lightning/light-red-console</property>
         </dim-factor>
     </light>
-    
+
     <light>
         <name>canopy-Consolle-red-dx-02</name>
         <type>spot</type>
@@ -1189,7 +1190,7 @@
             <property>fdm/jsbsim/systems/lightning/light-red-console</property>
         </dim-factor>
     </light>
-    
+
     <light>
         <name>canopy-Consolle-red-dx-03</name>
         <type>spot</type>
@@ -1233,7 +1234,7 @@
             <property>fdm/jsbsim/systems/lightning/light-red-console</property>
         </dim-factor>
     </light>
-    
+
     <light>
         <name>canopy-Consolle-red-sx-01</name>
         <type>spot</type>
@@ -1277,7 +1278,7 @@
             <property>fdm/jsbsim/systems/lightning/light-red-console</property>
         </dim-factor>
     </light>
-    
+
     <light>
         <name>canopy-Consolle-red-sx-02</name>
         <type>spot</type>
@@ -1288,7 +1289,7 @@
         </position>
         <direction>
             <pitch-deg>0.0</pitch-deg>
-            <roll-deg>-10.0</roll-deg>
+            <roll-deg>-20.0</roll-deg>
             <heading-deg>0.0</heading-deg>
         </direction>
         <ambient>
@@ -1311,17 +1312,17 @@
         </specular>
         <attenuation>
             <c>1.0</c>
-            <l>0.5</l>
-            <q>5.0</q>
+            <l>0.3</l>
+            <q>3.0</q>
         </attenuation>
-        <spot-exponent>20</spot-exponent>
-        <spot-cutoff>30</spot-cutoff>
-        <range-m>0.45</range-m>
+        <spot-exponent>10</spot-exponent>
+        <spot-cutoff>40</spot-cutoff>
+        <range-m>0.55</range-m>
         <dim-factor>
             <property>fdm/jsbsim/systems/lightning/light-red-console</property>
         </dim-factor>
     </light>
-    
+
     <light>
         <name>canopy-Consolle-red-sx-03</name>
         <type>spot</type>
@@ -1331,8 +1332,8 @@
             <z-m>0.15</z-m>
         </position>
         <direction>
-            <pitch-deg>-10.0</pitch-deg>
-            <roll-deg>-10.0</roll-deg>
+            <pitch-deg>-40.0</pitch-deg>
+            <roll-deg>-20.0</roll-deg>
             <heading-deg>0.0</heading-deg>
         </direction>
         <ambient>
@@ -1355,17 +1356,17 @@
         </specular>
         <attenuation>
             <c>1.0</c>
-            <l>0.5</l>
-            <q>5.0</q>
+            <l>0.3</l>
+            <q>2.0</q>
         </attenuation>
-        <spot-exponent>20</spot-exponent>
-        <spot-cutoff>30</spot-cutoff>
-        <range-m>0.45</range-m>
+        <spot-exponent>10</spot-exponent>
+        <spot-cutoff>40</spot-cutoff>
+        <range-m>0.65</range-m>
         <dim-factor>
             <property>fdm/jsbsim/systems/lightning/light-red-console</property>
         </dim-factor>
     </light>
-    
+
     <light>
         <name>canopy-ambient-red</name>
         <type>point</type>
@@ -1409,7 +1410,7 @@
             <property>fdm/jsbsim/systems/lightning/light-red-console</property>
         </dim-factor>
     </light>
-    
+
     <animation>
         <type>select</type>
         <object-name>canopy-Consolle-red-sx-01</object-name>
@@ -1426,9 +1427,9 @@
             </greater-than>
         </condition>
     </animation>
-    
-    <!-- Compositor anticollision light -->  
-    
+
+    <!-- Compositor anticollision light -->
+
     <light>
         <name>anticollision-top-spot</name>
         <type>spot</type>
@@ -1472,7 +1473,7 @@
             <property>fdm/jsbsim/systems/lightning/ambient-light-anticollision-intensity</property>
         </dim-factor>
     </light>
-    
+
     <animation>
         <type>select</type>
         <object-name>anticollision-top-spot</object-name>
@@ -1484,9 +1485,9 @@
             </greater-than>
         </condition>
     </animation>
-    
+
     <!-- Ambient day gray light correction -->
-    
+
     <light>
         <name>canopy-ambient-gray</name>
         <type>point</type>
@@ -1535,7 +1536,7 @@
             </expression>
         </dim-factor>
     </light>
-    
+
     <animation>
         <type>select</type>
         <object-name>canopy-ambient-gray</object-name>
@@ -1557,5 +1558,5 @@
             </and>
         </condition>
     </animation>
-    
+
 </PropertyList>

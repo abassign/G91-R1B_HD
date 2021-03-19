@@ -64,11 +64,11 @@ var ils_bearing_max = 10;
 
 
 var quickSortValueId = func(list, beg, end) {
-    
-    var piv = nil; 
+
+    var piv = nil;
     var tmp = nil;
     var l = 0; var r = 0; var p = 0;
-    
+
     while (beg < end) {
         l = beg;
         p = math.round(0.5 + (beg + end) / 2);
@@ -120,7 +120,7 @@ var norm_type_VOR_NDB = func(type) {
 
 var RadioDataClass = {
     class_name: "RadioDataClass",
-    
+
     new: func() {
         var obj = {
             id: nil,
@@ -149,7 +149,7 @@ var RadioDataClass = {
         me.select_delay = 0;
         return {parents: [RadioDataClass]};
     },
-    
+
     init: func(nav, airplane) {
         me.id = nav.id;
         me.name = nav.name;
@@ -160,7 +160,7 @@ var RadioDataClass = {
         me.frequency = nav.frequency / 100;
         me.radial = nil;
     },
-    
+
     init_tacan: func(airplane) {
         me.id = getprop("/instrumentation/tacan/ident") ~ ":T";
         me.name = getprop("/instrumentation/tacan/name");
@@ -174,22 +174,22 @@ var RadioDataClass = {
         me.frequency = getprop("/instrumentation/tacan/frequencies/selected-mhz");
         me.radial = nil;
     },
-    
+
     distance_nm: func(airplane) {
         return airplane.distance_to(me.pos_nav) * 0.000539957;
     },
-    
+
     bearing: func(airplane) {
         return airplane.course_to(me.pos_nav);
     },
-    
+
     set_select: func(select, select_delay = 0) {
         me.select = select;
         me.active = 0;
         me.select_delay = select_delay;
         me.renew_delay = select_delay;
     },
-    
+
     renew_delay_clock: func(renew_delay = 0) {
         if (renew_delay > 0) {
             me.select_delay = renew_delay;
@@ -208,7 +208,7 @@ var RadioDataClass = {
             };
         };
     },
-    
+
     washout_filter: func(input, c1, delta_time) {
         var output = 0.0;
         var denom = 2.0 + delta_time * c1;
@@ -219,16 +219,16 @@ var RadioDataClass = {
         value_previusOutput = output;
         return output;
     },
-    
+
     set_value: func(input, delta_time) {
         me.value = me.washout_filter(input,0.02,delta_time);
     },
-    
+
     is_type: func(aType) {
         if (aType == nil or me.type == nil) return 0;
         return norm_type(me.type) == norm_type(aType);
     },
-    
+
     in_range: func() {
         if (me.active > 0) {
             var in_range = 0;
@@ -245,19 +245,19 @@ var RadioDataClass = {
             return 1;
         };
     },
-    
+
     set_type: func(type, airplane) {
         me.type = norm_type(type);
         if (testing_log_active >= 2) {
             print ("pilot_radio_assistant.nas RadioDataClass.set_type: ",me.to_string_format(airplane));
         };
     },
-    
+
     difference_deg: func(heading_true_deg, airplane) {
         var difference_deg = math.abs(geo.normdeg180(heading_true_deg - me.bearing(airplane)));
         return difference_deg;
     },
-    
+
     sintonize: func(radial, airplane) {
         if (me.type != nil) {
             if (me.type == "NDB") {
@@ -280,25 +280,25 @@ var RadioDataClass = {
             };
         };
     },
-    
+
     description: func(airplane) {
         var heading_true_deg = getprop("fdm/jsbsim/systems/autopilot/heading-true-deg");
         var str = me.name ~ sprintf(" | Dist: %.0f",me.distance_nm(airplane)) ~ sprintf(" | Bearing: %.0f",me.bearing(airplane)) ~ sprintf(" ( %.1f )",me.difference_deg(heading_true_deg,airplane)) ~ " | Range: " ~ me.range_nm ~ sprintf(" | Freq: %.3f",me.frequency);
         return str;
     },
-    
+
     to_string_format: func(airplane) {
         var heading_true_deg = getprop("fdm/jsbsim/systems/autopilot/heading-true-deg");
         var str = me.name ~ " | ID: " ~ me.id ~ sprintf(" | Dist: %.0f",me.distance_nm(airplane)) ~ sprintf(" | Bearing: %.1f",me.bearing(airplane)) ~ sprintf(" ( %.1f )",me.difference_deg(heading_true_deg,airplane)) ~ " | Type: " ~ me.type ~ " | Range: " ~ me.range_nm ~ sprintf(" | Freq: %.3f",me.frequency) ~ sprintf(" | Value: %.3f",me.value);
         return str;
     },
-    
+
 };
 
 
 var RadiosDataClass = {
     class_name: "RadiosDataClass",
-    
+
     new: func() {
         var obj = {
             radios_set: nil,
@@ -345,7 +345,7 @@ var RadiosDataClass = {
         me.route_manager_versus_eta_adv = nil;
         return {parents: [RadiosDataClass]};
     },
-    
+
     checkNavVsRange: func(airplane, distance_max, tollerance, bearing_max, delta_time) {
         #// This check can be onerous and therefore is done "forward", that is when the flight path exceeds a certain tolerance
         #// for example 0.1 with respect to the maximum predetermined distance.
@@ -389,7 +389,7 @@ var RadiosDataClass = {
         };
         activate_new_scan = 0;
     },
-    
+
     search_radios: func(airplane, distance_max, bearing_max, delta_time, distance_tollerance = 0.1) {
         var heading_true_deg = getprop("fdm/jsbsim/systems/autopilot/heading-true-deg");
         me.bearing_max = bearing_max / 2.0;
@@ -443,7 +443,7 @@ var RadiosDataClass = {
                         me.radios_set[id] = RadioDataClass.new();
                         me.radios_set[id].init(nav, airplane);
                     };
-                    if ((configuration_gauges_nav_active == 1 and me.radios_set[id].type != "TAC") 
+                    if ((configuration_gauges_nav_active == 1 and me.radios_set[id].type != "TAC")
                         or (configuration_gauges_tacan_active == 1 and (me.radios_set[id].type != "VOR" and me.radios_set[id].type != "LOC" and me.radios_set[id].type != "ILS"))
                         or (configuration_gauges_nav_active == 0 and configuration_gauges_tacan_active == 0 and me.radios_set[id].type == "NDB")) {
                         if (me.radios_set[id].distance_nm(airplane) <= me.radios_set[id].range_nm) {
@@ -486,7 +486,7 @@ var RadiosDataClass = {
             };
         };
     },
-    
+
     search_id: func(search_id, type = nil) {
         for (var i = 0; i < me.num_radios; i += 1) {
             #// Normalize search id values
@@ -514,7 +514,7 @@ var RadiosDataClass = {
         };
         return nil;
     },
-    
+
     match_type: func(type) {
         for (var i = (me.num_radios - 1); i >= 0; i -= 1) {
             var radio = me.radios_set[me.valueSort[i][1]];
@@ -524,7 +524,7 @@ var RadiosDataClass = {
         };
         return nil;
     },
-    
+
     match_id_route: func(type, startPosition) {
         type = norm_type(type);
         var total = 0;
@@ -540,7 +540,7 @@ var RadiosDataClass = {
         };
         return nil;
     },
-    
+
     route_manager_versus: func() {
         var eta_seconds = getprop("/autopilot/route-manager/wp/eta-seconds");
         if (eta_seconds != nil) {
@@ -576,7 +576,7 @@ var RadiosDataClass = {
             };
         };
     },
-    
+
     search_manual_select: func() {
         me.manual_select_vor_id = nil;
         me.manual_select_ndb_id = nil;
@@ -597,7 +597,7 @@ var RadiosDataClass = {
             };
         };
     },
-    
+
     manual_select_remove: func(type, airplane) {
         for (var i = 0; i < 8; i += 1) {
             var isSelect = me.listNode.getValue("row[" ~ i ~ "]/select");
@@ -622,14 +622,14 @@ var RadiosDataClass = {
             };
         };
     },
-    
+
     refresh_delay_clock: func() {
         for (var i = (me.num_radios - 1); i >= 0; i -= 1) {
             var radio = me.radios_set[me.valueSort[i][1]];
             radio.renew_delay_clock();
         };
     },
-    
+
     display: func(airplane) {
         me.search_manual_select();
         var row = -1;
@@ -643,7 +643,7 @@ var RadiosDataClass = {
             var isSelect = 0;
             var manual_selected_sign = " ";
             var type = norm_type(radio.type);
-            if (me.select_vor_id != nil and radio.id == me.select_vor_id and (type == "VOR" or type == "ILS" or type == "LOC" or type == "TAC")) 
+            if (me.select_vor_id != nil and radio.id == me.select_vor_id and (type == "VOR" or type == "ILS" or type == "LOC" or type == "TAC"))
                 isSelect = 1;
             elsif (me.manual_select_vor_id != nil and radio.id == me.manual_select_vor_id) {
                 isSelect = 1;
@@ -696,7 +696,7 @@ var RadiosDataClass = {
             setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/error_msg","                               ");
         };
     },
-    
+
     vor_radio_selected: func() {
         var vor_radio = nil;
         if (me.manual_select_vor_id != nil) {
@@ -715,7 +715,7 @@ var RadiosDataClass = {
         };
         return vor_radio;
     },
-    
+
     ndb_radio_selected: func() {
         var ndb_radio = nil;
         if (me.manual_select_ndb_id != nil) {
@@ -725,11 +725,11 @@ var RadiosDataClass = {
         };
         return ndb_radio;
     },
-    
+
     sintonize: func(airplane, mode) {
         var vor_radio = me.vor_radio_selected();
         var ndb_radio = me.ndb_radio_selected();
-        if (vor_radio != nil) { 
+        if (vor_radio != nil) {
             if (vor_radio.type == "ILS") {
                 vor_radio.sintonize(getprop("fdm/jsbsim/systems/autopilot/gui/airport_runway_airplane_heading_correct"),airplane);
                 setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/find-vor",2);
@@ -747,7 +747,7 @@ var RadiosDataClass = {
                     }
                 };
                 setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/find-vor",1);
-                if (vor_radio.type == "LOC") {      
+                if (vor_radio.type == "LOC") {
                     setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/find-vor-str","LOC (" ~ vor_radio.id ~ ")");
                 } elsif (vor_radio.type == "VOR") {
                     setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/find-vor-str","VOR (" ~ vor_radio.id ~ ")");
@@ -768,7 +768,7 @@ var RadiosDataClass = {
             setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/find-ndb-str","  ---");
         };
     },
-    
+
     print_debug: func(airplane) {
         if (testing_log_active >= 2) {
             print("----- Find ",me.num_radios," navaids bearing +/- ",me.bearing_max,sprintf(" deg within range from: %.0f",me.radios_set[me.distanceSort[0][1]].distance_nm(airplane)),sprintf(" to: %.0f nm",me.radios_set[me.distanceSort[me.num_radios - 1][1]].distance_nm(airplane)));
@@ -778,36 +778,36 @@ var RadiosDataClass = {
             };
         };
     },
-    
+
 };
 
 
 var nav_radials_selected_deg = func(radial,id) {
-    
+
     radial = math.round(radial);
     nav_radials_set_automatic_deg = radial;
     setprop("/instrumentation/nav/radials/selected-deg",radial);
     #//print("pilot_radio_assistant.nav_radials_selected_deg: ",radial," id: ",id);
-    
+
 };
 
 
 var radio_assistant = func() {
-    
+
     search_max_dist = getprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/search-max-dist");
     search_max_bearing = getprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/search-max-bearing");
-    
+
     configuration_gauges_nav_active = getprop("sim/G91/configuration/gauges/nav-active");
     configuration_gauges_tacan_active = getprop("sim/G91/configuration/gauges/tacan-active");
-    
+
     if (radios == nil) {
         radios = RadiosDataClass.new();
     };
-    
+
     #// Test for mode == 3 or Landing phase for search ILS
     landing_activate_status = getprop("fdm/jsbsim/systems/autopilot/gui/landing-activate-status");
     if (landing_activate_status > 0) {
-        if (getprop("fdm/jsbsim/systems/autopilot/gui/airport_runway_distance") < 20.0 
+        if (getprop("fdm/jsbsim/systems/autopilot/gui/airport_runway_distance") < 20.0
             and getprop("fdm/jsbsim/systems/autopilot/speed-cas-on-air-lag") < 220.0) {
             if (mode == 1 or mode == 2) {
                 mode = 3;
@@ -830,7 +830,7 @@ var radio_assistant = func() {
             };
         };
     };
-    
+
     if (mode == 1 or mode == 2) {
         var rm_active = getprop("autopilot/route-manager/active");
         if (rm_active > 0 and mode == 2) {
@@ -842,7 +842,7 @@ var radio_assistant = func() {
             setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/mode",2);
         };
     };
-    
+
     if (mode == 0) {
         #// pilot_radio_assistant not operative
         setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/find-vor",0);
@@ -970,12 +970,12 @@ var radio_assistant = func() {
         radios.sintonize(airplane,mode);
         radios.refresh_delay_clock();
     };
-    
-    
+
+
 #// Qui vengono impostati gli strumenti di navigazione, il problema è quando un VOR è stato superato e successivamente
 #// non vi è un VOR, ma ad esempio un NDB ... in questo caso il VOR (orfano) deve inserire come radiale quella dello step successivo
 #// questo va fatto in qualche modo ....
-    
+
     if (getprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/automatic-to-radial-active") == 1 and radios != nil) {
         if (getprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/automatic-to-radial-by-vor") == 1) {
             var vor_radio = radios.vor_radio_selected();
@@ -1033,41 +1033,41 @@ var radio_assistant = func() {
             };
         };
     };
-    
+
     var radial_selected_deg = getprop("/instrumentation/nav/radials/selected-deg");
     if (radial_selected_deg < 0.0) {
         radial_selected_deg = 360.0 + radial_selected_deg;
     };
     setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/radials-selected-correct-deg",radial_selected_deg);
-    
+
 }
 
 
 setlistener("/instrumentation/nav/radials/selected-deg", func {
 
-    #// The radial was changed manually, nav_radials_set_automatic_deg is differente from "/instrumentation/nav/radials/selected-deg"    
+    #// The radial was changed manually, nav_radials_set_automatic_deg is differente from "/instrumentation/nav/radials/selected-deg"
     if (nav_radials_set_automatic_deg != nil and nav_radials_set_automatic_deg != getprop("/instrumentation/nav/radials/selected-deg")) {
         nav_radials_set_automatic_deg = nil;
         setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/automatic-to-radial-active-trigger",9);
         print("pilot_radio_assistant.radio_assistant set automatic-to-radial-active = 0 ",nav_radials_set_automatic_deg," != ",getprop("/instrumentation/nav/radials/selected-deg"));
     };
-    
+
 }, 0, 1);
 
 
 setlistener("autopilot/route-manager/wp[1]/id", func {
-    
+
     var rm_id = getprop("autopilot/route-manager/wp[1]/id");
-    
+
     if (rm_id != nil and size(rm_id) >= 2) {
         #// this is a point
     };
-    
+
 }, 0, 1);
 
 
 setlistener("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/mode-trigger", func {
-    
+
     var mode_trigger = getprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/mode-trigger");
     setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/mode-landing",0);
     if (mode_trigger == 1) {
@@ -1099,16 +1099,16 @@ setlistener("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/mode-trigger", f
         mode = mode_get;
         setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/mode",mode_get);
     };
-    
+
     setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/mode-trigger",0);
-    
+
 }, 0, 1);
 
 
 setlistener("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/mode", func {
-    
+
     mode = getprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/mode");
-    
+
     if (mode == 0) {
         delta_time = 2;
         setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/mode-description","Inactive");
@@ -1122,14 +1122,14 @@ setlistener("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/mode", func {
     } elsif (mode == 3) {
         delta_time = delta_time_standard;
         setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/mode-description","Landing in ILS");
-        setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/automatic-to-radial-active-trigger",9);
+        setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/automatic-to-radial-active-trigger",2);
     };
-    
+
 }, 0, 1);
 
 
 setlistener("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/automatic-to-radial-active-trigger", func {
-    
+
     var radial_active_trigger = getprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/automatic-to-radial-active-trigger");
     if (radial_active_trigger == 9) {
         setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/automatic-to-radial-active",0);
@@ -1150,12 +1150,12 @@ setlistener("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/automatic-to-rad
         setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/automatic-to-radial-active-description","Link to course active");
     };
     setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/automatic-to-radial-active-trigger",0);
-    
+
 }, 0, 1);
 
 
 setlistener("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/automatic-to-radial-trigger", func {
-    
+
     if (getprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/automatic-to-radial-by-vor") == 1) {
         setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/automatic-to-radial-by-vor",0);
         setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/automatic-to-radial-by-ndb",1);
@@ -1164,19 +1164,19 @@ setlistener("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/automatic-to-rad
         setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/automatic-to-radial-by-ndb",0);
     };
     setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/automatic-to-radial-trigger",0);
-    
+
 }, 0, 1);
 
 
 setlistener("/instrumentation/tacan/frequencies/selected-mhz", func {
-    
+
     activate_new_scan = 1;
-    
+
 }, 0, 1);
 
 
 setlistener("sim/G91/configuration/gauges/nav-active", func {
-    
+
     configuration_gauges_nav_active = getprop("sim/G91/configuration/gauges/nav-active");
     activate_new_scan = 1;
 
@@ -1184,7 +1184,7 @@ setlistener("sim/G91/configuration/gauges/nav-active", func {
 
 
 setlistener("sim/G91/configuration/gauges/tacan-active", func {
-    
+
     configuration_gauges_tacan_active = getprop("sim/G91/configuration/gauges/tacan-active");
     activate_new_scan = 1;
 
@@ -1192,34 +1192,34 @@ setlistener("sim/G91/configuration/gauges/tacan-active", func {
 
 
 setlistener("/instrumentation/nav/radials/reciprocal-radial-deg", func {
-    
+
     var rrd = getprop("fdm/jsbsim/systems/gauges/radio/ID-249-ARN/arrow-deg-la");
     var gmdv = getprop("fdm/jsbsim/systems/gauges/radio/ID-249-ARN/gyrocompass-magnetic-deg-var");
     var cds = getprop("fdm/jsbsim/systems/gauges/radio/ID-249-ARN/course-deg-set");
     var otf = getprop("fdm/jsbsim/systems/gauges/radio/ID-249-ARN/off-to-from");
-    
+
     var adn = rrd;
     setprop("fdm/jsbsim/systems/gauges/radio/ID-249-ARN/arrow-deg-norm",adn);
-    
-    
+
+
 
 }, 0, 1);
 
 
 var radio_assistant_control = func() {
-    
+
     delta_time_delay -= 1;
-    
+
     var mod = getprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/radials-selected-correct-deg-mod");
     if (mod > 0) radials_selected_correct_deg_mod = 1;
-    
+
     if (delta_time_delay <= 0) {
         testing_log_active = getprop("sim/G91/testing/log");
         if (testing_log_active == nil) testing_log_active = 0;
         ##//if (radials_selected_correct_deg_mod > 0) print("***** radials_selected_correct_deg_mod: ",radials_selected_correct_deg_mod);
-        
+
         radio_assistant();
-        
+
         delta_time_delay = delta_time;
         radials_selected_correct_deg_mod = 0;
     };
