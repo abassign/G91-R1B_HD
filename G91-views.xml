@@ -24,8 +24,8 @@
         <internal archive="y">true</internal>
         <config>
             <x-offset-m archive="y">  0.0 </x-offset-m> <!--  Right -->
-            <y-offset-m archive="y">  0.7964 </y-offset-m> <!--  Up    -->
-            <z-offset-m archive="y"> -2.55 </z-offset-m> <!--  Back  -->
+            <y-offset-m archive="y">  0.815 </y-offset-m> <!--  Up    -->
+            <z-offset-m archive="y"> -2.60 </z-offset-m> <!--  Back  -->
             <pitch-offset-deg> -12.6 </pitch-offset-deg>
             <default-field-of-view-deg type="double"> 75.0 </default-field-of-view-deg>
         </config>

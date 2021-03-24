@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+
+    <path>counter_rocket.ac</path>
+
+    <animation>
+        <type>noshadow</type>
+        <object-name>digit S 0001 (Meshed)</object-name>
+        <object-name>digit A 0001 (Meshed)</object-name>
+        <object-name>digit B 0001 (Meshed)</object-name>
+        <object-name>digit A 0010 (Meshed)</object-name>
+        <object-name>digit B 0010 (Meshed)</object-name>
+        <object-name>digit S 0100 (Meshed)</object-name>
+        <object-name>digit A 0100 (Meshed)</object-name>
+        <object-name>digit B 0100 (Meshed)</object-name>
+        <object-name>digit A 1000 (Meshed)</object-name>
+        <object-name>digit B 1000 (Meshed)</object-name>
+        <object-name>push up 1100 (Meshed)</object-name>
+        <object-name>push up 0011 (Meshed)</object-name>
+        <object-name>push dw 1100 (Meshed)</object-name>
+        <object-name>push dw 0011 (Meshed)</object-name>
+        <object-name>windows (Meshed)</object-name>
+    </animation>
+
+    <effect>
+        <inherits-from>Effects/model-transparent</inherits-from>
+        <object-name>windows (Meshed)</object-name>
+    </effect>
+
+    <animation>
+        <type>material</type>
+        <object-name>box (Meshed)</object-name>
+        <diffuse>
+            <red>0.15</red>
+            <green>0.15</green>
+            <blue>0.15</blue>
+        </diffuse>
+        <ambient>
+            <red>0.15</red>
+            <green>0.15</green>
+            <blue>0.15</blue>
+        </ambient>
+        <emission>
+            <red>0.14</red>
+            <green>0.0</green>
+            <blue>0.02</blue>
+            <factor-prop>sim/G91/re_emit/light_red_console</factor-prop>
+        </emission>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>windows (Meshed)</object-name>
+        <transparency>
+            <alpha>0.25</alpha>
+            <red-prop>sim/G91/re_emit/gauge_console_lamp_3200_console_red_50</red-prop>
+        </transparency>
+        <ambient>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </ambient>
+        <specular>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+        </specular>
+        <emission>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
+            <factor-prop>fdm/jsbsim/systems/lightning/light-red-console</factor-prop>
+        </emission>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>digit B 0001 (Meshed)</object-name>
+        <object-name>digit B 0010 (Meshed)</object-name>
+        <object-name>digit B 0100 (Meshed)</object-name>
+        <object-name>digit B 1000 (Meshed)</object-name>
+        <diffuse>
+            <red>0.35</red>
+            <green>0.35</green>
+            <blue>0.35</blue>
+        </diffuse>
+        <ambient>
+            <red>0.35</red>
+            <green>0.35</green>
+            <blue>0.35</blue>
+        </ambient>
+        <emission>
+            <red>0.14</red>
+            <green>0.0</green>
+            <blue>0.02</blue>
+            <factor-prop>sim/G91/re_emit/light_red_console</factor-prop>
+        </emission>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>push up 1100 (Meshed)</object-name>
+        <object-name>push up 0011 (Meshed)</object-name>
+        <object-name>push dw 1100 (Meshed)</object-name>
+        <object-name>push dw 0011 (Meshed)</object-name>
+        <diffuse>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </diffuse>
+        <ambient>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </ambient>
+        <emission>
+            <red>0.10</red>
+            <green>0.0</green>
+            <blue>0.015</blue>
+            <factor-prop>sim/G91/re_emit/light_red_console</factor-prop>
+        </emission>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>digit S 0001 (Meshed)</object-name>
+        <object-name>digit S 0100 (Meshed)</object-name>
+        <diffuse>
+            <red>0.02</red>
+            <green>0.15</green>
+            <blue>0.02</blue>
+        </diffuse>
+        <ambient>
+          <red>0.02</red>
+          <green>0.15</green>
+          <blue>0.02</blue>
+        </ambient>
+        <emission>
+            <red>0.02</red>
+            <green>0.15</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/light_red_console</factor-prop>
+        </emission>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>digit A 0001 (Meshed)</object-name>
+        <object-name>digit A 0010 (Meshed)</object-name>
+        <object-name>digit A 0100 (Meshed)</object-name>
+        <object-name>digit A 1000 (Meshed)</object-name>
+        <diffuse>
+            <red>0.6</red>
+            <green>0.6</green>
+            <blue>0.5</blue>
+        </diffuse>
+        <ambient>
+            <red>0.6</red>
+            <green>0.6</green>
+            <blue>0.5</blue>
+        </ambient>
+        <emission>
+            <red>0.2</red>
+            <green>0.1</green>
+            <blue>0.05</blue>
+            <factor-prop>fdm/jsbsim/systems/lightning/light-red-console</factor-prop>
+        </emission>
+    </animation>
+
+</PropertyList>

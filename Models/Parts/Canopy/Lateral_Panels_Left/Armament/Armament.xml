@@ -7,8 +7,18 @@
     <animation>
         <type>noshadow</type>
         <object-name>support (Meshed)</object-name>
-        <object-name>support A (Meshed)</object-name>
         <object-name>screews (Meshed)</object-name>
+        <object-name>Bombs and Rokets (Meshed)</object-name>
+        <object-name>Bombs Camera Rokets (Meshed)</object-name>
+        <object-name>Rokets counters (Meshed)</object-name>
+        <object-name>salve yellow (Meshed)</object-name>
+        <object-name>division (Meshed)</object-name>
+        <!--
+        <object-name>selector camera B (Meshed)</object-name>
+        -->
+        <object-name>selector camera A (Meshed)</object-name>
+        <object-name>screews counters (Meshed)</object-name>
+        <object-name>guns and camera (Meshed)</object-name>
     </animation>
 
     <animation>
@@ -60,7 +70,31 @@
 
     <animation>
         <type>material</type>
-        <object-name>support A (Meshed)</object-name>
+        <object-name>Bombs and Rokets (Meshed)</object-name>
+        <object-name>Bombs Camera Rokets (Meshed)</object-name>
+        <object-name>Rokets counters (Meshed)</object-name>
+        <object-name>guns and camera (Meshed)</object-name>
+        <diffuse>
+            <red>0.6</red>
+            <green>0.6</green>
+            <blue>0.5</blue>
+        </diffuse>
+        <ambient>
+            <red>0.6</red>
+            <green>0.6</green>
+            <blue>0.5</blue>
+        </ambient>
+        <emission>
+            <red>0.16</red>
+            <green>0.09</green>
+            <blue>0.04</blue>
+            <factor-prop>fdm/jsbsim/systems/lightning/light-red-console</factor-prop>
+        </emission>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>division (Meshed)</object-name>
         <diffuse>
             <red>0.20</red>
             <green>0.20</green>
@@ -73,9 +107,79 @@
         </ambient>
         <emission>
             <red>0.2</red>
-            <green>0.0</green>
+            <green>0.1</green>
             <blue>0.02</blue>
+            <factor-prop>fdm/jsbsim/systems/lightning/light-red-console</factor-prop>
+        </emission>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>selector camera B (Meshed)</object-name>
+        <object-name>screews counters (Meshed)</object-name>
+        <diffuse>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </diffuse>
+        <ambient>
+            <red>0.15</red>
+            <green>0.15</green>
+            <blue>0.15</blue>
+        </ambient>
+        <specular>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+        </specular>
+        <emission>
+            <red>0.1</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
             <factor-prop>sim/G91/re_emit/light_red_console</factor-prop>
+        </emission>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>salve yellow (Meshed)</object-name>
+        <object-name>selector camera A (Meshed)</object-name>
+        <diffuse>
+            <red>0.9</red>
+            <green>0.8</green>
+            <blue>0.0</blue>
+        </diffuse>
+        <ambient>
+            <red>0.9</red>
+            <green>0.8</green>
+            <blue>0.0</blue>
+        </ambient>
+        <emission>
+            <red>0.1</red>
+            <green>0.05</green>
+            <blue>0.0</blue>
+            <factor-prop>fdm/jsbsim/systems/lightning/light-red-console</factor-prop>
+        </emission>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>division (Meshed)</object-name>
+        <diffuse>
+            <red>0.6</red>
+            <green>0.4</green>
+            <blue>0.0</blue>
+        </diffuse>
+        <ambient>
+            <red>0.9</red>
+            <green>0.8</green>
+            <blue>0.0</blue>
+        </ambient>
+        <emission>
+            <red>0.1</red>
+            <green>0.05</green>
+            <blue>0.0</blue>
+            <factor-prop>fdm/jsbsim/systems/lightning/light-red-console</factor-prop>
         </emission>
     </animation>
 
@@ -94,7 +198,7 @@
     <model>
         <path>sw_bombs_all_single.xml</path>
         <offsets>
-            <x-m>0.139</x-m>
+            <x-m>0.134</x-m>
             <y-m>-0.162</y-m>
             <z-m>0.005</z-m>
             <roll-deg>180.0</roll-deg>
@@ -112,6 +216,138 @@
             <roll-deg>180.0</roll-deg>
             <pitch-deg>90.0</pitch-deg>
             <heading-deg>180.0</heading-deg>
+        </offsets>
+    </model>
+
+    <model>
+        <path>sw_salve.xml</path>
+        <offsets>
+            <x-m>0.134</x-m>
+            <y-m>-0.234</y-m>
+            <z-m>0.005</z-m>
+            <roll-deg>180.0</roll-deg>
+            <pitch-deg>180.0</pitch-deg>
+            <heading-deg>0.0</heading-deg>
+        </offsets>
+    </model>
+
+    <model>
+        <path>sw_single_right.xml</path>
+        <offsets>
+            <x-m>0.182</x-m>
+            <y-m>-0.080</y-m>
+            <z-m>0.004</z-m>
+            <roll-deg>180.0</roll-deg>
+            <pitch-deg>90.0</pitch-deg>
+            <heading-deg>180.0</heading-deg>
+        </offsets>
+    </model>
+
+    <model>
+        <path>sw_ready_right.xml</path>
+        <offsets>
+            <x-m>0.187</x-m>
+            <y-m>-0.109</y-m>
+            <z-m>0.005</z-m>
+            <roll-deg>180.0</roll-deg>
+            <pitch-deg>180.0</pitch-deg>
+            <heading-deg>0.0</heading-deg>
+        </offsets>
+    </model>
+
+    <model>
+        <path>sw_ready_left.xml</path>
+        <offsets>
+            <x-m>0.187</x-m>
+            <y-m>-0.212</y-m>
+            <z-m>0.005</z-m>
+            <roll-deg>180.0</roll-deg>
+            <pitch-deg>180.0</pitch-deg>
+            <heading-deg>0.0</heading-deg>
+        </offsets>
+    </model>
+
+    <model>
+        <path>sw_single_left.xml</path>
+        <offsets>
+            <x-m>0.182</x-m>
+            <y-m>-0.241</y-m>
+            <z-m>0.004</z-m>
+            <roll-deg>180.0</roll-deg>
+            <pitch-deg>90.0</pitch-deg>
+            <heading-deg>180.0</heading-deg>
+        </offsets>
+    </model>
+
+    <model>
+        <path>sw_intervallometer.xml</path>
+        <offsets>
+            <x-m>0.253</x-m>
+            <y-m>-0.125</y-m>
+            <z-m>0.004</z-m>
+            <roll-deg>180.0</roll-deg>
+            <pitch-deg>90.0</pitch-deg>
+            <heading-deg>180.0</heading-deg>
+        </offsets>
+    </model>
+
+    <model>
+        <path>counter_rocket_left.xml</path>
+        <offsets>
+            <x-m>0.173</x-m>
+            <y-m>-0.160</y-m>
+            <z-m>0.002</z-m>
+            <roll-deg>0.0</roll-deg>
+            <pitch-deg>0.0</pitch-deg>
+            <heading-deg>0.0</heading-deg>
+        </offsets>
+    </model>
+
+    <model>
+        <path>counter_rocket_right.xml</path>
+        <offsets>
+            <x-m>0.173</x-m>
+            <y-m>-0.1195</y-m>
+            <z-m>0.002</z-m>
+            <roll-deg>0.0</roll-deg>
+            <pitch-deg>0.0</pitch-deg>
+            <heading-deg>0.0</heading-deg>
+        </offsets>
+    </model>
+
+    <model>
+        <path>sw_guns_camera_lw.xml</path>
+        <offsets>
+            <x-m>0.248</x-m>
+            <y-m>-0.202</y-m>
+            <z-m>0.005</z-m>
+            <roll-deg>180.0</roll-deg>
+            <pitch-deg>180.0</pitch-deg>
+            <heading-deg>0.0</heading-deg>
+        </offsets>
+    </model>
+
+    <model>
+        <path>sw_guns_camera_up.xml</path>
+        <offsets>
+            <x-m>0.248</x-m>
+            <y-m>-0.164</y-m>
+            <z-m>0.005</z-m>
+            <roll-deg>180.0</roll-deg>
+            <pitch-deg>180.0</pitch-deg>
+            <heading-deg>0.0</heading-deg>
+        </offsets>
+    </model>
+
+    <model>
+        <path>sw_guns_heater.xml</path>
+        <offsets>
+            <x-m>0.304</x-m>
+            <y-m>-0.202</y-m>
+            <z-m>0.005</z-m>
+            <roll-deg>180.0</roll-deg>
+            <pitch-deg>180.0</pitch-deg>
+            <heading-deg>0.0</heading-deg>
         </offsets>
     </model>
 
