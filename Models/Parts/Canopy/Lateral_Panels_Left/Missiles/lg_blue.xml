@@ -39,10 +39,10 @@ Original work Copyright (c) 2018-2021 Adriano Bassignana (abassign)
             <blue>0.3</blue>
         </specular>
         <emission>
-            <red>0.0</red>
+            <red>0.05</red>
             <green>0.0</green>
-            <blue>0.1</blue>
-            <factor-prop>fdm/jsbsim/systems/lightning/light-uv-instrument</factor-prop>
+            <blue>0.0</blue>
+            <factor-prop>fdm/jsbsim/systems/lightning/light-red-console</factor-prop>
         </emission>
     </animation>
 
@@ -65,10 +65,10 @@ Original work Copyright (c) 2018-2021 Adriano Bassignana (abassign)
             <blue>0.4</blue>
         </specular>
         <emission>
-            <red>0.0</red>
+            <red>0.05</red>
             <green>0.0</green>
-            <blue>0.1</blue>
-            <factor-prop>fdm/jsbsim/systems/lightning/light-uv-instrument</factor-prop>
+            <blue>0.0</blue>
+            <factor-prop>fdm/jsbsim/systems/lightning/light-red-console</factor-prop>
         </emission>
     </animation>
 
@@ -91,10 +91,10 @@ Original work Copyright (c) 2018-2021 Adriano Bassignana (abassign)
             <blue>0.3</blue>
         </specular>
         <emission>
-            <red>0.0</red>
+            <red>0.2</red>
             <green>0.0</green>
-            <blue>0.3</blue>
-            <factor-prop>fdm/jsbsim/systems/lightning/light-uv-instrument</factor-prop>
+            <blue>0.0</blue>
+            <factor-prop>fdm/jsbsim/systems/lightning/light-red-console</factor-prop>
         </emission>
     </animation>
 
@@ -117,10 +117,10 @@ Original work Copyright (c) 2018-2021 Adriano Bassignana (abassign)
             <blue>0.3</blue>
         </specular>
         <emission>
-            <red>0.0</red>
+            <red>0.02</red>
             <green>0.0</green>
-            <blue>0.02</blue>
-            <factor-prop>fdm/jsbsim/systems/lightning/light-uv-instrument</factor-prop>
+            <blue>0.0</blue>
+            <factor-prop>fdm/jsbsim/systems/lightning/light-red-console</factor-prop>
         </emission>
     </animation>
 
@@ -143,10 +143,10 @@ Original work Copyright (c) 2018-2021 Adriano Bassignana (abassign)
             <blue>0.4</blue>
         </specular>
         <emission>
-            <red>0.0</red>
+            <red>0.04</red>
             <green>0.0</green>
-            <blue>0.1</blue>
-            <factor-prop>fdm/jsbsim/systems/lightning/light-uv-instrument</factor-prop>
+            <blue>0.0</blue>
+            <factor-prop>fdm/jsbsim/systems/lightning/light-red-console</factor-prop>
         </emission>
     </animation>
 

@@ -1,17 +1,23 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 
+<!--
+Original work Copyright (c) 2018 Adriano Bassignana (abassign)
+-->
+
 <PropertyList>
-    
+
     <model>
-        <path>sw_model_no_protection.xml</path>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Common/switch_panel_05_model.xml</path>
     </model>
 
     <animation>
         <type>pick</type>
         <visible>true</visible>
-        <object-name>sw_north</object-name>
-        <object-name>sw_center</object-name>
-        <object-name>sw_south</object-name>
+        <object-name>support (Meshed)</object-name>
+        <object-name>pin (Meshed)</object-name>
+        <object-name>ring (Meshed)</object-name>
+        <object-name>nut (Meshed)</object-name>
+        <object-name>cover (Meshed)</object-name>
         <action>
             <button>0</button>
             <repeatable>false</repeatable>
@@ -22,23 +28,23 @@
             </binding>
         </action>
     </animation>
-    
-     <animation>
+
+    <animation>
         <type>rotate</type>
-        <object-name>swich_04</object-name>
+        <object-name>pin (Meshed)</object-name>
         <property>fdm/jsbsim/systems/manual-switches/lateral_panel_left/dampers/sw-pitch-damper-pos</property>
-        <factor>-25</factor>
+        <offset-deg>15</offset-deg>
+        <factor>-30</factor>
         <center>
-            <x-m> 0.0</x-m>
+            <x-m> 0.004</x-m>
             <y-m> 0.0</y-m>
             <z-m> 0.0</z-m>
         </center>
         <axis>
             <x>0</x>
-            <y>1</y>
+            <y>1.0</y>
             <z>0</z>
         </axis>
     </animation>
-    
-</PropertyList> 
- 
+
+</PropertyList>

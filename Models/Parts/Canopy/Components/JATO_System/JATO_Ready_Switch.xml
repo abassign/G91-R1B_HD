@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 
 <PropertyList>
-    
+
     <path>JATO_Ready_Switch.ac</path>
 
     <animation>
@@ -15,8 +15,8 @@
         <object-name>support (Meshed)</object-name>
         <object-name>switch (Meshed)</object-name>
     </animation>
-    
-    <animation> 
+
+    <animation>
         <type>material</type>
         <object-name>support (Meshed)</object-name>
         <texture>Pictures/G91-light-blue-01.png</texture>
@@ -32,8 +32,8 @@
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
-    
-    <animation> 
+
+    <animation>
         <type>material</type>
         <object-name>cover (Meshed)</object-name>
         <texture>Pictures/G91-Al-Light.png</texture>
@@ -49,8 +49,8 @@
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
-    
-    <animation> 
+
+    <animation>
         <type>material</type>
         <object-name>switch (Meshed)</object-name>
         <texture>Pictures/G91-Al-01.png</texture>
@@ -66,8 +66,8 @@
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
-    
-    <animation> 
+
+    <animation>
         <type>material</type>
         <object-name>screewsD6 (Meshed)</object-name>
         <object-name>screewsD7 (Meshed)</object-name>
@@ -84,8 +84,8 @@
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
-    
-    <animation> 
+
+    <animation>
         <type>material</type>
         <object-name>protection (Meshed)</object-name>
         <object-name>frontal (Meshed)</object-name>
@@ -102,8 +102,8 @@
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
-    
-    <animation> 
+
+    <animation>
         <type>material</type>
         <object-name>protection_A (Meshed)</object-name>
         <transparency>
@@ -135,7 +135,7 @@
             </binding>
         </action>
     </animation>
-    
+
     <animation>
         <type>rotate</type>
         <object-name>switch (Meshed)</object-name>
@@ -153,5 +153,5 @@
             <z>0</z>
         </axis>
     </animation>
-    
+
 </PropertyList>

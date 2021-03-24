@@ -1,8 +1,8 @@
 
 <PropertyList>
-    
+
     <path>Jato_System.ac</path>
-    
+
     <animation>
         <type>noshadow</type>
         <object-name>F_livetto.028</object-name>
@@ -41,8 +41,8 @@
             <factor>0.05</factor>
         </emission>
     </animation>
-    
-    <animation> 
+
+    <animation>
         <type>material</type>
         <object-name>Curve.002</object-name>
         <object-name>Curve.003</object-name>
@@ -65,7 +65,7 @@
             <factor>0.10</factor>
         </emission>
     </animation>
-    
+
     <animation>
         <type>material</type>
         <object-name>F_livetto.028</object-name>
@@ -92,7 +92,7 @@
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
-    
+
     <model>
         <path>JATO_Ignition.xml</path>
         <offsets>
@@ -104,19 +104,19 @@
             <roll-deg>0.0</roll-deg>
         </offsets>
     </model>
-    
+
     <model>
         <path>lg_JATO_Ready.xml</path>
         <offsets>
-            <x-m>-2.99240</x-m>
-            <y-m>-0.26346</y-m>
+            <x-m>-2.98540</x-m>
+            <y-m>-0.26246</y-m>
             <z-m>0.118</z-m>
             <pitch-deg>0.0</pitch-deg>
             <heading-deg>16.0</heading-deg>
             <roll-deg>0.0</roll-deg>
         </offsets>
     </model>
-    
+
     <model>
         <path>JATO_Jettinson.xml</path>
         <offsets>
@@ -127,6 +127,6 @@
             <heading-deg>16.0</heading-deg>
             <roll-deg>0.0</roll-deg>
         </offsets>
-    </model> 
-    
+    </model>
+
 </PropertyList>

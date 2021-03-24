@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+
+    <path>aux_and_oxigen.ac</path>
+
+    <animation>
+        <type>noshadow</type>
+        <object-name>white (Meshed)</object-name>
+        <object-name>gray (Meshed)</object-name>
+        <object-name>screews (Meshed)</object-name>
+        <object-name>screew ma 3 (Meshed)</object-name>
+        <object-name>description (Meshed)</object-name>
+        <object-name>ground fire base (Meshed)</object-name>
+        <object-name>ground fire box (Meshed)</object-name>
+        <object-name>GROUND FIRE A (Meshed)</object-name>
+        <object-name>GROUND FIRE B (Meshed)</object-name>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>white (Meshed)</object-name>
+        <diffuse>
+            <red>0.6</red>
+            <green>0.6</green>
+            <blue>0.55</blue>
+        </diffuse>
+        <ambient>
+          <red>0.6</red>
+          <green>0.6</green>
+          <blue>0.55</blue>
+        </ambient>
+        <emission>
+            <red>0.04</red>
+            <green>0.0</green>
+            <blue>0.02</blue>
+            <factor-prop>fdm/jsbsim/systems/lightning/light-red-console</factor-prop>
+        </emission>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>gray (Meshed)</object-name>
+        <object-name>ground fire box (Meshed)</object-name>
+        <diffuse>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
+        </diffuse>
+        <ambient>
+          <red>0.2</red>
+          <green>0.2</green>
+          <blue>0.2</blue>
+        </ambient>
+        <emission>
+            <red>0.03</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>fdm/jsbsim/systems/lightning/light-red-console</factor-prop>
+        </emission>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>screews (Meshed)</object-name>
+        <diffuse>
+            <red>0.35</red>
+            <green>0.35</green>
+            <blue>0.35</blue>
+        </diffuse>
+        <ambient>
+            <red>0.35</red>
+            <green>0.35</green>
+            <blue>0.35</blue>
+        </ambient>
+        <specular>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+        </specular>
+        <emission>
+            <red>0.04</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>fdm/jsbsim/systems/lightning/light-red-console</factor-prop>
+        </emission>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>screew ma 3 (Meshed)</object-name>
+        <diffuse>
+            <red>0.15</red>
+            <green>0.15</green>
+            <blue>0.15</blue>
+        </diffuse>
+        <ambient>
+            <red>0.15</red>
+            <green>0.15</green>
+            <blue>0.15</blue>
+        </ambient>
+        <specular>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+        </specular>
+        <emission>
+            <red>0.05</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>fdm/jsbsim/systems/lightning/light-red-console</factor-prop>
+        </emission>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>description (Meshed)</object-name>
+        <diffuse>
+            <red>0.6</red>
+            <green>0.6</green>
+            <blue>0.5</blue>
+        </diffuse>
+        <ambient>
+            <red>0.6</red>
+            <green>0.6</green>
+            <blue>0.5</blue>
+        </ambient>
+        <emission>
+            <red>0.16</red>
+            <green>0.09</green>
+            <blue>0.04</blue>
+            <factor-prop>fdm/jsbsim/systems/lightning/light-red-console</factor-prop>
+        </emission>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>ground fire base (Meshed)</object-name>
+        <diffuse>
+            <red>0.6</red>
+            <green>0.6</green>
+            <blue>0.5</blue>
+        </diffuse>
+        <ambient>
+            <red>0.6</red>
+            <green>0.6</green>
+            <blue>0.5</blue>
+        </ambient>
+        <emission>
+            <red>0.16</red>
+            <green>0.09</green>
+            <blue>0.04</blue>
+            <factor-prop>fdm/jsbsim/systems/lightning/light-red-console</factor-prop>
+        </emission>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>GROUND FIRE A (Meshed)</object-name>
+        <diffuse>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </diffuse>
+        <ambient>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </ambient>
+        <emission>
+            <red>0.02</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>fdm/jsbsim/systems/lightning/light-red-console</factor-prop>
+        </emission>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>GROUND FIRE B (Meshed)</object-name>
+        <diffuse>
+            <red>0.7</red>
+            <green>0.6</green>
+            <blue>0.0</blue>
+        </diffuse>
+        <ambient>
+            <red>0.7</red>
+            <green>0.6</green>
+            <blue>0.0</blue>
+        </ambient>
+        <emission>
+            <red>0.1</red>
+            <green>0.05</green>
+            <blue>0.0</blue>
+            <factor-prop>fdm/jsbsim/systems/lightning/light-red-console</factor-prop>
+        </emission>
+    </animation>
+
+    <model>
+        <path>sw_ground_fire.xml</path>
+        <offsets>
+            <x-m>0.358</x-m>
+            <y-m>-0.134</y-m>
+            <z-m>0.016</z-m>
+            <roll-deg>180.0</roll-deg>
+            <pitch-deg>180.0</pitch-deg>
+            <heading-deg>47.0</heading-deg>
+        </offsets>
+    </model>
+
+ </PropertyList>

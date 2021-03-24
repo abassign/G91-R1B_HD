@@ -126,7 +126,16 @@
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Lateral_Panels_Left/Armament/Armament.xml</path>
         <offsets>
-            <x-m>0.0</x-m>
+            <x-m>-0.001</x-m>
+            <y-m>0.0</y-m>
+            <z-m>0.004</z-m>
+        </offsets>
+    </model>
+
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Lateral_Panels_Left/Aux_and_oxigen/Aux_and_oxigen.xml</path>
+        <offsets>
+            <x-m>-0.001</x-m>
             <y-m>0.0</y-m>
             <z-m>0.004</z-m>
         </offsets>
