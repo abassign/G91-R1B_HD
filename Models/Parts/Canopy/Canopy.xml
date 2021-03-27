@@ -951,6 +951,20 @@
             </equals>
         </condition>
     </model>
+    
+    <!-- Pedals -->
+    
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Components/Steering_rudder_pedals/Steering_rudder_pedals.xml</path>
+        <offsets>
+            <x-m>-3.35</x-m>
+            <y-m>0.0</y-m>
+            <z-m>-0.4782641</z-m>
+            <roll-deg>0.0</roll-deg>
+            <pitch-deg>0.0</pitch-deg>
+            <heading-deg>0.0</heading-deg>
+        </offsets>
+    </model>
 
     <!-- Compositor lights -->
 
