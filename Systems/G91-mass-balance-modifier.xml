@@ -1,9 +1,23 @@
-<!-- G91 JSBsim -->
+<!-- G91 JSBsim 
+
+Adriano Bassignana (abassign) January 2021
+Lic. GPL3
+
+Program for modifying the inertia on the y axis by inserting a virtual mass from 5 to 50 lb at a variable distance of 0-1000 inches with respect to the geometric center.
+The application places its value in the variable
+pm-cg-x-weight-pos-position
+and in the variable
+pm-cg-x-weight-neg-position
+
+-->
 
 <system>
-
+    <!--
     <property value="10.0">inertia/modifier/cg-x-weight-value-lib-default</property>
     <property value="-30.0">inertia/modifier/cg-x-shift-percent-default</property>
+    -->
+    <property value="5.0">inertia/modifier/cg-x-weight-value-lib-default</property>
+    <property value="-100.0">inertia/modifier/cg-x-shift-percent-default</property>
     
     <property value="0.0">inertia/modifier/cg-x-weight-active</property>
     <property value="0.0">inertia/modifier/cg-x-weight-active-default</property>
