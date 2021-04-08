@@ -3,6 +3,11 @@
 <PropertyList>
 
     <path>ID-249-ARN.ac</path>
+    
+    <effect>
+        <inherits-from>Effects/model-transparent</inherits-from>
+        <object-name>glass (Meshed)</object-name>
+    </effect>
 
     <animation>
         <type>noshadow</type>
@@ -470,14 +475,14 @@
         <type>material</type>
         <object-name>ring (Meshed)</object-name>
         <diffuse>
-            <red>0.33</red>
-            <green>0.31</green>
-            <blue>0.30</blue>
+            <red>0.23</red>
+            <green>0.21</green>
+            <blue>0.20</blue>
         </diffuse>
         <ambient>
-            <red>0.1</red>
-            <green>0.1</green>
-            <blue>0.1</blue>
+            <red>0.15</red>
+            <green>0.15</green>
+            <blue>0.15</blue>
         </ambient>
         <emission>
             <red>0.08</red>
@@ -515,14 +520,14 @@
         <type>material</type>
         <object-name>frontal B (Meshed)</object-name>
         <diffuse>
-            <red>0.20</red>
-            <green>0.20</green>
-            <blue>0.20</blue>
+            <red>0.10</red>
+            <green>0.10</green>
+            <blue>0.10</blue>
         </diffuse>
         <ambient>
-            <red>0.20</red>
-            <green>0.20</green>
-            <blue>0.20</blue>
+            <red>0.10</red>
+            <green>0.10</green>
+            <blue>0.10</blue>
         </ambient>
         <specular>
             <red>0.4</red>
