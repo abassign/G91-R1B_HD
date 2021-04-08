@@ -6,18 +6,28 @@
 
     <animation>
         <type>noshadow</type>
-        <object-name>join big (Meshed)</object-name>
-        <object-name>join little (Meshed)</object-name>
+        <object-name>base (Meshed)</object-name>
+        <object-name>base axis (Meshed)</object-name>
+        <object-name>base axis top ring (Meshed)</object-name>
+        <object-name>base flat axis (Meshed)</object-name>
+        <object-name>base ring (Meshed)</object-name>
+        <object-name>base screew axis (Meshed)</object-name>
+        <object-name>base screews (Meshed)</object-name>
+        <object-name>wing (Meshed)</object-name>
+        <object-name>wing bearing dx (Meshed)</object-name>
+        <object-name>wing bearing sx (Meshed)</object-name>
+        <object-name>arm dx (Meshed)</object-name>
+        <object-name>arm sx (Meshed)</object-name>
+        <object-name>arm join dx (Meshed)</object-name>
+        <object-name>arm join sx (Meshed)</object-name>
+        <object-name>join little dx (Meshed)</object-name>
+        <object-name>join little sx (Meshed)</object-name>
+        <object-name>join little screew (Meshed)</object-name>
         <object-name>staff dx (Meshed)</object-name>
         <object-name>staff sx (Meshed)</object-name>
-        <object-name>vertical axis internal (Meshed)</object-name>
-        <object-name>vertical axis internal contact (Meshed)</object-name>
-        <object-name>pin 1 l (Meshed)</object-name>
-        <object-name>pin 1 r (Meshed)</object-name>
         <object-name>pin 2 l (Meshed)</object-name>
         <object-name>pin 2 r (Meshed)</object-name>
-        <object-name>Lock bracket dx (Meshed)</object-name>
-        <object-name>Lock bracket sx (Meshed)</object-name>
+        <object-name>octagon fixed point (Meshed)</object-name>
         <object-name>octagon force axis (Meshed)</object-name>
         <object-name>octagon force axis stop (Meshed)</object-name>
         <object-name>octagon (Meshed)</object-name>
@@ -26,6 +36,10 @@
         <object-name>octagon rivets (Meshed)</object-name>
         <object-name>octagon axis dx (Meshed)</object-name>
         <object-name>octagon axis sx (Meshed)</object-name>
+        <object-name>octagon axis external dx (Meshed)</object-name>
+        <object-name>octagon axis external sx (Meshed)</object-name>
+        <object-name>octagon bracket sx (Meshed)</object-name>
+        <object-name>octagon bracket dx (Meshed)</object-name>
         <object-name>pedal cover black dx (Meshed)</object-name>
         <object-name>pedal cover black sx (Meshed)</object-name>
         <object-name>pedal internal screew sx (Meshed)</object-name>
@@ -39,9 +53,34 @@
         <object-name>pedal sx secondary axis (Meshed)</object-name>
         <object-name>pedal dx secondary axis (Meshed)</object-name>
         <object-name>pedal screew sx (Meshed)</object-name>
-        <object-name>pedal screew dx (Meshed)</object-name>
-        <object-name>pedal axis dx (Meshed)</object-name>
-        <object-name>pedal axis sx (Meshed)</object-name>
+        <object-name>pedal screew dX (Meshed)</object-name>
+        <object-name>pedal screew int sx (Meshed)</object-name>
+        <object-name>pedal screew int dx (Meshed)</object-name>
+        <object-name>pump cilinder (Meshed)</object-name>
+        <object-name>pump frontal (Meshed)</object-name>
+        <object-name>pump top valv (Meshed)</object-name>
+        <object-name>pumo top pin (Meshed)</object-name>
+        <object-name>pump cone (Meshed)</object-name>
+        <object-name>pump join dx (Meshed)</object-name>
+        <object-name>pump join sx (Meshed)</object-name>
+        <object-name>pump screews (Meshed)</object-name>
+        <object-name>brake arm dx (Meshed)</object-name>
+        <object-name>brake arm sx (Meshed)</object-name>
+        <object-name>brake central axis (Meshed)</object-name>
+        <object-name>brake central bearing (Meshed)</object-name>
+        <object-name>brake central lock dx (Meshed)</object-name>
+        <object-name>brake central lock sx (Meshed)</object-name>
+        <object-name>brake central lock sphere dx (Meshed)</object-name>
+        <object-name>brake central lock sphere sx (Meshed)</object-name>
+        <object-name>brake central screew (Meshed)</object-name>
+        <object-name>brake lateral lock dx (Meshed)</object-name>
+        <object-name>brake lateral lock sx (Meshed)</object-name>
+        <object-name>brake lateral pin dx (Meshed)</object-name>
+        <object-name>brake lateral pin sx (Meshed)</object-name>
+        <object-name>brake lateral pix dx (Meshed)</object-name>
+        <object-name>brake lateral pix sx (Meshed)</object-name>
+        <object-name>brake lock dx (Meshed)</object-name>
+        <object-name>brake lock sx (Meshed)</object-name>
     </animation>
     
     <effect>
@@ -51,10 +90,105 @@
         <object-name>octagon (Meshed)</object-name>
     </effect>
     
+    <animation>
+        <name>ArmGroup</name>
+        <object-name>arm sx (Meshed)</object-name>
+        <object-name>arm dx (Meshed)</object-name>
+        <object-name>arm join dx (Meshed)</object-name>
+        <object-name>arm join sx (Meshed)</object-name>
+        <object-name>wing (Meshed)</object-name>
+        <object-name>wing bearing dx (Meshed)</object-name>
+        <object-name>wing bearing sx (Meshed)</object-name>
+        <object-name>octagon fixed point (Meshed)</object-name>
+        <object-name>octagon force axis (Meshed)</object-name>
+        <object-name>octagon force axis stop (Meshed)</object-name>
+        <object-name>octagon (Meshed)</object-name>
+        <object-name>octagon internal (Meshed)</object-name>
+        <object-name>octagon internal border (Meshed)</object-name>
+        <object-name>octagon rivets (Meshed)</object-name>
+        <object-name>octagon axis dx (Meshed)</object-name>
+        <object-name>octagon axis sx (Meshed)</object-name>
+        <object-name>octagon axis external dx (Meshed)</object-name>
+        <object-name>octagon axis external sx (Meshed)</object-name>
+        <object-name>octagon bracket sx (Meshed)</object-name>
+        <object-name>octagon bracket dx (Meshed)</object-name>
+    </animation>
+    
+    <animation>
+        <name>PedalsSxGroup</name>
+        <object-name>pin 2 l (Meshed)</object-name>
+        <object-name>staff sx (Meshed)</object-name>
+        <object-name>pedal cover black sx (Meshed)</object-name>
+        <object-name>pedal internal screew sx (Meshed)</object-name>
+        <object-name>pedal side sx (Meshed)</object-name>
+        <object-name>pedal internal sx (Meshed)</object-name>
+        <object-name>pedal sx (Meshed)</object-name>
+        <object-name>pedal sx secondary axis (Meshed)</object-name>
+        <object-name>pedal screew sx (Meshed)</object-name>
+        <object-name>pedal screew int sx (Meshed)</object-name>
+        <object-name>brake lock sx (Meshed)</object-name>
+        <object-name>brake lateral lock sx (Meshed)</object-name>
+        <object-name>brake lateral pin sx (Meshed)</object-name>
+        <object-name>brake lateral pix sx (Meshed)</object-name>
+    </animation>
+    
+    <animation>
+        <name>PedalsDxGroup</name>
+        <object-name>pin 2 r (Meshed)</object-name>
+        <object-name>staff dx (Meshed)</object-name>
+        <object-name>pedal cover black dx (Meshed)</object-name>
+        <object-name>pedal internal screew dx (Meshed)</object-name>
+        <object-name>pedal side dx (Meshed)</object-name>
+        <object-name>pedal internal dx (Meshed)</object-name>
+        <object-name>pedal dx (Meshed)</object-name>
+        <object-name>pedal dx secondary axis (Meshed)</object-name>
+        <object-name>pedal screew dX (Meshed)</object-name>
+        <object-name>pedal screew int dx (Meshed)</object-name>
+        <object-name>brake lock dx (Meshed)</object-name>
+        <object-name>brake lateral lock dx (Meshed)</object-name>
+        <object-name>brake lateral pin dx (Meshed)</object-name>
+        <object-name>brake lateral pix dx (Meshed)</object-name>
+    </animation>
+    
     <animation> 
         <type>material</type>
-        <object-name>join big (Meshed)</object-name>
-        <object-name>join little (Meshed)</object-name>
+        <object-name>base (Meshed)</object-name>
+        <object-name>arm sx (Meshed)</object-name>
+        <object-name>arm dx (Meshed)</object-name>
+        <object-name>arm join dx (Meshed)</object-name>
+        <object-name>arm join sx (Meshed)</object-name>
+        <object-name>octagon bracket sx (Meshed)</object-name>
+        <object-name>octagon bracket dx (Meshed)</object-name>
+        <diffuse>
+            <red>0.54</red>
+            <green>0.69</green>
+            <blue>0.65</blue>
+        </diffuse>
+        <ambient>
+            <red>0.54</red>
+            <green>0.69</green>
+            <blue>0.65</blue>
+            <factor>0.5</factor>
+        </ambient>
+        <specular>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.3</blue>
+        </specular>
+        <emission>
+            <red>0.03</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>join little dx (Meshed)</object-name>
+        <object-name>join little sx (Meshed)</object-name>
+        <object-name>brake arm dx (Meshed)</object-name>
+        <object-name>brake arm sx (Meshed)</object-name>
         <object-name>staff dx (Meshed)</object-name>
         <object-name>staff sx (Meshed)</object-name>
         <diffuse>
@@ -82,23 +216,26 @@
     
     <animation> 
         <type>material</type>
-        <object-name>vertical axis internal (Meshed)</object-name>
-        <object-name>Lock bracket dx (Meshed)</object-name>
-        <object-name>Lock bracket sx (Meshed)</object-name>
+        <object-name>octagon internal (Meshed)</object-name>
+        <object-name>octagon fixed point (Meshed)</object-name>
+        <object-name>brake lateral lock dx (Meshed)</object-name>
+        <object-name>brake lateral lock sx (Meshed)</object-name>
+        <object-name>brake central lock dx (Meshed)</object-name>
+        <object-name>brake central lock sx (Meshed)</object-name>
         <diffuse>
-            <red>0.48</red>
-            <green>0.53</green>
-            <blue>0.56</blue>
+            <red>0.6</red>
+            <green>0.6</green>
+            <blue>0.6</blue>
         </diffuse>
         <ambient>
-            <red>0.48</red>
-            <green>0.53</green>
-            <blue>0.56</blue>
+            <red>0.6</red>
+            <green>0.6</green>
+            <blue>0.6</blue>
         </ambient>
         <specular>
-            <red>0.1</red>
-            <green>0.1</green>
-            <blue>0.1</blue>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
         </specular>
         <emission>
             <red>0.03</red>
@@ -106,27 +243,6 @@
             <blue>0.0</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
-    </animation>
-    
-    <animation> 
-        <type>material</type>
-        <object-name>vertical axis internal contact (Meshed)</object-name>
-        <object-name>octagon internal (Meshed)</object-name>
-        <diffuse>
-            <red>0.6</red>
-            <green>0.6</green>
-            <blue>0.6</blue>
-        </diffuse>
-        <ambient>
-            <red>0.6</red>
-            <green>0.6</green>
-            <blue>0.6</blue>
-        </ambient>
-        <specular>
-            <red>0.6</red>
-            <green>0.6</green>
-            <blue>0.6</blue>
-        </specular>
     </animation>
     
     <animation> 
@@ -163,14 +279,14 @@
         <object-name>pedal dx (Meshed)</object-name>
         <object-name>pedal sx (Meshed)</object-name>
         <diffuse>
-            <red>0.65</red>
-            <green>0.65</green>
-            <blue>0.65</blue>
+            <red>0.75</red>
+            <green>0.75</green>
+            <blue>0.75</blue>
         </diffuse>
         <ambient>
-            <red>0.65</red>
-            <green>0.65</green>
-            <blue>0.65</blue>
+            <red>0.85</red>
+            <green>0.85</green>
+            <blue>0.85</blue>
         </ambient>
         <specular>
             <red>0.6</red>
@@ -178,7 +294,7 @@
             <blue>0.6</blue>
         </specular>
         <emission>
-            <red>0.06</red>
+            <red>0.07</red>
             <green>0.0</green>
             <blue>0.0</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
@@ -188,37 +304,63 @@
     <animation> 
         <type>material</type>
         <object-name>octagon force axis (Meshed)</object-name>
+        <object-name>brake lateral pin dx (Meshed)</object-name>
+        <object-name>brake lateral pin sx (Meshed)</object-name>
+        <object-name>brake lateral pix dx (Meshed)</object-name>
+        <object-name>brake lateral pix sx (Meshed)</object-name>
+        <object-name>brake central axis (Meshed)</object-name>
+        <object-name>octagon axis dx (Meshed)</object-name>
+        <object-name>octagon axis sx (Meshed)</object-name>
+        <object-name>octagon axis external dx (Meshed)</object-name>
+        <object-name>octagon axis external sx (Meshed)</object-name>
+        <object-name>brake lock dx (Meshed)</object-name>
+        <object-name>brake lock sx (Meshed)</object-name>
+        <object-name>pump screews (Meshed)</object-name>
+        <object-name>join little screew (Meshed)</object-name>
+        <object-name>wing bearing dx (Meshed)</object-name>
+        <object-name>wing bearing sx (Meshed)</object-name>
         <diffuse>
             <red>0.7</red>
             <green>0.65</green>
             <blue>0.6</blue>
         </diffuse>
         <ambient>
-            <red>0.4</red>
-            <green>0.4</green>
-            <blue>0.4</blue>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
         </ambient>
         <specular>
             <red>0.4</red>
             <green>0.4</green>
             <blue>0.4</blue>
         </specular>
+        <emission>
+            <red>0.07</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
     </animation>
     
     <animation> 
         <type>material</type>
-        <object-name>pin 1 l (Meshed)</object-name>
-        <object-name>pin 1 r (Meshed)</object-name>
         <object-name>pin 2 l (Meshed)</object-name>
         <object-name>pin 2 r (Meshed)</object-name>
-        <object-name>octagon axis dx (Meshed)</object-name>
-        <object-name>octagon axis sx (Meshed)</object-name>
         <object-name>octagon force axis stop (Meshed)</object-name>
         <object-name>octagon rivets (Meshed)</object-name>
         <object-name>pedal internal screew sx (Meshed)</object-name>
         <object-name>pedal internal screew dx (Meshed)</object-name>
         <object-name>pedal screew sx (Meshed)</object-name>
-        <object-name>pedal screew dx (Meshed)</object-name>
+        <object-name>pedal screew dX (Meshed)</object-name>
+        <object-name>pedal screew int sx (Meshed)</object-name>
+        <object-name>pedal screew int dx (Meshed)</object-name>
+        <object-name>brake central bearing (Meshed)</object-name>
+        <object-name>brake central screew (Meshed)</object-name>
+        <object-name>base screew axis (Meshed)</object-name>
+        <object-name>wing (Meshed)</object-name>
+        <object-name>base axis (Meshed)</object-name>
+        <object-name>base axis top ring (Meshed)</object-name>
+        <object-name>base ring (Meshed)</object-name>
         <diffuse>
             <red>0.7</red>
             <green>0.7</green>
@@ -246,6 +388,7 @@
         <type>material</type>
         <object-name>pedal side dx (Meshed)</object-name>
         <object-name>pedal side sx (Meshed)</object-name>
+        <object-name>base flat axis (Meshed)</object-name>
         <diffuse>
             <red>0.9</red>
             <green>0.9</green>
@@ -263,33 +406,6 @@
         </specular>
         <emission>
             <red>0.08</red>
-            <green>0.0</green>
-            <blue>0.0</blue>
-            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
-        </emission>
-    </animation>
-    
-    <animation> 
-        <type>material</type>
-        <object-name>pedal axis dx (Meshed)</object-name>
-        <object-name>pedal axis sx (Meshed)</object-name>
-        <diffuse>
-            <red>0.8</red>
-            <green>0.8</green>
-            <blue>0.8</blue>
-        </diffuse>
-        <ambient>
-            <red>0.8</red>
-            <green>0.8</green>
-            <blue>0.8</blue>
-        </ambient>
-        <specular>
-            <red>0.9</red>
-            <green>0.9</green>
-            <blue>0.9</blue>
-        </specular>
-        <emission>
-            <red>0.06</red>
             <green>0.0</green>
             <blue>0.0</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
@@ -352,6 +468,10 @@
         <type>material</type>
         <object-name>pedal cover black dx (Meshed)</object-name>
         <object-name>pedal cover black sx (Meshed)</object-name>
+        <object-name>pump cone (Meshed)</object-name>
+        <object-name>brake central lock sphere dx (Meshed)</object-name>
+        <object-name>brake central lock sphere sx (Meshed)</object-name>
+        <object-name>base screews (Meshed)</object-name>
         <diffuse>
             <red>0.2</red>
             <green>0.2</green>
@@ -374,8 +494,363 @@
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
+
+    <animation> 
+        <type>material</type>
+        <object-name>pump cilinder (Meshed)</object-name>
+        <diffuse>
+            <red>0.79</red>
+            <green>0.65</green>
+            <blue>0.26</blue>
+        </diffuse>
+        <ambient>
+            <red>0.79</red>
+            <green>0.65</green>
+            <blue>0.26</blue>
+        </ambient>
+        <specular>
+            <red>0.79</red>
+            <green>0.65</green>
+            <blue>0.26</blue>
+        </specular>
+        <emission>
+            <red>0.01</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+
+    <animation> 
+        <type>material</type>
+        <object-name>pump frontal (Meshed)</object-name>
+        <object-name>pump top valv (Meshed)</object-name>
+        <diffuse>
+            <red>0.67</red>
+            <green>0.53</green>
+            <blue>0.28</blue>
+        </diffuse>
+        <ambient>
+            <red>0.67</red>
+            <green>0.53</green>
+            <blue>0.28</blue>
+        </ambient>
+        <specular>
+            <red>0.67</red>
+            <green>0.53</green>
+            <blue>0.28</blue>
+        </specular>
+        <emission>
+            <red>0.005</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>pump join dx (Meshed)</object-name>
+        <object-name>pump join sx (Meshed)</object-name>
+        <diffuse>
+            <red>0.79</red>
+            <green>0.65</green>
+            <blue>0.26</blue>
+        </diffuse>
+        <ambient>
+            <red>0.79</red>
+            <green>0.65</green>
+            <blue>0.26</blue>
+        </ambient>
+        <specular>
+            <red>0.79</red>
+            <green>0.65</green>
+            <blue>0.26</blue>
+        </specular>
+        <emission>
+            <red>0.01</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>pumo top pin (Meshed)</object-name>
+        <diffuse>
+            <red>0.24</red>
+            <green>0.60</green>
+            <blue>0.65</blue>
+        </diffuse>
+        <ambient>
+            <red>0.24</red>
+            <green>0.60</green>
+            <blue>0.65</blue>
+        </ambient>
+        <specular>
+            <red>0.24</red>
+            <green>0.60</green>
+            <blue>0.65</blue>
+        </specular>
+        <emission>
+            <red>0.015</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <!-- Cynematic animations -->
+    
+    <!-- Arm -->
+    
+    <animation>
+        <object-name>ArmGroup</object-name>
+        <object-name>PedalsSxGroup</object-name>
+        <object-name>PedalsDxGroup</object-name>
+        <type>rotate</type>
+        <property>fdm/jsbsim/fcs/yaw-deg-cmd</property>
+        <factor>0.5</factor>
+        <offset-deg>0</offset-deg>
+        <center>
+            <x-m>0</x-m>
+            <y-m>0</y-m>
+            <z-m>0</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>0</y>
+            <z>1</z>
+        </axis>
+    </animation>
+    
+    <animation>
+        <object-name>PedalsSxGroup</object-name>
+        <type>rotate</type>
+        <property>fdm/jsbsim/fcs/yaw-deg-cmd</property>
+        <factor>-0.5</factor>
+        <offset-deg>0</offset-deg>
+        <center>
+            <x-m>0.019</x-m>
+            <y-m>-0.221</y-m>
+            <z-m>0</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>0</y>
+            <z>1</z>
+        </axis>
+    </animation>
+    
+    <animation>
+        <object-name>join little sx (Meshed)</object-name>
+        <type>rotate</type>
+        <property>fdm/jsbsim/fcs/yaw-deg-cmd</property>
+        <factor>-0.5</factor>
+        <offset-deg>0</offset-deg>
+        <center>
+            <x-m>-0.086</x-m>
+            <y-m>0.0</y-m>
+            <z-m>0.0</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>0</y>
+            <z>-1</z>
+        </axis>
+    </animation>
+    
+    <animation>
+        <object-name>brake arm sx (Meshed)</object-name>
+        <type>rotate</type>
+        <property>fdm/jsbsim/fcs/yaw-deg-cmd</property>
+        <factor>-0.5</factor>
+        <offset-deg>0</offset-deg>
+        <center>
+            <x-m>0.024</x-m>
+            <y-m>0.0</y-m>
+            <z-m>0.0</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>0</y>
+            <z>-1</z>
+        </axis>
+    </animation>
+    
+    <animation>
+        <object-name>brake lateral lock sx (Meshed)</object-name>
+        <object-name>brake lateral pin sx (Meshed)</object-name>
+        <object-name>brake lateral pix sx (Meshed)</object-name>
+        <object-name>brake lock sx (Meshed)</object-name>
+        <type>rotate</type>
+        <property>fdm/jsbsim/fcs/yaw-deg-cmd</property>
+        <factor>0.65</factor>
+        <offset-deg>0</offset-deg>
+        <center>
+            <x-m>0.019</x-m>
+            <y-m>-0.221</y-m>
+            <z-m>0.0</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>0</y>
+            <z>1</z>
+        </axis>
+    </animation>
+    
+    <animation>
+        <object-name>brake lock sx (Meshed)</object-name>
+        <type>rotate</type>
+        <property>fdm/jsbsim/fcs/yaw-deg-cmd</property>
+        <factor>-0.4</factor>
+        <offset-deg>0</offset-deg>
+        <center>
+            <x-m>0.019</x-m>
+            <y-m>-0.179</y-m>
+            <z-m>0.0</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>0</y>
+            <z>1</z>
+        </axis>
+    </animation>
+
+    <animation>
+        <object-name>pedal sx (Meshed)</object-name>
+        <object-name>pedal sx secondary axis (Meshed)</object-name>
+        <object-name>pedal screew int sx (Meshed)</object-name>
+        <type>rotate</type>
+        <property>fdm/jsbsim/fcs/yaw-deg-cmd</property>
+        <factor>-0.9</factor>
+        <offset-deg>0</offset-deg>
+        <center>
+            <x-m>0.058</x-m>
+            <y-m>0.0</y-m>
+            <z-m>0.0</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+        </axis>
+    </animation>
+    
+    <animation>
+        <object-name>PedalsDxGroup</object-name>
+        <type>rotate</type>
+        <property>fdm/jsbsim/fcs/yaw-deg-cmd</property>
+        <factor>-0.5</factor>
+        <offset-deg>0</offset-deg>
+        <center>
+            <x-m>0.019</x-m>
+            <y-m>0.221</y-m>
+            <z-m>0</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>0</y>
+            <z>1</z>
+        </axis>
+    </animation>
+    
+    <animation>
+        <object-name>join little dx (Meshed)</object-name>
+        <type>rotate</type>
+        <property>fdm/jsbsim/fcs/yaw-deg-cmd</property>
+        <factor>-0.5</factor>
+        <offset-deg>0</offset-deg>
+        <center>
+            <x-m>-0.086</x-m>
+            <y-m>0.0</y-m>
+            <z-m>0.0</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>0</y>
+            <z>-1</z>
+        </axis>
+    </animation>
+    
+    <animation>
+        <object-name>brake arm dx (Meshed)</object-name>
+        <type>rotate</type>
+        <property>fdm/jsbsim/fcs/yaw-deg-cmd</property>
+        <factor>-0.5</factor>
+        <offset-deg>0</offset-deg>
+        <center>
+            <x-m>-0.024</x-m>
+            <y-m>0.0</y-m>
+            <z-m>0.0</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>0</y>
+            <z>-1</z>
+        </axis>
+    </animation>
+    
+    <animation>
+        <object-name>brake lateral lock dx (Meshed)</object-name>
+        <object-name>brake lateral pin dx (Meshed)</object-name>
+        <object-name>brake lateral pix dx (Meshed)</object-name>
+        <object-name>brake lock dx (Meshed)</object-name>
+        <type>rotate</type>
+        <property>fdm/jsbsim/fcs/yaw-deg-cmd</property>
+        <factor>0.390</factor>
+        <offset-deg>0</offset-deg>
+        <center>
+            <x-m>0.019</x-m>
+            <y-m>0.221</y-m>
+            <z-m>0.0</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>0</y>
+            <z>1</z>
+        </axis>
+    </animation>
+
+    <animation>
+        <object-name>brake lock dx (Meshed)</object-name>
+        <type>rotate</type>
+        <property>fdm/jsbsim/fcs/yaw-deg-cmd</property>
+        <factor>-0.5</factor>
+        <offset-deg>0</offset-deg>
+        <center>
+            <x-m>0.019</x-m>
+            <y-m>0.179</y-m>
+            <z-m>0.0</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>0</y>
+            <z>1</z>
+        </axis>
+    </animation>
+
+    <animation>
+        <object-name>pedal dx (Meshed)</object-name>
+        <object-name>pedal dx secondary axis (Meshed)</object-name>
+        <object-name>pedal screew int dx (Meshed)</object-name>
+        <type>rotate</type>
+        <property>fdm/jsbsim/fcs/yaw-deg-cmd</property>
+        <factor>0.5</factor>
+        <offset-deg>0</offset-deg>
+        <center>
+            <x-m>0.058</x-m>
+            <y-m>0.0</y-m>
+            <z-m>0.0</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+        </axis>
+    </animation>
+    
     
 
-    
-    
 </PropertyList>
