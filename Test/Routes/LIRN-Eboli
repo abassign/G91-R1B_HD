@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+  <version type="int">2</version>
+  <flight-rules type="string">V</flight-rules>
+  <flight-type type="string">X</flight-type>
+  <estimated-duration-minutes type="int">0</estimated-duration-minutes>
+  <departure>
+    <airport type="string">LIRN</airport>
+    <runway type="string">06</runway>
+  </departure>
+  <route>
+    <wp>
+      <type type="string">runway</type>
+      <departure type="bool">true</departure>
+      <ident type="string">06</ident>
+      <icao type="string">LIRN</icao>
+    </wp>
+    <wp n="1">
+      <type type="string">navaid</type>
+      <ident type="string">SOR</ident>
+      <lon type="double">14.335272</lon>
+      <lat type="double">40.582488</lat>
+    </wp>
+    <wp n="2">
+      <type type="string">navaid</type>
+      <ident type="string">PTC</ident>
+      <lon type="double">14.908359</lon>
+      <lat type="double">40.619993</lat>
+    </wp>
+    <wp n="3">
+      <type type="string">basic</type>
+      <ident type="string">E015N040</ident>
+      <lon type="double">15.061</lon>
+      <lat type="double">40.613</lat>
+    </wp>
+  </route>
+</PropertyList>

@@ -1,0 +1,4 @@
+All livery files have been converted to DDS, but the liveries in PNG are always present for any corrections or additions. The conversion to DDS format was done following this example:
+
+convert ITA_prot_001.png -flip -define dds: compression = DXT5 dxt5: ITA_prot_001.dds
+convert ITA_prot_002.png -flip -define dds: compression = DXT5 dxt5: ITA_prot_002.dds

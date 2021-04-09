@@ -611,7 +611,7 @@
         <object-name>PedalsDxGroup</object-name>
         <type>rotate</type>
         <property>fdm/jsbsim/fcs/yaw-deg-cmd</property>
-        <factor>0.5</factor>
+        <factor>-0.5</factor>
         <offset-deg>0</offset-deg>
         <center>
             <x-m>0</x-m>
@@ -629,7 +629,7 @@
         <object-name>PedalsSxGroup</object-name>
         <type>rotate</type>
         <property>fdm/jsbsim/fcs/yaw-deg-cmd</property>
-        <factor>-0.5</factor>
+        <factor>0.5</factor>
         <offset-deg>0</offset-deg>
         <center>
             <x-m>0.019</x-m>
@@ -647,7 +647,7 @@
         <object-name>join little sx (Meshed)</object-name>
         <type>rotate</type>
         <property>fdm/jsbsim/fcs/yaw-deg-cmd</property>
-        <factor>-0.5</factor>
+        <factor>0.5</factor>
         <offset-deg>0</offset-deg>
         <center>
             <x-m>-0.086</x-m>
@@ -665,7 +665,7 @@
         <object-name>brake arm sx (Meshed)</object-name>
         <type>rotate</type>
         <property>fdm/jsbsim/fcs/yaw-deg-cmd</property>
-        <factor>-0.5</factor>
+        <factor>0.5</factor>
         <offset-deg>0</offset-deg>
         <center>
             <x-m>0.024</x-m>
@@ -686,7 +686,7 @@
         <object-name>brake lock sx (Meshed)</object-name>
         <type>rotate</type>
         <property>fdm/jsbsim/fcs/yaw-deg-cmd</property>
-        <factor>0.65</factor>
+        <factor>-0.65</factor>
         <offset-deg>0</offset-deg>
         <center>
             <x-m>0.019</x-m>
@@ -704,7 +704,7 @@
         <object-name>brake lock sx (Meshed)</object-name>
         <type>rotate</type>
         <property>fdm/jsbsim/fcs/yaw-deg-cmd</property>
-        <factor>-0.4</factor>
+        <factor>0.4</factor>
         <offset-deg>0</offset-deg>
         <center>
             <x-m>0.019</x-m>
@@ -724,7 +724,7 @@
         <object-name>pedal screew int sx (Meshed)</object-name>
         <type>rotate</type>
         <property>fdm/jsbsim/fcs/yaw-deg-cmd</property>
-        <factor>-0.9</factor>
+        <factor>0.9</factor>
         <offset-deg>0</offset-deg>
         <center>
             <x-m>0.058</x-m>
@@ -742,7 +742,7 @@
         <object-name>PedalsDxGroup</object-name>
         <type>rotate</type>
         <property>fdm/jsbsim/fcs/yaw-deg-cmd</property>
-        <factor>-0.5</factor>
+        <factor>0.5</factor>
         <offset-deg>0</offset-deg>
         <center>
             <x-m>0.019</x-m>
@@ -760,7 +760,7 @@
         <object-name>join little dx (Meshed)</object-name>
         <type>rotate</type>
         <property>fdm/jsbsim/fcs/yaw-deg-cmd</property>
-        <factor>-0.5</factor>
+        <factor>0.5</factor>
         <offset-deg>0</offset-deg>
         <center>
             <x-m>-0.086</x-m>
@@ -778,7 +778,7 @@
         <object-name>brake arm dx (Meshed)</object-name>
         <type>rotate</type>
         <property>fdm/jsbsim/fcs/yaw-deg-cmd</property>
-        <factor>-0.5</factor>
+        <factor>0.5</factor>
         <offset-deg>0</offset-deg>
         <center>
             <x-m>-0.024</x-m>
@@ -799,7 +799,7 @@
         <object-name>brake lock dx (Meshed)</object-name>
         <type>rotate</type>
         <property>fdm/jsbsim/fcs/yaw-deg-cmd</property>
-        <factor>0.390</factor>
+        <factor>-0.390</factor>
         <offset-deg>0</offset-deg>
         <center>
             <x-m>0.019</x-m>
@@ -817,7 +817,7 @@
         <object-name>brake lock dx (Meshed)</object-name>
         <type>rotate</type>
         <property>fdm/jsbsim/fcs/yaw-deg-cmd</property>
-        <factor>-0.5</factor>
+        <factor>0.5</factor>
         <offset-deg>0</offset-deg>
         <center>
             <x-m>0.019</x-m>
@@ -837,7 +837,7 @@
         <object-name>pedal screew int dx (Meshed)</object-name>
         <type>rotate</type>
         <property>fdm/jsbsim/fcs/yaw-deg-cmd</property>
-        <factor>0.5</factor>
+        <factor>-0.5</factor>
         <offset-deg>0</offset-deg>
         <center>
             <x-m>0.058</x-m>

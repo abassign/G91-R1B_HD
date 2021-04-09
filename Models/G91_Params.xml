@@ -63,10 +63,10 @@ G91_Params.xml
             <diffuse type="float">0.69</diffuse>
             <specular type="float">0.20</specular>
             <dirty_set type="int">0</dirty_set>
-            <livery_001 type="string">Aircraft/G91-R1B_HD/Models/Liveries/pan_1_001.png</livery_001>
-            <livery_002 type="string">Aircraft/G91-R1B_HD/Models/Liveries/pan_1_002.png</livery_002>
-            <dirty_001 type="string">Aircraft/G91-R1B_HD/Models/Liveries/dirty_01_4k.png</dirty_001>
-            <dirty_002 type="string">Aircraft/G91-R1B_HD/Models/Liveries/dirty_02_4k.png</dirty_002>
+            <livery_001 type="string">Aircraft/G91-R1B_HD/Models/Liveries/pan_1_001.dds</livery_001>
+            <livery_002 type="string">Aircraft/G91-R1B_HD/Models/Liveries/pan_1_002.dds</livery_002>
+            <dirty_001 type="string">Aircraft/G91-R1B_HD/Models/Liveries/dirty_01_4k.dds</dirty_001>
+            <dirty_002 type="string">Aircraft/G91-R1B_HD/Models/Liveries/dirty_02_4k.dds</dirty_002>
             <normalmap_enabled>0</normalmap_enabled>
             <version>2</version>
             <symbols_path type="string"></symbols_path>
@@ -86,10 +86,10 @@ G91_Params.xml
             <diffuse type="float">0.69</diffuse>
             <specular type="float">0.20</specular>
             <dirty_set type="int">0</dirty_set>
-            <livery_001 type="string">Aircraft/G91-R1B_HD/Models/Liveries/pan_1_001.png</livery_001>
-            <livery_002 type="string">Aircraft/G91-R1B_HD/Models/Liveries/pan_1_002.png</livery_002>
-            <dirty_001 type="string">Aircraft/G91-R1B_HD/Models/Liveries/dirty_01_4k.png</dirty_001>
-            <dirty_002 type="string">Aircraft/G91-R1B_HD/Models/Liveries/dirty_02_4k.png</dirty_002>
+            <livery_001 type="string">Aircraft/G91-R1B_HD/Models/Liveries/pan_1_001.dds</livery_001>
+            <livery_002 type="string">Aircraft/G91-R1B_HD/Models/Liveries/pan_1_002.dds</livery_002>
+            <dirty_001 type="string">Aircraft/G91-R1B_HD/Models/Liveries/dirty_01_4k.dds</dirty_001>
+            <dirty_002 type="string">Aircraft/G91-R1B_HD/Models/Liveries/dirty_02_4k.dds</dirty_002>
             <normalmap_enabled>0</normalmap_enabled>
             <version>2</version>
             <symbols_path type="string"></symbols_path>
@@ -109,10 +109,10 @@ G91_Params.xml
             <diffuse type="float">0.83</diffuse>
             <specular type="float">0.08</specular>
             <dirty_set type="int">0</dirty_set>
-            <livery_001 type="string">Aircraft/G91-R1B_HD/Models/Liveries/ITA_2_37_001.png</livery_001>
-            <livery_002 type="string">Aircraft/G91-R1B_HD/Models/Liveries/ITA_2_37_002.png</livery_002>
-            <dirty_001 type="string">Aircraft/G91-R1B_HD/Models/Liveries/dirty_01_4k.png</dirty_001>
-            <dirty_002 type="string">Aircraft/G91-R1B_HD/Models/Liveries/dirty_02_4k.png</dirty_002>
+            <livery_001 type="string">Aircraft/G91-R1B_HD/Models/Liveries/ITA_2_37_001.dds</livery_001>
+            <livery_002 type="string">Aircraft/G91-R1B_HD/Models/Liveries/ITA_2_37_002.dds</livery_002>
+            <dirty_001 type="string">Aircraft/G91-R1B_HD/Models/Liveries/dirty_01_4k.dds</dirty_001>
+            <dirty_002 type="string">Aircraft/G91-R1B_HD/Models/Liveries/dirty_02_4k.dds</dirty_002>
             <normalmap_enabled>0</normalmap_enabled>
             <version>2</version>
             <symbols_path type="string"></symbols_path>
@@ -132,10 +132,10 @@ G91_Params.xml
             <diffuse type="float">0.60</diffuse>
             <specular type="float">0.48</specular>
             <dirty_set type="int">0</dirty_set>
-            <livery_001 type="string">Aircraft/G91-R1B_HD/Models/Liveries/ITA_prot_001.png</livery_001>
-            <livery_002 type="string">Aircraft/G91-R1B_HD/Models/Liveries/ITA_prot_002.png</livery_002>
-            <dirty_001 type="string">Aircraft/G91-R1B_HD/Models/Liveries/dirty_01_4k.png</dirty_001>
-            <dirty_002 type="string">Aircraft/G91-R1B_HD/Models/Liveries/dirty_02_4k.png</dirty_002>
+            <livery_001 type="string">Aircraft/G91-R1B_HD/Models/Liveries/ITA_prot_001.dds</livery_001>
+            <livery_002 type="string">Aircraft/G91-R1B_HD/Models/Liveries/ITA_prot_002.dds</livery_002>
+            <dirty_001 type="string">Aircraft/G91-R1B_HD/Models/Liveries/dirty_01_4k.dds</dirty_001>
+            <dirty_002 type="string">Aircraft/G91-R1B_HD/Models/Liveries/dirty_02_4k.dds</dirty_002>
             <normalmap_enabled>0</normalmap_enabled>
             <version>2</version>
             <symbols_path>Aircraft/G91-R1B_HD/Models/Liveries/symbols</symbols_path>
@@ -178,10 +178,10 @@ G91_Params.xml
             <diffuse type="float">0.76</diffuse>
             <specular type="float">0.09</specular>
             <dirty_set type="int">0</dirty_set>
-            <livery_001 type="string">Aircraft/G91-R1B_HD/Models/Liveries/R3/poto_01.png</livery_001>
-            <livery_002 type="string">Aircraft/G91-R1B_HD/Models/Liveries/R3/poto_02.png</livery_002>
-            <dirty_001 type="string">Aircraft/G91-R1B_HD/Models/Liveries/dirty_01_4k.png</dirty_001>
-            <dirty_002 type="string">Aircraft/G91-R1B_HD/Models/Liveries/dirty_02_4k.png</dirty_002>
+            <livery_001 type="string">Aircraft/G91-R1B_HD/Models/Liveries/R3/poto_01.dds</livery_001>
+            <livery_002 type="string">Aircraft/G91-R1B_HD/Models/Liveries/R3/poto_02.dds</livery_002>
+            <dirty_001 type="string">Aircraft/G91-R1B_HD/Models/Liveries/dirty_01_4k.dds</dirty_001>
+            <dirty_002 type="string">Aircraft/G91-R1B_HD/Models/Liveries/dirty_02_4k.dds</dirty_002>
             <normalmap_enabled>0</normalmap_enabled>
             <version>10</version>
             <symbols_path type="string"></symbols_path>
@@ -201,10 +201,10 @@ G91_Params.xml
             <diffuse type="float">0.80</diffuse>
             <specular type="float">0.33</specular>
             <dirty_set type="int">0</dirty_set>
-            <livery_001 type="string">Aircraft/G91-R1B_HD/Models/Liveries/R3/GER_1962_001.png</livery_001>
-            <livery_002 type="string">Aircraft/G91-R1B_HD/Models/Liveries/R3/GER_1962_002.png</livery_002>
-            <dirty_001 type="string">Aircraft/G91-R1B_HD/Models/Liveries/dirty_01_4k.png</dirty_001>
-            <dirty_002 type="string">Aircraft/G91-R1B_HD/Models/Liveries/dirty_02_4k.png</dirty_002>
+            <livery_001 type="string">Aircraft/G91-R1B_HD/Models/Liveries/R3/GER_1962_001.dds</livery_001>
+            <livery_002 type="string">Aircraft/G91-R1B_HD/Models/Liveries/R3/GER_1962_002.dds</livery_002>
+            <dirty_001 type="string">Aircraft/G91-R1B_HD/Models/Liveries/dirty_01_4k.dds</dirty_001>
+            <dirty_002 type="string">Aircraft/G91-R1B_HD/Models/Liveries/dirty_02_4k.dds</dirty_002>
             <normalmap_enabled>0</normalmap_enabled>
             <version>10</version>
             <symbols_path type="string"></symbols_path>
@@ -224,10 +224,10 @@ G91_Params.xml
             <diffuse type="float">0.60</diffuse>
             <specular type="float">0.48</specular>
             <dirty_set type="int">0</dirty_set>
-            <livery_001 type="string">Aircraft/G91-R1B_HD/Models/Liveries/ITA_2_CBR_200000_H_001.png</livery_001>
-            <livery_002 type="string">Aircraft/G91-R1B_HD/Models/Liveries/ITA_2_CBR_200000_H_002.png</livery_002>
-            <dirty_001 type="string">Aircraft/G91-R1B_HD/Models/Liveries/dirty_01_4k.png</dirty_001>
-            <dirty_002 type="string">Aircraft/G91-R1B_HD/Models/Liveries/dirty_02_4k.png</dirty_002>
+            <livery_001 type="string">Aircraft/G91-R1B_HD/Models/Liveries/ITA_2_CBR_200000_H_001.dds</livery_001>
+            <livery_002 type="string">Aircraft/G91-R1B_HD/Models/Liveries/ITA_2_CBR_200000_H_002.dds</livery_002>
+            <dirty_001 type="string">Aircraft/G91-R1B_HD/Models/Liveries/dirty_01_4k.dds</dirty_001>
+            <dirty_002 type="string">Aircraft/G91-R1B_HD/Models/Liveries/dirty_02_4k.dds</dirty_002>
             <normalmap_enabled>0</normalmap_enabled>
             <version>2</version>
             <symbols_path type="string"></symbols_path>
@@ -247,10 +247,10 @@ G91_Params.xml
             <diffuse type="float">0.76</diffuse>
             <specular type="float">0.09</specular>
             <dirty_set type="int">0</dirty_set>
-            <livery_001 type="string">Aircraft/G91-R1B_HD/Models/Liveries/R3/poto_eq_301_jaguares_1971_01.png</livery_001>
-            <livery_002 type="string">Aircraft/G91-R1B_HD/Models/Liveries/R3/poto_eq_301_jaguares_1971_02.png</livery_002>
-            <dirty_001 type="string">Aircraft/G91-R1B_HD/Models/Liveries/dirty_01_4k.png</dirty_001>
-            <dirty_002 type="string">Aircraft/G91-R1B_HD/Models/Liveries/dirty_02_4k.png</dirty_002>
+            <livery_001 type="string">Aircraft/G91-R1B_HD/Models/Liveries/R3/poto_eq_301_jaguares_1971_01.dds</livery_001>
+            <livery_002 type="string">Aircraft/G91-R1B_HD/Models/Liveries/R3/poto_eq_301_jaguares_1971_02.dds</livery_002>
+            <dirty_001 type="string">Aircraft/G91-R1B_HD/Models/Liveries/dirty_01_4k.dds</dirty_001>
+            <dirty_002 type="string">Aircraft/G91-R1B_HD/Models/Liveries/dirty_02_4k.dds</dirty_002>
             <normalmap_enabled>0</normalmap_enabled>
             <version>10</version>
             <symbols_path type="string"></symbols_path>

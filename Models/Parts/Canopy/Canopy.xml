@@ -1508,7 +1508,7 @@
         <position>
             <x-m>-2.7</x-m>
             <y-m>0.0</y-m>
-            <z-m>0.9</z-m>
+            <z-m>1.2</z-m>
         </position>
         <direction>
             <x>-1.0</x>
@@ -1516,21 +1516,21 @@
             <z>0.0</z>
         </direction>
         <ambient>
-            <r>0.00</r>
-            <g>0.00</g>
-            <b>0.00</b>
+            <r>0.01</r>
+            <g>0.01</g>
+            <b>0.01</b>
             <a>1</a>
         </ambient>
         <diffuse>
-            <r>0.05</r>
-            <g>0.05</g>
-            <b>0.05</b>
+            <r>0.1</r>
+            <g>0.1</g>
+            <b>0.1</b>
             <a>1</a>
         </diffuse>
         <specular>
-            <r>0.2</r>
-            <g>0.2</g>
-            <b>0.2</b>
+            <r>0.4</r>
+            <g>0.4</g>
+            <b>0.4</b>
             <a>1</a>
         </specular>
         <attenuation>
