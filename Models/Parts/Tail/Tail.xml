@@ -600,7 +600,7 @@
         <object-name>D_DADI_Plate_vertical_wing</object-name>
         <object-name>D_DADI_Plate_vertical_wing_01</object-name>
         <object-name>DADI.027</object-name>
-        <property>fdm/jsbsim/fcs/rudder-pos-deg</property>
+        <property>fdm/jsbsim/fcs/yaw-deg-cmd</property>
         <factor>-1</factor>
         <axis>
             <x1-m> 4.22196 </x1-m>
@@ -617,7 +617,7 @@
         <object-name>D_bar_node3.001</object-name>
         <object-name>D_bar_node2.001</object-name>
         <object-name>D_DADI_Plate_vertical_wing_01.001</object-name>
-        <property>fdm/jsbsim/fcs/rudder-pos-deg</property>
+        <property>fdm/jsbsim/fcs/yaw-deg-cmd</property>
         <factor>0.3</factor>
         <axis>
             <x1-m> 4.22196 </x1-m>
