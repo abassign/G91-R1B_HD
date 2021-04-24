@@ -106,8 +106,8 @@ G91_Params.xml
             <name_short type="string">Mil ITA 3-37 R1B</name_short>
             <name_long type="string">Italian Air Force - 2nd flight flock n. 37 (R1B)</name_long>
             <PANR1 type="float">0.0</PANR1>
-            <diffuse type="float">0.83</diffuse>
-            <specular type="float">0.08</specular>
+            <diffuse type="float">0.24</diffuse>
+            <specular type="float">0.26</specular>
             <dirty_set type="int">0</dirty_set>
             <livery_001 type="string">Aircraft/G91-R1B_HD/Models/Liveries/ITA_2_37_001.dds</livery_001>
             <livery_002 type="string">Aircraft/G91-R1B_HD/Models/Liveries/ITA_2_37_002.dds</livery_002>

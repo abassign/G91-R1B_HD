@@ -46,7 +46,6 @@
         <object-name>A__G91_fuselage_canopy.004</object-name>
     </effect>
 
-
     <animation>
         <type>material</type>
         <object-name>anticollision mirror (Meshed)</object-name>
@@ -513,17 +512,37 @@
 
     <animation>
         <type>material</type>
-        <object-name>F_canopY_ant.006</object-name>
         <object-name>Tunnel_cable</object-name>
+        <diffuse>
+            <red>0.13</red>
+            <green>0.12</green>
+            <blue>0.12</blue>
+        </diffuse>
+        <ambient>
+            <red>0.18</red>
+            <green>0.15</green>
+            <blue>0.15</blue>
+        </ambient>
+        <emission>
+            <red>0.007</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation>
+        <type>material</type>
+        <object-name>F_canopY_ant.006</object-name>
         <diffuse>
             <red>0.1</red>
             <green>0.1</green>
             <blue>0.1</blue>
         </diffuse>
         <ambient>
-            <red>0.15</red>
-            <green>0.12</green>
-            <blue>0.12</blue>
+            <red>0.10</red>
+            <green>0.10</green>
+            <blue>0.10</blue>
         </ambient>
         <emission>
             <red>0.005</red>
