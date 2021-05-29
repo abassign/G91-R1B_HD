@@ -99,17 +99,19 @@ var radio_ptr175 = func() {
     # System initialization
     if (chan_selector == nil) {
         start_status = 1;
-
         var list = props.globals.initNode("fdm/jsbsim/systems/gauges/radio/com1/chann");
         list.removeAllChildren();
-        list.addChildren("data", 22);
+        #// This command give an system error, is strange, but not work from 20210525
+        #// list.addChildren("data", 22);
+        for (var i = 1; i <= 22; i += 1) {
+            list.addChild("data");
+        }
         list = props.globals.getNode("fdm/jsbsim/systems/gauges/radio/com1/chann").getChildren("data");
         for (var i = 1; i <= 20; i += 1) {
             list[i].setIntValue("active",0);
             list[i].setDoubleValue("freq",0.0);
             list[i].setValue("description","");
         };
-
         setprop("fdm/jsbsim/systems/gauges/radio/ptr175/chan-selector",19);
         chan_selector = 19;
         var freq = radio_normal_freq(getprop("instrumentation/comm/frequencies/selected-mhz"));

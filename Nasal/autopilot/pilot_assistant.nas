@@ -305,7 +305,7 @@ var RunwaysDataClass = {
             me.num_rwys += 1;
             me.rwys[me.num_rwys] = RunwayDataClass.new();
             me.rwys[me.num_rwys].init(airport.runways[rwy]);
-            print("pilot_assistan.nas RunwayDataClass.init rwys: ",me.num_rwys," lenght: ",me.rwys[me.num_rwys].lenght);
+            ## print("pilot_assistan.nas RunwayDataClass.init rwys: ",me.num_rwys," lenght: ",me.rwys[me.num_rwys].lenght);
         };
         me.rwys_list_id = {};
         me.rwys_list_select = -1;
