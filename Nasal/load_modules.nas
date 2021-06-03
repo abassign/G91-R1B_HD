@@ -223,7 +223,6 @@ var load_modules = func() {
             module_radio_ptr175.setDebug(set_active_radio_ptr175 - 1);
             module_radio_ptr175.setFilePath(getprop("/sim/aircraft-dir")~"/Nasal/Gauges");
             module_radio_ptr175.setMainFile("radio_ptr175.nas");
-# Verifica modulo 2021-05-25 errore di caricamento :
             module_radio_ptr175.load();
             setprop("sim/G91/nasal/modules/active-radio-ptr175",1);
             print("load_modules.nas load module [radio-ptr175.nas]");
