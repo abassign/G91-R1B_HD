@@ -331,6 +331,12 @@ G91_Params.xml
     </parts>
     
     <configuration>
+        <inertia>
+            <modifier>
+                <cg-x-weight-value-lib-default type="float">15.0</cg-x-weight-value-lib-default>
+                <cg-x-shift-percent-default type="float">-100.0</cg-x-shift-percent-default>
+            </modifier>
+        </inertia>
         <gauges>
             <tacan-active type="float">0.0</tacan-active>
             <nav-active type="float">1.0</nav-active>

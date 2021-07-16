@@ -977,9 +977,154 @@
             </button>
         </group>
     </group>
-    <!--
+
     <hrule/>
-    
+
+    <group>
+        <layout>hbox</layout>
+        <group>
+            <layout>table</layout>
+            <radio>
+                <row>0</row>
+                <col>0</col>
+                <halign>fill</halign>
+                <label>CG Ctrl Active</label>
+                <property>fdm/jsbsim/inertia/modifier/cg-x-weight-active</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </radio>
+            <slider>
+                <row>0</row>
+                <col>1</col>
+                <pref-width>80</pref-width>
+                <name>Variation CG - Massa lib.</name>
+                <property>fdm/jsbsim/inertia/modifier/cg-x-weight-value-lib</property>
+                <min>0</min>
+                <max>50</max>
+                <step>5</step>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+                <binding>
+                    <command>property-assign</command>
+                    <property>fdm/jsbsim/inertia/modifier/cg-x-weight-active</property>
+                    <value>1</value>
+                </binding>
+            </slider>
+            <text>
+                <row>0</row>
+                <col>2</col>
+                <label>MMMMMMMM</label>
+                <live>true</live>
+                <format>Mass lib: %3.0f</format>
+                <property>fdm/jsbsim/inertia/modifier/cg-x-weight-value-lib</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.0</blue>
+                </color>
+            </text>
+            <slider>
+                <row>0</row>
+                <col>3</col>
+                <pref-width>120</pref-width>
+                <name>cg x shift percent in</name>
+                <property>fdm/jsbsim/inertia/modifier/cg-x-shift-percent</property>
+                <min>-100</min>
+                <max>100</max>
+                <step>5</step>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+                <binding>
+                    <command>property-assign</command>
+                    <property>fdm/jsbsim/inertia/modifier/cg-x-weight-active</property>
+                    <value>1</value>
+                </binding>
+            </slider>
+            <text>
+                <row>0</row>
+                <col>4</col>
+                <label>MMMMMM</label>
+                <live>true</live>
+                <format>X: %3.0f %%</format>
+                <property>fdm/jsbsim/inertia/modifier/cg-x-shift-percent</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.0</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>5</col>
+                <label>999999999999</label>
+                <live>true</live>
+                <format>PW - : %3.0f</format>
+                <property>fdm/jsbsim/inertia/pointmass-weight-lbs[9]</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.0</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>6</col>
+                <label>999999999999</label>
+                <live>true</live>
+                <format>PW + : %3.0f</format>
+                <property>fdm/jsbsim/inertia/pointmass-weight-lbs[8]</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.0</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>7</col>
+                <label>999999999999</label>
+                <live>true</live>
+                <format>CG X: %3.1f</format>
+                <property>fdm/jsbsim/inertia/cg-x-in</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.0</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>8</col>
+                <label>999999999999</label>
+                <live>true</live>
+                <format>I-YY: %5.0f</format>
+                <property>fdm/jsbsim/inertia/iyy-slugs_ft2</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.0</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>9</col>
+                <label>999999999999</label>
+                <live>true</live>
+                <format>CG Z: %3.1f</format>
+                <property>fdm/jsbsim/inertia/cg-z-in</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.0</blue>
+                </color>
+            </text>
+        </group>
+    </group>
+    <!--
     <group>
         <layout>vbox</layout>
         <group>

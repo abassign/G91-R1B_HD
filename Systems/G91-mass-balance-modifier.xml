@@ -16,13 +16,12 @@ pm-cg-x-weight-neg-position
     <property value="10.0">inertia/modifier/cg-x-weight-value-lib-default</property>
     <property value="-30.0">inertia/modifier/cg-x-shift-percent-default</property>
     -->
-    <property value="5.0">inertia/modifier/cg-x-weight-value-lib-default</property>
-    <property value="-100.0">inertia/modifier/cg-x-shift-percent-default</property>
-    
-    <property value="0.0">inertia/modifier/cg-x-weight-active</property>
-    <property value="0.0">inertia/modifier/cg-x-weight-active-default</property>
-    <property value="0.0">inertia/modifier/cg-x-weight-value-lib</property>
+    <property value="0.0">inertia/modifier/cg-x-weight-value-lib-default</property>
+    <property value="0.0">inertia/modifier/cg-x-shift-percent-default</property>
     <property value="0.0">inertia/modifier/cg-x-shift-percent</property>
+    <property value="0.0">inertia/modifier/cg-x-weight-active-default</property>
+    <property value="0.0">inertia/modifier/cg-x-weight-active</property>
+    <property value="0.0">inertia/modifier/cg-x-weight-value-lib</property>
     <property value="0.0">inertia/modifier/cg-x-weight-pos-value</property>
     <property value="0.0">inertia/modifier/cg-x-weight-neg-value</property>
     

@@ -263,6 +263,7 @@
     <nasal>
         
         <general>
+            <file>Aircraft/G91-R1B_HD/Nasal/init.nas</file>
             <!-- Generic -->
             <file>Aircraft/G91-R1B_HD/Nasal/Ambient/ambient_data.nas</file>
             <file>Aircraft/G91-R1B_HD/Nasal/Engine/engine_red_emission.nas</file>
