@@ -75,6 +75,8 @@ var timer_tacan_arn_21 = maketimer(0.5, func() {
             setprop("sim/G91/configuration/gauges/tacan-nav-active-state",1);
             setprop("sim/G91/configuration/gauges/tacan-nav-active-desc","VOR configuration activate");
             setprop("sim/G91/configuration/gauges/frontal-central-01-active",0);
+            setprop("sim/G91/configuration/gauges/nav-active-AN_ARN-82",1);
+            setprop("sim/G91/configuration/gauges/nav-active-NAV_arn_21_C866",0);
         } elsif(s == 1) {
             setprop("sim/G91/configuration/gauges/nav-active",0);
             setprop("sim/G91/configuration/gauges/MBT-active",0);
