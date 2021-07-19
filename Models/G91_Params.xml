@@ -48,6 +48,8 @@ G91_Params.xml
             <symbol_03 type="string"></symbol_03>
             <symbol_04 type="string"></symbol_04>
             <symbol_05 type="string"></symbol_05>
+            <tacan_nav_active_state type="int">0</tacan_nav_active_state>
+            <recognition_gauges type="int">0</recognition_gauges>
         </active>
         
         <!-- For correct identification ref:
@@ -75,6 +77,8 @@ G91_Params.xml
             <symbol_03 type="string"></symbol_03>
             <symbol_04 type="string"></symbol_04>
             <symbol_05 type="string"></symbol_05>
+            <tacan_nav_active_state type="int">0</tacan_nav_active_state>
+            <recognition_gauges type="int">0</recognition_gauges>
         </livery>
         
         <livery n="2">
@@ -98,6 +102,8 @@ G91_Params.xml
             <symbol_03 type="string"></symbol_03>
             <symbol_04 type="string"></symbol_04>
             <symbol_05 type="string"></symbol_05>
+            <tacan_nav_active_state type="int">1</tacan_nav_active_state>
+            <recognition_gauges type="int">1</recognition_gauges>
         </livery>
         
         <livery n="3">
@@ -121,6 +127,8 @@ G91_Params.xml
             <symbol_03 type="string"></symbol_03>
             <symbol_04 type="string"></symbol_04>
             <symbol_05 type="string"></symbol_05>
+            <tacan_nav_active_state type="int">0</tacan_nav_active_state>
+            <recognition_gauges type="int">1</recognition_gauges>
         </livery>
         
         <livery n="4">
@@ -144,6 +152,8 @@ G91_Params.xml
             <symbol_03 type="string"></symbol_03>
             <symbol_04 type="string"></symbol_04>
             <symbol_05 type="string"></symbol_05>
+            <tacan_nav_active_state type="int">0</tacan_nav_active_state>
+            <recognition_gauges type="int">0</recognition_gauges>
         </livery>
         
         <livery n="5">
@@ -167,6 +177,8 @@ G91_Params.xml
             <symbol_03 type="string"></symbol_03>
             <symbol_04 type="string"></symbol_04>
             <symbol_05 type="string"></symbol_05>
+            <tacan_nav_active_state type="int">2</tacan_nav_active_state>
+            <recognition_gauges type="int">1</recognition_gauges>
         </livery>
         
         <livery n="6">
@@ -190,6 +202,8 @@ G91_Params.xml
             <symbol_03 type="string"></symbol_03>
             <symbol_04 type="string"></symbol_04>
             <symbol_05 type="string"></symbol_05>
+            <tacan_nav_active_state type="int">2</tacan_nav_active_state>
+            <recognition_gauges type="int">1</recognition_gauges>
         </livery>
         
         <livery n="7">
@@ -213,6 +227,8 @@ G91_Params.xml
             <symbol_03 type="string"></symbol_03>
             <symbol_04 type="string"></symbol_04>
             <symbol_05 type="string"></symbol_05>
+            <tacan_nav_active_state type="int">1</tacan_nav_active_state>
+            <recognition_gauges type="int">1</recognition_gauges>
         </livery>
         
         <livery n="8">
@@ -236,6 +252,8 @@ G91_Params.xml
             <symbol_03 type="string"></symbol_03>
             <symbol_04 type="string"></symbol_04>
             <symbol_05 type="string"></symbol_05>
+            <tacan_nav_active_state type="int">0</tacan_nav_active_state>
+            <recognition_gauges type="int">0</recognition_gauges>
         </livery>
         
         <livery n="9">
@@ -259,6 +277,8 @@ G91_Params.xml
             <symbol_03 type="string"></symbol_03>
             <symbol_04 type="string"></symbol_04>
             <symbol_05 type="string"></symbol_05>
+            <tacan_nav_active_state type="int">2</tacan_nav_active_state>
+            <recognition_gauges type="int">1</recognition_gauges>
         </livery>
         
     </liveries>

@@ -871,6 +871,12 @@
 
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Components/Film_Counter_Box/Film_Counter_Box.xml</path>
+        <condition>
+            <equals>
+                <property>sim/G91/liveries/active/recognition_gauges</property>
+                <value>1</value>
+            </equals>
+        </condition>
     </model>
 
     <!-- Jato System -->

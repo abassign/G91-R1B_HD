@@ -415,26 +415,37 @@
             </test>
         </switch>
         
-        <switch name="systems/gauges/radio/NAV-ARN-21/switch-turn">
-            <default value="systems/gauges/radio/NAV-ARN-21/switch-turn"/>
-            <test logic="AND" value="0.0">
-                systems/gauges/radio/NAV-ARN-21/set-on-off == 1
-            </test>
-            <test logic="AND" value="2.0">
-                systems/gauges/radio/NAV-ARN-21/set-on-off == 2
-            </test>
-        </switch>
-        
+    </channel>
+    
+    
+    <channel name="systems gauges radio AN_ARN-82 NAV-ARN-21 switch animation" execrate="4">
+
         <washout_filter name="systems/gauges/radio/NAV-ARN-21/switch-turn-wa">
             <input>systems/gauges/radio/NAV-ARN-21/switch-turn</input>
             <c1>1.0</c1>
         </washout_filter>
-        
+
+        <switch name="systems/gauges/radio/AN_ARN-82/switch-turn">
+            <default value="systems/gauges/radio/AN_ARN-82/switch-turn"/>
+            <test logic="OR" value="systems/gauges/radio/NAV-ARN-21/switch-turn">
+                systems/gauges/radio/NAV-ARN-21/switch-turn-wa GT 0.1
+                systems/gauges/radio/NAV-ARN-21/switch-turn-wa LT -0.1
+            </test>
+        </switch>
+
         <washout_filter name="systems/gauges/radio/AN_ARN-82/switch-turn-wa">
             <input>systems/gauges/radio/AN_ARN-82/switch-turn</input>
             <c1>1.0</c1>
         </washout_filter>
-        
+
+        <switch name="systems/gauges/radio/NAV-ARN-21/switch-turn">
+            <default value="systems/gauges/radio/NAV-ARN-21/switch-turn"/>
+            <test logic="OR" value="systems/gauges/radio/AN_ARN-82/switch-turn">
+                systems/gauges/radio/AN_ARN-82/switch-turn-wa GT 0.1
+                systems/gauges/radio/AN_ARN-82/switch-turn-wa LT -0.1
+            </test>
+        </switch>
+
         <switch name="systems/gauges/radio/NAV-ARN-21/switch-turn-on-event">
             <default value="0"/>
             <test logic="OR" value="1.0">
@@ -446,40 +457,21 @@
                 systems/gauges/radio/AN_ARN-82/switch-turn-wa LT -0.2
             </test>
         </switch>
-        
-    </channel>
-    
-    
-    <channel name="systems gauges radio AN_ARN-82 switch connector" execrate="4">
-        
+
         <lag_filter name="systems/gauges/radio/AN_ARN-82/switch-turn-pos">
             <input>systems/gauges/radio/AN_ARN-82/switch-turn</input>
             <c1>4.0</c1>
         </lag_filter>
-        
-        <switch name="systems/gauges/radio/NAV-ARN-21/switch-turn">
-            <default value="systems/gauges/radio/NAV-ARN-21/switch-turn"/>
-            <test logic="AND" value="3.0">
-                systems/gauges/radio/AN_ARN-82/switch-turn-pos GE 1.9
-            </test>
-            <test logic="AND" value="2.0">
-                systems/gauges/radio/AN_ARN-82/switch-turn-pos GT 0.9
-                systems/gauges/radio/AN_ARN-82/switch-turn-pos LT 1.1
-            </test>
-            <test logic="AND" value="0.0">
-                systems/gauges/radio/AN_ARN-82/switch-turn-pos LE 0.9
-            </test>
-        </switch>
-        
-    </channel>
-    
-    
-    <channel name="systems gauges radio NAV-ARN-21 switch" execrate="4">
-        
+
         <lag_filter name="systems/gauges/radio/NAV-ARN-21/switch-turn-pos">
             <input>systems/gauges/radio/NAV-ARN-21/switch-turn</input>
             <c1>8.0</c1>
         </lag_filter>
+
+    </channel>
+    
+    
+    <channel name="systems gauges radio NAV-ARN-21 switch" execrate="4">
         
         <switch name="systems/gauges/radio/NAV-ARN-21/sw-off">
             <default value="1.0"/>
@@ -489,8 +481,8 @@
         </switch>
         
         <switch name="systems/gauges/radio/NAV-ARN-21/sw-rec">
-            <default value="1.0"/>
-            <test logic="AND" value="0.0">
+            <default value="0.0"/>
+            <test logic="AND" value="1.0">
                 systems/gauges/radio/NAV-ARN-21/switch-turn-pos GT 0.9
                 systems/gauges/radio/NAV-ARN-21/switch-turn-pos LT 1.1
             </test>
@@ -514,7 +506,10 @@
             <default value="0"/>
             <test logic="AND" value="1">
                 systems/gauges/radio/NAV-ARN-21/operative == 1
-                systems/gauges/radio/NAV-ARN-21/sw-TR == 1
+                <test logic="OR">
+                    systems/gauges/radio/NAV-ARN-21/sw-TR == 1
+                    systems/gauges/radio/NAV-ARN-21/sw-rec == 1
+                </test>
             </test>
         </switch>
         
@@ -1243,7 +1238,10 @@
             <default value="0"/>
             <test logic="AND" value="1.0">
                 systems/gauges/radio/NAV-ARN-21/operative GT 0.1
-                systems/gauges/radio/NAV-ARN-21/sw-TR GE 1
+                <test logic="OR">
+                    systems/gauges/radio/NAV-ARN-21/sw-TR == 1
+                    systems/gauges/radio/NAV-ARN-21/sw-rec == 1
+                </test>
             </test>
         </switch>
         

@@ -1106,6 +1106,17 @@ setlistener("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/mode-trigger", f
 
 
 setlistener("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/mode", func {
+    mode = getprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/mode");
+    if (mode > 0) {
+        if (getprop("fdm/jsbsim/systems/gauges/radio/AN_ARN-82/switch-turn") == 0 or getprop("fdm/jsbsim/systems/gauges/radio/NAV-ARN-21/switch-turn") == 0) {
+            setprop("fdm/jsbsim/systems/gauges/radio/AN_ARN-82/switch-turn",1);
+            setprop("fdm/jsbsim/systems/gauges/radio/NAV-ARN-21/switch-turn",1);
+        }
+    }
+}, 0, 1);
+
+
+setlistener("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/mode", func {
 
     mode = getprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/mode");
 
