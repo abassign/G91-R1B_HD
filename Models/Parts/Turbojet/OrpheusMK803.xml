@@ -9,7 +9,7 @@
         <y-m>0.30</y-m>
         <z-m>-0.25</z-m>
     </offsets>
-
+    <!--
     <animation>
         <type>noshadow</type>
         <object-name>node0</object-name>
@@ -28,7 +28,7 @@
         <object-name>node14</object-name>
         <object-name>node15</object-name>
     </animation>
-    
+    -->
     <animation> 
         <type>material</type>
         <object-name>node0</object-name>

@@ -1576,6 +1576,7 @@
         </dim-factor>
     </light>
 
+
     <animation>
         <type>select</type>
         <object-name>canopy-ambient-gray</object-name>
@@ -1584,12 +1585,84 @@
                 <greater-than>
                     <expression>
                         <product>
-                            <property>sim/G91/ambient-data/irradiance_light_green</property>
                             <property>sim/G91/configuration/compositor/canopy-ambient-light-dimmer</property>
+                            <property>sim/G91/ambient-data/irradiance_light_green</property>
                         </product>
                     </expression>
                     <value type="double">0.01</value>
                 </greater-than>
+                <equals>
+                    <property>sim/current-view/internal</property>
+                    <value>true</value>
+                </equals>
+            </and>
+        </condition>
+    </animation>
+
+    <light>
+        <name>canopy-ambient-gray-moon</name>
+        <type>point</type>
+        <position>
+            <x-m>-2.7</x-m>
+            <y-m>0.0</y-m>
+            <z-m>1.2</z-m>
+        </position>
+        <direction>
+            <x>-1.0</x>
+            <y>0.0</y>
+            <z>0.0</z>
+        </direction>
+        <ambient>
+            <r>0.0</r>
+            <g>0.0</g>
+            <b>0.0</b>
+            <a>1</a>
+        </ambient>
+        <diffuse>
+            <r>0.0</r>
+            <g>0.0</g>
+            <b>0.0</b>
+            <a>1</a>
+        </diffuse>
+        <specular>
+            <r>1.0</r>
+            <g>1.0</g>
+            <b>1.04</b>
+            <a>1</a>
+        </specular>
+        <attenuation>
+            <c>1.0</c>
+            <l>0.09</l>
+            <q>0.032</q>
+        </attenuation>
+        <spot-exponent>20</spot-exponent>
+        <spot-cutoff>50</spot-cutoff>
+        <range-m>2</range-m>
+        <dim-factor>
+            <expression>
+                <product>
+                    <property>ephemeris/moon/phase</property>
+                    <cos><property>sim/G91/ambient-data/irradiance_light_green</property></cos>
+                    <property>sim/G91/configuration/compositor/canopy-ambient-gray-specular-dimmer</property>
+                </product>
+            </expression>
+        </dim-factor>
+    </light>
+
+    <animation>
+        <type>select</type>
+        <object-name>canopy-ambient-gray-moon</object-name>
+        <condition>
+            <and>
+                <lower-than>
+                    <expression>
+                        <product>
+                            <property>sim/G91/configuration/compositor/canopy-ambient-light-dimmer</property>
+                            <property>sim/G91/ambient-data/irradiance_light_green</property>
+                        </product>
+                    </expression>
+                    <value type="double">0.01</value>
+                </lower-than>
                 <equals>
                     <property>sim/current-view/internal</property>
                     <value>true</value>

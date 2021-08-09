@@ -51,10 +51,10 @@
             <rotation-speed>
                 <x-min-deg-sec>00</x-min-deg-sec>
                 <y-min-deg-sec>00</y-min-deg-sec>
-                <z-min-deg-sec>00</z-min-deg-sec>
-                <x-max-deg-sec>2000</x-max-deg-sec>
-                <y-max-deg-sec>00</y-max-deg-sec>
-                <z-max-deg-sec>00</z-max-deg-sec>
+                <z-min-deg-sec>-500</z-min-deg-sec>
+                <x-max-deg-sec>4000</x-max-deg-sec>
+                <y-max-deg-sec>4000</y-max-deg-sec>
+                <z-max-deg-sec>500</z-max-deg-sec>
             </rotation-speed>
         </shooter>
        

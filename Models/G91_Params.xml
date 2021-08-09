@@ -353,7 +353,7 @@ G91_Params.xml
     <configuration>
         <inertia>
             <modifier>
-                <cg-x-weight-value-lib-default type="float">15.0</cg-x-weight-value-lib-default>
+                <cg-x-weight-value-lib-default type="float">10.0</cg-x-weight-value-lib-default>
                 <cg-x-shift-percent-default type="float">-100.0</cg-x-shift-percent-default>
             </modifier>
         </inertia>
@@ -365,7 +365,7 @@ G91_Params.xml
         </gauges>
         <compositor>
             <canopy-ambient-light-dimmer type="float">0.4</canopy-ambient-light-dimmer>
-            <canopy-ambient-gray-specular-dimmer type="float">0.0</canopy-ambient-gray-specular-dimmer>
+            <canopy-ambient-gray-specular-dimmer type="float">0.15</canopy-ambient-gray-specular-dimmer>
         </compositor>
     </configuration>
     

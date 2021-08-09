@@ -663,9 +663,9 @@
             <factor-prop>/fdm/jsbsim/fcs/flap-pos-norm</factor-prop>
         </diffuse>
         <ambient>
-            <red>0.6</red>
-            <green>0.6</green>
-            <blue>0.6</blue>
+            <red>0.3</red>
+            <green>0.4</green>
+            <blue>0.3</blue>
         </ambient>
         <specular>
             <red>0.1</red>
@@ -1019,7 +1019,6 @@
     
     <animation> 
         <type>material</type>
-        <object-name>B00_box_gear_door</object-name>
         <object-name>A__G91_fuselage_int</object-name>
         <object-name>B00_dx_door_02.001</object-name>
         <object-name>B00_dx_door_02.008</object-name>
@@ -1039,6 +1038,27 @@
             <red>0.1</red>
             <green>0.1</green>
             <blue>0.1</blue>
+        </specular>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>B00_box_gear_door</object-name>
+        <diffuse>
+            <red>0.52</red>
+            <green>0.75</green>
+            <blue>0.51</blue>
+            <factor-prop>gear/gear/position-norm</factor-prop>
+        </diffuse>
+        <ambient>
+            <red>0.3</red>
+            <green>0.4</green>
+            <blue>0.3</blue>
+        </ambient>
+        <specular>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.3</blue>
         </specular>
     </animation>
     
@@ -1370,7 +1390,7 @@
         <object-name>Flap-sx</object-name>
         <property>surface-positions/flap-pos-norm</property>
         <factor>0.15</factor>
-        <offset-m>0</offset-m>
+        <offset-m>0.0</offset-m>
         <axis>
             <x>1</x>
             <y>0.5</y>
@@ -1414,6 +1434,7 @@
         <object-name>A00.flap.dx.005</object-name>
         <object-name>A00.flap.dx.006</object-name>
         <object-name>A00.flap.dx.007</object-name>
+        <object-name>A00.flap.sx.000</object-name>
         <center>
             <x-m>0.58449</x-m>
             <y-m>1.70121</y-m>
@@ -1442,12 +1463,25 @@
             <z-m>-0.76</z-m>
         </target-center>
     </animation>
+
+    <animation>
+        <type>translate</type>
+        <object-name>A00.flap.sx.000</object-name>
+        <property>surface-positions/flap-pos-norm</property>
+        <factor>0.115</factor>
+        <offset-m>0</offset-m>
+        <axis>
+            <x>1</x>
+            <y>0.5</y>
+            <z>0</z>
+        </axis>
+    </animation>
     
     <animation>
         <type>translate</type>
         <object-name>A00.flap.dx.006</object-name>
         <property>surface-positions/flap-pos-norm</property>
-        <factor>0.135</factor>
+        <factor>0.185</factor>
         <offset-m>0</offset-m>
         <axis>
             <x>1</x>
@@ -2014,19 +2048,4 @@
         </offsets>
     </model>
     
-    <!-- delcas Sperimental -->
-    <!--
-    <model>
-        <path>Aircraft/G91-R1B_HD/Models/Parts/Wing/wing-delcas.xml</path>
-        <name>wing-delcas</name>
-        <offsets>
-            <x-m>0.0</x-m>
-            <y-m>0.0</y-m>
-            <z-m>0.0</z-m>
-            <pitch-deg>0.0</pitch-deg>
-            <roll-deg>0.0</roll-deg>
-            <heading-deg>0.0</heading-deg>
-        </offsets>
-    </model>
-    -->
 </PropertyList>

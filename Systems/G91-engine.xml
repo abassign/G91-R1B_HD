@@ -191,9 +191,9 @@ Description: G91R2 Canopy automation
                     <p>systems/engine/effects-external-light-contrast</p>
                     <interpolate1d>
                         <p>systems/engine/rpm-norm</p>
-                        <v>0.0</v> <v>0.5</v>
-                        <v>0.5</v> <v>0.15</v>
-                        <v>1.0</v> <v>0.1</v>
+                        <v>0.0</v> <v>0.3</v>
+                        <v>0.5</v> <v>0.18</v>
+                        <v>1.0</v> <v>0.05</v>
                     </interpolate1d>
                 </product>
             </function>
@@ -206,9 +206,9 @@ Description: G91R2 Canopy automation
                     <p>systems/engine/effects-external-light-contrast</p>
                     <interpolate1d>
                         <p>systems/engine/rpm-norm</p>
-                        <v>0.0</v> <v>0.1</v>
-                        <v>0.5</v> <v>0.1</v>
-                        <v>1.0</v> <v>0.0</v>
+                        <v>0.0</v> <v>0.12</v>
+                        <v>0.5</v> <v>0.08</v>
+                        <v>1.0</v> <v>0.05</v>
                     </interpolate1d>
                 </product>
             </function>
@@ -221,8 +221,8 @@ Description: G91R2 Canopy automation
                     <p>systems/engine/effects-external-light-contrast</p>
                     <interpolate1d>
                         <p>systems/engine/rpm-norm</p>
-                        <v>0.0</v> <v>0.05</v>
-                        <v>0.5</v> <v>0.15</v>
+                        <v>0.0</v> <v>0.02</v>
+                        <v>0.5</v> <v>0.1</v>
                         <v>1.0</v> <v>0.6</v>
                     </interpolate1d>
                 </product>
@@ -243,7 +243,47 @@ Description: G91R2 Canopy automation
                 </product>
             </function>
         </fcs_function>
-        
+
+        <fcs_function name="/environment/aircraft-effects/wash-strength">
+            <function>
+                <product>
+                    <interpolate1d>
+                        <p>/position/altitude-agl-ft</p>
+                        <v>0.0</v> <v>1.0</v>
+                        <v>100.0</v> <v>0.0</v>
+                    </interpolate1d>
+                    <interpolate1d>
+                        <p>systems/engine/rpm-norm</p>
+                        <v>0.0</v> <v>0.0</v>
+                        <v>1.0</v> <v>1.0</v>
+                    </interpolate1d>
+                </product>
+            </function>
+        </fcs_function>
+
+        <fcs_function name="/environment/aircraft-effects/wash-x">
+            <function>
+                <v>3.0</v>
+            </function>
+        </fcs_function>
+
+        <fcs_function name="/environment/aircraft-effects/wash-y">
+            <function>
+                <product>
+                    <interpolate1d>
+                        <p>/position/altitude-agl-ft</p>
+                        <v>0.0</v> <v>10.0</v>
+                        <v>100.0</v> <v>0.0</v>
+                    </interpolate1d>
+                    <interpolate1d>
+                        <p>systems/engine/rpm-norm</p>
+                        <v>0.0</v> <v>0.0</v>
+                        <v>1.0</v> <v>1.0</v>
+                    </interpolate1d>
+                </product>
+            </function>
+        </fcs_function>
+
     </channel>
     
     
