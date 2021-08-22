@@ -121,20 +121,20 @@
         <type>material</type>
         <object-name>back_plane_A</object-name>
         <diffuse>
-            <red>0.5</red>
-            <green>0.5</green>
-            <blue>0.5</blue>
+            <red>0.4</red>
+            <green>0.4</green>
+            <blue>0.4</blue>
         </diffuse>
         <ambient>
-            <red>1.0</red>
-            <green>0.9</green>
-            <blue>0.6</blue>
+            <red>0.8</red>
+            <green>0.7</green>
+            <blue>0.5</blue>
         </ambient>
         <emission>
             <red-prop>sim/G91/re_emit/gauge_red_type_b_phosphorescent_light</red-prop>
             <green-prop>sim/G91/re_emit/gauge_phosphorescent_light_type_b</green-prop>
             <blue>0.0</blue>
-            <factor>0.07</factor>
+            <factor>0.05</factor>
         </emission>
     </animation>
     
@@ -161,8 +161,6 @@
     
     <animation>
         <type>material</type>
-        <object-name>Arrow_1A (Meshed)</object-name>
-        <object-name>Arrow_2A (Meshed)</object-name>
         <object-name>Arrow_3A (Meshed)</object-name>
         <object-name>Arrow_4A (Meshed)</object-name>
         <diffuse>
@@ -180,6 +178,28 @@
             <green-prop>sim/G91/re_emit/gauge_phosphorescent_light_type_c</green-prop>
             <blue>0.0</blue>
             <factor>0.10</factor>
+        </emission>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>Arrow_1A (Meshed)</object-name>
+        <object-name>Arrow_2A (Meshed)</object-name>
+        <diffuse>
+            <red>0.9</red>
+            <green>0.9</green>
+            <blue>0.7</blue>
+        </diffuse>
+        <ambient>
+            <red>1.0</red>
+            <green>0.83</green>
+            <blue>0.60</blue>
+        </ambient>
+        <emission>
+            <red-prop>sim/G91/re_emit/gauge_red_type_c_phosphorescent_light</red-prop>
+            <green-prop>sim/G91/re_emit/gauge_phosphorescent_light_type_c</green-prop>
+            <blue>0.0</blue>
+            <factor>0.15</factor>
         </emission>
     </animation>
     
@@ -212,19 +232,19 @@
         <object-name>knob_001 (Meshed)</object-name>
         <object-name>knob_002 (Meshed)</object-name>
         <diffuse>
-            <red>0.2</red>
+            <red>0.22</red>
             <green>0.2</green>
             <blue>0.2</blue>
         </diffuse>
         <ambient>
-            <red>0.1</red>
-            <green>0.1</green>
-            <blue>0.1</blue>
+            <red>0.22</red>
+            <green>0.2</green>
+            <blue>0.21</blue>
         </ambient>
         <emission>
-            <red>0.01</red>
-            <green>0.003</green>
-            <blue>0.003</blue>
+            <red>0.015</red>
+            <green>0.0035</green>
+            <blue>0.0035</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
@@ -235,8 +255,8 @@
         <type>rotate</type>
         <object-name>Arrow_3A (Meshed)</object-name>
         <object-name>Arrow_3B (Meshed)</object-name>
-        <property>instrumentation/clock/indicated-sec</property>
-        <factor>0.00833333</factor>
+        <property>/instrumentation/clock/indicated-sec</property>
+        <factor>0.00833333333</factor>
         <axis>
             <x>-1</x>
             <y>0</y>
@@ -261,7 +281,7 @@
         <type>rotate</type>
         <object-name>Arrow_1A (Meshed)</object-name>
         <object-name>Arrow_1B (Meshed)</object-name>
-        <property>/instrumentation/clock/indicated-sec</property>
+        <property>/fdm/jsbsim/systems/gauges/clock/seconds-lag</property>
         <factor>6.0</factor>
         <axis>
             <x>-1</x>
@@ -279,7 +299,7 @@
             <repeatable>false</repeatable>
             <binding>
                 <command>property-cycle</command>
-                <property>sim/G91/gauge/clock/stopwatch</property>
+                <property>/fdm/jsbsim/systems/gauges/clock/push-status</property>
                 <value type="double">1</value>
                 <value type="double">2</value>
                 <value type="double">0</value>
@@ -291,7 +311,7 @@
         <type>rotate</type>
         <object-name>Arrow_2A (Meshed)</object-name>
         <object-name>Arrow_2B (Meshed)</object-name>
-        <property>sim/G91/gauge/clock/stopwatch_seconds</property>
+        <property>/fdm/jsbsim/systems/gauges/clock/minutes-lag</property>
         <factor>6</factor>
         <axis>
             <x>-1</x>

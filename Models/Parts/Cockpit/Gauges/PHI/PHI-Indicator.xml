@@ -284,10 +284,10 @@
             <blue>0.53</blue>
         </ambient>
         <emission>
-            <red-prop>sim/G91/re_emit/gauge_red_emer_lamp_3200_console_red_20</red-prop>
+            <red-prop>sim/G91/re_emit/gauge_red_emer_lamp_3200_console_red_50</red-prop>
             <green-prop>sim/G91/re_emit/gauge_red_emer_lamp_3200_console_green_50</green-prop>
             <blue-prop>sim/G91/re_emit/gauge_red_emer_lamp_3200_console_blue_50</blue-prop>
-            <factor>2.0</factor>
+            <factor>1.5</factor>
         </emission>
     </animation>
 

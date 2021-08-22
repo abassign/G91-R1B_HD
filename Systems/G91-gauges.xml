@@ -8,13 +8,110 @@ The C1 lag_filter is less is longer respond time
 
 <system name="Gauges">  
     
+    <property value="0">systems/gauges/clock/push-status</property>
+    <property value="-1">systems/gauges/clock/seconds-trigger-id</property>
+    <property value="0">systems/gauges/clock/seconds-increment</property>
+    <property value="0">systems/gauges/clock/minutes-increment</property>
+    <property value="0">systems/gauges/clock/seconds</property>
+    <property value="0">systems/gauges/clock/seconds-lag</property>
+    <property value="0">systems/gauges/clock/minutes</property>
+    <property value="0">systems/gauges/clock/minutes-lag</property>
+    <property value="-1">systems/gauges/clock/minutes-id</property>
     <property value="0">systems/gauges/cockpit-attitude-J8-horizon-offset</property>
     <property value="0">systems/gauges/cockpit-attitude-J8-caged-push-trigger</property>
     <property value="0">systems/gauges/cockpit-fire-sw-test-togle</property>
     <property value="0">systems/gauges/cockpit-fire-light-intensity</property>
     <property value="0">systems/gauges/cockpit-fire-light-transparent</property>
     
+
+    <channel name="Cockpit Clock" execrate="4">
+
+        <washout_filter name="systems/gauges/clock/seconds-counter-trigger-wa">
+            <input>/instrumentation/clock/indicated-sec</input>
+            <c1>4.0</c1>
+        </washout_filter>
+
+        <switch name="systems/gauges/clock/seconds-increment">
+            <default value="0"/>
+            <test logic="AND" value="1">
+                systems/gauges/clock/push-status == 1
+                systems/gauges/clock/seconds-counter-trigger-wa >= 0.5
+                systems/gauges/clock/seconds-trigger-id NE /instrumentation/clock/indicated-sec
+            </test>
+        </switch>
+
+        <switch name="systems/gauges/clock/seconds-trigger-id">
+            <default value="systems/gauges/clock/seconds-trigger-id"/>
+            <test logic="AND" value="/instrumentation/clock/indicated-sec">
+                systems/gauges/clock/seconds-increment == 1
+            </test>
+        </switch>
+
+        <summer name="systems/gauges/clock/seconds">
+            <input>systems/gauges/clock/seconds</input>
+            <input>systems/gauges/clock/seconds-increment</input>
+        </summer>
+
+        <fcs_function name="systems/gauges/clock/minutes-increment">
+            <function>
+                <ifthen>
+                    <and>
+                        <eq><mod><p>systems/gauges/clock/seconds</p><v>60</v></mod><v>0</v></eq>
+                        <gt><p>systems/gauges/clock/seconds</p><v>0</v></gt>
+                    </and>
+                    <p>systems/gauges/clock/seconds-increment</p>
+                    <v>0</v>
+                </ifthen>
+            </function>
+        </fcs_function>
+
+        <summer name="systems/gauges/clock/minutes">
+            <input>systems/gauges/clock/minutes</input>
+            <input>systems/gauges/clock/minutes-increment</input>
+        </summer>
+
+        <switch name="systems/gauges/clock/push-reset">
+            <default value="0"/>
+            <test logic="AND" value="1">
+                systems/gauges/clock/push-status == 0
+            </test>
+        </switch>
+
+        <linear_actuator name="systems/gauges/clock/seconds-lag">
+            <input>systems/gauges/clock/seconds-increment</input>
+            <versus>1</versus>
+            <reset>systems/gauges/clock/push-reset</reset>
+            <module>60</module>
+            <rate>0.1</rate>
+            <lag>0.0</lag>
+        </linear_actuator>
+
+        <linear_actuator name="systems/gauges/clock/minutes-lag">
+            <input>systems/gauges/clock/minutes-increment</input>
+            <versus>1</versus>
+            <reset>systems/gauges/clock/push-reset</reset>
+            <module>60</module>
+            <rate>0.1</rate>
+            <lag>0.0</lag>
+        </linear_actuator>
+
+        <switch name="systems/gauges/clock/seconds">
+            <default value="systems/gauges/clock/seconds"/>
+            <test logic="OR" value="0">
+                systems/gauges/clock/push-status == 0
+            </test>
+        </switch>
+
+        <switch name="systems/gauges/clock/minutes">
+            <default value="systems/gauges/clock/minutes"/>
+            <test logic="OR" value="0">
+                systems/gauges/clock/push-status == 0
+            </test>
+        </switch>
+
+    </channel>
     
+
     <channel name="Cockpit Fuel Pounds" execrate="8">
         
         <summer name="systems/gauges/cockpit-fuel-pounds/fuel_pounds_0-1-2">

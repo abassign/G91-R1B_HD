@@ -172,7 +172,10 @@ G91_Params.xml
             <normalmap_enabled>0</normalmap_enabled>
             <version>2</version>
             <symbols_path type="string">Aircraft/G91-R1B_HD/Models/Liveries/symbols</symbols_path>
+            <!--
             <symbol_01 type="string">1|0.507,0.033,0|0.853,0.348,1|0.632,0.0,16.0|1|px-NASA_logo.svg.png</symbol_01>
+            -->
+            <symbol_01 type="string"></symbol_01>
             <symbol_02 type="string"></symbol_02>
             <symbol_03 type="string"></symbol_03>
             <symbol_04 type="string"></symbol_04>
