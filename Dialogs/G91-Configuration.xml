@@ -1124,6 +1124,54 @@
             </text>
         </group>
     </group>
+
+    <hrule/>
+
+    <group>
+        <layout>hbox</layout>
+        <group>
+            <layout>table</layout>
+            <text>
+                <label>Gauges</label>
+                <pref-width>100</pref-width>
+                <halign>left</halign>
+                <row>0</row>
+                <col>0</col>
+                <color>
+                    <red>0.0</red>
+                    <green>1.0</green>
+                    <blue>1.0</blue>
+                </color>
+            </text>
+        </group>
+        <group>
+            <layout>table</layout>
+            <radio>
+                <row>0</row>
+                <col>0</col>
+                <label>Advanced gauges</label>
+                <pref-width>100</pref-width>
+                <halign>left</halign>
+                <property>sim/G91/liveries/active/advanced_gauges</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </radio>
+            <text>
+                <label> </label>
+                <pref-width>500</pref-width>
+                <halign>left</halign>
+                <row>0</row>
+                <col>2</col>
+                <color>
+                    <red>0.0</red>
+                    <green>1.0</green>
+                    <blue>1.0</blue>
+                </color>
+            </text>
+        </group>
+    </group>
     <!--
     <group>
         <layout>vbox</layout>

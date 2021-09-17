@@ -654,7 +654,7 @@
             <pitch-deg>8.5</pitch-deg>
         </offsets>
     </model>
-    
+
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/J8/J8.xml</path>
         <offsets>
@@ -663,6 +663,28 @@
             <z-m>0.140</z-m>
             <pitch-deg>8.5</pitch-deg>
         </offsets>
+        <condition>
+            <equals>
+                <property>sim/G91/liveries/active/advanced_gauges</property>
+                <value>0</value>
+            </equals>
+        </condition>
+    </model>
+
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/MM2/MM2.xml</path>
+        <offsets>
+            <x-m>0.01</x-m>
+            <y-m>0.112</y-m>
+            <z-m>0.140</z-m>
+            <pitch-deg>0.0</pitch-deg>
+        </offsets>
+        <condition>
+            <equals>
+                <property>sim/G91/liveries/active/advanced_gauges</property>
+                <value>1</value>
+            </equals>
+        </condition>
     </model>
 
     <model>

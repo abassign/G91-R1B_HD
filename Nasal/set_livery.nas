@@ -661,6 +661,7 @@ var getActiveData = func(target_module_id, dirty_set) {
         targets_module_id[target_module_id]["symbol_05"] = liveries[id].getNode("symbol_05").getValue();
         targets_module_id[target_module_id]["tacan_nav_active_state"] = liveries[id].getNode("tacan_nav_active_state").getValue();
         targets_module_id[target_module_id]["recognition_gauges"] = liveries[id].getNode("recognition_gauges").getValue();
+        targets_module_id[target_module_id]["advanced_gauges"] = liveries[id].getNode("advanced_gauges").getValue();
         targets_module_id[target_module_id]["resolution_set"] = resolutionSet;
 
         #// Set the active livery section
@@ -686,6 +687,7 @@ var getActiveData = func(target_module_id, dirty_set) {
         setprop("sim/G91/liveries/active/symbol_05",liveries[id].getNode("symbol_05").getValue());
         setprop("sim/G91/liveries/active/tacan_nav_active_state",liveries[id].getNode("tacan_nav_active_state").getValue());
         setprop("sim/G91/liveries/active/recognition_gauges",liveries[id].getNode("recognition_gauges").getValue());
+        setprop("sim/G91/liveries/active/advanced_gauges",liveries[id].getNode("advanced_gauges").getValue());
         
         #// Symbol section
         

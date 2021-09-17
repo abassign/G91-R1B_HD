@@ -1,0 +1,498 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+    
+    <path>MM2.ac</path>
+
+    <offsets>
+        <x-m>0.0</x-m>
+        <y-m>0.0</y-m>
+        <z-m>0.0</z-m>
+        <roll-deg>180.0</roll-deg>
+        <pitch-deg>90.0</pitch-deg>
+        <heading-deg>-90.0</heading-deg>
+    </offsets>
+
+    <effect>
+        <inherits-from>Effects/model-transparent</inherits-from>
+        <object-name>glass (Meshed)</object-name>
+    </effect>
+
+    <animation>
+        <type>noshadow</type>
+        <object-name>procedural_light_cockpit_gauge_spot_red</object-name>
+        <object-name>glass (Meshed)</object-name>
+        <object-name>cover (Meshed)</object-name>
+        <object-name>frontal top (Meshed)</object-name>
+        <object-name>frontal screews (Meshed)</object-name>
+        <object-name>frontal back (Meshed)</object-name>
+        <object-name>cursor B (Meshed)</object-name>
+        <object-name>cursor A (Meshed)</object-name>
+        <object-name>cursor screews (Meshed)</object-name>
+        <object-name>sfera white B (Meshed)</object-name>
+        <object-name>sfera black B (Meshed)</object-name>
+        <object-name>sfera white A (Meshed)</object-name>
+        <object-name>sfera black A (Meshed)</object-name>
+        <object-name>sfera belt A (Meshed)</object-name>
+        <object-name>arrow top A (Meshed)</object-name>
+        <object-name>arrow top B (Meshed)</object-name>
+        <object-name>grade A (Meshed)</object-name>
+        <object-name>flag off (Meshed)</object-name>
+        <object-name>border screews (Meshed)</object-name>
+        <object-name>pick screews (Meshed)</object-name>
+        <object-name>pick support B (Meshed)</object-name>
+        <object-name>pick B (Meshed)</object-name>
+        <object-name>pick support A (Meshed)</object-name>
+        <object-name>pick A 01 (Meshed)</object-name>
+        <object-name>pick A 02 (Meshed)</object-name>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>cover (Meshed)</object-name>
+        <diffuse>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </diffuse>
+        <ambient>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </ambient>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>glass (Meshed)</object-name>
+        <transparency>
+            <alpha>0.1</alpha>
+        </transparency>
+        <diffuse>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </diffuse>
+        <ambient>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </ambient>
+        <emission>
+            <red-prop>sim/G91/re_emit/gauge_red_type_b_phosphorescent_light</red-prop>
+            <green-prop>sim/G91/re_emit/gauge_phosphorescent_light_type_b</green-prop>
+            <blue>0.0</blue>
+            <factor>0.10</factor>
+        </emission>
+    </animation>
+    
+    <animation>
+        <type>material</type>
+        <object-name>frontal top (Meshed)</object-name>
+        <diffuse>
+            <red>0.28</red>
+            <green>0.28</green>
+            <blue>0.28</blue>
+        </diffuse>
+        <ambient>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </ambient>
+        <emission>
+            <red>0.05</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>frontal screews (Meshed)</object-name>
+        <object-name>cursor screews (Meshed)</object-name>
+        <object-name>border screews (Meshed)</object-name>
+        <object-name>pick screews (Meshed)</object-name>
+        <diffuse>
+            <red>0.35</red>
+            <green>0.30</green>
+            <blue>0.30</blue>
+        </diffuse>
+        <ambient>
+            <red>0.15</red>
+            <green>0.15</green>
+            <blue>0.15</blue>
+        </ambient>
+        <specular>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </specular>
+        <emission>
+            <red>0.02</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation>
+        <type>material</type>
+        <object-name>frontal back (Meshed)</object-name>
+        <object-name>pick support B (Meshed)</object-name>
+        <diffuse>
+            <red>0.20</red>
+            <green>0.20</green>
+            <blue>0.20</blue>
+        </diffuse>
+        <ambient>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
+        </ambient>
+        <emission>
+            <red>0.01</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>pick B (Meshed)</object-name>
+        <diffuse>
+            <red>0.30</red>
+            <green>0.30</green>
+            <blue>0.30</blue>
+        </diffuse>
+        <ambient>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.3</blue>
+        </ambient>
+        <specular>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </specular>
+        <emission>
+            <red>0.015</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+
+    <animation> 
+        <type>material</type>
+        <object-name>cursor support B (Meshed)</object-name>
+        <object-name>cursor B (Meshed)</object-name>
+        <object-name>arrow top B (Meshed)</object-name>
+        <diffuse>
+            <red>0.28</red>
+            <green>0.28</green>
+            <blue>0.28</blue>
+        </diffuse>
+        <ambient>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
+        </ambient>
+        <emission>
+            <red>0.02</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation>
+        <type>material</type>
+        <object-name>cursor A (Meshed)</object-name>
+        <diffuse>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+        </diffuse>
+        <ambient>
+            <red>0.80</red>
+            <green>0.73</green>
+            <blue>0.40</blue>
+        </ambient>
+        <emission>
+            <red-prop>sim/G91/re_emit/gauge_red_type_b_phosphorescent_light</red-prop>
+            <green-prop>sim/G91/re_emit/gauge_phosphorescent_light_type_b</green-prop>
+            <blue>0.0</blue>
+            <factor>0.15</factor>
+        </emission>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>sfera belt A (Meshed)</object-name>
+        <diffuse>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </diffuse>
+        <ambient>
+            <red>0.80</red>
+            <green>0.75</green>
+            <blue>0.45</blue>
+        </ambient>
+        <emission>
+            <red-prop>sim/G91/re_emit/gauge_red_type_b_phosphorescent_light</red-prop>
+            <green-prop>sim/G91/re_emit/gauge_phosphorescent_light_type_b</green-prop>
+            <blue>0.0</blue>
+            <factor>0.12</factor>
+        </emission>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>arrow top A (Meshed)</object-name>
+        <object-name>grade A (Meshed)</object-name>
+        <object-name>pick support A (Meshed)</object-name>
+        <object-name>pick A 01 (Meshed)</object-name>
+        <object-name>pick A 02 (Meshed)</object-name>
+        <diffuse>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+        </diffuse>
+        <ambient>
+            <red>0.80</red>
+            <green>0.73</green>
+            <blue>0.40</blue>
+        </ambient>
+        <emission>
+            <red-prop>sim/G91/re_emit/gauge_red_type_b_phosphorescent_light</red-prop>
+            <green-prop>sim/G91/re_emit/gauge_phosphorescent_light_type_b</green-prop>
+            <blue>0.0</blue>
+            <factor>0.10</factor>
+        </emission>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>sfera white B (Meshed)</object-name>
+        <diffuse>
+            <red>0.9</red>
+            <green>0.9</green>
+            <blue>0.8</blue>
+        </diffuse>
+        <ambient>
+            <red>0.6</red>
+            <green>0.6</green>
+            <blue>0.5</blue>
+        </ambient>
+        <emission>
+            <red>0.05</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>sfera black A (Meshed)</object-name>
+        <diffuse>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+        </diffuse>
+        <ambient>
+            <red>0.9</red>
+            <green>0.9</green>
+            <blue>0.8</blue>
+        </ambient>
+        <emission>
+            <red>0.1</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>sfera black B (Meshed)</object-name>
+        <object-name>sfera white A (Meshed)</object-name>
+        <diffuse>
+            <red>0.10</red>
+            <green>0.10</green>
+            <blue>0.10</blue>
+        </diffuse>
+        <ambient>
+            <red>0.05</red>
+            <green>0.05</green>
+            <blue>0.05</blue>
+        </ambient>
+        <emission>
+            <red>0.01</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+
+
+    <animation>
+        <type>material</type>
+        <object-name>flag off (Meshed)</object-name>
+        <diffuse>
+            <red>0.7</red>
+            <green>0.4</green>
+            <blue>0.0</blue>
+        </diffuse>
+        <ambient>
+            <red>0.7</red>
+            <green>0.3</green>
+            <blue>0.3</blue>
+        </ambient>
+        <emission>
+            <red-prop>sim/G91/re_emit/gauge_red_type_c_phosphorescent_light</red-prop>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor>0.15</factor>
+        </emission>
+    </animation>
+    
+    <animation>
+        <type>knob</type>
+        <object-name>pick B (Meshed)</object-name>
+        <value>0.0</value>
+        <center>
+            <x-m>0.0</x-m><y-m>0.0305</y-m><z-m>0.0305</z-m>
+        </center>
+        <axis>
+            <x>-1</x><y>0</y><z>0</z>
+        </axis>
+        <action>
+            <binding>
+                <command>property-adjust</command>
+                <property>fdm/jsbsim/systems/gauges/cockpit-attitude-MM2-pitch-deg-display-offset</property>
+                <factor>1</factor>
+                <min>-27</min>
+                <max>27</max>
+                <wrap>false</wrap>
+            </binding>
+        </action>
+    </animation>
+
+    <animation>
+        <type>rotate</type>
+        <object-name>flag off (Meshed)</object-name>
+        <property>fdm/jsbsim/systems/gauges/cockpit-attitude-MM2-no-flag</property>
+        <factor>-70</factor>
+        <axis>
+            <x>0</x>
+            <y>-1</y>
+            <z>0</z>
+        </axis>
+        <center>
+            <x-m>0.0218</x-m>
+            <y-m>0.0</y-m>
+            <z-m>0.0222</z-m>
+        </center>
+    </animation>
+
+    <animation>
+        <type>rotate</type>
+        <object-name>arrow top A (Meshed)</object-name>
+        <object-name>arrow top B (Meshed)</object-name>
+        <property>fdm/jsbsim/systems/gauges/cockpit-attitude-MM2-roll-deg-display</property>
+        <factor>1</factor>
+        <axis>
+            <x>0</x>
+            <y>-1</y>
+            <z>0</z>
+        </axis>
+        <center>
+            <x-m>0.0</x-m>
+            <y-m>0.0</y-m>
+            <z-m>0.0</z-m>
+        </center>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>pick B (Meshed)</object-name>
+        <object-name>pick A 01 (Meshed)</object-name>
+        <object-name>pick A 02 (Meshed)</object-name>
+        <property>fdm/jsbsim/systems/gauges/cockpit-attitude-MM2-pitch-deg-display-offset</property>
+        <factor>4</factor>
+        <axis>
+            <x>0</x>
+            <y>-1</y>
+            <z>0</z>
+        </axis>
+        <center>
+            <x-m>-0.0305</x-m>
+            <y-m>0.0</y-m>
+            <z-m>-0.0305</z-m>
+        </center>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>sfera white B (Meshed)</object-name>
+        <object-name>sfera black B (Meshed)</object-name>
+        <object-name>sfera white A (Meshed)</object-name>
+        <object-name>sfera black A (Meshed)</object-name>
+        <object-name>sfera belt A (Meshed)</object-name>
+        <property>fdm/jsbsim/systems/gauges/cockpit-attitude-MM2-roll-deg-display</property>
+        <axis>
+            <x>0</x>
+            <y>-1</y>
+            <z>0</z>
+        </axis>
+        <center>
+            <x-m>0</x-m>
+            <y-m>0.041</y-m>
+            <z-m>0</z-m>
+        </center>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>sfera white B (Meshed)</object-name>
+        <object-name>sfera black B (Meshed)</object-name>
+        <object-name>sfera white A (Meshed)</object-name>
+        <object-name>sfera black A (Meshed)</object-name>
+        <object-name>sfera belt A (Meshed)</object-name>
+        <property>fdm/jsbsim/systems/gauges/cockpit-attitude-MM2-pitch-deg-display</property>
+        <factor>1</factor>
+        <!--
+        <interpolation>
+            <entry><ind>-90.0</ind><dep>-90.0</dep></entry>
+            <entry><ind> 90.0</ind><dep> 90.0</dep></entry>
+        </interpolation>
+
+        -->
+        <axis>
+            <x>0</x>
+            <y>0</y>
+            <z>-1</z>
+        </axis>
+        <center>
+            <x-m>0</x-m>
+            <y-m>0.041</y-m>
+            <z-m>0</z-m>
+        </center>
+    </animation>
+    
+    <model>
+        <name>procedural_light_cockpit_gauge_spot_red</name>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Effects/lights/procedural_light_cockpit_gauge_spot_red.xml</path>
+        <offsets>
+            <x-m> 0.03</x-m>
+            <y-m> 0.0 </y-m>
+            <z-m> 0.0 </z-m>
+        </offsets>
+    </model>
+    
+</PropertyList>
+
