@@ -7,6 +7,7 @@ var prop = props.globals.initNode("sim/G91/gauge/SFOM_83A/collimator_red", 0, "D
 var prop = props.globals.initNode("sim/G91/gauge/SFOM_83A/collimator_green", 0, "DOUBLE");
 var prop = props.globals.initNode("sim/G91/gauge/SFOM_83A/collimator_blue", 0, "DOUBLE");
 
+
 var viewInternal = 0;
 var valButton = 0;
 var xOffset0 = 0;
@@ -15,6 +16,8 @@ var xOffset_prec = 0;
 var yOffset0 = 0;
 var yOffset = 0;
 var yOffset_prec = 0;
+
+print("***** SFOM_83A_01.nas is load and execute");
 
 sfom83A_canvas = canvas.new({"name": "SFOM83A_canvas_Collimator_glass_TargetDOWN",
                     "size": [512,512], 
@@ -29,6 +32,8 @@ sfom83A_child = sfom83A_root.createChild("image")
         .setFile(sfom83A_path)
         .setTranslation(0,0)
         .setSize(384,384);
+
+## props.dump(sfom83A_canvas._node);
 
 var setCross = func() {
     sfom83A_child.setTranslation(xOffset * 10000 + 67, yOffset * (-11100) + valButton);
@@ -70,42 +75,47 @@ var color_cross_SFOM83A = func() {
 setlistener("sim/G91/gauge/SFOM_83A/button", func {
     if (viewInternal == 1) {
         valButton = props.globals.getNode("sim/G91/gauge/SFOM_83A/button",1).getValue();
-        call(setCross,[]);
+        #call(setCross,[]);
+        setCross();
     }
 }, 1, 1);
 
-setlistener("sim/current-view/x-offset-m", func {
+var getViewXOffset = func() {
     if (viewInternal == 1) {
         xOffset = xOffset0 - props.globals.getNode("sim/current-view/x-offset-m",1).getValue();
         if (math.abs(xOffset - xOffset_prec) > 0.0001) {
             xOffset_prec = xOffset;
-            valButton = props.globals.getNode("sim/G91/gauge/SFOM_83A/button",1).getValue();
-            yOffset = yOffset0 - props.globals.getNode("sim/current-view/y-offset-m",1).getValue();
-            call(setCross,[]);
+            #call(setCross,[]);
+            setCross();
+            #print("***** getViewXOffset: ",xOffset);
         }
     }
-}, 1, 1);
+}
 
-setlistener("sim/current-view/y-offset-m", func {
+var getViewYOffset = func() {
     if (viewInternal == 1) {
         yOffset = yOffset0 - props.globals.getNode("sim/current-view/y-offset-m",1).getValue();
         if (math.abs(yOffset - yOffset_prec) > 0.0001) {
             yOffset_prec = yOffset;
-            valButton = props.globals.getNode("sim/G91/gauge/SFOM_83A/button",1).getValue();
-            xOffset = xOffset0 - props.globals.getNode("sim/current-view/x-offset-m",1).getValue();
-            call(setCross,[]);
+            #call(setCross,[]);
+            setCross();
+            #print("***** getViewYOffset: ",yOffset);
         }
     }
-}, 1, 1);
+}
+
+setlistener("sim/current-view/x-offset-m",getViewXOffset);
+setlistener("sim/current-view/y-offset-m",getViewYOffset);
 
 var display_SFOM83A = maketimer(0.3, func() {
     viewInternal = props.globals.getNode("sim/current-view/internal",1).getValue();
     if (viewInternal == 1) {
         xOffset0 = string.trim(props.globals.getNode("sim/view/config/x-offset-m",1).getValue());
         yOffset0 = string.trim(props.globals.getNode("sim/view/config/y-offset-m",1).getValue());
-        valButton = props.globals.getNode("sim/G91/gauge/SFOM_83A/button",1).getValue();
-        call(setCross,[]);
-        call(color_cross_SFOM83A,[]);
+        #call(setCross,[]);
+        #call(color_cross_SFOM83A,[]);
+        setCross();
+        color_cross_SFOM83A();
     }
 });
 display_SFOM83A.start();

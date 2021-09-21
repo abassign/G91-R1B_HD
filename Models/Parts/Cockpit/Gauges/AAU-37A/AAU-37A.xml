@@ -1,0 +1,576 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+    
+    <path>AAU-37A.ac</path>
+
+    <offsets>
+        <x-m>0.0</x-m>
+        <y-m>0.0</y-m>
+        <z-m>0.0</z-m>
+    </offsets>
+
+    <effect>
+        <inherits-from>Effects/model-transparent</inherits-from>
+        <object-name>glass (Meshed)</object-name>
+    </effect>
+
+    <animation>
+        <type>noshadow</type>
+        <object-name>procedural_light_cockpit_gauge_spot_red</object-name>
+        <object-name>glass (Meshed)</object-name>
+        <object-name>cover (Meshed)</object-name>
+        <object-name>frontal top (Meshed)</object-name>
+        <object-name>frontal screews (Meshed)</object-name>
+        <object-name>frontal screews 8 (Meshed)</object-name>
+        <object-name>frontal back (Meshed)</object-name>
+        <object-name>frontal top A (Meshed)</object-name>
+        <object-name>division A (Meshed)</object-name>
+        <object-name>arrow B (Meshed)</object-name>
+        <object-name>arrow A (Meshed)</object-name>
+        <object-name>arrow center (Meshed)</object-name>
+        <object-name>frontal back A (Meshed)</object-name>
+        <object-name>frontal back A W (Meshed)</object-name>
+        <object-name>inhg 0001 A (Meshed)</object-name>
+        <object-name>inhg 0010 A (Meshed)</object-name>
+        <object-name>inhg 0100 A (Meshed)</object-name>
+        <object-name>inhg 1000 A (Meshed)</object-name>
+        <object-name>inhg 0001 B (Meshed)</object-name>
+        <object-name>inhg 0010 B (Meshed)</object-name>
+        <object-name>inhg 0100 B (Meshed)</object-name>
+        <object-name>inhg 1000 B (Meshed)</object-name>
+        <object-name>100ft A (Meshed)</object-name>
+        <object-name>100ft B (Meshed)</object-name>
+        <object-name>1000ft A (Meshed)</object-name>
+        <object-name>1000ft B (Meshed)</object-name>
+        <object-name>10000 ft B (Meshed)</object-name>
+        <object-name>10000 ft W A (Meshed)</object-name>
+        <object-name>10000 ft R A (Meshed)</object-name>
+        <object-name>10000 ft W B (Meshed)</object-name>
+        <object-name>pin sx (Meshed)</object-name>
+        <object-name>pin dx (Meshed)</object-name>
+        <object-name>flag elect A (Meshed)</object-name>
+        <object-name>flag elect B (Meshed)</object-name>
+        <object-name>flag pneu A (Meshed)</object-name>
+        <object-name>flag pneu B (Meshed)</object-name>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>Support (Meshed)</object-name>
+        <diffuse>
+            <red>0.33</red>
+            <green>0.50</green>
+            <blue>0.50</blue>
+        </diffuse>
+        <ambient>
+            <red>0.16</red>
+            <green>0.25</green>
+            <blue>0.25</blue>
+        </ambient>
+        <emission>
+            <red>0.035</red>
+            <green>0.012</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>cover (Meshed)</object-name>
+        <diffuse>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </diffuse>
+        <ambient>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </ambient>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>glass (Meshed)</object-name>
+        <transparency>
+            <alpha>0.1</alpha>
+        </transparency>
+        <diffuse>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </diffuse>
+        <ambient>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </ambient>
+        <emission>
+            <red-prop>sim/G91/re_emit/gauge_red_type_b_phosphorescent_light</red-prop>
+            <green-prop>sim/G91/re_emit/gauge_phosphorescent_light_type_b</green-prop>
+            <blue>0.0</blue>
+            <factor>0.10</factor>
+        </emission>
+    </animation>
+    
+    <animation>
+        <type>material</type>
+        <object-name>frontal top (Meshed)</object-name>
+        <diffuse>
+            <red>0.28</red>
+            <green>0.28</green>
+            <blue>0.28</blue>
+        </diffuse>
+        <ambient>
+            <red>0.15</red>
+            <green>0.15</green>
+            <blue>0.15</blue>
+        </ambient>
+        <emission>
+            <red>0.07</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>frontal screews (Meshed)</object-name>
+        <object-name>frontal screews 8 (Meshed)</object-name>
+        <object-name>arrow center (Meshed)</object-name>
+        <object-name>pin sx (Meshed)</object-name>
+        <object-name>pin dx (Meshed)</object-name>
+        <diffuse>
+            <red>0.35</red>
+            <green>0.30</green>
+            <blue>0.30</blue>
+        </diffuse>
+        <ambient>
+            <red>0.15</red>
+            <green>0.15</green>
+            <blue>0.15</blue>
+        </ambient>
+        <specular>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </specular>
+        <emission>
+            <red>0.02</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation>
+        <type>material</type>
+        <object-name>frontal back (Meshed)</object-name>
+        <diffuse>
+            <red>0.25</red>
+            <green>0.25</green>
+            <blue>0.25</blue>
+        </diffuse>
+        <ambient>
+            <red>0.25</red>
+            <green>0.25</green>
+            <blue>0.25</blue>
+        </ambient>
+        <emission>
+            <red>0.01</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+
+    <animation> 
+        <type>material</type>
+        <object-name>arrow B (Meshed)</object-name>
+        <object-name>100ft A (Meshed)</object-name>
+        <object-name>1000ft B (Meshed)</object-name>
+        <object-name>10000 ft B (Meshed)</object-name>
+        <object-name>inhg 0001 B (Meshed)</object-name>
+        <object-name>inhg 0010 B (Meshed)</object-name>
+        <object-name>inhg 0100 B (Meshed)</object-name>
+        <object-name>inhg 1000 B (Meshed)</object-name>
+        <diffuse>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </diffuse>
+        <ambient>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </ambient>
+        <emission>
+            <red>0.02</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>flag elect B (Meshed)</object-name>
+        <diffuse>
+            <red>0.28</red>
+            <green>0.28</green>
+            <blue>0.28</blue>
+        </diffuse>
+        <ambient>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
+        </ambient>
+        <emission>
+            <red>0.02</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>division A (Meshed)</object-name>
+        <object-name>frontal back A (Meshed)</object-name>
+        <object-name>frontal back A W (Meshed)</object-name>
+        <object-name>arrow A (Meshed)</object-name>
+        <object-name>frontal top A (Meshed)</object-name>
+        <diffuse>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+        </diffuse>
+        <ambient>
+            <red>0.9</red>
+            <green>0.9</green>
+            <blue>0.9</blue>
+        </ambient>
+        <emission>
+            <red-prop>sim/G91/re_emit/gauge_red_type_b_phosphorescent_light</red-prop>
+            <green-prop>sim/G91/re_emit/gauge_red_type_b_phosphorescent_light</green-prop>
+            <blue>sim/G91/re_emit/gauge_phosphorescent_light_type_b</blue>
+            <factor>0.25</factor>
+        </emission>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>10000 ft W A (Meshed)</object-name>
+        <object-name>10000 ft W B (Meshed)</object-name>
+        <object-name>1000ft A (Meshed)</object-name>
+        <object-name>100ft B (Meshed)</object-name>
+        <object-name>inhg 0001 A (Meshed)</object-name>
+        <object-name>inhg 0010 A (Meshed)</object-name>
+        <object-name>inhg 0100 A (Meshed)</object-name>
+        <object-name>inhg 1000 A (Meshed)</object-name>
+        <object-name>flag pneu A (Meshed)</object-name>
+        <object-name>flag elect A (Meshed)</object-name>
+        <diffuse>
+            <red>1.0</red>
+            <green>0.9</green>
+            <blue>0.9</blue>
+        </diffuse>
+        <ambient>
+            <red>0.9</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </ambient>
+        <emission>
+            <red-prop>sim/G91/re_emit/gauge_red_type_b_phosphorescent_light</red-prop>
+            <green-prop>sim/G91/re_emit/gauge_red_type_b_phosphorescent_light</green-prop>
+            <blue>sim/G91/re_emit/gauge_phosphorescent_light_type_b</blue>
+            <blue>0.0</blue>
+            <factor>0.20</factor>
+        </emission>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>10000 ft R A (Meshed)</object-name>
+        <diffuse>
+            <red>0.7</red>
+            <green>0.2</green>
+            <blue>0.0</blue>
+        </diffuse>
+        <ambient>
+            <red>0.7</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
+        </ambient>
+        <emission>
+            <red-prop>sim/G91/re_emit/gauge_red_type_c_phosphorescent_light</red-prop>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor>0.15</factor>
+        </emission>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>flag pneu B (Meshed)</object-name>
+        <diffuse>
+            <red>0.8</red>
+            <green>0.2</green>
+            <blue>0.0</blue>
+        </diffuse>
+        <ambient>
+            <red>0.8</red>
+            <green>0.2</green>
+            <blue>0.0</blue>
+        </ambient>
+        <emission>
+            <red-prop>sim/G91/re_emit/gauge_red_type_b_phosphorescent_light</red-prop>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor>0.10</factor>
+        </emission>
+    </animation>
+
+    <animation>
+        <type>pick</type>
+        <visible>true</visible>
+        <object-name>pin dx (Meshed)</object-name>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <binding>
+                <command>property-toggle</command>
+                <property>fdm/jsbsim/systems/gauges/pneumatic/AAU-37A/sw-pneu-elect-set</property>
+            </binding>
+        </action>
+    </animation>
+
+    <animation>
+        <type>rotate</type>
+        <object-name>pin dx (Meshed)</object-name>
+        <property>fdm/jsbsim/systems/gauges/pneumatic/AAU-37A/sw-pneu-elect-position</property>
+        <factor>90</factor>
+        <center>
+            <x-m>0.0</x-m>
+            <y-m>0.028</y-m>
+            <z-m>-0.028</z-m>
+        </center>
+        <axis>
+            <x>1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
+
+    <animation>
+        <type>rotate</type>
+        <object-name>flag pneu A (Meshed)</object-name>
+        <object-name>flag pneu B (Meshed)</object-name>
+        <property>fdm/jsbsim/systems/gauges/pneumatic/AAU-37A/sw-pneu-elect-flag-position</property>
+        <factor>30</factor>
+        <center>
+            <x-m>0.0</x-m>
+            <y-m>-0.028</y-m>
+            <z-m>0.014</z-m>
+        </center>
+        <axis>
+            <x>1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
+    
+    <animation>
+        <type>knob</type>
+        <object-name>pin sx (Meshed)</object-name>
+        <value>0.0</value>
+        <center>
+            <x-m>0.0</x-m><y-m>-0.031</y-m><z-m>-0.031</z-m>
+        </center>
+        <axis>
+            <x>-1</x><y>0</y><z>0</z>
+        </axis>
+        <action>
+            <binding>
+                <command>property-adjust</command>
+                <property>fdm/jsbsim/systems/gauges/pneumatic/AAU-37A/pin-QFE-inhg-set</property>
+                <factor>0.01</factor>
+                <min>27.9</min>
+                <max>31.4</max>
+                <wrap>false</wrap>
+            </binding>
+        </action>
+    </animation>
+
+    <animation>
+        <type>rotate</type>
+        <object-name>pin sx (Meshed)</object-name>
+        <property>fdm/jsbsim/systems/gauges/pneumatic/AAU-37A/pin-QFE-inhg-set</property>
+        <factor>100</factor>
+        <axis>
+            <x>1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+        <center>
+            <x-m>0.0</x-m>
+            <y-m>-0.031</y-m>
+            <z-m>-0.031</z-m>
+        </center>
+    </animation>
+
+    <animation>
+        <type>rotate</type>
+        <object-name>inhg 1000 A (Meshed)</object-name>
+        <property>fdm/jsbsim/systems/gauges/pneumatic/AAU-37A/QFE-1000-digit</property>
+        <factor>36</factor>
+        <axis>
+            <x>0</x>
+            <y>-1</y>
+            <z>0</z>
+        </axis>
+        <center>
+            <x-m>-0.008</x-m>
+            <y-m>0.0</y-m>
+            <z-m>-0.013</z-m>
+        </center>
+    </animation>
+
+    <animation>
+        <type>rotate</type>
+        <object-name>inhg 0100 A (Meshed)</object-name>
+        <property>fdm/jsbsim/systems/gauges/pneumatic/AAU-37A/QFE-0100-digit</property>
+        <factor>36</factor>
+        <axis>
+            <x>0</x>
+            <y>-1</y>
+            <z>0</z>
+        </axis>
+        <center>
+            <x-m>-0.008</x-m>
+            <y-m>0.0</y-m>
+            <z-m>-0.013</z-m>
+        </center>
+    </animation>
+
+    <animation>
+        <type>rotate</type>
+        <object-name>inhg 0010 A (Meshed)</object-name>
+        <property>fdm/jsbsim/systems/gauges/pneumatic/AAU-37A/QFE-0010-digit</property>
+        <factor>36</factor>
+        <axis>
+            <x>0</x>
+            <y>-1</y>
+            <z>0</z>
+        </axis>
+        <center>
+            <x-m>-0.008</x-m>
+            <y-m>0.0</y-m>
+            <z-m>-0.013</z-m>
+        </center>
+    </animation>
+
+    <animation>
+        <type>rotate</type>
+        <object-name>inhg 0001 A (Meshed)</object-name>
+        <property>fdm/jsbsim/systems/gauges/pneumatic/AAU-37A/QFE-0001-digit</property>
+        <factor>36</factor>
+        <axis>
+            <x>0</x>
+            <y>-1</y>
+            <z>0</z>
+        </axis>
+        <center>
+            <x-m>-0.008</x-m>
+            <y-m>0.0</y-m>
+            <z-m>-0.013</z-m>
+        </center>
+    </animation>
+
+    <animation>
+        <type>rotate</type>
+        <object-name>10000 ft B (Meshed)</object-name>
+        <object-name>10000 ft W A (Meshed)</object-name>
+        <object-name>10000 ft R A (Meshed)</object-name>
+        <object-name>10000 ft W B (Meshed)</object-name>
+        <property>fdm/jsbsim/systems/gauges/pneumatic/AAU-37A/altitude-1000-digit</property>
+        <factor>36</factor>
+        <axis>
+            <x>0</x>
+            <y>-1</y>
+            <z>0</z>
+        </axis>
+        <center>
+            <x-m>-0.016</x-m>
+            <y-m>0.0</y-m>
+            <z-m>0.0</z-m>
+        </center>
+    </animation>
+
+    <animation>
+        <type>rotate</type>
+        <object-name>1000ft A (Meshed)</object-name>
+        <property>fdm/jsbsim/systems/gauges/pneumatic/AAU-37A/altitude-0100-digit</property>
+        <factor>36</factor>
+        <axis>
+            <x>0</x>
+            <y>-1</y>
+            <z>0</z>
+        </axis>
+        <center>
+            <x-m>-0.016</x-m>
+            <y-m>0.0</y-m>
+            <z-m>0.0</z-m>
+        </center>
+    </animation>
+
+    <animation>
+        <type>rotate</type>
+        <object-name>100ft A (Meshed)</object-name>
+        <property>fdm/jsbsim/systems/gauges/pneumatic/AAU-37A/altitude-0010-digit</property>
+        <factor>36</factor>
+        <axis>
+            <x>0</x>
+            <y>-1</y>
+            <z>0</z>
+        </axis>
+        <center>
+            <x-m>-0.016</x-m>
+            <y-m>0.0</y-m>
+            <z-m>0.0</z-m>
+        </center>
+    </animation>
+
+    <animation>
+        <type>rotate</type>
+        <object-name>arrow B (Meshed)</object-name>
+        <object-name>arrow A (Meshed)</object-name>
+        <property>fdm/jsbsim/systems/gauges/pneumatic/AAU-37A/altitude-0001-digit</property>
+        <factor>36</factor>
+        <axis>
+            <x>-1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+        <center>
+            <x-m>0.0</x-m>
+            <y-m>0.0</y-m>
+            <z-m>0.0</z-m>
+        </center>
+    </animation>
+    
+    <model>
+        <name>procedural_light_cockpit_gauge_spot_red</name>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Effects/lights/procedural_light_cockpit_gauge_spot_red.xml</path>
+        <offsets>
+            <x-m> 0.03</x-m>
+            <y-m> 0.0 </y-m>
+            <z-m> 0.0 </z-m>
+        </offsets>
+    </model>
+    
+</PropertyList>
+

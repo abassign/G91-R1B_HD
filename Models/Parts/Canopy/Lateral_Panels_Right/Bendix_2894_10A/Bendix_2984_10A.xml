@@ -13,6 +13,7 @@
     
     <animation>
         <type>noshadow</type>
+        <object-name>arrow A (Meshed)</object-name>
         <object-name>arrow B (Meshed)</object-name>
         <object-name>axis (Meshed)</object-name>
         <object-name>box_cover_adapter (Meshed)</object-name>
@@ -341,14 +342,14 @@
         </diffuse>
         <ambient>
             <red>1.0</red>
-            <green>0.95</green>
-            <blue>0.8</blue>
+            <green>0.2</green>
+            <blue>0.2</blue>
         </ambient>
         <emission>
-            <red-prop>sim/G91/re_emit/gauge_console_lamp_3200_console_red_50</red-prop>
-            <green-prop>sim/G91/re_emit/gauge_console_lamp_3200_console_green_20</green-prop>
-            <blue-prop>sim/G91/re_emit/gauge_console_lamp_3200_console_blue_20</blue-prop>
-            <factor>0.4</factor>
+            <red-prop>sim/G91/re_emit/gauge_red_emer_lamp_3200_console_red_10</red-prop>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor>0.5</factor>
         </emission>
     </animation>
     

@@ -1005,7 +1005,7 @@
         </position>
         <direction>
             <pitch-deg>10.0</pitch-deg>
-            <roll-deg>-5.0</roll-deg>
+            <roll-deg>-0.0</roll-deg>
             <heading-deg>0.0</heading-deg>
         </direction>
         <ambient>
@@ -1032,7 +1032,7 @@
             <q>5.5</q>
         </attenuation>
         <spot-exponent>25</spot-exponent>
-        <spot-cutoff>70</spot-cutoff>
+        <spot-cutoff>85</spot-cutoff>
         <range-m>0.15</range-m>
         <dim-factor>
             <property>fdm/jsbsim/systems/lightning/light-red-emer-instrument</property>
@@ -1049,7 +1049,7 @@
         </position>
         <direction>
             <pitch-deg>10.0</pitch-deg>
-            <roll-deg>5.0</roll-deg>
+            <roll-deg>0.0</roll-deg>
             <heading-deg>0.0</heading-deg>
         </direction>
         <ambient>
@@ -1076,7 +1076,7 @@
             <q>5.5</q>
         </attenuation>
         <spot-exponent>25</spot-exponent>
-        <spot-cutoff>70</spot-cutoff>
+        <spot-cutoff>85</spot-cutoff>
         <range-m>0.15</range-m>
         <dim-factor>
             <property>fdm/jsbsim/systems/lightning/light-red-emer-instrument</property>

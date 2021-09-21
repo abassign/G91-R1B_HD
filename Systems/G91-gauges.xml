@@ -29,7 +29,6 @@ The C1 lag_filter is less is longer respond time
     <property value="0">systems/gauges/cockpit-fire-sw-test-togle</property>
     <property value="0">systems/gauges/cockpit-fire-light-intensity</property>
     <property value="0">systems/gauges/cockpit-fire-light-transparent</property>
-    
 
     <channel name="Cockpit Clock" execrate="4">
 

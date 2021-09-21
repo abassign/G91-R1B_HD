@@ -541,6 +541,28 @@
             <z-m>0.065</z-m>
             <pitch-deg>0.0</pitch-deg>
         </offsets>
+        <condition>
+            <equals>
+                <property>sim/G91/liveries/active/advanced_gauges</property>
+                <value>0</value>
+            </equals>
+        </condition>
+    </model>
+
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/AAU-37A/AAU-37A.xml</path>
+        <offsets>
+            <x-m>0.020</x-m>
+            <y-m>-0.115</y-m>
+            <z-m>0.065</z-m>
+            <pitch-deg>0.0</pitch-deg>
+        </offsets>
+        <condition>
+            <equals>
+                <property>sim/G91/liveries/active/advanced_gauges</property>
+                <value>1</value>
+            </equals>
+        </condition>
     </model>
 
     <model>
@@ -653,6 +675,28 @@
             <z-m>0.062</z-m>
             <pitch-deg>8.5</pitch-deg>
         </offsets>
+        <condition>
+            <equals>
+                <property>sim/G91/liveries/active/advanced_gauges</property>
+                <value>0</value>
+            </equals>
+        </condition>
+    </model>
+
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/Bendix_B6_3419_5A_A1_Acc/Bendix_B6_3419_5A_A1_Acc.xml</path>
+        <offsets>
+            <x-m>0.020</x-m>
+            <y-m>-0.196</y-m>
+            <z-m>0.062</z-m>
+            <pitch-deg>8.5</pitch-deg>
+        </offsets>
+        <condition>
+            <equals>
+                <property>sim/G91/liveries/active/advanced_gauges</property>
+                <value>1</value>
+            </equals>
+        </condition>
     </model>
 
     <model>
@@ -674,10 +718,10 @@
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/MM2/MM2.xml</path>
         <offsets>
-            <x-m>0.01</x-m>
+            <x-m>0.025</x-m>
             <y-m>0.112</y-m>
             <z-m>0.140</z-m>
-            <pitch-deg>0.0</pitch-deg>
+            <pitch-deg>8.5</pitch-deg>
         </offsets>
         <condition>
             <equals>

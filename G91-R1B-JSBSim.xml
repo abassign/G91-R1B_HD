@@ -87,6 +87,7 @@
     <system file="gyrocompass"/>
     <system file="compass-flux-gate"/>
     <system file="ATC-transponder"/>
+    <system file="AAU-37A"/>
     
     <metrics file="Systems/G91-metrics"/>
     <mass_balance file="Systems/G91-mass-balance"/>
