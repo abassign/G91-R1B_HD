@@ -176,7 +176,8 @@ No Overshoot
     <property value="0.0">systems/autopilot/pitch-output-error-coefficient-gain-active-max</property>
     <property value="0.0">systems/autopilot/pitch-output-error-coefficient-gain-active-max-lag</property>
     <property value="0.0">systems/autopilot/pitch-output-error-coefficient-gain-speedbrake</property>
-    <property value="0.3">systems/autopilot/pitch-output-error-coefficient-gain-speedbrake-value</property>
+    <!-- da 0.3 a 0.6 -->
+    <property value="0.6">systems/autopilot/pitch-output-error-coefficient-gain-speedbrake-value</property>
     <property value="0.0">systems/autopilot/pitch-output-error-coefficient-gain-flap</property>
     <property value="0.3">systems/autopilot/pitch-output-error-coefficient-gain-flap-value</property>
     <property value="0.0">systems/autopilot/pitch-output-error-coefficient-gain-gear</property>

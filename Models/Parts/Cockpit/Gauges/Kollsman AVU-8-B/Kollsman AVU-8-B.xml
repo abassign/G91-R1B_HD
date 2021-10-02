@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+    
+    <path>Kollsman AVU-8-B.ac</path>
+
+    <offsets>
+        <x-m>0.0</x-m>
+        <y-m>0.0</y-m>
+        <z-m>0.0</z-m>
+    </offsets>
+
+    <effect>
+        <inherits-from>Effects/model-transparent</inherits-from>
+        <object-name>glass (Meshed)</object-name>
+    </effect>
+
+    <animation>
+        <type>noshadow</type>
+        <object-name>procedural_light_cockpit_gauge_spot_red</object-name>
+        <object-name>glass (Meshed)</object-name>
+        <object-name>cover (Meshed)</object-name>
+        <object-name>frontal top (Meshed)</object-name>
+        <object-name>frontal screews (Meshed)</object-name>
+        <object-name>frontal screews 8 (Meshed)</object-name>
+        <object-name>frontal top A (Meshed)</object-name>
+        <object-name>arrow center back (Meshed)</object-name>
+        <object-name>arrow center A (Meshed)</object-name>
+        <object-name>arrow center back A (Meshed)</object-name>
+        <object-name>arrow red A (Meshed)</object-name>
+        <object-name>arrow black B (Meshed)</object-name>
+        <object-name>frontal back (Meshed)</object-name>
+        <object-name>frontal back A numbers (Meshed)</object-name>
+        <object-name>frontal back A triangles (Meshed)</object-name>
+        <object-name>frontal back A lines (Meshed)</object-name>
+        <object-name>pin dx A (Meshed)</object-name>
+        <object-name>pin dx B (Meshed)</object-name>
+        <object-name>mach A lines (Meshed)</object-name>
+        <object-name>mach A numbers (Meshed)</object-name>
+        <object-name>mach B (Meshed)</object-name>
+        <object-name>mach diafram fixed (Meshed)</object-name>
+        <object-name>index A (Meshed)</object-name>
+    </animation>
+    
+    <animation> 
+        <type>material</type>
+        <object-name>cover (Meshed)</object-name>
+        <diffuse>
+            <red>0.20</red>
+            <green>0.20</green>
+            <blue>0.20</blue>
+        </diffuse>
+        <ambient>
+            <red>0.20</red>
+            <green>0.20</green>
+            <blue>0.20</blue>
+        </ambient>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>glass (Meshed)</object-name>
+        <transparency>
+            <alpha>0.1</alpha>
+        </transparency>
+        <diffuse>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </diffuse>
+        <ambient>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </ambient>
+        <emission>
+            <red-prop>sim/G91/re_emit/gauge_red_type_b_phosphorescent_light</red-prop>
+            <green-prop>sim/G91/re_emit/gauge_phosphorescent_light_type_b</green-prop>
+            <blue-prop>sim/G91/re_emit/gauge_phosphorescent_light_type_b</blue-prop>
+            <factor>0.15</factor>
+        </emission>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>frontal back (Meshed)</object-name>
+        <diffuse>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
+        </diffuse>
+        <ambient>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
+        </ambient>
+        <emission>
+            <red>0.012</red>
+            <green>0.007</green>
+            <blue>0.007</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation>
+        <type>material</type>
+        <object-name>frontal top (Meshed)</object-name>
+        <diffuse>
+            <red>0.28</red>
+            <green>0.28</green>
+            <blue>0.28</blue>
+        </diffuse>
+        <ambient>
+            <red>0.15</red>
+            <green>0.15</green>
+            <blue>0.15</blue>
+        </ambient>
+        <emission>
+            <red>0.07</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>frontal screews (Meshed)</object-name>
+        <object-name>frontal screews 8 (Meshed)</object-name>
+        <object-name>pin dx B (Meshed)</object-name>
+        <diffuse>
+            <red>0.35</red>
+            <green>0.30</green>
+            <blue>0.30</blue>
+        </diffuse>
+        <ambient>
+            <red>0.15</red>
+            <green>0.15</green>
+            <blue>0.15</blue>
+        </ambient>
+        <specular>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </specular>
+        <emission>
+            <red>0.02</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>mach B (Meshed)</object-name>
+        <diffuse>
+            <red>0.15</red>
+            <green>0.15</green>
+            <blue>0.15</blue>
+        </diffuse>
+        <ambient>
+            <red>0.15</red>
+            <green>0.15</green>
+            <blue>0.15</blue>
+        </ambient>
+        <emission>
+            <red>0.005</red>
+            <green>0.002</green>
+            <blue>0.002</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>frontal back A numbers (Meshed)</object-name>
+        <object-name>frontal back A triangles (Meshed)</object-name>
+        <object-name>frontal back A lines (Meshed)</object-name>
+        <object-name>mach A lines (Meshed)</object-name>
+        <object-name>mach A numbers (Meshed)</object-name>
+        <object-name>arrow center back A (Meshed)</object-name>
+        <diffuse>
+            <red>0.80</red>
+            <green>0.73</green>
+            <blue>0.40</blue>
+        </diffuse>
+        <ambient>
+            <red>0.80</red>
+            <green>0.73</green>
+            <blue>0.40</blue>
+        </ambient>
+        <emission>
+            <red-prop>sim/G91/re_emit/gauge_red_type_b_phosphorescent_light</red-prop>
+            <green-prop>sim/G91/re_emit/gauge_red_type_a_phosphorescent_light</green-prop>
+            <blue>0.0</blue>
+            <factor>0.25</factor>
+        </emission>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>index A (Meshed)</object-name>
+        <object-name>arrow center A (Meshed)</object-name>
+        <diffuse>
+            <red>0.80</red>
+            <green>0.73</green>
+            <blue>0.30</blue>
+        </diffuse>
+        <ambient>
+            <red>0.80</red>
+            <green>0.73</green>
+            <blue>0.30</blue>
+        </ambient>
+        <emission>
+            <red-prop>sim/G91/re_emit/gauge_red_type_b_phosphorescent_light</red-prop>
+            <green-prop>sim/G91/re_emit/gauge_red_type_a_phosphorescent_light</green-prop>
+            <blue>0.0</blue>
+            <factor>0.32</factor>
+        </emission>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>pin dx A (Meshed)</object-name>
+        <diffuse>
+            <red>0.70</red>
+            <green>0.70</green>
+            <blue>0.70</blue>
+        </diffuse>
+        <ambient>
+            <red>0.80</red>
+            <green>0.73</green>
+            <blue>0.30</blue>
+        </ambient>
+        <emission>
+            <red-prop>sim/G91/re_emit/gauge_red_type_b_phosphorescent_light</red-prop>
+            <green-prop>sim/G91/re_emit/gauge_red_type_a_phosphorescent_light</green-prop>
+            <blue>0.0</blue>
+            <factor>0.32</factor>
+        </emission>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>arrow black B (Meshed)</object-name>
+        <object-name>arrow center back (Meshed)</object-name>
+        <diffuse>
+            <red>0.20</red>
+            <green>0.20</green>
+            <blue>0.20</blue>
+        </diffuse>
+        <ambient>
+            <red>0.20</red>
+            <green>0.20</green>
+            <blue>0.20</blue>
+        </ambient>
+        <specular>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </specular>
+        <emission>
+            <red>0.01</red>
+            <green>0.003</green>
+            <blue>0.003</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>mach diafram fixed (Meshed)</object-name>
+        <diffuse>
+            <red>0.25</red>
+            <green>0.22</green>
+            <blue>0.22</blue>
+        </diffuse>
+        <ambient>
+            <red>0.20</red>
+            <green>0.18</green>
+            <blue>0.18</blue>
+        </ambient>
+        <specular>
+            <red>0.4</red>
+            <green>0.4</green>
+            <blue>0.4</blue>
+        </specular>
+        <emission>
+            <red>0.04</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>arrow red A (Meshed)</object-name>
+        <diffuse>
+            <red>0.8</red>
+            <green>0.2</green>
+            <blue>0.0</blue>
+        </diffuse>
+        <ambient>
+            <red>0.8</red>
+            <green>0.2</green>
+            <blue>0.0</blue>
+        </ambient>
+        <emission>
+            <red-prop>sim/G91/re_emit/gauge_red_type_b_phosphorescent_light</red-prop>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor>0.20</factor>
+        </emission>
+    </animation>
+
+    <animation>
+        <type>knob</type>
+        <object-name>pin dx A (Meshed)</object-name>
+        <object-name>pin dx B (Meshed)</object-name>
+        <value>0.0</value>
+        <action>
+            <binding>
+                <command>property-adjust</command>
+                <property>fdm/jsbsim/systems/gauges/pneumatic/AVU-8-B/pin-set-target-speed</property>
+                <factor>10.0</factor>
+                <min>0.0</min>
+                <max>800.0</max>
+                <wrap>false</wrap>
+            </binding>
+        </action>
+    </animation>
+
+    <animation>
+        <type>rotate</type>
+        <object-name>pin dx A (Meshed)</object-name>
+        <object-name>pin dx B (Meshed)</object-name>
+        <property>fdm/jsbsim/systems/gauges/pneumatic/AVU-8-B/pin-set-target-speed-deg</property>
+        <factor>1</factor>
+        <axis>
+            <x>1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+        <center>
+            <x-m>0.0</x-m>
+            <y-m>0.029</y-m>
+            <z-m>-0.029</z-m>
+        </center>
+    </animation>
+
+    <animation>
+        <type>rotate</type>
+        <object-name>index A (Meshed)</object-name>
+        <property>fdm/jsbsim/systems/gauges/pneumatic/AVU-8-B/pin-set-target-speed-deg</property>
+        <factor>-1</factor>
+        <axis>
+            <x>1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+        <center>
+            <x-m>0.0</x-m>
+            <y-m>0.0</y-m>
+            <z-m>-0.0</z-m>
+        </center>
+    </animation>
+
+    <animation>
+        <type>rotate</type>
+        <object-name>arrow center back (Meshed)</object-name>
+        <object-name>arrow center A (Meshed)</object-name>
+        <object-name>arrow center back A (Meshed)</object-name>
+        <property>fdm/jsbsim/systems/gauges/pneumatic/AVU-8-B/CAS-to-gauge-deg</property>
+        <factor>-1</factor>
+        <axis>
+            <x>1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+        <center>
+            <x-m>0.0</x-m>
+            <y-m>0.0</y-m>
+            <z-m>-0.0</z-m>
+        </center>
+    </animation>
+
+    <!-- Speed limit red arrow -->
+    <animation>
+        <type>rotate</type>
+        <object-name>arrow red A (Meshed)</object-name>
+        <object-name>arrow black B (Meshed)</object-name>
+        <property>instrumentation/altimeter/pressure-alt-ft</property>
+        <interpolation>
+            <entry><ind>-10000.0</ind><dep>285</dep></entry>
+            <entry><ind>0.0</ind><dep>285</dep></entry>
+            <entry><ind>5000</ind><dep>280</dep></entry>
+            <entry><ind>20000</ind><dep>235</dep></entry>
+            <entry><ind>30000</ind><dep>210</dep></entry>
+            <entry><ind>50000</ind><dep>150</dep></entry>
+        </interpolation>
+        <axis>
+            <x> -1 </x>
+            <y>  0 </y>
+            <z>  0 </z>
+        </axis>
+    </animation>
+
+    <!-- Mach number -->
+    <animation>
+        <type>rotate</type>
+        <object-name>mach A lines (Meshed)</object-name>
+        <object-name>mach A numbers (Meshed)</object-name>
+        <object-name>mach B (Meshed)</object-name>
+        <property>fdm/jsbsim/systems/gauges/pneumatic/AVU-8-B/mach-deg</property>
+        <axis>
+            <x>  -1 </x>
+            <y>  0 </y>
+            <z>  0 </z>
+        </axis>
+    </animation>
+    
+    <model>
+        <name>procedural_light_cockpit_gauge_spot_red</name>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Effects/lights/procedural_light_cockpit_gauge_spot_red.xml</path>
+        <offsets>
+            <x-m> 0.03</x-m>
+            <y-m> 0.0 </y-m>
+            <z-m> 0.0 </z-m>
+        </offsets>
+    </model>
+    
+</PropertyList>
+

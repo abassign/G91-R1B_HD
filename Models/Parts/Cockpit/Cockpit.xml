@@ -597,8 +597,25 @@
         </condition>
     </model>
 
+    <!--
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/Kollsman_ME4/Kollsman_ME4.xml</path>
+        <offsets>
+            <x-m>0.019</x-m>
+            <y-m>-0.101</y-m>
+            <z-m>0.148</z-m>
+            <pitch-deg>0.0</pitch-deg>
+        </offsets>
+        <condition>
+            <equals>
+                <property>sim/G91/liveries/active/advanced_gauges</property>
+                <value>0</value>
+            </equals>
+        </condition>
+    </model>
+    -->
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/Kollsman AVU-8-B/Kollsman AVU-8-B.xml</path>
         <offsets>
             <x-m>0.019</x-m>
             <y-m>-0.101</y-m>

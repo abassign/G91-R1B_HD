@@ -6,14 +6,14 @@
 
     <effect>
         <inherits-from>Effects/model-transparent</inherits-from>
-        <object-name>glass (Meshed)</object-name>
+        <object-name>PHI-Indicator-Glass</object-name>
     </effect>
 
      <animation>
         <type>noshadow</type>
         <object-name>cover (Meshed)</object-name>
         <object-name>back_support (Meshed)</object-name>
-        <object-name>glass (Meshed)</object-name>
+        <object-name>PHI-Indicator-Glass</object-name>
         <object-name>screews_01 (Meshed)</object-name>
         <object-name>screews_02 (Meshed)</object-name>
         <object-name>screews_03 (Meshed)</object-name>
@@ -72,8 +72,6 @@
             <blue>0.0</blue>
         </ambient>
     </animation>
-
-
 
     <animation>
         <type>material</type>
@@ -170,9 +168,9 @@
 
     <animation>
         <type>material</type>
-        <object-name>glass (Meshed)</object-name>
+        <object-name>PHI-Indicator-Glass</object-name>
         <transparency>
-            <alpha>0.2</alpha>
+            <alpha>0.1</alpha>
         </transparency>
         <diffuse>
             <red>0.8</red>
@@ -185,10 +183,10 @@
             <blue>0.2</blue>
         </ambient>
         <emission>
-            <red-prop>sim/G91/re_emit/gauge_red_20_phosphorescent_light</red-prop>
-            <green-prop>sim/G91/re_emit/gauge_red_40_phosphorescent_light</green-prop>
-            <blue-prop>sim/G91/re_emit/gauge_red_50_phosphorescent_light</blue-prop>
-            <factor>0.8</factor>
+            <red-prop>sim/G91/re_emit/gauge_red_emer_lamp_3200_console_red_20</red-prop>
+            <green-prop>sim/G91/re_emit/gauge_red_emer_lamp_3200_console_green_20</green-prop>
+            <blue-prop>sim/G91/re_emit/gauge_red_emer_lamp_3200_console_blue_20</blue-prop>
+            <factor>0.6</factor>
         </emission>
     </animation>
 
@@ -202,20 +200,20 @@
         <object-name>frontal_mark_knob_001 (Meshed)</object-name>
         <object-name>frontal_labels (Meshed)</object-name>
         <diffuse>
-            <red>0.5</red>
-            <green>0.5</green>
-            <blue>0.5</blue>
+            <red>0.70</red>
+            <green>0.70</green>
+            <blue>0.70</blue>
         </diffuse>
         <ambient>
             <red>0.80</red>
             <green>0.73</green>
-            <blue>0.53</blue>
+            <blue>0.30</blue>
         </ambient>
         <emission>
             <red-prop>sim/G91/re_emit/gauge_red_type_b_phosphorescent_light</red-prop>
-            <green-prop>sim/G91/re_emit/gauge_phosphorescent_light_type_b</green-prop>
+            <green-prop>sim/G91/re_emit/gauge_red_type_a_phosphorescent_light</green-prop>
             <blue>0.0</blue>
-            <factor>0.10</factor>
+            <factor>0.15</factor>
         </emission>
     </animation>
 
@@ -255,9 +253,9 @@
             <blue>0.1</blue>
         </ambient>
         <emission>
-            <red-prop>sim/G91/re_emit/gauge_red_30_phosphorescent_light</red-prop>
-            <green-prop>sim/G91/re_emit/gauge_red_20_phosphorescent_light</green-prop>
-            <blue-prop>sim/G91/re_emit/gauge_red_60_phosphorescent_light</blue-prop>
+            <red-prop>sim/G91/re_emit/gauge_red_emer_lamp_3200_console_red_20</red-prop>
+            <green-prop>sim/G91/re_emit/gauge_red_emer_lamp_3200_console_green_20</green-prop>
+            <blue-prop>sim/G91/re_emit/gauge_red_emer_lamp_3200_console_blue_20</blue-prop>
             <factor>0.1</factor>
         </emission>
     </animation>
@@ -276,10 +274,10 @@
             <blue>0.53</blue>
         </ambient>
         <emission>
-            <red-prop>sim/G91/re_emit/gauge_red_15_phosphorescent_light</red-prop>
-            <green-prop>sim/G91/re_emit/gauge_red_20_phosphorescent_light</green-prop>
-            <blue-prop>sim/G91/re_emit/gauge_red_60_phosphorescent_light</blue-prop>
-            <factor>0.4</factor>
+            <red-prop>sim/G91/re_emit/gauge_red_emer_lamp_3200_console_red_20</red-prop>
+            <green-prop>sim/G91/re_emit/gauge_red_emer_lamp_3200_console_green_20</green-prop>
+            <blue-prop>sim/G91/re_emit/gauge_red_emer_lamp_3200_console_blue_20</blue-prop>
+            <factor>0.7</factor>
         </emission>
     </animation>
 
@@ -297,10 +295,10 @@
             <blue>0.53</blue>
         </ambient>
         <emission>
-            <red-prop>sim/G91/re_emit/gauge_red_15_phosphorescent_light</red-prop>
-            <green-prop>sim/G91/re_emit/gauge_red_20_phosphorescent_light</green-prop>
-            <blue-prop>sim/G91/re_emit/gauge_red_60_phosphorescent_light</blue-prop>
-            <factor>0.3</factor>
+            <red-prop>sim/G91/re_emit/gauge_red_emer_lamp_3200_console_red_20</red-prop>
+            <green-prop>sim/G91/re_emit/gauge_red_emer_lamp_3200_console_green_20</green-prop>
+            <blue-prop>sim/G91/re_emit/gauge_red_emer_lamp_3200_console_blue_20</blue-prop>
+            <factor>0.5</factor>
         </emission>
     </animation>
 
@@ -340,10 +338,10 @@
             <blue>0.6</blue>
         </ambient>
         <emission>
-            <red-prop>sim/G91/re_emit/gauge_red_20_phosphorescent_light</red-prop>
-            <green-prop>sim/G91/re_emit/gauge_red_20_phosphorescent_light</green-prop>
-            <blue-prop>sim/G91/re_emit/gauge_red_50_phosphorescent_light</blue-prop>
-            <factor>0.5</factor>
+            <red-prop>sim/G91/re_emit/gauge_red_emer_lamp_3200_console_red_20</red-prop>
+            <green-prop>sim/G91/re_emit/gauge_red_emer_lamp_3200_console_green_20</green-prop>
+            <blue-prop>sim/G91/re_emit/gauge_red_emer_lamp_3200_console_blue_20</blue-prop>
+            <factor>0.9</factor>
         </emission>
     </animation>
 
@@ -361,10 +359,10 @@
             <blue>0.6</blue>
         </ambient>
         <emission>
-            <red-prop>sim/G91/re_emit/gauge_red_20_phosphorescent_light</red-prop>
-            <green-prop>sim/G91/re_emit/gauge_red_20_phosphorescent_light</green-prop>
-            <blue-prop>sim/G91/re_emit/gauge_red_50_phosphorescent_light</blue-prop>
-            <factor>0.3</factor>
+            <red-prop>sim/G91/re_emit/gauge_red_emer_lamp_3200_console_red_20</red-prop>
+            <green-prop>sim/G91/re_emit/gauge_red_emer_lamp_3200_console_green_20</green-prop>
+            <blue-prop>sim/G91/re_emit/gauge_red_emer_lamp_3200_console_blue_20</blue-prop>
+            <factor>0.6</factor>
         </emission>
     </animation>
 
@@ -406,10 +404,10 @@
             <blue>0.6</blue>
         </ambient>
         <emission>
-            <red-prop>sim/G91/re_emit/gauge_red_20_phosphorescent_light</red-prop>
-            <green-prop>sim/G91/re_emit/gauge_red_20_phosphorescent_light</green-prop>
-            <blue-prop>sim/G91/re_emit/gauge_red_50_phosphorescent_light</blue-prop>
-            <factor>0.4</factor>
+            <red-prop>sim/G91/re_emit/gauge_red_emer_lamp_3200_console_red_20</red-prop>
+            <green-prop>sim/G91/re_emit/gauge_red_emer_lamp_3200_console_green_20</green-prop>
+            <blue-prop>sim/G91/re_emit/gauge_red_emer_lamp_3200_console_blue_20</blue-prop>
+            <factor>0.8</factor>
         </emission>
     </animation>
 

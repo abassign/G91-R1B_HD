@@ -2554,6 +2554,37 @@
                     <command>dialog-apply</command>
                 </binding>
             </radio>
+            <text>
+                <row>0</row>
+                <col>9</col>
+                <halign>left</halign>
+                <label>Circuit:</label>
+            </text>
+            <slider>
+                <row>0</row>
+                <col>10</col>
+                <live>true</live>
+                <property>fdm/jsbsim/systems/autopilot/gui/landing-circuit-L-R</property>
+                <min>-1</min>
+                <max>1</max>
+                <step>1</step>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </slider>
+            <text>
+                <row>0</row>
+                <col>11</col>
+                <label>9999999999</label>
+                <halign>left</halign>
+                <live>true</live>
+                <property>fdm/jsbsim/systems/autopilot/gui/landing-circuit-L-R-description</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.0</blue>
+                </color>
+            </text>
         </group>
     
         <!-- PID configurator -->

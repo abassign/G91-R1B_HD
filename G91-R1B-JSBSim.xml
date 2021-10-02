@@ -88,6 +88,7 @@
     <system file="compass-flux-gate"/>
     <system file="ATC-transponder"/>
     <system file="AAU-37A"/>
+    <system file="AVU-8-B"/>
     
     <metrics file="Systems/G91-metrics"/>
     <mass_balance file="Systems/G91-mass-balance"/>

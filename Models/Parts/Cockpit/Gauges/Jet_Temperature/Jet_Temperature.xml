@@ -129,8 +129,8 @@
         <emission>
             <red-prop>sim/G91/re_emit/gauge_red_type_b_phosphorescent_light</red-prop>
             <green-prop>sim/G91/re_emit/gauge_phosphorescent_light_type_b</green-prop>
-            <blue>0.0</blue>
-            <factor>0.10</factor>
+            <blue-prop>sim/G91/re_emit/gauge_phosphorescent_light_type_b</blue-prop>
+            <factor>0.2</factor>
         </emission>
     </animation>
     
@@ -138,20 +138,20 @@
         <type>material</type>
         <object-name>pointer_stop_A</object-name>
         <diffuse>
-            <red>0.5</red>
-            <green>0.5</green>
-            <blue>0.5</blue>
+            <red>0.80</red>
+            <green>0.73</green>
+            <blue>0.40</blue>
         </diffuse>
         <ambient>
-            <red>1.0</red>
-            <green>0.9</green>
-            <blue>0.6</blue>
+            <red>0.80</red>
+            <green>0.73</green>
+            <blue>0.40</blue>
         </ambient>
         <emission>
-            <red-prop>sim/G91/re_emit/gauge_red_150_phosphorescent_light</red-prop>
-            <green-prop>sim/G91/re_emit/gauge_phosphorescent_light</green-prop>
+            <red-prop>sim/G91/re_emit/gauge_red_type_b_phosphorescent_light</red-prop>
+            <green-prop>sim/G91/re_emit/gauge_red_type_a_phosphorescent_light</green-prop>
             <blue>0.0</blue>
-            <factor>0.08</factor>
+            <factor>0.35</factor>
         </emission>
     </animation>
     
@@ -159,20 +159,20 @@
         <type>material</type>
         <object-name>back_plane_1A</object-name>
         <diffuse>
-            <red>0.5</red>
-            <green>0.5</green>
-            <blue>0.5</blue>
+            <red>0.80</red>
+            <green>0.73</green>
+            <blue>0.40</blue>
         </diffuse>
         <ambient>
-            <red>1.0</red>
-            <green>0.9</green>
-            <blue>0.6</blue>
+            <red>0.80</red>
+            <green>0.73</green>
+            <blue>0.40</blue>
         </ambient>
         <emission>
             <red-prop>sim/G91/re_emit/gauge_red_type_b_phosphorescent_light</red-prop>
-            <green-prop>sim/G91/re_emit/gauge_phosphorescent_light_type_b</green-prop>
+            <green-prop>sim/G91/re_emit/gauge_red_type_a_phosphorescent_light</green-prop>
             <blue>0.0</blue>
-            <factor>0.11</factor>
+            <factor>0.25</factor>
         </emission>
     </animation>
     
@@ -180,20 +180,20 @@
         <type>material</type>
         <object-name>back_plane_2A1</object-name>
         <diffuse>
-            <red>0.5</red>
-            <green>0.5</green>
-            <blue>0.5</blue>
+            <red>0.80</red>
+            <green>0.73</green>
+            <blue>0.40</blue>
         </diffuse>
         <ambient>
-            <red>1.0</red>
-            <green>0.9</green>
-            <blue>0.6</blue>
+            <red>0.80</red>
+            <green>0.73</green>
+            <blue>0.40</blue>
         </ambient>
         <emission>
             <red-prop>sim/G91/re_emit/gauge_red_type_b_phosphorescent_light</red-prop>
-            <green-prop>sim/G91/re_emit/gauge_phosphorescent_light_type_b</green-prop>
+            <green-prop>sim/G91/re_emit/gauge_red_type_a_phosphorescent_light</green-prop>
             <blue>0.0</blue>
-            <factor>0.12</factor>
+            <factor>0.35</factor>
         </emission>
     </animation>
     
@@ -245,20 +245,20 @@
         <type>material</type>
         <object-name>pointer_1A (Meshed)</object-name>
         <diffuse>
-            <red>0.5</red>
-            <green>0.5</green>
-            <blue>0.5</blue>
+            <red>0.80</red>
+            <green>0.73</green>
+            <blue>0.40</blue>
         </diffuse>
         <ambient>
-            <red>1.0</red>
-            <green>0.9</green>
-            <blue>0.6</blue>
+            <red>0.80</red>
+            <green>0.73</green>
+            <blue>0.40</blue>
         </ambient>
         <emission>
-            <red-prop>sim/G91/re_emit/gauge_red_type_c_phosphorescent_light</red-prop>
-            <green-prop>sim/G91/re_emit/gauge_phosphorescent_light_type_c</green-prop>
+            <red-prop>sim/G91/re_emit/gauge_red_type_b_phosphorescent_light</red-prop>
+            <green-prop>sim/G91/re_emit/gauge_red_type_a_phosphorescent_light</green-prop>
             <blue>0.0</blue>
-            <factor>0.12</factor>
+            <factor>0.40</factor>
         </emission>
     </animation>
     

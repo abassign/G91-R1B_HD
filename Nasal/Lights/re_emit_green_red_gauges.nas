@@ -130,17 +130,17 @@ var timer_re_emit_green_red_gauges = maketimer(0.5, func() {
     setprop("sim/G91/re_emit/gauge_red_emer_70_red_console",(red_emer_instrument * 0.7 * (1 - light_red_console * 0.5) + light_red_console));
     
     setprop("sim/G91/re_emit/gauge_red_emer_lamp_3200_console_red_05",(red_emer_instrument * (1 - pl_phosphorescent_emission) * 0.05 + pl_phosphorescent_emission * 0.5));
-    setprop("sim/G91/re_emit/gauge_red_emer_lamp_3200_console_green_05",(red_emer_instrument * (1 - pl_phosphorescent_emission) * 0.0125 + pl_phosphorescent_emission * 0.4));
-    setprop("sim/G91/re_emit/gauge_red_emer_lamp_3200_console_blue_05",(red_emer_instrument * (1 - pl_phosphorescent_emission) * 0.0025 + pl_phosphorescent_emission * 0.2));
+    setprop("sim/G91/re_emit/gauge_red_emer_lamp_3200_console_green_05",(red_emer_instrument * (1 - pl_phosphorescent_emission) * 0.0125 + pl_phosphorescent_emission * 0.45));
+    setprop("sim/G91/re_emit/gauge_red_emer_lamp_3200_console_blue_05",(red_emer_instrument * (1 - pl_phosphorescent_emission) * 0.0025 + pl_phosphorescent_emission * 0.4));
     setprop("sim/G91/re_emit/gauge_red_emer_lamp_3200_console_red_10",(red_emer_instrument * (1 - pl_phosphorescent_emission) * 0.1 + pl_phosphorescent_emission * 0.5));
-    setprop("sim/G91/re_emit/gauge_red_emer_lamp_3200_console_green_10",(red_emer_instrument * (1 - pl_phosphorescent_emission) * 0.025 + pl_phosphorescent_emission * 0.4));
-    setprop("sim/G91/re_emit/gauge_red_emer_lamp_3200_console_blue_10",(red_emer_instrument * (1 - pl_phosphorescent_emission) * 0.005 + pl_phosphorescent_emission * 0.2));
+    setprop("sim/G91/re_emit/gauge_red_emer_lamp_3200_console_green_10",(red_emer_instrument * (1 - pl_phosphorescent_emission) * 0.025 + pl_phosphorescent_emission * 0.45));
+    setprop("sim/G91/re_emit/gauge_red_emer_lamp_3200_console_blue_10",(red_emer_instrument * (1 - pl_phosphorescent_emission) * 0.005 + pl_phosphorescent_emission * 0.4));
     setprop("sim/G91/re_emit/gauge_red_emer_lamp_3200_console_red_20",(red_emer_instrument * (1 - pl_phosphorescent_emission) * 0.2 + pl_phosphorescent_emission * 0.5));
-    setprop("sim/G91/re_emit/gauge_red_emer_lamp_3200_console_green_20",(red_emer_instrument * (1 - pl_phosphorescent_emission) * 0.05 + pl_phosphorescent_emission * 0.4));
-    setprop("sim/G91/re_emit/gauge_red_emer_lamp_3200_console_blue_20",(red_emer_instrument * (1 - pl_phosphorescent_emission) * 0.01 + pl_phosphorescent_emission * 0.2));
+    setprop("sim/G91/re_emit/gauge_red_emer_lamp_3200_console_green_20",(red_emer_instrument * (1 - pl_phosphorescent_emission) * 0.05 + pl_phosphorescent_emission * 0.45));
+    setprop("sim/G91/re_emit/gauge_red_emer_lamp_3200_console_blue_20",(red_emer_instrument * (1 - pl_phosphorescent_emission) * 0.01 + pl_phosphorescent_emission * 0.4));
     setprop("sim/G91/re_emit/gauge_red_emer_lamp_3200_console_red_50",(red_emer_instrument * (1 - pl_phosphorescent_emission) * 0.5 + pl_phosphorescent_emission * 0.5));
     setprop("sim/G91/re_emit/gauge_red_emer_lamp_3200_console_green_50",(red_emer_instrument * (1 - pl_phosphorescent_emission) * 0.1 + pl_phosphorescent_emission * 0.45));
-    setprop("sim/G91/re_emit/gauge_red_emer_lamp_3200_console_blue_50",(red_emer_instrument * (1 - pl_phosphorescent_emission) * 0.02 + pl_phosphorescent_emission * 0.35));
+    setprop("sim/G91/re_emit/gauge_red_emer_lamp_3200_console_blue_50",(red_emer_instrument * (1 - pl_phosphorescent_emission) * 0.02 + pl_phosphorescent_emission * 0.40));
     #setprop("sim/G91/re_emit/gauge_console_lamp_3200_console_red_50",(light_red_console * (1 - light_red_console) * 0.5 + light_red_console * 0.5));
     #setprop("sim/G91/re_emit/gauge_console_lamp_3200_console_green_50",(light_red_console * (1 - light_red_console) * 0.3 + light_red_console * 0.4));
     #setprop("sim/G91/re_emit/gauge_console_lamp_3200_console_blue_50",(light_red_console * (1 - light_red_console) * 0.2 + light_red_console * 0.2));

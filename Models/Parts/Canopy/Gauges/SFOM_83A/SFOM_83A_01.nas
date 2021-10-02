@@ -20,7 +20,7 @@ var yOffset_prec = 0;
 print("***** SFOM_83A_01.nas is load and execute");
 
 sfom83A_canvas = canvas.new({"name": "SFOM83A_canvas_Collimator_glass_TargetDOWN",
-                    "size": [512,512], 
+                    "size": [1024,1024],
                     "view": [512,690],
                     "mipmapping": 1});
 sfom83A_canvas.name = "SFOM83A_canvas_Collimator_glass_TargetDOWN";
@@ -33,10 +33,10 @@ sfom83A_child = sfom83A_root.createChild("image")
         .setTranslation(0,0)
         .setSize(384,384);
 
-## props.dump(sfom83A_canvas._node);
+props.dump(sfom83A_canvas._node);
 
 var setCross = func() {
-    sfom83A_child.setTranslation(xOffset * 10000 + 67, yOffset * (-11100) + valButton);
+    ##sfom83A_child.setTranslation(xOffset * 10000 + 67, yOffset * (-11100) + valButton);
 }
 
 var color_cross_SFOM83A = func() {
@@ -76,7 +76,7 @@ setlistener("sim/G91/gauge/SFOM_83A/button", func {
     if (viewInternal == 1) {
         valButton = props.globals.getNode("sim/G91/gauge/SFOM_83A/button",1).getValue();
         #call(setCross,[]);
-        setCross();
+        #setCross();
     }
 }, 1, 1);
 
@@ -86,8 +86,8 @@ var getViewXOffset = func() {
         if (math.abs(xOffset - xOffset_prec) > 0.0001) {
             xOffset_prec = xOffset;
             #call(setCross,[]);
-            setCross();
-            #print("***** getViewXOffset: ",xOffset);
+            #setCross();
+            print("***** getViewXOffset: ",xOffset);
         }
     }
 }
@@ -98,8 +98,8 @@ var getViewYOffset = func() {
         if (math.abs(yOffset - yOffset_prec) > 0.0001) {
             yOffset_prec = yOffset;
             #call(setCross,[]);
-            setCross();
-            #print("***** getViewYOffset: ",yOffset);
+            #setCross();
+            print("***** getViewYOffset: ",yOffset);
         }
     }
 }
@@ -114,7 +114,7 @@ var display_SFOM83A = maketimer(0.3, func() {
         yOffset0 = string.trim(props.globals.getNode("sim/view/config/y-offset-m",1).getValue());
         #call(setCross,[]);
         #call(color_cross_SFOM83A,[]);
-        setCross();
+        #setCross();
         color_cross_SFOM83A();
     }
 });

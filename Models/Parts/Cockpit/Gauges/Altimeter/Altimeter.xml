@@ -17,6 +17,8 @@
         <object-name>I_plate.000B</object-name>
         <object-name>I_Plate.001B</object-name>
         <object-name>I_Plate.004B</object-name>
+        <object-name>I_Plate.001A1</object-name>
+        <object-name>I_Plate.001A2</object-name>
         <object-name>hand01b</object-name>
         <object-name>hand01b.001</object-name>
         <object-name>I_ironware.003</object-name>
@@ -152,8 +154,8 @@
         <emission>
             <red-prop>sim/G91/re_emit/gauge_red_type_b_phosphorescent_light</red-prop>
             <green-prop>sim/G91/re_emit/gauge_phosphorescent_light_type_b</green-prop>
-            <blue>0.0</blue>
-            <factor>0.10</factor>
+            <blue-prop>sim/G91/re_emit/gauge_phosphorescent_light_type_b</blue-prop>
+            <factor>0.15</factor>
         </emission>
     </animation>
 
@@ -161,20 +163,20 @@
         <type>material</type>
         <object-name>I_plate.000A</object-name>
         <diffuse>
-            <red>0.7</red>
-            <green>0.6</green>
-            <blue>0.4</blue>
+            <red>0.80</red>
+            <green>0.73</green>
+            <blue>0.40</blue>
         </diffuse>
         <ambient>
-            <red>0.7</red>
-            <green>0.6</green>
-            <blue>0.4</blue>
+            <red>0.80</red>
+            <green>0.73</green>
+            <blue>0.40</blue>
         </ambient>
         <emission>
             <red-prop>sim/G91/re_emit/gauge_red_type_b_phosphorescent_light</red-prop>
-            <green-prop>sim/G91/re_emit/gauge_phosphorescent_light_type_b</green-prop>
+            <green-prop>sim/G91/re_emit/gauge_red_type_a_phosphorescent_light</green-prop>
             <blue>0.0</blue>
-            <factor>0.06</factor>
+            <factor>0.22</factor>
         </emission>
     </animation>
 
@@ -182,19 +184,19 @@
         <type>material</type>
         <object-name>I_plate.000B</object-name>
         <diffuse>
-            <red>0.35</red>
-            <green>0.35</green>
-            <blue>0.35</blue>
+            <red>0.25</red>
+            <green>0.25</green>
+            <blue>0.25</blue>
         </diffuse>
         <ambient>
-            <red>0.15</red>
-            <green>0.15</green>
-            <blue>0.15</blue>
+            <red>0.12</red>
+            <green>0.12</green>
+            <blue>0.12</blue>
         </ambient>
         <emission>
             <red>0.025</red>
-            <green>0.0005</green>
-            <blue>0.0005</blue>
+            <green>0.005</green>
+            <blue>0.005</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
@@ -203,9 +205,9 @@
         <type>material</type>
         <object-name>I_Plate.001A1</object-name>
         <diffuse>
-            <red>0.9</red>
-            <green>0.9</green>
-            <blue>0.9</blue>
+            <red>0.80</red>
+            <green>0.73</green>
+            <blue>0.40</blue>
         </diffuse>
         <ambient>
             <red>0.80</red>
@@ -214,9 +216,9 @@
         </ambient>
         <emission>
             <red-prop>sim/G91/re_emit/gauge_red_type_b_phosphorescent_light</red-prop>
-            <green-prop>sim/G91/re_emit/gauge_phosphorescent_light_type_b</green-prop>
+            <green-prop>sim/G91/re_emit/gauge_red_type_a_phosphorescent_light</green-prop>
             <blue>0.0</blue>
-            <factor>0.10</factor>
+            <factor>0.20</factor>
         </emission>
     </animation>
     
@@ -224,9 +226,9 @@
         <type>material</type>
         <object-name>I_Plate.001A2</object-name>
         <diffuse>
-            <red>0.9</red>
-            <green>0.9</green>
-            <blue>0.9</blue>
+            <red>0.80</red>
+            <green>0.73</green>
+            <blue>0.40</blue>
         </diffuse>
         <ambient>
             <red>0.80</red>
@@ -235,9 +237,9 @@
         </ambient>
         <emission>
             <red-prop>sim/G91/re_emit/gauge_red_type_b_phosphorescent_light</red-prop>
-            <green-prop>sim/G91/re_emit/gauge_phosphorescent_light_type_b</green-prop>
+            <green-prop>sim/G91/re_emit/gauge_red_type_a_phosphorescent_light</green-prop>
             <blue>0.0</blue>
-            <factor>0.08</factor>
+            <factor>0.20</factor>
         </emission>
     </animation>
 
@@ -250,14 +252,14 @@
             <blue>0.1</blue>
         </diffuse>
         <ambient>
-            <red>0.2</red>
-            <green>0.2</green>
-            <blue>0.2</blue>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
         </ambient>
         <emission>
-            <red>0.02</red>
-            <green>0.0</green>
-            <blue>0.0</blue>
+            <red>0.01</red>
+            <green>0.005</green>
+            <blue>0.005</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
@@ -266,9 +268,9 @@
         <type>material</type>
         <object-name>I_Plate.004A</object-name>
         <diffuse>
-            <red>0.9</red>
-            <green>0.9</green>
-            <blue>0.9</blue>
+            <red>0.80</red>
+            <green>0.73</green>
+            <blue>0.40</blue>
         </diffuse>
         <ambient>
             <red>0.80</red>
@@ -277,9 +279,9 @@
         </ambient>
         <emission>
             <red-prop>sim/G91/re_emit/gauge_red_type_b_phosphorescent_light</red-prop>
-            <green-prop>sim/G91/re_emit/gauge_phosphorescent_light_type_b</green-prop>
+            <green-prop>sim/G91/re_emit/gauge_red_type_a_phosphorescent_light</green-prop>
             <blue>0.0</blue>
-            <factor>0.08</factor>
+            <factor>0.18</factor>
         </emission>
     </animation>
     
@@ -335,9 +337,9 @@
         <object-name>hand02a</object-name>
         <object-name>Plane</object-name>
         <diffuse>
-            <red>0.9</red>
-            <green>0.9</green>
-            <blue>0.9</blue>
+            <red>0.80</red>
+            <green>0.73</green>
+            <blue>0.40</blue>
         </diffuse>
         <ambient>
             <red>0.80</red>
@@ -345,10 +347,10 @@
             <blue>0.40</blue>
         </ambient>
         <emission>
-            <red-prop>sim/G91/re_emit/gauge_red_type_c_phosphorescent_light</red-prop>
-            <green-prop>sim/G91/re_emit/gauge_phosphorescent_light_type_c</green-prop>
+            <red-prop>sim/G91/re_emit/gauge_red_type_b_phosphorescent_light</red-prop>
+            <green-prop>sim/G91/re_emit/gauge_red_type_a_phosphorescent_light</green-prop>
             <blue>0.0</blue>
-            <factor>0.12</factor>
+            <factor>0.40</factor>
         </emission>
     </animation>
     
