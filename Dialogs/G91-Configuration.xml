@@ -984,9 +984,21 @@
         <layout>hbox</layout>
         <group>
             <layout>table</layout>
-            <radio>
+            <text>
+                <label>Center of gravity</label>
+                <pref-width>100</pref-width>
+                <halign>left</halign>
                 <row>0</row>
                 <col>0</col>
+                <color>
+                    <red>0.0</red>
+                    <green>1.0</green>
+                    <blue>1.0</blue>
+                </color>
+            </text>
+            <radio>
+                <row>0</row>
+                <col>1</col>
                 <halign>fill</halign>
                 <label>CG Ctrl Active</label>
                 <property>fdm/jsbsim/inertia/modifier/cg-x-weight-active</property>
@@ -995,15 +1007,28 @@
                     <command>dialog-apply</command>
                 </binding>
             </radio>
+            <text>
+                <label>Stability:</label>
+                <pref-width>50</pref-width>
+                <halign>left</halign>
+                <row>0</row>
+                <col>2</col>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.0</blue>
+                </color>
+            </text>
+            <!--
             <slider>
                 <row>0</row>
-                <col>1</col>
+                <col>2</col>
                 <pref-width>80</pref-width>
                 <name>Variation CG - Massa lib.</name>
                 <property>fdm/jsbsim/inertia/modifier/cg-x-weight-value-lib</property>
                 <min>0</min>
                 <max>50</max>
-                <step>5</step>
+                <step>2.5</step>
                 <binding>
                     <command>dialog-apply</command>
                 </binding>
@@ -1013,12 +1038,76 @@
                     <value>1</value>
                 </binding>
             </slider>
+            -->
+            <radio>
+                <row>0</row>
+                <col>3</col>
+                <halign>fill</halign>
+                <label>Easy</label>
+                <property>/sim/G91/configuration/inertia/modifier/cg-x-weight-value-set-easy</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+                <binding>
+                    <command>nasal</command>
+                    <script><![CDATA[
+                        if (getprop("sim/G91/configuration/inertia/modifier/cg-x-weight-value-set-easy") == 1) {
+                            setprop("fdm/jsbsim/inertia/modifier/cg-x-weight-value-lib",getprop("sim/G91/configuration/inertia/modifier/cg-x-weight-value-easy"));
+                            setprop("sim/G91/configuration/inertia/modifier/cg-x-weight-value-set-medium",0);
+                            setprop("sim/G91/configuration/inertia/modifier/cg-x-weight-value-set-difficult",0);
+                        }
+                    ]]></script>
+                </binding>
+            </radio>
+            <radio>
+                <row>0</row>
+                <col>4</col>
+                <halign>fill</halign>
+                <label>Medium</label>
+                <property>/sim/G91/configuration/inertia/modifier/cg-x-weight-value-set-medium</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+                <binding>
+                    <command>nasal</command>
+                    <script><![CDATA[
+                        if (getprop("sim/G91/configuration/inertia/modifier/cg-x-weight-value-set-medium") == 1) {
+                            setprop("fdm/jsbsim/inertia/modifier/cg-x-weight-value-lib",getprop("sim/G91/configuration/inertia/modifier/cg-x-weight-value-medium"));
+                            setprop("sim/G91/configuration/inertia/modifier/cg-x-weight-value-set-easy",0);
+                            setprop("sim/G91/configuration/inertia/modifier/cg-x-weight-value-set-difficult",0);
+                        }
+                    ]]></script>
+                </binding>
+            </radio>
+            <radio>
+                <row>0</row>
+                <col>5</col>
+                <halign>fill</halign>
+                <label>Difficult</label>
+                <property>/sim/G91/configuration/inertia/modifier/cg-x-weight-value-set-difficult</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+                <binding>
+                    <command>nasal</command>
+                    <script><![CDATA[
+                        if (getprop("sim/G91/configuration/inertia/modifier/cg-x-weight-value-set-difficult") == 1) {
+                            setprop("fdm/jsbsim/inertia/modifier/cg-x-weight-value-lib",getprop("sim/G91/configuration/inertia/modifier/cg-x-weight-value-difficult"));
+                            setprop("sim/G91/configuration/inertia/modifier/cg-x-weight-value-set-easy",0);
+                            setprop("sim/G91/configuration/inertia/modifier/cg-x-weight-value-set-medium",0);
+                        }
+                    ]]></script>
+                </binding>
+            </radio>
             <text>
                 <row>0</row>
-                <col>2</col>
+                <col>6</col>
                 <label>MMMMMMMM</label>
                 <live>true</live>
-                <format>Mass lib: %3.0f</format>
+                <format>Mass lib: %3.1f</format>
                 <property>fdm/jsbsim/inertia/modifier/cg-x-weight-value-lib</property>
                 <color>
                     <red>0.9</red>
@@ -1026,9 +1115,11 @@
                     <blue>0.0</blue>
                 </color>
             </text>
+            <!-- Only for testing -->
+            <!--
             <slider>
                 <row>0</row>
-                <col>3</col>
+                <col>4</col>
                 <pref-width>120</pref-width>
                 <name>cg x shift percent in</name>
                 <property>fdm/jsbsim/inertia/modifier/cg-x-shift-percent</property>
@@ -1046,7 +1137,7 @@
             </slider>
             <text>
                 <row>0</row>
-                <col>4</col>
+                <col>5</col>
                 <label>MMMMMM</label>
                 <live>true</live>
                 <format>X: %3.0f %%</format>
@@ -1057,10 +1148,11 @@
                     <blue>0.0</blue>
                 </color>
             </text>
+            -->
             <text>
                 <row>0</row>
-                <col>5</col>
-                <label>999999999999</label>
+                <col>7</col>
+                <label>9999999999</label>
                 <live>true</live>
                 <format>PW - : %3.0f</format>
                 <property>fdm/jsbsim/inertia/pointmass-weight-lbs[9]</property>
@@ -1072,8 +1164,8 @@
             </text>
             <text>
                 <row>0</row>
-                <col>6</col>
-                <label>999999999999</label>
+                <col>8</col>
+                <label>9999999999</label>
                 <live>true</live>
                 <format>PW + : %3.0f</format>
                 <property>fdm/jsbsim/inertia/pointmass-weight-lbs[8]</property>
@@ -1085,8 +1177,8 @@
             </text>
             <text>
                 <row>0</row>
-                <col>7</col>
-                <label>999999999999</label>
+                <col>9</col>
+                <label>9999999999</label>
                 <live>true</live>
                 <format>CG X: %3.1f</format>
                 <property>fdm/jsbsim/inertia/cg-x-in</property>
@@ -1098,8 +1190,8 @@
             </text>
             <text>
                 <row>0</row>
-                <col>8</col>
-                <label>999999999999</label>
+                <col>10</col>
+                <label>9999999999</label>
                 <live>true</live>
                 <format>I-YY: %5.0f</format>
                 <property>fdm/jsbsim/inertia/iyy-slugs_ft2</property>
@@ -1111,8 +1203,8 @@
             </text>
             <text>
                 <row>0</row>
-                <col>9</col>
-                <label>999999999999</label>
+                <col>11</col>
+                <label>9999999999</label>
                 <live>true</live>
                 <format>CG Z: %3.1f</format>
                 <property>fdm/jsbsim/inertia/cg-z-in</property>

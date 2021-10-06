@@ -366,7 +366,13 @@ G91_Params.xml
     <configuration>
         <inertia>
             <modifier>
-                <cg-x-weight-value-lib-default type="float">10.0</cg-x-weight-value-lib-default>
+                <cg-x-weight-value-lib-default type="float">12.5</cg-x-weight-value-lib-default>
+                <cg-x-weight-value-easy type="float">15.0</cg-x-weight-value-easy>
+                <cg-x-weight-value-set-easy type="int">0</cg-x-weight-value-set-easy>
+                <cg-x-weight-value-medium type="float">12.5</cg-x-weight-value-medium>
+                <cg-x-weight-value-set-medium type="int">1</cg-x-weight-value-set-medium>
+                <cg-x-weight-value-difficult type="float">10.0</cg-x-weight-value-difficult>
+                <cg-x-weight-value-set-difficult type="int">0.0</cg-x-weight-value-set-difficult>
                 <cg-x-shift-percent-default type="float">-100.0</cg-x-shift-percent-default>
             </modifier>
         </inertia>

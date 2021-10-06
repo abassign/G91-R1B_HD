@@ -234,6 +234,20 @@
             <factor>0.12</factor>
         </emission>
     </animation>
+
+    <animation>
+        <type>pick</type>
+        <visible>true</visible>
+        <object-name>glass (Meshed)</object-name>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <binding>
+                <command>property-toggle</command>
+                <property>fdm/jsbsim/systems/airbrake/manual-cmd</property>
+            </binding>
+        </action>
+    </animation>
     
     <animation>
         <type>rotate</type>

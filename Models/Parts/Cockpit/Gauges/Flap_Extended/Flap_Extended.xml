@@ -257,6 +257,24 @@
             <z-m>0.0</z-m>
         </center>
     </animation>
+
+    <animation>
+        <type>pick</type>
+        <visible>true</visible>
+        <object-name>glass (Meshed)</object-name>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <binding>
+                <command>property-cycle</command>
+                <property>/controls/flight/flaps</property>
+                <value type="double">0</value>
+                <value type="double">0.33</value>
+                <value type="double">0.66</value>
+                <value type="double">1.00</value>
+            </binding>
+        </action>
+    </animation>
     
     
     <model>
