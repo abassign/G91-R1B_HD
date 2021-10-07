@@ -57,10 +57,15 @@
             <gain>systems/lightning/light-uv-instrument-on</gain>
             <input>systems/lightning/intensity-bus1-norm</input>
         </pure_gain>
-        
-        <pure_gain name="systems/lightning/light-uv-instrument">
+
+        <pure_gain name="systems/lightning/light-uv-instrument-bright-set">
             <gain>systems/lightning/light-uv-instrument-bright-pos</gain>
             <input>systems/lightning/light-uv-instrument-on-volt-norm</input>
+        </pure_gain>
+        
+        <pure_gain name="systems/lightning/light-uv-instrument">
+            <gain>systems/lightning/ambient-light-reflection-display-correction</gain>
+            <input>systems/lightning/light-uv-instrument-bright-set</input>
         </pure_gain>
         
         <pure_gain name="systems/electric/bus[1]/instrument-flood-lights/I">
@@ -90,10 +95,15 @@
             <gain>systems/lightning/light-red-emer-instrument-on</gain>
             <input>systems/lightning/intensity-bus1-norm</input>
         </pure_gain>
-        
-        <pure_gain name="systems/lightning/light-red-emer-instrument">
+
+        <pure_gain name="systems/lightning/light-red-emer-bright-set">
             <gain>systems/lightning/light-red-emer-instrument-bright-pos</gain>
             <input>systems/lightning/light-red-emer-instrument-on-volt-norm</input>
+        </pure_gain>
+        
+        <pure_gain name="systems/lightning/light-red-emer-instrument">
+            <gain>systems/lightning/ambient-light-reflection-display-correction</gain>
+            <input>systems/lightning/light-red-emer-bright-set</input>
         </pure_gain>
         
         <pure_gain name="systems/electric/bus[1]/instrument-panel-emerg-lights/I">
@@ -123,10 +133,15 @@
             <gain>systems/lightning/light-red-console-on</gain>
             <input>systems/lightning/intensity-bus1-norm</input>
         </pure_gain>
-        
-        <pure_gain name="systems/lightning/light-red-console">
+
+        <pure_gain name="systems/lightning/light-red-console-bright-set">
             <gain>systems/lightning/light-red-console-bright-pos</gain>
             <input>systems/lightning/light-red-console-on-volt-norm</input>
+        </pure_gain>
+        
+        <pure_gain name="systems/lightning/light-red-console">
+            <gain>systems/lightning/ambient-light-reflection-display-correction</gain>
+            <input>systems/lightning/light-red-console-bright-set</input>
         </pure_gain>
         
         <pure_gain name="systems/electric/bus[1]/console-lights/I">
@@ -466,6 +481,22 @@
                     0.6 0.60
                     0.8 0.90
                     1.0 1.00
+                </tableData>
+            </table>
+            <gain>1.0</gain>
+        </scheduled_gain>
+
+        <scheduled_gain name="systems/lightning/ambient-light-reflection-display-correction">
+            <input>systems/lightning/unit</input>
+            <table>
+                <independentVar>/rendering/scene/ambient/blue</independentVar>
+                <tableData>
+                    0.0 1.00
+                    0.2 0.60
+                    0.4 0.20
+                    0.6 0.10
+                    0.8 0.08
+                    1.0 0.04
                 </tableData>
             </table>
             <gain>1.0</gain>

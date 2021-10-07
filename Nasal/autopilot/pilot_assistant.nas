@@ -1006,7 +1006,8 @@ var pilot_assistant = func() {
                 }
             }
             #// Altitude reduction section
-            if (holding_point_to_airplane_delta_alt_ft < 0.0) {
+print("***** ",landing_20_dist_to_reduce_h," | ",airplane.alt()," | ",runway_alt_m_select," | ",holding_point_h_ft," | ",holding_point_to_airplane_delta_alt_ft," | ",holding_point_to_airplane_dist_nm," | ",dist_to_reduce_h);
+            if (holding_point_to_airplane_delta_alt_ft < 0.0 and landing_20_dist_to_reduce_h == 1) {
                 landing_20_dist_to_reduce_h = 2;
                 setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle",1.0);
                 setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle-deg",6.0);

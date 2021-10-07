@@ -20,7 +20,7 @@ var yOffset_prec = 0;
 print("***** SFOM_83A_01.nas is load and execute");
 
 sfom83A_canvas = canvas.new({"name": "SFOM83A_canvas_Collimator_glass_TargetDOWN",
-                    "size": [1024,1024],
+                    "size": [512,512],
                     "view": [512,690],
                     "mipmapping": 1});
 sfom83A_canvas.name = "SFOM83A_canvas_Collimator_glass_TargetDOWN";
@@ -36,7 +36,7 @@ sfom83A_child = sfom83A_root.createChild("image")
 props.dump(sfom83A_canvas._node);
 
 var setCross = func() {
-    ##sfom83A_child.setTranslation(xOffset * 10000 + 67, yOffset * (-11100) + valButton);
+    sfom83A_child.setTranslation(xOffset * 10000 + 67, yOffset * (-11100) + valButton);
 }
 
 var color_cross_SFOM83A = func() {
@@ -75,8 +75,8 @@ var color_cross_SFOM83A = func() {
 setlistener("sim/G91/gauge/SFOM_83A/button", func {
     if (viewInternal == 1) {
         valButton = props.globals.getNode("sim/G91/gauge/SFOM_83A/button",1).getValue();
-        #call(setCross,[]);
-        #setCross();
+        call(setCross,[]);
+        setCross();
     }
 }, 1, 1);
 
@@ -85,8 +85,8 @@ var getViewXOffset = func() {
         xOffset = xOffset0 - props.globals.getNode("sim/current-view/x-offset-m",1).getValue();
         if (math.abs(xOffset - xOffset_prec) > 0.0001) {
             xOffset_prec = xOffset;
-            #call(setCross,[]);
-            #setCross();
+            call(setCross,[]);
+            setCross();
             print("***** getViewXOffset: ",xOffset);
         }
     }
@@ -97,8 +97,8 @@ var getViewYOffset = func() {
         yOffset = yOffset0 - props.globals.getNode("sim/current-view/y-offset-m",1).getValue();
         if (math.abs(yOffset - yOffset_prec) > 0.0001) {
             yOffset_prec = yOffset;
-            #call(setCross,[]);
-            #setCross();
+            call(setCross,[]);
+            setCross();
             print("***** getViewYOffset: ",yOffset);
         }
     }
@@ -112,9 +112,9 @@ var display_SFOM83A = maketimer(0.3, func() {
     if (viewInternal == 1) {
         xOffset0 = string.trim(props.globals.getNode("sim/view/config/x-offset-m",1).getValue());
         yOffset0 = string.trim(props.globals.getNode("sim/view/config/y-offset-m",1).getValue());
-        #call(setCross,[]);
-        #call(color_cross_SFOM83A,[]);
-        #setCross();
+        call(setCross,[]);
+        call(color_cross_SFOM83A,[]);
+        setCross();
         color_cross_SFOM83A();
     }
 });
