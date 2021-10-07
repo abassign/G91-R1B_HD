@@ -314,9 +314,9 @@
             <z-m>0.30</z-m>
         </position>
         <direction>
-            <pitch-deg>65</pitch-deg>
+            <pitch-deg>60</pitch-deg>
             <roll-deg>0</roll-deg>
-            <heading-deg>5</heading-deg>
+            <heading-deg>6</heading-deg>
         </direction>
         <ambient>
             <r>0.0</r>
@@ -331,9 +331,9 @@
             <a>1</a>
         </diffuse>
         <specular>
-            <r>0.3</r>
-            <g>0.3</g>
-            <b>0.8</b>
+            <r>0.6</r>
+            <g>0.6</g>
+            <b>1.8</b>
             <a>1</a>
         </specular>
         <attenuation>
@@ -341,7 +341,7 @@
             <l>0.3</l>
             <q>2.0</q>
         </attenuation>
-        <spot-exponent>25</spot-exponent>
+        <spot-exponent>20</spot-exponent>
         <spot-cutoff>70</spot-cutoff>
         <range-m>2</range-m>
         <dim-factor>
@@ -360,7 +360,7 @@
         <direction>
             <pitch-deg>65</pitch-deg>
             <roll-deg>0</roll-deg>
-            <heading-deg>-5</heading-deg>
+            <heading-deg>-9</heading-deg>
         </direction>
         <ambient>
             <r>0.0</r>
@@ -375,9 +375,9 @@
             <a>1</a>
         </diffuse>
         <specular>
-            <r>0.3</r>
-            <g>0.3</g>
-            <b>0.8</b>
+            <r>0.6</r>
+            <g>0.6</g>
+            <b>1.8</b>
             <a>1</a>
         </specular>
         <attenuation>
@@ -385,7 +385,7 @@
             <l>0.3</l>
             <q>2.0</q>
         </attenuation>
-        <spot-exponent>25</spot-exponent>
+        <spot-exponent>20</spot-exponent>
         <spot-cutoff>70</spot-cutoff>
         <range-m>2</range-m>
         <dim-factor>
