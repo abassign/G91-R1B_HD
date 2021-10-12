@@ -242,11 +242,8 @@ No Overshoot
     <property value="0.0">systems/autopilot/vertical-speed-reset-integrator</property>
     <property value="2.0">systems/autopilot/vertical-speed-pid-kp-set</property>
     <property value="0.8">systems/autopilot/vertical-speed-pid-ki-set</property>
-    <!--
-    <property value="6.3">systems/autopilot/vertical-speed-pid-kd-set</property>
-    -->
     <property value="4.0">systems/autopilot/vertical-speed-pid-kd-set</property>
-    <property value="0.1">systems/autopilot/vertical-speed-output-error-coefficient</property>
+    <property value="0.14">systems/autopilot/vertical-speed-output-error-coefficient</property>
     
     <property value="0.0">systems/autopilot/left-steer-brake</property>
     <property value="0.0">systems/autopilot/right-steer-brake</property>

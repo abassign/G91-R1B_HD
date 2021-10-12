@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+
+    <path>mirror.ac</path>
+
+    <animation>
+        <type>noshadow</type>
+        <object-name>cover_mirror</object-name>
+        <object-name>mirror</object-name>
+        <object-name>mirror_support</object-name>
+        <object-name>screw_mirror</object-name>
+    </animation>
+<!--
+    <effect>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/glass-chrome</inherits-from>
+        <object-name>mirror</object-name>
+    </effect>
+    -->
+
+    <animation>
+        <type>material</type>
+        <object-name>mirror</object-name>
+        <diffuse>
+            <red>0.9</red>
+            <green>0.9</green>
+            <blue>0.9</blue>
+        </diffuse>
+        <ambient>
+            <red>0.9</red>
+            <green>0.9</green>
+            <blue>0.9</blue>
+        </ambient>
+        <specular>
+            <red>0.9</red>
+            <green>0.9</green>
+            <blue>0.9</blue>
+        </specular>
+        <emission>
+            <red>0.03</red>
+            <green>0.00</green>
+            <blue>0.005</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>screw_mirror</object-name>
+        <diffuse>
+            <red>0.3</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
+        </diffuse>
+        <ambient>
+            <red>0.3</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
+        </ambient>
+        <specular>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
+        </specular>
+        <emission>
+            <red>0.03</red>
+            <green>0.00</green>
+            <blue>0.005</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>cover_mirror</object-name>
+        <object-name>mirror_support</object-name>
+        <diffuse>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
+        </diffuse>
+        <ambient>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
+        </ambient>
+        <specular>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
+        </specular>
+        <emission>
+            <red>0.03</red>
+            <green>0.00</green>
+            <blue>0.005</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
+    </animation>
+
+    <animation>
+        <type>rotate</type>
+        <object-name>cover_mirror</object-name>
+        <object-name>mirror</object-name>
+        <object-name>mirror_support</object-name>
+        <object-name>screw_mirror</object-name>
+        <property>fdm/jsbsim/systems/canopy/position</property>
+        <factor>45</factor>
+        <center>
+            <x-m> 0.5</x-m>
+            <y-m> 0.0</y-m>
+            <z-m> 0.55355</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+        </axis>
+    </animation>
+
+</PropertyList>

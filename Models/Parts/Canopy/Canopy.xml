@@ -1553,9 +1553,9 @@
             <a>1</a>
         </diffuse>
         <specular>
-            <r>0.4</r>
-            <g>0.4</g>
-            <b>0.4</b>
+            <r>0.6</r>
+            <g>0.6</g>
+            <b>0.6</b>
             <a>1</a>
         </specular>
         <attenuation>
@@ -1619,15 +1619,15 @@
             <a>1</a>
         </ambient>
         <diffuse>
-            <r>0.0</r>
-            <g>0.0</g>
-            <b>0.0</b>
+            <r>0.1</r>
+            <g>0.1</g>
+            <b>0.1</b>
             <a>1</a>
         </diffuse>
         <specular>
-            <r>0.3</r>
-            <g>0.3</g>
-            <b>0.35</b>
+            <r>0.4</r>
+            <g>0.4</g>
+            <b>0.45</b>
             <a>1</a>
         </specular>
         <attenuation>

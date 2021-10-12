@@ -1,6 +1,6 @@
 <PropertyList>   
    
-   <model>
+    <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Canopy_Top.xml</path>
     </model>
     
@@ -10,6 +10,21 @@
     
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Components/Canopy_Top_Defrost/Canopy_Top_Defrost.xml</path>
-    </model> 
+    </model>
+
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Components/Mirror/Mirror.xml</path>
+        <offsets>
+            <x-m>-2.972</x-m>
+            <y-m>0.0</y-m>
+            <z-m>0.558</z-m>
+            <roll-deg>0</roll-deg>
+            <heading-deg>0</heading-deg>
+            <pitch-deg>-15.0</pitch-deg>
+        </offsets>
+        <condition>
+            <property>sim/G91/configuration/gauges/mirror</property>
+        </condition>
+    </model>
 
 </PropertyList>

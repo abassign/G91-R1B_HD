@@ -6,7 +6,7 @@
     <layout>vbox</layout>
     <default-padding>7</default-padding>
     <modal>false</modal>
-    <width>800</width>
+    <width>900</width>
     
     <!-- title bar -->
     <group>
@@ -380,6 +380,116 @@
                 <halign>left</halign>
                 <row>0</row>
                 <col>19</col>
+            </text>
+        </group>
+    </group>
+
+    <hrule/>
+
+    <group>
+        <layout>hbox</layout>
+        <group>
+            <layout>table</layout>
+            <text>
+                <halign>left</halign>
+                <label>Internal UV (flood) lights</label>
+                <row>0</row>
+                <col>0</col>
+            </text>
+            <slider>
+                <row>0</row>
+                <col>1</col>
+                <name>gauge_UV_light_spot_lamp</name>
+                <property>/fdm/jsbsim/systems/lightning/light-uv-instrument-bright</property>
+                <min>0.0</min>
+                <max>1.0</max>
+                <step>0.01</step>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </slider>
+            <text>
+                <row>0</row>
+                <col>2</col>
+                <label>9999</label>
+                <live>true</live>
+                <format>%2.2f</format>
+                <property>sim/G91/re_emit/gauge_phosphorescent_light</property>
+                <color>
+                    <red>0.2</red>
+                    <green>0.9</green>
+                    <blue>0.2</blue>
+                </color>
+            </text>
+        </group>
+        <vrule/>
+        <group>
+            <layout>table</layout>
+            <text>
+                <halign>left</halign>
+                <label>Frontal Cockpit red emergency lights</label>
+                <row>0</row>
+                <col>0</col>
+            </text>
+            <slider>
+                <row>0</row>
+                <col>1</col>
+                <name>gauge_Red_light_spot_lamp</name>
+                <property>/fdm/jsbsim/systems/lightning/light-red-emer-instrument-bright</property>
+                <min>0.0</min>
+                <max>1.0</max>
+                <step>0.01</step>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </slider>
+            <text>
+                <row>0</row>
+                <col>2</col>
+                <label>9999</label>
+                <live>true</live>
+                <format>%2.2f</format>
+                <property>sim/G91/re_emit/gauge_red_light</property>
+                <color>
+                    <red>0.2</red>
+                    <green>0.9</green>
+                    <blue>0.2</blue>
+                </color>
+            </text>
+        </group>
+        <vrule/>
+        <group>
+            <layout>table</layout>
+            <text>
+                <halign>left</halign>
+                <label>Lateral Console light</label>
+                <row>0</row>
+                <col>0</col>
+            </text>
+            <slider>
+                <row>0</row>
+                <col>1</col>
+                <name>gauge_Red_light_spot_lamp</name>
+                <property>/fdm/jsbsim/systems/lightning/light-red-console-bright</property>
+                <min>0.0</min>
+                <max>1.0</max>
+                <step>0.01</step>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </slider>
+            <text>
+                <row>0</row>
+                <col>2</col>
+                <label>9999</label>
+                <live>true</live>
+                <format>%2.2f</format>
+                <property>sim/G91/re_emit/light_red_console</property>
+                <color>
+                    <red>0.2</red>
+                    <green>0.9</green>
+                    <blue>0.2</blue>
+                </color>
             </text>
         </group>
     </group>

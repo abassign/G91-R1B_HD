@@ -86,6 +86,12 @@
             <green>0.0</green>
             <blue>0.0</blue>
         </ambient>
+        <specular>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+            <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light_type_b</factor-prop>
+        </specular>
         <emission>
             <red-prop>sim/G91/re_emit/gauge_red_type_b_phosphorescent_light</red-prop>
             <green-prop>sim/G91/re_emit/gauge_phosphorescent_light_type_b</green-prop>
@@ -107,6 +113,11 @@
             <green>0.15</green>
             <blue>0.15</blue>
         </ambient>
+        <specular>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </specular>
         <emission>
             <red>0.07</red>
             <green>0.0</green>
@@ -219,7 +230,6 @@
         <type>material</type>
         <object-name>division A (Meshed)</object-name>
         <object-name>frontal back A (Meshed)</object-name>
-        <object-name>frontal back A W (Meshed)</object-name>
         <object-name>frontal top A (Meshed)</object-name>
         <diffuse>
             <red>0.80</red>
@@ -231,6 +241,12 @@
             <green>0.73</green>
             <blue>0.40</blue>
         </ambient>
+        <specular>
+            <red>0.80</red>
+            <green>0.73</green>
+            <blue>0.40</blue>
+            <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light_type_b</factor-prop>
+        </specular>
         <emission>
             <red-prop>sim/G91/re_emit/gauge_red_type_b_phosphorescent_light</red-prop>
             <green-prop>sim/G91/re_emit/gauge_red_type_a_phosphorescent_light</green-prop>
@@ -253,6 +269,12 @@
             <green>0.73</green>
             <blue>0.30</blue>
         </ambient>
+        <specular>
+            <red>0.80</red>
+            <green>0.73</green>
+            <blue>0.30</blue>
+            <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light_type_b</factor-prop>
+        </specular>
         <emission>
             <red-prop>sim/G91/re_emit/gauge_red_type_b_phosphorescent_light</red-prop>
             <green-prop>sim/G91/re_emit/gauge_red_type_a_phosphorescent_light</green-prop>
@@ -273,6 +295,7 @@
         <object-name>inhg 1000 A (Meshed)</object-name>
         <object-name>flag pneu A (Meshed)</object-name>
         <object-name>flag elect A (Meshed)</object-name>
+        <object-name>frontal back A W (Meshed)</object-name>
         <diffuse>
             <red>1.0</red>
             <green>0.9</green>
@@ -283,6 +306,12 @@
             <green>0.8</green>
             <blue>0.8</blue>
         </ambient>
+        <specular>
+            <red>0.9</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+            <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light_type_b</factor-prop>
+        </specular>
         <emission>
             <red-prop>sim/G91/re_emit/gauge_red_type_b_phosphorescent_light</red-prop>
             <green-prop>sim/G91/re_emit/gauge_red_type_a_phosphorescent_light</green-prop>

@@ -1179,7 +1179,7 @@
         
         <linear_actuator name="systems/gauges/radio/ID-249-ARN/course-deg-turn-100AW">
             <input>systems/gauges/radio/ID-249-ARN/digit1A</input>
-            <module>3</module>
+            <module>10</module>
             <lag>8.0</lag>
             <gain>1.0</gain>
             <versus>0</versus>

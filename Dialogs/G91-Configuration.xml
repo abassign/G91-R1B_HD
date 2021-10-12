@@ -1241,8 +1241,8 @@
             <radio>
                 <row>0</row>
                 <col>0</col>
-                <label>Advanced gauges</label>
-                <pref-width>100</pref-width>
+                <label>Activate advanced gauges</label>
+                <pref-width>150</pref-width>
                 <halign>left</halign>
                 <property>sim/G91/liveries/active/advanced_gauges</property>
                 <live>true</live>
@@ -1250,18 +1250,18 @@
                     <command>dialog-apply</command>
                 </binding>
             </radio>
-            <text>
-                <label> </label>
-                <pref-width>500</pref-width>
-                <halign>left</halign>
+            <radio>
                 <row>0</row>
-                <col>2</col>
-                <color>
-                    <red>0.0</red>
-                    <green>1.0</green>
-                    <blue>1.0</blue>
-                </color>
-            </text>
+                <col>1</col>
+                <label>Mirror</label>
+                <pref-width>50</pref-width>
+                <halign>left</halign>
+                <property>sim/G91/configuration/gauges/mirror</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </radio>
         </group>
     </group>
     <!--

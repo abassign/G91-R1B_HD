@@ -381,9 +381,10 @@ G91_Params.xml
             <nav-active type="float">1.0</nav-active>
             <nav-active-NAV_arn_21_C866 type="float">0.0</nav-active-NAV_arn_21_C866>
             <nav-active-AN_ARN-82 type="float">1.0</nav-active-AN_ARN-82>
+            <mirror type="int">0</mirror>
         </gauges>
         <compositor>
-            <canopy-ambient-light-dimmer type="float">0.4</canopy-ambient-light-dimmer>
+            <canopy-ambient-light-dimmer type="float">0.64</canopy-ambient-light-dimmer>
             <canopy-ambient-gray-specular-dimmer type="float">0.15</canopy-ambient-gray-specular-dimmer>
         </compositor>
     </configuration>

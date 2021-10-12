@@ -112,6 +112,12 @@
             <green>0.1</green>
             <blue>0.1</blue>
         </ambient>
+        <specular>
+            <red>0.4</red>
+            <green>0.4</green>
+            <blue>2.8</blue>
+            <factor-prop>fdm/jsbsim/systems/lightning/light-uv-instrument</factor-prop>
+        </specular>
         <emission>
             <red>0.04</red>
             <green>0.0</green>
@@ -182,6 +188,12 @@
             <green>0.2</green>
             <blue>0.2</blue>
         </ambient>
+        <specular>
+            <red>0.4</red>
+            <green>0.4</green>
+            <blue>2.8</blue>
+            <factor-prop>fdm/jsbsim/systems/lightning/light-uv-instrument</factor-prop>
+        </specular>
         <emission>
             <red-prop>sim/G91/re_emit/gauge_red_emer_lamp_3200_console_red_20</red-prop>
             <green-prop>sim/G91/re_emit/gauge_red_emer_lamp_3200_console_green_20</green-prop>

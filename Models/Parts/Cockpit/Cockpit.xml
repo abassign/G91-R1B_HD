@@ -265,9 +265,9 @@
             <blue>0.50</blue>
         </ambient>
         <specular>
-            <red>0.1</red>
-            <green>0.1</green>
-            <blue>0.1</blue>
+            <red>0.05</red>
+            <green>0.05</green>
+            <blue>0.05</blue>
         </specular>
         <emission>
             <red-prop>sim/G91/re_emit/gauge_red_light</red-prop>

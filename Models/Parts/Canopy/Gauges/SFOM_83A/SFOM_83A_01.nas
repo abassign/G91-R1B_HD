@@ -37,6 +37,7 @@ props.dump(sfom83A_canvas._node);
 
 var setCross = func() {
     sfom83A_child.setTranslation(xOffset * 10000 + 67, yOffset * (-11100) + valButton);
+    ##//print("***** setCross: ",xOffset," | ",yOffset," -> ",xOffset * 10000 + 67," | ",yOffset * (-11100) + valButton);
 }
 
 var color_cross_SFOM83A = func() {
@@ -87,7 +88,6 @@ var getViewXOffset = func() {
             xOffset_prec = xOffset;
             call(setCross,[]);
             setCross();
-            print("***** getViewXOffset: ",xOffset);
         }
     }
 }
@@ -99,7 +99,6 @@ var getViewYOffset = func() {
             yOffset_prec = yOffset;
             call(setCross,[]);
             setCross();
-            print("***** getViewYOffset: ",yOffset);
         }
     }
 }
@@ -107,7 +106,7 @@ var getViewYOffset = func() {
 setlistener("sim/current-view/x-offset-m",getViewXOffset);
 setlistener("sim/current-view/y-offset-m",getViewYOffset);
 
-var display_SFOM83A = maketimer(0.3, func() {
+var display_SFOM83A = maketimer(1.3, func() {
     viewInternal = props.globals.getNode("sim/current-view/internal",1).getValue();
     if (viewInternal == 1) {
         xOffset0 = string.trim(props.globals.getNode("sim/view/config/x-offset-m",1).getValue());
