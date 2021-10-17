@@ -272,6 +272,7 @@ var analyze_imp_time = func() {
                         ,sprintf(" T: %#3d",radar_elv_time[i])
                         ,sprintf(" Elv h: %#5d",radar_elv_Hsl_ft[i])
                         ,sprintf(" HAir: %#5d",h_airplane_sl_ft)
+                        ,sprintf(" MT: %#3d",imp_medium_time)
                         ,sprintf(" Dif: %#6d",radar_elv_h_T0_ft[i])
                         ,sprintf(" | T1 %#6d",radar_elv_h_T1_ft[i])
                         ,sprintf(" | T2 %#6d",radar_elv_h_T2_ft[i])
@@ -441,7 +442,7 @@ var analyze_imp_time = func() {
     if (intensity < 0.0 or intensity_T0_lag < 0.1) intensity = 0.0;
     #// Intensity filter, is very importan, the frist costant define the time advance by the sensivity increment the second the intensity reduction
     # 1.5 - 0.7
-    intensity = (complex_factor / 1.2) * math.atan(intensity/0.5);
+    intensity = (complex_factor / 1.2) * math.atan(intensity / 0.5);
     
     # setIntensty_calc_lag(intensity, 0.3 * complex_factor,0.05 * complex_factor,speed_cas_on_air);
     setIntensty_calc_lag(intensity, 0.3 * complex_factor,0.05 * complex_factor,speed_cas_on_air);
@@ -454,7 +455,7 @@ var analyze_imp_time = func() {
         setprop("fdm/jsbsim/systems/autopilot/altitude-QFE-impact-elev-intensity",0.0);
     }
     
-    if (testing_log_active >= 2 and timeStepSecond == 1) {
+    if (testing_log_active == 2 and timeStepSecond == 1) {
         print("## Impact ctl: "
               ,sprintf(" Altitude-QFE %5d ",elevation_max)
               ,sprintf(" | %5d",h_airplane_sl_ft)

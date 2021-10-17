@@ -64,7 +64,7 @@
             <blue>0.8</blue>
         </ambient>
         <emission>	
-            <red>0.8</red>	
+            <red>0.8</red>
             <green>0.8</green>	
             <blue>0.8</blue>
             <factor-prop>fdm/jsbsim/systems/lightning/ambient-light-anticollision-intensity</factor-prop>
@@ -90,7 +90,7 @@
             <blue>0.3</blue>
         </ambient>
         <emission>	
-            <red>1.2</red>	
+            <red>1.2</red>
             <green>1.2</green>	
             <blue>1.2</blue>
             <factor-prop>fdm/jsbsim/systems/lightning/ambient-light-anticollision-intensity</factor-prop>

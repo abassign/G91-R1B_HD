@@ -52,6 +52,11 @@
             <green>0.4</green>
             <blue>0.4</blue>
         </ambient>
+        <specular>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
+        </specular>
     </animation>
     
     <animation> 
@@ -70,6 +75,11 @@
             <green>0.6</green>
             <blue>0.6</blue>
         </ambient>
+        <specular>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
+        </specular>
     </animation>
     
     <animation>
@@ -100,9 +110,9 @@
             <blue>0.35</blue>
         </ambient>
         <specular>
-            <red>0.2</red>
-            <green>0.2</green>
-            <blue>0.2</blue>
+            <red>0.4</red>
+            <green>0.4</green>
+            <blue>0.4</blue>
         </specular>
     </animation>
     
@@ -133,9 +143,9 @@
             <blue>0.35</blue>
         </ambient>
         <specular>
-            <red>0.2</red>
-            <green>0.2</green>
-            <blue>0.2</blue>
+            <red>0.4</red>
+            <green>0.4</green>
+            <blue>0.4</blue>
         </specular>
     </animation>
     

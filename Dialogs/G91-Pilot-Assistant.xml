@@ -804,6 +804,31 @@
                     <binding>
                         <command>dialog-apply</command>
                     </binding>
+                    <binding>
+                        <command>nasal</command>
+                        <script><![CDATA[
+                            if (getprop("fdm/jsbsim/systems/autopilot/gui/altitude-hold-ft") <= 0.0) {
+                                setprop("fdm/jsbsim/systems/autopilot/gui/altitude-QFE",1.0);
+                                setprop("fdm/jsbsim/systems/autopilot/gui/altitude-hold",0.0);
+                                setprop("fdm/jsbsim/systems/autopilot/gui/pitch-alpha",0.0);
+                                setprop("fdm/jsbsim/systems/autopilot/gui/impact-control-active",1.0);
+                                if (getprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle") > 0.5) {
+                                    if (getprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle-deg") < 6.0) {
+                                        setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle-deg",6.0);
+                                    }
+                                } else if (getprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed") > 0.5) {
+                                    if (getprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed-fpm") < 2500.0) {
+                                        setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed-fpm",2500.0);
+                                    }
+                                } else {
+                                    setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle",1.0);
+                                    if (getprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle-deg") < 6.0) {
+                                        setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle-deg",6.0);
+                                    }
+                                }
+                            }
+                        ]]></script>
+                    </binding>
                 </input>
                 <text>
                     <row>4</row>

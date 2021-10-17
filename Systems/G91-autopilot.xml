@@ -39,8 +39,8 @@ No Overshoot
     <property value="10000.0">systems/autopilot/gui/altitude-hold-ft</property>
     
     <property value="0.0">systems/autopilot/gui/altitude-QFE</property>
-    <property value="600.0">systems/autopilot/gui/altitude-QFE-ft</property>
-    <property value="600.0">systems/autopilot/gui/altitude-QFE-impact-ft</property>
+    <property value="1000.0">systems/autopilot/gui/altitude-QFE-ft</property>
+    <property value="1000.0">systems/autopilot/gui/altitude-QFE-impact-ft</property>
     
     <property value="0.0">systems/autopilot/gui/speed-control</property>
     <property value="1.0">systems/autopilot/gui/speed-throttle</property>
@@ -236,6 +236,7 @@ No Overshoot
     <property value="0.0">systems/autopilot/speed-best-by-altitude</property>
     <property value="-0.002">systems/autopilot/vertical-speed-anti-stall-lim-max</property>
     <!-- Vertical speed section -->
+    <!--
     <property value="2.0">systems/autopilot/vertical-speed-fps-lag-C1</property>
     <property value="0.0">systems/autopilot/vertical-speed-active</property>
     <property value="0.0">systems/autopilot/vertical-speed-fpm</property>
@@ -243,7 +244,16 @@ No Overshoot
     <property value="2.0">systems/autopilot/vertical-speed-pid-kp-set</property>
     <property value="0.8">systems/autopilot/vertical-speed-pid-ki-set</property>
     <property value="4.0">systems/autopilot/vertical-speed-pid-kd-set</property>
-    <property value="0.14">systems/autopilot/vertical-speed-output-error-coefficient</property>
+    <property value="0.145">systems/autopilot/vertical-speed-output-error-coefficient</property>
+    -->
+    <property value="2.0">systems/autopilot/vertical-speed-fps-lag-C1</property>
+    <property value="0.0">systems/autopilot/vertical-speed-active</property>
+    <property value="0.0">systems/autopilot/vertical-speed-fpm</property>
+    <property value="0.0">systems/autopilot/vertical-speed-reset-integrator</property>
+    <property value="2.0">systems/autopilot/vertical-speed-pid-kp-set</property>
+    <property value="0.8">systems/autopilot/vertical-speed-pid-ki-set</property>
+    <property value="2.0">systems/autopilot/vertical-speed-pid-kd-set</property>
+    <property value="0.15">systems/autopilot/vertical-speed-output-error-coefficient</property>
     
     <property value="0.0">systems/autopilot/left-steer-brake</property>
     <property value="0.0">systems/autopilot/right-steer-brake</property>

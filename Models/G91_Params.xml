@@ -384,8 +384,9 @@ G91_Params.xml
             <mirror type="int">0</mirror>
         </gauges>
         <compositor>
-            <canopy-ambient-light-dimmer type="float">0.64</canopy-ambient-light-dimmer>
+            <canopy-ambient-light-dimmer type="float">0.60</canopy-ambient-light-dimmer>
             <canopy-ambient-gray-specular-dimmer type="float">0.15</canopy-ambient-gray-specular-dimmer>
+            <wing-ambient-light-dimmer type="float">0.75</wing-ambient-light-dimmer>
         </compositor>
     </configuration>
     

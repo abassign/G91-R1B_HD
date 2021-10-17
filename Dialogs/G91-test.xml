@@ -46,7 +46,7 @@
                 <name>Testing_log</name>
                 <property>sim/G91/testing/log</property>
                 <min>0</min>
-                <max>2</max>
+                <max>3</max>
                 <step>1</step>
                 <binding>
                     <command>dialog-apply</command>
@@ -728,7 +728,7 @@
                 </binding>
             </slider>
             <text>
-                <label>Light specular cabin</label>
+                <label>External light</label>
                 <halign>right</halign>
                 <row>0</row>
                 <col>5</col>
@@ -736,8 +736,8 @@
             <slider>
                 <row>0</row>
                 <col>6</col>
-                <name>canopy-ambient-gray-specular-dimmer</name>
-                <property>sim/G91/configuration/compositor/canopy-ambient-gray-specular-dimmer</property>
+                <name>wing-ambient-light-dimmer</name>
+                <property>sim/G91/configuration/compositor/wing-ambient-light-dimmer</property>
                 <min>0.0</min>
                 <max>1.0</max>
                 <step>0.01</step>

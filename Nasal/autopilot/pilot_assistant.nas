@@ -1079,7 +1079,7 @@ var pilot_assistant = func() {
                     );
                 }
             } else {
-                if (math.abs(holding_point_to_airplane_delta_alt_ft) < 500.0 and math.abs(speed_cas - 190) < 40.0) {
+                if (math.abs(holding_point_to_airplane_delta_alt_ft) < 800.0 and math.abs(speed_cas - 190) < 40.0) {
                     landing_20_skip_to_22 = 1;
                 }
                 pilot_ass_status_id = 2.1;

@@ -215,8 +215,8 @@
         </ambient>
         <emission>	
             <red>3.0</red>	
-            <green>1.0</green>	
-            <blue>0.5</blue>
+            <green>0.5</green>
+            <blue>0.7</blue>
             <factor-prop>sim/G91/lightning/beacon-light/intensity_mirror</factor-prop>
         </emission>
     </animation>
