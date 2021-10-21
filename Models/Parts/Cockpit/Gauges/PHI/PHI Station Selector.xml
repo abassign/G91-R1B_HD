@@ -116,9 +116,9 @@
             <blue>0.15</blue>
         </ambient>
         <specular>
-            <red>0.5</red>
-            <green>0.5</green>
-            <blue>0.5</blue>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
         </specular>
         <emission>
             <red>0.12</red>
@@ -168,9 +168,9 @@
             <blue>0.12</blue>
         </ambient>
         <specular>
-            <red>0.5</red>
-            <green>0.5</green>
-            <blue>0.5</blue>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
         </specular>
         <emission>
             <red>0.16</red>
@@ -194,6 +194,11 @@
             <green>0.1</green>
             <blue>0.1</blue>
         </ambient>
+        <specular>
+            <red>0.4</red>
+            <green>0.4</green>
+            <blue>0.4</blue>
+        </specular>
         <emission>
             <red>0.14</red>
             <green>0.0</green>
@@ -274,9 +279,9 @@
             <blue>0.2</blue>
         </ambient>
         <specular>
-            <red>1.0</red>
-            <green>1.0</green>
-            <blue>1.0</blue>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
         </specular>
         <emission>
             <red>0.1</red>

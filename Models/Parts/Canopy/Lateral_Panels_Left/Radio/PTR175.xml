@@ -132,9 +132,9 @@
         <object-name>knob_freq_cover (Meshed)</object-name>
         <object-name>freq_preselect_cover (Meshed)</object-name>
         <diffuse>
-            <red>0.07</red>
-            <green>0.07</green>
-            <blue>0.07</blue>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
         </diffuse>
         <ambient>
             <red>0.1</red>
@@ -142,11 +142,9 @@
             <blue>0.1</blue>
         </ambient>
         <specular>
-            <red>0.5</red>
-            <green>0.5</green>
-            <blue>0.5</blue>
-            <factor-prop>sim/G91/re_emit/light_red_console</factor-prop>
-            <offset>0.1</offset>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
         </specular>
         <emission>
             <red>0.14</red>
@@ -174,21 +172,19 @@
         <object-name>freq set 00100 (Meshed)</object-name>
         <object-name>freq set 00011 (Meshed)</object-name>
         <diffuse>
-            <red>0.1</red>
-            <green>0.1</green>
-            <blue>0.1</blue>
+            <red>0.05</red>
+            <green>0.05</green>
+            <blue>0.05</blue>
         </diffuse>
         <ambient>
+            <red>0.05</red>
+            <green>0.05</green>
+            <blue>0.05</blue>
+        </ambient>
+        <specular>
             <red>0.15</red>
             <green>0.15</green>
             <blue>0.15</blue>
-        </ambient>
-        <specular>
-            <red>0.8</red>
-            <green>0.8</green>
-            <blue>0.8</blue>
-            <factor-prop>sim/G91/re_emit/light_red_console</factor-prop>
-            <offset>0.1</offset>
         </specular>
         <emission>
             <red>0.06</red>
@@ -214,11 +210,9 @@
             <blue>0.5</blue>
         </ambient>
         <specular>
-            <red>1.8</red>
-            <green>1.8</green>
-            <blue>1.8</blue>
-            <factor-prop>sim/G91/re_emit/light_red_console</factor-prop>
-            <offset>0.3</offset>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
         </specular>
         <emission>
             <red>0.1</red>

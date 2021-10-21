@@ -37,6 +37,11 @@
             <green>0.05</green>
             <blue>0.05</blue>
         </ambient>
+        <specular>
+            <red>0.15</red>
+            <green>0.15</green>
+            <blue>0.15</blue>
+        </specular>
         <emission>
             <red>0.08</red>
             <green>0.0</green>
@@ -58,6 +63,11 @@
             <green>0.1</green>
             <blue>0.1</blue>
         </ambient>
+        <specular>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
+        </specular>
         <emission>
             <red>0.14</red>
             <green>0.0</green>

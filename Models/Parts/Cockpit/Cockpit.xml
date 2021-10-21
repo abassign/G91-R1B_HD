@@ -597,6 +597,7 @@
         </condition>
     </model>
 
+    <!-- Old anemometer version -->
     <!--
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/Kollsman_ME4/Kollsman_ME4.xml</path>
@@ -614,6 +615,7 @@
         </condition>
     </model>
     -->
+
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/Kollsman AVU-8-B/Kollsman AVU-8-B.xml</path>
         <offsets>
