@@ -1460,10 +1460,16 @@
         <object-name>canopy-Consolle-red-dx-03</object-name>
         <object-name>canopy-ambient-red</object-name>
         <condition>
-            <greater-than>
-                <property>fdm/jsbsim/systems/lightning/light-red-console</property>
-                <value type="double">0.01</value>
-            </greater-than>
+            <and>
+                <greater-than>
+                    <property>fdm/jsbsim/systems/lightning/light-red-console</property>
+                    <value type="double">0.01</value>
+                </greater-than>
+                <equals>
+                    <property>sim/current-view/internal</property>
+                    <value>true</value>
+                </equals>
+            </and>
         </condition>
     </animation>
 

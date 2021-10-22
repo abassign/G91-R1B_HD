@@ -97,6 +97,8 @@
         </emission>
     </animation>
 
+        <!-- animation -->
+
     <animation>
         <type>rotate</type>
         <object-name>cover_mirror</object-name>
@@ -106,7 +108,7 @@
         <property>fdm/jsbsim/systems/canopy/position</property>
         <factor>45</factor>
         <center>
-            <x-m> 0.5</x-m>
+            <x-m>-1.50104</x-m>
             <y-m> 0.0</y-m>
             <z-m> 0.55355</z-m>
         </center>

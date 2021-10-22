@@ -390,7 +390,7 @@
         <object-name>weapon_structure_dx_03.001</object-name>
         <object-name>weapon_structure_dx_04.001</object-name>
         <property>fdm/jsbsim/systems/guns/compartment/sw-open-door-pos-dx</property>
-        <factor>-150</factor>
+        <factor>-65</factor>
         <axis>
             <x1-m> -2.6982 </x1-m>
             <y1-m> 0.5905 </y1-m>
@@ -432,7 +432,7 @@
         <object-name>weapon_structure_sx_03.001</object-name>
         <object-name>weapon_structure_sx_04.001</object-name>
         <property>fdm/jsbsim/systems/guns/compartment/sw-open-door-pos-sx</property>
-        <factor>150</factor>
+        <factor>65</factor>
         <axis>
             <x1-m> -2.6982 </x1-m>
             <y1-m> -0.5905 </y1-m>
