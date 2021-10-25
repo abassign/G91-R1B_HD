@@ -1,11 +1,11 @@
 AC3Db
-MATERIAL "DefaultWhite" rgb 1.000 1.000 1.000  amb 0.200 0.200 0.200  emis 0.000 0.000 0.000  spec 0.500 0.500 0.500  shi 10 trans 0.000
-MATERIAL "I_plastic" rgb 1.000 1.000 1.000  amb 0.200 0.200 0.200  emis 0.000 0.000 0.000  spec 0.500 0.500 0.500  shi 10 trans 0.000
-MATERIAL "SVGMat.007" rgb 1.000 1.000 1.000  amb 0.200 0.200 0.200  emis 0.000 0.000 0.000  spec 0.500 0.500 0.500  shi 10 trans 0.000
-MATERIAL "SVGMat.005" rgb 1.000 1.000 1.000  amb 0.200 0.200 0.200  emis 0.000 0.000 0.000  spec 0.500 0.500 0.500  shi 10 trans 0.000
-MATERIAL "SVGMat.009" rgb 1.000 1.000 1.000  amb 0.200 0.200 0.200  emis 0.000 0.000 0.000  spec 0.500 0.500 0.500  shi 10 trans 0.000
-MATERIAL "I_plastic.002" rgb 1.000 1.000 1.000  amb 0.200 0.200 0.200  emis 0.000 0.000 0.000  spec 0.500 0.500 0.500  shi 10 trans 0.000
-MATERIAL "SVGMat.001" rgb 1.000 1.000 1.000  amb 0.200 0.200 0.200  emis 0.000 0.000 0.000  spec 0.500 0.500 0.500  shi 10 trans 0.000
+MATERIAL "DefaultWhite" rgb 1.000 1.000 1.000  amb 0.200 0.200 0.200  emis 0.000 0.000 0.000  spec 0.500 0.500 0.500  shi 64 trans 0.000
+MATERIAL "I_plastic" rgb 1.000 1.000 1.000  amb 0.200 0.200 0.200  emis 0.000 0.000 0.000  spec 0.500 0.500 0.500  shi 64 trans 0.000
+MATERIAL "SVGMat.007" rgb 1.000 1.000 1.000  amb 0.200 0.200 0.200  emis 0.000 0.000 0.000  spec 0.500 0.500 0.500  shi 64 trans 0.000
+MATERIAL "SVGMat.005" rgb 1.000 1.000 1.000  amb 0.200 0.200 0.200  emis 0.000 0.000 0.000  spec 0.500 0.500 0.500  shi 64 trans 0.000
+MATERIAL "SVGMat.009" rgb 1.000 1.000 1.000  amb 0.200 0.200 0.200  emis 0.000 0.000 0.000  spec 0.500 0.500 0.500  shi 64 trans 0.000
+MATERIAL "I_plastic.002" rgb 1.000 1.000 1.000  amb 0.200 0.200 0.200  emis 0.000 0.000 0.000  spec 0.500 0.500 0.500  shi 64 trans 0.000
+MATERIAL "SVGMat.001" rgb 1.000 1.000 1.000  amb 0.200 0.200 0.200  emis 0.000 0.000 0.000  spec 0.500 0.500 0.500  shi 64 trans 0.000
 OBJECT world
 name "Blender_exporter_v2.26__altimeter.ac"
 kids 22

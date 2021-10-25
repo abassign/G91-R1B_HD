@@ -11,12 +11,11 @@
         <object-name>mirror_support</object-name>
         <object-name>screw_mirror</object-name>
     </animation>
-<!--
+
     <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/glass-chrome</inherits-from>
+        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_chrome</inherits-from>
         <object-name>mirror</object-name>
     </effect>
-    -->
 
     <animation>
         <type>material</type>
