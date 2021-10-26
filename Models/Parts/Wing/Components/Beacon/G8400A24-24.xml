@@ -45,7 +45,7 @@
         <object-name>cover (Meshed)</object-name>
         <transparency>
             <alpha>0.90</alpha>
-            <factor-prop>sim/G91/lightning/beacon-light/transparent_cover</factor-prop>
+            <factor-prop>fdm/jsbsim/systems/lightning/beacon/transparent_cover</factor-prop>
         </transparency>
         <diffuse>
             <red>0.3</red>
@@ -61,7 +61,7 @@
             <red>1.0</red>	
             <green>0.0</green>	
             <blue>0.0</blue>
-            <factor-prop>sim/G91/lightning/beacon-light/emission_cover</factor-prop>
+            <factor-prop>fdm/jsbsim/systems/lightning/beacon/pl-emission-effect</factor-prop>
         </emission>
         <specular>
             <red>1.0</red>
@@ -84,10 +84,10 @@
             <blue>0.5</blue>
         </ambient>
         <emission>	
-            <red>0.2</red>	
+            <red>0.2</red>
             <green>0.0</green>	
             <blue>0.0</blue>
-            <factor-prop>sim/G91/lightning/beacon-light/emission_cover</factor-prop>
+            <factor-prop>fdm/jsbsim/systems/lightning/beacon/pl-emission-effect</factor-prop>
         </emission>
     </animation>
     
@@ -108,7 +108,7 @@
             <red>0.15</red>	
             <green>0.0</green>	
             <blue>0.0</blue>
-            <factor-prop>sim/G91/lightning/beacon-light/emission_cover</factor-prop>
+            <factor-prop>fdm/jsbsim/systems/lightning/beacon/intensity</factor-prop>
         </emission>
     </animation>
     
@@ -124,7 +124,7 @@
             <red>0.2</red>	
             <green>0.0</green>	
             <blue>0.1</blue>
-            <factor-prop>sim/G91/lightning/beacon-light/emission_cover</factor-prop>
+            <factor-prop>fdm/jsbsim/systems/lightning/beacon/intensity</factor-prop>
         </emission>
     </animation>
     
@@ -145,7 +145,7 @@
             <red>0.3</red>	
             <green>0.0</green>	
             <blue>0.0</blue>
-            <factor-prop>sim/G91/lightning/beacon-light/emission_cover</factor-prop>
+            <factor-prop>fdm/jsbsim/systems/lightning/beacon/intensity</factor-prop>
         </emission>
     </animation>
     
@@ -166,7 +166,7 @@
             <red>0.3</red>	
             <green>0.0</green>	
             <blue>0.0</blue>
-            <factor-prop>sim/G91/lightning/beacon-light/emission_cover</factor-prop>
+            <factor-prop>fdm/jsbsim/systems/lightning/beacon/intensity</factor-prop>
         </emission>
     </animation>
     
@@ -176,7 +176,7 @@
         <object-name>glass-support (Meshed)</object-name>
         <transparency>
             <alpha>0.4</alpha>
-            <factor-prop>sim/G91/lightning/beacon-light/transparent_cover</factor-prop>
+            <factor-prop>fdm/jsbsim/systems/lightning/beacon/transparent_cover</factor-prop>
         </transparency>
         <diffuse>
             <red>0.59</red>
@@ -197,7 +197,7 @@
             <red>0.2</red>	
             <green>0.0</green>	
             <blue>0.0</blue>
-            <factor-prop>sim/G91/lightning/beacon-light/emission_cover</factor-prop>
+            <factor-prop>fdm/jsbsim/systems/lightning/beacon/intensity</factor-prop>
         </emission>
     </animation>
     
@@ -206,7 +206,7 @@
         <object-name>lamp-mirrors (Meshed)</object-name>
         <transparency>
             <alpha>1.0</alpha>
-            <factor-prop>sim/G91/lightning/beacon-light/intensity_bulb</factor-prop>
+            <factor-prop>fdm/jsbsim/systems/lightning/beacon/intensity_bulb</factor-prop>
         </transparency>
         <ambient>
             <red>1.0</red>
@@ -217,7 +217,7 @@
             <red>3.0</red>	
             <green>0.5</green>
             <blue>0.7</blue>
-            <factor-prop>sim/G91/lightning/beacon-light/intensity_mirror</factor-prop>
+            <factor-prop>fdm/jsbsim/systems/lightning/beacon/intensity_mirror</factor-prop>
         </emission>
     </animation>
     
@@ -226,7 +226,7 @@
         <object-name>lamp-filament (Meshed)</object-name>
         <transparency>
             <alpha>1.0</alpha>
-            <factor-prop>sim/G91/lightning/beacon-light/intensity_bulb</factor-prop>
+            <factor-prop>fdm/jsbsim/systems/lightning/beacon/intensity_bulb</factor-prop>
         </transparency>
         <diffuse>
             <red>0.67</red>
@@ -242,7 +242,7 @@
             <red>1.0</red>	
             <green>0.5</green>	
             <blue>3.0</blue>
-            <factor-prop>sim/G91/lightning/beacon-light/intensity_bulb</factor-prop>
+            <factor-prop>fdm/jsbsim/systems/lightning/beacon/intensity_bulb</factor-prop>
         </emission>
     </animation>
     
@@ -261,10 +261,10 @@
             <blue>0.11</blue>
         </ambient>
         <emission>	
-            <red>0.5</red>	
+            <red>0.5</red>
             <green>0.0</green>	
             <blue>0.0</blue>
-            <factor-prop>sim/G91/lightning/beacon-light/emission_cover</factor-prop>
+            <factor-prop>fdm/jsbsim/systems/lightning/beacon/pl-emission-effect</factor-prop>
         </emission>
     </animation>
     
@@ -285,7 +285,7 @@
             <red>0.3</red>	
             <green>0.0</green>	
             <blue>0.0</blue>
-            <factor-prop>sim/G91/lightning/beacon-light/emission_cover</factor-prop>
+            <factor-prop>fdm/jsbsim/systems/lightning/beacon/intensity</factor-prop>
         </emission>
     </animation>
     
@@ -306,7 +306,7 @@
             <red>0.3</red>	
             <green>0.0</green>	
             <blue>0.0</blue>
-            <factor-prop>sim/G91/lightning/beacon-light/emission_cover</factor-prop>
+            <factor-prop>fdm/jsbsim/systems/lightning/beacon/intensity</factor-prop>
         </emission>
     </animation>
 
@@ -366,7 +366,7 @@
         <spot-cutoff>50</spot-cutoff>
         <range-m>0.8</range-m>
         <dim-factor>
-            <property>sim/G91/lightning/beacon-light/emission_cover</property>
+            <property>fdm/jsbsim/systems/lightning/beacon/intensity_effect</property>
         </dim-factor>
     </light>
     
@@ -411,7 +411,7 @@
         <spot-cutoff>15</spot-cutoff>
         <range-m>50.0</range-m>
         <dim-factor>
-            <property>sim/G91/lightning/beacon-light/emission_cover</property>
+            <property>fdm/jsbsim/systems/lightning/beacon/intensity_effect</property>
         </dim-factor>
     </light>
     
@@ -455,7 +455,7 @@
         <spot-cutoff>15</spot-cutoff>
         <range-m>8.0</range-m>
         <dim-factor>
-            <property>sim/G91/lightning/beacon-light/emission_cover</property>
+            <property>fdm/jsbsim/systems/lightning/beacon/intensity_effect</property>
         </dim-factor>
     </light>
     
@@ -499,7 +499,7 @@
         <spot-cutoff>15</spot-cutoff>
         <range-m>50.0</range-m>
         <dim-factor>
-            <property>sim/G91/lightning/beacon-light/emission_cover</property>
+            <property>fdm/jsbsim/systems/lightning/beacon/intensity_effect</property>
         </dim-factor>
     </light>
     
@@ -543,7 +543,7 @@
         <spot-cutoff>15</spot-cutoff>
         <range-m>8.0</range-m>
         <dim-factor>
-            <property>sim/G91/lightning/beacon-light/emission_cover</property>
+            <property>fdm/jsbsim/systems/lightning/beacon/intensity_effect</property>
         </dim-factor>
     </light>
     
@@ -554,7 +554,7 @@
         <object-name>beacon-spot-02</object-name>
         <condition>
             <greater-than>
-                <property>sim/G91/lightning/beacon-light/emission_cover</property>
+                <property>fdm/jsbsim/systems/lightning/beacon/intensity_effect</property>
                 <value type="double">0.01</value>
             </greater-than>
         </condition>
@@ -567,7 +567,7 @@
         <condition>
             <and>
                 <greater-than>
-                    <property>sim/G91/lightning/beacon-light/emission_cover</property>
+                    <property>fdm/jsbsim/systems/lightning/beacon/intensity_effect</property>
                     <value type="double">0.01</value>
                 </greater-than>
                 <equals>
@@ -625,70 +625,5 @@
             <z>1</z>
         </axis>
     </animation>
-<!--
-    <animation>
-        <type>spin</type>
-        <object-name>lamp-glasses (Meshed)</object-name>
-        <object-name>glass-support (Meshed)</object-name>
-        <object-name>lamp-mirrors (Meshed)</object-name>
-        <object-name>lamp-filament (Meshed)</object-name>
-        <object-name>lamp-support (Meshed)</object-name>
-        <object-name>base-rotante (Meshed)</object-name>
-        <object-name>contact (Meshed)</object-name>
-        <object-name>support (Meshed)</object-name>
-        <object-name>beacon-01 (Meshed)</object-name>
-        <object-name>beacon-02 (Meshed)</object-name>
-        <property>fdm/jsbsim/systems/lightning/beacon/motor</property>
-        <factor>45</factor>
-        <center>
-            <x-m>0.0</x-m>
-            <y-m>0.0</y-m>
-            <z-m>0.0</z-m>
-        </center>
-        <axis>
-            <x>0</x>
-            <y>0</y>
-            <z>1</z>
-        </axis>
-    </animation>
-    -->
-    
-    <!-- Beacon effects -->
-    <!--
-    <model>
-        <name>beacon-01 (Meshed)</name>
-        <path>Effects/lights/beacon-01.xml</path>
-        <offsets>
-            <x-m> 0.0 </x-m>
-            <y-m> -0.07 </y-m>
-            <z-m> 0.02 </z-m>
-            <heading-deg>90</heading-deg>
-            <pitch-deg>45</pitch-deg>
-        </offsets>
-    </model>
-    
-    <model>
-        <name>beacon-02 (Meshed)</name>
-        <path>Effects/lights/beacon-02.xml</path>
-        <offsets>
-            <x-m> 0.0 </x-m>
-            <y-m> 0.07 </y-m>
-            <z-m> 0.02 </z-m>
-            <heading-deg>-90</heading-deg>
-            <pitch-deg>45</pitch-deg>
-        </offsets>
-    </model>
 
-    <model>
-        <name>cover (Meshed)</name>
-        <path>Effects/lights/beacon-00.xml</path>
-        <offsets>
-            <x-m> 0.0 </x-m>
-            <y-m> 0.0 </y-m>
-            <z-m> 0.03 </z-m>
-            <heading-deg>00</heading-deg>
-            <pitch-deg>0</pitch-deg>
-        </offsets>
-    </model>
-    -->
 </PropertyList>

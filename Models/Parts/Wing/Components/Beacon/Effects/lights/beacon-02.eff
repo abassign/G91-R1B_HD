@@ -12,7 +12,7 @@
         <light_color_center_g type="float">0.8</light_color_center_g>
         <light_color_center_b type="float">0.8</light_color_center_b>
         <intensity_scale>
-            <use>sim/G91/lightning/beacon-light/intensity_effect</use>
+            <use>fdm/jsbsim/systems/lightning/beacon/intensity_effect</use>
         </intensity_scale>
 
         <!-- Arc is 140 deg, is 70 deg per side -->

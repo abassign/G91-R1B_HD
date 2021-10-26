@@ -276,7 +276,6 @@
             <file>Aircraft/G91-R1B_HD/Nasal/Lights/button_lights.nas</file>
             <!-- Lights -->
             <file>Aircraft/G91-R1B_HD/Models/Parts/LandingGearFrontal/NASAL/frontal_gear_lights.nas</file>
-            <file>Aircraft/G91-R1B_HD/Models/Parts/Wing/Components/Beacon/Nasal/beacon_lights.nas</file>
             <!-- Stores -->
             <file>Aircraft/G91-R1B_HD/Nasal/store.nas</file>
             <!-- Load modules -->

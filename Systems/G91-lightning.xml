@@ -3,6 +3,7 @@
 <system name="lightning">
 
     <property value="1.0">systems/lightning/unit</property>
+    <property value="0">systems/lightning/ambient-light</property>
     <property value="0">systems/lightning/light-uv-instrument</property>
     <property value="0">systems/lightning/light-uv-instrument-bright</property>
     <property value="0">systems/lightning/light-uv-instrument-bright-pos</property>
@@ -27,6 +28,13 @@
     <property value="0">systems/lightning/beacon/motor</property>
     <property value="0">systems/lightning/beacon/deg</property>
     <property value="0">systems/lightning/beacon/deg-trigger</property>
+    <property value="0">systems/lightning/beacon/intensity</property>
+    <property value="0">systems/lightning/beacon/emission_cover</property>
+    <property value="0">systems/lightning/beacon/intensity_effect</property>
+    <property value="0">systems/lightning/beacon/intensity_mirror</property>
+    <property value="0">systems/lightning/beacon/intensity_bulb</property>
+    <property value="0">systems/lightning/beacon/transparent_cover</property>
+    <property value="0">systems/lightning/beacon/transparent_glass</property>
     <property value="0">systems/lightning/anticollision/on</property>
     <property value="0">systems/lightning/ambient-light-anticollision-procedural</property>
     <property value="0">systems/lightning/ambient-light-anticollision-intensity</property>
@@ -37,6 +45,22 @@
     <property value="0">systems/lightning/ambient-position-lights-glass</property>
     <property value="0">systems/lightning/ambient-position-lights-glass-lamp</property>
     
+
+    <channel name="Ambient lighting" execrate="64">
+
+        <summer name="systems/lightning/ambient-light-sum">
+            <input>/rendering/scene/ambient/red</input>
+            <input>/rendering/scene/ambient/green</input>
+            <input>/rendering/scene/ambient/blue</input>
+        </summer>
+
+        <pure_gain name="systems/lightning/ambient-light">
+            <input>systems/lightning/ambient-light-sum</input>
+            <gain>0.3333</gain>
+        </pure_gain>
+
+    </channel>
+
     
     <channel name="light uv instrument" execrate="32">
         
@@ -253,6 +277,7 @@
         
     </channel>
 
+
     <channel name="beacon light" execrate="4">
 
         <switch name="systems/lightning/beacon/on">
@@ -289,6 +314,79 @@
             <input>systems/lightning/beacon/on</input>
             <gain>3.0</gain>
         </pure_gain>
+
+        <scheduled_gain name="systems/lightning/beacon/pl-emission">
+            <input>systems/lightning/beacon/on</input>
+            <table>
+                <independentVar>systems/lightning/ambient-light</independentVar>
+                <tableData>
+                    0.0 1.00
+                    0.2 0.90
+                    0.3 0.70
+                    0.4 0.40
+                    0.6 0.20
+                    0.8 0.10
+                    1.0 0.05
+                </tableData>
+            </table>
+            <gain>1.0</gain>
+        </scheduled_gain>
+
+        <pure_gain name="systems/lightning/beacon/pl-emission-a">
+            <input>systems/lightning/beacon/pl-emission</input>
+            <gain>3.0</gain>
+        </pure_gain>
+
+        <pure_gain name="systems/lightning/beacon/pl-emission-b">
+            <input>systems/lightning/beacon/pl-emission</input>
+            <gain>-1.0</gain>
+        </pure_gain>
+
+        <pure_gain name="systems/lightning/beacon/pl-emission-c">
+            <input>systems/lightning/beacon/pl-emission</input>
+            <gain>-0.25</gain>
+        </pure_gain>
+
+        <scheduled_gain name="systems/lightning/beacon/pl-emission-effect">
+            <input>systems/lightning/beacon/on</input>
+            <table>
+                <independentVar>systems/lightning/ambient-light</independentVar>
+                <tableData>
+                    0.0 1.00
+                    0.2 0.90
+                    0.3 0.30
+                    0.4 0.15
+                    0.6 0.05
+                    1.0 0.00
+                </tableData>
+            </table>
+            <gain>1.0</gain>
+        </scheduled_gain>
+
+        <pure_gain name="systems/lightning/beacon/intensity_effect">
+            <input>systems/lightning/beacon/pl-emission-effect</input>
+            <gain>1.2</gain>
+        </pure_gain>
+
+        <summer name="systems/lightning/beacon/intensity_mirror">
+            <input>systems/lightning/beacon/pl-emission</input>
+            <bias>0.3 </bias>
+        </summer>
+
+        <summer name="systems/lightning/beacon/intensity_bulb">
+            <input>systems/lightning/beacon/pl-emission-a</input>
+            <bias>0.3 </bias>
+        </summer>
+
+        <summer name="systems/lightning/beacon/transparent_glass">
+            <input>systems/lightning/beacon/pl-emission-b</input>
+            <bias>1.0</bias>
+        </summer>
+
+        <summer name="systems/lightning/beacon/transparent_cover">
+            <input>systems/lightning/beacon/pl-emission-c</input>
+            <bias>1.0</bias>
+        </summer>
 
     </channel>
     
