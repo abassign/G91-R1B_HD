@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+
+    <path>lateral_panel_left_support.ac</path>
+
+    <animation>
+       <object-name>plate (Meshed)</object-name>
+       <type>select</type>
+       <condition>
+           <not>
+              <property>sim/aircraft-is-singleplayer</property>
+           </not>
+       </condition>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>box-bottom (Meshed)</object-name>
+        <diffuse>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
+        </diffuse>
+        <ambient>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
+        </ambient>
+        <specular>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
+        </specular>
+        <emission>
+            <red>0.1</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/light_red_console</factor-prop>
+        </emission>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>cave-black (Meshed)</object-name>
+        <diffuse>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </diffuse>
+        <ambient>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </ambient>
+        <specular>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </specular>
+        <emission>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/light_red_console</factor-prop>
+        </emission>
+    </animation>
+
+    <model>
+      <path>lateral_panel_left_plate.xml</path>
+      <offsets>
+          <x-m>0.0</x-m>
+          <y-m>0.0</y-m>
+          <z-m>0.0</z-m>
+          <roll-deg>-30.0</roll-deg>
+          <pitch-deg>0.0</pitch-deg>
+          <heading-deg>0.0</heading-deg>
+      </offsets>
+    </model>
+
+</PropertyList>

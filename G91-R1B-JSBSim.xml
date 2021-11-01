@@ -89,6 +89,7 @@
     <system file="ATC-transponder"/>
     <system file="AAU-37A"/>
     <system file="AVU-8-B"/>
+    <system file="Altimeter-5934PA"/>
     
     <metrics file="Systems/G91-metrics"/>
     <mass_balance file="Systems/G91-mass-balance"/>

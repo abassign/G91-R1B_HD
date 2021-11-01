@@ -2370,7 +2370,7 @@
             <text>
                 <row>0</row>
                 <col>3</col>
-                <pref-width>400</pref-width>
+                <pref-width>430</pref-width>
                 <property>fdm/jsbsim/systems/autopilot/gui/airport_landing_status</property>
                 <live>true</live>
                 <halign>left</halign>
@@ -2439,7 +2439,7 @@
             <text>
                 <row>0</row>
                 <col>8</col>
-                <label>999999999999999</label>
+                <label>99999999999999999</label>
                 <halign>left</halign>
                 <live>true</live>
                 <format>Slope %2.1f (deg)</format>
@@ -2588,6 +2588,7 @@
             <slider>
                 <row>0</row>
                 <col>10</col>
+                <pref-width>30</pref-width>
                 <live>true</live>
                 <property>fdm/jsbsim/systems/autopilot/gui/landing-circuit-L-R</property>
                 <min>-1</min>
@@ -2600,10 +2601,30 @@
             <text>
                 <row>0</row>
                 <col>11</col>
-                <label>9999999999</label>
+                <label>999999</label>
                 <halign>left</halign>
                 <live>true</live>
                 <property>fdm/jsbsim/systems/autopilot/gui/landing-circuit-L-R-description</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.0</blue>
+                </color>
+            </text>
+            <text>
+                <row>0</row>
+                <col>12</col>
+                <halign>left</halign>
+                <label>QFE:</label>
+            </text>
+            <text>
+                <row>0</row>
+                <col>13</col>
+                <label>99999</label>
+                <halign>left</halign>
+                <live>true</live>
+                <format>%2.2f</format>
+                <property>fdm/jsbsim/systems/autopilot/gui/airport_runway_QFE_inhg</property>
                 <color>
                     <red>0.9</red>
                     <green>0.9</green>

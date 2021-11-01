@@ -375,6 +375,12 @@
             <y-m> -0.05 </y-m>
             <z-m> 0.29 </z-m>
         </offsets>
+        <condition>
+            <greater-than>
+                <property>fdm/jsbsim/systems/lightning/ambient-position-lights-procedural</property>
+                <value type="double">0.01</value>
+            </greater-than>
+        </condition>
     </model>
     
     <effect>
@@ -449,6 +455,12 @@
             <y-m> 0.05 </y-m>
             <z-m> 0.29 </z-m>
         </offsets>
+        <condition>
+            <greater-than>
+                <property>fdm/jsbsim/systems/lightning/ambient-position-lights-procedural</property>
+                <value type="double">0.01</value>
+            </greater-than>
+        </condition>
     </model>
 
     <!-- Objects animation -->

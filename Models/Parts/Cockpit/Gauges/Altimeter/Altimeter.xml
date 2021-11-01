@@ -414,14 +414,37 @@
             <z>0</z>
         </axis>
     </animation>
-    
+
+    <animation>
+        <type>pick</type>
+        <visible>true</visible>
+        <object-name>I_Plate.004A</object-name>
+        <object-name>I_Plate.004B</object-name>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <binding>
+                <command>nasal</command>
+                <script><![CDATA[
+                    var value = getprop("fdm/jsbsim/systems/gauges/pneumatic/alt-5934PA/pick-MANUAL-QFE-QNH-2992-set");
+                    if (value >= 4) {
+                        value = 2;
+                    } else {
+                        value = value + 1;
+                    }
+                    setprop("fdm/jsbsim/systems/gauges/pneumatic/alt-5934PA/pick-MANUAL-QFE-QNH-2992-set",value);
+                ]]></script>
+            </binding>
+        </action>
+    </animation>
+
     <animation>
         <type>rotate</type>
         <object-name>I_Plate.004A</object-name>
         <property>instrumentation/altimeter/setting-inhg</property>
         <interpolation>
-            <entry><ind>27.9</ind><dep>-210</dep></entry>
-            <entry><ind>31.5</ind><dep>150</dep></entry>
+            <entry><ind>27.9</ind><dep>-122</dep></entry>
+            <entry><ind>31.5</ind><dep>238</dep></entry>
         </interpolation>
         <center>
             <x>-0.00260</x>
@@ -441,11 +464,16 @@
         <action>
             <binding>
                 <command>property-adjust</command>
-                <property>instrumentation/altimeter/setting-inhg</property>
+                <property>fdm/jsbsim/systems/gauges/pneumatic/alt-5934PA/pin-MANUAL-inhg-set</property>
                 <factor>0.01</factor>
                 <min>27.9</min>
-                <max>31.5</max>
+                <max>31.4</max>
                 <wrap>false</wrap>
+            </binding>
+            <binding>
+                <command>property-assign</command>
+                <property>fdm/jsbsim/systems/gauges/pneumatic/alt-5934PA/pick-MANUAL-QFE-QNH-2992-set</property>
+                <value>1</value>
             </binding>
         </action>
     </animation>

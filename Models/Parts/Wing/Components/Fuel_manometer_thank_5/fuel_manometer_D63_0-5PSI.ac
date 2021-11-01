@@ -1,5 +1,5 @@
 AC3Db
-MATERIAL "DefaultWhite" rgb 1.000 1.000 1.000  amb 0.200 0.200 0.200  emis 0.000 0.000 0.000  spec 0.500 0.500 0.500  shi 10 trans 0.000
+MATERIAL "DefaultWhite" rgb 1.000 1.000 1.000  amb 0.200 0.200 0.200  emis 0.000 0.000 0.000  spec 0.500 0.500 0.500  shi 64 trans 0.000
 OBJECT world
 name "Blender_exporter_v2.26__fuel_manometer_D63_0-5PSI.ac"
 kids 11

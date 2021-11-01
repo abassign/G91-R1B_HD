@@ -1234,6 +1234,12 @@
             <y-m> -4.32</y-m>
             <z-m> -0.75</z-m>
         </offsets>
+        <condition>
+            <greater-than>
+                <property>fdm/jsbsim/systems/lightning/ambient-position-lights-procedural</property>
+                <value type="double">0.01</value>
+            </greater-than>
+        </condition>
     </model>
     
     <animation> 
@@ -1318,6 +1324,12 @@
             <y-m> 4.315</y-m>
             <z-m> -0.75</z-m>
         </offsets>
+        <condition>
+            <greater-than>
+                <property>fdm/jsbsim/systems/lightning/ambient-position-lights-procedural</property>
+                <value type="double">0.01</value>
+            </greater-than>
+        </condition>
     </model>
     
     <!-- Remove Tank inlet -->
@@ -2136,7 +2148,7 @@
             <l>0.09</l>
             <q>0.032</q>
         </attenuation>
-        <spot-exponent>1</spot-exponent>
+        <spot-exponent>0.1</spot-exponent>
         <spot-cutoff>80</spot-cutoff>
         <range-m>20</range-m>
         <dim-factor>

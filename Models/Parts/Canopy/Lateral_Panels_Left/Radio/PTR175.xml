@@ -14,7 +14,11 @@
         <object-name>knob_freq_4 (Meshed)</object-name>
         <object-name>knob_freq_cover (Meshed)</object-name>
         <object-name>freq_preselect_cover (Meshed)</object-name>
+        <object-name>freq_preselect_cover top (Meshed)</object-name>
         <object-name>freq_preselect_screew (Meshed)</object-name>
+        <object-name>freq_preselect_cover script</object-name>
+        <object-name>freq_preselect_cover script-2070</object-name>
+        <object-name>freq_preselect_cover screew (Meshed)</object-name>
         <object-name>screews (Meshed)</object-name>
         <object-name>cover_lamp (Meshed)</object-name>
         <object-name>knob_function (Meshed)</object-name>
@@ -26,6 +30,8 @@
         <object-name>screew internal 01 (Meshed)</object-name>
         <object-name>screew internal 02 (Meshed)</object-name>
         <object-name>screew internal 02 (Meshed)</object-name>
+        <object-name>freq_preselect_cover screew ext (Meshed)</object-name>
+        <object-name>freq_preselect_cover screew int (Meshed)</object-name>
         <object-name>digit B 10000 (Meshed)</object-name>
         <object-name>digit A 10000 (Meshed)</object-name>
         <object-name>digit S 10000 (Meshed)</object-name>
@@ -107,6 +113,7 @@
         <type>material</type>
         <object-name>knob_function_arrow (Meshed)</object-name>
         <object-name>vol_knob_mirror (Meshed)</object-name>
+        <object-name>freq_preselect_cover screew ext (Meshed)</object-name>
         <diffuse>
             <red>0.7</red>
             <green>0.7</green>
@@ -125,12 +132,36 @@
         </emission>
     </animation>
 
+
+    <animation>
+        <type>material</type>
+        <object-name>freq_preselect_cover script</object-name>
+        <diffuse>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.45</blue>
+        </diffuse>
+        <ambient>
+            <red>0.7</red>
+            <green>0.7</green>
+            <blue>0.65</blue>
+        </ambient>
+        <emission>
+            <red>0.15</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/light_red_console</factor-prop>
+        </emission>
+    </animation>
+
     <animation>
         <type>material</type>
         <object-name>box_cover_inf (Meshed)</object-name>
         <object-name>box_cover_sup (Meshed)</object-name>
         <object-name>knob_freq_cover (Meshed)</object-name>
         <object-name>freq_preselect_cover (Meshed)</object-name>
+        <object-name>freq_preselect_cover top (Meshed)</object-name>
+        <object-name>freq_preselect_cover script-2070</object-name>
         <diffuse>
             <red>0.1</red>
             <green>0.1</green>
@@ -142,9 +173,9 @@
             <blue>0.1</blue>
         </ambient>
         <specular>
-            <red>0.2</red>
-            <green>0.2</green>
-            <blue>0.2</blue>
+            <red>0.1</red>
+            <green>0.1</green>
+            <blue>0.1</blue>
         </specular>
         <emission>
             <red>0.14</red>
@@ -198,7 +229,9 @@
         <type>material</type>
         <object-name>freq_preselect_screew (Meshed)</object-name>
         <object-name>screews (Meshed)</object-name>
+        <object-name>freq_preselect_cover screew int (Meshed)</object-name>
         <object-name>freq_preselect_hinges (Meshed)</object-name>
+        <object-name>freq_preselect_cover screew (Meshed)</object-name>
         <diffuse>
             <red>0.3</red>
             <green>0.3</green>

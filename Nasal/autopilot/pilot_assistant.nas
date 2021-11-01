@@ -770,8 +770,10 @@ var pilot_assistant = func() {
     var rwy_offset_v_ft = getprop("fdm/jsbsim/systems/autopilot/gui/landing-rwy-v-offset-ft");
     var speed_true_nmh = getprop("fdm/jsbsim/systems/autopilot/speed-true-on-air");
     var speed_true_fps = speed_true_nmh / 3600.0 * 5280.0;
+
+    setprop("fdm/jsbsim/systems/autopilot/gui/airport_runway_QFE_inhg",0.0);
+
     if (pilot_ass_status_id == 1) {
-        
         if (airport_select != nil and rwy_select != nil) {
             
             #// print("***** airport_select.id: ",airport_select.id," rwy_select.id: ",rwy_select);
@@ -796,6 +798,7 @@ var pilot_assistant = func() {
             setprop("fdm/jsbsim/systems/autopilot/gui/airport_runway_id",airport_select.runways[rwy_select].id);
             setprop("fdm/jsbsim/systems/autopilot/gui/airport_runway_distance",runway_to_airplane_dist_nm);
             setprop("fdm/jsbsim/systems/autopilot/gui/airport_runway_airplane_slope",slope);
+
             if (landing_activate_status == 1
                 and ((getprop("fdm/jsbsim/systems/gauges/PHI/program/route-manager/autopush-last") == 1 and getprop("fdm/jsbsim/systems/gauges/PHI/program/route-manager/autopush-active") == 1)
                     or getprop("fdm/jsbsim/systems/gauges/PHI/program/route-manager/autopush-active") == 0)
@@ -963,6 +966,14 @@ var pilot_assistant = func() {
             } else {
                 runway_alt_m_select = airport_select.elevation;
             }
+            #// QNH to QFE airport rw conversion
+            var qfe_calculate = 0.02953 * (getprop("/environment/pressure-sea-level-inhg") * 33.8639 - 0.0022857 * runway_alt_m_select) / (0.0001019 * runway_alt_m_select + 0.9990444);
+            #// QNH Correction
+            var hft = runway_alt_m_select * 3.28084;
+            qfe_calculate = qfe_calculate - (0.0000027197131 * hft * hft + 0.012174 * hft + 3.91464) / 100.0;
+            setprop("fdm/jsbsim/systems/autopilot/gui/airport_runway_QFE_inhg",qfe_calculate);
+        } else {
+            setprop("fdm/jsbsim/systems/autopilot/gui/airport_runway_QFE_inhg",0.0);
         }
         runway_to_airplane_delta_alt_ft = (airplane.alt() - runway_alt_m_select) * 3.28084;
         setprop("fdm/jsbsim/systems/autopilot/gui/airport_runway_delta_altitude",runway_to_airplane_delta_alt_ft);
@@ -1851,7 +1862,7 @@ var pilot_assistant = func() {
         #
         #// Output
         #
-        var landing_status = airport_select.id ~ " | " ~ airport_select.name ~ " | " ~ airport_select.runways[rwy_select].id;
+        var landing_status = airport_select.id ~ " | " ~ airport_select.name ~ " | " ~ airport_select.runways[rwy_select].id ~ sprintf(" |H %5.0f ft",runway_alt_m_select * 3.28084);
         if (pilot_ass_status_id == 1) {
             landing_status = "Airport found " ~ landing_status;
         } else if (pilot_ass_status_id == 2)  {
