@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 
-<system name="G91 UHF Emerg and Dampers">
+<system name="UHF emergency">
 
     <!-- Comunication properties -->
     <property value="0.0">systems/gauges/radio/UHF-Emerg/wl-uhf-emerg-on</property>

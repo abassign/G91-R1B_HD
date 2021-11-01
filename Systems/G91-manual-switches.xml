@@ -362,7 +362,7 @@
         
         <lag_filter name="systems/manual-switches/lateral_panel_left/dampers/sw-pitch-damper-pos">
             <input>systems/manual-switches/lateral_panel_left/dampers/sw-pitch-damper-togle</input>
-            <c1>1.0</c1>
+            <c1>4.0</c1>
         </lag_filter>
         
         <switch name="systems/manual-switches/lateral_panel_left/dampers/sw-pitch-damper-on">
@@ -374,7 +374,7 @@
         
         <lag_filter name="systems/manual-switches/lateral_panel_left/dampers/sw-yaw-damper-pos">
             <input>systems/manual-switches/lateral_panel_left/dampers/sw-yaw-damper-togle</input>
-            <c1>1.0</c1>
+            <c1>4.0</c1>
         </lag_filter>
         
         <switch name="systems/manual-switches/lateral_panel_left/dampers/sw-yaw-damper-on">

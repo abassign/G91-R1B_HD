@@ -77,11 +77,13 @@
     <system file="G91-stations"/>
     <system file="G91-stations-hardpoint-hook"/>
     <system file="G91-army"/>
-    <system file="PHI"/>
+    <system file="G91-army"/>
     <system file="G91-mass-balance-modifier"/>
     
     <!-- apparatus -->
+    <system file="PHI"/>
     <system file="radio-PTR175"/>
+    <system file="UHF-emergency"/>
     <system file="ADF-MARCONI-8283"/>
     <system file="TACAN-NAV-ARN-21"/>
     <system file="gyrocompass"/>
@@ -90,6 +92,7 @@
     <system file="AAU-37A"/>
     <system file="AVU-8-B"/>
     <system file="Altimeter-5934PA"/>
+
     
     <metrics file="Systems/G91-metrics"/>
     <mass_balance file="Systems/G91-mass-balance"/>

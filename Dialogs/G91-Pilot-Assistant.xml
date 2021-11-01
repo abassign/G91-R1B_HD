@@ -13,7 +13,7 @@
         <layout>hbox</layout>
         <empty><stretch>true</stretch></empty>
         <text>
-            <pref-width>300</pref-width>
+            <pref-width>100</pref-width>
             <label> </label>
         </text>
         <text>
@@ -21,6 +21,24 @@
             <label>Pilot assistant menu</label>
         </text>
         <empty><stretch>true</stretch></empty>
+        <radio>
+            <label>Yaw damper</label>
+            <halign>left</halign>
+            <property>fdm/jsbsim/systems/manual-switches/lateral_panel_left/dampers/sw-yaw-damper-togle</property>
+            <live>true</live>
+            <binding>
+                <command>dialog-apply</command>
+            </binding>
+        </radio>
+        <radio>
+            <label>Pitch damper</label>
+            <halign>left</halign>
+            <property>fdm/jsbsim/systems/manual-switches/lateral_panel_left/dampers/sw-pitch-damper-togle</property>
+            <live>true</live>
+            <binding>
+                <command>dialog-apply</command>
+            </binding>
+        </radio>
         <button>
             <pref-width>150</pref-width>
             <legend>Set active/idle</legend>

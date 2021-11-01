@@ -80,13 +80,14 @@
     <system file="G91-mass-balance-modifier"/>
     
     <!-- apparatus -->
+    <system file="PHI"/>
     <system file="radio-PTR175"/>
+    <system file="UHF-emergency"/>
     <system file="ADF-MARCONI-8283"/>
     <system file="TACAN-NAV-ARN-21"/>
     <system file="gyrocompass"/>
     <system file="compass-flux-gate"/>
     <system file="ATC-transponder"/>
-    <system file="PHI"/>
     <system file="AAU-37A"/>
     <system file="AVU-8-B"/>
     <system file="Altimeter-5934PA"/>

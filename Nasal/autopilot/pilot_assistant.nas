@@ -2210,7 +2210,7 @@ var pilot_assistant = func() {
             setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle-deg",0.0);
             setprop("fdm/jsbsim/systems/autopilot/gui/pitch-alpha",0.0);
             setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed",1.0);
-            setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed-fpm",2500.0);
+            setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed-fpm",4500.0);
             setprop("fdm/jsbsim/systems/oxygen/oxygen-supply-togle",1);
             if (getprop("fdm/jsbsim/systems/autopilot/gui/take-off-altitude-top-active") > 0) {
                 setprop("fdm/jsbsim/systems/autopilot/gui/altitude-hold",1.0);
@@ -2331,7 +2331,7 @@ var pilot_assistant = func() {
         setprop("fdm/jsbsim/systems/autopilot/gui/wing-leveler",0.0);
         setprop("fdm/jsbsim/systems/autopilot/gui/pitch-angle",0.0);
         setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed",1.0);
-        setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed-fpm",2500.0);
+        setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed-fpm",4500.0);
         setprop("fdm/jsbsim/systems/autopilot/gui/altitude-active",1.0);
         setprop("fdm/jsbsim/systems/autopilot/gui/altitude-hold",1.0);
         setprop("fdm/jsbsim/systems/autopilot/gui/altitude-QFE",0.0);
@@ -2401,7 +2401,7 @@ var pilot_assistant_engage = func() {
                 setprop("fdm/jsbsim/systems/autopilot/gui/phi-heading",0.0);
                 setprop("fdm/jsbsim/systems/autopilot/gui/altitude-active",1.0);
                 setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed",1.0);
-                setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed-fpm",2500.0);
+                setprop("fdm/jsbsim/systems/autopilot/gui/vertical-speed-fpm",4500.0);
                 setprop("fdm/jsbsim/systems/autopilot/gui/altitude-hold",1.0);
                 setprop("fdm/jsbsim/systems/autopilot/gui/impact-control-active",1.0);
                 #// if pilot assistant start in the fly situation set the correct parameters

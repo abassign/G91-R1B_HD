@@ -371,7 +371,7 @@ G91_Params.xml
                 <cg-x-weight-value-set-easy type="int">0</cg-x-weight-value-set-easy>
                 <cg-x-weight-value-medium type="float">12.5</cg-x-weight-value-medium>
                 <cg-x-weight-value-set-medium type="int">1</cg-x-weight-value-set-medium>
-                <cg-x-weight-value-difficult type="float">10.0</cg-x-weight-value-difficult>
+                <cg-x-weight-value-difficult type="float">5.0</cg-x-weight-value-difficult>
                 <cg-x-weight-value-set-difficult type="int">0.0</cg-x-weight-value-set-difficult>
                 <cg-x-shift-percent-default type="float">-100.0</cg-x-shift-percent-default>
             </modifier>

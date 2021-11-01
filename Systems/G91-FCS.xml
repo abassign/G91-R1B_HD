@@ -133,6 +133,7 @@ Flaps 38°
             <input>fcs/aero-int-turbulence-elevator</input>
             <input>fcs/aero-int-turbulence-gear</input>
             <input>fcs/aero-int-turbulence-flap</input>
+            <input>systems/active-stability/pitch-damper/correction-norm</input>
             <clipto>
                 <min>-0.2181662</min>
                 <max>0.3054326</max> 
@@ -253,6 +254,7 @@ Flaps 38°
             <input>fcs/rudder-cmd-norm</input>
             <input>fcs/yaw-trim-cmd-norm</input>
             <input>systems/autopilot/rudder-ap-value-norm</input>
+            <input>systems/active-stability/yaw-damper/correction-norm</input>
         </summer>
         
         <pure_gain name="fcs/yaw-deg-cmd">
