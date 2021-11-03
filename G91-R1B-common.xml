@@ -371,7 +371,34 @@
                     </binding>
                 </mod-up>
             </key>
-            
+            <key n="68">
+                <name>D</name>
+                <desc>Disactivate the dampers</desc>
+                <binding>
+                    <command>property-assign</command>
+                    <property>fdm/jsbsim/systems/manual-switches/lateral_panel_left/dampers/sw-yaw-damper-togle</property>
+                    <value>0</value>
+                </binding>
+                <binding>
+                    <command>property-assign</command>
+                    <property>fdm/jsbsim/systems/manual-switches/lateral_panel_left/dampers/sw-pitch-damper-togle</property>
+                    <value>0</value>
+                </binding>
+            </key>
+            <key n="100">
+                <name>d</name>
+                <desc>Activate the dampers</desc>
+                <binding>
+                    <command>property-assign</command>
+                    <property>fdm/jsbsim/systems/manual-switches/lateral_panel_left/dampers/sw-yaw-damper-togle</property>
+                    <value>1</value>
+                </binding>
+                <binding>
+                    <command>property-assign</command>
+                    <property>fdm/jsbsim/systems/manual-switches/lateral_panel_left/dampers/sw-pitch-damper-togle</property>
+                    <value>1</value>
+                </binding>
+            </key>
             <key n="261">
                 <name>F5</name>
                 <desc>Drag Chute</desc>

@@ -6,7 +6,7 @@
     <layout>vbox</layout>
     <default-padding>7</default-padding>
     <modal>false</modal>
-    <width>500</width>
+    <width>700</width>
     
     <!-- title bar -->
     <group>
@@ -54,7 +54,7 @@
                 <col>2</col>
             </text>
             <text>
-                <label>F5</label>
+                <label>d / D</label>
                 <halign>left</halign>
                 <row>1</row>
                 <col>0</col>
@@ -63,42 +63,60 @@
                 <label> - </label>
                 <halign>left</halign>
                 <row>1</row>
+                <col>1</col>
+            </text>
+            <text>
+                <label>Dampers yaw and pitch on or off</label>
+                <halign>left</halign>
+                <row>1</row>
+                <col>2</col>
+            </text>
+            <text>
+                <label>F5</label>
+                <halign>left</halign>
+                <row>2</row>
+                <col>0</col>
+            </text>
+            <text>
+                <label> - </label>
+                <halign>left</halign>
+                <row>2</row>
                 <col>1</col>
             </text>
             <text>
                 <label>Drag chute activate</label>
                 <halign>left</halign>
-                <row>1</row>
+                <row>2</row>
                 <col>2</col>
             </text>
             <text>
                 <label>CTRL B</label>
                 <halign>left</halign>
-                <row>2</row>
+                <row>3</row>
                 <col>0</col>
             </text>
             <text>
                 <label> - </label>
                 <halign>left</halign>
-                <row>2</row>
+                <row>3</row>
                 <col>1</col>
             </text>
             <text>
                 <label>Airbrake togle</label>
                 <halign>left</halign>
-                <row>2</row>
+                <row>3</row>
                 <col>2</col>
             </text>
             <text>
                 <label> - </label>
                 <halign>left</halign>
-                <row>2</row>
+                <row>3</row>
                 <col>3</col>
             </text>
             <text>
                 <label>with Joystick is activate by spoiler</label>
                 <halign>left</halign>
-                <row>2</row>
+                <row>3</row>
                 <col>4</col>
                 <color>
                     <red>0.8</red>
