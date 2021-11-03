@@ -1,4 +1,6 @@
-# Starter utility for effect and autostart engine
+# Camera utility mobile views
+
+var prop = props.globals.initNode("sim/G91/camera/to/set-position","0,0.0,0.0,0.0,0.0,0.0,0.0", "STRING");
 
 
 var ViewCamDataClass = {
