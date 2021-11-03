@@ -41,14 +41,14 @@
                 <halign>fill</halign>
                 <live>true</live>
                 <binding>
-                    <command>property-toggle</command>
+                    <command>property-assign</command>
                     <property>fdm/jsbsim/systems/starter/gui/autostart-activate</property>
+                    <value>1</value>
                 </binding>
                 <binding>
-                    <command>nasal</command>
-                    <script>
-                        setprop("fdm/jsbsim/systems/oxygen/cylinder-refilled-flow-rate",20);
-                    </script>
+                    <command>property-assign</command>
+                    <property>fdm/jsbsim/systems/oxygen/cylinder-refilled-flow-rate</property>
+                    <value>20</value>
                 </binding>
             </button>
             <text>

@@ -46,6 +46,30 @@
         <object-name>A__G91_fuselage_canopy.004</object-name>
     </effect>
 
+    <!-- cover section -->
+
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Canopy_cover_with_cave_counter.xml</path>
+        <condition>
+            <equals>
+                <property>sim/G91/liveries/active/PANR1</property>
+                <value>0</value>
+            </equals>
+        </condition>
+    </model>
+
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Canopy_cover.xml</path>
+        <condition>
+            <equals>
+                <property>sim/G91/liveries/active/PANR1</property>
+                <value>1</value>
+            </equals>
+        </condition>
+    </model>
+
+    <!-- Animations -->
+
     <animation>
         <type>material</type>
         <object-name>anticollision mirror (Meshed)</object-name>
@@ -589,27 +613,6 @@
         </ambient>
         <emission>
             <red>0.012</red>
-            <green>0.0</green>
-            <blue>0.0</blue>
-            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
-        </emission>
-    </animation>
-
-    <animation>
-        <type>material</type>
-        <object-name>F_Cover_panel_cockpit</object-name>
-        <diffuse>
-            <red>0.1</red>
-            <green>0.1</green>
-            <blue>0.1</blue>
-        </diffuse>
-        <ambient>
-            <red>0.1</red>
-            <green>0.1</green>
-            <blue>0.1</blue>
-        </ambient>
-        <emission>
-            <red>0.005</red>
             <green>0.0</green>
             <blue>0.0</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>

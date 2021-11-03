@@ -71,6 +71,7 @@
         
     </channel>
     
+
     <channel name="Pitch Damper">
         
         <switch name="systems/active-stability/pitch-damper/operative">
