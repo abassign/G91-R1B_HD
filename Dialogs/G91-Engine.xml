@@ -6,7 +6,7 @@
     <layout>vbox</layout>
     <default-padding>7</default-padding>
     <modal>false</modal>
-    <width>400</width>
+    <width>600</width>
     
     <!-- title bar -->
     <group>
@@ -40,6 +40,7 @@
                 <legend>Engine auto start</legend>
                 <halign>fill</halign>
                 <live>true</live>
+                <pref-width>200</pref-width>
                 <binding>
                     <command>property-assign</command>
                     <property>fdm/jsbsim/systems/starter/gui/autostart-activate</property>
@@ -49,6 +50,32 @@
                     <command>property-assign</command>
                     <property>fdm/jsbsim/systems/oxygen/cylinder-refilled-flow-rate</property>
                     <value>20</value>
+                </binding>
+            </button>
+            <button>
+                <row>0</row>
+                <col>1</col>
+                <legend>Abort start</legend>
+                <halign>fill</halign>
+                <live>true</live>
+                <pref-width>100</pref-width>
+                <binding>
+                    <command>property-assign</command>
+                    <property>fdm/jsbsim/systems/starter/gui/autostart-activate-stop</property>
+                    <value>1</value>
+                </binding>
+            </button>
+            <button>
+                <row>0</row>
+                <col>2</col>
+                <legend>Stop engine</legend>
+                <halign>fill</halign>
+                <live>true</live>
+                <pref-width>200</pref-width>
+                <binding>
+                    <command>property-assign</command>
+                    <property>fdm/jsbsim/systems/starter/gui/autostart-stop</property>
+                    <value>1</value>
                 </binding>
             </button>
             <text>

@@ -11,23 +11,64 @@
         <visible>true</visible>
         <object-name>sw_north (Meshed)</object-name>
         <object-name>pin (Meshed)</object-name>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <interval-sec>0.5</interval-sec>
+            <binding>
+                <command>property-assign</command>
+                <property>fdm/jsbsim/systems/manual-switches/cockpit/sw-internal-power-generator-trigger</property>
+                <value>1</value>
+            </binding>
+            <binding>
+                <command>property-assign</command>
+                <property>fdm/jsbsim/systems/manual-switches/cockpit/sw-internal-power-generator</property>
+                <value>1</value>
+            </binding>
+            <mod-up>
+                <binding>
+                    <command>property-assign</command>
+                    <property>fdm/jsbsim/systems/manual-switches/cockpit/sw-internal-power-generator-trigger</property>
+                    <value>0</value>
+                </binding>
+            </mod-up>
+        </action>
+    </animation>
+
+    <animation>
+        <type>pick</type>
+        <visible>true</visible>
         <object-name>sw_south (Meshed)</object-name>
         <action>
             <button>0</button>
             <repeatable>false</repeatable>
+            <interval-sec>0.5</interval-sec>
             <binding>
-                <command>property-toggle</command>
-                <property>fdm/jsbsim/systems/manual-switches/cockpit/sw-internal-power-generator</property>
+                <command>property-assign</command>
+                <property>fdm/jsbsim/systems/manual-switches/cockpit/sw-internal-power-generator-trigger</property>
+                <value>-1</value>
             </binding>
+            <binding>
+                <command>property-assign</command>
+                <property>fdm/jsbsim/systems/manual-switches/cockpit/sw-internal-power-generator</property>
+                <value>0</value>
+            </binding>
+            <mod-up>
+                <binding>
+                    <command>property-assign</command>
+                    <property>fdm/jsbsim/systems/manual-switches/cockpit/sw-internal-power-generator-trigger</property>
+                    <value>0</value>
+                </binding>
+            </mod-up>
         </action>
     </animation>
-    
+
     <animation>
         <type>rotate</type>
         <object-name>pin (Meshed)</object-name>
-        <property>fdm/jsbsim/systems/manual-switches/cockpit/sw-internal-power-generator</property>
-        <offset-deg>15</offset-deg>
-        <factor>-30</factor>
+        <property>fdm/jsbsim/systems/manual-switches/cockpit/sw-internal-power-generator-pos</property>
+        <offset-deg>0</offset-deg>
+        <factor>-15</factor>
         <center>
             <x-m> 0.004</x-m>
             <y-m> 0.0</y-m>
@@ -39,6 +80,6 @@
             <z>0</z>
         </axis>
     </animation>
-    
+
 </PropertyList> 
  

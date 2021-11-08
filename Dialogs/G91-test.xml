@@ -305,55 +305,106 @@
         <layout>hbox</layout>
         <text>
             <halign>left</halign>
-            <label>Altitude - IAS - Mach</label>
+            <label>Camera test</label>
         </text>
         <group>
             <layout>hbox</layout>
             <halign>right</halign>
             <text>
-                <label>99999</label>
-                <live>true</live>
-                <format>%5.0f </format>
-                <property>/instrumentation/altimeter/pressure-alt-ft</property>
+                <row>0</row>
+                <col>0</col>
+                <label>Camera string:</label>
+                <halign>left</halign>
                 <color>
                     <red>0.9</red>
                     <green>0.9</green>
-                    <blue>0.9</blue>
+                    <blue>0.0</blue>
                 </color>
             </text>
-            <empty>
-                <stretch>true</stretch>
-            </empty>
-            <vrule/>
-            <text>
-                <label>99999</label>
+            <button>
+                <row>0</row>
+                <col>1</col>
+                <pref-width>100</pref-width>
+                <legend>Save camera</legend>
+                <halign>fill</halign>
                 <live>true</live>
-                <format>%5.0f </format>
-                <property>instrumentation/airspeed-indicator/indicated-speed-kt</property>
-                <color>
-                    <red>0.9</red>
-                    <green>0.9</green>
-                    <blue>0.9</blue>
-                </color>
-            </text>
-            <empty>
-                <stretch>true</stretch>
-            </empty>
-            <vrule/>
-            <text>
-                <label>99999</label>
+                <binding>
+                    <command>nasal</command>
+                    <script>
+                        <![CDATA[
+                            setprop("sim/current-view/ab-camera/to/command",11);
+                        ]]>
+                    </script>
+                </binding>
+            </button>
+            <button>
+                <row>0</row>
+                <col>2</col>
+                <pref-width>100</pref-width>
+                <legend>Get pos</legend>
+                <halign>fill</halign>
                 <live>true</live>
-                <format>%1.2f </format>
-                <property>instrumentation/airspeed-indicator/indicated-mach</property>
-                <color>
-                    <red>0.9</red>
-                    <green>0.9</green>
-                    <blue>0.9</blue>
-                </color>
-            </text>
-            <empty>
-                <stretch>true</stretch>
-            </empty>
+                <binding>
+                    <command>nasal</command>
+                    <script>
+                        <![CDATA[
+                            var a = getprop("/sim/current-view/view-number");
+                            a = a ~ "," ~ sprintf("%3.3f",getprop("/sim/current-view/field-of-view"));
+                            a = a ~ "," ~ sprintf("%3.3f",getprop("/sim/current-view/heading-offset-deg"));
+                            a = a ~ "," ~ sprintf("%3.3f",getprop("/sim/current-view/pitch-offset-deg"));
+                            a = a ~ "," ~ sprintf("%3.3f",getprop("/sim/current-view/x-offset-m"));
+                            a = a ~ "," ~ sprintf("%3.3f",getprop("/sim/current-view/y-offset-m"));
+                            a = a ~ "," ~ sprintf("%3.3f",getprop("/sim/current-view/z-offset-m"));
+                            setprop("sim/current-view/ab-camera/to/test-string",a);
+                        ]]>
+                    </script>
+                </binding>
+            </button>
+            <input>
+                <row>0</row>
+                <col>1</col>
+                <pref-width>300</pref-width>
+                <property>sim/current-view/ab-camera/to/test-string</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </input>
+            <button>
+                <row>0</row>
+                <col>2</col>
+                <pref-width>100</pref-width>
+                <legend>Test camera</legend>
+                <halign>fill</halign>
+                <live>true</live>
+                <binding>
+                    <command>nasal</command>
+                    <script>
+                        <![CDATA[
+                            var cmd = getprop("sim/current-view/ab-camera/to/test-string");
+                            var strTest = "1," ~ cmd ~ ",0.0,2.0,2.0";
+                            print("ab-camera test: ",strTest);
+                            setprop("sim/current-view/ab-camera/to/set-position",strTest);
+                        ]]>
+                    </script>
+                </binding>
+            </button>
+            <button>
+                <row>0</row>
+                <col>2</col>
+                <pref-width>100</pref-width>
+                <legend>Restore camera</legend>
+                <halign>fill</halign>
+                <live>true</live>
+                <binding>
+                    <command>nasal</command>
+                    <script>
+                        <![CDATA[
+                            setprop("sim/current-view/ab-camera/to/command",12);
+                        ]]>
+                    </script>
+                </binding>
+            </button>
         </group>
     </group>
     <hrule/>

@@ -5,70 +5,29 @@
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Common/switch_panel_05_model.xml</path>
     </model>
-    
+
     <animation>
         <type>pick</type>
         <visible>true</visible>
         <object-name>sw_north (Meshed)</object-name>
         <object-name>pin (Meshed)</object-name>
-        <action>
-            <button>0</button>
-            <repeatable>false</repeatable>
-            <interval-sec>0.5</interval-sec>
-            <binding>
-                <command>property-assign</command>
-                <property>fdm/jsbsim/systems/manual-switches/cockpit/sw-bus0-bus1-battery-trigger</property>
-                <value>1</value>
-            </binding>
-            <binding>
-                <command>property-assign</command>
-                <property>fdm/jsbsim/systems/manual-switches/cockpit/sw-bus0-bus1-battery</property>
-                <value>1</value>
-            </binding>
-            <mod-up>
-                <binding>
-                    <command>property-assign</command>
-                    <property>fdm/jsbsim/systems/manual-switches/cockpit/sw-bus0-bus1-battery-trigger</property>
-                    <value>0</value>
-                </binding>
-            </mod-up>
-        </action>
-    </animation>
-    
-    <animation>
-        <type>pick</type>
-        <visible>true</visible>
         <object-name>sw_south (Meshed)</object-name>
         <action>
             <button>0</button>
             <repeatable>false</repeatable>
-            <interval-sec>0.5</interval-sec>
             <binding>
-                <command>property-assign</command>
-                <property>fdm/jsbsim/systems/manual-switches/cockpit/sw-bus0-bus1-battery-trigger</property>
-                <value>-1</value>
-            </binding>
-            <binding>
-                <command>property-assign</command>
+                <command>property-toggle</command>
                 <property>fdm/jsbsim/systems/manual-switches/cockpit/sw-bus0-bus1-battery</property>
-                <value>0</value>
             </binding>
-            <mod-up>
-                <binding>
-                    <command>property-assign</command>
-                    <property>fdm/jsbsim/systems/manual-switches/cockpit/sw-bus0-bus1-battery-trigger</property>
-                    <value>0</value>
-                </binding>
-            </mod-up>
         </action>
     </animation>
-    
+
     <animation>
         <type>rotate</type>
         <object-name>pin (Meshed)</object-name>
         <property>fdm/jsbsim/systems/manual-switches/cockpit/sw-bus0-bus1-battery-pos</property>
-        <offset-deg>0</offset-deg>
-        <factor>-15</factor>
+        <offset-deg>15</offset-deg>
+        <factor>-30</factor>
         <center>
             <x-m> 0.004</x-m>
             <y-m> 0.0</y-m>
@@ -80,6 +39,6 @@
             <z>0</z>
         </axis>
     </animation>
-            
+
 </PropertyList> 
  

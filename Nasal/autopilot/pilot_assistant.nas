@@ -1988,8 +1988,18 @@ var pilot_assistant = func() {
         } else if (pilot_ass_status_id == 10.1) {
             departure_msg = "Motor and electric starting";
             print("Departure 10.1 > Motor and electric starting phase");
-            if (getprop("fdm/jsbsim/systems/starter/gui/autostart-status-is-ok") == 1) {
+            var engineN1 = getprop("fdm/jsbsim/propulsion/engine[0]/n1");
+            var engineN2 = getprop("fdm/jsbsim/propulsion/engine[0]/n2");
+            var bus0V = getprop("fdm/jsbsim/systems/electric/bus[0]/V");
+            var bus1V = getprop("fdm/jsbsim/systems/electric/bus[1]/V");
+            var bus2V = getprop("fdm/jsbsim/systems/electric/bus[2]/V");
+            var inverterPrimaryV = getprop("fdm/jsbsim/systems/electric/inv-primary/V");
+            var inverterSecondaryV = getprop("fdm/jsbsim/systems/electric/inv-secondary/V");
+            if (engineN1 >= 0.38 and engineN2 >= 0.38 and bus0V >= 0.26 and bus1V >= 0.26 and bus2V >= 0.26 and inverterPrimaryV >= 110 and inverterSecondaryV >= 110) {
+                setprop("fdm/jsbsim/systems/starter/gui/autostart-status-is-ok",1);
                 pilot_ass_status_id = 10.2;
+            } else {
+                setprop("fdm/jsbsim/systems/starter/gui/autostart-status-is-ok",0);
             }
             #// Oxigen refill, is faster and non in logical sequence, but is only for initialize the Oxygen system
             setprop("fdm/jsbsim/systems/oxygen/cylinder-refilled-flow-rate",20);

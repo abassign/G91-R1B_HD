@@ -4,9 +4,10 @@
     
     <property value="0">systems/manual-switches/cockpit/sw-canopy-togle-trigger</property>
     <property value="0">systems/manual-switches/cockpit/sw-bus0-bus1-battery</property>
-    <property value="0">systems/manual-switches/cockpit/sw-bus0-bus1-battery-trigger</property>
     <property value="0">systems/manual-switches/cockpit/sw-bus0-bus1-battery-pos</property>
     <property value="0">systems/manual-switches/cockpit/sw-internal-power-generator</property>
+    <property value="0">systems/manual-switches/cockpit/sw-internal-power-generator-pos</property>
+    <property value="0">systems/manual-switches/cockpit/sw-internal-power-generator-trigger</property>
     <property value="0">systems/manual-switches/cockpit/sw-canopy-trigger</property>
     <property value="0">systems/manual-switches/cockpit/sw-canopy-pos</property>
     <property value="0">systems/manual-switches/cockpit/sw-canopy-togle</property>
@@ -50,24 +51,38 @@
         <!-- Battery bus 0 to bus 1 switch -->
         
         <lag_filter name="systems/manual-switches/cockpit/sw-bus0-bus1-battery-pos">
-            <input>systems/manual-switches/cockpit/sw-bus0-bus1-battery-pos-status</input>
+            <input>systems/manual-switches/cockpit/sw-bus0-bus1-battery</input>
             <c1>8.0</c1>
         </lag_filter>
         
-        <switch name="systems/manual-switches/cockpit/sw-bus0-bus1-battery-pos-status">
-            <default value="systems/manual-switches/cockpit/sw-bus0-bus1-battery-pos-status"/>
+        <!-- Internal power generator switch -->
+
+        <lag_filter name="systems/manual-switches/cockpit/sw-internal-power-generator-pos">
+            <input>systems/manual-switches/cockpit/sw-internal-power-generator-pos-status</input>
+            <c1>8.0</c1>
+        </lag_filter>
+
+        <switch name="systems/manual-switches/cockpit/sw-internal-power-generator-pos-status">
+            <default value="systems/manual-switches/cockpit/sw-internal-power-generator-pos-status"/>
             <test logic="AND" value="1">
-                systems/manual-switches/cockpit/sw-bus0-bus1-battery-trigger == 1
+                systems/manual-switches/cockpit/sw-internal-power-generator-trigger == 1
             </test>
             <test logic="AND" value="-1">
-                systems/manual-switches/cockpit/sw-bus0-bus1-battery-trigger == -1
+                systems/manual-switches/cockpit/sw-internal-power-generator-trigger == -1
             </test>
             <test logic="AND" value="0">
-                systems/manual-switches/cockpit/sw-bus0-bus1-battery-trigger == 0
+                systems/manual-switches/cockpit/sw-internal-power-generator-trigger == 0
                 <test logic="OR">
-                    systems/manual-switches/cockpit/sw-bus0-bus1-battery-pos GE 0.9
-                    systems/manual-switches/cockpit/sw-bus0-bus1-battery-pos LE -0.9
+                    systems/manual-switches/cockpit/sw-internal-power-generator-pos GE 0.9
+                    systems/manual-switches/cockpit/sw-internal-power-generator-pos LE -0.9
                 </test>
+            </test>
+        </switch>
+
+        <switch name="systems/manual-switches/cockpit/sw-internal-power-generator-trigger">
+            <default value="systems/manual-switches/cockpit/sw-internal-power-generator-trigger"/>
+            <test logic="AND" value="0">
+                systems/electric/bus[1]/V LT 12.0
             </test>
         </switch>
         

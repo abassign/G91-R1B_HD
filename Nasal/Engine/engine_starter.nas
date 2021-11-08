@@ -1,262 +1,616 @@
 # Starter utility for effect and autostart engine
 
-var prop = props.globals.initNode("fdm/jsbsim/systems/starter/gui/autostart-activate", 0, "INT");
-var prop = props.globals.initNode("fdm/jsbsim/systems/starter/gui/autostart-is-active", 0, "INT");
-var prop = props.globals.initNode("fdm/jsbsim/systems/starter/gui/autostart-clock-time", 0, "INT");
-var prop = props.globals.initNode("fdm/jsbsim/systems/starter/gui/autostart-status-is-ok", 0, "INT");
-var prop = props.globals.initNode("fdm/jsbsim/systems/starter/gui/autostart-message", "", "STRING");
+#// Camera position:
+#// Handle brake: setprop("sim/current-view/ab-camera/to/set-position","2,0,41.71,346.0,-18.93,0.0,0.815,-2.6,1.0,2.0,2.0");
+#// Electric panel: setprop("sim/current-view/ab-camera/to/set-position","1,0,38.28,354.6,-29.75,0.25,0.55,-2.9,1.0,2.0,2.0");
+#// Throttle area: setprop("sim/current-view/ab-camera/to/set-position","1,0,24.29,55.65,-49.0,0.118,0.930,-2.6,1.0,2.0,2.0");
+#// Starter panel: setprop("sim/current-view/ab-camera/to/set-position","1,0,23.48,37.48,-45.56,-0.019,0.7890,-2.6,1.0,2.0,2.0");
+#// Motor gauges control panel: setprop("sim/current-view/ab-camera/to/set-position","1,0,30.77,330.04,-19.98,-0.202,0.659,-2.6,1.0,2.0,2.0");
+#// Close the canopy: setprop("sim/current-view/ab-camera/to/set-position","1,0,56.49,21.86,-28.22,0.0,0.815,-2.6,1.0,2.0,3.0");
 
-var timeStep = 1.0;
-var timeStepEffective = timeStep;
-var stepCameraRemain = 0;
-var minCameraTime = 4;
-var speed_up = 1.0;
+var prop = props.globals.initNode("fdm/jsbsim/systems/starter/gui/autostart-activate",0,"INT");
+var prop = props.globals.initNode("fdm/jsbsim/systems/starter/gui/autostart-activate-stop",0,"INT");
+var prop = props.globals.initNode("fdm/jsbsim/systems/starter/gui/autostart-stop",0,"INT");
+var prop = props.globals.initNode("fdm/jsbsim/systems/starter/gui/autostart-is-active",0,"INT");
+var prop = props.globals.initNode("fdm/jsbsim/systems/starter/gui/autostart-status-is-ok",0,"INT");
+var prop = props.globals.initNode("fdm/jsbsim/systems/starter/gui/autostart-message","", "STRING");
+
+
+var isStartingProcedureActive = 0;
+var isStartingProcedureActiveStopped = 0;
+var isStopProcedureActive = 0;
+var timerEngine_starterTimer = nil;
+var timeStepEffective = 1.0;
 var msgOutput = "";
-var msgOutputStstus = "";
+var cameraStatus = 0;
+var cameraStatusTime = 0.0;
+var actualPhaseActive = 0;
+var phaseIsActive = 0;
+var pushTogleSignal = 0;
 
-var nextTimeProcess = 0.0;
+var engineN1 = 0.0;
+var engineN2 = 0.0;
+var bus0V = 0.0;
+var bus1V = 0.0;
+var bus2V = 0.0;
+var inverterPrimaryV = 0.0;
+var inverterSecondaryV = 0.0;
+var autostart_status_is_ok = 0;
 
 
-var ViewCamDataClass = {
-    class_name: "ViewCamDataClass",
-
-    new: func() {
-        var obj = {
-            view_number: 0,
-            field_of_view: 0.0,
-            heading_offset_deg: 0.0,
-            pitch_offset_deg: 0.0,
-            x_offset: 0.0,
-            y_offset: 0.0,
-            z_offset: 0.0,
-        };
-        return {parents: [ViewCamDataClass]};
-    },
-
-    init: func(view_number,field_of_view,heading_offset,pitch_offset,x_offset,y_offset,z_offset) {
-        me.view_number = view_number;
-        me.field_of_view = field_of_view;
-        me.heading_offset_deg = heading_offset;
-        me.pitch_offset_deg = pitch_offset;
-        me.x_offset = x_offset;
-        me.y_offset = y_offset;
-        me.z_offset = z_offset;
-    },
-
-    difDegNorm: func(fromAng,toAng,stepRemain) {
-        a1 = fromAng;
-        a2 = toAng;
-        fromAngRad = fromAng * 0.0174533;
-        toAngRad = toAng * 0.0174533;
-        difRad = math.asin(math.sin(toAngRad) * math.cos(fromAngRad) - math.cos(toAngRad) * math.sin(fromAngRad)) / stepRemain;
-        value = math.asin(math.sin(toAngRad) * math.cos(difRad) + math.cos(toAngRad) * math.sin(difRad)) / 0.0174533;
-        return value;
-    },
-
-    getView: func() {
-        me.view_number = getprop("/sim/current-view/view-number");
-        me.field_of_view = getprop("/sim/current-view/field-of-view");
-        me.heading_offset_deg = getprop("/sim/current-view/heading-offset-deg");
-        me.pitch_offset_deg = getprop("/sim/current-view/pitch-offset-deg");
-        me.x_offset = getprop("/sim/current-view/x-offset-m");
-        me.y_offset = getprop("/sim/current-view/y-offset-m");
-        me.z_offset = getprop("/sim/current-view/z-offset-m");
-    },
-
-    setView: func() {
-        setprop("/sim/current-view/view-number",me.view_number);
-        setprop("/sim/current-view/field-of-view",me.field_of_view);
-        setprop("/sim/current-view/heading-offset-deg",me.heading_offset_deg);
-        setprop("/sim/current-view/pitch-offset-deg",me.pitch_offset_deg);
-        setprop("/sim/current-view/x-offset-m",me.x_offset);
-        setprop("/sim/current-view/y-offset-m",me.y_offset);
-        setprop("/sim/current-view/z-offset-m",me.z_offset);
-    },
-
-    goViewTo: func(to,stepRemain) {
-        me.getView();
-        me.view_number = to.view_number;
-        me.field_of_view = me.field_of_view + (to.field_of_view - me.field_of_view)/stepRemain;
-        me.heading_offset_deg = me.difDegNorm(me.heading_offset_deg,to.heading_offset_deg,stepRemain);
-        me.pitch_offset_deg = me.difDegNorm(me.pitch_offset_deg,to.pitch_offset_deg,stepRemain);
-        me.x_offset = me.x_offset + (to.x_offset - me.x_offset)/stepRemain;
-        me.y_offset = me.y_offset + (to.y_offset - me.y_offset)/stepRemain;
-        me.z_offset = me.z_offset + (to.z_offset - me.z_offset)/stepRemain;
-        me.setView();
-    },
+var messageOutputStatus = func() {
+    setprop("fdm/jsbsim/systems/starter/gui/autostart-message","Engine starter: #" ~ actualPhaseActive ~ " -> " ~ msgOutput);
 };
 
-camera_save = ViewCamDataClass.new();
-camera_position = ViewCamDataClass.new();
-camera_to_position = ViewCamDataClass.new();
+
+var start_PrepareTheAirplane = func() {
+    if (cameraStatus == 0 and phaseIsActive == 0) {
+        setprop("sim/current-view/ab-camera/to/set-position","2,0,41.71,346.0,-18.93,0.0,0.815,-2.6,0.0,1.5,1.0");
+        phaseIsActive = 1;
+    } else {
+        if (cameraStatus == 3 and phaseIsActive > 0) {
+            msgOutput = "prepare the airplane";
+            if (getprop("fdm/jsbsim/systems/wow")) {
+                setprop("fdm/jsbsim/systems/autopilot/handle-brake-activate",1);
+            } else {
+                setprop("fdm/jsbsim/systems/autopilot/handle-brake-activate",0);
+            }
+            setprop("controls/engines/engine/throttle",0.0);
+        };
+        if (cameraStatus == 0 and phaseIsActive > 0) {
+            actualPhaseActive = 2;
+            phaseIsActive = 0;
+        };
+    };
+};
 
 
-var timerEngine_starter = func(timeNow, factorTimeStep) {
+var start_PrepareElectricPanel = func() {
+    if (cameraStatus == 0 and phaseIsActive == 0) {
+        setprop("sim/current-view/ab-camera/to/set-position","1,0,38.28,354.6,-29.75,0.25,0.55,-2.9,1.0,2.0,2.0");
+        phaseIsActive = 1;
+    } else {
+        if (cameraStatus == 3 and phaseIsActive > 0) {
+            if (cameraStatusTime < 1.0) {
+                msgOutput = "set electric primary panel";
+                setprop("fdm/jsbsim/systems/manual-switches/cockpit/sw-internal-power-generator",0);
+                setprop("fdm/jsbsim/systems/electric/bus[2]/primary-inverter/sw",0);
+                setprop("fdm/jsbsim/systems/electric/bus[1]/secondary-inverter/sw",0);
+                setprop("fdm/jsbsim/systems/manual-switches/cockpit/sw-bus0-bus1-battery",1);
+            } else if (cameraStatusTime > 1.0 and cameraStatusTime < 1.5) {
+                setprop("fdm/jsbsim/systems/manual-switches/cockpit/sw-bus0-bus1-battery-trigger",0);
+            };
+        };
+        if (cameraStatus == 0 and phaseIsActive > 0) {
+            actualPhaseActive = 3;
+            phaseIsActive = 0;
+        };
+    };
+};
 
-    var engineN1 = getprop("fdm/jsbsim/propulsion/engine[0]/n1");
-    var engineN2 = getprop("fdm/jsbsim/propulsion/engine[0]/n2");
-    var bus0V = getprop("fdm/jsbsim/systems/electric/bus[0]/V");
-    var bus1V = getprop("fdm/jsbsim/systems/electric/bus[1]/V");
-    var bus2V = getprop("fdm/jsbsim/systems/electric/bus[2]/V");
-    var inverterPrimaryV = getprop("fdm/jsbsim/systems/electric/inv-primary/V");
-    var inverterSecondaryV = getprop("fdm/jsbsim/systems/electric/inv-secondary/V");
-    var autostart_status_is_ok = 0;
-    speed_up = getprop("/sim/speed-up");
+
+var start_PrepareStarterPanel = func() {
+    if (cameraStatus == 0 and phaseIsActive == 0) {
+        setprop("sim/current-view/ab-camera/to/set-position","1,0,23.48,37.48,-45.56,-0.019,0.789,-2.6,1.0,2.0,3.0");
+        phaseIsActive = 1;
+    } else {
+        if (cameraStatus == 3 and phaseIsActive > 0) {
+            msgOutput = "set left starter panel";
+            if (cameraStatusTime < 0.5) {
+                setprop("fdm/jsbsim/systems/starter/emerg-engine",0);
+                setprop("fdm/jsbsim/systems/starter/drop-tank-press",0);
+                setprop("fdm/jsbsim/systems/starter/fuel-shut-off-valve-lock",1);
+            } else if (cameraStatusTime > 0.5 and cameraStatusTime < 1.0) {
+                setprop("fdm/jsbsim/systems/starter/fuel-shut-off-valve",0);
+            } else if (cameraStatusTime > 1.2) {
+                setprop("fdm/jsbsim/systems/starter/fuel-shut-off-valve-lock",0);
+            };
+        };
+        if (cameraStatus == 0 and phaseIsActive > 0) {
+            actualPhaseActive = 4;
+            phaseIsActive = 0;
+        };
+    };
+};
+
+
+var start_PrepareStarterPanelBoosterPump = func() {
+    if (cameraStatus == 0 and phaseIsActive == 0) {
+        setprop("sim/current-view/ab-camera/to/set-position","1,0,23.48,37.48,-45.56,-0.019,0.789,-2.6,1.0,2.0,3.0");
+        phaseIsActive = 1;
+    } else {
+        if (cameraStatus == 3 and phaseIsActive > 0) {
+            msgOutput = "set left starter panel";
+            if (cameraStatusTime < 0.5) {
+                msgOutput = "set left starter panel fuel - Booster pump on";
+                setprop("fdm/jsbsim/systems/starter/fuel-booster-pump",1);
+            } else if (cameraStatusTime > 1.0 and cameraStatusTime < 1.5) {
+                msgOutput = "set left starter panel fuel - Engine JPTL on";
+                setprop("fdm/jsbsim/systems/starter/engine-JPTL",1);
+            } else if (cameraStatusTime > 2.0) {
+                setprop("fdm/jsbsim/systems/starter/NE",1);
+            };
+        };
+        if (cameraStatus == 0 and phaseIsActive > 0) {
+            actualPhaseActive = 5;
+            phaseIsActive = 0;
+        };
+    };
+};
+
+
+var start_SetThrottle = func() {
+    if (cameraStatus == 0 and phaseIsActive == 0) {
+        setprop("sim/current-view/ab-camera/to/set-position","1,0,24.29,55.65,-49.0,0.118,0.930,-2.6,1.0,2.0,3.0");
+        phaseIsActive = 1;
+    } else {
+        if (cameraStatus == 3 and phaseIsActive > 0) {
+            if (cameraStatusTime < 0.5) {
+                msgOutput = "set throttle - Ignition push starter on throttle";
+                setprop("fdm/jsbsim/systems/starter/ignition-on-throttle-togle",1);
+            };
+        };
+        if (cameraStatus == 0 and phaseIsActive > 0) {
+            actualPhaseActive = 6;
+            phaseIsActive = 0;
+        };
+    };
+};
+
+
+var start_StarterPanelPushIgnition = func() {
+    if (cameraStatus == 0 and phaseIsActive == 0) {
+        setprop("sim/current-view/ab-camera/to/set-position","1,0,23.48,37.48,-45.56,-0.019,0.789,-2.6,1.0,2.0,3.0");
+        phaseIsActive = 1;
+        pushTogleSignal = 0;
+    } else {
+        if (cameraStatus == 3 and phaseIsActive > 0) {
+            if (cameraStatusTime < 1.0) {
+                msgOutput = "set left starter panel - Ignition remove fire button cover";
+                if (pushTogleSignal == 0) {
+                    var swCoverTogle = getprop("fdm/jsbsim/systems/starter/sw-cover-togle");
+                    if (swCoverTogle == 0) {
+                        setprop("fdm/jsbsim/systems/starter/sw-cover-togle",1);
+                    } else {
+                        setprop("fdm/jsbsim/systems/starter/sw-cover-togle",0);
+                    };
+                    pushTogleSignal = 1;
+                };
+            } else if (cameraStatusTime > 1.5 and cameraStatusTime < 2.0) {
+                if (pushTogleSignal == 1) {
+                    msgOutput = "set left starter panel - push ignition button";
+                    var pt = getprop("fdm/jsbsim/systems/starter/sw-push-togle");
+                    if (pt == 0) {
+                        setprop("fdm/jsbsim/systems/starter/sw-push-togle",1);
+                    } else {
+                        setprop("fdm/jsbsim/systems/starter/sw-push-togle",0);
+                    };
+                    pushTogleSignal = 2;
+                };
+            };
+        };
+        if (cameraStatus == 0 and phaseIsActive > 0 and autostart_status_is_ok > 0) {
+            actualPhaseActive = 7;
+            phaseIsActive = 0;
+        };
+    };
+};
+
+
+var start_RPMGaugeAfterPushIgnition = func() {
+    if (cameraStatus == 0 and phaseIsActive == 0) {
+        setprop("sim/current-view/ab-camera/to/set-position","1,0,30.77,330.04,-19.98,-0.202,0.659,-2.6,1.0,2.0,8.0");
+        phaseIsActive = 1;
+    } else {
+        if (cameraStatus == 3 and phaseIsActive > 0) {
+            msgOutput = "Motor gauges control panel, look the RPM";
+        };
+        if (cameraStatus == 0 and phaseIsActive > 0 and engineN1 > 0.40) {
+            actualPhaseActive = 8;
+            phaseIsActive = 0;
+        };
+    };
+};
+
+
+var start_ActivateElectricPanel = func() {
+    msgOutput = "set electric - Internal power generator is on";
+    if (cameraStatus == 0 and phaseIsActive == 0) {
+        setprop("sim/current-view/ab-camera/to/set-position","1,0,38.28,354.6,-29.75,0.25,0.55,-2.9,1.0,2.0,2.0");
+        phaseIsActive = 1;
+    } else {
+        if (cameraStatus == 3 and phaseIsActive > 0) {
+            msgOutput = "set left starter panel";
+            setprop("fdm/jsbsim/systems/manual-switches/cockpit/sw-internal-power-generator-trigger",1);
+            setprop("fdm/jsbsim/systems/manual-switches/cockpit/sw-internal-power-generator",1);
+        };
+        if (cameraStatus == 0 and phaseIsActive > 0 and bus2V > 18.0) {
+            actualPhaseActive = 9;
+            phaseIsActive = 0;
+        };
+    };
+};
+
+
+var start_StarterPanelAfterPushIgnition = func() {
+    if (cameraStatus == 0 and phaseIsActive == 0) {
+        setprop("sim/current-view/ab-camera/to/set-position","1,0,23.48,37.48,-45.56,-0.019,0.789,-2.6,1.0,1.0,3.0");
+        phaseIsActive = 1;
+    } else {
+        if (cameraStatus == 3 and phaseIsActive > 0) {
+            if (cameraStatusTime < 0.5) {
+                msgOutput = "set left starter panel - stop fuel booster pump";
+                setprop("fdm/jsbsim/systems/starter/fuel-booster-pump",0);
+            } else if (cameraStatusTime >= 0.5 and cameraStatusTime < 1.0) {
+                setprop("fdm/jsbsim/systems/starter/NE",0);
+            } else if (cameraStatusTime >= 1.5 and cameraStatusTime < 2.0) {
+                setprop("fdm/jsbsim/systems/starter/engine-JPTL",0);
+            };
+        };
+        if (cameraStatus == 0 and phaseIsActive > 0) {
+            actualPhaseActive = 10;
+            phaseIsActive = 0;
+        };
+    };
+};
+
+
+var start_ActivateElectricPanelInverters = func() {
+    if (cameraStatus == 0 and phaseIsActive == 0) {
+        setprop("sim/current-view/ab-camera/to/set-position","1,0,38.28,354.6,-29.75,0.25,0.55,-2.9,1.0,1.0,5.0");
+        phaseIsActive = 1;
+    } else {
+        if (cameraStatus == 3 and phaseIsActive > 0) {
+            if (cameraStatusTime < 0.5) {
+                msgOutput = "set electric - primary inverter on";
+                setprop("fdm/jsbsim/systems/electric/bus[2]/primary-inverter/sw",1);
+            } else if (cameraStatusTime > 1.5 and cameraStatusTime < 2.0) {
+                msgOutput = "set electric - secondary inverter on";
+                setprop("fdm/jsbsim/systems/electric/bus[1]/secondary-inverter/sw",1);
+            };
+        };
+        if (cameraStatus == 0 and phaseIsActive > 0 and inverterPrimaryV > 100.0 and inverterSecondaryV > 100.0) {
+            actualPhaseActive = 11;
+            phaseIsActive = 0;
+        };
+    };
+};
+
+
+var start_CloseTheCanopy = func() {
+    if (cameraStatus == 0 and phaseIsActive == 0) {
+        setprop("sim/current-view/ab-camera/to/set-position","1,0,56.49,21.86,-28.22,0.0,0.815,-2.6,1.0,2.0,3.0");
+        phaseIsActive = 1;
+    } else {
+        if (cameraStatus == 3 and phaseIsActive > 0) {
+            if (cameraStatusTime < 0.5) {
+                msgOutput = "Close the canopy";
+                setprop("fdm/jsbsim/systems/canopy/lever-trigger",1);
+            };
+        };
+        if (cameraStatus == 0 and phaseIsActive > 0) {
+            actualPhaseActive = 100;
+            phaseIsActive = 0;
+        };
+    };
+};
+
+
+var stop_PrepareTheAirplane = func() {
+    if (cameraStatus == 0 and phaseIsActive == 0) {
+        setprop("sim/current-view/ab-camera/to/set-position","1,0,26.0,55.65,-49.0,0.118,0.930,-2.6,1.0,2.0,3.0");
+        phaseIsActive = 1;
+    } else {
+        if (cameraStatus == 3 and phaseIsActive > 0) {
+            msgOutput = "prepare the airplane";
+            if (getprop("fdm/jsbsim/gear/wow")) {
+                setprop("fdm/jsbsim/systems/autopilot/handle-brake-activate",1);
+            } else {
+                setprop("fdm/jsbsim/systems/autopilot/handle-brake-activate",0);
+            }
+            setprop("controls/engines/engine/throttle",0.5);
+        };
+        if (cameraStatus == 0 and phaseIsActive > 0) {
+            actualPhaseActive = 21;
+            phaseIsActive = 0;
+        };
+    };
+};
+
+
+var stop_StopACElectricPanel = func() {
+    if (cameraStatus == 0 and phaseIsActive == 0) {
+        setprop("sim/current-view/ab-camera/to/set-position","1,0,38.28,354.6,-29.75,0.25,0.55,-2.9,1.0,1.5,3.0");
+        phaseIsActive = 1;
+    } else {
+        if (cameraStatus == 3 and phaseIsActive > 0) {
+            msgOutput = "set electric primary panel";
+            if (cameraStatusTime < 1.0) {
+                setprop("fdm/jsbsim/systems/electric/bus[2]/primary-inverter/sw",0);
+            } else if (cameraStatusTime > 1.0) {
+                setprop("fdm/jsbsim/systems/electric/bus[1]/secondary-inverter/sw",0);
+            };
+        };
+        if (cameraStatus == 0 and phaseIsActive > 0) {
+            actualPhaseActive = 22;
+            phaseIsActive = 0;
+        };
+    };
+};
+
+
+var stop_PrepareStarterPanel = func() {
+    if (cameraStatus == 0 and phaseIsActive == 0) {
+        setprop("sim/current-view/ab-camera/to/set-position","1,0,23.48,37.48,-45.56,-0.019,0.789,-2.6,1.0,2.0,4.5");
+        phaseIsActive = 1;
+    } else {
+        if (cameraStatus == 3 and phaseIsActive > 0) {
+            msgOutput = "set left starter panel stop motor procedure";
+            if (cameraStatusTime < 0.5) {
+                setprop("fdm/jsbsim/systems/starter/emerg-engine",0);
+                setprop("fdm/jsbsim/systems/starter/drop-tank-press",0);
+            } else if (cameraStatusTime > 0.5 and cameraStatusTime < 1.0) {
+                setprop("fdm/jsbsim/systems/starter/fuel-booster-pump",0);
+            } else if (cameraStatusTime > 1.0 and cameraStatusTime < 1.5) {
+                setprop("fdm/jsbsim/systems/starter/engine-JPTL",0);
+            } else if (cameraStatusTime > 1.5 and cameraStatusTime < 2.0) {
+                setprop("fdm/jsbsim/systems/starter/NE",1);
+            } else if (cameraStatusTime > 2.0 and cameraStatusTime < 2.5) {
+                setprop("fdm/jsbsim/systems/starter/fuel-shut-off-valve-lock",1);
+            } else if (cameraStatusTime > 3.0) {
+                setprop("fdm/jsbsim/systems/starter/fuel-shut-off-valve",1);
+            };
+        };
+        if (cameraStatus == 0 and phaseIsActive > 0) {
+            actualPhaseActive = 23;
+            phaseIsActive = 0;
+        };
+    };
+};
+
+
+var stop_RPMGaugeAfterPushIgnition = func() {
+    if (cameraStatus == 0 and phaseIsActive == 0) {
+        setprop("sim/current-view/ab-camera/to/set-position","1,0,30.77,330.04,-19.98,-0.202,0.659,-2.6,1.0,2.0,3.0");
+        phaseIsActive = 1;
+    } else {
+        if (cameraStatus == 3 and phaseIsActive > 0) {
+            msgOutput = "Motor gauges control panel, look the RPM";
+        };
+        if (cameraStatus == 0 and phaseIsActive > 0 and engineN1 < 0.01) {
+            actualPhaseActive = 24;
+            phaseIsActive = 0;
+        };
+    };
+};
+
+
+var stop_AfterStopStarterPanel = func() {
+    if (cameraStatus == 0 and phaseIsActive == 0) {
+        setprop("sim/current-view/ab-camera/to/set-position","1,0,23.48,37.48,-45.56,-0.019,0.789,-2.6,1.0,1.5,2.0");
+        phaseIsActive = 1;
+    } else {
+        if (cameraStatus == 3 and phaseIsActive > 0) {
+            msgOutput = "set left starter panel after stop procedure";
+            setprop("fdm/jsbsim/systems/starter/fuel-shut-off-valve-lock",0);
+        };
+        if (cameraStatus == 0 and phaseIsActive > 0) {
+            if (getprop("fdm/jsbsim/gear/wow")) {
+                actualPhaseActive = 25;
+            } else {
+                actualPhaseActive = 30;
+            };
+            phaseIsActive = 0;
+        };
+    };
+};
+
+
+var stop_OpenTheCanopy = func() {
+    if (cameraStatus == 0 and phaseIsActive == 0) {
+        setprop("sim/current-view/ab-camera/to/set-position","1,0,39.89,12.88,-12.31,-0.179,0.553,-2.6,1.0,2.0,3.0");
+        phaseIsActive = 1;
+    } else {
+        if (cameraStatus == 3 and phaseIsActive > 0) {
+            msgOutput = "open the canopy";
+            if (cameraStatusTime < 0.5) {
+                setprop("fdm/jsbsim/systems/canopy/lever-trigger",0);
+            } else if (cameraStatusTime > 2.0 and cameraStatusTime < 2.5) {
+                setprop("fdm/jsbsim/systems/manual-switches/cockpit/sw-canopy-trigger",1);
+            } else {
+                setprop("fdm/jsbsim/systems/manual-switches/cockpit/sw-canopy-trigger",0);
+            };
+        };
+        if (cameraStatus == 0 and phaseIsActive > 0) {
+            actualPhaseActive = 26;
+            phaseIsActive = 0;
+        };
+    };
+};
+
+
+var stop_OpenTheCanopyPursuit = func() {
+    if (cameraStatus == 0 and phaseIsActive == 0) {
+        setprop("sim/current-view/ab-camera/to/set-position","1,0,73.376,358.169,68.362,0.003,0.815,-2.600,0.0,5.0,1.0");
+        phaseIsActive = 1;
+    } else {
+        if (cameraStatus == 3 and phaseIsActive > 0) {
+            msgOutput = "opening the canopy";
+        };
+        if (cameraStatus == 0 and phaseIsActive > 0) {
+            actualPhaseActive = 30;
+            phaseIsActive = 0;
+        };
+    };
+};
+
+
+var stop_AfterStopElectricPanel = func() {
+    if (cameraStatus == 0 and phaseIsActive == 0) {
+        setprop("sim/current-view/ab-camera/to/set-position","1,0,38.28,354.6,-29.75,0.25,0.55,-2.9,1.0,1.5,3.0");
+        phaseIsActive = 1;
+    } else {
+        if (cameraStatus == 3 and phaseIsActive > 0) {
+            setprop("fdm/jsbsim/systems/manual-switches/cockpit/sw-bus0-bus1-battery",0);
+        };
+        if (cameraStatus == 0 and phaseIsActive > 0) {
+            actualPhaseActive = 100;
+            phaseIsActive = 0;
+        };
+    };
+};
+
+
+var timerEngine_starter = func() {
+
+    engineN1 = getprop("fdm/jsbsim/propulsion/engine[0]/n1");
+    engineN2 = getprop("fdm/jsbsim/propulsion/engine[0]/n2");
+    bus0V = getprop("fdm/jsbsim/systems/electric/bus[0]/V");
+    bus1V = getprop("fdm/jsbsim/systems/electric/bus[1]/V");
+    bus2V = getprop("fdm/jsbsim/systems/electric/bus[2]/V");
+    inverterPrimaryV = getprop("fdm/jsbsim/systems/electric/inv-primary/V");
+    inverterSecondaryV = getprop("fdm/jsbsim/systems/electric/inv-secondary/V");
+    autostart_status_is_ok = 0;
     
-    if (engineN1 >= 0.38 and engineN2 >= 0.38 and bus0V >= 0.26 and bus1V >= 0.26 and bus2V >= 0.26 and inverterPrimaryV >= 110 and inverterSecondaryV >= 110) {
+    if (engineN1 >= 0.38 and engineN2 >= 0.38) {
         setprop("fdm/jsbsim/systems/starter/gui/autostart-status-is-ok",1);
         autostart_status_is_ok = 1;
     } else {
         setprop("fdm/jsbsim/systems/starter/gui/autostart-status-is-ok",0);
         autostart_status_is_ok = 0;
     }
-    
+
     var guiAutostartActivate = getprop("fdm/jsbsim/systems/starter/gui/autostart-activate");
-    
-    if (guiAutostartActivate >= 1 and autostart_status_is_ok == 0) {
-        var guiAutostartIsActive = getprop("fdm/jsbsim/systems/starter/gui/autostart-is-active");
-        var guiAutostartClockTime = getprop("fdm/jsbsim/systems/starter/gui/autostart-clock-time");
-        guiAutostartClockTime = guiAutostartClockTime + 1;
-        var startProcessActive = getprop("fdm/jsbsim/systems/starter/start-process-active");
-        msgOutput = "Engine starter: ";
-        
-        if (guiAutostartIsActive == 0 and startProcessActive == 0.0) {
-            msgOutput = msgOutput ~ "Autostarting engine procedure start";
-            msgOutputStstus = "Autostarting engine start the procedure";
-            if (getprop("fdm/jsbsim/systems/landing-gear/on-ground")) {
-                setprop("fdm/jsbsim/systems/autopilot/handle-brake-activate",1);
-            } else {
-                setprop("fdm/jsbsim/systems/autopilot/handle-brake-activate",0);
-            }
-            setprop("fdm/jsbsim/systems/starter/gui/autostart-is-active",1);
-            camera_save.getView();
-            camera_to_position.init(0,38.28,354.6,-29.75,0.25,0.55,-2.9);
-            nextTimeProcess = timeNow + minCameraTime * factorTimeStep;
-            guiAutostartIsActive = 1;
-            setprop("fdm/jsbsim/systems/manual-switches/cockpit/sw-bus0-bus1-battery-trigger",1);
-            setprop("fdm/jsbsim/systems/manual-switches/cockpit/sw-internal-power-generator",0);
-            setprop("fdm/jsbsim/systems/electric/bus[2]/primary-inverter/sw",0);
-            setprop("fdm/jsbsim/systems/electric/bus[1]/secondary-inverter/sw",0);
-        } else if (guiAutostartIsActive == 1) {
-            msgOutput = msgOutput ~ "Activate battery";
-            setprop("fdm/jsbsim/systems/manual-switches/cockpit/sw-bus0-bus1-battery-trigger",0);
-            setprop("fdm/jsbsim/systems/manual-switches/cockpit/sw-bus0-bus1-battery",1);
-            setprop("fdm/jsbsim/systems/starter/fuel-shut-off-valve-lock",1);
-            setprop("fdm/jsbsim/systems/starter/gui/autostart-is-active",2);
-            msgOutputStstus = "Activate battery";
-        } else if (guiAutostartIsActive == 2) {
-            msgOutput = msgOutput ~ "Prepare the starter procedure 1";
-            camera_to_position.init(0,38.28,17.59,-54.46,-0.245,0.50,-2.9);
-            nextTimeProcess = timeNow + minCameraTime * factorTimeStep;
-            setprop("fdm/jsbsim/systems/starter/emerg-engine",0);
-            setprop("fdm/jsbsim/systems/starter/fuel-booster-pump",1);
-            setprop("fdm/jsbsim/systems/starter/drop-tank-press",0);
-            setprop("fdm/jsbsim/systems/starter/fuel-shut-off-valve",0);
-            setprop("fdm/jsbsim/systems/starter/gui/autostart-is-active",3);
-            msgOutputStstus = "Fuel booster pump on";
-        } else if (guiAutostartIsActive == 3) {
-            msgOutput = msgOutput ~ "Prepare the starter procedure 2";
-            setprop("fdm/jsbsim/systems/starter/fuel-shut-off-valve-lock",0);
-            setprop("fdm/jsbsim/systems/starter/engine-JPTL",1);
-            setprop("fdm/jsbsim/systems/starter/NE",1);
-            setprop("fdm/jsbsim/systems/starter/gui/autostart-is-active",4);
-            msgOutputStstus = "Engine JPTL on";
-        } else if (guiAutostartIsActive == 4) {
-            camera_to_position.init(0,38.28,8.72,-47.7,-0.245,0.56,-2.6);
-            nextTimeProcess = timeNow + minCameraTime * factorTimeStep;
-            if (engineN2 < 10) {
-                msgOutput = msgOutput ~ "Prepare the starter procedure 3";
-                setprop("fdm/jsbsim/systems/starter/ignition-on-throttle-togle",1);
-                guiAutostartClockTime = 0;
-                setprop("fdm/jsbsim/systems/starter/gui/autostart-is-active",5);
-                msgOutputStstus = "Ignition push starter on throttle";
-            } else {
-                guiAutostartClockTime = 0;
-                setprop("fdm/jsbsim/systems/starter/gui/autostart-is-active",8);
-            }
-        } else if (guiAutostartIsActive == 5 and guiAutostartClockTime == 2) {
-            camera_to_position.init(0,51.74,3.94,-43.08,-0.246,0.55,-2.6);
-            nextTimeProcess = timeNow + minCameraTime * factorTimeStep;
-            msgOutput = msgOutput ~ "Prepare the starter procedure 4";
-            var swCoverTogle = getprop("fdm/jsbsim/systems/starter/sw-cover-togle");
-            if (swCoverTogle == 0) {
-                setprop("fdm/jsbsim/systems/starter/sw-cover-togle",1);
-            } else {
-                setprop("fdm/jsbsim/systems/starter/sw-cover-togle",0);
-            }
-            setprop("fdm/jsbsim/systems/starter/gui/autostart-is-active",6);
-            msgOutputStstus = "Push starter";
-            guiAutostartClockTime = 0;
-        } else if (guiAutostartIsActive == 6 and guiAutostartClockTime == 2) {
-            camera_to_position.init(0,51.74,330.5,-8.62,-0.15,0.55,-2.6);
-            nextTimeProcess = timeNow + minCameraTime * factorTimeStep;
-            msgOutput = msgOutput ~ "Prepare the starter procedure 5";
-            setprop("fdm/jsbsim/systems/starter/sw-push-togle",1);
-            setprop("fdm/jsbsim/systems/starter/gui/autostart-is-active",7);
-        } else if (guiAutostartIsActive == 7 and engineN2 >= 40) {
-            setprop("fdm/jsbsim/systems/starter/fuel-booster-pump",0);
-            msgOutput = msgOutput ~ "Prepare the starter procedure 6";
-            guiAutostartClockTime = 0;
-            setprop("fdm/jsbsim/systems/starter/gui/autostart-is-active",8);
-            msgOutputStstus = "Engine N2 > 40%";
-        } else if (guiAutostartIsActive == 8 and guiAutostartClockTime > 5) {
-            msgOutput = msgOutput ~ "Prepare the starter procedure 7";
-            setprop("fdm/jsbsim/systems/manual-switches/cockpit/sw-internal-power-generator",1);
-            guiAutostartClockTime = 0;
-            setprop("fdm/jsbsim/systems/starter/gui/autostart-is-active",9);
-            msgOutputStstus = "Switch internal power generator on";
-        } else if (guiAutostartIsActive == 9 and guiAutostartClockTime > 10) {
-            msgOutput = msgOutput ~ "Prepare the starter procedure 8";
-            setprop("fdm/jsbsim/systems/electric/bus[2]/primary-inverter/sw",1);
-            setprop("fdm/jsbsim/systems/starter/gui/autostart-is-active",10);
-            msgOutputStstus = "Switch primary inverter on";
-        } else if (guiAutostartIsActive == 10) {
-            msgOutput = msgOutput ~ "Prepare the starter procedure 9";
-            setprop("fdm/jsbsim/systems/electric/bus[1]/secondary-inverter/sw",1);
-            setprop("fdm/jsbsim/systems/canopy/lever-trigger",1);
-            setprop("fdm/jsbsim/systems/starter/gui/autostart-is-active",100);
-            msgOutputStstus = "Switch secondary inverter on";
-        } else if (guiAutostartIsActive >= 100) {
-            camera_save.setView();
-            nextTimeProcess = 0.0;
-            msgOutput = msgOutput ~ "Prepare the starter procedure is finish";
+
+    if (guiAutostartActivate >= 1 and (autostart_status_is_ok == 0 or actualPhaseActive > 0)) {
+        cameraStatus = getprop("sim/current-view/ab-camera/to/status");
+        cameraStatusTime = getprop("sim/current-view/ab-camera/to/status-time");
+        if (actualPhaseActive == 0) {
+            msgOutput = "start procedure";
+            actualPhaseActive = 1;
+            phaseIsActive = 0;
+        } else if (actualPhaseActive == 1) {
+            start_PrepareTheAirplane();
+        } else if (actualPhaseActive == 2) {
+            start_PrepareElectricPanel();
+        } else if (actualPhaseActive == 3) {
+            start_PrepareStarterPanel();
+        } else if (actualPhaseActive == 4) {
+            start_PrepareStarterPanelBoosterPump();
+        } else if (actualPhaseActive == 5) {
+            start_SetThrottle();
+        } else if (actualPhaseActive == 6) {
+            start_StarterPanelPushIgnition();
+        } else if (actualPhaseActive == 7) {
+            start_RPMGaugeAfterPushIgnition();
+        } else if (actualPhaseActive == 8) {
+            start_ActivateElectricPanel();
+        } else if (actualPhaseActive == 9) {
+            start_StarterPanelAfterPushIgnition();
+        } else if (actualPhaseActive == 10) {
+            start_ActivateElectricPanelInverters();
+        } else if (actualPhaseActive == 11) {
+            start_CloseTheCanopy();
+        } else {
+            #// End cycle
+            msgOutput = "terminate the start procedure";
             setprop("fdm/jsbsim/systems/starter/gui/autostart-activate",0);
-            setprop("fdm/jsbsim/systems/starter/gui/autostart-is-active",0);
-            msgOutputStstus = "Autostarting procedure completed";
+            setprop("sim/current-view/ab-camera/to/command",12);
+            setprop("fdm/jsbsim/systems/starter/gui/autostart-activate-stop",1);
         };
-        setprop("fdm/jsbsim/systems/starter/gui/autostart-clock-time",guiAutostartClockTime);
-        setprop("fdm/jsbsim/systems/starter/gui/autostart-message",msgOutputStstus);
-    }
+        messageOutputStatus();
+    } else {
+        var guiAutostartStop = getprop("fdm/jsbsim/systems/starter/gui/autostart-stop");
+
+        if (guiAutostartStop >= 1 and (autostart_status_is_ok > 0 or actualPhaseActive > 0)) {
+            cameraStatus = getprop("sim/current-view/ab-camera/to/status");
+            cameraStatusTime = getprop("sim/current-view/ab-camera/to/status-time");
+            if (actualPhaseActive == 0) {
+                msgOutput = "stop procedure";
+                actualPhaseActive = 20;
+                phaseIsActive = 0;
+            } else if (actualPhaseActive == 20) {
+                stop_PrepareTheAirplane();
+            } else if (actualPhaseActive == 21) {
+                stop_StopACElectricPanel();
+            } else if (actualPhaseActive == 22) {
+                stop_PrepareStarterPanel();
+            } else if (actualPhaseActive == 23) {
+                stop_RPMGaugeAfterPushIgnition();
+            } else if (actualPhaseActive == 24) {
+                stop_AfterStopStarterPanel();
+            }  else if (actualPhaseActive == 25) {
+                stop_OpenTheCanopy();
+            }else if (actualPhaseActive == 26) {
+                stop_OpenTheCanopyPursuit();
+            } else if (actualPhaseActive == 30) {
+                stop_AfterStopElectricPanel();
+            } else {
+                #// End cycle
+                msgOutput = "terminate the start procedure";
+                setprop("sim/current-view/ab-camera/to/command",12);
+                setprop("fdm/jsbsim/systems/starter/gui/autostart-stop",0);
+            };
+            messageOutputStatus();
+        };
+    };
+
+    ##// print("** timerEngine_starter: ",actualPhaseActive," | ",cameraStatusTime," | ",cameraStatusTime);
 
 };
 
 
+setlistener("fdm/jsbsim/systems/starter/gui/autostart-activate", func {
 
-var timerEngine_starter_control = func() {
-    
-    timerEngine_starterTimer.restart(timeStep / speed_up);
-    timeNow = getprop("/sim/time/elapsed-sec");
-    if (timeNow >= nextTimeProcess) {
-        stepCameraRemain = 0;
-        timeStepEffective = timeStep / speed_up;
-        timerEngine_starter(timeNow,1.0);
-    } else {
-        #// Camera action
-        timeStepEffective = 0.01;
-        if (stepCameraRemain == 0) {
-            delta_sec = getprop("/sim/time/delta-sec");
-            stepCameraRemain = int((nextTimeProcess - (minCameraTime * 0.7) - timeNow) / delta_sec);
-        };
-        if (stepCameraRemain >= 1) {
-            camera_position.goViewTo(camera_to_position,stepCameraRemain);
-            stepCameraRemain += -1;
-        };
+    isStartingProcedureActive = getprop("fdm/jsbsim/systems/starter/gui/autostart-activate");
+    if (isStartingProcedureActive > 0 and timerEngine_starterTimer == nil) {
+        setprop("fdm/jsbsim/systems/starter/gui/autostart-activate-stop",0);
+        setprop("fdm/jsbsim/systems/starter/gui/autostart-stop",0);
+        timerEngine_starterTimer = maketimer(0.1, timerEngine_starter);
+        timerEngine_starterTimer.singleShot = 0;
+        #// timerEngine_starterTimer.simulatedTime = 1;
+        timerEngine_starterTimer.start();
+    } else if (isStartingProcedureActive > 0) {
+        setprop("fdm/jsbsim/systems/starter/gui/autostart-activate-stop",0);
+        setprop("fdm/jsbsim/systems/starter/gui/autostart-stop",0);
+        timerEngine_starterTimer.restart(0.1);
     };
-    
-}
+
+}, 0, 1);
 
 
+setlistener("fdm/jsbsim/systems/starter/gui/autostart-activate-stop", func {
 
-var timerEngine_starterTimer = maketimer(timeStepEffective, timerEngine_starter_control);
-timerEngine_starterTimer.singleShot = 1;
-timerEngine_starterTimer.start();
+    isStartingProcedureActiveStopped = getprop("fdm/jsbsim/systems/starter/gui/autostart-activate-stop");
+    if (isStartingProcedureActiveStopped == 1) {
+        actualPhaseActive = 0;
+        isStartingProcedureActive = 0;
+        setprop("fdm/jsbsim/systems/starter/gui/autostart-activate",0);
+        isStartingProcedureActiveStopped = 0;
+        getprop("fdm/jsbsim/systems/starter/gui/autostart-activate-stop",0);
+        timerEngine_starterTimer.stop();
+        msgOutput = "procedure terminate";
+        messageOutputStatus();
+    };
+
+}, 0, 1);
+
+
+setlistener("fdm/jsbsim/systems/starter/gui/autostart-stop", func {
+
+    isStopProcedureActive = getprop("fdm/jsbsim/systems/starter/gui/autostart-stop");
+    if (isStopProcedureActive > 0 and timerEngine_starterTimer == nil) {
+        setprop("fdm/jsbsim/systems/starter/gui/autostart-activate-stop",0);
+        setprop("fdm/jsbsim/systems/starter/gui/autostart-activate",0);
+        timerEngine_starterTimer = maketimer(0.1, timerEngine_starter);
+        timerEngine_starterTimer.singleShot = 0;
+        #// timerEngine_starterTimer.simulatedTime = 1;
+        timerEngine_starterTimer.start();
+    } else if (isStopProcedureActive > 0) {
+        setprop("fdm/jsbsim/systems/starter/gui/autostart-activate-stop",0);
+        setprop("fdm/jsbsim/systems/starter/gui/autostart-activate",0);
+        timerEngine_starterTimer.restart(0.1);
+    };
+
+}, 0, 1);
+
