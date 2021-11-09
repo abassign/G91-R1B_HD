@@ -15,10 +15,16 @@
         <texture>Pictures/smoke.png</texture>
         
         <condition>
-            <greater-than>
-                <property>fdm/jsbsim/systems/starter/start-starter-gas-lag</property>
-                <value>0.05</value>
-            </greater-than>
+            <and>
+                <greater-than>
+                    <property>fdm/jsbsim/systems/starter/start-starter-gas-lag</property>
+                    <value>0.05</value>
+                </greater-than>
+                <equals>
+                    <property>sim/current-view/internal</property>
+                    <value>false</value>
+                </equals>
+            </and>
         </condition>
         
         <emissive>false</emissive>

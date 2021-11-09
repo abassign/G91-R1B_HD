@@ -55,6 +55,24 @@
             <button>
                 <row>0</row>
                 <col>1</col>
+                <legend>Fast mode</legend>
+                <halign>fill</halign>
+                <live>true</live>
+                <pref-width>100</pref-width>
+                <binding>
+                    <command>property-assign</command>
+                    <property>fdm/jsbsim/systems/starter/gui/autostart-activate</property>
+                    <value>2</value>
+                </binding>
+                <binding>
+                    <command>property-assign</command>
+                    <property>fdm/jsbsim/systems/oxygen/cylinder-refilled-flow-rate</property>
+                    <value>20</value>
+                </binding>
+            </button>
+            <button>
+                <row>0</row>
+                <col>2</col>
                 <legend>Abort start</legend>
                 <halign>fill</halign>
                 <live>true</live>
@@ -67,7 +85,7 @@
             </button>
             <button>
                 <row>0</row>
-                <col>2</col>
+                <col>3</col>
                 <legend>Stop engine</legend>
                 <halign>fill</halign>
                 <live>true</live>

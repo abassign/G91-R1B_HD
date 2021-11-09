@@ -37,13 +37,6 @@
         </condition>
     </animation>
     
-    <!--
-    <effect>
-        <inherits-from>Aircraft/G91-R1B_HD/Models/Effects/Reflections/reflection_black_00</inherits-from>
-        <object-name>staircase</object-name>
-    </effect>
-    -->
-    
     <animation> 
         <type>material</type>
         <object-name>staircase</object-name>
@@ -53,8 +46,8 @@
             <blue>0.2</blue>
         </diffuse>
         <ambient>
-            <red>0.9</red>
-            <green>0.8</green>
+            <red>0.5</red>
+            <green>0.5</green>
             <blue>0.3</blue>
         </ambient>
     </animation>

@@ -333,7 +333,7 @@ G91_Params.xml
     </lights>
     
     <accessories>
-        <staircase type="int">0</staircase>
+        <staircase type="int">1</staircase>
     </accessories>
     
     <switchs>
