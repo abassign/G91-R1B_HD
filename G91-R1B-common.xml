@@ -292,7 +292,7 @@
             <file>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Gauges/SFOM_83A/SFOM_83A_01.nas</file>
             <file>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/PHI/phi.nas</file>
             <!-- Aux -->
-            <file>Aircraft/G91-R1B_HD/Nasal/Camera/ab-camera.nas</file>
+            <file>Aircraft/G91-R1B_HD/Nasal/AB-camera/ab-camera.nas</file>
         </general>
         
         <canvas_gauges>

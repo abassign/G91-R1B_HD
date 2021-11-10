@@ -96,16 +96,39 @@
                     <value>1</value>
                 </binding>
             </button>
+        </group>
+    </group>
+
+    <hrule/>
+
+    <group>
+        <layout>vbox</layout>
+        <group>
+            <layout>table</layout>
             <text>
                 <row>1</row>
                 <col>0</col>
                 <halign>left</halign>
                 <live>true</live>
+                <pref-width>400</pref-width>
                 <property>fdm/jsbsim/systems/starter/gui/autostart-message</property>
                 <color>
                     <red>0.8</red>
                     <green>0.8</green>
                     <blue>0.8</blue>
+                </color>
+            </text>
+            <text>
+                <row>1</row>
+                <col>1</col>
+                <halign>left</halign>
+                <live>true</live>
+                <pref-width>200</pref-width>
+                <property>sim/current-view/ab-camera/to/status-time-remain-msg</property>
+                <color>
+                    <red>0.2</red>
+                    <green>0.8</green>
+                    <blue>0.2</blue>
                 </color>
             </text>
         </group>

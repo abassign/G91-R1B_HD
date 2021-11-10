@@ -119,6 +119,8 @@ var ViewCamDataClass = {
 
 var statusCamera = 0;
 var idCameraPlay = nil;
+var isMouseButtonActive = 0;
+var offsetFromMouseSensor = 0.0;
 var statusCameraActiveTime = 0.0;
 var actualDeltaTime = 0.0;
 var stepCameraRemain = 0;
@@ -149,31 +151,54 @@ var cameraPlay = func(steadyClockSec) {
     if (statusCamera > 0) {
         var deltaSec = getprop("sim/time/delta-sec");
         if (deltaSec > 0.0) {
+            #// The mouse moviment check
+            isMouseButtonActive = 0;
+            if (getprop("devices/status/mice/mouse/button[0]") or getprop("devices/status/mice/mouse/button[1]") or getprop("devices/status/mice/mouse/button[2]")) isMouseButtonActive = 1;
+            if (offsetFromMouseSensor < 0.0) offsetFromMouseSensor = 0.0;
+            if (isMouseButtonActive > 0) {
+                offsetFromMouseSensor += 1.2 * deltaSec;
+            } else {
+                offsetFromMouseSensor -= 2.0 * deltaSec;
+            };
             #// Display active process
             if (statusCamera == 1) {
                 actualDeltaTime = steadyClockSec.getValue() - (statusCameraActiveTime + deltaSec);
-                if (actualDeltaTime >= camera_to_position.start_wait_time) {
+                if (actualDeltaTime >= (camera_to_position.start_wait_time + offsetFromMouseSensor)) {
+                    offsetFromMouseSensor = 0.0;
                     setprop("sim/current-view/ab-camera/to/status",2);
                 };
                 setprop("sim/current-view/ab-camera/to/status-time",int(actualDeltaTime * 10.0) / 10.0);
-#    print("*** 1 : ",deltaSec," | ",statusCameraActiveTime," | ",actualDeltaTime," | ",camera_to_position.start_wait_time," | ",getprop("sim/current-view/ab-camera/to/status-time"));
+                setprop("sim/current-view/ab-camera/to/status-time-remain-msg",
+                        sprintf("Time remain (s): %4.1f",(actualDeltaTime - (camera_to_position.start_wait_time + offsetFromMouseSensor))) ~ sprintf(" [%2.2f]",offsetFromMouseSensor));
+#//    print("*** 1 : ",deltaSec," | ",statusCameraActiveTime," | ",actualDeltaTime," | ",camera_to_position.start_wait_time," | ",getprop("sim/current-view/ab-camera/to/status-time"));
             } else if (statusCamera == 2) {
                 actualDeltaTime = steadyClockSec.getValue() - statusCameraActiveTime;
-                stepCameraRemain = int((camera_to_position.duration_path_time - actualDeltaTime) / deltaSec);
+                stepCameraRemain = int(((camera_to_position.duration_path_time + offsetFromMouseSensor) - actualDeltaTime) / deltaSec);
                 if (stepCameraRemain <= 0) {
+                    offsetFromMouseSensor = 0.0;
                     setprop("sim/current-view/ab-camera/to/status",3);
                 } else {
-                    camera_position.goViewTo(camera_to_position,stepCameraRemain);
+                    if (offsetFromMouseSensor < 0.01) {
+                        camera_position.goViewTo(camera_to_position,stepCameraRemain);
+                    };
                 };
                 setprop("sim/current-view/ab-camera/to/status-time",int(actualDeltaTime * 10.0) / 10.0);
-#    print("*** 2 : ",deltaSec," | ",statusCameraActiveTime," | ",actualDeltaTime," | ",camera_to_position.duration_path_time," | ",stepCameraRemain," | ",getprop("sim/current-view/ab-camera/to/status-time"));
+                setprop("sim/current-view/ab-camera/to/status-time-remain-msg",
+                        sprintf("Time remain (s): %4.1f",(actualDeltaTime - (camera_to_position.start_wait_time + offsetFromMouseSensor))) ~ sprintf(" [%2.2f]",offsetFromMouseSensor));
+#//    print("*** 2 : ",deltaSec," | ",statusCameraActiveTime," | ",actualDeltaTime," | ",camera_to_position.duration_path_time," | ",stepCameraRemain," | ",getprop("sim/current-view/ab-camera/to/status-time"));
             } else if (statusCamera == 3) {
                 actualDeltaTime = steadyClockSec.getValue() - (statusCameraActiveTime + deltaSec);
-                if (actualDeltaTime >= camera_to_position.end_wait_time) {
+                if (actualDeltaTime >= (camera_to_position.end_wait_time + offsetFromMouseSensor)) {
+                    offsetFromMouseSensor = 0.0;
                     setprop("sim/current-view/ab-camera/to/status",9);
                 };
+                if (offsetFromMouseSensor < 0.01) {
+                    camera_position.setView();
+                };
                 setprop("sim/current-view/ab-camera/to/status-time",int(actualDeltaTime * 10.0) / 10.0);
-#    print("*** 3 : ",deltaSec," | ",statusCameraActiveTime," | ",actualDeltaTime," | ",camera_to_position.duration_path_time," | ",getprop("sim/current-view/ab-camera/to/status-time"));
+                setprop("sim/current-view/ab-camera/to/status-time-remain-msg",
+                        sprintf("Time remain (s): %4.1f",(actualDeltaTime - (camera_to_position.start_wait_time + offsetFromMouseSensor))) ~ sprintf(" [%2.2f]",offsetFromMouseSensor));
+#//    print("*** 3 : ",deltaSec," | ",statusCameraActiveTime," | ",actualDeltaTime," | ",camera_to_position.duration_path_time," | ",getprop("sim/current-view/ab-camera/to/status-time"));
             };
         };
     };
@@ -181,7 +206,7 @@ var cameraPlay = func(steadyClockSec) {
 };
 
 
-var removeCameraPlay = func() {
+var removeListeners = func() {
     if (idCameraPlay != nil) {
         removelistener(idCameraPlay);
         idCameraPlay = nil;
@@ -218,7 +243,7 @@ setlistener("sim/current-view/ab-camera/to/status", func {
             statusCameraActiveTime = getprop("sim/time/steady-clock-sec");
         } else if (statusCamera == 9) {
             print("ab-camera.nas remove listner: sim/time/steady-clock-sec id: ",idCameraPlay);
-            removeCameraPlay();
+            removeListeners();
             setprop("sim/current-view/ab-camera/to/command",0);
         };
         if (idCameraPlay == nil and statusCamera > 0) {
@@ -248,10 +273,14 @@ setlistener("sim/current-view/ab-camera/to/command", func {
     } else if (command == 11) {
         camera_save.getView();
     } else if (command == 12) {
-        removeCameraPlay();
+        removeListeners();
         camera_save.setView();
     };
     setprop("sim/current-view/ab-camera/to/command",0);
 
 }, 0, 1);
+
+
+
+
 
