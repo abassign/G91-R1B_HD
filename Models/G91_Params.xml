@@ -334,6 +334,22 @@ G91_Params.xml
     
     <accessories>
         <staircase type="int">1</staircase>
+        <illuminators>
+            <sx>
+                <active type="int">1</active>
+                <intensity type="float">0.3</intensity>
+                <intensity-glass type="float">0.5</intensity-glass>
+                <pitch type="float">3.0</pitch>
+                <yaw type="float">54.0</yaw>
+            </sx>
+            <dx>
+                <active type="int">1</active>
+                <intensity type="float">0.3</intensity>
+                <intensity-glass type="float">0.5</intensity-glass>
+                <pitch type="float">3.0</pitch>
+                <yaw type="float">-54.0</yaw>
+            </dx>
+        </illuminators>
     </accessories>
     
     <switchs>

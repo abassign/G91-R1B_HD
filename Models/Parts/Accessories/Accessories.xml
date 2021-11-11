@@ -51,5 +51,45 @@
             <blue>0.3</blue>
         </ambient>
     </animation>
+
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Accessories/StandIlluminator-sx.xml</path>
+        <condition>
+            <and>
+                <greater-than>
+                    <property>sim/G91/accessories/illuminators/sx/active</property>
+                    <value>0.5</value>
+                </greater-than>
+                <greater-than>
+                    <property>fdm/jsbsim/systems/gears/gear[0]/is-stationary</property>
+                    <value>0.5</value>
+                </greater-than>
+                <greater-than>
+                    <property>fdm/jsbsim/systems/canopy/position-deg</property>
+                    <value>5.0</value>
+                </greater-than>
+            </and>
+        </condition>
+    </model>
+
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Accessories/StandIlluminator-dx.xml</path>
+        <condition>
+            <and>
+                <greater-than>
+                    <property>sim/G91/accessories/illuminators/dx/active</property>
+                    <value>0.5</value>
+                </greater-than>
+                <greater-than>
+                    <property>fdm/jsbsim/systems/gears/gear[0]/is-stationary</property>
+                    <value>0.5</value>
+                </greater-than>
+                <greater-than>
+                    <property>fdm/jsbsim/systems/canopy/position-deg</property>
+                    <value>5.0</value>
+                </greater-than>
+            </and>
+        </condition>
+    </model>
     
 </PropertyList>

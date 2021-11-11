@@ -119,7 +119,7 @@ var store = func() {
             submodel = StoreModelDataClass.new();
             submodel.init("abassign-Mk81-250lb_ext_dx",1,path);
             submodel.setToAirplanePosition();
-            print("***** submodel: ",debug.dump(submodel));
+print("***** store.nas - submodel: ",debug.dump(submodel));
         }
     }
     if (isModelCreate == 1) {

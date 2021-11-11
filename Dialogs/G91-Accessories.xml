@@ -6,7 +6,7 @@
     <layout>vbox</layout>
     <default-padding>7</default-padding>
     <modal>false</modal>
-    <width>500</width>
+    <width>700</width>
     
     <!-- title bar -->
     <group>
@@ -96,6 +96,158 @@
     
     <hrule/>
     
+    <group>
+        <layout>table</layout>
+        <checkbox>
+            <row>0</row>
+            <col>0</col>
+            <halign>fill</halign>
+            <property>sim/G91/accessories/illuminators/sx/active</property>
+            <live>true</live>
+            <binding>
+                <command>dialog-apply</command>
+            </binding>
+        </checkbox>
+        <text>
+            <label>Ext. illuminator Sx</label>
+            <halign>left</halign>
+            <row>0</row>
+            <col>1</col>
+        </text>
+        <text>
+            <label>Pitch</label>
+            <halign>left</halign>
+            <row>0</row>
+            <col>2</col>
+        </text>
+        <slider>
+            <name>illuminator Sx pitch</name>
+            <row>0</row>
+            <col>3</col>
+            <property>sim/G91/accessories/illuminators/sx/pitch</property>
+            <min>0.0</min>
+            <max>30.0</max>
+            <step>1.0</step>
+            <binding>
+                <command>dialog-apply</command>
+            </binding>
+        </slider>
+        <text>
+            <label>Yaw</label>
+            <halign>left</halign>
+            <row>0</row>
+            <col>4</col>
+        </text>
+        <slider>
+            <name>illuminator Sx heading</name>
+            <row>0</row>
+            <col>5</col>
+            <property>sim/G91/accessories/illuminators/sx/yaw</property>
+            <min>-90.0</min>
+            <max>90</max>
+            <step>1.0</step>
+            <binding>
+                <command>dialog-apply</command>
+            </binding>
+        </slider>
+        <text>
+            <label>Intensity</label>
+            <halign>left</halign>
+            <row>0</row>
+            <col>6</col>
+        </text>
+        <slider>
+            <row>0</row>
+            <col>7</col>
+            <name>Intensity</name>
+            <property>sim/G91/accessories/illuminators/sx/intensity</property>
+            <min>0.0</min>
+            <max>0.5</max>
+            <step>0.1</step>
+            <binding>
+                <command>dialog-apply</command>
+            </binding>
+        </slider>
 
+    </group>
+
+    <hrule/>
+
+    <group>
+        <layout>table</layout>
+        <checkbox>
+            <row>0</row>
+            <col>0</col>
+            <halign>fill</halign>
+            <property>sim/G91/accessories/illuminators/dx/active</property>
+            <live>true</live>
+            <binding>
+                <command>dialog-apply</command>
+            </binding>
+        </checkbox>
+        <text>
+            <label>Ext. illuminator Dx</label>
+            <halign>left</halign>
+            <row>0</row>
+            <col>1</col>
+        </text>
+        <text>
+            <label>Pitch</label>
+            <halign>left</halign>
+            <row>0</row>
+            <col>2</col>
+        </text>
+        <slider>
+            <name>illuminator Dx pitch</name>
+            <row>0</row>
+            <col>3</col>
+            <property>sim/G91/accessories/illuminators/dx/pitch</property>
+            <min>0.0</min>
+            <max>30.0</max>
+            <step>1.0</step>
+            <binding>
+                <command>dialog-apply</command>
+            </binding>
+        </slider>
+        <text>
+            <label>Yaw</label>
+            <halign>left</halign>
+            <row>0</row>
+            <col>4</col>
+        </text>
+        <slider>
+            <name>illuminator Sx heading</name>
+            <row>0</row>
+            <col>5</col>
+            <property>sim/G91/accessories/illuminators/dx/yaw</property>
+            <min>-90.0</min>
+            <max>90</max>
+            <step>1.0</step>
+            <binding>
+                <command>dialog-apply</command>
+            </binding>
+        </slider>
+        <text>
+            <label>Intensity</label>
+            <halign>left</halign>
+            <row>0</row>
+            <col>6</col>
+        </text>
+        <slider>
+            <row>0</row>
+            <col>7</col>
+            <name>Intensity</name>
+            <property>sim/G91/accessories/illuminators/dx/intensity</property>
+            <min>0.0</min>
+            <max>0.5</max>
+            <step>0.1</step>
+            <binding>
+                <command>dialog-apply</command>
+            </binding>
+        </slider>
+
+    </group>
+
+    <hrule/>
 
 </PropertyList>
