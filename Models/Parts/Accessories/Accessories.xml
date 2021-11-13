@@ -10,7 +10,7 @@
         <z-m>0.78</z-m>
         <pitch-deg>0.0</pitch-deg>
     </offsets>
-    
+
     <animation>
         <name>staircase_show</name>
         <type>select</type>
@@ -64,10 +64,6 @@
                     <property>fdm/jsbsim/systems/gears/gear[0]/is-stationary</property>
                     <value>0.5</value>
                 </greater-than>
-                <greater-than>
-                    <property>fdm/jsbsim/systems/canopy/position-deg</property>
-                    <value>5.0</value>
-                </greater-than>
             </and>
         </condition>
     </model>
@@ -83,10 +79,6 @@
                 <greater-than>
                     <property>fdm/jsbsim/systems/gears/gear[0]/is-stationary</property>
                     <value>0.5</value>
-                </greater-than>
-                <greater-than>
-                    <property>fdm/jsbsim/systems/canopy/position-deg</property>
-                    <value>5.0</value>
                 </greater-than>
             </and>
         </condition>

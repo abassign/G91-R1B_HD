@@ -221,7 +221,7 @@ var start_SetThrottle = func(nextActualPhaseActive = 100,isFastMode = 0) {
 };
 
 
-var start_StarterPanelPushIgnition = func(nextActualPhaseActive = 100,isFastMode = 0) {
+var start_StarterPanelPushIgnition = func(nextActualPhaseActive = 100,isFastMode = 0,activeCamera = 1) {
     if (cameraStatus == 0 and phaseIsActive == 0) {
         if (isFastMode) {
             setprop("sim/current-view/ab-camera/to/set-position","1,0,23.48,37.48,-45.56,-0.019,0.789,-2.6,0.1,0.5,3.0");
@@ -607,6 +607,7 @@ var start_FastPreamble = func(nextActualPhaseActive = 100) {
         if (cameraStatus == 3 and phaseIsActive > 0) {
             if (cameraStatusTime < 1.0) {
                 msgOutput = "prepare the electric system";
+                setprop("fdm/jsbsim/systems/manual-switches/cockpit/sw-canopy-trigger",0);
                 setprop("fdm/jsbsim/systems/manual-switches/cockpit/sw-internal-power-generator",0);
                 setprop("fdm/jsbsim/systems/electric/bus[2]/primary-inverter/sw",0);
                 setprop("fdm/jsbsim/systems/electric/bus[1]/secondary-inverter/sw",0);
@@ -615,6 +616,7 @@ var start_FastPreamble = func(nextActualPhaseActive = 100) {
                 setprop("fdm/jsbsim/systems/lightning/light-red-console-bright",0);
                 setprop("fdm/jsbsim/systems/manual-switches/cockpit/sw-bus0-bus1-battery",1);
                 setprop("fdm/jsbsim/systems/manual-switches/cockpit/sw-bus0-bus1-battery-trigger",0);
+                setprop("fdm/jsbsim/systems/canopy/lever-trigger",0);
                 if (getprop("fdm/jsbsim/systems/lightning/ambient-light") < 0.18) {
                     setprop("fdm/jsbsim/systems/lightning/light-uv-instrument-bright",0);
                     setprop("fdm/jsbsim/systems/lightning/light-red-emer-instrument-bright",1.0);
@@ -622,6 +624,7 @@ var start_FastPreamble = func(nextActualPhaseActive = 100) {
                 };
             } else if (cameraStatusTime > 1.0) {
                 msgOutput = "prepare the engine system";
+                setprop("fdm/jsbsim/systems/manual-switches/cockpit/sw-canopy-trigger",-1);
                 setprop("fdm/jsbsim/systems/starter/emerg-engine",0);
                 setprop("fdm/jsbsim/systems/starter/drop-tank-press",0);
                 setprop("fdm/jsbsim/systems/starter/fuel-shut-off-valve",0);
@@ -629,10 +632,6 @@ var start_FastPreamble = func(nextActualPhaseActive = 100) {
                 setprop("fdm/jsbsim/systems/starter/engine-JPTL",1);
                 setprop("fdm/jsbsim/systems/starter/NE",1);
             } else if (cameraStatusTime > 1.5) {
-                if (getprop("fdm/jsbsim/systems/canopy/position") > 0.01 and cameraStatusTime > 1.5 and cameraStatusTime < 2.0) {
-                    setprop("fdm/jsbsim/systems/manual-switches/cockpit/sw-canopy-trigger",-1);
-                };
-            } else if (cameraStatusTime > 2.0) {
                 setprop("fdm/jsbsim/systems/manual-switches/cockpit/sw-canopy-trigger",0);
             };
         };

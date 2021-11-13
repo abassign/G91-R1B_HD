@@ -236,9 +236,10 @@
         <object-name>scatola</object-name>
         <object-name>centine.001</object-name>
         <diffuse>
-            <red>0.4</red>
-            <green>0.55</green>
-            <blue>0.38</blue>
+            <red>0.52</red>
+            <green>0.75</green>
+            <blue>0.51</blue>
+            <factor-prop>/fdm/jsbsim/systems/lightning/ambient-light</factor-prop>
         </diffuse>
         <ambient>
             <red>0.3</red>
@@ -251,9 +252,10 @@
         <type>material</type> 
         <object-name>centine</object-name>
         <diffuse>
-            <red>0.4</red>
-            <green>0.55</green>
-            <blue>0.38</blue>
+            <red>0.52</red>
+            <green>0.75</green>
+            <blue>0.51</blue>
+            <factor-prop>/fdm/jsbsim/systems/lightning/ambient-light</factor-prop>
         </diffuse>
         <ambient>
             <red>0.4</red>
@@ -269,6 +271,7 @@
             <red>0.1</red>
             <green>0.1</green>
             <blue>0.12</blue>
+            <factor-prop>/fdm/jsbsim/systems/lightning/ambient-light</factor-prop>
         </diffuse>
         <ambient>
             <red>0.2</red>
@@ -301,6 +304,7 @@
             <red>0.1</red>
             <green>0.1</green>
             <blue>0.1</blue>
+            <factor-prop>/fdm/jsbsim/systems/lightning/ambient-light</factor-prop>
         </diffuse>
         <ambient>
             <red>0.2</red>

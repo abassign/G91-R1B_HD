@@ -440,6 +440,7 @@
             <red>0.8</red>
             <green>0.8</green>
             <blue>0.8</blue>
+            <factor-prop>/fdm/jsbsim/systems/lightning/ambient-light</factor-prop>
         </diffuse>
         <ambient>
             <red>0.05</red>
@@ -1027,7 +1028,7 @@
             <red>0.52</red>
             <green>0.75</green>
             <blue>0.51</blue>
-            <factor-prop>gear/gear/position-norm</factor-prop>
+            <factor-prop>/fdm/jsbsim/systems/lightning/ambient-light</factor-prop>
         </diffuse>
         <ambient>
             <red>0.8</red>
@@ -1048,7 +1049,7 @@
             <red>0.52</red>
             <green>0.75</green>
             <blue>0.51</blue>
-            <factor-prop>gear/gear/position-norm</factor-prop>
+            <factor-prop>/fdm/jsbsim/systems/lightning/ambient-light</factor-prop>
         </diffuse>
         <ambient>
             <red>0.3</red>
@@ -1061,6 +1062,7 @@
             <blue>0.3</blue>
         </specular>
     </animation>
+
     
     <!-- Army door open Sx -->
     

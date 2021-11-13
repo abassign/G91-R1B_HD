@@ -335,21 +335,24 @@ G91_Params.xml
     <accessories>
         <staircase type="int">1</staircase>
         <illuminators>
+            <isOperative type="int">1</isOperative>
+            <minAmbientLight type="float">0.2</minAmbientLight>
             <sx>
-                <active type="int">1</active>
-                <intensity type="float">0.3</intensity>
-                <intensity-glass type="float">0.5</intensity-glass>
+                <active type="int">0</active>
+                <intensity type="float">1.0</intensity>
                 <pitch type="float">3.0</pitch>
-                <yaw type="float">54.0</yaw>
+                <yaw type="float">40.0</yaw>
             </sx>
             <dx>
-                <active type="int">1</active>
-                <intensity type="float">0.3</intensity>
-                <intensity-glass type="float">0.5</intensity-glass>
+                <active type="int">0</active>
+                <intensity type="float">1.0</intensity>
                 <pitch type="float">3.0</pitch>
-                <yaw type="float">-54.0</yaw>
+                <yaw type="float">-40.0</yaw>
             </dx>
         </illuminators>
+        <canopy>
+            <isOpenWhenStart type="int">1</isOpenWhenStart>
+        </canopy>
     </accessories>
     
     <switchs>

@@ -218,10 +218,6 @@ No Overshoot
     <property value="1.0">systems/autopilot/speed-throttle-input-gain</property>
     <property value="1.0">systems/autopilot/speed-pitch-input-gain</property>
     <property value="0.0">systems/autopilot/speed-reset-integrator</property>
-    <!--
-    <property value="28.0">systems/autopilot/speed-throttle-pid-ku</property>
-    <property value="22.0">systems/autopilot/speed-throttle-pid-tu</property>
-    -->
     <property value="9.5">systems/autopilot/speed-throttle-pid-ku</property>
     <property value="40.0">systems/autopilot/speed-throttle-pid-tu</property>
     <property value="0.0">systems/autopilot/speed-pitch-pid-gain-sum</property>
@@ -236,16 +232,6 @@ No Overshoot
     <property value="0.0">systems/autopilot/speed-best-by-altitude</property>
     <property value="-0.002">systems/autopilot/vertical-speed-anti-stall-lim-max</property>
     <!-- Vertical speed section -->
-    <!--
-    <property value="2.0">systems/autopilot/vertical-speed-fps-lag-C1</property>
-    <property value="0.0">systems/autopilot/vertical-speed-active</property>
-    <property value="0.0">systems/autopilot/vertical-speed-fpm</property>
-    <property value="0.0">systems/autopilot/vertical-speed-reset-integrator</property>
-    <property value="2.0">systems/autopilot/vertical-speed-pid-kp-set</property>
-    <property value="0.8">systems/autopilot/vertical-speed-pid-ki-set</property>
-    <property value="4.0">systems/autopilot/vertical-speed-pid-kd-set</property>
-    <property value="0.145">systems/autopilot/vertical-speed-output-error-coefficient</property>
-    -->
     <property value="2.0">systems/autopilot/vertical-speed-fps-lag-C1</property>
     <property value="0.0">systems/autopilot/vertical-speed-active</property>
     <property value="0.0">systems/autopilot/vertical-speed-fpm</property>

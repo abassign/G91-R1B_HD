@@ -291,8 +291,9 @@
             <file>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/TACAN_NAV_arn_21/tacan_nav_arn_21.nas</file>
             <file>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Gauges/SFOM_83A/SFOM_83A_01.nas</file>
             <file>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/PHI/phi.nas</file>
-            <!-- Aux -->
+            <!-- Aux and accessories -->
             <file>Aircraft/G91-R1B_HD/Nasal/AB-camera/ab-camera.nas</file>
+            <file>Aircraft/G91-R1B_HD/Models/Parts/Accessories/accessories.nas</file>
         </general>
         
         <canvas_gauges>

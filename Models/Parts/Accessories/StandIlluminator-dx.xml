@@ -379,10 +379,6 @@
                     <value type="double">0.01</value>
                 </greater-than>
                 <equals>
-                    <property>sim/current-view/internal</property>
-                    <value>false</value>
-                </equals>
-                <equals>
                     <property>sim/G91/accessories/illuminators/dx/active</property>
                     <value type="int">1</value>
                 </equals>
@@ -439,15 +435,15 @@
             <a>1</a>
         </specular>
         <attenuation>
-            <c>1.0</c>
-            <l>0.01</l>
-            <q>0.01</q>
+            <c>0.05</c>
+            <l>0.05</l>
+            <q>0.05</q>
         </attenuation>
-        <spot-exponent>120</spot-exponent>
-        <spot-cutoff>70</spot-cutoff>
-        <range-m>10.0</range-m>
+        <spot-exponent>20</spot-exponent>
+        <spot-cutoff>89</spot-cutoff>
+        <range-m>15.0</range-m>
         <dim-factor>
-            <property>sim/G91/accessories/illuminators/dx/intensity</property>
+            <property>fdm/jsbsim/systems/lightning/accessories/illuminators/dx/intensity</property>
         </dim-factor>
     </light>
 
@@ -491,7 +487,7 @@
         <spot-cutoff>30</spot-cutoff>
         <range-m>0.7</range-m>
         <dim-factor>
-            <property>sim/G91/accessories/illuminators/dx/intensity-glass</property>
+            <property>fdm/jsbsim/systems/lightning/accessories/illuminators/dx/intensity-spot</property>
         </dim-factor>
     </light>
 

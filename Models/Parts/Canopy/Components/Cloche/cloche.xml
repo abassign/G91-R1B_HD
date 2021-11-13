@@ -224,6 +224,7 @@
             <red>0.4</red>
             <green>0.5</green>
             <blue>0.6</blue>
+            <factor-prop>/fdm/jsbsim/systems/lightning/ambient-light-inernal-canopy</factor-prop>
         </diffuse>
         <ambient>
             <red>0.5</red>
@@ -250,6 +251,7 @@
             <red>0.30</red>
             <green>0.18</green>
             <blue>0.18</blue>
+            <factor-prop>/fdm/jsbsim/systems/lightning/ambient-light-inernal-canopy-low</factor-prop>
         </diffuse>
         <ambient>
             <red>0.1</red>

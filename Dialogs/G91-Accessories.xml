@@ -7,7 +7,7 @@
     <default-padding>7</default-padding>
     <modal>false</modal>
     <width>700</width>
-    
+
     <!-- title bar -->
     <group>
         <layout>hbox</layout>
@@ -95,6 +95,44 @@
     </group>
     
     <hrule/>
+
+    <group>
+        <layout>table</layout>
+        <text>
+            <label>Steady illuminators operative</label>
+            <halign>left</halign>
+            <row>0</row>
+            <col>0</col>
+        </text>
+        <checkbox>
+            <row>0</row>
+            <col>1</col>
+            <halign>fill</halign>
+            <property>sim/G91/accessories/illuminators/isOperative</property>
+            <live>true</live>
+            <binding>
+                <command>dialog-apply</command>
+            </binding>
+        </checkbox>
+        <text>
+            <label>show with min ambient light</label>
+            <halign>left</halign>
+            <row>0</row>
+            <col>2</col>
+        </text>
+        <slider>
+            <name>illuminator show mil lighth</name>
+            <row>0</row>
+            <col>3</col>
+            <property>sim/G91/accessories/illuminators/minAmbientLight</property>
+            <min>0.0</min>
+            <max>1.0</max>
+            <step>0.05</step>
+            <binding>
+                <command>dialog-apply</command>
+            </binding>
+        </slider>
+    </group>
     
     <group>
         <layout>table</layout>
@@ -162,7 +200,7 @@
             <name>Intensity</name>
             <property>sim/G91/accessories/illuminators/sx/intensity</property>
             <min>0.0</min>
-            <max>0.5</max>
+            <max>1.0</max>
             <step>0.1</step>
             <binding>
                 <command>dialog-apply</command>
@@ -170,8 +208,6 @@
         </slider>
 
     </group>
-
-    <hrule/>
 
     <group>
         <layout>table</layout>
@@ -239,7 +275,7 @@
             <name>Intensity</name>
             <property>sim/G91/accessories/illuminators/dx/intensity</property>
             <min>0.0</min>
-            <max>0.5</max>
+            <max>1.0</max>
             <step>0.1</step>
             <binding>
                 <command>dialog-apply</command>

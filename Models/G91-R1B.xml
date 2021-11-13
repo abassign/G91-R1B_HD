@@ -120,7 +120,7 @@
         </condition>
     </model>
 
-    <!-- Compositor lights test -->
+    <!-- Compositor lights -->
     
     <model>
         <path>Aircraft/G91-R1B_HD/Models/Parts/Composer/external-taxing-light-dx.xml</path>

@@ -78,22 +78,32 @@
     <animation> 
         <type>material</type>
         <object-name>C00_boxpanel_airbrake</object-name>
-        <texture>Pictures/AichiInteriorGreyGreen.png</texture>
+        <diffuse>
+            <red>0.52</red>
+            <green>0.75</green>
+            <blue>0.51</blue>
+            <factor-prop>/fdm/jsbsim/systems/lightning/ambient-light</factor-prop>
+        </diffuse>
         <ambient>
-            <red>0.8</red>
-            <green>0.8</green>
-            <blue>0.8</blue>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.3</blue>
         </ambient>
     </animation>
     
     <animation> 
         <type>material</type>
         <object-name>C00_airbrake_box.001</object-name>
-        <texture>Pictures/AichiInteriorGreyGreen.png</texture>
+        <diffuse>
+            <red>0.52</red>
+            <green>0.75</green>
+            <blue>0.51</blue>
+            <factor-prop>/fdm/jsbsim/systems/lightning/ambient-light</factor-prop>
+        </diffuse>
         <ambient>
-            <red>0.6</red>
-            <green>0.6</green>
-            <blue>0.6</blue>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.3</blue>
         </ambient>
     </animation>
     
