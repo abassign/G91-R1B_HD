@@ -1,11 +1,14 @@
 #// Procedura NASAL per la gestione degli accessori
 #// Adriano Bassignana  (abassign) nov. 2021
 
+var prop = props.globals.initNode("sim/G91/accessories/illuminators/isParkingStartStop",0,"INT");
+
 var timeStep = 1;
 var timeStepDivisor = 1;
 var delta_time = 1;
 
 var canopy_isFristTimeSetup = 1;
+var isParkingStop = 1;
 
 
 var DelayTime = {
@@ -72,14 +75,18 @@ var StdIlluminator = {
             intensity: 0.0,
             pitch: 0.0,
             yaw: 0.0,
+            x0: 0.0,
+            y0: 0.0,
             x: 0.0,
             y: 0.0,
         };
         return {parents: [StdIlluminator]};
     },
 
-    init: func(id) {
+    init: func(id,x0,y0) {
         me.id = id;
+        me.x0 = x0;
+        me.y0 = y0;
         me.pathId = "sim/G91/accessories/illuminators/" ~ me.id ~ "/";
     },
 
@@ -128,9 +135,9 @@ var StdIlluminators = {
         };
     },
 
-    add: func(id) {
+    add: func(id,x0,y0) {
         me.illuminators[id] = StdIlluminator.new();
-        me.illuminators[id].init(id);
+        me.illuminators[id].init(id,x0,y0);
     },
 
     set: func(isActive = 0) {
@@ -144,8 +151,8 @@ var StdIlluminators = {
 
 var delayTimeForCanopy = DelayTime.new();
 var stdIlluminators = StdIlluminators.new();
-stdIlluminators.add("sx");
-stdIlluminators.add("dx");
+stdIlluminators.add("sx",-7.0,-7.0);
+stdIlluminators.add("dx",-7.0,7.0);
 
 
 var accessories = func() {
@@ -165,7 +172,7 @@ var accessories = func() {
     stdIlluminators.getParams();
 
     #// One shot time set open canopy
-    if ((isWow and isStationary) > 0 and canopy_isFristTimeSetup) {
+    if ((isWow and isStationary) > 0 and (canopy_isFristTimeSetup or getprop("sim/G91/accessories/illuminators/isParkingStartStop") > 0)) {
         if (getprop("sim/G91/accessories/canopy/isOpenWhenStart") > 0) {
             if (getprop("fdm/jsbsim/systems/canopy/position-deg") < 1.0) {
                 if (delayTimeForCanopy.isTimeExceeded(0.0)) {
@@ -179,6 +186,7 @@ var accessories = func() {
                     setprop("fdm/jsbsim/systems/manual-switches/cockpit/sw-canopy-trigger",0);
                     delayTimeForCanopy.setStop();
                     canopy_isFristTimeSetup = 0;
+                    setprop("sim/G91/accessories/illuminators/isParkingStartStop",0);
                 };
             };
         };

@@ -30,12 +30,18 @@
 #// 3 - stop the process
 #// 11 - save the current active view
 #// 12 - restore the saved view
+#//
+#// Display configuration
+#// sim/current-view/ab-camera/to/setViewActive
+#// 0 - no change the view
+#// 1 - change the view
 
 
 var prop = props.globals.initNode("sim/current-view/ab-camera/to/set-position","0,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0", "STRING");
 var prop = props.globals.initNode("sim/current-view/ab-camera/to/status","0", "INT");
 var prop = props.globals.initNode("sim/current-view/ab-camera/to/status-time","0.0", "DOUBLE");
 var prop = props.globals.initNode("sim/current-view/ab-camera/to/command","0", "INT");
+var prop = props.globals.initNode("sim/current-view/ab-camera/to/setViewActive","1", "INT");
 
 
 var ViewCamDataClass = {
@@ -61,6 +67,7 @@ var ViewCamDataClass = {
 
     init: func(active,view_number,field_of_view,heading_offset,pitch_offset,x_offset,y_offset,z_offset,start_wait_time,duration_path_time,end_wait_time) {
         me.view_number = view_number;
+print("init - field_of_view 1: ",me.field_of_view);
         me.field_of_view = field_of_view;
         me.heading_offset_deg = heading_offset;
         me.pitch_offset_deg = pitch_offset;
@@ -84,7 +91,10 @@ var ViewCamDataClass = {
 
     getView: func() {
         me.view_number = getprop("/sim/current-view/view-number");
+print("init - view_number 2: ",me.view_number);
+print("init - field_of_view 2: ",me.field_of_view);
         me.field_of_view = getprop("/sim/current-view/field-of-view");
+print("init - field_of_view 3: ",me.field_of_view);
         me.heading_offset_deg = getprop("/sim/current-view/heading-offset-deg");
         me.pitch_offset_deg = getprop("/sim/current-view/pitch-offset-deg");
         me.x_offset = getprop("/sim/current-view/x-offset-m");
@@ -93,17 +103,20 @@ var ViewCamDataClass = {
     },
 
     setView: func() {
-        setprop("/sim/current-view/view-number",me.view_number);
-        setprop("/sim/current-view/field-of-view",me.field_of_view);
-        setprop("/sim/current-view/heading-offset-deg",me.heading_offset_deg);
-        setprop("/sim/current-view/pitch-offset-deg",me.pitch_offset_deg);
-        setprop("/sim/current-view/x-offset-m",me.x_offset);
-        setprop("/sim/current-view/y-offset-m",me.y_offset);
-        setprop("/sim/current-view/z-offset-m",me.z_offset);
+        if (getprop("sim/current-view/ab-camera/to/setViewActive") == 1) {
+            setprop("/sim/current-view/view-number",me.view_number);
+            setprop("/sim/current-view/field-of-view",me.field_of_view);
+            setprop("/sim/current-view/heading-offset-deg",me.heading_offset_deg);
+            setprop("/sim/current-view/pitch-offset-deg",me.pitch_offset_deg);
+            setprop("/sim/current-view/x-offset-m",me.x_offset);
+            setprop("/sim/current-view/y-offset-m",me.y_offset);
+            setprop("/sim/current-view/z-offset-m",me.z_offset);
+        };
     },
 
     goViewTo: func(to,stepRemain) {
-        me.getView();
+        debug.dump(to);
+        debug.dump(stepRemain);
         me.view_number = to.view_number;
         me.field_of_view = me.field_of_view + (to.field_of_view - me.field_of_view)/stepRemain;
         me.heading_offset_deg = me.difDegNorm(me.heading_offset_deg,to.heading_offset_deg,stepRemain);
@@ -111,7 +124,6 @@ var ViewCamDataClass = {
         me.x_offset = me.x_offset + (to.x_offset - me.x_offset)/stepRemain;
         me.y_offset = me.y_offset + (to.y_offset - me.y_offset)/stepRemain;
         me.z_offset = me.z_offset + (to.z_offset - me.z_offset)/stepRemain;
-        me.setView();
     },
 
 };
@@ -222,6 +234,7 @@ setlistener("sim/current-view/ab-camera/to/set-position", func {
         if (setPosition[0] == 2) camera_save.getView();
         camera_to_position.init(setPosition[0],setPosition[1],setPosition[2],setPosition[3],setPosition[4],setPosition[5],setPosition[6],setPosition[7],setPosition[8],setPosition[9],setPosition[10]);
         setprop("sim/current-view/ab-camera/to/status",1);
+        setprop("sim/current-view/ab-camera/to/setViewActive",1);
     };
     setprop("sim/current-view/ab-camera/to/set-position","0,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0");
 
@@ -276,7 +289,6 @@ setlistener("sim/current-view/ab-camera/to/command", func {
     setprop("sim/current-view/ab-camera/to/command",0);
 
 }, 0, 1);
-
 
 
 

@@ -1,4 +1,5 @@
-# Starter utility for effect and autostart engine
+#// Starter utility for effect and autostart engine
+#// Adriano Bassignana  (abassign) nov. 2021
 
 #// Camera position:
 #// Handle brake: setprop("sim/current-view/ab-camera/to/set-position","2,0,41.71,346.0,-18.93,0.0,0.815,-2.6,1.0,2.0,2.0");
@@ -198,12 +199,12 @@ var start_PrepareStarterPanelBoosterPump = func(nextActualPhaseActive = 100) {
 };
 
 
-var start_SetThrottle = func(nextActualPhaseActive = 100,isFastMode = 0) {
+var start_SetThrottle = func(nextActualPhaseActive = 100,setPosition = nil) {
     if (cameraStatus == 0 and phaseIsActive == 0) {
-        if (isFastMode) {
+        if (setPosition == nil) {
             setprop("sim/current-view/ab-camera/to/set-position","1,0,24.29,55.65,-49.0,0.118,0.930,-2.6,0.1,0.5,1.0");
         } else {
-            setprop("sim/current-view/ab-camera/to/set-position","1,0,24.29,55.65,-49.0,0.118,0.930,-2.6,1.0,2.0,3.0");
+            setprop("sim/current-view/ab-camera/to/set-position",setPosition);
         };
         phaseIsActive = 1;
     } else {
@@ -221,12 +222,12 @@ var start_SetThrottle = func(nextActualPhaseActive = 100,isFastMode = 0) {
 };
 
 
-var start_StarterPanelPushIgnition = func(nextActualPhaseActive = 100,isFastMode = 0,activeCamera = 1) {
+var start_StarterPanelPushIgnition = func(nextActualPhaseActive = 100,setPosition = nil,activeCamera = 1) {
     if (cameraStatus == 0 and phaseIsActive == 0) {
-        if (isFastMode) {
+        if (setPosition == nil) {
             setprop("sim/current-view/ab-camera/to/set-position","1,0,23.48,37.48,-45.56,-0.019,0.789,-2.6,0.1,0.5,3.0");
         } else {
-            setprop("sim/current-view/ab-camera/to/set-position","1,0,23.48,37.48,-45.56,-0.019,0.789,-2.6,1.0,2.0,3.0");
+            setprop("sim/current-view/ab-camera/to/set-position",setPosition);
         };
         phaseIsActive = 1;
         pushTogleSignal = 0;
@@ -439,7 +440,6 @@ var stop_PrepareTheAirplane = func(nextActualPhaseActive = 100) {
             } else {
                 setprop("fdm/jsbsim/systems/autopilot/handle-brake-activate",0);
             }
-            setprop("controls/engines/engine/throttle",0.5);
         };
         if (cameraStatus == 0 and phaseIsActive > 0) {
             actualPhaseActive = nextActualPhaseActive;
@@ -477,7 +477,7 @@ var stop_StopACElectricPanel = func(nextActualPhaseActive = 100) {
 
 var stop_PrepareStarterPanel = func(nextActualPhaseActive = 100) {
     if (cameraStatus == 0 and phaseIsActive == 0) {
-        setprop("sim/current-view/ab-camera/to/set-position","1,0,23.48,37.48,-45.56,-0.019,0.789,-2.6,1.0,2.0,4.5");
+        setprop("sim/current-view/ab-camera/to/set-position","1,0,23.48,37.48,-45.56,-0.019,0.789,-2.6,1.0,2.0,5.0");
         phaseIsActive = 1;
     } else {
         if (cameraStatus == 3 and phaseIsActive > 0) {
@@ -493,8 +493,10 @@ var stop_PrepareStarterPanel = func(nextActualPhaseActive = 100) {
                 setprop("fdm/jsbsim/systems/starter/NE",1);
             } else if (cameraStatusTime > 2.0 and cameraStatusTime < 2.5) {
                 setprop("fdm/jsbsim/systems/starter/fuel-shut-off-valve-lock",1);
-            } else if (cameraStatusTime > 3.0) {
+            } else if (cameraStatusTime > 3.0 and cameraStatusTime < 4.0) {
                 setprop("fdm/jsbsim/systems/starter/fuel-shut-off-valve",1);
+            } else if (cameraStatusTime > 4.0) {
+                setprop("controls/engines/engine/throttle",0.8);
             };
         };
         if (cameraStatus == 0 and phaseIsActive > 0) {
@@ -638,6 +640,7 @@ var start_FastPreamble = func(nextActualPhaseActive = 100) {
         if (cameraStatus == 0 and phaseIsActive > 0) {
             actualPhaseActive = nextActualPhaseActive;
             phaseIsActive = 0;
+            setprop("sim/current-view/ab-camera/to/setViewActive",1);
         };
     };
 };
@@ -645,7 +648,7 @@ var start_FastPreamble = func(nextActualPhaseActive = 100) {
 
 var start_FastClosure = func(nextActualPhaseActive = 100) {
     if (cameraStatus == 0 and phaseIsActive == 0) {
-        setprop("sim/current-view/ab-camera/to/set-position","1,0,93.0,0.0,-21.0,0.000,0.815,-2.600,0.0,1.0,2.0");
+        setprop("sim/current-view/ab-camera/to/set-position","1,0,93.0,0.0,-21.0,0.000,0.815,-2.600,0.0,1.0,5.0");
         phaseIsActive = 1;
     } else {
         if (cameraStatus == 3 and phaseIsActive > 0) {
@@ -658,8 +661,7 @@ var start_FastClosure = func(nextActualPhaseActive = 100) {
                 setprop("fdm/jsbsim/systems/starter/engine-JPTL",0);
                 setprop("fdm/jsbsim/systems/electric/bus[2]/primary-inverter/sw",1);
                 setprop("fdm/jsbsim/systems/electric/bus[1]/secondary-inverter/sw",1);
-            } else if (cameraStatusTime > 1.0) {
-                setprop("fdm/jsbsim/systems/canopy/lever-trigger",1);
+            } else if (cameraStatusTime > 1.0 and cameraStatusTime < 4.0) {
                 if (getprop("fdm/jsbsim/systems/lightning/ambient-light") < 0.18) {
                     setprop("fdm/jsbsim/systems/lightning/light-uv-instrument-bright",0.8);
                     setprop("fdm/jsbsim/systems/lightning/light-red-emer-instrument-bright",0.0);
@@ -670,11 +672,14 @@ var start_FastClosure = func(nextActualPhaseActive = 100) {
                     setprop("fdm/jsbsim/systems/manual-switches/lateral_panel_right/lightning/sw-anticollision-togle",1);
                     setprop("fdm/jsbsim/systems/manual-switches/lateral_panel_right/lightning/sw-flasher-togle",1);
                 };
+            } else if (cameraStatusTime > 4.0) {
+                setprop("fdm/jsbsim/systems/canopy/lever-trigger",1);
             };
         };
         if (cameraStatus == 0 and phaseIsActive > 0) {
             actualPhaseActive = nextActualPhaseActive;
             phaseIsActive = 0;
+            setprop("sim/current-view/ab-camera/to/setViewActive",1);
         };
     };
 };
@@ -708,6 +713,7 @@ var timerEngine_starter = func() {
             msgOutput = "start procedure";
             actualPhaseActive = 1;
             phaseIsActive = 0;
+            setprop("sim/G91/accessories/illuminators/isParkingStartStop",1);
         } else if (actualPhaseActive == 1) {
             start_PrepareTheAirplane(2);
         } else if (actualPhaseActive == 2) {
@@ -753,12 +759,13 @@ var timerEngine_starter = func() {
             msgOutput = "start fast procedure";
             actualPhaseActive = 1;
             phaseIsActive = 0;
+            setprop("sim/G91/accessories/illuminators/isParkingStartStop",1);
         } else if (actualPhaseActive == 1) {
             start_FastPreamble(2);
         } else if (actualPhaseActive == 2) {
-            start_SetThrottle(3,1);
+            start_SetThrottle(3,"2,0,93.0,0.0,-21.0,0.000,0.815,-2.600,0.0,1.0,2.5");
         } else if (actualPhaseActive == 3) {
-            start_StarterPanelPushIgnition(4,1);
+            start_StarterPanelPushIgnition(4,"2,0,93.0,0.0,-21.0,0.000,0.815,-2.600,0.0,1.0,2.5");
         } else if (actualPhaseActive == 4) {
             start_FastClosure();
         } else {
@@ -771,7 +778,6 @@ var timerEngine_starter = func() {
         messageOutputStatus();
     } else {
         var guiAutostartStop = getprop("fdm/jsbsim/systems/starter/gui/autostart-stop");
-
         if (guiAutostartStop >= 1 and (autostart_status_is_ok > 0 or actualPhaseActive > 0)) {
             cameraStatus = getprop("sim/current-view/ab-camera/to/status");
             cameraStatusTime = getprop("sim/current-view/ab-camera/to/status-time");
@@ -779,6 +785,7 @@ var timerEngine_starter = func() {
                 msgOutput = "stop procedure";
                 actualPhaseActive = 20;
                 phaseIsActive = 0;
+                setprop("sim/G91/accessories/illuminators/isParkingStartStop",1);
             } else if (actualPhaseActive == 20) {
                 stop_PrepareTheAirplane(21);
             } else if (actualPhaseActive == 21) {
