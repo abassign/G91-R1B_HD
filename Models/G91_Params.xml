@@ -341,13 +341,13 @@ G91_Params.xml
                 <active type="int">0</active>
                 <intensity type="float">1.0</intensity>
                 <pitch type="float">3.0</pitch>
-                <yaw type="float">40.0</yaw>
+                <yaw type="float">332.0</yaw>
             </sx>
             <dx>
                 <active type="int">0</active>
                 <intensity type="float">1.0</intensity>
                 <pitch type="float">3.0</pitch>
-                <yaw type="float">-40.0</yaw>
+                <yaw type="float">230.0</yaw>
             </dx>
         </illuminators>
         <canopy>

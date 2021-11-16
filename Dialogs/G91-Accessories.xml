@@ -163,7 +163,7 @@
             <row>0</row>
             <col>3</col>
             <property>sim/G91/accessories/illuminators/sx/pitch</property>
-            <min>0.0</min>
+            <min>-10.0</min>
             <max>30.0</max>
             <step>1.0</step>
             <binding>
@@ -181,8 +181,8 @@
             <row>0</row>
             <col>5</col>
             <property>sim/G91/accessories/illuminators/sx/yaw</property>
-            <min>-90.0</min>
-            <max>90</max>
+            <min>0.0</min>
+            <max>360.0</max>
             <step>1.0</step>
             <binding>
                 <command>dialog-apply</command>
@@ -206,7 +206,6 @@
                 <command>dialog-apply</command>
             </binding>
         </slider>
-
     </group>
 
     <group>
@@ -238,7 +237,7 @@
             <row>0</row>
             <col>3</col>
             <property>sim/G91/accessories/illuminators/dx/pitch</property>
-            <min>0.0</min>
+            <min>-10.0</min>
             <max>30.0</max>
             <step>1.0</step>
             <binding>
@@ -256,8 +255,8 @@
             <row>0</row>
             <col>5</col>
             <property>sim/G91/accessories/illuminators/dx/yaw</property>
-            <min>-90.0</min>
-            <max>90</max>
+            <min>0.0</min>
+            <max>360.0</max>
             <step>1.0</step>
             <binding>
                 <command>dialog-apply</command>

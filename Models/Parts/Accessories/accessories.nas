@@ -2,6 +2,10 @@
 #// Adriano Bassignana  (abassign) nov. 2021
 
 var prop = props.globals.initNode("sim/G91/accessories/illuminators/isParkingStartStop",0,"INT");
+var prop = props.globals.initNode("sim/G91/accessories/illuminators/sx/x-m",-7.0,"DOUBLE");
+var prop = props.globals.initNode("sim/G91/accessories/illuminators/sx/y-m",-7.0,"DOUBLE");
+var prop = props.globals.initNode("sim/G91/accessories/illuminators/dx/x-m",-7.0,"DOUBLE");
+var prop = props.globals.initNode("sim/G91/accessories/illuminators/dx/y-m",7.0,"DOUBLE");
 
 var timeStep = 1;
 var timeStepDivisor = 1;
@@ -75,19 +79,48 @@ var StdIlluminator = {
             intensity: 0.0,
             pitch: 0.0,
             yaw: 0.0,
-            x0: 0.0,
-            y0: 0.0,
-            x: 0.0,
-            y: 0.0,
+            course: 0.0,
+            heading: 0.0,
+            aiNode: nil,
         };
         return {parents: [StdIlluminator]};
     },
 
-    init: func(id,x0,y0) {
+    init: func(id,course,heading) {
         me.id = id;
-        me.x0 = x0;
-        me.y0 = y0;
+        me.course = course;
+        me.heading = heading;
+        me.aiNode = nil;
         me.pathId = "sim/G91/accessories/illuminators/" ~ me.id ~ "/";
+    },
+
+    addAIObject: func() {
+        var position = geo.aircraft_position();
+        var course = getprop("/orientation/heading-deg") + me.heading;
+        position.apply_course_distance(course,me.course);
+        var alt = geo.elevation(position.lat(), position.lon());
+        if (alt != nil) {
+            me.aiNode = props.Node.new({
+                "type": "static",
+                "model":"Aircraft/G91-R1B_HD/Models/Parts/Accessories/StandIlluminator-" ~ me.id ~ ".xml",
+                "model-lowres":"Aircraft/G91-R1B_HD/Models/Parts/Accessories/StandIlluminator-" ~ me.id ~ ".xml",
+                "latitude": position.lat(),
+                "longitude": position.lon(),
+                "altitude": alt*M2FT,
+                "search-order": "DATA_ONLY"
+            });
+        };
+
+        if (me.aiNode != nil) {
+            fgcommand("add-aiobject",me.aiNode);
+        };
+    },
+
+    removeAIObject: func() {
+        if (me.aiNode != nil) {
+            fgcommand("remove-aiobject",me.aiNode);
+            me.aiNode = nil;
+        };
     },
 
     getParams: func() {
@@ -151,18 +184,17 @@ var StdIlluminators = {
 
 var delayTimeForCanopy = DelayTime.new();
 var stdIlluminators = StdIlluminators.new();
-stdIlluminators.add("sx",-7.0,-7.0);
-stdIlluminators.add("dx",-7.0,7.0);
+stdIlluminators.add("sx",10,-50.0);
+stdIlluminators.add("dx",10,50.0);
 
 
 var accessories = func() {
 
-    var isStationary = getprop("fdm/jsbsim/systems/gears/gear[0]/is-stationary");
     var isWow = getprop("fdm/jsbsim/gear/wow");
 
     #// Accessories on for Ground Services
 
-    if (isWow and isStationary) {
+    if (isWow) {
         timeStepDivisor = 2;
     } else {
         timeStepDivisor = 0.5;
@@ -172,7 +204,7 @@ var accessories = func() {
     stdIlluminators.getParams();
 
     #// One shot time set open canopy
-    if ((isWow and isStationary) > 0 and (canopy_isFristTimeSetup or getprop("sim/G91/accessories/illuminators/isParkingStartStop") > 0)) {
+    if ((isWow) > 0 and (canopy_isFristTimeSetup or getprop("sim/G91/accessories/illuminators/isParkingStartStop") > 0)) {
         if (getprop("sim/G91/accessories/canopy/isOpenWhenStart") > 0) {
             if (getprop("fdm/jsbsim/systems/canopy/position-deg") < 1.0) {
                 if (delayTimeForCanopy.isTimeExceeded(0.0)) {
@@ -194,7 +226,7 @@ var accessories = func() {
         delayTimeForCanopy.reset();
     };
 
-    if (isWow and isStationary) {
+    if (isWow) {
         if (stdIlluminators.externalLghtConditionsIsOk()) {
             stdIlluminators.set(1);
         } else {
@@ -205,6 +237,36 @@ var accessories = func() {
     };
 
 };
+
+
+setlistener("sim/G91/accessories/illuminators/sx/active", func {
+
+    if (getprop("sim/G91/accessories/illuminators/sx/active") > 0) {
+        if (stdIlluminators.illuminators["sx"].aiNode == nil) {
+            stdIlluminators.illuminators["sx"].addAIObject();
+        };
+    } else {
+        if (stdIlluminators.illuminators["sx"].aiNode == nil) {
+            stdIlluminators.illuminators["sx"].removeAIObject();
+        };
+    };
+
+}, 0, 1);
+
+
+setlistener("sim/G91/accessories/illuminators/dx/active", func {
+
+    if (getprop("sim/G91/accessories/illuminators/dx/active") > 0) {
+        if (stdIlluminators.illuminators["dx"].aiNode == nil) {
+            stdIlluminators.illuminators["dx"].addAIObject();
+        };
+    } else {
+        if (stdIlluminators.illuminators["dx"].aiNode == nil) {
+            stdIlluminators.illuminators["dx"].removeAIObject();
+        };
+    };
+
+}, 0, 1);
 
 
 var accessories_control = func() {
