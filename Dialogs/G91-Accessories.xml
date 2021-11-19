@@ -99,7 +99,7 @@
     <group>
         <layout>table</layout>
         <text>
-            <label>Steady illuminators operative</label>
+            <label>Automatic tracking</label>
             <halign>left</halign>
             <row>0</row>
             <col>0</col>
@@ -108,23 +108,41 @@
             <row>0</row>
             <col>1</col>
             <halign>fill</halign>
-            <property>sim/G91/accessories/illuminators/isOperative</property>
+            <property>sim/G91/accessories/standIlluminators/autotraking</property>
             <live>true</live>
             <binding>
                 <command>dialog-apply</command>
             </binding>
         </checkbox>
         <text>
-            <label>show with min ambient light</label>
+            <label>Intensity</label>
             <halign>left</halign>
             <row>0</row>
             <col>2</col>
         </text>
         <slider>
-            <name>illuminator show mil lighth</name>
+            <name>illuminators intensity</name>
             <row>0</row>
             <col>3</col>
-            <property>sim/G91/accessories/illuminators/minAmbientLight</property>
+            <property>sim/G91/accessories/standIlluminators/intensity</property>
+            <min>-10.0</min>
+            <max>30.0</max>
+            <step>1.0</step>
+            <binding>
+                <command>dialog-apply</command>
+            </binding>
+        </slider>
+        <text>
+            <label>Min ambient light</label>
+            <halign>left</halign>
+            <row>0</row>
+            <col>4</col>
+        </text>
+        <slider>
+            <name>illuminator show mil lighth</name>
+            <row>0</row>
+            <col>5</col>
+            <property>sim/G91/accessories/standIlluminators/minAmbientLight</property>
             <min>0.0</min>
             <max>1.0</max>
             <step>0.05</step>
@@ -132,15 +150,55 @@
                 <command>dialog-apply</command>
             </binding>
         </slider>
+        <radio>
+            <row>0</row>
+            <col>6</col>
+            <halign>fill</halign>
+            <property>sim/G91/accessories/standIlluminators/I01/light/active</property>
+            <live>true</live>
+            <binding>
+                <command>dialog-apply</command>
+            </binding>
+        </radio>
+        <radio>
+            <row>0</row>
+            <col>7</col>
+            <halign>fill</halign>
+            <property>sim/G91/accessories/standIlluminators/I02/light/active</property>
+            <live>true</live>
+            <binding>
+                <command>dialog-apply</command>
+            </binding>
+        </radio>
+        <radio>
+            <row>0</row>
+            <col>8</col>
+            <halign>fill</halign>
+            <property>sim/G91/accessories/standIlluminators/I03/light/active</property>
+            <live>true</live>
+            <binding>
+                <command>dialog-apply</command>
+            </binding>
+        </radio>
+        <radio>
+            <row>0</row>
+            <col>9</col>
+            <halign>fill</halign>
+            <property>sim/G91/accessories/standIlluminators/I04/light/active</property>
+            <live>true</live>
+            <binding>
+                <command>dialog-apply</command>
+            </binding>
+        </radio>
     </group>
-    
+    <!--
     <group>
         <layout>table</layout>
         <checkbox>
             <row>0</row>
             <col>0</col>
             <halign>fill</halign>
-            <property>sim/G91/accessories/illuminators/sx/active</property>
+            <property>sim/G91/accessories/standIlluminators/sx/active</property>
             <live>true</live>
             <binding>
                 <command>dialog-apply</command>
@@ -162,7 +220,7 @@
             <name>illuminator Sx pitch</name>
             <row>0</row>
             <col>3</col>
-            <property>sim/G91/accessories/illuminators/sx/pitch</property>
+            <property>sim/G91/accessories/standIlluminators/sx/pitch</property>
             <min>-10.0</min>
             <max>30.0</max>
             <step>1.0</step>
@@ -180,7 +238,7 @@
             <name>illuminator Sx heading</name>
             <row>0</row>
             <col>5</col>
-            <property>sim/G91/accessories/illuminators/sx/yaw</property>
+            <property>sim/G91/accessories/standIlluminators/sx/yaw</property>
             <min>0.0</min>
             <max>360.0</max>
             <step>1.0</step>
@@ -198,7 +256,7 @@
             <row>0</row>
             <col>7</col>
             <name>Intensity</name>
-            <property>sim/G91/accessories/illuminators/sx/intensity</property>
+            <property>sim/G91/accessories/standIlluminators/sx/intensity</property>
             <min>0.0</min>
             <max>1.0</max>
             <step>0.1</step>
@@ -214,7 +272,7 @@
             <row>0</row>
             <col>0</col>
             <halign>fill</halign>
-            <property>sim/G91/accessories/illuminators/dx/active</property>
+            <property>sim/G91/accessories/standIlluminators/dx/active</property>
             <live>true</live>
             <binding>
                 <command>dialog-apply</command>
@@ -236,7 +294,7 @@
             <name>illuminator Dx pitch</name>
             <row>0</row>
             <col>3</col>
-            <property>sim/G91/accessories/illuminators/dx/pitch</property>
+            <property>sim/G91/accessories/standIlluminators/dx/pitch</property>
             <min>-10.0</min>
             <max>30.0</max>
             <step>1.0</step>
@@ -254,7 +312,7 @@
             <name>illuminator Sx heading</name>
             <row>0</row>
             <col>5</col>
-            <property>sim/G91/accessories/illuminators/dx/yaw</property>
+            <property>sim/G91/accessories/standIlluminators/dx/yaw</property>
             <min>0.0</min>
             <max>360.0</max>
             <step>1.0</step>
@@ -272,7 +330,7 @@
             <row>0</row>
             <col>7</col>
             <name>Intensity</name>
-            <property>sim/G91/accessories/illuminators/dx/intensity</property>
+            <property>sim/G91/accessories/standIlluminators/dx/intensity</property>
             <min>0.0</min>
             <max>1.0</max>
             <step>0.1</step>
@@ -282,7 +340,7 @@
         </slider>
 
     </group>
-
+    -->
     <hrule/>
 
 </PropertyList>

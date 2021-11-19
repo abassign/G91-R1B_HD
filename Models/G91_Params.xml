@@ -334,22 +334,51 @@ G91_Params.xml
     
     <accessories>
         <staircase type="int">1</staircase>
-        <illuminators>
-            <isOperative type="int">1</isOperative>
+        <standIlluminators>
             <minAmbientLight type="float">0.2</minAmbientLight>
-            <sx>
-                <active type="int">0</active>
-                <intensity type="float">1.0</intensity>
+            <autotraking type="int">1</autotraking>
+            <intensity type="float">0.8</intensity>
+            <I01>
+                <light>
+                    <active type="int">1</active>
+                    <intensity type="float">1.0</intensity>
+                </light>
+                <course type="float">10.0</course>
+                <heading type="float">-50.0</heading>
                 <pitch type="float">3.0</pitch>
                 <yaw type="float">332.0</yaw>
-            </sx>
-            <dx>
-                <active type="int">0</active>
-                <intensity type="float">1.0</intensity>
+            </I01>
+            <I02>
+                <light>
+                    <active type="int">1</active>
+                    <intensity type="float">1.0</intensity>
+                </light>
+                <course type="float">10.0</course>
+                <heading type="float">50.0</heading>
                 <pitch type="float">3.0</pitch>
                 <yaw type="float">230.0</yaw>
-            </dx>
-        </illuminators>
+            </I02>
+            <I03>
+                <light>
+                    <active type="int">1</active>
+                    <intensity type="float">1.0</intensity>
+                </light>
+                <course type="float">10.0</course>
+                <heading type="float">-140.0</heading>
+                <pitch type="float">0.0</pitch>
+                <yaw type="float">332.0</yaw>
+            </I03>
+            <I04>
+                <light>
+                    <active type="int">1</active>
+                    <intensity type="float">1.0</intensity>
+                </light>
+                <course type="float">10.0</course>
+                <heading type="float">140.0</heading>
+                <pitch type="float">0.0</pitch>
+                <yaw type="float">230.0</yaw>
+            </I04>
+        </standIlluminators>
         <canopy>
             <isOpenWhenStart type="int">1</isOpenWhenStart>
         </canopy>

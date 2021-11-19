@@ -8,7 +8,6 @@
         <x-m>0.0</x-m>
         <y-m>0.0</y-m>
         <z-m>0.390</z-m>
-        <!-- <z-m>-1.68</z-m> -->
         <pitch-deg>0.0</pitch-deg>
     </offsets>
 
@@ -334,7 +333,7 @@
         <action>
             <binding>
                 <command>property-adjust</command>
-                <property>sim/G91/accessories/illuminators/sx/yaw</property>
+                <property>sim/G91/accessories/standIlluminators/yaw</property>
                 <factor>3.0</factor>
                 <min>0</min>
                 <max>360</max>
@@ -349,7 +348,7 @@
         <action>
             <binding>
                 <command>property-adjust</command>
-                <property>/sim/G91/accessories/illuminators/sx/pitch</property>
+                <property>/sim/G91/accessories/standIlluminators/pitch</property>
                 <factor>3.0</factor>
                 <min>-10.0</min>
                 <max>30.0</max>
@@ -364,7 +363,7 @@
         <object-name>StandIlluminator-spot-01</object-name>
         <object-name>StandIlluminator-spot-02</object-name>
         <type>rotate</type>
-        <property>sim/G91/accessories/illuminators/sx/yaw</property>
+        <property>sim/G91/accessories/standIlluminators/yaw</property>
         <factor>1.0</factor>
         <offset-deg>0.0</offset-deg>
         <center>
@@ -384,7 +383,7 @@
         <object-name>StandIlluminator-spot-01</object-name>
         <object-name>StandIlluminator-spot-02</object-name>
         <type>rotate</type>
-        <property>/sim/G91/accessories/illuminators/sx/pitch</property>
+        <property>sim/G91/accessories/standIlluminators/pitch</property>
         <factor>1.0</factor>
         <offset-deg>0.0</offset-deg>
         <center>
@@ -405,7 +404,7 @@
         <action>
             <binding>
                 <command>property-adjust</command>
-                <property>/sim/G91/accessories/illuminators/sx/intensity</property>
+                <property>sim/G91/accessories/standIlluminators/light/intensity</property>
                 <factor>0.1</factor>
                 <min>0.0</min>
                 <max>1.0</max>
@@ -416,21 +415,111 @@
 
     <!-- Compositor lights -->
 
-    <model>
-        <path>Aircraft/G91-R1B_HD/Models/Parts/Accessories/StandIlluminator-sx-compositor.xml</path>
+    <animation>
+        <type>select</type>
+        <object-name>StandIlluminator-spot-01</object-name>
+        <object-name>StandIlluminator-spot-02</object-name>
         <condition>
             <and>
                 <greater-than>
-                    <property>/sim/G91/accessories/illuminators/sx/intensity</property>
+                    <property>sim/G91/accessories/standIlluminators/light/intensity</property>
                     <value type="double">0.01</value>
                 </greater-than>
                 <equals>
-                    <property>/sim/G91/accessories/illuminators/sx/active</property>
+                    <property>sim/G91/accessories/standIlluminators/light/active</property>
                     <value type="int">1</value>
                 </equals>
             </and>
         </condition>
-    </model>
+    </animation>
+
+    <light>
+        <name>StandIlluminator-spot-01</name>
+        <type>spot</type>
+        <position>
+            <x-m>0.3</x-m>
+            <y-m>0.0</y-m>
+            <z-m>1.95</z-m>
+        </position>
+        <direction>
+            <pitch-deg>-90.0</pitch-deg>
+            <roll-deg>0.0</roll-deg>
+            <heading-deg>0.0</heading-deg>
+        </direction>
+        <ambient>
+            <r>0.0</r>
+            <g>0.0</g>
+            <b>0.0</b>
+            <a>1</a>
+        </ambient>
+        <diffuse>
+            <r>8.0</r>
+            <g>7.0</g>
+            <b>6.0</b>
+            <a>1</a>
+        </diffuse>
+        <specular>
+            <r>0.4</r>
+            <g>0.3</g>
+            <b>0.3</b>
+            <a>1</a>
+        </specular>
+        <attenuation>
+            <c>0.05</c>
+            <l>0.05</l>
+            <q>0.05</q>
+        </attenuation>
+        <spot-exponent>20</spot-exponent>
+        <spot-cutoff>89</spot-cutoff>
+        <range-m>100.0</range-m>
+        <dim-factor>
+            <property>sim/G91/accessories/standIlluminators/light/intensity</property>
+        </dim-factor>
+    </light>
+
+    <light>
+        <name>StandIlluminator-spot-02</name>
+        <type>spot</type>
+        <position>
+            <x-m>1.0</x-m>
+            <y-m>0.0</y-m>
+            <z-m>1.95</z-m>
+        </position>
+        <direction>
+            <pitch-deg>90.0</pitch-deg>
+            <roll-deg>0.0</roll-deg>
+            <heading-deg>0.0</heading-deg>
+        </direction>
+        <ambient>
+            <r>0.0</r>
+            <g>0.0</g>
+            <b>0.0</b>
+            <a>1</a>
+        </ambient>
+        <diffuse>
+            <r>8.0</r>
+            <g>7.0</g>
+            <b>6.0</b>
+            <a>1</a>
+        </diffuse>
+        <specular>
+            <r>0.4</r>
+            <g>0.3</g>
+            <b>0.3</b>
+            <a>1</a>
+        </specular>
+        <attenuation>
+            <c>2.0</c>
+            <l>0.01</l>
+            <q>0.01</q>
+        </attenuation>
+        <spot-exponent>60</spot-exponent>
+        <spot-cutoff>30</spot-cutoff>
+        <range-m>0.4</range-m>
+        <dim-factor>
+            <property>sim/G91/accessories/standIlluminators/light/intensity-spot</property>
+        </dim-factor>
+    </light>
 
 
 </PropertyList>

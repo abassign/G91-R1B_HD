@@ -293,7 +293,7 @@
             <file>Aircraft/G91-R1B_HD/Models/Parts/Cockpit/Gauges/PHI/phi.nas</file>
             <!-- Aux and accessories -->
             <file>Aircraft/G91-R1B_HD/Nasal/AB-camera/ab-camera.nas</file>
-            <file>Aircraft/G91-R1B_HD/Models/Parts/Accessories/accessories.nas</file>
+            <file>Aircraft/G91-R1B_HD/Models/Parts/Accessories/StandIlluminator.nas</file>
         </general>
         
         <canvas_gauges>

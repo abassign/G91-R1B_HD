@@ -334,7 +334,7 @@
         <action>
             <binding>
                 <command>property-adjust</command>
-                <property>/sim/G91/accessories/illuminators/dx/yaw</property>
+                <property>sim/G91/accessories/illuminators/dx/yaw</property>
                 <factor>3.0</factor>
                 <min>0</min>
                 <max>360</max>
@@ -364,7 +364,7 @@
         <object-name>StandIlluminator-spot-01</object-name>
         <object-name>StandIlluminator-spot-02</object-name>
         <type>rotate</type>
-        <property>/sim/G91/accessories/illuminators/dx/yaw</property>
+        <property>sim/G91/accessories/illuminators/dx/yaw</property>
         <factor>1.0</factor>
         <offset-deg>0.0</offset-deg>
         <center>
@@ -375,7 +375,7 @@
         <axis>
             <x>0</x>
             <y>0</y>
-            <z>1</z>
+            <z>-1</z>
         </axis>
     </animation>
 

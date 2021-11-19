@@ -40,7 +40,7 @@
         </attenuation>
         <spot-exponent>20</spot-exponent>
         <spot-cutoff>89</spot-cutoff>
-        <range-m>15.0</range-m>
+        <range-m>100.0</range-m>
         <dim-factor>
             <property>/fdm/jsbsim/systems/lightning/accessories/illuminators/sx/intensity</property>
         </dim-factor>
