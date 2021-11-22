@@ -859,6 +859,40 @@
     </group>
 
     <hrule/>
+
+    <group>
+        <layout>hbox</layout>
+        <text>
+            <halign>left</halign>
+            <label>Roll_aileron-coefficient  = </label>
+        </text>
+        <text>
+            <label>99999</label>
+            <live>true</live>
+            <format>%3.3f </format>
+            <property>/fdm/jsbsim/aero/constant/Roll_aileron-coefficient</property>
+            <color>
+                <red>0.9</red>
+                <green>0.9</green>
+                <blue>0.9</blue>
+            </color>
+        </text>
+        <empty>
+            <stretch>true</stretch>
+        </empty>
+        <slider>
+            <name>sim_G91_Test_V0_1000A</name>
+            <property>/fdm/jsbsim/aero/constant/Roll_aileron-coefficient</property>
+            <min>0.1</min>
+            <max>1.0</max>
+            <step>0.02</step>
+            <binding>
+                <command>dialog-apply</command>
+            </binding>
+        </slider>
+    </group>
+
+    <hrule/>
     <!-- Pos the objects -->
     <!--
     <group>

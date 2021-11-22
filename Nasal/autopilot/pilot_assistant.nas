@@ -1835,6 +1835,15 @@ var pilot_assistant = func() {
                 setprop("fdm/jsbsim/systems/autopilot/gui/heading-control",0);
                 setprop("fdm/jsbsim/systems/autopilot/gui/altitude-active",0);
                 setprop("fdm/jsbsim/systems/autopilot/gui/speed-control",0);
+                setprop("/controls/gear/brake-parking",1);
+                #// Dragchute reset
+                if (getprop("fdm/jsbsim/systems/dragchute/sw-reset") == 0) {
+                    setprop("fdm/jsbsim/systems/dragchute/sw-reset",1);
+                } else {
+                    setprop("fdm/jsbsim/systems/dragchute/sw-reset",0);
+                };
+                #// accessories section (2 is restart position)
+                setprop("sim/G91/accessories/standIlluminators/isParkingStartStop",2);
             };
             if (testing_log_active >= 1 and timeStepSecond == 1) {
                 print("Landing 4.0 >"

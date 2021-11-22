@@ -113,6 +113,12 @@
             <binding>
                 <command>dialog-apply</command>
             </binding>
+            <binding>
+                <command>nasal</command>
+                <script>
+                    setprop("sim/G91/accessories/standIlluminators/autotraking",1);
+                </script>
+            </binding>
         </checkbox>
         <text>
             <label>Intensity</label>
@@ -125,9 +131,10 @@
             <row>0</row>
             <col>3</col>
             <property>sim/G91/accessories/standIlluminators/intensity</property>
-            <min>-10.0</min>
-            <max>30.0</max>
-            <step>1.0</step>
+            <min>0.0</min>
+            <max>1.0</max>
+            <step>0.1</step>
+            <live>true</live>
             <binding>
                 <command>dialog-apply</command>
             </binding>
