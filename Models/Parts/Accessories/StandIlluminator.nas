@@ -250,8 +250,10 @@ var StdIlluminators = {
     },
 
     add: func(id) {
-        me.illuminators[id] = StdIlluminator.new();
-        me.illuminators[id].init(id);
+        if (!contains(me.illuminators,id)) {
+            me.illuminators[id] = StdIlluminator.new();
+            me.illuminators[id].init(id);
+        };
     },
 
     setOperative: func(isOperative) {
@@ -326,7 +328,7 @@ var stdIlluminators = StdIlluminators.new();
 var accessories = func() {
 
     var isWow = getprop("fdm/jsbsim/gear/wow");
-    canopy_isStartRestart = getprop("sim/G91/accessories/standIlluminators/isParkingStartStop")
+    canopy_isStartRestart = getprop("sim/G91/accessories/standIlluminators/isParkingStartStop");
 
     #// Accessories on for Ground Services
     #// One shot time set open canopy
@@ -354,11 +356,8 @@ var accessories = func() {
                 };
             };
         };
-    } else if (isWow > 0 canopy_isStartRestart == 2) {
-        stdIlluminators.add("I01");
-        stdIlluminators.add("I02");
-        stdIlluminators.add("I03");
-        stdIlluminators.add("I04");
+    } else if (isWow > 0 and canopy_isStartRestart == 2) {
+
     } else {
         delayTimeForCanopy.reset();
     };
