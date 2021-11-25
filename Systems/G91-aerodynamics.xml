@@ -315,7 +315,7 @@ Changes by Joshua Davidson (it0uchpods) for stability, and fix some reversed sig
 <!--
     <property value="0.20">aero/constant/Roll_aileron-coefficient</property>
 -->
-    <property value="0.40">aero/constant/Roll_aileron-coefficient</property>
+    <property value="0.30">aero/constant/Roll_aileron-coefficient</property>
     <property value="-0.01141">aero/constant/Roll_rudder-coefficient</property>
     
     <axis name="ROLL">
