@@ -312,7 +312,10 @@ Changes by Joshua Davidson (it0uchpods) for stability, and fix some reversed sig
     
     <property value="-0.5112">aero/constant/Roll_damp-coefficient</property>
     <property value="0.0876">aero/constant/Roll_yaw-coefficient</property>
-    <property value="0.1954">aero/constant/Roll_aileron-coefficient</property>
+<!--
+    <property value="0.20">aero/constant/Roll_aileron-coefficient</property>
+-->
+    <property value="0.40">aero/constant/Roll_aileron-coefficient</property>
     <property value="-0.01141">aero/constant/Roll_rudder-coefficient</property>
     
     <axis name="ROLL">
@@ -389,8 +392,34 @@ Changes by Joshua Davidson (it0uchpods) for stability, and fix some reversed sig
                 <property>aero/qbar-psf</property>
                 <property>metrics/Sw-sqft</property>
                 <property>metrics/bw-ft</property>
+                <!--
                 <property>fcs/aileron-pos-rad-avg</property>
+                -->
                 <property>aero/constant/Roll_aileron-coefficient</property>
+                <table>
+                    <independentVar lookup="row">fcs/aileron-pos-rad-avg</independentVar>
+                    <tableData>
+                        -1.57	-1.57
+                        -1.40	-1.38
+                        -1.22	-1.15
+                        -1.05	-0.91
+                        -0.87	-0.67
+                        -0.70	-0.45
+                        -0.52	-0.26
+                        -0.35	-0.12
+                        -0.17	-0.03
+                        0.00	0.00
+                        0.17	0.03
+                        0.35	0.12
+                        0.52	0.26
+                        0.70	0.45
+                        0.87	0.67
+                        1.05	0.91
+                        1.22	1.15
+                        1.40	1.38
+                        1.57	1.57
+                    </tableData>
+                </table>
             </product>
         </function>
         

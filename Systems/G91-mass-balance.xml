@@ -26,9 +26,18 @@
     <ixz unit="SLUG*FT2">594.9233</ixz>
     <iyz unit="SLUG*FT2">0.0</iyz>
     -->
+    <!--
+    to Nov. 2021
     <ixx unit="SLUG*FT2">15000</ixx>
     <iyy unit="SLUG*FT2">20200</iyy>
     <izz unit="SLUG*FT2">23500</izz>
+    <ixy unit="SLUG*FT2">0.0</ixy>
+    <ixz unit="SLUG*FT2">0.0</ixz>
+    <iyz unit="SLUG*FT2">0.0</iyz>
+    -->
+    <ixx unit="SLUG*FT2">10000</ixx>
+    <iyy unit="SLUG*FT2">15000</iyy>
+    <izz unit="SLUG*FT2">15000</izz>
     <ixy unit="SLUG*FT2">0.0</ixy>
     <ixz unit="SLUG*FT2">0.0</ixz>
     <iyz unit="SLUG*FT2">0.0</iyz>
