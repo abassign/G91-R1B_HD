@@ -392,34 +392,8 @@ Changes by Joshua Davidson (it0uchpods) for stability, and fix some reversed sig
                 <property>aero/qbar-psf</property>
                 <property>metrics/Sw-sqft</property>
                 <property>metrics/bw-ft</property>
-                <!--
                 <property>fcs/aileron-pos-rad-avg</property>
-                -->
                 <property>aero/constant/Roll_aileron-coefficient</property>
-                <table>
-                    <independentVar lookup="row">fcs/aileron-pos-rad-avg</independentVar>
-                    <tableData>
-                        -1.57	-1.57
-                        -1.40	-1.38
-                        -1.22	-1.15
-                        -1.05	-0.91
-                        -0.87	-0.67
-                        -0.70	-0.45
-                        -0.52	-0.26
-                        -0.35	-0.15
-                        -0.17	-0.06
-                        0.00	0.00
-                        0.17	0.06
-                        0.35	0.15
-                        0.52	0.26
-                        0.70	0.45
-                        0.87	0.67
-                        1.05	0.91
-                        1.22	1.15
-                        1.40	1.38
-                        1.57	1.57
-                    </tableData>
-                </table>
             </product>
         </function>
         

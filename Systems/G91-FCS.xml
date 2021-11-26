@@ -66,13 +66,35 @@ Flaps 38°
             </function>
         </fcs_function>
 
-        <summer name="fcs/pitch-alpha-norm-sum">
+        <fcs_function name="fcs/elevator-cmd-norm-abs">
+            <function>
+                <abs><p>fcs/elevator-cmd-norm</p></abs>
+            </function>
+        </fcs_function>
+
+        <scheduled_gain name="fcs/pitch-alpha-norm-sum">
             <input>fcs/elevator-cmd-norm</input>
+            <table>
+                <independentVar lookup="row">fcs/elevator-cmd-norm-abs</independentVar>
+                <tableData>
+                    0.00	0.00
+                    0.17	0.06
+                    0.35	0.15
+                    0.52	0.26
+                    0.70	0.45
+                    0.87	0.67
+                    1.05	0.91
+                    1.22	1.15
+                    1.40	1.38
+                    1.57	1.57
+                </tableData>
+            </table>
+            <gain>10</gain>
             <clipto>
                 <min> -1 </min>
-                <max>  1 </max> 
+                <max>  1 </max>
             </clipto>
-        </summer>
+        </scheduled_gain>
         
         <fcs_function name="fcs/pitch-alpha-sum-rad">
             <function>
@@ -160,15 +182,37 @@ Flaps 38°
             <input>fcs/roll-trim-cmd-norm</input>
             <input>systems/autopilot/roll-ap-autoswitch-norm</input>
         </summer>
+
+
+        <fcs_function name="fcs/roll-input-sum-abs">
+            <function>
+                <abs><p>fcs/roll-input-sum</p></abs>
+            </function>
+        </fcs_function>
         
-        <pure_gain name="fcs/roll-deg-cmd">
+        <scheduled_gain name="fcs/roll-deg-cmd">
             <input>fcs/roll-input-sum</input>
-            <gain>15</gain>
+            <table>
+                <independentVar lookup="row">fcs/roll-input-sum-abs</independentVar>
+                <tableData>
+                    0.00	0.00
+                    0.17	0.06
+                    0.35	0.15
+                    0.52	0.26
+                    0.70	0.45
+                    0.87	0.67
+                    1.05	0.91
+                    1.22	1.15
+                    1.40	1.38
+                    1.57	1.57
+                </tableData>
+            </table>
+            <gain>10</gain>
             <clipto>
                 <min>-fcs/ailerons-max-deg</min>
                 <max>fcs/ailerons-max-deg</max>
             </clipto>
-        </pure_gain>
+        </scheduled_gain>
         
         <fcs_function name="fcs/aileron-droop">
             <function>
@@ -181,24 +225,23 @@ Flaps 38°
                 </table>
             </function>
         </fcs_function>
-        
-        <switch name="fcs/left-aileron-deg-cmd">
-            <default value="fcs/aileron-droop"/>
-            <test value="fcs/roll-deg-cmd">
-                systems/hydraulics/flight-system-psi ge 1500
-            </test>
-        </switch>
-        
-        <switch name="fcs/right-aileron-deg-cmd">
-            <default value="fcs/aileron-droop"/>
-            <test value="-fcs/roll-deg-cmd">
-                systems/hydraulics/flight-system-psi ge 1500
-            </test>
-        </switch>
+
+        <fcs_function name="fcs/aileron-rate-max">
+            <function>
+                <table>
+                    <independentVar lookup="row">systems/hydraulics/flight-system-psi</independentVar>
+                    <tableData>
+                        0       30
+                        1500    150
+                        3000    150
+                    </tableData>
+                </table>
+            </function>
+        </fcs_function>
         
         <actuator name="fcs/aileron-left-deg">
-            <input>fcs/left-aileron-deg-cmd</input>
-            <rate_limit>150</rate_limit>
+            <input>fcs/roll-deg-cmd</input>
+            <rate_limit>fcs/aileron-rate-max</rate_limit>
             <lag>26.7</lag>
             <output>fcs/left-aileron-pos-deg</output>
         </actuator>
@@ -210,8 +253,8 @@ Flaps 38°
         </pure_gain>
         
         <actuator name="fcs/aileron-right-deg">
-            <input>fcs/right-aileron-deg-cmd</input>
-            <rate_limit>150</rate_limit>
+            <input>-fcs/roll-deg-cmd</input>
+            <rate_limit>fcs/aileron-rate-max</rate_limit>
             <lag>26.7</lag>
             <output>fcs/right-aileron-pos-deg</output>
         </actuator>
@@ -256,22 +299,53 @@ Flaps 38°
             <input>systems/autopilot/rudder-ap-value-norm</input>
             <input>systems/active-stability/yaw-damper/correction-norm</input>
         </summer>
-        
-        <pure_gain name="fcs/yaw-deg-cmd">
+
+        <fcs_function name="fcs/yaw-input-sum-abs">
+            <function>
+                <abs><p>fcs/yaw-input-sum</p></abs>
+            </function>
+        </fcs_function>
+
+        <scheduled_gain name="fcs/yaw-deg-cmd">
             <input>fcs/yaw-input-sum</input>
-            <gain>20</gain>
-        </pure_gain>
-        
-        <switch name="fcs/rudder-deg-cmd">
-            <default value="0"/>
-            <test value="fcs/yaw-deg-cmd">
-                systems/hydraulics/flight-system-psi ge 1500
-            </test>
-        </switch>
+            <table>
+                <independentVar lookup="row">fcs/yaw-input-sum-abs</independentVar>
+                <tableData>
+                    0.00	0.00
+                    0.17	0.06
+                    0.35	0.15
+                    0.52	0.26
+                    0.70	0.45
+                    0.87	0.67
+                    1.05	0.91
+                    1.22	1.15
+                    1.40	1.38
+                    1.57	1.57
+                </tableData>
+            </table>
+            <gain>15</gain>
+            <clipto>
+                <min>-fcs/ailerons-max-deg</min>
+                <max>fcs/ailerons-max-deg</max>
+            </clipto>
+        </scheduled_gain>
+
+        <fcs_function name="fcs/rudder-rate-max">
+            <function>
+                <table>
+                    <independentVar lookup="row">systems/hydraulics/flight-system-psi</independentVar>
+                    <tableData>
+                        0       30
+                        1500    150
+                        3000    150
+                    </tableData>
+                </table>
+            </function>
+        </fcs_function>
         
         <actuator name="fcs/rudder-deg">
-            <input>fcs/rudder-deg-cmd</input>
-            <rate_limit>145</rate_limit>
+            <input>fcs/yaw-deg-cmd</input>
+            <rate_limit>fcs/rudder-rate-max</rate_limit>
             <lag>26.7</lag>
             <output>fcs/rudder-pos-deg</output>
         </actuator>
