@@ -895,6 +895,37 @@
                     <command>dialog-apply</command>
                 </binding>
             </slider>
+            <text>
+                <row>0</row>
+                <col>3</col>
+                <halign>left</halign>
+                <label>Pitch_elevator-coefficient  = </label>
+            </text>
+            <text>
+                <row>0</row>
+                <col>4</col>
+                <label>99999</label>
+                <live>true</live>
+                <format>%3.3f </format>
+                <property>/fdm/jsbsim/aero/constant/Pitch_elevator-coefficient</property>
+                <color>
+                    <red>0.9</red>
+                    <green>0.9</green>
+                    <blue>0.9</blue>
+                </color>
+            </text>
+            <slider>
+                <row>0</row>
+                <col>5</col>
+                <name>Pitch_elevator-coefficient</name>
+                <property>/fdm/jsbsim/aero/constant/Pitch_elevator-coefficient</property>
+                <min>-2.0/min>
+                <max>0.0</max>
+                <step>0.1</step>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </slider>
         </group>
     </group>
 

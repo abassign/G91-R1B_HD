@@ -411,7 +411,11 @@ Changes by Joshua Davidson (it0uchpods) for stability, and fix some reversed sig
     </axis>
     
     <property value="-14.445">aero/constant/Pitch_damp-coefficient</property>
+    <!--
     <property value="-0.611">aero/constant/Pitch_elevator-coefficient</property>
+    -->
+    <property value="-0.8">aero/constant/Pitch_elevator-coefficient</property>
+
     <property value="-9.165">aero/constant/Pitch_alphadot-coefficient</property>
     <property value="-0.01478">aero/constant/Pitch_speedbrake-coefficient</property>
     
