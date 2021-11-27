@@ -886,7 +886,6 @@
             <slider>
                 <row>0</row>
                 <col>2</col>
-                <name>Roll_aileron-coefficient</name>
                 <property>/fdm/jsbsim/aero/constant/Roll_aileron-coefficient</property>
                 <min>0.02</min>
                 <max>0.50</max>
@@ -917,7 +916,6 @@
             <slider>
                 <row>0</row>
                 <col>5</col>
-                <name>Pitch_elevator-coefficient</name>
                 <property>/fdm/jsbsim/aero/constant/Pitch_elevator-coefficient</property>
                 <min>-2.0/min>
                 <max>0.0</max>

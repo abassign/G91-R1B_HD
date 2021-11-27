@@ -750,6 +750,10 @@ var timerEngine_starter = func() {
             setprop("fdm/jsbsim/systems/starter/gui/autostart-activate",0);
             setprop("sim/current-view/ab-camera/to/command",12);
             setprop("fdm/jsbsim/systems/starter/gui/autostart-activate-stop",1);
+            #// Setup radios
+            setprop("fdm/jsbsim/systems/gauges/radio/ptr175/knob-function-set",1);
+            setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/mode-trigger",2);
+            setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/automatic-to-radial-active-trigger",1);
         };
         messageOutputStatus();
     } else if (guiAutostartActivate == 2 and (autostart_status_is_ok == 0 or actualPhaseActive > 0)) {
@@ -774,6 +778,10 @@ var timerEngine_starter = func() {
             setprop("fdm/jsbsim/systems/starter/gui/autostart-activate",0);
             setprop("sim/current-view/ab-camera/to/command",12);
             setprop("fdm/jsbsim/systems/starter/gui/autostart-activate-stop",1);
+            #// Setup radios
+            setprop("fdm/jsbsim/systems/gauges/radio/ptr175/knob-function-set",1);
+            setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/mode-trigger",2);
+            setprop("fdm/jsbsim/systems/autopilot/pilot-radio-assistant/automatic-to-radial-active-trigger",1);
         };
         messageOutputStatus();
     } else {
@@ -807,6 +815,8 @@ var timerEngine_starter = func() {
                 msgOutput = "terminate the start procedure";
                 setprop("sim/current-view/ab-camera/to/command",12);
                 setprop("fdm/jsbsim/systems/starter/gui/autostart-stop",0);
+                 #// Setup radios
+                setprop("fdm/jsbsim/systems/gauges/radio/ptr175/knob-function-set",0);
             };
             messageOutputStatus();
         };

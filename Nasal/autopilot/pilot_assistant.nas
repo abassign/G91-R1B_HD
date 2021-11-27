@@ -1991,7 +1991,7 @@ var pilot_assistant = func() {
                 }
             }
 
-            setprop("fdm/jsbsim/systems/starter/gui/autostart-activate",1);
+            setprop("fdm/jsbsim/systems/starter/gui/autostart-activate",2);
             setprop("fdm/jsbsim/systems/autopilot/gui/speed-automatic-gear",1.0);
             setprop("fdm/jsbsim/systems/handle-switches/sw-handle-brake-activate",1);
         } else if (pilot_ass_status_id == 10.1) {
@@ -2425,7 +2425,7 @@ var pilot_assistant_engage = func() {
                 setprop("fdm/jsbsim/systems/autopilot/gui/impact-control-active",1.0);
                 #// if pilot assistant start in the fly situation set the correct parameters
                 if (gear_unit_contact == 0) {
-                    setprop("fdm/jsbsim/systems/starter/gui/autostart-activate",1);
+                    setprop("fdm/jsbsim/systems/starter/gui/autostart-activate",2);
                     var speed_cas = getprop("fdm/jsbsim/systems/autopilot/speed-cas-on-air");
                     if (speed_cas != nil and getprop("fdm/jsbsim/systems/autopilot/gui/impact-control-active") > 0) {
                         setprop("fdm/jsbsim/systems/autopilot/gui/speed-control",1.0);
