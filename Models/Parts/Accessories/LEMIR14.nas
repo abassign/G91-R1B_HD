@@ -83,7 +83,7 @@ var Lemir14Light = {
                     "altitude": alt*M2FT,
                     "search-order": "DATA_ONLY"
                 };
-                print("*** Type 0: ",position.lat()," | ",position.lon());
+                print("*** Type 0: ",me.position.lat()," | ",me.position.lon());
             } else {
                 me.node = {
                     "type": "static",
