@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+
+    <path>LEMIR14.ac</path>
+
+    <offsets>
+        <x-m>0.0</x-m>
+        <y-m>0.0</y-m>
+        <z-m>0.0</z-m>
+        <pitch-deg>0.0</pitch-deg>
+        <roll-deg>0.0</roll-deg>
+        <heading-deg>90.0</heading-deg>
+    </offsets>
+
+    <effect>
+        <inherits-from>Effects/model-transparent</inherits-from>
+        <object-name>glass (Meshed)</object-name>
+        <object-name>lamp (Meshed)</object-name>
+    </effect>
+
+    <animation>
+        <type>noshadow</type>
+        <object-name>lamp (Meshed)</object-name>
+        <object-name>lamp support (Meshed)</object-name>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>glass (Meshed)</object-name>
+        <transparency>
+            <alpha>0.9</alpha>
+        </transparency>
+        <diffuse>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </diffuse>
+        <ambient>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </ambient>
+        <emission>
+            <red>1.6</red>
+            <green>1.2</green>
+            <blue>0.8</blue>
+            <factor-prop>/sim/G91/accessories/LEMIR14/light/intensity</factor-prop>
+        </emission>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>lamp (Meshed)</object-name>
+        <transparency>
+            <alpha>1.4</alpha>
+        </transparency>
+        <diffuse>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </diffuse>
+        <ambient>
+            <red>0.8</red>
+            <green>0.8</green>
+            <blue>0.8</blue>
+        </ambient>
+        <emission>
+            <red>2</red>
+            <green>2</green>
+            <blue>2</blue>
+            <factor-prop>/sim/G91/accessories/LEMIR14/light/intensity</factor-prop>
+        </emission>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>lamp support (Meshed)</object-name>
+        <diffuse>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
+        </diffuse>
+        <ambient>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
+        </ambient>
+        <emission>
+            <red>0.6</red>
+            <green>0.6</green>
+            <blue>0.6</blue>
+            <factor-prop>/sim/G91/accessories/LEMIR14/light/intensity</factor-prop>
+        </emission>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>support yellow (Meshed)</object-name>
+        <diffuse>
+            <red>0.9</red>
+            <green>0.7</green>
+            <blue>0.05</blue>
+        </diffuse>
+        <ambient>
+            <red>0.9</red>
+            <green>0.7</green>
+            <blue>0.05</blue>
+            <factor>0.5</factor>
+        </ambient>
+        <emission>
+            <red>0.09</red>
+            <green>0.07</green>
+            <blue>0.005</blue>
+            <factor-prop>/sim/G91/accessories/LEMIR14/light/intensity</factor-prop>
+        </emission>
+    </animation>
+
+    <light>
+        <name>LEMIR14-Illuminator</name>
+        <type>point</type>
+        <position>
+            <x-m>0.0</x-m>
+            <y-m>0.0</y-m>
+            <z-m>0.35</z-m>
+        </position>
+        <direction>
+            <pitch-deg>180.0</pitch-deg>
+            <roll-deg>0.0</roll-deg>
+            <heading-deg>0.0</heading-deg>
+        </direction>
+        <ambient>
+            <r>0.8</r>
+            <g>0.7</g>
+            <b>0.3</b>
+            <a>1</a>
+        </ambient>
+        <diffuse>
+            <r>8.0</r>
+            <g>7.0</g>
+            <b>3.0</b>
+            <a>1</a>
+        </diffuse>
+        <specular>
+            <r>0.4</r>
+            <g>0.3</g>
+            <b>0.2</b>
+            <a>1</a>
+        </specular>
+        <attenuation>
+            <c>5.0</c>
+            <l>22.0</l>
+            <q>12.0</q>
+        </attenuation>
+        <spot-exponent>10</spot-exponent>
+        <spot-cutoff>89</spot-cutoff>
+        <range-m>2.6</range-m>
+        <dim-factor>
+            <property>/sim/G91/accessories/LEMIR14/light/intensity</property>
+        </dim-factor>
+    </light>
+
+    <animation>
+        <type>select</type>
+        <object-name>LEMIR14-Illuminator</object-name>
+        <condition>
+            <greater-than>
+                <!--
+                <property>/sim/G91/accessories/LEMIR14/light/maxDistFromViewPoint</property>
+                <property>sim/G91/accessories/LEMIR14/light/distFromViewPoint</property>
+                -->
+                <value type="double">100.0</value>
+                <value type="double">1000.0</value>
+            </greater-than>
+        </condition>
+    </animation>
+
+    <model>
+        <name>procedural_light_LEMIR14</name>
+        <path>LEMIR14Light.xml</path>
+        <offsets>
+            <x-m> 0.0 </x-m>
+            <y-m> 0.0 </y-m>
+            <z-m> 0.38 </z-m>
+        </offsets>
+    </model>
+
+</PropertyList>

@@ -124,7 +124,6 @@ var StdIlluminator = {
             if (alt != nil) {
                 me.node = {
                     "type": "static",
-                    #//"model":"Aircraft/G91-R1B_HD/Models/Parts/Accessories/StandIlluminator-" ~ me.id ~ ".xml",
                     "model":"Aircraft/G91-R1B_HD/Models/Parts/Accessories/StandIlluminator.xml",
                     "model-lowres":"Aircraft/G91-R1B_HD/Models/Parts/Accessories/StandIlluminator.xml",
                     "latitude": position.lat(),
@@ -325,11 +324,9 @@ var delayTimeForCanopy = DelayTime.new();
 var stdIlluminators = StdIlluminators.new();
 
 
-var accessories = func() {
-
+var stdIllumin = func() {
     var isWow = getprop("fdm/jsbsim/gear/wow");
     canopy_isStartRestart = getprop("sim/G91/accessories/standIlluminators/isParkingStartStop");
-
     #// Accessories on for Ground Services
     #// One shot time set open canopy
     #// DEVE PARTIRE CON UN CERTO RITARDO!
@@ -395,17 +392,17 @@ setlistener("sim/G91/accessories/standIlluminators/autotraking", func {
 }, 0, 1);
 
 
-var accessories_control = func() {
+var stdIlluminators_ctl = func() {
 
-    accessories();
+    stdIllumin();
 
     delta_time = timeStep / timeStepDivisor;
-    pilot_imp_controlTimer.restart(delta_time);
+    stdIlluminTimer.restart(delta_time);
 
 };
 
 
-var pilot_imp_controlTimer = maketimer(delta_time, accessories_control);
-pilot_imp_controlTimer.singleShot = 1;
-pilot_imp_controlTimer.start();
+var stdIlluminTimer = maketimer(delta_time, stdIlluminators_ctl);
+stdIlluminTimer.singleShot = 1;
+stdIlluminTimer.start();
 

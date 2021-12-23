@@ -860,13 +860,37 @@
         <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/MK6/MK6.xml</path>
     </model>
 
+    <!-- Pilot -->
+
     <model>
-        <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Pilot/pilot.xml</path>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Pilot/pilot-G91.xml</path>
         <condition>
-            <equals>
-                <property>sim/current-view/internal</property>
-                <value>false</value>
-            </equals>
+            <and>
+                <equals>
+                    <property>sim/current-view/internal</property>
+                    <value>false</value>
+                </equals>
+                <greater-than>
+                    <property>sim/G91/liveries/active/id</property>
+                    <value type="int">2</value>
+                </greater-than>
+            </and>
+        </condition>
+    </model>
+
+    <model>
+        <path>Aircraft/G91-R1B_HD/Models/Parts/Canopy/Pilot/pilot-pan.xml</path>
+        <condition>
+            <and>
+                <equals>
+                    <property>sim/current-view/internal</property>
+                    <value>false</value>
+                </equals>
+                <lower-than>
+                    <property>sim/G91/liveries/active/id</property>
+                    <value type="int">3</value>
+                </lower-than>
+            </and>
         </condition>
     </model>
 

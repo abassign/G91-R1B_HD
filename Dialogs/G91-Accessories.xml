@@ -198,156 +198,129 @@
             </binding>
         </radio>
     </group>
-    <!--
+
+    <hrule/>
+
     <group>
         <layout>table</layout>
-        <checkbox>
+        <text>
+            <label>RWY edge LGT</label>
+            <halign>left</halign>
             <row>0</row>
             <col>0</col>
+        </text>
+        <checkbox>
+            <row>0</row>
+            <col>1</col>
             <halign>fill</halign>
-            <property>sim/G91/accessories/standIlluminators/sx/active</property>
+            <property>sim/G91/accessories/LEMIR14/isOperative</property>
+            <live>true</live>
+            <binding>
+                <command>nasal</command>
+                <script>
+                    if (getprop("sim/G91/accessories/LEMIR14/isOperative") == 3) {
+                        setprop("sim/G91/accessories/LEMIR14/isOperative",9);
+                    } else {
+                        if (getprop("sim/G91/accessories/LEMIR14/isOperative") == 0) {
+                            setprop("sim/G91/accessories/LEMIR14/isOperative",1);
+                        };
+                    };
+                </script>
+            </binding>
+        </checkbox>
+        <radio>
+            <row>0</row>
+            <col>3</col>
+            <label>Cup</label>
+            <halign>fill</halign>
+            <property>sim/G91/accessories/LEMIR14/type-cup-14</property>
             <live>true</live>
             <binding>
                 <command>dialog-apply</command>
             </binding>
-        </checkbox>
-        <text>
-            <label>Ext. illuminator Sx</label>
-            <halign>left</halign>
-            <row>0</row>
-            <col>1</col>
-        </text>
-        <text>
-            <label>Pitch</label>
-            <halign>left</halign>
-            <row>0</row>
-            <col>2</col>
-        </text>
-        <slider>
-            <name>illuminator Sx pitch</name>
-            <row>0</row>
-            <col>3</col>
-            <property>sim/G91/accessories/standIlluminators/sx/pitch</property>
-            <min>-10.0</min>
-            <max>30.0</max>
-            <step>1.0</step>
             <binding>
-                <command>dialog-apply</command>
+                <command>nasal</command>
+                <script>
+                    setprop("sim/G91/accessories/LEMIR14/type",0);
+                </script>
             </binding>
-        </slider>
-        <text>
-            <label>Yaw</label>
-            <halign>left</halign>
+        </radio>
+        <radio>
             <row>0</row>
             <col>4</col>
-        </text>
-        <slider>
-            <name>illuminator Sx heading</name>
+            <label>Cone</label>
+            <halign>fill</halign>
+            <property>sim/G91/accessories/LEMIR14/type-cone-light</property>
+            <live>true</live>
+            <binding>
+                <command>dialog-apply</command>
+            </binding>
+            <binding>
+                <command>nasal</command>
+                <script>
+                    setprop("sim/G91/accessories/LEMIR14/type",1);
+                </script>
+            </binding>
+        </radio>
+        <text>
+            <label>Breadth:</label>
+            <halign>left</halign>
             <row>0</row>
             <col>5</col>
-            <property>sim/G91/accessories/standIlluminators/sx/yaw</property>
-            <min>0.0</min>
-            <max>360.0</max>
-            <step>1.0</step>
+        </text>
+        <slider>
+            <name>illuminators intensity</name>
+            <row>0</row>
+            <col>6</col>
+            <property>sim/G91/accessories/LEMIR14/runwayBreadth</property>
+            <min>5.0</min>
+            <max>40.0</max>
+            <step>5</step>
+            <live>true</live>
             <binding>
                 <command>dialog-apply</command>
             </binding>
         </slider>
         <text>
-            <label>Intensity</label>
+            <label>Step:</label>
             <halign>left</halign>
             <row>0</row>
-            <col>6</col>
+            <col>7</col>
         </text>
         <slider>
+            <name>illuminators intensity</name>
             <row>0</row>
-            <col>7</col>
-            <name>Intensity</name>
-            <property>sim/G91/accessories/standIlluminators/sx/intensity</property>
-            <min>0.0</min>
+            <col>8</col>
+            <property>sim/G91/accessories/LEMIR14/lightStep</property>
+            <min>15.0</min>
+            <max>60.0</max>
+            <step>5</step>
+            <live>true</live>
+            <binding>
+                <command>dialog-apply</command>
+            </binding>
+        </slider>
+        <text>
+            <label>Int:</label>
+            <halign>left</halign>
+            <row>0</row>
+            <col>9</col>
+        </text>
+        <slider>
+            <name>illuminators intensity</name>
+            <row>0</row>
+            <col>10</col>
+            <property>sim/G91/accessories/LEMIR14/light/intensity</property>
+            <min>0.1</min>
             <max>1.0</max>
             <step>0.1</step>
+            <live>true</live>
             <binding>
                 <command>dialog-apply</command>
             </binding>
         </slider>
     </group>
 
-    <group>
-        <layout>table</layout>
-        <checkbox>
-            <row>0</row>
-            <col>0</col>
-            <halign>fill</halign>
-            <property>sim/G91/accessories/standIlluminators/dx/active</property>
-            <live>true</live>
-            <binding>
-                <command>dialog-apply</command>
-            </binding>
-        </checkbox>
-        <text>
-            <label>Ext. illuminator Dx</label>
-            <halign>left</halign>
-            <row>0</row>
-            <col>1</col>
-        </text>
-        <text>
-            <label>Pitch</label>
-            <halign>left</halign>
-            <row>0</row>
-            <col>2</col>
-        </text>
-        <slider>
-            <name>illuminator Dx pitch</name>
-            <row>0</row>
-            <col>3</col>
-            <property>sim/G91/accessories/standIlluminators/dx/pitch</property>
-            <min>-10.0</min>
-            <max>30.0</max>
-            <step>1.0</step>
-            <binding>
-                <command>dialog-apply</command>
-            </binding>
-        </slider>
-        <text>
-            <label>Yaw</label>
-            <halign>left</halign>
-            <row>0</row>
-            <col>4</col>
-        </text>
-        <slider>
-            <name>illuminator Sx heading</name>
-            <row>0</row>
-            <col>5</col>
-            <property>sim/G91/accessories/standIlluminators/dx/yaw</property>
-            <min>0.0</min>
-            <max>360.0</max>
-            <step>1.0</step>
-            <binding>
-                <command>dialog-apply</command>
-            </binding>
-        </slider>
-        <text>
-            <label>Intensity</label>
-            <halign>left</halign>
-            <row>0</row>
-            <col>6</col>
-        </text>
-        <slider>
-            <row>0</row>
-            <col>7</col>
-            <name>Intensity</name>
-            <property>sim/G91/accessories/standIlluminators/dx/intensity</property>
-            <min>0.0</min>
-            <max>1.0</max>
-            <step>0.1</step>
-            <binding>
-                <command>dialog-apply</command>
-            </binding>
-        </slider>
-
-    </group>
-    -->
     <hrule/>
 
 </PropertyList>

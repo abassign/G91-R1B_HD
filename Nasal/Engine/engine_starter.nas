@@ -292,9 +292,13 @@ var start_ActivateElectricPanel = func(nextActualPhaseActive = 100) {
         phaseIsActive = 1;
     } else {
         if (cameraStatus == 3 and phaseIsActive > 0) {
-            msgOutput = "set left starter panel";
-            setprop("fdm/jsbsim/systems/manual-switches/cockpit/sw-internal-power-generator-trigger",1);
-            setprop("fdm/jsbsim/systems/manual-switches/cockpit/sw-internal-power-generator",1);
+            if (cameraStatusTime < 0.5) {
+                msgOutput = "set left starter panel";
+                setprop("fdm/jsbsim/systems/manual-switches/cockpit/sw-internal-power-generator-trigger",1);
+                setprop("fdm/jsbsim/systems/manual-switches/cockpit/sw-internal-power-generator",1);
+            } else if (cameraStatusTime >= 1.5 and cameraStatusTime < 2.0) {
+                setprop("fdm/jsbsim/systems/manual-switches/cockpit/sw-internal-power-generator-trigger",0);
+            };
         };
         if (cameraStatus == 0 and phaseIsActive > 0 and bus2V > 18.0) {
             actualPhaseActive = nextActualPhaseActive;
@@ -654,7 +658,6 @@ var start_FastClosure = func(nextActualPhaseActive = 100) {
         if (cameraStatus == 3 and phaseIsActive > 0) {
             if (cameraStatusTime < 1.0) {
                 msgOutput = "setup operative electric system and lights";
-                setprop("fdm/jsbsim/systems/manual-switches/cockpit/sw-internal-power-generator-trigger",1);
                 setprop("fdm/jsbsim/systems/manual-switches/cockpit/sw-internal-power-generator",1);
                 setprop("fdm/jsbsim/systems/starter/fuel-booster-pump",0);
                 setprop("fdm/jsbsim/systems/starter/NE",0);

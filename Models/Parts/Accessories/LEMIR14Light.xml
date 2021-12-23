@@ -2,16 +2,16 @@
 
 <PropertyList>
 
-    <path>procedural_light.ac</path>
-    <nopreview/>
-    <!--
     <animation>
-        <type>noshadow</type>
+        <type>noshadow</type> 
         <object-name>procedural_light</object-name>
     </animation>
-    -->
+    
+    <path>procedural_light.ac</path>
+    <nopreview/>
+
     <effect>
-        <inherits-from>procedural_light_LEMIR14</inherits-from>
+        <inherits-from>LEMIR14ALS</inherits-from>
         <object-name>procedural_light</object-name>
     </effect>
 

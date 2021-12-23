@@ -294,6 +294,7 @@
             <!-- Aux and accessories -->
             <file>Aircraft/G91-R1B_HD/Nasal/AB-camera/ab-camera.nas</file>
             <file>Aircraft/G91-R1B_HD/Models/Parts/Accessories/StandIlluminator.nas</file>
+            <file>Aircraft/G91-R1B_HD/Models/Parts/Accessories/LEMIR14.nas</file>
         </general>
         
         <canvas_gauges>
