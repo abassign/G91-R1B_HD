@@ -22,11 +22,32 @@
     
 
     <channel name="handle dragchute" execrate="16">
+
+        <washout_filter name="systems/dragchute/sw-handle-dragchute-washed">
+            <input>systems/handle-switches/sw-handle-dragchute-status</input>
+            <c1>1.0</c1>
+        </washout_filter>
+
+        <switch name="systems/dragchute/activate">
+            <default value="systems/dragchute/activate"/>
+            <test logic="AND" value = "1">
+                systems/dragchute/sw-handle-dragchute-washed GT 0.5
+                systems/dragchute/activate == 0
+            </test>
+        </switch>
+
+        <switch name="systems/dragchute/reset">
+            <default value="systems/dragchute/reset"/>
+            <test logic="AND" value = "1">
+                systems/dragchute/reset == 0
+                systems/dragchute/sw-handle-dragchute-washed LT -0.2
+                systems/dragchute/status == 1
+            </test>
+        </switch>
         
         <switch name="systems/dragchute/status">
             <default value="systems/dragchute/status"/>
             <test logic="AND" value="1">
-                systems/handle-switches/sw-handle-dragchute-status == 1
                 systems/dragchute/door-chute LT 0.1
                 systems/dragchute/status == 0
                 systems/dragchute/reset == 0
@@ -91,6 +112,14 @@
             <test logic="AND" value = "0">
                 systems/dragchute/sw-reset-washed LT 0.6
                 systems/dragchute/sw-reset-washed GT -0.6
+            </test>
+        </switch>
+
+        <switch name="systems/handle-switches/sw-handle-dragchute-status">
+            <default value="systems/handle-switches/sw-handle-dragchute-status"/>
+            <test logic="AND" value = "0">
+                systems/handle-switches/sw-handle-dragchute-status == 1
+                systems/dragchute/reset == 1
             </test>
         </switch>
         
