@@ -105,6 +105,6 @@ print("**** 4 sim/G91/menu/menuActive : ",menuActive);
 
     setprop("sim/G91/menu/command",0);
 
-},0,1);
+},1,1);
 
 
