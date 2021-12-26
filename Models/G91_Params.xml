@@ -267,9 +267,35 @@ G91_Params.xml
             <recognition_gauges type="int">0</recognition_gauges>
             <advanced_gauges type="int">0</advanced_gauges>
         </livery>
-        
+
         <livery n="9">
             <id type="int">9</id>
+            <reloads type="float">0.0</reloads>
+            <name_short type="string">G91 R - Tricolore</name_short>
+            <name_long type="string">Flight flock n.2 Cacciabombardieri Ricognitori</name_long>
+            <PANR1 type="float">1.0</PANR1>
+            <diffuse type="float">0.91</diffuse>
+            <specular type="float">0.20</specular>
+            <dirty_set type="int">0</dirty_set>
+            <livery_001 type="string">Aircraft/G91-R1B_HD/Models/Liveries/SPECIAL_2_001.png</livery_001>
+            <livery_002 type="string">Aircraft/G91-R1B_HD/Models/Liveries/SPECIAL_2_002.png</livery_002>
+            <dirty_001 type="string">Aircraft/G91-R1B_HD/Models/Liveries/dirty_01_4k.dds</dirty_001>
+            <dirty_002 type="string">Aircraft/G91-R1B_HD/Models/Liveries/dirty_02_4k.dds</dirty_002>
+            <normalmap_enabled>0</normalmap_enabled>
+            <version>2</version>
+            <symbols_path type="string"></symbols_path>
+            <symbol_01 type="string"></symbol_01>
+            <symbol_02 type="string"></symbol_02>
+            <symbol_03 type="string"></symbol_03>
+            <symbol_04 type="string"></symbol_04>
+            <symbol_05 type="string"></symbol_05>
+            <tacan_nav_active_state type="int">0</tacan_nav_active_state>
+            <recognition_gauges type="int">0</recognition_gauges>
+            <advanced_gauges type="int">0</advanced_gauges>
+        </livery>
+        
+        <livery n="10">
+            <id type="int">10</id>
             <reloads type="float">0.0</reloads>
             <name_short type="string">Portuguese R3 esq 301 jaguares</name_short>
             <name_long type="string">Portuguese Air Force G-91R/3 Esquadra 301 - Jaguares 1971</name_long>
@@ -437,6 +463,11 @@ G91_Params.xml
             <wing-ambient-light-dimmer type="float">0.75</wing-ambient-light-dimmer>
         </compositor>
     </configuration>
+
+    <menu>
+        <active type="string">F1Menu</active>
+        <command type="int">1</command>
+    </menu>
     
 </PropertyList>
 

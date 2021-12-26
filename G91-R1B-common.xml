@@ -96,10 +96,10 @@
                 <float n="21" alias="/sim/G91/liveries/active/specular"/>
             </generic>
         </multiplay>
-        
-        <menubar>
-            <default>
-                <menu n="13">
+        <!--
+        <menubar n="0">
+            <default n="0">
+                <menu n="100">
                     <label>Fiat G91</label>
                     <enabled type="bool">true</enabled>
                     <item>
@@ -255,7 +255,7 @@
                 </menu>
             </default>
         </menubar>
-
+        -->
         <G91 include="Models/G91_Params.xml"/>
         
     </sim>
@@ -264,6 +264,7 @@
         
         <general>
             <file>Aircraft/G91-R1B_HD/Nasal/init.nas</file>
+            <file>Aircraft/G91-R1B_HD/Nasal/menu.nas</file>
             <!-- Generic -->
             <file>Aircraft/G91-R1B_HD/Nasal/Ambient/ambient_data.nas</file>
             <file>Aircraft/G91-R1B_HD/Nasal/Engine/engine_red_emission.nas</file>
@@ -401,6 +402,19 @@
                     <command>property-assign</command>
                     <property>fdm/jsbsim/systems/manual-switches/lateral_panel_left/dampers/sw-pitch-damper-togle</property>
                     <value>1</value>
+                </binding>
+            </key>
+            <key n="257">
+                <name>F1</name>
+                <desc>Float menu</desc>
+                <repeatable type="bool">false</repeatable>
+                <interval-sec>0.2</interval-sec>
+                <binding>
+                    <command>nasal</command>
+                    <script><![CDATA[
+                        setprop("sim/G91/menu/command",1);
+                        print("*** set sim/G91/menu/command to 1");
+                    ]]></script>
                 </binding>
             </key>
             <key n="261">

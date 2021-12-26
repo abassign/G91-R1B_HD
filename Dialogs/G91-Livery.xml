@@ -31,7 +31,10 @@ http://wiki.flightgear.org/Howto:Adding_a_canvas_to_a_GUI_dialog
             <pref-height>16</pref-height>
             <border>2</border>
             <binding>
-                <command>dialog-close</command>
+                <command>nasal</command>
+                <script>
+                    setprop("sim/G91/menu/command",2);
+                </script>
             </binding>
         </button>
     </group>
@@ -122,21 +125,39 @@ http://wiki.flightgear.org/Howto:Adding_a_canvas_to_a_GUI_dialog
                 <binding>
                     <command>nasal</command>
                     <script>
-                        setprop("sim/G91/liveries/active/id",4);
+                        setprop("sim/G91/liveries/active/id",9);
                     </script>
                 </binding>
             </button>
             <text>
                 <row>4</row>
                 <col>1</col>
+                <label>Italian Air Force - 2nd flight flock - Tricolore</label>
+                <halign>left</halign>
+            </text>
+
+            <button>
+                <row>5</row>
+                <col>0</col>
+                <legend>06</legend>
+                <binding>
+                    <command>nasal</command>
+                    <script>
+                        setprop("sim/G91/liveries/active/id",4);
+                    </script>
+                </binding>
+            </button>
+            <text>
+                <row>5</row>
+                <col>1</col>
                 <label>Silver version, used as a prototype Pinocchio nose (R1)</label>
                 <halign>left</halign>
             </text>
             
             <button>
-                <row>5</row>
+                <row>6</row>
                 <col>0</col>
-                <legend>06</legend>
+                <legend>07</legend>
                 <binding>
                     <command>nasal</command>
                     <script>
@@ -145,16 +166,16 @@ http://wiki.flightgear.org/Howto:Adding_a_canvas_to_a_GUI_dialog
                 </binding>
             </button>
             <text>
-                <row>5</row>
+                <row>6</row>
                 <col>1</col>
                 <label>Silver version R1B recognition nose (R1B)</label>
                 <halign>left</halign>
             </text>
             
             <button>
-                <row>6</row>
+                <row>7</row>
                 <col>0</col>
-                <legend>07</legend>
+                <legend>08</legend>
                 <binding>
                     <command>nasal</command>
                     <script>
@@ -163,27 +184,9 @@ http://wiki.flightgear.org/Howto:Adding_a_canvas_to_a_GUI_dialog
                 </binding>
             </button>
             <text>
-                <row>6</row>
+                <row>7</row>
                 <col>1</col>
                 <label>Portuguese R3 esq 301 (R3)</label>
-                <halign>left</halign>
-            </text>
-            
-            <button>
-                <row>7</row>
-                <col>0</col>
-                <legend>07</legend>
-                <binding>
-                    <command>nasal</command>
-                    <script>
-                        setprop("sim/G91/liveries/active/id",9);
-                    </script>
-                </binding>
-            </button>
-            <text>
-                <row>7</row>
-                <col>1</col>
-                <label>Portuguese R3 esq 301 jaguares</label>
                 <halign>left</halign>
             </text>
             
@@ -194,12 +197,30 @@ http://wiki.flightgear.org/Howto:Adding_a_canvas_to_a_GUI_dialog
                 <binding>
                     <command>nasal</command>
                     <script>
-                        setprop("sim/G91/liveries/active/id",7);
+                        setprop("sim/G91/liveries/active/id",9);
                     </script>
                 </binding>
             </button>
             <text>
                 <row>8</row>
+                <col>1</col>
+                <label>Portuguese R3 esq 301 jaguares</label>
+                <halign>left</halign>
+            </text>
+            
+            <button>
+                <row>9</row>
+                <col>0</col>
+                <legend>09</legend>
+                <binding>
+                    <command>nasal</command>
+                    <script>
+                        setprop("sim/G91/liveries/active/id",7);
+                    </script>
+                </binding>
+            </button>
+            <text>
+                <row>9</row>
                 <col>1</col>
                 <label>Luftwaffe c/n 535 (R3)</label>
                 <halign>left</halign>

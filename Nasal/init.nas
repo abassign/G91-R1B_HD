@@ -1,4 +1,4 @@
-# Mass inertia modifier default
+#// Mass inertia modifier default
 
 var cg_x_weight = getprop("sim/G91/configuration/inertia/modifier/cg-x-weight-value-lib-default");
 var cg_x_shift = getprop("sim/G91/configuration/inertia/modifier/cg-x-shift-percent-default");
