@@ -271,9 +271,9 @@ G91_Params.xml
         <livery n="9">
             <id type="int">9</id>
             <reloads type="float">0.0</reloads>
-            <name_short type="string">G91 R - Tricolore</name_short>
+            <name_short type="string">G91 R - Tricolore for last flight</name_short>
             <name_long type="string">Flight flock n.2 Cacciabombardieri Ricognitori</name_long>
-            <PANR1 type="float">1.0</PANR1>
+            <PANR1 type="float">0.0</PANR1>
             <diffuse type="float">0.91</diffuse>
             <specular type="float">0.20</specular>
             <dirty_set type="int">0</dirty_set>
@@ -290,7 +290,7 @@ G91_Params.xml
             <symbol_04 type="string"></symbol_04>
             <symbol_05 type="string"></symbol_05>
             <tacan_nav_active_state type="int">0</tacan_nav_active_state>
-            <recognition_gauges type="int">0</recognition_gauges>
+            <recognition_gauges type="int">1</recognition_gauges>
             <advanced_gauges type="int">0</advanced_gauges>
         </livery>
         
