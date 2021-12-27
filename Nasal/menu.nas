@@ -1,6 +1,9 @@
 var prop = props.globals.initNode("sim/G91/menu/command",0,"INT");
 var prop = props.globals.initNode("sim/G91/menu/menuActive","nil","STRING");
 
+var commandMemory = nil;
+var doublePushActive = 0;
+var lastMenuActive = "F1Menu";
 
 #// Setup dialogs menu
 
@@ -30,7 +33,6 @@ var closeMenuActive = func(menuActive) {
     if (menuActive != nil and dialogsMenu[menuActive][2] != nil) {
         dialogsMenu[menuActive][2].close();
         dialogsMenu[menuActive][2] = nil;
-print("**** 3 sim/G91/menu/menuActive : ",menuActive," -> close");
         setprop("sim/G91/menu/menuActive","nil");
         return 1;
     };
@@ -50,12 +52,65 @@ var openMenuActive = func(menuActive) {
         dialogsMenu[menuActive][2] = gui.Dialog.new(dialogsMenu[menuActive][0],dialogsMenu[menuActive][1]);
         dialogsMenu[menuActive][2].open();
         setprop("sim/G91/menu/menuActive",menuActive);
-print("**** 6 sim/G91/menu/menuActive : ",menuActive," -> open");
         return 1
     } else {
         return 0;
     };
 };
+
+
+var commandSet = func() {
+    if (commandMemory != nil) {
+        var command = commandMemory;
+        if (command == 0) {
+            var menuActive = getprop("sim/G91/menu/menuActive");
+            if (doublePushActive > 1) {
+                lastMenuActive = menuActive;
+            };
+            closeMenuActive(menuActive);
+        } else {
+            if (command == 1) {
+                var menuActive = getprop("sim/G91/menu/menuActive");
+                if (menuActive == "nil") {
+                    if (doublePushActive > 1) {
+                        menuActive = lastMenuActive;
+                    } else {
+                        menuActive = "F1Menu";
+                    };
+                    setprop("sim/G91/menu/menuActive",menuActive);
+                } else {
+                    if (menuActive == "F1Menu") {
+                        command = 2;
+                    } else {
+                        closeMenuActive(menuActive);
+                    };
+                };
+                menuActive = getprop("sim/G91/menu/menuActive");
+                if (command == 1) {
+                    if (menuActive == "nil") {
+                        if (doublePushActive < 2) {
+                            menuActive = "F1Menu";
+                            openMenuActive(menuActive);
+                        };
+                    } else {
+                        lastMenuActive = menuActive;
+                        openMenuActive(menuActive);
+                    };
+                };
+            };
+            if (command == 2) {
+                var menuActive = getprop("sim/G91/menu/menuActive");
+                closeMenuActive(menuActive);
+            };
+        };
+    };
+    commandMemory = nil;
+    doublePushActive = 0;
+};
+
+
+var delayTimer = maketimer(0.5, commandSet);
+delayTimer.singleShot = 1;
 
 
 setlistener("sim/G91/menu/menuActive", func {
@@ -73,38 +128,23 @@ setlistener("sim/G91/menu/menuActive", func {
 setlistener("sim/G91/menu/command", func {
 
     var command = getprop("sim/G91/menu/command");
-print("**** 2 sim/G91/menu/command : ",command," sim/G91/menu/menuActive: ",getprop("sim/G91/menu/menuActive"));
-    if (command == 0) {
-        var menuActive = getprop("sim/G91/menu/menuActive");
-        closeMenuActive(menuActive);
+
+    if (command == 1) {
+        if (doublePushActive > 0) {
+            doublePushActive += 1;
+        } else {
+            commandMemory = command;
+            doublePushActive = 1;
+            delayTimer.start();
+        };
     } else {
-        if (command == 1) {
-            var menuActive = getprop("sim/G91/menu/menuActive");
-            if (menuActive == "nil") {
-                menuActive = "F1Menu";
-                setprop("sim/G91/menu/menuActive",menuActive);
-            } else {
-                if (menuActive == "F1Menu") {
-                    command = 2;
-                } else {
-                    closeMenuActive(menuActive);
-                };
-            };
-            menuActive = getprop("sim/G91/menu/menuActive");
-print("**** 4 sim/G91/menu/menuActive : ",menuActive);
-            if (command == 1) {
-                if (menuActive == "nil") menuActive = "F1Menu";
-                openMenuActive(menuActive);
-            };
-        };
-        if (command == 2) {
-            var menuActive = getprop("sim/G91/menu/menuActive");
-            closeMenuActive(menuActive);
-        };
+        commandMemory = command;
+        commandSet();
     };
 
-    setprop("sim/G91/menu/command",0);
+#//print("**** 2 sim/G91/menu/command : ",command, " | ",commandMemory," sim/G91/menu/menuActive: ",getprop("sim/G91/menu/menuActive")," doublePushActive: ",doublePushActive," lastMenuActive: ",lastMenuActive);
 
 },1,1);
+
 
 

@@ -96,140 +96,26 @@
                 <float n="21" alias="/sim/G91/liveries/active/specular"/>
             </generic>
         </multiplay>
-        <!--
+
         <menubar n="0">
             <default n="0">
                 <menu n="100">
                     <label>Fiat G91</label>
                     <enabled type="bool">true</enabled>
                     <item>
-                        <label>Pilot assistant</label>
+                        <label>[F1] activate menu</label>
                         <binding>
-                            <command>nasal</command>
-                            <script>
-                                test_dialog = gui.Dialog.new("sim/gui/dialogs/G91/Autopilot/dialog","Aircraft/G91-R1B_HD/Dialogs/G91-Pilot-Assistant.xml");
-                                test_dialog.open();
-                            </script>
+                            <command>property-assign</command>
+                            <property>sim/G91/menu/command</property>
+                            <value>1</value>
                         </binding>
                     </item>
                     <item>
-                        <label>Configuration</label>
+                        <label> </label>
                         <binding>
-                            <command>nasal</command>
-                            <script>
-                                test_dialog = gui.Dialog.new("sim/gui/dialogs/G91/Configuration/dialog","Aircraft/G91-R1B_HD/Dialogs/G91-Configuration.xml");
-                                test_dialog.open();
-                            </script>
-                        </binding>
-                    </item>
-                    <item>
-                        <label>Autostart and Engine</label>
-                        <binding>
-                            <command>nasal</command>
-                            <script>
-                                test_dialog = gui.Dialog.new("sim/gui/dialogs/G91/Engine/dialog","Aircraft/G91-R1B_HD/Dialogs/G91-Engine.xml");
-                                test_dialog.open();
-                            </script>
-                        </binding>
-                    </item>
-                    <item>
-                        <label>Electric System</label>
-                        <binding>
-                            <command>nasal</command>
-                            <script>
-                                test_dialog = gui.Dialog.new("sim/gui/dialogs/G91/Electric/dialog","Aircraft/G91-R1B_HD/Dialogs/G91-Electric.xml");
-                                test_dialog.open();
-                            </script>
-                        </binding>
-                    </item>
-                    <item>
-                        <label>Radio VOR/NDB/ILS/TACAN near sel.</label>
-                        <binding>
-                            <command>nasal</command>
-                            <script>
-                                test_dialog = gui.Dialog.new("sim/gui/dialogs/G91/Radio/dialog","Aircraft/G91-R1B_HD/Dialogs/G91-Radio-Near-Selector.xml");
-                                test_dialog.open();
-                            </script>
-                        </binding>
-                    </item>
-                    <item>
-                        <label>PHI - route system</label>
-                        <binding>
-                            <command>nasal</command>
-                            <script>
-                                test_dialog = gui.Dialog.new("sim/gui/dialogs/G91/PHI/dialog","Aircraft/G91-R1B_HD/Dialogs/G91-PHI.xml");
-                                test_dialog.open();
-                            </script>
-                        </binding>
-                    </item>
-                    <item>
-                        <label>Radio COM1 mod. PTR 175</label>
-                        <binding>
-                            <command>nasal</command>
-                            <script>
-                                test_dialog = gui.Dialog.new("sim/gui/dialogs/G91/ptr175/dialog","Aircraft/G91-R1B_HD/Dialogs/G91-radio_ptr175.xml");
-                                test_dialog.open();
-                            </script>
-                        </binding>
-                    </item>
-                    <item>
-                        <label>Livery</label>
-                        <binding>
-                            <command>nasal</command>
-                            <script>
-                                test_dialog = gui.Dialog.new("sim/gui/dialogs/G91/Livery/dialog","Aircraft/G91-R1B_HD/Dialogs/G91-Livery.xml");
-                                test_dialog.open();
-                            </script>
-                        </binding>
-                    </item>
-                    <item>
-                        <label>JATO System</label>
-                        <binding>
-                            <command>nasal</command>
-                            <script>
-                                test_dialog = gui.Dialog.new("sim/gui/dialogs/G91/JATO/dialog","Aircraft/G91-R1B_HD/Dialogs/G91-JATO.xml");
-                                test_dialog.open();
-                            </script>
-                        </binding>
-                    </item>
-                    <item>
-                        <label>Militar pilot assistant</label>
-                        <binding>
-                            <command>nasal</command>
-                            <script>
-                                test_dialog = gui.Dialog.new("sim/gui/dialogs/G91/Autopilot/dialog","Aircraft/G91-R1B_HD/Dialogs/G91-Militar-Pilot-Assistant.xml");
-                                test_dialog.open();
-                            </script>
-                        </binding>
-                    </item>
-                    <item>
-                        <label>Acrobatic configuration</label>
-                        <binding>
-                            <command>nasal</command>
-                            <script>
-                                test_dialog = gui.Dialog.new("sim/gui/dialogs/G91/Acro/dialog","Aircraft/G91-R1B_HD/Dialogs/G91-Acro.xml");
-                                test_dialog.open();
-                            </script>
-                        </binding>
-                    </item>
-                    <item>
-                        <label>Special effects</label>
-                        <binding>
-                            <command>nasal</command>
-                            <script>
-                                test_dialog = gui.Dialog.new("sim/gui/dialogs/G91/Acro/dialog","Aircraft/G91-R1B_HD/Dialogs/G91-Effects.xml");
-                                test_dialog.open();
-                            </script>
-                        </binding>
-                    </item>
-                    <item>
-                        <label>Accessories</label>
-                        <binding>
-                            <command>nasal</command>
-                            <script>
-                                test_dialog = gui.Dialog.new("sim/gui/dialogs/G91/Accessories/dialog","Aircraft/G91-R1B_HD/Dialogs/G91-Accessories.xml");
-                                test_dialog.open();
-                            </script>
+                            <command>property-assign</command>
+                            <property>sim/G91/menu/command</property>
+                            <value>1</value>
                         </binding>
                     </item>
                     <item>
@@ -237,25 +123,23 @@
                         <binding>
                             <command>nasal</command>
                             <script>
-                                test_dialog = gui.Dialog.new("sim/gui/dialogs/G91/Help/dialog","Aircraft/G91-R1B_HD/Dialogs/G91-Help.xml");
-                                test_dialog.open();
+                                setprop("sim/G91/menu/menuActive","Help");
                             </script>
                         </binding>
                     </item>
                     <item>
-                        <label>Test systems plane</label>
+                        <label>Test system plane menu</label>
                         <binding>
                             <command>nasal</command>
                             <script>
-                                test_dialog = gui.Dialog.new("sim/gui/dialogs/G91/TestSystemsPlane/dialog","Aircraft/G91-R1B_HD/Dialogs/G91-test.xml");
-                                test_dialog.open();
+                                setprop("sim/G91/menu/menuActive","TestSystemsPlane");
                             </script>
                         </binding>
                     </item>
                 </menu>
             </default>
         </menubar>
-        -->
+
         <G91 include="Models/G91_Params.xml"/>
         
     </sim>
@@ -410,11 +294,9 @@
                 <repeatable type="bool">false</repeatable>
                 <interval-sec>0.2</interval-sec>
                 <binding>
-                    <command>nasal</command>
-                    <script><![CDATA[
-                        setprop("sim/G91/menu/command",1);
-                        print("*** set sim/G91/menu/command to 1");
-                    ]]></script>
+                    <command>property-assign</command>
+                    <property>sim/G91/menu/command</property>
+                    <value>1</value>
                 </binding>
             </key>
             <key n="261">

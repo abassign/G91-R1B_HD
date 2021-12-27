@@ -192,7 +192,7 @@
             </binding>
         </button>
     </group>
-
+<!--
     <hrule/>
 
     <group>
@@ -211,7 +211,7 @@
             </binding>
         </button>
     </group>
-
+    -->
     <hrule/>
 
 </PropertyList>

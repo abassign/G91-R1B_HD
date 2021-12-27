@@ -466,7 +466,7 @@ G91_Params.xml
 
     <menu>
         <active type="string">F1Menu</active>
-        <command type="int">1</command>
+        <command type="int">0</command>
     </menu>
     
 </PropertyList>
