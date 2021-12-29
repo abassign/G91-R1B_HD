@@ -197,7 +197,7 @@ http://wiki.flightgear.org/Howto:Adding_a_canvas_to_a_GUI_dialog
                 <binding>
                     <command>nasal</command>
                     <script>
-                        setprop("sim/G91/liveries/active/id",9);
+                        setprop("sim/G91/liveries/active/id",10);
                     </script>
                 </binding>
             </button>
@@ -223,6 +223,24 @@ http://wiki.flightgear.org/Howto:Adding_a_canvas_to_a_GUI_dialog
                 <row>9</row>
                 <col>1</col>
                 <label>Luftwaffe c/n 535 (R3)</label>
+                <halign>left</halign>
+            </text>
+
+            <button>
+                <row>10</row>
+                <col>0</col>
+                <legend>10</legend>
+                <binding>
+                    <command>nasal</command>
+                    <script>
+                        setprop("sim/G91/liveries/active/id",11);
+                    </script>
+                </binding>
+            </button>
+            <text>
+                <row>10</row>
+                <col>1</col>
+                <label>USAF R3 US Army</label>
                 <halign>left</halign>
             </text>
             

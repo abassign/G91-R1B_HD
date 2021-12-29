@@ -49,7 +49,10 @@
             <pref-height>16</pref-height>
             <border>2</border>
             <binding>
-                <command>dialog-close</command>
+                <command>nasal</command>
+                <script>
+                    setprop("sim/G91/menu/command",2);
+                </script>
             </binding>
         </button>
     </group>

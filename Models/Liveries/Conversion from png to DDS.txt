@@ -2,3 +2,7 @@ All livery files have been converted to DDS, but the liveries in PNG are always 
 
 convert ITA_prot_001.png -flip -define dds: compression = DXT5 dxt5: ITA_prot_001.dds
 convert ITA_prot_002.png -flip -define dds: compression = DXT5 dxt5: ITA_prot_002.dds
+
+Or:
+
+convert ITA_2_37_002.rgb -flip -format png temp.png; nvcompress -bc1  temp.png ITA_2_37_002.dds

@@ -319,6 +319,32 @@ G91_Params.xml
             <recognition_gauges type="int">1</recognition_gauges>
             <advanced_gauges type="int">0</advanced_gauges>
         </livery>
+
+        <livery n="11">
+            <id type="int">11</id>
+            <reloads type="float">0.0</reloads>
+            <name_short type="string">USAF R3 US Army</name_short>
+            <name_long type="string">USAF R3 US Army</name_long>
+            <PANR1 type="float">0.0</PANR1>
+            <diffuse type="float">0.44</diffuse>
+            <specular type="float">0.28</specular>
+            <dirty_set type="int">0</dirty_set>
+            <livery_001 type="string">Aircraft/G91-R1B_HD/Models/Liveries/USAF_01_01.png</livery_001>
+            <livery_002 type="string">Aircraft/G91-R1B_HD/Models/Liveries/USAF_01_02.png</livery_002>
+            <dirty_001 type="string">Aircraft/G91-R1B_HD/Models/Liveries/dirty_01_4k.dds</dirty_001>
+            <dirty_002 type="string">Aircraft/G91-R1B_HD/Models/Liveries/dirty_02_4k.dds</dirty_002>
+            <normalmap_enabled>0</normalmap_enabled>
+            <version>2</version>
+            <symbols_path type="string"></symbols_path>
+            <symbol_01 type="string"></symbol_01>
+            <symbol_02 type="string"></symbol_02>
+            <symbol_03 type="string"></symbol_03>
+            <symbol_04 type="string"></symbol_04>
+            <symbol_05 type="string"></symbol_05>
+            <tacan_nav_active_state type="int">1</tacan_nav_active_state>
+            <recognition_gauges type="int">1</recognition_gauges>
+            <advanced_gauges type="int">0</advanced_gauges>
+        </livery>
         
     </liveries>
     

@@ -23,6 +23,7 @@ dialogsMenu["JATO"] = ["sim/gui/dialogs/G91/JATO/dialog","Aircraft/G91-R1B_HD/Di
 dialogsMenu["Acro"] = ["sim/gui/dialogs/G91/Acro/dialog","Aircraft/G91-R1B_HD/Dialogs/G91-Acro.xml",nil];
 dialogsMenu["Accessories"] = ["sim/gui/dialogs/G91/Accessories/dialog","Aircraft/G91-R1B_HD/Dialogs/G91-Accessories.xml",nil];
 dialogsMenu["Effects"] = ["sim/gui/dialogs/G91/Effects/dialog","Aircraft/G91-R1B_HD/Dialogs/G91-Effects.xml",nil];
+dialogsMenu["Militar-Pilot-Assistant"] = ["sim/gui/dialogs/G91/MilitarPilotAssistant/dialog","Aircraft/G91-R1B_HD/Dialogs/G91-Militar-Pilot-Assistant.xml",nil];
 dialogsMenu["TestSystemsPlane"] = ["sim/gui/dialogs/G91/TestSystemsPlane/dialog","Aircraft/G91-R1B_HD/Dialogs/G91-test.xml",nil];
 
 

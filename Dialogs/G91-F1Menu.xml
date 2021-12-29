@@ -191,6 +191,19 @@
                 </script>
             </binding>
         </button>
+        <button>
+            <row>12</row>
+            <col>0</col>
+            <pref-width>250</pref-width>
+            <legend>Militar Pilot Assistant</legend>
+            <halign>left</halign>
+            <binding>
+                <command>nasal</command>
+                <script>
+                    setprop("sim/G91/menu/menuActive","Militar-Pilot-Assistant");
+                </script>
+            </binding>
+        </button>
     </group>
 <!--
     <hrule/>
