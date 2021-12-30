@@ -35,6 +35,8 @@
             rplayer.getNode("sim/G91/liveries/active/symbol_03", 1).alias(rplayer.getNode("sim/multiplay/generic/string[8]"));
             rplayer.getNode("sim/G91/liveries/active/symbol_04", 1).alias(rplayer.getNode("sim/multiplay/generic/string[9]"));
             rplayer.getNode("sim/G91/liveries/active/symbol_05", 1).alias(rplayer.getNode("sim/multiplay/generic/string[10]"));
+            rplayer.getNode("sim/G91/liveries/active/tacan_nav_active_state", 1).alias(rplayer.getNode("sim/multiplay/generic/int[5]"));
+            rplayer.getNode("sim/G91/liveries/active/recognition_gauges", 1).alias(rplayer.getNode("sim/multiplay/generic/int[6]"));
             rplayer.getNode("sim/G91/liveries/active/diffuse", 1).alias(rplayer.getNode("sim/multiplay/generic/float[20]"));
             rplayer.getNode("sim/G91/liveries/active/specular", 1).alias(rplayer.getNode("sim/multiplay/generic/float[21]"));
             

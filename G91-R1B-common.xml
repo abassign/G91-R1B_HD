@@ -81,6 +81,8 @@
                 <int n="2" alias="/sim/G91/liveries/active/PANR1"/>
                 <int n="3" alias="/sim/G91/liveries/active/normalmap_enabled"/>
                 <int n="4" alias="/sim/G91/liveries/active/dirty_set"/>
+                <int n="5" alias="/sim/G91/liveries/active/tacan_nav_active_state"/>
+                <int n="6" alias="/sim/G91/liveries/active/recognition_gauges"/>
                 <string n="0" alias="/sim/G91/liveries/active/livery_001"/>
                 <string n="1" alias="/sim/G91/liveries/active/livery_002"/>
                 <string n="2" alias="/sim/G91/liveries/active/dirty_001"/>
