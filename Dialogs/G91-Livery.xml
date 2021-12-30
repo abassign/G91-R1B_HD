@@ -65,8 +65,8 @@ http://wiki.flightgear.org/Howto:Adding_a_canvas_to_a_GUI_dialog
             </text>
             
             <button>
-                <row>1</row>
-                <col>0</col>
+                <row>0</row>
+                <col>2</col>
                 <legend>02</legend>
                 <binding>
                     <command>nasal</command>
@@ -76,9 +76,9 @@ http://wiki.flightgear.org/Howto:Adding_a_canvas_to_a_GUI_dialog
                 </binding>
             </button>
             <text>
-                <row>1</row>
-                <col>1</col>
-                <label>PAN - National Aerobatic recognition nose (R1B)</label>
+                <row>0</row>
+                <col>3</col>
+                <label>Recognition nose (R1B)</label>
                 <halign>left</halign>
             </text>
 
@@ -119,8 +119,8 @@ http://wiki.flightgear.org/Howto:Adding_a_canvas_to_a_GUI_dialog
             </text>
 
             <button>
-                <row>4</row>
-                <col>0</col>
+                <row>3</row>
+                <col>2</col>
                 <legend>05</legend>
                 <binding>
                     <command>nasal</command>
@@ -130,9 +130,9 @@ http://wiki.flightgear.org/Howto:Adding_a_canvas_to_a_GUI_dialog
                 </binding>
             </button>
             <text>
-                <row>4</row>
-                <col>1</col>
-                <label>Italian Air Force - 2nd flight flock - Tricolore</label>
+                <row>3</row>
+                <col>3</col>
+                <label>Tricolore painted for last flight</label>
                 <halign>left</halign>
             </text>
 
@@ -150,13 +150,13 @@ http://wiki.flightgear.org/Howto:Adding_a_canvas_to_a_GUI_dialog
             <text>
                 <row>5</row>
                 <col>1</col>
-                <label>Silver version, used as a prototype Pinocchio nose (R1)</label>
+                <label>Silver version, prototype Pinocchio nose (R1)</label>
                 <halign>left</halign>
             </text>
             
             <button>
-                <row>6</row>
-                <col>0</col>
+                <row>5</row>
+                <col>2</col>
                 <legend>07</legend>
                 <binding>
                     <command>nasal</command>
@@ -166,9 +166,9 @@ http://wiki.flightgear.org/Howto:Adding_a_canvas_to_a_GUI_dialog
                 </binding>
             </button>
             <text>
-                <row>6</row>
-                <col>1</col>
-                <label>Silver version R1B recognition nose (R1B)</label>
+                <row>5</row>
+                <col>3</col>
+                <label>R1B recognition nose (R1B)</label>
                 <halign>left</halign>
             </text>
             
@@ -191,8 +191,8 @@ http://wiki.flightgear.org/Howto:Adding_a_canvas_to_a_GUI_dialog
             </text>
             
             <button>
-                <row>8</row>
-                <col>0</col>
+                <row>7</row>
+                <col>2</col>
                 <legend>08</legend>
                 <binding>
                     <command>nasal</command>
@@ -202,9 +202,9 @@ http://wiki.flightgear.org/Howto:Adding_a_canvas_to_a_GUI_dialog
                 </binding>
             </button>
             <text>
-                <row>8</row>
-                <col>1</col>
-                <label>Portuguese R3 esq 301 jaguares</label>
+                <row>7</row>
+                <col>3</col>
+                <label>Jaguares</label>
                 <halign>left</halign>
             </text>
             
@@ -240,7 +240,25 @@ http://wiki.flightgear.org/Howto:Adding_a_canvas_to_a_GUI_dialog
             <text>
                 <row>10</row>
                 <col>1</col>
-                <label>USAF R3 US Army</label>
+                <label>USAF R3 US Army 4x12.7</label>
+                <halign>left</halign>
+            </text>
+
+            <button>
+                <row>10</row>
+                <col>2</col>
+                <legend>11</legend>
+                <binding>
+                    <command>nasal</command>
+                    <script>
+                        setprop("sim/G91/liveries/active/id",12);
+                    </script>
+                </binding>
+            </button>
+            <text>
+                <row>10</row>
+                <col>3</col>
+                <label>USAF R3 US Army 2x30 mm</label>
                 <halign>left</halign>
             </text>
             
