@@ -16,6 +16,7 @@ Modify the program for gear[0] pivoting
     <property value="-55">systems/gears/gear[2]/z</property>
     
     <property value="0.0">systems/gears/gear[0]/is-stationary</property>
+    <property value="1.5">systems/gears/gear[0]/slip-angle-deg-lag-c1</property>
     <property value="0.0">systems/gears/gear[0]/slip-angle-deg-lag</property>
     <property value="20.0">systems/gears/gear[0]/slip-angle-deg-max</property>
     <property value="1.0">systems/gears/gear[0]/landingGearSteerLimitationFx-sign</property>
@@ -53,105 +54,65 @@ Modify the program for gear[0] pivoting
                 </ifthen>
             </function>
         </fcs_function>
-        
-        <fcs_function name="systems/gears/gear[0]/slip-angle-deg">
+
+        <lag_filter name="gear/unit[0]/WOW-lag">
+            <input>gear/unit[0]/WOW</input>
+            <c1>0.5</c1>
+        </lag_filter>
+
+        <switch name="systems/gears/gear[0]/is-on-ground">
+            <default value="0"/>
+            <test value="1" logic="AND">
+                gear/unit[0]/WOW-lag GT 0.5
+            </test>
+        </switch>
+
+        <switch name="systems/gears/gear[0]/is-not-on-ground">
+            <default value="0"/>
+            <test value="-1" logic="AND">
+                gear/unit[0]/WOW-lag LT 0.5
+            </test>
+        </switch>
+
+        <switch name="gear/unit[0]/steering-angle-deg">
+            <default value="gear/unit[0]/steering-angle-deg"/>
+            <test value="0" logic="AND">
+                systems/gears/gear[0]/is-on-ground GT 0.0
+            </test>
+        </switch>
+
+        <lag_filter name="gear/unit[0]/steering-angle-deg-lag">
+            <input>gear/unit[0]/steering-angle-deg</input>
+            <c1>1.0</c1>
+        </lag_filter>
+
+        <fcs_function name="systems/gears/gear[0]/slip-angle-deg-c1">
             <function>
-                <difference>
-                    <ifthen>
-                        <gt>
-                            <p>gear/unit[0]/compression-ft</p>
-                            <v>0.001</v>
-                        </gt>
+                <product>
+                    <difference>
                         <p>gear/unit[0]/steering-angle-deg</p>
-                        <v>0.0</v>
-                    </ifthen>
-                    <v>0.0</v>
-                </difference>
+                        <p>systems/gears/gear[0]/slip-angle-deg</p>
+                    </difference>
+                    <v>3.0</v>
+                </product>
             </function>
         </fcs_function>
+
+        <integrator name="systems/gears/gear[0]/slip-angle-deg">
+            <input>gear/unit[0]/wheel-speed-fps</input>
+            <c1>systems/gears/gear[0]/slip-angle-deg-c1</c1>
+            <trigger>systems/gears/gear[0]/is-not-on-ground</trigger>
+            <clipto>
+                <min>-40.0</min>
+                <max>40.0</max>
+            </clipto>
+        </integrator>
         
         <lag_filter name="systems/gears/gear[0]/slip-angle-deg-lag">
             <input>systems/gears/gear[0]/slip-angle-deg</input>
-            <c1>2.0</c1>
+            <c1>systems/gears/gear[0]/slip-angle-deg-lag-c1</c1>
         </lag_filter>
-        
-        <switch name="systems/gears/gear[0]/steering-angle-deg-limiter-active">
-            <default value="0"/>
-            <test value="1" logic="AND">
-                gear/unit[0]/WOW ne 0
-                gear/unit[0]/wheel-speed-fps GT 0.1
-            </test>
-        </switch>
-        
-        <fcs_function name="systems/gears/gear[0]/steering-angle-deg-limiter-norm">
-            <function>
-                <ifthen>
-                    <and>
-                        <gt>
-                            <abs>
-                                <quotient>
-                                    <p>systems/gears/gear[0]/slip-angle-deg-lag</p>
-                                    <p>systems/gears/gear[0]/slip-angle-deg-max</p>
-                                </quotient>
-                            </abs>
-                            <v>1.0</v>
-                        </gt>
-                        <gt>
-                            <p>systems/gears/gear[0]/steering-angle-deg-limiter-active</p>
-                            <v>0.0</v>
-                        </gt>
-                    </and>
-                    <product>
-                        <difference>
-                            <pow>
-                                <abs>
-                                    <quotient>
-                                        <p>systems/gears/gear[0]/slip-angle-deg-lag</p>
-                                        <p>systems/gears/gear[0]/slip-angle-deg-max</p>
-                                    </quotient>
-                                </abs>
-                                <p>systems/gears/gear[0]/steering-angle-deg-limiter-force-exp</p>
-                            </pow>
-                            <p>systems/gears/gear[0]/steering-angle-deg-limiter-force</p>
-                        </difference>
-                        <p>systems/gears/gear[0]/steering-angle-deg-limiter-force</p>
-                    </product>
-                    <v>0.0</v>
-                </ifthen>
-            </function>
-        </fcs_function>
-        
-        <fcs_function name="systems/gears/gear[0]/LandingGearSteerLimitationFx">
-            <function>
-                <product>
-                    <!-- problema sistema di riferimento carrello -->
-                    <sin>
-                        <p>systems/gears/gear[0]/slip-angle-deg-lag</p>
-                    </sin>
-                    <p>systems/gears/gear[0]/steering-angle-deg-limiter-norm</p>
-                    <p>systems/gears/gear[0]/steering-angle-deg-limiter-force</p>
-                    <p>systems/gears/gear[0]/steering-angle-deg-limiter-active</p>
-                    <p>systems/gears/gear[0]/landingGearSteerLimitationFx-sign</p>
-                </product>
-            </function>
-            <output>external_reactions/LandingGearSteerLimitationFx/magnitude</output>
-        </fcs_function>
-        
-        <fcs_function name="systems/gears/gear[0]/LandingGearSteerLimitationFy">
-            <function>
-                <product>
-                    <cos>
-                        <p>systems/gears/gear[0]/slip-angle-deg-lag</p>
-                    </cos>
-                    <p>systems/gears/gear[0]/steering-angle-deg-limiter-norm</p>
-                    <p>systems/gears/gear[0]/steering-angle-deg-limiter-force</p>
-                    <p>systems/gears/gear[0]/steering-angle-deg-limiter-active</p>
-                    <p>systems/gears/gear[0]/landingGearSteerLimitationFy-sign</p>
-                </product>
-            </function>
-            <output>external_reactions/LandingGearSteerLimitationFy/magnitude</output>
-        </fcs_function>
-        
+
     </channel>
     
     

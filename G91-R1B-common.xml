@@ -75,6 +75,8 @@
                 <float n="12" alias="/gear/gear[1]/rollspeed-ms"/>
                 <float n="13" alias="/gear/gear[2]/rollspeed-ms"/>
                 <float n="14" alias="/controls/engines/engine[0]/throttle"/>
+                <!-- Lights -->
+
                 <!-- MP for models parts -->
                 <int n="0" alias="/sim/G91/liveries/active/id"/>
                 <int n="1" alias="/sim/G91/liveries/active/version"/>

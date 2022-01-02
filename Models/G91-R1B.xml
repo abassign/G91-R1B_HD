@@ -12,6 +12,8 @@
     <nasal>
         <load><![CDATA[
             
+            # For multiplayer livery information
+
             var aModuleId = 1 + _module_id;
             setprop("sim/G91/liveries/active/set-target-module-id",aModuleId);
             setprop("sim/G91/liveries/active/set-target-path",cmdarg().getPath());

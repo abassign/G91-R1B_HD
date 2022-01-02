@@ -875,7 +875,6 @@ var livery_multiplayer = maketimer(1, func() {
                     targets_module_id[target_module_id]["symbol_03"] = node.getNode("sim/G91/liveries/active/symbol_03").getValue();
                     targets_module_id[target_module_id]["symbol_04"] = node.getNode("sim/G91/liveries/active/symbol_04").getValue();
                     targets_module_id[target_module_id]["symbol_05"] = node.getNode("sim/G91/liveries/active/symbol_05").getValue();
-##// Verificare questa riga se veramente serve! Da un errore in MP o meglio se in MP non gestire la riga ?
                     targets_module_id[target_module_id]["tacan_nav_active_state"] = node.getNode("sim/G91/liveries/active/tacan_nav_active_state").getValue();
                     targets_module_id[target_module_id]["recognition_gauges"] = node.getNode("sim/G91/liveries/active/recognition_gauges").getValue();
                     getActiveData(target_module_id, nil);

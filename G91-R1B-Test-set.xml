@@ -50,7 +50,7 @@
     
     <engines>
         <engine n="0">
-            <running>false</running>
+            <running>true</running>
         </engine>
     </engines>
     

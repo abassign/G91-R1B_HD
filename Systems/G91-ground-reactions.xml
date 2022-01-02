@@ -18,8 +18,9 @@ Modified work Copyright 2019 Joshua Davidson (it0uchpods)
         <static_friction>0.80</static_friction>
         <dynamic_friction>0.50</dynamic_friction>
         <rolling_friction> 0.02 </rolling_friction>
-        <spring_coeff unit="LBS/FT">       20200.0 </spring_coeff>
-        <damping_coeff unit="LBS/FT/SEC">   2000.0 </damping_coeff>
+        <spring_coeff unit="LBS/FT">20000.0</spring_coeff>
+        <damping_coeff unit="LBS/FT/SEC">2000.0</damping_coeff>
+        <steerability>STEERABLE</steerability>
         <max_steer unit="DEG">40</max_steer>
         <brake_group>NONE</brake_group>
         <retractable>1</retractable>
@@ -35,8 +36,8 @@ Modified work Copyright 2019 Joshua Davidson (it0uchpods)
         <static_friction>  0.80 </static_friction>
         <dynamic_friction> 0.50 </dynamic_friction>
         <rolling_friction> 0.02 </rolling_friction>
-        <spring_coeff unit="LBS/FT">      29200.0 </spring_coeff>
-        <damping_coeff unit="LBS/FT/SEC">  4500.0 </damping_coeff>
+        <spring_coeff unit="LBS/FT">30000.0</spring_coeff>
+        <damping_coeff unit="LBS/FT/SEC">4000.0</damping_coeff>
         <max_steer unit="DEG">0</max_steer>
         <brake_group>LEFT</brake_group>
         <retractable>1</retractable>
@@ -51,8 +52,8 @@ Modified work Copyright 2019 Joshua Davidson (it0uchpods)
         <static_friction>  0.80 </static_friction>
         <dynamic_friction> 0.50 </dynamic_friction>
         <rolling_friction> 0.02 </rolling_friction>
-        <spring_coeff unit="LBS/FT">      29200.0 </spring_coeff>
-        <damping_coeff unit="LBS/FT/SEC">  4500.0 </damping_coeff>
+        <spring_coeff unit="LBS/FT">30000.0</spring_coeff>
+        <damping_coeff unit="LBS/FT/SEC">4000.0</damping_coeff>
         <max_steer unit="DEG">0</max_steer>
         <brake_group>RIGHT</brake_group>
         <retractable>1</retractable>
