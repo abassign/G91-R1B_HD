@@ -47,6 +47,11 @@
             <blue>1.0</blue>
             <factor-prop>sim/G91/liveries/active/specular</factor-prop>
         </specular>
+        <emission>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </emission>
     </animation>
     
     <animation> 
@@ -64,6 +69,11 @@
             <green>0.4</green>
             <blue>0.4</blue>
         </ambient>
+        <emission>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </emission>
     </animation>
 
 </PropertyList>

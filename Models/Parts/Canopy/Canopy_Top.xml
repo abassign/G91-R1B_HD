@@ -35,9 +35,9 @@
         <type>material</type>
         <object-name>F_CANPOPY.005</object-name>
         <diffuse>
-            <red>1.0</red>
-            <green>1.0</green>
-            <blue>1.0</blue>
+            <red>0.5</red>
+            <green>0.5</green>
+            <blue>0.5</blue>
             <factor-prop>sim/G91/liveries/active/diffuse</factor-prop>
         </diffuse>
         <specular>
@@ -46,6 +46,12 @@
             <blue>1.0</blue>
             <factor-prop>sim/G91/liveries/active/specular</factor-prop>
         </specular>
+        <emission>
+            <red>0.05</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
     </animation>
 
     <animation>
@@ -77,6 +83,11 @@
             <green>1.0</green>
             <blue>0.2</blue>
         </specular>
+        <emission>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </emission>
     </animation>
     
     <animation> 
@@ -100,6 +111,11 @@
             <green>0.0</green>
             <blue>0.1</blue>
         </specular>
+        <emission>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </emission>
     </animation>
 
     <animation> 
@@ -109,15 +125,21 @@
         <object-name>F_CANPOPY.002</object-name>
         <object-name>F_CANPOPY.003</object-name>
         <diffuse>
-            <red>0.8</red>
-            <green>0.8</green>
-            <blue>0.8</blue>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.2</blue>
         </diffuse>
         <ambient>
-            <red>0.5</red>
-            <green>0.5</green>
-            <blue>0.5</blue>
+            <red>0.4</red>
+            <green>0.4</green>
+            <blue>0.4</blue>
         </ambient>
+        <emission>
+            <red>0.03</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
     </animation>
 
     <animation> 
@@ -133,6 +155,11 @@
             <green>0.5</green>
             <blue>0.5</blue>
         </ambient>
+        <emission>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </emission>
     </animation>
 
     <animation> 
@@ -140,17 +167,17 @@
         <object-name>F_dadi</object-name>
         <object-name>F_blocksistem</object-name>
         <diffuse>
-            <red>0.7</red>
-            <green>0.7</green>
-            <blue>0.7</blue>
+            <red>0.15</red>
+            <green>0.15</green>
+            <blue>0.15</blue>
         </diffuse>
         <ambient>
-            <red>0.4</red>
-            <green>0.4</green>
-            <blue>0.4</blue>
+            <red>0.3</red>
+            <green>0.3</green>
+            <blue>0.3</blue>
         </ambient>
         <emission>
-            <red>0.01</red>
+            <red>0.03</red>
             <green>0.0</green>
             <blue>0.0</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>

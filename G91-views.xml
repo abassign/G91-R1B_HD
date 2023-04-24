@@ -127,15 +127,54 @@
             <eye-lon-deg-path>/position/longitude-deg</eye-lon-deg-path>
             <eye-alt-ft-path>/position/altitude-ft</eye-alt-ft-path>
             <eye-heading-deg-path>/orientation/heading-deg</eye-heading-deg-path>
-
             <at-model type="bool">true</at-model>
             <at-model-idx type="int">0</at-model-idx>
-
             <ground-level-nearplane-m type="double">0.5f</ground-level-nearplane-m>
-
             <x-offset-m type="double">5</x-offset-m>
             <y-offset-m type="double">1</y-offset-m>
             <z-offset-m type="double">-10</z-offset-m>
+            <heading-offset-deg>180</heading-offset-deg>
+        </config>
+    </view>
+
+    <view n="110">
+        <name>ab-camera internal view</name>
+        <type>lookfrom</type>
+        <config>
+            <from-model type="bool">false</from-model>
+            <from-model-idx type="int">0</from-model-idx>
+            <eye-lat-deg-path>/position/latitude-deg</eye-lat-deg-path>
+            <eye-lon-deg-path>/position/longitude-deg</eye-lon-deg-path>
+            <eye-alt-ft-path>/position/altitude-ft</eye-alt-ft-path>
+            <eye-heading-deg-path>sim/current-view/ab-camera/view/heading-deg</eye-heading-deg-path>
+            <at-model type="bool">true</at-model>
+            <at-model-idx type="int">0</at-model-idx>
+            <ground-level-nearplane-m type="double">0.5f</ground-level-nearplane-m>
+            <x-offset-m>sim/current-view/ab-camera/view/x-offset</x-offset-m>
+            <y-offset-m>sim/current-view/ab-camera/view/y-offset</y-offset-m>
+            <z-offset-m>sim/current-view/ab-camera/view/z-offset</z-offset-m>
+            <heading-offset-deg>180</heading-offset-deg>
+        </config>
+    </view>
+
+    <view n="111">
+        <name>ab-camera external view</name>
+        <type>lookat</type>
+        <config>
+            <from-model type="bool">false</from-model>
+            <from-model-idx type="int">0</from-model-idx>
+            <eye-lat-deg-path>sim/current-view/ab-camera/view/latitude-deg</eye-lat-deg-path>
+            <eye-lon-deg-path>sim/current-view/ab-camera/view/longitude-deg</eye-lon-deg-path>
+            <eye-alt-ft-path>sim/current-view/ab-camera/view/altitude-ft</eye-alt-ft-path>
+            <eye-roll-deg-path>sim/G91/views/view_submodel/roll-deg</eye-roll-deg-path>
+            <eye-pitch-deg-path>sim/G91/views/view_submodel/pitch-deg</eye-pitch-deg-path>
+            <eye-heading-deg-path>sim/current-view/ab-camera/view/heading-deg</eye-heading-deg-path>
+            <at-model type="bool">true</at-model>
+            <at-model-idx type="int">0</at-model-idx>
+            <ground-level-nearplane-m type="double">0.5f</ground-level-nearplane-m>
+            <x-offset-m>sim/current-view/ab-camera/view/x-offset</x-offset-m>
+            <y-offset-m>sim/current-view/ab-camera/view/y-offset</y-offset-m>
+            <z-offset-m>sim/current-view/ab-camera/view/z-offset</z-offset-m>
             <heading-offset-deg>180</heading-offset-deg>
         </config>
     </view>

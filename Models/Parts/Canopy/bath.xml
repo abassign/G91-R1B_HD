@@ -3,7 +3,7 @@
 <PropertyList>
     
     <path>vasca.ac</path>
-    
+
      <animation>
         <type>noshadow</type>
         <object-name>PANEL</object-name>
@@ -17,7 +17,7 @@
         <object-name>Plane.003</object-name>
         <object-name>Plane.015</object-name>
     </animation>
-    
+
     <animation> 
         <type>material</type> 
         <object-name>Cylinder.002</object-name>
@@ -43,6 +43,12 @@
             <green>0.1</green>
             <blue>0.1</blue>
         </specular>
+        <emission>
+            <red>0.03</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/light_red_console</factor-prop>
+        </emission>
     </animation>
     
     <animation> 
@@ -64,6 +70,11 @@
             <green>0.0</green>
             <blue>0.0</blue>
         </specular>
+        <emission>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </emission>
     </animation>
     
     <animation> 
@@ -85,6 +96,11 @@
             <green>0.1</green>
             <blue>0.1</blue>
         </specular>
+        <emission>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </emission>
     </animation>
     
     <animation> 
@@ -129,6 +145,11 @@
             <green>0.2</green>
             <blue>0.2</blue>
         </ambient>
+        <emission>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </emission>
     </animation>
     
     <animation> 
@@ -172,6 +193,11 @@
             <green>0.4</green>
             <blue>0.4</blue>
         </ambient>
+        <emission>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </emission>
     </animation>
     
 </PropertyList>

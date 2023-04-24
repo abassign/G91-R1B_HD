@@ -68,6 +68,11 @@
             <blue>1.0</blue>
             <factor-prop>sim/G91/liveries/active/specular</factor-prop>
         </specular>
+        <emission>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </emission>
     </animation>
 
     <animation> 
@@ -85,6 +90,11 @@
             <green>0.4</green>
             <blue>0.4</blue>
         </ambient>
+        <emission>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </emission>
     </animation>
     
     <animation> 
@@ -107,6 +117,11 @@
             <blue>0.2</blue>
             <factor-prop>sim/G91/liveries/active/specular</factor-prop>
         </specular>
+        <emission>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </emission>
     </animation>
     
     <animation> 
@@ -130,6 +145,11 @@
             <blue>0.2</blue>
             <factor-prop>sim/G91/liveries/active/specular</factor-prop>
         </specular>
+        <emission>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </emission>
     </animation>
     
     <animation> 
@@ -151,6 +171,11 @@
             <green>0.8</green>
             <blue>0.8</blue>
         </specular>
+        <emission>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </emission>
     </animation>
     
     <animation> 
@@ -172,6 +197,11 @@
             <green>0.7</green>
             <blue>0.7</blue>
         </specular>
+        <emission>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </emission>
     </animation>
     
     <animation> 
@@ -192,6 +222,11 @@
             <green>0.2</green>
             <blue>0.2</blue>
         </specular>
+        <emission>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </emission>
     </animation>
 
 </PropertyList>

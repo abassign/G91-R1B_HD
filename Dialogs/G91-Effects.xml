@@ -6,7 +6,7 @@
     <layout>vbox</layout>
     <default-padding>7</default-padding>
     <modal>false</modal>
-    <width>500</width>
+    <width>800</width>
     
     <!-- title bar -->
     <group>
@@ -54,6 +54,243 @@
     </group>
     
     <hrule/>
+
+    <group>
+        <layout>vbox</layout>
+        <group>
+            <layout>table</layout>
+            <text>
+                <label>View</label>
+                <halign>left</halign>
+                <row>0</row>
+                <col>0</col>
+            </text>
+            <slider>
+                <row>1</row>
+                <col>0</col>
+                <name>ab-camera-zoom</name>
+                <property>sim/current-view/ab-camera/set-view/zoom</property>
+                <min>20</min>
+                <max>100</max>
+                <step>1</step>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </slider>
+            <text>
+                <row>1</row>
+                <col>1</col>
+                <label>99999999</label>
+                <live>true</live>
+                <format>Zoom: %3.0f</format>
+                <property>sim/current-view/ab-camera/set-view/zoom</property>
+                <color>
+                    <red>0.2</red>
+                    <green>0.9</green>
+                    <blue>0.2</blue>
+                </color>
+            </text>
+            <slider>
+                <row>1</row>
+                <col>2</col>
+                <name>ab-camera-zoom</name>
+                <property>sim/current-view/ab-camera/set-view/heading</property>
+                <min>-180</min>
+                <max>180</max>
+                <step>1</step>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </slider>
+            <text>
+                <row>1</row>
+                <col>3</col>
+                <label>99999999</label>
+                <live>true</live>
+                <format>H: %3.0f</format>
+                <property>sim/current-view/ab-camera/set-view/heading</property>
+                <color>
+                    <red>0.2</red>
+                    <green>0.9</green>
+                    <blue>0.2</blue>
+                </color>
+            </text>
+            <slider>
+                <row>1</row>
+                <col>4</col>
+                <name>ab-camera-zoom</name>
+                <property>sim/current-view/ab-camera/set-view/pitch</property>
+                <min>-90</min>
+                <max>90</max>
+                <step>1</step>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </slider>
+            <text>
+                <row>1</row>
+                <col>5</col>
+                <label>99999999</label>
+                <live>true</live>
+                <format>P: %3.0f</format>
+                <property>sim/current-view/ab-camera/set-view/pitch</property>
+                <color>
+                    <red>0.2</red>
+                    <green>0.9</green>
+                    <blue>0.2</blue>
+                </color>
+            </text>
+            <slider>
+                <row>2</row>
+                <col>0</col>
+                <name>radius</name>
+                <property>sim/current-view/ab-camera/set-view/radius</property>
+                <min>5</min>
+                <max>200</max>
+                <step>5</step>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </slider>
+            <text>
+                <row>2</row>
+                <col>1</col>
+                <label>99999999</label>
+                <live>true</live>
+                <format>Radius: %3.0f</format>
+                <property>sim/current-view/ab-camera/set-view/radius</property>
+                <color>
+                    <red>0.2</red>
+                    <green>0.9</green>
+                    <blue>0.2</blue>
+                </color>
+            </text>
+            <!--
+            <slider>
+                <row>2</row>
+                <col>0</col>
+                <name>ab-camera-zoom</name>
+                <property>sim/current-view/ab-camera/set-view/x-offset</property>
+                <min>0</min>
+                <max>100</max>
+                <step>1</step>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </slider>
+            <text>
+                <row>2</row>
+                <col>1</col>
+                <label>99999999</label>
+                <live>true</live>
+                <format>X: %3.0f</format>
+                <property>sim/current-view/ab-camera/set-view/x-offset</property>
+                <color>
+                    <red>0.2</red>
+                    <green>0.9</green>
+                    <blue>0.2</blue>
+                </color>
+            </text>
+            <slider>
+                <row>2</row>
+                <col>2</col>
+                <name>ab-camera-zoom</name>
+                <property>sim/current-view/ab-camera/set-view/y-offset</property>
+                <min>0</min>
+                <max>100</max>
+                <step>1</step>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </slider>
+            <text>
+                <row>2</row>
+                <col>3</col>
+                <label>99999999</label>
+                <live>true</live>
+                <format>Y: %3.0f</format>
+                <property>sim/current-view/ab-camera/set-view/y-offset</property>
+                <color>
+                    <red>0.2</red>
+                    <green>0.9</green>
+                    <blue>0.2</blue>
+                </color>
+            </text>
+            <slider>
+                <row>2</row>
+                <col>4</col>
+                <name>ab-camera-zoom</name>
+                <property>sim/current-view/ab-camera/set-view/z-offset</property>
+                <min>0</min>
+                <max>100</max>
+                <step>1</step>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </slider>
+            <text>
+                <row>2</row>
+                <col>5</col>
+                <label>99999999</label>
+                <live>true</live>
+                <format>Z: %3.0f</format>
+                <property>sim/current-view/ab-camera/set-view/z-offset</property>
+                <color>
+                    <red>0.2</red>
+                    <green>0.9</green>
+                    <blue>0.2</blue>
+                </color>
+            </text>
+            -->
+            <slider>
+                <row>2</row>
+                <col>6</col>
+                <name>ab-camera-zoom</name>
+                <property>sim/current-view/ab-camera/set-view/time-travel</property>
+                <min>1</min>
+                <max>10</max>
+                <step>1</step>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+            </slider>
+            <text>
+                <row>2</row>
+                <col>7</col>
+                <label>99999999</label>
+                <live>true</live>
+                <format>TT: %3.0f</format>
+                <property>sim/current-view/ab-camera/set-view/time-travel</property>
+                <color>
+                    <red>0.2</red>
+                    <green>0.9</green>
+                    <blue>0.2</blue>
+                </color>
+            </text>
+            <checkbox>
+                <row>2</row>
+                <col>8</col>
+                <label>Set</label>
+                <property>sim/current-view/ab-camera/view/active</property>
+                <live>true</live>
+                <binding>
+                    <command>nasal</command>
+                    <script>
+                        setprop("sim/current-view/ab-camera/set-view/time-before",0.0);
+                        setprop("sim/current-view/ab-camera/set-view/time-after",0.0);
+                        var r = getprop("sim/current-view/ab-camera/set-view/radius");
+                        var x = r * math.cos(getprop("sim/current-view/ab-camera/set-view/heading") * 0.0174533);
+                        var y = r * math.sin(getprop("sim/current-view/ab-camera/set-view/heading") * 0.0174533);
+                        var z = r * math.sin(getprop("sim/current-view/ab-camera/set-view/pitch") * 0.0174533);
+                        setprop("sim/current-view/ab-camera/set-view/x-offset",x);
+                        setprop("sim/current-view/ab-camera/set-view/y-offset",y);
+                        setprop("sim/current-view/ab-camera/set-view/z-offset",z);
+                        setprop("sim/current-view/ab-camera/set-view/set","1,0");
+                    </script>
+                </binding>
+            </checkbox>
+        </group>
+    </group>
     
     <hrule/>
 

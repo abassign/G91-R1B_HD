@@ -82,6 +82,11 @@
             <green>0.2</green>
             <blue>0.2</blue>
         </ambient>
+        <emission>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </emission>
     </animation>
     
     <animation> 
@@ -94,6 +99,11 @@
             <green>0.8</green>
             <blue>0.8</blue>
         </ambient>
+        <emission>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </emission>
     </animation>
     
     <animation> 
@@ -105,6 +115,12 @@
             <green>0.1</green>
             <blue>0.1</blue>
         </ambient>
+        <emission>
+            <red>0.1</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
     </animation>
     
     <animation> 
@@ -116,6 +132,12 @@
             <green>0.1</green>
             <blue>0.1</blue>
         </ambient>
+        <emission>
+            <red>0.1</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
     </animation>
     
     <animation> 
@@ -186,14 +208,18 @@
         <object-name>lever:dispositive</object-name>
         <object-name>lever_rotation_bar</object-name>
         <object-name>lever_support</object-name>
-        <texture>Pictures/G91-Al.png.png</texture>
         <ambient>
             <red>0.2</red>
             <green>0.2</green>
             <blue>0.2</blue>
         </ambient>
+        <specular>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.1</blue>
+        </specular>
         <emission>
-            <red>0.03</red>
+            <red>0.1</red>
             <green>0.0</green>
             <blue>0.0</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
@@ -206,12 +232,16 @@
         <object-name>screew:centralcover</object-name>
         <object-name>screew_group01.001</object-name>
         <object-name>F_dadi</object-name>
-        <texture>Pictures/G91-Dark-Grey.png</texture>
         <ambient>
             <red>0.8</red>
             <green>0.8</green>
             <blue>0.8</blue>
         </ambient>
+        <specular>
+            <red>0.2</red>
+            <green>0.2</green>
+            <blue>0.15</blue>
+        </specular>
         <emission>
             <red>0.04</red>
             <green>0.0</green>
@@ -272,6 +302,11 @@
             <green>0.5</green>
             <blue>0.5</blue>
         </ambient>
+        <emission>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </emission>
     </animation>
     
     <animation> 

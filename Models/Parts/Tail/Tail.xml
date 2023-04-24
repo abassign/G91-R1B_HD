@@ -78,6 +78,11 @@
             <blue>1.0</blue>
             <factor-prop>sim/G91/liveries/active/specular</factor-prop>
         </specular>
+        <emission>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </emission>
     </animation>
     
     <animation> 
@@ -95,6 +100,11 @@
             <blue>0.5</blue>
             <factor-prop>sim/G91/liveries/active/specular</factor-prop>
         </specular>
+        <emission>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </emission>
     </animation>
     
     <effect>
@@ -127,6 +137,11 @@
             <blue>1.0</blue>
             <factor-prop>sim/G91/liveries/active/specular</factor-prop>
         </specular>
+        <emission>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </emission>
     </animation>
     
     <animation>
@@ -159,6 +174,11 @@
             <green>0.6</green>
             <blue>0.6</blue>
         </ambient>
+        <emission>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </emission>
     </animation>
     
     <animation>
@@ -181,6 +201,11 @@
             <green>0.5</green>
             <blue>0.5</blue>
         </ambient>
+        <emission>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </emission>
     </animation>
     
     <animation> 
@@ -198,6 +223,11 @@
             <green>1.0</green>
             <blue>1.0</blue>
         </specular>
+        <emission>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </emission>
     </animation>
     
     <animation> 
@@ -214,6 +244,11 @@
             <green>1.0</green>
             <blue>1.0</blue>
         </specular>
+        <emission>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </emission>
     </animation>
     
     <animation>
@@ -256,6 +291,11 @@
             <green>0.0</green>
             <blue>0.0</blue>
         </ambient>
+        <emission>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </emission>
     </animation>
     
     <animation> 
@@ -268,6 +308,11 @@
             <green>0.3</green>
             <blue>0.3</blue>
         </ambient>
+        <emission>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </emission>
     </animation>
     
     <animation> 
@@ -279,6 +324,11 @@
             <green>0.2</green>
             <blue>0.2</blue>
         </ambient>
+        <emission>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </emission>
     </animation>
     
     <animation> 
@@ -295,6 +345,11 @@
             <green>0.3</green>
             <blue>0.3</blue>
         </ambient>
+        <emission>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </emission>
     </animation>
     
     <!-- Tail Lights -->

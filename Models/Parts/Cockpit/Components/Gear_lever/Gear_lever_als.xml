@@ -56,6 +56,11 @@
             <green>0.0</green>
             <blue>0.0</blue>
         </specular>
+        <emission>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </emission>
     </animation>
     
     <animation> 

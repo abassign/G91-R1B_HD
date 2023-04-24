@@ -12,7 +12,7 @@
 #// 0.0, - /sim/current-view/y-offset-m -> Airplane Z axis
 #// 0.0, - /sim/current-view/z-offset-m -> Airplane X axis
 #// 0.0, - waiting time before starting (seconds)
-#// 0,0, - time to travel the space between the starting point and the ending point
+#// 0.0, - time to travel the space between the starting point and the ending point
 #// 0.0  - waiting time after finishing the route before sending the finish signal
 #//
 #// Status variable indicating the status: "sim/current-view/ab-camera/to/status"
@@ -36,6 +36,27 @@ var prop = props.globals.initNode("sim/current-view/ab-camera/to/set-position","
 var prop = props.globals.initNode("sim/current-view/ab-camera/to/status","0", "INT");
 var prop = props.globals.initNode("sim/current-view/ab-camera/to/status-time","0.0", "DOUBLE");
 var prop = props.globals.initNode("sim/current-view/ab-camera/to/command","0", "INT");
+var prop = props.globals.initNode("sim/current-view/ab-camera/set-view/radius","5.0", "DOUBLE");
+var prop = props.globals.initNode("sim/current-view/ab-camera/set-view/set","0,0", "STRING");
+var prop = props.globals.initNode("sim/current-view/ab-camera/set-view/zoom","60.0", "DOUBLE");
+var prop = props.globals.initNode("sim/current-view/ab-camera/set-view/heading","0.0", "DOUBLE");
+var prop = props.globals.initNode("sim/current-view/ab-camera/set-view/pitch","0.0", "DOUBLE");
+var prop = props.globals.initNode("sim/current-view/ab-camera/set-view/x-offset","0.0", "DOUBLE");
+var prop = props.globals.initNode("sim/current-view/ab-camera/set-view/y-offset","0.0", "DOUBLE");
+var prop = props.globals.initNode("sim/current-view/ab-camera/set-view/z-offset","0.0", "DOUBLE");
+var prop = props.globals.initNode("sim/current-view/ab-camera/set-view/time-before","0.0", "DOUBLE");
+var prop = props.globals.initNode("sim/current-view/ab-camera/set-view/time-travel","1.0", "DOUBLE");
+var prop = props.globals.initNode("sim/current-view/ab-camera/set-view/time-after","0.0", "DOUBLE");
+
+var prop = props.globals.initNode("sim/current-view/ab-camera/view/latitude-deg","0.0", "DOUBLE");
+var prop = props.globals.initNode("sim/current-view/ab-camera/view/longitude-deg","1.0", "DOUBLE");
+var prop = props.globals.initNode("sim/current-view/ab-camera/view/altitude-ft","0.0", "DOUBLE");
+var prop = props.globals.initNode("sim/current-view/ab-camera/view/roll-deg","0.0", "DOUBLE");
+var prop = props.globals.initNode("sim/current-view/ab-camera/view/pitch-deg","0.0", "DOUBLE");
+var prop = props.globals.initNode("sim/current-view/ab-camera/view/heading-deg","0.0", "DOUBLE");
+var prop = props.globals.initNode("sim/current-view/ab-camera/view/x-offset","0.0", "DOUBLE");
+var prop = props.globals.initNode("sim/current-view/ab-camera/view/y-offset","0.0", "DOUBLE");
+var prop = props.globals.initNode("sim/current-view/ab-camera/view/z-offset","0.0", "DOUBLE");
 
 
 var ViewCamDataClass = {
@@ -224,6 +245,33 @@ setlistener("sim/current-view/ab-camera/to/set-position", func {
         setprop("sim/current-view/ab-camera/to/status",1);
     };
     setprop("sim/current-view/ab-camera/to/set-position","0,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0");
+
+}, 0, 1);
+
+
+setlistener("sim/current-view/ab-camera/set-view/set", func {
+
+    #// x-offset -> y
+    #// y-offset -> z
+    #// z-offset -> -x
+
+    var setPosition = strToViewCamData(getprop("sim/current-view/ab-camera/set-view/set"));
+    if (setPosition[0] > 0) {
+        if (setPosition[0] == 2) camera_save.getView();
+        camera_to_position.init(setPosition[0],setPosition[1],
+            getprop("sim/current-view/ab-camera/set-view/zoom"),
+            getprop("sim/current-view/ab-camera/set-view/heading"),
+           -getprop("sim/current-view/ab-camera/set-view/pitch"),
+            getprop("sim/current-view/ab-camera/set-view/y-offset"),
+            getprop("sim/current-view/ab-camera/set-view/z-offset"),
+           -getprop("sim/current-view/ab-camera/set-view/x-offset"),
+            getprop("sim/current-view/ab-camera/set-view/time-before"),
+            getprop("sim/current-view/ab-camera/set-view/time-travel"),
+            getprop("sim/current-view/ab-camera/set-view/time-after")
+        );
+        setprop("sim/current-view/ab-camera/to/status",1);
+    };
+    setprop("sim/current-view/ab-camera/set-view/set","0,0");
 
 }, 0, 1);
 

@@ -34,6 +34,12 @@
             <green>0.8</green>
             <blue>0.8</blue>
         </specular>
+        <emission>
+            <red>0.05</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
     </animation>
     
     <animation> 
@@ -51,6 +57,12 @@
             <green>0.4</green>
             <blue>0.4</blue>
         </specular>
+        <emission>
+            <red>0.05</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
     </animation>
     
     <!-- animation -->

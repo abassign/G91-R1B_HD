@@ -52,6 +52,11 @@
         <transparency>
             <alpha>0.9</alpha>
         </transparency>
+        <emission>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </emission>
     </animation>
     
     <animation> 
@@ -70,6 +75,11 @@
         <transparency>
             <alpha>0.85</alpha>
         </transparency>
+        <emission>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </emission>
     </animation>
     
     <animation> 
@@ -91,6 +101,11 @@
         <transparency>
             <alpha>1.0</alpha>
         </transparency>
+        <emission>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </emission>
     </animation>
     
     <animation>

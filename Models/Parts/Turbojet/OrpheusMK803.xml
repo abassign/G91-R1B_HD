@@ -50,6 +50,11 @@
             <blue>0.6</blue>
             <factor-prop>sim/G91/engine_internal_light_low</factor-prop>
         </specular>
+        <emission>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </emission>
     </animation>
     
     <animation> 
@@ -75,6 +80,11 @@
             <blue>0.2</blue>
             <factor-prop>sim/G91/engine_internal_light</factor-prop>
         </specular>
+        <emission>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </emission>
     </animation>
     
     <animation> 
@@ -98,6 +108,11 @@
             <blue>0.2</blue>
             <factor-prop>sim/G91/engine_internal_light_low</factor-prop>
         </specular>
+        <emission>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </emission>
     </animation>
     
     <animation>
@@ -199,6 +214,11 @@
             <green>0.0</green>
             <blue>0.0</blue>
         </specular>
+        <emission>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </emission>
     </animation>
     
     <animation>
@@ -220,6 +240,11 @@
             <green>0.0</green>
             <blue>0.0</blue>
         </specular>
+        <emission>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </emission>
     </animation>
     
     <animation>
@@ -241,6 +266,11 @@
             <green>0.0</green>
             <blue>0.0</blue>
         </specular>
+        <emission>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </emission>
     </animation>
     
     <animation> 
@@ -264,6 +294,11 @@
             <blue>0.8</blue>
             <factor-prop>sim/G91/engine_internal_light_hight</factor-prop>
         </specular>
+        <emission>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </emission>
     </animation>
     
     <animation> 
@@ -288,6 +323,11 @@
             <blue>0.2</blue>
             <factor-prop>sim/G91/engine_internal_light</factor-prop>
         </specular>
+        <emission>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </emission>
     </animation>
         
     <animation>

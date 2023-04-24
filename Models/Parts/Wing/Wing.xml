@@ -299,6 +299,11 @@
             <blue>1.0</blue>
             <factor-prop>sim/G91/liveries/active/specular</factor-prop>
         </specular>
+        <emission>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </emission>
     </animation>
     
     <effect>
@@ -375,6 +380,11 @@
             <blue>1.0</blue>
             <factor-prop>sim/G91/liveries/active/specular</factor-prop>
         </specular>
+        <emission>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </emission>
     </animation>
     
     <animation> 
@@ -409,7 +419,12 @@
             <red>0.5</red>
             <green>0.5</green>
             <blue>0.5</blue>
-        </ambient>	
+        </ambient>
+        <emission>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </emission>
     </animation>
     
     <animation> 
@@ -430,6 +445,11 @@
             <green>1.0</green>
             <blue>1.0</blue>
         </specular>
+        <emission>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </emission>
     </animation>
     
     <animation> 
@@ -446,7 +466,12 @@
             <red>0.05</red>
             <green>0.05</green>
             <blue>0.05</blue>
-        </ambient>	
+        </ambient>
+        <emission>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </emission>
     </animation>
     
     <animation> 
@@ -473,7 +498,12 @@
             <red>0.8</red>
             <green>0.8</green>
             <blue>0.8</blue>
-        </ambient>	
+        </ambient>
+        <emission>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </emission>
     </animation>
     
     <animation> 
@@ -542,7 +572,12 @@
             <red>0.5</red>
             <green>0.5</green>
             <blue>0.5</blue>
-        </ambient>	
+        </ambient>
+        <emission>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </emission>
     </animation>
     
     <animation> 
@@ -559,7 +594,12 @@
             <red>0.1</red>
             <green>0.1</green>
             <blue>0.1</blue>
-        </ambient>	
+        </ambient>
+        <emission>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </emission>
     </animation>
     
     
@@ -613,7 +653,12 @@
             <red>0.8</red>
             <green>0.8</green>
             <blue>0.8</blue>
-        </ambient>	
+        </ambient>
+        <emission>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </emission>
     </animation>
     
     <animation> 
@@ -629,7 +674,12 @@
             <red>0.2</red>
             <green>0.2</green>
             <blue>0.2</blue>
-        </ambient>	
+        </ambient>
+        <emission>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </emission>
     </animation>
     
     <animation> 
@@ -646,7 +696,12 @@
             <red>0.4</red>
             <green>0.4</green>
             <blue>0.4</blue>
-        </ambient>	
+        </ambient>
+        <emission>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </emission>
     </animation>
     
     <animation> 
@@ -673,6 +728,11 @@
             <green>0.1</green>
             <blue>0.1</blue>
         </specular>
+        <emission>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </emission>
     </animation>
     
     <animation> 
@@ -695,6 +755,11 @@
             <green>0.1</green>
             <blue>0.1</blue>
         </specular>
+        <emission>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </emission>
     </animation>
 
     <!-- Landing gear materials -->
@@ -712,7 +777,12 @@
             <red>0.1</red>
             <green>0.1</green>
             <blue>0.1</blue>
-        </ambient>	
+        </ambient>
+        <emission>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </emission>
     </animation>
     
     <animation> 
@@ -727,7 +797,12 @@
             <red>0.4</red>
             <green>0.4</green>
             <blue>0.4</blue>
-        </ambient>	
+        </ambient>
+        <emission>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </emission>
     </animation>
     
     <!-- Emergency Canopy Open Sx-dx-->
@@ -745,7 +820,12 @@
             <red>0.8</red>
             <green>0.8</green>
             <blue>0.8</blue>
-        </ambient>	
+        </ambient>
+        <emission>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </emission>
     </animation>
     
     <animation>
@@ -1040,6 +1120,11 @@
             <green>0.1</green>
             <blue>0.1</blue>
         </specular>
+        <emission>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </emission>
     </animation>
 
     <animation>
@@ -1061,6 +1146,11 @@
             <green>0.3</green>
             <blue>0.3</blue>
         </specular>
+        <emission>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </emission>
     </animation>
 
     

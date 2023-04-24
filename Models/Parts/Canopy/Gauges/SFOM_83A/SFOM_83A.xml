@@ -1,7 +1,7 @@
 <PropertyList>
-    
+
     <path>SFOM_83A.ac</path>
-    
+
     <animation>
         <type>noshadow</type>
         <object-name>Collimator_glass02</object-name>
@@ -44,7 +44,7 @@
         <object-name>screw_gauges01</object-name>
         <object-name>index</object-name>
     </animation>
-    
+
     <effect>
         <inherits-from>Effects/model-transparent</inherits-from>
         <object-name>Collimator_glass_TargetDOWN</object-name>
@@ -54,8 +54,8 @@
         <object-name>Large_disk.001</object-name>
         <object-name>Disk_mobile.001</object-name>
     </effect>
-    
-    <animation> 
+
+    <animation>
         <type>material</type>
         <object-name>Collimator_glass02</object-name>
         <transparency>
@@ -83,8 +83,8 @@
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
-    
-    <animation> 
+
+    <animation>
         <type>material</type>
         <object-name>border_glass_target</object-name>
         <transparency>
@@ -106,9 +106,9 @@
             <blue>0.0</blue>
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
-    </animation> 
-    
-    <animation> 
+    </animation>
+
+    <animation>
         <type>material</type>
         <object-name>Colimator_Objective01</object-name>
         <transparency>
@@ -129,9 +129,14 @@
             <green>0.9</green>
             <blue>0.9</blue>
         </specular>
+        <emission>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </emission>
     </animation>
 
-    <animation> 
+    <animation>
         <type>material</type>
         <object-name>Collimator_glass_TargetDOWN</object-name>
         <transparency>
@@ -164,8 +169,13 @@
             <green>0.2</green>
             <blue>0.2</blue>
         </ambient>
+        <emission>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </emission>
     </animation>
-    
+
     <animation>
         <type>material</type>
         <object-name>Collimator_body</object-name>
@@ -187,7 +197,7 @@
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
-    
+
     <animation>
         <type>material</type>
         <object-name>Collimator_body.002</object-name>
@@ -217,7 +227,7 @@
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
-    
+
     <animation>
         <type>material</type>
         <object-name>Large_disk.001</object-name>
@@ -243,7 +253,7 @@
             <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
         </emission>
     </animation>
-    
+
     <animation>
         <type>material</type>
         <object-name>cover_glass_target</object-name>
@@ -269,7 +279,7 @@
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
-    
+
     <animation>
         <type>material</type>
         <object-name>Cube.004</object-name>
@@ -289,8 +299,13 @@
             <green>0.0</green>
             <blue>0.0</blue>
         </specular>
+        <emission>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </emission>
     </animation>
-    
+
     <animation>
         <type>material</type>
         <object-name>Disk_mobile.001</object-name>
@@ -319,7 +334,7 @@
             <factor-prop>sim/G91/re_emit/gauge_phosphorescent_light</factor-prop>
         </emission>
     </animation>
-    
+
     <animation>
         <type>material</type>
         <object-name>Disk_mobile</object-name>
@@ -346,7 +361,7 @@
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
-    
+
     <animation>
         <type>material</type>
         <object-name>Circle.001</object-name>
@@ -374,7 +389,7 @@
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
-    
+
     <animation>
         <type>material</type>
         <object-name>F_structure_panel_cockpit.005</object-name>
@@ -402,7 +417,7 @@
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
-    
+
     <animation>
         <type>material</type>
         <object-name>collimator_Ice breaker</object-name>
@@ -431,7 +446,7 @@
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
-    
+
     <animation>
         <type>material</type>
         <object-name>beam</object-name>
@@ -466,7 +481,7 @@
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
-    
+
     <animation>
         <type>material</type>
         <object-name>screw_gauges</object-name>
@@ -493,7 +508,7 @@
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
-    
+
     <animation>
         <type>material</type>
         <object-name>flange_fixed_drum</object-name>
@@ -520,7 +535,7 @@
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
-    
+
     <animation>
         <type>material</type>
         <object-name>locking_lever01</object-name>
@@ -551,7 +566,7 @@
             <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
         </emission>
     </animation>
-    
+
     <animation>
         <type>knob</type>
         <object-name>button</object-name>
@@ -568,12 +583,12 @@
                 <property>/sim/G91/gauge/SFOM_83A/button</property>
                 <factor>10</factor>
                 <min>0</min>
-                <max>256</max>                
+                <max>256</max>
                 <wrap>false</wrap>
             </binding>
         </action>
     </animation>
-    
+
     <animation>
         <type>rotate</type>
         <object-name>button</object-name>
@@ -594,7 +609,7 @@
             <z>  0 </z>
         </axis>
     </animation>
-    
+
     <animation>
         <type>select</type>
         <object-name>Collimator_cable</object-name>
@@ -607,7 +622,7 @@
             </greater-than>
         </condition>
     </animation>
-    
+
     <animation>
         <type>knob</type>
         <object-name>Disk_mobile</object-name>
@@ -624,12 +639,12 @@
                 <property>/sim/G91/gauge/SFOM_83A/inclination</property>
                 <factor>2</factor>
                 <min>-10</min>
-                <max>20</max>                
+                <max>20</max>
                 <wrap>false</wrap>
             </binding>
         </action>
     </animation>
-    
+
     <animation>
         <type>rotate</type>
         <object-name>Disk_mobile</object-name>
@@ -664,7 +679,7 @@
             <z>  0 </z>
         </axis>
     </animation>
-    
+
     <animation>
         <type>rotate</type>
         <object-name>Collimator_cable</object-name>
@@ -680,4 +695,3 @@
     </animation>
 
 </PropertyList>
-

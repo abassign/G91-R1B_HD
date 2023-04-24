@@ -229,9 +229,9 @@
         
         <linear_actuator name="systems/gauges/radio/ADF-Marconi-8283/freq-set-pos">
             <input>systems/gauges/radio/ADF-Marconi-8283/freq-set</input>
-            <module>72</module>
+            <module>360</module>
             <lag>16.0</lag>
-            <gain>5.0</gain>
+            <gain>1.0</gain>
         </linear_actuator>
         
         <washout_filter name="systems/gauges/radio/ADF-Marconi-8283/freq-set-pos-wash">
@@ -251,8 +251,8 @@
                 systems/gauges/radio/ADF-Marconi-8283/freq-imposed-new-event LT -1.0
             </test>
             <test logic="OR" value="0.0">
-                systems/gauges/radio/ADF-Marconi-8283/freq-set-pos-wash GT 1.0
-                systems/gauges/radio/ADF-Marconi-8283/freq-set-pos-wash LT -1.0
+                systems/gauges/radio/ADF-Marconi-8283/freq-set-pos-wash GT 0.5
+                systems/gauges/radio/ADF-Marconi-8283/freq-set-pos-wash LT -0.5
             </test>
         </switch>
         

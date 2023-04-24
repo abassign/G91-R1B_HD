@@ -1,3 +1,4 @@
+
 var prop = props.globals.initNode("sim/G91/gauge/SFOM_83A/button", 126, "DOUBLE");
 var prop = props.globals.initNode("sim/G91/gauge/SFOM_83A/inclination", 0, "DOUBLE");
 var prop = props.globals.initNode("sim/G91/gauge/SFOM_83A/isLightActive", 0, "DOUBLE");

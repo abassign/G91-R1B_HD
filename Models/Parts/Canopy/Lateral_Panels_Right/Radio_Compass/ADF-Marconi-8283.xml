@@ -500,6 +500,11 @@
             <green>0.01</green>
             <blue>0.01</blue>
         </ambient>
+        <emission>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </emission>
     </animation>
     
     <animation>
@@ -996,7 +1001,7 @@
                 <property>/fdm/jsbsim/systems/gauges/radio/ADF-Marconi-8283/freq-set</property>
                 <factor>1</factor>
                 <min>0</min>
-                <max>72</max>                
+                <max>360</max>
                 <wrap>true</wrap>
             </binding>
         </action>
@@ -1009,7 +1014,7 @@
         <object-name>crank knob (Meshed)</object-name>
         <object-name>crank rod (Meshed)</object-name>
         <property>/fdm/jsbsim/systems/gauges/radio/ADF-Marconi-8283/freq-pos</property>
-        <factor>5</factor>
+        <factor>2</factor>
         <offset-deg>0</offset-deg>
         <center>
             <x-m>0.095</x-m><y-m>-0.043</y-m><z-m>0.0</z-m>

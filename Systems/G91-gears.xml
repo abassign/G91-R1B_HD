@@ -18,11 +18,6 @@ Modify the program for gear[0] pivoting
     <property value="0.0">systems/gears/gear[0]/is-stationary</property>
     <property value="1.5">systems/gears/gear[0]/slip-angle-deg-lag-c1</property>
     <property value="0.0">systems/gears/gear[0]/slip-angle-deg-lag</property>
-    <property value="20.0">systems/gears/gear[0]/slip-angle-deg-max</property>
-    <property value="1.0">systems/gears/gear[0]/landingGearSteerLimitationFx-sign</property>
-    <property value="-1.0">systems/gears/gear[0]/landingGearSteerLimitationFy-sign</property>
-    <property value="5.0">systems/gears/gear[0]/steering-angle-deg-limiter-force</property>
-    <property value="2.0">systems/gears/gear[0]/steering-angle-deg-limiter-force-exp</property>
     
     <property value="0.0">systems/gears/induced-turbulence</property>
     <property value="0.2">systems/gears/induced-turbulence-intensity</property>

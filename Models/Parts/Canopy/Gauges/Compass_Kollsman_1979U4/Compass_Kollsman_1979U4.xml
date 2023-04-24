@@ -1,12 +1,12 @@
 <PropertyList>
     
     <path>Compass_Kollsman_1979U4.ac</path>
-    
+
     <effect>
         <inherits-from>Effects/model-transparent</inherits-from>
         <object-name>glass (Meshed)</object-name>
     </effect>
-    
+
     <animation>
         <type>noshadow</type>
         <object-name>procedural_light_canopy_spot_red</object-name>
@@ -27,7 +27,7 @@
         <object-name>label_back</object-name>
         <object-name>lubber_line (Meshed)</object-name>
     </animation>
-    
+
     <animation> 
         <type>material</type>
         <object-name>glass (Meshed)</object-name>
@@ -65,6 +65,12 @@
             <green>0.0</green>
             <blue>0.0</blue>
         </ambient>
+        <emission>
+            <red>0.003</red>
+            <green>0.00</green>
+            <blue>0.001</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
     </animation> 
     
     <animation> 
@@ -108,6 +114,11 @@
             <green>0.3</green>
             <blue>0.3</blue>
         </ambient>
+        <emission>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </emission>
     </animation>
     
     <animation> 
@@ -124,6 +135,11 @@
             <green>0.7</green>
             <blue>0.7</blue>
         </ambient>
+        <emission>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </emission>
     </animation>
     
     <animation> 
@@ -139,6 +155,12 @@
             <green>0.5</green>
             <blue>0.5</blue>
         </ambient>
+        <emission>
+            <red>0.003</red>
+            <green>0.00</green>
+            <blue>0.001</blue>
+            <factor-prop>sim/G91/re_emit/gauge_red_light</factor-prop>
+        </emission>
     </animation>
     
     <animation>
