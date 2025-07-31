@@ -9,7 +9,7 @@
         </long-description>
         <author>Massimiliano Cuccarano rendering 3D, Adriano Bassignana FDM JSBSim and historical research, Joshua Davidson Flight Control System and JSBsim</author>
         <status>in_progress</status>
-        <license>GPL 3+</license>
+        <license>GPL 2</license>
         <rating>
             <FDM type="int">3</FDM>
             <systems type="int">4</systems>
